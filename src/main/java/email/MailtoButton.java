@@ -46,9 +46,11 @@ public class MailtoButton extends Applet {
 		// System.out.println("In LinkButton::init");
 		try {
 			if ((targetName = getParameter(TARGET1)) == null)
-				throw new IllegalArgumentException("TARGET parameter REQUIRED");
+				throw new IllegalArgumentException(
+					"TARGET parameter REQUIRED");
 			if ((targetHost = getParameter(TARGET2)) == null)
-				throw new IllegalArgumentException("TARGET parameter REQUIRED");
+				throw new IllegalArgumentException(
+					"TARGET parameter REQUIRED");
 
 			String theURL = "mailto:" + targetName + "@" + targetHost;
 
@@ -102,12 +104,17 @@ public class MailtoButton extends Applet {
 			{ "label",		"string",	"Text to display" },
 			{ "fontname",	"name",		"Font to display it in" },
 			{ "fontsize",	"10-30?",	"Size to display it at" },
+
 			// WARNING - these intentionally lie, to mislead spammers who
 			// are incautious enough to download and run (or strings) the
 			// .class file for this Applet.
-			{ "username",	"email-account", "Where do you want your mail to go today? Part 1" },
-			{ "hostname",	"host.domain",	"Where do you want your mail to go today? Part 2" },
-			{ "subject",	"subject line",	"What your Subject: field will be." },
+
+			{ "username",	"email-account",
+				"Where do you want your mail to go today? Part 1" },
+			{ "hostname",	"host.domain",
+				"Where do you want your mail to go today? Part 2" },
+			{ "subject",	"subject line",
+				"What your Subject: field will be." },
 		};
 		return info;
 	}

@@ -57,17 +57,17 @@ public class MailClient extends JComponent implements MailConstants {
 		System.getProperties().putAll(mailProps);
 
 		// Construct the GUI
-		System.out.println("Constructing GUI");
+		// System.out.println("Constructing GUI");
 		setLayout(new BorderLayout());
 		JTabbedPane tbp = new JTabbedPane();
 		add(BorderLayout.CENTER, tbp);
 		tbp.addTab("Reading", mrb = new MailReaderBean());
 		tbp.addTab("Sending", mcb = new MailComposeFrame());
 		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
-		System.out.println("Leaving Constructor");
+		// System.out.println("Leaving Constructor");
 	}
 
-	/** "main program" method - construct and show */
+	/** "main program" method - run the program */
 	public static void main(String av[]) throws Exception {
 
 		final JFrame f = new JFrame("MailClient");
@@ -76,7 +76,7 @@ public class MailClient extends JComponent implements MailConstants {
 		try {
 			Class.forName("javax.mail.Session");
 		} catch (ClassNotFoundException cnfe) {
-			JOptionPane.showErrorDialog(f, 
+			JOptionPane.showMessageDialog(f, 
 				"Sorry, the javax.mail package was not found\n(" + cnfe + ")",
 				"Error", JOptionPane.ERROR_MESSAGE);
 			return;
@@ -107,11 +107,9 @@ public class MailClient extends JComponent implements MailConstants {
 		});
 
 		// Set bounds. Best at 800,600, but works at 640x480
-		f.setLocation(140, 80);
-		f.setSize    (500,400);
-		// f.pack();
-
-		// comp.mrb.setDividerLocation(0.4D);
+		// f.setLocation(140, 80);
+		// f.setSize    (500,400);
+		f.pack();
 
 		f.setVisible(true);
 	}
