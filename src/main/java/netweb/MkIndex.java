@@ -132,7 +132,7 @@ public class LinkChecker extends Frame implements Runnable {
 			textWindow.append("Can't parse " + pageURL + "\n");
 		}
 		catch (IOException e) {
-			textWindow.append("Error " + root + ":<" + e +">\n");
+			System.err.println("Error " + root + ":<" + e +">\n");
 		}
 	}
 
