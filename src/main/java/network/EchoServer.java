@@ -46,7 +46,7 @@ public class EchoServer {
 				String unicodeLine;
 				while ((unicodeLine = is.readLine()) != null) {
 					System.err.println("Read " + unicodeLine);
-					os.println(unicodeLine);
+					os.print(unicodeLine + "\r\n");
 					System.err.println("Wrote " + unicodeLine);
 				}
 				System.err.println("All done!");

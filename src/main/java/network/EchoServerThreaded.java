@@ -63,7 +63,7 @@ class OneClient extends Thread {
 			PrintStream os = new PrintStream(sock.getOutputStream());
 			String line;
 			while ((line = is.readLine()) != null)
-				os.println(line);
+				os.print(line + "\r\n");
 			sock.close();
 		} catch (IOException e) {
 			System.out.println("IO Error on socket " + e);

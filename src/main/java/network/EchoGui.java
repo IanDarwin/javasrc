@@ -38,7 +38,7 @@ public class EchoGui {
 			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			os = new PrintWriter(sock.getOutputStream(), true);
 
-			os.write(mesg); os.println("");
+			os.write(mesg); os.print("\r\n");
 			ta.append("Sent \"" + mesg  + "\"");
 
 			String reply = is.readLine();
