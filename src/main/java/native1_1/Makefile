@@ -13,14 +13,10 @@
 CFLAGS_FOR_SO = -G # Solaris
 CFLAGS_FOR_SO = -shared
 CSRCS		= HelloWorld.c
-#JAVAHOME	= /local/jdk1.1.2
-#JAVAHOME	= /usr/local/jdk-1.2.2
-JAVAHOME	= $$JAVA_HOME
-#INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/solaris 
-#INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/openbsd
-INCLUDES	= -I$(JAVAHOME)/include
-LIBDIR		= $(JAVAHOME)/lib/sparc/green_threads
-CLASSPATH	= $(JAVAHOME)/lib/classes.zip:.
+# JAVA_HOME should be been set in the environment
+#INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVAHOME)/include/solaris 
+#INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVAHOME)/include/openbsd
+INCLUDES	= -I$(JAVA_HOME)/include
 
 all:		testhello testjavafromc
 
@@ -49,7 +45,7 @@ testjavafromc:	javafromc.all hello.all
 	@echo
 	@echo "Now we test HelloWorld using javafromc instead of java"
 	@echo
-	LD_LIBRARY_PATH="$(LIBDIR):." ./javafromc HelloWorld
+	./javafromc HelloWorld
 	@echo
 	@echo "That was, in case you didn't notice, C->Java->C. And,"
 	@echo "incidentally, a replacement for JDK program \"java\" itself!"
