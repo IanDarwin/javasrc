@@ -23,8 +23,12 @@ public class CommPortOpen {
 	protected String response;
 	/** A flag to control debugging output. */
 	protected boolean debug = true;
+	/** The chosen Port Identifier */
+	CommPortIdentifier thePortID;
+	/** The chosen Port itself */
+	CommPort thePort;
 
-	public static void main(String ap[])
+	public static void main(String[] argv)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 
@@ -53,12 +57,13 @@ public class CommPortOpen {
 		} while (portName == null);
 
 		// Get the CommPortIdentifier.
-		CommPortIdentifier port = chooser.getSelectedIdentifier();
+		thePortID = chooser.getSelectedIdentifier();
 
 		// Now actually open the port.
 		// This form of openPort takes an Application Name and a timeout.
 		// 
-		CommPort thePort = port.open("DarwinSys DataComm",
+		System.out.println("Trying to open " + thePortID.getName() + "...");
+		thePort = thePortID.open("DarwinSys DataComm",
 			TIMEOUTSECONDS * 1000);
 
 		if (thePort instanceof SerialPort) {
