@@ -1,0 +1,2 @@
+jikes *.java
+java NetWatch

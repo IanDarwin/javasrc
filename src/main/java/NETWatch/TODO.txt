@@ -1,0 +1,5 @@
+* Split Panel into abstract and RMI-specific.
+
+* Add other subclasses for Ping, Socket, CORBA, etc.
+
+* Enable these in View Menu when ready.
