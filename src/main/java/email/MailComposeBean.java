@@ -136,6 +136,9 @@ public class MailComposeBean extends JPanel {
 					doSend();
 				} catch(Exception err) {
 					System.err.println("Error: " + err);
+					JOptionPane.showErrorDialog(null,
+						"Sending error:\n" + err.toString(),
+						"Send failed", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -169,7 +172,7 @@ public class MailComposeBean extends JPanel {
 		if (serverHost == null) {
 			JOptionPane.showMessageDialog(parent,
 				"\"" + MailConstants.SEND_HOST +
-					"\" must be set in System.properties",
+					"\" must be set in properties",
 				"No server!",
 				JOptionPane.ERROR_MESSAGE);
 			return;
@@ -184,8 +187,8 @@ public class MailComposeBean extends JPanel {
 		String myAddress = props.getProperty("Mail.address");
 		if (myAddress == null) {
 			JOptionPane.showMessageDialog(parent,
-				"\"Mail.address\" must be set in System.properties",
-				"No server!?",
+				"\"Mail.address\" must be set in properties",
+				"No From: address!",
 				JOptionPane.ERROR_MESSAGE);
 			return;
 		}
