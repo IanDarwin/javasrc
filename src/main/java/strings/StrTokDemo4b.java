@@ -15,11 +15,15 @@ public class StrTokDemo4b {
 		// it silently discards multiple null tokens.
 		StringTokenizer st = new StringTokenizer(line, DELIM, true);
 
+		int i = 0;
 		// Stuff each token into the Vector
 		while (st.hasMoreTokens()) {
 			String s = st.nextToken();
 			if (s.equals(DELIM)) {
 				// Just ignore the "tokens" that consit of DELIM
+				// But do insert something for consecutive delimiters
+				if (results.size() < ++i)
+					results.add(null);
 				continue;
 			}
 			results.addElement(s);
