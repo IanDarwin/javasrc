@@ -19,6 +19,9 @@ import com.darwinsys.util.*;
 public class MkIndex {
 	/** The output file that we create */
 	public static final String OUTPUTFILE = "index-byname.html";
+	/** The string for TITLE and H1 */
+	public static final String TITLE =
+		"Ian Darwin's Java Cookbook: Source Code: By Name";
 	/** The main output stream */
 	PrintWriter out;
 	/** The background color for the page */
@@ -52,10 +55,10 @@ public class MkIndex {
 		println("<HEAD>");
 		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
 		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <TITLE>Ian Darwin's Java Programming Online Source Examples</TITLE>");
+		println("    <title>" + TITLE + </title>");
 		println("</HEAD>");
-		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
-		println("<H1>Ian Darwin's Java Programming Online Source Examples</H1>");
+		println("<body bgcolor=\"" + BGCOLOR + "\">");
+		println("<h1>" + TITLE + </h1>");
 		if (new File("about.html").exists()) {
 			FileIO.copyFile("about.html", out, false);
 		} else {
