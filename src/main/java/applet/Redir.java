@@ -1,0 +1,68 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import java.net.*;
+
+/** A simple redirection applet.
+ * @author Ian Darwin
+ */
+public class Redir extends Applet implements Runnable {
+	protected String urlString;
+	protected URL theNewURL;
+	protected final static int NSECONDS = 5;
+	protected Thread t;
+
+	public void init() {
+		try {
+			// Get the address from a PARAM...
+			urlString = getParameter("URL");
+			if (urlString == null)  {
+				urlString = "MISSING URL";
+				throw new IllegalArgumentException(
+				"Redir requires a URL parameter in the HTML");
+			}
+
+			// Make up the URL object
+			theNewURL = new URL(urlString);
+
+			// debug...
+			// showStatus("URL = " + theNewURL);
+
+			t = new Thread(this);
+			t.start();
+
+		} catch (Exception err) {
+			System.err.println("Error!\n" + err);
+			showStatus("Error, look in Java Console for details!");
+		}
+	}
+
+	public void paint(Graphics g) {
+		if (urlString != null)
+			g.drawString(urlString, 20, 50);
+		else
+			g.drawString("Initializing...", 20, 50);
+	}
+	/** If users moves off the page, set Thread t to null so
+	 * we dont showDocument from within the middle of the new page!
+	 */
+	public void stop() {
+		t = null;
+	}
+
+	/** run, called by the Thread, does the work of sleeping
+	 * for a fixed number of seconds then, if the user hasnt
+	 * moved off the page, actually passing control to the new page.
+	 */
+	public void run() {
+		try {
+			Thread.sleep(NSECONDS * 1000);
+		} catch (InterruptedException e) {
+			// so what?
+		}
+
+		if (t != null)
+			// "And then a miracle occurs..."
+			getAppletContext().showDocument(theNewURL);
+	}
+}
