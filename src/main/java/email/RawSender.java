@@ -2,19 +2,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class SMTPException extends IOException {
-	int ret;
-
-	SMTPException(int ret, String s) {
-		super(s);
-		this.ret = ret;
-	}
-
-	int getCode() {
-		return ret;
-	}
-}
-
 /**
  * SMTP talker class, usable standalone (as a SendMail(8) backend)
  * or inside applications such as JabaDex that need to send mail..
@@ -72,9 +59,9 @@ public class SmtpTalk implements SysExits {
 		} catch (ConnectException e) {
 			die(EX_TEMPFAIL, "Connection Refused by " + host);
 		} catch (UnknownHostException e) {
-			die(EX_NOHOST,"Unknown host " + host);
+			die(EX_NOHOST, "Unknown host " + host);
 		} catch (IOException e) {
-			die(EX_IOERR,"I/O error setting up socket streams\n" + e);
+			die(EX_IOERR, "I/O error setting up socket streams\n" + e);
 		}
 	}
 
@@ -92,6 +79,7 @@ public class SmtpTalk implements SysExits {
 	protected void send_cmd(String cmd, String oprnd) {
 		send_cmd(cmd + " " + oprnd);
 	}
+
 	protected void send_cmd(String cmd) {
 		if (debug)
 			System.out.println(">>> " + cmd);
