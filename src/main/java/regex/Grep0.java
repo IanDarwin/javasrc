@@ -3,7 +3,7 @@ import java.util.regex.*;
 
 /** Grep0 - Match lines from stdin against the pattern on the command line.
  */
-public class MatchLines {
+public class Grep0 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader is =
 			new BufferedReader(new InputStreamReader(System.in));

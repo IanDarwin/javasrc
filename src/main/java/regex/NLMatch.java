@@ -22,12 +22,13 @@ public class NLMatch {
 
 			boolean found;
 			Pattern p1l = Pattern.compile(patt[i]);
-			found = p1l.matcher(input).lookingAt();
+			found = p1l.matcher(input).find();
 			System.out.println("DEFAULT match " + found);
 
-			Pattern pml = Pattern.compile(patt[i], Pattern.DOTALL);
-			found = pml.matcher(input).lookingAt();
-			System.out.println("DOTALL match was " + found);
+			Pattern pml = Pattern.compile(patt[i], 
+				Pattern.DOTALL|Pattern.MULTILINE);
+			found = pml.matcher(input).find();
+			System.out.println("MultiLine match " + found);
 			System.out.println();
 		}
 	}
