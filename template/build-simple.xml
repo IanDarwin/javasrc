@@ -1,4 +1,4 @@
-<project name="XXX" default="build" basedir=".">
+<project name="XXX" default="run" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -6,6 +6,7 @@
 	<property name="build" value="build"/>
 	<property name="darwinsys.jar"
 		value="${user.home}/classes/com-darwinsys-all.jar"/>
+	<property name="main.class" value="IOTest"/>
 
 	<target name="init">
 		<tstamp/>
@@ -16,6 +17,12 @@
 		<javac srcdir="${src}" destdir="${build}" classpath="${darwinsys.jar}"/>
 	</target>
 
+	<target name="run" depends="build">
+		<java classname="${main.class}"
+			classpath="${build}:${darwinsys.jar}"/>
+	</target>
+
 	<target name="clean">
+		<delete dir="${build}"/>
 	</target>
 </project>
