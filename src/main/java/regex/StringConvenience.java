@@ -1,5 +1,3 @@
-import java.util.regex.*;
-
 /**
  * StringConvenience -- demonstrate java.lang.String convenience routine
  * @author Ian F. Darwin

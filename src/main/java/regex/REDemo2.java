@@ -1,7 +1,8 @@
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.util.regex.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 /* Like REDemo but shows the groups in a TextField
  */
