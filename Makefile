@@ -28,20 +28,21 @@ checkpaths:
 
 # Then build everything.
 build:
-		for dir in $(SUBDIR); do ( cd $$dir; make -k "JAVACC=$(JAVACC)"); done
+		@for dir in $(SUBDIR); do ( cd $$dir; make -k "JAVACC=$(JAVACC)"); done
 
 # For any subdirectory that doesn't already have a Makefile, create a simple one
 makefiles:
-		for dir in introspection language numbers; do \
-			cp Makefile.exclude-errors $$dir/Makefile;
+		@for dir in introspection language numbers; do \
+			echo "===> $$dir/Makefile (exclude-errors)"; \
+			cp Makefile.exclude-errors $$dir/Makefile; \
 		done
-		for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
+		@for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
 			echo "===> $$dir/Makefile"; \
 			cp Makefile.simple $$dir/Makefile; \
 		fi; done
 # Get rid of copied Makefiles
 makefiles.clean:
-		for dir in $(SUBDIR); do \
+		@for dir in $(SUBDIR); do \
 		if cmp -s Makefile.simple $$dir/Makefile; then \
 			echo "===> rm $$dir/Makefile"; \
 			rm $$dir/Makefile; \
