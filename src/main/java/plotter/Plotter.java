@@ -22,9 +22,9 @@ public abstract class Plotter {
 		penIsUp = true;
 		curx = 0; cury = 0;
 	}
-	abstract boolean rmoveTo(int incrx, int incry);
-	abstract boolean moveTo(int absx, int absy);
-	abstract boolean setdir(float deg);
+	abstract void rmoveTo(int incrx, int incry);
+	abstract void moveTo(int absx, int absy);
+	abstract void setdir(float deg);
 	abstract void penUp();
 	abstract void penDown();
 	abstract void penColor(int c);
@@ -35,13 +35,23 @@ public abstract class Plotter {
 	/* Concrete classes */
 
 	/** Draw a box of width w and height h */
-	public void drawBox(int w, int h)
-	{
+	public void drawBox(int w, int h) {
 		penDown();
 		rmoveTo(w, 0);
 		rmoveTo(0, h);
 		rmoveTo(-w, 0);
 		rmoveTo(0, -h);
 		penUp();
+	}
+
+	/** Draw a box given an AWT Dimension for its size */
+	public void drawBox(java.awt.Dimension d) {
+		drawBox(d.width, d.height);
+	}
+
+	/** Draw a box given an AWT Rectangle for its location and size */
+	public void drawBox(java.awt.Rectangle r) {
+		moveTo(r.x, r.y);
+		drawBox(r.width, r.height);
 	}
 }
