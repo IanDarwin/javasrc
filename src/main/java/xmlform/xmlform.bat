@@ -1,1 +1,2 @@
-java -cp %CLASSPATH%;/javasrc XmlForm %1 > %1.mif
+set CODEDIR=/javasrc
+java -cp %CLASSPATH%;%CODEDIR% -Dcodedir=%CODEDIR% XmlForm %1 > %1.mif
