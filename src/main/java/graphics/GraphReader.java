@@ -1,38 +1,50 @@
-import java.awt.Point;
-import java.io.*;
-import java.util.*;
+import java.awt.geom.Point2D;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /** GraphReader is a helper class for Grapher, that reads various formats.
  * (At present, only a list of x,y points from a text file).
  */
 public class GraphReader {
 
-	/** Read the data file named. Each line has an x and a y coordinate. */
-	public static List read(String fileName) {
-		LineNumberReader is = null;
-		List data = new ArrayList();
-		try {
-			is = new LineNumberReader(new FileReader(fileName));
+	/** Read data points from the named file. Each line has an x and a y coordinate.
+	 * @throws IllegalArgumentException on bad or insufficient data
+	 * @throws IOException if the file doesn't exist or is unreadable.
+	 */
+	public static List read(String fileName) throws IOException {
+		return read(new FileReader(fileName), fileName);
+	}
+	
+	/** Read data points from an opened Reader. Each line has an x and a y coordinate.
+	 * @throws IllegalArgumentException on bad or insufficient data
+	 * @throws IOException if the file doesn't exist or is unreadable.
+	 */
+	public static List read(Reader reader, String fileName) throws IOException {
+		LineNumberReader is = new LineNumberReader(reader);
 
-			String txt;
-			// Read the file a line at a time, parse it, save the data.
-			while ((txt = is.readLine()) != null) {
-				StringTokenizer st = new StringTokenizer(txt);
-				try {
-					Point p = new Point();
-					p.setLocation(Float.parseFloat(st.nextToken()),
-						Float.parseFloat(st.nextToken()));
-					data.add(p);
-				} catch(NumberFormatException nfe) {
-					System.err.println("Invalid number on line " +
-						is.getLineNumber());
-				} // XXX catch out of range exception
+		List data = new ArrayList();
+
+		String txt;
+	
+		// Read the file a line at a time, parse it, save the data.
+		while ((txt = is.readLine()) != null) {
+			StringTokenizer st = new StringTokenizer(txt);
+			try {
+				Point2D p = new Point2D.Double();
+				p.setLocation(Float.parseFloat(st.nextToken()),
+					Float.parseFloat(st.nextToken()));
+				data.add(p);
+			} catch(NumberFormatException nfe) {
+				throw new IllegalArgumentException("Invalid number " + nfe + 
+						" on line " + is.getLineNumber());
 			}
-		} catch (FileNotFoundException e) {
-			System.err.println("File " + fileName + " unreadable: " + e);
-		} catch (IOException e) {
-			System.err.println("I/O error on line " + is.getLineNumber());
 		}
+
 		if (data.size() < 2) {
 			throw new IllegalArgumentException(
 				"GraphReader.read: " + fileName + ": Not enough data points!");

@@ -1,8 +1,8 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.geom.Point2D;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +41,8 @@ public class Grapher extends JPanel {
 	public void setListDataFromYStrings(List newData) {
 		data.clear();
 		for (int i=0; i < newData.size(); i++) {
-			Point p = new Point();
-			p.setLocation(i, Double.parseDouble((String)newData.get(i)));
+			Point2D p = new Point2D.Double();
+			p.setLocation(i, java.lang.Double.parseDouble((String)newData.get(i)));
 			data.add(p);
 		}
 		figure();
@@ -58,11 +58,11 @@ public class Grapher extends JPanel {
 	private void figure() {
 		// find min & max
         for (int i=0 ; i < data.size(); i++) {
-			Point d = (Point)data.get(i);
-			if (d.x < minx) minx = d.x;
-			if (d.x > maxx) maxx = d.x;
-			if (d.y < miny) miny = d.y;
-			if (d.y > maxy) maxy = d.y;
+			Point2D d = (Point2D)data.get(i);
+			if (d.getX() < minx) minx = d.getX();
+			if (d.getX() > maxx) maxx = d.getX();
+			if (d.getY() < miny) miny = d.getY();
+			if (d.getY() > maxy) maxy = d.getY();
         }
 
 		// Compute ranges
@@ -89,9 +89,9 @@ public class Grapher extends JPanel {
 
 		// Scale and plot the data
         for (int i=0 ; i < data.size(); i++) {
-			Point d = (Point)data.get(i);
-			double x = (d.x-minx) * xfact;
-			double y = (d.y-miny) * yfact;
+			Point2D d = (Point2D)data.get(i);
+			double x = (d.getX() - minx) * xfact;
+			double y = (d.getY() - miny) * yfact;
 			Debug.println("point", "AT " + i + " " + d + "; " +
 				"x = " + x + "; y = " + y);
 			// Draw a 5-pixel rectangle centered, so -2 both x and y.
@@ -104,23 +104,25 @@ public class Grapher extends JPanel {
 		return new Dimension(150, 150);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		final JFrame f = new JFrame("Grapher");
-        f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				f.setVisible(false);
-				f.dispose();
-				System.exit(0);
-			}
-		});
-		Grapher g = new Grapher();
-		f.setContentPane(g);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Grapher grapher = new Grapher();
+		f.setContentPane(grapher);
 		f.setLocation(100, 100);
 		f.pack();
+		List data = null;
 		if (args.length == 0)
-			g.setListData(GraphReader.read("Grapher.dat"));
-		else
-			g.setListData(GraphReader.read(args[0]));
+			data = GraphReader.read("Grapher.dat");
+		else {
+			String fileName = args[0];
+			if ("-".equals(fileName)) {
+				data = GraphReader.read(new InputStreamReader(System.in), "System.in");
+			} else {
+				data = GraphReader.read(fileName);
+			}
+		}
+		grapher.setListData(data);
 		f.setVisible(true);
 	}
 }
