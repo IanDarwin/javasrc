@@ -11,9 +11,9 @@ public class Demo {
 		PDF p = new PDF(pout);
 		Page p1 = new Page(p);
 		p1.add(new PDFText(p, 100, 600, "Hello world, live on the web."));
-		p1.add(new PDFText(p, 200, 400, "Hello world, live on the web."));
+		p1.add(new PDFText(p, 200, 700, "Hello world, live on the web."));
 		p.add(p1);
-		// p.setAuthor("Ian Darwin");
+		p.setAuthor("Ian F. Darwin");
 		p.writePDF();
 	}
 }

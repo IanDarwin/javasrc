@@ -21,10 +21,38 @@ public class Page extends PDFDict {
 		objects.add(po);
 	}
 
+	/** Print all the objects on the page.
+	 * For now, just print all the Text objects, as one Stream.
+	 */
 	protected void print() {
+		// Print the Page object
 		super.print();
+
+		// Now do the Text objects as one PDF obj
+		master.addXref();
+		startObj();
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("BT\n");
+		sb.append("/F1 10 Tf\n");
+
 		for (int i=0; i<objects.size(); i++) {
-			((PDFObject)objects.get(i)).print();
+			PDFObject po = (PDFObject)objects.get(i);
+			if (po instanceof PDFText)
+				((PDFText)po).print(sb);
+			else if (po instanceof MoveTo)
+				((MoveTo)po).print(sb);
+			// else if (po instanceof Font)
+			//	...
+			else
+				System.err.println("PDFPage: ignoring " + po);
 		}
+		sb.append("ET\n");
+
+		master.println("<< /Length " + sb.length() + " >>");
+		master.println("stream");
+		master.print(sb);
+		master.println("endstream");
+		endObj();
 	}
 }

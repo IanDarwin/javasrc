@@ -1,0 +1,23 @@
+package com.darwinsys.spdf;
+
+/** Represent one Move object ("moveto") in a PDF file. */
+public class MoveTo extends PDFObject {
+	protected int x, y;
+
+	public MoveTo(PDF m, int x, int y) {
+		super(m);
+		this.x = x;
+		this.y = y;
+	}
+
+	public void print() {
+		throw new IllegalStateException("print() called on a PDFText obj");
+	}
+
+	public void print(StringBuffer sb) {
+		sb.append(x);
+		sb.append(' ');
+		sb.append(y);
+		sb.append(" m\n");
+	}
+}

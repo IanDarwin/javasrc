@@ -27,6 +27,9 @@ public class PDF {
 	/** The Pages object */
 	PagesObject pagesObj = new PagesObject(this);
 
+	/** The Font Dictionary */
+	FontDict fontDict = new FontDict(this);
+
 	/** The object number of the current object */
 	protected int currObj = 1;
 
@@ -140,20 +143,11 @@ public class PDF {
 		}
 
 		addXref();
-		println("7 0 obj");
+		print(currObj++); println(" 0 obj");
 		println("[/PDF /Text]");
 		println("endobj");
 
-		addXref();
-		println("8 0 obj");
-		println("<<");
-		println("/Type /Font");
-		println("/Subtype /Type1");
-		println("/Name /F1");
-		println("/BaseFont /Helvetica");
-		println("/Encoding /MacRomanEncoding");
-		println(">>");
-		println("endobj");
+		fontDict.print();		// 8
 	}
 
 	DecimalFormat nf10 = new DecimalFormat("0000000000");
@@ -210,11 +204,15 @@ public class PDF {
 		protected InfoObject(PDF m) {
 			super(m);
 			dict.put("Title", "(Sample PDF by SPDF)");
-			dict.put("Author", "(Ian F. Darwin)");
 			dict.put("Creator", "(Darwin Open Systems SPDF Software)");
 			dict.put("Created", "(D:20000516010203)");
 		}
 	}
+	
+	public void setAuthor(String au) {
+		infoObj.dict.put("Author", "(" + au + ")");
+	}
+
 	class OutlinesObject extends PDFDict {
 		protected OutlinesObject(PDF m) {
 			super(m);
@@ -228,6 +226,17 @@ public class PDF {
 			dict.put("Type", "/Pages");
 			dict.put("Count", "1");
 			dict.put("Kids", "[5 0 R]");
+		}
+	}
+
+	class FontDict extends PDFDict {
+		protected FontDict(PDF m) {
+			super(m);
+			dict.put("Type", "/Font");
+			dict.put("Subtype", "/Type1");
+			dict.put("Name", "/F1");
+			dict.put("BaseFont", "/Helvetica");
+			dict.put("Encoding", "/MacRomanEncoding");
 		}
 	}
 }

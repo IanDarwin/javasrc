@@ -16,28 +16,15 @@ public class PDFText extends PDFObject {
 	}
 
 	public void print() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("BT\n");
-		sb.append("/F1 10 Tf\n");
+		throw new IllegalStateException("print() called on a PDFText obj");
+	}
+
+	public void print(StringBuffer sb) {
 		sb.append(x);
 		sb.append(' ');
 		sb.append(y);
-		sb.append(" Td (");
+		sb.append(" m (");
 		sb.append(text);	// TODO must substitute escaped characters
 		sb.append(") Tj\n");
-		sb.append("ET\n");
-		master.addXref();
-		startObj();
-		master.println("<< /Length " + sb.length() + " >>");
-		master.println("stream");
-		master.print(sb);
-		master.println("endstream");
-		endObj();
-	}
-
-	/* trivial text test */
-	public static void main(String argv[]) {
-		PrintWriter pout = new PrintWriter(System.out);
-		new PDFText(new PDF(pout), 100, 300, "Hello World").print();
 	}
 }
