@@ -6,17 +6,28 @@
 	<property name="src"   value="."/>
 	<property name="build" value="."/>
 
-	<!-- specify what to compile. This builds everything -->
+	<property name="getmark.dir" value="../io"/>
+
 	<target name="build">
-		<!-- Compile the java code from ${src} into ${build}.
-		 *** failonerror set false because of 1.4 constructs that will
-		 *** won't compile on 1.3, and a few "expect compile error" cases...
-		  -->
+		<!-- Make sure ../io is up to date, for GetMark -->
+		<!--
+		<ant dir="${getmark.dir}" target="build" />
+		-->
+
+		<!-- Now build this directory -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${darwinsys.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:../io"
-			deprecation="true"
-			failonerror="false"
-		/>
+			classpath="${darwinsys.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${getmark.dir}"
+			debug="true" deprecation="true">
+		</javac>
+	</target>
+
+	<target name="xmlform">
+		<java classname="XmlForm"
+			classpath="${build}:${darwinsys.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${getmark.dir}"
+			output="tmp.mif">
+			<arg value="test1.xml"/>
+		</java>
+		<echo message="Now compare test1.mif with tmp.mif"/>
 	</target>
 
 </project>
