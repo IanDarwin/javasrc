@@ -1,4 +1,6 @@
-/** Toy Stack. */
+/** Toy Stack. 
+ * @version $Id$
+ */
 public class ToyStack {
 
 	/** The maximum stack depth */
