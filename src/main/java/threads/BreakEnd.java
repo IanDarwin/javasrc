@@ -52,14 +52,18 @@ import com.darwinsys.util.*;
  * This started as a quick hack when I saw the Windows
  * guys with a tool like this, but it has grown somewhat since then.
  *
- * TODO add another Thread to flash the screen if the resume time is passed.
+ * TODO 
+ * <ul>
+ *	<li>add another Thread to flash the screen if the resume time is passed.
+ *	<li>add a Slider to set the point size, and shrinkwrap to that.
+ * </ul>
  *
  * @author	Ian Darwin
  * @version	$Id$
  */
-public class BreakEnd extends Frame implements Runnable {
-	protected Label nowLabel;
-	protected Label endsLabel;
+public class BreakEnd extends JFrame implements Runnable {
+	protected JLabel nowLabel;
+	protected JLabel endsLabel;
 	/** A thread to run the clock ticker */
 	protected Thread t;
 	/** The font for the large text */
@@ -84,12 +88,14 @@ public class BreakEnd extends Frame implements Runnable {
 		b.setVisible(true);
 	}
 
+	/** NumberFormat to format a non-localized two-digit number */
+	protected NumberFormat form = new DecimalFormat("00");
+
+	/** Get the Calendar into HHMM format */
 	private String toHHMM_String(Calendar d) {
 		String result = null;
 		int h = d.get(Calendar.HOUR_OF_DAY);
 		int m = d.get(Calendar.MINUTE);
-		// To format a non-localized two-digit number
-		NumberFormat form = new DecimalFormat("00");
 		try {
 			result = form.format(h) + ":" + form.format(m);
 		} catch (IllegalArgumentException iae) {
@@ -116,28 +122,32 @@ public class BreakEnd extends Frame implements Runnable {
 	/** Constructor: set a font, initialize UI components. */
 	public BreakEnd(String s) {
 		super("Java Breaker: " + s);
-		String mesg = null;
+		setBackground(Color.white);
+		setForeground(Color.red);
 
 		Container cp;
-		// cp = getContentPane();
-		cp = this;
+		cp = getContentPane();
+		// cp = this;
 		cp.setLayout(new BorderLayout());
 
 		cp.add(BorderLayout.NORTH,
-			nowLabel =  new Label("Time now is: 00:00:00", Label.CENTER));
+			nowLabel =  new JLabel("Time now is: 00:00:00", JLabel.CENTER));
 	
+		String mesg = null;
 		if (s.startsWith("+")) {	// "This will be HARDer..."
 			Calendar d = new GregorianCalendar();
 			int newMinutes = d.get(Calendar.MINUTE)+
 				Integer.parseInt(s.substring(1))+1;
 			d.set(Calendar.MINUTE, newMinutes);
 			mesg = "Class resumes at " + toHHMM_String(d);
-		} else	mesg = "Class resumes at " + s + " ";
+		} else {
+			mesg = "Class resumes at " + s + " ";
+		}
 		cp.add(BorderLayout.CENTER,
-			endsLabel = new Label(mesg, Label.CENTER));
+			endsLabel = new JLabel(mesg, JLabel.CENTER));
 		setFontSize(40);
-		Button b;
-		cp.add(BorderLayout.SOUTH, b = new Button("Done"));
+		JButton b;
+		cp.add(BorderLayout.SOUTH, b = new JButton("Done"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -146,13 +156,8 @@ public class BreakEnd extends Frame implements Runnable {
 
 		(t = new Thread(this)).start();
 
-        addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-			setVisible(false);
-			dispose();
-			System.exit(0);
-			}
-		});
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent e) {
 				Dimension d = getSize();
@@ -164,6 +169,7 @@ public class BreakEnd extends Frame implements Runnable {
 		});
 	}
 
+	/** Set the font to the given size */
     protected void setFontSize(int sz) {
 		if (sz > MAXFONTSIZE)
 			sz = MAXFONTSIZE;
