@@ -44,7 +44,7 @@
 /** Show a method that may fail due to lack of synchronization */
 public class SyncNeeded {
 
-	public static final int MAX = 2000;
+	public static final int MAX = 4000;
 
 	protected static int[] data;
 	protected static int ix = 0;
@@ -60,16 +60,16 @@ public class SyncNeeded {
 			}
 		}
 		data = new int[MAX];
-		System.out.println("Starting");
+		System.out.println("Starting " + MAX + " threads...");
 		for (int i=0; i<MAX; i++) {
 			new Thread(new R()).start();
 		}
 		System.out.println("Sleeping to let threads finish");
 		Thread.sleep(4000);
-		for (int i=0; i<MAX; ) {
+		for (int i=0; i<MAX; i++) {
 			if (i != data[i])
 				System.out.println("Discrepancy at " + i + ": " + data[i]);
 		}
-		System.out.println();
+		System.out.println("Done.");
 	}
 }
