@@ -363,7 +363,7 @@ public class JModem extends javax.swing.JFrame {
     getContentPane().add(new JScrollPane(theTextArea), BorderLayout.CENTER);
     plainFont = new Font("courier", Font.PLAIN, 12);
 	theTextArea.setFont(plainFont); 
-	fileNameTF.setFont(plainFont);
+	xferFileNameTF.setFont(plainFont);
 
     // get list of ports available on this particular computer,
     // by calling static method in CommPortIdentifier.
