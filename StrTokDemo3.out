@@ -1,0 +1,10 @@
+C:\javasrc>java  StrTokDemo3
+Token: Hello
+Token: ,
+Token:
+Token: World
+Token: |
+Token: of
+Token: |
+Token: Java
+
