@@ -1,8 +1,8 @@
 // The Overall Structure of a Java Class
 
-package com.acme.stuff;
+//package com.acme.stuff;
 
-import java.util.*;
+import java.util.Calendar;
 
 public class Overall extends Object implements Fun, Action {
 
@@ -16,12 +16,13 @@ public class Overall extends Object implements Fun, Action {
 	public int abc() {		// ordinary method
 		int i;					// local data
 		int answer = 0;
-		for (i=0; i<num; i++)
+		for (i=0; i<num; i++) {
 			// compute answer
+		}
 		return answer;
 	}
 
-	int xyz;				// other object-wide data
+	Calendar xyz;				// other object-wide data
 
 	public void def() {
 		// more computation, presumably using xyz
