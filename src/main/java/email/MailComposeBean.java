@@ -163,21 +163,25 @@ public class MailComposeBean extends JPanel {
 
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
-		Properties props = new Properties();
-		String serverHost = System.getProperties().getProperty("Mail.server");
+		FileProperties props =
+			new FileProperties(MailConstants.PROPS_FILE_NAME);
+		String serverHost = props.getProperty(MailConstants.SEND_HOST);
 		if (serverHost == null) {
 			JOptionPane.showMessageDialog(parent,
-				"\"Mail.server\" must be set in System.properties",
-				"No server!?",
+				"\"" + MailConstants.SEND_HOST +
+					"\" must be set in System.properties",
+				"No server!",
 				JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		props.put("mail.smtp.host", serverHost);
 
 		session = Session.getDefaultInstance(props, null);
-		session.setDebug(true);		// XXX
+		String tmp = props.getProperty(MailConstants.SEND_DEBUG);
+		if (tmp != null && tmp.equals("true"))
+			session.setDebug(true);
 
-		String myAddress = System.getProperties().getProperty("Mail.address");
+		String myAddress = props.getProperty("Mail.address");
 		if (myAddress == null) {
 			JOptionPane.showMessageDialog(parent,
 				"\"Mail.address\" must be set in System.properties",
@@ -185,6 +189,9 @@ public class MailComposeBean extends JPanel {
 				JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+
+		// Dump all properties into System.properties.
+		System.getProperties().putAll(props);
 		
 		try {
 			// create a message
