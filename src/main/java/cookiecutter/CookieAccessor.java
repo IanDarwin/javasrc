@@ -95,7 +95,7 @@ public class CookieAccessor {
 				(c.isClient()?"TRUE":"FALSE") + "\t" +
 				c.getPath() + "\t" +
 				(c.isSecure()?"TRUE":"FALSE") + "\t" +
-				c.getMaxAge() + "\t" +
+				c.getExpiry() + "\t" +
 				c.getName() + "\t" + c.getValue());
 		}
 
