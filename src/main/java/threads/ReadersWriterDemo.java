@@ -13,10 +13,13 @@ public class ReadersWriterDemo {
 		new ReadersWriterDemo().demo();
 	}
 	
+	/** Set this to true to end the program */
 	private boolean done = false;
 	
+	/** The data being protected. */
 	private BallotBox theData;
-
+	
+	/** The read lock / write lock combination */
 	private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 	
 	/**
