@@ -95,16 +95,16 @@ public class GenMIF implements XmlFormWalker {
 		// STRUCTURE TAGS
 		//
 		if (tag.equals("head")) {
-			System.out.println(">>>>Start HEAD");
+			System.err.println(">>>>Start HEAD");
 		} else if (tag.equals("body")) {
-			System.out.println(">>>>Start BODY");
+			System.err.println(">>>>Start BODY");
 		} else if (tag.equals("chapter")) {
 			doChapter(p);
 		//
 		// PARAGRAPH TAGS
 		//
 		} else if (tag.equals("chaptertitle")) {
-			doParagraph("ChapterTitleLeft", p);
+			doParagraph("ChapterTitle", p);
 		} else if (tag.equals("sc")) {
 			doParagraph("HeadA", p);
 		} else if (tag.equals("ss")) {
@@ -125,6 +125,8 @@ public class GenMIF implements XmlFormWalker {
 			doExample(p);
 		} else if (tag.equals("runoutput")) {
 			doRun(p);
+		} else if (tag.equals("pre")) {
+			doPre(p);
 		//
 		// STYLE TAGS
 		//
@@ -139,6 +141,7 @@ public class GenMIF implements XmlFormWalker {
 
 	protected void doChapter(Element p) {
 		msg.println("# START OF CHAPTER");
+		makeUpParagraph("ChapterStart", null);
 	}
 
 	protected void pgfTag(String s) {
@@ -202,7 +205,7 @@ public class GenMIF implements XmlFormWalker {
 		Node myClass;
 		if ((myClass = attrs.getNamedItem("CLASS")) == null)
 			throw new IllegalArgumentException(
-				"node " + p + "lacks required CMD Attribute");
+				"node " + p + "lacks required CLASS Attribute");
 		String className = myClass.getNodeValue();
 
 		// makeUpParagraph("Example", "Example XX: " + className);
@@ -268,6 +271,9 @@ public class GenMIF implements XmlFormWalker {
 			throw new IllegalArgumentException(e.toString());
 		}
 	}
+	protected void doPre(Element p) {
+		makeUpParagraph("Code", "// ");
+	}
 
 	protected void doChildren(Element p) {
 		NodeList nodes = p.getChildNodes();
@@ -307,11 +313,11 @@ public class GenMIF implements XmlFormWalker {
 			char c = line.charAt(i);
 			switch (c) {
 			case '\\':	b.append("\\"); break;
-			case ' ':	b.append(' '); break;
 			case '\t':	b.append("\\t"); break;
 			case '\'':	b.append("\\xd5 "); break;
 			case '<':	b.append("\\<"); break;
 			case '>':	b.append("\\>"); break;
+			case '\r': case '\n': b.append(' '); break;
 			default:	b.append(c); break;
 			}
 		}
