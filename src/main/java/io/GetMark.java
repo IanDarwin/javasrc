@@ -45,7 +45,7 @@ public class GetMark {
 							fileName + : + is.getLineNumber());
 					printing = false;
 				} else if (printing) {
-					if (indent == NOINDENT) {
+					if (indent < inputLine.length() && indent == NOINDENT) {
 						while (Character.isWhitespace(inputLine.charAt(indent)))
 							++indent;
 					}
