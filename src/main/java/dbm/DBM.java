@@ -30,6 +30,11 @@ public class DBM {
 				"dbminit failed, code = " + retCode);
 	}
 			
+	// Static code blocks are executed once, when class file is loaded
+	// This is here to ensure that the shared library gets loaded.
+	static {
+		System.loadlibrary("jdbm");
+	}
 	private native int dbminit(String file);
 
 	private native int dbmclose();

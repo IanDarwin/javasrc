@@ -7,6 +7,7 @@
 
 CC			= cc
 CC_SHARED	= -fpic
+LD_SHARED	= -shared
 CLASS		= DBM.class
 CSRCS		= DBM.c
 HDR			= DBM.h
@@ -26,8 +27,8 @@ DBM.class: DBM.java
 
 DBM.o::	DBM.h
 
-$(SHARED_OBJ):	$(CSRCS) $(HDR)
-	$(CC) $(INCLUDES) $(CC_SHARED) $(CSRCS) -o $(SHARED_OBJ)
+$(SHARED_OBJ):	$(OBJS) $(HDR)
+	$(LD) $(LD_SHARED) $(OBJS) -o $(SHARED_OBJ)
 
 clean:
 	rm -f core *.class *.o *.so DBM.h
