@@ -9,14 +9,14 @@ package oo;
  */
 public class SingletonStatic {
 
-	private static Singleton instance = new Singleton();
+	private static SingletonStatic instance = new SingletonStatic();
 
 	/** A private Constructor prevents any other class from instantiating. */
 	private SingletonStatic() {
 	}
 
 	/** Static 'instance' method */
-	public static Singleton getInstance() {
+	public static SingletonStatic getInstance() {
 		return instance;
 	}
 

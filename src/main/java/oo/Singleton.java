@@ -11,6 +11,11 @@ public class Singleton {
 	private static Singleton instance = new Singleton();
 
 	/** A private Constructor prevents any other class from instantiating. */
+	private Singleton() {
+		
+	}
+	
+	/** The Static initializer constructs the instance at class loading time */
 	static {
 		instance = new Singleton();
 	}
