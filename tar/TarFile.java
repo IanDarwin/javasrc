@@ -115,11 +115,12 @@ public class TarFile {
 
 	/** Returns the path name of the Tar file. */
 	public String getName() {
-		return null;
+		return fileName;
 	}
 
 	/** Returns the number of entries in the Tar archive.
 	 * May cause the entire file to be read.
+	 * XXX Obviously not written yet, sorry.
 	 */
 	public int size() {
 		return 0;

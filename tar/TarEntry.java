@@ -164,7 +164,7 @@ public class TarEntry {
 	/** Returns the modification time of the entry */
 	public long getTime() {
 		try {
-			return Long.parseLong(new String(mtime).trim(),8);
+			return Long.parseLong(new String(mtime).trim(), 8);
 		} catch (IllegalArgumentException e) {
 			return 0;
 		}
