@@ -50,8 +50,10 @@ public class Mover3 extends Mover implements MouseListener {
 	protected volatile boolean threadSuspended;
 
 	public void init() {
+		System.out.println("Mover3 starting");
 		super.init();
 		addMouseListener(this);
+		System.out.println("Mover3 initted");
 	}
 
 	public synchronized void mousePressed(MouseEvent e) {
@@ -69,8 +71,6 @@ public class Mover3 extends Mover implements MouseListener {
 	public void run() {
 		int w = getSize().width;
 		while (!done) {
-			if (offset++ > w)
-				offset = 0;
 			try {
                 Thread.currentThread().sleep(interval);
 
@@ -82,6 +82,8 @@ public class Mover3 extends Mover implements MouseListener {
 			} catch (InterruptedException canthappen) {
 				// Do nothing
 			}
+			if (offset++ > w)
+				offset = 0;
 			repaint();
 		}
 	}

@@ -42,7 +42,7 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+//import javax.swing.*;
 
 /**
  * Mover -- move an image, slowly.
@@ -93,7 +93,9 @@ public class Mover extends Applet implements Runnable {
 			imageName = getParameter("imagename");
 		if (imageName == null)
 			imageName = "Mover.gif";
+		System.out.println("imageName = " + imageName);
 		setImage(imageName);
+		System.out.println("setImage done");
 	}
 
 	public void start() {
@@ -121,7 +123,8 @@ public class Mover extends Applet implements Runnable {
 		imgWid = imgHt = 0;
 		offset = 0;
 
-		img = Toolkit.getDefaultToolkit().getImage(fn);
+		// img = Toolkit.getDefaultToolkit().getImage(fn);
+		img = getImage(getDocumentBase(), fn);
 
 		// Use a MediaTracker to show the "best"? way of waiting
 		// for an image to load, and how to check for errors.
@@ -175,10 +178,10 @@ public class Mover extends Applet implements Runnable {
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 	
-		final JFrame f = new JFrame("Mover Demo");
+		final Frame f = new Frame("Mover Demo");
 		final Mover m = new Mover("mover.gif", 10);
-		f.getContentPane().add(m);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.add(m);
+		//f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		m.init();
 		m.start();
 		f.pack();

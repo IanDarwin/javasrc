@@ -41,16 +41,11 @@
 
 // import - none
 
-/** Show stopping a Thread using a flag.
+/** Show stopping a Thread using deprecated stop() method.
  */
-public class StopBoolean extends Thread {
-
-	// MUST be volatile... If not, aggressive optimizing compiler
-	// wil break this code!
-	protected volatile boolean done = false;
-
+public class StopStop extends Thread {
 	public void run() {
-		while (!done) {
+		while (true) {
 			System.out.println("StopBoolean running");
 			try {
 				sleep(720);
@@ -58,10 +53,6 @@ public class StopBoolean extends Thread {
 				// nothing to do 
 			}
 		}
-		System.out.println("StopBoolean finished.");
-	}
-	public void shutDown() {
-		done = true;
 	}
 
 	public static void main(String[] args) 
@@ -69,6 +60,7 @@ public class StopBoolean extends Thread {
 		StopBoolean t1 = new StopBoolean();
 		t1.start();
 		Thread.sleep(1000*5);
-		t1.shutDown();
+		System.out.println("Stopping thread...");
+		t1.stop();		// EXPECT COMPILER WARNING
 	}
 }

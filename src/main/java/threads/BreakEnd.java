@@ -119,8 +119,10 @@ public class BreakEnd extends JFrame implements Runnable {
 	}
 
 	public void run() {
+		Calendar d /* = new GregorianCalendar() */; // For 1.4
 		while (ticker.isAlive()) {
-			Calendar d = new GregorianCalendar();
+			//d.setTimeInMillis(System.currentTimeMillis()); // For 1.4
+			d = new GregorianCalendar();
 			nowLabel.setText("Time is now " + toHHMM_String(d));
 			try {
 				Thread.sleep(1000);
@@ -144,6 +146,8 @@ public class BreakEnd extends JFrame implements Runnable {
 		fontSize = new JSlider(JSlider.HORIZONTAL,
 			FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_DEFAULT);
 		fontSize.setMajorTickSpacing(10);
+		fontSize.setMinorTickSpacing(5);
+		fontSize.setSnapToTicks(true);
 		fontSize.setPaintTicks(true);
 		fontSize.setPaintLabels(true);
 		fontSize.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
@@ -205,7 +209,7 @@ public class BreakEnd extends JFrame implements Runnable {
 				if (d.height < 100)
 					setFontSize(15);
 				else
-					setFontSize(d.height/7);
+					setFontSize(d.height/6);
 			}
 		});
 	}
@@ -214,7 +218,7 @@ public class BreakEnd extends JFrame implements Runnable {
     protected void setFontSize(int sz) {
 		if (sz > FONT_SIZE_MAX)
 			sz = FONT_SIZE_MAX;
-		System.out.println("Setting font size to " + sz);
+		//System.out.println("Setting font size to " + sz);
 		Font f = new Font("Helvetica", Font.PLAIN, sz);
 		nowLabel.setFont(f);
 		endsLabel.setFont(f);

@@ -41,34 +41,27 @@
 
 // import - none
 
-/** Show stopping a Thread using a flag.
+/**
+ * Catch a ThreadDeath by hitting a Thread with stop.
  */
-public class StopBoolean extends Thread {
-
-	// MUST be volatile... If not, aggressive optimizing compiler
-	// wil break this code!
-	protected volatile boolean done = false;
-
-	public void run() {
-		while (!done) {
-			System.out.println("StopBoolean running");
-			try {
-				sleep(720);
-			} catch (InterruptedException ex) {
-				// nothing to do 
-			}
+public class ThreadDeathCatch {
+	public static void main(String[] args) {
+		try {
+			Thread t = new Thread() {
+				public void run() {
+					try {
+						Thread.sleep(2500);
+					} catch (Throwable ex)  {
+						System.out.println("Caught in run: " + ex);
+					}
+				}
+			};
+			t.start();
+			// Give t time to get going...
+			Thread.sleep(1000);
+			t.stop();
+		} catch (Throwable t) {
+			System.out.println("Caught in main: " + t);
 		}
-		System.out.println("StopBoolean finished.");
-	}
-	public void shutDown() {
-		done = true;
-	}
-
-	public static void main(String[] args) 
-	throws InterruptedException {
-		StopBoolean t1 = new StopBoolean();
-		t1.start();
-		Thread.sleep(1000*5);
-		t1.shutDown();
 	}
 }

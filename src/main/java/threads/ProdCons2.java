@@ -135,7 +135,7 @@ public class ProdCons2 {
 
 		// Start producers and consumers
 		int numProducers = 2;
-		int numConsumers = 2;
+		int numConsumers = 3;
 		ProdCons2 pc = new ProdCons2(numProducers, numConsumers);
 
 		// Let it run for, say, 30 seconds
