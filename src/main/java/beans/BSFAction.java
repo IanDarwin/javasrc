@@ -1,10 +1,13 @@
-import com.ibm.cs.util.*;
-import com.ibm.bsf.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import com.darwinsys.util.*;
+
+import org.apache.bsf.*;
+import org.apache.bsf.util.*;
+
+import com.darwinsys.swingui.LabelText;
+import com.darwinsys.io.FileIO;
 
 /** Longer sample of using Bean Scripting Framework with JPython */
 public class BSFAction {
@@ -29,7 +32,7 @@ public class BSFAction {
 			// register scripting language
 			String[] fntypes = { ".py" };
 			manager.registerScriptingEngine("jpython",
-			  "com.ibm.bsf.engines.jpython.JPythonEngine", fntypes);
+			  "org.apache.bsf.engines.jpython.JPythonEngine", fntypes);
 			jpythonengine = manager.loadScriptingEngine("jpython");
 
 			// Tell BSF about the bean.
@@ -37,7 +40,7 @@ public class BSFAction {
 
 			// Read the script file into BSF
 			language = manager.getLangFromFilename(FILENAME);
-			script = IOUtils.getStringFromReader(
+			script = FileIO.readerToString(
 				new FileReader(FILENAME));
 
 		} catch (Exception ex) {

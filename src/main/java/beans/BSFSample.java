@@ -1,6 +1,6 @@
-import com.ibm.cs.util.*;
-import com.ibm.bsf.*;
 import java.io.*;
+import org.apache.bsf.*;
+import org.apache.bsf.util.*;
 
 /** Sample of using Bean Scripting Framework with JPython */
 public class BSFSample {
@@ -10,7 +10,7 @@ public class BSFSample {
 		// register scripting language
 		String[] fntypes = { ".py" };
 		manager.registerScriptingEngine("jpython",
-			"com.ibm.bsf.engines.jpython.JPythonEngine", fntypes);
+			"org.apache.bsf.engines.jpython.JPythonEngine", fntypes);
 
 		try {
 			BSFEngine jpythonengine = manager.loadScriptingEngine("jpython");
