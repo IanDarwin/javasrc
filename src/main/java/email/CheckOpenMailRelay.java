@@ -31,7 +31,7 @@ public class TestOpenMailRelay {
 				"is in fact an open mail relay site.\n" +
 				"For more information on the notion of open mail relays,\n" +
 				"please visit site " + "http://www.vix.org/rbl/.\n" + // XXX
-				"Please join the fight against spam by closing all open mail relays!"\n +
+				"Please join the fight against spam by closing all open mail relays!\n" +
 				"If this open relay has been closed, please accept our thanks.\n");
 			sm.sendFile();
 		} catch (MessagingException e) {
