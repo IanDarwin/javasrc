@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<parent_committee>
+	<parent><name>Ian</name><children>3</children></parent>
+	<parent><name>Rick</name><children>2</children></parent>
+</parent_committee>
