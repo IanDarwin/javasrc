@@ -85,6 +85,17 @@ public class Transfer extends JFrame {
 				tf.setFont(font);
 			}
 		});
+
+		// Setting the Slider sets that font into the textfield.
+		stryder.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent evt)  {
+				JSlider sl = (JSlider)evt.getSource();
+				Font oldf = tf.getFont();
+				Font newf = oldf.deriveFont((float)sl.getValue());
+				tf.setFont(newf);
+			}
+		});
+
 	}
 
 	private void setMyTransferHandlers(String s) {
