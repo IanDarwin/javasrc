@@ -63,7 +63,7 @@ public class UnZip {
 			zippy = new ZipFile(fileName);
 			Enumeration all = zippy.entries();
 			while (all.hasMoreElements()) {
-				getFile(((ZipEntry)(all.nextElement())));
+				getFile((ZipEntry)all.nextElement());
 			}
 		} catch (IOException err) {
 			System.err.println("IO Error: " + err);
