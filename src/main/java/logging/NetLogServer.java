@@ -47,7 +47,7 @@ public class NetLogServer {
 
 		// Now start the Threads
 		for (int i=0; i<numThreads; i++) {
-			new Thread(new Handler(servSock, i)).start();
+			new Handler(servSock, i).start();
 		}
 
 		theFrame.pack();

@@ -35,7 +35,7 @@ public class EchoServerThreaded2 {
 
 		// Create a series of threads and start them.
 		for (int i=0; i<numThreads; i++) {
-			new Thread(new Handler(servSock, i)).start();
+			new Handler(servSock, i).start();
 		}
 	}
 
