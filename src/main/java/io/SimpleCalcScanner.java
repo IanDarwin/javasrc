@@ -1,3 +1,8 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Reader;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -65,11 +70,11 @@ public class SimpleCalcScanner {
 				if (token.equals("+")) {
 					// Found + operator, perform it immediately.
 					push(pop() + pop());
-				} else if (token.equals"-")) {
+				} else if (token.equals("-")) {
 					// Found - operator, perform it (order matters).
 					tmp = pop();
 					push(pop() - tmp);
-				} else if (token.equals"*")) {
+				} else if (token.equals("*")) {
 					// Multiply is commutative
 					push(pop() * pop());
 				} else if (token.equals("/")) {
