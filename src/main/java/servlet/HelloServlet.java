@@ -12,7 +12,8 @@ public class HelloServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.println("<H1>Hello from a Servlet</H1>");
-		out.println("<P>This servlet, $Id$, ran at ");
+		out.println("<P>This servlet ran at ");
 		out.println(new Date().toString());
+		out.println("<P>Courtesy of $Id$");
 	}
 }
