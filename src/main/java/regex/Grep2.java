@@ -108,7 +108,11 @@ public class Grep2 {
 			}
 	}
 
-	public Grep2(String arg, BitSet args) throws PatternSyntaxException {
+	/** Construct a Grep2 object.
+	 * @param patt The pattern to look for
+	 * @param args the command-line options.
+	 */
+	public Grep2(String patt, BitSet args) throws PatternSyntaxException {
 		// compile the regular expression
 		if (args.get('C'))
 			countOnly = true;
@@ -124,10 +128,10 @@ public class Grep2 {
 			silent = true;
 		if (args.get('V'))
 			inVert = true;
-		int caseMode = ignoreCase?
+		int caseMode = ignoreCase ?
 			Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE :
 			0;
-		pattern = Pattern.compile(arg, caseMode);
+		pattern = Pattern.compile(patt, caseMode);
 		matcher = pattern.matcher("");
 	}
         
