@@ -25,7 +25,7 @@ public class Penman extends Plotter {
 	public Penman() throws NoSuchPortException,PortInUseException,
 			IOException,UnsupportedCommOperationException {
 		super();
-		init_comm();		// setup serial commx
+		init_comm("COM2");		// setup serial commx
 		init_plotter();		// set plotter to good state
 	}
 
@@ -58,22 +58,20 @@ public class Penman extends Plotter {
 	}
 
 	/** Move to a relative location */
-	public boolean rmoveTo(int incrx, int incry){
-		return moveTo(curx + incrx, cury + incry);
+	public void rmoveTo(int incrx, int incry){
+		moveTo(curx + incrx, cury + incry);
 	}
 
 	/** move to absolute location */
-	public boolean moveTo(int absx, int absy) {
+	public void moveTo(int absx, int absy) {
 		System.err.println("moveTo ["+absx+","+absy+"]");
 		curx = absx;
 		cury = absy;
 		send("M" + curx + "," + cury + ","); expect(OK_PROMPT);
-		return true;
 	}
 
-	public boolean setdir(float deg) {
+	public void setdir(float deg) {
 		dir = deg;
-		return true;
 	}
 
 	private void setPenState(boolean up) {
@@ -99,7 +97,7 @@ public class Penman extends Plotter {
 	// PRIVATE COMMUNICATION ROUTINES
 	//
 
-	private void init_comm() throws NoSuchPortException,PortInUseException,
+	private void init_comm(String portName) throws NoSuchPortException,PortInUseException,
 			IOException,UnsupportedCommOperationException {
 
 		// get list of ports available on this particular computer.
@@ -111,8 +109,7 @@ public class Penman extends Plotter {
 			// System.err.println("Port " + cpi.getName());
 		}
 		
-		// Open a port. For now, hard-code name (ugh).
-		String portName = "COM1";	// or "Serial 1" on UNIX
+		// Open a port. 
 		CommPortIdentifier port =
 			CommPortIdentifier.getPortIdentifier(portName);
 

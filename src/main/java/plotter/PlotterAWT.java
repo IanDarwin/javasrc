@@ -36,17 +36,16 @@ public class PlotterAWT extends Plotter {
 		g.drawRect(curx, cury, w, h);
 		p.repaint();
 	}
-	boolean rmoveTo(int incrx, int incry){
-		return moveTo(curx += incrx, cury += incry);
+	public void rmoveTo(int incrx, int incry){
+		moveTo(curx += incrx, cury += incry);
 	}
-	boolean moveTo(int absx, int absy){
+	public void moveTo(int absx, int absy){
 		if (!penIsUp)
 			g.drawLine(curx, cury, absx, absy);
 		curx = absx;
 		cury = absy;
-		return true;
 	}
-	boolean setdir(float deg){return false;}
+	public void setdir(float deg){}
 	void penUp(){ penIsUp = true; }
 	void penDown(){ penIsUp = false; }
 	void penColor(int c){
