@@ -9,6 +9,9 @@ all:		testhello testjavafromc
 
 # This part of the Makefile is for C called from Java, in HelloWorld
 testhello:		hello.all
+		@echo
+		@echo "Here we test the Java code \"HelloWorld\" that calls C code."
+		@echo
 		LD_LIBRARY_PATH=`pwd`:. java HelloWorld
 
 hello.all:		HelloWorld.class libhello.so
@@ -24,7 +27,14 @@ libhello.so:	$(CSRCS)
 
 # This part of the Makefile is for Java called from C, in javafromc
 testjavafromc:	javafromc.all hello.all
-	LD_LIBRARY_PATH="$(LIBDIR)" CLASSPATH="$(CLASSPATH)" ./javafromc HelloWorld
+	@echo
+	@echo "Now we test HelloWorld using javafromc instead of java"
+	@echo
+	LD_LIBRARY_PATH="$(LIBDIR):." CLASSPATH="$(CLASSPATH)" ./javafromc HelloWorld
+	@echo
+	@echo "That was, in case you didn't notice, C->Java->C."
+	@echo
+
 
 javafromc.all:	javafromc
 
@@ -35,4 +45,4 @@ javafromc.o:	javafromc.c
 	$(CC) -c $(INCLUDES) javafromc.c
 
 clean:
-	rm -f *.class # HelloWorld.[ch]
+	rm -f *.class *.o HelloWorld.h
