@@ -227,6 +227,13 @@ public class TarEntry {
 	}
 
 	protected StringBuffer sb;
+	/** Shift used in formatting permissions */
+	protected static int shft[] = { 6, 3, 0 };
+	/** Format strings used in permissions */
+	protected static String rwx[] = {
+		"---", "--x", "-w-", "-wx",
+		"r--", "r-x", "rw-", "rwx"
+	};
 
 	public String toString() {
 		sb = new StringBuffer();
@@ -258,8 +265,12 @@ public class TarEntry {
 				sb.append('?');
 				break;
 		}
+		int mode = getMode();
+
+		for (int i=0; i<3; i++) {
+			sb.append(rwx[mode >> shft[i] & 007]);
+		}
 		sb.append(' ');
-		sb.append(Integer.toString(getMode(),8)).append(' ');
 		sb.append(getUname()).append('/').append(getGname());
 		sb.append(' ').append(getSize()).append(' ');
 		sb.append("mtime=").append(getTime()).append(' ');
