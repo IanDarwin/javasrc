@@ -2,7 +2,6 @@ import java.io.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
-import org.apache.xerces.parsers.SAXParser;
 import com.darwinsys.util.Debug;
 
 /** Simple lister - extract name and children tags from a user file.

@@ -6,10 +6,12 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
+	<property name="build.compiler" value="modern"/>
 
 	<target name="build">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
+		/>
 	</target>
 
 	<target name="declare" depends="build">

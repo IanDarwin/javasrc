@@ -5,7 +5,6 @@
 	<!-- Override the above for this directory, since jikes (1.17) fails badly
 	 *** on several of the Java files in this directory, esp those w/ \\ in 'em.
 	 -->
-	<!-- <property name="build.compiler" value="javac"/> -->
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
@@ -19,6 +18,7 @@
 		 *** fail to compile on 1.3. Until we get this conditionalized better.
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			failonerror="false"
 			classpath="${javacook.jar}:${junit.jar}"/>
 	</target>

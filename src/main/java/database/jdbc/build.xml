@@ -12,6 +12,7 @@
 		  ** failOnError=false because of wierd DataSource definition found.
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			failOnError="false"
 			classpath="${javacook.jar}:${servletapi.jar}"/>
 	</target>

@@ -17,6 +17,7 @@
 		 *** won't compile on 1.3, and a few "expect compile error" cases...
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			failonerror="false"
 			classpath="${javacook.jar}:${junit.jar}"/>
 	</target>

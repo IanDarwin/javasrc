@@ -10,6 +10,7 @@
 	<target name="build">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			classpath="${javacook.jar}:${bsf.jar}"/>
 	</target>
 

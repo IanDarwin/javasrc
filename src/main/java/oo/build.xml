@@ -15,16 +15,16 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			failOnError="false"
 			deprecation="true"
 			excludes="${excludes}"
+			failOnError="false"
 		/>
 	</target>
 
 	<target name="regress" depends="build">
 		<junit printsummary="yes">
 			<formatter type="brief"/>
-			<test name="EqualsDemoTest"/>
+			<test name="regress.EqualsDemoTest"/>
 		</junit>
 	</target>
 

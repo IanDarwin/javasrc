@@ -13,7 +13,9 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			failOnError="false"/>
+			deprecation="true"
+			failOnError="false"
+		/>
 	</target>
 
 	<target name="clean">

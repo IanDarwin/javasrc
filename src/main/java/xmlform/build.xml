@@ -13,8 +13,10 @@
 		 *** won't compile on 1.3, and a few "expect compile error" cases...
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:../io"
+			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:../io"/>
+		/>
 	</target>
 
 </project>

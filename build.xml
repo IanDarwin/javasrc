@@ -13,17 +13,11 @@
 		<tstamp/>
 
 		<!-- conditional properties -->
-		<condition property="avail.prefs">
-			<available className="java.util.prefs.Preferences"/>
-		</condition>
+		<available property="avail.prefs" className="java.util.prefs.Preferences"/>
 
-		<condition property="avail.RE.1.4">
-			<available className="java.util.regex.Pattern"/>
-		</condition>
+		<available property="avail.RE.1.4" className="java.util.regex.Pattern"/>
 
-		<condition property="avail.RE.apache">
-			<available className="org.apache.regexp.RE"/>
-		</condition>
+		<available property="avail.RE.apache" className="org.apache.regexp.RE"/>
 
 		<condition property="avail.javamail">
 			<and>
@@ -32,21 +26,20 @@
 			</and>
 		</condition>
 
-		<condition property="avail.nio">
-			<available className="java.nio.Buffer"/>
-		</condition>
+		<available property="avail.jmf" classname="javax.media.Controllerlistener" />
 
-		<condition property="avail.imageio.1.4">
-			<available className="java.awt.image.ColorModel"/>
-		</condition>
+		<available property="avail.nio" className="java.nio.Buffer"/>
 
-		<condition property="avail.jdom">
-			<available className="org.jdom.Document"/>
-		</condition>
+		
+		<available property="avail.imageio.1.4" className="java.awt.image.ColorModel"/>
+
+		<available property="avail.jdom" className="org.jdom.Document"/>
 		
 		<condition property="avail.javacomm">
 			<available className="javax.comm.CommPortOpen"/>
 		</condition>
+
+		<available property="avail.pdflib" className="com.pdflib.Document"/>
 		
 	</target>
 

@@ -36,7 +36,7 @@ public class Undent {
             while ((inputLine = is.readLine()) != null) {
 				int toRemove = 0;
 				for (int i=0; i<nSpaces && i < inputLine.length(); i++)
-					if (Character.isSpace(inputLine.charAt(i)))
+					if (Character.isWhitespace(inputLine.charAt(i)))
 						++toRemove;
                 System.out.println(inputLine.substring(toRemove));
             }

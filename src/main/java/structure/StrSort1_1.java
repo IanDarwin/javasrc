@@ -1,9 +1,11 @@
 /**
  * StrSort demonstrates sorting of strings using a quicksort.
- * The actual sort is borrowed from the Java Demo Applet SortDemo,
- * whose copyright allows its use.
- * This may be useful on JDK1.1 (or even 1.0); on Java 2/JDK1.2,
- * use Arrays.sort() or Collections.sort() instead!
+ * The actual sorting code, in StringSort.java, is borrowed from the 
+ * Java Demo Applet SortDemo, whose copyright allows its use.
+ * <p>
+ * This may be useful on JDK1.1 (or even 1.0), which lacked the 
+ * Collections API; on any modern Java, you'd use Arrays.sort() or 
+ * Collections.sort() as appropriate; see StrSort.java.
  */
 
 public class StrSort1_1 {

@@ -19,7 +19,7 @@ public class TestOpenMailRelayGUI extends JFrame {
 	/** The piped stream for the main class to write into "results" */
 	PrintStream ps;
 	/** The piped stream to read from "ps" into "results" */
-	DataInputStream iis;
+	BufferedReader iis;
 
 	/** This inner class is the action handler both for pressing
 	 * the "Try" button and also for pressing <ENTER> in the text
@@ -69,7 +69,7 @@ public class TestOpenMailRelayGUI extends JFrame {
 		is = new PipedInputStream();
 		os = new PipedOutputStream(is);
 
-		iis = new DataInputStream(is);
+		iis = new BufferedReader(new InputStreamReader(is, "ISO8859_1"));
 		ps = new PrintStream(os);
 
 		// Construct and start a Thread to copy data from "is" to "os".

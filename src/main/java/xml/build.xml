@@ -12,8 +12,10 @@
 		 *** not compile on 1.3, and a few "expect compile error" cases...
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${servletapi.jar}"
+			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${servletapi.jar}"/>
+		/>
 	</target>
 
 	<target name="detect">

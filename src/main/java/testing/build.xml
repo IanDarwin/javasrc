@@ -12,7 +12,10 @@
 	</target>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
+			source="1.4"
+		/>
 	</target>
 
 	<target name="clean">

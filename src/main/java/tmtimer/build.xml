@@ -1,4 +1,4 @@
-<project name="XXX" default="build" basedir=".">
+<project name="Speech Timer for e.g., Toastmasters meetings" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -12,7 +12,9 @@
 	</target>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
+		/>
 	</target>
 
 	<target name="clean">

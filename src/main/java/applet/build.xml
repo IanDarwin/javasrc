@@ -14,6 +14,7 @@
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${javacook.jar}:${servletapi.jar}"
+			deprecation="true"
 			failonerror="false"
 			excludes="AppletJavaScript.java"/>
 	</target>

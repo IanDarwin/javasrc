@@ -12,7 +12,7 @@ public class SortBooleans {
 			new Boolean(false),
 			new Boolean(true),
 		};
-		Arrays.sort(data);
+		Arrays.sort(data);		// EXPECT RUNTIME ERROR
 		for (int i=0; i<data.length; i++)
 			System.out.println(data[i]);
 	}

@@ -7,8 +7,8 @@
 	<property file="../build.properties"/>
 
 	<target name="init">
-		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
-		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
+		<tstamp/>
+		<mkdir dir="${build}"/>
 	</target>
 
 	<target name="build" depends="init">

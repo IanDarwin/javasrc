@@ -22,7 +22,9 @@
 	</target>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
+		/>
 	</target>
 
 	<target name="jar" depends="build">

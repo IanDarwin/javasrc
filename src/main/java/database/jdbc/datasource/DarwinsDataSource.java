@@ -4,7 +4,6 @@ import java.sql.*;
 import javax.sql.*;
 import java.io.*;
 import java.rmi.*;
-import java.util.Properties;
 
 /** A simple DataSource wrapper for a JDBC connection.
  * Constructed using a drivername and dbURL
@@ -12,8 +11,7 @@ import java.util.Properties;
  */
 public class DarwinsDataSource implements DataSource, Remote, Serializable {
 
-	/** The SQL driver name. We cannot load the driver itself as we cannot
-	  * ensure that all Drivers will be Serializable.
+	/** The SQL driver name. 
 	  */
 	protected String driverName;
 
@@ -21,7 +19,7 @@ public class DarwinsDataSource implements DataSource, Remote, Serializable {
 	protected String dbURL;
 
 	/** The LogWriter - not the same as DriverManager.getLogWriter */
-	protected PrintWriter logWriter;
+	protected PrintWriter logWriter = new PrintWriter(System.out);
 
 	public DarwinsDataSource(String driverName, String dbURL)
 	 {
@@ -49,10 +47,8 @@ public class DarwinsDataSource implements DataSource, Remote, Serializable {
 			System.err.println("Can't load driver: " + ex);
 			return null;
 		}
-		Properties props = new Properties();
-		props.setProperty("user", userName);
-		props.setProperty("password", passWord);
-		Connection c = DriverManager.getConnection(dbURL, props);
+	
+		Connection c = DriverManager.getConnection(dbURL, userName, passWord);
 
 		return c;
 	}

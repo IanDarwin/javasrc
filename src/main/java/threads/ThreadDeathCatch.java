@@ -59,7 +59,7 @@ public class ThreadDeathCatch {
 			t.start();
 			// Give t time to get going...
 			Thread.sleep(1000);
-			t.stop();
+			t.stop();				// EXPECT COMPILER WARNING
 		} catch (Throwable t) {
 			System.out.println("Caught in main: " + t);
 		}

@@ -10,13 +10,13 @@
 	<target name="build">
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${javacook.jar}:${jmf.jar}"
+			deprecation="true"
 			excludes="JMFPlayer.java"/>
 	</target>
 
-	<available classname="javax.media.Controllerlistener" property="avail.jmf"/>
-
 	<target name="build_jmf" if="avail.jmf">
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			classpath="${javacook.jar}:${jmf.jar}"
 			includes="JMFPlayer.java"/>
 	</target>

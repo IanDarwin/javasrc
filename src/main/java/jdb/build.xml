@@ -13,6 +13,7 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
 			failOnError="false"/>
 	</target>
 

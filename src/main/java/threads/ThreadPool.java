@@ -1,3 +1,4 @@
+/* status UNFINISHED UNTESTED */
 /*
  * Copyright (c) Ian F. Darwin, ian@darwinsys.com, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
@@ -43,7 +44,6 @@ import java.util.*;
 
 /**
  * First stab at a ThreadPool
- * @status UNFINISHED
  */
 public class ThreadPool {
 	protected ArrayList readyPool = new ArrayList();

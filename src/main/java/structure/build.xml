@@ -15,8 +15,10 @@
 		 *** won't compile on 1.3, and a few "expect compile error" cases...
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${junit.jar}"
+			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}:${junit.jar}"/>
+		/>
 	</target>
 
 	<target name="zip">

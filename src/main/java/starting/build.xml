@@ -17,11 +17,13 @@
     <mkdir dir="${build}"/>
   </target>
 
-  <!-- specify what to compile. This builds everything -->
-  <target name="build" depends="init">
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"
-		  classpath="${javacook.jar}"/>
+	<!-- specify what to compile. This builds everything -->
+	<target name="build" depends="init">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}"
+			deprecation="true"
+		/>
   </target>
 
 </project>
