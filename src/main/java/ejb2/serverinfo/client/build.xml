@@ -1,0 +1,27 @@
+<project name="Server Info Enterprise Bean" default="compile" basedir=".">
+
+  <!-- $Id$ -->
+
+  <!-- set global properties for this build -->
+  <property name="src" value="."/>
+  <property name="build" value="."/>
+  <property name="build.compiler" value="jikes"/>
+
+  <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- specify what to compile. This builds everything -->
+  <target name="compile" depends="init">
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"
+		  classpath="com-darwinsys-util.jar:../ejb.jar"/>
+  </target>
+
+</project>

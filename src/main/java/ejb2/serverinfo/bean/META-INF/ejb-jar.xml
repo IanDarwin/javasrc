@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC 
+	"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN"
+	"http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd"
+>
+
+<!-- This partial Deployment Descriptor for ServInfo
+	will likely need to be merged into the overall EJB DD.
+	-->
+
+<ejb-jar>
+<enterprise-beans>
+<session>
+	<display-name>ServInfo EJB</display-name>
+	<ejb-name>ServInfo1</ejb-name>
+	<home>com.darwinsys.ejb.ServInfoHome</home>
+	<remote>com.darwinsys.ejb.ServInfo</remote>
+	<ejb-class>com.darwinsys.ejb.ServInfoBean</ejb-class>
+	<session-type>Stateless</session-type>
+	<transaction-type>Container</transaction-type>
+	<env-entry>
+		<env-entry-name>duplicate</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>string one</env-entry-value>
+	</env-entry>
+
+</session>
+<session>
+	<display-name>ServInfo EJB</display-name>
+	<ejb-name>ServInfo2</ejb-name>
+	<home>com.darwinsys.ejb.ServInfoHome</home>
+	<remote>com.darwinsys.ejb.ServInfo</remote>
+	<ejb-class>com.darwinsys.ejb.ServInfoBean</ejb-class>
+	<session-type>Stateless</session-type>
+	<transaction-type>Container</transaction-type>
+	<env-entry>
+		<env-entry-name>duplicate</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>string two</env-entry-value>
+	</env-entry>
+</session>
+</enterprise-beans>
+
+<assembly-descriptor>
+</assembly-descriptor>
+</ejb-jar>
