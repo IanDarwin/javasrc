@@ -10,6 +10,11 @@ import java.util.*;
  * Responses not adequate; need to check at least for 404-type errors!
  * When all that is (said and) done, display in a Tree instead of a TextArea.
  * Then use Color coding to indicate errors.
+ * <p>
+ * Further, it needs to use Swing and Threads properly (see
+ * Java Swing, section on "MultiThreading Issues with Swing".
+ * As it stands, the GUI thread is locked up until the complete
+ * checking is completed, which could take a long time.
  *
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
