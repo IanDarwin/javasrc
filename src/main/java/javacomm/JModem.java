@@ -1,5 +1,3 @@
-import javax.comm.*;
-import java.io.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,37 +10,24 @@ import javax.swing.*;
  */
 public class JModem extends javax.swing.JFrame {
 
-  /** The javax.com.CommPort object in use */
-  private SerialPort thePort;
+  /** The Model. */
+  JMModel theModel;
 
-  /** The input and output streams */
-  private InputStream serialInput;
-  private OutputStream serialOutput;
-
-  /** The size of the static read buffer. */
-  protected static final int BUFSIZE = 1024;
-  /** A buffer for the read listener; preallocated once. */
-  static byte[] buf = new byte[BUFSIZE];
-  /** A Thread for reading from the remote. */
-  protected Thread serialReadThread;
   /** The TextArea */
-  protected JTextArea theTextArea;
+  JTextArea theTextArea;
   /** The courier font for the text areas and fields. */
   protected Font plainFont;
-  /** A file transfer program */
-  protected TModem xferProg;
-  /** The state for disconnected and connected */
-  private int S_DISCONNECTED = 0, S_CONNECTED = 1;
-  /** The state, either disconnected or connected */
-  private int state = S_DISCONNECTED;
-  private int S_INTERACT = 0, S_XFER = 1;
-  /** The online state, either interactive or in xfer. Used by the
-   * main reader thread to avoid reading data meant for the xfer program.
-   */
-  private int submode = S_INTERACT;
+  /** The valid baud rates (actually BPS rates). */
+  private int[] baudot = { 9600, 19200, 38400, 57600, 115200 };
+  /** The types of remote systems. */
+  private String sysTypes[] = { "Unix", "DOS", "Other" };
 
-  /** Initializes the Form */
+  private int M_RECEIVE = -1, M_SEND = +1;
+  private int xferDirection = M_RECEIVE;
+
+  /** Constructor */
   public JModem() {
+    theModel = new JMModel(this);
     initComponents();
     finishConstructor();
     pack();
@@ -288,24 +273,10 @@ public class JModem extends javax.swing.JFrame {
 
   }//GEN-END:initComponents
 
-  /** Default log file name */
-  protected String DEFAULT_LOG_FILE = "jmodemlog.txt";
-
   /** Save the session log to disk.
-   * For now the filename is hard-coded to be DEFAULT_FILE.
    */
   private void saveLogFileMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveLogFileMenuItemActionPerformed
-    String fileName = DEFAULT_LOG_FILE;
-    try {
-      Writer w = new FileWriter(fileName);
-      theTextArea.write(w);
-	  w.write('\r'); w.write('\n');	// in case last line is a prompt.
-      w.close();
-    } catch (IOException e) {
-      err("Error saving log file:\n" + e.toString());
-      return;
-    }
-    note("Session log saved to " + fileName);
+    theModel.saveLogFile();
   }//GEN-LAST:event_saveLogFileMenuItemActionPerformed
 
   private void helpAboutMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAboutMenuItemActionPerformed
@@ -319,12 +290,6 @@ public class JModem extends javax.swing.JFrame {
   private void portsComboBoxActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portsComboBoxActionPerformed
     // Add your handling code here:
   }//GEN-LAST:event_portsComboBoxActionPerformed
-
-  private int[] baudot = { 9600, 19200, 38400, 57600, 115200 };
-  private String sysTypes[] = { "Unix", "DOS", "Other" };
-
-  private HashMap portsIDmap = new HashMap();
-
 
   /** A TextArea subclass with funky keypress forwarding: send to
    * remote, not to local. This IS a terminal emulator, after all.
@@ -341,17 +306,17 @@ public class JModem extends javax.swing.JFrame {
 
       // send keystrokes to remote, for processing.
       // do nothing locally, to avoid user keystrokes appearing twice!
-      if (state != S_CONNECTED) {
-        getToolkit().beep();
+      if (theModel.state != JMModel.S_CONNECTED) {
+        getToolkit().beep();  // or just connect()?
         return;
       }
       char ch = evt.getKeyChar();
       if (ch == '\n') {    // XX if systemtype == dos
         // sendChar('\r');
-        sendChar('\n');
+        theModel.sendChar('\n');
         return;
       }
-      sendChar(ch);
+      theModel.sendChar(ch);
     }
   }
 
@@ -359,24 +324,13 @@ public class JModem extends javax.swing.JFrame {
   private void finishConstructor() {
     // Create the textarea with a JScrollpane wrapping it.
     // Install it in Centre of the TextArea.
-    theTextArea = new MyTextArea(24,80);
+    theTextArea = new MyTextArea(20, 80);
     getContentPane().add(new JScrollPane(theTextArea), BorderLayout.CENTER);
-    plainFont = new Font("courier", Font.PLAIN, 12);
-	theTextArea.setFont(plainFont); 
-	xferFileNameTF.setFont(plainFont);
+    plainFont = new Font("courier", Font.PLAIN, 13);
+    theTextArea.setFont(plainFont);
+    xferFileNameTF.setFont(plainFont);
 
-    // get list of ports available on this particular computer,
-    // by calling static method in CommPortIdentifier.
-    Enumeration pList = CommPortIdentifier.getPortIdentifiers();
-
-    // Process the list of ports, putting serial ports into ComboBox
-    while (pList.hasMoreElements()) {
-        CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
-        if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-          portsComboBox.addItem(cpi.getName());
-          portsIDmap.put(cpi.getName(), cpi);
-        }
-    }
+    theModel.populateComboBox();
     portsComboBox.setSelectedIndex(0);
 
     // Load up the baud rate combo box
@@ -411,9 +365,6 @@ public class JModem extends javax.swing.JFrame {
     xferModeBinRadioButton.setEnabled(true);
   }
 
-  private int M_RECEIVE = -1, M_SEND = +1;
-  private int xferDirection = M_RECEIVE;
-
   private void recvRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recvRadioButtonActionPerformed
     xferDirection = M_RECEIVE;
   }//GEN-LAST:event_recvRadioButtonActionPerformed
@@ -442,232 +393,38 @@ public class JModem extends javax.swing.JFrame {
     // Add your handling code here:
   }//GEN-LAST:event_evenRadioButtonActionPerformed
 
-  private void xferButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xferButtonActionPerformed
-
-    // Do the transfer, using TModem class.
-  if (state != S_CONNECTED) {
-    err("Must be connected to do file transfers");
-    return;
-  }
-  xferButton.setEnabled(false);
-  if (xferProg == null) {
-    xferProg = new TModem(serialInput, serialOutput, 
-      new PrintWriter(System.out)); // TModem object discarded in disconnect()
-  }
-  String fileName = xferFileNameTF.getText();
-  if (fileName.length() == 0) {
-    err("Filename must be given");
-    return;
-  }
-
-  // Do the transfer!  If we are sending, send a "tmodem -r" to
-  // the other side; if receiving, send "tmodem -s" to ask it
-  // to send the file.
-  try {
-    if (sendRadioButton.isSelected()) {
-	  if (!new File(fileName).canRead()) {
-        err("Can't read file " + fileName + ".");
-	    return;
-	  }
-      sendString("tmodem -r " + fileName + "\r\n");
-	  delay(500);		// let command echo back to us
-      submode = S_XFER;
-      xferProg.send(fileName);
-    } else {
-      sendString("tmodem -s " + fileName + "\r\n");
-	  delay(500);		// let command echo back to us
-      submode = S_XFER;
-      xferProg.receive(fileName);
-    }
-  } catch (InterruptedException e) {
-    err("Timeout");
-    return;
-  } catch (IOException e) {
-    err("IO Exception in transfer:\n" + e);
-    return;
-  } catch (ProtocolBotchException ev) {
-    err("Protocol failure:\n" + ev);
-	return;
-  } finally {
-    submode = S_INTERACT;
-  }
-  note("File Transfer completed");
-
-  }//GEN-LAST:event_xferButtonActionPerformed
 
 
   /** This method basically toggles between Connected mode and
    * disconnected mode.
    */
   private void connectButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
-  if (state == S_CONNECTED) {
-    disconnect();
-    connectButton.setText("Connect");
-    theTextArea.setEditable(false);
-  } else {
-    try {
-      connect();
-    } catch (PortInUseException pue) {
-      err("Port in use: close other app, or use different port.");
-      return;
-    } catch (UnsupportedCommOperationException uoe) {
-      err("Unsupported options error: try different settings");
-      return;
+    if (theModel.state == JMModel.S_CONNECTED) {
+      theModel.disconnect();  // calls our disconnect() if OK
+    } else {
+      theModel.connect();    // calls our connect() if OK
     }
-    connectButton.setText("Disconnect");
-    theTextArea.setEditable(true);
-    theTextArea.requestFocus();
-  }
-  }
-
-  /** Show a standard-form information dialog */
-  protected void note(String message) {
-    JOptionPane.showMessageDialog(this, message,
-      "JModem Notice", JOptionPane.INFORMATION_MESSAGE);
-    return;
-  }
-
-  /** Show a standard-form error dialog */
-  protected void err(String message) {
-    JOptionPane.showMessageDialog(this, message,
-      "JModem Error", JOptionPane.ERROR_MESSAGE);
-    return;
-  }
-
-  private void connect() throws PortInUseException,
-      UnsupportedCommOperationException {
-
-    // Open the specified serial port
-  CommPortIdentifier cpi = (CommPortIdentifier)portsIDmap.get(
-    portsComboBox.getSelectedItem());
-  thePort = (SerialPort)cpi.open("JModem", 15*1000);
-
-  // Set the serial port parameters.
-  int parity = 0;
-  if (pNoneRadioButton.isSelected()) parity = SerialPort.PARITY_NONE;
-  if (pEvenRadioButton.isSelected()) parity = SerialPort.PARITY_EVEN;
-  if (pOddRadioButton.isSelected())  parity = SerialPort.PARITY_ODD;
-  thePort.setSerialPortParams(
-    baudot[portsComboBox.getSelectedIndex()],    // baud
-    d7RadioButton.isSelected() ?          // data bits
-      SerialPort.DATABITS_7 : SerialPort.DATABITS_8,
-    SerialPort.STOPBITS_1,              // stop bits
-    parity);                    // parity
-
-  thePort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN &
-    SerialPort.FLOWCONTROL_RTSCTS_OUT);
-
-  // Similar to "raw" mode: return when 1 or more chars available.
-  try {
-    thePort.enableReceiveThreshold(1);
-    if (!thePort.isReceiveThresholdEnabled()) {
-      err("Could not set receive threshold");
-    }
-    thePort.setInputBufferSize(buf.length);
-  } catch (UnsupportedCommOperationException ev) {
-    err("Unable to set receive threshold in Comm API; port unusable.");
-    disconnect();
-    return;
-  }
-
-  // Get the streams
-  try {
-    serialInput = thePort.getInputStream();
-  } catch (IOException e) {
-    err("Error getting input stream:\n" + e.toString());
-    return;
-  }
-  try {
-    serialOutput = thePort.getOutputStream();
-  } catch (IOException e) {
-    err("Error getting output stream:\n" + e.toString());
-    return;
-  }
-
-    // Now that we're all set, create a Thread to read data from the remote
-    serialReadThread = new Thread(new Runnable() {
-    int nbytes = buf.length;
-      public void run() {
-        do {
-          try {
-            // If the xfer program is running, stay out of its way.
-              if (submode == S_XFER) {
-                delay(1000);
-              continue;
-            }
-            nbytes = serialInput.read(buf, 0, buf.length);
-          } catch (IOException ev) {
-          err("Error reading from remote:\n" + ev.toString());
-          return;
-          }
-          // XXX need an appendChar() method in MyTextArea
-          String tmp = new String(buf, 0, nbytes);
-          theTextArea.append(tmp);
-          theTextArea.setCaretPosition(theTextArea.getText().length());
-        } while (serialInput != null);
-      }
-    });
-    serialReadThread.start();
-
-    // Finally, record the fact that we're online.
-    state = S_CONNECTED;
-
   }//GEN-LAST:event_connectButtonActionPerformed
 
-  private void disconnect() {
-    // Tell java.io we are done with the input and output
-    try {
-    serialReadThread.stop();  // IGNORE DEPRECATION WARNINGS; the Java
-    // API still does not give a reliable termination method for Threads
-    // that are blocked on e.g., local disk reads.
-      serialInput.close();
-      serialOutput.close();
-    serialOutput = null;
-    } catch (IOException e) {
-      err("IO Exception closing port:\n" + e.toString());
-    }
-    // Tell javax.comm we are done with the port.
-    thePort.removeEventListener();
-    thePort.close();
-  // Discard TModem object, if present.
-  xferProg = null;
-    // Tell rest of program we are no longer online.
-    state = S_DISCONNECTED;
+  /** Show that we have connected to the serial port. */
+  void connect() {
+      connectButton.setText("Disconnect");
+      theTextArea.setEditable(true);
+      theTextArea.requestFocus();
   }
 
-  /** Convenience routine, due to useless InterruptedException */
-  public void delay(long milliseconds) {
-  	try {
-  		Thread.sleep(milliseconds);
-  	} catch (InterruptedException e) {
-  		// can't happen
-  	}
+  /** Show that we have connected to the serial port. */
+  void disconnect() {
+      connectButton.setText("Connect");
+      theTextArea.setEditable(false);
   }
 
-  private void sendChar(char ch) {
-    if (state != S_CONNECTED)
-      return;
-    // System.err.println("--> " + ch);
-    try {
-      serialOutput.write(ch);
-    } catch (IOException e) {
-      err("Output error on remote:\n" + e.toString() +
-        "\nClosing connection.");
-      disconnect();
-    }
-  }
+  private void xferButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xferButtonActionPerformed
 
-  private void sendString(String s) {
-    if (state != S_CONNECTED)
-      return;
-    try {
-      serialOutput.write(s.getBytes());
-    } catch (IOException e) {
-      err("Output error on remote:\n" + e.toString() +
-        "\nClosing connection.");
-      disconnect();
-    }
-  }
+    // Do the transfer, using TModem class.
+    theModel.xfer();
+
+  }//GEN-LAST:event_xferButtonActionPerformed
 
   /** Exit the Application */
   private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
@@ -675,6 +432,8 @@ public class JModem extends javax.swing.JFrame {
   }//GEN-LAST:event_exitForm
 
 
+// Some of these must be package-level visibility for JMModel,
+// until we re-define the interface to that class a little...
 // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JPanel connectPanel;
   private javax.swing.JPanel xferPanel;
@@ -706,11 +465,57 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JMenuBar jMenuBar1;
   private javax.swing.JMenu fileMenu;
   private javax.swing.JMenu helpMenu;
+  private javax.swing.JMenuItem saveLogFileMenuItem;
   private javax.swing.JMenuItem exitMenuItem;
   private javax.swing.JMenuItem helpAboutMenuItem;
-  private javax.swing.JMenuItem saveLogFileMenuItem;
 // End of variables declaration//GEN-END:variables
 
+  /** Tell if the user wants 7 or 8-bit words */
+  public int getDataBits() {
+    if (d7RadioButton.isSelected())
+      return 7;
+    if (d8RadioButton.isSelected())
+      return 8;
+    throw new IllegalStateException("No word size in radio button group");
+  }
+
+  /** Tell if the user wants even, odd, or no parity. */
+  public int getParity() {
+    if (pNoneRadioButton.isSelected()) return JMModel.PARITY_NONE;
+    if (pEvenRadioButton.isSelected()) return JMModel.PARITY_EVEN;
+    if (pOddRadioButton.isSelected())  return JMModel.PARITY_ODD;
+    throw new IllegalStateException("No parity in radio button group");
+  }
+
+  /** Get the filename */
+  public String getXferFileName() {
+    return xferFileNameTF.getText();
+  }
+
+  /** "One if by send, two if receive" */
+  public boolean isSend() {
+    if (sendRadioButton.isSelected())
+      return true;
+    if (recvRadioButton.isSelected())
+      return false;
+    throw new IllegalStateException("No send/recv set in radio button group");
+  }
+
+  /** Convenience routine: Show a standard-form information dialog */
+  void note(String message) {
+    JOptionPane.showMessageDialog(this, message,
+      "JModem Notice", JOptionPane.INFORMATION_MESSAGE);
+    return;
+  }
+
+  /** Convenience routine: Show a standard-form error dialog */
+  void err(String message) {
+    JOptionPane.showMessageDialog(this, message,
+      "JModem Error", JOptionPane.ERROR_MESSAGE);
+    return;
+  }
+
+  /** Main: just create and show the application class. */
   public static void main(java.lang.String[] args) {
     new JModem().setVisible(true);
   }

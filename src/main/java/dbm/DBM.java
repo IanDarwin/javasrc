@@ -38,9 +38,18 @@ public class DBM {
 	static {
 		System.loadLibrary("jdbm");
 	}
-	private native int dbminit(String file);
 
-	private native int dbmclose();
+	protected byte[] objToBytes(Object o) {
+		if (o instanceof String) 
+			return o.toBytes();
+		else { // serialize to byte array.
+			return null;
+		}
+	}
+
+	protected native int dbminit(String file);
+
+	protected native int dbmclose();
 
 	/** Public wrapper for close method. */
 	public void close() {
@@ -48,11 +57,15 @@ public class DBM {
 		inuse = false;
 	}
 
-	public native Object fetch(Object key);
+	protected native byte[] dbmfetch(Object key);
 
-	public native int store(Object key, Object content);
+	public Object fetch(Object key) {
+		return null;
+	}
 
-	public native int delete(Object key);
+	protected native int dbmstore(byte[] key, byte[] content);
+
+	protected native int delete(Object byte[]);
 
 	public native Object firstkey();
 

@@ -11,12 +11,13 @@ public class DaytimeBinary {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
 	/** Seconds between 1970, the time base for Date(long) and Time.
-	 * Factors in leap years, hours, minutes, and seconds. */
+	 * Factors in leap years (up to 2100), hours, minutes, and seconds.
+	 */
 	public static final long BASE_DIFF = (long)((1970-1900)*365.25*24*60*60);
 	/** Convert from seconds to milliseconds */
 	public static final int MSEC = 1000;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String hostName;
 		if (argv.length == 0)
 			hostName = "localhost";
@@ -35,7 +36,7 @@ public class DaytimeBinary {
 				((long)(is.readUnsignedByte() & 0xff) << 16) |
 				((long)(is.readUnsignedByte() & 0xff) <<  8) |
 				((long)(is.readUnsignedByte() & 0xff) <<  0));
-			System.out.println("Reme time is " + remoteTime);
+			System.out.println("Remote time is " + remoteTime);
 			System.out.println("BASE_DIFF is " + BASE_DIFF);
 			System.out.println("Time diff == " + (remoteTime - BASE_DIFF));
 			Date d = new Date((remoteTime - BASE_DIFF) * MSEC);

@@ -9,7 +9,7 @@ import java.net.*;
 public class DaytimeText {
 	public static final short TIME_PORT = 13;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String hostName;
 		if (argv.length == 0)
 			hostName = "localhost";

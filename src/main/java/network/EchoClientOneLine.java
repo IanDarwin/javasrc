@@ -8,7 +8,7 @@ public class EchoClientOneLine {
 	/** What we send across the net */
 	String mesg = "Hello across the net";
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length == 0)
 			new EchoClientOneLine().converse("localhost");
 		else
@@ -24,7 +24,7 @@ public class EchoClientOneLine {
 			PrintWriter os = new PrintWriter(sock.getOutputStream(), true);
 			// Do the CRLF ourself since println appends only a \r on
 			// platforms where that is the native line ending.
-			os.print(mesg + "\r\n");
+			os.print(mesg + "\r\n"); os.flush();
 			String reply = is.readLine();
 			System.out.println("Sent \"" + mesg  + "\"");
 			System.out.println("Got  \"" + reply + "\"");

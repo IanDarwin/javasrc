@@ -14,7 +14,7 @@ public class EchoGui {
 	PrintWriter os;
 	TextArea ta;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length == 0)
 			new EchoGui().converse();
 		else

@@ -11,7 +11,7 @@ public class EchoClient {
 	/** Main program: construct an EchoClient object and use
 	 * its "converse" method to call the Echo server.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		EchoClient c = new EchoClient();
 		c.converse(argv.length==1?argv[0]:"localhost");
 	}
@@ -32,13 +32,15 @@ public class EchoClient {
 
 			String line;
 			do {
-				System.out.print(">>");
+				System.out.print(">> ");
 				if ((line = stdin.readLine()) == null)
 					break;
 				// Do the CRLF ourself since println appends only a \r on
 				// platforms where that is the native line ending.
 				os.print(line + "\r\n");
+				os.flush();
 				String reply = is.readLine();
+				System.out.print("<< ");
 				System.out.println(reply);
 			} while (line != null);
 		} catch (IOException e) {	// handles all input/output errors

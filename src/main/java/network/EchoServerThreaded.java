@@ -3,22 +3,12 @@ import java.io.*;
 
 
 /**
- * Course 333: Hands-On UNIX Systems and Applications Programming in C
- * <BR>
- * Specimen Solution to Hands-On Exercise Chapter 7: a threaded echo server
- *
- * @author	John McDermott, Jr
- * @version 3 June 1996
- *
- * @author	Rewritten in Java by Ian F. Darwin, LT471/478 Author.
- * @version	January, 1997
- * <BR>
- * No need for "struct client": use object-wide data
- * the echo_client function is renamed "run" to fit with Java threads
+ * Threaded Echo Server.
+ * @author Ian F. Darwin.
  */
 public class EchoServerThreaded {
 
-	public final int TESTPORT = 666;
+	public final int PORT = 7;
 
 	public static void main(String[] av)
 	{
@@ -28,46 +18,54 @@ public class EchoServerThreaded {
 	public void runServer()
 	{
 		ServerSocket sock;
-		Socket newsock;
+		Socket clientSocket;
 
 		try {
-			/* STEPS for starting a TCP/IP socket based server */
-			/* STEP 1, 2, and 3 in Java are all done in one line: */
-			sock = new ServerSocket(TESTPORT);
+			sock = new ServerSocket(PORT);
 		
-			/* STEP 4: Wait for a connection */
+			System.out.println("EchoServerThreaded ready for connections.");
+
+			/* Wait for a connection */
 			while(true){
-				newsock = sock.accept();
+				clientSocket = sock.accept();
 				/* Create a thread to do the communication, and start it */
-				new OneClient(newsock).start();
+				new Handler(clientSocket).start();
 			}
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
 			System.err.println("Could not accept " + e);
+			System.exit(1);
 		}
 	}
-}
 
-class OneClient extends Thread {
-	Socket sock;
+	/** A Thread subclass to handle one client conversation. */
+	class Handler extends Thread {
+		Socket sock;
 
-	OneClient(Socket s) {
-		sock = s;
-	}
-
-	public void run() 
-	{
-		System.out.println("Starting client, socket = " + sock);
-		try {
-			DataInputStream is = new DataInputStream(sock.getInputStream());
-			PrintStream os = new PrintStream(sock.getOutputStream());
-			String line;
-			while ((line = is.readLine()) != null)
-				os.print(line + "\r\n");
-			sock.close();
-		} catch (IOException e) {
-			System.out.println("IO Error on socket " + e);
+		Handler(Socket s) {
+			sock = s;
 		}
-		return;
+
+		public void run() 
+		{
+			System.out.println("Socket starting: " + sock);
+			try {
+				DataInputStream is = new DataInputStream(
+					sock.getInputStream());
+				PrintStream os = new PrintStream(
+					sock.getOutputStream(), true);
+				String line;
+				while ((line = is.readLine()) != null) {
+					// System.out.println(">> " + line);
+					os.print(line + "\r\n");
+					os.flush();
+				}
+				sock.close();
+			} catch (IOException e) {
+				System.out.println("IO Error on socket " + e);
+				return;
+			}
+			System.out.println("Socket ENDED: " + sock);
+		}
 	}
 }

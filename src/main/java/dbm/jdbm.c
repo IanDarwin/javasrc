@@ -1,13 +1,14 @@
 #include <jni.h>
-#include "DBM.h"	/* for our class information */
+#include "DBM.h"	/* current directory - for our class information */
 #include <stdio.h>
-#include <dbm.h>	/* for native DBM library information */
+#include <dbm.h>	/* system directory - for UNIX DBM library information */
 
 #ident	"$Id$"
 
 /*
  * This is the native implentation of our Java-DBM hookup.
  */
+
 /*
  * Method:    dbminit
  * Signature: (Ljava/lang/String;)I

@@ -11,15 +11,16 @@ public class DaytimeObjectServer {
 	/** The TCP port for the object time service. */
 	public static final short TIME_PORT = 1951;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		ServerSocket sock;
 		Socket  clientSock;
 		try {
 			sock = new ServerSocket(TIME_PORT);
 			while ((clientSock = sock.accept()) != null) {
-				System.out.println("Accept from " + clientSock.getInetAddress());
-				ObjectOutputStream os = new ObjectOutputStream(new
-					BufferedOutputStream(clientSock.getOutputStream()));
+				System.out.println("Accept from " + 
+					clientSock.getInetAddress());
+				ObjectOutputStream os = new ObjectOutputStream(
+					clientSock.getOutputStream());
 
 				// Construct and write the Object
 				os.writeObject(new Date());

@@ -16,8 +16,8 @@ public class EchoServer {
 	protected boolean debug = true;
 
 	/** main: construct and run */
-	public static void main(String argv[]) {
-		new EchoServer(ECHOPORT).run();
+	public static void main(String[] argv) {
+		new EchoServer(ECHOPORT).handle();
 	}
 
 	/** Construct an EchoServer on the given port number */
@@ -26,28 +26,30 @@ public class EchoServer {
 			sock = new ServerSocket(port);
 		} catch (IOException e) {
 			System.err.println("I/O error in setup\n" + e);
+			System.exit(1);
 		}
 	}
 
 	/** This handles the connections */
-	protected void run() {
+	protected void handle() {
 		Socket ios = null;
 		BufferedReader is = null;
 		PrintWriter os = null;
 		while (true) {
 			try {
 				ios = sock.accept();
-				System.err.println("Accepted from " + ios.getInetAddress().getHostName());
+				System.err.println("Accepted from " +
+					ios.getInetAddress().getHostName());
 				is = new BufferedReader(
 					new InputStreamReader(ios.getInputStream(), "8859_1"));
 				os = new PrintWriter(
 						new OutputStreamWriter(
 							ios.getOutputStream(), "8859_1"), true);
-				String unicodeLine;
-				while ((unicodeLine = is.readLine()) != null) {
-					System.err.println("Read " + unicodeLine);
+				String echoLine;
+				while ((echoLine = is.readLine()) != null) {
+					System.err.println("Read " + echoLine);
 					os.print(unicodeLine + "\r\n");
-					System.err.println("Wrote " + unicodeLine);
+					System.err.println("Wrote " + echoLine);
 				}
 				System.err.println("All done!");
 			} catch (IOException e) {
