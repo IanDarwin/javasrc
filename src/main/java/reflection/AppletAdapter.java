@@ -1,8 +1,17 @@
-import java.applet.*;
-import java.awt.*;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.applet.Applet;
+import java.applet.AppletContext;
+import java.applet.AppletStub;
+import java.applet.AudioClip;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Panel;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /*
  * AppletAdaptor: partial implementation of AppletStub and AppletContext.
