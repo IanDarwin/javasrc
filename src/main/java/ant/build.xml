@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!-- $Id$ -->
+
+<!-- Bootstrapping issue: if starting from a clean source directory,
+ *** you must do "jikes -d . *.java". After that it is self-maintaining.
+ -->
+
+<project name="AntTasks" default="main" basedir=".">
+	<taskdef name="ghost" classname="com.darwinsys.ant.GhostTask"/>
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property name="build.compiler" value="jikes"/>
+
+	<target name="main" depends="compile">
+		<ghost 
+			ghosthome="C:\program files\symantec\ghost"
+			source="D:\" 
+			target="foo-test.gho"/>
+	</target>
+
+	<target name="compile">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+</project>
