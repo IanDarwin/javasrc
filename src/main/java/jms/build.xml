@@ -20,7 +20,7 @@
 
 	<target name="build" depends="init" if="avail.jms">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${j2ee.jar}"
+			classpath="${darwinsys.jar}:${j2ee.jar}"
 			deprecation="true"
 			failonerror="false"/>
 	</target>

@@ -16,7 +16,7 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath=".:${j2ee.jar}:${deploy.jar}:${javacook.jar}"/>
+			classpath=".:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
 	</target>
 
 </project>

@@ -6,7 +6,7 @@
   <property name="src" value="."/>
   <property name="build" value="."/>
 
-	<property file="../../../build.properties"/>
+  <property file="../../build.properties"/>
 
   <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 
@@ -21,7 +21,7 @@
   <target name="build" depends="init">
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="${javacook.jar}:../bean/ejb.jar"/>
+		  classpath="${j2ee.jar}:../bean/serverinfo.jar"/>
   </target>
 
 </project>

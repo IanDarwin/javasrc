@@ -5,9 +5,8 @@
   <!-- set global properties for this build -->
   <property name="src" value="."/>
   <property name="build" value="."/>
-	<property file="../../../build.properties"/>
+  <property file="../../build.properties"/>
 
-  <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
   <property name="deploy.jar" value="serverinfo.jar"/>
 
   <target name="init">
@@ -21,8 +20,7 @@
   <target name="compile" depends="init">
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"
-		  classpath=".:${deploy.jar}:${javacook.jar}"/>
+    <javac srcdir="${src}" destdir="${build}" classpath="${j2ee.jar}"/>
   </target>
 
   <target name="jar" depends="compile">

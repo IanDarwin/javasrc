@@ -4,9 +4,8 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
+	<property file="../build.properties"/>
 
-	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 	<property name="deploy.jar" value="universe.jar"/>
 
 	<target name="init">
@@ -15,7 +14,7 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}" classpath="${j2ee.jar}"/>
 	</target>
 
 	<target name="jar" depends="compile">
@@ -25,6 +24,6 @@
 	</target>
 
 	<target name="deploy" depends="jar">
-	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>
 </project>
