@@ -36,16 +36,16 @@ public class ScanStreamTok {
 
 		while ((i = tf.nextToken()) != tf.TT_EOF) {
 			switch(i) {
-			case tf.TT_EOF:
+			case StreamTokenizer.TT_EOF:
 				System.out.println("End of file");
 				break;
-			case tf.TT_EOL:
+			case StreamTokenizer.TT_EOL:
 				System.out.println("End of line");
 				break;
-			case tf.TT_NUMBER:
+			case StreamTokenizer.TT_NUMBER:
 				System.out.println("Number " + tf.nval);
 				break;
-			case tf.TT_WORD:
+			case StreamTokenizer.TT_WORD:
 				System.out.println("Word, length " + tf.sval.length() + "->" + tf.sval);
 				break;
 			default:
