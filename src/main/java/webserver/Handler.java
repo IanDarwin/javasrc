@@ -34,7 +34,7 @@ public class Handler extends Thread {
 		clntSock = sock;
 		// First time, put in null handler.
 		if (h.size() == 0) {
-			h.put("", "<HTML><BODY><B>Unknown server error");
+			h.put("", "<HTML><BODY><B>Unknown server error".getBytes());
 		}
 	}
 
@@ -192,7 +192,7 @@ public class Handler extends Thread {
 		os.println("HTTP/1.0 200 Here's your file");
 		os.println("Content-type: " + guessMime(fname));
 		os.println("Content-length: " + content.length);
-		os.println("");
+		os.println();
 		if (justHead)
 			return;
 		os.write(content);
@@ -230,7 +230,7 @@ public class Handler extends Thread {
 		// Generate and send the response
 		os.println("HTTP/1.0 " + errNum + " " + response);
 		os.println("Content-type: text/html");
-		os.println("");
+		os.println();
 		os.println("<HTML>");
 		os.println("<HEAD><TITLE>Error " + errNum + "--" + response +
 			"</TITLE></HEAD>");
@@ -247,6 +247,6 @@ public class Handler extends Thread {
 			myAddr + "</A>");
 		os.println("</ADDRESS>");
 		os.println("</HTML>");
-		os.println("");
+		os.println();
 	}
 }
