@@ -38,7 +38,7 @@ public class DummyAction extends Action {
 		// 	errors.add(ActionErrors.GLOBAL_ERROR,
 		// 		new ActionError("error.insert", p.getTitle()));
 		// 	saveErrors(request, errors);
-		// 	return mapping.findForward("input");
+		// 	return new ActionForward(mapping.getInput());
 		// }
 
 		return mapping.findForward("notwrittenyet");
