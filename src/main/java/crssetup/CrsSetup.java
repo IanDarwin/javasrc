@@ -243,6 +243,7 @@ public class CrsSetup extends JFrame {
 		centre();
 	}
 
+	/** Create the first-time link */
 	private void createStartupLink() {
 		File sl = new File(STARTUP_LINK);
 		if (sl.exists()) {
