@@ -1,0 +1,16 @@
+#     jmake.rules -- Java language section for /usr/lib/make/make.rules
+#
+SUFFIXES:	java class
+#
+JCC=javac
+JCC=jikes +E
+JCFLAGS=
+COMPILE.java=$(JCC) $(JCFLAGS)
+#
+# First rule so you can just "make x" where x.java --> x.class
+.java:
+	$(COMPILE.java) $<
+# Second so you can explicitly say "make x.class" if you want.
+.java.class:
+	$(COMPILE.java) $<
+
