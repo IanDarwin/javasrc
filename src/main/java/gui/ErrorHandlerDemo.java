@@ -20,7 +20,7 @@ public class ErrorHandlerTest extends JFrame {
 		super("GUI");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
-		JButton bx = new JButton("Blast X");
+		JButton bx = new JButton("Throw!");
 		bx.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				throw new IllegalArgumentException("foo");
