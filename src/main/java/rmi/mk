@@ -1,5 +1,0 @@
-#!/bin/sh
-set -x
-jikes +E -d . \
-	RemoteDate.java DateApplet.java RemoteDateImpl.java DateServer.java &&
-	rmic DateServer
