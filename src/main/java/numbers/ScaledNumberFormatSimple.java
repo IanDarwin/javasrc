@@ -1,3 +1,7 @@
+import com.darwinsys.util.ScaledNumberFormat;
+
+/** A simple example of ScaleNumberFormat, from com.darwinsys.util
+  */
 public class ScaledNumberFormatSimple {
 	public static void main(String[] args) {
 		String cinput = "1.5K";
