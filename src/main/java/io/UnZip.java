@@ -8,7 +8,7 @@ import java.util.zip.*;
  * Final command-line version: extracts files.
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
- *
+ * $Id$
  */
 public class UnZip {
 	public static final int LIST = 0, EXTRACT = 1;
@@ -42,7 +42,7 @@ public class UnZip {
 		System.err.println("All done!");
 	}
 
-	/** Construct an UnZip object */
+	/** Construct an UnZip object. Just allocate the buffer */
 	UnZip() {
 		b = new byte[8092];
 	}
