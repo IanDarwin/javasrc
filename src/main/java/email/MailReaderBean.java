@@ -42,6 +42,7 @@ public class MailReaderBean extends JSplitPane implements MailConstants {
 		// Construct a javax.mail.URLName representing all the information.
 		URLName connection = new URLName(protocol,
                host, port, rootName, user, password);
+System.out.println("connection = " + connection);
 
 		// Use the URLName to get a Store object to read the mail from
 		Store store = session.getStore(connection);

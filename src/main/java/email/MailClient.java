@@ -44,8 +44,10 @@ public class MailClient extends JComponent implements MailConstants {
 			String np;
 			do {
 				np = JOptionPane.showInputDialog(null,
-				"Please enter password for " + proto + " " + user + " on " +
-				host,  "Password request", JOptionPane.QUESTION_MESSAGE);
+				"Please enter password for " + proto + " user  " +
+					user + " on " + host + "\n" +
+					"(warning: password WILL echo)",
+				"Password request", JOptionPane.QUESTION_MESSAGE);
 			} while (np == null || (np != null && np.length() == 0));
 			mailProps.setProperty(RECV_PASS, np);
 		}
@@ -54,12 +56,14 @@ public class MailClient extends JComponent implements MailConstants {
 		System.getProperties().putAll(mailProps);
 
 		// Construct the GUI
+		System.out.println("Constructing GUI");
 		setLayout(new BorderLayout());
 		JTabbedPane tbp = new JTabbedPane();
 		add(BorderLayout.CENTER, tbp);
 		tbp.addTab("Reading", mrb = new MailReaderBean());
 		tbp.addTab("Sending", mcb = new MailComposeFrame());
 		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
+		System.out.println("Leaving Constructor");
 	}
 
 	/** "main program" method - construct and show */
@@ -94,6 +98,8 @@ public class MailClient extends JComponent implements MailConstants {
 		f.setLocation(140, 80);
 		f.setSize    (500,400);
 		// f.pack();
+
+		comp.mrb.setDividerLocation(0.4D);
 
 		f.setVisible(true);
 	}
