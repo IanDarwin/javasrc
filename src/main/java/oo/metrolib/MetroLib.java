@@ -1,28 +1,37 @@
-package oo.game;
+package metrolib;
 
-public class Game {
-	private Room room = Rooms.firstRoom;
+import java.io.*;
 
-	public static void main(String[] args) {
+public class MetroLib {
+	private Room room;
+
+	MetroLib() {
+		room = Rooms.getFirstRoom();
+	}
+
+	public static void main(String[] args) throws IOException {
 		println("This is a trivial game demonstrating OO structures.");
+		println("You can move north south east or west");
 		BufferedReader is = new BufferedReader(
-			new InputStringReader(System.in));
-		while ((cmd = parseCmd(is)) != Cmd.QUIT)
-			play(cmd);
+			new InputStreamReader(System.in));
+		MetroLib game = new MetroLib();
+		int cmd;
+		while ((cmd = game.parseCmd(is)) != Cmd.QUIT) {
+			game.play(cmd);
 		}
 	}
 
-	int parseCmd(BufferedReader is) {
+	int parseCmd(BufferedReader is) throws IOException {
 		String line = is.readLine();
 		if (line == null)
 			return Cmd.QUIT;
-		if (line.equalsIgnoreCase("north")
+		if (line.equalsIgnoreCase("north"))
 			return Cmd.NORTH;
-		if (line.equalsIgnoreCase("east")
+		if (line.equalsIgnoreCase("east"))
 			return Cmd.EAST;
-		if (line.equalsIgnoreCase("south")
+		if (line.equalsIgnoreCase("south"))
 			return Cmd.SOUTH;
-		if (line.equalsIgnoreCase("west")
+		if (line.equalsIgnoreCase("west"))
 			return Cmd.WEST;
 
 		// more later...
@@ -31,10 +40,12 @@ public class Game {
 	}
 
 	void play(int cmd) {
-		boolean entered = false, noWay = true;;
+		boolean entered = false, noWay = false;
+println("IN PLAY: room=" + room);
 		switch(cmd) {
 		case Cmd.UNKNOWN:
-			println("Unknown command!"); break;
+			println("Unknown command!");
+			break;
 		case Cmd.NORTH:
 			if (room.north != null) {
 				room = room.north;
@@ -72,7 +83,7 @@ public class Game {
 			println("I see no way to go in that direction");
 	}
 
-	void println(String s) {
+	static void println(String s) {
 		System.out.println(s);
 	}
 }
