@@ -15,9 +15,18 @@ public class Delete2 {
 	public static void delete(String fileName) {
 		try {
 			// Construct a File object for the file to be deleted.
-			File bkup = new File(fileName);
+			File target = new File(fileName);
+
+			if (!target.exists()) {
+				System.err.println("File " fileName + 
+					" not there to begin with!");
+				return;
+			}
+
 			// Quick, now, delete it immediately:
-			if (!bkup.delete())
+			if (target.delete())
+				System.err.println("** Deleted " + fileName + " **");
+			else
 				System.err.println("Failed to delete " + fileName);
 		} catch (SecurityException e) {	
 			System.err.println("Unable to delete " + fileName +
