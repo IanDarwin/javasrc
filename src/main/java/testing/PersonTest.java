@@ -8,12 +8,10 @@ public class PersonTest extends TestCase {
 		super(name);
 	}
 
-	/** Simple test program. */
 	public void testNameConcat() {
 		Person p = new Person("Ian", "Darwin");
 		String f = p.getFullName();
-		if (!f.equals("Ian Darwin"))
-			throw new IllegalStateException("Name concatenation broken");
-		System.out.println("Fullname " + f + " looks good");
+		assertEquals(f, "Ian Darwin");
 	}
+
 }

@@ -36,13 +36,13 @@ public class ChartBeanInfo extends SimpleBeanInfo {
 			MethodDescriptor md1 = new MethodDescriptor(m);
 			md1.setShortDescription("Run a simple demonstration");
 
-			// SETDATA(ChartData[]);	-- NOT BEANABLE YET
-			// Class argTypes[] = { Class.forName("ChartData[]") };
-			// Method m = Chart.class.getMethod("setData", argTypes);
-			// MethodDescriptor md2 = new MethodDescriptor(m);
-			// md2.setShortDescription("Provide array of ChartData to plot");
+			// SETDATA(ChartData[]);
+			Class argTypes[] = { Class.forName("ChartData[]") };
+			Method m = Chart.class.getMethod("setData", argTypes);
+			MethodDescriptor md2 = new MethodDescriptor(m);
+			md2.setShortDescription("Provide array of ChartData to plot");
 
-			return new MethodDescriptor[] { md1 };
+			return new MethodDescriptor[] { md1, md2 };
 
 		} catch (Exception e) {		// if anything fails, fall back to default
 			System.out.println(e);
