@@ -7,29 +7,37 @@ import java.util.*;
  * We are created with just a Socket, and read the
  * HTTP request, extract a name, read it (saving it
  * in Hashtable h for next time), and write it back.
+ * <p>
+ * TODO split into general handler stuff and "FileServlet",
+ *	then handle w/ either user HttpServlet subclasses or FileServlet.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class Handler extends Thread {
 	/** The Socket that we read from and write to. */
-	Socket clntSock;
+	protected Socket clntSock;
 	/** inputStream, from Viewer */
-	BufferedReader is;
+	protected BufferedReader is;
 	/** outputStream, to Viewer */
-	PrintStream os;
+	protected PrintStream os;
 	/** Main program */
-	Httpd parent;
+	protected Httpd parent;
 	/** The default filename in a directory. */
-	final static String DEF_NAME = "/index.html";
+	protected final static String DEF_NAME = "/index.html";
 
 	/** The Hashtable used to cache all URLs we've read.
-	 * Static, shared by all instances of Handler (one per request).
+	 * Static, shared by all instances of Handler (one Handler per request;
+	 * this is probably quite inefficient, but simple. Need ThreadPool).
+	 * Note that Hashtable methods *are* synchronized.
 	 */
-	static Hashtable h = new Hashtable();
+	private static Hashtable h = new Hashtable();
+
+	/** A sequence number for thread identification */
+	private static int n = 0;
 
 	/** Construct a Handler */
 	Handler(Httpd prnt, Socket sock) {
-		super("client thread");
+		super("client thread " + ++n);
 		parent = prnt;
 		clntSock = sock;
 		// First time, put in null handler.
@@ -185,7 +193,7 @@ public class Handler extends Thread {
 	}
 
 	/** Send one file, given the filename and contents.
-	 * boolean justHead - if true, send heading and return.
+	 * @param justHead - if true, send heading and return.
 	 */
 	void sendFile(String fname, boolean justHead,
 		byte[] content, PrintStream os) throws IOException {

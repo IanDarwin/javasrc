@@ -9,10 +9,9 @@ import java.util.*;
 /** Process a raw SQL query; use ResultSetMetaData to format it.
  */
 public class RawSQLServlet extends HttpServlet {
-	public final static String PROPS_FILE = "JDBCMeta.properties";
 
-	/** The name of the JDBC Driver */
-	protected String DRIVER;
+	/** The application-wide servlet context */
+	protected ServletContext application;
 
 	/** The DB connection object */
 	protected Connection conn;
@@ -22,28 +21,25 @@ public class RawSQLServlet extends HttpServlet {
 
 	/** Initialize the servlet. */
 	public void init() throws ServletException {
+		application = getServletConfig().getServletContext();
+		String driver = null;
 		try {
-			// Get a Properties to load from
-			FileProperties fp = new FileProperties(PROPS_FILE);
 
-			// Load the database driver
-			DRIVER = fp.getProperty("driver");
-			Class.forName(DRIVER);
+			driver = application.getInitParameter("db.driver");
+			Class.forName(driver);
 
 			// Get the connection
 			log(getClass() + ": Getting Connection");
 			Connection conn = DriverManager.getConnection (
-				fp.getProperty("dburl"),
-				fp.getProperty("user"),
-				fp.getProperty("password"));
+				application.getInitParameter("db.url"),
+				application.getInitParameter("db.user"),
+				application.getInitParameter("db.password"));
 
 
 			log(getClass() + ": Creating Statement");
 			stmt = conn.createStatement();
-		} catch (IOException ex) {
-			log(getClass() + ": init: could not load props file " + PROPS_FILE);
 		} catch (ClassNotFoundException ex) {
-			log(getClass() + ": init: Could not load SQL driver " + DRIVER);
+			log(getClass() + ": init: Could not load SQL driver " + driver);
 		} catch (SQLException ex) {
 			log(getClass() + ": init: SQL Error: " + ex);
 		}
@@ -64,32 +60,37 @@ public class RawSQLServlet extends HttpServlet {
 		}
 
 		// NB MUST also check for admin privs before proceding!
-		if (!query.toLowerCase().startsWith("select")) {
-			throw new SecurityException("You can only select data");
-		}
 
 		try {	// SQL
-			out.println("<br>Your query: <b>" + query + "</b>");
-			ResultSet rs = stmt.executeQuery(query);
+			out.println("<p>Your query: <b>" + query + "</b></p>");
+			stmt.execute(query);
+			ResultSet rs = stmt.getResultSet();
+			if (rs == null) {
+				// print updatecount
+				out.println("<p>Result: updateCount = <b>" + 
+					stmt.getUpdateCount() + "</p>");
+			} else {
+				// process resultset
 
-			out.println("<br>Your response:");
+				out.println("<br>Your response:");
 
-			ResultSetMetaData md = rs.getMetaData();
-			int count = md.getColumnCount();
-			out.println("<table border=1>");
-			out.print("<tr>");
-			for (int i=1; i<=count; i++) {
-				out.print("<th>");
-				out.print(md.getColumnName(i));
-			}
-			out.println("</tr>");
-			while (rs.next()) {
+				ResultSetMetaData md = rs.getMetaData();
+				int count = md.getColumnCount();
+				out.println("<table border=1>");
 				out.print("<tr>");
 				for (int i=1; i<=count; i++) {
-					out.print("<td>");
+					out.print("<th>");
+					out.print(md.getColumnName(i));
+				}
+				out.println("</tr>");
+				while (rs.next()) {
+					out.print("<tr>");
+					for (int i=1; i<=count; i++) {
+						out.print("<td>");
 					out.print(rs.getString(i));
 				}
 				out.println("</tr>");
+				}
 			}
 			out.println("</table>");
 			// rs.close();

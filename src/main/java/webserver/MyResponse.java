@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class MyResponse implements HttpServletResponse {
-	/** COnstruct a dummy Response */
+	/** Construct a dummy Response */
 	public MyResponse() {
 	}
 	/** Construct a Response to the given Socket */
@@ -38,6 +38,7 @@ public class MyResponse implements HttpServletResponse {
 	public Locale getLocale() { return Locale.US; }
 
 	public void flushBuffer() { }
+	public void resetBuffer() { }
 	public int getBufferSize() { return 42; }
 	public String getCharacterEncoding() { return "iso-8859-1"; }
 	public javax.servlet.ServletOutputStream getOutputStream() { return null; }
