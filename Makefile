@@ -7,19 +7,19 @@ SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io ta
 #JAVAC=	javac
 #JAVAC=	guavac
 #JAVAC=	kaffe
-JAVACC=	jikes +E
+JAVAC=	jikes +E
 # Make sure the user picked one.
-JAVACC?= javac
+JAVAC?= javac
 
 MAKE?=	make		# could also be gmake, nmake, ...
 SHELL=	/bin/sh
 
 # There are three types of Makefiles in SUBDIR/*. Most of them
 # are not in CVS, but are copied from Makefile.simple by "make makefiles"
-# The few listed there:
+# The few listed here, dirs that don't own a Makefile but need special one:
 SUBDIRS_WITH_ERROR_DEMOS= introspection language numbers oo netweb
 # are similarly copied by "make makefiles" from "Makefile.exclude-errors";
-# these directories have files (discussed in the book) that show
+# these directories have source files (discussed in the book) that show
 # why certain features won't compile without change.
 # The third type are hand-maintained; these are for those that
 # either need a "checkpath" rule similar to the one in this Makefile,
@@ -40,13 +40,13 @@ checkpaths:
 
 # Then build everything.
 build:
-		@for dir in $(SUBDIR); do ( cd $$dir; $(MAKE) -k "JAVACC=$(JAVACC)"); done
+		@for dir in $(SUBDIR); do ( cd $$dir; $(MAKE) "JAVAC=$(JAVAC)"); done
 
 clean:
 		@for dir in $(SUBDIR); do echo "===> cleaning in $$dir"; \
 			( cd $$dir; $(MAKE) clean ); done
 
-# For any subdirectory that doesn't already have a Makefile, create a simple one
+# For any subdirectory that lacks a Makefile, create a simple one
 makefiles:
 		@for dir in $(SUBDIRS_WITH_ERROR_DEMOS); do \
 			echo "===> $$dir/Makefile (exclude-errors)"; \
@@ -56,15 +56,21 @@ makefiles:
 			echo "===> $$dir/Makefile"; \
 			cp Makefile.simple $$dir/Makefile; \
 		fi; done
-# Get rid of copied Makefiles
+
+# Get rid of copied Makefiles (unless somebody changed them!)
 makefiles.clean:
 		@for dir in $(SUBDIR); do \
 		if cmp -s Makefile.simple $$dir/Makefile; then \
 			echo "===> rm $$dir/Makefile"; \
 			rm $$dir/Makefile; \
-		elif cmp -s Makefile.exclude-errors $$dir/Makefile; then \
+		fi; \
+		done
+		@for dir in $(SUBDIRS_WITH_ERROR_DEMOS); do \
+		if cmp -s Makefile.exclude-errors $$dir/Makefile; then \
 			echo "===> rm $$dir/Makefile"; \
 			rm $$dir/Makefile; \
+		else \
+			echo "Warning: modified makefile in $$dir"; \
 		fi; \
 		done
 

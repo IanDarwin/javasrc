@@ -5,7 +5,7 @@
 
 # $Id$
 
-JAVACC?=	jikes +E
+JAVAC?=	jikes +E
 
 all:	classes
 
@@ -14,7 +14,7 @@ classes:
 		# This directory includes some classes that will not compile as is;
 		# they are present for pedagogic reasons. To compile all but them:
 		# The tr turns newlines into spaces. The sed gets rid of the last one.
-		$(JAVACC) $$(ls *.java | egrep -v $$(grep -l "EXPECT COMPILE ERROR" *.java | tr '\012' '|' | sed -e 's/|$$//'))
+		$(JAVAC) $$(ls *.java | egrep -v $$(grep -l "EXPECT COMPILE ERROR" *.java | tr '\012' '|' | sed -e 's/|$$//'))
 
 clean:
 		@rm -f *.class

@@ -2,10 +2,10 @@
 #
 SUFFIXES:	java class
 #
-JCC=javac
-JCC=jikes +E
+JAVAC=javac
+JAVAC=jikes +E
 JCFLAGS=
-COMPILE.java=$(JCC) $(JCFLAGS)
+COMPILE.java=$(JAVAC) $(JCFLAGS)
 #
 # First rule so you can just "make x" where x.java --> x.class
 .java:

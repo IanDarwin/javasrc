@@ -1,3 +1,5 @@
+JAVACC?=	jikes +E
+
 entab:	EnTab.class
 		java EnTab entab.txt | diff - entab.expect
 
@@ -6,11 +8,21 @@ csv:	csvgetline CSVFile.class
 	java CSVFile < CSV.dat > j2
 	-diff j1 j2
 
-CSVFile.class: CSVFile.java CSV.java
-	jikes +E CSVFile.java
-
 csvgetline: csvgetline.c++
-	$(CC) csvgetline.c++ -lstdc++ -o $@
+	$(CPP) csvgetline.c++ -lstdc++ -o $@
 
 clean:
-	rm -f j1 j2 csvgetline
+	rm -f *.class j1 j2 csvgetline
+
+# Copied from jmake.rules (include is importable among different makes)
+SUFFIXES:	java class
+#
+JCFLAGS=
+COMPILE.java=$(JAVAC) $(JCFLAGS)
+#
+# First rule so you can just "make x" where x.java --> x.class
+.java:
+	$(COMPILE.java) $<
+# Second so you can explicitly say "make x.class" if you want.
+.java.class:
+	$(COMPILE.java) $<

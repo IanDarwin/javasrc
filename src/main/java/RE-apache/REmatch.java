@@ -1,11 +1,11 @@
 import org.apache.regexp.*;
 
 /**
- * REsubstr -- demonstrate RE Match -> String.substring()
+ * REsubstr -- demonstrate RE Match -> getParen()
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class REsubstr {
+public class REmatch {
 	public static void main(String[] argv) throws RESyntaxException {
 		//+
 		String patt = "Q[^u]\\d+\\.";
@@ -13,7 +13,7 @@ public class REsubstr {
 		String line = "Order QT300. Now!";
 		if (r.match(line)) {
 			System.out.println(patt + " matches \"" + 
-				line.substring(r.getParenStart(0), r.getParenEnd(0)) +
+				r.getParen(0) +
 				"\" in \"" + line + "\"");
 		} else {
 			System.out.println("NO MATCH");

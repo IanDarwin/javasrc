@@ -26,28 +26,13 @@ public class JDBCMeta {
 			// the names of the tables in this database.
 			DatabaseMetaData meta = conn.getMetaData();
 
-			// Try to list all possible tables
-			System.out.println("Listing Tables");
-			ResultSet res = meta.getTables(null, "", "%", null);
-			i = 0;
-			while (res.next()) {
-				System.out.print("Row " + ++i + " ");
-				System.out.println(res.getString(3));
-			}
-			res.close();
-
-			// Now get a ResultSetMetaData for "select * from userdb" as
-			// a way of interrogating column names.
-			ResultSet rs = 
-				conn.createStatement().executeQuery("select * from userdb");
-			ResultSetMetaData rsMeta = rs.getMetaData();
-			System.out.println("ResultSetMetaData is " + rsMeta);
-			int n = rsMeta.getColumnCount();
-			System.out.println("ResultSet has " + n + " columns.");
-			for (int col=1; col<=n; col++)
-				System.out.println("Column " + col + " is " +
-					rsMeta.getColumnName(col));
-			rs.close();
+			System.out.println("We are using " + meta.getDatabaseProductName());
+			System.out.println("Version is " + meta.getDatabaseProductVersion() );
+        
+			int txisolation = meta.getDefaultTransactionIsolation();
+            System.out.println("Database default transaction isolation is " + 
+				txisolation + " (" +
+				transactionIsolationToString(txisolation) + ").");
 
 			conn.close();
 
@@ -60,6 +45,34 @@ public class JDBCMeta {
 		} catch (SQLException ex) {
 			System.out.println("Database access failed:");
 			System.out.println(ex);
+		}
+	}
+
+	/** Convert a TransactionIsolation int (defined in java.sql.Connection)
+	 * to the corresponding printable string.
+	 */
+	public static String transactionIsolationToString(int txisolation) {
+		switch(txisolation) {
+			case Connection.TRANSACTION_NONE: 
+				// transactions not supported.
+				return "TRANSACTION_NONE";
+			case Connection.TRANSACTION_READ_UNCOMMITTED: 
+				// All three phenomena can occur
+				return "TRANSACTION_NONE";
+			case Connection.TRANSACTION_READ_COMMITTED: 
+			// Dirty reads are prevented; non-repeatable reads and 
+			// phantom reads can occur.
+				return "TRANSACTION_READ_COMMITTED";
+			case Connection.TRANSACTION_REPEATABLE_READ: 
+				// Dirty reads and non-repeatable reads are prevented;
+				// phantom reads can occur.
+				return "TRANSACTION_REPEATABLE_READ";
+			case Connection.TRANSACTION_SERIALIZABLE:
+				// All three phenomena prvented; slowest!
+				return "TRANSACTION_SERIALIZABLE";
+			default:
+				throw new IllegalArgumentException(
+					txisolation + " not a valid TX_ISOLATION");
 		}
 	}
 }

@@ -4,12 +4,12 @@ SPECIAL= TestForClass.java
 all:	classes special
 
 classes:
-		$(JAVACC) *.java
+		$(JAVAC) *.java
 
 special:	../TestForClass.class
 
 ../TestForClass.class: TestForClass.java
-		$(JAVACC) -d .. TestForClass.java
+		$(JAVAC) -d .. TestForClass.java
 
 clean:
 		@rm -f *.class

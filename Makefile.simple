@@ -2,13 +2,13 @@
 # Remember to "make makefiles.clean" before editing this file!
 # $Id$
 
-JAVACC?=	jikes +E
+JAVAC?=	jikes +E
 
 all:	classes
 
 classes:
 		@echo "===> Building in `pwd`"
-		$(JAVACC) *.java
+		$(JAVAC) *.java
 
 clean:
 		@rm -f *.class

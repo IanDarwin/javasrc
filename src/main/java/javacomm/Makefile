@@ -1,7 +1,7 @@
 # Makefile for javax.comm package
 # $Id$
 
-JAVACC?=	jikes +E
+JAVAC?=	jikes +E
 
 all:	checkpath classes
 
@@ -12,7 +12,7 @@ checkpath:
 
 classes:
 		@echo "===> Building in `pwd`"
-		$(JAVACC) *.java
+		$(JAVAC) *.java
 
 clean:
 		rm -f *.class
