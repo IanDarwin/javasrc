@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This test document simply shows several entities being defined,
+ ** one of which includes some additional predefined entities.
+ ** This document also shows an "internal DTD".
+ -->
+<!DOCTYPE test [
+<!ELEMENT test (paragraph)+>
+<!ELEMENT paragraph (#PCDATA)>
+<!ENTITY myaddr "ian@darwinsys.com"> 
+<!ENTITY nameandaddr "Ian Darwin &lt;ian@darwinsys.com&gt;">
+]>
+<test>
+<paragraph>Send your email to &myaddr;.</paragraph> 
+<paragraph>Or to &nameandaddr;.</paragraph> 
+</test>

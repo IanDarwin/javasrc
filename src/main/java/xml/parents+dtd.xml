@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE parentcommittee SYSTEM "parentcommittee.dtd">
+<parentcommittee>
+	<parent position="president"><name>Ian</name><children>3</children></parent>
+	<parent><name>Rick</name><children>2</children></parent>
+</parentcommittee>

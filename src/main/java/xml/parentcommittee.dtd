@@ -1,0 +1,9 @@
+<!--
+ Document Type Definition for the Parent Committee Document
+ $Id$
+ -->
+<!ELEMENT parentcommittee (parent)+>
+<!ELEMENT parent (name, children)>
+<!ATTLIST parent position (president|secretary|treasurer) #IMPLIED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT children (#PCDATA)>
