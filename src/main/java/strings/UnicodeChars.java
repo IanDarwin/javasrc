@@ -1,5 +1,5 @@
 /**
- * Conversion between Unicode characters and bytes
+ * Conversion between Unicode characters and Strings.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
