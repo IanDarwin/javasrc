@@ -7,8 +7,9 @@ import java.util.Calendar;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class RebootServlet {
+public class RebootServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 3257291322644705584L;
 	String pwParamName = "mxyzptlk";
 
 	public void init() {
