@@ -7,7 +7,7 @@ import javax.swing.*;
  */
 public class JFrameDemo extends JFrame {
 	boolean unsavedChanges = false;
-	Button quitButton;
+	JButton quitButton;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
@@ -18,7 +18,7 @@ public class JFrameDemo extends JFrame {
 	/** Construct the object including its GUI */
 	public JFrameDemo() {
 		super("JFrameDemo");
-		getContendPane().add(quitButton = new Button("Exit"));
+		getContendPane().add(quitButton = new JButton("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
