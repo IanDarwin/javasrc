@@ -1,11 +1,16 @@
 package ca.tcp.utils;
 
+import java.util.List;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
- * similar to how he extended it for Java 1.5 (with valueOf() method).
+ * similar to how he extended it for Java 1.5 (with valueOf() method), but
+ * implemented entirely using pre-1.5 mechanisms and syntax.
  * When we move to 1.5, change all subclasses of this to J2SE 1.5 enums.
  * See Java Cookbook, 2nd Edition, Chapter 8.
  * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
@@ -13,31 +18,33 @@ import java.io.Serializable;
  * are required to be Serializable.
  */
 public abstract class Enum implements Serializable {
-	/** The name of this class, should be set in a static initializer. */
-	protected static String className = "(class not set!)";
+	/** The name of this class, set in constructor. */
+	protected String className;
 	/** The value of this instance */
 	private String value;
-	/** The maximum number of values an enum can have */
-	private static final int INITIAL_SIZE = 10;
+
+	/** This maps from each class's Class object to its List of subclasses */
+	private static Map map = new HashMap();
 	
-	private static Enum[] all = new Enum[INITIAL_SIZE];
-	private static int allIndex;
-	
+	/** Get the list for this Class */
+	private static List getList(String klass) {
+		return (List)map.get(klass);
+	}
 	
 	/** Although this is public, the implementing subclass' constructor must be 
 	 * private to ensure typesafe enumeration pattern.
 	 */
-	public Enum(String val) {
+	public Enum(String klass, String val) {
+		className = klass;
 		value = val;
-		if (allIndex == all.length) {
-			Enum[] tmp = new Enum[all.length * 2];
-			System.arraycopy(all, 0, tmp, 0, all.length);
-			all = tmp;
+		List l = (List)map.get(klass);
+		if (l == null) {
+			map.put(klass, l = new ArrayList());
 		}
-		all[allIndex++] = this;
+		l.add(this);
 	}
 	
-	/** Returns the value of this value as a String */
+	/** Returns the value of this Enum as a String */
 	public String toString() {
 		return value;
 	}
@@ -45,24 +52,27 @@ public abstract class Enum implements Serializable {
 	/** Returns the given Enum instance for the given String.
 	 * @throws IllegalArgumentException if the input is not one of the valid values.
 	 */
-	public static Enum getValueOf(String s) {
-		for (int i = 0; i < allIndex; i++) {
-			if (all[i].value.equals(s))	{
-				return all[i];
+	public static Enum getValueOf(String klass, String val) {
+		List l = getList(klass);
+		for (int i = 0; i < l.size(); i++) {
+			Enum e = (Enum)l.get(i);
+			if (e.value.equals(val))	{
+				return e;
 			}
 		}
-		throw new IllegalArgumentException("Value '" + s + "' is not a valid " + className + " enumeration value.");
+		throw new IllegalArgumentException("Value '" + val + "' is not a valid " + klass + " enumeration value.");
 	}
 
 	/** Return all the values of this Enumeration */
-	public static Enum[] values() {
-		return (Enum[])all.clone();
+	public Enum[] values(String klass) {
+		List l = getList(klass);
+		return (Enum[]) l.toArray(new Enum[l.size()]);
 	}
 	
 	/** Needed to avoid having Serialization create objects that bypass the constructor */
     protected Object readResolve() throws ObjectStreamException
     {
     	System.out.println("readResolve: value = " + value);
-        return getValueOf(value);
+        return getValueOf(className, value);
     }
 }
