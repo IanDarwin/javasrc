@@ -1,0 +1,9 @@
+Things you might do to improve MailClient:
+	Move MailReaderBean loading code into a method, so we can load a new mbox.
+	MailReaderBean needs a Reply button (implement addActionListener)
+	MailReaderBean - handle HTML mail - use DataHandler.
+	Menus.
+	Options:
+		Aliases for composing.
+		Various reply options (Reply to sender, reply to all, etc.)
+		Compose/Reply Templates.

@@ -63,11 +63,11 @@ public class MailReaderBean extends JSplitPane {
 		JTree tree = new JTree(top);
 		JScrollPane treeScroller = new JScrollPane(tree);
 		treeScroller.setBackground(tree.getBackground());
-		this.add(treeScroller);
+		this.setTopComponent(treeScroller);
 
 		// The Southern (Bottom) child is a textarea to display the msg.
 		bodyText = new JTextArea(20, 80);
-		this.add(new JScrollPane(bodyText));
+		this.setBottomComponent(new JScrollPane(bodyText));
 
 		// Add a notification listener for the tree; this will
 		// display the clicked-upon message
