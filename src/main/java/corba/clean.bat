@@ -1,2 +1,2 @@
 del *.class
-deltree CDService
+deltree/y CDService
