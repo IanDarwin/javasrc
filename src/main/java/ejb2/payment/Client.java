@@ -3,7 +3,8 @@ import javax.ejb.*;
 import javax.rmi.*;
 import javax.naming.*;
 
-import com.darwinsys.orders.*;
+import com.darwinsys.orders.PaymentHome;
+import com.darwinsys.orders.Payment;
 
 public class Client {
 	public static void main(String[] args) {

@@ -11,6 +11,7 @@
 		<remote>com.darwinsys.orders.Payment</remote>
 		<ejb-class>com.darwinsys.orders.PaymentBean</ejb-class>
 		<transaction-type>Container</transaction-type>
+		<session-type>Stateless</session-type>
 		<reentrant>false</reentrant>
 		</session>
 	</enterprise-beans>

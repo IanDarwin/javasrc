@@ -15,9 +15,8 @@ public class PaymentBean implements SessionBean, PaymentMethods {
 	/** pkey, a unique number for this payment transaction */
 	int paymentID;
 
-	public Integer ejbCreate(Integer i) {
-		paymentID = i.intValue();
-		return i;
+	public void ejbCreate() {
+		setUpConnection();
 	}
 
 	public void ejbPostCreate(Integer i) {
