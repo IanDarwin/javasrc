@@ -1,18 +1,18 @@
 package oo;
 
-/** An example of a Singleton implementation in Java, using lazy initialization.
+/** An example of a Singleton implementation in Java, using 
+ * static initialization.
  * The Singleton design pattern is described in GOF; the idea is to ensure
  * that only one instance of the class will exist in a given application.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class Singleton {
+public class SingletonStatic {
 
 	private static Singleton instance = new Singleton();
 
 	/** A private Constructor prevents any other class from instantiating. */
-	static {
-		instance = new Singleton();
+	private SingletonStatic() {
 	}
 
 	/** Static 'instance' method */
