@@ -6,7 +6,7 @@
  * @version $Id$.
  */
 public class Palindrome {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		for (int i=0; i<argv.length; i++)
 			try {
 				long l = Long.parseLong(argv[i]);
