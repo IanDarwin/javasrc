@@ -169,7 +169,7 @@ public class Handler {
 		String fl[] = dir.list();
 		Arrays.sort(fl);
 		for (int i=0; i<fl.length; i++)
-			os.println("<br/><a href=\"" + fl[i] + "\">" +
+			os.println("<br/><a href=\"" + rqName + File.separator + fl[i] + "\">" +
 			"<img align='center' border='0' src=\"/images/file.jpg\">" +
 			' ' + fl[i] + "</a>");
 	}
