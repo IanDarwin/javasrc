@@ -2,7 +2,10 @@ import java.io.*;
 import java.util.*;
 import java.text.*;
 
-public class CalEventMaker {
+/** Program to generate an iCalendar event.
+ * Can be used as a main program or as a Servlet.
+ */
+public class CalEventMaker extends javax.servlet.http.HttpServlet {
 
 	static int nEvent;
 	static Random r = new Random();
@@ -10,18 +13,65 @@ public class CalEventMaker {
 	public static void main(String[] args) throws IOException {
 		String TMPFILE = "j.ics";
 		PrintWriter out = new PrintWriter(new FileWriter(TMPFILE));
-		writeEvent(out, args[0], 
-			Integer.parseInt(args[1]),
-			Integer.parseInt(args[2]),
-			Integer.parseInt(args[3]),
-			Integer.parseInt(args[4]));
+		writeEvent(out, 
+			args[0], 					// description
+			Integer.parseInt(args[1]),	// mm start
+			Integer.parseInt(args[2]),	// dd start
+			Integer.parseInt(args[3]),	// mm end
+			Integer.parseInt(args[4]));	// dd end
 		out.close();
+		// This is Mac OS X specific; on MS-Windows use "start".
 		Runtime.getRuntime().exec("open" + ' ' + TMPFILE);
 	}
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+
+		String event = request.getParameter("description");
+
+		String yyStart = request.getParameter("yyStart");
+		String mmStart = request.getParameter("mmStart");
+		String ddStart = request.getParameter("ddStart");
+
+		String yyEnd = request.getParameter("yyEnd");
+		String mmEnd = request.getParameter("mmEnd");
+		String ddEnd = request.getParameter("ddEnd");
+
+		response.setContentType("ical");	// BLEARGH
+
+		writeEvent(out, event,
+			Integer.parseInt(yyStart),
+			Integer.parseInt(mmStart),
+			Integer.parseInt(ddStart),
+			Integer.parseInt(yyEnd),
+			Integer.parseInt(mmEnd),
+			Integer.parseInt(ddEnd));
+	}
 	
+	/** Write an event in the current year */
 	public static void writeEvent(PrintWriter out, String event,
 			int startMon, int startDay,
 			int endMon, int endDay)
+	{
+		int thisyear = Calendar.getInstance().get(Calendar.YEAR);
+		writeEvent(out, event, 
+			2003, startMon, startYear,
+			2003, endMon, endYear);
+	}
+
+	/** Write an event.
+	 * @param out - the PrintWriter to use.
+	 * @param event - a textual description of the event.
+	 * @param startYear - starting year (e.g., 2010)
+	 * @param startMon  - starting month (
+	 * @param startDay
+	 * @param endYear - ending year (e.g., 2010)
+	 * @param endMon
+	 * @param endDay
+	 */
+	public static void writeEvent(PrintWriter out, String event,
+			int startYear, int startMon, int startDay,
+			int endYear, int endMon, int endDay)
 	{
 		out.println("BEGIN:VCALENDAR");
 		out.println("CALSCALE:GREGORIAN");
@@ -35,8 +85,10 @@ public class CalEventMaker {
 		out.println("UID:27F0307F-37A6-21D7-AD6A-" + r.nextInt(9999999));
 		out.println("SUMMARY:" + event);
 		out.println("STATUS:TENTATIVE");
-		out.println("DTSTART;VALUE=DATE:" + int4digit(2003) + int2digit(startMon) + int2digit(startDay));
-		out.println("DTEND;VALUE=DATE:" + int4digit(2003) + int2digit(endMon) + int2digit(endDay));
+		out.println("DTSTART;VALUE=DATE:" +
+			int4digit(startYear) + int2digit(startMon) + int2digit(startDay));
+		out.println("DTEND;VALUE=DATE:" +
+			int4digit(endYear) + int2digit(endMon) + int2digit(endDay));
 		out.println("END:VEVENT");
 		out.println("END:VCALENDAR");
 	}
