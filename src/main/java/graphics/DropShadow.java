@@ -56,6 +56,7 @@ public class DropShad extends Applet {
 	public void paint(Graphics g) {
 		if (!inittedOK)
 			return;
+		g.setFont(theFont);
 		g.setColor(Color.black);
 		g.drawString(theLabel, theOffset+30, theOffset+50);
 		g.setColor(Color.white);
