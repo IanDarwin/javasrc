@@ -12,6 +12,19 @@ public class PSFormatter {
 	protected int lineNum;
 	/** The current tab setting */
 	protected int tabPos = 0;
+	public static final int INCH = 72;	// PS constant: 72 pts/inch
+
+	// Page parameters
+	/** The left margin indent */
+	protected int leftMargin = 50;
+	/** The top of page indent */
+	protected int topMargin = 750;
+	/** The bottom of page indent */
+	protected int botMargin = 50;
+
+	// FORMATTING PARAMETERS
+	protected int points = 12;
+	protected int leading = 14;
 
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0) 
@@ -33,44 +46,58 @@ public class PSFormatter {
 			br = new BufferedReader(in);
 	}
 
+	/** Main processing of the current input source. */
 	protected void process() throws IOException {
 
 		String line;
 
-		prologue();
+		prologue();			// emit PostScript prologue, once.
 
-		startPage();
+		startPage();		// emit top-of-page (ending previous)
 
 		while ((line = br.readLine()) != null) {
-			if (line.trim().equals("%page")) {
+			if (line.startsWith("") || line.trim().equals(".bp")) {
 				startPage();
 				continue;
 			}
 			doLine(line);
 		}
+
+		// finish last page, if not already done.
+		if (lineNum != 0)
+			println("showpage");
 	}
 
 	/** Handle start of page details. */
 	protected void startPage() {
 		if (pageNum++ > 0)
 			println("showpage");
-		pageNum = lineNum = 0;
-		moveTo(0, 700);
+		lineNum = 0;
+		moveTo(leftMargin, topMargin);
 	}
 
 	/** Process one line from the current input */
 	protected void doLine(String line) {
 		tabPos = 0;
-		for (int i=0; i<line.length() &&
-				line.charAt(i)=='\t'; i++)
-			tabPos++;
+		// count leading (not imbedded) tabs.
+		for (int i=0; i<line.length(); i++) {
+			if (line.charAt(i)=='\t')
+				tabPos++;
+			else
+				break;
+		}
 		String l = line.trim(); // removes spaces AND tabs
 		if (l.length() == 0) {
 			++lineNum;
 			return;
 		}
-		moveTo(tabPos * 72, 700-(lineNum++ * 50));
+		moveTo(leftMargin + (tabPos * INCH),
+			topMargin-(lineNum++ * leading));
 		println('(' + toPSString(l)+ ") show");
+
+		// If we just hit the bottom, start a new page
+		if (curY <= botMargin)
+			startPage();
 	}
 
 	protected String toPSString(String o) {
@@ -98,6 +125,6 @@ public class PSFormatter {
 
 	void prologue() {
 		println("%!PS-Adobe");
-		println("/Courier findfont 12 scalefont setfont ");
+		println("/Courier findfont " + points + " scalefont setfont ");
 	}
 }
