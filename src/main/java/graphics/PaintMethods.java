@@ -1,5 +1,3 @@
-import com.darwinsys.swingui.WindowCloser;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,10 +8,10 @@ public class PaintMethods extends JLabel {
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		final JFrame f = new JFrame("PaintMethods demo");
-		f.add("Center", new PaintMethods("Testing 1 2 3"));
-		f.addWindowListener(new WindowCloser(f));
+		f.getContentPane().add("Center", new PaintMethods("Testing 1 2 3"));
 		f.pack();
 		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public PaintMethods(String s) {
