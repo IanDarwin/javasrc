@@ -1,4 +1,6 @@
-/** The main public API of org.apache.regexp.RE */
+/** The main public API of org.apache.regexp.RE.
+ * Prepared in machine readable by javap and Ian Darwin.
+ */
 public class RE extends Object {
 	// Constructors
     public RE();
