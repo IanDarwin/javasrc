@@ -1,6 +1,7 @@
 import junit.framework.*;
-/** some junit test cases for EqualsDemo
- * writing a full set is left as "an exercise for the reader".
+
+/** Some JUnit test cases for EqualsDemo.
+ * Writing a full set is left as "an exercise for the reader".
  * Run as: $ java junit.textui.TestRunner EqualsDemoTest
  * @version $Id$
  */

@@ -1,4 +1,4 @@
-<project name="XXX" default="build" basedir=".">
+<project name="OO Examples from JavaCook" default="regress" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -6,13 +6,26 @@
 	<property name="build" value="."/>
 	<property file="../build.properties"/>
 
+	<property name="excludes" value="Clone0.java"/>
+
 	<target name="init">
 		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
 		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
 	</target>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			failOnError="false"
+			deprecation="true"
+			excludes="${excludes}"
+		/>
+	</target>
+
+	<target name="regress" depends="build">
+		<junit printsummary="yes">
+			<formatter type="brief"/>
+			<test name="EqualsDemoTest"/>
+		</junit>
 	</target>
 
 	<target name="clean">
