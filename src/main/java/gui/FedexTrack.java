@@ -13,6 +13,7 @@ import java.util.*;
  * and is subject to change without notice! USE AT OWN RISK.
  *
  * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 
 public class FXTrack extends Applet {
