@@ -1,10 +1,10 @@
-// $Id$
 import java.awt.*;
 import java.awt.event.*;
-import com.sun.java.swing.*;
+import javax.swing.*;
 
 /**
  * Internal Frames Demo
+ * @version $Id$
  */
 public class JIFrameDemo {
 

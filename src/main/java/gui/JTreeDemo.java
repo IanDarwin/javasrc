@@ -1,25 +1,27 @@
-import com.sun.java.swing.*;
-import com.sun.java.swing.tree.*;
-
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.tree.*;
 
-/** Simple JFC JTree demo */
-public class Tree2 extends JFrame {
+/** Simple JFC JTree demo
+ * @version $Id$
+ */
+public class JTreeDemo extends JFrame {
 	JButton addButton, quitButton;
 	JTree myTree;
 	DefaultMutableTreeNode root, child;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
-		// create a Tree2 object, tell it to show up
-		new Tree2().setVisible(true);
+		// create a JTreeDemo object, tell it to show up
+		new JTreeDemo().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public Tree2() {
-		super("Tree2");
-		setLayout(new BorderLayout());
+	public JTreeDemo() {
+		super("JTreeDemo");
+		Container cp = getContentPane();
+		cp.setLayout(new BorderLayout());
 			
 		root = new DefaultMutableTreeNode("root");
 
@@ -32,9 +34,9 @@ public class Tree2 extends JFrame {
 
 		myTree = new JTree(root);
 
-		add(BorderLayout.CENTER, myTree);
+		cp.add(BorderLayout.CENTER, myTree);
 
-		add(BorderLayout.NORTH, addButton = new JButton("Add"));
+		cp.add(BorderLayout.NORTH, addButton = new JButton("Add"));
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -53,7 +55,7 @@ public class Tree2 extends JFrame {
 			}
 		});
 
-		add(BorderLayout.SOUTH, quitButton = new JButton("Exit"));
+		cp.add(BorderLayout.SOUTH, quitButton = new JButton("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

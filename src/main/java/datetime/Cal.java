@@ -1,15 +1,13 @@
-// $Id$
-// THIS IS MAINTAINED IN JAVASRC; DO NOT EDIT IN JABADEX
 
 import java.awt.*;
-import com.sun.java.swing.*;
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
 /** Bean to display a month calendar in a JPanel. 
  * Only works for the Western calendar. 
  * @author	Ian F. Darwin, ian@darwinsys.com
- * @version 0.2, April 1998
+ * @version $Id$
  */
 public class Cal extends JPanel {
 	/** The currently-interesting year (not modulo 1900!) */

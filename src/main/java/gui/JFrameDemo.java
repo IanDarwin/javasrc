@@ -1,8 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
-import com.sun.java.swing.*;
+import javax.swing.*;
 
-/** Just a Frame */
+/** Just a Frame
+ * @version $Id$
+ */
 public class FrameDemo extends JFrame {
 	boolean unsavedChanges = false;
 	Button quitButton;

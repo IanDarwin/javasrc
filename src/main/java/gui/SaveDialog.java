@@ -1,7 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
-import com.sun.java.swing.*;
+import javax.swing.*;
 
+/*
+ * Simple Save Dialog demo.
+ * @version $Id$
+ */
 public class SaveDialog extends JFrame {
 	boolean unsavedChanges = false;
 	Button quitButton;

@@ -1,16 +1,15 @@
-import java.util.Date;
-
 /**
- * Linked list class
- * @deprecated	Supplanted by java.util.LinkList
+ * Linked list class, written out in full using Java.
+ * @deprecated	Supplanted by java.util.LinkedList
  * @author	Ian Darwin, ian@darwinsys.com
  */
 public class LinkList {
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
+		System.out.println("Here is a demo of writing a Linked List in Java");
 		LinkList l = new LinkList();
-		l.add(new Date());
+		l.add(new Object());
 		l.add("Hello");
+		System.out.println("Here is a list of all the elements");
 		l.print();
 		if (l.lookup("Hello"))
 			System.err.println("Lookup works");

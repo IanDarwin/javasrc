@@ -1,15 +1,14 @@
-import com.sun.java.swing.*;
-import com.sun.java.swing.tree.*;
-
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.tree.*;
 import java.io.*;
 import java.util.*;
 
 /**
  * Display a file system in a JTree view
  *
- * @version 0.3 1998/06/05, for Swing 1.0.1
+ * @version $Id$
  * @author Ian Darwin
  */
 public class FileTree extends JPanel 

@@ -1,4 +1,4 @@
-import com.sun.java.swing.*;
+import javax.swing.*;
 import com.sun.java.swing.preview.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,6 +10,7 @@ import java.awt.event.*;
  * <LI>Call its ConstructDialog() and get a JDialog back
  * <LI>Call its showDialog() and get back the chosen color
  * </UL>
+ * @version $Id$
  */
 public class ColorChooser extends JFrame
 {

@@ -1,8 +1,9 @@
 // Acks - pop up a bunch of dialogs, to thank some people in the Java style.
+// $Id$
 
 import java.awt.*;
 import java.awt.event.*;
-//import com.sun.java.swing.*;
+import javax.swing.*;
 import java.io.*;
 import java.util.*;
 

@@ -2,9 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
 import java.util.*;
-// THIS VERSION REQUIRES SWING -- Can just change
+// THIS VERSION USES SWING -- Could probably just change
 // all occurrences of JLabel/JButton to Label/Button for AWT.
-import com.sun.java.swing.*;
+import javax.swing.*;
 
 /** Unicode - show a page of Unicode characters.
  * BUG: Times throws a bunch of exceptions on page 2 and 3, that can
