@@ -10,9 +10,10 @@ import javax.servlet.http.*;
  * the master one for Tomcat which lives in /etc/tomcat (or whereever).
  *
  * The ServletContext init parameters are set as context-param in web.xml
- * as <context-param><param-name></>param-value></>
+ * as <context-param><param-name>...</param-name><param-value>...</param-value>
  * The Servlet's own init parameters are set in web.xml as
- *	<servlet>...<init-param><param-name>...</><param-value>...</></>
+ *	<servlet>...<init-param><param-name>...</param-name>
+ *		<param-value>...</param-value></servlet>
  */
 public class InitParams extends HttpServlet {
 
