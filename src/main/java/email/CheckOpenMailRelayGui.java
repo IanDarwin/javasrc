@@ -7,10 +7,6 @@ import javax.swing.*;
  */
 public class TestMailRelayGUI extends JFrame {
 
-	public static void main(String[] args) {
-		new TestMailRelayGUI().setVisible(true);
-	}
-
 	JTextField tf;
 
 	public TestMailRelayGUI() {
@@ -25,9 +21,8 @@ public class TestMailRelayGUI extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 				new Thread(new Runnable() {
 					public void run() {
-						String host = tf.getText();
-						String[] nargs = { host };
-						TestOpenMailRelay.main(nargs);
+						String host = tf.getText().trim();
+						TestOpenMailRelay.process(host);
 					}
 				}).start();
 			}
@@ -35,4 +30,3 @@ public class TestMailRelayGUI extends JFrame {
 		pack();
 	}
 }
-		
