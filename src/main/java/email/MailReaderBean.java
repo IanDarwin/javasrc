@@ -1,14 +1,13 @@
-// $Id$
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.tree.*;
 
 /**
-  * Display a mailbox, initially faked.
-  */
+ * Display a mailbox, currently faked.
+ * @version $Id$
+ */
 public class MailReaderBean extends JPanel implements JDModule {
 
     public MailReaderBean() {
@@ -101,6 +100,21 @@ public class MailReaderBean extends JPanel implements JDModule {
 
 	/** Modify the current via a dialog */
 	public void modItem(){}
+
+	/** Get this module to remember and control a MenuItem.  */
+	public void ownThisMenuItem(JMenuItem mi) {
+		// NOT USED - util.ownThisMenuItem(mi);
+	}
+
+	/** Enable the menuItems we own */
+	public void beingShown() {
+		// NOT USED - util.showMenus();
+	}
+
+	/** Disable the menuItems we own */
+	public void beingHidden() {
+		// NOT USED - util.hideMenus();
+	}
 
 	/** Edit->Copy */
 	public void editCopy(){}
