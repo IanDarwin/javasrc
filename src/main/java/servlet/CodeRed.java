@@ -70,7 +70,13 @@ public class CodeRed extends HttpServlet {
 		"This typically indicates that your site " +
 		"has been compromised by the \"CodeRed\" virus. " +
 		"You should (1) immediately reboot the offending machine and " +
-		"(2) update your virus protection software and do a full scan.";
+		"(2) To protect your system from re-infection: Install Microsoft's " +
+		"patch for the Code Red vulnerability problem: " +
+		"Windows NT version 4.0: " +
+		"http://www.microsoft.com/Downloads/Release.asp?ReleaseID=30833 " +
+		"Windows 2000 Professional, Server and Advanced Server: " +
+		"http://www.microsoft.com/Downloads/Release.asp?ReleaseID=30800 " +
+		"(3) update your virus protection software and do a full scan.";
 
 		out.println(message_body);
 
