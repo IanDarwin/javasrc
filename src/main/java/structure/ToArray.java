@@ -17,6 +17,6 @@ public class ToArray {
 		// This would throw an ArrayStoreException if the line
 		// "list.add(new Date())" above were uncommented.
 		String[] sl = (String[]) list.toArray(new String[0]);
-		System.out.println("Array of String has length " + ol.length);
+		System.out.println("Array of String has length " + sl.length);
 	}
 }
