@@ -234,7 +234,7 @@ public class JDAdmin extends JFrame {
 			User u = (User) userList.get(row);
 			switch (col) {
 			// DB Schemas start at one, Java columns at zero.
-			case UserDBSchema.PASSWORD-1:
+			case UserDB.PASSWORD-1:
 				String newPass = (String)val;		// Get new value
 				try {
 					setPasswordStatement.setString(1, newPass);		// ready,
