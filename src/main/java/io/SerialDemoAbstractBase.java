@@ -1,5 +1,6 @@
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 //import io.MyData;
 
@@ -15,7 +16,6 @@ public abstract class SerialDemoAbstractBase {
 	public void save() throws IOException {
 		List l = new ArrayList();
 		// Gather the data
-		l.add(new Date());
 		l.add(new MyData("Ian Darwin", "secret_java_cook"));
 		l.add(new MyData("Abby Brant", "dujordian"));
 		write(l);
