@@ -10,7 +10,7 @@ import com.sun.xml.tree.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class ConvertToMif implements XmlFormWalker {
+public class ConvertToMML implements XmlFormWalker {
 	/** The normal output writer */
 	PrintWriter msg;
 	/** Specialized PrintWriter for use by GetMark. */
@@ -21,7 +21,7 @@ public class ConvertToMif implements XmlFormWalker {
 	GetMark gm = new GetMark();
 
 	/** Construct a converter object */
-	ConvertToMif(Document doc, PrintWriter pw) {
+	ConvertToMML(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
 		smsg = new StyledWriter(msg);
