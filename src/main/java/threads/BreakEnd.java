@@ -144,7 +144,7 @@ public class BreakEnd extends JFrame implements Runnable {
 		// cp = this;
 		cp.setLayout(new BorderLayout());
 
-		fontSize = new JSlider(JSlider.HORIZONTAL,
+		fontSize = new JSlider(SwingConstants.HORIZONTAL,
 			FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_DEFAULT);
 		fontSize.setMajorTickSpacing(10);
 		fontSize.setMinorTickSpacing(5);
@@ -172,7 +172,7 @@ public class BreakEnd extends JFrame implements Runnable {
 
 		cp.add(BorderLayout.CENTER, timesPanel);
 		timesPanel.add(
-			nowLabel =  new JLabel("Time now is: 00:00:00", JLabel.CENTER));
+			nowLabel =  new JLabel("Time now is: 00:00:00", SwingConstants.CENTER));
 	
 		String mesg = null;
 		if (s.startsWith("+")) {	// "This will be HARDer..."
@@ -185,7 +185,7 @@ public class BreakEnd extends JFrame implements Runnable {
 			mesg = "We start at " + s + " ";
 		}
 		timesPanel.add(BorderLayout.CENTER,
-			endsLabel = new JLabel(mesg, JLabel.CENTER));
+			endsLabel = new JLabel(mesg, SwingConstants.CENTER));
 		setFontSize(FONT_SIZE_DEFAULT);
 		JButton b;
 		cp.add(BorderLayout.SOUTH, b = new JButton("Done"));
@@ -220,9 +220,9 @@ public class BreakEnd extends JFrame implements Runnable {
 		if (sz > FONT_SIZE_MAX)
 			sz = FONT_SIZE_MAX;
 		//System.out.println("Setting font size to " + sz);
-		Font f = new Font("Helvetica", Font.PLAIN, sz);
-		nowLabel.setFont(f);
-		endsLabel.setFont(f);
+		Font font = new Font("Helvetica", Font.PLAIN, sz);
+		nowLabel.setFont(font);
+		endsLabel.setFont(font);
 		fontSize.setValue(sz);
 	}
 }
