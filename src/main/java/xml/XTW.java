@@ -56,9 +56,9 @@ public class XTW {
 
 	/* Process all the nodes, recursively. */
 	protected void doRecursive(Node p) {
-		if (p == null)
+		if (p == null) {
 			return;
-
+		}
 		NodeList nodes = p.getChildNodes();
 		int numElem = nodes.getLength();
 		// System.err.println("Element has " + numElem + " children");
@@ -67,32 +67,29 @@ public class XTW {
 			if (n == null) {
 				continue;
 			}
-			// System.err.println("NODE " + n.getNodeType());
 
-		doNode(n);
+			doNode(n);
 
-		NodeList kids = n.getChildNodes();
-		int nkids = kids.getLength();
-		for (int i=0; i<nkids; i++) {
-			doRecursive(kids.item(i));
 		}
 	}
 
 	protected void doNode(Node n) {
 
-		// System.err.println("NODE " + n.getNodeType());
 		switch(n.getNodeType()) {
 			case Node.ELEMENT_NODE:
-				System.out.println("\tELEMENT<" + n.getNodeName() + ">");
-				doRecursive((Element)n);
-				n.removeChild(n);
+				System.out.println("ELEMENT<" + n.getNodeName() + ">");
+				doRecursive(n);
 				break;
 			case Node.TEXT_NODE:
-				System.out.println("\tCDATA: " + n.getNodeValue());
-				p.removeChild(n);
+				String text = n.getNodeValue();
+				if (text.length() == 0 || 
+					text.equals("\n") || text.equals("\\r")) {
+					break;
+				}
+				System.out.println("TEXT: " + text);
 				break;
 			default:
-				System.err.println( "Warning: unhandled child node " +
+				System.err.println( "OTHER NODE " +
 					n.getNodeType() + ": " + n.getClass());
 				break;
 		}

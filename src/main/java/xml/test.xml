@@ -1,0 +1,24 @@
+<CHAPTER><ChapterTitle>Numbers</ChapterTitle>
+<SC>Introduction</SC>
+<PR></PR>
+<P>You have a problem.</P>
+<SO></SO>
+<P>I have the solution.</P>
+<SC>Introduction</SC>
+<P>Numbers are basic to just about any computation.
+Theyre used for array indices, for temperatures, for salaries,
+for ratings of various kinds, and a hundred other things.
+Yet theyre not as simple as they seem.
+With floating point numbers, how accurate is accurate?
+With random numbers, how random is random?
+With strings that should contain a number,
+what actually constitutes a number? </P>
+<P>Java has several built-in types that can be used to represent numbers,
+summarized in this table. Note that unlike languages like C or Perl
+which dont specify the size or precision of numeric type, Java--
+with its goal of portability--specifies these exactly.</P>
+<P>Here is an example of a Java insertion:</P>
+<EXAMPLE HREF="LogBaseUse.java"></EXAMPLE>
+<P>Here is an example of a Java OUTPUT insertion:</P>
+<RUNOUTPUT CLASS="LogBaseUse"></RUNOUTPUT>
+</CHAPTER>
