@@ -1,0 +1,21 @@
+<project name="Java Cookbook Examples" default="compile" basedir=".">
+
+	<!-- include global build properties -->
+	<property file="../build.properties"/>
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+
+	<!-- specify what to compile. This builds everything -->
+	<target name="compile">
+		<echo message="==> Compiling in RE14"/>
+		<!-- Compile the java code from ${src} into ${build}.
+		 *** failonerror is set false because of 1.4 constructs that will
+		 *** fail to compile on 1.3, and a few "expect error here" cases...
+		  -->
+		<javac srcdir="${src}" destdir="${build}"
+			failonerror="false"
+			classpath="${javacook.jar}:${junit.jar}"/>
+	</target>
+
+</project>
