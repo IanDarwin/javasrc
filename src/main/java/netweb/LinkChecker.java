@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 
 import com.darwinsys.io.FileIO;
-import com.darwinsys.swingui.UtilGUI;
+import com.darwinsys.swingui.UtilGUI; 
 import com.darwinsys.util.Debug;
 
 /** A simple HTML Link Checker. 
@@ -270,13 +270,13 @@ public class LinkChecker extends JFrame {
 		int p1, p2, p3, p4;
 
 		if (caseTag.startsWith("<a") && 
-			Character.isWhiteSpace(caseTag.charAt(2)))
+			Character.isWhitespace(caseTag.charAt(2)))
 			attrib = "href";		// A
 		else
 			attrib = "src";			// image, frame
 		// XXX refactor to use 1.5 enum here
 		if (attrib.equals("href") && caseTag.indexOf("name") != -1) {
-			return;		// silently ignore <a name=...>
+			return null;		// silently ignore <a name=...>
 		}
 		p1 = caseTag.indexOf(attrib);
 		if (p1 < 0) {
