@@ -1,7 +1,3 @@
-/*
- <APPLET CODE=ButtonDemo2a WIDTH=234 HEIGHT=123>
- </APPLET>
- */
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;

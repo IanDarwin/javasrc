@@ -80,22 +80,21 @@ public class FileTree extends JPanel
 	/** Main: make a Frame, add a FileTree */
     public static void main(String av[]) {
 
-		Frame frame = new Frame("FileTree");
+		JFrame frame = new JFrame("FileTree");
 		frame.setForeground(Color.black);
 		frame.setBackground(Color.lightGray);
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {System.exit(0);}
-		});
+		Container cp = frame.getContentPane();
 
 		if (av.length == 0) {
-			frame.add(new FileTree(new File(".")));
+			cp.add(new FileTree(new File(".")));
 		} else {
-			frame.setLayout(new BoxLayout(frame, BoxLayout.X_AXIS));
+			cp.setLayout(new BoxLayout(cp, BoxLayout.X_AXIS));
 			for (int i=0; i<av.length; i++)
-				frame.add(new FileTree(new File(av[i])));
+				cp.add(new FileTree(new File(av[i])));
 		}
 
 		frame.pack();
 		frame.setVisible(true);
+		frame.addWindowListener(new WindowCloser(frame, true));
 	}
 }

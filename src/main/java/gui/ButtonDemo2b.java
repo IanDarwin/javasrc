@@ -1,28 +1,25 @@
-/*
- <APPLET CODE=ButtonDemo2b WIDTH=234 HEIGHT=123>
- </APPLET>
- */
-
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/** Demonstrate use of Button */
-public class ButtonDemo2b extends Applet {
-	Button	b;
+/** Demonstrate use of two buttons, using a single ActionListener */
+public class ButtonDemo2a extends Applet {
+	Button b1, b2;
 
 	public void init() {
-		add(b = new Button("A button"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		add(b1 = new Button("A button"));
+		b1.addActionListener(this);
+
+		add(b2 = new Button("Another button"));
+		b2.addActionListener(this);
+	}
+
+	class ButtonHandler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == b1)
 				showStatus("Thanks for pushing my first button!");
-			}
-		});
-		add(b = new Button("Another button"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			else
 				showStatus("Thanks for pushing my second button!");
-			}
-		});
+		}
 	}
 }
