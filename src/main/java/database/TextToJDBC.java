@@ -21,7 +21,7 @@ public class UserToJDBC {
 
 		System.out.println("Getting Connection");
 		Connection conn = DriverManager.getConnection(
-			DB_URL, "ian", "");	// user, passwd
+			DB_URL, "ian", "");	// user, password
 
 		System.out.println("Creating Statement");
 		Statement stmt = conn.createStatement();
@@ -47,7 +47,7 @@ public class UserToJDBC {
 
 		String line;
 		while ((line = is.readLine()) != null) {
-			//name:passwd:fullname:City:Prov:Country:privs
+			//name:password:fullname:City:Prov:Country:privs
 
 			if (line.startsWith("#")) {		// comment
 				continue;

@@ -16,7 +16,7 @@ public class UserConvert {
 
 		String line;
 		while ((line = is.readLine()) != null) {
-			//name:passwd:fullname:City:Prov:Country:privs
+			//name:password:fullname:City:Prov:Country:privs
 
 			if (line.startsWith("#")) {		// comment
 				continue;

@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.sql.SQLException;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
@@ -13,31 +14,13 @@ public class UserDBDBM extends UserDB {
 
 	protected DBM db;
 
-	protected static void init() throws IOException {
-		singleton = new UserDBDBM(DEF_NAME);
+	/** Default Constructor */
+	protected UserDBDBM() throws IOException,SQLException {
+		this(DEF_NAME);
 	}
 
-	public static UserDB getInstance() throws IOException {
-		if (singleton == null) {
-			init();
-		}
-		return singleton;
-	}
-
-	/** Add one user to the list, both in-memory and on disk. */
-	public synchronized void addUser(User nu) throws IOException {
-		// Add it to the in-memory list
-		super.addUser(nu);
-
-		// Add it to the on-disk version: store in DB with
-		// key = nickname, value = object.
-		db.store(nu.getName(), nu);
-	}
-
-	/** Constructor is protected since it should only be called
-	 * from within the init() method.
-	 */
-	protected UserDBDBM(String fn) throws IOException {
+	/** Constructor */
+	protected UserDBDBM(String fn) throws IOException,SQLException {
 		super();
 		
 		db = new DBM(fn);
@@ -53,16 +36,13 @@ public class UserDBDBM extends UserDB {
 		}
 	}
 
-	/** Get the User object for a given nickname.
-	 */
-	public User getUser(String nick) {
-		Iterator it = users.iterator();
-		while (it.hasNext()) {
-			User u = (User)it.next();
-			if (u.getName().equals(nick))
-				return u;
-		}
-		return null;
-	}
+	/** Add one user to the list, both in-memory and on disk. */
+	public synchronized void addUser(User nu) throws IOException, SQLException {
+		// Add it to the in-memory list
+		super.addUser(nu);
 
+		// Add it to the on-disk version: store in DB with
+		// key = nickname, value = object.
+		db.store(nu.getName(), nu);
+	}
 }

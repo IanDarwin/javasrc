@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.sql.SQLException;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
@@ -13,27 +14,18 @@ public class UserDBText extends UserDB {
 
 	protected String fileName;
 
-	protected static void init() throws IOException {
-		singleton = new UserDBText(DEF_NAME);
+	protected UserDBText() throws IOException,SQLException {
+		this(DEF_NAME);
 	}
 
-	public static UserDB getInstance() throws IOException {
-		if (singleton == null) {
-			init();
-		}
-		return singleton;
-	}
-
-	/** Constructor is protected since it should only be called
-	 * from within the init() method.
-	 */
-	protected UserDBText(String fn) throws IOException {
+	/** Constructor */
+	protected UserDBText(String fn) throws IOException,SQLException {
 		super();
 		fileName = fn;
 		BufferedReader is = new BufferedReader(new FileReader(fn));
 		String line;
 		while ((line = is.readLine()) != null) {
-			//name:passwd:fullname:City:Prov:Country:privs
+			//name:password:fullname:City:Prov:Country:privs
 
 			if (line.startsWith("#")) {		// comment
 				continue;
@@ -58,28 +50,38 @@ public class UserDBText extends UserDB {
 		}
 	}
 
-	/** Get the User object for a given nickname */
-	public User getUser(String nick) {
-		Iterator it = users.iterator();
-		while (it.hasNext()) {
-			User u = (User)it.next();
-			if (u.getName().equals(nick))
-				return u;
-		}
-		return null;
-	}
-
 	protected PrintWriter pw;
 
-	public synchronized void addUser(User nu) throws IOException {
+	public synchronized void addUser(User nu) throws IOException,SQLException {
 		// Add it to the in-memory list
 		super.addUser(nu);
 
 		// Add it to the on-disk version
-		// name:passwd:fullname:City:Prov:Country:privs
-		if (pw == null)
+		if (pw == null) {
 			pw = new PrintWriter(new FileWriter(fileName, true));
-		pw.println(nu.toDB());
+		}
+		pw.println(toDB(nu));
+		// toDB returns: name:password:fullname:City:Prov:Country:privs
 		pw.flush();
+	}
+
+	protected String toDB(User u) {
+		// #name:password:fullName:email:City:Prov:Country:privs
+		char privs = '-';
+		if (adminPrivs)
+			privs = 'A';
+		else if (editPrivs) 
+			privs = 'E';
+		
+		return new StringBuffer()
+			.append(u.name).append(':')
+			.append(u.password).append(':')
+			.append(u.fullName).append(':')
+			.append(u.email).append(':')
+			.append(u.city).append(':')
+			.append(u.prov).append(':')
+			.append(u.country).append(':')
+			.append(u.privs)
+			.toString();
 	}
 }
