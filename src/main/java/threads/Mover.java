@@ -29,19 +29,19 @@ public class Mover extends Applet implements Runnable {
 	// YOU DON'T NEED THEM FOR AN APPLET-ONLY SOLUTION.
 
 	/** Construct a Mover, given an Image and using a default pause interval. */
-	Mover(String imgName) {
+	public Mover(String imgName) {
 		this(imgName, DEFAULT_INTERVAL);
 	}
 
 	/** Construct a Mover, given an Image and a pause interval. */
-	Mover(String imgName, int pauseInt) {
+	public Mover(String imgName, int pauseInt) {
 		interval = pauseInt;
 		imageName = imgName;
 		init();
 	}
 
 	/** Since we have the above Constructors, we need this one for Applet */
-	Mover() {
+	public Mover() {
 	}
 
 	/** Setup a Mover applet. */
