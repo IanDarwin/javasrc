@@ -1,9 +1,9 @@
 package email;
 
-import java.io.*;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*; 
+import java.io.IOException;
+import java.io.PrintStream;
+
+import javax.mail.MessagingException;
 
 /** TestOpenMailRelay -- send self-returning SPAM to check for relay sites.
  * @author Ian F. Darwin

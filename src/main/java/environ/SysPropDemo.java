@@ -1,7 +1,6 @@
 package environ;
 
 import java.io.IOException;
-import java.util.*;
 
 /**
  * List one or more item(s) from System Properties

@@ -1,14 +1,10 @@
 package gc;
 
-import java.lang.*;
-import java.util.*;
-
 /**
  * IRC - IsRefCount. A Garbage Collection Test Class
  * Does this Java VM/GC use reference counts? RefCounting GC's
  * normally do not remove cycles...
  */
-
 public class IRC {
 	private static int nodeCount;
 	private IRC next;

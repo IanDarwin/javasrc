@@ -1,7 +1,6 @@
 package dir_file;
 
-import java.io.*;
-import java.io.*;
+import java.io.File;
 
 import com.darwinsys.lang.GetOpt;
 import com.darwinsys.util.Debug;
@@ -57,7 +56,7 @@ public class Find {
 			String objects[] = f.list(filter);
 
 			for (int i=0; i<objects.length; i++)
-				doName(s + f.separator + objects[i]);
+				doName(s + File.separator + objects[i]);
 		} else
 			System.err.println("Unknown type: " + s);
 	}

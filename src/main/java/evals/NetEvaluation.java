@@ -1,10 +1,10 @@
 package evals;
 
-import java.rmi.*;
+import java.rmi.RemoteException;
 
 /** The interface for sending stuff over the net */
 public interface NetEvaluation {
 	public void sendEval(Evaluation e) 
-		throws java.rmi.RemoteException, DupEvalException;
+		throws RemoteException, DupEvalException;
 }
 	

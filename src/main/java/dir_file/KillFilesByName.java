@@ -21,7 +21,7 @@ public class KillFilesByName {
 
 		String[] info = dir.list();
 		for (int i=0; i<info.length; i++) {
-			File n = new File(argv[0] + dir.separator + info[i]);
+			File n = new File(argv[0] + File.separator + info[i]);
 			if (!n.isFile()) {	// skip ., .., other directories, etc.
 				continue;
 			}

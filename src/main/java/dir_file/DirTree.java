@@ -31,7 +31,7 @@ public class DirTree {
 			String objects[] = f.list();
 
 			for (int i=0; i<objects.length; i++)
-				doDir(s + f.separator + objects[i]);
+				doDir(s + File.separator + objects[i]);
 		} else
 			System.err.println("Unknown: " + s);
 	}

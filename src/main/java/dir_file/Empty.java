@@ -21,7 +21,7 @@ public class Empty {
 
 		String[] info = dir.list();
 		for (int i=0; i<info.length; i++) {
-			File n = new File(argv[0] + dir.separator + info[i]);
+			File n = new File(argv[0] + File.separator + info[i]);
 			if (!n.isFile())	// skip ., .., other directories too
 				continue;
 			System.out.println("removing " + n.getPath());
