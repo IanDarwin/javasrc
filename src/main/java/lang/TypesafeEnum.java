@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import ca.tcp.controller.Direction;
+
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
  * similar to how he extended it for Java 1.5 (with valueOf() method), but
@@ -16,6 +18,27 @@ import java.util.Map;
  * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
  * info on Serializable and readResolve(); objects used in HttpSessions
  * are required to be Serializable.
+ * <p>
+ * A sample use is shown here:<pre>
+ * /**
+ *  * An Enum for Upload/Download Direction
+ *  *
+ * public class Direction extends Enum {
+ * 	public static final String KLASSNAME = "Direction";
+ * 	
+ * 	/** Constructor must be private to ensure typesafe enumeration pattern *
+ * 	private Direction(String status) {
+ * 		super(KLASSNAME, status);
+ * 	}
+ * 	public Direction valueOf(String val) {
+ * 		return (Direction)Enum.getValueOf(KLASSNAME, val);
+ * 	}
+ * 	
+ * 	/** The status value for the INPUT direction, that is, a file checkin or upload *
+ * 	public final static Direction DIRECTION_IN = new Direction("I");
+ * 	/** The status value for the OUTPUT direction, that is, a file checkout or download *
+ * 	public final static Direction DIRECTION_OUT = new Direction("O");
+ * }
  */
 public abstract class Enum implements Serializable {
 	/** The name of this class, set in constructor. */
