@@ -17,14 +17,6 @@ public abstract class APIFormatter {
 	/** True if we are doing classpath, so only do java. and javax. */
 	protected static boolean doingStandardClasses = true;
 	
-	/** Simple main program, construct self, process each .ZIP file
-	 * found in CLASSPATH or in argv.
-	 */
-	public static void main(String[] argv) throws IOException {
-		CrossRef xref = new CrossRef();
-		xref.doArgs(argv);
-	}
-
 	protected int doArgs(String[] argv) throws IOException {
 		/** Counter of fields/methods printed. */
 		int n = 0;
