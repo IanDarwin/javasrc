@@ -21,6 +21,15 @@ jbyteArray datumToByteArray(JNIEnv *env, datum d) {
 	return value;
 }
 
+/* Convenience routine: make jbyteArray into datum */
+datum byteArrayToDatum(JNIEnv *env, jbyteArray ba) {
+	datum d;
+	d.dsize = (*env)->GetArrayLength(env, ba);
+	d.dptr = malloc(d.dsize);
+	(*env)->GetByteArrayRegion(env, ba, 0, d.dsize, d.dptr);
+	return d;
+}
+
 /*
  * Method:    dbminit
  * Signature: (Ljava/lang/String;)I
@@ -137,7 +146,10 @@ JNIEXPORT jint JNICALL Java_DBM_delete
  */
 JNIEXPORT jbyteArray JNICALL Java_DBM_firstkey
   (JNIEnv *env, jobject this) {
-	return NULL;
+	datum d = firstkey();
+	if (d.dptr == NULL)
+		return NULL;
+	return datumToByteArray(env, d);
 }
 
 /*
@@ -146,6 +158,9 @@ JNIEXPORT jbyteArray JNICALL Java_DBM_firstkey
  */
 JNIEXPORT jbyteArray JNICALL Java_DBM_nextkey
   (JNIEnv *env, jobject this, jbyteArray key) {
-	return NULL;
+	datum d = nextkey(byteArrayToDatum(env, key));
+	if (d.dptr == NULL)
+		return NULL;
+	return datumToByteArray(env, d);
 }
 

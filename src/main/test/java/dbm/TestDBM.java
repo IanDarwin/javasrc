@@ -23,9 +23,9 @@ public class Test {
 
 		System.out.println("Now try iterating");
 		DBM d3 = new DBM("/tmp/mydb");
-		byte[] ba;
-		for (ba = d3.firstkey(); ba != null; ba = d3.nextkey(ba)) {
-			System.out.println(new String(ba));
+		Object o;
+		for (o = d3.firstkeyObject(); o != null; o = d3.nextkey(o)) {
+			System.out.println("Key=\"" + o + "\"; value=\"" + d3.fetch(o));
 		}
 	}
 }
