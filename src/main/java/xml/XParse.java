@@ -13,7 +13,7 @@ import org.xml.sax.SAXParseException;
  */
 public class XParse {
 
-	/** Convert the file */
+	/** Parse the file */
 	public static void parse(String fileName, boolean validate) {
 		try {
 			System.err.println("Parsing " + fileName + "...");
