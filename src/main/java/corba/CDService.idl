@@ -10,8 +10,10 @@ module CDService {
 		short runSeconds;
 	};
 
+	typedef sequence <Track> Tracks;
+
 	interface CDList {
 		CD getCD(in long cdNum);
-		Track  nextTrack();
+		Tracks  getTracks();
 	};
 };

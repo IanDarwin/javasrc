@@ -14,7 +14,7 @@ public class Handler extends Thread {
 	/** inputStream, from Viewer */
 	BufferedReader is;
 	/** outputStream, to Viewer */
-	PrintWriter os;
+	PrintStream os;
 	/** Main program */
 	WebServer parent;
 
@@ -65,7 +65,7 @@ public class Handler extends Thread {
 
 			// TODO die if rqName.contains("..");
 
-			os = new PrintWriter(clntSock.getOutputStream(), true);
+			os = new PrintStream(clntSock.getOutputStream());
 			doFile(rqName, type == RQ_HEAD, os);
 			os.flush();
 			this.sleep(1000);
@@ -79,15 +79,15 @@ public class Handler extends Thread {
 	}
 
 	/** Processes one file */
-	void doFile(String rqName, boolean headerOnly, PrintWriter os) throws IOException {
+	void doFile(String rqName, boolean headerOnly, PrintStream os) throws IOException {
 		if (rqName.endsWith("/"))
 			rqName += "index.html";
 		// strip leading / from rqName
 		while (rqName.startsWith("/"))
 			rqName = rqName.substring(1);
 		File f;
-		String content;
-		content = (String)h.get(rqName);
+		byte[] content;
+		content = (byte[])h.get(rqName);
 		if (content != null) {
 			System.out.println("Using cached file " + rqName);
 			sendFile(rqName, headerOnly, content, os);
@@ -105,13 +105,10 @@ public class Handler extends Thread {
 			os.println("</HTML>");
 		} else if (f.canRead()) {
 			System.out.println("Loading file " + rqName);
-			FileReader in = new FileReader(rqName);
-			if (f.length() > Integer.MAX_VALUE)
-				throw new IllegalArgumentException(
-					"File too big!!");
-			char c_content[] = new char[(int)f.length()];
+			InputStream in = new FileInputStream(rqName);
+			byte c_content[] = new byte[(int)f.length()];
 			int n = in.read(c_content);
-			content = new String(c_content);
+			content = c_content;
 			h.put(rqName, content);
 			sendFile(rqName, headerOnly, content, os);
 		} else {
@@ -123,14 +120,14 @@ public class Handler extends Thread {
 	 * TODO add a boolean justHead and if true, return before content.
 	 */
 	void sendFile(String fname, boolean justHead,
-		String content, PrintWriter os) {
+		byte[] content, PrintStream os) throws IOException {
 		os.println("HTTP/1.0 200 Here's your file");
 		os.println("Content-type: " + guessMime(fname));
-		os.println("Content-length: " + content.length());
+		os.println("Content-length: " + content.length);
 		os.println("");
 		if (justHead)
 			return;
-		os.print(content);
+		os.write(content);
 	}
 
 	/** The type for unguessable files */
