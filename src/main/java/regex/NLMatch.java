@@ -20,10 +20,7 @@ public class NLMatch {
 		for (int i = 0; i < patt.length; i++) {
 			System.out.println("PATTERN " + patt[i]);
 
-			boolean found;
-			RE r = new RE(patt[i]);
-
-			found = r.match(input);
+			boolean found = Pattern.matches(patt[i], input);
 			System.out.println("DEFAULT match " + found);
 
 			r.setMatchFlags(RE.MATCH_MULTILINE);

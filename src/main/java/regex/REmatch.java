@@ -1,7 +1,7 @@
 import java.util.regex.*;
 
 /**
- * REsubstr -- demonstrate RE Match -> getParen()
+ * REmatch -- demonstrate RE Match -> getParen()
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */

@@ -12,7 +12,6 @@ import java.util.regex.*;
  *	from the 2nd edition of his book "Web Performance Tuning".
  * @version $Id$
  */
-
 public class BookRank {
 	public final static String ISBN = "0937175307";
 	public final static String DATA_FILE = "lint.sales";
@@ -31,7 +30,7 @@ public class BookRank {
 
 		// Patrick Killelea's original RE formulation : match number with
 		// comma included, just print minus ",". Loses if fall below 100,000.
-		RE r = new RE(" Sales Rank: </b>\\s*(\\d*),*(\\d+)\\s");
+		Pattern r = Pattern.compile(" Sales Rank: </b>\\s*(\\d*),*(\\d+)\\s");
 		// Java: should use "[\d,]+" to extract the number and 
 		// NumberFormat.getInstance().parse() to convert to int.
 
@@ -43,14 +42,15 @@ public class BookRank {
 		String input = FileIO.readerToString(is);
 
 		// If found, append to sales data file.
-		if (r.match(input)) {
+		Matcher m = r.matcher(input);
+		if (r.lookingAt(input)) {
 			PrintWriter FH = new PrintWriter(
 				new FileWriter(DATA_FILE, true));
 			String date = // `date +'%m %d %H %M %S %Y'`;
 				new SimpleDateFormat("MM dd hh mm ss yyyy ").
 				format(new Date());
 			// Paren 1 is the optional thousands; paren 2 is low 3 digits.
-			FH.println(date + r.getParen(1) + r.getParen(2));
+			FH.println(date + r.group(1) + r.group(2));
 			FH.close();
 		}
 

@@ -8,9 +8,10 @@ import java.util.regex.*;
 public class RE_QnotU_Args {
 	public static void main(String[] argv) throws PatternSyntaxException {
 		String patt = "^Q[^u]\\d+\\.";
-		RE r = new RE(patt);
+		Pattern r = Pattern.compile(patt);
 		for (int i=0; i<argv.length; i++) {
-			boolean found = r.match(argv[i]);
+			Matcher m = r.matcher(argv[i]);
+			boolean found = m.lookingAt();
 			System.out.println(patt +
 				(found ? " matches " : " doesn't match ") + argv[i]);
 		}

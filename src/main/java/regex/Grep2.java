@@ -125,23 +125,24 @@ public class Grep2 {
 	 */
 	public void process(Reader ifile, String fileName) {
 
-		String line;
+		String inputLine;
 		int matches = 0;
 
 		try {
 			d = new BufferedReader(ifile);
 		    
-			while ((line = d.readLine()) != null) {
-				if (pattern.match(line)) {
+			while ((inputLine = d.readLine()) != null) {
+				matcher.reset(inputLine);
+				if (pattern.lookingAt()) {
 					if (countOnly)
 						matches++;
 					else {
 					if (!dontPrintFileName)
 						System.out.print(fileName + ": ");
-					System.out.println(line);
+					System.out.println(inputLine);
 					}
 				} else if (inVert) {
-					System.out.println(line);
+					System.out.println(inputLine);
 				}
 			}
 			if (countOnly)

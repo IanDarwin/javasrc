@@ -6,15 +6,16 @@ import java.util.regex.*;
  * @version $Id$
  */
 public class CaseMatch {
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 		String pattern = "^q[^u]\\d+\\.";
 		String input = "QA777. is the next flight. It is on time.";
 
-		RE r = new RE(pattern, RE.MATCH_CASEINDEPENDENT);
+		Pattern r = Pattern.compile(pattern, Pattern.IGNORE_CASE);
 
 		boolean found;
-		found = r.match(input);			// will match any case
-		System.out.println("MATCH_CASEINDEPENDENT match " + found);
+		Matcher m = r.matcher(input);	// will match any case
+		found = r.find();				// will match any case
+		System.out.println("IGNORE_CASE match " + found);
 
 		r.setMatchFlags(RE.MATCH_NORMAL);
 		found = r.match(input);		// will match case-sensitively

@@ -6,6 +6,8 @@
 	<property name="src" value="."/>
 	<property name="build" value="."/>
 
+	<property name="zipfile" value="regexp-1.4.zip"/>
+
 	<!-- specify what to compile. This builds everything -->
 	<target name="compile">
 		<echo message="==> Compiling in RE14"/>
@@ -16,6 +18,13 @@
 		<javac srcdir="${src}" destdir="${build}"
 			failonerror="false"
 			classpath="${javacook.jar}:${junit.jar}"/>
+	</target>
+
+	<target name="zip">
+		<zip zipfile="${build}/${zipfile}" basedir="."
+			includes="**"
+			excludes="CVS,${zipfile},*.class,ReaderIter.java,Grep*.java">
+		</zip>
 	</target>
 
 </project>

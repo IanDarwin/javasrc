@@ -44,16 +44,16 @@ public class Grep1 {
 	public void process(
 		Reader ifile, String fileName, boolean printFileName) {
 
-		String line;
+		String inputLine;
 
 		try {
 			d = new BufferedReader(ifile);
 		    
-			while ((line = d.readLine()) != null) {
-				if (pattern.match(line)) {
+			while ((inputLine = d.readLine()) != null) {
+				if (pattern.match(inputLine)) {
 					if (printFileName)
 						System.out.print(fileName + ": ");
-					System.out.println(line);
+					System.out.println(inputLine);
 				}
 			}
 			d.close();
