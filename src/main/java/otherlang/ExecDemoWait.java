@@ -18,13 +18,10 @@ public class ExecDemoWait {
 		BufferedReader is;	// reader for output of process
 		String line;
 		
-		if (argv.length != 0) {
-			program = argv[0];
-			// Make up argv-format (array of String) minus program name.
-			newArgs = new String[argv.length -1];
-			System.arraycopy(argv, 1, newArgs, 0, argv.length - 1);
-		}
-		p = r.exec(program, newArgs);
+		// Our argv[0] contains the program to run; remaining elements
+		// of argv contain args for the target program. This is just
+		// what is needed for the String[] form of exec.
+		p = r.exec(argv);
 
 		System.out.println("In Main after exec");
 
