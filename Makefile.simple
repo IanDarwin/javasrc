@@ -1,0 +1,10 @@
+# Makefile.simple -- simple makefile to build all Java classes.
+# $Id$
+
+JAVACC?=	jikes +E
+
+all:	classes
+
+classes:
+		echo "===> Building in `pwd`"
+		$(JAVACC) *.java

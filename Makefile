@@ -9,7 +9,9 @@ SHELL=	/bin/sh
 #JAVAC=	javac
 #JAVAC=	guavac
 #JAVAC=	kaffe
-JAVAC=	jikes +E
+JAVACC=	jikes +E
+# Make sure the user picked one.
+JAVACC?= javac
 
 all:	checkpaths build
 
@@ -26,8 +28,13 @@ checkpaths:
 
 # Then build everything.
 build:
-		for dir in ${SUBDIRS}; do ( cd $$dir; make "JAVACC=$(JAVACC)"); done
+		for dir in $(SUBDIR); do ( cd $$dir; make "JAVACC=$(JAVACC)"); done
 
+# For any subdirectory that doesn't already have a Makefile, create a simple one
+makefiles:
+		for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
+			cp Makefile.simple $$dir/Makefile; \
+		fi; done
 # Don't worry about (or try to use) this rule; it is only used by the book's
 # author when adding a subdirectory to the list of files included.
 subdirs:
