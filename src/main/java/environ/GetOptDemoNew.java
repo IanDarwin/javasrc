@@ -47,7 +47,9 @@ public class GetOptDemoNew {
 		System.out.print("Inputs: ");
 		List files = parser.getFilenameList();
 		for (int i = 0; i < files.size(); i++) {
-			System.out.println("Filename: " + files.get(i));
+			System.out.print(files.get(i));
+			System.out.print(' ');
 		}
+		System.out.println();
 	}
 }
