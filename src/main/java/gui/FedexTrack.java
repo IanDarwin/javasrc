@@ -27,10 +27,10 @@ public class FXTrack extends Applet {
 			URL destURL = null;
 			try {
 				destURL = new URL("http://www.fedex.com/cgi-bin/track_it?" +
-				"dest_cntry=" + destChooser.getSelectedItem() +
-				"&trk_num=" + numField.getText() +
-				"&ship_date=" +	shipDate +
-				"&Request+Tracking+Info.x=43&Request+Tracking+Info.y=8");
+				"&kurrent_airbill=" + numField.getText() + "|" +
+					destChooser.getSelectedItem() + "|" + shipDate +
+					// following boilerplate seems needed
+					"&language=english&cntry_code=us&state=0");
 			} catch (MalformedURLException err) {
 				System.err.println("Error!\n" + err);
 				showStatus("Error, look in Java Console for details!");
@@ -51,9 +51,11 @@ public class FXTrack extends Applet {
 		setLayout(new GridLayout(3,2));
 		add(new Label("Dest. Country:", Label.RIGHT));
 		add(destChooser = new Choice());
-		destChooser.add("CANADA");
+		destChooser.add("ca");
 		destChooser.select(0);
-		destChooser.add("UNITED+STATES");
+		destChooser.add("sv");
+		destChooser.add("uk");
+		destChooser.add("us");
 		add(new Label("Waybill #", Label.RIGHT));
 		add(numField = new TextField(12));
 		numField.addActionListener(handler);
