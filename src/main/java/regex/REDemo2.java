@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
  */
 public class REDemo2 extends REDemo {
 
-	JTextArea log;
+	JTextArea logTextArea;
 	
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -17,24 +17,46 @@ public class REDemo2 extends REDemo {
 		REDemo2 comp = new REDemo2();
 		Container cp = f.getContentPane();
 		cp.add(comp, BorderLayout.NORTH);
-		cp.add(comp.log, BorderLayout.SOUTH);
+		cp.add(comp.logTextArea, BorderLayout.SOUTH);
 		f.pack();
 		f.setVisible(true);
 	}
 
 	REDemo2() {
 		super();
-		log = new JTextArea(10,40);
-		add(log);
+		logTextArea = new JTextArea(10,40);
+		add(logTextArea);
 	}
 
 	protected boolean tryMatch() {
-		log.setText("");
-		if (!super.tryMatch())
+		if (pattern == null) {
 			return false;
-		for (int i=0; i <= matcher.groupCount(); i++) {
-			log.append(i + ": " + matcher.group(i) + "\n");
 		}
-		return true;
+		logTextArea.setText("");
+		if (!super.tryMatch()) {
+			return false;
+		}
+		int n = matcher.groupCount();
+		matcher.reset(stringTF.getText());
+		if (match.isSelected() && matcher.matches()) {
+			logTextArea.setText(matcher.group());
+			return true;
+		}
+		if (find.isSelected() && matcher.find()) {
+			logTextArea.setText(matcher.group());
+			return true;
+		}
+		if (findAll.isSelected()) {
+			int i;
+			for (i = 0; i < n; i++) {
+				matcher.find();
+				logTextArea.append(i + ": " + matcher.group(i) + "\n");
+			}
+			if (i > 0) {
+				return true;
+			}
+		}
+		setMatches(false);
+		return false;
 	}
 }
