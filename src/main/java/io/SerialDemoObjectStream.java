@@ -1,13 +1,17 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /** Demonstrate use of standard Object Serialization. */
 public class SerialDemoObjectStream extends SerialDemoAbstractBase {
 	protected static final String FILENAME = "serial.dat";
 
 	public static void main(String[] s) throws Exception {
-		new SerialDemo().save();		// in parent class; calls write
-		new SerialDemo().dump();
+		new SerialDemoObjectStream().save();	// in parent class; calls write
+		new SerialDemoObjectStream().dump();	// here
 	}
 
 	/** Does the actual serialization */

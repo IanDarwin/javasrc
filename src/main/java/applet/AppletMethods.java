@@ -8,11 +8,6 @@ public class AppletMethods extends Applet {
 	/** AudioClip object, used to load and play a sound file. */
 	AudioClip snd = null;
 
-	/** Yes, applets can have constructors! */
-	public AppletMethods() {
-		System.out.println("In Appletmethods::<init> No Arg form");
-	}
-
 	/** Initialize the sound file object and the GUI. */
 	public void init() {
 		System.out.println("In AppletMethods.init()");

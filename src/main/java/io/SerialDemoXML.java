@@ -24,10 +24,10 @@ public class SerialDemoXML extends SerialDemoAbstractBase {
 
 	/** Display the data */
 	public void dump() throws IOException {
-		XMLDecoder is = new XMLDecoder(		// NEEDS JDK 1.4
+		XMLDecoder inp = new XMLDecoder(		// NEEDS JDK 1.4
 			new BufferedInputStream(
 				new FileInputStream(FILENAME)));
-		System.out.println(is.readObject());
-		is.close();
+		System.out.println(inp.readObject());
+		inp.close();
 	}
 }

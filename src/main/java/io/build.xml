@@ -1,18 +1,51 @@
-<project name="Java Cookbook Examples" default="build" basedir=".">
+<project name="Java Cookbook Examples" default="run" basedir=".">
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
+	<property name="jdo.jar" value="../lib/jdo.jar"/>
+	<property name="jdori.jar" value="../lib/jdori.jar"/>
+	<property name="jdori-enhancer.jar" value="../lib/jdori-enhancer.jar"/>
 
 	<!-- specify what to compile. has failonerror=false because needs 1.4 -->
 	<target name="build">
 		<!-- Compile the java code from ${src} into ${build} -->
+		<echo message="Compiling in ${user.dir}"/>
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${darwinsys.jar}"/>
+			classpath="${darwinsys.jar}:${jdo.jar}"/>
+	</target>
+	
+	<target name="enhance" depends="build" >
+ 	   <java fork="true"
+			classname="com.sun.jdori.enhancer.Main"
+			classpath="${jdori-enhancer.jar}:${jdori.jar}:${jdo.jar}:${antlr.jar}">
+ 	       <arg line="-s . MyData.class MyData$DES.class"/>
+	    </java>
+	</target>
+	
+	<target name="createdatastore" depends="enhance"
+		description="Initialize JDO datastore">
+		<java className="JDOCreateDataStore"
+			classpath="${jdo.jar}:${jdori.jar}:."/>
+	</target>
+	
+	<target name="run" depends="createdatastore">
+		<!-- All these classes need JDO classpath since MyData is enhanced. -->
+		<echo message="SerialDemoObjectStream"/>
+		<java className="SerialDemoObjectStream"
+			classpath="${jdo.jar}:${jdori.jar}:."/>
+		<!--
+		<echo message="SerialDemoXML"/>
+		<java className="SerialDemoXML"
+			classpath="${jdo.jar}:${jdori.jar}:."/>
+		-->
+		<echo message="SerialDemoJDO"/>
+		<java classname="SerialDemoJDO"
+			classpath="${jdo.jar}:${jdori.jar}:."/>
 	</target>
 
 </project>

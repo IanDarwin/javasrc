@@ -1,8 +1,13 @@
 import javax.jdo.*;
+import javax.jdo.spi.PersistenceCapable;
+
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Properties;
+import java.io.FileInputStream;
 import java.io.IOException;
 
-/** TODO
+/**
  * A demonstration of serialization using JDO.
  * JDO is normally used to access a database, but can also be used
  * to save locally, which is shown here.
@@ -15,17 +20,30 @@ public class SerialDemoJDO extends SerialDemoAbstractBase {
 		jd.dump();
 	}
 
-
 	public PersistenceManager getPM() {
 		Properties p = new Properties();
-		p.setProperty("PersistenceManagerFactoryClass",
-			"com.sun.jdori.common.PersistenceManagerFactoryImpl");
-		PersistenceManagerFactory pmf = 
-			JDOHelper.getPersistenceManagerFactory(p);
-		return pmf.getPersistenceManager();
+		try {
+			p.load(new FileInputStream("jdo.properties"));
+			PersistenceManagerFactory pmf = 
+				JDOHelper.getPersistenceManagerFactory(p);
+			return pmf.getPersistenceManager();
+		} catch (IOException ex) {
+			throw new RuntimeException(ex.toString());
+		}
 	}
 
 	public void write(Object o) {
+		if (o instanceof Collection){
+			Iterator it = (((Collection)o).iterator());
+			while (it.hasNext()) {
+				write(it.next());
+			}
+		}
+		if (!(o instanceof PersistenceCapable)) {
+			throw new IllegalArgumentException(
+				"Data class " + o.getClass().getName() +
+				" has not been JDO-enhanced");
+		}
 		PersistenceManager pm = getPM();
 		pm.currentTransaction().begin();
 		pm.makePersistent(o);

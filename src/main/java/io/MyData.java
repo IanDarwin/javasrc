@@ -5,6 +5,11 @@ public class MyData implements Serializable {
 	String userName;
 	String passwordCypher;
 	transient String passwordClear;
+
+	/** This constructor is required for use by JDO */
+	public MyData() {
+	}
+
 	public MyData(String name, String clear) {
 		userName = name;
 		// Save the clear text p/w in the object, it won't get serialized
@@ -13,8 +18,18 @@ public class MyData implements Serializable {
 		passwordCypher = new DES().encrypt(passwordClear);
 	}
 
-	/** This just generates a String; Strings are serializable */
+	public String toString() {
+		return "MyData[" + userName + ",XXXXX]";
+	}
+
+	/** This just generates a String; Strings are serializable.
+	 * This class does not need to be Serializable (or, presumably,
+	 * JDO enhanced?)
+	 */
 	class DES {
+		public DES() {
+		}
+
 		// Obviously just a placeholder.
 		public String encrypt(String s) {
 			return s;

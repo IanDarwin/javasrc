@@ -1,5 +1,4 @@
 import java.io.*;
-import java.net.*;
 import java.util.*;
 
 /**
@@ -47,7 +46,7 @@ public class SimpleCalc {
 		int iType;
 		double tmp;
 
-		while ((iType = tf.nextToken()) != tf.TT_EOF) {
+		while ((iType = tf.nextToken()) != StreamTokenizer.TT_EOF) {
 			switch(iType) {
 			case StreamTokenizer.TT_NUMBER: // Found a number, push value to stack
 				push(tf.nval);

@@ -35,10 +35,10 @@ public class TestOpenMailRelayGUI extends JFrame {
 	 */
 	ActionListener runner = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
+			goButton.setEnabled(false);
 			SwingUtilities.invokeLater(
 				new Thread() {
 					public void run() {
-						goButton.setEnabled(false);
 						String host = hostTextField.getText().trim();
 						ps.println("Trying " + host);
 						TestOpenMailRelay.process(host, ps);

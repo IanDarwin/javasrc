@@ -1,6 +1,8 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StreamTokenizer;
 
 /**
  * ScanStreamTok - show scanning a file with StringTokenizer.
@@ -34,7 +36,7 @@ public class ScanStreamTok {
 		String s = null;
 		int i;
 
-		while ((i = tf.nextToken()) != tf.TT_EOF) {
+		while ((i = tf.nextToken()) != StreamTokenizer.TT_EOF) {
 			switch(i) {
 			case StreamTokenizer.TT_EOF:
 				System.out.println("End of file");
