@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+
+<html>
+
+<head>
+	<title>DataSource </title>
+	<meta name="version"
+		content="$Id$" />
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+<h1>DataSource... </h1>
+<p>This is not how DataSources are normally used!
+Normally the DataSource object will be synthesized dynamically
+by a Java Application Server (J2EE Server).
+However, I wrote this to demystify what a DataSource does.
+Note that most AppServer DataSources do much more: 
+they also provide connection pooling, for example!
+But here is a minimal implementation.
+</p>
+<ul>
+<li><a href="DarwinsDataDelivery.java">DarwinsDataDelivery.java</a>,
+the program that exports the DataSource</li>
+<li><a href="DarwinsDataLookup.java">DarwinsDataLookup.java</a>,
+a program that looks up and uses the DataSource</li>
+<li><a href="DarwinsDataSource.java">DarwinsDataSource.java</a>,
+the DataSource implementation</li>
+</ul>
+</body>
+</html>
