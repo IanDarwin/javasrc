@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
-s
+
 /**
  * HelloApplet is a simple applet that toggles a message
  * when you click on a Draw button.
