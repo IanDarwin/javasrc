@@ -144,6 +144,11 @@ public class ConvertToMif implements XmlFormWalker {
 			throw new IllegalArgumentException(
 				"node " + p + "lacks required HREF Attribute");
 		String fname = href.getNodeValue();
+		boolean doMarks = true;
+		Node marked = attrs.getNamedItem("NOMARK");
+		if (marked != null)
+			doMarks = true;
+	
 		msg.println("<Example>");
 		try {
 			fname = "/javasrc/" + fname;	// XX dir should be parameter
@@ -160,14 +165,14 @@ public class ConvertToMif implements XmlFormWalker {
 	 */
 	protected void doRun(Element p) {
 		NamedNodeMap attrs = p.getAttributes();
-		Node href;
-		if ((href = attrs.getNamedItem("CMD")) == null)
+		Node class;
+		if ((class = attrs.getNamedItem("CLASS")) == null)
 			throw new IllegalArgumentException(
 				"node " + p + "lacks required CMD Attribute");
-		String fname = href.getNodeValue();
+		String className = class.getNodeValue();
 		msg.println("<Example>");
 		try {
-			String cmd = "cd /javasrc; java " + fname;	// XX dir should be parameter
+			String cmd = "cd /javasrc; java " + className;	// XX dir should be parameter
 			Process p = Runtime.getRuntime().exec(cmd);
 			LineNumberReader is = new LineNumberReader(
 				new InputStreamReader(p.getInputStream()));
