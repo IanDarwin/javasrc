@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#set -x
+
+JBOSS_LIB=~/jboss-3.0.0_tomcat-4.0.3/client
+CP=.:../beans/music.jar:
+for f in $JBOSS_LIB/*.jar; do
+	CP=$CP:$f
+done
+java -classpath $CP Client
