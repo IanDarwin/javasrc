@@ -52,12 +52,7 @@ public class NetLogServer {
 
 		theFrame.pack();
 		theFrame.setVisible(true);
-		theFrame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent we) {
-				System.exit(0);
-			}
-		});
-
+		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public synchronized void log(int tid, String s) {
