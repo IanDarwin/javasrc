@@ -1,7 +1,7 @@
 import java.io.*;
 
 /** entab- replace blanks by tabs and blanks.
- * Transmuted from K&R software tools book into C.
+ * Transmuted from K&R Software Tools book into C.
  * Transmuted again, years later, into Java.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$

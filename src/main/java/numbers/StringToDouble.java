@@ -1,8 +1,8 @@
 import java.awt.*;
-import java.applet.*;
 
 public class StringToDouble {
 
+	//+
 	public static void main(String argv[]) {
 		String aNumber = argv[0];	// not argv[1]
 		double result;
@@ -14,4 +14,5 @@ public class StringToDouble {
 		}
 		System.out.println("Number is " + result);
 	}
+	//-
 }

@@ -5,29 +5,22 @@ import java.util.*;
  */
 public class PropsDemo {
 	public static void main(String argv[]) {
-		Properties p = new Properties();
+	Properties ian = new Properties();
 
-		// Same data as HashDemo
-		p.setProperty("Adobe", "Mountain View, CA");
-		p.setProperty("IBM", "White Plains, NJ");
-		p.setProperty("Learning Tree", "Los Angeles, CA");
-		p.setProperty("Microsoft", "Redmond, WA");
-		p.setProperty("Netscape", "Mountain View, CA");
-		p.setProperty("Sun", "Mountain View, CA");
+	// Set my data.
+	ian.setProperty(name", "Ian Darwin");
+	ian.setProperty(favorite popsicle", "cherry");
+	ian.setProperty(favorite rock group", "Fleetwood Mac");
+	ian.setProperty(favorite programming language", "Java");
+	ian.setProperty(pencil color=green");
 
-		// Now list the Properties, using System.out
-		p.list(System.out);
+	// should return the string "green".
+	String ianColor = ian.getProperty("pencil color") 
 
-		// The inverse operation: load it from a file
-		// assume System.in has been redirected to "PropsDemo.dat"
-		try {
-			p.load(System.in);
-		} catch (java.io.IOException exc) {
-			System.err.println(exc);
-			return;
-		}
+	// Dont know what it will return.
+	String sysColor = System.getProperty("pencil color")
 
-		// List the values again; notice the new ones joined the old
-		p.list(System.out);
+	// Now list the Properties, using System.out
+	ian.list(System.out);
 	}
 }

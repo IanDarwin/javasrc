@@ -4,6 +4,7 @@
  * @version $Id$
  */
 public class FormatPlurals {
+	//+
 	public static void main(String argv[]) {
 		report(0);
 		report(1);
@@ -12,4 +13,5 @@ public class FormatPlurals {
 	public static void report(int n) {
 		System.out.println("We used " + n + " item" + (n==1?"":"s"));
 	}
+	//-
 }
