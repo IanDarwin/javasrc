@@ -1,5 +1,6 @@
 import com.darwinsys.util.*;
 import java.io.*;
+import java.io.*;
 
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.
@@ -29,7 +30,7 @@ public class Find {
 		}
 	}
 
-	protected FileFilter filter = new FileFilter();
+	protected FindFilter filter = new FindFilter();
 
 	public static void usage() {
 		System.err.println(
@@ -59,33 +60,5 @@ public class Find {
 	/** doFile - process one regular file. */
 	private static void doFile(File f) {
 		System.out.println("f " + f.getPath());
-	}
-
-	/** inner class to encapsulate the filtration */
-	class FileFilter implements FilenameFilter {
-		boolean sizeSet;
-		int size;
-		String name;
-
-		public FileFilter() {
-		}
-
-		void setSizeFilter(String sizeFilter) {
-			size = Integer.parseInt(sizeFilter);
-			sizeSet = true;
-		}
-		void setNameFilter(String nameFilter) {
-			name = nameFilter;
-		}
-
-		/** Do the filtering. For now, only filter on name */
-		public boolean accept(File dir, String fileName) {
-			if (name == null)
-				return true;
-			
-			// Just use indexOf. Could use regexp (see chapter on
-			// Regular Expressions) or implement simple shell wildcarding.
-			return fileName.indexOf(name) != -1;
-		}
 	}
 }
