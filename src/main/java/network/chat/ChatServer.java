@@ -44,7 +44,7 @@ public class ChatServer {
 			System.out.println("DarwinSys Chat Server Listening on port " +
 				Chat.PORTNUM);
 		} catch(IOException e) {
-			log("IO Exception in ChatServer.<init>");
+			log("IO Exception in ChatServer.<init>" + e);
 			System.exit(0);
 		}
 	}
