@@ -1,4 +1,7 @@
-import RE;
+// import com.darwinsys.regexp.RE;				// my RE package
+// import com.darwinsys.regexp.RESyntaxException;	// my RE package
+import org.apache.regexp.RE;					// Apache regexp
+import org.apache.regexp.RESyntaxException;		// Apache regexp
 import java.io.*;
 
 //+
@@ -7,14 +10,14 @@ import java.io.*;
  */
 public class Grep1 {
 	/** The pattern we're looking for */
-	RE pattern;
+	protected RE pattern;
 	/** The Reader for the current file */
-    BufferedReader d;
+    protected BufferedReader d;
 
 	/** Construct a Grep object for each pattern, and run it
 	 * on all input files listed in argv.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String argv[]) throws Exception {
 
 		if (argv.length < 1) {
 		    System.err.println("Usage: Grep pattern [filename]");
@@ -36,7 +39,7 @@ public class Grep1 {
 			}
 	}
 
-	public Grep1(String arg) {
+	public Grep1(String arg) throws RESyntaxException {
 		// compile the regular expression
 		pattern = new RE(arg);
 	}
@@ -57,7 +60,7 @@ public class Grep1 {
 			d = new BufferedReader(ifile);
 		    
 			while ((line = d.readLine()) != null) {
-				if (pattern.isMatch(line)) {
+				if (pattern.match(line)) {
 					if (printFileName)
 						System.out.print(fileName + ": ");
 					System.out.println(line);
