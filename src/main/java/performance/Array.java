@@ -1,4 +1,4 @@
-import com.darwinsys.util.MutableInteger;
+import com.darwinsys.lang.MutableInteger;
 
 /** Time a bunch of creates and gets through an Array */
 public class Array {

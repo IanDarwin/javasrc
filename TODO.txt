@@ -3,5 +3,7 @@ put FilterGUI "" "" ""
 Get rid of JDBC/testdatasource.
 
 Get conditionals working: 1.4.
+	RE - don't build RE-Apache, do build RE-1.4 if present.
+	prefs - ditto
 
 Clean up spdf.jar deploy and its use in PDFcouponservlet.

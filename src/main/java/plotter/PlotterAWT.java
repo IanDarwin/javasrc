@@ -1,11 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 
+import com.darwinsys.swingui.WindowCloser;
+
 /**
  * A Plotter subclass for drawing into an AWT Window. Reflecting back
  * to AWT gives us a "known working" plotter to test on.
- * You can also steal this as a basis for your own plotter driver!
- * 
+ * You can also steal this as a basis for your own plotter driver.
  * @author	Ian Darwin
  */
 public class PlotterAWT extends Plotter {

@@ -10,18 +10,18 @@ import java.io.*;
 public class ExecDemoPartial {
 	/** The program to run */
 	public static final String PROGRAM = "ls";
+	/** Set to true to end the loop */
+	static boolean done = false;
 
 	public static void main(String argv[]) throws IOException { 
 
-		Process p; 		// Process tracks one external native process
 		BufferedReader is;	// reader for output of process
 		String line;
 		
-		p = Runtime.getRuntime().exec(PROGRAM);
+		final Process p = Runtime.getRuntime().exec(PROGRAM);
 
 		Debug.println("exec", "In Main after exec");
 
-		boolean done = false;
 
 		Thread waiter = new Thread() {
 			public void run() {
@@ -35,7 +35,7 @@ public class ExecDemoPartial {
 				done = true;
 			}
 		};
-		waiter..start();
+		waiter.start();
 
 		// getInputStream gives an Input stream connected to 
 		// the process p's standard output (and vice versa). We use

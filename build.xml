@@ -8,7 +8,9 @@
 	<property name="src" value="."/>
 
 	<target name="init">
-		<tstamp/><!-- Create time stamp variables -->
+		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
+
+		<tstamp/>
 
 		<!-- conditional properties -->
 		<condition property="RE_1.4">

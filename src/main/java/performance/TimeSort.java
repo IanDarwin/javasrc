@@ -17,7 +17,7 @@ public class TimeSort {
 		long randTime = t1 - t0;
 		long sortTime = t2 - t1;
 		System.out.println(
-			 "randTime="  + Double.mstoSting(randTime/1000D) + 
-			", sortTime=" + Double.toSting(sortTime/1000D));
+			 "randTime="  + Double.toString(randTime/1000D) + 
+			", sortTime=" + Double.toString(sortTime/1000D));
 	}
 }
