@@ -6,11 +6,11 @@ import java.io.*;
  */
 public class Grep1 {
 	/** The pattern we're looking for */
-	protected RE pattern;
+	protected Pattern pattern;
 	/** The Reader for the current file */
     protected BufferedReader d;
 
-	/** Construct a Grep object for each pattern, and run it
+	/** Main will make a Grep object for the pattern, and run it
 	 * on all input files listed in argv.
 	 */
 	public static void main(String[] argv) throws Exception {
@@ -30,11 +30,13 @@ public class Grep1 {
 			}
 	}
 
-	public Grep1(String arg) throws PatternSyntaxException {
-		// compile the regular expression
-		pattern = new RE(arg);
+	/** Construct a Grep1 program */
+	public Grep1(String patt) throws PatternSyntaxException {
+		// compile the regular expression, with .* around so it will
+		// match anywhere in the input line
+		pattern = Pattern.compile(".*" + patt + ".*");
 	}
-        
+
 	/** Do the work of scanning one file
 	 * @param ifile Reader Reader object already open
 	 * @param fileName String Name of the input file
@@ -50,9 +52,11 @@ public class Grep1 {
 			d = new BufferedReader(ifile);
 		    
 			while ((inputLine = d.readLine()) != null) {
-				if (pattern.match(inputLine)) {
-					if (printFileName)
+				Matcher m = pattern.matcher(inputLine);
+				if (m.matches()) {
+					if (printFileName) {
 						System.out.print(fileName + ": ");
+					}
 					System.out.println(inputLine);
 				}
 			}
