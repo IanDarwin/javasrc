@@ -7,11 +7,11 @@ public class ProdCons1 {
 
 	protected void produce() {
 		int len = 0;
-		synchronized(this) {
+		synchronized(list) {
 			Object justProduced = new Object();
 			list.addFirst(justProduced);
 			len = list.size();
-			notifyAll();
+			list.notifyAll();
 		}
 		System.out.println("List size now " + len);
 	}
@@ -19,10 +19,10 @@ public class ProdCons1 {
 	protected void consume() {
 		Object obj = null;
 		int len = 0;
-		synchronized(this) {
+		synchronized(list) {
 			while (list.size() == 0) {
 				try {
-					wait();
+					list.wait();
 				} catch (InterruptedException ex) {
 					return;
 				}
