@@ -1,6 +1,9 @@
-import java.util.*;
-import java.rmi.*;
-import javax.naming.*;
+import java.rmi.RMISecurityManager;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
 
 /** List the "java:comp" of an EJB server.
  * @version $Id$

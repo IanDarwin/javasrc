@@ -1,0 +1,12 @@
+#
+# Typical example of jndi.properties
+#
+# Context.INITIAL_CONTEXT_FACTORY (aka java.naming.factory.initial)
+# is always needed for JNDI
+java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+# Provider URL is pretty common
+java.naming.provider.url=jnp://localhost:1099
+java.naming.provider.url=localhost
+# Others are optional; JBoss seems to want this one.
+java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces
+# user name and password may also be needed...

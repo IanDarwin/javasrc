@@ -1,5 +1,6 @@
-import java.util.*;
-import javax.naming.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /** Example of lookup up filenames in a JNDI "file system context".
  * N.B. Will ONLY work if you have the "File System Context Provider" JAR
