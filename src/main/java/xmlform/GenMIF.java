@@ -154,7 +154,8 @@ public class GenMIF implements XmlFormWalker {
 	/** Synthesize a paragraph when we know its content. */
 	protected void makeUpParagraph(String tag, String contents) {
 		indent(); pgfTag(tag);
-		pgfString(contents);
+		if (contents != null)
+			pgfString(contents);
 		endTag();
 	}
 
@@ -170,7 +171,8 @@ public class GenMIF implements XmlFormWalker {
 		if (marked != null)
 			doMarks = true;
 	
-		makeUpParagraph("Example", "Example XX: " + fname);
+		makeUpParagraph("ExampleLabel", null);
+		makeUpParagraph("ExampleTitle", fname);
 
 		// Each line of output from gm.process() is a separate Para!
 		try {
@@ -192,7 +194,7 @@ public class GenMIF implements XmlFormWalker {
 				"node " + p + "lacks required CMD Attribute");
 		String className = myClass.getNodeValue();
 
-		makeUpParagraph("Example", "Example XX: " + className);
+		// makeUpParagraph("Example", "Example XX: " + className);
 
 		try {
 			// First, find the class.
@@ -237,10 +239,12 @@ public class GenMIF implements XmlFormWalker {
 	}
 
 	protected void doCode(Element p) {
-		msg.print("<Literal>");
+		indent();
+		pgfTag("Code");
 		doChildren(p);
-		msg.print("<Plain>");
+		endTag();
 	}
+
 	protected void doChildren(Element p) {
 		NodeList nodes = p.getChildNodes();
 		int numElem = nodes.getLength();
