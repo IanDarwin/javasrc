@@ -1,9 +1,14 @@
-#!/bin/sh -f
+#!/bin/sh
+
+# mkindex - runs MkIndex from its source but indexing all in target.
+# overwrites index-byname in target.
+
+TARGET=..
 
 set -x
 
-export CLASSPATH="$CLASSPATH:`pwd`"
+export CLASSPATH="`pwd`:$CLASSPATH"
 
-cd ..
+cd ${TARGET}
 
-java MkIndex # program overwrites index-byname.html
+java MkIndex *

@@ -3,9 +3,9 @@ import java.util.*;
 import com.darwinsys.util.*;
 
 /** MkIndex -- make a static index.html for a Java Source directory
- *
+ * <p>
  * REQUIRES JDK1.2 OR LATER FOR SORT!!
- *
+ * <p>
  * Started life as an awk script that used "ls" to get
  * the list of files, grep out .class and javadoc output files, |sort.
  * Now it's all in Java (including the ls-ing and the sorting).
@@ -14,6 +14,20 @@ import com.darwinsys.util.*;
  * @Version $Id$
  */
 public class MkIndex {
+
+	class NameMap implements Comparable {
+		String name, nameLC;
+		String path;
+		public NameMap(String nm, String p) {
+			name = nm;
+			nameLC = name.toLowerCase();
+			path = p;
+		}
+		public int compareTo(Object other) {
+			return nameLC.compareTo(((NameMap)other).nameLC);
+		}
+	}
+
 	/** The output file that we create */
 	public static final String OUTPUTFILE = "index-byname.html";
 	/** The string for TITLE and H1 */
@@ -32,7 +46,11 @@ public class MkIndex {
 		String inDir = args.length > 0 ? args[0] : ".";
 		mi.open(inDir, OUTPUTFILE);		// open files
 		mi.BEGIN();		// print HTML header
-		mi.process();		// do bulk of work
+		System.out.println("** Start Pass One **");
+		for (int i=0; i<args.length; i++)
+			mi.process(new File(args[i]));	// "We do ALL the work..."
+		mi.writeNav();	// Write navigator
+		mi.writeList();	// Write huge list of files
 		mi.END();		// print trailer.
 		mi.close();		// close files
 	}
@@ -90,50 +108,56 @@ public class MkIndex {
 	ArrayList vec = new ArrayList();
 
 	/** Do the bulk of the work */
-	void process() throws IOException {
+	void process(File file) throws IOException {
 
-		System.out.println("Start PASS ONE -- from directory to Vector...");
-		String[] fl = dirFile.list();
-		for (int i=0; i<fl.length; i++) {
-			String fn = fl[i];
-			if (fn.startsWith("index")) { // we'll have no self-reference here!
-				System.err.println("Ignoring " + fn);
-				continue;
-			} else if (fn.endsWith(".bak")) {		// delete .bak files
-				System.err.println("DELETING " + fn);
-				new File(fn).delete();
-				continue;
-			} else if (fn.equals("CVS")) {		// Ignore CVS subdirectories
-				continue;						// don't mention it
-			} else if (fn.charAt(0) == '.') {	// UNIX dot-file
-				continue;
-			} else if (fn.endsWith(".class")) {	// nag about .class files
-				System.err.println("Ignoring " + fn);
-				continue;
-			} else if (new File(fn).isDirectory()) {
-				vec.add(fn + "/");
-			} else
-				vec.add(fn);
-			exists[fn.charAt(0)] = true;	// only after chances to continue
+		String name = file.getName();
+		if (name.startsWith("index") ||
+			name.endsWith(".class") ||
+			name.endsWith(".bak")) {
+			System.err.println("Ignoring " + file.getPath());
+			return;
+		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
+			return;						// don't mention it
+		} else if (name.charAt(0) == '.') {	// UNIX dot-file
+			return;
 		}
+
+		if (file.isDirectory()) {
+			File[] files = file.listFiles();
+			for (int i=0; i<files.length; i++) {
+				String fn = files[i].getName();
+				process(new File(file, fn));
+			}
+		} else {
+			// file to be processed.
+			vec.add(new NameMap(name, file.getPath()));
+			exists[name.charAt(0)] = true;
+		}
+	}
+
+	void writeNav() throws IOException {
 
 		System.out.println("Writing the Alphabet Navigator...");
 		for (char c = 'A'; c<='Z'; c++)
 			if (exists[c])
 				print("<a href=\"#" + c + "\">" + c + "</a> ");
+	}
 
-		// ... (and the beginning of the HTML Unordered List...)
+	void writeList() throws IOException {
+
+		// ... the beginning of the HTML Unordered List...
 		println("<ul>");
 
 		System.out.println("Sorting the Vector...");
-		Collections.sort(vec, String.CASE_INSENSITIVE_ORDER);
+		Collections.sort(vec);
 
 		System.out.println("Start PASS TWO -- from Vector to " +
 			OUTPUTFILE + "...");
-		String fn;
 		Iterator it = vec.iterator();
 		while (it.hasNext()) {
-			fn = (String)it.next();
+			NameMap map = (NameMap)it.next();
+			String fn = map.name;
+			String path = map.path;
 			// Need to make a link into this directory.
 			// IF there is a descr.txt file, use it for the text
 			// of the link, otherwise, use the directory name.
@@ -152,7 +176,7 @@ public class MkIndex {
 				else
 					mkLink(fn, descr!=null?descr:fn + " -- Directory");
 			} else // file
-				mkLink(fn, fn);
+				mkLink(fn, path);
 		}
 		System.out.println("*** process - ALL DONE***");
 	}
@@ -160,19 +184,19 @@ public class MkIndex {
 	/** Keep track of each letter for #links */
 	boolean done[] = new boolean[255];
 
-	void mkLink(String href, String descrip) {
+	void mkLink(String name, String path) {
 		print("<li>");
-		char c = href.charAt(0);
+		char c = name.charAt(0);
 		if (!done[c]) {
 			print("<a name=\"" + c + "\"/>");
 			done[c] = true;
 		}
-		println("<a href=\"" + href + "\">" + descrip + "</a>");
+		println("<a href=\"" + path + "\">" + name + "</a>");
 	}
 
 	void mkDirLink(String index, String dir) {
 		// XXX Open the index and look for TITLE lines!
-		mkLink(index, dir + " -- Directory");
+		println("<a href='" + index + "'>" + dir + "</a>");
 	}
 
 	/** Write the trailers and a signature */
