@@ -5,6 +5,8 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
+import com.darwinsys.util.*;
+
 /** A simple HTML Link Checker. 
  * Need a Properties file to set depth, URLs to check. etc.
  * Responses not adequate; need to check at least for 404-type errors!
@@ -87,7 +89,7 @@ public class LinkChecker extends JFrame {
 			try {
 				String log = textWindow.getText();
 				String fileName = "linkchecker.log";
-				com.darwinsys.util.FileIO.stringToFile(log, fileName);
+				FileIO.stringToFile(log, fileName);
 				JOptionPane.showMessageDialog(LinkChecker.this,
 					"File saved as " + fileName, "Done",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -103,7 +105,7 @@ public class LinkChecker extends JFrame {
 		cp.add("North", p);
 		textWindow = new JTextArea(80, 40);
 		cp.add("Center", new JScrollPane(textWindow));
-		com.darwinsys.util.UtilGUI.maximize(this);
+		UtilGUI.maximize(this);
 	}
 
   
@@ -157,7 +159,7 @@ public class LinkChecker extends JFrame {
 				if (done)
 					return;
 				String tag = (String)urlIterator.next();
-				com.darwinsys.util.Debug.println("TAG", tag);
+				Debug.println("TAG", tag);
 						
 				String href = extractHREF(tag);
 
