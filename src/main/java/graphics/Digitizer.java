@@ -5,10 +5,10 @@ import java.net.URL;
 
 /**
  * Digitizer - load an Image and let you click on it.
- * STAUTS - NOT WORKING!!
  */
 public class Digitizer extends JComponent {
 	Container cp;
+	ImageView iv;
 
 	/** Construct an Digitizer viewer, given a filename. */
 	public Digitizer(String fname) {
@@ -18,8 +18,7 @@ public class Digitizer extends JComponent {
 		cp = this;
 		cp.setLayout(new GridLayout(1, 0, 10, 10));
 
-		ImageView iv = new ImageView("Digitizer: " + fname);
-		iv.loadImage();
+		iv = new ImageView("foo");
 		cp.add(iv);
 
 		JList list = new JList();
@@ -34,6 +33,10 @@ public class Digitizer extends JComponent {
 		iv.addMouseMotionListener(mickey);
 	}
 
+	public void loadImage() {
+		iv.loadImage();
+	}
+
 	public static void main(String[] arg) {
 		System.out.println("Digitizer 0.0");
 		if (arg.length != 1) {
@@ -41,7 +44,9 @@ public class Digitizer extends JComponent {
 		} else {
 			for (int i=0; i<arg.length; i++) {
 				JFrame jf = new JFrame("Digitizer");
-				jf.getContentPane().add(new Digitizer(arg[i]));
+				Digitizer d = new Digitizer(arg[i]);
+				jf.getContentPane().add(d);
+				d.loadImage();
 				jf.pack();
 				jf.setVisible(true);
 			}
