@@ -1,5 +1,3 @@
-Inner classes
+More Inner classes -- all objects!
 
-if (done) throw new ISA("Twice")
-
-
+Font - AWT font or PDFObject?

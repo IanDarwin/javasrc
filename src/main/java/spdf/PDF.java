@@ -16,10 +16,16 @@ public class PDF {
 	protected ArrayList xrefs;
 
 	/** The root object */
-	PDFObject rootObj;
+	PDFObject rootObj = new RootObject(this);
 
 	/** The Info object */
-	InfoObject infoObj;
+	InfoObject infoObj = new InfoObject(this);
+
+	/** The outlines (outline font) object */
+	OutlinesObject outlinesObj = new OutlinesObject(this);
+
+	/** The Pages object */
+	PagesObject pagesObj = new PagesObject(this);
 
 	/** The object number of the current object */
 	protected int currObj = 1;
@@ -37,8 +43,6 @@ public class PDF {
 		pages = new ArrayList();
 		xrefs = new ArrayList();
 
-		rootObj = new RootObject(this);
-		infoObj = new InfoObject(this);
 	}
 
 	public void addPage(Page p) {
@@ -127,22 +131,9 @@ public class PDF {
 
 		infoObj.print();	// 2
 
-		addXref();
-		println("3 0 obj");
-		println("<<");
-		println("\t/Type /Outlines");
-		println("\t/Count 0");
-		println(">>");
-		println("endobj");
+		outlinesObj.print(); // 3
 
-		addXref();
-		println("4 0 obj");
-		println("<<");
-		println("/Type /Pages");
-		println("/Count 1");
-		println("/Kids [5 0 R]");
-		println(">>");
-		println("endobj");
+		pagesObj.print();	// 4
 	}
 
 	protected void writePDFbody() {
@@ -158,7 +149,7 @@ public class PDF {
 		println(">>");
 		println("endobj");
 		
-		new Text(this, 100, 600, "Printed live on the web for " + "Ian Darwin").
+		new PDFText(this, 100, 600, "Printed live on the web for " + "Ian Darwin").
 			print();
 
 		addXref();
@@ -219,30 +210,37 @@ public class PDF {
 		println("%%EOF");
 	}
 
-	class RootObject extends PDFObject {
+	class RootObject extends PDFDict {
 		protected RootObject(PDF m) {
 			super(m);
-		}
-		protected void print() {
-			startObj();
-			master.println("<< /Type /Catalog /Outlines 3 0 R /Pages 4 0 R >>");
-			endObj();
+			dict.put("Type", "/Catalog");
+			dict.put("Outlines", "3 0 R");
+			dict.put("Pages", "4 0 R");
 		}
 	}
 
-	class InfoObject extends PDFObject {
+	class InfoObject extends PDFDict {
 		protected InfoObject(PDF m) {
 			super(m);
+			dict.put("Title", "(Sample PDF by SPDF)");
+			dict.put("Author", "(Ian F. Darwin)");
+			dict.put("Creator", "(Darwin Open Systems SPDF Software)");
+			dict.put("Created", "(D:20000516010203)");
 		}
-		protected void print() {
-			startObj();
-			master.println("<<");
-			master.println("\t/Title (Sample PDF by SDF)");
-			master.println("\t/Author (Ian F. Darwin)");
-			master.println("\t/Creator (Darwin Open Systems SPDF)");
-			master.println("\t/Created (D:20000516)");
-			master.println(">>");
-			endObj();
+	}
+	class OutlinesObject extends PDFDict {
+		protected OutlinesObject(PDF m) {
+			super(m);
+			dict.put("Type", "/Outlines");
+			dict.put("Count", "0");
+		}
+	}
+	class PagesObject extends PDFDict {
+		protected PagesObject(PDF m) {
+			super(m);
+			dict.put("Type", "/Pages");
+			dict.put("Count", "1");
+			dict.put("Kids", "[5 0 R]");
 		}
 	}
 }

@@ -4,11 +4,11 @@ import java.io.*;
 import java.util.*;
 
 /** Represent one Text object in a PDF file. */
-public class Text extends PDFObject {
+public class PDFText extends PDFObject {
 	protected int x, y;
 	protected String text;
 
-	public Text(PDF m, int x, int y, String s) {
+	public PDFText(PDF m, int x, int y, String s) {
 		super(m);
 		this.x = x;
 		this.y = y;
@@ -38,6 +38,6 @@ public class Text extends PDFObject {
 	/* trivial text test */
 	public static void main(String argv[]) {
 		PrintWriter pout = new PrintWriter(System.out);
-		new Text(new PDF(pout), 100, 300, "Hello World").print();
+		new PDFText(new PDF(pout), 100, 300, "Hello World").print();
 	}
 }

@@ -9,7 +9,7 @@ public class Demo {
 		PrintWriter pout = new PrintWriter(System.out);
 		PDF p = new PDF(pout);
 		Page p1 = new Page(p);
-		// p1.add(new Text(100, 600, "hello world"));
+		// p1.add(new PDFText(100, 600, "hello world"));
 		// p.setAuthor("Ian Darwin");
 		p.writePDF();
 	}
