@@ -1,3 +1,6 @@
+Order:
+	Rename Handler to HttpHandler; revise it to use
+	HttpServletRequest and HttpServletResponse
 General:
 	Common Logfile Format
 Handler.java:

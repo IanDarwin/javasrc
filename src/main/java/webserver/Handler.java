@@ -5,7 +5,7 @@ import java.util.*;
 
 /** Called from Httpd to handle one connection.
  * We are created with just a Socket, and read the
- * HTTP request, extract a name , read it (saving it
+ * HTTP request, extract a name, read it (saving it
  * in Hashtable h for next time), and write it back.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
@@ -52,7 +52,16 @@ public class Handler extends Thread {
 			os = new PrintStream(clntSock.getOutputStream());
 
 			request = is.readLine();
+			if (request == null || request.length() == 0) {
+				// No point nattering: the sock died, nobody will hear
+				// us if we scream into cyberspace... Could log it though.
+				return;
+			}
 			StringTokenizer st = new StringTokenizer(request);
+			if (st.countTokens() != 3) {
+				errorResponse(444, "Unparseable input " + request);
+				return;
+			}
 			String rqCode = st.nextToken();
 			String rqName = st.nextToken();
 			String rqHttpVer = st.nextToken();

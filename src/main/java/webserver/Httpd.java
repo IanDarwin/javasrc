@@ -42,20 +42,19 @@ public class Httpd {
 		mimeTypes = loadProps(wsp.getProperty("mimeProperties", "mime.properties"));
 		String portNumString = null;
 		try {
+			int portNum = HTTP;
 			portNumString = wsp.getProperty("portNum");
-			if (portNumString == null)
-				sock = new ServerSocket(HTTP);
-			else {
-				int portNum = Integer.parseInt(portNumString);
-				sock = new ServerSocket(portNum);
+			if (portNumString != null) {
+				portNum = Integer.parseInt(portNumString);
 			}
+			sock = new ServerSocket(portNum);
 		} catch(NumberFormatException e) {
 			System.err.println("Httpd: \"" + portNumString +
 				"\" not a valid number, unable to start server");
 			System.exit(1);
 		} catch(IOException e) {
-			System.err.println("Network error " + e + "\n" +
-				"Unable to start server");
+			System.err.println("Network error " + e);
+			System.err.println("Unable to start server");
 			System.exit(1);
 		}
 	}

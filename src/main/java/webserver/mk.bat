@@ -1,1 +1,1 @@
-javac Httpd.java Handler.java
+jikes +E -d . javax/servlet/*.java javax/servlet/http/*.java 
