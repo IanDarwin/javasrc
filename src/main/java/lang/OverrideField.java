@@ -5,6 +5,7 @@ public class OverrideField {
 			new A().getAttr());
 		System.out.println("B's version of getAttr returns: " +
 			new B().getAttr());
+		// Declared as A, instantiated as B, so gets B's version of things.
 		A c = new B();
 		System.out.println("C's version of getAttr returns: " +
 			c.getAttr());
@@ -12,7 +13,7 @@ public class OverrideField {
 }
 
 class A {
-	int attr = 1;
+	final int attr = 1;
 	int getAttr() {
 		System.out.println("In A.getAttr");
 		return attr;
@@ -20,10 +21,10 @@ class A {
 }
 
 class B extends A {
-	int attr = 2;
+	final int attr = 2;
 	int getAttr() {
 		System.out.println("In B.getAttr");
-		super.getAttr();
+		super.getAttr(); // Just to show flow of control
 		return attr;
 	}
 }

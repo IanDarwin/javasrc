@@ -1,6 +1,15 @@
 /** Show various forms of nested classes */
 class A extends Object {
 	public class B {	// member class
+		public class BB {
+			public void print() {
+				System.out.println("Hello from BB");
+			}
+		}
+		public void print() {
+			BB bb = new BB();
+			bb.print();
+		}
 	}
 	public void print() {
 		class C {	// local class
@@ -11,6 +20,7 @@ class A extends Object {
 		System.out.println("Here are an A, a B, a C, and d.");
 		System.out.println(this + " " + new B() + " " +
 						new C() + " " + d);
+		new B().print();
 	}
 	public static void main(String[] av) {
 		new A().print();
