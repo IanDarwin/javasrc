@@ -7,7 +7,6 @@ import java.util.*;
  * TMTimer - simple speech timer for Toastmasters or similar
  * events where speeches are time-limited.
  * TODO: 
- *	fix start exception
  *	fiddle gui builder to obviate fixGUI().
  * @author  Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
@@ -170,6 +169,14 @@ public class TMTimer extends JFrame implements Runnable {
   /** The action handler for the Start button (doStart) */
   private void jButton1ActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     // Add your handling code here:
+	if (TMTimerUtil.mmssToInt(greenTF.getText()) <= 0 ||
+	    TMTimerUtil.mmssToInt(yellowTF.getText()) <= 0 ||
+	    TMTimerUtil.mmssToInt(redTF.getText()) <= 0) {
+			JOptionPane.showMessageDialog(this,
+				"All time values must be non-zero", "Error",
+				JOptionPane.ERROR_MESSAGE);
+			return;
+		}
     maxTime.setText(redTF.getText());
     gotoState(RUNNING);
     new Thread(this).start();
