@@ -5,7 +5,7 @@ public class StrTokDemo4 {
 	public final static int MAXFIELDS = 5;
 	public final static String DELIM = "|";
 
-	/** Processes one String, returns it as an array of fields */
+	/** Processes one String, returns it as an array of Strings */
 	public static String[] process(String line) {
 		String[] results = new String[MAXFIELDS];
 
@@ -20,7 +20,7 @@ public class StrTokDemo4 {
 			if (s.equals(DELIM)) {
 				if (i++>=MAXFIELDS)
 					// This is messy: See StrTokDemo4b which uses 
-					// a Vector to allow any number of fields.
+					// a List to allow any number of fields.
 					throw new IllegalArgumentException("Input line " +
 						line + " has too many fields");
 				continue;

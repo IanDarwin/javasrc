@@ -25,7 +25,6 @@ public class CheckSum {
     /** CheckSum one file, given an open BufferedReader.
 	 */
     public int process(BufferedReader is) {
-		//+
 		int sum = 0;
         try {
             String inputLine;
