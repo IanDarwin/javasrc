@@ -12,6 +12,10 @@ import java.io.*;
  */
 public class TestOpenMailRelayGUI extends JFrame {
 
+	public static void main(String unused[]) throws IOException {
+		new TestOpenMailRelayGUI().setVisible(true);
+	}
+
 	/** The one-line textfield for the user to type Host name/IP */
 	JTextField hostTextField;
 	/** Multi-line text area for results. */
@@ -24,17 +28,19 @@ public class TestOpenMailRelayGUI extends JFrame {
 	/** This inner class is the action handler both for pressing
 	 * the "Try" button and also for pressing <ENTER> in the text
 	 * field. It gets the IP name/address from the text field
-	 * and passes it to process() in the main class.
+	 * and passes it to process() in the main class. Run in the
+	 * GUI Dispatch thread to avoid messing the GUI. -- tmurtagh.
 	 */
 	ActionListener runner = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-			new Thread(new Runnable() {
-				public void run() {
-					String host = hostTextField.getText().trim();
-					ps.println("Trying " + host);
-					TestOpenMailRelay.process(host, ps);
-				}
-			}).start();
+			SwingUtilities.invokeLater(
+				new Thread() {
+					public void run() {
+						String host = hostTextField.getText().trim();
+						ps.println("Trying " + host);
+						TestOpenMailRelay.process(host, ps);
+					}
+				});
 		}
 	};
 
@@ -57,6 +63,17 @@ public class TestOpenMailRelayGUI extends JFrame {
 		JButton b;
 		p.add(b = new JButton("Try"));
 		b.addActionListener(runner);
+
+		JButton cb;
+		p.add(cb = new JButton("Clear Log"));
+		cb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				results.setText("");
+			}
+		});
+		JButton sb;
+		p.add(sb = new JButton("Save Log"));
+		sb.setEnabled(false);
 
 		results = new JTextArea(20, 60);
 		// Add the text area to the main part of the window (CENTER).
@@ -84,10 +101,10 @@ public class TestOpenMailRelayGUI extends JFrame {
 						results.append("\n");
 					}
 				} catch(IOException ex) {
-						results.append("\n");
-						results.append("*** Input or Output error ***\n");
-						results.append(ex.toString());
-						return;
+					JOptionPane.showMessageDialog(null,
+						"*** Input or Output error ***\n" + ex,
+						"Error",
+						JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}.start();

@@ -40,7 +40,7 @@ public class TestOpenMailRelay {
 			System.setErr(pw);
 			Sender2 sm = new Sender2();
 			sm.props.put("mail.smtp.host", suspect_relay);
-			sm.addRecipient("ian@darwinsys.com");
+			sm.addRecipient("nobody@erewhon.moc");
 			sm.setFrom(MY_TARGET);
 			sm.setSubject("Testing for open mail relay, see " + RSS_SITE);
 			sm.setBody("This mail is an attempt to confirm that site " +
