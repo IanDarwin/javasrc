@@ -1,3 +1,5 @@
+package oo;
+
 /* Demonstrate toString() with an override */
 public class ToStringWith {
 	int x, y;

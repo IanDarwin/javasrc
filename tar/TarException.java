@@ -1,3 +1,5 @@
+package tar;
+
 /*
  * Exception for TarFile and TarEntry.
  * $Id$

@@ -1,3 +1,5 @@
+package structure1.5;
+
 public enum MediaFancy {
 	book {
 		public String toString() { return "Book"; }

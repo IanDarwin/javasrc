@@ -1,4 +1,4 @@
-package com.darwinsys.codebean;
+package beans;
 
 import java.awt.*;
 import java.io.*;

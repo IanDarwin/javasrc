@@ -1,3 +1,5 @@
+package threads;
+
 import java.awt.*;
 
 /** A Sprite is one Image that moves around the screen on its own */

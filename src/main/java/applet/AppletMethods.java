@@ -1,3 +1,5 @@
+package applet;
+
 import java.applet.*;
 import java.awt.*;
 import java.net.*;

@@ -1,3 +1,5 @@
+package structure1.5;
+
 /*
  * MediaFactory - give out Media enumeration constants
  * @version $Id$

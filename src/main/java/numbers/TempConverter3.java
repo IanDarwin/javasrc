@@ -1,3 +1,5 @@
+package numbers;
+
 import java.text.*;
 
 /* Print a table of Fahrenheit and Celsius temperatures, with decimal

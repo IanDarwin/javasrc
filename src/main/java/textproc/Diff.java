@@ -1,3 +1,5 @@
+package textproc;
+
 // Diff -- text file difference utility.
 // See full docu-comment at beginning of Diff class.
 

@@ -1,3 +1,5 @@
+package lang;
+
 import java.io.*;
 
 /** This shows that a class implementing an interface need not

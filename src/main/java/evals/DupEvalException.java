@@ -1,3 +1,5 @@
+package evals;
+
 public class DupEvalException extends IllegalArgumentException {
 	public DupEvalException() {
 		super();

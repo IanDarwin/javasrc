@@ -1,3 +1,5 @@
+package numbers;
+
 /** A RangedInt is similar to Integer but enforces upper and lower bounds
  * that are set at construction time.
  * Originally for Learning Tree International Course 471.

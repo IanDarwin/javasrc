@@ -1,3 +1,5 @@
+package strings;
+
 public class Equality {
 	public static void main(String[] args) { 
 		new Equality().run();

@@ -1,3 +1,5 @@
+package lang;
+
 /** A simple casting demo. */
 public class CastingDemo {
 	public static void main(String[] argv) {

@@ -1,3 +1,5 @@
+package email;
+
 import javax.swing.*;
 
 /** CustMailer -- to be a small Mailing List sender. */

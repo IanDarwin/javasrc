@@ -1,3 +1,5 @@
+package lang;
+
 /** Can a class in a package access a class in the unnamed package? 
  * Answer: depends on the JDK. 1.3: yes. 1.4: no.
  * See http://java.sun.com/j2se/1.4/compatibility.html, item 8.

@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Demonstrate creating readers and writers with a specific encoding.

@@ -1,3 +1,5 @@
+package structure;
+
 /** Toy Stack. 
  * @version $Id$
  */

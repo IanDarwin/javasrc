@@ -1,3 +1,5 @@
+package oo;
+
 /** Cheat on a Singleton by cloning it? */
 public class SingletonCheat2 extends Singleton { // EXPECT COMPILE ERROR
 	public Object clone() {

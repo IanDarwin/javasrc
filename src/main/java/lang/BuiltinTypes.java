@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Built in types
  */

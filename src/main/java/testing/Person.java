@@ -1,3 +1,5 @@
+package testing;
+
 /** A simple class used to demonstrate unit testing. */
 public class Person {
 	protected String fullName;

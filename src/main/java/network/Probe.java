@@ -1,3 +1,5 @@
+package network;
+
 import java.net.*;
 /**
  * Probe a network address for useful information.

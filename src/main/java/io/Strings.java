@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Strings -- extract printable strings from binary file

@@ -1,3 +1,5 @@
+package io;
+
 /** Show that 'A' is not always (printed as) 'A'.
  */
 public class AisNotA {

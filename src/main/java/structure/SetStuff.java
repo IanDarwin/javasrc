@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 
 /** Show the union and instersection of two sets. */

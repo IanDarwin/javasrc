@@ -1,3 +1,5 @@
+package lang;
+
 /** Demonstration of overriding, from Chapter 7. */
 public class OverRide {
 	public static void main(String[] av) {

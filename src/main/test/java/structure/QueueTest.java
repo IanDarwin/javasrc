@@ -1,3 +1,5 @@
+package structure;
+
 import junit.framework.*;
 
 /** A simple test case for Queue */

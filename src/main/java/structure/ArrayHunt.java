@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 
 /** Array Hunt "game" (pathetic: computer plays itself).

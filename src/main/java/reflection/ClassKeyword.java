@@ -1,3 +1,5 @@
+package introspection;
+
 import java.util.*;
 /**
  * Show the class keyword and getClass() method in action.

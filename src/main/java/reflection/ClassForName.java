@@ -1,3 +1,5 @@
+package introspection;
+
 import java.awt.Frame;
 
 /** Demonstrate "classFor" to create an instance of an object. */

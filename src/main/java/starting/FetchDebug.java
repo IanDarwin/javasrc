@@ -1,3 +1,5 @@
+package starting;
+
 import com.darwinsys.util.Debug;
 
 public class FetchDebug {

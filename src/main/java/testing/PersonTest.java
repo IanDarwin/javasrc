@@ -1,3 +1,5 @@
+package testing;
+
 import junit.framework.*;
 
 /** A simple test case for Person */

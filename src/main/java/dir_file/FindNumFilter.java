@@ -1,3 +1,5 @@
+package dir_file;
+
 /** class to handle a numeric filter for Find, such as:
  * <li>5, meaning exactly 5
  * <li>+5, meaning greater than 5

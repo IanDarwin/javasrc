@@ -1,3 +1,5 @@
+package gui;
+
 // Investigate if you can get into a loop with a Swing-based MVC app;
 // in particular, if you do setSelectedIndex on a choice, does it
 // generate a secondary event?  Push the button and see!

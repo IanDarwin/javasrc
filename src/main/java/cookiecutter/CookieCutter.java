@@ -1,3 +1,5 @@
+package cookiecutter;
+
 import java.io.*;
 import java.util.*;
 import java.awt.*;

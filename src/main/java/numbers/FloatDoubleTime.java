@@ -1,3 +1,5 @@
+package numbers;
+
 public class FloatDoubleTime {
 	/** How many times to do the loop */
 	protected static final int HOW_MANY = 10000000;

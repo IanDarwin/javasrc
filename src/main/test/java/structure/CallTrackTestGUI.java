@@ -1,3 +1,5 @@
+package structure;
+
 import junit.framework.TestCase;
 
 import java.util.List;

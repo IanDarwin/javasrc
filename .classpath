@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry output="environ" kind="src" path="environ"/>
-	<classpathentry kind="src" path="starting"/>
-	<classpathentry output="datetime" kind="src" path="datetime"/>
-	<classpathentry excluding="CastNeeded.java|SmallIntMult.java" output="numbers" kind="src" path="numbers"/>
-	<classpathentry excluding="interface/|inherit/|shapes/|Clone0.java|SingletonCheat*.java" kind="src" path="oo"/>
-	<classpathentry output="structure" kind="src" path="structure"/>
-	<classpathentry output="patterns" kind="src" path="patterns"/>
-	<classpathentry output="Plotter" kind="src" path="Plotter"/>
-	<classpathentry excluding="Formatter*.java|CalcToken.java|PrintfDefault.java|ReadStdinInt15.java|ScannerTest.java|SimpleCalcScanner.java" kind="src" path="io"/>
-	<classpathentry output="graphics" kind="src" path="graphics"/>
-	<classpathentry output="dir_file" kind="src" path="dir_file"/>
-	<classpathentry output="email" kind="src" path="email"/>
-	<classpathentry excluding="ThreadBasedCatcher.java" output="gui" kind="src" path="gui"/>
-	<classpathentry output="i18n" kind="src" path="i18n"/>
-	<classpathentry output="javacomm" kind="src" path="javacomm"/>
-	<classpathentry output="javadoc" kind="src" path="javadoc"/>
-	<classpathentry output="JDBC" kind="src" path="JDBC"/>
-	<classpathentry output="JNDI" kind="src" path="JNDI"/>
-	<classpathentry output="jsp" kind="src" path="jsp"/>
-	<classpathentry output="jsptags" kind="src" path="jsptags"/>
-	<classpathentry excluding="loops/|ByteAdd2.java|AddException.java|CastingDemo.java|ChangeArrayLength.java|CommentBug.java|CompileError.java|ConsRecurs.java|Constructors.java|ImportConflict.java|InitializersDemo.java|InnerMethods.java|InterfaceNoConstructor.java|NoLocalStatics.java|OverLoadReturn.java|PrivProt.java|ProtectedClass.java|ReturnType.java|ShowInitializers.java|Switch.java|SwitchByte.java|TryStealingInnerClass.java|Unnamed.java|EuroLanguage.java|ImportNonPublic.java|UsePackage.java|VarArgsDemo.java" output="lang" kind="src" path="lang"/>
-	<classpathentry excluding="OverridesDemo.java" output="metadata" kind="src" path="metadata"/>
-	<classpathentry output="native1.1" kind="src" path="native1.1"/>
-	<classpathentry excluding="JScript.java" output="netweb" kind="src" path="netweb"/>
-	<classpathentry output="network" kind="src" path="network"/>
-	<classpathentry excluding="ExecDemoNS.java|ProcessBuilderDemo.java|StringDistance.java" output="otherlang" kind="src" path="otherlang"/>
-	<classpathentry output="packaging" kind="src" path="packaging"/>
-	<classpathentry output="performance" kind="src" path="performance"/>
-	<classpathentry output="RE" kind="src" path="RE"/>
-	<classpathentry output="rmi" kind="src" path="rmi"/>
-	<classpathentry output="servlet" kind="src" path="servlet"/>
-	<classpathentry output="tar" kind="src" path="tar"/>
-	<classpathentry output="template" kind="src" path="template"/>
-	<classpathentry output="threads" kind="src" path="threads"/>
-	<classpathentry excluding="HttpdConcurrent.java" output="webserver" kind="src" path="webserver"/>
-	<classpathentry output="xml" kind="src" path="xml"/>
-	<classpathentry output="introspection" kind="src" path="introspection"/>
+	<classpathentry excluding="1.5compile-only-api/|CORBA/|Contrib/|annotation/|bsd.comm/|com.darwinsys.regexp/|ejb/|gui/ThreadBasedCatcher.java|io/CalcToken.java|io/Formatter*.java|io/PrintfDefault.javaio/|io/ReadStdinInt15.java|io/ScannerTest.java|io/SimpleCalcScanner.java|lang/AddException.java|lang/ByteAdd2.java|lang/CastingDemo.javalang/|lang/ChangeArrayLength.java|lang/CommentBug.java|lang/CompileError.java|lang/ConsRecurs.java|lang/Constructors.java|lang/EuroLanguage.java|lang/ImportConflict.java|lang/ImportNonPublic.java|lang/InitializersDemo.java|lang/InnerMethods.java|lang/InterfaceNoConstructor.java|lang/NoLocalStatics.java|lang/OverLoadReturn.java|lang/PrivProt.java|lang/ProtectedClass.java|lang/ReturnType.java|lang/ShowInitializers.java|lang/Switch.java|lang/SwitchByte.java|lang/TryStealingInnerClass.java|lang/Unnamed.java|lang/UsePackage.java|lang/VarArgsDemo.java|lang/loops/|metadata/OverridesDemo.java|netweb/JScript.java|numbers/CastNeeded.java|numbers/SmallIntMult.java|oo/Clone0.java|oo/SingletonCheat*.java|oo/inherit/|oo/interface/|oo/shapes/|otherlang/ExecDemoNS.java|otherlang/ProcessBuilderDemo.java|otherlang/StringDistance.java|rmi/|structure1.5/|unfinished/|webserver/HttpdConcurrent.java" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/darwinsys-api"/>
 	<classpathentry kind="lib" path="/JavaCookJars/xerces.jar"/>
@@ -52,8 +16,6 @@
 	<classpathentry kind="lib" path="/JavaCookJars/jdom.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/jdo.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/j2ee.jar"/>
-	<classpathentry kind="lib" path="/JavaCookJars/db2jcc.jar"/>
-	<classpathentry kind="lib" path="/JavaCookJars/db2jcc_license_cu.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/darwinsys.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/commons-logging.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/btree.jar"/>
@@ -62,6 +24,5 @@
 	<classpathentry kind="lib" path="/JavaCookJars/ant-contrib-0.6.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/activation.jar"/>
 	<classpathentry kind="src" path="/JavaCookJars"/>
-	<classpathentry kind="src" path="/1.5compile-only-api"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

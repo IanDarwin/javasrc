@@ -1,3 +1,5 @@
+package lang;
+
 /** Test case for "finally", to show its effect with
  * return or exit.
  */

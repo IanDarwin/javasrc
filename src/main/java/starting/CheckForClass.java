@@ -1,3 +1,5 @@
+package starting;
+
 /** Test for presence of class named in argv[0] on classpath at runtime.
  * This uses Reflectance (see chapter "Introspection, or a Class named Class")
  * to find out if the given class (named on the command line) is present

@@ -1,3 +1,5 @@
+package unfinished;
+
 /**
  * Download a set of files from a URL containing the list and their checksums.
  * @author Ian F. Darwin, http://www.darwinsys.com/

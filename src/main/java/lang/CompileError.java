@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Program with a syntax error, to show compiler error messages
  */

@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * StringBufferDemo: construct the same String three different ways.
  */

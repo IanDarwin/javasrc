@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * StringEscapes.java - show string escapes.
  * Note that they may not print correctly on all platforms.

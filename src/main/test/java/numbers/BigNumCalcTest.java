@@ -1,3 +1,5 @@
+package numbers;
+
 import java.math.BigDecimal;
 
 import junit.framework.TestCase;

@@ -1,3 +1,5 @@
+package structure;
+
 /**
  * This is a toy program that shows creating a Manager object.
  */

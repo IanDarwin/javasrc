@@ -1,3 +1,5 @@
+package starting;
+
 /**
  * Your basic, minimal, Hello World type program in Java.
  */

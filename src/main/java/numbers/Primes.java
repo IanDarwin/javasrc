@@ -1,3 +1,5 @@
+package numbers;
+
 /* Compute prime numbers, after Knuth, Vol 1, Sec 1.3.2, Alg. "P".
  * Unlike Knuth, I don't build table formatting into
  * computational programs; output is one per line.

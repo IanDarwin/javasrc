@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * Multiply two matrices.
  * Only defined for int: TODO: rewrite using 1.5 Generics to add 

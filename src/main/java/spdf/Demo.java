@@ -1,3 +1,5 @@
+package spdf;
+
 import com.darwinsys.spdf.PDF;
 import com.darwinsys.spdf.Page;
 import com.darwinsys.spdf.Text;

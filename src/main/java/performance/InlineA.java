@@ -1,3 +1,5 @@
+package performance;
+
 public class InlineA {
 	public static void main(String[] args) {
 		InlineA o = new InlineA();

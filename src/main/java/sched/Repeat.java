@@ -1,3 +1,5 @@
+package sched;
+
 /** A Repeat is a representation of when a repeating appointment.
  * TODO think about codes for recurring appointments;
  * check out existing programs, and Sun's RPC CMSD values

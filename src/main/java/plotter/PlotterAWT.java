@@ -1,3 +1,5 @@
+package Plotter;
+
 import java.awt.*;
 import java.awt.event.*;
 

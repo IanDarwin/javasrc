@@ -1,3 +1,5 @@
+package dir_file;
+
 import java.io.File;
 
 /** The collected mkdir examples (JavaCook 2e, Recipe 11.9).

@@ -1,3 +1,5 @@
+package oo;
+
 /** Demonstrate how finalize() methods and shutdownHooks interact
  *  with calls to System.exit().
  */

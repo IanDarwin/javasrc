@@ -1,3 +1,5 @@
+package structure1.5;
+
 public class AutoboxDemo {
 	public static void main(String[] args) {
 		int i = 42;

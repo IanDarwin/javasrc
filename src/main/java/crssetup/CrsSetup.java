@@ -1,3 +1,5 @@
+package crssetup;
+
 import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.border.*;

@@ -1,3 +1,5 @@
+package numbers;
+
 
 /* Print a table of Fahrenheit and Celsius temperatures 
  * @author Ian F. Darwin, http://www.darwinsys.com/

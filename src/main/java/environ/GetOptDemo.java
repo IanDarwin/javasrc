@@ -1,3 +1,5 @@
+package environ;
+
 import com.darwinsys.lang.GetOpt;
 
 /** Demonstrate the modern way of using GetOpt. This allows a subset of

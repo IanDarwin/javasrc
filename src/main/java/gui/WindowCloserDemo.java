@@ -1,3 +1,5 @@
+package gui;
+
 import java.awt.Frame;
 import java.awt.Label;
 import com.darwinsys.swingui.WindowCloser;

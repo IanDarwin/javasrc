@@ -1,3 +1,5 @@
+package JNDI;
+
 import java.rmi.RMISecurityManager;
 
 import javax.naming.Context;

@@ -1,3 +1,5 @@
+package javacomm;
+
 import java.io.IOException;
 
 import javax.comm.NoSuchPortException;

@@ -1,3 +1,5 @@
+package oo;
+
 import com.darwinsys.lang.MutableInteger;
 
 /** Show use of MutableInteger to "pass back" a value in addition

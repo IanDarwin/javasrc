@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 
 /** A simple Map implementation, implemented in terms of a

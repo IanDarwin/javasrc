@@ -1,3 +1,5 @@
+package oo;
+
 public class SomeClass {
 	public boolean equals(Object o2) {
 		if (!(o2 instanceof SomeClass))

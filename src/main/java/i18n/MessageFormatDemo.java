@@ -1,3 +1,5 @@
+package i18n;
+
 import java.text.*;
 
 public class MessageFormatDemo {

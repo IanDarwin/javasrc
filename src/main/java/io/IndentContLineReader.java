@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Subclass of ContLineReader for lines continued by indentation of

@@ -1,3 +1,5 @@
+package lang;
+
 // Just to prove whether interfaces are allowed constructors or not
 
 public interface InterfaceNoConstructor {

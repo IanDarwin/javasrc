@@ -1,3 +1,5 @@
+package graphics;
+
 import java.applet.*;
 import java.net.*;
 

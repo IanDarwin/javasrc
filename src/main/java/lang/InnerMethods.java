@@ -1,3 +1,5 @@
+package lang;
+
 /** Just to show that there is no such thing as inner methods in Java */
 public class InnerMethods {
 	public static void main(String[] args) {

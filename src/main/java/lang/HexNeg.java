@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Are all hex integers negative?
  * @author Ian F. Darwin, http://www.darwinsys.com/

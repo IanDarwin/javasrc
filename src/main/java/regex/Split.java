@@ -1,3 +1,5 @@
+package RE;
+
 import java.util.regex.*;
 
 /** Split a String into a Java Array of Strings divided by an RE

@@ -1,3 +1,5 @@
+package NETWatch;
+
 import java.awt.*;
 import javax.swing.*;
 

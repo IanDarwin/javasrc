@@ -1,3 +1,5 @@
+package numbers;
+
 /** Compute the value of 2/3 of 5 */
 public class FractMult {
 	public static void main(String[] u) {

@@ -1,3 +1,5 @@
+package lang;
+
 
 public class LoopLocal {
 	public static void main(String[] args) {

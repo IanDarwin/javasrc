@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * If this class could be compiled, Java security would be a myth.
  */

@@ -1,3 +1,5 @@
+package netweb;
+
 import java.net.URI;
 import java.net.URL;
 import java.net.URISyntaxException;

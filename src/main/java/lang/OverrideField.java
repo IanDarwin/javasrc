@@ -1,3 +1,5 @@
+package lang;
+
 /** Demonstration of overriding fields. */
 public class OverrideField {
 	public static void main(String[] av) {

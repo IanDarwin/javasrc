@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** TeePrintStream tees all PrintStream operations into a file, rather

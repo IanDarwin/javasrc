@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Subclass of LineNumberReader to read Fortran-style lines.

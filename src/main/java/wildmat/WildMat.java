@@ -1,3 +1,5 @@
+package wildmat;
+
 import java.io.*;
 
 /*

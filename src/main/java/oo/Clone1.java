@@ -1,3 +1,5 @@
+package oo;
+
 /** Demonstration of cloning. */
 public class Clone1 implements Cloneable {
 

@@ -1,3 +1,5 @@
+package strings;
+
 /* Align a page number on a 70-character line. */
 public class StringAlignSimple {
 

@@ -1,3 +1,5 @@
+package i18n;
+
 import java.util.Locale;
 
 public class ListLocales {

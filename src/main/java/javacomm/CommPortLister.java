@@ -1,3 +1,5 @@
+package javacomm;
+
 import javax.comm.*;
 import java.util.*;
 

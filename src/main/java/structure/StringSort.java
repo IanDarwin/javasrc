@@ -1,3 +1,5 @@
+package structure;
+
 
 /* The contents of this file is borrowed from:
  * @(#)QSortAlgorithm.java	1.3   29 Feb 1996 James Gosling

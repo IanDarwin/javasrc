@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Print to the standard output */

@@ -1,3 +1,5 @@
+package RE;
+
 // Sun Microsystems Example Code @(#)Grep.java	1.1 01/05/10
 
 // Search a list of files for lines that match a given regular-expression

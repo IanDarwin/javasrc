@@ -1,3 +1,5 @@
+package oo;
+
 /* Demonstrate toString() without an override */
 public class ToStringWithout {
 	int x, y;

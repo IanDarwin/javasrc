@@ -1,3 +1,5 @@
+package network;
+
 import java.net.*;
 
 /* Client with error handling */

@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.geom.Point2D;
 import java.io.FileReader;
 import java.io.IOException;

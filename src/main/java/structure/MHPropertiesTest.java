@@ -1,3 +1,5 @@
+package structure;
+
 public class MHPropertiesTest {
 	public static void main(String[] args) throws java.io.IOException {
 		MHProperties mp = new MHProperties();

@@ -1,3 +1,5 @@
+package pool;
+
 public class PoolDemo implements PoolFactory {
 
 	public static void main(String[] args) throws Exception {

@@ -1,3 +1,5 @@
+package structure;
+
 /**
  * ExecDemo shows how to execute an external program and read its output.
  * This version tries to let the sort's standard output appear at the terminal.

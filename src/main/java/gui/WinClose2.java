@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.*;
 
 /* Show an example of closing a JFrame.

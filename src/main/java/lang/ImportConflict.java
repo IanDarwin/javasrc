@@ -1,3 +1,5 @@
+package lang;
+
 /** Bring on the conflict! */
 
 import java.util.*;	// includes Date

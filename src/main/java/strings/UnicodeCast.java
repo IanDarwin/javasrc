@@ -1,3 +1,5 @@
+package strings;
+
 /** Convert among Unicode, ASCII and byte/int. */
 public class UnicodeCast {
 	public static void main(String[] args) {

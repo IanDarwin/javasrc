@@ -1,3 +1,5 @@
+package structure1.5;
+
 import java.util.HashMap;
 
 public class HashDemoGeneric {

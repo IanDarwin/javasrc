@@ -1,3 +1,5 @@
+package template;
+
 import java.awt.Button;
 import java.awt.Container;
 import java.awt.FlowLayout;

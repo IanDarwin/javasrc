@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 /**
  * Read an int from Standard Input

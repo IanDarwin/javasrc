@@ -1,3 +1,5 @@
+package gc;
+
 /**
  * Statics -- class to show how static (class) variables work.
  *

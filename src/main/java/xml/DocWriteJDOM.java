@@ -1,3 +1,5 @@
+package xml;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.output.XMLOutputter;

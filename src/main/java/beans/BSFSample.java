@@ -1,3 +1,5 @@
+package beans;
+
 import java.io.*;
 import org.apache.bsf.*;
 import org.apache.bsf.util.*;

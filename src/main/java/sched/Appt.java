@@ -1,3 +1,5 @@
+package sched;
+
 import java.util.*;
 
 /** Simple Appointment object, to represent a year-month-day-hour-minute.

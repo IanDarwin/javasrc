@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * NullChar - see if you can have null characters in a String.
  */

@@ -1,3 +1,5 @@
+package cookiecutter;
+
 // DO NOT PACKAGE INTO javax.servlet.http DUE TO INCOMPATIBILITIES
 
 /** Represent the contents of one HTTP cookie. 

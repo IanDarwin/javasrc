@@ -1,3 +1,5 @@
+package oo;
+
 import junit.framework.*;
 
 public class Clone1Test extends TestCase {

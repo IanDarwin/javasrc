@@ -1,3 +1,5 @@
+package lang;
+
 // This shows off the uses of "this". It is a non-public class
 // just so the file name UseThis doesn't have to be the class name
 // (some students found "This" in the class name confusing in this example).

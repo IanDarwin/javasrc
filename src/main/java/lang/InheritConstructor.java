@@ -1,3 +1,5 @@
+package lang;
+
 /** Show that if your class has no constructors, your superclass'
  * constructors still get called.
  */

@@ -1,3 +1,5 @@
+package Plotter;
+
 /**
  * Plotter abstract class. Must be subclassed 
  * for X, DOS, Penman, HP plotter, etc.

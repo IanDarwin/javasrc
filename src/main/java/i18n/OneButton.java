@@ -1,3 +1,5 @@
+package i18n;
+
 import javax.swing.*;
 import java.util.*;
 

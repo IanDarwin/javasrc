@@ -1,3 +1,5 @@
+package lang;
+
 /** Show various forms of nested classes.
  * Not all nested classes are "inner classes".
  */

@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;

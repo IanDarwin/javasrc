@@ -1,3 +1,5 @@
+package gui;
+
 import java.awt.*;
 
 /** Make a Frame with two Panels.

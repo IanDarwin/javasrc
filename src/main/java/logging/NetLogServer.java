@@ -1,3 +1,5 @@
+package network;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.net.*;

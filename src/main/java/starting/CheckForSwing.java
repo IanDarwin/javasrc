@@ -1,3 +1,5 @@
+package starting;
+
 /** Test for presence of Swing on classpath at runtime.
  */
 public class TestForSwing {

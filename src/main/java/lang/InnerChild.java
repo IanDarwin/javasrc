@@ -1,3 +1,5 @@
+package lang;
+
 //+
 /**
  * Demonstrate an Inner Child class

@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * Format a plural correctly, by hand.
  * @author Ian F. Darwin, http://www.darwinsys.com/

@@ -1,3 +1,5 @@
+package otherlang;
+
 import com.darwinsys.lang.ExecAndPrint;
 
 /**

@@ -1,3 +1,5 @@
+package dir_file;
+
 import java.io.*;
 /**
  * DANGEROUS Program to remove files matching a name in a directory

@@ -1,3 +1,5 @@
+package evals;
+
 import java.rmi.*;
 
 /** The interface for sending stuff over the net */

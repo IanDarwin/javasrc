@@ -1,3 +1,5 @@
+package lookup;
+
 0) FIX THE BUG: Classes that conflict get only one entry!
 e.g., try "Date" - do you get java.util.Date or java.sql.Date?
 Suggestion: use a Hashmap (like the mini-Web Server did) to keep

@@ -1,3 +1,5 @@
+package lang;
+
 /** The documentation, and the Java Language Spec, claim that
  * slash-star comments do not nest. But they do in some compilers!
  */

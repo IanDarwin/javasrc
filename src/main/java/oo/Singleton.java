@@ -1,3 +1,5 @@
+package oo;
+
 /** An example of a Singleton implementation in Java.
  * The Singleton design pattern is described in GOF; the idea is to ensure
  * that only one instance of the class will exist in a given application.

@@ -1,3 +1,5 @@
+package miles2kms;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;

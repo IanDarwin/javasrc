@@ -1,3 +1,5 @@
+package numbers;
+
 import java.text.*;
 
 /* Print a table of fahrenheit and celsius temperatures, a bit more neatly.

@@ -1,9 +1,15 @@
-import java.awt.*;
-import com.sun.java.swing.*;
-import java.rmi.*;
-import java.rmi.server.*;
-import java.text.*;
-import java.util.*;
+package evals;
+
+import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
+import java.rmi.server.UnicastRemoteObject;
+import java.text.DecimalFormat;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import javax.swing.JFrame;
+
+import graphics.Grapher;
 
 public class EvalServer 
 	extends UnicastRemoteObject 
@@ -73,7 +79,8 @@ public class EvalServer
 			"insAvg = " + df.format(insAvg));
 
 		if (isVisual) {
-			g.setValues(nEvals, crsAvg, insAvg);
+			System.out.println("XXX: Update me for current Grapher.");
+			// g.setValues(nEvals, crsAvg, insAvg);
 		}
 
 		// if (e.c1 != null && c1.length != 0)

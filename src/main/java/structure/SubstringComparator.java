@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.Comparator;
 
 /** Comparator for comparing strings ignoring first character.

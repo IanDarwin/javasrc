@@ -1,3 +1,5 @@
+package native1.1;
+
 /**
  * A trivial class to show Java Native Interface 1.1 usage from Java.
   */

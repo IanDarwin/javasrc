@@ -1,3 +1,5 @@
+package email;
+
 public class Alias {
 	/** The name for the alias */
 	protected String name;

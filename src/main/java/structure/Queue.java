@@ -1,3 +1,5 @@
+package structure;
+
 /** Treat a LinkList as a Queue */
 public class Queue extends java.util.LinkedList {
 	public void q_add(Object o) {

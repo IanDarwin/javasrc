@@ -1,3 +1,5 @@
+package lang;
+
 // The Overall Structure of a Java Class
 
 //package com.acme.stuff;

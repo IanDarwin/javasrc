@@ -1,3 +1,5 @@
+package lang;
+
 /** What happens if a method declares an unchecked exception?
  * Some people seem to think that declaring a method in a throws
  * clause is what makes it "checked". As we see here, this is not

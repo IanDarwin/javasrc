@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Simple Hello World demo program.
  */

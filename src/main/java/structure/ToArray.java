@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 
 /** List to array */

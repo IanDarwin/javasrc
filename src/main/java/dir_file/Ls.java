@@ -1,3 +1,5 @@
+package dir_file;
+
 /** Simple directory lister.
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$

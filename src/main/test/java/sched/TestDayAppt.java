@@ -1,3 +1,5 @@
+package sched;
+
 import java.util.*;
 
 /** Confirm that Appts compare, sort, print, and read back correctly.

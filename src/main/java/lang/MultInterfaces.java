@@ -1,3 +1,5 @@
+package lang;
+
 interface I1 {
 	abstract void test(int i);
 }

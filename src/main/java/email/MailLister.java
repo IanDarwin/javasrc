@@ -1,3 +1,5 @@
+package email;
+
 import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Message;

@@ -1,3 +1,5 @@
+package lang;
+
 public class MultiSuperInterfaces {
 	public interface Marker 
 		extends java.io.Serializable, java.rmi.Remote, java.lang.Runnable {

@@ -1,3 +1,5 @@
+package performance;
+
 import com.darwinsys.lang.MutableInteger;
 
 /** Time a bunch of creates and gets through an Array */

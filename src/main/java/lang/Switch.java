@@ -1,3 +1,5 @@
+package lang;
+
 public class Switch {
 	static short s;
 	static int   i;

@@ -1,3 +1,5 @@
+package netweb;
+
 public class GetResource {
 	public static void main(String[] argv) {
 		Class c = GetResource.class;

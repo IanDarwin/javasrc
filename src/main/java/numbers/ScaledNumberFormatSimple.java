@@ -1,3 +1,5 @@
+package numbers;
+
 import com.darwinsys.util.ScaledNumberFormat;
 
 /** A simple example of ScaleNumberFormat, from com.darwinsys.util

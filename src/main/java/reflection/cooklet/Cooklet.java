@@ -1,3 +1,5 @@
+package introspection;
+
 /** A simple class, just to provide the list of methods that 
  * users need to provide to be usable in our application.
  * Note that the class is abstract so you must subclass it,

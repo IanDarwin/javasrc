@@ -1,3 +1,5 @@
+package strings;
+
 import junit.framework.*;
 
 /** Soundex Test program. Knuth's original examples, and mine. */

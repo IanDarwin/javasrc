@@ -1,3 +1,5 @@
+package lang;
+
 /** Show locals not conflicting */
 public class Locals {
 	final int i = 42;

@@ -1,3 +1,5 @@
+package DBM;
+
 import java.io.IOException;
 
 /** Demonstration of reading the MS-Windows Netscape History

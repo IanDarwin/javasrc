@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.*;
 
 public class PaintDemo extends Component {

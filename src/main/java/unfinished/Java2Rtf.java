@@ -1,3 +1,5 @@
+package unfinished;
+
 // Just some notes...
 
 public class JavaScan {

@@ -1,3 +1,5 @@
+package sched;
+
 /** Generic(?) Event Handling for the DateSelectedListeners */
 import java.util.Vector;
 public class CalEventMgr {

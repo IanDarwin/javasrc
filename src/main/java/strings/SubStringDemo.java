@@ -1,3 +1,5 @@
+package strings;
+
 public class SubStringDemo {
 	public static void main(String[] av) {
 		String a = "Java is great.";

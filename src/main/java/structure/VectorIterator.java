@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 /** Iterator used to walk through a Vector.
  * @version $Id$

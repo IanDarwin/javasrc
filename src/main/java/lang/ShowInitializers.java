@@ -1,3 +1,5 @@
+package lang;
+
 /** Just show use of initializers, and which ones need to be initialized. */
 public class ShowInitializers {
 		int quantity;		// defaults to zero

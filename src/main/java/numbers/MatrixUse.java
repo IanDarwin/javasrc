@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * Multiply two matrices.
  * Only defined for int: clone the code (or wait for Templates)

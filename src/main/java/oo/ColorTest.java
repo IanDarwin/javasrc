@@ -1,3 +1,5 @@
+package oo;
+
 import java.awt.Color;
 
 public class ColorTest {

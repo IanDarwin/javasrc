@@ -1,3 +1,5 @@
+package introspection;
+
 public class DemoCooklet extends Cooklet {
 	public void work() {
 		System.out.println("I am busy baking cookies.");

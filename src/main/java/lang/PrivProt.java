@@ -1,3 +1,5 @@
+package lang;
+
 /** Member modifier "private protected" is now gone from the language!
  * This class proves it: modern Java compilers must reject this file.
  */

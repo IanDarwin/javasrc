@@ -1,3 +1,5 @@
+package email;
+
 /** Represent a Mail or News Header */
 public class Header {
 	public String type;

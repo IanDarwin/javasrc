@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.Container;
 
 import javax.swing.JApplet;

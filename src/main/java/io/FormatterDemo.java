@@ -1,3 +1,5 @@
+package io;
+
 import java.util.Formatter;
 
 /** Demonstrate some usage patterns and format-code examples 

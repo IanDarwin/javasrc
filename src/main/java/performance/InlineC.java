@@ -1,3 +1,5 @@
+package performance;
+
 public final class InlineC {
 	public static void main(String[] args) {
 		InlineC o = new InlineC();

@@ -1,3 +1,5 @@
+package DBM;
+
 import java.io.*;
 
 /** This class provides a dbm-compatible interface to the UNIX-style

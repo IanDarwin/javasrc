@@ -1,3 +1,5 @@
+package JNDI;
+
 import java.rmi.*;
 import java.io.*;
 

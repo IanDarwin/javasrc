@@ -1,3 +1,5 @@
+package email;
+
 /** Simply a list of names for the Mail System to use.
  * If you "implement" this interface, you don't have to prefix
  * all the names with MailProps in your code.

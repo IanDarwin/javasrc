@@ -1,3 +1,5 @@
+package lang;
+
 /** If main is not special to the compiler, you should be able to 
  * write it any way you like. And you can. But the <KBD>java</KBD>
  * command only knows to call one particular form, as you can see

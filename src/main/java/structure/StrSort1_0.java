@@ -1,3 +1,5 @@
+package structure;
+
 /**
  * StrSort demonstrates sorting of strings using a quicksort.
  * This is for JDK 1.0, which lacked the Collections API.

@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Show that you can't have static variables in a method, unlike C/C++
  */

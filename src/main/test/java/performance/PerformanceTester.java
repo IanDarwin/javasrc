@@ -1,3 +1,5 @@
+package performance;
+
 public class PerformanceTester {
 	private int amount;
 	private static int NOBJECTS = 500000;

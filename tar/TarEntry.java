@@ -1,3 +1,5 @@
+package tar;
+
 import java.io.*;
 
 /** One entry in an archive file.

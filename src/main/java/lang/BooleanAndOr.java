@@ -1,3 +1,5 @@
+package lang;
+
 /*
  * Test out combinations of Ands and Ors on Boolean values.
  * Some of these will probably throw a NullPointerException: which one(s)?

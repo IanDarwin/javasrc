@@ -1,3 +1,5 @@
+package JDBC;
+
 import javax.sql.rowset.CachedRowSet;
 
 /** Demonstrate simple use of the CachedRowSet.

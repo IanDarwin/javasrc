@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * See if Strings are shared in Java.
  * The thing is, it depends on whether you say 

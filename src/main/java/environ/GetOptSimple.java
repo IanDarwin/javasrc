@@ -1,3 +1,5 @@
+package environ;
+
 import com.darwinsys.lang.GetOpt;
 
 /** Trivial demonstration of GetOpt, the old way. If -h present, print help.

@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * ToString -- demo program to show a toString method.
  */

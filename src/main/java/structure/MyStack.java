@@ -1,3 +1,5 @@
+package structure1.5;
+
 /** A lax Stack implementation.
  * @version $Id$
  */

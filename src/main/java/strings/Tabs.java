@@ -1,3 +1,5 @@
+package strings;
+
 import com.darwinsys.util.Debug;
 
 /** Basic tab-character handling stuff.

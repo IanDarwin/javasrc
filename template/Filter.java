@@ -1,3 +1,5 @@
+package template;
+
 import java.io.*;
 
 /** Filter - template line-mode filter.

@@ -1,3 +1,5 @@
+package oo;
+
 import junit.framework.*;
 
 /** Some JUnit test cases for EqualsDemo.

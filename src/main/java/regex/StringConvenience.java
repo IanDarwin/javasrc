@@ -1,3 +1,5 @@
+package RE;
+
 /**
  * StringConvenience -- demonstrate java.lang.String convenience routine
  * @author Ian F. Darwin

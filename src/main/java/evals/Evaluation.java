@@ -1,3 +1,5 @@
+package evals;
+
 /** The data that we send over the wire */
 public class Evaluation {
 	String hostName;	// origin

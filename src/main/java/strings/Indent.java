@@ -1,3 +1,5 @@
+package strings;
+
 import java.io.*;
 
 /** Indent - prepend leading spaces

@@ -1,3 +1,5 @@
+package strings;
+
 public class StringAlignDemo {
 
 	/** Demonstrate and test StringAlign class */

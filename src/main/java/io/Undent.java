@@ -1,3 +1,5 @@
+package io;
+
 import java.io.*;
 
 /** Undent - remove leading spaces

@@ -1,3 +1,5 @@
+package lang;
+
 // Can we implement part of an interface?
 
 interface X {

@@ -1,3 +1,5 @@
+package structure1.5;
+
 public class ForeachArray {
 	public static void main(String args[]) {
 		String[] data = { "Toronto", "Stockholm" };

@@ -1,3 +1,5 @@
+package starting;
+
 import java.util.Date;
 
 /** Demonstrate deprecation warning */

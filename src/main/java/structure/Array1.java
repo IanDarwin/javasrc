@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.Calendar;
 
 /** Review examples of arrays: shows array allocation, processing,

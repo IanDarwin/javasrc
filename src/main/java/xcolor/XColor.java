@@ -1,3 +1,5 @@
+package XColor;
+
 import java.awt.*;
 
 /** A Color subclass that provides all the RGB color names from 

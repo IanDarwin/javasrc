@@ -1,3 +1,5 @@
+package bsd.comm;
+
 public class BSDParallelPort extends javax.comm.ParallelCommPort {
 
 	/** The name of the default port */

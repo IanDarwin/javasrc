@@ -1,3 +1,5 @@
+package sched;
+
 // XXX need to move "selection" logic from CalMonth to Cal
 
 import javax.swing.*;

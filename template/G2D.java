@@ -1,3 +1,5 @@
+package template;
+
 import java.awt.*;
 
 /** Template Graphics2D object

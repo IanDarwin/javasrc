@@ -1,3 +1,5 @@
+package io;
+
 import java.util.Scanner;
 /**
  * Read an int from Standard Input, using 1.5

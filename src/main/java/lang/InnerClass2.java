@@ -1,3 +1,5 @@
+package lang;
+
 import java.util.Date;
 
 /** Demonstrate simple inner class which just extends an

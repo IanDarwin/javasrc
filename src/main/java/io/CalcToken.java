@@ -1,3 +1,5 @@
+package io;
+
 /** These are the kinds of tokens that are in the input.
  */
 public enum CalcToken {

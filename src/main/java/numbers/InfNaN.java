@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * Show INFINITY and NaN
  * @author Ian F. Darwin, http://www.darwinsys.com/

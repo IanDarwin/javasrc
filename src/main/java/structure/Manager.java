@@ -1,3 +1,5 @@
+package structure;
+
 public class Manager extends Employee {
 	// name and personellNumber are inherited from Employee
 

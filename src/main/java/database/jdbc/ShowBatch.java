@@ -1,3 +1,5 @@
+package JDBC;
+
 /**
  * Show use of Batching
  */

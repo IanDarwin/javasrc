@@ -1,3 +1,5 @@
+package lang;
+
 /* To show that certain things really must be initialized */
 
 class InitializersDemo {

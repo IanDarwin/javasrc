@@ -1,3 +1,5 @@
+package PhoneSim;
+
 public class PhoneSystem {
 	public static void main(String[] a) throws InterruptedException {
 		while (true) {

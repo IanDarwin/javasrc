@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.*;
 
 /** Fill a Polygon with a colored gradient */

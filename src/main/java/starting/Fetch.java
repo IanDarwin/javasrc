@@ -1,3 +1,5 @@
+package starting;
+
 public class Fetch {
 	public static void main(String[] args) { 
 		String name = "poem", value;

@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * LengthOf - show length of things
  */

@@ -1,3 +1,5 @@
+package unfinished;
+
 import java.io.*;
 public class JapanWriter {
 	public static void main(String[] args) {

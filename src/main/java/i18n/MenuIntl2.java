@@ -1,3 +1,5 @@
+package i18n;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

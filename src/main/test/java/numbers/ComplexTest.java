@@ -1,3 +1,5 @@
+package numbers;
+
 import junit.framework.TestCase;
 
 /**

@@ -1,3 +1,5 @@
+package email;
+
 /** This is like an IOException, but it includes a Sendmail-style error
  * number in addition to the error message String.
  */

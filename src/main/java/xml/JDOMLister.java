@@ -1,3 +1,5 @@
+package xml;
+
 import java.io.File;
 
 import org.jdom.Document;

@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Every "Exception" (or subclass) object contains a "stackTrace", or
  * traceback, meant to indicate where the error occurred.

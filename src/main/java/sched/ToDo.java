@@ -1,3 +1,5 @@
+package sched;
+
 /** ToDo - represent one TODO item appointment.
  */
 public class ToDo {

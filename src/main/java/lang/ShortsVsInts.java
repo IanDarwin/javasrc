@@ -1,3 +1,5 @@
+package lang;
+
 public class ShortsVsInts {
 	public static void main(String[] unused) {
 		short i,j;

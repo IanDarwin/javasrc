@@ -1,4 +1,4 @@
-package com.darwinsys.charts;
+package ChartBean;
 
 public class ChartData {
 	String name;

@@ -1,3 +1,5 @@
+package lang;
+
 /** Find out whether interfaces are inherited.
  * Start with Thread which implements Runnable.
  */

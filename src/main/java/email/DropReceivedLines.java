@@ -1,3 +1,5 @@
+package email;
+
 import java.io.*;
 
 import com.darwinsys.util.Debug;

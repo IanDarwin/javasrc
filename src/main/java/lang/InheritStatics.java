@@ -1,3 +1,5 @@
+package lang;
+
 // Show that you do inherit static fields.
 
 /** This is the class that we extend. */

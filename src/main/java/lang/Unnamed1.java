@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Can a class in a package access a class in the unnamed package?
  */

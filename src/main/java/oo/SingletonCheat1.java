@@ -1,3 +1,5 @@
+package oo;
+
 /** Cheat on a Singleton by calling its clone method?
  */
 public class SingletonCheat1 {

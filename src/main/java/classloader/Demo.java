@@ -1,3 +1,5 @@
+package classloader;
+
 /**
  * This trivial Demo is used as the target of the
  * ClassLoaderDemo program. Compile this, dump it

@@ -1,3 +1,5 @@
+package numbers;
+
 import java.util.*;
 
 /** Demonstrate the better way of getting random numbers,

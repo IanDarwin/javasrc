@@ -1,3 +1,5 @@
+package JDBC;
+
 /**
  * List the Column names in an SQL database table.
  */

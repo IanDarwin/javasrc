@@ -1,3 +1,5 @@
+package applet;
+
 import java.io.*;
 import java.net.*;
 

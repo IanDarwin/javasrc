@@ -1,3 +1,5 @@
+package email;
+
 import javax.mail.*;
 import javax.swing.tree.*;
 

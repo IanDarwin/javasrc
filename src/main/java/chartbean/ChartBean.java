@@ -1,4 +1,4 @@
-package com.darwinsys.charts;
+package ChartBean;
 
 import java.awt.*;
 

@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * StringBuilderDemo: construct the same String three different ways.
  */

@@ -1,3 +1,5 @@
+package template;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

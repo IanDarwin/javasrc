@@ -1,3 +1,5 @@
+package lang;
+
 import java.awt.event.*;
 
 // This file is to show what happens if you try to access an inner class

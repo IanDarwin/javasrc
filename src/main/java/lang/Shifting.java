@@ -1,3 +1,5 @@
+package lang;
+
 /**
  //+
  * Show some effects of shifting on ints and longs

@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Can you call a static method of an abstract class?
  * @author Ian F. Darwin, http://www.darwinsys.com/

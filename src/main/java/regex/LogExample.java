@@ -1,3 +1,5 @@
+package RE;
+
 /**
  * Common fields for Apache Log demo.
  */

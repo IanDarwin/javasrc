@@ -1,3 +1,5 @@
+package starting;
+
 /**
  * Just print the Java runtime version, e.g., 1.3, 1.4, 1.5, ...
  */

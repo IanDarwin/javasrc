@@ -1,3 +1,5 @@
+package numbers;
+
 import java.util.*;
 
 /** Generate random ints by asking Random() for

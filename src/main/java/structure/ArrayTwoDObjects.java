@@ -1,3 +1,5 @@
+package structure;
+
 /** Show Two-Dimensional Array of Objects */
 public class ArrayTwoDObjects {
 

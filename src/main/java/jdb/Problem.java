@@ -1,3 +1,5 @@
+package jdb;
+
 /**
  * A Program with a Problem
  * @author Ian F. Darwin, http://www.darwinsys.com/

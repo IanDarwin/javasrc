@@ -1,3 +1,5 @@
+package lang;
+
 public class ArrayArgs {
 	ArrayArgs(int[] foo) {
 		super();

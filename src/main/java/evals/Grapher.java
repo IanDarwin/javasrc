@@ -1,3 +1,5 @@
+package evals;
+
 import java.awt.*;
 import com.sun.java.swing.*;
 

@@ -1,3 +1,5 @@
+package spdf;
+
 package com.darwinsys.spdf;
 
 /** Represent one Move object ("moveto") in a PDF file. */

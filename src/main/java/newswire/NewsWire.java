@@ -1,3 +1,5 @@
+package newswire;
+
 import java.awt.*;
 import java.applet.*;
 import java.io.*;

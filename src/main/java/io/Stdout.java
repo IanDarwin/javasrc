@@ -1,3 +1,5 @@
+package io;
+
 /**
  * All the examples for the Standard output recipe.
  * @author Ian F. Darwin, http://www.darwinsys.com/

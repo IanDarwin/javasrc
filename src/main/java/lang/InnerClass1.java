@@ -1,3 +1,5 @@
+package lang;
+
 /** Demonstrate simple inner class. A named inner class
  * is used to show that it can access non-local variables
  * in the enclosing object.

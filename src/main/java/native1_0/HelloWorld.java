@@ -1,3 +1,5 @@
+package native1.0;
+
 /**
  * A trivial class to show native method usage from Java.
  */

@@ -1,3 +1,5 @@
+package numbers;
+
 /** Show some things from java.lang.Math */
 public class Math1 {
 	public static void main(String[] argv) {

@@ -1,3 +1,5 @@
+package starting;
+
 /**
  * Simple echo/print client -- print command line arguments (argv) back
  * to the standard oubput.

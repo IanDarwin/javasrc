@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 
 /** Dummy source of Objects, for structure demos.

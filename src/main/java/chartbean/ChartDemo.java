@@ -1,14 +1,14 @@
+package ChartBean;
+
 import java.awt.*;
 import java.awt.event.*;
-
-import com.darwinsys.charts.*;
 
 /** Simple GUI driver for Chart, showing it used as a plain Component */
 public class ChartTest extends Frame {
 	boolean unsavedChanges = false;
 	Button drawButton;
 	Button quitButton;
-	com.darwinsys.charts.Chart bean;
+	Chart bean;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -38,7 +38,7 @@ public class ChartTest extends Frame {
 			}
 		});
 
-		add(bean = new com.darwinsys.charts.Chart("System Usage in 1999"));
+		add(bean = new Chart("System Usage in 1999"));
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

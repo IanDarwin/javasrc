@@ -1,3 +1,5 @@
+package lang;
+
 // Just to show that constructors are allowed to throw exceptions
 
 public class ConstrException {

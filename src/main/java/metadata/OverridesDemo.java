@@ -1,3 +1,5 @@
+package metadata;
+
 /** Simple demonstation of Metadata being used to verify
  * that a method does in fact override (not overload) a method
  * from the parent class. This class provides the method.

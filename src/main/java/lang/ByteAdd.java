@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * This shows something interesting about addition of "byte" variables
  * (which also applies to all integer types).

@@ -1,3 +1,5 @@
+package structure1.5;
+
 import java.util.*;
 
 public class ArrayListGenericDemo {

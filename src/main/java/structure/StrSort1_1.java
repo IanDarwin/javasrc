@@ -1,3 +1,5 @@
+package structure;
+
 /**
  * StrSort demonstrates sorting of strings using a quicksort.
  * The actual sorting code, in StringSort.java, is borrowed from the 

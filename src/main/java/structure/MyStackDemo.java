@@ -1,3 +1,5 @@
+package structure1.5;
+
 public class MyStackDemo {
 	public static void main(String[] args) {
 		MyStack<String> ms1 = new MyStack<String>();

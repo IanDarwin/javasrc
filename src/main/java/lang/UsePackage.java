@@ -1,3 +1,5 @@
+package lang;
+
 import com.darwinsys.ianstuff.*;
 
 /** Demo program using classes from a package. */

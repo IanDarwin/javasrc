@@ -1,3 +1,5 @@
+package performance;
+
 public class StringPrintAA {
 	public static void main(String[] argv) {
 		Object o = "Hello World";

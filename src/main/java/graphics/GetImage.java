@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;

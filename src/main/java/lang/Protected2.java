@@ -1,3 +1,5 @@
+package lang;
+
 // package x;
 
 /** This class is in the same package as Protected above.

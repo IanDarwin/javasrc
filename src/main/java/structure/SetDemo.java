@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.*;
 /**
  * Demonstrate the Set interface

@@ -1,3 +1,5 @@
+package structure1.5;
+
 /** These are the product categories that we sell
  */
 public enum Media {

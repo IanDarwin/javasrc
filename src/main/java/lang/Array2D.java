@@ -1,3 +1,5 @@
+package lang;
+
 public class Array2D {
 	public static void main(String[] args) {
 		int[][] data;

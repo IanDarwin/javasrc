@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Show static initializers. These are run when the class is loaded.
  * If you run the main program here, you will see the static

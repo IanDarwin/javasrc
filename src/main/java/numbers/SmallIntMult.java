@@ -1,3 +1,5 @@
+package numbers;
+
 public class SmallIntMult {
     public static void main(String[] argv) {
         byte b = 1;

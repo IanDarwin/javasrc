@@ -1,3 +1,5 @@
+package lang;
+
 /** Simple demo of exceptions */
 public class ExceptionDemo {
 

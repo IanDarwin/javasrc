@@ -1,3 +1,5 @@
+package template;
+
 import com.darwinsys.lang.GetOpt;
 
 /** Template main program using GetOpt.

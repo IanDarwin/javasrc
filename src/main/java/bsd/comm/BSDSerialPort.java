@@ -1,5 +1,7 @@
 package bsd.comm;
 
+package bsd.comm;
+
 import java.io.*;
 import javax.comm.*;
 

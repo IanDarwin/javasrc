@@ -1,3 +1,5 @@
+package structure;
+
 /** Simple example
  * @author Ian Darwin
  * @version $Id$

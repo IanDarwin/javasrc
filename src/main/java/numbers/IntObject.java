@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * IntObject -- convert between int and Integer (needed pre-1.5)
  * @version $Id$

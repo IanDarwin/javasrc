@@ -1,3 +1,5 @@
+package lang;
+
 public class Visibility {
 	final int i = 42;
 	void method1() {

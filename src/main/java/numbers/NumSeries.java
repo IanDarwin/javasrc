@@ -1,3 +1,5 @@
+package numbers;
+
 import java.util.BitSet;
 
 /** Operations on series of numbers */

@@ -1,3 +1,5 @@
+package lang;
+
 /** Show that "null instanceof SomeClass" returns false, not a NPE */
 public class InstanceofNull {
 	public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package network;
+
 import java.io.IOException;
 
 /* A simple example of using the NetLog program.

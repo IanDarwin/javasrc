@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.Calendar;
 
 /** Re-allocate an array, bigger...

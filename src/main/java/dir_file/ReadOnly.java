@@ -1,3 +1,5 @@
+package dir_file;
+
 import java.io.*;
 
 public class ReadOnly {

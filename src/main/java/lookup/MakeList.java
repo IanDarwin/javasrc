@@ -1,3 +1,5 @@
+package lookup;
+
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;

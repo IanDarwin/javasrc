@@ -1,3 +1,5 @@
+package lang;
+
 /**
  * Can you change the .length of an array?
  * @author Ian F. Darwin, http://www.darwinsys.com/

@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.BitSet;
 /**
  * Bitset demo

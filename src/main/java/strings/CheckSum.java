@@ -1,3 +1,5 @@
+package strings;
+
 import java.io.*;
 
 /** CheckSum - print the checksum of a file

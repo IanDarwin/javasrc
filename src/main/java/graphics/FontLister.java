@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.*;
 
 /** Print the list of available fonts. */

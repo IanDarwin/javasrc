@@ -1,3 +1,5 @@
+package oo;
+
 /** Display hashCodes from some objects */
 public class PrintHashCodes {
 

@@ -1,3 +1,5 @@
+package lang;
+
 /** Can you have such a thing as a protected class?
  */
 package foo;

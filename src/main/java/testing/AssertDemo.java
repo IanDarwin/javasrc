@@ -1,3 +1,5 @@
+package testing;
+
 /**
  * Demonstrate the new-in-1.4 "assert" facility.
  * <p>

@@ -1,3 +1,5 @@
+package email;
+
 import javax.activation.*;
 
 import java.awt.datatransfer.*;

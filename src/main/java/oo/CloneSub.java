@@ -1,3 +1,5 @@
+package oo;
+
 class One extends java.lang.Object {
 	int x;
 }

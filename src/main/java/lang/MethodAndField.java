@@ -1,3 +1,5 @@
+package lang;
+
 /** Show a class that has a method and a field with the same name (and type).
  */
 public class MethodAndField {

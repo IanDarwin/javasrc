@@ -1,3 +1,5 @@
+package lang;
+
 public class CharIsInt {
 	public static void main(String[] argv) {
 		char a = 'A';

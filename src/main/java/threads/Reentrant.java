@@ -1,3 +1,5 @@
+package threads;
+
 /** 
  * Illustrate the following quotation:<blockquote>
  * "Threads are re-entrant. A given thread can acquire the same

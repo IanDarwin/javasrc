@@ -1,3 +1,5 @@
+package strings;
+
 import java.util.*;
 
 /** Show using a StringTokenizer including getting the delimiters back */

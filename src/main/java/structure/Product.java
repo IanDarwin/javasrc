@@ -1,3 +1,5 @@
+package structure1.5;
+
 import com.darwinsys.util.Debug;
 
 public class Product {

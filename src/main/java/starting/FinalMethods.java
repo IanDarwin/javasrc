@@ -1,3 +1,5 @@
+package starting;
+
 /** Investigate inlining of final methods.
  * You need to investigate the resulting class file
  * when generated from various compilers and options.

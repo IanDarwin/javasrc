@@ -1,3 +1,5 @@
+package numbers;
+
 /** Compute the area of a triangle using Heron's Formula.
  * Code and values from Prof W. Kahan and Joseph D. Darcy.
  * See http://www.cs.berkeley.edu/~wkahan/JAVAhurt.pdf.

@@ -1,3 +1,5 @@
+package netweb;
+
 import java.io.File;
 
 /** Convert a filename to a URL using the Java 2 java.io.File.toURL()

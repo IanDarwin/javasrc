@@ -1,3 +1,5 @@
+package lang;
+
 /** What happens when two constructors call each other?
  * Can you get an infinite loop out of the process?
  */

@@ -1,3 +1,5 @@
+package oo;
+
 public class EqualsDemo {
 	private int int1;
 	private SomeClass obj1;

@@ -1,3 +1,5 @@
+package otherlang;
+
 /** Example of a Java Class that calls a Perl function.
  * <br/>
  * Does not run on its own -- for usage, see StringDistance.pl!

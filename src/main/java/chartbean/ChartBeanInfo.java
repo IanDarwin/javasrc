@@ -1,3 +1,5 @@
+package ChartBean;
+
 package com.darwinsys.charts;
 
 import java.beans.*;

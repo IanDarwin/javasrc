@@ -1,3 +1,5 @@
+package strings;
+
 /** Simple Comparator for the common case of sortings Strings
  * in a case-insensitive way.
  * NOT NEEDED IN JAVA2; use String.CASE_INSENSITIVE_ORDER.

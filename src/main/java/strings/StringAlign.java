@@ -1,3 +1,5 @@
+package strings;
+
 import java.text.*;
 
 /** Bare-minimum String formatter (string aligner).

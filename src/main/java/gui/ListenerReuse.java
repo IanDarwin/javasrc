@@ -1,3 +1,5 @@
+package gui;
+
 // Demonstrate a listener being reused.
 
 import java.awt.*;

@@ -1,3 +1,5 @@
+package textproc;
+
 import java.io.*;
 
 /** Text to PS */

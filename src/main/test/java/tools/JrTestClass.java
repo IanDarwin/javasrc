@@ -1,3 +1,5 @@
+package tools;
+
 /** This is a key test class for jr. Do not delete! */
 public class JrTestClass {
 	public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package sched;
+
 // $Id$
 
 import java.awt.*;

@@ -1,3 +1,5 @@
+package structure;
+
 /** A sample class used in some of the notes accompanying this code set.
  * N.B. This is NOT "best practices": should all be private fields,
  * and get/set methods.  (Done this way so examples are shorter).

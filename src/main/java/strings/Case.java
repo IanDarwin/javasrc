@@ -1,3 +1,5 @@
+package strings;
+
 /**
  * Control case.
  * @author Ian F. Darwin, http://www.darwinsys.com/

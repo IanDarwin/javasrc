@@ -1,5 +1,0 @@
-#!/bin/sh
-
-echo "ghost: SIMULATION: This is UNIX, and ghost can't be seen here." >&2
-
-exit 1

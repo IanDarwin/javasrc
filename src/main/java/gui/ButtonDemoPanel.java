@@ -1,3 +1,5 @@
+package gui;
+
 /*
  <APPLET CODE=ButtonDemoPanel WIDTH=234 HEIGHT=123>
  </APPLET>

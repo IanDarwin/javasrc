@@ -1,3 +1,5 @@
+package strings;
+
 /** Simple demonstration of Soundex.  */
 public class SoundexSimple {
 

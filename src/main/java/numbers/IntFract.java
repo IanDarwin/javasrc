@@ -1,3 +1,5 @@
+package numbers;
+
 /**
  * Multiply a decimal fraction, not using floating point
  * @author Ian F. Darwin, http://www.darwinsys.com/

@@ -1,3 +1,5 @@
+package lang;
+
 public class SwitchByte {
 	void voo() {
 		byte x = bar();

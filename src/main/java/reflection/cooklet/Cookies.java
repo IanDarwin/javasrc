@@ -1,3 +1,5 @@
+package introspection;
+
 /**
  * This is the part of the Cookies application that loads
  * the user-defined subclass.
