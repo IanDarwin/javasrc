@@ -12,7 +12,7 @@ public class Constructors {
 	}
 
 	/** Not a Constructor, because of void */
-	public void Constructors() {
+	public void Constructors() {	// EXPECT COMPILE ERROR some compilers
 		System.out.println("In void Constructor()");
 	}
 	void method1() {

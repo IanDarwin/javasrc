@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.util.*;
 
 /** This is a partly-internationalized version of MenuDemo.
@@ -7,11 +8,10 @@ import java.util.*;
  *		java MenuIntl
  *		java -Duser.language=es MenuIntl
  */
-public class MenuIntl extends Frame {
+public class MenuIntl extends JFrame {
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
-
 		// create an MenuIntl object, tell it to show up
 		new MenuIntl().setVisible(true);
 	}
@@ -19,10 +19,12 @@ public class MenuIntl extends Frame {
 	/** Construct the object including its GUI */
 	public MenuIntl() {
 		super("MenuIntlTest");
-		MenuItem mi;		// used in various spots
-		setLayout(new FlowLayout());
-		Label lab;
-		add(lab = new Label());
+		JMenuItem mi;		// used in various spots
+
+		Container cp = getContentPane();
+		cp.setLayout(new FlowLayout());
+		JLabel lab;
+		cp.add(lab = new JLabel());
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -31,8 +33,8 @@ public class MenuIntl extends Frame {
 				System.exit(0);
 			}
 		});
-		MenuBar mb = new MenuBar();
-		setMenuBar(mb);
+		JMenuBar mb = new JMenuBar();
+		setJMenuBar(mb);
 
 		ResourceBundle b = ResourceBundle.getBundle("Menus");
 
@@ -48,7 +50,7 @@ public class MenuIntl extends Frame {
 		}
 		lab.setText(message);
 
-		Menu fm = mkMenu(b, "file");
+		JMenu fm = mkMenu(b, "file");
 		fm.add(mi = mkMenuItem(b, "file", "open"));
 		fm.add(mi = mkMenuItem(b, "file", "new"));
 		fm.add(mi = mkMenuItem(b, "file", "save"));
@@ -62,30 +64,31 @@ public class MenuIntl extends Frame {
 		});
 		mb.add(fm);
 
-		Menu vm = mkMenu(b,  "view");
+		JMenu vm = mkMenu(b,  "view");
 		vm.add(mi = mkMenuItem(b, "view", "tree"));
 		vm.add(mi = mkMenuItem(b, "view", "list"));
 		vm.add(mi = mkMenuItem(b, "view", "longlist"));
 		mb.add(vm);
 
-		Menu hm = mkMenu(b,  "help");
+		JMenu hm = mkMenu(b,  "help");
 		hm.add(mi = mkMenuItem(b, "help", "about"));
-		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
+		// mb.setHelpMenu(hm);	// needed for portability (Motif, etc.).
 
-		//pack();
-		setSize(300,100);
+		// the main window
+		cp.add(new MyCanvas("Menu Demo Window", 200, 150));
+		pack();
 	}
 
-	/** Convenience routine to make a Menu */
-	public Menu mkMenu(ResourceBundle b, String name) {
+	/** Convenience routine to make a JMenu */
+	public JMenu mkMenu(ResourceBundle b, String name) {
 		String menuLabel;
 		try { menuLabel = b.getString(name+".label"); }
 		catch (MissingResourceException e) { menuLabel=name; }
-		return new Menu(menuLabel);
+		return new JMenu(menuLabel);
 	}
 
-	/** Convenience routine to make a MenuItem */
-	public MenuItem mkMenuItem(ResourceBundle b, String menu, String name) {
+	/** Convenience routine to make a JMenuItem */
+	public JMenuItem mkMenuItem(ResourceBundle b, String menu, String name) {
 		String miLabel;
 		try { miLabel = b.getString(menu + "." + name + ".label"); }
 		catch (MissingResourceException e) { miLabel=name; }
@@ -93,10 +96,10 @@ public class MenuIntl extends Frame {
 		try { key = b.getString(menu + "." + name + ".key"); }
 		catch (MissingResourceException e) { key=null; }
 
-		if (key == null)
-			return new MenuItem(miLabel);
-		else
-			return new MenuItem(miLabel, new MenuShortcut(key.charAt(0)));
+		// if (key == null)
+			return new JMenuItem(miLabel);
+		// else
+			// return new JMenuItem(miLabel, new MenuShortcut(key.charAt(0)));
 	}
 
 }

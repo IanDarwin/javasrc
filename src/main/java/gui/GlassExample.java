@@ -10,10 +10,10 @@ public class GlassExample {
 
 	/** Construct a Splash screen with the given image */
 	public static void main(String args[]) {
-		JFrame f = new JFrame("GlassPanel");
+		JFrame f = new JFrame("GlassPane");
 		
 		final JPanel p1 = new JPanel();
-		p1.add(new JLabel("Foo, Bar & Baz"));
+		p1.add(new JLabel("GlassPane Example"));
 		JButton show = new JButton("Show");
 		p1.add(show);
 		p1.add(new JButton("No-op"));
@@ -29,8 +29,11 @@ public class GlassExample {
 		f.setSize(150, 80);
 		f.setVisible(true);
 
-		System.out.println("Button is " + glassButton);
-		System.out.println("GlassPane is " + glass);
+		boolean debug = false;
+		if (debug) {
+			System.out.println("Button is " + glassButton);
+			System.out.println("GlassPane is " + glass);
+		}
 
 		// Add actions to the buttons...
 

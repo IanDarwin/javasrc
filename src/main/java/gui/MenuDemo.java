@@ -27,6 +27,10 @@ public class MenuDemo
 	// Constructor
 	MenuDemo(String s) {
 		super("MenuDemo: " + s);
+
+		Container cp = this;
+		cp.setLayout(new FlowLayout());
+
 		mb = new MenuBar();
 		setMenuBar(mb);		// Frame implements MenuContainer
 
@@ -69,8 +73,7 @@ public class MenuDemo
 		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
 
 		// the main window
-		MyCanvas c = new MyCanvas("Demo Area", 200, 150);
-		add(c);
+		cp.add(new MyCanvas("Menu Demo Window", 200, 150));
 		pack();
 	}
 

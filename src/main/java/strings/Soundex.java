@@ -59,14 +59,13 @@ public class Soundex {
 		'5','0','1','2','6','2','3','0','1','0','2','0','2'
 	};
 
-	//+
 	public static String soundex(String s) {
 		String t = s.toUpperCase();
 		StringBuffer res = new StringBuffer();
 
 		for (int i=0; i<t.length() && i < 4; i++) {
 			char c = t.charAt(i);
-			if (!(c>='A' && c<='Z')) 	// only handles US letters
+			if (!(c>='A' && c<='Z')) 	// only handles ASCII letters
 				continue;
 			if (i==0)
 				res.append(c);
@@ -82,9 +81,8 @@ public class Soundex {
 			res.append('0');
 		return res.toString();
 	}
-	//-
 
-	/** Test program */
+	/** Test program. Knuth's original examples, and mine. */
 	public static void main(String av[]) {
 		test("Euler, Ellery", "E460");
 		test("Gauss, Ghosh", "G200");
@@ -92,7 +90,11 @@ public class Soundex {
 		test("Knuth, Kant", "K530");
 		test("Lloyd, Ladd", "L300");
 		test("Lukasiewicz, Lissajous", "L222");
+		test("Darwin", "D612");
+		test("Darwent", "D612");
+		test("Derwin", "D612");
 	}
+
 	/** test function */
 	public static void test(String name, String value) {
 		String res;

@@ -134,6 +134,6 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		/** Try to instantiate a second ClassLoader */
 		System.out.println("Trying to install another ClassLoader");
 		ClassLoaderDemo1 loader2 = new ClassLoaderDemo1();
-		System.out.println("Installed another ClassLoader!?");
+		System.out.println("Instantiated another ClassLoader...");
 	}
 }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import javax.swing.*;
 
 /**
  * Dummy Canvas class, to represent the real main part of an application *
@@ -6,12 +7,12 @@ import java.awt.*;
  * @author Ian Darwin, http://www.darwinsys.com
  */
 
-class MyCanvas extends Label {
+class MyCanvas extends JLabel {
 	int width, height;
 	int pad;
 
 	MyCanvas(String l, int w, int h) {
-		super(l, Label.CENTER);
+		super(l, JLabel.CENTER);
 		width = w; height = h;
 	}
 	MyCanvas(String l, int w, int h, Color c) {
