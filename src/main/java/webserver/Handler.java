@@ -156,33 +156,33 @@ public class Handler {
 		}
 	}
 
-	void doDirList(String rqName, File dir, boolean justAHead, PrintStream os) {
-		os.println("HTTP/1.0 200 directory found");
-		os.println("Content-type: text/html");
-		os.println("Date: " + new Date().toString());
-		os.println("");
+	void doDirList(String rqName, File dir, boolean justAHead, PrintStream out) {
+		out.println("HTTP/1.0 200 directory found");
+		out.println("Content-type: text/html");
+		out.println("Date: " + new Date().toString());
+		out.println("");
 		if (justAHead)
 			return;
-		os.println("<HTML>");
-		os.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
-		os.println("<H1>Contents of directory " + rqName + "</H1>");
+		out.println("<HTML>");
+		out.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
+		out.println("<H1>Contents of directory " + rqName + "</H1>");
 		String fl[] = dir.list();
 		Arrays.sort(fl);
 		for (int i=0; i<fl.length; i++)
-			os.println("<br/><a href=\"" + rqName + File.separator + fl[i] + "\">" +
+			out.println("<br/><a href=\"" + rqName + File.separator + fl[i] + "\">" +
 			"<img align='center' border='0' src=\"/images/file.jpg\">" +
 			' ' + fl[i] + "</a>");
 	}
 
 	/** Send one file, given a File object. */
-	void doFile(String rqName, File f, boolean headerOnly, PrintStream os) throws IOException {
+	void doFile(String rqName, File f, boolean headerOnly, PrintStream out) throws IOException {
 		System.out.println("Loading file " + rqName);
 		InputStream in = new FileInputStream(f);
 		byte c_content[] = new byte[(int)f.length()];
 		// Single large read, should be fast.
 		int n = in.read(c_content);
 		h.put(rqName, c_content);
-		sendFile(rqName, headerOnly, c_content, os);
+		sendFile(rqName, headerOnly, c_content, out);
 		in.close();
 	}
 
@@ -190,14 +190,14 @@ public class Handler {
 	 * @param justHead - if true, send heading and return.
 	 */
 	void sendFile(String fname, boolean justHead,
-		byte[] content, PrintStream os) throws IOException {
-		os.println("HTTP/1.0 200 Here's your file");
-		os.println("Content-type: " + guessMime(fname));
-		os.println("Content-length: " + content.length);
-		os.println();
+		byte[] content, PrintStream out) throws IOException {
+		out.println("HTTP/1.0 200 Here's your file");
+		out.println("Content-type: " + guessMime(fname));
+		out.println("Content-length: " + content.length);
+		out.println();
 		if (justHead)
 			return;
-		os.write(content);
+		out.write(content);
 	}
 
 	/** The type for unguessable files */
