@@ -72,11 +72,12 @@ public class EnTab {
 
 			// Now either we're at the end of the input file,
 			// or we have a plain character to output.
-			// If the "plain" char happens to be \n, then
+			// If the "plain" char happens to be \r or \n, then
 			// output it, but also set col back to 1.
+			// This code for \r and \n should satisfy UNIX, Mac and MS.
 			if (c != EOF) {
 				putchar(c);
-				col = (c == '\n' ? 1 : col + 1);
+				col = (c == '\n' || c == '\r' ? 1 : col + 1);
 			}
 		} while (c != EOF);
 		System.out.flush();	// output everything for this file.
