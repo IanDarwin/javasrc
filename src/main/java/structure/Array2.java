@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Calendar;
 
 /** Re-allocate an array, bigger...
  * @author Ian Darwin
@@ -8,7 +8,7 @@ public class Array2  {
 	public static void main(String[] argv) {
 		int nDates = 0;
 		final int MAX = 10;
-		Calendar dates[] = new Calendar[MAX];
+		Calendar[] dates = new Calendar[MAX];
 		Calendar c;
 		StructureDemo source = new StructureDemo(21);
 		while ((c=(Calendar)source.getDate()) != null) {
@@ -20,7 +20,7 @@ public class Array2  {
 
 			// better: reallocate, making data structure dynamic
 			if (nDates >= dates.length) {
-				Calendar tmp[] = new Calendar[dates.length + 10];
+				Calendar[] tmp = new Calendar[dates.length + 10];
 				System.arraycopy(dates, 0, tmp, 0, dates.length);
 				dates = tmp;    // copies the array reference
 				// old array will be garbage collected soon...
