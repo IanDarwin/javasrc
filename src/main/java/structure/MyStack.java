@@ -1,7 +1,9 @@
-/** A surprisingly lax Stack implementation. */
+/** A lax Stack implementation.
+ * @version $Id$
+ */
 public class MyStack<T> {
 	private int ix = 0;
-	public final int MAX = 10;
+	public static final int MAX = 10;
 	private T[] data = (T[])new Object[MAX];
 
 	public void push(T obj) {
@@ -13,7 +15,7 @@ public class MyStack<T> {
 	}
 
 	public boolean hasRoom() {
-		return ix < (MAX - 1);
+		return ix < MAX;
 	}
 
 	public T pop() {
