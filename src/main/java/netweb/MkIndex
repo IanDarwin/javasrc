@@ -1,4 +1,6 @@
-#!/bin/sh -x
+#!/bin/sh -f
+
+set -x
 
 export CLASSPATH="$CLASSPATH:`pwd`"
 
