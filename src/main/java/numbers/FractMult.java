@@ -13,5 +13,8 @@ public class FractMult {
 
 		double d4 = (2*5)/3d;	// one step done as integers, almost same answer
 		System.out.println(d4);
+
+		int i5 = 2*5/3;			// fast, approximate integer answer
+		System.out.println(i5);
 	}
 }
