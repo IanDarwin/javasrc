@@ -1,2 +1,0 @@
-cp PDFCouponServlet.htm ~/webs/daroadweb
-sudo cp PDFCouponServlet.class /var/www/servlets
