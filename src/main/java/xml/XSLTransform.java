@@ -1,6 +1,7 @@
-import org.apache.xalan.xslt.*;
-import java.net.*;
-import java.io.*;
+import org.apache.xalan.xslt.XSLTInputSource;
+import org.apache.xalan.xslt.XSLTProcessor;
+import org.apache.xalan.xslt.XSLTProcessorFactory;
+import org.apache.xalan.xslt.XSLTResultTarget;
 
 /**
  * Demonstrate transforming a file using XSLT, with old Apache Xalan API.

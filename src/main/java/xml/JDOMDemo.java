@@ -6,6 +6,8 @@ import org.jdom.*;
 import org.jdom.input.SAXBuilder;
 import org.jdom.input.DOMBuilder;
 import org.jdom.output.*;
+
+import java.io.IOException;
 import java.util.*;
 
 
@@ -36,7 +38,8 @@ public class JDOMDemo {
                 /*
                  * Test getting DOM Element from JDOM Element
                  */
-                org.w3c.dom.Element domElement = domOutputter.output(jdomDocument.getRootElement());
+                org.w3c.dom.Element domElement = 
+                	domOutputter.output(jdomDocument.getRootElement());
 
                 /*
                  * Test getting JDOM Element from DOM Element
@@ -47,13 +50,15 @@ public class JDOMDemo {
             } catch (JDOMException e) { // indicates a well-formedness or other error
                 System.out.println(args[i] + " is not a well formed XML document.");
                 System.out.println(e.getMessage());
-            }      
+            } catch (IOException ex) {
+				System.out.println("Input or Output error:" + ex);
+			}     
         }
     }  
 
     public static void demo(Document doc) {
 
-        List children = doc.getMixedContent();
+        List children = doc.getContent();
         Iterator iterator = children.iterator();
         while (iterator.hasNext()) {
             Object o = iterator.next();
@@ -71,7 +76,7 @@ public class JDOMDemo {
 		System.out.println("Element " + element);
 
         List attributes = element.getAttributes();
-        List children = element.getMixedContent();
+        List children = element.getContent();
         Iterator iterator = children.iterator();
         while (iterator.hasNext()) {
             Object o = iterator.next();

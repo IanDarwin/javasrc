@@ -1,9 +1,17 @@
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import org.apache.xalan.xslt.*;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.xalan.xslt.XSLTInputSource;
+import org.apache.xalan.xslt.XSLTProcessor;
+import org.apache.xalan.xslt.XSLTProcessorFactory;
+import org.apache.xalan.xslt.XSLTResultTarget;
+
 import com.darwinsys.io.FileIO;
 
 /** Output the given XML file in XML if viewable, else in HTML. */
@@ -63,7 +71,7 @@ public class StyleServlet extends HttpServlet {
 		}
 	}
 
-	void output_body(String XML_FILE, PrintWriter out) {
+	void output_body(String XML_FILE, PrintWriter out) throws IOException {
 		FileIO.copyFile(XML_FILE, out, false);
 	}
 }

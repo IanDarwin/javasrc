@@ -1,6 +1,6 @@
-import java.io.*;
-import org.jdom.*;
-import org.jdom.output.*;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.output.XMLOutputter;
 
 /** Make up and write an XML document, using JDOM
  * @author Ian Darwin, ian@darwinsys.com

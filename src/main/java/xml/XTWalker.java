@@ -1,6 +1,5 @@
-import java.io.*;
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
+import org.apache.crimson.tree.TreeWalker;
+import org.w3c.dom.Node;
 
 /** Subclass XML Tree Walker to use the provided TreeWalker
  * STATUS -- INCOMPLETE.
