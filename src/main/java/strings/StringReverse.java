@@ -6,9 +6,8 @@ import java.util.*;
  */
 public class StringReverse {
 	public static void main(String argv[]) {
-		String s = "Hello. I like Java";
-		System.out.println('"' + s + '"' + " backwards by character is " + 
-			'"' + new StringBuffer(s).reverse() + '"');
+		//+
+		String s = "Father Charles Goes Down And Ends Battle";
 
 		// Put it in the stack frontwards
 		Stack stk = new Stack();
@@ -16,11 +15,12 @@ public class StringReverse {
 		while (st.hasMoreTokens()) stk.push(st.nextElement());
 
 		// Print the stack backwards
-		System.out.print('"' + s + '"' + " backwards by word is: \"");
+		System.out.print('"' + s + '"' + " backwards by word is:\n\t\"");
 		while (!stk.empty()) { 
 			System.out.print(stk.pop());
 			System.out.print(' ');
 		}
 		System.out.println('"');
+		//-
 	}
 }

@@ -1,16 +1,21 @@
 import java.io.*;
 
-/**
- * Read a file and print, using BufferedReader and System.out
+/** Indent - prepend leading spaces
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
-public class CatFile {
+
+public class Indent {
+	/** the default number of spaces. */
+	static int nSpaces = 10;
 
     public static void main(String av[]) {
-        CatFile c = new CatFile();
-        if (av.length == 0) {
-            c.process(new BufferedReader(
-					new InputStreamReader(System.in)));
-		else for (int i=0; i<av.length; i++)
+        Indent c = new Indent();
+        switch(av.length) {
+            case 0: c.process(new BufferedReader(
+                        new InputStreamReader(System.in))); break;
+            default:
+		for (int i=0; i<av.length; i++)
 			try {
 				c.process(new BufferedReader(new FileReader(av[i])));
 			} catch (FileNotFoundException e) {
@@ -24,9 +29,12 @@ public class CatFile {
         try {
             String inputLine;
 
+			//+
             while ((inputLine = is.readLine()) != null) {
+				for (int i=0; i<nSpaces; i++) System.out.print(' ');
                 System.out.println(inputLine);
             }
+			//-
             is.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
