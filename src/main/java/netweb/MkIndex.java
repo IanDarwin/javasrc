@@ -87,6 +87,8 @@ public class MkIndex {
 				System.err.println("DELETING " + fn);
 				new File(fn).delete();
 				continue;
+			} else if (fn.equals("CVS")) {		// Ignore CVS subdirectories
+				continue;						// don't mention it
 			} else if (fn.endsWith(".class")) {	// nag about .class files
 				System.err.println("Ignoring " + fn);
 				continue;

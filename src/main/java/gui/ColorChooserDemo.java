@@ -1,5 +1,4 @@
 import javax.swing.*;
-import com.sun.java.swing.preview.*;
 import java.awt.*;
 import java.awt.event.*;
 

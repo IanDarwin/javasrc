@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Demonstrate the Hashtable class
+ * Demonstrate the Hashtable class, and an Enumeration.
  */
 public class HashDemo {
 	public static void main(String argv[]) {
@@ -18,8 +18,11 @@ public class HashDemo {
 		// Two versions of the "retrieval" phase.
 		// Version 1: get one pair's value given its key
 		// (presumably the key would really come from user input):
-		String s = (String)h.get("Learning Tree");
-		System.out.println("Location: " + s);
+		String queryString = "Learning Tree";
+		System.out.println("You asked about " + queryString + ".");
+		String resultString = (String)h.get(queryString);
+		System.out.println("They are located in: " + resultString);
+		System.out.println();
 
 		// Version 2: get ALL the keys and pairs 
 		// (maybe to print a report, or to save to disk)

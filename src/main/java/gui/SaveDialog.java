@@ -19,9 +19,10 @@ public class SaveDialog extends JFrame {
 	/** Construct the object including its GUI */
 	public SaveDialog() {
 		super("SaveDialog");
-		setLayout(new FlowLayout());
-		add(new Label("Press this button to see the Quit dialog: "));
-		add(quitButton = new Button("Quit"));
+		Container cp = getContentPane();
+		cp.setLayout(new FlowLayout());
+		cp.add(new Label("Press this button to see the Quit dialog: "));
+		cp.add(quitButton = new Button("Quit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("In Exit Button's action handler");

@@ -10,8 +10,11 @@ import java.io.*;
  * However, it is still useful on notebooks in case somebody connects
  * to you on the Web port by accident (or otherwise).
  *
+ * Can't claim to be fully standards-conforming, but has been
+ * tested with Netscape Communicator and with the Lynx text browser.
+ *
  * @author	Ian Darwin, ian@darwinsys.com
- * @version	WebServer0, Version 1.0, July 20, 1996.
+ * @version	$Id$
  * @see		webserver/* for more fully-fleshed-out version(s).
  */
 public class WebServer0 {
@@ -80,7 +83,7 @@ public class WebServer0 {
 				"<P>You have reached a desktop machine " +
 				"that does not run a real Web service.\n" +
 				"<P>Please pick another system!\n" +
-				"<P>Or view <A HREF=\"file:///C|/javasrc/WebServer0.java\">" +
+				"<P>Or view <A HREF=\"file:///C:/javasrc/WebServer0.java\">" +
 				"the WebServer0 source (at a Course 47x site only)</A> " +
 				"or <A HREF=\"http://www.darwinsys.com/java/server.html\">" +
 				" at the Course Author's Web Site</A>.\n" +
@@ -90,7 +93,7 @@ public class WebServer0 {
 			os.println("");
 			os.println(reply);
 			os.flush();
-			// s.close();
+			s.close();
 		} catch (IOException e) {
 			System.out.println("IOException " + e);
 		}

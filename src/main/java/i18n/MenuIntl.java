@@ -73,7 +73,7 @@ public class MenuIntl extends Frame {
 		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
 
 		//pack();
-		setSize(200,100);
+		setSize(300,100);
 	}
 
 	/** Convenience routine to make a Menu */
