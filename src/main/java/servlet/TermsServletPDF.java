@@ -8,6 +8,8 @@ import com.pdflib.*;
 
 /** Output the dictionary in fancy(?) PDF.
  * This version uses "PDFlib", from PDFLib.GmbH (www.pdflib.com).
+ * There used to be a freeversion, but it is now commercial software;
+ * this file is therefore UNSUPPORTED until I convert it to use SPDF.
  * @author Ian Darwin
  * @version $Id$
  */
