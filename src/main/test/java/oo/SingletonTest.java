@@ -5,7 +5,7 @@ import junit.framework.*;
  */
 public class SingletonTest extends TestCase {
 
-	Object d1, d2;
+	Singleton d1, d2;
 
 	/** setup method */
 	public void setUp() {
@@ -26,16 +26,7 @@ public class SingletonTest extends TestCase {
 		assertTrue(d1 instanceof Singleton);
 	}
 
-	/** This test will only compile if this test and Singleton remain
-	 * in the same package.
-	 */
-	public void testConstruction() {
-		try {
-			Singleton impossible = Singleton.backdoor();
-			fail("Singleton constructor should raise IllegalStateException");
-		} catch (IllegalStateException ex) {
-			System.out.println("Singleton Uniqueness Protection works OK");
-			System.out.println(ex);
-		}
+	public void testDemoMethod() {
+		assertEquals(d1.demoMethod(), "demo");
 	}
 }

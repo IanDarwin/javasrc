@@ -6,31 +6,21 @@
  */
 public class Singleton {
 
-	private static Singleton singleton;
+	private static Singleton singleton = new Singleton();
 
 	/** A private Constructor prevents any other class from instantiating. */
 	private Singleton() {
-		if (singleton != null) {
-			throw new IllegalStateException(
-				"Attempt to instantiate multiple occurences of Singleton");
-		}
 	}
 
-	/** A static 'factory' method */
+	/** Static 'instance' method */
 	public static Singleton getInstance() {
-		if (singleton == null)
-			singleton = new Singleton();
 		return singleton;
 	}
 
-	/** Simple backdoor for SingletonTest (in this package) to 
-	 * exercise the constructor, just to test its enforcement of
-	 * singelton-ness. MUST NOT BE PUBLIC. Do not do even this in real code.
-	 */
-	static Singleton backdoor() {
-		// we can do this because we're in the Singleton class
-		return new Singleton();		// EXPECT EXCEPTION
-	}
-
 	// other methods protected by singleton-ness would be here...
+
+	/** A simple demo method */
+	public String demoMethod() {
+		return "demo";
+	}
 }
