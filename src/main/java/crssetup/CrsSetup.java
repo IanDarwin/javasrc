@@ -22,7 +22,7 @@ public class CrsSetup extends JFrame {
 	/** The version number */
 	final static String VERSION = "$Revision$";
 	/** KLUDGE - How many network interfaces there are on current setup. */
-	final int MAX_INTERFACES = 10;
+	final int MAX_INTERFACES = 16;
 	/** How many machines to go up to */
 	final int NUSERS = 22;
 	/** The link to us in the Startup folder, to remove it when done */
