@@ -42,7 +42,7 @@ public class BuzzInServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		out.println("<html><head><title>Thanks for playing</title></head>");
-		out.println(("<body bgcolor=\"white\">");
+		out.println("<body bgcolor=\"white\">");
 
 		if (igotit) {
 			out.println("<b>YOU GOT IT</b>");
