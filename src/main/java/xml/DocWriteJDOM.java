@@ -19,11 +19,11 @@ public class DocWriteJDOM {
 	protected Document makeDoc() throws Exception {
 			Document doc = new Document(new Element("Poem"));
 			doc.getRootElement().
-				addChild(new Element("Stanza")).
-				addChild(new Element("Line").
-						setContent("Once, upon a midnight dreary")).
-				addChild(new Element("Line").
-						setContent("While I pondered, weak and weary"));
+				addContent(new Element("Stanza").
+					addContent(new Element("Line").
+							setText("Once, upon a midnight dreary")).
+					addContent(new Element("Line").
+							setText("While I pondered, weak and weary")));
 
 			return doc;
 	}
