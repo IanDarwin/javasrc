@@ -4,7 +4,7 @@ import org.apache.xalan.xslt.XSLTProcessorFactory;
 import org.apache.xalan.xslt.XSLTResultTarget;
 
 /**
- * Demonstrate transforming a file using XSLT, with old Apache Xalan API.
+ * Demonstrate transforming a file using XSLT, with Apache Xalan API.
  * See also: JAXPTransform.
  */
 public class XSLTransform {
@@ -19,10 +19,10 @@ public class XSLTransform {
 			}
 
 			XSLTProcessor myProcessor = XSLTProcessorFactory.getProcessor();
-			XSLTInputSource xmlSource = new XSLTInputSource(args[0]);
-			XSLTInputSource xslStylesheet = new XSLTInputSource(args[1]);
-			XSLTResultTarget xmlOutput = new XSLTResultTarget(args[2]);
-			myProcessor.process(xmlSource, xslStylesheet, xmlOutput);
+
+			myProcessor.process(new XSLTInputSource(args[0]),
+					new XSLTInputSource(args[1]),
+					new XSLTResultTarget(args[2]));
 		}
 		catch (org.xml.sax.SAXException exc) {
 			System.err.println("Found invalid XML during processing:");
