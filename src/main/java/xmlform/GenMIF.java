@@ -1,6 +1,5 @@
 import java.io.*;
 import org.w3c.dom.*;
-import com.sun.xml.tree.*;
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -20,16 +19,16 @@ public class GenMIF implements XmlFormWalker {
 	protected PrintStream msg;
 	/** Specialized PrintStream for use by GetMark. */
 	protected StyledPrintStream smsg;
-	/** A tree walker object for walking the tree */
-	protected TreeWalker tw;
 	/** A GetMark converter for source code. */
 	protected GetMark gm = new GetMark();
 	/** Vector used to print indented lines */
 	protected Vector indents;
+	/** The Document */
+	Document theDocument;
 
 	/** Construct a converter object */
 	GenMIF(Document doc, PrintStream pw) {
-		tw = new TreeWalker(doc);
+		theDocument = doc;
 		msg = new PrintStream(pw);
 		smsg = new StyledPrintStream(msg);
 		// Reassign System.out to go there as well, so when we
@@ -69,18 +68,27 @@ public class GenMIF implements XmlFormWalker {
 
 		msg.println("<MIFFile 3.00 -- MIF produced by XmlForm>");
 
-		for (Node p = tw.getCurrent(); p != null; p = tw.getNext())
-			doNode(p);
+		doRecursive(theDocument);		// start recursing the document
+	}
+
+	protected void doRecursive(Node n) {
+		NodeList kids;
+		if (n == null)
+			return;
+
+		doNode(n);
+
+		kids = n.getChildNodes();
+		int nkids = kids.getLength();
+		for (int i=0; i<nkids; i++) {
+			doRecursive(kids.item(i));
+		}
 	}
 
 	protected void doNode(Node p) {
-		if (p instanceof com.sun.xml.tree.XmlDocument)
-			return;	// nothing to do - structural object.
-		// else if (p instanceof com.sun.xml.tree.Doctype)
-		//	return;	// ditto
-		else if (p instanceof Element)
+		if (p.getNodeType() == Node.ELEMENT_NODE)
 			doElement((Element)p);
-		else if (p instanceof org.w3c.dom.CharacterData)
+		else if (p.getNodeType() == Node.TEXT_NODE)
 			doCData((org.w3c.dom.CharacterData)p);
 		else
 			System.err.println("IGNORING non-Element: " +
