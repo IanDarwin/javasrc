@@ -1,4 +1,4 @@
-<project name="SPDF API and Tester" default="compile" basedir=".">
+<project name="SPDF API and Tester" default="jar" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -7,7 +7,7 @@
 	<property name="build.compiler" value="jikes"/>
 
 	<property name="deploy.dir" value="./deploy"/>
-	<property name="deploy.jar" value="XXX.jar"/>
+	<property name="deploy.jar" value="spdf.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Create the time stamp -->
