@@ -8,8 +8,6 @@ import java.awt.event.*;
  * @version $Id$
  */
 public class GetNumber extends Frame {
-	/** The label to display the type of thing we're editing */
-	protected Label myLabel;
 	/** The textfield to enter */
 	protected TextField textField;
 	/** The value, if a double */
@@ -19,17 +17,17 @@ public class GetNumber extends Frame {
 
 	public GetNumber() {
 		setLayout(new FlowLayout());
-		add(myLabel = new Label("Number:"));
+		add(new Label("Number:"));
 		add(textField = new TextField(10));
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String s = textField.getText();
 				System.out.println("Input is " + s);
-				if (s.indexof('.') >0 ||
-					s.indexOf('d') >0 || s.indexOf('e') >0) {
+				if (s.indexOf('.') >0 ||
+					s.indexOf('d') >0 || s.indexOf('e') >0)
 					try {
-						d = Double.parseDouble(s);
-						System.out.println("It's a double: " + d);
+						dvalue = Double.parseDouble(s);
+						System.out.println("It's a double: " + dvalue);
 						return;
 					} catch (NumberFormatException e) {
 						System.out.println("Invalid a double: " + s);
@@ -37,14 +35,13 @@ public class GetNumber extends Frame {
 					}
 				else // did not contain . or d or e, so try as int.
 					try {
-						i = Integer.parseInt(s);
-						System.out.println("It's an int: " + i);
+						ivalue = Integer.parseInt(s);
+						System.out.println("It's an int: " + ivalue);
 						return;
 					} catch (NumberFormatException e2) {
 						System.out.println("Not a number:" + s);
 					}
 				}
-			}
 		});
 		pack();
 	}
