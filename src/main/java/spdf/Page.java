@@ -38,8 +38,8 @@ public class Page extends PDFDict {
 
 		for (int i=0; i<objects.size(); i++) {
 			PDFObject po = (PDFObject)objects.get(i);
-			if (po instanceof PDFText)
-				((PDFText)po).print(sb);
+			if (po instanceof Text)
+				((Text)po).print(sb);
 			else if (po instanceof MoveTo)
 				((MoveTo)po).print(sb);
 			// else if (po instanceof Font)

@@ -4,11 +4,11 @@ import java.io.*;
 import java.util.*;
 
 /** Represent one Text object in a PDF file. */
-public class PDFText extends PDFObject {
+public class Text extends PDFObject {
 	protected int x, y;
 	protected String text;
 
-	public PDFText(PDF m, int x, int y, String s) {
+	public Text(PDF m, int x, int y, String s) {
 		super(m);
 		this.x = x;
 		this.y = y;
@@ -16,7 +16,7 @@ public class PDFText extends PDFObject {
 	}
 
 	public void print() {
-		throw new IllegalStateException("print() called on a PDFText obj");
+		throw new IllegalStateException("print() called on a Text obj");
 	}
 
 	public void print(StringBuffer sb) {

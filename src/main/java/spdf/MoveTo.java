@@ -11,7 +11,7 @@ public class MoveTo extends PDFObject {
 	}
 
 	public void print() {
-		throw new IllegalStateException("print() called on a PDFText obj");
+		throw new IllegalStateException("print() called on a Text obj");
 	}
 
 	public void print(StringBuffer sb) {
