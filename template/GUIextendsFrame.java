@@ -28,13 +28,14 @@ public class GUIextendsFrame extends Frame {
 				System.exit(0);
 			}
 		});
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// addWindowListener(new WindowAdapter() {
+		// 	public void windowClosing(WindowEvent e) {
+		// 		setVisible(false);
+		// 		dispose();
+		// 		System.exit(0);
+		// 	}
+		// });
 			
 		pack();
 	}

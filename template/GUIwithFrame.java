@@ -24,15 +24,16 @@ public class GUIwithFrame {
 			}
 		});
 
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Set the Frame's windowListener to be a trivial WindowAdapter
 		// subclass that just calls System.exit(). Not ideal but works here.
 		// DO NOT USE THIS in any program that saves user input in memory!
-		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-				return;
-			}
-		});
+		// f.addWindowListener(new WindowAdapter() {
+		// 	public void windowClosing(WindowEvent e) {
+		// 		System.exit(0);
+		// 		return;
+		// 	}
+		// });
 		f.add(new TextArea(24,80));
 		f.pack();
 		f.setVisible(true);
