@@ -36,11 +36,11 @@ public class Grep1 {
 	}
         
 	/** Do the work of scanning one file
-	 * @param	patt	RE	Regular Expression object
-	 * @param	ifile	Reader	Reader object already open
-	 * @param	fileName String	Name of the input file
-	 * @param	printFileName	Boolean - true to print filename
-	 *		before lines that match.
+	 * @param patt RE Regular Expression object
+	 * @param ifile Reader Reader object already open
+	 * @param fileName String Name of the input file
+	 * @param printFileName Boolean - true to print filename
+	 * before lines that match.
 	 */
 	public void process(
 		Reader ifile, String fileName, boolean printFileName) {

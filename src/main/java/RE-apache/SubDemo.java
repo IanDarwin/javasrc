@@ -10,7 +10,7 @@ public class SubDemo {
 	public static void main(String[] argv) throws RESyntaxException {
 
 		// Make an RE pattern to match almost any form (deamon, demon, etc.).
-		String patt = "d[ae]{1,2}mon";
+		String patt = "d[ae]{1,2}mon";	// i.e., 1 or 2 'a' or 'e' any combo
 
 		// A test input.
 		String input = "Unix hath demons and deamons in it!";
