@@ -2,37 +2,37 @@
 public class ClassCast {
 	public static void main(String[] argv) {
 
-		A anA = new A();
-		B aB = new B(1);
-		C aC = new C(2,3);
+		CCA anA = new CCA();
+		CCB aB = new CCB(1);
+		CCC aC = new CCC(2,3);
 
 		System.out.println("A = " + anA);
 		System.out.println("B = " + aB);
 		System.out.println("C = " + aC);
 
-		A aCast = aC;
+		CCA aCast = aC;
 		System.out.println("aCast = " + aCast);
 
-		C anotherC = (C) aCast;
+		CCC anotherC = (CCC) aCast;
 		System.out.println("anotherC = " + anotherC);
 	}
 }
 
-class A {
+class CCA {
 }
 
-class B extends A {
+class CCB extends CCA {
 	int one;
-	B(int i) {
+	CCB(int i) {
 		one = i;
 	}
 	public String toString() {
 		return "In a B object: " + one;
 	}
 }
-class C extends B {
+class CCC extends CCB {
 	int two;
-	C(int i, int j) {
+	CCC(int i, int j) {
 		super(i);	// does "one = i" for us.
 		two = j;
 	}
