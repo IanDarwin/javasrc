@@ -1,3 +1,5 @@
+import com.darwinsys.util.*;
+
 import java.io.*;
 import java.net.*;
 
@@ -23,22 +25,22 @@ public class DaytimeUDP {
 		String host = argv[0];
 		InetAddress servAddr = InetAddress.getByName(host);
 		DatagramSocket sock = new DatagramSocket();
-		sock.connect(servAddr, DAYTIME_PORT);
+		//sock.connect(servAddr, DAYTIME_PORT);
 		byte[] buffer = new byte[PACKET_SIZE];
 
 		// The udp packet we will send and receive
 		DatagramPacket packet = new DatagramPacket(
 			buffer, PACKET_SIZE, servAddr, DAYTIME_PORT);
 
-		/* Send zero-length packet to server */
-		packet.setLength(1);
+		/* Send empty max-length (-1 for null byte) packet to server */
+		packet.setLength(PACKET_SIZE-1);
 		sock.send(packet);
-		System.err.println("Sent it");
+		Debug.println("net", "Sent request");
 
 		// Receive a packet and print it.
 		sock.receive(packet);
-		System.err.println("Got packet of size " + packet.getLength());
-		System.out.println("Date on " + host + " is " + 
+		Debug.println("net", "Got packet of size " + packet.getLength());
+		System.out.print("Date on " + host + " is " + 
 			new String(buffer, 0, packet.getLength()));
 	}
 }
