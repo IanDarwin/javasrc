@@ -9,15 +9,23 @@
 public class Palindrome {
 	public static void main(String argv[]) {
 		for (int i=0; i<argv.length; i++)
-		try {
-			System.out.println(argv[i] + "->" + 
-				findPalindrome(Long.parseLong(argv[i])));
-		} catch (NumberFormatException e) {
-			System.err.println(argv[i] + "->" + " TOO BIG");
-		} 
+			try {
+				long l = Long.parseLong(argv[i]);
+				if (l < 0) {
+					System.err.println(argv[i] + " -> TOO SMALL");
+					continue;
+				}
+				System.out.println(argv[i] + "->" + findPalindrome(l));
+			} catch (NumberFormatException e) {
+				System.err.println(argv[i] + "-> INVALID");
+			} catch (IllegalStateException e) {
+				System.err.println(argv[i] + "-> TOO BIG(went negative)");
+			} 
 	}
 
 	static long findPalindrome(long num) {
+		if (num < 0)
+			throw new IllegalStateException("went negative");
 		if (isPalindrome(num))
 			return num;
 		System.out.println("Trying " + num);
