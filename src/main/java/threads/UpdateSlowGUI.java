@@ -54,9 +54,11 @@ public class UpdateSlowGUI extends JFrame {
 	}
 
 	public UpdateSlowGUI() {
+		super("UpdateSlowGUI");
 		final JButton b;
 		final JLabel status;
 		Container cp = getContentPane();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		cp.add(BorderLayout.CENTER, b = new JButton("Update..."));
 		cp.add(BorderLayout.SOUTH, status = new JLabel("Ready"));
@@ -79,6 +81,7 @@ public class UpdateSlowGUI extends JFrame {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								status.setText("Ready");
+								b.setEnabled(true);
 							}
 						});
 					}
@@ -86,7 +89,7 @@ public class UpdateSlowGUI extends JFrame {
 				t.start();
 			}
 		});
-		pack();
+		setSize(150, 200);
 		setLocation(200, 200);
 	}
 }
