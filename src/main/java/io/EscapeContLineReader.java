@@ -1,11 +1,7 @@
 import java.io.*;
 
 /** Subclass of LineNumberReader to allow continued lines. */
-public class LineReader extends LineNumberReader {
-	/** Line number of first line in current (possibly continued) line */
-	protected int firstLineNumber = 0;
-	/** EOF flag, needed since we use super.readLine() several places */
-	protected boolean hitEOF = false;
+public class BSContLineReader extends ContLineReader {
 
 	/** Read one (possibly continued) line, stripping out the \ that
 	 * mark the end of all but the last.
@@ -30,7 +26,7 @@ public class LineReader extends LineNumberReader {
 				hitEOF = true;
 				return sb.toString();	// Gak! EOF within continued line
 			}
-			sb.append(' ').append(super.readLine());	// and add line.
+			sb.append(' ').append(nextPart);	// and add line.
 		}
 		return sb.toString();
 	}
@@ -42,13 +38,13 @@ public class LineReader extends LineNumberReader {
 		return firstLineNumber;
 	}
 
-	/** Construct a LineReader with the default input-buffer size. */
-	public LineReader(Reader in)  {
+	/** Construct a BSContLineReader with the default input-buffer size. */
+	public BSContLineReader(Reader in)  {
 		super(in);
 	}
 
-	/** Construct a LineReader using the given input-buffer size. */
-	public LineReader(Reader in, int sz)  {
+	/** Construct a BSContLineReader using the given input-buffer size. */
+	public BSContLineReader(Reader in, int sz)  {
 		super(in, sz);
 	}
 }
