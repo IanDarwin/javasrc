@@ -1,10 +1,16 @@
-import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.*;	// IF THIS FAILS TO COMPILE YOU NEED JDK1.4.
-import javax.imageio.stream.*;
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+package servlet.chartservlet;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.imageio.ImageIO;		// IF THIS FAILS TO COMPILE YOU NEED JDK1.4.
+import javax.imageio.stream.ImageOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /** Servlet to draw a Graphical Chart in response to a user request
  */
