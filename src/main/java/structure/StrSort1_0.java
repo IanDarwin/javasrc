@@ -23,7 +23,7 @@ public class StrSort {
 
 	/** Simple main program to test the sorting */
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
+		System.out.println("StrSort Demo in Java");
 		StrSort s = new StrSort();
 		s.dump(a, "Before");
 		s.QuickSort(a, 0, a.length-1);

@@ -44,7 +44,7 @@ public class ClassLoaderDemo0 extends ClassLoader {
 	}
 
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
+		System.out.println("ClassLoaderDemo starting");
 		ClassLoaderDemo0 loader = new ClassLoaderDemo0();
 		Class c = null;
 		Object demo;

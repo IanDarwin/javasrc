@@ -25,6 +25,9 @@ public class ArrayDemo  {
 		for (int i=0; i<10; i++)
 			me[i] = new int[24];
 
+		System.out.println(me.length);
+		System.out.println(me[0].length);
+
 		int me2[][];				// shorter
 		me2 = new int[10][24];
 		

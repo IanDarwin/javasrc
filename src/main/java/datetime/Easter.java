@@ -1,62 +1,33 @@
-import java.util.Date;
+import java.util.*;
 import java.applet.*;
 
-/** easter - compute the day on which Easter falls.
+/** Easter - compute the day on which Easter falls.
+ *
  * In the Christian religion, Easter is possibly the most important holiday
  * of the year, so getting its date <I>just so</I> is worthwhile.
  *
  * @author: Ian F. Darwin, ian@darwinsys.com,
  * based on a detailed algorithm in Knuth, vol 1, pg 155.
- * Written in C, Toronto, 1988. Java version 1996.
  *
- * @Version: $Version$
+ * @Version: $Id$
+ * Written in C, Toronto, 1988. Java version 1996.
  *
  * @Note: It's not proven correct, although it gets the right answer for 
  * years around the present.
  */
-public class Easter extends Applet {
+public class Easter {
 	protected int year;
+	protected GregorianCalendar gc;
 
-	/** Main program, when used as a standalone application */
-	public static void main(String argv[]) {
-		int year = -44;
-
-		if (argv.length == 0) {
-			// Note use of "toss off" Date object
-			year = 1900 + new Date().getYear();
-		} else for (int i=0; i<argv.length; i++) {
-			try {
-				year = Integer.parseInt(argv[i]);
-				System.out.println(
-					new Easter(year).FindHolyDay().toString());
-			} catch(NumberFormatException e) {
-				System.err.println("Year " + argv[0] + " invalid (" + e.getMessage() + ").");
-				System.exit(1);
-			} catch (EasterDateException e) {
-				System.err.println("Error: Year " + year + 
-					" invalid (" + e.getMessage() + ").");
-			}
-		}
-	}
-
-	/** Construct an EasterDate object for the given year Anno Dominei.
-	 @exception EasterDateException If the year is before 1582 (since the
-			algorithm only works on the Gregorian calendar).
-			Also if the year is before 1970, since we currently use a
-			Java.util.Date object to represent the day; should change
-			this to a Calendar-based object.
+	/* Compute the day of the year that Easter falls on.
+	 * Step names E1 E2 etc., are direct references to Knuth, Vol 1, p 155.
+	 * @exception IllegalArgumentexception If the year is before 1582 (since the
+	 * 		algorithm only works on the Gregorian calendar).
 	 */
-	Easter(int year) throws EasterDateException {
+	protected void findHolyDay() {
 		if (year <= 1582) {
-			throw new EasterDateException("Algorithm invalid before 1582");
+			throw new IllegalArgumentException("Algorithm invalid before April 1583");
 		}
-		if (year <= 1970) {
-			throw new EasterDateException("Java Date class invalid before 1970");
-		}
-		this.year = year;
-	}
-
-	public Date FindHolyDay() {
 		int golden, century, x, z, d, epact, n;
 
 		golden = (year % 19) + 1;	/* E1: metonic cycle */
@@ -71,18 +42,43 @@ public class Easter extends Applet {
 		n += 30 * (n < 21?1:0);		/* E6: */
 		n += 7 - ((d+n)%7);
 		if (n>31)			/* E7: */
-			return new Date(year-1900, 4-1, n-31);	/* April */
+			gc = new GregorianCalendar(year, 4-1, n-31);	/* April */
 		else
-			return new Date(year-1900, 3-1, n);	/* March */
+			gc =  new GregorianCalendar(year, 3-1, n);	/* March */
 	}
-}
 
-/** Exceptions in date input to Easter class. */
-class EasterDateException extends Exception {
-	EasterDateException() {
-		super();
+	public String toString() {
+		String months[] = { "Jan", "Feb", "Mar", "Apr", "May" };
+		StringBuffer sb = new StringBuffer("Easter: ");
+		sb.append(gc.get(GregorianCalendar.DAY_OF_MONTH));
+ 		sb.append(' ');
+		sb.append(months[gc.get(GregorianCalendar.MONTH)]);
+ 		sb.append(',');
+ 		sb.append(' ');
+ 		sb.append(gc.get(Calendar.YEAR));
+ 		sb.append('.');
+		return sb.toString();
 	}
-	EasterDateException(String message) {
-		super(message);
+
+	public Easter(int y) {
+		year = y;
+		findHolyDay();
+	}
+
+	/** Main program, when used as a standalone application */
+	public static void main(String argv[]) {
+
+		if (argv.length == 0) {
+			int thisYear = new GregorianCalendar().get(Calendar.YEAR);
+			System.out.println( new Easter(thisYear));
+		} else for (int i=0; i<argv.length; i++) {
+			int year = 0;
+			try {
+				year = Integer.parseInt(argv[i]);
+				System.out.println( new Easter(year));
+			} catch (IllegalArgumentException e) {
+				System.err.println("Year " + argv[i] + " invalid (" + e.getMessage() + ").");
+			}
+		}
 	}
 }

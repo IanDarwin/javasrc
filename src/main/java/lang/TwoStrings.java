@@ -3,8 +3,8 @@
  */
 public class TwoStrings {
 	public static void main(String argv[]) {
-		String one = "Hello, World of Java";
-		String two = new String("Hello, World of Java");
+		String one = "A String";
+		String two = new String(one);
 		if (one == two) {
 			System.out.println("Strings are shared: " +
 				one.hashCode() + ", " + two.hashCode());

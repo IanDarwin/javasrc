@@ -3,7 +3,6 @@
  */
 public class NoLocalStatics {
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
 		NoLocalStatics t = new NoLocalStatics();
 		t.process();
 	}

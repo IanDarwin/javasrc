@@ -6,7 +6,7 @@
  */
 public class Protected {
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
+		System.out.println("Protected values demo");
 		Protected p = new Protected();
 		p.process();
 	}
