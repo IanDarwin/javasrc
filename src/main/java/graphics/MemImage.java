@@ -11,7 +11,7 @@ public class MemImage extends Component {
 	public static void main(String av[]) {
 		Frame f = new Frame("MemImage.java");
 		f.add(new MemImage());
-		f.setIconImage(new MemImage(16,16).img);
+		f.setIconImage(new MemImage(16,16).getImage());
 		f.pack();
 		f.setVisible(true);
 	}
@@ -44,6 +44,12 @@ public class MemImage extends Component {
         img = createImage(new MemoryImageSource(w, h, pix, 0, w));
 		setSize(getPreferredSize());
 	}
+
+	/** Getter for the Image */
+	public Image getImage() {
+		return img;
+	}
+
 	public Dimension getPreferredSize() {
 		return new Dimension(w, h);
 	}
