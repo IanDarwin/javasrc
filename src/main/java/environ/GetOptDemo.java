@@ -29,13 +29,12 @@ public class GetOptDemo {
 		}
 		System.out.print("Options: ");
 		System.out.print("Numeric: " + numeric_option + ' ');
-		System.out.print("Output: " + outFileName + ' ');
-		System.out.println("; Inputs: ");
-		if (go.getOptInd() == args.length) {
+		System.out.print("Output: " + outFileName + "; ");
+		System.out.println("Inputs: ");
+		if (go.getOptInd()-1 == args.length) {
 			doFile("(standard input)");
-		} else for (int i=go.getOptInd(); i<args.length; i++)
+		} else for (int i=go.getOptInd()-1; i<args.length; i++)
 			doFile(args[i]);
-		System.out.println();
 	}
 
 	/** Stub for providing help on usage
@@ -48,6 +47,6 @@ public class GetOptDemo {
 
 	/** Stub to demonstrate processine one file. */
 	static void doFile(String fileName) {
-		System.out.print(fileName + ' ');
+		System.out.println(fileName + ' ');
 	}
 }
