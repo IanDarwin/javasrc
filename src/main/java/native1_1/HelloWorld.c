@@ -13,14 +13,17 @@ void Java_HelloWorld_displayHelloWorld(JNIEnv *env, jobject this)
 		fprintf(stderr, "Input pointer is null!\n");
 		return;
 	}
-	if ((fldid = (*env)->GetFieldID(env, this, "myNumber", "I")) == NULL) {
+	if ((fldid = (*env)->GetFieldID(env, (*env)->GetObjectClass(env, this), "myNumber", "I")) == NULL) {
 		fprintf(stderr, "GetFieldID failed");
 		return;
 	}
+
 	n = (*env)->GetIntField(env, this, fldid);	/* retrieve myNumber */
-	printf("Input value is %d\n", n);
+	printf("\"myNumber\" value is %d\n", n);
+
 	(*env)->SetIntField(env, this, fldid, ++n);	/* increment it! */
 	nn = (*env)->GetIntField(env, this, fldid);
-	printf("Input value now %d\n", nn); 		/* make sure */
+
+	printf("\"myNumber\" value now %d\n", nn); 		/* make sure */
 	return;
 }
