@@ -2,15 +2,19 @@
 
 <!-- $Id$ -->
 
-<project name="AntTasks" default="main" basedir=".">
+<project name="AntTasks" default="build" basedir=".">
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
+	<property name="build" value="build"/>
 	<property name="build.compiler" value="modern"/>
 
-	<target name="build">
+	<target name="init">
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			deprecation="true"
+			debug="true" deprecation="true"
 		/>
 	</target>
 
@@ -18,13 +22,24 @@
 		<taskdef name="ghost" 
 			classname="com.darwinsys.ant.GhostTask"
 			classpath="${build}"/>
+		<taskdef name="http" 
+			classname="com.darwinsys.ant.HttpTask"
+			classpath="${build}"/>
 	</target>
 
-	<target name="main" depends="declare">
+	<target name="jar" depends="build">
+		<jar jarfile="darwinsys-ant.jar" basedir="${build}" update="no"/>
+	</target>
+
+	<target name="ghostrun" depends="declare">
 		<ghost 
 			ghosthome="."
 			srcDir="D:\" 
 			destFile="foo-test.gho"/>
+	</target>
+
+	<target name="testhttp" depends="declare">
+		<http url="http://localhost/"/>
 	</target>
 
 </project>
