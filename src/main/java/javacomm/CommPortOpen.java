@@ -63,23 +63,28 @@ public class CommPortOpen {
 		// This form of openPort takes an Application Name and a timeout.
 		// 
 		System.out.println("Trying to open " + thePortID.getName() + "...");
-		thePort = thePortID.open("DarwinSys DataComm",
-			TIMEOUTSECONDS * 1000);
 
-		if (thePort instanceof SerialPort) {
+		switch (thePortID.getPortType()) {
+		case CommPortIdentifier.PORT_SERIAL:
+			thePort = thePortID.open("DarwinSys DataComm",
+				TIMEOUTSECONDS * 1000);
 			SerialPort myPort = (SerialPort) thePort;
 
 			// set up the serial port
 			myPort.setSerialPortParams(BAUD, SerialPort.DATABITS_8,
 				SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-		} else if (thePort instanceof ParallelPort) {
-			ParallelPort myPort = (ParallelPort)thePort;
+			break;
+
+		case CommPortIdentifier.PORT_PARALLEL:
+			thePort = thePortID.open("DarwinSys Printing",
+				TIMEOUTSECONDS * 1000);
+			ParallelPort pPort = (ParallelPort)thePort;
 
 			// Tell API to pick "best available mode" - can fail!
 			// myPort.setMode(ParallelPort.LPT_MODE_ANY);
 
 			// Print what the mode is
-			int mode = myPort.getMode();
+			int mode = pPort.getMode();
 			switch (mode) {
 				case ParallelPort.LPT_MODE_ECP:
 					System.out.println("Mode is: ECP");
@@ -103,7 +108,10 @@ public class CommPortOpen {
 					throw new IllegalStateException("Parallel mode " + 
 						mode + " invalid.");
 			}
-		} else throw new IllegalStateException("Unknown port type " + thePort);
+			break;
+		default:	// Neither parallel nor serial??
+			throw new IllegalStateException("Unknown port type " + thePortID);
+		}
 
 		// Get the input and output streams
 		// Printers can be write-only
