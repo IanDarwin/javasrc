@@ -20,7 +20,7 @@ public class StrTokDemo4b {
 		while (st.hasMoreTokens()) {
 			String s = st.nextToken();
 			if (s.equals(DELIM)) {
-				// Just ignore the "tokens" that consit of DELIM
+				// Just ignore the "tokens" that consist of DELIM
 				// But do insert something for consecutive delimiters
 				if (results.size() < ++i)
 					results.add(null);

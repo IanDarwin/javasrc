@@ -11,10 +11,10 @@ public class StrTokDemo4 {
 
 		// Unless you ask StringTokenizer to give you the tokens,
 		// it silently discards multiple null tokens.
-		StringTokenizer st = new StringTokenizer(line, DELIM  true);
+		StringTokenizer st = new StringTokenizer(line, DELIM, true);
 
 		int i = 0;
-		// stuff each token into the current user
+		// stuff each token into the current slot in the array.
 		while (st.hasMoreTokens()) {
 			String s = st.nextToken();
 			if (s.equals(DELIM)) {
