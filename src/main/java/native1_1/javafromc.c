@@ -12,11 +12,13 @@
 int
 main(int argc, char *argv[])
 {
+	int i;
 	JavaVM *jvm;		/* The Java VM we will use */
 	JNIEnv *myEnv;		/* pointer to native environment */
 	JDK1_1InitArgs jvmArgs; /* JNI initialization arguments */
-	jclass myClass;		/* pointer to the class type */
+	jclass myClass, stringClass;	/* pointer to the class type */
 	jmethodID myMethod;	/* pointer to the main() method */
+	jarray args;		/* becomes an array of Strings */
 	jthrowable tossed;	/* Exception object, if we get one. */
 	
 	JNI_GetDefaultJavaVMInitArgs(&jvmArgs);	/* set up the argument pointer */
@@ -42,10 +44,30 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
+	/* Since we're calling main, must pass along the command line arguments,
+	 * in the form of Java String array?
+	 */
+	if ((stringClass = (*myEnv)->FindClass(myEnv, "java/lang/String")) == NULL){
+		fprintf(stderr, "get of String class failed!!\n");
+		exit(1);
+	}
+	/* make an array of Strings, subtracting 1 for progname & 1 for the
+	 * java class name */
+	if ((args = (*myEnv)->NewObjectArray(myEnv, argc-2, stringClass, NULL))==NULL) {
+		fprintf(stderr, "Create array failed!\n");
+		exit(1);
+	}
+	/* fill the array */
+	for (i=2; i<argc; i++)
+		(*myEnv)->SetObjectArrayElement(myEnv,
+			args, i-2, (*myEnv)->NewStringUTF(myEnv, argv[i]));
+
 	/* finally, call the method. */
-	(*myEnv)->CallStaticVoidMethod(myEnv, myClass, myMethod, 100);
+	(*myEnv)->CallStaticVoidMethodA(myEnv, myClass, myMethod, &args);
+
+	/* And check for exceptions */
 	if ((tossed = (*myEnv)->ExceptionOccurred(myEnv)) != NULL) {
-		fprintf(stderr, "%s: Error Exception detected:\n", argv[0]);
+		fprintf(stderr, "%s: Exception detected:\n", argv[0]);
 		(*myEnv)->ExceptionDescribe(myEnv);	/* writes on stderr */
 		(*myEnv)->ExceptionClear(myEnv);	/* OK, we're done with it. */
 	}
