@@ -1,23 +1,30 @@
 import java.applet.*;
 import java.awt.*;
 import java.util.Date;
+import java.text.DateFormat;
 
+/** An Applet to display the current time */
 public class ClockApplet extends Applet implements Runnable {
-	Thread timerThread;
+	/** A Thread to run the timer */
+	protected Thread timerThread;
+	/** The date object */
+	Date date = new Date();
+	/** The date format */
+	protected DateFormat format = DateFormat.getTimeInstance();
 
 	/* Applet Lifestyle Methods */
 	public void start() {
 		timerThread = new Thread(this, "Clock");
 		timerThread.start();
 	}
+
 	public void stop() {
 		if (timerThread == null)
 			return;
-		timerThread.stop();
 		timerThread = null;
 	}
  
-	/* Runnable interface method */
+	/** Show the time, and wait a while. */
 	public void run() {
 		while (timerThread != null) {
 			repaint();	// request a redraw
@@ -27,9 +34,9 @@ public class ClockApplet extends Applet implements Runnable {
 		}
 	}
 
-	/* AWT method */ 
+	/** Display the time. */
 	public void paint(Graphics g) {
-		Date d = new Date();
-		g.drawString(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds(), 1, 10);
+		date.setTime(System.currentTimeMillis());
+		g.drawString(format.format(date), 2, 10);
 	}
 }
