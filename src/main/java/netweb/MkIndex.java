@@ -55,12 +55,16 @@ public class MkIndex {
 		println("</HEAD>");
 		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
 		println("<H1>Ian Darwins Java Programming Online Source Examples</H1>");
-		println("<P>The following files are online.");
-		println("Some of these files are still experimental!</P>");
-		println("<P>Most of these files are Java source code.");
-		println("If you load an HTML file from here, the applets will not run!");
-		println("The HTML files must be saved to disk and the applets compiled,");
-		println("before you can run them!");
+		if (new File("about.html").exists()) {
+			com.darwinsys.com.FileIO.copyFile("about.html", out);
+		} else {
+			println("<P>The following files are online.");
+			println("Some of these files are still experimental!</P>");
+			println("<P>Most of these files are Java source code.");
+			println("If you load an HTML file from here, the applets will not run!");
+			println("The HTML files must be saved to disk and the applets compiled,");
+			println("before you can run them!");
+		}
 		println("<P>All files are Copyright &copy;: All rights reserved.");
 		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use.");
 		println("May be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met.");
@@ -118,14 +122,23 @@ public class MkIndex {
 		String fn;
 		for (int i=0; i<vec.size(); i++) {
 			fn = (String)vec.elementAt(i).toString();
-			// println(fn);
+			// Need to make a link into this directory.
+			// IF there is a descr.txt file, use it for the text
+			// of the link, otherwise, use the directory name.
+			// But, if there is an index.html or index.html file,
+			// make the link to that file, else to the directory itself.
 			if (fn.endsWith("/")) {	// directory
+				String descr = null;
+				if (new File(fn + "comment.txt").exists()) {
+					descr = com.darwinsys.util.FileIO.readLine(fn + 
+						"comment.txt");
+				};
 				if (new File(fn + "index.html").exists())
-					mkDirLink(fn+"index.html", fn);
+					mkDirLink(fn+"index.html", descr!=null?descr:fn);
 				else if (new File(fn + "index.htm").exists())
-						mkDirLink(fn+"index.htm", fn);
+						mkDirLink(fn+"index.htm", descr!=null?descr:fn);
 				else
-					mkLink(fn, fn + " -- Directory");
+					mkLink(fn, descr!=null?descr:fn + " -- Directory");
 			} else // file
 				mkLink(fn, fn);
 		}
