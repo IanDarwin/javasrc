@@ -1,7 +1,7 @@
 import java.text.*;
 import java.util.*;
 
-/** Show Learning Tree Java Students some date uses */
+/** Show some date uses */
 public class DateDemo {
     public static void main(String[] args) {
 		Date dNow = new Date();
@@ -15,8 +15,7 @@ public class DateDemo {
 		System.out.println("This is year " + year + " Anno Domini");
 
 		/* Fancier "DateFormat" using "simple"(?) format.
-		 * See the javadoc for java.text.SimpleDateFormat, but
-		 * know that (at least in JDK1.1.1) the example is wrong.
+		 * See the javadoc for java.text.SimpleDateFormat.
 		 */
 		SimpleDateFormat formatter
 			= new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
