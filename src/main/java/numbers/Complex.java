@@ -10,11 +10,13 @@ public class Complex {
 	private double r;
 	/** The imaginary part */
 	private double i;
+
 	/** Construct a Complex */
 	Complex(double rr, double ii) {
 		r = rr;
 		i = ii;
 	}
+
 	/** Display the current Complex as a String, for use in
 	 * println() and elsewhere.
 	 */
@@ -24,6 +26,7 @@ public class Complex {
 			sb.append('+');	// else append(i) appends - sign
 		return sb.append(i).append('i').toString();
 	}
+
 	/** Return just the Real part */
 	public double getReal() {
 		return r;
@@ -37,30 +40,48 @@ public class Complex {
 		return Math.sqrt(r*r + i*i);
 	}
 
-	/** Add another Complex to this one */
+	/** Add another Complex to this one
+	 */
 	public Complex add(Complex other) {
 		return add(this, other);
 	}
-	/** Add two Complexs */
+
+	/** Add two Complexes
+	 */
 	public static Complex add(Complex c1, Complex c2) {
 		return new Complex(c1.r+c2.r, c1.i+c2.i);
 	}
 
-	/** Subtract another Complex from this one */
+	/** Subtract another Complex from this one
+	 */
 	public Complex subtract(Complex other) {
 		return subtract(this, other);
 	}
-	/** Subtract two Complexs */
+
+	/** Subtract two Complexes
+	 */
 	public static Complex subtract(Complex c1, Complex c2) {
 		return new Complex(c1.r-c2.r, c1.i-c2.i);
 	}
 
-	/** Multiply this Complex times another one */
+	/** Multiply this Complex times another one
+	 */
 	public Complex multiply(Complex other) {
 		return multiply(this, other);
 	}
-	/** Multiply two Complexs */
+
+	/** Multiply two Complexes
+	 */
 	public static Complex multiply(Complex c1, Complex c2) {
 		return new Complex(c1.r*c2.r - c1.i*c2.i, c1.r*c2.i + c1.i*c2.r);
+	}
+
+	/** Divide c1 by c2.
+	 * @author Gisbert Selke.
+	 */
+	public static Complex divide(Complex c1, Complex c2) {
+		return new Complex(
+			(c1.r*c2.r+c1.i*c2.i)/(c2.r*c2.r+c2.i*c2.i),
+			(c1.i*c2.r-c1.r*c2.i)/(c2.r*c2.r+c2.i*c2.i));
 	}
 }
