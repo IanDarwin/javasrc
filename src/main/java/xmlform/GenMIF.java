@@ -151,7 +151,9 @@ public class GenMIF implements XmlFormWalker {
 		endTag();
 	}
 
-	/** Synthesize a paragraph when we know its content. */
+	/** Synthesize a paragraph when we know its content.
+	 * content can be null for things like Label paragraphs.
+	 */
 	protected void makeUpParagraph(String tag, String contents) {
 		indent(); pgfTag(tag);
 		if (contents != null)
@@ -159,6 +161,10 @@ public class GenMIF implements XmlFormWalker {
 		endTag();
 	}
 
+	/** EXAMPLEs are longer than CODEs, and are not limited by //+ //-
+	 * marks, which are therefore not required.
+	 * XXX TODO wrap a TABLE around the output.
+	 */
 	protected void doExample(Element p) {
 		NamedNodeMap attrs = p.getAttributes();
 		Node href;
@@ -166,19 +172,20 @@ public class GenMIF implements XmlFormWalker {
 			throw new IllegalArgumentException(
 				"node " + p + "lacks required HREF Attribute");
 		String fname = href.getNodeValue();
-		boolean doMarks = true;
-		Node marked = attrs.getNamedItem("NOMARK");
-		if (marked != null)
-			doMarks = true;
+		System.err.println("Making an EXAMPLE out of " + fname);
 	
 		makeUpParagraph("ExampleLabel", null);
 		makeUpParagraph("ExampleTitle", fname);
 
-		// Each line of output from gm.process() is a separate Para!
 		try {
 			fname = System.getProperty("codedir", ".") + '/' + fname;	
 			LineNumberReader is = new LineNumberReader(new FileReader(fname));
-			gm.process(fname, is, smsg);
+			String line;
+			while ((line = is.readLine()) != null) {
+				indent(); pgfTag("Code");
+				pgfString(line);
+				endTag();	// end of Para
+			}
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
@@ -239,10 +246,23 @@ public class GenMIF implements XmlFormWalker {
 	}
 
 	protected void doCode(Element p) {
-		indent();
-		pgfTag("Code");
-		doChildren(p);
-		endTag();
+		NamedNodeMap attrs = p.getAttributes();
+		Node href;
+		if ((href = attrs.getNamedItem("HREF")) == null)
+			throw new IllegalArgumentException(
+				"node " + p + "lacks required HREF Attribute");
+		String fname = href.getNodeValue();
+		System.err.println("En-CODE-ing " + fname);
+
+		makeUpParagraph("Code", "// " + fname);
+	
+		try {
+			fname = System.getProperty("codedir", ".") + '/' + fname;	
+			LineNumberReader is = new LineNumberReader(new FileReader(fname));
+			gm.process(fname, is, smsg);
+		} catch(IOException e) {
+			throw new IllegalArgumentException(e.toString());
+		}
 	}
 
 	protected void doChildren(Element p) {
@@ -314,7 +334,7 @@ public class GenMIF implements XmlFormWalker {
 			super(p, true);
 		}
 		public void println(String s) {
-			indent(); pgfTag("CellBody");
+			indent(); pgfTag("Code");
 			pgfString(s);
 			endTag();	// end of Para
 		}

@@ -1,11 +1,13 @@
-TODO for XmlForm
-$Id$
+MIF: "C:\book\javacook\xml.fm" (2942): Invalid opcode: ParaLine.
+--- Skipping these chars:< String "flyweight" or ultra-light. > >
+---------- Done skipping.
+MIF: "C:\book\javacook\xml.fm" (2945): Invalid opcode: ParaLine.
+--- Skipping these chars:< String That is, we only create one of each
+of > > ---------- Done skipping.
 
-Handle <LITERAL> <BT> and other Style Tags.
+... etc: lines being outputted AFTER the ending > of their Para.
 
-Find out why occasionally CDATAs appear outside of Paras,
-sometimes even broken in mid-word!!?
+Use CellCode for examples.
 
-Make Examples come out right.
-
-Maybe handle tables?
+XML attributes: LABEL={yes,no}
+				MARK={yes,no}
