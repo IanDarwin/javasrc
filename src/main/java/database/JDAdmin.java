@@ -132,13 +132,13 @@ public class JDAdmin extends JFrame {
 		while (rs.next()) {
 			String nick = rs.getString(1);
 			// System.out.println("Adding " + nick);
-			User u = new User(nick, rs.getString(Schema.PASSWORD),
-				rs.getString(Schema.FULLNAME),
-				rs.getString(Schema.EMAIL), 
-				rs.getString(Schema.CITY),
-				rs.getString(Schema.PROVINCE),
-				rs.getString(Schema.COUNTRY),
-				rs.getInt(Schema.PRIVS));
+			User u = new User(nick, rs.getString(UserDB.PASSWORD),
+				rs.getString(UserDB.FULLNAME),
+				rs.getString(UserDB.EMAIL), 
+				rs.getString(UserDB.CITY),
+				rs.getString(UserDB.PROVINCE),
+				rs.getString(UserDB.COUNTRY),
+				rs.getInt(UserDB.PRIVS));
 			userList.add(u);
 		}
 		rs.close();
@@ -194,14 +194,14 @@ public class JDAdmin extends JFrame {
 		/** Get the name of a given column */
 		public String getColumnName(int i) {
 			switch(i) {
-			case Schema.NAME-1:		return "Nickname";
-			case Schema.PASSWORD-1:	return "Password";
-			case Schema.FULLNAME-1:	return "Full Name";
-			case Schema.EMAIL-1:	return "Email";
-			case Schema.CITY-1:		return "City";
-			case Schema.PROVINCE-1:	return "Province";
-			case Schema.COUNTRY-1:	return "Country";
-			case Schema.PRIVS-1:	return "Privs";
+			case UserDB.NAME-1:		return "Nickname";
+			case UserDB.PASSWORD-1:	return "Password";
+			case UserDB.FULLNAME-1:	return "Full Name";
+			case UserDB.EMAIL-1:	return "Email";
+			case UserDB.CITY-1:		return "City";
+			case UserDB.PROVINCE-1:	return "Province";
+			case UserDB.COUNTRY-1:	return "Country";
+			case UserDB.PRIVS-1:	return "Privs";
 			default: return "??";
 			}
 		}
@@ -212,14 +212,14 @@ public class JDAdmin extends JFrame {
 		public Object getValueAt(int row, int col)  {
 			User u = (User) userList.get(row);
 			switch (col) {
-			case Schema.NAME-1: 	return u.getName();
-			case Schema.PASSWORD-1: return u.getPassword();
-			case Schema.FULLNAME-1: return u.getFullName();
-			case Schema.EMAIL-1: 	return u.getEmail();
-			case Schema.CITY-1: 	return u.getCity();
-			case Schema.PROVINCE-1:	return u.getProv();
-			case Schema.COUNTRY-1:	return u.getCountry();
-			case Schema.PRIVS-1:	return new Integer(u.getPrivs());
+			case UserDB.NAME-1: 	return u.getName();
+			case UserDB.PASSWORD-1: return u.getPassword();
+			case UserDB.FULLNAME-1: return u.getFullName();
+			case UserDB.EMAIL-1: 	return u.getEmail();
+			case UserDB.CITY-1: 	return u.getCity();
+			case UserDB.PROVINCE-1:	return u.getProv();
+			case UserDB.COUNTRY-1:	return u.getCountry();
+			case UserDB.PRIVS-1:	return new Integer(u.getPrivs());
 			default: return null;
 			}
 		}
@@ -229,7 +229,7 @@ public class JDAdmin extends JFrame {
 			User u = (User) userList.get(row);
 			switch (col) {
 			// DB Schemas start at one, Java columns at zero.
-			case Schema.PASSWORD-1:
+			case UserDB.PASSWORD-1:
 				String newPass = (String)val;		// Get new value
 				try {
 					setPasswordStatement.setString(1, newPass);		// ready,
@@ -255,7 +255,7 @@ public class JDAdmin extends JFrame {
 
 		/** Only password cells are editable. */
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
-			return columnIndex == Schema.PASSWORD-1;
+			return columnIndex == UserDB.PASSWORD-1;
 		}
 	}
 }
