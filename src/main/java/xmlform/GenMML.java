@@ -25,7 +25,7 @@ public class ConvertToMML implements XmlFormWalker {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
 		smsg = new StyledWriter(msg);
-	}
+
 	/** Convert all the nodes in the current document. */
 	public void convertAll() {
 
@@ -57,6 +57,8 @@ public class ConvertToMML implements XmlFormWalker {
 			doChapter(p);
 		} else if (tag.equals("sc")) {
 			doSection(p);
+		} else if (tag.equals("ss")) {
+			doSubSection(p);
 		} else if (tag.equals("p")) {
 			doParagraph(p);
 		} else if (tag.equals("pr")) {
@@ -67,6 +69,10 @@ public class ConvertToMML implements XmlFormWalker {
 			msg.println("<HeadB>Discussion");
 		} else if (tag.equals("code")) {
 			doCode(p);
+		} else if (tag.equals("b")) {
+			doBold(p);
+		} else if (tag.equals("i")) {
+			doItalic(p);
 		} else if (tag.equals("example")) {
 			doExample(p);
 		} else
@@ -114,8 +120,17 @@ public class ConvertToMML implements XmlFormWalker {
 		msg.println(s);
 	}
 
-	protected void doCode(Element p) {
-		msg.print("<Code>");
+	protected void doBold(Element p) {
+		msg.print("<Bold>");
+		doNodes(p);
+		msg.print("<Plain>");
+	}
+	protected void doItalic(Element p) {
+		msg.print("<Italic>");
+		doNodes(p);
+		msg.print("<Plain>");
+	}
+	protected void doNodes(Element p) {
 		NodeList nodes = p.getChildNodes();
 		for (int i=0; i<nodes.getLength(); i++) {
 			Node n = nodes.item(i);
@@ -124,7 +139,6 @@ public class ConvertToMML implements XmlFormWalker {
 				p.removeChild(n);
 			}
 		}
-		msg.print("<Plain>");
 	}
 	/** Simply subclass PrintWriter so we don't have to modify
 	 * GetMark to change the format of lines that it writes, or
