@@ -21,7 +21,7 @@ public abstract class ContLineReader extends LineNumberReader {
 	}
 
 	/** Get the continuation mode */
-	public boolean isContinuation() {
+	public boolean getContinuationMode() {
 		return doContinue;
 	}
 
