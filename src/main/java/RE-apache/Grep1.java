@@ -26,12 +26,7 @@ public class Grep1 {
 			pg.process(new InputStreamReader(System.in), "(standard input", false);
 		else
 			for (int i=1; i<argv.length; i++) {
-				try {
-					pg.process(new FileReader(argv[i]), 
-						argv[i], true);
-				} catch(Exception e) {
-					System.err.println(e);
-				}
+				pg.process(new FileReader(argv[i]), argv[i], true);
 			}
 	}
 

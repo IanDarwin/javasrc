@@ -1,4 +1,5 @@
 import org.apache.regexp.*;
+import com.darwinsys.util.*;
 import java.io.*;
 import java.util.*;
 
@@ -28,10 +29,10 @@ public class Grep2 {
 	/** Construct a Grep object for each pattern, and run it
 	 * on all input files listed in argv.
 	 */
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws RESyntaxException {
 
 		if (argv.length < 1) {
-		    System.err.println("Usage: Grep pattern [filename]");
+		    System.err.println("Usage: Grep pattern [filename...]");
 		    System.exit(1);
 		}
 		String pattern = null;
@@ -76,15 +77,17 @@ public class Grep2 {
 			}
 		}
 
+		int ix = go.getOptInd();
+
 		if (pattern == null)
-			pattern = argv[0];
+			pattern = argv[ix-1];
 
 		Grep2 pg = new Grep2(pattern, args);
 
-		if (argv.length == 1)
+		if (argv.length == ix)
 			pg.process(new InputStreamReader(System.in), "(standard input");
 		else
-			for (int i=1; i<argv.length; i++) {
+			for (int i=ix; i<argv.length; i++) {
 				try {
 					pg.process(new FileReader(argv[i]), argv[i]);
 				} catch(Exception e) {
@@ -93,9 +96,8 @@ public class Grep2 {
 			}
 	}
 
-	public Grep2(String arg, BitSet args) {
+	public Grep2(String arg, BitSet args) throws RESyntaxException {
 		// compile the regular expression
-		pattern = new RE(arg);
 		if (args.get('C'))
 			countOnly = true;
 		if (args.get('H'))
@@ -110,6 +112,8 @@ public class Grep2 {
 			silent = true;
 		if (args.get('V'))
 			inVert = true;
+		int caseMode = ignoreCase?RE.MATCH_CASEINDEPENDENT:RE.MATCH_NORMAL;
+		pattern = new RE(arg, caseMode);
 	}
         
 	/** Do the work of scanning one file
@@ -126,7 +130,7 @@ public class Grep2 {
 			d = new BufferedReader(ifile);
 		    
 			while ((line = d.readLine()) != null) {
-				if (pattern.isMatch(line, ignoreCase)) {
+				if (pattern.match(line)) {
 					if (countOnly)
 						matches++;
 					else {

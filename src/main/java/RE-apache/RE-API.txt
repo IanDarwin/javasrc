@@ -8,8 +8,8 @@ public class RE extends Object {
     public RE(REProgram patt, int flg);
 
     public boolean match(String in);
-    public boolean match(String in, int flg);
-    public boolean match(CharacterIterator where, int flg);
+    public boolean match(String in, int index);
+    public boolean match(CharacterIterator where, int index);
     public String[] split(String)[];
     public String[] grep(Object[] in);
     public String subst(String in, String repl);
