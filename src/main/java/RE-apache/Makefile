@@ -1,10 +1,13 @@
 all:		runtests
 
-runtests:	Test.class tests REtest.class RE.class 
-			java Test < tests
+runtests:	Test.class tests RE.class 
+			java Test < mytests
+retests:	REtest.class
 			java REtest
 
-SE_CLASSES = SE.class SEany.class SEbol.class SEccl.class SEchar.class SEeol.class SEmult.class
-RE.class:	Int.class $(SE_CLASSES)
+# On Kaffe, need to compile RE.java and SE*.java due to circularities
+# javac and most other java compilers are Ok with this.
+RE.class:	Int.class Match.class
+			javac RE.java SE*.java
 
 .include	<bsd.java.mk>
