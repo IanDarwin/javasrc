@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE jdo PUBLIC 
+	"-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 1.0//EN" 
+    "http://java.sun.com/dtd/jdo_1_0.dtd">
+<jdo>
+    <package name="">
+        <class name="MyData"/>
+    </package>
+	<package name="java.util">
+		<class name="ArrayList"/>
+		<class name="Date"/>
+	</package>
+</jdo>
