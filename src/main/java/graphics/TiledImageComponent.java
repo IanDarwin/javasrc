@@ -1,7 +1,11 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.TextField;
+
+import javax.swing.JFrame;
 
 /**
  * Demo of Tiled Image

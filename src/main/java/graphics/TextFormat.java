@@ -1,18 +1,19 @@
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Font;
 import java.awt.Point;
-import java.awt.Dimension;
-import java.awt.font.*;
-import java.awt.geom.*;
-import java.awt.image.ImageObserver;
-import javax.swing.*;
-import java.text.*;
-import java.util.List;
+import java.awt.font.FontRenderContext;
+import java.awt.font.LineBreakMeasurer;
+import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
+import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
+import javax.swing.JFrame;
 
 /** A display of text, formatted by us instead of by AWT/Swing.
  * <P>

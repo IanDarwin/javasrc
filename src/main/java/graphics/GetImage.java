@@ -8,14 +8,13 @@
 import java.awt.*;
 import java.net.*;		// for URL class
 
-import com.darwinsys.swingui.WindowCloser;	// EXPECT DEPRECATION WARNING
-// This program could be updated to JApplet and JFrame if anybody has time.
+import javax.swing.*;
 
 /** This program, which can be an Applet or an Application,
  * shows a form of Toolkit.getImage() which works the same
  * in either Applet or Application!
  */
-public class GetImage extends java.applet.Applet {
+public class GetImage extends JApplet {
 
 	Image image;
 
@@ -40,10 +39,10 @@ public class GetImage extends java.applet.Applet {
 	}
 
 	public static void main(String[] args) {
-		Frame f = new Frame("GetImage");
-        f.addWindowListener(new WindowCloser(f));
+		JFrame f = new JFrame("GetImage");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GetImage myApplet = new GetImage();
-		f.add(myApplet);
+		f.getContentPane().add(myApplet);
 		myApplet.init();
 		f.setSize(100, 100);
 		f.setVisible(true);

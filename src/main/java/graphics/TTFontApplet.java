@@ -1,6 +1,7 @@
-import java.applet.*;
 import java.awt.Container;
-import javax.swing.*;
+
+import javax.swing.JApplet;
+import javax.swing.JLabel;
 
 /** Create a TTFontDemo label in an Applet.
  * @version $Id$

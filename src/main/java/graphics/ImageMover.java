@@ -1,6 +1,6 @@
-import java.applet.*;
-import java.awt.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Image;
+import java.awt.MediaTracker;
 
 /** ImageMover: Move one image around */
 public class ImageMover extends Applet {

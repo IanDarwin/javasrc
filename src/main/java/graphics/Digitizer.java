@@ -1,7 +1,12 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.net.URL;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JList;
 
 /**
  * Digitizer - load an Image and let you click on it.

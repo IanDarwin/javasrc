@@ -17,8 +17,8 @@ public class GfxDemo2 extends Frame {
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = gbc.BOTH;
-		gbc.anchor = gbc.CENTER;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.weightx = gbc.weighty = 1.0;
 
 		// Now create a GfxDemoCanvas and add it to the Frame.

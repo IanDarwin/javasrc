@@ -3,7 +3,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.util.*;
 
 import com.darwinsys.util.Debug;

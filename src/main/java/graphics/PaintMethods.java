@@ -1,6 +1,7 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /** Standalone GUI program that shows paint, repaint, and update */
 public class PaintMethods extends JLabel {
