@@ -1,6 +1,6 @@
 package netscape.javascript;
 
-import applet.AppletJavaScript;
+import java.applet.Applet;
 
 /**
  * TOTALLY FAKE JSObject,just for compilation.
@@ -11,7 +11,7 @@ public class JSObject {
 	 * @param script
 	 * @return
 	 */
-	public static JSObject getWindow(AppletJavaScript script) {
+	public static JSObject getWindow(Applet script) {
 		// TODO Auto-generated method stub
 		return null;
 	}
