@@ -258,20 +258,6 @@ public class JModem extends javax.swing.JFrame {
 
   }//GEN-END:initComponents
 
-  private void theTextAreaKeyTyped (java.awt.event.KeyEvent evt) {//GEN-FIRST:event_theTextAreaKeyTyped
-    if (state != S_CONNECTED) {
-      getToolkit().beep();
-      return;
-    }
-    char ch = evt.getKeyChar();
-  if (ch == '\n') {    // XX if systemtype == dos
-    sendChar('\r');
-    // sendChar('\n');
-    return;
-  }
-    sendChar(ch);
-  }//GEN-LAST:event_theTextAreaKeyTyped
-
   private void helpAboutMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAboutMenuItemActionPerformed
     JOptionPane.showMessageDialog(this,
       "JModem 0.0 (c) 2000 Ian F. Darwin\nian@darwinsys.com",
@@ -294,13 +280,32 @@ public class JModem extends javax.swing.JFrame {
   /** Finish the initializations. */
   private void finishConstructor() {
 
-	// A TextArea subclass without keypress forwarding
+	/** A TextArea subclass with funky keypress forwarding: send to
+	 * remote, not to local. This IS a terminal emulator, after all.
+	 */
 	class MyTextArea extends JTextArea {
 		MyTextArea(int r, int c) {
 			super(r, c);
 		}
-		protected void processComponentKeyEvent(java.awt.event.KeyEvent ke) {
-			// do nothing, to avoid user keystrokes appearing twice!
+
+		/** Handle local KeyEvents: send KeyTyped to the remote. */
+		protected void processComponentKeyEvent(java.awt.event.KeyEvent evt) {
+			if (evt.getID() != KeyEvent.KEY_TYPED)
+				return;
+
+			// send keystrokes to remote, for processing.
+			// do nothing locally, to avoid user keystrokes appearing twice!
+			if (state != S_CONNECTED) {
+			  getToolkit().beep();
+			  return;
+			}
+			char ch = evt.getKeyChar();
+			if (ch == '\n') {    // XX if systemtype == dos
+				sendChar('\r');
+				// sendChar('\n');
+				return;
+			}
+			sendChar(ch);
 		}
 	}
 
@@ -308,11 +313,6 @@ public class JModem extends javax.swing.JFrame {
 	// Install it in Centre of the TextArea.
 	theTextArea = new MyTextArea(24,80);
     getContentPane().add(new JScrollPane(theTextArea), BorderLayout.CENTER);
-	theTextArea.addKeyListener(new KeyAdapter() {
-		public void keyTyped(KeyEvent ke) {
-			theTextAreaKeyTyped(ke);
-		}
-	});
 
       // get list of ports available on this particular computer,
       // by calling static method in CommPortIdentifier.
@@ -488,10 +488,13 @@ public class JModem extends javax.swing.JFrame {
         try {
           nbytes = serialInput.read(buf, 0, buf.length);
         } catch (IOException ev) {
-        err("Error reading from remote:\n" + ev.toString());
-        return;
+          err("Error reading from remote:\n" + ev.toString());
+          return;
         }
-        theTextArea.append(new String(buf, 0, nbytes));
+		// XXX need an appendChar() method in MyTextArea
+        String tmp = new String(buf, 0, nbytes);
+        theTextArea.append(tmp);
+		theTextArea.setCaretPosition(theTextArea.getText().length());
         } while (serialInput != null);
       }
     });
