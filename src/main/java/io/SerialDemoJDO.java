@@ -33,20 +33,13 @@ public class SerialDemoJDO extends SerialDemoAbstractBase {
 	}
 
 	public void write(Object o) {
-		if (o instanceof Collection){
-			Iterator it = (((Collection)o).iterator());
-			while (it.hasNext()) {
-				write(it.next());
-			}
-		}
-		if (!(o instanceof PersistenceCapable)) {
-			throw new IllegalArgumentException(
-				"Data class " + o.getClass().getName() +
-				" has not been JDO-enhanced");
-		}
 		PersistenceManager pm = getPM();
 		pm.currentTransaction().begin();
-		pm.makePersistent(o);
+		if (o instanceof Collection) {
+			pm.makePersistentAll((Collection)o);
+		} else {
+			pm.makePersistent(o);
+		}
 		pm.currentTransaction().commit();
 		pm.close();
 	}
