@@ -16,13 +16,13 @@ public class TarFile {
 	/** The list of entries found in the archive */
 	protected Vector list;
 
-	/** Size of header block on tape. */
+	/** Size of header block. */
 	public static final int	RECORDSIZE = 512;
 
 	/* Size of each block, in records */
-	protected int		blocking;
+	protected int blocking;
 	/* Size of each block, in bytes */
-	protected int		blocksize;
+	protected int blocksize;
 
 	/** File containing archive */
 	protected String	fileName;

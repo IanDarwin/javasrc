@@ -10,7 +10,7 @@ public class ReadGZIP {
 	public static void main(String[] argv) throws IOException {
 		String FILENAME = "file.txt.gz";
 
-		// Since there be four constructors here, I wrote them all out in full.
+		// Since there are 4 constructor calls here, I wrote them out in full.
 		// In real life you would probably nest these constructor calls.
 		FileInputStream fin = new FileInputStream(FILENAME);
 		GZIPInputStream gzis = new GZIPInputStream(fin);

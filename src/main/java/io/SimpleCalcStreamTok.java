@@ -52,7 +52,7 @@ public class SimpleCalc {
 				push(tf.nval);
 				break;
 			case StreamTokenizer.TT_WORD:
-				// Found a variable, save its name. Not used here. */
+				// Found a variable, save its name. Not used here.
 				variable = tf.sval;
 				break;
 			case '+':

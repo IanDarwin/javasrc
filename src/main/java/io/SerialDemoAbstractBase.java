@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-// This class must be in a package to be JDO enhanced.
+import io.*;
 import io.MyData;
 
 /** Demonstrate use of Serialization. Typical Subclass main will be:
@@ -12,7 +12,7 @@ import io.MyData;
  */
 public abstract class SerialDemoAbstractBase {
 
-	/** The save method in an appliction */
+	/** The save method in an application */
 	public void save() throws IOException {
 		List l = new ArrayList();
 		// Gather the data
