@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.*;
 
 import com.darwinsys.swingui.ArrayListTableModel;

@@ -2,8 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.undo.*;
-import javax.swing.text.*;
-import javax.swing.text.DefaultEditorKit.CopyAction;
 
 /** Simple GUI demo of UndoManager and friends.
  * @author Ian Darwin http://www.darwinsys.com/

@@ -1,6 +1,11 @@
-import java.awt.*;
-import java.net.*;
-import java.io.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
 
 /**
  * BordLayPanel.java - BorderLayout with a Panel

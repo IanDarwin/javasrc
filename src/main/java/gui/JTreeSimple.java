@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.tree.*;
 
 /** Simple JFC JTree Simple application, showing default tree contents.
  * Note that the JTree will display a silly demo with not Model provided.

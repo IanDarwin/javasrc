@@ -1,6 +1,7 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /** Just a Frame
  * @version $Id$

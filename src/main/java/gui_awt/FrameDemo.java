@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
 
 /** Make a Frame with two Panels.
  * @version $Id$

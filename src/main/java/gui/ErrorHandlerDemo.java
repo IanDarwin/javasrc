@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
 
 /** Contrived program showing how to catch Exceptions
  * that occur on the event dispatching thread.

@@ -2,7 +2,6 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
-import java.util.*;
 
 /**
  * URLButton -- a Button-like object that jumps to a URL.

@@ -34,8 +34,7 @@ public class JOptionDemo extends JFrame {
 		});
 		cp.add(b);
 
-		// the main window
-		setSize(200, 150);
+		// size the main window
 		pack();
 	}
 

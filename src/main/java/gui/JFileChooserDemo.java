@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.*;
 
 /** A simple demo of a JFileChooser in action. */
 public class JFileChooserDemo extends JPanel {

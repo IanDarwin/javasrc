@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 /** This program displays a simple pre-fab welcome sign.
  */

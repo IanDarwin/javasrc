@@ -11,7 +11,8 @@ public class JFrameDemo extends JFrame {
 	/** Construct the object including its GUI */
 	public JFrameDemo() {
 		super("JFrameDemo");
-		getContentPane().add(quitButton = new JButton("Exit"));
+		Container cp = getContentPane();
+		cp.add(quitButton = new JButton("Exit"));
 
 		// Set up so that "Close" will exit the program, 
         // not just close the JFrame.

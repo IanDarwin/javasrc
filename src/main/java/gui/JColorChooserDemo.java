@@ -26,7 +26,7 @@ public class JColorDemo extends JFrame
         super("Swing Color Demo");
 		Container cp = getContentPane();
         JButton jButton;
-        cp.add(BorderLayout.NORTH, jButton = new JButton("Change Color..."));
+        cp.add(jButton = new JButton("Change Color..."), BorderLayout.NORTH);
 		jButton.setToolTipText("Click here to see the Color Chooser");
         jButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent)

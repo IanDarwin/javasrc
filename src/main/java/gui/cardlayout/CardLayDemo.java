@@ -3,8 +3,6 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /** Switchable interface lets us call back the Applet, instead of
  * having global variables (in other languages) or passing lots of

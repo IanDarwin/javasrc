@@ -1,9 +1,5 @@
-/* Printing Dialog */
-
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /**
  * PrintPanel is the base for an open-ended series of classes

@@ -1,7 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import java.util.*;
 
 /** Demonstrate Swing "JList" ListModel
  * @author Ian Darwin
