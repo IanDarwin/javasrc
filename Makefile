@@ -54,12 +54,15 @@ clean:
 # For any subdirectory that lacks a Makefile, create a simple one
 makefiles:
 		@for dir in $(SUBDIRS_WITH_ERROR_DEMOS); do \
-			echo "===> $$dir/Makefile (exclude-errors)"; \
-			cp Makefile.exclude-errors $$dir/Makefile; \
+			echo "===> $$dir/Makefile.exclude-errors"; \
+			if [ -d $$dir ]; then \
+				cp Makefile.exclude-errors $$dir/Makefile; \
+			else echo "[bypassed--NOT A DIRECTORY]"; \
 		done
 		@for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
-			echo "===> $$dir/Makefile"; \
-			cp Makefile.simple $$dir/Makefile; \
+			echo "===> $$dir/Makefile.simple"; \
+				cp Makefile.simple $$dir/Makefile; \
+			else echo "[bypassed--NOT A DIRECTORY]"; \
 		fi; done
 
 # Get rid of copied Makefiles (unless somebody changed them!)
