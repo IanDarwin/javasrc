@@ -5,4 +5,9 @@
 	<email>ian@darwinsys.com</email>
 	<country>Canada</country>
 </person>
+<person>
+	<name>Another Darwin</name>
+	<email type="intranet">ad</email>
+	<country>Canada</country>
+</person>
 </people>

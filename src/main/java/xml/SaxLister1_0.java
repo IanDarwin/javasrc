@@ -1,27 +1,27 @@
 import java.io.*;
 import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import org.apache.xerces.parsers.SAXParser;
 
 /** Simple lister - extract name and email tags from a user file.
- * Updated for SAX 2.0
  * @author Ian Darwin
  * @version $Id$
  */
 public class SaxLister {
 
-	class PeopleHandler extends DefaultHandler {
+	class PeopleHandler extends HandlerBase {
 
 		boolean name = false;
 		boolean mail = false;
 
-		public void startElement(String nsURI, String strippedName,
-			String tagName, Attributes attributes)
+		public void startElement(String tagName, AttributeList attributes)
 		throws SAXException {
 			if (tagName.equalsIgnoreCase("name"))
 				name = true;
 			if (tagName.equalsIgnoreCase("email"))
 				mail = true;
+		}
+
+		public void endElement(String name) {
+			// nothing to do.
 		}
 
 		public void characters(char[] ch, int start, int length) {
@@ -36,10 +36,11 @@ public class SaxLister {
 	}
 
 	public void list() throws Exception {
-		XMLReader parser = XMLReaderFactory.createXMLReader(
-			"org.apache.xerces.parsers.SAXParser");	// should load properties
-		parser.setContentHandler(new PeopleHandler());
-		parser.parse("people.xml");
+		Parser prs = org.xml.sax.helpers.ParserFactory.makeParser();
+		prs.setDocumentHandler(new PeopleHandler());
+		prs.parse(
+			com.sun.xml.parser.Resolver.createInputSource(
+				new File("people.xml")));
 	}
 
 	public static void main(String[] args) throws Exception { 
