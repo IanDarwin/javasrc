@@ -1,7 +1,16 @@
-import java.awt.*;
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+
+import javax.comm.CommPort;
+import javax.comm.CommPortIdentifier;
+import javax.comm.NoSuchPortException;
+import javax.comm.ParallelPort;
+import javax.comm.PortInUseException;
+import javax.comm.SerialPort;
+import javax.comm.UnsupportedCommOperationException;
+import javax.swing.JFrame;
 
 /**
  * Open a serial port using Java Communications.
@@ -16,7 +25,7 @@ public class CommPortOpen {
 	/** The parent JFrame, for the chooser. */
 	protected JFrame parent;
 	/** The input stream */
-	protected DataInputStream is;
+	protected BufferedReader is;
 	/** The output stream */
 	protected PrintStream os;
 	/** The chosen Port Identifier */
@@ -112,7 +121,7 @@ public class CommPortOpen {
 		// Get the input and output streams
 		// Printers can be write-only
 		try {
-			is = new DataInputStream(thePort.getInputStream());
+			is = new BufferedReader(new InputStreamReader(thePort.getInputStream()));
 		} catch (IOException e) {
 			System.err.println("Can't open input stream: write-only");
 			is = null;

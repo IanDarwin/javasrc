@@ -1,6 +1,8 @@
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
+import java.io.IOException;
+
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.UnsupportedCommOperationException;
 
 /**
  * Dial a phone using the Java Communications Package.

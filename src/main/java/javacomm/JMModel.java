@@ -1,6 +1,17 @@
-import javax.comm.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.Enumeration;
+import java.util.HashMap;
+
+import javax.comm.CommPortIdentifier;
+import javax.comm.PortInUseException;
+import javax.comm.SerialPort;
+import javax.comm.UnsupportedCommOperationException;
 
 /**
  * JMModel -- Communications I/O for JModem. No GUI stuff here.

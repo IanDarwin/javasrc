@@ -1,7 +1,13 @@
-import java.awt.*;
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.TooManyListenersException;
+
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.SerialPort;
+import javax.comm.SerialPortEvent;
+import javax.comm.SerialPortEventListener;
+import javax.comm.UnsupportedCommOperationException;
+import javax.swing.JFrame;
 
 /**
  * Read from a Serial port, notifying when data arrives.
@@ -20,14 +26,12 @@ public class SerialReadByEvents extends CommPortOpen
 	}
 
 	/* Constructor */
-	public SerialReadByEvents(Frame f)
+	public SerialReadByEvents(JFrame f)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 		
 		super(f);
 	}
-
-	protected BufferedReader ifile;
 
 	/** 
 	 * Hold the conversation. 
@@ -48,15 +52,12 @@ public class SerialReadByEvents extends CommPortOpen
 			System.exit(0);
 		}
 	
-		// Make a reader for the input file.
-		ifile = new BufferedReader(new InputStreamReader(is));
-
-		//
+		
 	}
 	public void serialEvent(SerialPortEvent ev) {
 		String line;
 		try {
-			line = ifile.readLine();
+			line = is.readLine();
 			if (line == null) {
 				System.out.println("EOF on serial port.");
 				System.exit(0);

@@ -1,8 +1,9 @@
-import java.awt.*;
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
-import javax.swing.*;
+import java.io.IOException;
+
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.UnsupportedCommOperationException;
+import javax.swing.JFrame;
 
 /**
  * Subclasses CommPortOpen and adds send/expect handling for dealing

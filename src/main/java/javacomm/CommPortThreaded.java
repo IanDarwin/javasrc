@@ -1,6 +1,13 @@
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.io.InputStreamReader;
+
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.UnsupportedCommOperationException;
 
 /**
  * This program tries to do I/O in each direction using a separate Thread.
@@ -40,11 +47,15 @@ public class CommPortThreaded extends CommPortOpen {
 
 	/** This inner class handles one side of a conversation. */
 	class DataThread extends Thread {
-		DataInputStream inStream;
+		BufferedReader inStream;
 		PrintStream pStream;
 
 		/** Construct this object */
-		DataThread(DataInputStream is, PrintStream os) {
+		DataThread(InputStream is, PrintStream os) {
+			inStream = new BufferedReader(new InputStreamReader(is));
+			pStream = os;
+		}
+		DataThread(BufferedReader is, PrintStream os) {
 			inStream = is;
 			pStream = os;
 		}

@@ -1,6 +1,11 @@
-import java.awt.*;
-import java.io.*;
-import javax.comm.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.UnsupportedCommOperationException;
+import javax.swing.JFrame;
 
 /**
  * Print to a serial port using Java Communications.
@@ -27,7 +32,7 @@ public class ParallelPrint extends CommPortOpen {
 	}
 
 	/* Constructor */
-	public ParallelPrint(Frame f)
+	public ParallelPrint(JFrame f)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 		
