@@ -1,11 +1,17 @@
-import java.io.*;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import com.darwinsys.spdf.PDF;
-import com.darwinsys.spdf.Page;
-import com.darwinsys.spdf.Text;
-import com.darwinsys.spdf.MoveTo;
+package servlet.pdfcouponservlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import spdf.MoveTo;
+import spdf.PDF;
+import spdf.Page;
+import spdf.Text;
 
 /** Simple PDF-based Coupon Printer Servlet
  * @author Ian Darwin
