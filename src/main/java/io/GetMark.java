@@ -32,7 +32,7 @@ import java.io.*;
  * 		//-
  * 		Ex31Object obj = (Ex31Object)PortableRemoteObject.narrow(
  * 			o, Ex31Object.class);
- * 		//-
+ * 		//+
  * 	}
  * </pre><p>
  * You could use this in a script:
