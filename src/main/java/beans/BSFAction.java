@@ -1,15 +1,21 @@
 package beans;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileReader;
 
-import org.apache.bsf.*;
-import org.apache.bsf.util.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-import com.darwinsys.swingui.LabelText;
+import org.apache.bsf.BSFEngine;
+import org.apache.bsf.BSFException;
+import org.apache.bsf.BSFManager;
+
 import com.darwinsys.io.FileIO;
+import com.darwinsys.swingui.LabelText;
 
 /** Longer sample of using Bean Scripting Framework with JPython */
 public class BSFAction {
@@ -33,7 +39,7 @@ public class BSFAction {
 
 			// register scripting language
 			String[] fntypes = { ".py" };
-			manager.registerScriptingEngine("jpython",
+			BSFManager.registerScriptingEngine("jpython",
 			  "org.apache.bsf.engines.jpython.JPythonEngine", fntypes);
 			jpythonengine = manager.loadScriptingEngine("jpython");
 
@@ -41,7 +47,7 @@ public class BSFAction {
 			manager.declareBean("bean", bean, LabelText.class);
 
 			// Read the script file into BSF
-			language = manager.getLangFromFilename(FILENAME);
+			language = BSFManager.getLangFromFilename(FILENAME);
 			script = FileIO.readerToString(
 				new FileReader(FILENAME));
 
