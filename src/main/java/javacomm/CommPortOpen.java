@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.*;
 import javax.comm.*;
 import java.util.*;
@@ -12,8 +13,23 @@ public class CommPortOpen {
 	public static final int TIMEOUTSECONDS = 30;
 	/** The baud rate to use. */
 	public static final int BAUD = 9600;
+	/** The parent Frame, for the chooser. */
+	protected Frame parent;
+	/** The input stream */
+	protected DataInputStream is;
+	/** The output stream */
+	protected PrintStream os;
 
 	public static void main(String ap[])
+		throws IOException, NoSuchPortException, PortInUseException,
+			UnsupportedCommOperationException {
+
+		new CommPortOpen(null).converse();
+
+		System.exit(0);
+	}
+
+	public CommPortOpen(Frame f)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 		
@@ -45,8 +61,14 @@ public class CommPortOpen {
 			SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
 		// Get the input and output streams
-		DataInputStream is = new DataInputStream(thePort.getInputStream());
-		PrintStream os = new PrintStream(thePort.getOutputStream());
+		is = new DataInputStream(thePort.getInputStream());
+		os = new PrintStream(thePort.getOutputStream(), true);
+	}
+
+	/** This method will be overridden by non-trivial subclasses
+	 * to hold a conversation. 
+	 */
+	public void converse() throws IOException {
 
 		// Input/Output code not shown.
 		System.out.println("Ready to read and write port " +
@@ -60,7 +82,5 @@ public class CommPortOpen {
 		// Finally, clean up.
 		is.close();
 		os.close();
-		
-		System.exit(0);
 	}
 }
