@@ -1,8 +1,6 @@
 package beans;
 
-import java.io.*;
-import org.apache.bsf.*;
-import org.apache.bsf.util.*;
+import org.apache.bsf.BSFManager;
 
 /** Sample of using Bean Scripting Framework with JPython */
 public class BSFSample {
@@ -11,7 +9,7 @@ public class BSFSample {
 
 		// register scripting language
 		String[] fntypes = { ".py" };
-		manager.registerScriptingEngine("jython",
+		BSFManager.registerScriptingEngine("jython",
 			"org.apache.bsf.engines.jython.JythonEngine", fntypes);
 
 		try {
