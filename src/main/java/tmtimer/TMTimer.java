@@ -333,11 +333,14 @@ public class TMTimer extends JFrame implements Runnable {
   protected void gotoState(int st) {
     switch(st) {
     case READY:
-      done = true;
       curTime.setText(TMTimerUtil.intToMmss(0));
       maxTime.setText(redTF.getText());
-      startButton.setEnabled(true);
       setColor(C_NONE);
+      /* FALLTHROUGH INTENTIONAL */
+    case STOPPED:
+      done = true;
+      stopButton.setEnabled(false);
+      startButton.setEnabled(true);
       break;
     case RUNNING:
       startButton.setEnabled(false);
@@ -351,13 +354,6 @@ public class TMTimer extends JFrame implements Runnable {
       break;
     case RED:
       setColor(C_RED);
-      break;
-    case STOPPED:
-      done = true;
-      stopButton.setEnabled(false);
-      startButton.setEnabled(true);
-      // Leave correct color showing.
-      // setColor(C_NONE);
       break;
       default:
       throw new IllegalStateException("gotoState(" + st + ") invalid");
