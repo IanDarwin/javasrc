@@ -14,7 +14,8 @@
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
 			failonerror="false"
-			classpath="${darwinsys.jar}:${junit.jar}"/>
+			classpath="${darwinsys.jar}:${junit.jar}:../graphics"
+			debug="true" deprecation="true"/>
 	</target>
 
 </project>
