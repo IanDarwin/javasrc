@@ -7,6 +7,8 @@ import javax.media.*;
 
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class JMFPlayer extends Applet implements ControllerListener {
 
@@ -15,13 +17,13 @@ public class JMFPlayer extends Applet implements ControllerListener {
     
     /** The visual component (if any) */
     Component visualComponent = null;
-    /** The default control component */
+    /** The default control component (if any) */
     Component controlComponent = null;
 
 	/** Initialize the player object and the GUI. */
 	public void init() {
 		setLayout(new BorderLayout());
-		String mediaFile = getParameter("MOVIE");
+		String mediaFile = getParameter("MEDIA");
 		URL theURL;
 		try {
 			theURL = new URL(getDocumentBase(), mediaFile);
@@ -50,7 +52,7 @@ public class JMFPlayer extends Applet implements ControllerListener {
 		thePlayer.close();
 	}
 
-	/** Called by JMF when the Player is ready to go. */
+	/** Called by JMF when the Player has something to tell us about. */
 	public synchronized void controllerUpdate(ControllerEvent event) {
 		if (event instanceof RealizeCompleteEvent) {
 			System.out.println("controllerUpdate(" + event + ")");
