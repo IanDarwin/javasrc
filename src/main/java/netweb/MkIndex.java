@@ -11,7 +11,7 @@ import com.darwinsys.util.*;
  *
  * Translated from awk to Java in October, 1997 to use java.io.File methods
  *
- * Revised June 1998 to use Collections.sort() instead of running unix sort.
+ * Revised June 1998 to use Collections.sort() instead of running external sort.
  *
  * @author	Ian F. Darwin, ian@darwinsys.com
  * @Version $Id$
@@ -89,7 +89,7 @@ public class MkIndex {
 		String[] fl = dirFile.list();
 		for (int i=0; i<fl.length; i++) {
 			String fn = fl[i];
-			if (fn.equals(OUTPUTFILE)) { // well have no self-reference here!
+			if (fn.startsWith("index")) { // well have no self-reference here!
 				System.err.println("Ignoring " + OUTPUTFILE);
 				continue;
 			} else if (fn.endsWith(".bak")) {		// delete .bak files
@@ -121,7 +121,8 @@ public class MkIndex {
 		System.out.println("Sorting the Vector...");
 		Collections.sort(vec, String.CASE_INSENSITIVE_ORDER);
 
-		System.out.println("Start PASS TWO -- from Vector to index.htm...");
+		System.out.println("Start PASS TWO -- from Vector to " +
+			OUTPUTFILE + "...");
 		String fn;
 		Iterator it = vec.iterator();
 		while (it.hasNext()) {
