@@ -1,4 +1,3 @@
-import java.util.*;
 
 /** Demonstrate the easy way of getting random numbers,
  * using java.lang.Math.Random().

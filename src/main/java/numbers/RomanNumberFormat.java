@@ -1,5 +1,7 @@
-import java.text.*;
-import java.util.*;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 
 /**
  * Roman Number class. Not localized, since "Latin's a Dead Dead Language..."

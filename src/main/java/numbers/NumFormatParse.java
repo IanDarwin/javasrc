@@ -1,5 +1,5 @@
-import java.text.*;
-import java.util.*;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 /*
  * Parse a number using a NumberFormat.

@@ -1,5 +1,5 @@
-import java.text.*;
-import java.util.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /*
  * Format a number our way and the default way.
