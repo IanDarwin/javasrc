@@ -2,6 +2,12 @@
 
 	<!-- $Id$ -->
 
+	<!-- set this to acroread or xpdf, possibly with full path;
+	 *** can also set to "open" or "start" on Mac OS X or M$-Windows.
+	 *** (use of "start" has not yet been verified)
+	 -->
+	<property name="viewer.pdf" value="open"/>
+
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
 	<property name="build.compiler" value="jikes"/>
@@ -14,11 +20,11 @@
 		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}" />
 	</target>
 
-	<target name="jar" depends="compile">
+	<target name="jar" depends="build">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
 			includes="META-INF/*,com/**">
 		</jar>
@@ -27,5 +33,12 @@
 	<target name="deploy" depends="jar">
 		<mkdir dir="${deploy.dir}"/> <!-- Create target directory -->
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+
+	<target name="regress" depends="build">
+		<java classname="Demo" classpath="${build}" output="temp.pdf"/>
+		<exec executable="${viewer.pdf}">
+			<arg value="temp.pdf"/>
+		</exec>
 	</target>
 </project>
