@@ -1,0 +1,29 @@
+<project name="Java Cookbook Examples" default="compile" basedir=".">
+
+	<!-- include global build properties -->
+	<property file="../build.properties"/>
+
+	<property name="src"   value="."/>
+	<property name="build" value="."/>
+
+	<property name="zipfile" value="collections.zip"/>
+
+	<!-- specify what to compile. This builds everything -->
+	<target name="compile">
+		<!-- Compile the java code from ${src} into ${build}.
+		 *** failonerror set false because of 1.4 constructs that will
+		 *** won't compile on 1.3, and a few "expect compile error" cases...
+		  -->
+		<javac srcdir="${src}" destdir="${build}"
+			failonerror="false"
+			classpath="${javacook.jar}:${junit.jar}"/>
+	</target>
+
+	<target name="zip">
+		<zip zipfile="${build}/${zipfile}" basedir="."
+			includes="**"
+			excludes="CVS,${zipfile},*.class">
+		</zip>
+	</target>
+
+</project>
