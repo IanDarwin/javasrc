@@ -2,7 +2,7 @@ import java.applet.*;
 import java.awt.*;
 import java.util.Date;
 
-public class Clock extends Applet implements Runnable {
+public class ClockApplet extends Applet implements Runnable {
 	Thread timerThread;
 
 	/* Applet Lifestyle Methods */

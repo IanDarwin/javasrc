@@ -13,7 +13,7 @@ public class Undent {
 
     public static void main(String av[]) {
         Undent c = new Undent();
-        if ((av.length == 0) {
+        if (av.length == 0)
             c.process(new BufferedReader(
 				new InputStreamReader(System.in)));
 		else for (int i=0; i<av.length; i++)
