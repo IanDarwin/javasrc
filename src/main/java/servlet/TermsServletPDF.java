@@ -25,7 +25,8 @@ public class TermsServletPDF extends HttpServlet {
 			pdflib p = new pdflib();
 
 			if (p.open_file("") == -1) {
-				warning(response, "Couldn't create in-memory PDF file", null);
+				warning(response,
+					"Couldn't create in-memory PDF file", null);
 				return;
 			}
 
@@ -65,8 +66,12 @@ public class TermsServletPDF extends HttpServlet {
 		}
     }
 
-	/** Generic error handler. Must call before any use of "out" */
-	protected void warning(HttpServletResponse response, String error, Exception e) {
+	/** Generic error handler. 
+	 * Can only use before writing to response's output stream.
+	 */
+	protected void warning(HttpServletResponse response, 
+		String error, Exception e) {
+
 		response.setContentType("text/html");
 		try {
 			PrintWriter out = response.getWriter();
