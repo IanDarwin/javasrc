@@ -39,7 +39,7 @@ public class CalendarPage {
 		System.out.println("Su Mo Tu We Th Fr Sa");
 
 		// Compute how much to leave before the first.
-		// getDay() returns 0 for Sunday, which is just right.
+		// get(DAY_OF_WEEK) returns 0 for Sunday, which is just right.
 		leadGap = calendar.get(Calendar.DAY_OF_WEEK)-1;
 
 		int daysInMonth = dom[mm];
