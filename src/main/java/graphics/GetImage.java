@@ -26,7 +26,7 @@ public class GetImage extends JApplet {
 
 	public void loadImage() {
 		// Applet-only version:
-		// Image = getImage(getCodeBase(), "Duke.gif");
+		// image = getImage(getCodeBase(), "Duke.gif");
 		
 		// Portable version: getClass().getResource() works in either
 		// applet or application, 1.1 or 1.3, returns URL for file name.
