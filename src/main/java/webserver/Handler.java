@@ -28,9 +28,9 @@ public class Handler extends Thread {
 	static Hashtable h = new Hashtable();
 
 	/** Construct a Handler */
-	Handler(Httpd ws, Socket sock) {
+	Handler(Httpd prnt, Socket sock) {
 		super();
-		parent = ws;
+		parent = prnt;
 		clntSock = sock;
 		// First time, put in null handler.
 		if (h.size() == 0) {
@@ -38,11 +38,12 @@ public class Handler extends Thread {
 		}
 	}
 
-	protected static final int RQ_INVALID = 0, RQ_GET = 1, RQ_HEAD = 2; 
+	protected static final int RQ_INVALID = 0, RQ_GET = 1, RQ_HEAD = 2,
+		RQ_POST = 3; 
 
 	public void run() {
 		String request;		// what Viewer sends us.
-		int type = RQ_INVALID;
+		int methodType = RQ_INVALID;
 		try {
 			System.out.println("Connection accepted from " +
 				clntSock.getInetAddress());
@@ -67,33 +68,47 @@ public class Handler extends Thread {
 			String rqHttpVer = st.nextToken();
 			System.out.println("Request: Command " + rqCode +
 					", file " + rqName + ", version " + rqHttpVer);
-			String nullLine = is.readLine();
 
-			// check that rqCode is either GET or HEAD
+
+			// Read headers, up to the null line before the body,
+			// so the body can be read directly if it's a POST.
+			HashMap map = new HashMap();
+			String hdrLine;
+			while ((hdrLine = is.readLine()) != null &&
+					hdrLine.length() != 0) {
+					// XXX split on :
+					// XXX map.put(hdrName, hdrValue);
+			}
+
+			// check that rqCode is either GET or HEAD or ...
 			if ("get".equalsIgnoreCase(rqCode))
-				  type = RQ_GET;
+				  methodType = RQ_GET;
 			else if ("head".equalsIgnoreCase(rqCode))
-				  type = RQ_HEAD;
+				  methodType = RQ_HEAD;
+			else if ("post".equalsIgnoreCase(rqCode))
+				  methodType = RQ_POST;
 			else {
-				errorResponse(400, "invalid code: " + rqCode);
+				errorResponse(400, "invalid method: " + rqCode);
 				return;
 			}
 
 			// A bit of paranoia may be a good thing...
-			if (rqName.indexOf("../") != -1 ||
-		 		rqName.indexOf("..\\") != -1) {
+			if (rqName.indexOf("..") != -1) {
 				errorResponse(404, "can't seem to find: " + rqName);
 				return;
 			}
 				
-			doFile(rqName, type == RQ_HEAD, os);
+			// XXX new MyRequest(clntSock, rqName, methodType);
+			// XXX new MyResponse(clntSock, os);
+
+			// XXX if (isServlet(rqName)) [
+			// 		doServlet(rqName, methodType, map);
+			// else
+				doFile(rqName, methodType == RQ_HEAD, os /*, map */);
 			os.flush();
-			// this.sleep(100);
 			clntSock.close();
 		} catch (IOException e) {
 			System.out.println("IOException " + e);
-		// } catch (InterruptedException e2) {
-			// do nothing...
 		}
 		System.out.println("END OF REQUEST");
 	}

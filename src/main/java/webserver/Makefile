@@ -1,2 +1,7 @@
+# Makefile for Httpd
+
+#JAVAC = javac
+JAVAC = jikes +E
+
 all:
-	javac Httpd.java Handler.java
+	$(JAVAC) Httpd.java Handler.java

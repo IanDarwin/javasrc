@@ -28,12 +28,17 @@ public class Httpd {
 
 	public static void main(String argv[]) {
 		System.out.println("DarwinSys JavaWeb Server 0.1 starting...");
-		Httpd w = new Httpd();
+		Httpd w;
+		if (argv.length == 2 && argv[0].equals("-p")) {
+			w = new Httpd(Integer.parseInt(argv[1]));
+		} else {
+			w = new Httpd();
+		}
 		w.runServer();
 		// NOTREACHED
 	}
 
-	Httpd() {
+	Httpd(int portNum) {
 		super();
 		// A ResourceBundle can't load from the same basename as your class,
 		// but a simple Properties can.
@@ -41,12 +46,13 @@ public class Httpd {
 		rootDir = wsp.getProperty("rootDir", ".");
 		mimeTypes = loadProps(wsp.getProperty("mimeProperties", "mime.properties"));
 		String portNumString = null;
-		try {
-			int portNum = HTTP;
+		if (portNum == HTTP) { 
 			portNumString = wsp.getProperty("portNum");
 			if (portNumString != null) {
 				portNum = Integer.parseInt(portNumString);
 			}
+		}
+		try {
 			sock = new ServerSocket(portNum);
 		} catch(NumberFormatException e) {
 			System.err.println("Httpd: \"" + portNumString +
@@ -57,6 +63,10 @@ public class Httpd {
 			System.err.println("Unable to start server");
 			System.exit(1);
 		}
+	}
+
+	Httpd() {
+		this(HTTP);
 	}
 
 	/** Load the Properties. */
