@@ -1,6 +1,5 @@
 /**
- * StringBufferDemo: construct the same String
- * three different ways.
+ * StringBufferDemo: construct the same String three different ways.
  */
 public class StringBufferDemo {
 	public static void main(String[] argv) {

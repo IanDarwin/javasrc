@@ -1,6 +1,6 @@
 import java.text.*;
 
-/** Bare-minimum String formatter. */
+/** Bare-minimum String formatter (string aligner). */
 public class StringFormat extends Format {
 	/* Constant for left justification. */
 	public static final int JUST_LEFT = 'l';
@@ -26,7 +26,7 @@ public class StringFormat extends Format {
 		default:
 			throw new IllegalArgumentException("invalid justification arg.");
 		}
-		if (maxChars < 1) {
+		if (maxChars < 0) {
 			throw new IllegalArgumentException("maxChars must be positive.");
 		}
 		this.maxChars = maxChars;
@@ -80,30 +80,4 @@ public class StringFormat extends Format {
 		return source;
 	}
 
-	/** Simple test cases; try even and odd lengths */
-	public static void main(String[] argv) {
-		String[] mesg = {"JavaFun", "JavaFun!" };
-		for (int i=0; i<mesg.length; i++) {
-			System.out.println("Input String " + mesg[i]);
-			dump(JUST_LEFT,
-				new StringFormat(5, StringFormat.JUST_LEFT).format(mesg[i]));
-			dump(JUST_LEFT,
-				new StringFormat(10, StringFormat.JUST_LEFT).format(mesg[i]));
-			dump(JUST_CENTER,
-				new StringFormat(5, StringFormat.JUST_CENTER).format(mesg[i]));
-			dump(JUST_CENTER,
-				new StringFormat(10, StringFormat.JUST_CENTER).format(mesg[i]));
-			dump(JUST_RIGHT,
-				new StringFormat(5, StringFormat.JUST_RIGHT).format(mesg[i]));
-			dump(JUST_RIGHT,
-				new StringFormat(10, StringFormat.JUST_RIGHT).format(mesg[i]));
-		}
-	}
-	private static void dump(int format, String s) {
-		System.out.print((char)format);
-		System.out.print(" ==> \"");
-		System.out.print(s);
-		System.out.print('"');
-		System.out.println();
-	}
 }
