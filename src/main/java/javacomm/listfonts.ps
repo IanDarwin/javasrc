@@ -1,0 +1,13 @@
+%!PS-Adobe
+
+% Program to list the fonts in a printer.
+% Information gleaned from McGilton & Campione's book Postscript By Example,
+% first edition, Chapter 14. Their program printed the fonts neatly on
+% a printer. Here we want to get the fonts back into the Java host.
+
+FontDirectory
+{
+	pop					% discard font dictionary
+	JunkString cvs		% convert font name to String
+	print				% upload font name
+} forall				% for all elements of FontDictionary

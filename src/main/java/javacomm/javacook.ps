@@ -1,0 +1,32 @@
+%!PS-Adobe
+
+% Draw a cirle of "Java Cookbook"
+% simplified from Chapter 9 of the Adobe Systems "Blue Book", 
+% PostScript Language Tutorial and Cookbook
+
+% center the origin
+250 350 translate
+
+/Helvetica-BoldOblique findfont
+	30 scalefont
+	setfont
+
+% print circle of Java
+0.4 setlinewidth	% make outlines not too heavy
+20 20 340 {
+	gsave
+	rotate 0 0 moveto
+	(Java) true charpath stroke
+	grestore
+} for
+
+% print "Java Cookbook" in darker outline
+% fill w/ light gray to contrast w/ spiral
+1.5 setlinewidth
+0 0 moveto
+(Java Cookbook) true charpath 
+gsave 1 setgray fill grestore
+stroke
+
+% now send it all to the printed page
+showpage

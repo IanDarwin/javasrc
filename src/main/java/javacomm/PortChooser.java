@@ -115,6 +115,10 @@ public class PortChooser extends JDialog implements ItemListener {
 
 	}
 
+	/** Populate the ComboBoxes by asking the Java Communications API
+	 * what ports it has.  Since the initial information comes from
+	 * a Properties file, it may not exactly reflect your hardware.
+	 */
 	protected void populate() {
 		// get list of ports available on this particular computer,
 		// by calling static method in CommPortIdentifier.
@@ -147,5 +151,4 @@ public class PortChooser extends JDialog implements ItemListener {
 		pack();
 		addWindowListener(new WindowCloser(this, true));
 	}
-
 }

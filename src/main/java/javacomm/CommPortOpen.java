@@ -57,16 +57,57 @@ public class CommPortOpen {
 
 		// Now actually open the port.
 		// This form of openPort takes an Application Name and a timeout.
-		// Program will bomb here if you picked a Parallel port!
-		SerialPort thePort = (SerialPort) port.open("DarwinSys DataComm",
+		// 
+		CommPort thePort = port.open("DarwinSys DataComm",
 			TIMEOUTSECONDS * 1000);
 
-		// set up the serial port
-		thePort.setSerialPortParams(BAUD, SerialPort.DATABITS_8,
-			SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+		if (thePort instanceof SerialPort) {
+			SerialPort myPort = (SerialPort) thePort;
+
+			// set up the serial port
+			myPort.setSerialPortParams(BAUD, SerialPort.DATABITS_8,
+				SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+		} else if (thePort instanceof ParallelPort) {
+			ParallelPort myPort = (ParallelPort)thePort;
+
+			// Tell API to pick "best available mode" - can fail!
+			// myPort.setMode(ParallelPort.LPT_MODE_ANY);
+
+			// Print what the mode is
+			int mode = myPort.getMode();
+			switch (mode) {
+				case ParallelPort.LPT_MODE_ECP:
+					System.out.println("Mode is: ECP");
+					break;
+				case ParallelPort.LPT_MODE_EPP:
+					System.out.println("Mode is: EPP");
+					break;
+				case ParallelPort.LPT_MODE_NIBBLE:
+					System.out.println("Mode is: Nibble Mode.");
+					break;
+				case ParallelPort.LPT_MODE_PS2:
+					System.out.println("Mode is: Byte mode.");
+					break;
+				case ParallelPort.LPT_MODE_SPP:
+					System.out.println("Mode is: Compatibility mode.");
+					break;
+				// ParallelPort.LPT_MODE_ANY is a "set only" mode;
+				// tells the API to pick "best mode"; will report the
+				// actual mode it selected.
+				default:
+					throw new IllegalStateException("Parallel mode " + 
+						mode + " invalid.");
+			}
+		} else throw new IllegalStateException("Unknown port type " + thePort);
 
 		// Get the input and output streams
-		is = new DataInputStream(thePort.getInputStream());
+		// Printers can be write-only
+		try {
+			is = new DataInputStream(thePort.getInputStream());
+		} catch (IOException e) {
+			System.err.println("Can't open input stream: write-only");
+			is = null;
+		}
 		os = new PrintStream(thePort.getOutputStream(), true);
 	}
 
@@ -80,7 +121,8 @@ public class CommPortOpen {
 		// Input/Output code not written -- must subclass.
 
 		// Finally, clean up.
-		is.close();
+		if (is != null)
+			is.close();
 		os.close();
 	}
 }
