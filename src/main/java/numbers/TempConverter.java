@@ -1,4 +1,5 @@
 import java.text.*;
+
 /* Print a table of fahrenheit and celsius temperatures 
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
