@@ -1,35 +1,55 @@
-package rain;
+package orders;
 
 import javax.ejb.*;
+import javax.naming.*;
+import java.util.Collection;
 
 /**
- *  Implementation Class for Order.
- *
- * @author MkBean
+ * Implementation Class for Order EJB.
+ * @author Ian Darwin, originally by MkBean
  */
-public class OrderBean implements EntityBean {
+public abstract class OrderBean implements EntityBean {
 
-	// fields.
-	public Integer order;		// primary key
-	public int customer;
+	// Virtual CMP fields.
+	public abstract void setOrderNumber(Integer x);		// primary key
+	public abstract Integer getOrderNumber();		// primary key
+	public abstract void setCustomer(Integer id);
+	public abstract Integer getCustomer();
 
-	// implementation of main logic
+	// Virtual CMR fields
+	public abstract Collection getOrderItems();
+	public abstract void setOrderItems(Collection c);
 
-	public int getCustomer() { return customer; }
-	public void setCustomer(int cust) { customer = cust; }
+	private static int seqNumber;
+
+	public void addItem(int product, int qty) {
+		OrderItemLocalHome tmp;
+		try {
+			tmp = (OrderItemLocalHome)new InitialContext().
+				lookup("local/OrderItemEJB");
+
+			OrderItemLocal l = tmp.create(new Integer(++seqNumber), product, qty);
+
+			getOrderItems().add(l);
+		} catch (NamingException ex) {
+			throw new EJBException(ex);
+		} catch (CreateException ex) {
+			throw new EJBException(ex);
+		}
+	}
 
 	// Create Methods
 	// method implementation for Create/PostCreate
-	public Order ejbCreate(Integer ord, int cust) throws CreateException{
-		if (ord.intValue() == 0) {
-			throw new CreateException("Order number cannot be zero");
+	public Integer ejbCreate(Integer ord, Integer cust) throws CreateException{
+		if (ord.intValue() <= 0) {
+			throw new CreateException("Order number must be positive integer");
 		}
-		order = ord;
-		customer = cust;
+		setOrderNumber(ord);
+		setCustomer(cust);
 		return null;
 	}
-	public Order ejbPostCreate(Integer ord, int cust) throws CreateException{
-		return null;
+
+	public void ejbPostCreate(Integer ord, Integer cust) throws CreateException{
 	}
 
 	// Find methods will be implemented by deployment.

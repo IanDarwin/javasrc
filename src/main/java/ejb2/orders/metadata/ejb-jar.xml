@@ -1,18 +1,81 @@
 <?xml version="1.0"?>
 <!DOCTYPE ejb-jar PUBLIC 
-"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN"
-	"http://java.sun.com/j2ee/dtds/ejb-jar-1.1.1.dtd">
-<!-- This partial Deployment Descriptor for Order
-	will likely need to be merged into the overall EJB DD.
-	-->
+	"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+	"http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+<!--
+ *** EJBs for order management.
+ ***
+ *** The ELEMENT model for Entity EJB is:
+	entity (description?, display-name?, small-icon?,
+	large-icon?, ejb-name, home?, remote?, local-home?,
+	local?, ejb-class, persistence-type, prim-key-class,
+	reentrant, cmp-version?, abstract-schema-name?,
+	cmp-field*, primkey-field?, env-entry*, ejb-ref*,
+	ejb-local-ref*, security-role-ref*, security-identity?,
+	resource-ref*, resource-env-ref*, query*)
+ -->
 <ejb-jar>
-<enterprise-beans>
-<entity>
-	<display-name>Order EJB</display-name>
-	<ejb-name>Order</ejb-name>
-	<home>OrderHome</home>
-	<remote>Order</remote>
-	<ejb-class>OrderBean</ejb-class>
-</entity>
-<enterprise-beans>
-<ejb-jar>
+	<enterprise-beans>
+		<entity>
+			<display-name>OrderEJB</display-name>
+			<ejb-name>OrderEJB</ejb-name>
+			<home>orders.OrderHome</home>
+			<remote>orders.OrderRemote</remote>
+			<local-home>orders.OrderLocalHome</local-home>
+			<local>orders.OrderLocal</local>
+			<ejb-class>orders.OrderBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>java.lang.Integer</prim-key-class>
+			<reentrant>false</reentrant>
+			<cmp-version>2.x</cmp-version>
+			<abstract-schema-name>Orders</abstract-schema-name>
+			<cmp-field><field-name>orderNumber</field-name></cmp-field>
+			<cmp-field><field-name>customer</field-name></cmp-field>
+			<primkey-field>orderNumber</primkey-field>
+		</entity>
+
+		<entity>
+			<display-name>OrderItemEJB</display-name>
+			<ejb-name>OrderItemEJB</ejb-name>
+			<local-home>orders.OrderItemLocalHome</local-home>
+			<local>orders.OrderItemLocal</local>
+			<ejb-class>orders.OrderItemBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>java.lang.Integer</prim-key-class>
+			<reentrant>false</reentrant>
+			<cmp-version>2.x</cmp-version>
+			<abstract-schema-name>OrderItems</abstract-schema-name>
+			<cmp-field><field-name>orderItemSequence</field-name></cmp-field>
+			<cmp-field><field-name>product</field-name></cmp-field>
+			<cmp-field><field-name>quantity</field-name></cmp-field>
+			<primkey-field>orderItemSequence</primkey-field>
+		</entity>
+	</enterprise-beans>
+
+	<relationships>
+		<ejb-relation>
+			<ejb-relation-name>Order and OrderItems</ejb-relation-name>
+			<ejb-relationship-role>
+				<ejb-relationship-role-name>Order Has OrderItems
+					</ejb-relationship-role-name>
+				<multiplicity>One</multiplicity>
+				<relationship-role-source>
+					<ejb-name>OrderEJB</ejb-name>
+				</relationship-role-source>
+				<cmr-field>
+					<cmr-field-name>orderItems</cmr-field-name>
+					<cmr-field-type>java.util.Collection</cmr-field-type>
+				</cmr-field>
+			</ejb-relationship-role>
+			<ejb-relationship-role>
+				<ejb-relationship-role-name>OrderItem Belongs to Orders
+				</ejb-relationship-role-name>
+				<multiplicity>Many</multiplicity>
+				<cascade-delete/>
+				<relationship-role-source>
+					<ejb-name>OrderItemEJB</ejb-name>
+				</relationship-role-source>
+			</ejb-relationship-role>
+		</ejb-relation>
+	</relationships>
+</ejb-jar>

@@ -1,18 +1,17 @@
-package rain;
+package orders;
 
 import java.rmi.*;
 import javax.ejb.*;
 
 /**
  *  Home interface for the Order EJB.
- *
  *  @author MkBean
  */
-
 public interface OrderHome extends EJBHome {
 
 	// Create Methods
-	public Order create(Integer ord, int cust) throws RemoteException, CreateException;
+	public OrderRemote create(Integer ord, Integer cust) throws RemoteException, CreateException;
+
 	// Find Methods
-	public  Order findByPrimaryKey(Integer ord) throws RemoteException;
+	public  OrderRemote findByPrimaryKey(Integer ord) throws FinderException, RemoteException;
 }
