@@ -1,0 +1,30 @@
+<project name="XXX Enterprise Bean" default="deploy" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
+	<property name="deploy.jar" value="hello.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,*.class">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>
