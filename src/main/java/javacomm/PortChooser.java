@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import com.darwinsys.util.WindowCloser;
 
 /**
  * Choose a port, any port!
@@ -150,6 +149,6 @@ public class PortChooser extends JDialog implements ItemListener {
 		parallelPortsChoice.addItemListener(this);
 		other.addItemListener(this);
 		pack();
-		addWindowListener(new WindowCloser(this, true));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

@@ -1,4 +1,4 @@
-import com.darwinsys.util.*;
+import com.darwinsys.util.Debug;
 
 import java.io.*;
 

@@ -1,7 +1,7 @@
-import com.darwinsys.util.*;
-
 import java.io.*;
 import java.net.*;
+
+import com.darwinsys.util.Debug;
 
 /**
  * Simple UDP client - contact the standard ascii time service

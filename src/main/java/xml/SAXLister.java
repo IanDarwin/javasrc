@@ -1,7 +1,9 @@
 import java.io.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
+
 import org.apache.xerces.parsers.SAXParser;
+import com.darwinsys.util.Debug;
 
 /** Simple lister - extract name and children tags from a user file.
  * Version for SAX 2.0
@@ -29,7 +31,7 @@ class PeopleHandler extends DefaultHandler {
 		String rawName, Attributes attributes)
 	throws SAXException {
 
-		com.darwinsys.util.Debug.println("docEvents",
+		Debug.println("docEvents",
 			"startElement: " + localName + "," + rawName);
 
 		// Consult rawName since we aren't using xmlns prefixes here.

@@ -45,7 +45,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
 import java.util.*;
-import com.darwinsys.util.*;
+
+import com.darwinsys.swingui.UtilGUI;
 
 /** BreakEnd - 
  * Tool to display current time and time that class starts/resumes.

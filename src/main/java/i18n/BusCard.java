@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-import com.darwinsys.util.I18N;
+import com.darwinsys.swingui.I18N;
 
 /** Display your business-card information in a Java window.
  *

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-import com.darwinsys.util.UtilGUI;
+import com.darwinsys.swingui.UtilGUI;
 
 /** Prototype for Window Manager chooser. 
  * Recode in Qt for speed, someday.

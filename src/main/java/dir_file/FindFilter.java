@@ -1,5 +1,5 @@
 import java.io.*;
-import org.apache.regexp.*;
+import java.util.regex.*;
 import com.darwinsys.util.Debug;
 
 /** Class to encapsulate the filtration for Find.
@@ -12,7 +12,7 @@ public class FindFilter implements FilenameFilter {
 	boolean sizeSet;
 	int size;
 	String name;
-	RE nameRE;
+	Pattern nameRE;
 
 	public FindFilter() {
 	}
@@ -38,9 +38,10 @@ public class FindFilter implements FilenameFilter {
 		sb.append('$');
 		Debug.println("name", "RE=\"" + sb + "\".");
 		try {
-			nameRE = new RE(sb.toString());
-		} catch (RESyntaxException ex) {
-			System.err.println("For shame! " + ex);
+			nameRE = Pattern.compile(sb.toString());
+		} catch (PatternSyntaxException ex) {
+			System.err.println("Error: RE " + sb.toString() +
+				" didn't compile: " + ex);
 		}
 	}
 
@@ -51,8 +52,8 @@ public class FindFilter implements FilenameFilter {
 			return true;	// allow recursion
 		}
 
-		if (name != null) {
-			return nameRE.match(fileName);
+		if (nameRE != null) {
+			return nameRE.matcher(fileName).matches();
 		}
 
 		// TODO size handling.

@@ -1,4 +1,4 @@
-import com.darwinsys.util.GetOpt;
+import com.darwinsys.lang.GetOpt;
 
 /** Simple demonstration of GetOpt. Accept the '-n' and '-o outfile'
  * options as shown for sort, and also -h for help.
@@ -30,11 +30,13 @@ public class GetOptDemo {
 		System.out.print("Options: ");
 		System.out.print("Numeric: " + numeric_option + ' ');
 		System.out.print("Output: " + outFileName + "; ");
-		System.out.println("Inputs: ");
-		if (go.getOptInd()-1 == args.length) {
+		System.out.print("Inputs: ");
+		if (go.getOptInd() == args.length) {
 			doFile("(standard input)");
-		} else for (int i=go.getOptInd()-1; i<args.length; i++)
+		} else for (int i = go.getOptInd(); i < args.length; i++) {
 			doFile(args[i]);
+		}
+		System.out.println();
 	}
 
 	/** Stub for providing help on usage

@@ -1,7 +1,7 @@
-import com.darwinsys.util.WindowCloser;
-
 import java.awt.*;
 import java.awt.event.*;
+
+import com.darwinsys.swingui.WindowCloser;
 
 /** MouseDrag -- implement simple mouse drag in a window.
  */

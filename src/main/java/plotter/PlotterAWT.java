@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 
-import com.darwinsys.util.*;
-
 /**
  * A Plotter subclass for drawing into an AWT Window. Reflecting back
  * to AWT gives us a "known working" plotter to test on.

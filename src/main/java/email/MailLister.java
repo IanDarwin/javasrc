@@ -1,7 +1,9 @@
-import com.darwinsys.util.*;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import com.darwinsys.lang.StringFormat;
+import com.darwinsys.util.FileProperties;
 
 /**
 * List all available folders.

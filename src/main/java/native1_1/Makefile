@@ -1,9 +1,10 @@
 # Makefile for the 1.1 Java Native Methods examples for
-# Learning Tree International Course 471/478.
-# Has been tested on Solaris both with "gcc" and with SunSoft "cc".
+# Java Cookbook, originally for Learning Tree International Course 471/478.
+# Tested on Solaris both with "gcc" and with SunSoft "cc".
+# Tested on OpenBSD with native port "devel/jdk/1.2" and cc.
 # On other platforms it will certainly need some tweaking; please
 # let me know how much! :-)
-# Ian Darwin, ian@darwinsys.com, http://www.darwinsys.com
+# Ian Darwin, http://www.darwinsys.com
 
 # $Id$
 
@@ -13,9 +14,11 @@ CFLAGS_FOR_SO = -G # Solaris
 CFLAGS_FOR_SO = -shared
 CSRCS		= HelloWorld.c
 #JAVAHOME	= /local/jdk1.1.2
-JAVAHOME	= /usr/local/jdk-1.2.2
+#JAVAHOME	= /usr/local/jdk-1.2.2
+JAVAHOME	= $$JAVA_HOME
 #INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/solaris 
-INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/openbsd
+#INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/openbsd
+INCLUDES	= -I$(JAVAHOME)/include
 LIBDIR		= $(JAVAHOME)/lib/sparc/green_threads
 CLASSPATH	= $(JAVAHOME)/lib/classes.zip:.
 
@@ -46,7 +49,7 @@ testjavafromc:	javafromc.all hello.all
 	@echo
 	@echo "Now we test HelloWorld using javafromc instead of java"
 	@echo
-	LD_LIBRARY_PATH="$(LIBDIR):." CLASSPATH="$(CLASSPATH)" ./javafromc HelloWorld
+	LD_LIBRARY_PATH="$(LIBDIR):." ./javafromc HelloWorld
 	@echo
 	@echo "That was, in case you didn't notice, C->Java->C. And,"
 	@echo "incidentally, a replacement for JDK program \"java\" itself!"

@@ -2,7 +2,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.net.*;
 import java.io.*;
+
 import org.apache.xalan.xslt.*;
+import com.darwinsys.io.FileIO;
 
 /** Output the given XML file in XML if viewable, else in HTML. */
 public class StyleServlet extends HttpServlet {
@@ -62,6 +64,6 @@ public class StyleServlet extends HttpServlet {
 	}
 
 	void output_body(String XML_FILE, PrintWriter out) {
-		com.darwinsys.util.FileIO.copyFile(XML_FILE, out, false);
+		FileIO.copyFile(XML_FILE, out, false);
 	}
 }

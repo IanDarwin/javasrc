@@ -30,7 +30,6 @@ public class SecondApplet extends FirstApplet {
 		colors = new Color[nColors];
 		for (int i=0; i<nColors; i++)
 			// colors[i] = ColorName.lookup(getParameter("color" + i));
-			// ColorName isn't in com.darwinsys.util; hack to make this compile
 			colors[i] = new Color(i, 123, 456);
 	}
 

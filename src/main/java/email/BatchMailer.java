@@ -1,7 +1,8 @@
-import com.darwinsys.util.Mailer;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
+
+import com.darwinsys.mail.Mailer;
 
 /** Command-line batch mailer */
 public class BatchMailer {

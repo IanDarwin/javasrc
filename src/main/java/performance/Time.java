@@ -1,4 +1,3 @@
-import com.darwinsys.util.QuickTimeFormat;
 import java.lang.reflect.*;
 
 /**
@@ -7,7 +6,6 @@ import java.lang.reflect.*;
  * @version $Id$
  */
 public class Time {
-	//+
 	public static void main(String[] argv) throws Exception {
 		// Instantiate target class, from argv[0]
 		Class c = Class.forName(argv[0]);
@@ -40,7 +38,6 @@ public class Time {
 		long runTime = t1 - t0;
 
 		System.err.println(
-			 "runTime="  + QuickTimeFormat.msToSecs(runTime));
+			 "runTime="  + Double.toString(runTime/1000D));
 	}
-	//-
 }

@@ -1,6 +1,6 @@
-import com.darwinsys.util.Debug;
-
 import java.io.*;
+
+import com.darwinsys.util.Debug;
 
 /**
  * Read a file and print, using LineReader and System.out

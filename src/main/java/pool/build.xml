@@ -1,4 +1,4 @@
-<project name="Object Pool with Demo" default="compile" basedir=".">
+<project name="Object Pool with Demo" default="build" basedir=".">
 
   <!-- Ant buildfile for Java Cookbook Pool Demo.
     $Id$
@@ -7,24 +7,19 @@
   <!-- set global properties for this build -->
   <property name="src" value="."/>
   <property name="build" value="."/>
-  <!-- Specify the compiler to use. 
-	Using jikes is supported but requires rt.jar in classpath.
-	-->
-  <property name="build.compiler" value="jikes"/>
+
+	<property file="../build.properties"/>
 
   <target name="init">
-    <!-- Create the time stamp -->
     <tstamp/>
-    <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
   </target>
 
-  <!-- specify what to compile. This builds everything -->
-  <target name="compile" depends="init">
-
+  <!-- specify what to build. This builds everything -->
+  <target name="build" depends="init">
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="com-darwinsys-util.jar"/>
+		  classpath="${javacook.jar}"/>
   </target>
 
 </project>

@@ -1,10 +1,10 @@
-<project name="Buzzin Quiz-Show Servlet" default="compile" basedir=".">
+<project name="Buzzin Quiz-Show Servlet" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
+	<property file="../../build.properties"/>
 
 	<property name="deploy.dir" value="/tmp"/>
 	<property name="deploy.jar" value="buzzin.jar"/>
@@ -23,5 +23,7 @@
 			includes="*,hosts/**,WEB-INF/**">
 		</jar>
 	</target>
+
+	<target name="build" depends="jar"/>
 
 </project>

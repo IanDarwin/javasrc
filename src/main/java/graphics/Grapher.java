@@ -1,9 +1,10 @@
-import com.darwinsys.util.Debug;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
+
+import com.darwinsys.util.Debug;
 
 /** Simple Graphing program.
  * @author Ian F. Darwin, ian@darwinsys.com

@@ -6,7 +6,7 @@ import netscape.javascript.*;
  * The import of netscape.javascript.* requires a JAR file.
  * EXPECT COMPILE ERROR unless you have the Netscape JAR file.
  * This may be e.g., $NETSCAPEHOME/java/classes/java40.jar.
- * The use of JavaScript requires <APPLET ... MAYSCRIPT>
+ * The use of JavaScript requires <APPLET ... MAYSCRIPT="true">
  * @author Ian F. Darwin, ian@darwinsys.com
  * @author Roger Goudarzi -- provided background information.
  * @version $Id$

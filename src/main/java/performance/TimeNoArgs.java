@@ -1,4 +1,3 @@
-import com.darwinsys.util.QuickTimeFormat;
 import java.lang.reflect.*;
 
 /**
@@ -44,7 +43,7 @@ public class TimeNoArgs {
 		long runTime = t1 - t0;
 
 		System.err.println(
-			 "runTime="  + QuickTimeFormat.msToSecs(runTime));
+			 "runTime="  + Double.toString(runTime/1000D));
 	}
 	//-
 }

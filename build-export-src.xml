@@ -28,13 +28,14 @@
 	</target>
 
 	<target name="api" depends="get">
-		<ant dir="${build.work}/com.darwinsys.util" target="dist"/>
+		<ant dir="${build.work}/com.darwinsys.util" target="dist"
+			inheritAll="false"/>
 	</target>
 
 	<target name="index" depends="api">
 		<!-- Update the index.html for just what we exported -->
-		<javac basedir="${build.work}/netweb" source="MkIndex.java"/>
-		<java classpath="${build.work}" classname="MkIndex"
+		<javac srcdir="${build.work}/netweb" includes="MkIndex.java"/>
+		<java classpath="${build.work}/netweb" classname="MkIndex"
 			dir="${build.work}" fork="yes"/>
 	</target>
 
@@ -44,14 +45,16 @@
 
 	<target name="dist" depends="jar"/>
 
-	<target name="webdeploy" depends="dist">
+	<target name="deploy" depends="dist">
 
 		<scp file="${dist.jar}" todir="darwinsys.com:/www/javacook/"/>
 
 		<Sshexec 
 			host="darwinsys.com"
 			command="cd /www/javacook; unzip -fo ${dist.jar}" />
+	</target>
 
+	<target name="notify">
 		<mail subject="Java Cookbook Download Updated" 
 			message=
 				"${dist.jar} updated at javacook.darwinsys.com/download.html"

@@ -1,6 +1,8 @@
-import com.darwinsys.util.*;
 import java.io.*;
 import java.io.*;
+
+import com.darwinsys.lang.GetOpt;
+import com.darwinsys.util.Debug;
 
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.

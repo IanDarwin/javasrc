@@ -5,9 +5,10 @@
  * For Application, just run it (has own main).
  */
 
-import com.darwinsys.util.WindowCloser;
 import java.awt.*;
 import java.net.*;		// for URL class
+
+import com.darwinsys.swingui.WindowCloser;
 
 /** This program, which can be an Applet or an Application,
  * shows a form of Toolkit.getImage() which works the same

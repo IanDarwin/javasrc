@@ -1,4 +1,4 @@
-<project name="Java Cookbook Examples" default="compile" basedir=".">
+<project name="Java Cookbook Examples" default="build" basedir=".">
 
 	<!-- Ant buildfile for Java Cookbook examples.
 		$Id$
@@ -6,7 +6,6 @@
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
-
 
 	<target name="init">
 		<tstamp/><!-- Create time stamp variables -->
@@ -31,93 +30,93 @@
 	<!-- compile APIs needed by other parts of the file -->
 	<target name="api" depends="init">
 		<echo message="==> com.darwinsys.util"/>
-		<ant target="jar" dir="com.darwinsys.util"/>
+		<ant target="jar" dir="com.darwinsys.util" inheritAll="false"/>
 		<echo message="==> spdf"/>
 		<ant target="jar" dir="spdf"/>
 	</target>
 
 	<!-- compile everything, for JavaCookbook reliability :-) -->
-	<target name="compile" description="compile all" depends="api">
-		<ant target="compile" dir="acks"/>
-		<ant target="compile" dir="applet"/>
-		<ant target="compile" dir="beans"/>
+	<target name="build" description="compile all" depends="api">
+		<ant target="build" dir="acks"/>
+		<ant target="build" dir="applet"/>
+		<ant target="build" dir="beans"/>
 		<echo message="==> ChartBean"/>
-		<ant target="compile" dir="ChartBean"/>
-		<ant target="compile" dir="classloader"/>
-		<ant target="compile" dir="ColumnLayout"/>
-		<ant target="compile" dir="com.darwinsys.regexp"/>
-		<ant target="compile" dir="cookiecutter"/>
-		<ant target="compile" dir="crssetup"/>
-		<ant target="compile" dir="datetime"/>
-		<ant target="compile" dir="DBM"/>
-		<ant target="compile" dir="dir_file"/>
-		<ant target="compile" dir="email"/>
-		<ant target="compile" dir="environ"/>
-		<ant target="compile" dir="filterGUI"/>
-		<ant target="compile" dir="gc"/>
-		<ant target="compile" dir="graphics"/>
-		<ant target="compile" dir="gui"/>
-		<ant target="compile" dir="i18n"/>
-		<ant target="compile" dir="introspection"/>
-		<ant target="compile" dir="io"/>
+		<ant target="build" dir="ChartBean"/>
+		<ant target="build" dir="classloader"/>
+		<ant target="build" dir="ColumnLayout"/>
+		<ant target="build" dir="com.darwinsys.regexp"/>
+		<ant target="build" dir="cookiecutter"/>
+		<ant target="build" dir="crssetup"/>
+		<ant target="build" dir="datetime"/>
+		<ant target="build" dir="DBM"/>
+		<ant target="build" dir="dir_file"/>
+		<ant target="build" dir="email"/>
+		<ant target="build" dir="environ"/>
+		<ant target="build" dir="filterGUI"/>
+		<ant target="build" dir="gc"/>
+		<ant target="build" dir="graphics"/>
+		<ant target="build" dir="gui"/>
+		<ant target="build" dir="i18n"/>
+		<ant target="build" dir="introspection"/>
+		<ant target="build" dir="io"/>
 		<echo message="==> javacomm"/>
 		<!-- javacomm.api must precede javacomm -->
-		<ant target="compile" dir="javacomm.api"/>
-		<ant target="compile" dir="javacomm"/>
-		<ant target="compile" dir="javadoc"/>
-		<ant target="compile" dir="jdb"/>
+		<ant target="build" dir="javacomm.api"/>
+		<ant target="build" dir="javacomm"/>
+		<ant target="build" dir="javadoc"/>
+		<ant target="build" dir="jdb"/>
 		<echo message="==> JDBC"/>
-		<ant target="compile" dir="JDBC"/>
-		<ant target="compile" dir="JMS"/>
-		<ant target="compile" dir="JNDI"/>
-		<ant target="compile" dir="jndi-services"/>
-		<ant target="compile" dir="jsp"/>
-		<ant target="compile" dir="jsptags"/>
+		<ant target="build" dir="JDBC"/>
+		<ant target="build" dir="JMS"/>
+		<ant target="build" dir="JNDI"/>
+		<ant target="build" dir="jndi-services"/>
+		<ant target="build" dir="jsp"/>
+		<ant target="build" dir="jsptags"/>
 		<echo message="==> language"/>
-		<ant target="compile" dir="language"/>
-		<ant target="compile" dir="native1.1"/>
-		<ant target="compile" dir="NETWatch"/>
-		<ant target="compile" dir="netweb"/>
-		<ant target="compile" dir="network"/>
-		<ant target="compile" dir="numbers"/>
+		<ant target="build" dir="language"/>
+		<echo message="native1.1 not built -- you have to tweak the Makefile"/>
+		<ant target="build" dir="NETWatch"/>
+		<ant target="build" dir="netweb"/>
+		<ant target="build" dir="network"/>
+		<ant target="build" dir="numbers"/>
 		<echo message="==> oo"/>
-		<ant target="compile" dir="oo"/>
-		<ant target="compile" dir="otherlang"/>
-		<ant target="compile" dir="packaging"/>
-		<ant target="compile" dir="performance"/>
-		<ant target="compile" dir="Plotter"/>
-		<ant target="compile" dir="prefs"/>
-		<ant target="compile" dir="quizzes"/>
+		<ant target="build" dir="oo"/>
+		<ant target="build" dir="otherlang"/>
+		<ant target="build" dir="packaging"/>
+		<ant target="build" dir="performance"/>
+		<ant target="build" dir="Plotter"/>
+		<ant target="build" dir="prefs"/>
+		<ant target="build" dir="quizzes"/>
 		<echo message="==> RE"/><ant target="RE"/>
-		<ant target="compile" dir="RE-apache"/>
-		<ant target="compile" dir="RelLayout"/>
-		<ant target="compile" dir="rmi"/>
-		<ant target="compile" dir="search"/>
-		<ant target="compile" dir="seating"/>
-		<ant target="compile" dir="servlet"/>
-		<ant target="compile" dir="ShowDocument"/>
-		<ant target="compile" dir="signals"/>
+		<ant target="build" dir="RE-apache"/>
+		<ant target="build" dir="RelLayout"/>
+		<ant target="build" dir="rmi"/>
+		<ant target="build" dir="search"/>
+		<ant target="build" dir="seating"/>
+		<ant target="build" dir="servlet"/>
+		<ant target="build" dir="ShowDocument"/>
+		<ant target="build" dir="signals"/>
 		<echo message="==> starting"/>
-		<ant target="compile" dir="starting"/>
-		<ant target="compile" dir="strings"/>
-		<ant target="compile" dir="structure"/>
-		<ant target="compile" dir="TabLayout"/>
-		<ant target="compile" dir="tar"/>
-		<ant target="compile" dir="testing"/>
-		<ant target="compile" dir="textproc"/>
-		<ant target="compile" dir="threads"/>
-		<ant target="compile" dir="tmtimer"/>
-		<ant target="compile" dir="tools"/>
+		<ant target="build" dir="starting"/>
+		<ant target="build" dir="strings"/>
+		<ant target="build" dir="structure"/>
+		<ant target="build" dir="TabLayout"/>
+		<ant target="build" dir="tar"/>
+		<ant target="build" dir="testing"/>
+		<ant target="build" dir="textproc"/>
+		<ant target="build" dir="threads"/>
+		<ant target="build" dir="tmtimer"/>
+		<ant target="build" dir="tools"/>
 		<echo message="==> webserver"/>
-		<ant target="compile" dir="webserver"/>
-		<ant target="compile" dir="wildmat"/>
-		<ant target="compile" dir="XColor"/>
-		<ant target="compile" dir="xml"/>
-		<ant target="compile" dir="xmlform"/>
+		<ant target="build" dir="webserver"/>
+		<ant target="build" dir="wildmat"/>
+		<ant target="build" dir="XColor"/>
+		<ant target="build" dir="xml"/>
+		<ant target="build" dir="xmlform"/>
 	</target>
 
 	<!-- optional targets -->
-	<target name="RE-1.4" if="RE_1.4">
-		<ant target="compile" dir="RE-1.4"/>
+	<target name="RE" if="RE_1.4">
+		<ant target="build" dir="RE"/>
 	</target>
 </project>

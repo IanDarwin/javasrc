@@ -1,5 +1,6 @@
-import com.darwinsys.util.Debug;
 import java.io.*;
+
+import com.darwinsys.util.Debug;
 
 /** entab- replace blanks by tabs and blanks.
  * Transmuted from K&R Software Tools book into C.

@@ -1,7 +1,7 @@
-import com.darwinsys.util.FileProperties;
-
 import java.awt.*;
 import java.sql.*;
+
+import com.darwinsys.util.FileProperties;
 
 /** A database MetaData query
  * @version $Id$

@@ -1,5 +1,3 @@
-import com.darwinsys.util.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -97,6 +95,6 @@ public class FileTree extends JPanel
 
 		frame.pack();
 		frame.setVisible(true);
-		frame.addWindowListener(new WindowCloser(frame, true));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

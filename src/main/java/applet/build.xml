@@ -1,4 +1,4 @@
-<project name="Java Cookbook Examples" default="compile" basedir=".">
+<project name="Java Cookbook Examples" default="build" basedir=".">
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
@@ -6,11 +6,26 @@
 	<property name="src"   value="."/>
 	<property name="build" value="."/>
 
-	<!-- specify what to compile. This builds everything -->
+	<available property="ns.jscript" 
+		classname="netscape.javascript.JSObject"
+		classpath="${netscape-java.jar}"/>
+
 	<target name="compile">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${netscape-java.jar}"/>
+			classpath="${javacook.jar}:${servletapi.jar}"
+			failonerror="false"
+			excludes="AppletJavaScript.java"/>
 	</target>
+
+	<target name="compile_js" if="ns.jscript">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${netscape-java.jar}"
+			failonerror="false"
+			includes="AppletJavaScript.java"/>
+	</target>
+
+	<target name="build" depends="compile,compile_js"/>
 
 </project>

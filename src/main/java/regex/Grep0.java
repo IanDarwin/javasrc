@@ -18,7 +18,6 @@ public class Grep0 {
 			matcher.reset(line);
 			if (matcher.find()) {
 				System.out.println("MATCH: " + line);
-				/* ... */
 			}
 		}
 	}

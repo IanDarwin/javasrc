@@ -1,7 +1,7 @@
-import com.darwinsys.util.FileProperties;
-
 import java.io.*;
 import java.util.*;
+
+import com.darwinsys.util.FileProperties;
 
 /** ImageIndex -- make an index.html for an image directory
  * based on some images and a "captions.txt" file.

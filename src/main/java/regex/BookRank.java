@@ -4,7 +4,7 @@ import java.text.*;
 import java.util.*;
 import java.util.regex.*;
 
-import com.darwinsys.util.FileIO;
+import com.darwinsys.io.FileIO;
 import com.darwinsys.util.FileProperties;
 
 /** Graph of a book's sales rank on a given bookshop site.

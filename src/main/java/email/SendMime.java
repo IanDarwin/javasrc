@@ -1,8 +1,9 @@
-import com.darwinsys.util.FileProperties;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*; 
+
+import com.darwinsys.util.FileProperties;
 
 /** SendMime -- send a multi-part MIME email message.
  * @author Ian F. Darwin

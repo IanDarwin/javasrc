@@ -1,9 +1,10 @@
-import com.darwinsys.util.FileProperties;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
+
+import com.darwinsys.util.FileProperties;
 
 /** Standalone MailClient GUI application.
  * @author	Ian Darwin, ian@darwinsys.com

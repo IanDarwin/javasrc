@@ -10,6 +10,7 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
+	<property name="temp.pdf" value="${build}/temp.pdf"/>
 	<property name="build.compiler" value="jikes"/>
 
 	<property name="deploy.dir" value="../lib"/>
@@ -36,9 +37,13 @@
 	</target>
 
 	<target name="regress" depends="build">
-		<java classname="Demo" classpath="${build}" output="temp.pdf"/>
+		<java classname="Demo" classpath="${build}" output="${temp.pdf}"/>
 		<exec executable="${viewer.pdf}">
-			<arg value="temp.pdf"/>
+			<arg value="${temp.pdf}"/>
 		</exec>
+	</target>
+
+	<target name="clean">
+		<delete dir="build"/>
 	</target>
 </project>

@@ -1,4 +1,4 @@
-import com.darwinsys.util.GetOpt;
+import com.darwinsys.lang.GetOpt;
 
 /** Trivial demonstration of GetOpt. If -h present, print help.
  * @author Ian F. Darwin, ian@darwinsys.com

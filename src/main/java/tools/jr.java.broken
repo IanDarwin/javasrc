@@ -1,9 +1,9 @@
 package com.darwinsys.tools;
 
-import com.darwinsys.util.Debug;
-
 import java.lang.reflect.*;
 import java.util.*;
+
+import com.darwinsys.util.Debug;
 
 /** User javac to compile a file and run it iff it compiles OK;
  * this is a time-save as it avoids loading the JVM a

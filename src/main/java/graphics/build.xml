@@ -1,15 +1,24 @@
-<project name="Java Cookbook Examples" default="compile" basedir=".">
+<project name="Java Cookbook Examples" default="build" basedir=".">
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
 
+	<property name="src" value="."/>
 	<property name="build" value="."/>
 
 	<!-- specify what to compile. This builds everything -->
-	<target name="compile">
-		<!-- Compile the java code from ${src} into ${build} -->
+	<target name="build">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${jmf.jar}"/>
+			classpath="${javacook.jar}:${jmf.jar}"
+			excludes="JMFPlayer.java"/>
+	</target>
+
+	<available classname="javax.media.Controllerlistener" property="avail.jmf"/>
+
+	<target name="build_jmf" if="avail.jmf">
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${jmf.jar}"
+			includes="JMFPlayer.java"/>
 	</target>
 
 </project>

@@ -1,4 +1,4 @@
-import com.darwinsys.util.WindowCloser;
+import com.darwinsys.swingui.WindowCloser;
 
 import java.awt.*;
 import java.awt.event.*;

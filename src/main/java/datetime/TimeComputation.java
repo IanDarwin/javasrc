@@ -1,7 +1,7 @@
 import java.io.*;
 import java.text.*;
 
-import com.darwinsys.util.SysDep;
+import com.darwinsys.lang.SysDep;
 
 /**
  * Timer for processing sqrt and I/O operations.

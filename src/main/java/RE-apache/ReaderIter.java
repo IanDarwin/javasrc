@@ -1,5 +1,5 @@
-import org.apache.regexp.*;
 import java.io.*;
+import org.apache.regexp.*;
 import com.darwinsys.util.Debug;
 
 /** Demonstrate the CharacterIterator interface: print

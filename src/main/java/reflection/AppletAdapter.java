@@ -1,6 +1,6 @@
-import java.awt.*;
-import java.awt.event.*;
 import java.applet.*;
+import java.awt.*;
+import java.io.*;
 import java.net.*;
 import java.util.*;
 
@@ -103,5 +103,21 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		if (msg == null)
 			msg = "";
 		status.setText(msg);
+	}
+
+	/* StreamKey stuff - new in JDK1.4 */
+	Map streamMap = new HashMap();
+
+	/** Associate the stream with the key. */
+	public void setStream(String key, InputStream stream) throws IOException {
+		streamMap.put(key, stream);
+	}
+
+	public InputStream getStream(String key) {
+		return (InputStream)streamMap.get(key);
+	}
+
+	public Iterator getStreamKeys() {
+		return streamMap.keySet().iterator();
 	}
 }

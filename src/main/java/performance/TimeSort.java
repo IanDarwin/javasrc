@@ -1,12 +1,9 @@
-import com.darwinsys.util.*;
-
 /**
  * Time a bunch of sorting.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class TimeSort {
-	//+
 	public static void main(String[] argv) {
 		final int N = 1024 * 1024;
 		java.util.Random r = new java.util.Random();
@@ -20,8 +17,7 @@ public class TimeSort {
 		long randTime = t1 - t0;
 		long sortTime = t2 - t1;
 		System.out.println(
-			 "randTime="  + QuickTimeFormat.msToSecs(randTime) + 
-			", sortTime=" + QuickTimeFormat.msToSecs(sortTime));
+			 "randTime="  + Double.mstoSting(randTime/1000D) + 
+			", sortTime=" + Double.toSting(sortTime/1000D));
 	}
-	//-
 }

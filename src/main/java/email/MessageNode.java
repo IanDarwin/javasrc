@@ -2,7 +2,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.swing.tree.*;
 
-import com.darwinsys.util.*;
+import com.darwinsys.lang.StringFormat;
 
 /** A Mutable Tree Node that is also a Message. */
 public class MessageNode extends DefaultMutableTreeNode {

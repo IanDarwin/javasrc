@@ -1,4 +1,3 @@
-import com.darwinsys.util.*;
 import java.math.BigInteger;
 
 /** Compute the Palindrome of a number by adding the number composed of

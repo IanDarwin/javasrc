@@ -1,5 +1,3 @@
-import com.darwinsys.util.WindowCloser;
-
 import java.applet.*;
 import java.awt.*;
 import javax.swing.*;
@@ -7,6 +5,8 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import javax.media.*;
+
+import com.darwinsys.swingui.WindowCloser;
 
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.

@@ -1,9 +1,6 @@
-import com.darwinsys.util.*;
-
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
 import javax.naming.*;
 import javax.rmi.*;
 

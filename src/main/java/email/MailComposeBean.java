@@ -1,4 +1,3 @@
-import com.darwinsys.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,6 +6,9 @@ import java.io.*;
 import javax.activation.*;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import com.darwinsys.mail.Mailer;
+import com.darwinsys.util.FileProperties;
 
 /** MailComposeBean - Mail gather and send Component Bean.
  *

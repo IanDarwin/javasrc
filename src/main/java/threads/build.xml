@@ -1,4 +1,4 @@
-<project name="Java Cookbook Threads Examples" default="compile" basedir=".">
+<project name="Java Cookbook Threads Examples" default="build" basedir=".">
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
@@ -6,8 +6,8 @@
 	<property name="build" value="."/>
 	<property name="src" value="."/>
 
-	<!-- specify what to compile. This builds everything -->
-	<target name="compile">
+	<!-- specify what to build. This builds everything -->
+	<target name="build">
 		<!-- Compile the java code from ${src} into ${build}.
 		 *** failonerror is set false because of 1.4 constructs that will
 		 *** fail to compile on 1.3, and a few "expect error here" cases...

@@ -1,34 +1,22 @@
-<project name="Tools" default="compile" basedir=".">
+<project name="Tools" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
-
-	<!-- JAR FILES -->
-	<!-- path to com-darwinsys-util.jar -->
-	<property name="darwinsys.jar" 
-		value="${user.home}/classes/ext/com-darwinsys-util.jar"/>
-	<!-- path to tools.jar in your version of the JDK -->
-	<property name="tools.jar"
-		value="/usr/local/jdk1.3.1-linux/lib/tools.jar"/>
-
-	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
-	<property name="deploy.jar" value="XXX.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
 		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${darwinsys.jar}:${tools.jar}"
+			classpath="${javacook.jar}:${tools.jar}"
 			/>
 	</target>
 
-	<target name="run" depends="compile">
+	<target name="run" depends="build">
 		<java className="com.darwinsys.tools.jr">
 			<arg value="JrTest"/>
 			<arg value="ArgOne"/>
@@ -41,7 +29,7 @@
 		</java>
 	</target>
 
-	<target name="jar" depends="compile">
+	<target name="jar" depends="build">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
 			includes="META-INF/*,com/**">
 		</jar>

@@ -1,11 +1,10 @@
-import com.darwinsys.util.*;
-
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.io.*;
 import java.net.*;
-import java.awt.*;
+
+import com.darwinsys.util.Debug;
 
 /**
  * ExecDemoNS shows how to execute a 32-bit Windows program from within Java.

@@ -17,6 +17,9 @@ public class ReaderIter {
 			// For each match in the line, extract and print it.
 			Matcher m = patt.matcher(line);
 			while (m.find()) {
+				// Simplest method:
+				// System.out.println(m.group(0));
+
 				// Get the starting position of the text
 				int start = m.start(0);
 				// Get ending position
@@ -24,8 +27,6 @@ public class ReaderIter {
 				// Print whatever matched.
 				// Use CharacterIterator.substring(offset, end);
 				System.out.println(line.substring(start, end));
-				// Easier method:
-				System.out.println(m.group(0));
 			}
 		}
 	}

@@ -1,8 +1,9 @@
-import com.darwinsys.util.*;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*; 
+
+import com.darwinsys.lang.GetOpt;
 
 /** sender -- send an email message.
  * If you give more than one file, each file will be sent to the

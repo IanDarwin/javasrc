@@ -1,7 +1,8 @@
-import com.darwinsys.util.*;
 import java.io.*;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+
+import com.darwinsys.util.Debug;
 
 /** XML Tree Walker
  * UPDATED FOR JAXP.

@@ -1,9 +1,11 @@
-import com.darwinsys.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-/** Simple demo of the com.darwinsys.util.ArrayListTable{Model,Panel}.
+import com.darwinsys.swingui.ArrayListTableModel;
+import com.darwinsys.swingui.ArrayListTablePanel;
+
+/** Simple demo of the com.darwinsys.swingui.ArrayListTable{Model,Panel}.
  * The "data" is an ArrayList made from the System Properties
  */
 public class ArrayListTableSimple extends JFrame {
@@ -78,7 +80,7 @@ public class ArrayListTableSimple extends JFrame {
 		setContentPane(new JScrollPane(v));
 		pack();
 
-		addWindowListener(new WindowCloser(this, true));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {

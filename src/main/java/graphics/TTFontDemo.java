@@ -57,9 +57,6 @@ public class TTFontDemo extends JLabel {
 
 		f.setBounds(100, 100, 700, 250);
 		f.setVisible(true);
-		// The AWT way to make it easy to close the Window.
-		//f.addWindowListener(new com.darwinsys.util.WindowCloser(f));
-		// The Swing way
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
-import com.darwinsys.io.*;
-import com.darwinsys.util.*;
+import com.darwinsys.io.FileIO;
 
 /** MkIndex -- make a static index.html for a Java Source directory
  * <p>
@@ -105,8 +104,8 @@ public class MkIndex {
 	 */
 	boolean[] exists = new boolean[255];
 
-	/** Vector for temporary storage, and sorting */
-	ArrayList vec = new ArrayList();
+	/** List for temporary storage, and sorting */
+	ArrayList list = new ArrayList();
 
 	/** Do the bulk of the work */
 	void process(File file) throws IOException {
@@ -131,7 +130,7 @@ public class MkIndex {
 			}
 		} else {
 			// file to be processed.
-			vec.add(new NameMap(name, file.getPath()));
+			list.add(new NameMap(name, file.getPath()));
 			exists[name.charAt(0)] = true;
 		}
 	}
@@ -149,12 +148,12 @@ public class MkIndex {
 		// ... the beginning of the HTML Unordered List...
 		println("<ul>");
 
-		System.out.println("Sorting the Vector...");
-		Collections.sort(vec);
+		System.out.println("Sorting the list...");
+		Collections.sort(list);
 
-		System.out.println("Start PASS TWO -- from Vector to " +
+		System.out.println("Start PASS TWO -- from List to " +
 			OUTPUTFILE + "...");
-		Iterator it = vec.iterator();
+		Iterator it = list.iterator();
 		while (it.hasNext()) {
 			NameMap map = (NameMap)it.next();
 			String fn = map.name;

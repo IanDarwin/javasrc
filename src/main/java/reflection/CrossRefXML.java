@@ -6,7 +6,7 @@ import java.lang.reflect.*;
  */
 public class CrossRefXML extends CrossRef {
 
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws IOException {
 		CrossRef xref = new CrossRefXML();
 		xref.doArgs(argv);
 	}

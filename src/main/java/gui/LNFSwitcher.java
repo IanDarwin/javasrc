@@ -1,5 +1,3 @@
-import com.darwinsys.util.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -28,7 +26,7 @@ public class LNFSwitcher {
 	public LNFSwitcher() {
 		super();
 		theFrame = new JFrame("LNF Switcher");
-		theFrame.addWindowListener(new WindowCloser(theFrame, true));
+		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cp = theFrame.getContentPane();
 		cp.setLayout(new FlowLayout());
 

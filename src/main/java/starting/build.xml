@@ -1,4 +1,4 @@
-<project name="Java Cookbook Examples" default="compile" basedir=".">
+<project name="Java Cookbook Examples" default="build" basedir=".">
 
   <!-- Ant buildfile for Java Cookbook examples.
     $Id$
@@ -18,8 +18,7 @@
   </target>
 
   <!-- specify what to compile. This builds everything -->
-  <target name="compile" depends="init">
-
+  <target name="build" depends="init">
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
 		  classpath="${javacook.jar}"/>
