@@ -4,7 +4,9 @@ import java.nio.channels.*;
 import java.nio.charset.*;
 import java.util.regex.*;
 
-// UNFINISHED - NOT LINE BASED
+/** A grep-like program using NIO but NOT LINE BASED.
+ * Pattern and file name(s) must be on command line.
+ */
 public class GrepNIO {
 	public static void main(String[] args) throws IOException {
 

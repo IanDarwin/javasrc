@@ -22,7 +22,6 @@ public class ReaderIter {
 				// Get ending position
 				int end = m.end(0);
 				// Print whatever matched.
-				System.out.println("start=" + start + "; end=" + end);
 				// Use CharacterIterator.substring(offset, end);
 				System.out.println(line.substring(start, end));
 			}

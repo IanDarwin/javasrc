@@ -22,12 +22,11 @@ public class ReplaceDemo {
 
 		// Show the appendReplacement method
 		m.reset();
-		StringBuffer sb = new StringBuffer("before -->");
+		StringBuffer sb = new StringBuffer();
 		m.find();
-		m.appendReplacement(sb, "stuff");	// Copy up to before first match,
-											// plus the word "stuff"
+		m.appendReplacement(sb, "daemon");	// Copy up to before first match,
+											// plus the word "daemon"
 		m.appendTail(sb);					// copy remainder
-		sb.append("<-- after");
 		System.out.println(sb.toString());
 	}
 }
