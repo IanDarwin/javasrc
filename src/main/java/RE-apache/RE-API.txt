@@ -1,0 +1,28 @@
+/** The main public API of org.apache.regexp.RE */
+public class org.apache.regexp.RE extends Object {
+	// Constructors
+    public org.apache.regexp.RE();
+    public org.apache.regexp.RE(String patt) throws org.apache.regexp.RESyntaxException;
+    public org.apache.regexp.RE(String patt, int flg) throws org.apache.regexp.RESyntaxException;
+    public org.apache.regexp.RE(org.apache.regexp.REProgram patt);
+    public org.apache.regexp.RE(org.apache.regexp.REProgram patt, int flg);
+
+    public boolean match(String in);
+    public boolean match(String in, int flg);
+    public boolean match(org.apache.regexp.CharacterIterator where, int flg);
+    public String[] split(String)[];
+    public String[] grep(Object[] in);
+    public String subst(String in, String repl);
+    public String subst(String in, String repl, int how);
+
+    public String getParen(int level);
+    public int getParenCount();
+    public final int getParenEnd(int level);
+    public final int getParenLength(int level);
+    public final int getParenStart(int level);
+
+    public int getMatchFlags();
+    public void setMatchFlags(int flg);
+    public org.apache.regexp.REProgram getProgram();
+    public void setProgram(org.apache.regexp.REProgram prog);
+}
