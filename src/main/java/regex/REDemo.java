@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.text.*;
+//import javax.swing.text.*;
 import java.util.regex.*;
 
 /** Standalone Swing GUI application for demonstrating REs.
@@ -12,12 +12,12 @@ import java.util.regex.*;
  * @version #Id$
  */
 public class REDemo extends JPanel {
-	Pattern pattern;
-	Matcher matcher;
-	JTextField patternTF, stringTF;
-	JCheckBox compiledOK;
-	JRadioButton match, find, findAll;
-	JTextField matchesTF;
+	protected Pattern pattern;
+	protected Matcher matcher;
+	protected JTextField patternTF, stringTF;
+	protected JCheckBox compiledOK;
+	protected JRadioButton match, find, findAll;
+	protected JTextField matchesTF;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -73,24 +73,24 @@ public class REDemo extends JPanel {
 		matchesTF = new JTextField(3);
 		strPane.add(matchesTF);
 
-		setLayout(new GridLayout(3, 1, 5, 5));
+		setLayout(new GridLayout(0, 1, 5, 5));
 		add(top);
 		add(strPane);
 		add(switchPane);
 	}
 
-	void setMatches(boolean b) {
+	protected void setMatches(boolean b) {
 		if (b)
 			matchesTF.setText("Yes");
 		else
 			matchesTF.setText("No");
 	}
 
-	void setMatches(int n) {
+	protected void setMatches(int n) {
 		matchesTF.setText(Integer.toString(n));
 	}
 
-	void tryCompile() {
+	protected void tryCompile() {
 		pattern = null;
 		try {
 			pattern = Pattern.compile(patternTF.getText());
@@ -101,7 +101,7 @@ public class REDemo extends JPanel {
 		}
 	}
 
-	void tryMatch() {
+	protected void tryMatch() {
 		if (pattern == null)
 			return;
 		matcher.reset(stringTF.getText());
