@@ -1,4 +1,4 @@
-package darwin;
+package jsp.darwin;
 
 /** Simple Password Checker Javabean.
  * Does not implement get methods, only set.
