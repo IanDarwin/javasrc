@@ -13,7 +13,7 @@ import java.io.*;
  * stored in the Servlet Application Context, at a slight increased cost
  * in terms of system overhead.
  */
-public class BuzzInServlet {
+public class BuzzInServlet extends HttpServlet {
 
 	/** This controls the access */
 	protected static boolean buzzed = false;
@@ -35,6 +35,7 @@ public class BuzzInServlet {
 			}
 	 	}
 
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
 		if (igotit) {
@@ -58,8 +59,9 @@ public class BuzzInServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		if (request.getParameter("hosthost").equals("syzzy")) {
+		if (request.getParameter("password").equals("syzzy")) {
 			synchronized(this) {
 				buzzed = false;
 			}

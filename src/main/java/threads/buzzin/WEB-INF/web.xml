@@ -1,0 +1,28 @@
+<!DOCTYPE web-app PUBLIC
+	"-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+	"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+
+    <display-name>Buzz-In Application</display-name>
+    <description>
+	This is a simple Servlet application that lets you run a quiz show
+	where the first person to "buzz in" gets to try to answer the
+	skill-testing question. It demonstrates Thread synchronization.
+	</description>
+
+    <!-- Servlet definitions -->
+
+    <servlet>
+        <servlet-name>BuzzInServlet</servlet-name>
+        <servlet-class>BuzzInServlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet name mappings.  -->
+
+    <servlet-mapping>
+        <servlet-name>BuzzInServlet</servlet-name>
+        <url-pattern>/servlet/BuzzInServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
