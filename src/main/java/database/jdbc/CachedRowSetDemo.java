@@ -1,5 +1,4 @@
-import java.sql.*;
-import javax.sql.*;
+import javax.sql.rowset.CachedRowSet;
 
 /** Demonstrate simple use of the CachedRowSet.
  * The RowSet family of interfaces is in JDK1.5, but the Implementation
@@ -30,7 +29,7 @@ public class CachedRowSetDemo {
 		// Suppose we want to update data:
 		while (rs.next()) {
 			if (rs.getInt("id") == 42) {
-				rs.setString("firstname", "Marvin");
+				rs.setString(1, "Marvin");
 				rs.updateRow();	// Normal JDBC
 
 				// This additional call tells the CachedRowSet to connect
