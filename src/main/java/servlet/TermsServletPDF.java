@@ -45,10 +45,10 @@ public class TermsServletPDF extends HttpServlet {
 			Term t = (Term)e.next();
 			p.set_text_pos(50, 700);
 			p.show("Term: ");
-			p.continueText(t.term);
+			p.continue_text(t.term);
 			p.set_text_pos(70, 666);
 			p.show("Definition: ");
-			p.continueText(t.definition);
+			p.continue_text(t.definition);
 			p.end_page();
 
 			p.close();

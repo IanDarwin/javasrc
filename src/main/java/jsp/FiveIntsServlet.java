@@ -1,8 +1,12 @@
 import java.util.Random;
 import javax.servlet.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
 
 public class FiveIntsServlet {
-	public void service(HttpServletRequest req, HttpServletResponse resp) {
+	public void service(HttpServletRequest req, HttpServletResponse resp) 
+	throws IOException {
 		PrintWriter out = resp.getWriter();
 		out.println("<HTML>");
 		out.println("<HEAD>");
