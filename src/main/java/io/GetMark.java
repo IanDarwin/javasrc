@@ -35,8 +35,21 @@ import java.io.*;
  * 		//+
  * 	}
  * </pre><p>
+ * When run through GetMark in "exclude" mode, the above will produce:
+ * </p><pre>
+ *  public methodA() {
+ *      // TODO:
+ *      // Look up the object to be invoked.
+ *      // Use a Lookup Name of "ex31object"
+ * 
+ * 
+ *      // TODO #2
+ *      // Downcast the looked up object using the IIOP portability
+ *
+ *  }
+ * </pre><p>
  * You could use this in a script:
- * <p><pre>
+ * </p><pre>
  * for f in *.java
  * do
  *    echo $f
