@@ -1,8 +1,12 @@
 import java.io.*;
 import org.xml.sax.*;
+import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 
-/** Convert a simple XML file to text */
+/** Convert a simple XML file to text.
+ * @author Ian Darwin, ian@darwinsys.com
+ * @version $Id$
+ */
 public class XmlToText {
 	protected Reader is;
 	protected String fileName;
@@ -23,7 +27,10 @@ public class XmlToText {
 		instance.parse(new InputSource(is));
 		XmlDocument doc = ((XmlDocumentBuilder)handler).getDocument();
 		// For now, just dump it:
-		doc.write(System.out);
+		// doc.write(System.out);
+		TreeWalker tw = new TreeWalker(doc);
+		for (Node p = tw.getCurrent(); p != null; p = tw.getNext())
+			System.out.println(p);
 	} catch (Exception ex) {
 		System.err.println(ex);
 	}
@@ -31,7 +38,11 @@ public class XmlToText {
 
 	public static void main(String av[]) {
 		System.out.println("Starting...");
+		if (av.length == 0) {
+			System.err.println("Usage: XmlForm file");
+			return;
+		}
 		new XmlToText(av[0]).convert();
-		System.out.println("Back in main, all done!");
+		System.out.println("All done!");
 	}
 }
