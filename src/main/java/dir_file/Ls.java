@@ -1,6 +1,6 @@
 /** Simple directory lister.
  * @author Ian Darwin, ian@darwinsys.com
- * @version $id$
+ * @version $Id$
  */
 public class Ls {
 	public static void main(String argh_my_aching_fingers[]) {
