@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<jboss>
+	<enterprise-beans>
+		<entity>
+			<ejb-name>MusicRecording</ejb-name>
+			<jndi-name>MusicRecording</jndi-name>
+		</entity>
+		<entity>
+			<ejb-name>Publisher</ejb-name>
+			<jndi-name>Publisher</jndi-name>
+		</entity>
+	</enterprise-beans>
+</jboss>
+

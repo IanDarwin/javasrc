@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC 
+	"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+	"http://java.sun.com/j2ee/dtds/ejb-jar_2_0.dtd"
+>
+
+<!-- Deployment Descriptor for MusicRecording -->
+<ejb-jar>
+
+<!-- Enterprise-Bean lists the beans, gives them names, and some
+ ** basic attributes.
+ -->
+<enterprise-beans>
+<entity>
+	<display-name>Music Recording Entity EJB</display-name>
+	<ejb-name>MusicRecording</ejb-name>
+	<home>rain.MusicHome</home>
+	<remote>rain.MusicRemote</remote>
+	<localhome>rain.MusicLocalHome</localhome>
+	<local>rain.MusicLocal</local>
+	<ejb-class>rain.MusicBean</ejb-class>
+	<persistence-type>Container</persistence-type>
+	<reentrant>false</reentrant>
+	<cmp-version>2.x</cmp-version>
+	<abstract-schema-name>MusicRecording</abstract-schema-name>
+	<cmp-field><field-name>id</field-name></cmp-field>
+	<cmp-field><field-name>artist</field-name></cmp-field>
+	<cmp-field><field-name>title</field-name></cmp-field>
+	<cmp-field><field-name>category</field-name></cmp-field>
+	<cmp-field><field-name>price</field-name></cmp-field>
+	<prim-key-field>id</prim-key-field>
+	<prim-key-class>java.lang.Integer</prim-key-class>
+	<cmr-field><field-name>publisher</field-name></cmr-field>
+</entity>
+<entity>
+	<ejb-name>Publisher</ejb-name>
+	<localhome>rain.PublisherLocalHome</localhome>
+	<local>rain.PublisherLocal</local>
+	<ejb-class>rain.PublisherBean</ejb-class>
+	<persistence-type>Container</persistence-type>
+	<reentrant>false</reentrant>
+	<cmp-version>2.x</cmp-version>
+	<abstract-schema-name>Publisher</abstract-schema-name>
+	<cmp-field><field-name>id</field-name></cmp-field>
+	<cmp-field><field-name>name</field-name></cmp-field>
+	<cmp-field><field-name>city</field-name></cmp-field>
+	<prim-key-field>id</prim-key-field>
+	<prim-key-class>java.lang.Integer</prim-key-class>
+</entity>
+</enterprise-beans>
+
+<!-- Relationships - CMR links (requires CMP 2) -->
+<relationships>
+    <ejb-relation>
+      <ejb-relation-name>MusicRecording-Publisher</ejb-relation-name>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>
+          musicRecording-has-publisher
+        </ejb-relationship-role-name>
+        <multiplicity>one</multiplicity>
+        
+        <role-source>
+          <ejb-name>Music</ejb-name>
+        </role-source>
+        
+        <cmr-field>
+          <cmr-field-name>publisher</cmr-field-name>
+          <cmr-field-type>rain.Publisher</cmr-field-type>
+        </cmr-field>
+        
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>
+          publisher-has-musicRecordings
+        </ejb-relationship-role-name>
+        <multiplicity>many</multiplicity>
+        <role-source>
+          <ejb-name>Publisher</ejb-name>
+        </role-source>
+        <cmr-field>
+          <cmr-field-name>recordings</cmr-field-name>
+          <cmr-field-type>java.util.Collection</cmr-field-type>
+        </cmr-field>
+      </ejb-relationship-role>
+    </ejb-relation>
+</relationships>
+
+<!-- 
+ ** Assembly-Descriptor includes CMT specification of what methods need xactions.
+ ** For now set all methods to Required, so anything gets committed.
+ ** XXX TODO list methods that don't change data, lower them from Required.
+ -->
+<assembly-descriptor>
+    <container-transaction>
+      <method>
+        <ejb-name>MusicRecording</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>Publisher</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
