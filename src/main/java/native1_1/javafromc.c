@@ -20,11 +20,22 @@ main(int argc, char *argv[])
 	}
 	
 	/* find the class named in argv[1] */
-	myClass = (*myEnv)->FindClass(myEnv, argv[1]);
+	if ((myClass = (*myEnv)->FindClass(myEnv, argv[1])) == NULL) {
+		fprintf(stderr, "FindClass %s failed\n", argv[1]);
+		exit(1);
+	}
+
 	/* find the static void main(String[])  method of that class */
-	myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "test", "(I)V");
+	/* myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "main", "([L/java/lang/String;)V"); */
+	myMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I");
+	if (myMethod == NULL) {
+		fprintf(stderr, "GetStaticMethodID failed\n");
+		exit(1);
+	}
 	/* finally, call the method */
 	(*myEnv)->CallStaticVoidMethod(myEnv, myClass, myMethod, 100);
 	
 	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
+
+	return 0;
 }
