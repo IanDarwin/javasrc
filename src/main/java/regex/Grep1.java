@@ -37,6 +37,7 @@ public class Grep1 {
 		// compile the regular expression, with .* around so it will
 		// match anywhere in the input line
 		pattern = Pattern.compile(patt);
+		matcher = pattern.matcher("");
 	}
 
 	/** Do the work of scanning one file
