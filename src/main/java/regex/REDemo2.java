@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
  */
 public class REDemo2 extends REDemo {
 
-	JTextArea logTextArea;
+	protected JTextArea logTextArea;
 	
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -41,7 +41,10 @@ public class REDemo2 extends REDemo {
 		int n = matcher.groupCount();
 		matcher.reset(stringTF.getText());
 		if (match.isSelected() && matcher.matches()) {
-			logTextArea.setText(matcher.group());
+			logTextArea.setText("");
+			for (int i = 0; i <= matcher.groupCount(); i++) {
+				logTextArea.append(i + " " + matcher.group(i) + "\n");
+			}
 			return true;
 		}
 		if (find.isSelected() && matcher.find()) {

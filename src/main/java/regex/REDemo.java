@@ -7,10 +7,8 @@ import java.util.regex.*;
 
 /** Standalone Swing GUI application for demonstrating REs.
  * <br/>
- * TODO: 
- * Show the entire match, and $1 and up as captures that matched.
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version #Id$
+ * @version $Id$
  */
 public class REDemo extends JPanel {
 	protected Pattern pattern;
@@ -90,6 +88,14 @@ public class REDemo extends JPanel {
 	protected void setMatches(int n) {
 		matchesTF.setText(Integer.toString(n));
 	}
+	
+	protected void tryAll() {
+		tryCompile();
+		String data = stringTF.getText();
+		if (data != null && data.length() > 0) {
+			tryMatch();
+		}
+	}
 
 	protected void tryCompile() {
 		pattern = null;
@@ -132,15 +138,15 @@ public class REDemo extends JPanel {
 	class PatternListener implements DocumentListener {
 
 		public void changedUpdate(DocumentEvent ev) {
-			tryCompile();
+			tryAll();
 		}
 
 		public void insertUpdate(DocumentEvent ev) {
-			tryCompile();
+			tryAll();
 		}
 
 		public void removeUpdate(DocumentEvent ev) {
-			tryCompile();
+			tryAll();
 		}
 	}
 
