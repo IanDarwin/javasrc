@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class CookieDialog extends JDialog {
@@ -7,9 +8,10 @@ public class CookieDialog extends JDialog {
 	JTextField name;
 	JTextField value;
 	JCheckBox fromJavaScript;
-	JTextField relURL;
-	JCheckBox overSSL;
+	JTextField path;
+	JCheckBox secure;
 	JTextField expDate;
+	JButton okButton, cancelButton;
 
 	CookieDialog(JFrame jf, String title) {
 		super(jf, title, true);
@@ -17,11 +19,11 @@ public class CookieDialog extends JDialog {
 		Container cp = getContentPane();
 		cp.setLayout(new GridLayout(0, 2));
 
-		cp.add(new JLabel("URL", JLabel.RIGHT));
+		cp.add(new JLabel("Domain", JLabel.RIGHT));
 		cp.add(url = new JTextField(20));
 
-		cp.add(new JLabel("RelURL", JLabel.RIGHT));
-		cp.add(relURL = new JTextField(20));
+		cp.add(new JLabel("Path", JLabel.RIGHT));
+		cp.add(path = new JTextField(20));
 
 		cp.add(new JLabel("Name", JLabel.RIGHT));
 		cp.add(name = new JTextField(20));
@@ -32,15 +34,27 @@ public class CookieDialog extends JDialog {
 		cp.add(new JLabel("Expiry", JLabel.RIGHT));
 		cp.add(expDate = new JTextField(20));
 
-		cp.add(new JLabel("URL", JLabel.RIGHT));
-		cp.add(url = new JTextField(20));
-
-		cp.add(new JLabel("overSSL", JLabel.RIGHT));
-		cp.add(overSSL = new JCheckBox());
+		cp.add(new JLabel("secure", JLabel.RIGHT));
+		cp.add(secure = new JCheckBox());
 
 		cp.add(new JLabel("fromClient", JLabel.RIGHT));
 		cp.add(fromJavaScript = new JCheckBox());
 
+		cp.add(okButton = new JButton("OK"));
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		cp.add(cancelButton = new JButton("Cancel"));
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// JOptionPane.showMessageDialog(CookieDialog.this,
+					// "Cannot cancel yet", "Cannot cancel yet",
+					// JOptionPane.ERROR_DIALOG);
+				dispose();
+			}
+		});
 
 		pack();
 	}
@@ -48,26 +62,27 @@ public class CookieDialog extends JDialog {
 	public void setCookie(Cookie c) {
 		undoableCookie = c;
 		url.setText(c.url);
-		relURL.setText(c.relURL);
+		path.setText(c.path);
 		name.setText(c.name);
 		value.setText(c.value);
+		// XXX
 	}
 
 	public Cookie getCookie() {
-		long expdt;
+		int expdt;
 		try {
-			expdt = Long.parseLong(expDate.getText());
+			expdt = Integer.parseInt(expDate.getText());
 		} catch (NumberFormatException ne) {
 			expdt = 0;
 		}
 		return new Cookie(
-			url.getText(),
-			fromJavaScript.isSelected(),
 			name.getText(),
-			overSSL.isSelected(),
-			expdt,
 			value.getText(),
-			relURL.getText()
+			url.getText(),
+			path.getText(),
+			expdt,
+			secure.isSelected(),
+			fromJavaScript.isSelected()
 		);
 	}
 
