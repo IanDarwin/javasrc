@@ -34,10 +34,28 @@ public class Httpd {
 		} else {
 			w = new Httpd();
 		}
+		w.startServer();
 		w.runServer();
 		// NOTREACHED
 	}
 
+	/** Run the main loop of the Server. Each time a client connects,
+	 * the ServerSocket accept() returns a new Socket for I/O, and
+	 * we pass that to the Handler constructor, which creates a Thread,
+	 * which we start.
+	 */
+	void runServer() {
+		while (true) {
+			try {
+				Socket clntSock = sock.accept();
+				new Handler(this, clntSock).start();
+			} catch(IOException e) {
+				System.err.println(e);
+			}
+		}
+	}
+
+	/** Construct a server object for a given port number */
 	Httpd(int portNum) {
 		super();
 		// A ResourceBundle can't load from the same basename as your class,
@@ -52,6 +70,9 @@ public class Httpd {
 				portNum = Integer.parseInt(portNumString);
 			}
 		}
+	}
+
+	public void startServer() {
 		try {
 			sock = new ServerSocket(portNum);
 		} catch(NumberFormatException e) {
@@ -65,6 +86,7 @@ public class Httpd {
 		}
 	}
 
+	/** A no-argument constructor */
 	Httpd() {
 		this(HTTP);
 	}
@@ -88,15 +110,4 @@ public class Httpd {
 		return sp;
 	}
 
-	/** Run the main loop of the Server. */
-	void runServer() {
-		while (true) {
-			try {
-				Socket clntSock = sock.accept();
-				new Handler(this, clntSock).start();
-			} catch(IOException e) {
-				System.err.println(e);
-			}
-		}
-	}
 }

@@ -29,7 +29,7 @@ public class Handler extends Thread {
 
 	/** Construct a Handler */
 	Handler(Httpd prnt, Socket sock) {
-		super();
+		super("client thread");
 		parent = prnt;
 		clntSock = sock;
 		// First time, put in null handler.
@@ -58,6 +58,9 @@ public class Handler extends Thread {
 				// us if we scream into cyberspace... Could log it though.
 				return;
 			}
+
+			// Use a StringTokenizer to break the request into its three parts:
+			// HTTP method, resource name, and HTTP version
 			StringTokenizer st = new StringTokenizer(request);
 			if (st.countTokens() != 3) {
 				errorResponse(444, "Unparseable input " + request);
@@ -76,8 +79,15 @@ public class Handler extends Thread {
 			String hdrLine;
 			while ((hdrLine = is.readLine()) != null &&
 					hdrLine.length() != 0) {
-					// XXX split on :
-					// XXX map.put(hdrName, hdrValue);
+					int ix;
+					if ((ix=hdrLine.indexOf(':')) != -1) {
+						String hdrName = hdrLine.substring(0, ix);
+						String hdrValue = hdrLine.substring(ix+1).trim();
+						System.out.println("hdr("+hdrName+","+hdrValue+")");
+						map.put(hdrName, hdrValue);
+					} else {
+						System.err.println("INVALID HEADER: " + hdrLine);
+					}
 			}
 
 			// check that rqCode is either GET or HEAD or ...
