@@ -95,8 +95,6 @@ public class RomanNumberFormat extends Format {
 	public Object parseObject(String what, ParsePosition where) {
 		throw new IllegalArgumentException("Parsing not implemented");
 		// TODO PARSING HERE
-		// if (!(what instanceof String)
-		// 	throw new IllegalArgumentException(what + " must be String");
 		// return new Long(0);
 	}
 

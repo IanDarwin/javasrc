@@ -22,9 +22,9 @@ public class BigNumCalc {
 		BigDecimal tmp;
 		for (int i = 0; i < input.length; i++) {
 			Object o = input[i];
-			if (o instanceof BigDecimal)
+			if (o instanceof BigDecimal) {
 				s.push(o);
-			else if (o instanceof String) {
+			} else if (o instanceof String) {
 				switch (((String)o).charAt(0)) {
 				// + and * are commutative, order doesn't matter
 				case '+':
@@ -47,7 +47,7 @@ public class BigNumCalc {
 					throw new IllegalStateException("Unknown OPERATOR popped");
 				}
 			} else {
-				throw new IllegalStateException("Syntax error in input");
+				throw new IllegalArgumentException("Syntax error in input");
 			}
 		}
 		return (BigDecimal)s.pop();
