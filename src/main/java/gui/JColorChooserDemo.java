@@ -5,11 +5,12 @@ import java.awt.event.*;
 /* 
  * Colors - demo of Swing JColorChooser.
  * Swing's JColorChooser can be used in three ways:
- * <UL><LI>Construct it and place it in a panel;
- * <LI>Call its createDialog() and get a JDialog back
- * <LI>Call its showDialog() and get back the chosen color
- * </UL>
- * <P>We use the last method, as it's the simplest, and is how
+ * <ul>
+ * <li>Construct it and place it in a panel;</li>
+ * <li>Call its createDialog() and get a JDialog back;</li>
+ * <li>Call its showDialog() and get back the chosen color.</li>
+ * </ul>
+ * <p>We use the last method, as it's the simplest, and is how
  * you'd most likely use it in a real application.
  *
  * @version $Id$
@@ -18,9 +19,7 @@ import java.awt.event.*;
 public class JColorDemo extends JFrame
 {
 	/** A canvas to display the color in. */
-    JLabel demo;
-	/** The latest chosen Color */
-	Color lastChosen;
+    protected JLabel demo;
 
 	/** Constructor - set up the entire GUI for this program */
     public JColorDemo() {
@@ -35,10 +34,10 @@ public class JColorDemo extends JFrame
 				Color ch = JColorChooser.showDialog(
 					JColorDemo.this,				// parent
 					"Swing Demo Color Popup",	// title
-					getBackground());			// default
+					demo.getForeground());			// default
 				System.out.println("Your selected color is " + ch);
 				if (ch != null) {
-					demo.setBackground(ch);
+					demo.setForeground(ch);
 					demo.repaint();
 				}
 			}
