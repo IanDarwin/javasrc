@@ -5,19 +5,19 @@ import javax.swing.*;
 /** Just a Frame
  * @version $Id$
  */
-public class FrameDemo extends JFrame {
+public class JFrameDemo extends JFrame {
 	boolean unsavedChanges = false;
 	Button quitButton;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
-		// create a FrameDemo object, tell it to show up
-		new FrameDemo().setVisible(true);
+		// create a JFrameDemo object, tell it to show up
+		new JFrameDemo().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public FrameDemo() {
-		super("FrameDemo");
+	public JFrameDemo() {
+		super("JFrameDemo");
 		add(quitButton = new Button("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

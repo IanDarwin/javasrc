@@ -7,36 +7,21 @@ import java.net.*;
 public class EchoClientOneLine {
 	/** What we send across the net */
 	String mesg = "Hello across the net";
-	/** Where we send "mesg" across the net TO */
-	String hostName;
 
 	public static void main(String argv[]) {
 		if (argv.length == 0)
-			new EchoClientOneLine().converse();
+			new EchoClientOneLine().converse("localhost");
 		else
-			new EchoClientOneLine(argv[0]).converse();
-	}
-
-	/** Construct a EchoClientOneLine with a default hostname */
-	public EchoClientOneLine() {
-		this("server");
-	}
-
-	/** Construct a EchoClientOneLine with a given hostname */
-	public EchoClientOneLine(String hName) {
-		hostName = hName;
+			new EchoClientOneLine().converse(argv[0]);
 	}
 
 	/** Hold one conversation across the net */
-	protected void converse() {
-		Socket sock;
-		BufferedReader is;
-		PrintWriter os;
+	protected void converse(String hostName) {
 		try {
-			sock = new Socket(hostName, 7); // echo server.
-			is = new BufferedReader(new 
+			Socket sock = new Socket(hostName, 7); // echo server.
+			BufferedReader is = new BufferedReader(new 
 				InputStreamReader(sock.getInputStream()));
-			os = new PrintWriter(sock.getOutputStream(), true);
+			PrintWriter os = new PrintWriter(sock.getOutputStream(), true);
 			os.println(mesg);
 			String reply = is.readLine();
 			System.out.println("Sent \"" + mesg  + "\"");

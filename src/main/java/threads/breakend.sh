@@ -1,3 +1,5 @@
-cd /local/breakend	# wherever the class file is
+#!/bin/sh -x
+
+# cd /usr/local/breakend	# wherever the class file is
 
 java BreakEnd $* &

@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
 import java.util.*;
+
 // THIS VERSION USES SWING -- Could probably just change
 // all occurrences of JLabel/JButton to Label/Button for AWT.
 import javax.swing.*;
@@ -9,9 +10,13 @@ import javax.swing.*;
 /** Unicode - show a page of Unicode characters.
  * BUG: Times throws a bunch of exceptions on page 2 and 3, that can
  * not be caught as they occur in the AWT thread. On some platforms.
+ *
+ * TODO - remove GoToPage as a dialog, move its textfield into main GUI.
+ *
  * @author	Ian Darwin, ian@darwinsys.com
+ * @version $Id$
  */
-public class Unicode extends JFrame {
+public class Unicode extends Frame {
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
@@ -30,7 +35,7 @@ public class Unicode extends JFrame {
 	/** the row labels, in a column at the left */
 	protected JLabel rowLabs[] = new JLabel[ROWS];
 	/** The page chooser pop-up */
-	protected GotoPage gotoPageUI;
+	protected GoToPage gotoPageUI;
 	/** How git to make the font samples */
 	protected final int FONTSIZE = 8;
 
@@ -135,28 +140,17 @@ public class Unicode extends JFrame {
 		};
 
 		Menu fontMenu = mkMenu(b, "font");
-		String[] fontList = Toolkit.getDefaultToolkit().getFontList();
+		// String[] fontList = Toolkit.getDefaultToolkit().getFontList();
+		String[] fontList = GraphicsEnvironment.getLocalGraphicsEnvironment().
+			getAvailableFontFamilyNames();
 		for (int i=0; i<fontList.length; i++) {
 			fontMenu.add(mi = new MenuItem(fontList[i]));
 			mi.addActionListener(fontSelector);
 		}
 		mb.add(fontMenu);
 
-		gotoPageUI = new GotoPage("Unicode Page");
+		gotoPageUI = new GoToPage("Unicode Page");
 		centre(gotoPageUI);
-		gotoPageUI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() instanceof TextField) {
-					String s = ((TextField)e.getSource()).getText();
-					int n = -1;
-					n = Integer.parseInt(s, 16);
-					if (n >= 0 && n <= 255)
-						gotoPage(startNum = n*QUADSIZE);
-					else
-						Toolkit.getDefaultToolkit().beep();
-				}
-			}
-		});
 
 		Menu vm = mkMenu(b,  "page");
 		vm.add(mi = mkMenuItem(b, "page", "first"));
@@ -184,7 +178,7 @@ public class Unicode extends JFrame {
 		centre(this);
 
 		// start at a known place
-		mySetFont("Dialog", FONTSIZE);
+		mySetFont(fontList[0], FONTSIZE);
 		gotoPage(startNum);
 	} // End of huge Constructor
 
@@ -195,6 +189,7 @@ public class Unicode extends JFrame {
 			for (int j = 0; j<COLUMNS; j++)
 				buttons[i][j].setFont(f);
 		}
+		repaint();
 	}
 
 	public void centre(Window c) {
@@ -222,7 +217,7 @@ public class Unicode extends JFrame {
 				b.setText(new String(chars));
 			}
 		}
-		// validate();
+		repaint();
 	}
 
 	/** Convenience routine to make a Button */
@@ -254,5 +249,75 @@ public class Unicode extends JFrame {
 			return new MenuItem(miLabel);
 		else
 			return new MenuItem(miLabel, new MenuShortcut(key.charAt(0)));
+	}
+
+	/** Implement a simple "Go To Page" dialog
+	 * Row one: "Go to Page", textfield
+	 * second OK, Cancel buttons.
+	 */
+	class GoToPage extends Frame {
+		/** TextField used to enter the number */
+		protected JTextField tf;
+		/** The OK button */
+		protected Button ok;
+		/** The cancel button */
+		protected Button can;
+
+		/** Construct a GoToPage window (no actions yet) */
+		public GoToPage(String title) {
+			setTitle(title);
+			Container cp = getContentPane();
+
+			Label l = new Label("Quadrant number (hex):");
+			tf = new JTextField(4);
+			tf.setText("1");
+			// set the text initially selected so you can easily overtype it
+			tf.selectAll();
+
+			ok = new Button("OK");
+			can = new Button("Cancel");
+			can.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					hide();
+				}
+			});
+
+			ActionListener doIt = new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					int n = -1;
+					try {
+						n = getValue();
+					} catch(IllegalArgumentException notANumber) {
+						// handled below
+					}
+					if (n >= 0 && n <= 255) {
+						gotoPage(startNum = n*QUADSIZE);
+						hide();
+					} else
+						Toolkit.getDefaultToolkit().beep();
+				}
+			};
+			ok.addActionListener(doIt);
+			tf.addActionListener(doIt);
+
+			Panel top = new Panel();
+			top.add(l);
+			top.add(tf);
+
+			Panel bottom = new Panel();
+			bottom.add(ok);
+			bottom.add(can);
+
+			cp.add(BorderLayout.NORTH, top);
+			cp.add(BorderLayout.SOUTH, bottom);
+
+			pack();
+		}
+
+		protected int getValue() {
+			int i = Integer.parseInt(tf.getText(), 16);
+			return i;
+		}
 	}
 }

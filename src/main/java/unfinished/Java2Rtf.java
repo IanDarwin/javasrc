@@ -8,7 +8,7 @@ public class Java2RTF extends JavaScan # or implements it, make inteface
 {
 	// read tokens, emit bold around keywords
 
-	Hashtable keyHash = new Hashtable(100);
+	Hashtable keyHash = new Hashtable();
 
 	// put the java Keywords into it
 

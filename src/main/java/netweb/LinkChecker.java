@@ -6,17 +6,15 @@ import java.io.*;
 
 /** A simple HTML Link Checker. 
  * Sorta working, but not ready for prime time.
- * Finish file: url checking, but this is hard:
- * The biggest problem is that Netscape and Java have different ideas
- * on how to do File: URLs, and they're incompatible.
  * Needs code simplification/elimination.
  * Need a Properties file to set depth, URLs to check. etc.
  * Responses not adequate; need to check at least for 404-type errors!
  * When all that is (said and) done, display in a Tree instead of a TextArea.
+ * Then use Color coding to indicate errors.
  *
- * @author	Ian Darwin, Darwin Open Systems, www.darwinsys.com.
- * Routine "readTag" stolen shamelessly from from
- * Elliott Rusty Harold's "ImageSizer" program.
+ * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
+ * @version $Id$
+ * @author Routine "readTag" from Elliott Rusty Harold's "ImageSizer" program.
  */
 public class LinkChecker extends Frame implements Runnable {
 	protected Thread t = null;
@@ -30,13 +28,30 @@ public class LinkChecker extends Frame implements Runnable {
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		if (args.length == 1)
-			lc.textFldURL.setText(args[0]);
 		lc.setSize(500, 400);
 		lc.setLocation(150, 150);
 		lc.setVisible(true);
+		if (args.length == 0)
+			return;
+		for (int i=0; i<args.length; i++) {
+			lc.textFldURL.setText(args[0]);
+			lc.startChecking();
+		}
 	}
   
+	public void startChecking() {
+		done = false;
+		checkButton.setEnabled(false);
+		killButton.setEnabled(true);
+		textWindow.setText("");
+		doCheck();
+	}
+	public void stopChecking() {
+		done = true;
+		checkButton.setEnabled(true);
+		killButton.setEnabled(false);
+	}
+
 	/** Construct a LinkChecker */
 	public LinkChecker() {
 		super("LinkChecker");
@@ -55,15 +70,16 @@ public class LinkChecker extends Frame implements Runnable {
 		p.add(checkButton = new Button("Check URL"));
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				doCheck();
+				startChecking();
 			}
 		});
 		p.add(killButton = new Button("Stop"));
+		killButton.setEnabled(false);	// until startChecking is called.
 		killButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (t == null || !t.isAlive())
 					return;
-				done = true;
+				stopChecking();
 			}
 		});
 		// Now lay out the main GUI - URL & buttons on top, text larger
@@ -88,31 +104,51 @@ public class LinkChecker extends Frame implements Runnable {
 	/** Start checking, given a URL by name.
 	 * Calls checkLink to check each link.
 	 */
-	public void checkOut(String pageURL) {
-		String thisLine = null;
-		URL root = null;
+	public void checkOut(String rootURLString) {
+		URL rootURL = null;
+		BufferedReader inrdr = null;
 
-		if (pageURL == null) {
-			throw new IllegalArgumentException(
-				"checkOut(null) isn't very useful");
+		if (rootURLString == null) {
+			textWindow.append("checkOut(null) isn't very useful");
+			return;
 		}
-		// Open the URL for reading
+
+		// Open the root URL for reading
 		try {
-			root = new URL(pageURL);
-			BufferedReader inrdr = null;
-			char thisChar = 0;
-			String tag = null;
-  
-			inrdr = new BufferedReader(new InputStreamReader(root.openStream()));
+			rootURL = new URL(rootURLString);
+			inrdr = new BufferedReader(new InputStreamReader(rootURL.openStream()));
+		} catch (MalformedURLException e) {
+			textWindow.append("Can't parse " + rootURLString + "\n");
+			return;
+		} catch (FileNotFoundException e) {
+			textWindow.append("Can't open file " + rootURLString + "\n");
+			return;
+		} catch (IOException e) {
+			textWindow.append("openStream " + rootURLString + " " + e + "\n");
+			return;
+		}
+
+		// If we're still here, the root URL given is OK.
+		// Next we make up a "directory" URL from it.
+		String rootURLdirString;
+		if (rootURLString.endsWith("/") ||
+			rootURLString.endsWith("\\"))
+				rootURLdirString = rootURLString;
+		else {
+			rootURLdirString = rootURLString.substring(0, 
+				rootURLString.lastIndexOf('/'));	// XXX or \
+		}
+
+		try {
 			int i;
 			while ((i = inrdr.read()) != -1) {
 				if (done) {
-					textWindow.append("-- Interrupted --");
+					textWindow.append("\n-- Interrupted --");
 					return;
 				}
-				thisChar = (char)i;
+				char thisChar = (char)i;
 				if (thisChar == '<') {
-					tag = readTag(inrdr);
+					String tag = readTag(inrdr);
 					// System.out.println("TAG: " + tag);
 					if (tag.toUpperCase().startsWith("<A ") ||
 						tag.toUpperCase().startsWith("<A\t")) {
@@ -123,23 +159,28 @@ public class LinkChecker extends Frame implements Runnable {
 						if (href.startsWith("mailto:"))
 							continue;
 
+						if (href.startsWith("..") || href.startsWith("#"))
+							// nothing doing!
+							continue; 
+
 						for (int j=0; j<indent; j++)
 							textWindow.append("\t");
+
 						textWindow.append(href + " -- ");
 						// don't combine previous append with this one,
 						// since this one can throw an exception!
-						textWindow.append(checkLink(root, href) + "\n");
+						textWindow.append(checkLink(rootURL, href) + "\n");
 
 						// If HTML, check it recursively
 						if (href.endsWith(".htm") ||
 							href.endsWith(".html")) {
 								++indent;
-								if (href.indexOf(":") != -1)
+								if (href.indexOf(':') != -1)
 									checkOut(href);
 								else {
-									String newRef = root.getProtocol() +
-										 "://" + root.getHost() + "/" + href;
-									// System.out.println(newRef);
+									String newRef = 
+										 rootURLdirString + '/' + href;
+									// System.out.println("MADE " + newRef);
 									checkOut(newRef);
 								}
 								--indent;
@@ -148,11 +189,7 @@ public class LinkChecker extends Frame implements Runnable {
 				}
 			}
 			inrdr.close();
-		}
-		catch (MalformedURLException e) {
-			textWindow.append("Can't parse " + pageURL + "\n");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.err.println("Error " + ":(" + e +")");
 		}
 	}

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 /** Implement a simple "Go To Page" dialog
  * Row one: "Go to Page", textfield
@@ -9,12 +10,12 @@ public class GoToPage extends Dialog {
 	/** TextField used to enter the number */
 	protected TextField tf;
 	/** The OK button */
-	protected Button ok;
+	protected JButton ok;
 	/** The cancel button */
-	protected Button can;
+	protected JButton can;
 
 	/** Construct a GoToPage window (no actions yet) */
-	public GoToPage(Frame f, String title) {
+	public GoToPage(JFrame f, String title) {
 		super(f);
 		setTitle(title);
 
@@ -24,8 +25,8 @@ public class GoToPage extends Dialog {
 		// set the text initially selected so you can easily overtype it
 		tf.selectAll();
 
-		ok = new Button("OK");
-		can = new Button("Cancel");
+		ok = new JButton("OK");
+		can = new JButton("Cancel");
 
 		Panel top = new Panel();
 		top.add(l);
@@ -41,10 +42,15 @@ public class GoToPage extends Dialog {
 		pack();
 	}
 
+	protected int getValue() {
+		int i = Integer.parseInt(tf.getText());
+		return i;
+	}
+
 	public static void main(String unused[]) {
-		final Frame f = new Frame("Page Dialog Test");
-		Button b;
-		f.add(b = new Button("Show Dialog"));
+		final JFrame f = new JFrame("Page Dialog Test");
+		JButton b;
+		f.getContentPane().add(b = new JButton("Show Dialog"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new GoToPage(f, "GoToPage Demo").setVisible(true);
