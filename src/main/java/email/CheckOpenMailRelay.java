@@ -14,12 +14,13 @@ public class TestOpenMailRelay {
 
 	/** Driver to parse options and control Sender */
 	public static void main(String[] args) {
-		if (args.length != 1) {
-			System.err.println("Usage: " + "TestOpenMailRelay" +
-				" suspected_relay");
-			System.exit(1);
+		if (args.length == 0) {
+			new TestOpenMailRelayGUI().setVisible(true);
+		} else {
+			for (int i=0; i<args.length; i++) {
+				process(args[i]);
+			}
 		}
-		process(args[0]);
 	}
 
 	public static void process(String suspect_relay) {
