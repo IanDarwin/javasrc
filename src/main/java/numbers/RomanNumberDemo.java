@@ -1,7 +1,7 @@
 public class RomanNumberDemo {
 	/** Simple test case */
 	public static void main(String argv[]) {
-		//-
+		//+
 		RomanNumberFormat nf = new RomanNumberFormat();
 		System.out.println("Test of " + nf);
 		System.out.println("0->" + nf.format(0));

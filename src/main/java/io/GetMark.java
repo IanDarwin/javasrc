@@ -22,7 +22,7 @@ public class GetMark {
 	 */
     public void process(String fileName,
 		LineNumberReader is,
-		PrintWriter out) {
+		PrintStream out) {
 		//+
 		try {
 			String inputLine;
@@ -54,7 +54,7 @@ public class GetMark {
 	 */
     public static void main(String av[]) {
         GetMark o = new GetMark();
-		PrintWriter pw = new PrintWriter(System.out);
+		PrintStream pw = new PrintStream(System.out);
         if (av.length == 0) {
             o.process("standard input", new LineNumberReader(
 				new InputStreamReader(System.in)), pw);
