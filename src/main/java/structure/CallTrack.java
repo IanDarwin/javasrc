@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 /** Code Fragmment showing how to insert in two lists (an ArrayList
  * and an AWT List) in sorted order, using a simple linear search
  * of the ArrayList to find the object (or end of list) before which
@@ -5,19 +8,22 @@
  */
 public class CallTrack {
 
-	/** The list of User objects. */
-	ArrayList usrList = new Vector();
+	/** The list of Person objects. */
+	protected List usrList = new ArrayList();
+
 	/** The scrolling list */
-	java.awt.List visList = new List();
-	/** Add one (new) Candidate to the lists */
-	protected void add(Candidate c) {
-		String n = c.lastname;
+	protected java.awt.List visList = new java.awt.List();
+
+	/** Add one (new) Person to the list, keeping the list sorted. */
+	protected void add(Person p) {
+		String lastName = p.getLastName();
 		int i;
 		for (i=0; i<usrList.size(); i++)
-			if (n.compareTo(((User)(usrList.elementAt(i))).lastname) <= 0)
+			if (lastName.compareTo(((Person)(usrList.get(i))).getLastName()) <= 0)
 				break;
-		visList.add(c.getName(), i);
-		usrList.add(i, c);
+		usrList.add(i, p);
+		visList.add(p.getName(), i);
 		visList.select(i);      // ensure current
 	}
+
 }
