@@ -3,7 +3,7 @@
  * $Id$
  */
 public class SEbol extends SE {
-	public String toString() { return "SE(^)"; }
+	public String toString() { return "BOL"; }
 	public boolean amatch(String ln, Int i) {
 		if (i.get()>0)
 			return false;

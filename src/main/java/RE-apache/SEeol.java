@@ -3,9 +3,9 @@
  * $Id$
  */
 public class SEeol extends SE {
-	public String toString() { return "SE($)"; }
+	public String toString() { return "EOL"; }
 	public boolean amatch(String ln, Int i) {
-		if (i.get() == ln.length() - 1) {
+		if (i.get() == ln.length()) {
 			// no i.incr() since we don't use any chars in ln
 			return true;
 		}
