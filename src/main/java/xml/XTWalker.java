@@ -2,7 +2,7 @@ import java.io.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 
-/** XML Tree Walker, using the provided TreeWalker
+/** Subclass XML Tree Walker to use the provided TreeWalker
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */

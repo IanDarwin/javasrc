@@ -7,10 +7,6 @@ import com.sun.xml.tree.*;
  * @version $Id$
  */
 public class XTW {
-	protected Reader is;
-	protected String fileName;
-
-	protected static PrintStream msg = System.out;
 
 	public static void main(String av[]) {
 		if (av.length == 0) {
@@ -19,18 +15,13 @@ public class XTW {
 		}
 		for (int i=0; i<av.length; i++) {
 			String name = av[i];
-			new XTW(name).convert(true);
+			new XTW().convert(name, true);
 		}
-		msg.close();
-	}
-
-	/** Construct a converter given an input filename */
-	public XTW(String fn) {
-		fileName = fn;
 	}
 
 	/** Convert the file */
-	protected void convert(boolean verbose) {
+	protected void convert(String fileName, boolean verbose) {
+		Reader is;
 		try {
 			if (verbose)
 				System.err.println(">>>Parsing " + fileName + "...");
