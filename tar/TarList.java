@@ -34,7 +34,7 @@ public class TarList {
 
 	protected StringBuffer sb;
 	/** Shift used in formatting permissions */
-	protected static int shft[] = { 6, 3, 0 };
+	protected static int[] shft = { 6, 3, 0 };
 	/** Format strings used in permissions */
 	protected static String rwx[] = {
 		"---", "--x", "-w-", "-wx",
