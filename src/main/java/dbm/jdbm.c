@@ -14,7 +14,7 @@
  * Signature: (Ljava/lang/String;)I
  */
 JNIEXPORT jint JNICALL Java_DBM_dbminit
-  (JNIEnv *env, jobject this, jstring) {
+  (JNIEnv *env, jobject this, jstring filename) {
 }
 
 /*
