@@ -14,10 +14,19 @@ public class Servlet extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
+		ServletContext application = getServletContext();
+
+		// to do: logic code and main HTML goes HERE.
+		// ...
+
+		// Output section in MVC: dispatch to JSP to display the work.
+		RequestDispatcher rd = application.getRequestDispatcher("/foo.jsp");
+		rd.forward(request, response);
+
+		// ALTERNATE Output section IF this servlet displays output itself
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
 
-		// BOILERPLATE beginning
 		out.println("<!DOCTYPE html PUBLIC " +
 			"\"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n" +
 			"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"\n" +
@@ -26,12 +35,13 @@ public class Servlet extends HttpServlet
 		out.println("<head><title>Servlet Output</title></head>");
 		out.println("<body>");
 
-		// to do: logic code and main HTML goes here.
+		// to do: output results of work here
 
 		// BOILERPLATE ending
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
+
 	}
 
 	/** Called in response to a POST request (data unencoded on the socket) */
@@ -43,7 +53,7 @@ public class Servlet extends HttpServlet
 		// Delegate to doGet:
 		// doGet(request, response);
 
-		// Do work different than that of doGet
+		// Alternate Version: Do work different than that of doGet
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
 
