@@ -49,7 +49,7 @@ public class ThreadLocalDemo extends Thread {
 
 	/** This ThreadLocal holds the Client reference for each Thread */
 	private ThreadLocal myClient = new ThreadLocal() {
-		// The initialValue() method is called magically when you call get().
+		// initialValue() is called magically when you first call get().
 		protected synchronized Object initialValue() {
 			return new Client(clientNum++);
 		}
