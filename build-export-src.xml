@@ -25,10 +25,12 @@
 			quiet="true"
 			package="javacook-src"
 			dest="${build}"/>
+		<echo message="javasrc.home=${user.dir}/${build.work}" 
+			file="${build.work}/build.properties" append="true"/>
 	</target>
 
 	<target name="api" depends="get">
-		<ant dir="${build.work}/com.darwinsys" target="dist"
+		<ant dir="${build.work}/darwinsys" target="dist"
 			inheritAll="false"/>
 	</target>
 
