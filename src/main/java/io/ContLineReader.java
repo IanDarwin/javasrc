@@ -1,9 +1,11 @@
 import java.io.*;
 
-/** Subclass of LineNumberReader to allow reading of continued lines
- * using the readLine() method. The other Reader methods (readInt()) etc.)
- * must not be used.  Must subclass to provide the actual implementation
- * of readLine().
+/**
+ * Subclass of LineNumberReader, parent of others, to allow reading of
+ * continued lines using the readLine() method. The other Reader methods
+ * (readInt()) etc.) must not be used. Must subclass to provide the actual
+ * implementation of readLine().
+ * 
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
