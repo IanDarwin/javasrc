@@ -1,6 +1,6 @@
 import com.darwinsys.lang.GetOpt;
 
-/** Trivial demonstration of GetOpt. If -h present, print help.
+/** Trivial demonstration of GetOpt, the old way. If -h present, print help.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -8,7 +8,7 @@ public class GetOptSimple {
 	public static void main(String[] args) {
 		GetOpt go = new GetOpt("h");
 		char c;
-		while ((c =go.getopt(args)) != 0) {
+		while ((c = go.getopt(args)) != 0) {
 			switch(c) {
 			case 'h':
 				helpAndExit(0);
