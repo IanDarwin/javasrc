@@ -12,14 +12,14 @@ public class GUI0 {
 		Button quitButton;
 
 		// create a GUI0 object and make it show
-		Frame f = new Frame();
+		final Frame f = new Frame();
 		f.setLayout(new FlowLayout());
 		f.add(new Label("Hello, and welcome to the world of Java"));
 		f.add(quitButton = new Button("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
+				f.setVisible(false);
+				f.dispose();
 				System.exit(0);
 			}
 		});
