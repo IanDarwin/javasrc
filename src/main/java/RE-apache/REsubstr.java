@@ -1,3 +1,5 @@
+import org.apache.regexp.*;
+
 /**
  * REsubstr -- demonstrate RE Match -> String.substring()
  * @author Ian F. Darwin, ian@darwinsys.com

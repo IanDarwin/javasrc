@@ -3,8 +3,6 @@ SUBDIR=	 starting environ strings RE numbers datetime structure Plotter io tar t
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
 # $Id$
 
-SHELL=	/bin/sh
-
 # Pick a Java compiler. Any Java compiler that works.
 #JAVAC=	javac
 #JAVAC=	guavac
@@ -12,6 +10,19 @@ SHELL=	/bin/sh
 JAVACC=	jikes +E
 # Make sure the user picked one.
 JAVACC?= javac
+
+SHELL=	/bin/sh
+
+# There are three types of Makefiles in SUBDIR/*. Most of them
+# are not in CVS, but are copied from Makefile.simple by "make makefiles"
+# The few listed there:
+SUBDIRS_WITH_ERROR_DEMOS= introspection language numbers netweb
+# are similarly copied by "make makefiles" from "Makefile.exclude-errors";
+# these directories have files (discussed in the book) that show
+# why certain features won't compile without change.
+# The third type are hand-maintained; these are for those that
+# either need a "checkpath" rule similar to the one in this Makefile,
+# or have other special needs.
 
 all:	checkpaths build
 
@@ -32,7 +43,7 @@ build:
 
 # For any subdirectory that doesn't already have a Makefile, create a simple one
 makefiles:
-		@for dir in introspection language numbers; do \
+		@for dir in $(SUBDIRS_WITH_ERROR_DEMOS); do \
 			echo "===> $$dir/Makefile (exclude-errors)"; \
 			cp Makefile.exclude-errors $$dir/Makefile; \
 		done
@@ -46,7 +57,11 @@ makefiles.clean:
 		if cmp -s Makefile.simple $$dir/Makefile; then \
 			echo "===> rm $$dir/Makefile"; \
 			rm $$dir/Makefile; \
-		fi; done
+		elif cmp -s Makefile.exclude-errors $$dir/Makefile; then \
+			echo "===> rm $$dir/Makefile"; \
+			rm $$dir/Makefile; \
+		fi; \
+		done
 # Don't worry about (or try to use) this rule; it is only used by the book's
 # author when adding a subdirectory to the list of files included.
 subdirs:

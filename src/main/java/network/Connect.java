@@ -4,7 +4,7 @@ import java.net.*;
  * A simple demonstration of setting up a Java network client.
  * @version $Id$
  */ 
-public class Client {
+public class Connect {
 	public static void main(String[] argv) {
 		String server_name = "localhost";
 

@@ -5,19 +5,19 @@ import java.util.*;
 
 /** This is a partly-internationalized version of MenuDemo.
  * To try it out, use
- *		java MenuIntl
- *		java -Duser.language=es MenuIntl
+ *		java MenuIntl2
+ *		java -Duser.language=es MenuIntl2
  */
-public class MenuIntl extends JFrame {
+public class MenuIntl2 extends JFrame {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		// create an MenuIntl object, tell it to show up
-		new MenuIntl().setVisible(true);
+		new MenuIntl2().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public MenuIntl() {
+	public MenuIntl2() {
 		super("MenuIntlTest");
 		JMenuItem mi;		// used in various spots
 
@@ -40,7 +40,7 @@ public class MenuIntl extends JFrame {
 
 		String titlebar;
 		try { titlebar = rb.getString("program"+".title"); }
-		catch (MissingResourceException e) { titlebar="MenuIntl Demo"; }
+		catch (MissingResourceException e) { titlebar="MenuIntl2 Demo"; }
 		setTitle(titlebar);
 
 		String message;
@@ -57,8 +57,8 @@ public class MenuIntl extends JFrame {
 		fm.add(mi = I18N.mkMenuItem(rb, "file", "exit"));
 		mi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuIntl.this.setVisible(false);
-				MenuIntl.this.dispose();
+				MenuIntl2.this.setVisible(false);
+				MenuIntl2.this.dispose();
 				System.exit(0);
 			}
 		});

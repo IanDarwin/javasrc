@@ -75,7 +75,9 @@ public class MenuIntl extends JFrame {
 		// mb.setHelpMenu(hm);	// needed for portability (Motif, etc.).
 
 		// the main window
-		cp.add(new MyLabel("Menu Demo Window", 200, 150));
+		JLabel jl = new JLabel("Menu Demo Window");
+		jl.setSize(200, 150);
+		cp.add(jl);
 		pack();
 	}
 

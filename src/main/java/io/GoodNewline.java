@@ -1,3 +1,5 @@
+import java.io.*;
+
 /**
  * Multiple lines output from one method.
  * @author Ian F. Darwin, ian@darwinsys.com

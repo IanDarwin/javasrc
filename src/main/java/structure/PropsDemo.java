@@ -8,17 +8,17 @@ public class PropsDemo {
 	Properties ian = new Properties();
 
 	// Set my data.
-	ian.setProperty(name", "Ian Darwin");
-	ian.setProperty(favorite popsicle", "cherry");
-	ian.setProperty(favorite rock group", "Fleetwood Mac");
-	ian.setProperty(favorite programming language", "Java");
-	ian.setProperty(pencil color=green");
+	ian.setProperty("name", "Ian Darwin");
+	ian.setProperty("favorite popsicle", "cherry");
+	ian.setProperty("favorite rock group", "Fleetwood Mac");
+	ian.setProperty("favorite programming language", "Java");
+	ian.setProperty("pencil color", "green");
 
 	// should return the string "green".
-	String ianColor = ian.getProperty("pencil color") 
+	String ianColor = ian.getProperty("pencil color");
 
 	// Don't know what it will return.
-	String sysColor = System.getProperty("pencil color")
+	String sysColor = System.getProperty("pencil color");
 
 	// Now list the Properties, using System.out
 	ian.list(System.out);

@@ -1,3 +1,5 @@
+import com.darwinsys.util.FileProperties;
+
 import java.io.*;
 import java.util.*;
 

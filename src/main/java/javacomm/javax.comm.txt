@@ -1,0 +1,10 @@
+
+CLASSPATH PROBLEM
+
+You do not appear to have the javax.comm package in your CLASSPATH.
+
+You will need to download and install this (operating-system-dependant)
+file in order to compile the programs in `pwd`.
+
+$Id$
+

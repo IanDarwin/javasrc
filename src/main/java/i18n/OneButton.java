@@ -12,6 +12,7 @@ public class OneButton extends JFrame {
 
 	public OneButton() {
 		ResourceBundle rb = ResourceBundle.getBundle("Widgets");
+		String label = null;
 		try {
 			label = rb.getString("exit.label");
 		} catch (MissingResourceException e) {

@@ -18,8 +18,8 @@ public class Delete2 {
 			File target = new File(fileName);
 
 			if (!target.exists()) {
-				System.err.println("File " fileName + 
-					" not there to begin with!");
+				System.err.println("File " + fileName + 
+					" not present to begin with!");
 				return;
 			}
 

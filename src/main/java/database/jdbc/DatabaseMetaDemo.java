@@ -1,3 +1,5 @@
+import com.darwinsys.util.FileProperties;
+
 import java.awt.*;
 import java.sql.*;
 

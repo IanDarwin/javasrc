@@ -1,0 +1,13 @@
+
+CLASSPATH PROBLEM
+
+You do not appear to have the javax.mail package in your CLASSPATH.
+
+You will need to download and install this file in order to compile 
+the programs in `pwd`. Either get and install the javamail and
+javax.activation APIs from http://java.sun.com/products/javamail,
+or get and install the J2EE reference implementation (or another
+J2EE implementation); all J2EE implementations include JavaMail.
+
+$Id$
+

@@ -16,7 +16,7 @@ public class Undent {
         if (av.length == 0)
             c.process(new BufferedReader(
 				new InputStreamReader(System.in)));
-		else for (int i=0; i<av.length; i++)
+		else for (int i=0; i<av.length; i++) {
 			try {
 				c.process(new BufferedReader(new FileReader(av[i])));
 			} catch (FileNotFoundException e) {

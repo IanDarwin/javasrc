@@ -10,38 +10,37 @@ public class PlotterDummy extends Plotter {
 	}
 
 	/** move to absolute location */
-	boolean moveTo(int absx, int absy) {
-		x = absx;
-		y = absy;
-		System.out.println("moveTo ["+x+","+y+"]");
-		return true;
+	void moveTo(int absx, int absy) {
+		curx = absx;
+		cury = absy;
+		System.out.println("moveTo ["+curx+","+cury+"]");
 	}
 	/** move to relative location */
-	boolean rmoveTo(int incrx, int incry) {
-		x += incrx;
-		y += incry;
-		System.out.println("rmoveTo ["+x+","+y+"]");
-		return true;
+	void rmoveTo(int incrx, int incry) {
+		curx += incrx;
+		cury += incry;
+		System.out.println("rmoveTo ["+curx+","+cury+"]");
 	}
-	boolean setdir(float deg) {
-		dir = deg;
-		return true;
+	public void setFont(java.lang.String fName, int fSize) {
+		System.out.println("set Font to " + fName);
 	}
+
+	public void drawString(java.lang.String s) {
+		System.out.println("Draw the string \"" + s + "\"");
+	}
+
 	void setPenState(boolean up) {
 		penIsUp = up;
 		System.out.println("Pen Up is ["+penIsUp+"]");
 	}
-	boolean penUp() {
+	void penUp() {
 		setPenState(true);
-		return true;
 	}
-	boolean penDown() {
+	void penDown() {
 		setPenState(false);
-		return true;
 	}
-	boolean penColor(int c) {
+	void penColor(int c) {
 		penColor = c;
 		System.out.println("PenColor is ["+penColor+"]");
-		return true;
 	}
 }

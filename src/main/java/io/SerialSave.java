@@ -1,3 +1,18 @@
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+
+/** Show Object Serialization saving a file.
+ */
+public class SerialSave extends JFrame {
+	/** The list of user objects to be saved */
+	protected Vector usrList = new Vector();
+	/** The JList used to display the users */
+	protected JList visList = new JList();
+	/** The filename */
+	protected final String FILENAME = "users.ser";
+	protected final String BACKFILENAME = FILENAME + ".bak";
+
 	/**
 	 * Save (serialize) current list to a file. Java 1.1's 
 	 * Object Persistence does all the work; we just ask it
@@ -6,7 +21,10 @@
 	 */
 	protected void save() {
 		if (usrList.size() == 0) {
-			(new InfoDialog(this, "Nothing to save", "No records to save! Save ignored")).setVisible(true);
+			JOptionPane.showMessageDialog(this, 
+				"Nothing to save",
+				"No records to save! Save ignored",
+				JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		try {
@@ -29,6 +47,9 @@
 			s.flush();
 			s.close();
 		} catch (Exception e) {
-			(new InfoDialog(this, "I/O Error", "I/O Error Saving: " + e)).setVisible(true);
+			JOptionPane.showMessageDialog(this, 
+				"I/O Error", "I/O Error Saving: " + e,
+				JOptionPane.ERROR_MESSAGE);
 		}
 	}
+}

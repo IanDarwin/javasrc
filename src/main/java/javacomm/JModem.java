@@ -5,6 +5,8 @@ import javax.swing.*;
 
 /**
  * JModem - simple communications program.
+ * WARNING this file was built with the NetBeans Developer IDE
+ * and parts of it should not be modified with a text editor.
  * @author    Ian F. Darwin, ian@darwinsys.com
  * @version   $Id$
  */
@@ -439,7 +441,7 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JPanel xferPanel;
   private javax.swing.JLabel connectPanelLabel;
   private javax.swing.JLabel portsLabel;
-  private javax.swing.JComboBox portsComboBox;
+  protected javax.swing.JComboBox portsComboBox;
   private javax.swing.JLabel buadLabel;
   private javax.swing.JComboBox baudComboBox;
   private javax.swing.JPanel databitsPanel;

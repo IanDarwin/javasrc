@@ -23,9 +23,9 @@ public class ReadHeaders {
             default:
 				for (int i=0; i<av.length; i++)
                     try {
-						ReadHeaders r = new ReadHeaders(
+						ReadHeaders rr = new ReadHeaders(
 							new BufferedReader(new FileReader(av[i])));
-						printit(r);
+						printit(rr);
                     } catch (FileNotFoundException e) {
                         System.err.println(e);
                     }

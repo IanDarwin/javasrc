@@ -4,6 +4,7 @@ import netscape.javascript.*;
 
 /* An Applet to perform JavaScript directly.
  * The import of netscape.javascript.* requires a JAR file.
+ * EXPECT COMPILE ERROR unless you have the Netscape JAR file.
  * The use of JavaScript requires <APPLET ... MAYSCRIPT>
  * @author Ian F. Darwin, ian@darwinsys.com
  * @author Roger Goudarzi -- provided background information.

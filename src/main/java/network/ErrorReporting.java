@@ -3,9 +3,10 @@ import java.net.*;
 /* Client with error handling */
 public class ErrorReporting {
 	public static void main(String[] argv) {
+		int tcp_port = 80;
 		String server_name = "localhost";
 		try {
-			Socket Sock = new Socket(server_name, tcp_port);
+			Socket sock = new Socket(server_name, tcp_port);
 
 			/* Finally, we can read and write on the socket. */
 			System.out.println(" *** Connected to " + server_name  + " ***");
@@ -23,7 +24,7 @@ public class ErrorReporting {
 			System.err.println(server_name + " connect refused");
 			return;
 		} catch (java.io.IOException e) {
-			System.err.println(server_name +   + e.getMessage());
+			System.err.println(server_name + ' ' + e.getMessage());
 			return;
 		}
 	}

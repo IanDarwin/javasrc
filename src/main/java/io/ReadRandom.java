@@ -5,20 +5,20 @@ import java.io.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class ReadRandom {
+public class RandomRead {
 	final static String FILENAME = "random.dat";
 	protected String fileName;
 	protected RandomAccessFile seeker;
 
 	public static void main(String[] argv) throws IOException {
-		ReadRandom r = new ReadRandom(FILENAME);
+		RandomRead r = new RandomRead(FILENAME);
 
 		System.out.println("Offset is " + r.readOffset());
 		System.out.println("Message is \"" + r.readMessage() + "\".");
 	}
 
 	/** Constructor: save filename, construct RandomAccessFile */
-	public ReadRandom(String fname) throws IOException {
+	public RandomRead(String fname) throws IOException {
 		fileName = fname;
 		seeker = new RandomAccessFile(fname, "r");
 	}

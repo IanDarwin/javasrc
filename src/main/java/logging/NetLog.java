@@ -21,7 +21,7 @@ public class NetLog {
 	}
 
 	public NetLog(String host, int po) throws IOException {
-		this(InetAddress.getInetAddress(host), po);
+		this(InetAddress.getByName(host), po);
 	}
 
 	public NetLog(InetAddress host, int po) throws IOException {

@@ -8,13 +8,21 @@ public class PropsCust {
 	Properties p;
 	String userName;
 	String userDir;
-	public static void main(String[] argv) {
-		new PropsCust();
+
+	/** A demonstration main program */
+	public static void main(String[] argv) throws IOException {
+		new PropsCust().process();
 	}
-	PropsCust() {
+
+	/** Construct a PropsCust program */
+	PropsCust() throws IOException {
 		p = new Properties();
 
 		p.load(System.in);
+	}
+
+	/** Just show some properties */
+	void process() {
 		userName = p.getProperty("username", "Unknown User");
 		userDir  = p.getProperty("directory", "/");
 

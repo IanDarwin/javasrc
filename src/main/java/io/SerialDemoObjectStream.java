@@ -33,6 +33,7 @@ public class Serialize {
 }
 
 class DES {
+	// Obviously just a placeholder.
 	public static String encrypt(String s) {
 		return s;
 	}
