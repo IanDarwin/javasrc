@@ -5,36 +5,43 @@ import java.util.Stack;
 public class BigNumCalc {
 
 	/** an array of Objects, simulating user input */
-	public static Object[] input = {
+	public static Object[] testInput = {
 		new BigDecimal("3419229223372036854775807.23343"),
 		new BigDecimal("2.0"),
 		"*",
-		"=",
 	};
 
 	public static void main(String[] args) {
-		Stack s = new Stack();
+		BigNumCalc calc = new BigNumCalc();
+		System.out.println(calc.calculate(testInput));
+	}
+
+	Stack s = new Stack();
+
+	public BigDecimal calculate(Object[] input) {
+		BigDecimal tmp;
 		for (int i = 0; i < input.length; i++) {
 			Object o = input[i];
 			if (o instanceof BigDecimal)
 				s.push(o);
 			else if (o instanceof String) {
 				switch (((String)o).charAt(0)) {
+				// + and * are commutative, order doesn't matter
 				case '+':
 					s.push(((BigDecimal)s.pop()).add((BigDecimal)s.pop()));
-					break;
-				case '-':
-					s.push(((BigDecimal)s.pop()).subtract((BigDecimal)s.pop()));
 					break;
 				case '*':
 					s.push(((BigDecimal)s.pop()).multiply((BigDecimal)s.pop()));
 					break;
-				case '/':
-					s.push(((BigDecimal)s.pop()).divide((BigDecimal)s.pop(),
-						BigDecimal.ROUND_UP));
+				// - and /, order *does* matter
+				case '-':
+					tmp = (BigDecimal)s.pop();
+					s.push(((BigDecimal)s.pop()).subtract(tmp));
 					break;
-				case '=':
-					System.out.println(s.pop());
+				case '/':
+					tmp = (BigDecimal)s.pop();
+					s.push(((BigDecimal)s.pop()).divide(tmp,
+						BigDecimal.ROUND_UP));
 					break;
 				default:
 					throw new IllegalStateException("Unknown OPERATOR popped");
@@ -43,5 +50,6 @@ public class BigNumCalc {
 				throw new IllegalStateException("Syntax error in input");
 			}
 		}
+		return (BigDecimal)s.pop();
 	}
 }
