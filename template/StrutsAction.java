@@ -23,6 +23,19 @@ public class DummyAction extends Action {
 		ActionErrors errors = new ActionErrors();
 		ActionMessages messages = new ActionMessages();
 
+		// if (success) {
+		// 	messages.add(ActionErrors.GLOBAL_MESSAGE,
+		// 		new ActionMessage("success.added.member", member.getName()));
+		// 	saveMessages(request, messages);
+		// }
+
+		// if (failure) {
+		// 	errors.add(ActionErrors.GLOBAL_ERROR,
+		// 		new ActionError("error.insert", p.getTitle()));
+		// 	saveErrors(request, errors);
+		// 	return mapping.findForward("input");
+		// }
+
 		return mapping.findForward("notwrittenyet");
 	}
 }
