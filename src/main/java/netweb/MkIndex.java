@@ -116,8 +116,8 @@ public class MkIndex {
 			return;
 		}
 
-		System.out.println("Indexing: " + name);
 		if (file.isDirectory()) {
+			System.out.println("Indexing directory " + name);
 			File[] files = file.listFiles();
 			for (int i=0; i<files.length; i++) {
 				String fn = files[i].getName();
