@@ -1,9 +1,11 @@
 import java.io.*;
 
-/** Subclass LineNumberReader to allow continued lines. */
+/** Subclass of LineNumberReader to allow continued lines. */
 public class LineReader extends LineNumberReader {
 	/** Line number of first line in current (possibly continued) line */
 	protected int firstLineNumber = 0;
+	/** EOF flag, needed since we use super.readLine() several places */
+	protected boolean hitEOF = false;
 
 	/** Read one (possibly continued) line, stripping out the \ that
 	 * mark the end of all but the last.
@@ -11,13 +13,24 @@ public class LineReader extends LineNumberReader {
 	public String readLine() throws IOException {
 		// Read the first line, save its contents in the StringBuffer
 		// and its line number in firstLineNumber.
-		StringBuffer sb = new StringBuffer(super.readLine());
-		firstLineNumber = getLineNumber();
+		String s = super.readLine();
+		if (s == null)
+			hitEOF = true;
+		if (hitEOF)
+			return null;
+		StringBuffer sb = new StringBuffer(s);
+		firstLineNumber = super.getLineNumber();
 
 		// Now read as many continued lines as there are.
 		while (sb.length() > 0 && sb.charAt(sb.length() - 1) == '\\') {
-			sb.deleteCharAt(sb.length() - 1);
-			sb.append(super.readLine());
+			sb.setLength(sb.length() - 1);		// JDK Any - kill '\\'
+			// sb.deleteCharAt(sb.length() - 1);// Java 2  - kill '\\'
+			String nextPart = super.readLine();
+			if (nextPart == null) {
+				hitEOF = true;
+				return sb.toString();	// Gak! EOF within continued line
+			}
+			sb.append(' ').append(super.readLine());	// and add line.
 		}
 		return sb.toString();
 	}
