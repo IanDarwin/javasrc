@@ -1,8 +1,8 @@
-<project name="XXX Enterprise Bean" default="deploy" basedir=".">
+<project name="Hello Enterprise Bean" default="deploy" basedir=".">
 
 	<!-- $Id$ -->
 
-	<property name="src" value="."/>
+	<property name="src" value="src"/>
 	<property name="build" value="build"/>
 	<property file="../build.properties"/>
 
