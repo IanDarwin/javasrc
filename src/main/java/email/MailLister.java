@@ -54,6 +54,7 @@ public class MailLister {
 			System.out.println("Getting default folder.");
 			rf = store.getDefaultFolder();
 		}
+		rf.open(Folder.READ_WRITE);
 
 		if (rf.getType() == Folder.HOLDS_FOLDERS) {
 			Folder[] f = rf.list();
@@ -64,6 +65,7 @@ public class MailLister {
 	}
 
 	static void listFolder(Folder folder, String tab, boolean recurse) throws Exception {
+		folder.open(Folder.READ_WRITE);
 		System.out.println(tab + "Name: " + folder.getName() + '(' +
 			folder.getFullName() + ')');
 		if (!folder.isSubscribed())

@@ -10,7 +10,7 @@ import javax.mail.internet.*;
  * Display a mailbox or mailboxes.
  * @version $Id$
  */
-public class MailReaderBean extends JSplitPane implements MailConstants {
+public class MailReaderBean extends JPanel implements MailConstants {
 
 	private JTextArea bodyText;
 	private String protocol;
@@ -21,7 +21,9 @@ public class MailReaderBean extends JSplitPane implements MailConstants {
 
     public MailReaderBean() throws Exception {
 
-		super(VERTICAL_SPLIT);
+		//super(VERTICAL_SPLIT);
+		super();
+		setLayout(new BorderLayout());
 
 		boolean recursive = false;
 
@@ -42,7 +44,9 @@ public class MailReaderBean extends JSplitPane implements MailConstants {
 		// Construct a javax.mail.URLName representing all the information.
 		URLName connection = new URLName(protocol,
                host, port, rootName, user, password);
-System.out.println("connection = " + connection);
+
+		// This printout is VERY INSECURE; beware shoulder surfers
+		// System.out.println("connection = " + connection);
 
 		// Use the URLName to get a Store object to read the mail from
 		Store store = session.getStore(connection);
@@ -76,13 +80,15 @@ System.out.println("connection = " + connection);
 		// and add it as the MailComposeBean's Northern child.
 		JTree tree = new JTree(top);
 		JScrollPane treeScroller = new JScrollPane(tree);
-		treeScroller.setBackground(tree.getBackground());
-		this.setTopComponent(treeScroller);
+		tree.setVisibleRowCount(10);
+		//this.setTopComponent(treeScroller);
+		this.add(treeScroller, BorderLayout.NORTH);
 
 		// The Southern (Bottom) child is a textarea to display the msg.
-		bodyText = new JTextArea(15, 80);
+		bodyText = new JTextArea(10, 80);
 		bodyText.setEditable(false);	// incoming mail is read-only
-		this.setBottomComponent(new JScrollPane(bodyText));
+		// this.setBottomComponent(new JScrollPane(bodyText));
+		this.add(new JScrollPane(bodyText), BorderLayout.SOUTH);
 
 		// Add a notification listener for the tree; this will
 		// display the clicked-upon message
@@ -134,7 +140,7 @@ System.out.println("connection = " + connection);
 	}
 
 	static void listFolder(FolderNode top, FolderNode folder, boolean recurse) throws Exception {
-		// System.out.println(folder.f.getName() + folder.f.getFullName());
+		folder.f.open(Folder.READ_WRITE);
 		if ((folder.f.getType() & Folder.HOLDS_MESSAGES) != 0) {
 			Message[] msgs = folder.f.getMessages();
 			for (int i=0; i<msgs.length; i++) {

@@ -43,6 +43,7 @@ public class MailClient extends JComponent implements MailConstants {
 		if (!proto.equals("mbox") && (pass == null || pass.equals("ASK"))) {
 			String np;
 			do {
+				// VERY INSECURE -- should use JDialog + JPasswordField!
 				np = JOptionPane.showInputDialog(null,
 				"Please enter password for " + proto + " user  " +
 					user + " on " + host + "\n" +
@@ -99,7 +100,7 @@ public class MailClient extends JComponent implements MailConstants {
 		f.setSize    (500,400);
 		// f.pack();
 
-		comp.mrb.setDividerLocation(0.4D);
+		// comp.mrb.setDividerLocation(0.4D);
 
 		f.setVisible(true);
 	}
