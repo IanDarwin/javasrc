@@ -58,12 +58,14 @@ makefiles:
 			if [ -d $$dir ]; then \
 				cp Makefile.exclude-errors $$dir/Makefile; \
 			else echo "[bypassed--NOT A DIRECTORY]"; \
+			fi \
 		done
 		@for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
 			echo "===> $$dir/Makefile.simple"; \
 				cp Makefile.simple $$dir/Makefile; \
 			else echo "[bypassed--NOT A DIRECTORY]"; \
-		fi; done
+			fi \
+		done
 
 # Get rid of copied Makefiles (unless somebody changed them!)
 makefiles.clean:
