@@ -48,6 +48,11 @@ public class LinkChecker extends JFrame {
 			lc.textFldURL.setText(args[0]);
 		lc.setVisible(true);
 	}
+	
+	void setGUIStartable(boolean startable ) {
+		checkButton.setEnabled(startable);
+		killButton.setEnabled(!startable);
+	}
   
 	/** Construct a LinkChecker */
 	public LinkChecker() {
@@ -66,13 +71,14 @@ public class LinkChecker extends JFrame {
 		ActionListener starter = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				done = false;
-				checkButton.setEnabled(false);
-				killButton.setEnabled(true);
+				setGUIStartable(true);
 				Thread t = new Thread() {
 					public void run() {
 						textWindow.setText("Checking...");
+						setGUIStartable(false);
 						checkOut(textFldURL.getText());
 						textWindow.append("-- All done --");
+						setGUIStartable(true);
 					}
 				};
 				t.start();
@@ -85,8 +91,6 @@ public class LinkChecker extends JFrame {
 		killButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				done = true;
-				checkButton.setEnabled(true);
-				killButton.setEnabled(false);
 			}
 		});
 		p.add(saveButton = new JButton("Save Log"));
