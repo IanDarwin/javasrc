@@ -65,7 +65,7 @@ public class TarFile {
 				int nbytes = hdr.getSize(), diff;
 				// Round it up to blocksize.
 				if ((diff = (nbytes % RECORDSIZE)) != 0) {
-					nbytes -= diff; nbytes += RECORDSIZE;
+					nbytes += RECORDSIZE - diff;
 				}
 				// And skip over the data portion.
 				// System.out.println("Skipping " + nbytes + " bytes");

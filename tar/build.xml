@@ -1,4 +1,4 @@
-<project name="XXX" default="build" basedir=".">
+<project name="Tar" default="run" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -15,6 +15,12 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 		/>
+	</target>
+
+	<target name="run" depends="build">
+		<java classname="TarList" classpath="${build}">
+			<arg value="demo.tar"/>
+		</java>
 	</target>
 
 	<target name="clean">
