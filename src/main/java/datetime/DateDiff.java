@@ -4,14 +4,19 @@ import java.util.Date;
  */
 public class DateDiff {
 	public static void main(String av[]) {
-		Date d1 = new Date(81,03,24);
+
+		/** The ending date. This value
+		 * doubles as a Y2K countdown time.
+		 */
+		Date d1 = new Date(99,11,31,23,59);	// Ignore Deprecation
+		/** Today's date */
 		Date d2 = new Date();
 
-		long diff = d2.getTime() - d1.getTime();
+		// Get seconds from each, and subtract.
+		long diff = d1.getTime() - d2.getTime();
 
-
-		System.out.println("Difference between " + d2 + 
-			" and " + d1 + " is " +
+		System.out.println("Difference between " + d2 + "\n" +
+			"\tand " + d1 + " is " +
 			(diff / (1000*60*60*24)) +
 			" days.");
 	}
