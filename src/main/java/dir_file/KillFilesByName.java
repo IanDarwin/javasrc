@@ -1,13 +1,12 @@
 import java.io.*;
 /**
- * DANGEROUS Program to empty a directory
- * Written for Course 333 comparison section.
- * @author	Ian Darwin, Learning Tree, Course 471/478
+ * DANGEROUS Program to remove files matching a name in a directory
+ * @author	Ian Darwin, ian@darwinsys.com
  */
-public class Empty {
+public class KillFilesByName {
 	public static void main(String[] argv) {
-		if (argv.length != 1) {	// no progname in argv[0]
-			System.err.println("usage: Empty dirname");
+		if (argv.length != 2) {
+			System.err.println("usage: KillFilesByName dirname pattern");
 			System.exit(1);
 		}
 
@@ -16,12 +15,17 @@ public class Empty {
 			System.out.println(argv[0] + " does not exist");
 			return;
 		}
+		String patt = argv[1];
 
 		String[] info = dir.list();
 		for (int i=0; i<info.length; i++) {
 			File n = new File(argv[0] + dir.separator + info[i]);
-			if (!n.isFile())	// skip ., .., other directories too
+			if (!n.isFile()) {	// skip ., .., other directories, etc.
 				continue;
+			}
+			if (info[i].indexOf(patt) == -1) {	// name doesn't match
+				continue;
+			}
 			System.out.println("removing " + n.getPath());
 			if (!n.delete())
 				System.err.println("Couldn't remove " + n.getPath());

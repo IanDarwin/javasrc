@@ -5,7 +5,7 @@ import java.io.*;
  * @author	Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-class DirTree {
+public class DirTree {
 	/** Main program */
 	public static void main(String[] argv) {
 		DirTree dt = new DirTree();
