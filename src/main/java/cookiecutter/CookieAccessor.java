@@ -13,7 +13,7 @@ public class CookieIO {
 		BufferedReader is = new BufferedReader(new FileReader(file));
 
 		if (!is.readLine().startsWith(MAGIC))
-			die(file + "not a cookies file");
+			die(file + " not a cookies file");
 		String line;
 		while ((line = is.readLine()) != null) {
 			if (line.startsWith(COMMENT))
@@ -43,5 +43,6 @@ public class CookieIO {
 		throw new IllegalArgumentException(s);
 	}
 	public void write(String file, Vector data) /* throws IOException */ {
+		throw new IllegalArgumentException("writing code not written yet");
 	}
 }

@@ -1,4 +1,8 @@
-/** Represent the contents of one cookie. */
+/** Represent the contents of one cookie. 
+ * Since we want this usable by people without the Servlet API installed,
+ * we generate our own implementation of Cookie for use in the
+ * CookieCutter application.
+ */
 public class Cookie implements Comparable
 {
 	public String url;
@@ -13,13 +17,14 @@ public class Cookie implements Comparable
 	/** Number of fields */
 	public final static int WIDTH = 7;
 
-	public Cookie(String u, boolean b1, String rest, boolean b2,
+	/* Constructor */
+	public Cookie(String u, boolean fromCl, String rest, boolean overSec,
 		long d, String n, String v) {
 		url = u;
 		urlForSorting = url.startsWith(".") ? url.substring(1) : url;
-		fromJavaScript = b1;
+		fromJavaScript = fromCl;
 		relURL = rest;
-		overSSL = b2;
+		overSSL = overSec;
 		expDate = d;
 		name = n;
 		value = v;
