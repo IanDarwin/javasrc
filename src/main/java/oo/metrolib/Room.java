@@ -10,7 +10,7 @@ class Room {
 	/** The message (if any) to display when leaving */
 	String exitMessage;
 
-	public Room(Room n, Room e, Room s, Room w,
+	public void setAll(Room n, Room e, Room s, Room w,
 		String inMsg, String outMsg) {
 		north = n; east = e; south = s; west = w;
 		entryMessage = inMsg;

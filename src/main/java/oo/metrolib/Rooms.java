@@ -10,11 +10,17 @@ public class Rooms {
 
 	static {
 		System.out.println("Building rooms...");
-		lobby = new Room(null, mainHall, null, null,
+
+		// MUST init these all before setting them up.
+		lobby = new Room();
+		mainHall = new Room();
+		hallofKings = new Room();
+
+		lobby.setAll(null, mainHall, null, null,
 		"You are standing in the lobby. There is a door to the east", null);
-		mainHall = new Room(null, hallOfKings, null, lobby,
+		mainHall.setAll(null, hallOfKings, null, lobby,
 		"You are in the Great Hall. There are doors to the east and west", null);
-		hallOfKings = new Room(null, null, null, mainHall,
+		hallOfKings.setAll(null, null, null, mainHall,
 		"You are in the Hall of Kings. there is a door to the west", null);
 	}
 
