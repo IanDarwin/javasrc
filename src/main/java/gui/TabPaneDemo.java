@@ -3,12 +3,6 @@ import javax.swing.*;
 public class TabPaneDemo {
 	protected JTabbedPane tabPane;
 	public TabPaneDemo() {
-		try {
-			UIManager.setLookAndFeel(
-				"com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (Exception e) {
-			// ignore
-		}
 		tabPane = new JTabbedPane();
 		tabPane.add(new JLabel("One", JLabel.CENTER), "First");
 		tabPane.add(new JLabel("Two", JLabel.CENTER), "Second");
@@ -20,4 +14,4 @@ public class TabPaneDemo {
 		f.setSize(120, 100);
 		f.setVisible(true);
 	}
-} 
+}
