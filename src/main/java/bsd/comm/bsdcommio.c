@@ -3,17 +3,22 @@
  * $Id$.
  */
 
-#import <stdio.h>
-#import <fcntl.h>
-#import <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#include "jni.h"
+#include "BSDSerialPort.h"
 
 /*
  * Class:     BSDSerialPort
  * Method:    bsdttyopen
  * Signature: (Ljava/lang/String;)I
  */
-JNIEXPORT jint JNICALL Java_BSDSerialPort_bsdttyopen
-  (JNIEnv *, jobject, jstring) {
+jint 
+JNICALL Java_BSDSerialPort_bsdttyopen(JNIEnv *env, jobject this,
+	jstring name)
+{
 	printf("bsdttyopen called!\n");
 }
 /*
@@ -21,7 +26,9 @@ JNIEXPORT jint JNICALL Java_BSDSerialPort_bsdttyopen
  * Method:    bsdstty
  * Signature: (IIII)I
  */
-JNIEXPORT jint JNICALL Java_BSDSerialPort_bsdstty
-  (JNIEnv *, jobject, jint, jint, jint, jint) {
+jint
+JNICALL Java_BSDSerialPort_bsdstty(JNIEnv *env, jobject this,
+	jint baud, jint databits, jint stopbits, jint parity)
+{
 	printf("bsdstty called!\n");
 }
