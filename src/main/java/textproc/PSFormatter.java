@@ -100,6 +100,7 @@ public class PSFormatter {
 			startPage();
 	}
 
+	/** Overly-simplistic conversion to PS, e.g., breaks on "foo\)bar" */
 	protected String toPSString(String o) {
 		StringBuffer sb = new StringBuffer();
 		for (int i=0; i<o.length(); i++) {
