@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Since Drivers almost always come in a Jar file, put its name here...
-DRIVER_JAR=lib/hsqldb.jar
+#DRIVER_JAR=lib/hsqldb.jar
+DRIVER_JAR=lib/postgresql.jar
 
 set -x
 
