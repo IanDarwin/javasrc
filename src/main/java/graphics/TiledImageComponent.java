@@ -33,14 +33,13 @@ public class TiledImageComponent extends Container {
 
 	/** paint()  - just tile the background.  */
 	public void paint(Graphics g) {
-		// System.out.println("In paint()");
 		if (im == null)
 			return;
 		int iw = im.getWidth(this), ih=im.getHeight(this);
 		if (iw < 0 || ih < 0)	// image not ready
 			return;				// live to try again later.
 		int w = getSize().width, h = getSize().height;
-		// System.out.println(iw + "," + ih + "; " + w + ", " + h);
+
 		for (int i = 0; i<=w; i+=iw) {
 			for (int j = 0; j<=h; j+=ih) {
 				// System.out.println("drawImage(im,"+i+","+j+")");
