@@ -12,9 +12,9 @@ public class REDemo extends JPanel {
 	Pattern pattern;
 	Matcher matcher;
 	JTextField patternTF, stringTF;
-	JCheckBox compiledOK, matches;
+	JCheckBox compiledOK;
 	JRadioButton match, find, findAll;
-	JTextField findCountTF;
+	JTextField matchesTF;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -30,43 +30,52 @@ public class REDemo extends JPanel {
 	/** Construct the REDemo object including its GUI */
 	public REDemo() {
 		super();
+
 		JPanel top = new JPanel();
 		top.add(new JLabel("Pattern:", JLabel.RIGHT));
 		patternTF = new JTextField(20);
 		patternTF.getDocument().addDocumentListener(new PatternListener());
 		top.add(patternTF);
-		compiledOK = new JCheckBox("Compiled OK?");
-		// compiledOK.setEditable(false);
+		compiledOK = new JCheckBox("Syntax OK?");
 		top.add(compiledOK);
 
-		JPanel mid = new JPanel();
-		mid.add(new JLabel("String:", JLabel.RIGHT));
-		stringTF = new JTextField(20);
-		stringTF.getDocument().addDocumentListener(new StringListener());
-		mid.add(stringTF);
-		matches = new JCheckBox("Matches?");
-		// matches.setEditable(false);
-		mid.add(matches);
-
-		JPanel bot = new JPanel();
+		JPanel switchPane = new JPanel();
 		ButtonGroup bg = new ButtonGroup();
 		match = new JRadioButton("Match");
 		match.setSelected(true);
 		bg.add(match);
-		bot.add(match);
+		switchPane.add(match);
 		find = new JRadioButton("Find");
 		bg.add(find);
-		bot.add(find);
+		switchPane.add(find);
 		findAll = new JRadioButton("Find All");
 		bg.add(findAll);
-		bot.add(findAll);
-		findCountTF = new JTextField(3);
-		bot.add(findCountTF);
+		switchPane.add(findAll);
+
+		JPanel strPane = new JPanel();
+		strPane.add(new JLabel("String:", JLabel.RIGHT));
+		stringTF = new JTextField(20);
+		stringTF.getDocument().addDocumentListener(new StringListener());
+		strPane.add(stringTF);
+		strPane.add(new JLabel("Matches:"));
+		matchesTF = new JTextField(3);
+		strPane.add(matchesTF);
 
 		setLayout(new GridLayout(3, 1, 5, 5));
 		add(top);
-		add(mid);
-		add(bot);
+		add(strPane);
+		add(switchPane);
+	}
+
+	void setMatches(boolean b) {
+		if (b)
+			matchesTF.setText("Yes");
+		else
+			matchesTF.setText("No");
+	}
+
+	void setMatches(int n) {
+		matchesTF.setText(Integer.toString(n));
 	}
 
 	void tryCompile() {
@@ -81,16 +90,15 @@ public class REDemo extends JPanel {
 	}
 
 	void tryMatch() {
-		findCountTF.setText("");
-		if (!compiledOK.isSelected())
+		if (pattern == null)
 			return;
 		matcher.reset(stringTF.getText());
 		if (match.isSelected() && matcher.matches()) {
-			matches.setSelected(true);
+			setMatches(true);
 			return;
 		}
 		if (find.isSelected() && matcher.find()) {
-			matches.setSelected(true);
+			setMatches(true);
 			return;
 		}
 		if (findAll.isSelected()) {
@@ -98,13 +106,17 @@ public class REDemo extends JPanel {
 			while (matcher.find()) {
 				++i;
 			}
-			findCountTF.setText(Integer.toString(i));
+			if (i > 0) {
+				setMatches(i);
+				return;
+			}
 		}
-		matches.setSelected(false);
+		setMatches(false);
 	}
 
 	/** Any change to the pattern tries to compile the result. */
 	class PatternListener implements DocumentListener {
+
 		public void changedUpdate(DocumentEvent ev) {
 			tryCompile();
 		}
@@ -120,6 +132,8 @@ public class REDemo extends JPanel {
 
 	/** Any change to the input string tries to match the result */
 	class StringListener implements DocumentListener {
+
+
 		public void changedUpdate(DocumentEvent ev) {
 			tryMatch();
 		}
