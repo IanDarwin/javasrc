@@ -1,3 +1,5 @@
+public class TestForSwing {
+	public static void main(String[] args) {
 		try {
 			Class.forName("javax.swing.JButton");
 		} catch (Exception e) {
@@ -9,3 +11,5 @@
 			cp.add(new Label(failure));
 			throw new IllegalArgumentException(failure);
 		}
+	}
+}

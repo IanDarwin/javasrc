@@ -5,8 +5,8 @@ public class TestFor1_1 {
 			Class.forName("java.lang.reflect.Constructor");
 		} catch (ClassNotFoundException e) {
 			String failure = 
-				"Sorry, but this version of JabaDex needs \n" +
-				"a Java Runtime based on Java JDK 1.1 or later";
+				"Sorry, but this program needs a Java\n" +
+				"Runtime based on Java JDK 1.1 or later";
 			System.err.println(failure);
 			throw new IllegalArgumentException(failure);
 		}
