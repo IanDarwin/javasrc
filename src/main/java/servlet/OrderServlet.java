@@ -54,6 +54,11 @@ public class OrderServlet extends HttpServlet {
 		return;
 	}
 
+	/** The DocumentRoot for the server. 
+	 * XXX TODO: Must get this from the Web Server API somehow.
+	 */
+	final static DOCUMENT_ROOT = "c:/javasrc/";
+
 	void make_reply(boolean cardIsApproved, ServletOutputStream os, 
 		String title, String h1, String txt) {
 		String reply = "<HTML><HEAD>" +
@@ -63,7 +68,8 @@ public class OrderServlet extends HttpServlet {
 			"</BODY></HTML>";
 		try {
 			PrintWriter ps = new PrintWriter(new FileWriter(
-				"/local/WWW/tmp_replies/" + "xxx.html"));
+				DOCUMENT_ROOT + 
+				"/tmp_replies/" + "xxx.html"));
 			ps.println(reply);
 			ps.close();
 			os.println((cardIsApproved?"A":"D") + " " +
