@@ -1,4 +1,3 @@
-// $Id$
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -17,14 +16,13 @@ import javax.mail.internet.*;
  *
  * If not visible, use addXXX(), setXXX(), and doSend() methods.
  *
- * XXX remove dependancies on JP (JabaDex Properties)
- *
  * @author Ian F. Darwin
+ * @version $Id$
  */
 public class MailComposeBean extends JPanel {
 
 	/** The parent frame to be hidden/disposed; may be JFrame, JInternalFrame
-	 * or even JPanel as necessary */
+	 * or JPanel, as necessary */
 	private Container parent;
 
 	private JButton sendButton, cancelButton;
@@ -126,6 +124,7 @@ public class MailComposeBean extends JPanel {
 
 		// Centre is the TextArea
 		cp.add("Center", msgText = new JTextArea(70, 10));
+		msgText.setBorder(BorderFactory.createTitledBorder("Message Text"));
 
 		// Bottom is the apply/cancel button
 		JPanel bp = new JPanel();
@@ -165,17 +164,34 @@ public class MailComposeBean extends JPanel {
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
 		Properties props = new Properties();
-		props.put("mail.smtp.host", JP.getProperty("Mail.server"));
+		String serverHost = System.getProperty("Mail.server");
+		if (serverHost == null) {
+			JOptionPane.showMessageDialog(parent,
+				"\"Mail.server\" must be set in System.properties",
+				"No server!?",
+				JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		props.put("mail.smtp.host", serverHost);
 
 		session = Session.getDefaultInstance(props, null);
 		session.setDebug(true);		// XXX
+
+		String myAddress = System.getProperty("Mail.address");
+		if (myAddress == null) {
+			JOptionPane.showMessageDialog(parent,
+				"\"Mail.address\" must be set in System.properties",
+				"No server!?",
+				JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		
 		try {
 			// create a message
 			mesg = new MimeMessage(session);
 
-			// From Address - from Jabadex properties
-			mesg.setFrom(new InternetAddress(JP.getProperty("Mail.address")));
+			// From Address - from System properties
+			mesg.setFrom(new InternetAddress(myAddress));
 
 			// TO Address - FROM the textfield and/or
 			// any addTOrecipient() call
@@ -192,10 +208,6 @@ public class MailComposeBean extends JPanel {
 
 			if (mesg.getAllRecipients()== null ||
 				mesg.getAllRecipients().length == 0) {
-				JOptionPane.showMessageDialog(parent,
-					"No recipients to send mail to!",
-					"No recipient!?",
-					JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
 
@@ -275,9 +287,11 @@ public class MailComposeBean extends JPanel {
 
 	/** Simple test case driver */
 	public static void main(String av[]) {
-		final JFrame jf = new JFrame("JabaDex: Compose Mail Tester");
+		final JFrame jf = new JFrame("DarwinSys Compose Mail Tester");
+		System.setProperty("Mail.server", "mailhost");
+		System.setProperty("Mail.address", "nobody@home");
 		MailComposeBean sm = 
-			new MailComposeBean(jf, "Test Mailer", "ian@darwinsys.com", 500, 400);
+			new MailComposeBean(jf, "Test Mailer", "spam-magnet@darwinsys.com", 500, 400);
 		sm.setSize(500, 400);
 		jf.getContentPane().add(sm);
 		jf.setLocation(100, 100);

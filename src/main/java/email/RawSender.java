@@ -38,7 +38,7 @@ public class SmtpTalk implements SysExits {
 
 			System.out.println("SMTP Talker ready");
 
-			st.converse("mailer-daemon", argv[1], "Test message", "Hello there");
+			st.converse("MAILER-DAEMON@daroad.darwinsys.com", argv[1], "Test message", "Hello there");
 		} catch (SMTPException ig) {
 			System.err.println(ig.getMessage());
 			System.exit(ig.getCode());
