@@ -34,8 +34,7 @@
 						<pathelement location="${darwinsys.jar}"/>
 				</classpath>
 				<formatter type="plain"/>
-				<test name="StringAlignTest"/>
-				<test name="SoundexTest"/>
+				<test name="AllTests"/>
 		</junit>
 
 	</target>
