@@ -5,17 +5,18 @@
  */
 public class FloatCmp {
 	public static void main(String[] argv) {
-		double da = 3 * .3;
-		double db = 0.9999999999;
+		double da = 3 * .3333333333;
+		double db = 0.99999992857;
 
 		// Compare two numbers that are expected to be close.
 		final double EPSILON = 0.0000001;
 		if (da == db) {
-			System.out.println("Approximately true");
-		else if (equals(da, db, 0.0000001)
+			System.out.println("Java considers " + da + "==" + db);
+		} else if (equals(da, db, 0.0000001)) {
 			System.out.println("True within epsilon " + EPSILON);
-		else
+		} else {
 			System.out.println(da + " != " + db);
+		}
 
 		double d1 = Double.NaN;
 		double d2 = Double.NaN;
@@ -26,7 +27,7 @@ public class FloatCmp {
 	}
 
 	/** Compare two doubles within a given epsilon */
-	public static equals(double a, double b, double eps) {
+	public static boolean equals(double a, double b, double eps) {
 		// If the difference is less than epsilon, treat as equal.
 		return Math.abs(a - b) < eps;
 	}
