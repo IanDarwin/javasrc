@@ -25,7 +25,7 @@ public class BrokenServlet extends HttpServlet
 
 	}
 
-	protected void print(int result);
+	protected void print(int result)
 	{
 		out.println("<!DOCTYPE html PUBLIC " +
 			"\"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n" +
