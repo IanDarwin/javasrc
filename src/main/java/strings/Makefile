@@ -14,7 +14,7 @@ csvtest:	csvgetline CSVFile.class
 	-diff j1 j2
 
 csvgetline: csvgetline.c++
-	$(CPP) csvgetline.c++ -lstdc++ -o $@
+	c++ csvgetline.c++ -lstdc++ -o $@
 
 clean:
 	rm -f *.class j1 j2 csvgetline
