@@ -26,7 +26,7 @@ public class EnTab extends Tabs {
 			while ((c = getchar()) == ' ') {
 				Debug.println("space", "Got space at " + col);
 				newcol++;
-				if (tabpos(newcol, tabstops)) {
+				if (tabpos(newcol)) {
 					Debug.println("tab", "Got a Tab Stop " + newcol);
 					putchar('\t');
 					col = newcol;
