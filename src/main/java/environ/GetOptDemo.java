@@ -11,7 +11,7 @@ public class GetOptDemo {
 		boolean numeric_option = false;
 		String outFileName = "(standard output)";
 		char c;
-		while ((c =go.getopt(args)) != 0) {
+		while ((c = go.getopt(args)) != GetOpt.DONE) {
 			switch(c) {
 			case 'h':
 				doHelp(0);
@@ -30,10 +30,10 @@ public class GetOptDemo {
 		System.out.print("Options: ");
 		System.out.print("Numeric: " + numeric_option + ' ');
 		System.out.print("Output: " + outFileName + ' ');
-		System.out.print("; Input: ");
-		if (go.optind() == args.length) {
+		System.out.println("; Inputs: ");
+		if (go.getOptInd() == args.length) {
 			doFile("(standard input)");
-		} else for (int i=go.optind(); i<args.length; i++)
+		} else for (int i=go.getOptInd(); i<args.length; i++)
 			doFile(args[i]);
 		System.out.println();
 	}
@@ -45,6 +45,7 @@ public class GetOptDemo {
 		System.err.println("Usage: GetOptDemo [-h][-n][-o outfile] file ...");
 		System.exit(returnValue);
 	}
+
 	/** Stub to demonstrate processine one file. */
 	static void doFile(String fileName) {
 		System.out.print(fileName + ' ');

@@ -16,7 +16,7 @@ public class NumSeries {
 
 		// For a discontiguous set of integers, try a BitSet
 
-		// Create a BitSet and turn on a couple of bitset.
+		// Create a BitSet and turn on a couple of bits.
 		BitSet b = new BitSet();
 		b.set(0);	// January
 		b.set(3);	// April

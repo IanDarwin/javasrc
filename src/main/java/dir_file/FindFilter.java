@@ -1,7 +1,13 @@
 import java.io.*;
 import org.apache.regexp.*;
+import com.darwinsys.util.Debug;
 
-/** Class to encapsulate the filtration for Find */
+/** Class to encapsulate the filtration for Find.
+ * For now just setTTTFilter() methods. Really needs to be a real
+ * data structure to allow complex things like
+ *		-n "*.html" -a \( -size < 0 -o mtime < 5 \).
+ * @version $Id$
+ */
 public class FindFilter implements FilenameFilter {
 	boolean sizeSet;
 	int size;
@@ -20,7 +26,7 @@ public class FindFilter implements FilenameFilter {
 	void setNameFilter(String nameFilter) {
 		name = nameFilter;
 		StringBuffer sb = new StringBuffer('^');
-		for (int i = 0; i < nameFilter.length; i++) {
+		for (int i = 0; i < nameFilter.length(); i++) {
 			char c = nameFilter.charAt(i);
 			switch(c) {
 				case '.':	sb.append("\\."); break;
@@ -28,8 +34,9 @@ public class FindFilter implements FilenameFilter {
 				case '?':	sb.append('.'); break;
 				default:	sb.append(c); break;
 			}
-			sb.append('$');
 		}
+		sb.append('$');
+		Debug.println("name", "RE=\"" + sb + "\".");
 		try {
 			nameRE = new RE(sb.toString());
 		} catch (RESyntaxException ex) {
@@ -42,6 +49,8 @@ public class FindFilter implements FilenameFilter {
 		if (name != null) {
 			return nameRE.match(fileName);
 		}
+
+		// TODO size handling.
 
 		// Catchall
 		return false;

@@ -40,6 +40,7 @@ public class Find {
 
 	/** doName - handle one filesystem object by name */
 	private void doName(String s) {
+		Debug.println("flow", "doName(" + s + ")");
 		File f = new File(s);
 		if (!f.exists()) {
 			System.out.println(s + " does not exist");
@@ -48,13 +49,13 @@ public class Find {
 		if (f.isFile())
 			doFile(f);
 		else if (f.isDirectory()) {
-			System.out.println("d " + f.getPath());
+			// System.out.println("d " + f.getPath());
 			String objects[] = f.list(filter);
 
 			for (int i=0; i<objects.length; i++)
 				doName(s + f.separator + objects[i]);
 		} else
-			System.err.println("Unknown: " + s);
+			System.err.println("Unknown type: " + s);
 	}
 
 	/** doFile - process one regular file. */
