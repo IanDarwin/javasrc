@@ -55,23 +55,22 @@ public class LNFSwitcher {
 		bg.add(bMotif);
 		cp.add(bMotif);
 
-		JRadioButton bMac = new JRadioButton("MacOS");
+		JRadioButton bMac = new JRadioButton("Sun-MacOS");
 		bMac.addActionListener(new LNFSetter(
 			"com.sun.java.swing.plaf.mac.MacLookAndFeel", bMac));
 		bg.add(bMac);
 		cp.add(bMac);
 
-		// Following is a **hypothetical** addition!
-		JRadioButton bOL = new JRadioButton("OPEN LOOK");
-		bOL.addActionListener(new LNFSetter(
-			 "com.darwinsys.openlook.OpenLookAndFeel", bOL));
-		bOL.setEnabled(false);	// since it IS hypothetical
-		bg.add(bOL);
-		cp.add(bOL);
+		String defaultLookAndFeel = UIManager.getSystemLookAndFeelClassName();
+		// System.out.println(defaultLookAndFeel);
+		JRadioButton bDefault = new JRadioButton("Default");
+		bDefault.addActionListener(new LNFSetter(
+			 defaultLookAndFeel, bDefault));
+		bg.add(bDefault);
+		cp.add(bDefault);
 
-		// We "know" that the Java Look-and-feel is the default.
-		previousButton = bJava;
-		bJava.setSelected(true);
+		previousButton = bDefault;
+		bDefault.setSelected(true);
 
 		theFrame.pack();
 		theFrame.setVisible(true);
@@ -93,6 +92,7 @@ public class LNFSwitcher {
 			try {
 				UIManager.setLookAndFeel(theLNFName);
 				SwingUtilities.updateComponentTreeUI(theFrame);
+				theFrame.pack();
 			} catch (Exception evt) {
 				JOptionPane.showMessageDialog(null,
 					"setLookAndFeel didn't work: " + evt,
