@@ -2,19 +2,16 @@ import java.util.*;
 
 public class ArrayListGenericDemo {
 	public static void main(String[] args) {
-		ArrayList<String> data = new ArrayList();
+		ArrayList<String> data = new ArrayList<String>();
 		data.add("hello");
 		data.add("goodbye");
-		try {
-			data.add(new Date());
-			System.err.println("Didn't throw expected Exception");
-		} catch (Exception ex) {
-			System.out.print("Caught expected exception: " + ex);
-		}
-		Iterator it = data.iterator();
+
+		// data.add(new Date()); This won't compile!
+
+		Iterator<String> it = data.iterator();
 		while (it.hasNext()) {
-			String s = it.next();	// no cast needed
-			System.out.println("Found String " + s);
+			String s = it.next();
+			System.out.println(s);
 		}
 	}
 }
