@@ -1,4 +1,6 @@
 import java.util.Formatter;
+import java.util.Date;
+import java.util.Calendar;
 
 /** Demonstrate some usage patterns and format-code examples 
  * of the Formatter class (new in J2SE 1.5).
@@ -16,18 +18,18 @@ public class FormatterDemo {
 		// For the full(!) story, see javadoc for java.util.Formatter.
 
 		Formatter fmtr = new Formatter();
-		System.out.println(fmtr.format("%1$4d-%2$2d-%3$2d", 2004, 06, 28));
+		System.out.println(fmtr.format("%1$4d-%2$2d-%3$2d", 2004, 6, 28));
 
 		// This is short for the above
-		System.out.format("%1$4d-%2$2d-%3$2d", 2004, 06, 28));
+		System.out.format("%1$4d-%2$02d-%3$02d", 2004, 6, 28);
 
 		// So is this
-		System.out.printf("%1$4d-%2$2d-%3$2d", 2004, 06, 28));
+		System.out.printf("%1$4d-%2$2d-%3$2d", 2004, 6, 28);
 
 		// Format fields from a Date object: multiple fields from "1$"
 		// (hard-coded formatting for Date not advisable; see I18N chapter)
 		Date today = Calendar.getInstance().getTime();
-		System.out.printf("%1$M %1$D, %1$M", today);
+		System.out.printf("%1$M %1$D, %1$Y", today);	// e.g., July 4, 2004
 
 		// Format floating point numbers
 		System.out.printf("%1$7.2f", Math.PI);
