@@ -1,6 +1,5 @@
 #!/bin/sh
-set -x
+set -xe
 jikes -d . P*.java
 jr Demo > j.pdf
-vi j.pdf
 xpdf j.pdf

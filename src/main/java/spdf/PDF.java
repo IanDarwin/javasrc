@@ -45,7 +45,7 @@ public class PDF {
 
 	}
 
-	public void addPage(Page p) {
+	public void add(Page p) {
 		pages.add(p);
 	}
 
@@ -114,9 +114,6 @@ public class PDF {
 		startedWriting = true;
 
 		writePDFHeader();
-		// for (int i=0; i<pages.size(); i++) {
-		//	 ((Page)pages.get(i)).writePage(out);
-		// }
 		writePDFbody();
 		writeXrefs();
 		writePDFTrailer();
@@ -138,19 +135,9 @@ public class PDF {
 
 	protected void writePDFbody() {
 
-		addXref();
-		println("5 0 obj");
-		println("<<");
-		println("\t/Type /Page");
-		println("\t/Parent 4 0 R");
-		println("\t/Resources << /Font << /F1 8 0 R >> /ProcSet 7 0 R >>");
-		println("\t/MediaBox [0 0 612 792]");
-		println("\t/Contents 6 0 R");
-		println(">>");
-		println("endobj");
-		
-		new PDFText(this, 100, 600, "Printed live on the web for " + "Ian Darwin").
-			print();
+		for (int i=0; i<pages.size(); i++) {
+			 ((Page)pages.get(i)).print();		// 5, 6
+		}
 
 		addXref();
 		println("7 0 obj");
