@@ -1,7 +1,7 @@
 import com.darwinsys.util.*;
 import java.io.*;
 import org.w3c.dom.*;
-import com.sun.xml.tree.*;
+import javax.xml.parsers.*;
 
 /** XML Tree Walker
  * @author Ian Darwin, ian@darwinsys.com
@@ -28,7 +28,12 @@ public class XTW {
 				System.err.println(">>>Parsing " + fileName + "...");
 			// Make the document a URL so relative DTD works.
 			String uri = "file:" + new File(fileName).getAbsolutePath();
-			XmlDocument doc = XmlDocument.createXmlDocument(uri);
+
+			DocumentBuilderFactory factory =
+				DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse( uri );
+ 
 			if (verbose)
 				System.err.println(">>>Walking " + fileName + "...");
 			doRecursive(doc);
@@ -52,7 +57,8 @@ public class XTW {
 			return;
 		}
 		NodeList nodes = p.getChildNodes();
-		Debug.println("xml-tree", "Element has " + numElem + " children");
+		Debug.println("xml-tree", "Element has " + 
+			nodes.getLength() + " children");
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Node n = nodes.item(i);
 			if (n == null) {
