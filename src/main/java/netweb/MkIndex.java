@@ -90,7 +90,7 @@ public class MkIndex {
 		for (int i=0; i<fl.length; i++) {
 			String fn = fl[i];
 			if (fn.startsWith("index")) { // well have no self-reference here!
-				System.err.println("Ignoring " + OUTPUTFILE);
+				System.err.println("Ignoring " + fn);
 				continue;
 			} else if (fn.endsWith(".bak")) {		// delete .bak files
 				System.err.println("DELETING " + fn);
