@@ -1,0 +1,35 @@
+<H1>A mover and shaker?</H1>
+<P>The ImageMover Applet can be arranged in one of three directions,
+and you can adjust its speed:
+<table bgcolor="white">
+<tr><th>Orientation<th>&nbsp<th>SleepTime(msec)</tr>
+<tr>
+<td>horizontally
+<td><APPLET CODE="ImageMover" WIDTH="200" HEIGHT="50">
+	<param name="orientation" value="horizontal">
+	<param name="imagefile" value="duke.gif">
+	<param name="sleeptime" value="150">
+</APPLET>
+<td>150
+</tr>
+
+<tr>
+<td>vertically
+<td><APPLET CODE="ImageMover" WIDTH="50" HEIGHT="200">
+	<param name="orientation" value="vertical">
+	<param name="imagefile" value="duke.gif">
+</APPLET>
+<td>(default)
+</tr>
+
+<tr>
+<td>diagonally.
+<td><APPLET CODE="ImageMover" WIDTH="200" HEIGHT="200">
+	<param name="orientation" value="diagonal">
+	<param name="imagefile" value="duke.gif">
+	<param name="sleeptime" value="500">
+</APPLET>
+<td>500
+</tr>
+</table>
+<p><a href="ImageMover.java">Use the source, Luke</a>

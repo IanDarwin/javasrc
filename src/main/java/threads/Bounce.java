@@ -5,9 +5,12 @@ import java.util.*;
 
 /** This is the Bounce class; create and start Sprites. */
 public class Bounce extends Applet implements ActionListener {
-	Panel p;
-	Image img;
-	Vector v;
+	/** The main Panel */
+	protected Panel p;
+	/** The image, shared by all the Sprite objects */
+	protected Image img;
+	/** A Vector of Sprite objects. */
+	protected Vector v;
 
     public void init() {
 		Button b = new Button("Start");
@@ -37,6 +40,7 @@ public class Bounce extends Applet implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 		System.out.println("Creat-ing another one!");
 		Sprite s = new Sprite(this, img);
+		s.start();
 		p.add(s);
 		v.addElement(s);
     }

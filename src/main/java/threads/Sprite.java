@@ -8,6 +8,9 @@ public class Sprite extends Component implements Runnable {
 	protected Component parent;
 	protected Image img;
 	protected boolean done = false;
+	/** The time in mSec to pause between each move. */
+	protected int sleepTime = 250;
+	/** The direction for this particular sprite. */
 	protected int direction;
 	/** The direction for going across the page */
 	public static final int HORIZONTAL = 1;
@@ -19,30 +22,44 @@ public class Sprite extends Component implements Runnable {
 	/** Construct a Sprite with a Component parent, image and direction.
 	 * Construct and start a Thread to drive this Sprite.
 	 */
-	public Sprite(Bounce parent, Image img, int dir) {
+	public Sprite(Component parent, Image img, int dir) {
 		super();
 		this.parent = parent;
 		this.img = img;
 		switch(dir) {
-			case VERTICAL: case HORIZONTAL: case DIAGONAL: break;
+			case VERTICAL: case HORIZONTAL: case DIAGONAL:
+				direction = dir;
+				break;
+			default:
 				throw new IllegalArgumentException(
 					"Direction " + dir + " invalid");
 		}
 		setSize(img.getWidth(this), img.getHeight(this));
+	}
+
+	/** Construct a sprite with the default direction */
+	public Sprite(Component parent, Image img) {
+		this(parent, img, DIAGONAL);
+	}
+
+	/** Start this Sprite's thread. */
+	public void start() {
 		t = new Thread(this);
 		t.setName("Sprite #" + ++spriteNumber);
 		t.start();
 	}
 
-	/** Construct a sprite with the default direction */
-	public Sprite(Bounce parent, Image img, int dir) {
-		this(parent, img, DIAGONAL);
-	}
-
 	/** Stop this Sprite's thread. */
-	void stop() {
+	public void stop() {
+		if (t == null)
+			return;
 		System.out.println("Stopping " + t.getName());
 		done = true;
+	}
+
+	/** Adjust the motion rate */
+	protected void setSleepTime(int n) {
+		sleepTime = n;
 	}
 
 	/**
@@ -70,7 +87,7 @@ public class Sprite extends Component implements Runnable {
 				x = width;
 			if (y<0)
 				y = height;
-			switch(dir) {
+			switch(direction) {
 				case VERTICAL: 
 					x = 0;
 					break;
@@ -79,17 +96,16 @@ public class Sprite extends Component implements Runnable {
 					break;
 				case DIAGONAL: break;
 			}
-			// System.out.println("Move " + t.getName() + " from " +
-			// 	getLocation() + " to " + x + "," + y);
+			//System.out.println("from " + getLocation() + "->" + x + "," + y);
 			setLocation(x, y);
 			repaint();
 			try {
-				Thread.sleep(250);
+				Thread.sleep(sleepTime);
 			} catch (InterruptedException e) {
 				return;
 			}
 		}
-        }
+	}
 
 	/** paint -- just draw our image at its current location */
     public void paint(Graphics g) {
