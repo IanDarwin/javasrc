@@ -7,7 +7,7 @@
 <!-- This web-app doesn't really need a web.xml, but here it is anyway -->
 
 <web-app>
-    <display-name>Ian Darwin Toy Web Server</display-name>
+    <display-name>Ian Darwin's Toy Web Server</display-name>
     <description>
       This is Ian Darwin's Toy Web Server
     </description>
