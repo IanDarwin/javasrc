@@ -38,12 +38,15 @@ public class JColorDemo extends JFrame
 					JColorDemo.this,				// parent
 					"Swing Demo Color Popup",	// title
 					getBackground());			// default
-				if (ch != null)
+System.out.println(ch);
+				if (ch != null) {
 					demo.setBackground(ch);
+					demo.repaint();
+				}
 			}
 		});
         cp.add(BorderLayout.CENTER, demo = 
-			new MyLabel("Your One True Color", 200, 100));
+			new JLabel("Your One True Color", JLabel.CENTER));
 		demo.setToolTipText("This is the last color you chose");
         pack();
         addWindowListener(new WindowCloser(this, true));
