@@ -27,7 +27,7 @@ public class InitParams extends HttpServlet {
 		ServletContext ctx = config.getServletContext();
 
 		CONTEXT_PARAM = ctx.getInitParameter("myParm");
-		CURR_DIR = getServletContext().getRealPath("/");
+		CURR_DIR = ctx.getRealPath("/");
 	}
 
 	public void service(HttpServletRequest request,
