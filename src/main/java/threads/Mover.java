@@ -49,8 +49,6 @@ public class Mover extends Applet implements Runnable {
 		if (imageName == null)
 			imageName = "mover.gif";
 		setImage(imageName);
-		setSize(imgWid = img.getWidth(this),
-			    imgHt  = img.getHeight(this));
 	}
 
 	public void start() {
