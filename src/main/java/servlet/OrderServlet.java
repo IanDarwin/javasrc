@@ -11,8 +11,7 @@ import javax.servlet.http.*;
  */
 public class OrderServlet extends HttpServlet {
 
-	/** doPost() processes one POST request. It is the one method
-	 * that must be provided (its abstract in GenericServlet).
+	/** doPost() processes one POST request.
 	 * Assuming weve been installed correctly, this can only 
 	 * come from the order page, so we blindly respond, 
 	 * without much validation of the order :-)
@@ -20,18 +19,14 @@ public class OrderServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException {
 		resp.setContentType("text/html");
-		ServletOutputStream out = resp.getOutputStream();
-
-		// out.println("<PRE>");
-		// Enumeration parms = req.getParameterNames();
-		// while (parms.hasMoreElements())
-			// out.println("Parm " + parms.nextElement());
-		// out.println("</PRE>");
+		PrintWriter out = resp.getWriter();
 
 		String cardType = req.getParameter("cardType");
 		String cardNumber = req.getParameter("cardNumber");
 		String expMonth = req.getParameter("expMonth");
 		String expYear = req.getParameter("expYear");
+
+		// Simple validation.
 		if (cardType == null || cardNumber == null ||
 			cardNumber.length() == 0 ||
 			expMonth == null || expYear == null) {
@@ -42,54 +37,41 @@ public class OrderServlet extends HttpServlet {
 				"month and year. Please click your " +
 				"browsers <I>Back</I> button and try again.\n" +
 				"<P>Again, thank you for your order.");
-		} else {
-			make_reply(true, out, "Acme Widgets: Thank you for your order",
+			return;
+		} 
+
+		// Code here to phone the bank and validate the card.
+
+		// Now make a nice thankyou to the user
+		make_reply(true, out, "Acme Widgets: Thank you for your order",
 				"Thank you for your credit card order",
 				"We will bill it to your " + cardType + " credit card" +
 				" which expires " + expMonth + "/" + expYear +
 				"<P>Wile E. Coyote will process your order " +
 				"as soon as he returns from his latest trip " +
 				"to the bottom of the Grand Canyon.</P>");
-		}
 		return;
 	}
 
-	/** The DocumentRoot for the server. 
-	 * XXX TODO: Must get this from the Web Server API somehow.
-	 */
-	final static DOCUMENT_ROOT = "c:/javasrc/";
-
-	void make_reply(boolean cardIsApproved, ServletOutputStream os, 
+	/** Common code to generate a reply */
+	void make_reply(boolean cardIsApproved, PrintWriter os, 
 		String title, String h1, String txt) {
-		String reply = "<HTML><HEAD>" +
-			"<TITLE>" + title + "</TITLE>" +
-			"<BODY><H1>" + h1 + "</H1>" +
-			txt +
-			"</BODY></HTML>";
-		try {
-			PrintWriter ps = new PrintWriter(new FileWriter(
-				DOCUMENT_ROOT + 
-				"/tmp_replies/" + "xxx.html"));
-			ps.println(reply);
-			ps.close();
-			os.println((cardIsApproved?"A":"D") + " " +
-				"/tmp_replies/" + "xxx.html");
-			os.close();
-		} catch (IOException e) {
-			System.err.println("Error " + e);
-		}
+
+		// There would be code here to log the approve/deny status
+
+		// Now make up the reply to the user.
+		os.print("<HTML><HEAD>");
+		os.print("<TITLE>");
+		os.print(title);
+		os.print("</TITLE>");
+		os.print("<BODY><H1>");
+		os.print(h1);
+		os.print("</H1>");
+		os.print(txt);
+		os.print("</BODY></HTML>");
 	}
 
-	/** For now, handle Get same as Post. DO NOT DO THIS FOR REAL,
-	 * since GET is not safe to use for $$ transactions (See Jeeves
-	 * Developer Doc).
-	 * Just a hack while we work on the Applet.
-	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
-		throws ServletException, IOException {
-			doPost(req, resp);
-	}
-
+	/** Some Servlet engines use this to report on the servlet */
 	public String getServletInfo() {
 		return "Acme Widgets Credit Card Validation";
 	}
