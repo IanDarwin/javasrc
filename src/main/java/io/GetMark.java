@@ -42,13 +42,12 @@ public class GetMark {
 					out.println(inputLine);
             }
             is.close();
-			// Must not close pw - caller may still need it.
+			out.flush(); // Must not close - caller may still need it.
 		//-
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }
     }
-	//-
 
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you.
