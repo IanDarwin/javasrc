@@ -13,6 +13,8 @@ public class JFrameDemo extends JFrame {
 	public JFrameDemo() {
 		super("JFrameDemo");
 		getContentPane().add(quitButton = new JButton("Exit"));
+
+		// These "action handlers" will be explained later in the chapter.
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

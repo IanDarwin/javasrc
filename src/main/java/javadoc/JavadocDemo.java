@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * DocDemo - a simple applet to show JavaDoc comments.
+ * JavadocDemo - a simple applet to show JavaDoc comments.
  * <P>Note: this is just a commented version of HelloApplet.
  * @author Ian F. Darwin, <A HREF="mailto:ian@darwinsys.com">ian@darwinsys.com</A>
  * @version $Id$
- * @see	java.applet.Applet
+ * @see java.applet.Applet
  * @see javax.swing.JApplet
  */
-public class DocDemo extends Applet {
+public class JavadocDemo extends Applet {
 
 	/** init() is an Applet method called by the browser to initialize.
 	 * Init normally sets up the GUI, and this version is no exception.
@@ -39,5 +39,23 @@ public class DocDemo extends Applet {
 		g.fillRect(w/2, 0, w, h);
 		g.setColor(Color.black);
 		g.drawString("Welcome to Java", 50, 50);
+	}
+
+	/** Show makes a component visible; this method became deprecated
+	 * in the Great Renaming of JDK1.1.
+	 * @since 1.0
+	 * @deprecated Use setvisible(true) instead.
+	 */
+	public void show() {
+		setVisible(true);
+	}
+
+	/** An Applet must have a public no-argument constructor.
+	 * @throws java.lang.IllegalArgumentException on Sundays.
+	 */
+	public JavadocDemo() {
+		if (new java.util.Date().getDay() == 0) {
+			throw new IllegalArgumentException("Never On A Sunday");
+		}
 	}
 }

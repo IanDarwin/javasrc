@@ -2,11 +2,11 @@ import java.io.*;
 import java.util.*;
 import com.darwinsys.util.*;
 
-/** mkindex -- make an index.html for a Java Source directory
+/** MkIndex -- make an index.html for a Java Source directory
  *
  * REQUIRES JDK1.2 OR LATER FOR SORT!!
  *
- * Original version was an Awk script that used "ls" to get
+ * Original version was an awk script that used "ls" to get
  * the list of files, grep out .class and javadoc output files, |sort.
  *
  * Translated from awk to Java in October, 1997 to use java.io.File methods
@@ -76,8 +76,8 @@ public class MkIndex {
 		println("<HR>");
 	}
 
-	/** Array of letters that exist
-	 * XXX fold case here so dont get f and F as distinct entries!
+	/** Array of letters that exist. Should
+	 * fold case here so don't get f and F as distinct entries!
 	 * This only works for ASCII characters (8-bit chars).
 	 */
 	boolean[] exists = new boolean[255];
@@ -92,7 +92,7 @@ public class MkIndex {
 		String[] fl = dirFile.list();
 		for (int i=0; i<fl.length; i++) {
 			String fn = fl[i];
-			if (fn.startsWith("index")) { // well have no self-reference here!
+			if (fn.startsWith("index")) { // we'll have no self-reference here!
 				System.err.println("Ignoring " + fn);
 				continue;
 			} else if (fn.endsWith(".bak")) {		// delete .bak files
@@ -100,7 +100,7 @@ public class MkIndex {
 				new File(fn).delete();
 				continue;
 			} else if (fn.equals("CVS")) {		// Ignore CVS subdirectories
-				continue;						// dont mention it
+				continue;						// don't mention it
 			} else if (fn.charAt(0) == '.') {	// UNIX dot-file
 				continue;
 			} else if (fn.endsWith(".class")) {	// nag about .class files

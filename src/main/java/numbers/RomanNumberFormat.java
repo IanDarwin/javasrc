@@ -2,7 +2,7 @@ import java.text.*;
 import java.util.*;
 
 /**
- * Roman Number class. Not localized, since Roman's a Dead Dead Language
+ * Roman Number class. Not localized, since "Latin's a Dead Dead Language..."
  * and we don't display Roman Numbers differently in different Locales.
  * Filled with quick-n-dirty algorithms.
  *

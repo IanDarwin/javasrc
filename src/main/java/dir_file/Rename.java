@@ -1,7 +1,7 @@
 import java.io.*;
 
 /**
- * Rename a fiel in Java
+ * Rename a file in Java
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
