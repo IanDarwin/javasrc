@@ -33,9 +33,9 @@ public class IMath {
 		long u, v, q, w;
 
 	  u = x;
-	  q = 1<<16 * (1<<16)-1);
+	  // q = 1<<16 * ((1<<16)-1);
+	  q = Integer.MAX_VALUE;
 	  System.out.println("huge q = " + q);
-	  // q = Integer.MAX_VALUE;
 
 	  if (u > q)
 		return 1<<16;
