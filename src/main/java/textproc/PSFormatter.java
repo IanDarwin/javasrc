@@ -1,20 +1,36 @@
 import java.io.*;
 
 /** Text to PS */
-public class tops {
+public class PSFormatter {
+	/** The current input source */
 	protected BufferedReader br;
+	/** The current page number */
 	protected int pageNum;
+	/** The current X and Y on the page */
 	protected int curX, curY;
+	/** The current line number on page */
 	protected int lineNum;
+	/** The current tab setting */
 	protected int tabPos = 0;
 
 	public static void main(String[] av) throws IOException {
-
-		new tops(av[0]).process();
+		if (av.length == 0) 
+			new PSFormatter(
+				new InputStreamReader(System.in)).process();
+		else for (int i = 0; i < av.length; i++) {
+			new PSFormatter(av[i]).process();
+		}
 	}
 
-	public tops(String fileName) throws IOException {
+	public PSFormatter(String fileName) throws IOException {
 		br = new BufferedReader(new FileReader(fileName));
+	}
+
+	public PSFormatter(Reader in) throws IOException {
+		if (in instanceof BufferedReader)
+			br = (BufferedReader)in;
+		else
+			br = new BufferedReader(in);
 	}
 
 	protected void process() throws IOException {
@@ -30,14 +46,11 @@ public class tops {
 				startPage();
 				continue;
 			}
-			tabPos = 0;
-			for (int i=0; i<line.length() &&
-					line.charAt(i)=='\t'; i++)
-				tabPos++;
 			doLine(line);
 		}
 	}
 
+	/** Handle start of page details. */
 	protected void startPage() {
 		if (pageNum++ > 0)
 			println("showpage");
@@ -45,8 +58,13 @@ public class tops {
 		moveTo(0, 700);
 	}
 
+	/** Process one line from the current input */
 	protected void doLine(String line) {
-		String l = line.trim().substring(tabPos==0?0:tabPos-1);
+		tabPos = 0;
+		for (int i=0; i<line.length() &&
+				line.charAt(i)=='\t'; i++)
+			tabPos++;
+		String l = line.trim(); // removes spaces AND tabs
 		if (l.length() == 0) {
 			++lineNum;
 			return;
@@ -80,6 +98,6 @@ public class tops {
 
 	void prologue() {
 		println("%!PS-Adobe");
-		println("/Helvetica-Bold findfont 24 scalefont setfont ");
+		println("/Courier findfont 12 scalefont setfont ");
 	}
 }
