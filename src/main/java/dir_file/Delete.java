@@ -12,9 +12,7 @@ public class Rename {
 		// this source file. The file probably already exists.
 		// My editor creates backups by putting ~ at the end of the name.
 		File bkup = new File("Rename.java~");
-		// Delete it immediately:
+		// Quick, now, delete it immediately:
 		bkup.delete();
-		// Alternately, arrange to have it deleted when the program ends.
-		bkup.deleteOnExit();
 	}
 }

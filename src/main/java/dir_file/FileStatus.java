@@ -56,5 +56,4 @@ public class FileStatus {
 
 		System.out.println();	// blank line between entries
 	}
-
 }
