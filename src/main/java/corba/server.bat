@@ -1,3 +1,3 @@
 REM Start the CDList server:
 
-java CDListServer -ORBInitialPort 1066
+start java -Ddebug.corba CDListServer -ORBInitialPort 1066

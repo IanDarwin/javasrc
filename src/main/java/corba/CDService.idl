@@ -1,19 +1,20 @@
-/* The CD Lookup */
+/* The CD Lookup Service */
 module CDService {
-	struct CD {
-		long cdNumber;
-		string title;
-	};
-
 	struct Track {
 		string title;
-		short runSeconds;
+		long runSeconds;
 	};
 
 	typedef sequence <Track> Tracks;
 
-	interface CDList {
-		CD getCD(in long cdNum);
+	interface CD {
+		attribute string title;
 		Tracks  getTracks();
+	};
+
+	interface CDListIterator {
+		void first();
+		boolean hasNext();
+		CD next();
 	};
 };

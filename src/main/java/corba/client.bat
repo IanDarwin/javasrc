@@ -1,2 +1,2 @@
 REM run the client.
-java CDListClient -ORBInitialPort 1066
+java -Ddebug.corba CDListClient -ORBInitialPort 1066

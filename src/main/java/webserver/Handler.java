@@ -44,6 +44,9 @@ public class Handler extends Thread {
 				clntSock.getInetAddress());
 			is = new BufferedReader(new InputStreamReader(
 				clntSock.getInputStream()));
+			// Must do before any chance of errorResponse being called!
+			os = new PrintStream(clntSock.getOutputStream());
+
 			request = is.readLine();
 			StringTokenizer st = new StringTokenizer(request);
 			String rqCode = st.nextToken();
@@ -63,9 +66,13 @@ public class Handler extends Thread {
 				return;
 			}
 
-			// TODO die if rqName.contains("..");
-
-			os = new PrintStream(clntSock.getOutputStream());
+			// A bit of paranoia may be a good thing...
+			if (rqName.indexOf("../") != -1 ||
+		 		rqName.indexOf("..\\") != -1) {
+				errorResponse(404, "can't seem to find: " + rqName);
+				return;
+			}
+				
 			doFile(rqName, type == RQ_HEAD, os);
 			os.flush();
 			this.sleep(1000);
