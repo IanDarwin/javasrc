@@ -94,7 +94,7 @@ JNIEXPORT jint JNICALL Java_DBM_dbmstore
 
 	// Create the C-language "datum" for "value"
 	v.dsize = (*env)->GetArrayLength(env, value);
-	v.dptr = malloc(k.dsize);			// XXX
+	v.dptr = malloc(v.dsize);			// XXX
 	(*env)->GetByteArrayRegion(env, value, 0, v.dsize, v.dptr);
 
 	// printf("In store, keylen %d, vallen %d\n", k.dsize, v.dsize);
