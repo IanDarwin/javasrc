@@ -3,8 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /** Contrived program showing how to catch Exceptions
- * that occur on the event dispatching thread.
- * Define "sun.awt.exception.handler" to a class with a method
+ * that occur on the event dispatching thread. Define the System 
+ * property "sun.awt.exception.handler" to name a class with a method
  * <pre>public void handle(Throwable t)</pre>.
  * <p>
  * That really is all you have to do to catch GUI Exceptions.
