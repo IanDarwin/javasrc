@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE people SYSTEM "people.dtd">
+<people>
+<person>
+	<name>Ian Darwin</name>
+	<email>http://www.darwinsys.com/</email>
+	<country>Canada</country>
+</person>
+<person>
+	<name>Another Darwin</name>
+	<email type="intranet">afd@node1</email>
+	<country>Canada</country>
+</person>
+</people>
