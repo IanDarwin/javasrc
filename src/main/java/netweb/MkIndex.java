@@ -1,214 +1,176 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
 import java.io.*;
+import java.util.*;
 
-/** A simple HTML Link Checker. 
- * Sorta working, but not ready for prime time.
- * Needs code simplification/elimination.
- * Need to have a -depth N argument to limit depth of checking.
- * Responses not adequate; need to check at least for 404-type errors!
- * When all that is said and done, display in a Tree instead of a TextArea.
+/** mkindex -- make an index.html for a Java Source directory
  *
- * @author	Ian Darwin, Darwin Open Systems, www.darwinsys.com.
- * Routine "readTag" stolen shamelessly from from
- * Elliott Rusty Harold's "ImageSizer" program.
+ * REQUIRES JDK1.2 OR LATER FOR SORT!!
+ *
+ * Original version was an Awk script that used "ls" to get
+ * the list of files, grep out .class and javadoc output files, |sort.
+ *
+ * Translated from awk to Java in October, 1997 to use java.io.File methods
+ *
+ * Revised June 1998 to use Collections.sort() instead of running unix sort.
+ *
+ * @author	Ian F. Darwin, ian@darwinsys.com
+ * @Version $Id$
  */
-public class LinkChecker extends Frame implements Runnable {
-	protected Thread t = null;
-	protected Runnable selfRef;
-	protected Panel p;
-		protected TextField textFldURL;
-		protected Button checkButton;
-		protected Button killButton;
-	protected TextArea textWindow;
-	protected int indent = 0;
-  
-	public static void main(String[] args) {
-		LinkChecker lc = new LinkChecker();
-		if (args.length == 1)
-			lc.textFldURL.setText(args[0]);
-		lc.setSize(500, 400);
-		lc.setVisible(true);
-	}
-  
-	/** Construct a LinkChecker */
-	public LinkChecker() {
-		super("LinkChecker");
-		selfRef = this;
-        addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-			setVisible(false);
-			dispose();
-			System.exit(0);
-			}
-		});
-		setLayout(new BorderLayout());
-		p = new Panel();
-		p.setLayout(new FlowLayout());
-		p.add(new Label("URL"));
-		p.add(textFldURL = new TextField(40));
-		p.add(checkButton = new Button("Check URL"));
-		checkButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (t!=null && t.isAlive())
-					return;
-				t = new Thread(selfRef);
-				t.start();
-			}
-		});
-		p.add(killButton = new Button("Stop"));
-		killButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (t == null || !t.isAlive())
-					return;
-				t.stop();
-				textWindow.append("-- Interrupted --");
-			}
-		});
-		// Now lay out the main GUI - URL & buttons on top, text larger
-		add("North", p);
-		textWindow = new TextArea(80, 40);
-		add("Center", textWindow);
+public class MkIndex {
+	/** The output file that we create */
+	public static final String OUTPUTFILE = "index.htm";
+	/** The main output stream */
+	PrintWriter out;
+	/** The background color for the page */
+	public static final String BGCOLOR="#33ee33";
+
+	/** Make an index */
+	public static void main(String av[]) {
+		MkIndex mi = new MkIndex();
+		mi.open();		// open files
+		mi.BEGIN();		// print HTML header
+		mi.process();		// do bulk of work
+		mi.END();		// print trailer.
+		mi.close();		// close files
 	}
 
-	public synchronized void run() {
-		textWindow.setText("");
-		checkOut(textFldURL.getText());
-		textWindow.append("-- All done --");
-	}
-  
-	/** Start checking, given a URL by name. */
-	public void checkOut(String pageURL) {
-		String thisLine = null;
-		URL root = null;
-
-		if (pageURL == null) {
-			throw new IllegalArgumentException(
-				"checkOut(null) isn't very useful");
-		}
-		// Open the URL for reading
+	void open() {
 		try {
-			root = new URL(pageURL);
-			BufferedReader inrdr = null;
-			char thisChar = 0;
-			String tag = null;
-  
-			inrdr = new BufferedReader(new InputStreamReader(root.openStream()));
-			int i;
-			while ((i = inrdr.read()) != -1) {
-				thisChar = (char)i;
-				if (thisChar == '<') {
-					tag = readTag(inrdr);
-					// System.out.println("TAG: " + tag);
-					if (tag.toUpperCase().startsWith("<A ") ||
-						tag.toUpperCase().startsWith("<A\t")) {
-						
-						String href = extractHREF(tag);
-
-						// Can't really validate these!
-						if (href.startsWith("mailto:"))
-							continue;
-
-						for (int j=0; j<indent; j++)
-							textWindow.append("\t");
-						textWindow.append(href + " -- ");
-						// don't combine previous append with this one,
-						// since this one can throw an exception!
-						textWindow.append(checkLink(root, href) + "\n");
-
-						// If HTML, check it recursively
-						if (href.endsWith(".htm") ||
-							href.endsWith(".html")) {
-								++indent;
-								if (href.indexOf(":") != -1)
-									checkOut(href);
-								else {
-									String newRef = root.getProtocol() +
-										 "://" + root.getHost() + "/" + href;
-									// System.out.println(newRef);
-									checkOut(newRef);
-								}
-								--indent;
-						}
-					}
-				}
-			}
-			inrdr.close();
-		}
-		catch (MalformedURLException e) {
-			textWindow.append("Can't parse " + pageURL + "\n");
-		}
-		catch (IOException e) {
-			System.err.println("Error " + ":(" + e +")");
+			out = new PrintWriter(new FileWriter(OUTPUTFILE));
+		} catch (IOException e) {
+			System.err.println(e);
 		}
 	}
 
-	/** Check one link, given its DocumentBase and the tag */
-	public String checkLink(URL baseURL, String thisURL) {
-		URL linkURL;
-
-		try {
-			if (thisURL.indexOf(":")  == -1) {
-			  // it's not an absolute URL
-			  linkURL = new URL(baseURL, thisURL);
-			} else {
-			  linkURL = new URL(thisURL);
-			}
-
-			// Open it; if the open fails we'll likely throw an exception
-			URLConnection luf = linkURL.openConnection();
-			if (luf instanceof HttpURLConnection) {
-				HttpURLConnection huf = (HttpURLConnection)linkURL.openConnection();
-				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
-				if (huf.getResponseCode() == -1)
-					return "Server error: bad HTTP response";
-				return s;
-			// } else if (luf instanceof FileURLConnection) {
-			// 	return "(File)";
-			} else
-				return "(non-HTTP)";
-		}
-		catch (MalformedURLException e) {
-			return "MALFORMED";
-		}
-		catch (IOException e) {
-			return "DEAD";
-		}
-    }
- 
-	/** Read one tag. Adapted from code by Elliott Rusty Harold */
-	public String readTag(BufferedReader is) {
-		StringBuffer theTag = new StringBuffer("<");
-		int i = '<';
-	  
-		try {
-			while (i != '>' && (i = is.read()) != -1)
-				theTag.append((char)i);
-		}
-		catch (IOException e) {
-		   System.err.println("IO Error: " + e);
-		}     
-		catch (Exception e) {
-		   System.err.println(e);
-		}     
-
-		return theTag.toString();
+	/** Write the HTML headers */
+	void BEGIN() {
+		println("<HTML>");
+		println("<HEAD>");
+		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
+		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
+		println("    <TITLE>Learning Tree Java Programming Online Source Examples</TITLE>");
+		println("</HEAD>");
+		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
+		println("<H1>Learning Tree Java Programming Online Source Examples</H1>");
+		println("<P>The following files are online. Most are described");
+		println("in the Course Notes by file name.");
+		println("Files not so mentioned are experimental!</P>");
+		println("<P>Most of these files are Java source code.");
+		println("If you load an HTML file from here, the applets will not run!");
+		println("The HTML files must be saved to disk and the applets compiled,");
+		println("before you can run them!");
+		println("<P>All files are Copyright &copy;: All rights reserved.");
+		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use");
+		println("(may be used by students of Learning Tree Java Courses for educational purposes, and for commercial use if certain conditions are met).");
+		println("</P>");
+		println("<HR>");
 	}
 
-	/** Extract the URL from <A HREF="http://foo/bar" ...> 
-	 * We presume that the HREF is the first tag.
+	/** Array of letters that exist
+	 * XXX fold case here so don't get f and F as distinct entries!
 	 */
-	public String extractHREF(String tag) throws MalformedURLException {
-		String s1 = tag.toUpperCase();
-		int p1, p2, p3, p4;
-		p1 = s1.indexOf("HREF");
-		p2 = s1.indexOf ("=", p1);
-		p3 = s1.indexOf("\"", p2);
-		p4 = s1.indexOf("\"", p3+1);
-		if (p3 < 0 || p4 < 0)
-			throw new MalformedURLException(tag);
-		return tag.substring(p3+1, p4);
+	boolean[] exists = new boolean[255];
+
+	/** Vector for temporary storage, and sorting */
+	Vector vec = new Vector();
+
+	/** Do the bulk of the work */
+	void process() {
+
+		System.out.println("Start PASS ONE -- from directory to Vector...");
+		String[] fl = new File(".").list();
+		for (int i=0; i<fl.length; i++) {
+			String fn = fl[i];
+			if (fn.equals(OUTPUTFILE)) { // we'll have no self-reference here!
+				System.err.println("Ignoring " + OUTPUTFILE);
+				continue;
+			} else if (fn.endsWith(".bak")) {		// delete .bak files
+				System.err.println("DELETING " + fn);
+				new File(fn).delete();
+				continue;
+			} else if (fn.endsWith(".class")) {	// nag about .class files
+				System.err.println("Ignoring " + fn);
+				continue;
+			} else if (new File(fn).isDirectory()) {
+				vec.addElement(fn + "/");
+			} else
+				vec.addElement(fn);
+			exists[fn.charAt(0)] = true;	// only after chances to continue
+		}
+
+		System.out.println("Writing the Alphabet Navigator...");
+		for (char c = 'A'; c<='Z'; c++)
+			if (exists[c])
+				print("<A HREF=\"#" + c + "\">" + c + "</A> ");
+
+		// ... (and the beginning of the HTML Unordered List...)
+		println("<UL>");
+
+		System.out.println("Sorting the Vector...");
+		Collections.sort(vec, new StringIgnoreCaseComparator());
+
+		System.out.println("Start PASS TWO -- from Vector to index.htm...");
+		String fn;
+		for (int i=0; i<vec.size(); i++) {
+			fn = (String)vec.elementAt(i).toString();
+			// println(fn);
+			if (fn.endsWith("/")) {	// directory
+				if (new File(fn + "index.html").exists())
+					mkDirLink(fn+"index.html", fn);
+				else if (new File(fn + "index.htm").exists())
+						mkDirLink(fn+"index.htm", fn);
+				else
+					mkLink(fn, fn + " -- Directory");
+			} else // file
+				mkLink(fn, fn);
+		}
+		System.out.println("*** process - ALL DONE***");
+	}
+
+	/** Keep track of each letter for #links */
+	boolean done[] = new boolean[255];
+
+	void mkLink(String href, String descrip) {
+		print("<LI>");
+		char c = href.charAt(0);
+		if (!done[c]) {
+			print("<A NAME=\"" + c + "\">");
+			done[c] = true;
+		}
+		println("<A HREF=\"" + href + "\">" + descrip + "</A>");
+	}
+
+	void mkDirLink(String index, String dir) {
+		// XXX Open the index and look for TITLE lines!
+		mkLink(index, dir + " -- Directory");
+	}
+
+	/** Write the trailers and a signature */
+	void END() {
+		System.out.println("Finishing the HTML");
+		println("</UL>");
+		println("<P>This file generated by  ");
+		print("<A HREF=MkIndex.java>MkIndex</A>, a Java program, at ");
+		println(new Date().toString());
+		println("</P>");
+		println("</BODY>");
+		println("</HTML>");
+	}
+
+	/** Close open files */
+	void close() {
+		System.out.println("Closing output files...");
+		if (out != null)
+			out.close();
+	}
+
+	/** Convenience routine for out.print */
+	void print(String s) {
+		out.print(s);
+	}
+
+	/** Convenience routine for out.println */
+	void println(String s) {
+		out.println(s);
 	}
 
 }
