@@ -36,46 +36,12 @@
  * language and environment is gratefully acknowledged.
  */
 
-package darwinsys.chat;
+package chatservlet;
 
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+public interface ChatConstants {
+	/** The name for the Application State object, in the Context */
+	public static final String APP_STATE = "darwinsys.chat.applicationState";
 
-/**
- * Package darwinsys.chat implements a simple servlet-based chat application.
- * This class does much of the work of the Chat application,
- * including registering/deregistering users in the List
- */
-public class ChatListener 
-	implements ChatConstants, HttpSessionListener, ServletContextListener {
-
-
-	/** Called when a new user comes along. Create a null
-	 * UserState object and store it in the session.
-	 */
-	public void sessionCreated(HttpSessionEvent e) {
-		HttpSession sess = e.getSession();
-		sess.setAttribute(USER_STATE, new UserState());
-		// XXX Get the ServletContext and add the user to it.
-		System.out.println("Chat User Set Up");
-	}
-
-	public void sessionDestroyed(HttpSessionEvent e) {
-		// Log this, but the Session is already destroyed.
-		System.out.println("Chat User Removed");
-	}
-
-	/**
-	 * The Chat Application is starting up. Create all of its global data!
- 	 */
-	public void contextInitialized(ServletContextEvent e) {
-		ServletContext ctx = e.getServletContext();
-		ctx.setAttribute(APP_STATE, new ChatState());
-		System.out.println("Chat Application Initialized");
-	}
-
-	public void contextDestroyed(ServletContextEvent e) {
-		System.out.println("Chat Application Destroyed");
-	}
+	/** The name for this user's State, in his/her Session */
+	public static final String USER_STATE = "darwinsys.chat.userState";
 }

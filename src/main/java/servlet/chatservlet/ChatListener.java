@@ -36,46 +36,46 @@
  * language and environment is gratefully acknowledged.
  */
 
-package darwinsys.chat;
+package chatservlet;
 
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
-import java.util.*;
 
-/*
- * ChatServlet
- * @author  Ian Darwin
- * @version $Id$
+/**
+ * Package darwinsys.chat implements a simple servlet-based chat application.
+ * This class does much of the work of the Chat application,
+ * including registering/deregistering users in the List
  */
-public class ChatServlet extends HttpServlet implements ChatConstants {
+public class ChatListener 
+	implements ChatConstants, HttpSessionListener, ServletContextListener {
 
-	/** Called in response to a GET request (data encoded in the URL) */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
 
-		ServletContext application = getServletContext();
-
-		ChatState chat = (ChatState)application.getAttribute(APP_STATE);
-		// assert(chat != null);
-
-		// to do: logic code and main HTML goes HERE.
-		String iSay = request.getParameter("iSay");
-		if (iSay != null) {
-			iSay = iSay.trim();
-			if (iSay.length() != 0) {
-				synchronized(chat) {
-					chat.chat.add(iSay);
-					chat.last++;
-				}
-			}
-		}
-
-		// Output section in MVC: dispatch to JSP to display the work.
-		// (Remember the URL for an RD **MUST** be absolute).
-		RequestDispatcher rd = application.getRequestDispatcher("/chat.jsp");
-		rd.forward(request, response);
-		/*NOTREACHED*/
+	/** Called when a new user comes along. Create a null
+	 * UserState object and store it in the session.
+	 */
+	public void sessionCreated(HttpSessionEvent e) {
+		HttpSession sess = e.getSession();
+		sess.setAttribute(USER_STATE, new UserState());
+		// XXX Get the ServletContext and add the user to it.
+		System.out.println("Chat User Set Up");
 	}
 
+	public void sessionDestroyed(HttpSessionEvent e) {
+		// Log this, but the Session is already destroyed.
+		System.out.println("Chat User Removed");
+	}
+
+	/**
+	 * The Chat Application is starting up. Create all of its global data!
+ 	 */
+	public void contextInitialized(ServletContextEvent e) {
+		ServletContext ctx = e.getServletContext();
+		ctx.setAttribute(APP_STATE, new ChatState());
+		System.out.println("Chat Application Initialized");
+	}
+
+	public void contextDestroyed(ServletContextEvent e) {
+		System.out.println("Chat Application Destroyed");
+	}
 }

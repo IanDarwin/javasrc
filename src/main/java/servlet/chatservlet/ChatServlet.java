@@ -36,23 +36,46 @@
  * language and environment is gratefully acknowledged.
  */
 
-package darwinsys.chat;
+package chatservlet;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
 import java.util.*;
 
-public class ChatState {
-	/** The list of messages */
-	public List chat;
-	/** The list of users */
-	public List users;
-	/** The lower bound of current messages */
-	public int first;
-	/** The upper bound of current messages */
-	public int last;
+/*
+ * ChatServlet
+ * @author  Ian Darwin
+ * @version $Id$
+ */
+public class ChatServlet extends HttpServlet implements ChatConstants {
 
-	public ChatState() {
-		chat = new ArrayList();
-		users = new ArrayList();
-		first = last = 0;
+	/** Called in response to a GET request (data encoded in the URL) */
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+
+		ServletContext application = getServletContext();
+
+		ChatState chat = (ChatState)application.getAttribute(APP_STATE);
+		// assert(chat != null);
+
+		// to do: logic code and main HTML goes HERE.
+		String iSay = request.getParameter("iSay");
+		if (iSay != null) {
+			iSay = iSay.trim();
+			if (iSay.length() != 0) {
+				synchronized(chat) {
+					chat.chat.add(iSay);
+					chat.last++;
+				}
+			}
+		}
+
+		// Output section in MVC: dispatch to JSP to display the work.
+		// (Remember the URL for an RD **MUST** be absolute).
+		RequestDispatcher rd = application.getRequestDispatcher("/chat.jsp");
+		rd.forward(request, response);
+		/*NOTREACHED*/
 	}
+
 }

@@ -1,4 +1,4 @@
-package darwinsys.chat;
+package chatservlet;
 
 public class UserState {
 	public int firstViewed;

@@ -1,8 +1,4 @@
-<%@page import="darwinsys.chat.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
->
-<!--
+/*
  * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 2002.
  * All rights reserved. Software written by Ian F. Darwin.
  * $Id$
@@ -38,40 +34,25 @@
  * cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
  * pioneering role in inventing and promulgating and standardizing the Java 
  * language and environment is gratefully acknowledged.
- -->
-<html>
+ */
 
-<head>
-	<title>Let's Chat by Servlet</title>
-	<meta name="version"
-		content="$Id$" />
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<link rel="stylesheet" type="text/css" href="/stylesheet.css" title="style"/>
-</head>
+package chatservlet;
 
-<body>
-<h1>Let's Chat by Servlet... </h1>
-<form action="ChatServlet" method="post">
-<p>
-<!-- Set rows to 13 but only print 10, needed on some browsers -->
-<textarea name="chat" rows="13" cols="60">
-<%
-	// Set the content of the textArea to the history.
-	ChatState chat = (ChatState)application.getAttribute(ChatConstants.APP_STATE);
-	// assert(chat != null);
+import java.util.*;
 
-	int start = Math.max(chat.first, chat.last-10);
-	for (int i=start; i<chat.last; i++) {
-		out.println(i + ": " + chat.chat.get(i));
+public class ChatState {
+	/** The list of messages */
+	public List chat;
+	/** The list of users */
+	public List users;
+	/** The lower bound of current messages */
+	public int first;
+	/** The upper bound of current messages */
+	public int last;
+
+	public ChatState() {
+		chat = new ArrayList();
+		users = new ArrayList();
+		first = last = 0;
 	}
- %>
-</textarea>
-<br/>
-I say: <input type="text" name="iSay" size="60"/>
-<br/>
-<input type="submit" name="do_it" value="Talk/Refresh"/>
-</p>
-</form>
-</body>
-</html>
-
+}
