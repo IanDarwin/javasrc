@@ -1,5 +1,6 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.*;
 import java.util.*;
 
 public class MyResponse implements HttpServletResponse {
@@ -23,7 +24,7 @@ public class MyResponse implements HttpServletResponse {
     public void sendError(int code, String val) throws java.io.IOException { return; }
     public void sendRedirect(String url) throws java.io.IOException { return; }
     public void setDateHeader(String val, long dval) {
-		setHeader("Date", new java.util.Date(dval).toString();
+		setHeader("Date", new java.util.Date(dval).toString());
 	}
     public void setHeader(String name, String val) { return; }
     public void setIntHeader(String name, int ival) {

@@ -1,5 +1,6 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.*;
 
 public class MyRequest implements HttpServletRequest {
 	/* Construct a dummy MyRequest */
@@ -11,7 +12,7 @@ public class MyRequest implements HttpServletRequest {
 
 	public String getAuthType() { return null; }
 	public String getContextPath() { return null; }
-	public javax.servlet.http.Cookie getCookies()[] { return null; }
+	public javax.servlet.http.Cookie[] getCookies() { return null; }
 	public long getDateHeader(String name) { return 0; }
 	public String getHeader(String name) { return null; }
 	public java.util.Enumeration getHeaderNames() { return null; }

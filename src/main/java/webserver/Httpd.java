@@ -28,13 +28,13 @@ public class Httpd {
 
 	public static void main(String argv[]) {
 		System.out.println("DarwinSys JavaWeb Server 0.1 starting...");
-		Httpd w;
+		Httpd w = new Httpd();
 		if (argv.length == 2 && argv[0].equals("-p")) {
-			w = new Httpd(Integer.parseInt(argv[1]));
+			w.startServer(Integer.parseInt(argv[1]));
 		} else {
-			w = new Httpd();
+			w.startServer(HTTP);
 		}
-		w.startServer();
+
 		w.runServer();
 		// NOTREACHED
 	}
@@ -56,23 +56,23 @@ public class Httpd {
 	}
 
 	/** Construct a server object for a given port number */
-	Httpd(int portNum) {
+	Httpd() {
 		super();
 		// A ResourceBundle can't load from the same basename as your class,
 		// but a simple Properties can.
 		wsp=loadProps("httpd.properties");
 		rootDir = wsp.getProperty("rootDir", ".");
 		mimeTypes = loadProps(wsp.getProperty("mimeProperties", "mime.properties"));
+	}
+
+	public void startServer(int portNum) {
 		String portNumString = null;
-		if (portNum == HTTP) { 
+		if (portNum == HTTP) {
 			portNumString = wsp.getProperty("portNum");
 			if (portNumString != null) {
 				portNum = Integer.parseInt(portNumString);
 			}
 		}
-	}
-
-	public void startServer() {
 		try {
 			sock = new ServerSocket(portNum);
 		} catch(NumberFormatException e) {
@@ -84,11 +84,6 @@ public class Httpd {
 			System.err.println("Unable to start server");
 			System.exit(1);
 		}
-	}
-
-	/** A no-argument constructor */
-	Httpd() {
-		this(HTTP);
 	}
 
 	/** Load the Properties. */
@@ -103,7 +98,7 @@ public class Httpd {
 		} catch (FileNotFoundException notFound) {
 			System.err.println(notFound);
 			System.exit(1);
-		} catch (IOException badLoad) { 
+		} catch (IOException badLoad) {
 			System.err.println(badLoad);
 			System.exit(1);
 		}
