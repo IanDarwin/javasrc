@@ -6,8 +6,10 @@ import java.util.*;
  * Read a SPAM mail message and generate an EMail compose window to the
  * SPAM-artist's ISP.
  * This version just prints the Received line with the offending ISP. 
- * TODO: extract the ISP's name, do host lookup if numeric,
+ * TODO: 0) extract the ISP's name, do host lookup if numeric,
  *	do whois netblock lookup if that fails.
+ *  1) Handle root spammers (use 2nd-last Received): need a heuristic
+ *  to figure these out!
  *  2) Have a FileProperties containing known "abuse" type addresses
  *	(some are abuse, some are email-abuse, etc.). And name the
  *	template file.
