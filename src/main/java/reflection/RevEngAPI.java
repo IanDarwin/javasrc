@@ -37,8 +37,20 @@ public class MakeAPI extends APIFormatter {
 		// create the file.
 		PrintWriter out = new PrintWriter(new FileWriter(fileName));
 
+		// If in a package, say so.
+		Package pkg;
+		if ((pkg = c.getPackage()) != null) {
+			out.println("package " + pkg.getName() + ';');
+			out.println();
+		}
 		// print class header
-		out.println(c.toString() + '{');
+		int cMods = c.getModifiers();
+		printMods(cMods, out);
+		out.print(" class ");
+		out.print(trim(c.getName()));
+		out.print(' ');
+		// XXX get superclass 
+		out.println('{');
 
 		// print constructors
 		Constructor[] ctors = c.getDeclaredConstructors();
