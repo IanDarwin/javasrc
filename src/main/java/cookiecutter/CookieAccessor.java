@@ -11,7 +11,7 @@ import java.util.*;
  * @author Ian F. Darwin
  * @version $Id$
  */
-public class CookieIO {
+public class CookieAccessor {
 	protected static String MAGIC = "# Netscape HTTP Cookie File";
 	protected static String COMMENT = "#";
 

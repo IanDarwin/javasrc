@@ -16,7 +16,7 @@ public class CookieCutter {
 	protected JTable table;
 	protected JButton editButton, delButton, saveButton, exitButton;
 	protected CookieDialog cd;
-	protected CookieIO ioModule;
+	protected CookieAccessor ioModule;
 	protected final static String DEFAULT_FILENAME = "cookies.txt";
 	protected String fileName = DEFAULT_FILENAME;
 
@@ -31,7 +31,7 @@ public class CookieCutter {
 		JPanel bottomPanel;
 		fileName = argv.length == 1 ? argv[0] : DEFAULT_FILENAME;
 
-		cookies = (ioModule = new CookieIO()).read(fileName);
+		cookies = (ioModule = new CookieAccessor()).read(fileName);
 		// This doesn't work yet on some platforms...
 		// Collections.sort(cookies);
 
