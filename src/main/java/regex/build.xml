@@ -1,4 +1,4 @@
-<project name="Java Cookbook Examples" default="compile" basedir=".">
+<project name="Java Cookbook RE Examples (JDK1.4+)" default="build" basedir=".">
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
@@ -13,7 +13,7 @@
 	<property name="zipfile" value="regexp-1.4.zip"/>
 
 	<!-- specify what to compile. This builds everything -->
-	<target name="compile">
+	<target name="build">
 		<echo message="==> Compiling in RE14"/>
 		<!-- Compile the java code from ${src} into ${build}.
 		 *** failonerror is set false because of 1.4 constructs that will
@@ -24,11 +24,9 @@
 			classpath="${javacook.jar}:${junit.jar}"/>
 	</target>
 
-	<target name="zip">
-		<zip zipfile="${build}/${zipfile}" basedir="."
-			includes="**"
-			excludes="CVS,${zipfile},*.class,ReaderIter.java,Grep*.java">
-		</zip>
+	<target name="REDemo" depends="build">
+		<java className="REDemo">
+		</java>
 	</target>
 
 </project>
