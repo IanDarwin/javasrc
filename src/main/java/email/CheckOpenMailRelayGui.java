@@ -17,13 +17,15 @@ public class TestOpenMailRelayGUI extends JFrame {
 	}
 
 	/** The one-line textfield for the user to type Host name/IP */
-	JTextField hostTextField;
+	protected JTextField hostTextField;
+	/** The push button to start a test; a field so can disable/enable it. */
+	protected JButton goButton;
 	/** Multi-line text area for results. */
-	JTextArea results;
+	protected JTextArea results;
 	/** The piped stream for the main class to write into "results" */
-	PrintStream ps;
+	protected PrintStream ps;
 	/** The piped stream to read from "ps" into "results" */
-	BufferedReader iis;
+	protected BufferedReader iis;
 
 	/** This inner class is the action handler both for pressing
 	 * the "Try" button and also for pressing <ENTER> in the text
@@ -36,9 +38,11 @@ public class TestOpenMailRelayGUI extends JFrame {
 			SwingUtilities.invokeLater(
 				new Thread() {
 					public void run() {
+						goButton.setEnabled(false);
 						String host = hostTextField.getText().trim();
 						ps.println("Trying " + host);
 						TestOpenMailRelay.process(host, ps);
+						goButton.setEnabled(true);
 					}
 				});
 		}
@@ -60,9 +64,8 @@ public class TestOpenMailRelayGUI extends JFrame {
 		p.add(hostTextField = new JTextField(10));
 		hostTextField.addActionListener(runner);
 
-		JButton b;
-		p.add(b = new JButton("Try"));
-		b.addActionListener(runner);
+		goButton.add(b = new JButton("Try"));
+		goButton.addActionListener(runner);
 
 		JButton cb;
 		p.add(cb = new JButton("Clear Log"));
