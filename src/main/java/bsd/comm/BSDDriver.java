@@ -11,10 +11,10 @@ public class BSDDriver implements CommDriver {
 	/**
 	 * initialize() will be called by the CommPortIdentifier's 
 	 * static initializer and is responsible to:
-	 * <OL><LI>Ensure that the correct hardware is present.
-	 * <LI>Load the native libraries.
-	 * <LI>Register the port names with CommPortIdentifier.addPortName(). 
-	 * </OL>
+	 * <ol><li>Ensure that the correct hardware is present.
+	 * <li>Load the native libraries if necessary.
+	 * <li>Register the port names with CommPortIdentifier.addPortName(). 
+	 * </ol>
 	 */
 	public void initialize() {
 		System.out.println("BSDDriver.initialize()");
@@ -22,9 +22,9 @@ public class BSDDriver implements CommDriver {
 
 		// Now register port names with CommPortIdentifier.
 		// XX This ought to be loaded from a Proprties file.
-		CommPortIdentifier.addPortName("Serial 1",
+		CommPortIdentifier.addPortName("ttya",
 				CommPortIdentifier.PORT_SERIAL, this);
-		CommPortIdentifier.addPortName("Serial 2",
+		CommPortIdentifier.addPortName("ttyb",
 				CommPortIdentifier.PORT_SERIAL, this);
 		CommPortIdentifier.addPortName("lpr",
 				CommPortIdentifier.PORT_PARALLEL, this);

@@ -5,10 +5,11 @@ import javax.comm.*;
 
 /** BSDSerialPort, a Java Communications API SerialPort object.
  * Written to the javadoc specification, with some input from Sun's
- * template "NullSerialPort" class. No GPL'd code was consulted
- * in the construction of this software.
+ * template "NullSerialPort" class. No Sun-licensed or GPL'd code was
+ * incorporated into this software.
  */
 public class BSDSerialPort extends javax.comm.SerialPort {
+
 	/** True if the port is currently closed. Initially true! */
 	protected boolean closed = true;
 
@@ -60,7 +61,7 @@ public class BSDSerialPort extends javax.comm.SerialPort {
 		super.closePort();	// REQUIRED for housekeeping
 	}
 
-	protected int baudRate = 9600;
+	protected int baudRate = 19200;
 	protected int dataBits = DATABITS_8;
 	protected int stopBits = STOPBITS_1;
 	protected int parity   = PARITY_NONE;
@@ -70,21 +71,25 @@ public class BSDSerialPort extends javax.comm.SerialPort {
 			throw new IllegalStateException("Port Closed");
 		return baudRate;
 	}
+
     public int getDataBits() {
 		if (closed)
 			throw new IllegalStateException("Port Closed");
 		return dataBits;
 	}
+
     public int getStopBits() {
 		if (closed)
 			throw new IllegalStateException("Port Closed");
 		return stopBits;
 	}
+
     public int getParity() {
 		if (closed)
 			throw new IllegalStateException("Port Closed");
 		return parity;
 	}
+
 	/** Convenience routine: sets baud, databits, stopbits, and parity */
     public void setSerialPortParams(int b, int d, int s, int p)
 		throws UnsupportedCommOperationException {
