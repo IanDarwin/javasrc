@@ -1,3 +1,5 @@
+package circular;
+
 public class A {
 	B bample;
 

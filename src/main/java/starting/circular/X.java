@@ -1,3 +1,5 @@
+package circular;
+
 public class X {
 	Y yample;
 
