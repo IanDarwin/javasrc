@@ -21,6 +21,8 @@ import java.util.*;
 public class CrsSetup extends JFrame {
 	/** The version number */
 	final static String VERSION = "$Revision$";
+	/** KLUDGE - How many network interfaces there are on current setup. */
+	final int MAX_INTERFACES = 10;
 	/** How many machines to go up to */
 	final int NUSERS = 22;
 	/** The link to us in the Startup folder, to remove it when done */
@@ -30,14 +32,20 @@ public class CrsSetup extends JFrame {
 		"C:\\windows\\Start Menu\\Programs\\Startup\\" + STARTUP_LINK_NAME;
 	/** The name to write the hosts file into */
 	final String HOSTS = "C:\\windows\\hosts";
+	/** The name for the server, treated specially */
+	final static String SERVER = "server";
+	/** The number for the server, treated specially */
+	final static int SERV_NUM = 50;
+	/** The login name for the instructor, treated specially */
+	final static String SERV_LOGIN = "instructor";
 
 	// MODEL
 	/** The default Course */
 	final String defCOURSE = "471";
 	/** The current machine name */
-	int machNameber = 0;
+	int machNumber = 0;
 	/** The default network */
-	final String DEFAULT_NET = "200.1.1";
+	final String DEFAULT_NET = "192.168.1";
 	/** The current network */
 	String netName = DEFAULT_NET;
 
@@ -107,8 +115,8 @@ public class CrsSetup extends JFrame {
 		ip = new JComboBox();
 		ip.setToolTipText("Set IP network number");
 		ip.addItem(DEFAULT_NET);
-		ip.addItem("204.92.76");
-		ip.addItem("204.92.77");
+		ip.addItem("204.92.76");	// Toronto EC
+		ip.addItem("204.92.77");	// Ottawa EC
 		ip.addItem("206.138.217");
 		ip.addItem("193.122.158");
 		ip.setEditable(true);	// allow user to type own value.
@@ -133,15 +141,17 @@ public class CrsSetup extends JFrame {
 		for (int i=1; i<=NUSERS; i++)
 			mach.addItem(""+i);
 		mach.addItem("44");			// instructor-notebook
+		mach.addItem(SERVER);
 
 		mach.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String chosen = e.getItem().toString();
 				if (chosen.charAt(0) == '-')
-					machNameber = 0;
+					machNumber = 0;
+				else if (chosen.equals(SERVER))
+					machNumber = SERV_NUM;
 				else
-					machNameber = Integer.parseInt(chosen);
-				// machNameber = mach.getSelectedIndex();
+					machNumber = Integer.parseInt(chosen);
 			}
 		});
 		tp.add(mach);
@@ -199,19 +209,18 @@ public class CrsSetup extends JFrame {
 		tp.setLayout(new BoxLayout(tp, BoxLayout.Y_AXIS));
 
 		// Create two radio buttons for the look-and-feel switcher.
-		JRadioButton basicButton = new JRadioButton("Ugly");
-		basicButton.setEnabled(false);
+		JRadioButton basicButton = new JRadioButton("Windows");
 		basicButton.addActionListener(new SwitchUIListener(
-			"com.sun.java.swing.plaf.organic.OrganicLookAndFeel"));
-		basicButton.setToolTipText("Just to make it ugly");
+			"com.sun.java.swing.plaf.windows.WindowsLookAndFeel"));
+		basicButton.setToolTipText("To make me look MicroSofty");
 		basicButton.setSelected(false);
 		tp.add(basicButton);
 
 		JRadioButton roseButton = new JRadioButton("Metal");
 		roseButton.addActionListener(new SwitchUIListener(
 			"com.sun.java.swing.plaf.metal.MetalLookAndFeel"));
-		roseButton.setToolTipText("Just to make it pretty");
-		basicButton.setSelected(true);	// we hope it got set.
+		roseButton.setToolTipText("To make it modern");
+		roseButton.setSelected(true);	// we hope it got set.
 		tp.add(roseButton);
 
 		// Group the radio buttons.
@@ -304,13 +313,13 @@ public class CrsSetup extends JFrame {
 				return;
 			}
 
-			if (machNameber == 0) {
+			if (machNumber == 0) {
 				JOptionPane.showMessageDialog(CrsSetup.this,
 					"No Machine \"Nameber\" chosen",
 					"User Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			doTheWork(forRealP, cName, netName, machNameber);
+			doTheWork(forRealP, cName, netName, machNumber);
 	}
 
 	/**
@@ -340,7 +349,7 @@ public class CrsSetup extends JFrame {
 		// System.out.println("Setting MachineID to " + machNum);
 
 		// Run any course-specific fixups
-		doCourseScript(applyForReal, cName);
+		runScript(applyForReal, cName);
 
 		// setup the TCP hosts files
 		doHostFile(applyForReal, netName, machNum, NUSERS);
@@ -348,10 +357,18 @@ public class CrsSetup extends JFrame {
 		// Update the Registry with computer/networking info.
 		// THIS IS FOR WINDOWS 95 AND WILL NOT WORK ON WINDOWS NT
 		startReg();
-		setReg("HKEY_LOCAL_MACHINE\\Network\\Logon",
-			"username", "user"+machNum);
-		setReg("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\control\\ComputerName\\ComputerName", "ComputerName", "user"+machNum);
-		for (int i=0; i<=5; i++) {
+		if (machNum == SERV_NUM) {
+			setReg("HKEY_LOCAL_MACHINE\\Network\\Logon",
+				"username", SERV_LOGIN);
+			setReg("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\control\\ComputerName\\ComputerName", "ComputerName", "server");
+			runScript(applyForReal, "server");	// install server startup
+		} else {
+			setReg("HKEY_LOCAL_MACHINE\\Network\\Logon",
+				"username", "user"+machNum);
+			setReg("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\control\\ComputerName\\ComputerName", "ComputerName", "user"+machNum);
+			runScript(applyForReal, "client");	// remove server startup
+		}
+		for (int i=0; i<=MAX_INTERFACES; i++) {
 			// To format a non-localized four-digit number
 			NumberFormat form = new DecimalFormat("0000");
 			String thisNum = "0000";
@@ -375,7 +392,7 @@ public class CrsSetup extends JFrame {
 
 		// Suggest a reboot
 		String choices[] = { "Reboot now", "Reboot later" };
-		// Due to contention in this pre-beta Swing API:
+		// Due to contention in the pre-beta Swing API:
 		class NullIcon implements Icon {
 			public void paintIcon(Component c, Graphics g, int x, int y) { }
 			public int getIconWidth() { return 16; };
@@ -399,7 +416,7 @@ public class CrsSetup extends JFrame {
 				}
 				break;
 			case 1:
-				System.out.println("OK, do it later");
+				// System.out.println("OK, do it later");
 				break;
 			default:
 				System.out.println("Unexpected return " + result + 
@@ -409,7 +426,7 @@ public class CrsSetup extends JFrame {
 	}
 
 	/** Run any course-specific customization script in \build */
-	void doCourseScript(boolean applyForReal, String course) {
+	void runScript(boolean applyForReal, String course) {
 		String csfn = "C:\\build\\" + course + ".bat";
 		File cs = new File(csfn);
 		if (cs.exists()) {
@@ -418,16 +435,17 @@ public class CrsSetup extends JFrame {
 					Runtime.getRuntime().exec(csfn);
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(this,
-						"Error running course script: " + e,
+						"Error running script: " + e,
 						"Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				JOptionPane.showMessageDialog(this,
-					"Ran Course script " + csfn,
-					"File " + csfn, JOptionPane.WARNING_MESSAGE);
+				// if (verbose)
+				//	JOptionPane.showMessageDialog(this,
+				// 	"Ran script " + csfn,
+				// 	"File " + csfn, JOptionPane.WARNING_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(this,
-				"Would run Course script " +csfn+ " - ignoring in test mode",
+				"Would run script " +csfn+ " - ignoring in test mode",
 				"File "+csfn, JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
@@ -454,7 +472,8 @@ public class CrsSetup extends JFrame {
 				hf.println("");
 			}
 			hf.println(net+".44\tdaroad user44 instructor-notebook");
-			hf.println(net+".50\tserver instructor-server");
+			hf.println(net+"." + SERV_NUM + "\t" +
+				SERVER + " instructor-server");
 			hf.println(net+".51\ttest-server instructor-test-server");
 			hf.println("# For testing timeouts in 478 Threaded HandsOn:");
 			hf.println(net+".99\terewhon");
@@ -467,7 +486,7 @@ public class CrsSetup extends JFrame {
 		}
 	}
 
-	// Set of q+d routines for setting registry values...
+	// Set of quick+dirty routines for setting registry values...
 	// Should do native code calls on Registry API. Real Soon Now(tm).
 
 	/** Temporary filename for holding registry data */
