@@ -1,24 +1,35 @@
 package ca.tcp.utils;
 
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
  * similar to how he extended it for Java 1.5 (with valueOf() method).
  * When we move to 1.5, change all subclasses of this to J2SE 1.5 enums.
  * See Java Cookbook, 2nd Edition, Chapter 8.
+ * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
+ * info on Serializable and readResolve(); objects used in HttpSessions
+ * are required to be Serializable.
  */
-public abstract class Enum {
+public abstract class Enum implements Serializable {
 	/** The name of this class, should be set in a static initializer. */
 	protected static String className = "(class not set!)";
 	/** The value of this instance */
 	private String value;
 	/** The maximum number of values an enum can have */
-	private static final int MAX_VALUES = 10;
+	private static final int INITIAL_SIZE = 10;
 	
 	/** Although this is public, the implementing subclass' constructor must be 
 	 * private to ensure typesafe enumeration pattern.
 	 */
 	public Enum(String val) {
 		value = val;
+		if (allIndex == all.length) {
+			Enum[] tmp = new Enum[all.length * 2];
+			System.arraycopy(all, 0, tmp, 0, all.length);
+			all = tmp;
+		}
 		all[allIndex++] = this;
 	}
 	
@@ -27,7 +38,7 @@ public abstract class Enum {
 		return value;
 	}
 	
-	private final static Enum[] all = new Enum[MAX_VALUES];
+	private static Enum[] all = new Enum[INITIAL_SIZE];
 	private static int allIndex;
 	
 	/** Returns the given Enum instance for the given String.
@@ -42,7 +53,15 @@ public abstract class Enum {
 		throw new IllegalArgumentException("Value '" + s + "' is not a valid " + className + " enumeration value.");
 	}
 
+	/** Return all the values of this Enumeration */
 	public static Enum[] values() {
 		return (Enum[])all.clone();
 	}
+	
+	/** Needed to avoid having Serialization create objects that bypass the constructor */
+    protected Object readResolve() throws ObjectStreamException
+    {
+    	System.out.println("readResolve: value = " + value);
+        return getValueOf(value);
+    }
 }
