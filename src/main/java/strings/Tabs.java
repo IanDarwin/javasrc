@@ -7,7 +7,7 @@ public class Tabs {
 	protected int TABSPACE = DEFTABSPACE;
 	public final static int MAXLINE  = 250;
 
-	boolean tabstops[];		/* actual tab stops */
+	protected boolean tabstops[];		/* actual tab stops */
 
 	public Tabs(int n) {
 		tabstops = new boolean[MAXLINE];
