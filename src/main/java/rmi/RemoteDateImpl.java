@@ -13,13 +13,10 @@ public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate
 		super();	// sets up networking
 	}
 
-	/** The remote method that "does all the work". This wont get
+	/** The remote method that "does all the work". This won't get
 	 * called until the client starts up.
 	 */
 	public Date getRemoteDate() throws RemoteException {
 		return new Date();
-	}
-	public NonSerNonRem getRemoteNon() throws java.rmi.RemoteException {
-		return new NonSerNonRem();
 	}
 }

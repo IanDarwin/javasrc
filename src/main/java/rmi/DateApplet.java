@@ -13,7 +13,7 @@ public class DateApplet extends Applet {
 
 	public void init() {
 		try {
-			netConn = (RemoteDate)Naming.lookup("/DateServer");
+			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
 		} catch (Exception e) {
 			System.err.println("RemoteDate exception: " + e.getMessage());
 			e.printStackTrace();
@@ -34,23 +34,5 @@ public class DateApplet extends Applet {
 				}
 			}
 		});
-		add(b = new Button("Crash & Burn"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (netConn == null) {
-					showStatus("Connection failed, bye");
-					return;
-				}
-				try {
-					Object o = netConn.getRemoteNon();
-					System.out.println(o);
-					showStatus("Got it, see Java Console");
-				} catch (RemoteException r) {
-					showStatus("Error, see Java Console");
-					System.err.println(r);
-				}
-			}
-		});
 	}
-
 }
