@@ -8,7 +8,7 @@ import java.awt.event.*;
  * Colors - demo of Swing JColorChooser.
  * Swing's JColorChooser can be used in three ways:
  * <UL><LI>Construct it and place it in a panel;
- * <LI>Call its ConstructDialog() and get a JDialog back
+ * <LI>Call its createDialog() and get a JDialog back
  * <LI>Call its showDialog() and get back the chosen color
  * </UL>
  * <P>We use the last method, as it's the simplest, and is how
