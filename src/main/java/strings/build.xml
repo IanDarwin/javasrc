@@ -1,4 +1,4 @@
-<project name="XXX" default="build" basedir=".">
+<project name="JavaCook: String Chapter" default="regress" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -14,9 +14,10 @@
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${darwinsys.jar}:${junit.jar}"
-			deprecation="true"
-			failOnError="false"
-		/>
+			debug="true" deprecation="true"
+			failOnError="false" >
+			<exclude name="WolfInStringsClothing.java"/>
+		</javac>
 	</target>
 
 	<!-- Simple Regression Tests -->
@@ -30,10 +31,11 @@
 				<classpath>
 						<pathelement location="${build}"/>
 						<pathelement location="${junit.jar}"/>
+						<pathelement location="${darwinsys.jar}"/>
 				</classpath>
 				<formatter type="plain"/>
-				<test name="regress.SoundexTest"/>
-				<test name="regress.StringAlignTest"/>
+				<test name="StringAlignTest"/>
+				<test name="SoundexTest"/>
 		</junit>
 
 	</target>
