@@ -4,6 +4,7 @@
 	<property file="../build.properties"/>
 
 	<property name="build" value="."/>
+	<property name="src" value="."/>
 
 	<!-- specify what to compile. This builds everything -->
 	<target name="compile">

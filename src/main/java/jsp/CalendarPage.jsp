@@ -77,11 +77,11 @@
 <table border=1>
 <tr><th colspan=7><%= months[mm] %>  <%= yy %></tr>
 
-<%		GregorianCalendar calendar = new GregorianCalendar(yy, mm, 1); %>
-
 <tr><td>Su<td>Mo<td>Tu<td>We<td>Th<td>Fr<td>Sa</tr>
 
 <%
+		GregorianCalendar calendar = new GregorianCalendar(yy, mm, 1);
+
 		// Compute how much to leave before the first.
 		// getDay() returns 0 for Sunday, which is just right.
 		leadGap = calendar.get(Calendar.DAY_OF_WEEK)-1;

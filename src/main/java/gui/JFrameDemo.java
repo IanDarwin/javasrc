@@ -6,7 +6,6 @@ import javax.swing.*;
  * @version $Id$
  */
 public class JFrameDemo extends JFrame {
-	boolean unsavedChanges = false;
 	JButton quitButton;
 
 	/** Construct the object including its GUI */
@@ -14,16 +13,13 @@ public class JFrameDemo extends JFrame {
 		super("JFrameDemo");
 		getContentPane().add(quitButton = new JButton("Exit"));
 
-		// These "action handlers" will be explained later in the chapter.
+		// Set up so that "Close" will exit the program, 
+        // not just close the JFrame.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// This "action handler" will be explained later in the chapter.
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
 				setVisible(false);
 				dispose();
 				System.exit(0);
