@@ -6,8 +6,13 @@ import java.util.*;
 public class HashDemo {
 	public static void main(String[] argv) {
 
-		// Construct and load it.
+		// Construct and load the hash. This simulates loading a
+		// database or reading from a file, or wherever the data is.
+
 		Hashtable h = new Hashtable();
+
+		// The hash maps from company name to address.
+		// In real life this might map to an Address object...
 		h.put("Adobe", "Mountain View, CA");
 		h.put("IBM", "White Plains, NY");
 		h.put("Learning Tree", "Los Angeles, CA");
