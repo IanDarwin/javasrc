@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 import javax.jdo.*;
 
-/** Create a DataStore. Adapted from the JavaRanch JDO tutorial */
+/** Create a DataStore, initially empty.
+ * Typically only needed if using the JDO RI.
+ */
 public class JDOCreateDataStore {
 	public static void main(String[] args) throws IOException {
 			Properties p = new Properties();
