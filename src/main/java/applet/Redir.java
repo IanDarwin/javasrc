@@ -51,14 +51,14 @@ public class Redir extends Applet implements Runnable {
 	}
 
 	/** If users moves off the page, set Thread t to null so
-	 * we dont showDocument from within the middle of the new page!
+	 * we don't showDocument from within the middle of the new page!
 	 */
 	public void stop() {
 		t = null;
 	}
 
 	/** run, called by the Thread, does the work of sleeping
-	 * for a fixed number of seconds then, if the user hasnt
+	 * for a fixed number of seconds then, if the user hasn't
 	 * moved off the page, actually passing control to the new page.
 	 */
 	public void run() {

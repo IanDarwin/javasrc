@@ -16,9 +16,10 @@ public class SocketApplet extends Applet {
 	/** Where the Applet came from */
 	URL whence;
 
-	/** Set things up nicely. */
+	//+
+	/** Initialize the GUI nicely. */
 	public void init() {
-		Label l;
+		Label aLabel;
 
 		setLayout(new GridBagLayout());
 		int LOGO_COL = 1;
@@ -30,14 +31,14 @@ public class SocketApplet extends Applet {
 
 		gbc.gridx = LABEL_COL; gbc.gridy = 0; 
 		gbc.anchor = GridBagConstraints.EAST;
-		add(l = new Label("Name:", Label.CENTER), gbc);
+		add(aLabel = new Label("Name:", Label.CENTER), gbc);
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.gridx = TEXT_COL; gbc.gridy = 0;
 		add(nameTF=new TextField(10), gbc);
 
 		gbc.gridx = LABEL_COL; gbc.gridy = 1;
 		gbc.anchor = GridBagConstraints.EAST;
-		add(l = new Label("Password:", Label.CENTER), gbc);
+		add(aLabel = new Label("Password:", Label.CENTER), gbc);
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.gridx = TEXT_COL; gbc.gridy = 1;
 		add(passTF=new TextField(10), gbc);
@@ -45,7 +46,7 @@ public class SocketApplet extends Applet {
 
 		gbc.gridx = LABEL_COL; gbc.gridy = 2;
 		gbc.anchor = GridBagConstraints.EAST;
-		add(l = new Label("Domain:", Label.CENTER), gbc);
+		add(aLabel = new Label("Domain:", Label.CENTER), gbc);
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.gridx = TEXT_COL; gbc.gridy = 2;
 		add(domainTF=new TextField(10), gbc);
@@ -93,5 +94,6 @@ public class SocketApplet extends Applet {
 			}
 		});
 	}
+	//-
 }
 

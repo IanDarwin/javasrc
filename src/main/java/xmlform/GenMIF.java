@@ -281,7 +281,7 @@ public class GenMIF implements XmlFormWalker {
 	}
 
 	protected void doPre(Element p) {
-		makeUpParagraph("Code", "// ");
+		doParagraph("Code", p);
 	}
 
 	protected void doChildren(Element p) {

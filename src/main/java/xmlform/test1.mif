@@ -1,0 +1,220 @@
+<MIFFile 3.00 -- MIF produced by XmlForm>
+# START OF CHAPTER
+<Para
+    <Pgf
+    <PgfTag `ChapterStart'>
+    > # end of Pgf
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `ChapterTitle'>
+    > # end of Pgf
+    <ParaLine
+    <String `Numbers '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `HeadA'>
+    > # end of Pgf
+    <ParaLine
+    <String `Introduction '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `HeadB'>
+    > # end of Pgf
+    <ParaLine
+    <String `Problem '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `You have a problem. '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `HeadB'>
+    > # end of Pgf
+    <ParaLine
+    <String `Solution '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `I have the solution. '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `HeadA'>
+    > # end of Pgf
+    <ParaLine
+    <String `Introduction '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `Numbers are basic to just about any computation. They\xd5 re used for array indices, for temperatures, for salaries, for ratings of various kinds, and a hundred other things. Yet they\xd5 re not as simple as they seem. With floating point numbers, how accurate is accurate? With random numbers, how random is random? With strings that should contain a number, what actually constitutes a number? '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `Java has several built-in types that can be used to represent numbers, summarized in this table. Note that unlike languages like C or Perl which don\xd5 t specify the size or precision of numeric type, Java-- with its goal of portability--specifies these exactly. '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `Here is an example of a Java insertion: '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `ExampleLabel'>
+    > # end of Pgf
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `ExampleTitle'>
+    > # end of Pgf
+    <ParaLine
+    <String `LogBaseUse.java '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `/** '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String ` * Log to arbitrary base '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String ` * @author Ian F. Darwin, ian@darwinsys.com '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String ` * @version $Id$ '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String ` */ '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `public class LogBaseUse { '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\t//+ '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\tpublic static void main(String argv[]) { '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\t\tdouble d = LogBase.log_base(10, 10000); '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\t\tSystem.out.println("log10(10000) = " + d); '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\t} '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `\t//- '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `} '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Body'>
+    > # end of Pgf
+    <ParaLine
+    <String `Here is an example of a Java OUTPUT insertion: '>
+    > # end of ParaLine
+> # end of Para
+<Para
+    <Pgf
+    <PgfTag `Code'>
+    > # end of Pgf
+    <ParaLine
+    <String `log10(10000) = 4.0 '>
+    > # end of ParaLine
+> # end of Para

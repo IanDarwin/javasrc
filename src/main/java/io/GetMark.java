@@ -36,13 +36,13 @@ public class GetMark {
 				if (inputLine.trim().equals(startMark)) {
 					if (printing)
 						System.err.println("ERROR: START INSIDE START, " +
-							fileName + : + is.getLineNumber());
+							fileName + ':' + is.getLineNumber());
 					printing = true;
 					indent = NOINDENT;
 				} else if (inputLine.trim().equals(endMark)) {
 					if (!printing)
 						System.err.println("ERROR: STOP WHILE STOPPED, " +
-							fileName + : + is.getLineNumber());
+							fileName + ':' + is.getLineNumber());
 					printing = false;
 				} else if (printing) {
 					if (indent < inputLine.length() && indent == NOINDENT) {

@@ -21,7 +21,7 @@ Software written by Ian F. Darwin and others.
  *    contributors may be used to endorse or promote products derived
  *    from this software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
@@ -34,8 +34,8 @@ Software written by Ian F. Darwin and others.
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-Java, the Duke mascot, and all variants of Suns Java "steaming coffee
-cup" logo are trademarks of Sun Microsystems. Suns, and James Goslings,
+Java, the Duke mascot, and all variants of Sun's Java "steaming coffee
+cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
 pioneering role in inventing and promulgating (and standardizing) the Java 
 language and environment is gratefully acknowledged.
 

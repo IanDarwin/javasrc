@@ -21,7 +21,7 @@ public class Singleton {
 			"Default constructor called more than once.");
 	}
 
-	// A static factory methods
+	// A static 'factory' methods
 
 	static Singleton getInstance() {
 		if (singleton == null)

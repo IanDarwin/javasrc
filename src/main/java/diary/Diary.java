@@ -133,7 +133,7 @@ public class Diary extends Frame {
 				s.append("\n");
 				col = 0;
 			}
-			s.append(sval).append( );
+			s.append(sval).append(' ');
 			col+=sval.length()+1;
 		}
 		tf.replaceRange(s.toString(), start, end);

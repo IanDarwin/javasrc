@@ -1,12 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
-import sun.net.www.protocol.file.FileURLConnection;
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
 /** A simple HTML Link Checker. 
- * Sorta working, but not ready for prime time.
- * Needs code simplification/elimination.
  * Need a Properties file to set depth, URLs to check. etc.
  * Responses not adequate; need to check at least for 404-type errors!
  * When all that is (said and) done, display in a Tree instead of a TextArea.
@@ -17,8 +15,12 @@ import java.io.*;
  */
 public class LinkChecker extends Frame implements Runnable {
 	protected Thread t = null;
+	/** The "global" activation flag: set false to halt. */
 	boolean done = false;
 	protected Panel p;
+	/** The textfield for the starting URL.
+	 * Should have a Properties file and a JComboBox instead.
+	 */
 	protected TextField textFldURL;
 	protected Button checkButton;
 	protected Button killButton;
@@ -32,10 +34,7 @@ public class LinkChecker extends Frame implements Runnable {
 		lc.setVisible(true);
 		if (args.length == 0)
 			return;
-		for (int i=0; i<args.length; i++) {
-			lc.textFldURL.setText(args[0]);
-			lc.startChecking();
-		}
+		lc.textFldURL.setText(args[0]);
 	}
   
 	public void startChecking() {
@@ -45,6 +44,7 @@ public class LinkChecker extends Frame implements Runnable {
 		textWindow.setText("");
 		doCheck();
 	}
+
 	public void stopChecking() {
 		done = true;
 		checkButton.setEnabled(true);
@@ -67,11 +67,15 @@ public class LinkChecker extends Frame implements Runnable {
 		p.add(new Label("URL"));
 		p.add(textFldURL = new TextField(40));
 		p.add(checkButton = new Button("Check URL"));
-		checkButton.addActionListener(new ActionListener() {
+		// Make a single action listener for both the text field (when
+		// you hit return) and the explicit "Check URL" button.
+		ActionListener starter = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				startChecking();
 			}
-		});
+		};
+		textFldURL.addActionListener(starter);
+		checkButton.addActionListener(starter);
 		p.add(killButton = new Button("Stop"));
 		killButton.setEnabled(false);	// until startChecking is called.
 		killButton.addActionListener(new ActionListener() {
@@ -107,6 +111,8 @@ public class LinkChecker extends Frame implements Runnable {
 		URL rootURL = null;
 		GetURLs urlGetter = null;
 
+		if (done)
+			return;
 		if (rootURLString == null) {
 			textWindow.append("checkOut(null) isn't very useful");
 			return;
@@ -140,40 +146,65 @@ public class LinkChecker extends Frame implements Runnable {
 
 		try {
 			ArrayList urlTags = urlGetter.getURLs();
-			Iterator urlIterator = urls.iterator();
+			Iterator urlIterator = urlTags.iterator();
 			while (urlIterator.hasNext()) {
-				String tag = urlIterator.next();
+				if (done)
+					return;
+				String tag = (String)urlIterator.next();
 				System.out.println(tag);
 						
 				String href = extractHREF(tag);
 
-				// Can't really validate these!
-				if (href.startsWith("mailto:"))
-					continue;
-
-				if (href.startsWith("..") || href.startsWith("#"))
-					// nothing doing!
-					continue; 
-
 				for (int j=0; j<indent; j++)
 					textWindow.append("\t");
-
 				textWindow.append(href + " -- ");
-				// don't combine previous append with this one,
-				// since this one can throw an exception!
-				textWindow.append(checkLink(rootURL, href) + "\n");
 
-				// If HTML, check it recursively
+				// Can't really validate these!
+				if (href.startsWith("mailto:")) {
+					textWindow.append(href + " -- not checking");
+					continue;
+				}
+
+				if (href.startsWith("..") || href.startsWith("#")) {
+					textWindow.append(href + " -- not checking");
+					// nothing doing!
+					continue; 
+				}
+
+				URL hrefURL = new URL(rootURL, href);
+
+				// TRY THE URL.
+				// (don't combine previous textWindow.append with this one,
+				// since this one can throw an exception)
+				textWindow.append(checkLink(hrefURL));
+
+				// There should be an option to control whether to
+				// "try the url" first and then see if off-site, or
+				// vice versa, for the case when checking a site you're
+				// working on on your notebook on a train in the Rockies
+				// with no web access available.
+
+				// Now see if the URL is off-site.
+				if (!hrefURL.getHost().equals(rootURL.getHost())) {
+					textWindow.append("-- OFFSITE -- not following");
+					textWindow.append("\n");
+					continue;
+				}
+				textWindow.append("\n");
+
+				// If HTML, check it recursively. No point checking
+				// PHP, CGI, JSP, etc., since these usually need forms input.
+				// If a directory, assume HTML or something under it will work.
 				if (href.endsWith(".htm") ||
-					href.endsWith(".html")) {
+					href.endsWith(".html") ||
+					href.endsWith("/")) {
 						++indent;
 						if (href.indexOf(':') != -1)
-							checkOut(href);
+							checkOut(href);			// RECURSE
 						else {
 							String newRef = 
 								 rootURLdirString + '/' + href;
-							// System.out.println("MADE " + newRef);
-							checkOut(newRef);
+							checkOut(newRef);		// RECURSE
 						}
 						--indent;
 				}
@@ -185,35 +216,24 @@ public class LinkChecker extends Frame implements Runnable {
 	}
 
 	/** Check one link, given its DocumentBase and the tag */
-	public String checkLink(URL baseURL, String thisURL) {
-		URL linkURL;
+	public String checkLink(URL linkURL) {
 
-		try {
-			if (thisURL.indexOf(":")  == -1) {
-			  // it's not an absolute URL
-			  linkURL = new URL(baseURL, thisURL);
-			} else {
-			  linkURL = new URL(thisURL);
-			}
-
+		try { 
 			// Open it; if the open fails we'll likely throw an exception
 			URLConnection luf = linkURL.openConnection();
-			if (luf instanceof HttpURLConnection) {
+			if (linkURL.getProtocol().equals("http")) {
 				HttpURLConnection huf = (HttpURLConnection)luf;
 				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
 				if (huf.getResponseCode() == -1)
 					return "Server error: bad HTTP response";
 				return s;
-			} else if (luf instanceof FileURLConnection) {
+			} else if (linkURL.getProtocol().equals("file")) {
 				InputStream is = luf.getInputStream();
 				is.close();
 				// If that didn't throw an exception, the file is probably OK
 				return "(File)";
 			} else
 				return "(non-HTTP)";
-		}
-		catch (MalformedURLException e) {
-			return "MALFORMED";
 		}
 		catch (SocketException e) {
 			return "DEAD: " + e.toString();
@@ -242,19 +262,29 @@ public class LinkChecker extends Frame implements Runnable {
 		return theTag.toString();
 	}
 
-	/** Extract the URL from <A HREF="http://foo/bar" ...> 
-	 * We presume that the HREF is the first tag.
+	/** Extract the URL from <sometag attrs HREF="http://foo/bar" attrs ...> 
+	 * We presume that the HREF is correctly quoted!!!!!
+	 * TODO: Handle Applets.
 	 */
 	public String extractHREF(String tag) throws MalformedURLException {
-		String s1 = tag.toUpperCase();
+		String caseTag = tag.toLowerCase(), attrib;
 		int p1, p2, p3, p4;
-		p1 = s1.indexOf("HREF");
-		p2 = s1.indexOf ("=", p1);
-		p3 = s1.indexOf("\"", p2);
-		p4 = s1.indexOf("\"", p3+1);
-		if (p3 < 0 || p4 < 0)
-			throw new MalformedURLException(tag);
-		return tag.substring(p3+1, p4);
-	}
 
+		if (caseTag.startsWith("<a "))
+			attrib = "href";		// A
+		else
+			attrib = "src";			// image, frame
+		p1 = caseTag.indexOf(attrib);
+		if (p1 < 0) {
+			throw new MalformedURLException("Can't find " + attrib + " in " + tag);
+		}
+		p2 = tag.indexOf ("=", p1);
+		p3 = tag.indexOf("\"", p2);
+		p4 = tag.indexOf("\"", p3+1);
+		if (p3 < 0 || p4 < 0) {
+			throw new MalformedURLException("Invalid " + attrib + " in " + tag);
+		}
+		String href = tag.substring(p3+1, p4);
+		return href;
+	}
 }

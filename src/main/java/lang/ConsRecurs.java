@@ -11,6 +11,6 @@ public class ConsRecurs {
 	public static void main(String a[]) {
 		System.out.println("About to construct...");
 		new ConsRecurs(Math.PI);
-		System.out.println("Hey, Im still alive!");
+		System.out.println("Hey, I'm still alive!");
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Format a plural correctly.
+ * Format a plural correctly, by hand.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */

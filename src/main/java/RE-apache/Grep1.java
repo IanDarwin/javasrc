@@ -6,7 +6,7 @@ import java.io.*;
  * and an arbitrary list of text files.
  */
 public class Grep1 {
-	/** The pattern were looking for */
+	/** The pattern we're looking for */
 	RE pattern;
 	/** The Reader for the current file */
     BufferedReader d;

@@ -1,8 +1,8 @@
 /** What happens if a method declares an unchecked exception?
  * Some people seem to think that declaring a method in a throws
  * clause is what makes it "checked". As we see here, this is not
- * the case; checked-ness has only to do with an exceptions place
- * in Javas class inheritance hierarchy.
+ * the case; checked-ness has only to do with an exception's place
+ * in Java's class inheritance hierarchy.
  */
 public class ThrowsUnchecked {
 

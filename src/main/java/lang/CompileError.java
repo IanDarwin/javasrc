@@ -3,7 +3,7 @@
  */
 public class CompileError {
 	public static void main(String argv]) {	// EXPECT COMPILE ERROR
-		System.out.println("You wont see this in Java");
+		System.out.println("You won't see this in Java");
 		System.out.println(System.getProperties());
 	}
 }

@@ -11,10 +11,12 @@ public class RomanYear {
 		RomanNumberFormat rf = new RomanNumberFormat();
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-		System.out.print(rf.format(year));
 		for (++i; i<argv.length; i++) {
 			System.out.print(' ');
-			System.out.print(argv[i]);	// e.g., "Acme Enterprises"
+			if (argv[i].equals("-"))
+				System.out.print(rf.format(year));
+			else
+				System.out.print(argv[i]);	// text
 		}
 		System.out.println();
 	}

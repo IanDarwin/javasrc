@@ -13,7 +13,7 @@ class BorderPanel extends Panel {
 }
 
 /**
- * Daily Evaluation Applet for Learning Tree Intl.
+ * Daily Evaluation Applet for Learning Tree Int'l.
  * @Author Ian Darwin, ian@darwinsys.com
  * @version 0.0
  */
@@ -177,7 +177,7 @@ public class DailyEval extends Applet {
 		improveTF.setBackground(Color.white);
 		add(improveTF);
 
-		bestpartLabel = new Label("What was the best part of todays class?");
+		bestpartLabel = new Label("What was the best part of today's class?");
 		bestpartLabel.setFont(midFont);
 		bestpartTF = new TextField();
 		bestpartTF.setName("bestpartTF");

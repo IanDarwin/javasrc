@@ -1,5 +1,5 @@
 /** Just some quick-and-dirty time format.
- * Nothing to do with Apples excellent multimedia format!
+ * Nothing to do with Apple's excellent multimedia format!
  */
 public class QuickTimeFormat {
 	//+

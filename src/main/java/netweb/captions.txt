@@ -1,0 +1,3 @@
+teambadge	Our Mission Badge	
+image001	Group shot in front of rocket.
+image002	Someone asleep at the switch

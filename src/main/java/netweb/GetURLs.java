@@ -4,14 +4,14 @@ import java.util.*;
 
 public class GetURLs {
 	/** The tag reader */
-	ReadTag rt;
+	ReadTag reader;
 
 	public GetURLs(URL theURL) throws IOException {
-		rt = new ReadTag(theURL);
+		reader = new ReadTag(theURL);
 	}
 
 	public GetURLs(String theURL) throws MalformedURLException, IOException {
-		rt = new ReadTag(theURL);
+		reader = new ReadTag(theURL);
 	}
 
 	/* The tags we want to look at */
@@ -25,7 +25,7 @@ public class GetURLs {
 	public ArrayList getURLs() throws IOException {
 		ArrayList al = new ArrayList();
 		String tag;
-		while ((tag = rt.nextTag()) != null) {
+		while ((tag = reader.nextTag()) != null) {
 			for (int i=0; i<wantTags.length; i++) {
 				if (tag.startsWith(wantTags[i])) {
 					al.add(tag);
@@ -36,6 +36,10 @@ public class GetURLs {
 		return al;
 	}
 
+	public void close() throws IOException {
+		if (reader != null) 
+			reader.close();
+	}
 	public static void main(String[] argv) throws 
 			MalformedURLException, IOException {
 		String theURL = argv.length == 0 ?

@@ -74,10 +74,10 @@ class ImgPanel extends Panel {
 		});
 	}
 
-	/** Set this panels text field to hidden echo */
+	/** Set this panel's text field to hidden echo */
 	public void setNoEcho() {
 		if (fld != null)
-			fld.setEchoChar(*);
+			fld.setEchoChar('*');
 	}
 	/* override update() to not clear, which reduces flicker */
 	public void update(Graphics g) {

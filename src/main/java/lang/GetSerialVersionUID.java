@@ -2,7 +2,7 @@ import java.io.*;
 
 /**
  * This program shows how to use getSerialVersionUID for a class that
- * isnt in a package and thus not findable to the normal "serialver" tool.
+ * isn't in a package and thus not findable to the normal "serialver" tool.
  *
  * @author Ian Darwin, ian@darwinsys.com
  */
@@ -16,7 +16,7 @@ public class GetSerVersUID {
 		// Then an ObjectStreamClass for the given class
 		ObjectStreamClass ocl = ObjectStreamClass.lookup(cl);
 
-		// And use the ObjectStreamClass to get the Class
+		// And use the ObjectStreamClass to get the Class'
 		// unique SerialVersionUID
 		System.out.println("For class " + cl);
 		System.out.println("static final long serialVersionUID = " +

@@ -3,13 +3,13 @@ package sun.tools.javac;
 import java.lang.reflect.*;
 import java.util.*;
 
-/** A first attempt at getting Suns compiler to compile a file.
+/** A first attempt at getting Sun's compiler to compile a file.
  * We also run the file for you if it compiles OK, else not;
  * this should be a big speedup as it avoids loading the JVM a
  * second time.
  * <P>
  * You are "not supposed" to call sun.tools.javac directly, since
- * its not in the public API "java.*". However, its a big convenience 
+ * it's not in the public API "java.*". However, it's a big convenience 
  * to be able to specify e.g., an OutputFilterStream for the output
  * (then you can e.g., tee the output).
  * <P>
@@ -116,7 +116,7 @@ public class jr extends Main {
 			System.out.println("Compile OK, trying to run");
 			try {
 				// Fetch the Class object for the just-compiled class
-				// (its probably still in memory).
+				// (it's probably still in memory).
 				Class c = Class.forName(fileName);
 				// Now clean up compiler-only stuff.
 				System.gc();
@@ -124,7 +124,7 @@ public class jr extends Main {
 				Class[] argvType = (Class[])Array.newInstance(String.class,0);
 				// Now find main(String av[])
 				Method m = c.getMethod("main", argvType);
-				// Hey, why not invoke it now that weve found it?
+				// Hey, why not invoke it now that we've found it?
 				m.invoke(null, runArgv.toArray());
 			} catch (Exception e) {
 				System.out.println("NOOOOOoooo! ... " + e);

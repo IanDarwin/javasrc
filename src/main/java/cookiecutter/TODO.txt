@@ -1,0 +1,7 @@
+Add a RELOAD Button!
+
+Enable sorting by domain.
+
+Add sorting by expiry date.
+
+Add "delete all with same domain" feature.

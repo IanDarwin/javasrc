@@ -31,7 +31,7 @@ public class RomanNumberFormat extends Format {
 	 */
 	public String format(long n) {
 		if (n < 0 || n >= 4000)
-			throw new IllegalArgumentException(n + " must be >= 0 && < 4000");
+			throw new NumberFormatException(n + " must be >= 0 && < 4000");
 		StringBuffer sb = new StringBuffer();
 		format(new Integer((int)n), sb, new FieldPosition(NumberFormat.INTEGER_FIELD));
 		return sb.toString();

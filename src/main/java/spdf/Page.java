@@ -34,7 +34,7 @@ public class Page extends PDFDict {
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("BT\n");
-		sb.append("/F1 10 Tf\n");
+		sb.append("/F1 12 Tf\n");
 
 		for (int i=0; i<objects.size(); i++) {
 			PDFObject po = (PDFObject)objects.get(i);

@@ -8,10 +8,8 @@ public class Text extends PDFObject {
 	protected int x, y;
 	protected String text;
 
-	public Text(PDF m, int x, int y, String s) {
+	public Text(PDF m, String s) {
 		super(m);
-		this.x = x;
-		this.y = y;
 		text = s;
 	}
 
@@ -20,10 +18,7 @@ public class Text extends PDFObject {
 	}
 
 	public void print(StringBuffer sb) {
-		sb.append(x);
-		sb.append(' ');
-		sb.append(y);
-		sb.append(" m (");
+		sb.append("0 -18 Td (");
 		sb.append(text);	// TODO must substitute escaped characters
 		sb.append(") Tj\n");
 	}

@@ -70,7 +70,7 @@ public class StrSort {
  * @version 	@(#)QSortAlgorithm.java	1.3, 29 Feb 1996
  */
 
-   /** This is a generic version of C.A.R Hoares Quick Sort 
+   /** This is a generic version of C.A.R Hoare's Quick Sort 
     * algorithm.  This will handle arrays that are already
     * sorted, and arrays with duplicate keys.<BR>
     *

@@ -7,7 +7,7 @@ import java.util.*;
  * and an arbitrary list of text files.
  */
 public class Grep2 {
-	/** The pattern were looking for */
+	/** The pattern we're looking for */
 	RE pattern;
 	/** The Reader for the current file */
     protected BufferedReader d;
@@ -43,36 +43,36 @@ public class Grep2 {
 		char c;
 		while ((c = go.getopt(argv)) != 0) {
 			switch(c) {
-				case c:
-					args.set(C);
+				case 'c':
+					args.set('C');
 					break;
-				case f:
+				case 'f':
 					try {
 						BufferedReader b = new BufferedReader(new FileReader(go.optarg()));
 						pattern = b.readLine();
 						b.close();
 					} catch (IOException e) {
-						System.err.println("Cant read pattern file " + go.optarg());
+						System.err.println("Can't read pattern file " + go.optarg());
 						System.exit(1);
 					}
 					break;
-				case h:
-					args.set(H);
+				case 'h':
+					args.set('H');
 					break;
-				case i:
-					args.set(I);
+				case 'i':
+					args.set('I');
 					break;
-				case l:
-					args.set(L);
+				case 'l':
+					args.set('L');
 					break;
-				case n:
-					args.set(N);
+				case 'n':
+					args.set('N');
 					break;
-				case s:
-					args.set(S);
+				case 's':
+					args.set('S');
 					break;
-				case v:
-					args.set(V);
+				case 'v':
+					args.set('V');
 					break;
 			}
 		}
@@ -97,19 +97,19 @@ public class Grep2 {
 	public Grep2(String arg, BitSet args) {
 		// compile the regular expression
 		pattern = new RE(arg);
-		if (args.get(C))
+		if (args.get('C'))
 			countOnly = true;
-		if (args.get(H))
+		if (args.get('H'))
 			dontPrintFileName = true;
-		if (args.get(I))
+		if (args.get('I'))
 			ignoreCase = true;
-		if (args.get(L))
+		if (args.get('L'))
 			listOnly = true;
-		if (args.get(N))
+		if (args.get('N'))
 			numbered = true;
-		if (args.get(S))
+		if (args.get('S'))
 			silent = true;
-		if (args.get(V))
+		if (args.get('V'))
 			inVert = true;
 	}
         

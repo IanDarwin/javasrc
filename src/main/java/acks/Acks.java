@@ -36,7 +36,7 @@ class OneAck extends Frame {
 				rows++;
 				col = 0;
 			}
-			s.append(sval).append( );
+			s.append(sval).append(' ');
 			col+=sval.length()+1;
 		}
 		s.append("\n");
@@ -57,7 +57,7 @@ class OneAck extends Frame {
 		StringBuffer sb = new StringBuffer();
 		sb.append("OneAck[");
 		sb.append(getTitle());
-		sb.append(/);
+		sb.append('/');
 		sb.append(getText());
 		sb.append(",");
 		sb.append(getBounds().toString());
@@ -231,7 +231,7 @@ public class Acks extends Frame {
 			String name = o.getPropsName();
 			Rectangle r = o.getBounds();
 			pf.println(name + ".title=" + o.getTitle());
-			pf.println(name + ".text=" + o.getText().replace(\n,  ));
+			pf.println(name + ".text=" + o.getText().replace('\n', ' '));
 			pf.println(name + ".x=" + r.x);
 			pf.println(name + ".y=" + r.y);
 			pf.println(name + ".width=" + r.width);
