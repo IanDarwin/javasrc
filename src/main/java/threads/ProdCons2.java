@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class ProdCons2 {
 
@@ -57,7 +56,7 @@ public class ProdCons2 {
 		new Consumer().start();
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		ProdCons2 pc = new ProdCons2();
 	}
 }
