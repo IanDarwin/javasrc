@@ -14,19 +14,34 @@ public class CompTest {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
-		// create a Frame, and add an instance of class named in av[0].
-		final JFrame f = new JFrame("CompTest: " + av[0]);
-		Container cp = f.getContentPane();
+		if (av.length == 0) {
+			System.err.println("Usage: CompTest ComponentSubclass");
+			System.exit(1);
+		}
+		String name = av[0];
+
+		// create an instance of class named in "name", save in "Component c".
 		Component c = null;
 		try {
-			Class cf = Class.forName(av[0]);
+			Class cf = Class.forName(name);
 			Object o = cf.newInstance();
-			c = (Component)o; // ClassCastException?
+			if (!(o instanceof Component)) {
+				System.err.println("ERROR: Class " + name +
+					" is not a subclass of Component");
+				System.exit(1);
+			}
+			c = (Component)o;
 		} catch (Exception e) {
 			System.err.println("Component under test got exception in construction or initialization");
 			System.err.println(e.toString());
 		}
-		cp.add(BorderLayout.CENTER, c);
+
+		// create a Frame, and "Component c" to it.
+		final JFrame f = new JFrame("CompTest: " + av[0]);
+		Container cp = f.getContentPane();
+
+		cp.add(BorderLayout.CENTER, c);		// Add the component under test
+
 		JButton quitButton;
 		cp.add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
 		quitButton.addActionListener(new ActionListener() {
