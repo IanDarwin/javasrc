@@ -2,7 +2,8 @@ package datetime;
 
 import java.util.*;
 
-/** DateAdd -- compute the difference between two dates.
+/** DateAdd -- compute the difference between two dates
+ * (today and 700 days ago).
  */
 public class DateAdd {
 	public static void main(String[] av) {

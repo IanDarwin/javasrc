@@ -16,7 +16,9 @@ public class DateCalAdd {
 		System.out.println("It is now " + 
 			formatter.format(now.getTime()));
 
+		// Add a "# of years" increment to the existing Calendar object
 		now.add(Calendar.YEAR, -2);
+		
 		System.out.println("Two years ago was " + 
 			formatter.format(now.getTime()));
 	}
