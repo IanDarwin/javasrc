@@ -3,6 +3,9 @@ import java.io.*;
 
 public class ProdCons2 {
 
+	/** Throughout the code, this is the object we synchronize on so this
+	 * is also the object we wait() and notifyAll() on.
+	 */
 	protected LinkedList list = new LinkedList();
 
 	protected boolean done = false;
@@ -11,17 +14,11 @@ public class ProdCons2 {
 		public void run() {
 			while (!done) {
 				int len = 0;
-				synchronized(this) {
+				synchronized(list) {
 					Object justProduced = new Object();
 					list.addFirst(justProduced);
 					len = list.size();
-					notifyAll();
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException ex) {
-						System.out.println("Producer interrupted, bye");
-						return;
-					}
+					list.notifyAll();	// must own the lock
 				}
 				System.out.println("Produced 1; List size now " + len);
 				yield();
@@ -34,29 +31,30 @@ public class ProdCons2 {
 			while (!done) {
 				Object obj = null;
 				int len = 0;
-				synchronized(this) {
+				synchronized(list) {
 					while (list.size() == 0) {
 						try {
 							System.out.println("CONSUMER WAITING");
-							wait();
+							list.wait();	// must own the lock
 						} catch (InterruptedException ex) {
-							return;
+							System.out.println("CONSUMER INTERRUPTED");
 						}
 					}
-					System.out.println("Consuming object " + obj);
 					obj = list.removeLast();
-					notifyAll();
+					System.out.println("Consuming object " + obj);
 					len = list.size();
 				}
 				System.out.println("List size now " + len);
+				yield();
 			}
 		}
 	}
 
 	ProdCons2() {
 		new Producer().start();
+		new Producer().start();
 		new Consumer().start();
-		// new Consumer().start();
+		new Consumer().start();
 	}
 
 	public static void main(String[] args) throws IOException {
