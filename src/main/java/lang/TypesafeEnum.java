@@ -12,7 +12,7 @@ public abstract class Enum {
 	/** The value of this instance */
 	private String value;
 	/** The maximum number of values an enum can have */
-	public static final int MAX_VALUES = 10;
+	private static final int MAX_VALUES = 10;
 	
 	/** Although this is public, the implementing subclass' constructor must be 
 	 * private to ensure typesafe enumeration pattern.
