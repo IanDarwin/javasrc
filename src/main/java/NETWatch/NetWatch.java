@@ -38,11 +38,17 @@ public class NetWatch {
 			}
 		// No arguments. Can we use properties?
 		} else if (p != null && p.size() > 0) {
-			String net = p.getProperty("rmiwatch.net");
-			int start = Integer.parseInt(p.getProperty("rmiwatch.start"));
-			int end = Integer.parseInt(p.getProperty("rmiwatch.end"));
+			String net = p.getProperty("netwatch.net");
+			int start = Integer.parseInt(p.getProperty("netwatch.start"));
+			int end = Integer.parseInt(p.getProperty("netwatch.end"));
 			for (int i=start; i<=end; i++) {
 				f.addHost(net + "." + i, p);
+			}
+			for (int i=0; ; i++) {
+				String nextHost = p.getProperty("nethost" + i);
+				if (nextHost == null)
+					break;
+				f.addHost(nextHost, p);
 			}
 		}
 		// None of the above. Fall back to localhost

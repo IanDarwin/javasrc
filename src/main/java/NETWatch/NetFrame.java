@@ -12,6 +12,7 @@ import java.util.*;
 public class NetFrame extends JFrame {
 	Properties props;
 	Container cp;
+	JDialog propsDialog;
 
 	/** Constructor */
 	public NetFrame(String title, Properties p) {
@@ -34,14 +35,18 @@ public class NetFrame extends JFrame {
 		});
 
 		// VIEW MENU
-		jb.add(jm = new JMenu("View"));
-		jm.add(mi = new JMenuItem("Ping"));
-		mi.setEnabled(false);
-		jm.add(mi = new JMenuItem("Socket"));
-		mi.setEnabled(false);
-		jm.add(mi = new JMenuItem("RMI"));
-		jm.add(mi = new JMenuItem("CORBA"));
-		mi.setEnabled(false);
+		jb.add(jm = new JMenu("Edit"));
+		jm.add(mi = new JMenuItem("Properties..."));
+		mi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (propsDialog == null) {
+					propsDialog = new ProtoDialog(NetFrame.this, "Properties");
+				}
+				propsDialog.setVisible(true);
+				// TODO fetch protocol
+				
+			}
+		});
 
 		// HELP MENU
 		jb.add(jm = new JMenu("Help"));

@@ -25,13 +25,12 @@ public class Finger {
 		String user = (String)st.nextElement();
 		st.nextElement();
 		String host = (String)st.nextElement();
-System.out.println("[" + user + "@" + host + "]");
 		//if (st.countTokens() != 2) {
 		//	System.out.println("Count = " + st.countTokens());
-		//	println("User " + s + " invalid, must be user@host");
+		//	System.err.println("User " + s + " invalid, must be user@host");
 		//	return;
 		//}
-		println("[" + host + "]");
+		System.out.println("[" + user + "@" + host + "]");
 		try {
 			sock = new Socket(host, 7);
 			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -47,13 +46,10 @@ System.out.println("[" + user + "@" + host + "]");
 			// No timeout policy -- if it hangs, user can INTR.
 			String reply;
 			while ((reply = is.readLine()) != null)
-				println(reply);
+				System.out.println(reply);
 
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-	}
-	public void println(String s) {
-		System.out.println(s);
 	}
 }

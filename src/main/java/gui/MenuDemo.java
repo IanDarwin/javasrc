@@ -73,7 +73,7 @@ public class MenuDemo
 		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
 
 		// the main window
-		cp.add(new MyCanvas("Menu Demo Window", 200, 150));
+		cp.add(new MyLabel("Menu Demo Window", 200, 150));
 		pack();
 	}
 

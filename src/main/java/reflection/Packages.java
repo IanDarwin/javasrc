@@ -6,8 +6,9 @@
 public class Packages {
 	public static void main(String argv[]) {
 		//+
-		Packages[] all = java.lang.Package.getPackages();
-		System.out.println("all = " + all);
+		java.lang.Package[] all = java.lang.Package.getPackages();
+		for (int i=0; i<all.length; i++)
+			System.out.println(all[i]);
 		//-
 	}
 }

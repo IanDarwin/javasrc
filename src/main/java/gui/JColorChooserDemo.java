@@ -18,7 +18,7 @@ import java.awt.event.*;
 public class JColorDemo extends JFrame
 {
 	/** A canvas to display the color in. */
-    MyCanvas demo;
+    JLabel demo;
 	/** The latest chosen Color */
 	Color lastChosen;
 
@@ -37,18 +37,14 @@ public class JColorDemo extends JFrame
 					"Swing Demo Color Popup",	// title
 					getBackground());			// default
 				if (ch != null)
-					demo.setColor(ch);
+					demo.setBackground(ch);
 			}
 		});
-        cp.add(BorderLayout.CENTER, demo = new MyCanvas(200, 100));
+        cp.add(BorderLayout.CENTER, demo = 
+			new MyLabel("Your One True Color", 200, 100));
 		demo.setToolTipText("This is the last color you chose");
         pack();
-        addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent windowEvent)
-			{
-				System.exit(0);
-			}
-		});
+        addWindowListener(new WindowCloser(this, true));
 	}
 
 	/** good old main */
