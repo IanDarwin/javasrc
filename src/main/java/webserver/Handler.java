@@ -1,8 +1,19 @@
 package webserver;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 import com.darwinsys.util.Debug;
 
@@ -31,7 +42,7 @@ public class Handler {
 	 * this is probably quite inefficient, but simple. Need ThreadPool).
 	 * Note that Hashtable methods *are* synchronized.
 	 */
-	private static Hashtable h = new Hashtable();
+	private static HashMap h = new HashMap();
 
 	static {
 		h.put("", "<html><body><b>Unknown server error</b>".getBytes());
