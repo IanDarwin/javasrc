@@ -8,7 +8,8 @@ import java.lang.reflect.*;
  * For each class, all public fields and methods are listed.
  * "Reflectance" is used to look up the information.
  *
- * TODO  System.getProperties().get("CLASSPATH"), strtok it.
+ * It is expected that the output will be post-processed e.g.,
+ * with sort and awk/perl.
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
  *
@@ -17,7 +18,17 @@ public class CrossRef {
 	/** Simple main program, construct and start, using argv */
 	public static void main(String argv[])
 	{
-		(new CrossRef()).processOneZip(argv);
+		CrossRef xref = new CrossRef();
+
+		String s = (String)System.getProperties().get("java.class.path");
+		// System.out.println("ClassPath is " + s);
+		StringTokenizer st = new StringTokenizer(s, ":");
+		while (st.hasMoreTokens()) {
+			String cand = st.nextToken();
+			// System.out.println("Trying path " + cand);
+			if (cand.endsWith(".zip"))
+				xref.processOneZip(argv);
+		}
 	}
 
 	/** For each Zip file, for each entry, xref it */
@@ -47,7 +58,7 @@ public class CrossRef {
 			throw new IllegalArgumentException("Unexp. class name " + zipName);
 		String className = zipName.replace(/, .).
 			substring(0, zipName.length() - 6);	// 6 for ".class"
-System.out.println("ZIpName " + zipName + "; className " + className);
+System.out.println("ZipName " + zipName + "; className " + className);
 		try {
 			Class c = Class.forName(className);
 			printClass(c);
@@ -65,13 +76,13 @@ System.out.println("ZIpName " + zipName + "; className " + className);
 			Field fields[] = c.getFields();
 			for (i = 0; i < fields.length; i++) {
 				println(fields[i].getName() +
-					" field-in " + c.getName());
+					" field " + c.getName());
 			}
 
 			Method methods[] = c.getMethods();
 			for (i = 0; i < methods.length; i++) {
 				println(methods[i].getName() +
-					" method-in " + c.getName());
+					" method " + c.getName());
 			}
 		} catch (Exception e) {
 			System.err.println(e);
