@@ -4,7 +4,7 @@ import java.util.*;
 /** Demonstrate use of Serialization. */
 public abstract class SerialDemoAbstractBase {
 
-	protected static final String FILENAME = "serial.dat";
+	protected abstract void save(Object data);
 
 	/** Does the actual serialization */
 	public void write(Object theGraph) throws IOException {
