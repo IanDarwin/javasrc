@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -14,6 +16,10 @@ import com.darwinsys.util.Debug;
  */
 public class SAXLister {
 	public static void main(String[] args) throws Exception {
+		new SAXLister(args);
+	}
+	
+	public SAXLister(String[] args) throws SAXException, IOException {
 		XMLReader parser = XMLReaderFactory
 				.createXMLReader("org.apache.xerces.parsers.SAXParser");
 		// should load properties rather than hardcoding class name
