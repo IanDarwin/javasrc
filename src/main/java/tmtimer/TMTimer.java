@@ -6,8 +6,8 @@ import java.util.*;
 /**
  * TMTimer - simple speech timer for Toastmasters or similar
  * events where speeches are time-limited.
- * TODO: 
- *	fiddle gui builder to obviate fixGUI().
+ * TODO:
+ *  fiddle gui builder to obviate fixGUI().
  * @author  Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -17,9 +17,9 @@ public class TMTimer extends JFrame implements Runnable {
   public TMTimer() {
     initComponents ();
     finishGUI();
-	gotoState(READY);
+  gotoState(READY);
     pack();
-	UtilGUI.centre(this);
+  UtilGUI.centre(this);
   }
 
   /** This method is called from within the constructor to
@@ -169,14 +169,14 @@ public class TMTimer extends JFrame implements Runnable {
   /** The action handler for the Start button (doStart) */
   private void jButton1ActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     // Add your handling code here:
-	if (TMTimerUtil.mmssToInt(greenTF.getText()) <= 0 ||
-	    TMTimerUtil.mmssToInt(yellowTF.getText()) <= 0 ||
-	    TMTimerUtil.mmssToInt(redTF.getText()) <= 0) {
-			JOptionPane.showMessageDialog(this,
-				"All time values must be non-zero", "Error",
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+  if (TMTimerUtil.mmssToInt(greenTF.getText()) <= 0 ||
+      TMTimerUtil.mmssToInt(yellowTF.getText()) <= 0 ||
+      TMTimerUtil.mmssToInt(redTF.getText()) <= 0) {
+      JOptionPane.showMessageDialog(this,
+        "All time values must be non-zero", "Error",
+        JOptionPane.ERROR_MESSAGE);
+      return;
+    }
     maxTime.setText(redTF.getText());
     gotoState(RUNNING);
     new Thread(this).start();
@@ -185,7 +185,7 @@ public class TMTimer extends JFrame implements Runnable {
   /** The action handler for the Stop button (doStop) */
   private void stopButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
     // Add your handling code here:
-	gotoState(STOPPED);
+  gotoState(STOPPED);
   }//GEN-LAST:event_stopButtonActionPerformed
 
   /** The action handler for the Reset button (doReset) */
@@ -231,18 +231,18 @@ public class TMTimer extends JFrame implements Runnable {
   private javax.swing.JMenuItem exitMenuItem;
 // End of variables declaration//GEN-END:variables
 
-	protected final int READY	= 0;
-	protected final int RUNNING	= 1;
-	protected final int GREEN	= 2;
-	protected final int YELLOW	= 3;
-	protected final int RED	 	= 4;
-	protected final int STOPPED	= 5;
+  protected final int READY  = 0;
+  protected final int RUNNING  = 1;
+  protected final int GREEN  = 2;
+  protected final int YELLOW  = 3;
+  protected final int RED     = 4;
+  protected final int STOPPED  = 5;
 
-	// These values are arbitrarily chosen not to intersect with the above.
-	protected final int C_NONE	= 100;
-	protected final int C_GREEN = 101;
-	protected final int C_YELLOW = 102;
-	protected final int C_RED	= 103;
+  // These values are arbitrarily chosen not to intersect with the above.
+  protected final int C_NONE  = 100;
+  protected final int C_GREEN = 101;
+  protected final int C_YELLOW = 102;
+  protected final int C_RED  = 103;
 
   /** A halt-the-timer flag */
   protected boolean done;
@@ -250,59 +250,59 @@ public class TMTimer extends JFrame implements Runnable {
    protected HashMap presetsMap;
   /** Map to make array processing of times easier */
   protected JTextField[] times = new JTextField[3];
-	/** The three numbers for the current event */
-	int[] data = new int[3];
+  /** The three numbers for the current event */
+  int[] data = new int[3];
 
   /** Attend to a few details that the GUI doesn't seem to drive.
    * Called at end of Constructor.
    */
    protected void finishGUI() {
-	// double widths[] = { .33, .66 };
-	// fieldsPanel.setLayout(new EntryLayout(widths));
-	yellowLabel.setHorizontalAlignment (javax.swing.SwingConstants.RIGHT);
-	redLabel.setHorizontalAlignment (javax.swing.SwingConstants.RIGHT);
+  // double widths[] = { .33, .66 };
+  // fieldsPanel.setLayout(new EntryLayout(widths));
+  yellowLabel.setHorizontalAlignment (javax.swing.SwingConstants.RIGHT);
+  redLabel.setHorizontalAlignment (javax.swing.SwingConstants.RIGHT);
     times[0] = greenTF;
     times[1] = yellowTF;
     times[2] = redTF;
     presetsList.addListSelectionListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
-		gotoState(READY);
+    gotoState(READY);
         String key = (String)presetsList.getSelectedValue();
-		data = (int[]) presetsMap.get(key);
+    data = (int[]) presetsMap.get(key);
         for (int i=0; i<data.length; i++)
           times[i].setText(TMTimerUtil.intToMmss(data[i]));
       }
     });
   }
 
-	public void showTime(String newTime) {
+  public void showTime(String newTime) {
         curTime.setText(newTime);
-	}
+  }
 
   /* The start button creates a Thread to run this. */
   public void run() {
-	// start where we left off! doReset sets it to zero
+  // start where we left off! doReset sets it to zero
     int time = TMTimerUtil.mmssToInt(curTime.getText());
-	if (time == 0)
-		gotoState(RUNNING);
+  if (time == 0)
+    gotoState(RUNNING);
     done = false;
-	data[0] = TMTimerUtil.mmssToInt(greenTF.getText());
-	data[1] = TMTimerUtil.mmssToInt(yellowTF.getText());
-	data[2] = TMTimerUtil.mmssToInt(redTF.getText());
+  data[0] = TMTimerUtil.mmssToInt(greenTF.getText());
+  data[1] = TMTimerUtil.mmssToInt(yellowTF.getText());
+  data[2] = TMTimerUtil.mmssToInt(redTF.getText());
     while (!done) {
       try {
-		showTime(TMTimerUtil.intToMmss(time));
-		/* Adjust color display. Tests in reverse order to avoid flashing. */
-		if (time == data[2])
-			gotoState(RED);
-		else
-			if (time == data[1])
-				gotoState(YELLOW);
-			else
-				if (time == data[0])
-					gotoState(GREEN);
-		Thread.sleep(1000);
-		time++;
+    showTime(TMTimerUtil.intToMmss(time));
+    /* Adjust color display. Tests in reverse order to avoid flashing. */
+    if (time == data[2])
+      gotoState(RED);
+    else
+      if (time == data[1])
+        gotoState(YELLOW);
+      else
+        if (time == data[0])
+          gotoState(GREEN);
+    Thread.sleep(1000);
+    time++;
       } catch (InterruptedException e) {
         // nothing
       }
@@ -311,57 +311,57 @@ public class TMTimer extends JFrame implements Runnable {
 
   /** Set the color on the screen and/or LED's. */
   protected void setColor(int c) {
-  	switch (c) {
-		case C_NONE:
-			bigFlag.setBackground(Color.white);
-			break;
-		case C_GREEN:
-			bigFlag.setBackground(Color.green);
-			break;
-		case C_YELLOW:
-			bigFlag.setBackground(Color.yellow);
-			break;
-		case C_RED:
-			bigFlag.setBackground(Color.red);
-			break;
-		default:
-			throw new IllegalStateException("setColor(" + c + ") invalid");
-	}
+    switch (c) {
+    case C_NONE:
+      bigFlag.setBackground(Color.white);
+      break;
+    case C_GREEN:
+      bigFlag.setBackground(Color.green);
+      break;
+    case C_YELLOW:
+      bigFlag.setBackground(Color.yellow);
+      break;
+    case C_RED:
+      bigFlag.setBackground(Color.red);
+      break;
+    default:
+      throw new IllegalStateException("setColor(" + c + ") invalid");
+  }
   }
 
   /** Set the program into the given state. */
   protected void gotoState(int st) {
-		switch(st) {
-		case READY:
-			done = true;
-			curTime.setText(TMTimerUtil.intToMmss(0));
-			maxTime.setText(redTF.getText());
-			startButton.setEnabled(true);
-			setColor(C_NONE);
-			break;
-		case RUNNING:
-			startButton.setEnabled(false);
-			stopButton.setEnabled(true);
-			break;
-		case GREEN:
-			setColor(C_GREEN);
-			break;
-		case YELLOW:
-			setColor(C_YELLOW);
-			break;
-		case RED:
-			setColor(C_RED);
-			break;
-		case STOPPED:
-			done = true;
-			stopButton.setEnabled(false);
-			startButton.setEnabled(true);
-			// Leave correct color showing.
-			// setColor(C_NONE);
-			break;
-  		default:
-			throw new IllegalStateException("gotoState(" + st + ") invalid");
-  	}
+    switch(st) {
+    case READY:
+      done = true;
+      curTime.setText(TMTimerUtil.intToMmss(0));
+      maxTime.setText(redTF.getText());
+      startButton.setEnabled(true);
+      setColor(C_NONE);
+      break;
+    case RUNNING:
+      startButton.setEnabled(false);
+      stopButton.setEnabled(true);
+      break;
+    case GREEN:
+      setColor(C_GREEN);
+      break;
+    case YELLOW:
+      setColor(C_YELLOW);
+      break;
+    case RED:
+      setColor(C_RED);
+      break;
+    case STOPPED:
+      done = true;
+      stopButton.setEnabled(false);
+      startButton.setEnabled(true);
+      // Leave correct color showing.
+      // setColor(C_NONE);
+      break;
+      default:
+      throw new IllegalStateException("gotoState(" + st + ") invalid");
+    }
   }
 
   /** Fill in the fields in the Presets list. */
