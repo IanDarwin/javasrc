@@ -1,6 +1,6 @@
 package com.darwinsys.ant;
 
-import java.io.File;
+import java.io.*;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
@@ -48,25 +48,31 @@ public class GhostTask extends Task {
 		if (!d.isDirectory()) {
 			throw new BuildException("Ghost home " + ghostHome + " does not contain " + ghostProg);
 		}
-		File prog = new File(dir, "ghost.exe");
+		File prog = new File(d, "ghost.exe");
 		String command = null;
+		Process proc = null;
 		try { 
 			command = prog.getCanonicalPath() + "/d " + source + " " + target;
+			System.out.println("Command is: " + command);
+
+			// START IT RUNNING
+			proc = Runtime.getRuntime().exec(command);
+
+			// ...
+			// XXX Get the stdout and stderr, copy to our output.
+			// See other Ant tasks to see best way...
+			// ...
+
+			// Wait for it to end...
+			proc.waitFor();
+
 		} catch (IOException ex) {
 			throw new BuildException("Failure in getCanonicalPath()", ex);
-		}
-		System.out.println("Command is: " + command);
-		Process p = System.getRuntime().exec(command);
-		// ...
-		// XXX Get the stdout and stderr, copy to our output.
-		// See other Ant tasks to see best way...
-		// ...
-		try {
-			p.waitFor();
 		} catch (InterruptedException ex) {
 			throw new BuildException("Unexpected InterruptedException", ex);
 		}
-		int ret = p.exitValue();
+		// assert(proc != null);
+		int ret = proc.exitValue();
 		if (ret != 0) {
 			throw new BuildException("Ghost program returned exitStatus " + ret);
 		}
