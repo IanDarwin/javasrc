@@ -13,3 +13,6 @@ classes:
 		@echo "===> Building in `pwd`"
 		# The tr turns newlines into spaces. The sed gets rid of the last one.
 		$(JAVACC) $$(ls *.java | egrep -v $$(grep -l "EXPECT COMPILE ERROR" *.java | tr '\012' '|' | sed -e 's/|$$//'))
+
+clean:
+		rm -f *.class
