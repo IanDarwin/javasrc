@@ -7,13 +7,13 @@
 # Configuration Section
 
 CSRCS		= bsdcommio.c
-OBJS		= bsdcommio.o
+SOBJS		= bsdcommio.o
+SHLIB	= libbsdcommio.so
 JAVAHOME	= /usr/local/share/kaffe
 INCDIR		= /usr/local/include
 INCLUDES	= -I$(INCDIR)/ -I$(INCDIR)/kaffe 
 LIBDIR		= $(JAVAHOME)/lib
-TARGET_LIB		= libbsdcommio.so
-
+CLASSPATH	= /usr/local/share/kaffe/Klasses.jar
 all:		testprog
 
 # This part of the Makefile is for C called from Java
@@ -21,20 +21,21 @@ testprog:		prog.all
 		@echo
 		@echo "Here we test the Java code that calls C code."
 		@echo
-		LD_LIBRARY_PATH=`pwd`:. java TestProg
+		LD_LIBRARY_PATH=`pwd`:. CLASSPATH=${CLASSPATH}:`pwd`/comm.jar:. \
+			java TestProg
 
-prog.all:		TestProg.class $(TARGET_LIB)
+prog.all:		TestProg.class $(SHLIB)
 
 TestProg.class: TestProg.java
 		javac TestProg.java
 
 # The rule for javah -jni is not here, until Kaffe gets a javah.
 
-$(OBJS):	$(CSRCS) BSDSerialPort.h
-	$(CC) $(INCLUDES) -c $(CSRCS) -o $(TARGET_LIB)
+$(SOBJS):	$(CSRCS) BSDSerialPort.h
+	$(CC) $(INCLUDES) -c -fpic $(CSRCS)
 
-$(TARGET_LIB):	$(OBJS) BSDSerialPort.h
-	$(CC) $(INCLUDES) -G $(OBJS) -o $(TARGET_LIB)
+$(SHLIB):	$(SOBJS) BSDSerialPort.h
+	ld -Bshareable -o $(SHLIB) $(SOBJS)
 
 clean:
 	rm -f *core *.class *.o *.so
