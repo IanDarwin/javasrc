@@ -24,9 +24,11 @@ public class RevEngAPI extends APIFormatter {
 		new RevEngAPI().doArgs(argv);
 	}
 
-	private final String[] argNames = {
-		"a", "b", "c", "d", "e", "f", "g", "h"
-	};
+	private final static String PREFIX_ARG = "arg";
+	/** Make up names like "arg0" "arg1", etc. */
+	private String mkName(String name, int number) {
+		return new StringBuffer(name).append(number).toString();
+	}
 
 	/** NOT THREAD SAFE */
 	private String className;
@@ -88,7 +90,8 @@ public class RevEngAPI extends APIFormatter {
 			Class[] classes = cons.getParameterTypes();
 			for (int j = 0; j<classes.length; j++) {
 				if (j > 0) out.print(", ");
-				out.print(trim(classes[j].getName()) + ' ' + argNames[j]);
+				out.print(trim(classes[j].getName()) + ' ' + 
+						mkName(PREFIX_ARG, j));
 			}
 			out.println(") {");
 			out.print("\t}");
@@ -115,7 +118,8 @@ public class RevEngAPI extends APIFormatter {
 			Class[] classes = m.getParameterTypes();
 			for (int j = 0; j<classes.length; j++) {
 				if (j > 0) out.print(", ");
-				out.print(trim(classes[j].getName()) + ' ' + argNames[j]);
+				out.print(trim(classes[j].getName()) + ' ' + 
+						mkName(PREFIX_ARG, j));
 			}
 			out.println(") {");
 			out.println("\treturn " + defaultValue(m.getReturnType()) + ';');
@@ -197,10 +201,10 @@ public class RevEngAPI extends APIFormatter {
 	}
 
 	public void startFile() {
-		// save filename as project name
+		// XXX save filename as project name
 	}
 
 	public void endFile() {
-		// generate a trivial "build.xml" for Ant to create the jar file.
+		// XXX generate a trivial "build.xml" for Ant to create the jar file.
 	}
 }
