@@ -142,78 +142,7 @@ public class MailReaderBean extends JSplitPane {
 		}
 	}
 
-  	/** Start a new file, prompting to save the old one first. */
-	public void newFile(){}
-
-	/** Load new model from fn{} if null, prompt for new fname */
-	public void loadFile(String fn){}
-
-	/** Save the current model's data in fn. 
-	 * If null, use current fname or prompt for a filename. */
-	public void saveFile(String fn){}
-
-	/** Export the file in a (portable?) format.
-	 */
-	 public void exportFile(){}
-
-	/** Ask the model if it has any unsaved changes, don't save otherwise */
-	public boolean hasUnsavedChanges(){ return false; }
-
-	/** If the module wants AutoSave when the user enables it. */
-	public boolean wantAutoSave(){ return false; }
-
-	/** Start the module's print routine */
-	public void doPrint(){
-		JOptionPane.showMessageDialog(null,
-			"Can't Print Mail Yet", "TODO",
-			JOptionPane.INFORMATION_MESSAGE);
-	}
-	/** Create a new item (usually by dialog?) */
-	public void newItem(){}
-
-	/** Modify the current via a dialog */
-	public void modItem(){}
-
-	/** Get this module to remember and control a MenuItem.  */
-	public void ownThisMenuItem(JMenuItem mi) {
-		// NOT USED - util.ownThisMenuItem(mi);
-	}
-
-	/** Enable the menuItems we own */
-	public void beingShown() {
-		// NOT USED - util.showMenus();
-	}
-
-	/** Disable the menuItems we own */
-	public void beingHidden() {
-		// NOT USED - util.hideMenus();
-	}
-
-	/** Edit->Copy */
-	public void editCopy(){}
-
-	/** Edit->Cut */
-	public void editCut(){}
-
-	/** Edit->Paste */
-	public void editPaste(){}
-
-	/** Edit->Delete */
-	public void editDelete(){}
-
-	/** If can undo */
-	public boolean hasUndoableChange(){ return false; }
-
-	/** Edit->Undo */
-	public void undoChange(){}
-
-	/** Edit->ReDo */
-	public void redoChange(){}
-
-	/** Synchronize with a PDA (tentative - functionality may go elsewhere) */
-	public void doSynch(){}
-
-	/* test case */
+	/* Test unit - main program */
 	public static void main(String[] args) throws Exception {
 		final JFrame jf = new JFrame("MailReaderBean");
 		String mbox = "/var/mail/ian";
