@@ -5,7 +5,7 @@ import java.util.*;
 import java.io.*;
 import javax.activation.*;
 import javax.mail.*;
-import javax.mail.internet.*; 
+import javax.mail.internet.*;
 
 /** MailComposeBean - Mail gather and send Component Bean.
  *
@@ -34,13 +34,6 @@ public class MailComposeBean extends JPanel {
 	// tfsMax MUST == how many are current, for focus handling to work
 	private int tfsMax = 3;
 	private final int TO = 0, SUBJ = 1, CC = 2, BCC = 3, MAXTF = 8;
-
-	/** The list of TO recipients */
-	Vector toList;
-	/** The list of Cc recipients */
-	Vector ccList;
-	/** The list of Bcc recipients */
-	Vector bccList;
 
 	/** The JavaMail session object */
 	private Session session = null;
@@ -79,26 +72,10 @@ public class MailComposeBean extends JPanel {
 		mywidth = width;
 		myheight = height;
 
-		// THE DATA STRUCTURE
-		toList = new Vector();
-		ccList = new Vector();
-		bccList = new Vector();
-
 		// THE GUI
 		Container cp = this;
 		cp.setLayout(new BorderLayout());
 
-		// Nothing doing, if the javax.mail package is not installed!
-		// But construct the data structures (above) first to avoid
-		// further runtime exceptions.
-		try {
-			Class.forName("javax.mail.Session");
-		} catch (ClassNotFoundException cnfe) {
-			add(BorderLayout.CENTER, 
-				new JLabel("Sorry, the javax.mail package was not found",
-				JLabel.CENTER));
-			return;
-		}
 
 		// Top is a JPanel for name, address, etc.
 		// Centre is the TextArea.
@@ -136,7 +113,7 @@ public class MailComposeBean extends JPanel {
 					doSend();
 				} catch(Exception err) {
 					System.err.println("Error: " + err);
-					JOptionPane.showErrorDialog(null,
+					JOptionPane.showMessageDialog(null,
 						"Sending error:\n" + err.toString(),
 						"Send failed", JOptionPane.ERROR_MESSAGE);
 				}
@@ -159,95 +136,70 @@ public class MailComposeBean extends JPanel {
 	}
 
 	/** Do the work: send the mail to the SMTP server.
-	 * 
+	 *
 	 * ASSERT: must have set at least one recipient.
 	 */
 	public void doSend() {
 
-		// We need to pass info to the mail server as a Properties, since
-		// JavaMail (wisely) allows room for LOTS of properties...
-		FileProperties props =
-			new FileProperties(MailConstants.PROPS_FILE_NAME);
-		String serverHost = props.getProperty(MailConstants.SEND_HOST);
-		if (serverHost == null) {
-			JOptionPane.showMessageDialog(parent,
-				"\"" + MailConstants.SEND_HOST +
-					"\" must be set in properties",
-				"No server!",
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		props.put("mail.smtp.host", serverHost);
-
-		session = Session.getDefaultInstance(props, null);
-		String tmp = props.getProperty(MailConstants.SEND_DEBUG);
-		if (tmp != null && tmp.equals("true"))
-			session.setDebug(true);
-
-		String myAddress = props.getProperty("Mail.address");
-		if (myAddress == null) {
-			JOptionPane.showMessageDialog(parent,
-				"\"Mail.address\" must be set in properties",
-				"No From: address!",
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-
-		// Dump all properties into System.properties.
-		System.getProperties().putAll(props);
-		
 		try {
-			// create a message
-			mesg = new MimeMessage(session);
+			Mailer m = new Mailer();
 
-			// From Address - from System properties
-			mesg.setFrom(new InternetAddress(myAddress));
-
-			// TO Address - FROM the textfield and/or
-			// any addTOrecipient() call
-			String recip = toTF.getText();
-			if (recip != null && recip.length() > 0) {
-				StringTokenizer tf = new StringTokenizer(recip, ",");
-				while (tf.hasMoreTokens())
-					addTOrecipient(tf.nextToken());
-			}
-			InternetAddress[] toAddress = new InternetAddress[toList.size()];
-			for (int i=0; i<toList.size(); i++)
-				toAddress[i] = new InternetAddress((String)toList.elementAt(i));
-			mesg.setRecipients(Message.RecipientType.TO, toAddress);
-
-			if (mesg.getAllRecipients()== null ||
-				mesg.getAllRecipients().length == 0) {
+			FileProperties props =
+				new FileProperties(MailConstants.PROPS_FILE_NAME);
+			String serverHost = props.getProperty(MailConstants.SEND_HOST);
+			if (serverHost == null) {
+				JOptionPane.showMessageDialog(parent,
+					"\"" + MailConstants.SEND_HOST +
+						"\" must be set in properties",
+					"No server!",
+					JOptionPane.ERROR_MESSAGE);
 				return;
 			}
+			m.setServer(serverHost);
 
-			// CC - XXX ONLY ONE FOR NOW
-			String s;
-			if ((s = ccTF.getText()).length() != 0) {
-				InternetAddress[] ccAddress = {new InternetAddress(s)};
-				mesg.setRecipients(Message.RecipientType.CC, ccAddress);
+			String tmp = props.getProperty(MailConstants.SEND_DEBUG);
+			m.setVerbose(tmp != null && tmp.equals("true"));
+
+			String myAddress = props.getProperty("Mail.address");
+			if (myAddress == null) {
+				JOptionPane.showMessageDialog(parent,
+					"\"Mail.address\" must be set in properties",
+					"No From: address!",
+					JOptionPane.ERROR_MESSAGE);
+				return;
 			}
+			m.setFrom(myAddress);
 
-			// The Subject
-			if ((s = subjectTF.getText()).length() != 0) {
-				mesg.setSubject(s);
+			m.setToList(toTF.getText());
+			m.setCcList(ccTF.getText());
+			// m.setBccList(bccTF.getText());
+
+			if (subjectTF.getText().length() != 0) {
+				m.setSubject(subjectTF.getText());
 			}
 
 			// Now copy the text from the Compose TextArea.
-			mesg.setText(msgText.getText());
-			// XXX I18N: use setText(msgText.getText(), charset)
-			
+			m.setBody(msgText.getText());
+			// XXX I18N: use setBody(msgText.getText(), charset)
+				
 			// Finally, send the sucker!
-			Transport.send(mesg);
+			m.doSend();
 
 			// Now hide the main window
 			maybeKillParent();
 
-		} catch (MessagingException ex) {
-			ex.printStackTrace();
-			while ((ex = (MessagingException)ex.getNextException()) != null) {
-				ex.printStackTrace();
+		} catch (MessagingException me) {
+			me.printStackTrace();
+			while ((me = (MessagingException)me.getNextException()) != null) {
+				me.printStackTrace();
 			}
+			JOptionPane.showMessageDialog(null,
+				"Mail Sending Error:\n" + me.toString(),
+				"Error", JOptionPane.ERROR_MESSAGE);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+				"Mail Sending Error:\n" + e.toString(),
+				"Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -265,42 +217,12 @@ public class MailComposeBean extends JPanel {
 	}
 
 
-	// METHODS FOR USE IN BEANS
-
-	/** Add a given recipient to the TO list */
-	public void addTOrecipient(String address) {
-		toList.addElement(address);
-	}
-
-	/** Add a given recipient to the CC list */
-	public void addCCrecipient(String address) {
-		ccList.addElement(address);
-	}
-
-	/** Add a given recipient to the BCC list */
-	public void addBCCrecipient(String address) {
-		bccList.addElement(address);
-	}
-
-	/** Set the subject */
-	public void setSubject(String s) {
-		try {
-			mesg.setSubject(subjectTF.getText());
-		} catch (Exception e) {
-			System.out.println("SetSubject failed?!?" + e);
-		}
-	}
-
-	/** Set the text */
-	public void setText(String s) {
-	}
-
 	/** Simple test case driver */
 	public static void main(String av[]) {
 		final JFrame jf = new JFrame("DarwinSys Compose Mail Tester");
 		System.getProperties().setProperty("Mail.server", "mailhost");
 		System.getProperties().setProperty("Mail.address", "nobody@home");
-		MailComposeBean sm = 
+		MailComposeBean sm =
 			new MailComposeBean(jf, "Test Mailer", "spam-magnet@darwinsys.com", 500, 400);
 		sm.setSize(500, 400);
 		jf.getContentPane().add(sm);

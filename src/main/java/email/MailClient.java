@@ -70,8 +70,19 @@ public class MailClient extends JComponent implements MailConstants {
 	/** "main program" method - construct and show */
 	public static void main(String av[]) throws Exception {
 
-		// create a MailClient object
 		final JFrame f = new JFrame("MailClient");
+
+		// Start by checking that the javax.mail package is installed!
+		try {
+			Class.forName("javax.mail.Session");
+		} catch (ClassNotFoundException cnfe) {
+			JOptionPane.showErrorDialog(f, 
+				"Sorry, the javax.mail package was not found\n(" + cnfe + ")",
+				"Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// create a MailClient object
 		MailClient comp;
 		if (av.length == 0)
 			comp = new MailClient();

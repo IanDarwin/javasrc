@@ -1,10 +1,10 @@
 Things you might do to improve MailClient:
   MailComposeBean
+	Do the sending in a new Thread, so you don't lock up the GUI.
 	Extract the GUI code in MailComposeBean into its own class, and use
 		it in MailReaderBean instead of all those calls to TextArea.add();
 		-- Also add Reload button, using same code.
 		-- Add FolderNotificationListener to replace button!
-	Do the sending in a new Thread, so you don't lock up the GUI.
   MailReaderBean
 	Move MailReaderBean loading code into a method, so we can load a new mbox.
 	MailReaderBean needs a Reply button (implement addActionListener)
@@ -18,3 +18,4 @@ Things you might do to improve MailClient:
 		Compose/Reply Templates.
 	GUI to set things like protocol, hostname, etc. (done in JabaDex).
 	More, and more consistent, error handling. Catch all exceptions!
+	Exit: check if any unsent messages.

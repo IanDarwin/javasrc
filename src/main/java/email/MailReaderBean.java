@@ -80,7 +80,7 @@ public class MailReaderBean extends JPanel implements MailConstants {
 		// and add it as the MailComposeBean's Northern child.
 		JTree tree = new JTree(top);
 		JScrollPane treeScroller = new JScrollPane(tree);
-		tree.setVisibleRowCount(10);
+		tree.setVisibleRowCount(8);
 		//this.setTopComponent(treeScroller);
 		this.add(treeScroller, BorderLayout.NORTH);
 
