@@ -1,15 +1,17 @@
 import java.util.*;
 
 /**
- * Demonstrate the Hashtable class, and an Enumeration.
+ * Demonstrate the HashMap class, and an Iterator.
+ * @see HashTableDemo, for the older Hashtable.
  */
-public class HashDemo {
+public class HashMapDemo {
+
 	public static void main(String[] argv) {
 
 		// Construct and load the hash. This simulates loading a
 		// database or reading from a file, or wherever the data is.
 
-		Hashtable h = new Hashtable();
+		HashMap h = new HashMap();
 
 		// The hash maps from company name to address.
 		// In real life this might map to an Address object...
@@ -32,9 +34,9 @@ public class HashDemo {
 
 		// Version 2: get ALL the keys and pairs 
 		// (maybe to print a report, or to save to disk)
-		Enumeration k = h.keys();
-		while (k.hasMoreElements()) {
-			String key = (String) k.nextElement();
+		Iterator k = h.keySet().iterator();
+		while (k.hasNext()) {
+			String key = (String) k.next();
 			System.out.println("Key " + key + "; Value " +
 				(String) h.get(key));
 		}

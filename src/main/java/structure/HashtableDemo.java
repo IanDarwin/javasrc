@@ -2,8 +2,10 @@ import java.util.*;
 
 /**
  * Demonstrate the Hashtable class, and an Enumeration.
+ * @see HashMapDemo, for the newer HashMap class.
  */
-public class HashDemo {
+public class HashTableDemo {
+
 	public static void main(String[] argv) {
 
 		// Construct and load the hash. This simulates loading a
