@@ -48,7 +48,11 @@ public class Transfer extends JFrame {
 
 		JSlider stryder = new JSlider(SwingConstants.VERTICAL);
 		stryder.setMinimum(10);
+		stryder.setValue(14);
 		stryder.setMaximum(72);
+		stryder.setMajorTickSpacing(10);
+		stryder.setPaintTicks(true);
+
 		cp.add(stryder);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 300);
