@@ -1,7 +1,7 @@
 import java.text.*;
 
 /** Bare-minimum String formatter (string aligner). */
-public class StringFormat extends Format {
+public class StringAlign extends Format {
 	/* Constant for left justification. */
 	public static final int JUST_LEFT = 'l';
 	/* Constant for centering. */
@@ -16,7 +16,7 @@ public class StringFormat extends Format {
 	/** Current max length */
 	private int maxChars;
 
-	public StringFormat(int maxChars, int just) {
+	public StringAlign(int maxChars, int just) {
 		switch(just) {
 		case JUST_LEFT:
 		case JUST_CENTRE:
