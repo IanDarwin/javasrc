@@ -79,7 +79,7 @@ public class CrsSetup extends JFrame {
 	/** Construct the object including its GUI */
 	public CrsSetup() {
 		super("Java Course 471/478 Configurator " +
-			VERSION + "(C) Ian F. Darwin");
+			VERSION + " (C) Ian F. Darwin");
 
 		cont = getContentPane();
 		cont.setLayout(new FlowLayout());
@@ -127,7 +127,7 @@ public class CrsSetup extends JFrame {
 		tp.setLayout(new BoxLayout(tp, BoxLayout.Y_AXIS));
 		mach = new JComboBox();
 		mach.setToolTipText("Set Machine nameber");
-		mach.setEditable(true);	// allow user to type other values.
+		mach.setEditable(false);	// don't allow user to type other values.
 		// mach.setMaximumSize(new Dimension(Integer.MAX_VALUE,20));
 		mach.addItem("-----------");
 		for (int i=1; i<=NUSERS; i++)
