@@ -1,25 +1,55 @@
 import java.io.*;
 import java.net.*;
 
+import com.darwinsys.util.*;
+
 /** Connect to a METCAST station and print the results */
 public class Weather {
 	public static final String request = 
-	"(webq (bounding-box 90. -180. -90. 180.)" +
-    "  (st_constraint" +
-    "    (block_id \"716240\")" +
-    "    (st_country_code \"CN\"))" +
-    "  (products (METAR (mime-type \"text/plain\")))" +
-    "  (products (Forecasts (mime-type \"text/plain\"))))";
+	"(ReqID (bounding-box 90. -180. -90. 180.)\n" +
+    "  (st_constraint (block_id \"716240\"))\n" +
+	// "  (products (METAR (mime-type \"text/plain\")))\n" +
+    "  (products (TAF (mime-type \"text/plain\"))))\n";
 	public static final String SERVER =
 		"http://zowie.metnet.navy.mil/cgi-bin/oleg/server";
 
+	class OMFHandler extends ContentHandler {
+		public Object getContent(URLConnection uc) {
+			String response = "";
+			try {
+				BufferedReader is = new BufferedReader(
+					new InputStreamReader(uc.getInputStream()));
+				String line;
+				while ((line = is.readLine()) != null) {
+					response += line;
+				}
+				is.close();
+			} catch (IOException ex) {
+				return ex.toString() + " partial response: " + response;
+			}
+			return response;
+		}
+	}
+
 	public static void main(String[] args) throws Exception {
+		Weather wx = new Weather();
+		wx.process();
+	}
+
+	protected void process() throws Exception {
 
 		System.out.println("Setting up URLConnection");
 
 		URL u = new URL(SERVER);
 
 		URLConnection cx = u.openConnection();
+		cx.setContentHandlerFactory(new ContentHandlerFactory() {
+			public ContentHandler createContentHandler(String type) {
+				if (type.equals("text/x-omf-forecasts"))
+					return new OMFHandler();
+				return null;
+			}
+		});
 
 		cx.setDoInput(true);
 		cx.setDoOutput(true);
@@ -35,18 +65,15 @@ public class Weather {
 		System.out.println(request);
 
 		System.out.println("Sending Request");
-		os.writeBytes("query=" + URLEncoder.encode(request));
+		os.writeBytes("mbl-stmt=" + URLEncoder.encode(request));
 		os.close();
 
 		System.out.println("Getting the Response");
 		
-		BufferedReader is = new BufferedReader(
-			new InputStreamReader(cx.getInputStream()));
-
-		String line;
-		while ((line = is.readLine()) != null)
-			System.out.println(line);
-		is.close();
+		Object response = cx.getContent();
+		if (response instanceof InputStream)
+			response = com.darwinsys.util.FileIO.inputStreamToString((InputStream)response);
+		System.out.println(response);
 	}
 }
 
