@@ -13,8 +13,9 @@ import java.awt.event.*;
  * you'd most likely use it in a real application.
  *
  * @version $Id$
+ * Originally appeared in the Linux Journal, 1999.
  */
-public class Colors extends JFrame
+public class JColorDemo extends JFrame
 {
 	/** A canvas to display the color in. */
     MyCanvas demo;
@@ -22,18 +23,18 @@ public class Colors extends JFrame
 	Color lastChosen;
 
 	/** Constructor - set up the entire GUI for this program */
-    public Colors() {
-        super("Linux Journal Color Demo");
+    public JColorDemo() {
+        super("Swing Color Demo");
 		Container cp = getContentPane();
         JButton jButton;
-        cp.add(BorderLayout.NORTH, jButton = new JButton("Choose Color..."));
+        cp.add(BorderLayout.NORTH, jButton = new JButton("Change Color..."));
 		jButton.setToolTipText("Click here to see the Color Chooser");
         jButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent)
 			{
 				Color ch = JColorChooser.showDialog(
-					Colors.this,				// parent
-					"Linux Demo Color Popup",	// title
+					JColorDemo.this,				// parent
+					"Swing Demo Color Popup",	// title
 					getBackground());			// default
 				if (ch != null)
 					demo.setColor(ch);
@@ -53,42 +54,6 @@ public class Colors extends JFrame
 	/** good old main */
     public static void main(String argv[])
     {
-        new Colors().setVisible(true);
+        new JColorDemo().setVisible(true);
     }
-}
-
-/** A helper class that just paints itself
- * in the given color, and tries to stay at the
- * size it was requested in the Constructor.
- */
-class MyCanvas extends JComponent {
-	int width, height;
-	Color col = getBackground();
-
-	/** Constructor */
-	MyCanvas(int w, int h) {
-		width = w;
-		height = h;
-		setSize(width, height);
-	}
-
-	/** Called by the program to set the color */
-	void setColor(Color c) {
-		col = c;
-		repaint();
-	}
-
-	/** Called by AWT whenever the screen needs painting */
-	public void paint(Graphics g) {
-		Dimension d = getSize();
-		g.setColor(col);
-		g.fillRect(0, 0, d.width-1, d.height-1);
-		g.setColor(Color.black);
-		g.drawString("Your color", 20, d.height/2);
-	}
-
-	/** Called by AWT layout when it needs to know */
-	public Dimension getPreferredSize() {
-		return new Dimension(width, height);
-	}
 }
