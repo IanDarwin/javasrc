@@ -42,7 +42,7 @@ public class CommPortModem extends CommPortOpen {
 		// Here we read and discard it.
 		String junk = is.readLine();
 		if (junk.length() != 0) {
-			System.err.print("Warning unexpected response: ");
+			System.err.print("Warning: unexpected response: ");
 			System.err.println(junk);
 		}
 	}

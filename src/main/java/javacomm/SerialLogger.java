@@ -25,7 +25,7 @@ public class SerialLogger {
 		// by calling static method in CommPortIdentifier.
 		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
 
-		// Process the list, putting serial and parallel into ComboBoxes
+		// Process the list, processing only serial ports.
 		while (pList.hasMoreElements()) {
 			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
 			String name = cpi.getName();
