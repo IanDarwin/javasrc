@@ -1,4 +1,5 @@
 # Makefile.simple -- simple makefile to build all Java classes.
+# Remember to "make makefiles.clean" before editing this file!
 # $Id$
 
 JAVACC?=	jikes +E
