@@ -4,7 +4,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
- * Read a file of reminders, sleep until each is due, beep.
+ * Read a file of reminders, run each when due using java.util.Timer
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
