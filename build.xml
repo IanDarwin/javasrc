@@ -51,8 +51,6 @@
 		<ant dir="ChartBean"/>
 		<echo message="==> classloader"/>
 		<ant dir="classloader"/>
-		<echo message="==> ColumnLayout"/>
-		<ant dir="ColumnLayout"/>
 		<echo message="==> cookiecutter"/>
 		<ant dir="cookiecutter"/>
 		<echo message="==> crssetup"/>
@@ -130,8 +128,6 @@
 		<echo message="==> RE"/><ant target="RE"/>
 		<echo message="==> RE-apache"/>
 		<ant dir="RE-apache"/>
-		<echo message="==> RelLayout"/>
-		<ant dir="RelLayout"/>
 		<echo message="==> RMI"/>
 		<ant dir="rmi"/>
 		<echo message="==> search"/>
@@ -149,8 +145,6 @@
 		<ant dir="strings"/>
 		<echo message="==> structure"/>
 		<ant dir="structure"/>
-		<echo message="==> TabLayout"/>
-		<ant dir="TabLayout"/>
 		<echo message="==> tar"/>
 		<ant dir="tar"/>
 		<echo message="==> testing"/>
