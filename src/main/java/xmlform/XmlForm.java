@@ -31,7 +31,12 @@ public class XmlForm {
 			c.convertAll();
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			System.err.println("+================================+");
+			System.err.println("|        XmlForm Error           |");
+			System.err.println("+================================+");
+			System.err.println(ex.getClass());
+			System.err.println(ex.getMessage());
+			System.err.println("+================================+");
 		}
 		if (verbose)
 			System.err.println(">>>Done " + fileName + "...");
