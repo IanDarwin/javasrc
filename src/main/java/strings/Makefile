@@ -1,4 +1,7 @@
-all:	csvgetline CSVFile.class
+entab:	EnTab.class
+		java EnTab entab.txt | diff - entab.expect
+
+csv:	csvgetline CSVFile.class
 	csvgetline   < CSV.dat > j1
 	java CSVFile < CSV.dat > j2
 	-diff j1 j2
@@ -11,4 +14,3 @@ csvgetline: csvgetline.c++
 
 clean:
 	rm -f j1 j2 csvgetline
-
