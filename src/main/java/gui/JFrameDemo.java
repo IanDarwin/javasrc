@@ -9,12 +9,6 @@ public class JFrameDemo extends JFrame {
 	boolean unsavedChanges = false;
 	JButton quitButton;
 
-	/** "main program" method - construct and show */
-	public static void main(String[] av) {
-		// create a JFrameDemo object, tell it to show up
-		new JFrameDemo().setVisible(true);
-	}
-
 	/** Construct the object including its GUI */
 	public JFrameDemo() {
 		super("JFrameDemo");
