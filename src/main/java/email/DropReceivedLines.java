@@ -2,14 +2,13 @@ import java.io.*;
 
 /**
  * Read a file and print, using LineReader and System.out
- * NOT WORKING: need to use BufferedReader for non-header text.
  */
 public class DropReceivedLines {
 
     public static void main(String av[]) {
         DropReceivedLines d = new DropReceivedLines();
-		// For stdin or each file, build a IndentContLineReader
-		// to treat the Received: lines as one.
+		// For stdin, act as a filter. For named files,
+		// update each file in place (safely, by creating a new file).
 		try {
 			if (av.length == 0) 
 				d.process(new BufferedReader(
@@ -42,18 +41,25 @@ public class DropReceivedLines {
 	}
 
     /** process one file, given an open LineReader */
-    public void process(BufferedReader ins, PrintWriter out)
+    public void process(BufferedReader is, PrintWriter out)
 		throws IOException {
-		IndentContLineReader is = new IndentContLineReader(ins);
         try {
             String lin;
 
 			// If line begins with "Received:", ditch it, and its continuations
             while ((lin = is.readLine()) != null) {
-				if (!lin.startsWith("Received:"))
-					out.println(lin);
+				Debug.println("read", "Read line " + lin);
+				if (lin.startsWith("Received:")) {
+					do {
+						lin = is.readLine();
+						Debug.println("read", "\tContin read line " + lin);
+					} while (lin.length() > 0 &&
+						Character.isWhitespace(lin.charAt(0)));
+				}
+				out.println(lin);
             }
             is.close();
+			out.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }

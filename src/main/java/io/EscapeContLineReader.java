@@ -1,7 +1,11 @@
 import java.io.*;
 
 /** Subclass of LineNumberReader to allow continued lines. */
-public class BSContLineReader extends ContLineReader {
+public class BSContLineReader extends java.io.LineNumberReader {
+	/** Line number of first line in current (possibly continued) line */
+	protected int firstLineNumber = 0;
+	/** EOF flag, needed since we use super.readLine() several places */
+	protected boolean hitEOF = false;
 
 	/** Read one (possibly continued) line, stripping out the \ that
 	 * mark the end of all but the last.
