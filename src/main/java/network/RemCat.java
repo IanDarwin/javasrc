@@ -73,12 +73,13 @@ public class RemCat {
 		inp = new DatagramPacket(buffer, PACKET_SIZE);
 	}
 
+	/* Build a TFTP Read Request packet. This is messy because the
+	 * fields have variable length. Numbers must be in
+	 * network order, too; fortunately Java just seems 
+	 * naturally smart enough :-) to use network byte order.
+	 */
 	void readFile(String path) throws IOException {
-		/* Build a tftp Read Request packet. This is messy because the
-		 * fields have variable length. Numbers must be in
-		 * network order, too; fortunately Java just seems 
-		 * naturally smart enough :-) to use network byte order.
-		 */
+		byte[] bTemp;
 		buffer[0] = 0;
 		buffer[OFFSET_REQUEST] = OP_RRQ;		// read request
 		int p = 2;			// number of chars into buffer
@@ -86,12 +87,14 @@ public class RemCat {
 		// Convert filename String to bytes in buffer , using "p" as an
 		// offset indicator to get all the bits of this request
 		// in exactly the right spot.
-		path.getBytes(0, path.length(), buffer, p); // file name
+		bTemp = path.getBytes();
+		System.arraycopy(bTemp, 0, buffer, p, path.length());
 		p += path.length();
 		buffer[p++] = 0;		// null byte terminates string
 
 		// Similarly, convert MODE ("octet") to bytes in buffer
-		MODE.getBytes(0, MODE.length(), buffer, p);
+		bTemp = MODE.getBytes();
+		System.arraycopy(bTemp, 0, buffer, p, MODE.length());
 		p += MODE.length();
 		buffer[p++] = 0;		// null terminate
 
@@ -132,7 +135,7 @@ public class RemCat {
 			outp.setLength(4);
 			outp.setPort(inp.getPort());
 			sock.send(outp);
-		} while (inp.getLength() == PACKET);
+		} while (inp.getLength() == PACKET_SIZE);
 
 		if (debug)
 			System.err.println("** ALL DONE** Leaving loop, last size " +
