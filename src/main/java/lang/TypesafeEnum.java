@@ -1,13 +1,11 @@
 package ca.tcp.utils;
 
-import java.util.List;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import ca.tcp.controller.Direction;
 
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
