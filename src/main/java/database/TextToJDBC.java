@@ -53,6 +53,7 @@ public class TextToJDBC {
 				continue;
 			}
 
+			// XXX Why doesn't this use UserDBText?
 			StringTokenizer st =
 				new StringTokenizer(line, ":");
 			String nick = st.nextToken();
