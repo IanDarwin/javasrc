@@ -63,6 +63,8 @@ public class TestOpenMailRelayGUI extends JFrame {
 		// Wrap it in a JScrollPane to make it scroll automatically.
 		cp.add(BorderLayout.CENTER, new JScrollPane(results));
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		pack();			// end of GUI portion
 
 		// Create a pair of Piped Streams.
