@@ -118,6 +118,16 @@
 		<ant dir="RE-apache"/>
 	</target>
 
+	<target name="index">
+		<!-- Update the index.html -->
+		<javac srcdir="${build.work}/netweb" 
+			classpath="${darwinsys.jar}" 
+			includes="MkIndex.java"/>
+		<java classpath="${build.work}/netweb:${darwinsys.jar}" 
+			dir="${build.work}" fork="yes"
+			classname="MkIndex"/>
+	</target>
+
 	<!-- clean up -->
 	<!--
 	<target name='clean'>
