@@ -1,7 +1,8 @@
 package bsd.comm;
 
-import javax.comm.*;
-import java.io.*;
+import javax.comm.CommDriver;
+import javax.comm.CommPort;
+import javax.comm.CommPortIdentifier;
 
 /** This class implements javax.comm.Driver so that the Java Communications
  * API can be used on BSD UNIX systems.

@@ -1,7 +1,5 @@
 package bsd.comm;
 
-package bsd.comm;
-
 import java.io.*;
 import javax.comm.*;
 
@@ -58,9 +56,9 @@ public class BSDSerialPort extends javax.comm.SerialPort {
 		this("ttya");		// TODO named default
 	}
 
-	public void closePort() {
+	public void close() {
 		closed = true;
-		super.closePort();	// REQUIRED for housekeeping
+		super.close();	// REQUIRED for housekeeping
 	}
 
 	protected int baudRate = 19200;
@@ -222,5 +220,110 @@ public class BSDSerialPort extends javax.comm.SerialPort {
 	}
 
 	public void notifyOnBreakInterrupt(boolean doit) {
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.SerialPort#getBaudRate()
+	 */
+	public int getBaudRate() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.SerialPort#setFlowControlMode(int)
+	 */
+	public void setFlowControlMode(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.SerialPort#getFlowControlMode()
+	 */
+	public int getFlowControlMode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveThreshold(int)
+	 */
+	public void enableReceiveThreshold(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveThreshold()
+	 */
+	public void disableReceiveThreshold() {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveThresholdEnabled()
+	 */
+	public boolean isReceiveThresholdEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveThreshold()
+	 */
+	public int getReceiveThreshold() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveTimeout(int)
+	 */
+	public void enableReceiveTimeout(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveTimeout()
+	 */
+	public void disableReceiveTimeout() {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveTimeoutEnabled()
+	 */
+	public boolean isReceiveTimeoutEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveTimeout()
+	 */
+	public int getReceiveTimeout() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveFraming(int)
+	 */
+	public void enableReceiveFraming(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveFraming()
+	 */
+	public void disableReceiveFraming() {
+		// TODO Auto-generated method stub
+		
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveFramingEnabled()
+	 */
+	public boolean isReceiveFramingEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveFramingByte()
+	 */
+	public int getReceiveFramingByte() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

@@ -1,6 +1,10 @@
 package bsd.comm;
 
-public class BSDParallelPort extends javax.comm.ParallelCommPort {
+import javax.comm.*;
+
+import java.io.*;
+
+public class BSDParallelPort extends ParallelPort {
 
 	/** The name of the default port */
 	public static final String DEFAULT_PARALLEL_PORT = "lp";
@@ -41,7 +45,7 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 	/** The filename of the device special file for this port */
 	protected String filename;
 
-	/** Construct a SerialPort object with a named port. */
+	/** Construct a Port object with a named port. */
     public BSDParallelPort(String sport) {
 		System.out.println("BSDParallelPort.<init>");
 		if (!closed)
@@ -57,13 +61,13 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 	}
 
 	/** Construct a ParallelPort object with no arguments. */
-    public BSDSerialPort() {
+    public BSDParallelPort() {
 		this(DEFAULT_PARALLEL_PORT);
 	}
 
-	public void closePort() {
+	public void close() {
 		closed = true;
-		super.closePort();	// REQUIRED for housekeeping
+		super.close();	// REQUIRED for housekeeping
 	}
 
 	/** Set the port listener */
@@ -72,17 +76,17 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 		if (theListener != null) {
 			throw new java.util.TooManyListenersException("Listener in use");
 		}
-		theListener = newListener
+		theListener = newListener;
 	}
 
 	public void removeEventListener() {
 		theListener = null;
 	}
 
-	public void notifyOnError(boolean) {
+	public void notifyOnError(boolean notify) {
 	}
 
-	public void notifyOnBuffer(boolean) {
+	public void notifyOnBuffer(boolean notify) {
 	}
 
 	public int getOutputBufferFree() {
@@ -132,5 +136,135 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 			default:
 				throw new UnsupportedCommOperationException();
 		}
+		return mode;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveThreshold(int)
+	 */
+	public void enableReceiveThreshold(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveThreshold()
+	 */
+	public void disableReceiveThreshold() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveThresholdEnabled()
+	 */
+	public boolean isReceiveThresholdEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveThreshold()
+	 */
+	public int getReceiveThreshold() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveTimeout(int)
+	 */
+	public void enableReceiveTimeout(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveTimeout()
+	 */
+	public void disableReceiveTimeout() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveTimeoutEnabled()
+	 */
+	public boolean isReceiveTimeoutEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveTimeout()
+	 */
+	public int getReceiveTimeout() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#enableReceiveFraming(int)
+	 */
+	public void enableReceiveFraming(int arg0) throws UnsupportedCommOperationException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#disableReceiveFraming()
+	 */
+	public void disableReceiveFraming() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#isReceiveFramingEnabled()
+	 */
+	public boolean isReceiveFramingEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getReceiveFramingByte()
+	 */
+	public int getReceiveFramingByte() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#setInputBufferSize(int)
+	 */
+	public void setInputBufferSize(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getInputBufferSize()
+	 */
+	public int getInputBufferSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#setOutputBufferSize(int)
+	 */
+	public void setOutputBufferSize(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.comm.CommPort#getOutputBufferSize()
+	 */
+	public int getOutputBufferSize() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

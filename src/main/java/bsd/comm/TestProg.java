@@ -44,7 +44,7 @@ public class TestProg {
 		CommPortIdentifier port =
 			CommPortIdentifier.getPortIdentifier(portName);
 		// This form of openPort takes an Application Name and a timeout.
-		ttya = (SerialPort) port.openPort("JavaJoe", 1000);
+		ttya = (SerialPort) port.open("JavaJoe", 1000);
 	}
 
 	private void traffic() 
