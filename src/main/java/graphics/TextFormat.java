@@ -23,7 +23,7 @@ import java.util.Iterator;
  * @author Ian F. Darwin
  * @version $Id$
  */
-public class MyTextLayout extends Component {
+public class TextFormat extends Component {
 
 	/** The text of this line */
 	protected String text;
@@ -96,10 +96,9 @@ public class MyTextLayout extends Component {
 	public static void main(String[] args) {
 		JFrame jf = new JFrame("Demo");
 		Container cp = jf.getContentPane();
-		MyTextLayout tl = new MyTextLayout();
+		TextFormat tl = new TextFormat();
 		tl.setFont(new Font("SansSerif", Font.BOLD, 42));
-		tl.setText(
-			"The quick brown fox jumped over the lazy cow");
+		tl.setText("The quick brown fox jumped over the lazy cow");
 		cp.add(tl);
 		jf.setSize(300, 200);
 		jf.setVisible(true);
