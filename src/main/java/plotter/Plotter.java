@@ -32,7 +32,7 @@ public abstract class Plotter {
 	abstract void setFont(String fName, int fSize);
 	abstract void drawString(String s);
 
-	/* Concrete classes */
+	/* Concrete methods */
 
 	/** Draw a box of width w and height h */
 	public void drawBox(int w, int h) {
