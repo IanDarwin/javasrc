@@ -18,15 +18,6 @@ class fileInfo {
 				/* Allocated AFTER the lines are read. */
 
 	/**
-	 * Dummy constructor, to avoid nasty surprises.
-	 */
-	fileInfo() {
-		throw new IllegalArgumentException(
-			"No-argument constructor should not get called!" 
-		);
-	}
-
-	/**
 	 * Normal constructor with one filename; file is opened and saved.
 	 */
 	fileInfo( String filename ) {
@@ -42,6 +33,7 @@ class fileInfo {
 			  System.exit(1);
 		}
 	}
+	// This is done late, to be same size as # lines in input file.
 	void alloc() {
 		other  = new int[symbol.length + 2];
 	}
