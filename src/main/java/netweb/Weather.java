@@ -46,14 +46,15 @@ public class Weather {
 
 		URL u = new URL(SERVER);
 
-		URLConnection cx = u.openConnection();
-		cx.setContentHandlerFactory(new ContentHandlerFactory() {
+		URLConnection.setContentHandlerFactory(new ContentHandlerFactory() {
 			public ContentHandler createContentHandler(String type) {
 				if (type.startsWith("text/x-omf"))
 					return new OMFHandler();
 				return null;
 			}
 		});
+		
+		URLConnection cx = u.openConnection();
 
 		cx.setDoInput(true);
 		cx.setDoOutput(true);
