@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import com.darwinsys.util.*;
 
 /** mkindex -- make an index.html for a Java Source directory
  *
@@ -26,7 +27,7 @@ public class MkIndex {
 	File dirFile;
 
 	/** Make an index */
-	public static void main(String[] av) {
+	public static void main(String[] av) throws IOException {
 		MkIndex mi = new MkIndex();
 		String inDir = av.length > 0 ? av[0] : ".";
 		mi.open(inDir, OUTPUTFILE);		// open files
@@ -46,17 +47,17 @@ public class MkIndex {
 	}
 
 	/** Write the HTML headers */
-	void BEGIN() {
+	void BEGIN() throws IOException {
 		println("<HTML>");
 		println("<HEAD>");
 		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
 		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <TITLE>Ian Darwins Java Programming Online Source Examples</TITLE>");
+		println("    <TITLE>Ian Darwin's Java Programming Online Source Examples</TITLE>");
 		println("</HEAD>");
 		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
-		println("<H1>Ian Darwins Java Programming Online Source Examples</H1>");
+		println("<H1>Ian Darwin's Java Programming Online Source Examples</H1>");
 		if (new File("about.html").exists()) {
-			com.darwinsys.com.FileIO.copyFile("about.html", out);
+			FileIO.copyFile("about.html", out, false);
 		} else {
 			println("<P>The following files are online.");
 			println("Some of these files are still experimental!</P>");
@@ -79,10 +80,10 @@ public class MkIndex {
 	boolean[] exists = new boolean[255];
 
 	/** Vector for temporary storage, and sorting */
-	Vector vec = new Vector();
+	ArrayList vec = new ArrayList();
 
 	/** Do the bulk of the work */
-	void process() {
+	void process() throws IOException {
 
 		System.out.println("Start PASS ONE -- from directory to Vector...");
 		String[] fl = dirFile.list();
@@ -101,14 +102,14 @@ public class MkIndex {
 				System.err.println("Ignoring " + fn);
 				continue;
 			} else if (new File(fn).isDirectory()) {
-				vec.addElement(fn + "/");
+				vec.add(fn + "/");
 			} else
-				vec.addElement(fn);
+				vec.add(fn);
 			exists[fn.charAt(0)] = true;	// only after chances to continue
 		}
 
 		System.out.println("Writing the Alphabet Navigator...");
-		for (char c = A; c<=Z; c++)
+		for (char c = 'A'; c<='Z'; c++)
 			if (exists[c])
 				print("<A HREF=\"#" + c + "\">" + c + "</A> ");
 
@@ -116,12 +117,13 @@ public class MkIndex {
 		println("<UL>");
 
 		System.out.println("Sorting the Vector...");
-		Collections.sort(vec, new StringIgnoreCaseComparator());
+		Collections.sort(vec, String.CASE_INSENSITIVE_ORDER);
 
 		System.out.println("Start PASS TWO -- from Vector to index.htm...");
 		String fn;
-		for (int i=0; i<vec.size(); i++) {
-			fn = (String)vec.elementAt(i).toString();
+		Iterator it = vec.iterator();
+		while (it.hasNext()) {
+			fn = (String)it.next();
 			// Need to make a link into this directory.
 			// IF there is a descr.txt file, use it for the text
 			// of the link, otherwise, use the directory name.
