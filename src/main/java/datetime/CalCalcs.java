@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class CalCalcs {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		Calendar c = Calendar.getInstance();
 		System.out.println("I got a " + c.getClass());

@@ -1,7 +1,7 @@
 /** Simple demo of exceptions, with finally clause */
 public class ExceptionDemo2 {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new ExceptionDemo2().doTheWork();
 	}
 

@@ -59,7 +59,7 @@ public class QCam extends Component implements Runnable {
 		return new Dimension(WIDTH, HEIGHT);
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Frame f = new Frame(DEVNAME);
 		f.add(new QCam());
 		f.pack();

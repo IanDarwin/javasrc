@@ -25,7 +25,7 @@ public class Statics {
 		--useCount;
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		final int N = 4;
 		for (int i=1; i<=N; i++) {
 			System.out.println("There are Now " +

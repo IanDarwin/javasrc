@@ -6,7 +6,7 @@
 public class BadNewline {
 	//+
 	String myName;
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		BadNewline jack = new BadNewline("Jack Adolphus Schmidt, III");
 		System.out.println(jack);
 	}

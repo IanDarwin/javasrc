@@ -20,7 +20,7 @@ public class SideEffects implements Cloneable {
 	/** When we clone a "SideEffects", this integer does NOT get cloned */
 	volatile int year;
 
-	public static void main(String argv[]) throws CloneNotSupportedException {
+	public static void main(String[] argv) throws CloneNotSupportedException {
 		new SideEffects().run();
 	}
 

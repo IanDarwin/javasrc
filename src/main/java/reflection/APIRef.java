@@ -29,7 +29,7 @@ public class APIRef {
 	/** Simple main program, construct self, process each .ZIP file
 	 * found in CLASSPATH.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		APIRef xref = new APIRef();
 
 		for (int i=0; i<argv.length; i++) {

@@ -83,7 +83,7 @@ public class Soundex {
 	}
 
 	/** Test program. Knuth's original examples, and mine. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		test("Euler, Ellery", "E460");
 		test("Gauss, Ghosh", "G200");
 		test("Hilbert, Heilbronn", "H416");

@@ -11,7 +11,7 @@ import java.util.*;
 public class ScanStringTok {
 	protected  LineNumberReader is;
 
-	public static void main(String av[]) throws IOException {
+	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new ScanStringTok(
 				new InputStreamReader(System.in)).process();

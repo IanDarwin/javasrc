@@ -5,7 +5,7 @@ import java.io.*;
  * Browser0 - Get the contents of a URL, write to stdout
  */
 public class Browser0 {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new Browser0(av);
 	}
 

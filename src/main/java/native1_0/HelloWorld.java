@@ -8,7 +8,7 @@ public class HelloWorld {
         public native void displayHelloWorld();
 
         // Application main, call its display method
-        public static void main(String args[]) {
+        public static void main(String[] args) {
 		System.out.println("HelloWorld starting...");
 		HelloWorld hw = new HelloWorld();
                 hw.displayHelloWorld();		// call the native function

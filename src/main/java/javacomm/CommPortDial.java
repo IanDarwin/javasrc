@@ -11,7 +11,7 @@ public class CommPortDial extends CommPortModem {
 
 	protected static String number = "000-0000";
 
-	public static void main(String ap[])
+	public static void main(String[] ap)
 		throws IOException, NoSuchPortException,PortInUseException,
 			UnsupportedCommOperationException {
 		if (ap.length == 1)

@@ -12,8 +12,8 @@ import java.lang.reflect.*;
  * with sort and awk/perl. Try: 
 	java CrossRef | 
 		uniq | # squeeze out polymorphic forms early
-		grep  method  |
-		sort | awk { ... } > crossref-methods.txt
+		grep ' method ' |
+		sort | awk '{ ... }' > crossref-methods.txt
  * The part in "{ ... }" is left as an exercise for the reader. :-(
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
@@ -29,7 +29,7 @@ public class CrossRef {
 	/** Simple main program, construct self, process each .ZIP file
 	 * found in CLASSPATH.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		CrossRef xref = new CrossRef();
 
 		if (argv.length == 0) {
@@ -89,7 +89,7 @@ public class CrossRef {
 		//	java/lang/Math.class
 		// to a class name like
 		//	java.lang.Math
-		String className = zipName.replace(/, .).
+		String className = zipName.replace('/', '.').
 			substring(0, zipName.length() - 6);	// 6 for ".class"
 		if (System.getProperties().getProperty("debug.names") != null)
 			System.err.println("ZipName " + zipName + 
@@ -134,14 +134,14 @@ public class CrossRef {
 		}
 	}
 
-	/** put a Fields information to the standard output.
+	/** put a Field's information to the standard output.
 	 * Marked protected so you can override it (hint, hint).
 	 */
 	protected void putField(Field fld, Class c) {
 		println(fld.getName() + " field " + c.getName() + " ");
 		++n;
 	}
-	/** put a Methods information to the standard output.
+	/** put a Method's information to the standard output.
 	 * Ignores ubiquitous methods listed in the "if" statement.
 	 * Marked protected so you can override it (hint, hint).
 	 */

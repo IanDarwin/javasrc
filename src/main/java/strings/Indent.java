@@ -9,7 +9,7 @@ public class Indent {
 	/** the default number of spaces. */
 	static int nSpaces = 10;
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         Indent c = new Indent();
         switch(av.length) {
             case 0: c.process(new BufferedReader(

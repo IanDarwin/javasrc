@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class IOUtil {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		IOUtil f = new IOUtil();
 		try {
 			f.copyDataFile("IOUtil.class", "IOUtil-class.bak");

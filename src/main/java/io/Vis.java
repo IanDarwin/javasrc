@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class Vis {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         Vis v = new Vis();
         if (av.length == 0)
             v.process(new BufferedReader(

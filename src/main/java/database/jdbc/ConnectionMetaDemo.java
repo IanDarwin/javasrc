@@ -5,7 +5,7 @@ import java.sql.*;
  */
 public class Connect {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		String dbURL = "jdbc:odbc:Companies";
 	    try {
 			// Load the jdbc-odbc bridge driver

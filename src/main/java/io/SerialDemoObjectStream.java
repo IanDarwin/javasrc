@@ -17,7 +17,7 @@ class MyData implements Serializable {
 public class Serialize {
 	protected static final String FILENAME = "serial.dat";
 
-	public static void main(String s[]) throws IOException {
+	public static void main(String[] s) throws IOException {
 		ArrayList v = new ArrayList();
 		// Gather the data
 		MyData u1 = new MyData("Ian Darwin", "secret_java_cook");

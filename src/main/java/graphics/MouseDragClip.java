@@ -29,7 +29,7 @@ public class MouseDragClip extends Canvas
 	int oldWidth = -1, oldHeight = -1;
 
 	// "main" method
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Frame f = new Frame("Mouse Dragger");
 
 		if (av.length < 1) {

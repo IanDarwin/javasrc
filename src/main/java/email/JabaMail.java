@@ -73,7 +73,7 @@ public class JabaMail extends JComponent implements MailConstants {
 	}
 
 	/** "main program" method - run the program */
-	public static void main(String av[]) throws Exception {
+	public static void main(String[] av) throws Exception {
 
 		final JFrame f = new JFrame("JabaMail");
 

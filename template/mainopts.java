@@ -3,7 +3,7 @@
  * @version $Id$
  */
 public class mainopts {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String argChars = "o:hv";
 		GetOpt go = new GetOpt("ho:v");
 

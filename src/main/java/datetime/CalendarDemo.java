@@ -11,7 +11,7 @@ public class CalendarDemo {
 	 */
 	Calendar calendar = new GregorianCalendar();
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new CalendarDemo().format();
 	}
 

@@ -13,7 +13,7 @@ public class DatePrint2 {
 		"July",    "August",   "September",
 		"October", "November", "December" };
 	static String[] eras = { "B.C.", "A.D." };
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		Calendar c = new GregorianCalendar(1918, 10, 11);
 		System.out.println(
 			months[c.get(Calendar.MONTH)] + " " +

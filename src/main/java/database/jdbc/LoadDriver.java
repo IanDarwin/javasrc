@@ -4,7 +4,7 @@ import java.sql.*;
 /** Load some drivers.  */
 public class LoadDriver {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	    try {
 
 			// Try to load the jdbc-odbc bridge driver

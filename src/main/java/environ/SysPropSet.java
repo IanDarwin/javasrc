@@ -6,7 +6,7 @@ public class SysPropSet {
 
 	static Properties p = System.getProperties();
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("System Properties:");
 		System.out.println("java.class.path now = " + getClassPath());
 		p.setProperty("java.class.path",

@@ -4,7 +4,7 @@ import java.util.*;
  * Demonstrate the Properties class
  */
 public class PropsDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 	Properties ian = new Properties();
 
 	// Set my data.

@@ -94,7 +94,7 @@ public class SendMime {
 	}
 
 	/** Simple test case driver */
-	public static void main(String av[]) throws Exception {
+	public static void main(String[] av) throws Exception {
 		SendMime sm = new SendMime();
 		sm.doSend();
 	}

@@ -7,7 +7,7 @@ import java.awt.event.*;
  */
 public class PopupDemo extends Frame {
 	/** "main" method - for testing. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new PopupDemo("Hello").setVisible(true);
 	}
 

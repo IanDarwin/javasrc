@@ -7,7 +7,7 @@ import java.text.*;
  * @version $Id$
  */
 public class Timer0 {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		//+
 		long t0, t1;
 		System.out.println("Press return when ready");

@@ -4,7 +4,7 @@
  */
 public class ComplexDemo {
 	/** The program */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		//+
 		Complex c = new Complex(3,  5);
 		Complex d = new Complex(2, -2);

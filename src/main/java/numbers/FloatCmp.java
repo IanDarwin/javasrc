@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class FloatCmp {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 	//+
 		double d1 = Double.NaN;
 		double d2 = Double.NaN;

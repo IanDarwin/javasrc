@@ -8,7 +8,7 @@ public class TabPaneDemo {
 		tabPane.add(new JLabel("Two", JLabel.CENTER), "Second");
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		JFrame f = new JFrame("Tab Demo");
 		f.getContentPane().add(new TabPaneDemo().tabPane);
 		f.setSize(120, 100);

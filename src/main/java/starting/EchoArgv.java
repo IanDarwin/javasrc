@@ -4,7 +4,7 @@
  *
  */
 public class EchoArgv {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new EchoArgv().func(args);
 	}
 	private void func(String args[]) {

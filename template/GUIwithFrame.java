@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class GUI0 {
 
 	/** "main" method */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Button quitButton;
 
 		// create a GUI0 object and make it show

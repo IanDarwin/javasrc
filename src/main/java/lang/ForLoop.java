@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class ForLoop {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Starting...");
 		// So what REALLY happens if a for loop's test condition is
 		// never satisfied.

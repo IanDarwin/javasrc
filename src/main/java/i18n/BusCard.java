@@ -16,7 +16,7 @@ public class BusCard extends JFrame {
 	JButton B1, B2, B3, B4;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 
 		// create a BusCard object, tell it to show up
 		new BusCard().setVisible(true);

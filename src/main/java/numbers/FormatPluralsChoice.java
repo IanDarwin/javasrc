@@ -11,7 +11,7 @@ public class FormatPlurals0 {
 	static String[] formats = { "items", "item", "items"};
 	static ChoiceFormat myFormat = new ChoiceFormat(limits, formats);
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		report(0);
 		report(1);
 		report(2);

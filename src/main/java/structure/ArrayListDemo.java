@@ -4,7 +4,7 @@ import java.util.*;
  * ArrayListDemo done over using an ArrayList
  */
 public class ArrayListDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		ArrayList al = new ArrayList();
 
 		// Create a source of Objects

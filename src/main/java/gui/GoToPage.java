@@ -47,7 +47,7 @@ public class GoToPage extends Dialog {
 		return i;
 	}
 
-	public static void main(String unused[]) {
+	public static void main(String[] unused) {
 		final JFrame f = new JFrame("Page Dialog Test");
 		JButton b;
 		f.getContentPane().add(b = new JButton("Show Dialog"));

@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class IntFract {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		int a = 100;
 		int b = a*5/7;

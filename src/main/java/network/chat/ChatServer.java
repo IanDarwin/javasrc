@@ -30,7 +30,7 @@ public class ChatServer {
 	private boolean DEBUG = false;
 
 	/** Main just constructs a ChatServer, which should never return */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("DarwinSys Chat Server 0.1 starting...");
 		ChatServer w = new ChatServer();
 		w.runServer();			// should never return.

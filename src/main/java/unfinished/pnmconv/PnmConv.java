@@ -3,7 +3,7 @@ import com.sun.java.swing.*;
  * PnmConv.java -- main program for PNM Converter
  */
 public class PnmConv {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length == 0)
 			new PnmView().buildGUI();
 		else {

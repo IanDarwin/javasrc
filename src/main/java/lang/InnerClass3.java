@@ -5,7 +5,7 @@
 public class InnerClass3 {
 	static String msg = "Hello";
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		class Inner {
 			public void doTheWork() {
 				// print member of enclosing class

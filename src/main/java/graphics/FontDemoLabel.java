@@ -32,7 +32,7 @@ public class FontDemo extends Frame {
 		pack();
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new FontDemo().setVisible(true);
 	}
 }

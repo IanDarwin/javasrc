@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Trig {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println("Java's PI is " + Math.PI);
 		System.out.println("Java's e is " + Math.E);

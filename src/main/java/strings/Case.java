@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Case {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		String name = "Java Cookbook";
 		System.out.println("Normal:\t" + name);

@@ -19,7 +19,7 @@ public class Constructors {
 		for (int i=0; i<5; i++)
 			System.out.println(i);
 	}
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		Constructors l = new Constructors();
 		l.method1();
 		l.Constructors();

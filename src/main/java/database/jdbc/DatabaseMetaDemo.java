@@ -6,7 +6,7 @@ import java.sql.*;
  */
 public class JDBCMeta {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		int i;
 		try {
 			FileProperties fp = new FileProperties("JDBCMeta.properties");

@@ -12,7 +12,7 @@ public class AddException {
 	/**
 	 * Main program, test driver for ThreadsDemo1 class.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new AddException();
 	}
 

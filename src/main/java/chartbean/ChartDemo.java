@@ -11,7 +11,7 @@ public class ChartTest extends Frame {
 	Chart bean;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a ChartTest object
 		ChartTest j = new ChartTest();
 		// send message telling it to show up

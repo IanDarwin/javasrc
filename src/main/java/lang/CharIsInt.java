@@ -1,5 +1,5 @@
 public class CharIsInt {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		char a = 'A';
 		System.out.println("a is " + a);
 		int i = a;

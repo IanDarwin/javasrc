@@ -29,7 +29,7 @@ public class Singleton {
 		return singleton;
 	}
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("getInstance returns " + getInstance());
 		System.out.println("getInstance returns " + getInstance());
 		System.out.println("getInstance returns " + getInstance());

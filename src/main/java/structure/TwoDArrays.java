@@ -5,7 +5,7 @@ public class TwoDArrays {
 		{ 10, 24 },
 		{ 32, 98.6 },
 	};
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// Each row in the initialization winds up as a column
 		// (see the diagram in the course notes!!), so this
 		// is a 3 x 2 array.

@@ -12,7 +12,7 @@ public class ReadHeaders {
 	}
 
 	/** Main program showing how to use it */
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         switch(av.length) {
             case 0: 
 				ReadHeaders r = new ReadHeaders(

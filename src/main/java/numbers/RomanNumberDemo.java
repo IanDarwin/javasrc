@@ -1,6 +1,6 @@
 public class RomanNumberDemo {
 	/** Simple test case */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		RomanNumberFormat nf = new RomanNumberFormat();
 		System.out.println("Test of " + nf);

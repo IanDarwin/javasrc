@@ -19,7 +19,7 @@ import javax.swing.*;
 public class Unicode extends Frame {
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a Unicode object, tell it to show up
 		new Unicode().setVisible(true);
 	}

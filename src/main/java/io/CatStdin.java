@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class CatStdin {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         CatFile c = new CatFile();
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader(System.in));

@@ -8,7 +8,7 @@ public class PropsCust {
 	Properties p;
 	String userName;
 	String userDir;
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new PropsCust();
 	}
 	PropsCust() {

@@ -8,7 +8,7 @@ import java.awt.event.*;
  */
 public class WindowDemo2 extends JFrame {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		JFrame f = new WindowDemo2();
 		f.setVisible(true);
 	}

@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class AppletFinder {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		String[] tags = new AppletFinder().doPage(av[0]);
 		for (int i=0;i<tags.length; i++)
 			System.out.println("APPLET: " +i+" " + tags[i]);

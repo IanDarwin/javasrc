@@ -8,7 +8,7 @@ public class OverLoad {
 	static void myfunc(int x) {
 		myfunc(x, 100);		// same as "OverLoad.myfunc(x, 100);"
 	}
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		myfunc(24,24);
 		myfunc(24);
 	}

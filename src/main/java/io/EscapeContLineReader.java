@@ -77,7 +77,7 @@ public class EscapeContLineReader extends ContLineReader {
 		"EXPECT THE NEXT LINE TO THROW AN IOException\n" +
 		"This tests for line ending in \\";
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		EscapeContLineReader is = new EscapeContLineReader(
 			new StringReader(sampleTxt));
 		String aLine;

@@ -2,7 +2,7 @@ import java.awt.Frame;
 
 /** Demonstrate "classFor" to create an instance of an object. */
 public class ClassForName {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Class  c = null;
 		Object o = null;
 		try {

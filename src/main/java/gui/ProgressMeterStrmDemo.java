@@ -52,7 +52,7 @@ public class ProgMeterStrmDemo extends JFrame implements Runnable {
 		new Thread(this).start();
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		ProgMeterStrmDemo demo = new ProgMeterStrmDemo();
 		demo.setSize(100, 100);
 		demo.getContentPane().add(new JLabel("ProgMeterStrmDemo"));

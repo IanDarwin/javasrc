@@ -8,7 +8,7 @@ import java.io.*;
 
 public class FNFilter2 implements FilenameFilter {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		FNFilter2 ff = new FNFilter2();
 		ff.process(".");
 	}

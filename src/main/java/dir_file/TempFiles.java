@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class TempFiles {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 
 		// 1. Make an existing file temporary
 

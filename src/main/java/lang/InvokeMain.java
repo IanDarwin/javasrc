@@ -8,7 +8,7 @@ import java.lang.reflect.*;
  * @version $Id$
  */
 public class InvokeMain {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		try {
 			// First, find the class.

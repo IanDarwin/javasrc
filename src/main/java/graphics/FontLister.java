@@ -3,7 +3,7 @@ import java.awt.*;
 /** Print the list of available fonts. */
 public class FontLister {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 
 		// A list of fonts, the 1.0 way.
 		Toolkit t = Toolkit.getDefaultToolkit();

@@ -4,7 +4,7 @@ import java.util.*;
  * Demonstrate the Hashtable class, and an Enumeration.
  */
 public class HashDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		// Construct and load it.
 		Hashtable h = new Hashtable();

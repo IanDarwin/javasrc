@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Logarithm {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		double someValue;
 		// compute someValue...

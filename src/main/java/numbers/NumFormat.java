@@ -10,7 +10,7 @@ import java.util.*;
  * see JavaDoc on java.util.Locale and java.text.NumberFormat.
  */
 public class NumFormat {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		int data[] = { 100, 1000, 10000, 1000000 };
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		for (int i = 0; i < data.length; ++i) {

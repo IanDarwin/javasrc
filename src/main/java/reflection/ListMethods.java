@@ -6,7 +6,7 @@ import java.lang.reflect.*;
  * @version $Id$
  */
 public class ListMethods {
-	public static void main(String argv[]) throws ClassNotFoundException {
+	public static void main(String[] argv) throws ClassNotFoundException {
 		if (argv.length == 0) {
 			System.err.println("Usage: ListMethods className");
 			return;

@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class CommPortThreaded extends CommPortOpen {
 
-	public static void main(String ap[])
+	public static void main(String[] ap)
 		throws IOException, NoSuchPortException,PortInUseException,
 			UnsupportedCommOperationException {
 		CommPortThreaded cp;

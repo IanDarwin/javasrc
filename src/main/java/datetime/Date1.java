@@ -6,7 +6,7 @@ import java.util.*;
  * @version $Id$
  */
 public class Date1 {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println(Calendar.getInstance());
 		//-

@@ -104,7 +104,7 @@ public class Sender2 {
 	}
 
 	/** Driver to parse options and control Sender */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		try {
 			Sender2 sm = new Sender2();
 			GetOpt go = new GetOpt("c:f:t:s:");

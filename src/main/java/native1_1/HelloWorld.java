@@ -9,7 +9,7 @@ public class HelloWorld {
 	public native void displayHelloWorld();
 
 	// Application main, call its display method
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		System.out.println("HelloWorld starting; args.length="+
 			args.length+"...");
 		for (int i=0; i<args.length; i++)

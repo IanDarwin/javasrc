@@ -2,7 +2,7 @@ import java.util.*;
 
 /** Print the current year in Roman Numerals */
 public class RomanYear {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int i;
 		for (i=0; i<argv.length && !argv[i].equals("-"); i++) {
 			System.out.print(argv[i]);	// e.g., "Copyright"

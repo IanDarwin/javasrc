@@ -124,7 +124,7 @@ public class XColorTest extends Frame {
 	}
  
 	/** "main program" method */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a XColorTest object
 		XColorTest j = new XColorTest();
 		// send message telling it to show up

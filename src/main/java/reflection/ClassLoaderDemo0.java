@@ -43,7 +43,7 @@ public class ClassLoaderDemo0 extends ClassLoader {
 		return c;
 	}
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("ClassLoaderDemo starting");
 		ClassLoaderDemo0 loader = new ClassLoaderDemo0();
 		Class c = null;

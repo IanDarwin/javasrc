@@ -20,7 +20,7 @@ public class BordLayDemo extends Frame {
 		setVisible(true);
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		BitSet b = new BitSet();
 		b.set(NORTH);
 		b.set(EAST);

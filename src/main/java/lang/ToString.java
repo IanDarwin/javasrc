@@ -14,7 +14,7 @@ public class ToString {
 		return "-->" + value + "<--";
 	}
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		ToString s = new ToString(123);
 
 		System.out.println("Hello, World of Java");

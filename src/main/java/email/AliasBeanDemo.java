@@ -9,7 +9,7 @@ public class AliasBeanTest extends JFrame {
 	JButton quitButton;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a JFrameDemo object, tell it to show up
 		new AliasBeanTest().setVisible(true);
 	}

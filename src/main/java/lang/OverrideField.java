@@ -1,6 +1,6 @@
 /** Demonstration of overriding fields. */
 public class OverrideField {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		System.out.println("A's version of getAttr returns: " +
 			new A().getAttr());
 		System.out.println("B's version of getAttr returns: " +

@@ -43,7 +43,7 @@ public class PhoneCall {
 		Thread.sleep((int)(d*5000));
 	}
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new PhoneCall().call();
 	}
 }

@@ -1,7 +1,7 @@
 /** Simple demo of exceptions */
 public class ExceptionDemo {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new ExceptionDemo().doTheWork();
 	}
 

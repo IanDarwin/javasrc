@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class EnTab extends Tabs {
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		EnTab et = new EnTab(8);
 		et.entab(new BufferedReader(new InputStreamReader(System.in)));
 	}

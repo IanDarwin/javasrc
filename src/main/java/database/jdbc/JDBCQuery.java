@@ -17,7 +17,7 @@ import java.sql.*;
  */
 public class JDBCQuery {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	    try {
 			System.out.println("Loading Driver (with Class.forName)");
 			// Load the jdbc-odbc bridge driver

@@ -9,7 +9,7 @@ import javax.swing.*;
 public class JIFrameDemo {
 
 	/* Main View */
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		final JFrame jf = new JFrame("JIFrameDemo Main Window");
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

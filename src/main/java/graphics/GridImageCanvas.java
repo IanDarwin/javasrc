@@ -28,7 +28,7 @@ public class GridImageCanvas extends Panel {
 	}
 
 	/** Main program to allow interactive use */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("GridImageCanvas demo starting...");
 		if (argv.length == 0)
 			throw new IllegalArgumentException("Usage: GridImageCanvas image...");

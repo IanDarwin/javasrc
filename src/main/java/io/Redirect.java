@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class Redirect {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		//+
 		String LOGFILENAME = "error.log";
 		System.setErr(new PrintStream(new FileOutputStream(LOGFILENAME)));

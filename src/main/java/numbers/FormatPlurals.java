@@ -5,7 +5,7 @@
  */
 public class FormatPlurals {
 	//+
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		report(0);
 		report(1);
 		report(2);

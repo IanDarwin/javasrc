@@ -31,7 +31,7 @@ public class StrSortCase {
 	}
 
 	/** Simple main program to test the sorting */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println("StrSort Demo Ignoring Case");
 		StrSortCase s = new StrSortCase();

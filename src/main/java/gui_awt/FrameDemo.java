@@ -6,7 +6,7 @@ import java.awt.event.*;
  */
 public class FrameDemo extends Frame {
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new FrameDemo().setVisible(true);
 	}
 

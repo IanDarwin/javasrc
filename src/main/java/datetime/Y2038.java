@@ -2,7 +2,7 @@
 /** When does the UNIX date get into trouble? */
 
 public class Y2038 {
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		// This should yield 2038AD, the hour of doom for the
 		// last remaining 32-bit UNIX systems (there will be
 		// millions of 64-bit UNIXes by then).

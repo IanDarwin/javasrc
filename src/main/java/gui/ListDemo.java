@@ -19,7 +19,7 @@ public class ListDemo extends Frame {
 		return true;
 	}
 
-	public static void main(String s[]) {
+	public static void main(String[] s) {
 		ListDemo l = new ListDemo("Up and down the list");
 		l.pack();
 		l.setVisible(true);

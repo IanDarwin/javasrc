@@ -8,7 +8,7 @@ public class Locals {
 			System.out.println(i);
 		System.out.println(i);
 	}
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new Locals().method1();
 	}
 }

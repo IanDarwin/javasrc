@@ -6,7 +6,7 @@ import java.util.*;
 public class DateUse {
 
 	/** Typical main method ("main program") declaration */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 
 		Locale l1 = new Locale("en", "US"),
 			l2 = new Locale("es", "ES");

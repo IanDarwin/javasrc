@@ -7,7 +7,7 @@ import java.util.*;
  * @version $Id$
  */
 public class CheckFiles {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		CheckFiles cf = new CheckFiles();
 		System.out.println("CheckFiles starting.");
 		cf.getListFromFile();

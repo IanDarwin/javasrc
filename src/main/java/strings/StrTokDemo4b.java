@@ -37,7 +37,7 @@ public class StrTokDemo4b {
 			System.out.println("Output " + i + " was: " + outputs[i]);
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		printResults("A|B|C|D", process("A|B|C|D"));
 		printResults("A||C|D", process("A||C|D"));
 		printResults("A|||D|E", process("A|||D|E"));

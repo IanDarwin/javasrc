@@ -3,7 +3,7 @@ import java.awt.*;
 public class StringToDouble {
 
 	//+
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String aNumber = argv[0];	// not argv[1]
 		double result;
 		try {

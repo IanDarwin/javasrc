@@ -48,7 +48,7 @@ public class GetNumber extends Frame {
 		pack();
 	}
 
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		new GetNumber().setVisible(true);
 	}
 }

@@ -6,7 +6,7 @@ import java.math.*;
  * @version $Id$
  */
 public class BigNums {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println("Here's Long.MAX_VALUE: " + Long.MAX_VALUE);
 		BigInteger bInt = new BigInteger("3419229223372036854775807");

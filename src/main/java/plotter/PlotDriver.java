@@ -4,7 +4,7 @@
 public class PlotDriver {
 
 	/** Construct a Plotter driver, and try it out. */
-	public static void main(String argv[])
+	public static void main(String[] argv)
 	{
 		Plotter r ;
 		if (argv.length != 1) {

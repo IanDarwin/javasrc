@@ -11,7 +11,7 @@ public class BordLayPanel extends Frame {
 	TextArea main;
 	Label status;
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new BordLayPanel().setVisible(true);
 	}
 

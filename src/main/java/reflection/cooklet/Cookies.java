@@ -5,7 +5,7 @@
  * @version $Id$
  */
 public class Cookies {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Cookies Application Version 0.0");
 		Cooklet cooklet = null;
 		String cookletClassName = argv[0];

@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class DropReceivedLines {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         DropReceivedLines d = new DropReceivedLines();
 		// For stdin, act as a filter. For named files,
 		// update each file in place (safely, by creating a new file).

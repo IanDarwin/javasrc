@@ -20,7 +20,7 @@ public class ButtonDemo1 extends JFrame implements ActionListener {
 	    System.exit(0);
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	    new ButtonDemo1().setVisible(true);
 	}
 }

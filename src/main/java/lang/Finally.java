@@ -3,7 +3,7 @@
  */
 public class Finally {
 	/** Main method, does the work of the testing... */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		try {
 			throw new Exception();

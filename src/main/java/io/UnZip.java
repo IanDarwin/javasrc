@@ -23,7 +23,7 @@ public class UnZip {
 	/** Simple main program, construct an UnZipper, process each
 	 * .ZIP file from argv[] through that object.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		UnZip u = new UnZip();
 
 		for (int i=0; i<argv.length; i++) {

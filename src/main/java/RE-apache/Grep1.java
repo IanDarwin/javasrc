@@ -17,7 +17,7 @@ public class Grep1 {
 	/** Construct a Grep object for each pattern, and run it
 	 * on all input files listed in argv.
 	 */
-	public static void main(String argv[]) throws Exception {
+	public static void main(String[] argv) throws Exception {
 
 		if (argv.length < 1) {
 		    System.err.println("Usage: Grep pattern [filename]");

@@ -4,7 +4,7 @@ import java.util.*;
  * Simple demo of the Vector class.
  */
 public class VectorDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		Vector v = new Vector();
 
 		// Create a source of Objects

@@ -101,7 +101,7 @@ public class IndentContLineReader extends ContLineReader {
 		"\n" +
 		"How about text ending without a newline?";
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		IndentContLineReader is = new IndentContLineReader(
 			new StringReader(sampleTxt));
 		String aLine;

@@ -4,7 +4,7 @@ class InitializersDemo {
 	public Object o;
 	public int i;
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Object mo;
 		int mi;
 		InitializersDemo t = new InitializersDemo();

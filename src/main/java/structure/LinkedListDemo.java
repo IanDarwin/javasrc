@@ -7,7 +7,7 @@ import java.util.*;
  * @version $Id$
  */
 public class LinkedListDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Here is a demo of Java 1.2's LinkedList class");
 		LinkedList l = new LinkedList();
 		l.add(new Object());

@@ -11,7 +11,7 @@ public class StackTrace {
 
 	IllegalArgumentException ex;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		StackTrace st = new StackTrace();
 		st.makeit();
 		System.out.println("CONSTRUCTED BUT NOT THROWN");

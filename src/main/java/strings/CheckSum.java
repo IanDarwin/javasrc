@@ -6,7 +6,7 @@ import java.io.*;
  */
 
 public class CheckSum {
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         CheckSum c = new CheckSum();
 		int sum = 0;
         if (av.length == 0)

@@ -22,7 +22,7 @@ public class TeePrintStream extends PrintStream {
 	protected String fileName;
 
 	/** A simple test case. */
-	public static void main(String args[]) throws IOException {
+	public static void main(String[] args) throws IOException {
 		TeePrintStream ts = new TeePrintStream(System.err, "err.log");
 		System.setErr(ts);
 		System.err.println("An imitation error message");

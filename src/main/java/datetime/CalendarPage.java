@@ -68,7 +68,7 @@ public class CalendarPage {
 	}
 
 	/** For testing, a main program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		int month, year;
 
 		CalendarPage cp = new CalendarPage();

@@ -1,6 +1,6 @@
 /** Compute the value of 2/3 of 5 */
 public class FractMult {
-	public static void main(String u[]) {
+	public static void main(String[] u) {
 
 		double d1 = 0.666 * 5;	// fast but obscure and inaccurate: convert
 		System.out.println(d1); // 2/3 to 0.666 in programmer's head

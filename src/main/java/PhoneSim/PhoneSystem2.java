@@ -1,7 +1,7 @@
 public class PhoneSystem2 {
 	static int nThreads = 0;
 	final static int THRESHOLD = 10;
-	public static void main(String a[]) throws InterruptedException {
+	public static void main(String[] a) throws InterruptedException {
 		while (true) {
 			while (nThreads > THRESHOLD) {
 				try {

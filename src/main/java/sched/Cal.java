@@ -214,7 +214,7 @@ public class Cal extends JPanel implements JDModule, DateSelectedListener {
 	public void doSynch(){ }
 
 	/** For testing, a main program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		JFrame f = new JFrame("Cal");
 
 		f.getContentPane().add(new Cal());

@@ -48,7 +48,7 @@ public class JColorDemo extends JFrame
 	}
 
 	/** good old main */
-    public static void main(String argv[])
+    public static void main(String[] argv)
     {
         new JColorDemo().setVisible(true);
     }

@@ -7,7 +7,7 @@ import java.util.*;
  * @version $Id$
  */
 public class FileStatus {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 
 		// Ensure that a filename (or something) was given in argv[0]
 		if (argv.length == 0) {

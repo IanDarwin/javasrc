@@ -2,7 +2,7 @@
  * This is a toy program that shows creating a Manager object.
  */
 public class ManagerInArray {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Employee aa;
 		Employee staff[] = {
 			new Employee("Jon Jonsson", 45678),

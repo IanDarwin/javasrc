@@ -5,7 +5,7 @@
  * attribute of another class in the same package as us?
  */
 public class Protected {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Protected values demo");
 		Protected p = new Protected();
 		p.process();

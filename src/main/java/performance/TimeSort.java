@@ -5,7 +5,7 @@
  */
 public class TimeSort {
 	//+
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		final int N = 1024 * 1024;
 		java.util.Random r = new java.util.Random();
 		long t0 = System.currentTimeMillis();

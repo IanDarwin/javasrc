@@ -3,7 +3,7 @@ import java.util.Date;
 /** DateDiff -- compute the difference between two dates.
  */
 public class DateDiff {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		//+ 
 		/** The ending date. This value
 		 * doubles as a Y2K countdown time.

@@ -6,7 +6,7 @@ import java.net.*;
  * @version $Id$
  */
 public class ConsChat {
-	public static void main(String args[]) throws IOException {
+	public static void main(String[] args) throws IOException {
 		new ConsChat().chat();
 	}
 

@@ -14,7 +14,7 @@ public class TestOpenMailRelay {
 	public final static String RSS_SITE = "http://mail-abuse.org/rss/";
 
 	/** Driver to parse options and control Sender */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Usage: " + "TestOpenMailRelay" +
 				" suspected_relay");

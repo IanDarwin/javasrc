@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class GetSerVersUID {
 	static final String ident = "$Id$";
-	public static void main(String av[]) throws Exception {
+	public static void main(String[] av) throws Exception {
 
 		// First we construct a Class object for the given class
 		Class cl = Class.forName("Candidate");

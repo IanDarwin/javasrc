@@ -57,7 +57,7 @@ public class Grids extends Frame {
 		pack();
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new Grids("Test", 300, 300, 5, 10).setVisible(true);
 	}
 }

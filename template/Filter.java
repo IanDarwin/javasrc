@@ -30,7 +30,7 @@ public class Filter {
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you.
 	 */
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         Filter o = new Filter();
         if (av.length == 0) {
             o.process("standard input", new LineNumberReader(

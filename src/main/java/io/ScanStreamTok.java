@@ -11,7 +11,7 @@ import java.util.*;
 public class ScanStreamTok {
 	protected  StreamTokenizer tf;
 
-	public static void main(String av[]) throws IOException {
+	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new ScanStreamTok(
 				new InputStreamReader(System.in)).process();

@@ -94,7 +94,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		return c;
 	}
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("ClassLoaderDemo1 starting");
 		ClassLoaderDemo1 loader = new ClassLoaderDemo1();
 		Class c = null;

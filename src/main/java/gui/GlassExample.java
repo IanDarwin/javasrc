@@ -9,7 +9,7 @@ import javax.swing.*;
 public class GlassExample {
 
 	/** Construct a Splash screen with the given image */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		JFrame f = new JFrame("GlassPane");
 		
 		final JPanel p1 = new JPanel();

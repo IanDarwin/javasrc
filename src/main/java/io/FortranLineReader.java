@@ -84,7 +84,7 @@ public class FortranLineReader extends ContLineReader {
 		"      This should be non-continued.\n" +
 		"  3   This is statement 3 and line 3.";
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		FortranLineReader is = new FortranLineReader(
 			new StringReader(sampleTxt));
 		String aLine;

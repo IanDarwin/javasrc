@@ -2,7 +2,7 @@
  * LengthOf - show length of things
  */
 public class LengthOf {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int    ints[] = new int[3];
 		Object objs[] = new Object[7];
 

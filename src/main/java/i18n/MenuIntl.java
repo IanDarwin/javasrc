@@ -11,7 +11,7 @@ import java.util.*;
 public class MenuIntl extends JFrame {
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create an MenuIntl object, tell it to show up
 		new MenuIntl().setVisible(true);
 	}

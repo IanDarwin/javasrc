@@ -6,7 +6,7 @@
  * @version $Id$
  */
 public class MatrixUse {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		int x[][] = {
 			{ 3, 2, 3 },

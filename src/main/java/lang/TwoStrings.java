@@ -2,7 +2,7 @@
  * See if Strings are shared on this implementation.
  */
 public class TwoStrings {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String one = "A String";
 		String two = new String(one);
 		if (one == two) {

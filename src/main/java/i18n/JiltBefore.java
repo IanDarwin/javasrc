@@ -82,7 +82,7 @@ public class JiltBefore
 			System.exit(0);
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		new JiltBefore("Testing 1 2 3...").setVisible(true);
 	}
 }

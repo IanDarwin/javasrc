@@ -6,7 +6,7 @@ public class FrameIcon {
 	 * Create a small MemImage and set it as this Frame's iconImage. 
 	 * Also display a larger version of the same image in the Frame.
 	 */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Frame f = new Frame("FrameIcon");
 		Image im = 
 			Toolkit.getDefaultToolkit().getImage("FrameIcon.gif");

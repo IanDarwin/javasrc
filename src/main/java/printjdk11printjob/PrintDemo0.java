@@ -9,7 +9,7 @@ public class PrintDemo0 extends Frame {
 	protected static final int NPAGES = 3;
 
 	/** main program: instantiate and run. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		PrintDemo0 pd = new PrintDemo0();
 		pd.setVisible(true);
 		pd.print(NPAGES);

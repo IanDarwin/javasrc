@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class SerialLogger {
 
-	public static void main(String argv[])
+	public static void main(String[] argv)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 

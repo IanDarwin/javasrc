@@ -19,7 +19,7 @@ public class Diary extends Frame {
 	protected String fileName = null;
 
 	/** "main program" method - construct and show */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		// create an Diary object, tell it to show up
 		Diary d = new Diary();

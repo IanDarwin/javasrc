@@ -9,7 +9,7 @@ import java.util.*;
 public class CommPortLister {
 
 	/** Simple test program. */
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		new CommPortLister().list();
 	}
 

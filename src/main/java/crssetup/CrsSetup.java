@@ -80,7 +80,7 @@ public class CrsSetup extends JFrame {
 	// CONTROLLERS are throughout -- look for add...Listener().
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new CrsSetup().setVisible(true);
 	}
 

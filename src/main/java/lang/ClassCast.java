@@ -1,6 +1,6 @@
 /** Class Casting Demo. */
 public class ClassCast {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		A anA = new A();
 		B aB = new B(1);

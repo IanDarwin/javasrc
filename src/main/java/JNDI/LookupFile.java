@@ -7,7 +7,7 @@ import javax.naming.*;
 public class LookupFile {
 	Hashtable env = new Hashtable();
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		LookupFile lf = new LookupFile();
 		for (int i=0; i<av.length; i++)
 			System.out.println(av[i] + "-->" + lf.look(av[i]));

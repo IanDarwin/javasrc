@@ -8,7 +8,7 @@ import java.util.*;
  * @version $Id$
  */
 public class TarList {
-	public static void main(String argv[]) throws IOException, TarException {
+	public static void main(String[] argv) throws IOException, TarException {
 		if (argv.length == 0) {
 			System.err.println("Usage: TarList archive");
 			System.exit(1);

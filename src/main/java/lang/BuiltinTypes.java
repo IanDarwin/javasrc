@@ -2,7 +2,7 @@
  * Built in types
  */
 public class BuiltinTypes {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		// An integer can be entered in several ways:
 		int i = 123;
 		System.out.println("i = " + i);

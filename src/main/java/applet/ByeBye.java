@@ -1,5 +1,6 @@
 import java.applet.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /** BadGuy demo -- exit from within an applet
  * (just to show that it has no effect).

@@ -33,7 +33,7 @@ public class GfxDemo2 extends Frame {
 		this(title, 300, 300);
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new GfxDemo2("Default Size").setVisible(true);
 		new GfxDemo2("Smaller", 100, 100).setVisible(true);
 	}

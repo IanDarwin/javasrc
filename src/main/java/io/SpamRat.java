@@ -23,7 +23,7 @@ import java.net.*;
  */
 public class SpamRat {
 
-    public static void main(String av[]) throws IOException {
+    public static void main(String[] av) throws IOException {
 		// For stdin or each file, build a IndentContLineReader
 		// to treat the Received: lines as one.
         if (av.length == 0) {

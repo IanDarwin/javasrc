@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PrintDemoGfx {
 
 	/** Simple demo main program. */
-	public static void main(String av[]) throws PrinterException {
+	public static void main(String[] av) throws PrinterException {
 		final JFrame f = new JFrame("Printing Test Dummy Frame");
 
 		// Construct the object we want to print. Contrived:

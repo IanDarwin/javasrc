@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class TextBrowser {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		TextBrowser tb = new TextBrowser();
 		if (av.length == 0) {
 			System.err.println("Usage: TextBrowser URL [...]");

@@ -43,7 +43,7 @@ public class JulianDate extends GregorianCalendar {
 		super(yy,mm,dd);
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new JulianDate().dump();
 		new JulianDate(1951, 04-1, 24).dump();
 		new JulianDate(2000, 00, 01).dump();

@@ -10,7 +10,7 @@ public class GUI1 extends Frame {
 	Button quitButton;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a GUI1 object, tell it to show up
 		new GUI1().setVisible(true);
 	}

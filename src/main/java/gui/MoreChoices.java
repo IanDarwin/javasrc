@@ -17,7 +17,7 @@ public class MoreChoices extends JFrame {
 	ActionListener less;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a MoreChoices object, tell it to show up
 		JFrame jf = new MoreChoices();
 		jf.setLocation(100, 100);	// get away from screen corner,

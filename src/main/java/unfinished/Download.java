@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Download {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println("Download starting.");
 		getListFromURL();

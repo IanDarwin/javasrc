@@ -18,7 +18,7 @@ public class MyJavaP {
 	/** Simple main program, construct self, process each class name
 	 * found in argv.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		MyJavaP pp = new MyJavaP();
 
 		if (argv.length == 0) {

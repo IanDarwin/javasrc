@@ -3,7 +3,7 @@ import java.util.*;
 /** Show use of Calendar get() method with various parameters. */
 public class DayWeek {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		//+
 		Calendar c = Calendar.getInstance();	// today
 

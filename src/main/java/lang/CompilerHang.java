@@ -140,7 +140,7 @@ public class CompilerHang extends Frame {
 
 
 	// Simple test case
-	public static void main(String av[]) throws SMTPException {
+	public static void main(String[] av) throws SMTPException {
 		CompilerHang sm = new CompilerHang("Test Mailer", "server", "ian", 400, 300);
 		sm.setVisible(true);
 	}

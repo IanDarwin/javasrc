@@ -1,7 +1,7 @@
 /** Casting Demo. */
 public class CastNeeded {
 	//+
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int i, k;
 		double j = 2.75;
 		i = j;			// EXPECT COMPILE ERROR

@@ -36,7 +36,7 @@ public class GetImage extends java.applet.Applet {
 		g.drawImage(image, 20, 20, this);
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Frame f = new Frame("GetImage");
 		//-
         f.addWindowListener(new WindowAdapter() {

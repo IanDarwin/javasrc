@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class CharMode {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		//+
 		BufferedReader is = new BufferedReader(
 			new InputStreamReader(System.in));

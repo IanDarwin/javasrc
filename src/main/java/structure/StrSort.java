@@ -30,7 +30,7 @@ public class StrSort {
 	}
 
 	/** Simple main program to test the sorting */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("StrSort Demo in Java");
 		StrSort s = new StrSort();
 		s.load();

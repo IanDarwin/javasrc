@@ -9,14 +9,14 @@ public class SoundPlay {
 		"file:///javasrc/graphics/test.wav",
 		"file:///music/midi/Beet5th.mid",
 	};
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		if (av.length == 0)
 			main(defSounds);
 		else for (int i=0;i<av.length; i++) {
 			System.out.println("Starting " + av[i]);
 			try {
 				URL snd = new URL(av[i]);
-				// open to see if works or throws exception, close to free fds
+				// open to see if works or throws exception, close to free fd's
 				// snd.openConnection().getInputStream().close();
 				Applet.newAudioClip(snd).play();
 			} catch (Exception e) {

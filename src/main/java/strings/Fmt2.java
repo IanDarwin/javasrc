@@ -18,7 +18,7 @@ public class Fmt2 extends Fmt {
 	/** The current output column. */
 	protected int col = 0;
 
-	public static void main(String av[]) throws IOException {
+	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new Fmt2("-").format();
 		else for (int i=0; i<av.length; i++)

@@ -18,7 +18,7 @@ public class proxy {
 	/**
 	 * Main method, just creates a server and call its runServer().
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length != 3) {
 			System.err.println("usage: proxy port destIP destport");
 			System.exit(0);

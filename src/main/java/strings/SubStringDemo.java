@@ -1,5 +1,5 @@
 public class SubStringDemo {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		String a = "Java is great.";
 		System.out.println(a);
 		String b = a.substring(5);	// b is the String "is great."

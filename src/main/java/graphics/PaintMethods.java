@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class PaintMethods extends Label {
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		final Frame f = new Frame("PaintMethods demo");
 		f.add("Center", new PaintMethods("Testing 1 2 3"));
 		f.addWindowListener(new WindowAdapter() {

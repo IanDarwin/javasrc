@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class CompTest {
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a Frame, and add an instance of class named in av[0].
 		final JFrame f = new JFrame("CompTest: " + av[0]);
 		Container cp = f.getContentPane();

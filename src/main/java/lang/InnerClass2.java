@@ -15,7 +15,7 @@ public class InnerClass2 {
 		System.out.println("Std Date: " + new Date());
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		InnerClass2 p = new InnerClass2();
 		p.doWork();
 	}

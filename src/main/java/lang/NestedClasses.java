@@ -12,7 +12,7 @@ class A extends Object {
 		System.out.println(this + " " + new B() + " " +
 						new C() + " " + d);
 	}
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new A().print();
 	}
 }

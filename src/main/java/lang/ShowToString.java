@@ -10,7 +10,7 @@ import java.awt.Button;
 public class ShowToString {
 
 	/** main method */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		System.out.println("An Object\t" + new Object());
 		System.out.println("A Date  \t" + new Date());

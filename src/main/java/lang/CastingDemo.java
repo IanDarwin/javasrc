@@ -1,6 +1,6 @@
 /** A simple casting demo. */
 public class CastingDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int i, ans;
 		double d = 2.75;
 		i = d;			// EXPECT COMPILE ERROR

@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class SetDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		HashSet h = new HashSet();
 		h.add("One");

@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Stopwatch {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		long t0 = System.currentTimeMillis();
 		while (true) {

@@ -15,7 +15,7 @@ class X {
  */
 public class GetMethod {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		try {
 			Class clX = X.class; // or Class.forName("X");
 			// To find a method we need the array of matching Class types.

@@ -31,7 +31,7 @@ public class Miles2Kms extends Applet {
 		sb.addAdjustmentListener( new MyAdjustmentListener( model ) );
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Miles2Kms mk = new Miles2Kms();
 		Frame f = new Frame("Miles2Kms");
 		f.add(mk);

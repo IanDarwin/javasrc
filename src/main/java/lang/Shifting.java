@@ -6,7 +6,7 @@
  * @version $Id$
  */
 public class Shifting {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println(" 2<<4 = " + (2<<4));
 		System.out.println(" 2<<8 = " + (2<<8));

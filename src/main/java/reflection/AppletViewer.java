@@ -30,7 +30,7 @@ public class AppletViewer {
 	/** Main is where it all starts. 
 	 * Construct the GUI. Load the Applet. Start it running.
 	 */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new AppletViewer(av.length==0?"HelloApplet":av[0]);
 	}
 

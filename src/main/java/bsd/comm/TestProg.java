@@ -15,7 +15,7 @@ import java.util.*;
 public class TestProg {
 	SerialPort ttya;
 
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		TestProg tp;
 		try {
 			tp = new TestProg();

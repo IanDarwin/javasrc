@@ -6,7 +6,7 @@ import java.io.*;
  */
 public class ClassFileToBytes {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         ClassFileToBytes c = new ClassFileToBytes();
         switch(av.length) {
             case 0: c.process(new DataInputStream(System.in));

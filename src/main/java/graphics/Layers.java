@@ -29,7 +29,7 @@ public class Layers extends Frame {
 		g.fillRect(width/3, height/3, width/4, height/4);
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new Layers("Default Size").setVisible(true);
 		new Layers("Smaller", 100,100).setVisible(true);
 	}

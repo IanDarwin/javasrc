@@ -40,7 +40,7 @@ public class FontDemo extends Canvas {
 	}
 
 	/** Simple main program to start it running */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Frame f = new Frame("Font Demo");
 		f.add(new FontDemo());
 		f.setVisible(true);

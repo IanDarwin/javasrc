@@ -26,7 +26,7 @@ public class MkIndex {
 	File dirFile;
 
 	/** Make an index */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		MkIndex mi = new MkIndex();
 		String inDir = av.length > 0 ? av[0] : ".";
 		mi.open(inDir, OUTPUTFILE);		// open files

@@ -12,7 +12,7 @@ public class JTreeDemo extends JFrame {
 	DefaultMutableTreeNode root, child;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a JTreeDemo object, tell it to show up
 		new JTreeDemo().setVisible(true);
 	}

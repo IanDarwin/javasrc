@@ -9,7 +9,7 @@ public class TempConverter3 extends TempConverter2 {
 	protected FieldPosition fp;
 	protected DecimalFormat dff;
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		TempConverter t = new TempConverter3();
 		t.start();
 		t.data();

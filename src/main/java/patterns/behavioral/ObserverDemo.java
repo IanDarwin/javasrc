@@ -18,7 +18,7 @@ public class ObservDemo extends Object {
 
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		ObservDemo me = new ObservDemo();
 		me.demo();
 	}

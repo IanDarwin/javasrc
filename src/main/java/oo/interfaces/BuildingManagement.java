@@ -102,7 +102,7 @@ public class EnergySaver {
 		things[thingNum++] = thing;
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		EnergySaver b1 = new EnergySaver();
 		b1.add(new RoomLights(101));	// control lights in room 101
 		b1.add(new EmergencyLights(101));	// and emerg. lights.

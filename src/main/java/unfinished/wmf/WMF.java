@@ -35,7 +35,7 @@ public class WMF {
 	}
 
 	/* TEST MAIN */
-	public static void main(String unused[]) {
+	public static void main(String[] unused) {
 		DataOutputStream fd;
 		try {
 			fd = new DataOutputStream(new FileOutputStream("foo.wmf"));

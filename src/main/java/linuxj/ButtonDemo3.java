@@ -70,7 +70,7 @@ public class ButtonDemo3 extends JFrame {
 		});
 	}
  
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	    new ButtonDemo3().setVisible(true);
 	}
 }

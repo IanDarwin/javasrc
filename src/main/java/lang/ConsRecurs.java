@@ -8,7 +8,7 @@ public class ConsRecurs {
 	public ConsRecurs(double d) {
 		this((int)d);
 	}
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		System.out.println("About to construct...");
 		new ConsRecurs(Math.PI);
 		System.out.println("Hey, I'm still alive!");

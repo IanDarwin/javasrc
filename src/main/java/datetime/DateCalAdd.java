@@ -4,7 +4,7 @@ import java.util.*;
 /** DateCalAdd -- compute the difference between two dates.
  */
 public class DateCalAdd {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		//+
 		/** Today's date */
 		Calendar now = Calendar.getInstance();

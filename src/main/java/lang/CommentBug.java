@@ -3,7 +3,7 @@
  */
 public class CommentBug {
 	/* This should be a /* compile-time */ error */	// EXPECT COMPILE ERROR
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		System.out.println("SHOULD NOT HAVE COMPILED!!");
 	}
 }

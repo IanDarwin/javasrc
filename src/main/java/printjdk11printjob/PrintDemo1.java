@@ -15,7 +15,7 @@ public class PrintDemo1 extends Frame implements ActionListener {
 	PrintJob pjob = null;	// refers to whole print job
 
 	/** main program: instantiate and show. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		PrintDemo1 p;
 		if (av.length>0)
 			p = new PrintDemo1(Integer.parseInt(av[0]));

@@ -80,7 +80,7 @@ public class EvalServer
 			// log(ident, e.c1);
 	}
 
-	public static void main(String av[]) throws java.rmi.RemoteException {
+	public static void main(String[] av) throws java.rmi.RemoteException {
 		EvalServer eServ = null;
 		// Must create and install a security manager BEFORE
 		// trying to create the object itself.

@@ -3,7 +3,7 @@ import java.util.*;
 /** Show use of Calendar objects */
 public class GregCalDemo {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		//+
 		GregorianCalendar d1 = new GregorianCalendar(1986, 04, 05); // May 5
 		GregorianCalendar d2 = new GregorianCalendar();	// today

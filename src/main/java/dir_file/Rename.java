@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class Rename {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 
 		// Construct the file object. Does NOT create a file on disk!
 		File f = new File("Rename.java~"); // backup of this source file.

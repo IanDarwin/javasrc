@@ -13,7 +13,7 @@ public class NumFormatTest {
 	//-
 
 	/** The main (and only) method in this class. */
-	public static void main(String av[]) { 
+	public static void main(String[] av) { 
 
 		//+
 		NumberFormat defForm = NumberFormat.getInstance();

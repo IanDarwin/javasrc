@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class Delete {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 
 		// Construct a File object for the backup created by editing
 		// this source file. The file probably already exists.

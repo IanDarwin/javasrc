@@ -7,7 +7,7 @@ import java.io.*;
  * @version $Id$
  */
 public class Creat {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 
 		// Ensure that a filename (or something) was given in argv[0]
 		if (argv.length == 0) {

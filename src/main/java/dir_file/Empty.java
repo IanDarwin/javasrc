@@ -5,7 +5,7 @@ import java.io.*;
  * @author	Ian Darwin, Learning Tree, Course 471/478
  */
 class Empty {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length != 1) {	// no progname in argv[0]
 			System.err.println("usage: Empty dirname");
 			System.exit(1);

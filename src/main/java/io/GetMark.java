@@ -70,7 +70,7 @@ public class GetMark {
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you.
 	 */
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         GetMark o = new GetMark();
 		PrintStream pw = new PrintStream(System.out);
         if (av.length == 0) {

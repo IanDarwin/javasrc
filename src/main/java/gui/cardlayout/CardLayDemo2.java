@@ -171,7 +171,7 @@ public class CardLayDemo2 extends Frame {
 		System.err.println("Print completed");
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 
 		// Generate some data...
 		// ...

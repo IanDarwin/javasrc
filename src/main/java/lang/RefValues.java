@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class RefValues {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		RefValues ref = new RefValues();
 	}
 

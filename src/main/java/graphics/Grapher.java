@@ -116,7 +116,7 @@ public class Grapher extends Component {
 		return new Dimension(150, 150);
 	}
 
-	public static void main(String rgs[]) {
+	public static void main(String[] rgs) {
 		final Frame f = new Frame("Grapher");
         f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

@@ -1,7 +1,7 @@
 /** Can you overload a method to have two different return types?
  */
 public class OverLoadReturn {
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		System.out.println("Hello. Why did you call me up?");
 		OverLoadReturn r = new OverLoadReturn();
 		int i = method();

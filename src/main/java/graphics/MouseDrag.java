@@ -17,7 +17,7 @@ public class MouseDrag extends Component
 	int curX = -1, curY = -1;
 
 	// "main" method
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Frame f = new Frame("Mouse Dragger");
 
 		if (av.length < 1) {

@@ -33,7 +33,7 @@ public class ButtonDemo2 extends JFrame {
 			pack();
 	}
  
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	    new ButtonDemo2().setVisible(true);
 	}
 }

@@ -58,7 +58,7 @@ public class PortChooser extends JDialog implements ItemListener {
 	}
 
 	/** A test program to show up this chooser. */
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		PortChooser c = new PortChooser(null);
 		c.setVisible(true);	// blocking wait
 		System.out.println("You chose " + c.getSelectedName() +

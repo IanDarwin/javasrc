@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class Array2  {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int nDates = 0;
 		final int MAX = 10;
 		Calendar dates[] = new Calendar[MAX];

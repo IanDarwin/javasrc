@@ -58,7 +58,7 @@ public class Sched {
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you.
 	 */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Sched o = new Sched();
 		System.out.println(o);
 		if (av.length == 0) {

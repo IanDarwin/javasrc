@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class UnicodeChars {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		StringBuffer b = new StringBuffer();
 		for (char c = 'a'; c<'d'; c++) {

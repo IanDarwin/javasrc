@@ -10,7 +10,7 @@ import javax.swing.text.html.*;
  * Browser1 - Get the contents of a URL, write to stdout
  */
 public class Browser1 {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		new Browser1(av);
 	}
 

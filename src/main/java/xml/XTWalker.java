@@ -8,7 +8,7 @@ import com.sun.xml.tree.*;
  */
 public class XTWalker extends XTW {
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		if (av.length == 0) {
 			System.err.println("Usage: XTWalker file [...]");
 			return;

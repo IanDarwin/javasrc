@@ -6,7 +6,7 @@ import java.util.*;
  * @version $Id$
  */
 public class TreeSetDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		/* A TreeSet keeps objects in sorted order. We use a
 		 * Comparator published by String for case-insensitive

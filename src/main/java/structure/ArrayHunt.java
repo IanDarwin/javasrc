@@ -10,7 +10,7 @@ public class ArrayHunt  {
 	int haystack[];
 	Random r;
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		ArrayHunt h = new ArrayHunt();
 		if (argv.length == 0)
 			h.play();

@@ -7,7 +7,7 @@ import java.text.*;
 public class TempConverter2 extends TempConverter {
 	protected DecimalFormat df;
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		TempConverter t = new TempConverter2();
 		t.start();
 		t.data();

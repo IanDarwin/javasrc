@@ -24,7 +24,7 @@ public class GfxDemo extends Frame {
 		g.drawString("Hello World of Blue", (width/2)+10, (height/2)+10);
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		GfxDemo xyz = new GfxDemo("Default Size");
 		xyz.setVisible(true);
 

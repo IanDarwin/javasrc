@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class RegUse2 {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		String patt = "^Q[^u]\\d+\\.";
 		RE myRE = new RE(patt);

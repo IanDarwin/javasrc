@@ -39,7 +39,7 @@ public class JOptionDemo extends JFrame {
 		pack();
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		JOptionDemo x = new JOptionDemo("Testing 1 2 3...");
 		x.setVisible(true);
 	}

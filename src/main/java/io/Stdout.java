@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class Stdout {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		Object anObject = new Object();
 		String myAnswer = "no";

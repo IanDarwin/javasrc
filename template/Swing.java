@@ -11,7 +11,7 @@ public class Swing extends JComponent {
 	JButton quitButton;
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a Swing object, tell it to show up
 		final JFrame f = new JFrame("Swing");
 		Swing comp = new Swing();

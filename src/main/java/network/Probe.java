@@ -3,7 +3,7 @@ import java.net.*;
  * Probe a network address for useful information.
  */
 public class Probe {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length == 0) {
 			System.err.println("lusage: Probe hostname [...]");
 			return;

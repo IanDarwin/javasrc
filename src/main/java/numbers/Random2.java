@@ -4,7 +4,7 @@ import java.util.*;
  * using java.util.Random.next*().
  */
 public class Random2 {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		// java.util.Random methods are non-static, do need to construct Math
 		Random r = new Random();

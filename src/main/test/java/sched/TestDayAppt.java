@@ -4,7 +4,7 @@ import java.util.*;
  * @version $Id$
  */
 public class TestDayAppt {
-	public static void main(String va[]) {
+	public static void main(String[] va) {
 		TreeSet days = new TreeSet();
 		// Exercise static factory method.
 		days.add(Appt.fromString("1951 4 24 6 0 birthday"));

@@ -12,7 +12,7 @@ public class InnerClass1 {
 		i.doTheWork();
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		InnerClass1 p = new InnerClass1();
 		p.doWork();
 	}

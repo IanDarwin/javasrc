@@ -7,7 +7,7 @@ import java.lang.reflect.*;
  */
 public class Time {
 	//+
-	public static void main(String argv[]) throws Exception {
+	public static void main(String[] argv) throws Exception {
 		// Instantiate target class, from argv[0]
 		Class c = Class.forName(argv[0]);
 

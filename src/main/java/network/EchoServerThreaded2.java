@@ -47,11 +47,7 @@ public class EchoServerThreaded2 {
 			super();
 			servSock = s;
 			threadNumber = i;
-		}
-
-		/** Like Thread.getName(), which is alas final */
-		public String myName() {
-			return "Thread " + threadNumber;
+			setName("Thread " + threadNumber);
 		}
 
 		public void run() 
@@ -59,9 +55,9 @@ public class EchoServerThreaded2 {
 			/* Wait for a connection */
 			while (true){
 				try {
-					System.out.println( myName() + " waiting");
+					System.out.println( getName() + " waiting");
 					Socket clientSocket = servSock.accept();
-					System.out.println(myName() + " starting, IP=" + 
+					System.out.println(getName() + " starting, IP=" + 
 						clientSocket.getInetAddress());
 					DataInputStream is = new DataInputStream(
 						clientSocket.getInputStream());
@@ -73,10 +69,10 @@ public class EchoServerThreaded2 {
 						os.print(line + "\r\n");
 						os.flush();
 					}
-					System.out.println(myName() + " ENDED ");
+					System.out.println(getName() + " ENDED ");
 					clientSocket.close();
 				} catch (IOException ex) {
-					System.out.println(myName() + ": IO Error on socket " + ex);
+					System.out.println(getName() + ": IO Error on socket " + ex);
 					return;
 				}
 			}

@@ -15,7 +15,7 @@ public class AppApp extends Applet {
 		showStatus("My applet is running");
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		AppApp app = new AppApp();
 		Frame f = new Frame("AppApp Demo");
 		f.addWindowListener(new WindowAdapter() {

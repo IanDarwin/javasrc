@@ -78,7 +78,7 @@ public class FileTree extends JPanel
 	}
 
 	/** Main: make a Frame, add a FileTree */
-    public static void main(String av[]) {
+    public static void main(String[] av) {
 
 		JFrame frame = new JFrame("FileTree");
 		frame.setForeground(Color.black);

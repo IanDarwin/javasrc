@@ -5,7 +5,7 @@
  */
 public class InfNaN {
 	//+
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		double d = 123;
 		double e = 0;
 		if (d/e == Double.POSITIVE_INFINITY)

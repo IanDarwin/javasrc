@@ -39,7 +39,7 @@ public class ImageIndex {
 	String title;
 
 	/** Make an index */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		ImageIndex mi = new ImageIndex();
 		try {
 			mi.open(CAPTIONS_FILE, OUTPUTFILE);		// open files

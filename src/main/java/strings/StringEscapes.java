@@ -3,7 +3,7 @@
  * Note that they may not print correctly on all platforms.
  */
 public class StringEscapes {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Java Strings in action:");
 		// System.out.println("An alarm or alert: \a");	// not supported
 		System.out.println("An alarm entered in Octal: \007");

@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class ReadOnly {
-	public static void main(String a[]) throws IOException {
+	public static void main(String[] a) throws IOException {
 
 		File f = new File("f");
 

@@ -4,7 +4,7 @@
  * @author	Ian Darwin, ian@darwinsys.com
  */
 public class LinkList {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("Here is a demo of writing a Linked List in Java");
 		LinkList l = new LinkList();
 		l.add(new Object());

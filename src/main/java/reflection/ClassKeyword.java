@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class ClassKeyword {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		System.out.println("Trying the ClassName.class keyword:");
 		System.out.println("Object class: " + Object.class);

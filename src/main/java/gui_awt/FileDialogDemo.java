@@ -32,7 +32,7 @@ public class FileDialogDemo extends Frame {
 	}
 
 	/** main test program: construct the Frame and show it */
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new FileDialogDemo().setVisible(true);
 	}
 }

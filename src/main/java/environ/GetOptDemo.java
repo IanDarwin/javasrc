@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class GetOptDemo {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		GetOpt go = new GetOpt("hno:");
 		boolean numeric_option = false;
 		String outFileName = "(standard output)";

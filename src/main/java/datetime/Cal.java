@@ -244,7 +244,7 @@ public class Cal extends JPanel {
 	}
 
 	/** For testing, a main program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		JFrame f = new JFrame("Cal");
 		Container c = f.getContentPane();
 		c.setLayout(new FlowLayout());

@@ -18,7 +18,7 @@ public class SimpleCalc {
 	protected Stack s;
 
 	/* Driver - main program */
-	public static void main(String av[]) throws IOException {
+	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new SimpleCalc(
 				new InputStreamReader(System.in)).doCalc();

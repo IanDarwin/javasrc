@@ -2,7 +2,7 @@
  * Start with Thread which implements Runnable.
  */
 public class InterfaceInherit extends Thread {
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new InterfaceInherit().start();
 	}
 	public void run() {

@@ -19,7 +19,7 @@ class MyClass {
 	}
 
 	/** Test main program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		System.out.println(new MyClass(300,100));
 		System.out.println(new MyClass());
 	}

@@ -6,7 +6,7 @@ import java.io.*;
  */
 public class HelpDemo {
 	/** A simple main program, to show calling help(). */
-	public static void main(String av[]) throws IOException { 
+	public static void main(String[] av) throws IOException { 
 		new HelpDemo().help();
 		return;
 	}

@@ -7,7 +7,7 @@ import java.text.*;
  * @version $Id$
  */
 public class Timer {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		try {
 			new Timer().run();
 		} catch (IOException e) {

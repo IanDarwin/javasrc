@@ -11,7 +11,7 @@ public class NumFormat2 {
 	};
 
 	/** The main (and only) method in this class. */
-	public static void main(String av[]) { 
+	public static void main(String[] av) { 
 		// Get a format instance
 		NumberFormat form = NumberFormat.getInstance();
 

@@ -10,7 +10,7 @@ public class ReadRandom {
 	protected String fileName;
 	protected RandomAccessFile seeker;
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		ReadRandom r = new ReadRandom(FILENAME);
 
 		System.out.println("Offset is " + r.readOffset());

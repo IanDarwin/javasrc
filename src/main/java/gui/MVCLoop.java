@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MVCLoop {
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		Button b;
 		final JComboBox ch;
 		JFrame f = new JFrame("Testing");

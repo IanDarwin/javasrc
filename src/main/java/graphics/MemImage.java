@@ -8,7 +8,7 @@ public class MemImage extends Component {
 	 * Create a small MemImage and set it as this Frame's iconImage. 
 	 * Also display a larger version of the same image in the Frame.
 	 */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Frame f = new Frame("MemImage.java");
 		f.add(new MemImage());
 		f.setIconImage(new MemImage(16,16).getImage());

@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class Reminder {
-	public static void main(String argv[]) throws InterruptedException {
+	public static void main(String[] argv) throws InterruptedException {
 		//+
 		while (true) {
 			System.out.println(new Date() + "\007");

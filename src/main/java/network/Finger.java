@@ -13,7 +13,7 @@ public class Finger {
 	static BufferedReader is;
 	static PrintStream os;
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		if (av.length == 0)
 			System.out.println("Just you");
 		else for (int i=0; i<av.length; i++)

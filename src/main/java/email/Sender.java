@@ -75,7 +75,7 @@ public class Sender {
 	}
 
 	/** Simple test case driver */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		Sender sm = new Sender();
 		sm.doSend();
 	}

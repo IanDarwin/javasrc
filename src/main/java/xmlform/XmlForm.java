@@ -42,7 +42,7 @@ public class XmlForm {
 			System.err.println(">>>Done " + fileName + "...");
 	}
 
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		if (av.length == 0) {
 			System.err.println("Usage: XmlForm file");
 			return;

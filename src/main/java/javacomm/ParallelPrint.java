@@ -11,7 +11,7 @@ public class ParallelPrint extends CommPortOpen {
 
 	protected static String inputFileName;
 
-	public static void main(String argv[])
+	public static void main(String[] argv)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 

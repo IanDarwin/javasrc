@@ -7,7 +7,7 @@ import java.util.zip.*;
  * @version $Id$
  */
 public class ReadGZIP {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		String FILENAME = "file.txt.gz";
 
 		// Since there be four constructors here, I wrote them all out in full.

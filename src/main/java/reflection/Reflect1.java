@@ -5,7 +5,7 @@ import java.lang.reflect.*;
  * "Reflectance" is used to look up that information.
  */
 public class Reflect1 {
-	public static void main(String args[])
+	public static void main(String[] args)
 	{
 		new Reflect1().run(args);
 	}

@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class REsubstr {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		String patt = "Q[^u]\\d+\\.";
 		String line = "Order QT300. Now!";

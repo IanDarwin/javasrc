@@ -21,7 +21,7 @@ public class MakeList {
 	/** Simple main program, construct self, process each .ZIP file
 	 * found in CLASSPATH.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		MakeList maker = new MakeList();
 
 		maker.processOneZip("/jdk1.2/jre/lib/rt.jar");

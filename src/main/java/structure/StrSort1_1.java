@@ -18,7 +18,7 @@ public class StrSort1_1 {
 	};
 
 	/** Simple main program to test the sorting */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("StrSort Demo in Java");
 		StringSort s = new StringSort();
 		dump(a, "Before");

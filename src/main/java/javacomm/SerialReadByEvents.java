@@ -12,7 +12,7 @@ import java.util.*;
 public class SerialReadByEvents extends CommPortOpen 
 	implements SerialPortEventListener {
 
-	public static void main(String argv[])
+	public static void main(String[] argv)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 

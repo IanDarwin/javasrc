@@ -3,7 +3,7 @@ import java.util.Date;
 /** Show use of Argv to get an integer value from command line */
 public class ArgvNumber {
 	/** Main program */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int number = 0;
 
 		System.out.println("The number of words in argv is " + argv.length);

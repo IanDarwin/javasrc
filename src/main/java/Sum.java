@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class Sum {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         Sum c = new Sum();
         switch(av.length) {
             case 0: c.process("Stdin", new BufferedInputStream(

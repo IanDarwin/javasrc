@@ -8,7 +8,7 @@ import com.sun.xml.tree.*;
  */
 public class DocWrite {
 
-	public static void main(String av[]) throws IOException {
+	public static void main(String[] av) throws IOException {
 		DocWrite dw = new DocWrite();
 		XmlDocument doc = dw.makeDoc();
 		doc.write(System.out);

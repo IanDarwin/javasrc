@@ -18,7 +18,7 @@ public class ReturnType {
 		System.out.println("e="+e);
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		new ReturnType().doTheWork();
 	}
 }

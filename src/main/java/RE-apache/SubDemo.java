@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class SubDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		// Quick demo of substitution: correct "demon" and other 
 		// spelling variants to the correct, non-satanic "daemon".

@@ -6,7 +6,7 @@ import java.util.*;
  * SMTP talker class, usable standalone (as a SendMail(8) backend)
  * or inside applications such as JabaDex that need to send mail..
  *
- * OBSOLETE!! Use javax.mail instead, now that its available!
+ * OBSOLETE!! Use javax.mail instead, now that it's available!
  *
  * Needs more parameterization - bit of a hack to start.
  * Should use same interface as Mailer (subclass, and override doSend()).
@@ -28,7 +28,7 @@ public class SmtpTalk implements SysExits {
 	 *
 	 * TODO generalize to accept From arg, read msg on stdin
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		if (argv.length != 2) {
 			System.err.println("Usage: java SmtpTalk host user");
 			System.exit(EX_USAGE);
@@ -127,7 +127,7 @@ public class SmtpTalk implements SysExits {
 			String r = st.nextToken();
 			send_cmd("RCPT", "To:<" + r + ">");
 			if (!expect_reply("250")) die(EX_PROTOCOL,
-				"didnt ack RCPT " + r);
+				"didn't ack RCPT " + r);
 		}
 		send_cmd("DATA");
 		if (!expect_reply("354")) die(EX_PROTOCOL,"did not want our DATA!");

@@ -5,7 +5,7 @@
  */
 public class ReadStdin {
 	/** Simple test case */
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		//+
 		int b = 0;
 		try {

@@ -7,7 +7,7 @@ import java.io.*;
  */
 class DirTree {
 	/** Main program */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		DirTree dt = new DirTree();
 		if (argv.length == 0)
 			dt.doDir(".");

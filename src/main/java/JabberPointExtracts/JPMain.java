@@ -8,7 +8,7 @@ public class JPMain {
 	static View view;
 
 	/** The Real Main Program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 
 		JPMain jp = new JPMain();
 

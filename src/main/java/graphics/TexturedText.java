@@ -17,7 +17,7 @@ public class TexturedText extends Component {
 	Font myFont = new Font("Lucida Regular", Font.BOLD, 72);
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		// create a TexturedText object, tell it to show up
 		final Frame f = new Frame("TexturedText");
 		TexturedText comp = new TexturedText();

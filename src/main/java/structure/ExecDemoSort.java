@@ -4,7 +4,7 @@ import java.io.*;
  * ExecDemo shows how to execute an external program and read its output.
  */
 public class ExecDemoSort {
-	public static void main(String av[]) throws IOException { 
+	public static void main(String[] av) throws IOException { 
 
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();

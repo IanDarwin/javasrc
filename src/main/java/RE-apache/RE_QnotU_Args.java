@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class RegUse1 {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		String patt = "^Q[^u]\\d+\\.";
 		boolean found = RE.isMatch(patt, argv[0]);

@@ -20,7 +20,7 @@ public class StaticIniDemo {
 		System.out.println("In Constructor");
 	}
 
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		try {
 			System.err.println("About to load class");
 			Class c = Class.forName("StaticIniDemo");

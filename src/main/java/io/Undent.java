@@ -11,7 +11,7 @@ public class Undent {
 	int nSpaces = 2;
 	//-
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         Undent c = new Undent();
         if (av.length == 0)
             c.process(new BufferedReader(

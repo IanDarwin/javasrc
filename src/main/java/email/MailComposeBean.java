@@ -218,7 +218,7 @@ public class MailComposeBean extends JPanel {
 
 
 	/** Simple test case driver */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		final JFrame jf = new JFrame("DarwinSys Compose Mail Tester");
 		System.getProperties().setProperty("Mail.server", "mailhost");
 		System.getProperties().setProperty("Mail.address", "nobody@home");

@@ -45,7 +45,7 @@ public class ImageView extends Frame {
 		g.drawImage(im, 0, 0, this);
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		if (arg.length == 0)
 			System.err.println("Usage: ImageView file");
 		else

@@ -3,7 +3,7 @@
  * This version tries to let the sort's standard output appear at the terminal.
  */
 public class ExecDemoSort2 {
-	public static void main(String av[]) { 
+	public static void main(String[] av) { 
 
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();

@@ -81,7 +81,7 @@ public class MenuShortcuts extends JFrame implements ActionListener {
 			System.exit(0);
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		new MenuShortcuts("Testing 1 2 3...").setVisible(true);
 	}
 }

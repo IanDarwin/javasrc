@@ -5,7 +5,7 @@ import java.util.*;
  * @version $Id$
  */
 public class StringReverse {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		String s = "Father Charles Goes Down And Ends Battle";
 

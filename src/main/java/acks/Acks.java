@@ -87,7 +87,7 @@ public class Acks extends Frame {
 	Vector winList = new Vector();
 
 	/** Main method, just instantiate and show.  */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		switch(argv.length) {
 			case 0:
 				new Acks(DATAFILENAME).setVisible(true);

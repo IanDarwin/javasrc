@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class Delete2 {
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		for (int i=0; i<argv.length; i++)
 			delete(argv[i]);
 	}

@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class ChangeArrayLength {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		//+
 		int[] a = new int[4];
 		System.out.println(a.length);

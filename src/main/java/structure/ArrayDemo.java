@@ -3,7 +3,7 @@
  * @version $Id$
  */
 public class ArrayDemo  {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		int ages[];			// declare a reference
 		ages = new int[10];		// construct it
 		int ages2[] = new int[10];	// short form

@@ -15,7 +15,7 @@ public class PrintFile extends Frame {
 	PrintJob pjob = null;	// refers to whole print job
 
 	/** main program: instantiate and show. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		PrintFile p = new PrintFile();
 		p.setVisible(true);
 		if (av.length==0)

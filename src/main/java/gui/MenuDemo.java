@@ -96,7 +96,7 @@ public class MenuDemo
 		System.out.println("AutoSave is set " + cb.getState());
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		new MenuDemo("Testing 1 2 3...").setVisible(true);
 	}
 }

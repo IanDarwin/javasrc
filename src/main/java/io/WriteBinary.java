@@ -6,7 +6,7 @@ import java.io.*;
  * @version $Id$
  */
 public class WriteBinary {
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		int i = 42;
 		double d = Math.PI;
 		String FILENAME = "binary.dat";

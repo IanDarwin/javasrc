@@ -3,7 +3,7 @@ import java.util.*;
 /** DateAdd -- compute the difference between two dates.
  */
 public class DateAdd {
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		//+
 		/** Today's date */
 		Date now = new Date();

@@ -13,7 +13,7 @@ class SomeOtherClass {
 
 /** This is the subclass */
 public class InheritStatics extends SomeOtherClass {
-	public static void main(String c[]) {
+	public static void main(String[] c) {
 		new InheritStatics().run();
 	}
 	public void run() {

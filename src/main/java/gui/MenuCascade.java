@@ -79,7 +79,7 @@ public class MenuCascade extends JFrame {
 		}
 	};
 
-	public static void main(String arg[]) {
+	public static void main(String[] arg) {
 		MenuCascade mb = new MenuCascade("Testing 1 2 3...");
 		mb.setVisible(true);
 	}

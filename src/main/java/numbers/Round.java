@@ -17,7 +17,7 @@ public class Round {
 		else return di;
 	}
 	//-
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		for (double d = 0.1; d<=1.0; d+=0.01)
 			System.out.println(d + "-> " + round(d));
 	}

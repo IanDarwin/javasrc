@@ -20,7 +20,7 @@ public class ReminderService {
 
 	ArrayList l = new ArrayList();
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		ReminderService rs = new ReminderService();
 		rs.load();
 		rs.run();

@@ -3,7 +3,7 @@ import java.util.*;
  * @version $Id$
  */
 public class VectorIterator {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		Vector v = new Vector();
 		Enumeration e; 
 		StructureDemo source = new StructureDemo(15);

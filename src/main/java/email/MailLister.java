@@ -11,7 +11,7 @@ public class MailLister {
 	static StringFormat subjFmt = 
 		new StringFormat(40, StringFormat.JUST_LEFT);
 
-	public static void main(String argv[]) throws Exception {
+	public static void main(String[] argv) throws Exception {
 		String fileName = MailConstants.PROPS_FILE_NAME;
 		String protocol = null;
 		String host = null;

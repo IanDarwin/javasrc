@@ -5,7 +5,7 @@ import java.io.*;
  */
 public class CatFile {
 
-    public static void main(String av[]) {
+    public static void main(String[] av) {
         CatFile c = new CatFile();
         if (av.length == 0)
             c.process(new BufferedReader(

@@ -222,7 +222,7 @@ public class CalMonth extends JPanel implements DateSelectedListener {
 	}
 
 	/** For testing, a main program */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		JFrame f = new JFrame("CalMonth");
 		Container c = f.getContentPane();
 		c.setLayout(new FlowLayout());

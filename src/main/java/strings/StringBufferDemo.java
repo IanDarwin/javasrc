@@ -3,7 +3,7 @@
  * three different ways.
  */
 public class StringBufferDemo {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		String s1 = "Hello" + ", " + "World";
 		System.out.println(s1);
 

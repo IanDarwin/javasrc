@@ -55,7 +55,7 @@ public class ColorChooser extends JFrame
 			});
 	}
 
-    public static void main(String astring[])
+    public static void main(String[] astring)
     {
         new ColorChooser().setVisible(true);
     }

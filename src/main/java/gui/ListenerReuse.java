@@ -31,7 +31,7 @@ public class ListenerReuse extends Frame {
 	}
 
 	/** Main just calls the above */
-	public static void main(String a[]) {
+	public static void main(String[] a) {
 		ListenerReuse lr = new ListenerReuse();
 		lr.setVisible(true);
 	}

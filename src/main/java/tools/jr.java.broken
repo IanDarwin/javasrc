@@ -23,7 +23,7 @@ import java.util.*;
 public class jr extends Main {
 
 	/** Main - just delegate to non-static methods */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		initResource();	// this is probably needed.
 		new jr().process(argv);
 	}
@@ -120,9 +120,9 @@ public class jr extends Main {
 				Class c = Class.forName(fileName);
 				// Now clean up compiler-only stuff.
 				System.gc();
-				// Get a String Class Array to find main(String av[])
+				// Get a String Class Array to find main(String[] av)
 				Class[] argvType = (Class[])Array.newInstance(String.class,0);
-				// Now find main(String av[])
+				// Now find main(String[] av)
 				Method m = c.getMethod("main", argvType);
 				// Hey, why not invoke it now that we've found it?
 				m.invoke(null, runArgv.toArray());
