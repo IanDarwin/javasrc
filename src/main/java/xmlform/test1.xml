@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<BOOK>
+<P>Java Cookbook -- O'Reilly &amp; Associates</P>
+<CH>Preface</CH>
+<P>This is some text that might be the
+introduction to this section.</P>
+<SC>OUTLINE</SC>
+<P>Here is some more text</P>
+
+<CH> Compiling, Running and Debugging
+	<SC>	Introduction</SC>
+	<P>This is the text of the introduction...</P>
+	<SC> Compiling with JDK</SC>
+	<P>This is the text of the section on compiling with the JDK</P>
+	<SC> Compiling with MRJ</SC>
+	<P>This is the text of the section on compiling using MRJ</P>
+</CH>
+</BOOK>

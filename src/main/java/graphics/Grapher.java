@@ -5,6 +5,7 @@ import java.util.*;
 
 /** Simple Graphing program.
  * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class Grapher extends Component {
 

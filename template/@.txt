@@ -1,0 +1,2 @@
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
