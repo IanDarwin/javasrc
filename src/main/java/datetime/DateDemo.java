@@ -15,5 +15,6 @@ public class DateDemo {
 		SimpleDateFormat formatter
 			= new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 		System.out.println("It is " + formatter.format(dNow));
+		//-
 	}
 }

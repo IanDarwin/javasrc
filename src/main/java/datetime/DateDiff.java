@@ -4,7 +4,7 @@ import java.util.Date;
  */
 public class DateDiff {
 	public static void main(String av[]) {
-
+		//+ 
 		/** The ending date. This value
 		 * doubles as a Y2K countdown time.
 		 */
@@ -19,5 +19,6 @@ public class DateDiff {
 			"\tand " + d1 + " is " +
 			(diff / (1000*60*60*24)) +
 			" days.");
+		//-
 	}
 }

@@ -4,7 +4,7 @@ import java.util.*;
  */
 public class DateAdd {
 	public static void main(String av[]) {
-
+		//+
 		/** Today's date */
 		Date now = new Date();
 
@@ -15,5 +15,6 @@ public class DateAdd {
 		Date then = new Date(t);
 
 		System.out.println("Seven hundred days ago was " + then);
+		//-
 	}
 }
