@@ -18,6 +18,16 @@
 		/>
 	</target>
 
+	<target name="regress" depends="build">
+		<junit printsummary="yes" fork="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement location="${build}"/>
+			</classpath>
+			<formatter type="plain"/>
+			<test name="PersonTest"/>
+		</junit>
+	</target>
+
 	<target name="clean">
 	</target>
 </project>

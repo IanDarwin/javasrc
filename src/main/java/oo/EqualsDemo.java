@@ -12,7 +12,7 @@ public class EqualsDemo {
 		this(0, new SomeClass());
 	}
 
-	/** Typical run-of-the-mill Equals method */
+	/** Typical run-of-the-mill "equals" method */
 	public boolean equals(Object o) {
 		if (o == null)		// caution
 			return false;

@@ -1,9 +1,9 @@
 /** This class is usable by AWT to handle exceptions.
  * System.setProperty("sun.awt.exception.handler", "ErrorHandler");
  * This usage is documented in the source code up to 1.4Beta for
- * java.awt.EventQueueDispatchThread. This class exists in all standard
+ * java.awt.EventDispatchThread. This class exists in all standard
  * implementations (try "javap java.awt.EventQueueDispatchThread"), but
- * the javadoc for it is removed before shipping.  NOTE: there is
+ * is not public so there's no javadoc.  NOTE: there is
  * a strong admonition that the interface WILL be changed in future.
  * <p>
  * In real life this could be part of your application, and can

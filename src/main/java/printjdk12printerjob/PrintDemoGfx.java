@@ -7,9 +7,18 @@ import javax.swing.*;
  * Java 2 VERSION, using a PrinterJob.
  */
 public class PrintDemoGfx {
+	final boolean quiet;
 
 	/** Simple demo main program. */
 	public static void main(String[] av) throws PrinterException {
+		boolean quiet = false;
+		if (av.length > 0 && av[0].startsWith("-q"))
+			quiet = true;
+		new PrintDemoGfx(quiet);
+	}
+
+	public PrintDemoGfx(boolean q) {
+		quiet = q;
 		final JFrame f = new JFrame("Printing Test Dummy Frame");
 
 		// Construct the object we want to print. Contrived:
@@ -44,7 +53,7 @@ public class PrintDemoGfx {
 						}
 					});
 
-					if (pjob.printDialog() == false)	// choose printer
+					if (!quiet && pjob.printDialog() == false)	// choose printer
 						return;				// user cancelled
 
 					pjob.print();			 // Finally, do the printing.

@@ -1,4 +1,4 @@
-<project name="XXX" default="compile" basedir=".">
+<project name="XXX" default="jar" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -24,6 +24,22 @@
 		</jar>
 	</target>
 
+	<target name="docs" depends="compile">
+		<javadoc sourcepath="${src}" destdir="${build}/docs/api"
+			packagenames="com.darwinsys.*"
+			maxmemory="32m" 
+			windowtitle="com.XXX.* - XXX Utilities"
+			Version="true" Author="true" Use="true"
+			Overview="overview.html"
+			>
+			<packageset dir="${src}" defaultexcludes="yes">
+				<include name="com/XXX/**" />
+				<exclude name="regress/**"/>
+			</packageset>
+			<bottom><![CDATA[<i>Copyright &#169; 2000-2003 Ian F. Darwin. See <a href="http://javacook.darwinsys.com/license.html">license.html</a> for usage license.</i>]]></bottom>
+		</javadoc>
+		<copy file="html/index.html" todir="${build}/docs"/>
+	</target>
 	<target name="deploy" depends="jar">
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>

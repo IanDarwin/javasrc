@@ -6,6 +6,7 @@
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
+	<property name="src-jar" value="/tmp/javasrc.jar"/>
 
 	<target name="init">
 		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
@@ -199,6 +200,12 @@
 
 	<target name="RE.apache" if="avail.RE.apache">
 		<ant dir="RE-apache"/>
+	</target>
+
+	<target name="src-jar">
+		<jar jarfile="${src-jar}"
+			basedir=".">
+		</jar>
 	</target>
 
 	<!-- clean up -->
