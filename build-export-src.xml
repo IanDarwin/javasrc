@@ -1,0 +1,67 @@
+<project name="Export JavaCook Source" default="dist" basedir=".">
+
+<!-- 
+ *** Build the jars for downloading and update the web site.
+ *** List of files set in darian:/cvs/CVSROOT/modules line for javacook-src
+ *** $Id$
+ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="build"/>
+	<property name="build.work" value="build//javasrc"/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="dist.jar" value="javacooksrc2.jar"/>
+
+	<property name="CVSROOT" value="ian@darian:/cvs"/>
+
+	<target name="init">
+		<tstamp/> <!-- Set time stamp variables in case we need 'em -->
+		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
+	</target>
+
+	<target name="get">
+		<cvs cvsRoot="${CVSROOT}" command="export" date="now"
+			quiet="true"
+			package="javacook-src"
+			dest="${build}"/>
+	</target>
+
+	<target name="api" depends="get">
+		<ant dir="${build.work}/com.darwinsys.util" target="dist"/>
+	</target>
+
+	<target name="index" depends="api">
+		<!-- Update the index.html for just what we exported -->
+		<javac basedir="${build.work}/netweb" source="MkIndex.java"/>
+		<java classpath="${build.work}" classname="MkIndex"
+			dir="${build.work}" fork="yes"/>
+	</target>
+
+	<target name="jar" depends="index">
+		<jar jarFile="${dist.jar}" includes="${build.work}"/>
+	</target>
+
+	<target name="dist" depends="jar"/>
+
+	<target name="webdeploy" depends="dist">
+
+		<scp file="${dist.jar}" todir="darwinsys.com:/www/javacook/"/>
+
+		<Sshexec 
+			host="darwinsys.com"
+			command="cd /www/javacook; unzip -fo ${dist.jar}" />
+
+		<mail subject="Java Cookbook Download Updated" 
+			message=
+				"${dist.jar} updated at javacook.darwinsys.com/download.html"
+			from="Ian Darwin &lt;ian@darwinsys.com&gt;"
+			tolist="ian@darwinsys.com"
+			cclist="ian@darwinsys.com"
+			/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.work}"/>
+	</target>
+</project>
