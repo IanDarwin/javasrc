@@ -238,6 +238,12 @@ public class TMTimer extends JFrame implements Runnable {
 	protected final int RED	 	= 4;
 	protected final int STOPPED	= 5;
 
+	// These values are arbitrarily chosen not to intersect with the above.
+	protected final int C_NONE	= 100;
+	protected final int C_GREEN = 101;
+	protected final int C_YELLOW = 102;
+	protected final int C_RED	= 103;
+
   /** A halt-the-timer flag */
   protected boolean done;
   /** Iterator that maps from foo to bar. */
@@ -303,7 +309,27 @@ public class TMTimer extends JFrame implements Runnable {
     }
   }
 
-  /* A sort of state machine */
+  /** Set the color on the screen and/or LED's. */
+  protected void setColor(int c) {
+  	switch (c) {
+		case C_NONE:
+			bigFlag.setBackground(Color.white);
+			break;
+		case C_GREEN:
+			bigFlag.setBackground(Color.green);
+			break;
+		case C_YELLOW:
+			bigFlag.setBackground(Color.yellow);
+			break;
+		case C_RED:
+			bigFlag.setBackground(Color.red);
+			break;
+		default:
+			throw new IllegalStateException("setColor(" + c + ") invalid");
+	}
+  }
+
+  /** Set the program into the given state. */
   protected void gotoState(int st) {
 		switch(st) {
 		case READY:
@@ -311,27 +337,27 @@ public class TMTimer extends JFrame implements Runnable {
 			curTime.setText(TMTimerUtil.intToMmss(0));
 			maxTime.setText(redTF.getText());
 			startButton.setEnabled(true);
-			bigFlag.setBackground(Color.white);
+			setColor(C_NONE);
 			break;
 		case RUNNING:
 			startButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			break;
 		case GREEN:
-			bigFlag.setBackground(Color.green);
+			setColor(C_GREEN);
 			break;
 		case YELLOW:
-			bigFlag.setBackground(Color.yellow);
+			setColor(C_YELLOW);
 			break;
 		case RED:
-			bigFlag.setBackground(Color.red);
+			setColor(C_RED);
 			break;
 		case STOPPED:
 			done = true;
 			stopButton.setEnabled(false);
 			startButton.setEnabled(true);
 			// Leave correct color showing.
-			// bigFlag.setBackground(getBackground());
+			// setColor(C_NONE);
 			break;
   		default:
 			throw new IllegalStateException("gotoState(" + st + ") invalid");
