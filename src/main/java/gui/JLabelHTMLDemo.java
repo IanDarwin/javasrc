@@ -9,7 +9,7 @@ public class JLabelHTMLDemo extends JFrame {
 
 	/** Construct the object including its GUI */
 	public JLabelHTMLDemo() {
-		super("Demo");
+		super("JLabelHTMLDemo");
 		Container cp = getContentPane();
 
 		JButton component = new JButton(
