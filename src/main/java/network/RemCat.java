@@ -7,7 +7,7 @@ import java.net.*;
  * <I>UNIX Network Programming</I>, by Dr. Chris Brown.
  *
  * Note that the TFTP server is NOT "internationalized"; the name and
- * mode in the protocol in defined in terms of ASCII, not UniCode.
+ * mode in the protocol are defined in terms of ASCII, not UniCode.
  *
  * @author	Java version by Ian Darwin, ian@darwinsys.com.
  */
@@ -59,8 +59,8 @@ public class RemCat {
 	void readFile(String path) throws IOException {
 		/* Build a tftp Read Request packet. This is messy because the
 		 * fields have variable length. Numbers must be in
-		 * network order, too; fortunately Java seems to use
-		 * network byte order.
+		 * network order, too; fortunately Java just seems 
+		 * naturally smart enough :-) to use network byte order.
 		 */
 		buffer[0] = 0;
 		buffer[1] = OP_RRQ;		// read request
@@ -88,7 +88,6 @@ public class RemCat {
 			else {
 				System.err.println("Got a packet of size " +
 					inp.getLength());
-				// System.out.println(write(1, buffer+4, count-4);
 				/* Ack the packet. The block number we 
 				 * want to ack is already in 'buffer' so 
 				 * we just change the opcode. The ACK is 
