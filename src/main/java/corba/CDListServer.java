@@ -13,6 +13,7 @@ public class CDListServer {
 	protected CD myCDList[] = {
 		new CD(100, "Gelatin Joe"),
 		new CD(102, "Cellaphane Sylph"),
+		new CD(102, "JoJo Jones and the Pedantix"),
 	};
 
 	class CDListServant extends _CDListImplBase {

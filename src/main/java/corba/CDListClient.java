@@ -4,7 +4,7 @@ import org.omg.CORBA.*;
 
 /** This is a simple client that just lists the CDs and tracks. */
 public class CDListClient {
-    public static void main(String argv[]) {
+	public static void main(String argv[]) {
 		try {
 			// create and initialize the ORB
 			ORB orb = ORB.init(argv, null);
@@ -23,10 +23,10 @@ public class CDListClient {
 			CD aCD;
 			while ((aCD = cdListRef.nextCD()) != null) {
 				System.out.println(aCD);
-				Track aTrack;
 				// Slightly unrealistic: nextTrack() should be a method
 				// of the CD object, not the CDList object.
-				while ((aTrack = cdListRef.nextTrack()) != null) {
+				for (int i=0; i<4; i++) {
+					Track aTrack = cdListRef.nextTrack();
 					System.out.println(aTrack);
 				}
 			}
@@ -35,5 +35,5 @@ public class CDListClient {
 			System.out.println("Error: " + e) ;
 			e.printStackTrace(System.err);
 		}
-    }
+	}
 }
