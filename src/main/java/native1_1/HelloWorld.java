@@ -21,6 +21,7 @@ public class HelloWorld {
 
 	// Static code blocks are executed once, when class file is loaded
 	static {
-		System.load("libhello.so");
+		System.load(System.getProperty("java.user.directory") + "/" +
+			"libhello.so");
 	}
 }

@@ -9,9 +9,13 @@
 
 # Configuration Section
 
+CFLAGS_FOR_SO = -G # Solaris
+CFLAGS_FOR_SO = -shared
 CSRCS		= HelloWorld.c
-JAVAHOME	= /local/jdk1.1.2
-INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/solaris 
+#JAVAHOME	= /local/jdk1.1.2
+JAVAHOME	= /usr/local/jdk-1.2.2
+#INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/solaris 
+INCLUDES	= -I$(JAVAHOME)/include -I$(JAVAHOME)/include/openbsd
 LIBDIR		= $(JAVAHOME)/lib/sparc/green_threads
 CLASSPATH	= $(JAVAHOME)/lib/classes.zip:.
 
@@ -35,7 +39,7 @@ HelloWorld.h:	HelloWorld.class
 HelloWorld.o::	HelloWorld.h
 
 libhello.so:	$(CSRCS) HelloWorld.h
-	$(CC) $(INCLUDES) -G $(CSRCS) -o libhello.so
+	$(CC) $(INCLUDES) $(CFLAGS_FOR_SO) $(CSRCS) -o libhello.so
 
 # This part of the Makefile is for Java called from C, in javafromc
 testjavafromc:	javafromc.all hello.all

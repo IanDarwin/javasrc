@@ -1,6 +1,9 @@
 package java.util;
 
-/** Crudely map Vector to ArrayList, for compatibility. */
+/** Crudely map Vector to ArrayList, for "compatibility",
+ * that is, for use with ArrayList-based code on really ancient JDK.
+ * Don't do that anymore; this is really olde code. Time to upgrade.
+ */
 public class ArrayList {
 	Vector v;
 

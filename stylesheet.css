@@ -1,0 +1,30 @@
+/* Style Sheet for Java Cookbook web site.
+ * This is the web: go ahead and borrow this page, but change it for 
+ * your own web, and pass it on with the same terms of re-use.
+ * $Id$
+ */
+
+/* Attributes named after an HTML element apply to all occurrences of type. */
+
+/* Page attributes */
+body	{ background-color: #FFFFFF; color: #000;
+	link-color: #000; vlink-color: #660099; alink-color: #FF0000
+}
+
+/* Paragraph formats: use generic, non-vendor specific names (no Arial) */
+H1	{ color: #000; font-family: Helvetica, sans-serif }
+H2	{ color: blue; font-family: Helvetica, sans-serif }
+H3	{ color: blue; font-family: Helvetica, sans-serif }
+
+/* Attributes named with a "#" can apply to any element but only if ID= used. */
+
+/* Heading colors */
+#TextAbout   { color: #0000FF; font-family: Helvetica, sans-serif } /* blue */
+
+/* Table cell colors */
+#TableNav	{ background-color: #00cc33; cellpadding: 5}
+
+/* Link colors */
+#LinkLocal	{ color: #00FF00 } /* green */
+#LinkRemote	{ color: #ff0000 } /* red  */
+
