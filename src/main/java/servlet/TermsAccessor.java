@@ -10,7 +10,7 @@ public class TermsAccessor {
 
 	/** constructor that takes a FileName */
 	public TermsAccessor(String inputFileName) throws IOException {
-		is = new BufferedReader(new FileReader("terms.txt"));
+		is = new BufferedReader(new FileReader(inputFileName));
 		String ident = is.readLine();
 	}
 
