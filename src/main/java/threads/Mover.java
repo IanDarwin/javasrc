@@ -124,7 +124,7 @@ public class Mover extends Applet implements Runnable {
 	}
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 	
 		final Frame f = new Frame("Mover Demo");
 		final Mover m = new Mover("mover.gif", 10);

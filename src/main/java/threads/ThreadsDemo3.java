@@ -13,7 +13,7 @@ public class ThreadsDemo3 {
 	/**
 	 * Main program, test driver for ThreadsDemo3 class.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new ThreadsDemo3("Hello from X", 10);
 		new ThreadsDemo3("Hello from Y", 15);
 	}
@@ -40,7 +40,7 @@ public class ThreadsDemo3 {
 				System.out.println(mesg + " thread all done.");
 			}
 		});
+		t.setName(m + " runner Thread");
 		t.start();
 	}
-
 }

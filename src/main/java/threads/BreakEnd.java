@@ -22,7 +22,7 @@ public class BreakEnd extends Frame implements Runnable {
 	Font f;
 
 	/** Main method to start me up. */
-	public static void main(String av[]) {
+	public static void main(String[] av) {
 		for (int i=0; i<av.length; i++) {
 			// parse options...
 		}

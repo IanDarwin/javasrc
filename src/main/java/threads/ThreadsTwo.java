@@ -14,7 +14,7 @@ public class ThreadsTwo implements Runnable {
 	/**
 	 * Main program, test driver for ThreadsTwo class.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new ThreadsTwo("Hello from X", 10);
 		for (int i=0; i<10; i++) 
 			putMsg("Hello from main");

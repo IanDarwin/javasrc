@@ -27,14 +27,18 @@ public class IOTimer extends Thread {
 		timedThread.interrupt();
 	}
 	/** Simple test case */
-	public static void main(String ap[]) {
+	public static void main(String[] ap) {
 		byte b[] = new byte[10];
 		System.out.println("Creating IOTimer");
 		new IOTimer(Thread.currentThread(), 1000).start();
 		System.out.println("Starting read");
 		try {
+			// This read will block, unless you type something in
+			// the console window (and you have to be pretty quick!).
 			System.in.read(b);
-		}		catch (Exception e) {
+
+		// Cannot catch InterruptedException, as read() doesn't declare it.
+		} catch (Exception e) {
 			System.out.println("Caught " + e);
 		}
 		System.out.println("All done");

@@ -13,7 +13,7 @@ public class ThreadsDemo2 implements Runnable {
 	/**
 	 * Main program, test driver for ThreadsDemo2 class.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new ThreadsDemo2("Hello from X", 10);
 		new ThreadsDemo2("Hello from Y", 15);
 	}
@@ -28,6 +28,7 @@ public class ThreadsDemo2 implements Runnable {
 		count = n;
 		mesg  = m;
 		t = new Thread(this);
+		t.setName(m + " runner Thread");
 		t.start();
 	}
 

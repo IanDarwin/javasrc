@@ -2,7 +2,6 @@
  * Threaded demo application, as a Threads subclass.
  *
  * @author	Ian Darwin
- *
  * @version	1.0
  */
 public class ThreadsDemo1 extends Thread {
@@ -30,14 +29,16 @@ public class ThreadsDemo1 extends Thread {
 	public ThreadsDemo1(String m, int n) {
 		count = n;
 		mesg  = m;
+		setName(m + " runner Thread");
 	}
 
 	/**
 	 * Main program, test driver for ThreadsDemo1 class.
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		// could say: new ThreadsDemo1("Hello from X", 10).run();
 		// could say: new ThreadsDemo1("Hello from Y", 15).run();
+		// But then it wouldn't be multi-threaded!
 		new ThreadsDemo1("Hello from X", 10).start();
 		new ThreadsDemo1("Hello from Y", 15).start();
 	}
