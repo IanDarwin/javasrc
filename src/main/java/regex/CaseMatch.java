@@ -10,15 +10,17 @@ public class CaseMatch {
 		String pattern = "^q[^u]\\d+\\.";
 		String input = "QA777. is the next flight. It is on time.";
 
-		Pattern r = Pattern.compile(pattern, Pattern.IGNORE_CASE);
+		Pattern reCaseInsens = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+		Pattern reCaseSens = Pattern.compile(pattern);
 
 		boolean found;
-		Matcher m = r.matcher(input);	// will match any case
-		found = r.find();				// will match any case
+		Matcher m;
+		m = reCaseInsens.matcher(input);	// will match any case
+		found = m.lookingAt();				// will match any case
 		System.out.println("IGNORE_CASE match " + found);
 
-		r.setMatchFlags(RE.MATCH_NORMAL);
-		found = r.match(input);		// will match case-sensitively
+		m = reCaseSens.matcher(input);	// Get matcher w/o case-insens flag
+		found = m.lookingAt();		// will match case-sensitively
 		System.out.println("MATCH_NORMAL match was " + found);
 
 	}
