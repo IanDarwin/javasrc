@@ -9,15 +9,27 @@ import java.lang.reflect.*;
  * "Reflectance" is used to look up the information.
  *
  * It is expected that the output will be post-processed e.g.,
- * with sort and awk/perl.
+ * with sort and awk/perl. Try: 
+	java CrossRef | 
+		uniq | # squeeze out polymorphic forms early
+		grep  method  |
+		sort | awk { ... } > crossref-methods.txt
+ * The part in "{ ... }" is left as an exercise for the reader. :-(
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
  *
  */
 public class CrossRef {
-	/** Simple main program, construct and start, using argv */
-	public static void main(String argv[])
-	{
+	/** Counter of fields/methods printed. */
+	static int n = 0;
+
+	/** A "Modifier" object, to decode modifiers of fields/methods */
+	Modifier m = new Modifier();
+
+	/** Simple main program, construct self, process each .ZIP file
+	 * found in CLASSPATH.
+	 */
+	public static void main(String argv[]) {
 		CrossRef xref = new CrossRef();
 
 		String s = (String)System.getProperties().get("java.class.path");
@@ -29,6 +41,8 @@ public class CrossRef {
 			if (cand.endsWith(".zip"))
 				xref.processOneZip(cand);
 		}
+		System.err.println("All done! Found " + n + " entries.");
+		System.exit(0);
 	}
 
 	/** For each Zip file, for each entry, xref it */
@@ -37,26 +51,32 @@ public class CrossRef {
 				ZipFile zippy = 
 				new ZipFile(new File(classes));
 				Enumeration all = zippy.entries();
-				while (all.hasMoreElements())
-				 doClass(((ZipEntry)(all.nextElement())).getName());
+				while (all.hasMoreElements()) {
+					doClass(((ZipEntry)(all.nextElement())).getName());
+				}
 			} catch (IOException err) {
 				System.err.println("IO Error: " + err);
 				return;
 			}
 	}
 
-	/** For one class name (which must be in CLASSPATH!!), 
-	 * format its fields.
+	/** Format the fields and methods of one class, given its name.
 	 */
-	public void doClass(String zipName) {
-		// Convert the zip file entry, like
-		//	java/lang/Math.class
-		// to a class name like
-		//	java.lang.Math
+	protected void doClass(String zipName) {
+		// Ignore package/directory, other odd-ball stuff.
 		if (!zipName.endsWith(".class")) {
 			System.err.println("Not a class: " + zipName);
 			return;
 		}
+		// Ignore sun.* etc.
+		if (!zipName.startsWith("java/")){
+			return;
+		}
+	
+		// Convert the zip file entry, like
+		//	java/lang/Math.class
+		// to a class name like
+		//	java.lang.Math
 		String className = zipName.replace(/, .).
 			substring(0, zipName.length() - 6);	// 6 for ".class"
 		// System.err.println("ZipName " + zipName + 
@@ -70,33 +90,54 @@ public class CrossRef {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
+		// System.err.println("in gc...");
+		System.gc();
+		// System.err.println("done gc");
 	}
 
 	/**
 	 * Print the fields and methods of one class.
 	 */
-	public void printClass(Class c) {
-		int i;
+	protected void printClass(Class c) {
+		int i, mods;
 		try {
 			Field fields[] = c.getFields();
 			for (i = 0; i < fields.length; i++) {
-				println(fields[i].getName() +
-					" field " + c.getName());
+				if (!m.isPrivate(fields[i].getModifiers())
+				 && !m.isProtected(fields[i].getModifiers()))
+					putField(fields[i], c);
+				else System.err.println("pvt: " + fields[i]);
 			}
 
 			Method methods[] = c.getMethods();
 			for (i = 0; i < methods.length; i++) {
-				println(methods[i].getName() +
-					" method " + c.getName());
+				if (!m.isPrivate(methods[i].getModifiers())
+				 && !m.isProtected(methods[i].getModifiers()))
+					putMethod(methods[i], c);
+				else System.err.println("pvt: " + methods[i]);
 			}
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 	}
 
-	/** Convenience routine */
+	/** put a Fields information to the standard output.
+	 * Marked protected so you can override it (hint, hint).
+	 */
+	protected void putField(Field fld, Class c) {
+		println(fld.getName() + " field " + c.getName() + " ");
+		++n;
+	}
+	/** put a Methods information to the standard output.
+	 * Marked protected so you can override it (hint, hint).
+	 */
+	protected void putMethod(Method meth, Class c) {
+		println(meth.getName() + " method " + c.getName() + " ");
+		++n;
+	}
+
+	/** Convenience routine, short for System.out.println */
 	private final void println(String s) {
 		System.out.println(s);
 	}
 }
-
