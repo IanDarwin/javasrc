@@ -1,4 +1,4 @@
-<project name="Payment Enterprise Bean" default="compile" basedir=".">
+<project name="Payment Enterprise Bean" default="deploy" basedir=".">
 
 	<!-- $Id$ -->
 
