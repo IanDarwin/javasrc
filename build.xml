@@ -203,8 +203,7 @@
 	</target>
 
 	<target name="src-jar">
-		<jar jarfile="${src-jar}" basedir=".">
-		</jar>
+		<ant file="build-export-src.xml"/>
 	</target>
 
 	<target name="src-tar">
