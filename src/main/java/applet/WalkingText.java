@@ -1,7 +1,11 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
+import java.applet.Applet;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
 
 public class WalkingText extends Applet implements Runnable {
 
@@ -46,11 +50,12 @@ public class WalkingText extends Applet implements Runnable {
 		theFont = new Font(fontName, Font.PLAIN, Integer.parseInt(pSize));
 		setFont(theFont);
 
-		// XXX deprecated, replace with theFont.getLineMetrics(mesg), then need
-		// a way to compute the width; this is easier for now.
-		FontMetrics fm = getToolkit().getFontMetrics(theFont);
-		textWidth = fm.stringWidth(mesg);
-		textHeight = fm.getHeight();
+		// Compute the width and height of the text.
+		FontRenderContext fontRenderContext = ((Graphics2D)getGraphics()).getFontRenderContext();
+		TextLayout tl = new TextLayout(mesg, getFont(), fontRenderContext);
+		textWidth = (int)tl.getBounds().getHeight();
+		textHeight = (int)tl.getBounds().getWidth();
+	
 		// System.out.println("TextWidth " + textWidth + ", ht " + textHeight);
 
 		// use textHeight in y coordinate calculation
@@ -89,7 +94,7 @@ public class WalkingText extends Applet implements Runnable {
 			try {
 				Thread.sleep(napTime);
 			} catch (Exception e) {
-				System.out.println("Who dares to interrupt my sleep()? " + e);
+				throw new IllegalStateException("sleep() interrupted");
 			};
 		}
 	}
