@@ -61,27 +61,30 @@ public class TarFile {
 	protected void readFile() throws IOException, TarException {
 	 	is = new RandomAccessFile(fileName, "r");
 		TarEntry hdr;
-		do {
-			hdr = new TarEntry(is);
-			if (hdr.getSize() < 0) {
-				System.out.println("Size < 0");
-				break;
-			}
-			System.out.println(hdr.toString());
-			list.addElement(hdr);
-			// Get the size of the entry
-			int nbytes = hdr.getSize(), diff;
-			// Round it up to blocksize.
-			if ((diff = (nbytes % RECORDSIZE)) != 0) {
-				nbytes -= diff; nbytes += RECORDSIZE;
-			}
-			// And skip over the data portion.
-			System.out.println("Currently at " + is.getFilePointer());
-			System.out.println("Skipping " + nbytes + " bytes");
-			is.skipBytes(nbytes);
-		} while (true);
+		try {
+			do {
+				hdr = new TarEntry(is);
+				if (hdr.getSize() < 0) {
+					System.out.println("Size < 0");
+					break;
+				}
+				// System.out.println(hdr.toString());
+				list.addElement(hdr);
+				// Get the size of the entry
+				int nbytes = hdr.getSize(), diff;
+				// Round it up to blocksize.
+				if ((diff = (nbytes % RECORDSIZE)) != 0) {
+					nbytes -= diff; nbytes += RECORDSIZE;
+				}
+				// And skip over the data portion.
+				// System.out.println("Skipping " + nbytes + " bytes");
+				is.skipBytes(nbytes);
+			} while (true);
+		} catch (EOFException e) {
+			// OK, just stop reading.
+		}
+		// All done, say we've read the contents.
 		read = true;
-		return;
 	}
 
 	/* Close the Tar file. */

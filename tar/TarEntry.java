@@ -78,11 +78,15 @@ public class TarEntry {
 	/* Constructor that reads the entry's header. */
 	public TarEntry(RandomAccessFile is) throws IOException, TarException {
 
-		while (((fileOffset = is.getFilePointer()) %
-			TarFile.RECORDSIZE) != 0)
-				is.readByte();
+		fileOffset = is.getFilePointer();
 
-		is.read(name);
+		// read() returns -1 at EOF
+		if (is.read(name) < 0)
+			throw new EOFException();
+		// Tar pads to block boundary with nulls.
+		if (name[0] == '\0')
+			throw new EOFException();
+		// OK, read remaining fields.
 		is.read(mode);
 		is.read(uid);
 		is.read(gid);
@@ -96,6 +100,10 @@ public class TarEntry {
 		is.read(gname);
 		is.read(devmajor);
 		is.read(devminor);
+
+		// Since the tar header is < 512, we need to skip it.
+		is.skipBytes((int)(TarFile.RECORDSIZE -
+			(is.getFilePointer() % TarFile.RECORDSIZE)));
 
 		// TODO if checksum() fails,
 		//	throw new TarException("Failed to find next header");
@@ -132,7 +140,7 @@ public class TarEntry {
 	/** Returns the UNIX-specific "mode" (type+permissions) of the entry */
 	public int getMode() {
 		try {
-			return Integer.parseInt(new String(mode).trim(), 8);
+			return Integer.parseInt(new String(mode).trim(), 8) & 0777;
 		} catch (IllegalArgumentException e) {
 			return 0;
 		}
@@ -151,8 +159,8 @@ public class TarEntry {
 	 * or null if this entry is not a link.
 	 */
 	public String getLinkName() {
-		if (isLink())
-			return null;
+		// if (isLink())
+		// 	return null;
 		return new String(linkName).trim();
 	}
 
@@ -203,9 +211,14 @@ public class TarEntry {
 		return type == LF_DIR;
 	}
 
-	/** Returns true if this a link (OR A SYMLINK??) */
+	/** Returns true if this a hard link (to a file in the archive) */
 	boolean isLink() {
-		return type == LF_LINK || type == LF_SYMLINK;
+		return type == LF_LINK;
+	}
+
+	/** Returns true if this a symbolic link */
+	boolean isSymLink() {
+		return type == LF_SYMLINK;
 	}
 
 	/** Returns true if this entry represents some type of UNIX special file */
@@ -216,28 +229,47 @@ public class TarEntry {
 	protected StringBuffer sb;
 
 	public String toString() {
-		sb = new StringBuffer("TarEntry[");
-		sb.append(getName()).append(',');
-		sb.append(getTypeName()).append(',');
-		sb.append("mode=").append(Integer.toString(getMode(),8)).append(',');
-		sb.append("uid=").append(getuid()).append(',');
-		sb.append("gid=").append(getgid()).append(',');
-		sb.append("size=").append(getSize()).append(',');
-		sb.append("mtime=").append(getTime()).append(',');
+		sb = new StringBuffer();
+		switch(type) {
+			case LF_OLDNORMAL:
+			case LF_NORMAL:
+			case LF_CONTIG:
+				sb.append('f');
+				break;
+			case LF_DIR:
+				sb.append('d');
+				break;
+			case LF_LINK:
+				sb.append('f');
+				break;
+			case LF_SYMLINK:
+				sb.append('l');
+				break;
+			case LF_CHR:
+				sb.append('c');
+				break;
+			case LF_BLK:
+				sb.append('b');
+				break;
+			case LF_FIFO:
+				sb.append('p');
+				break;
+			default:
+				sb.append('?');
+				break;
+		}
+		sb.append(' ');
+		sb.append(Integer.toString(getMode(),8)).append(' ');
+		sb.append(getUname()).append('/').append(getGname());
+		sb.append(' ').append(getSize()).append(' ');
+		sb.append("mtime=").append(getTime()).append(' ');
+
+		sb.append(getName());
 		if (isLink())
-			sb.append('@').append(getLinkName()).append(',');
-		bytesAppend(magic).append(',');
-		sb.append(getUname()).append(',');
-		sb.append(getGname()).append(',');
-		bytesAppend(chksum).append(',');
+			sb.append(" link to " ).append(getLinkName());
+		if (isSymLink())
+			sb.append(" -> " ).append(getLinkName());
 
-		sb.append(']');
 		return sb.toString();
-	}
-
-	protected StringBuffer bytesAppend(byte[] bytes) {
-		for (int i=0; i<bytes.length; i++)
-			sb.append((char)bytes[i]);
-		return sb;	// for subsequent .append()s
 	}
 }
