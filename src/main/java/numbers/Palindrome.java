@@ -10,7 +10,12 @@
 public class Palindrome {
 	public static void main(String argv[]) {
 		for (int i=0; i<argv.length; i++)
-		System.out.println(argv[i] + "->" + tryNum(Long.parseLong(argv[i])));
+		try {
+			System.out.println(argv[i] + "->" + 
+				tryNum(Long.parseLong(argv[i])));
+		} catch (NumberFormatException e) {
+			System.err.println(argv[i] + "->" + " TOO BIG");
+		} 
 	}
 
 	static long tryNum(long num) {
