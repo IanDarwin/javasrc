@@ -15,7 +15,7 @@ public class JFrameDemo extends JFrame {
 		cp.add(quitButton = new JButton("Exit"));
 
 		// Set up so that "Close" will exit the program, 
-        // not just close the JFrame.
+		// not just close the JFrame.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// This "action handler" will be explained later in the chapter.
