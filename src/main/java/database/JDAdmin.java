@@ -1,3 +1,5 @@
+package jabadot;
+
 import java.util.*;
 import java.sql.*;
 import java.awt.*;
