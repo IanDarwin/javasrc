@@ -1,4 +1,4 @@
-<project name="XXX Enterprise Bean" default="compile" basedir=".">
+<project name="XXX" default="compile" basedir=".">
 
 	<!-- $Id$ -->
 
@@ -10,8 +10,8 @@
 	<property name="deploy.jar" value="XXX.jar"/>
 
 	<target name="init">
-		<tstamp/> <!-- Create the time stamp -->
-		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
+		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
 	</target>
 
 	<target name="compile" depends="init">
