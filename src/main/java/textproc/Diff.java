@@ -1,6 +1,8 @@
 // Diff -- text file difference utility.
 // See full docu-comment at beginning of Diff class.
 
+// $Id$
+
 import java.io.*;
 
 /** This is the info kept per-file.     */
