@@ -1,4 +1,4 @@
-package darwinsys.client;
+package com.darwinsys.client;
 
 import java.rmi.*;
 

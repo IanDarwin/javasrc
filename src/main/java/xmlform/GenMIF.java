@@ -293,18 +293,23 @@ public class GenMIF implements XmlFormWalker {
 			if (n == null) {
 				continue;
 			}
-			// System.err.println("NODE " + n.getClass());
-			if (n instanceof CharacterData) {
-				// System.err.println("\tCDATA");
-				doCData((CharacterData)n);
-				p.removeChild(n);
-			} else if (n instanceof Element) {
-				// System.err.println("\tELEMENT");
-				doChildren((Element)n);
-				p.removeChild(n);
-			} else
-				System.err.println( "Warning: unhandled child node " +
-					n.getClass());
+			// System.err.println("NODE " + n.getNodeType());
+			switch(n.getNodeType()) {
+				case Node.TEXT_NODE:
+					// System.err.println("\tCDATA: " + n.getNodeValue());
+					doCData((CharacterData)n);
+					p.removeChild(n);
+					break;
+				case Node.ELEMENT_NODE:
+					// System.err.println("\tELEMENT<" + n.getNodeName() + ">");
+					doChildren((Element)n);
+					p.removeChild(n);
+					break;
+				default:
+					System.err.println( "Warning: unhandled child node " +
+						n.getNodeType() + ": " + n.getClass());
+					break;
+			}
 		}
 	}
 

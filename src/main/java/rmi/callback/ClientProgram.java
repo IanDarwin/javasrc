@@ -1,6 +1,6 @@
-package darwinsys.client;
+package com.darwinsys.client;
 
-import darwinsys.callback.*;
+import com.darwinsys.callback.*;
 
 import java.io.*;
 import java.rmi.*;

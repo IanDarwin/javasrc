@@ -1,0 +1,7 @@
+<!ELEMENT people (person)*>
+<!ELEMENT person (name, email, country)>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST email type CDATA #IMPLIED>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT country (#PCDATA)>

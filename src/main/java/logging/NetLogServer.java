@@ -72,7 +72,7 @@ public class NetLogServer {
 		else
 			sb.append(s);
 
-		sb.append(\n);
+		sb.append('\n');
 		theTextArea.append(sb.toString());
 		theFrame.toFront();
 	}

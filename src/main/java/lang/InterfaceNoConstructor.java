@@ -6,5 +6,4 @@ public interface InterfaceNoConstructor {
 		// This would be a Constructor, would it not?
 		// Same name as class, and no return type.
 	}
-
 }

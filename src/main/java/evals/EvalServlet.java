@@ -110,7 +110,7 @@ public class EvalServlet extends HttpServlet {
 				append("?reviewed=true&").
 				append(request.getQueryString()));
 			out.println(">");
-			out.print("<INPUT TYPE=submit VALUE=\"Press here to submit\">");
+			out.print("<INPUT TYPE=submit VALUE=\"Press here to confirm\">");
 			out.println("</FORM>");
 		}
 	}

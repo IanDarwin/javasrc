@@ -32,7 +32,7 @@ public class XmlForm {
 
 		} catch (Exception ex) {
 			System.err.println("+================================+");
-			System.err.println("|        XmlForm Error           |");
+			System.err.println("|         *Parse Error*          |");
 			System.err.println("+================================+");
 			System.err.println(ex.getClass());
 			System.err.println(ex.getMessage());
