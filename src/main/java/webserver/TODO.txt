@@ -1,5 +1,5 @@
 Order:
-	Rename Handler to HttpHandler; revise it to use
+	Finish revising Handler to use
 	HttpServletRequest and HttpServletResponse
 General:
 	Common Logfile Format

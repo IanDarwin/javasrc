@@ -4,28 +4,55 @@ import javax.servlet.http.*;
 public class MyRequest implements HttpServletRequest {
 	public MyRequest() {
 	}
-    public abstract String getAuthType();
-    public abstract String getContextPath();
-    public abstract javax.servlet.http.Cookie getCookies()[];
-    public abstract long getDateHeader(String name);
-    public abstract String getHeader(String name);
-    public abstract java.util.Enumeration getHeaderNames();
-    public abstract java.util.Enumeration getHeaders(String name);
-    public abstract int getIntHeader(String name);
-    public abstract String getMethod();
-    public abstract String getPathInfo();
-    public abstract String getPathTranslated();
-    public abstract String getQueryString();
-    public abstract String getRemoteUser();
-    public abstract String getRequestURI();
-    public abstract String getRequestedSessionId();
-    public abstract String getServletPath();
-    public abstract javax.servlet.http.HttpSession getSession();
-    public abstract javax.servlet.http.HttpSession getSession(boolean);
-    public abstract java.security.Principal getUserPrincipal();
-    public abstract boolean isRequestedSessionIdFromCookie();
-    public abstract boolean isRequestedSessionIdFromURL();
-    public abstract boolean isRequestedSessionIdFromUrl();
-    public abstract boolean isRequestedSessionIdValid();
-    public abstract boolean isUserInRole(String user);
+    public String getAuthType() { return null; }
+    public String getContextPath() { return null; }
+    public javax.servlet.http.Cookie getCookies()[] { return null; }
+    public long getDateHeader(String name) { return 0; }
+    public String getHeader(String name) { return null; }
+    public java.util.Enumeration getHeaderNames() { return null; }
+    public java.util.Enumeration getHeaders(String name) { return null; }
+    public int getIntHeader(String name) {
+		return Integer.parseInt(getHeader(name));
+	}
+    public String getMethod() { return null; }
+    public String getPathInfo() { return null; }
+    public String getPathTranslated() { return null; }
+    public String getQueryString() { return null; }
+    public String getRemoteUser() { return null; }
+    public String getRequestURI() { return null; }
+    public String getRequestedSessionId() { return null; }
+    public String getServletPath() { return null; }
+    public javax.servlet.http.HttpSession getSession() { return null; }
+    public javax.servlet.http.HttpSession getSession(boolean create) { return null; }
+    public java.security.Principal getUserPrincipal() { return null; }
+    public boolean isRequestedSessionIdFromCookie() { return false; }
+    public boolean isRequestedSessionIdFromURL() { return false; }
+    public boolean isRequestedSessionIdFromUrl() { return false; }
+    public boolean isRequestedSessionIdValid() { return false; }
+    public boolean isUserInRole(String user) { return false; }
+	public Object getAttribute(String $1) { return null; }
+	public java.util.Enumeration getAttributeNames() { return null; }
+	public String getCharacterEncoding() { return null; }
+	public int getContentLength() { return 0; }
+	public String getContentType() { return "text/html"; }
+	public javax.servlet.ServletInputStream getInputStream() { return null; }
+	public java.util.Locale getLocale() { return null; }
+	public java.util.Enumeration getLocales() { return null; }
+	public String getParameter(String $1) { return null; }
+	public java.util.Enumeration getParameterNames() { return null; }
+	public String[] getParameterValues(String $1) { return null; }
+	public String getProtocol() { return "http"; }
+	public java.io.BufferedReader getReader() { return null; }
+	public String getRealPath(String $1) { return null; }
+	public String getRemoteAddr() { return null; }
+	public String getRemoteHost() { return null; }
+	public javax.servlet.RequestDispatcher getRequestDispatcher(String req) {
+		return null;
+	}
+	public String getScheme() { return null; }
+	public String getServerName() { return null; }
+	public int getServerPort() { return 0; }
+	public boolean isSecure() { return false; }
+	public void removeAttribute(String $1) { }
+	public void setAttribute(String $1, Object $2) { }
 }
