@@ -7,7 +7,7 @@ import java.net.*;
  */
 public class ReadTag {
 	/** The URL that this ReadTag object is reading */
-	protected URL theURL = null;
+	protected URL myURL = null;
 	/** The Reader for this object */
 	protected BufferedReader inrdr = null;
   
@@ -28,17 +28,18 @@ public class ReadTag {
 		}
 	}
   
-	/** Constructor */
+	/** Construct a ReadTag given a URL String */
 	public ReadTag(String theURLString) throws 
 			IOException, MalformedURLException {
 
-		if (theURLString == null) {
-			throw new MalformedURLException("ReadTag(null) isn't very useful");
-		}
+		this(new URL(theURLString));
+	}
 
+	/** Construct a ReadTag given a URL */
+	public ReadTag(URL theURL) throws IOException {
+		myURL = theURL;
 		// Open the URL for reading
-		theURL = new URL(theURLString);
-		inrdr = new BufferedReader(new InputStreamReader(theURL.openStream()));
+		inrdr = new BufferedReader(new InputStreamReader(myURL.openStream()));
 	}
 
 	/** Read the next tag.  */
@@ -67,5 +68,10 @@ public class ReadTag {
 				theTag.append((char)i);
 		}     
 		return theTag.toString();
+	}
+
+	/* Return a String representation of this object */
+	public String toString() {
+		return "ReadTag[" + myURL.toString() + "]";
 	}
 }

@@ -1,0 +1,18 @@
+darian$ java GetURLs http://daroad
+<IMG SRC="ian.gif">
+<A ID="LinkLocal" HREF="webserver/index.html">
+<A HREF="quizzes/">
+<A HREF="servlets/IsItWorking">
+<A HREF="demo.jsp">
+<A ID=LinkRemote HREF="http://java.sun.com">
+<A ID=LinkRemote HREF="http://www.openbsd.org">
+<A ID=LinkRemote HREF="http://www.cpg.com">
+<A ID=LinkRemote HREF="http://www.ssc.com">
+<A ID=LinkRemote HREF="http://www.learningtree.com">
+<A ID=LinkLocal HREF="javacook.html">
+<A ID=LinkRemote HREF="http://java.oreilly.com">
+<A ID=LinkLocal HREF="lookup/index.htm">
+<A ID=LinkLocal HREF="readings/index.html">
+<A ID=LinkLocal HREF="download.html">
+<IMG SRC="miniduke.gif" BORDER=0>
+darian$ 
