@@ -1,0 +1,75 @@
+<project name="XDoclet Demo Shopping Cart Bean" default="run" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="build"/>
+	<property file="../build.properties"/>
+
+	<property name="xdoclet.lib" value="${user.home}/lib/xdoclet"/>
+	<property name="xdoclet.jar" 
+		value="${xdoclet.lib}/xdoclet-1.2b4.jar"/>
+	<property name="xdoclet-ejb.jar"
+		value="${xdoclet.lib}/xdoclet-ejb-module-1.2b4.jar"/>
+	<property name="xjavadoc.jar" value="${xdoclet.lib}/xjavadoc-1.0.jar"/>
+	<property name="commons-collections.jar"
+		value="${xdoclet.lib}/commons-collections-2.0.jar"/>
+
+    <path id="project.class.path">
+        <pathelement path="${j2ee.jar}"/>
+        <pathelement path="${build}"/>
+        <pathelement path="${xdoclet.jar}"/>
+        <pathelement path="${xdoclet-ejb.jar}"/>
+		<pathelement path="${xjavadoc.jar}"/>
+		<pathelement path="${commons-collections.jar}"/>
+		<pathelement path="${commons-logging.jar}"/>
+		<pathelement path="${log4j.jar}"/>
+    </path>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="ejbxdoclet" depends="init">
+		<taskdef
+			name="ejbxdoclet"
+			classname="xdoclet.modules.ejb.EjbDocletTask"
+			classpathref="project.class.path"
+		/>
+
+		<ejbxdoclet
+			destdir="${build}"
+			addedtags="@xdoclet-generated at ${TODAY}"
+			ejbspec="2.0"
+		>
+			<fileset dir="${src}">
+				<include name="XDocletDemo.java"/>
+			</fileset>
+
+			<remoteinterface pattern="{0}Remote"/>
+			<localinterface pattern="{0}Local"/>
+
+			<homeinterface />
+			<localhomeinterface/>
+			<remoteinterface/>
+			<localinterface/>
+
+        <deploymentdescriptor destdir="${build}"/>
+
+		</ejbxdoclet>
+	</target>
+
+	<target name="compile" depends="ejbxdoclet">
+		<javac srcdir="${src}" 
+			debug="true" destdir="${build}" 
+			classpathref="project.class.path">
+			<exclude name="OverridesDemo.java"/>
+		</javac>
+	</target>
+
+	<target name="run" depends="compile">
+		<echo message="All done here!"/>
+	</target>
+
+</project>
