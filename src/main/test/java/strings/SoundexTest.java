@@ -3,9 +3,6 @@ import junit.framework.*;
 /** Soundex Test program. Knuth's original examples, and mine. */
 public class SoundexTest extends TestCase {
 
-	/** The object being tested */
-	protected Soundex sx;
-
 	/** JUnit test classes require this constructor */
 	public SoundexTest(String name) {
 		super(name);
