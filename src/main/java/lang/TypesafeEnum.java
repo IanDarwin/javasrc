@@ -7,8 +7,8 @@ package ca.tcp.utils;
  * See Java Cookbook, 2nd Edition, Chapter 8.
  */
 public abstract class Enum {
-	/** The name of this class, must be set in a static initializer. */
-	protected static String className;
+	/** The name of this class, should be set in a static initializer. */
+	protected static String className = "(class not set!)";
 	/** The value of this instance */
 	private String value;
 	/** The maximum number of values an enum can have */
