@@ -1,5 +1,7 @@
-SUBDIR=	 
+
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
+# $Id$
+
 SHELL=	/bin/sh
 
 # Pick a Java compiler. Any Java compiler that works.
@@ -34,5 +36,4 @@ subdirs:
 		DIR=`grep javacook-src /cvs/CVSROOT/modules | \
 		sed -e 's/.*-a//' -e 's@javasrc/@@g'`; \
 		for d in $$DIR; do if [ -d $$d ]; then LIST="$$LIST $$d"; fi; done; \
-		(echo "SUBDIR=	$$DIR"; grep -v SUBDIR= Makefile) > Makefile.new; \
 		mv Makefile.new Makefile
