@@ -103,20 +103,29 @@ public class MkIndex {
 	/** List for temporary storage, and sorting */
 	ArrayList list = new ArrayList();
 
-	/** Do the bulk of the work */
-	void process(File file) throws IOException {
-
-		String name = file.getName();
+	/** Return true if a filename should be ignored. */
+	boolean ignorable(String name) {
 		if (name.startsWith("index") ||
 			name.endsWith(".class") ||
+			name.endsWith(".jar") ||
 			name.endsWith(".bak")) {
 			if (verbose) {
 				System.err.println("Ignoring " + file.getPath());
 			}
-			return;
+			return true;
 		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
-			return;						// don't mention it
+			return true;						// don't mention it
 		} else if (name.charAt(0) == '.' && name.length() > 1) {// UNIX dot-file
+			return true;
+		}
+		return false;
+	}
+
+	/** Do the bulk of the work */
+	void process(File file) throws IOException {
+
+		String name = file.getName();
+		if (ignorable(name)) {
 			return;
 		}
 
