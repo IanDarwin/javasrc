@@ -2,11 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** Simple GUI demonstration: construct a Frame and populate it */
-public class TemplateGUI0 {
+public class GUI0 {
 
 	/** "main" method */
 	public static void main(String av[]) {
-		// create a TemplateGUI0 object and make it show
+		// create a GUI0 object and make it show
 		Frame f = new Frame();
 
 		// Set the Frame's windowListener to be a trivial WindowAdapter

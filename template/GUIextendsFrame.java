@@ -2,19 +2,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** Template standalone GUI application */
-public class TemplateGUI extends Frame {
+public class GUI extends Frame {
 	boolean unsavedChanges = false;
 	Button quitButton;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
-		// create a TemplateGUI object, tell it to show up
-		new TemplateGUI().setVisible(true);
+		// create a GUI object, tell it to show up
+		new GUI().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public TemplateGUI() {
-		super("TemplateGUI");
+	public GUI() {
+		super("GUI");
 		setLayout(new FlowLayout());
 		add(new Label("Hello, and welcome to the world of Java"));
 		add(quitButton = new Button("Exit"));

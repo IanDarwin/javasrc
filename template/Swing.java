@@ -3,19 +3,18 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /** Template standalone Swing GUI application.
- * @author	YOUR NAME HERE, YOUR EMAIL HERE
- * FOR CVS OR RCS ADD $ AT THE FRONT OF THE FOLLOWING; else delete me and it
- * @version Id$
+ * @author	Ian Darwin, ian@darwinsys.com
+ * @version #Id$
  */
-public class TemplateSwing extends JComponent {
+public class Swing extends JComponent {
 	boolean unsavedChanges = false;
 	JButton quitButton;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
-		// create a TemplateSwing object, tell it to show up
-		final JFrame f = new JFrame("TemplateSwing");
-		TemplateSwing o = new TemplateSwing();
+		// create a Swing object, tell it to show up
+		final JFrame f = new JFrame("Swing");
+		Swing o = new Swing();
 		f.getContentPane().add(o);
 		o.quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -37,7 +36,7 @@ public class TemplateSwing extends JComponent {
 	}
 
 	/** Construct the object including its GUI */
-	public TemplateSwing() {
+	public Swing() {
 		super();
 		add(new Label("Hello, and welcome to the world of Java"));
 		add(quitButton = new JButton("Exit")); 

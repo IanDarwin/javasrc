@@ -4,7 +4,7 @@ import java.applet.*;
 /**
  * Example of a class that can be used as an Applet or an Application
  */
-public class TemplateAppApp extends Applet {
+public class AppApp extends Applet {
 	boolean inAnApplet = true;
 	Label status;		// for Application showStatus()
 
@@ -14,8 +14,8 @@ public class TemplateAppApp extends Applet {
 	}
 
 	public static void main(String av[]) {
-		TemplateAppApp app = new TemplateAppApp();
-		Frame f = new Frame("TemplateAppApp Demo");
+		AppApp app = new AppApp();
+		Frame f = new Frame("AppApp Demo");
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				Browser5.this.hide();

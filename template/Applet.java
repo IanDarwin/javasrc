@@ -1,7 +1,7 @@
 import java.applet.*;
 import java.awt.*;
 
-public class TemplateApplet extends Applet {
+public class Applet extends Applet {
 	public void init() {
 		// initialize your applet GUI here
 	}
