@@ -1,8 +1,11 @@
-
 import java.applet.*;
 import java.awt.*;
+import java.awt.event.*;
 
-/** Simpler CardLayout demo */
+/** Simpler CardLayout demo: cycles through some labels.
+ * @author Ian Darwin
+ * @version $Id$
+ */
 public class CardLayDemo1 extends Applet {
 	CardLayout cardlay;
         Panel panel;
@@ -16,6 +19,13 @@ public class CardLayDemo1 extends Applet {
 		panel = new Panel();
 		cardlay = new CardLayout();
 		b1 = new Button("Next");
+		b1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				if (++cardno >= NCARDS)
+					cardno = 0;
+				cardlay.show(panel, labels[cardno]);
+			}
+		});
 		labels[0] = "Card One";
 		labels[1] = "Card Two";
 		labels[2] = "Card Three";
@@ -29,12 +39,5 @@ public class CardLayDemo1 extends Applet {
 		setLayout(new BorderLayout());
 		add("Center", panel);
 		add("South", b1);
-	}
-
-	public boolean action(Event e, Object o) {
-		if (++cardno >= NCARDS)
-			cardno = 0;
-		cardlay.show(panel, labels[cardno]);
-		return true;
 	}
 }
