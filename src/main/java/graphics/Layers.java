@@ -1,11 +1,12 @@
 import java.awt.*;
+import javax.swing.*;
 
 /**
  * Layers - Try to use "alpha values (transparency) to draw in layers.
  * @author	Ian Darwin, ian@darwinsys.com
  * @version	$Id$
  */
-public class Layers extends Frame {
+public class Layers extends JFrame {
 	int width, height;
 
 	Layers(String s) {
@@ -15,6 +16,7 @@ public class Layers extends Frame {
 		setTitle(s);
 		setSize(width=w, height=h);	// a short form
 		setBackground(Color.black);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	public void paint(Graphics g) {

@@ -52,13 +52,7 @@ public class CompTest {
 				System.exit(0);
 			}
 		});
-		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				f.setVisible(false);
-				f.dispose();
-				System.exit(0);
-			}
-		});
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Set things reasonably sized.
 		Dimension d = c.getPreferredSize();
