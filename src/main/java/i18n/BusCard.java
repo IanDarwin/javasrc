@@ -45,41 +45,33 @@ public class BusCard extends JFrame {
 		ResourceBundle b = ResourceBundle.getBundle("BusCardInfo");
 
 		JMenu aMenu;
-		aMenu = mkMenu(b, "filemenu");
+		aMenu = I18N.mkMenu(b, "filemenu");
 		mb.add(aMenu);
-		JMenuItem mi = mkMenuItem(b, "filemenu", "exit");
+		JMenuItem mi = I18N.mkMenuItem(b, "filemenu", "exit");
 		aMenu.add(mi);
 		mi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		aMenu = mkMenu(b, "editmenu");
+		aMenu = I18N.mkMenu(b, "editmenu");
 		mb.add(aMenu);
-		aMenu = mkMenu(b, "viewmenu");
+		aMenu = I18N.mkMenu(b, "viewmenu");
 		mb.add(aMenu);
-		aMenu = mkMenu(b, "optionsmenu");
+		aMenu = I18N.mkMenu(b, "optionsmenu");
 		mb.add(aMenu);
-		aMenu = mkMenu(b, "helpmenu");
+		aMenu = I18N.mkMenu(b, "helpmenu");
 		mb.add(aMenu);
 		//mb.setHelpMenu(aMenu);		// needed for portability (Motif, etc.).
 
-		String titlebar;
-		try { titlebar = b.getString("card"+".company"); }
-		catch (MissingResourceException e) { titlebar="BusCard Demo"; }
-		setTitle(titlebar);
+		setTitle(I18N.getString(b, "card"+".company", "TITLE"));
 
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(0, 1, 50, 10));
 
 		nameTF = new JLabel("My Name", JLabel.CENTER);
 		nameTF.setFont(new Font("helvetica", Font.BOLD, 18));
-		String message;
-		try { message = b.getString("card"+".myname"); }
-		catch (MissingResourceException e) { 
-			message="Java Joe";
-		}
-		nameTF.setText(message);
+		nameTF.setText(I18N.getString(b, "card"+".myname", "MYNAME"));
 		p1.add(nameTF);
 
 		jobChoice = new JComboBox();
@@ -97,61 +89,22 @@ public class BusCard extends JFrame {
 		p2.setLayout(new GridLayout(2, 2, 10, 10));
 
 		B1 = new JButton();
-		try { message = b.getString("button1.label"); }
-		catch (MissingResourceException e) { 
-			message="Button1";
-		}
-		B1.setLabel(message);
+		B1.setLabel(I18N.getString(b, "button1.label", "BUTTON LABEL"));
 		p2.add(B1);
 
 		B2 = new JButton();
-		try { message = b.getString("button2.label"); }
-		catch (MissingResourceException e) { 
-			message="Button2";
-		}
-		B2.setLabel(message);
+		B2.setLabel(I18N.getString(b, "button2.label", "BUTTON LABEL"));
 		p2.add(B2);
 
 		B3 = new JButton();
-		try { message = b.getString("button3.label"); }
-		catch (MissingResourceException e) { 
-			message="Button3";
-		}
-		B3.setLabel(message);
+		B3.setLabel(I18N.getString(b, "button3.label", "BUTTON LABEL"));
 		p2.add(B3);
 
 		B4 = new JButton();
-		try { message = b.getString("button4.label"); }
-		catch (MissingResourceException e) { 
-			message="Button4";
-		}
-		B4.setLabel(message);
+		B4.setLabel(I18N.getString(b, "button4.label", "BUTTON LABEL"));
 		p2.add(B4);
 		cp.add(p2);
 
 		pack();
-	}
-
-	/** Convenience routine to make a Menu */
-	public JMenu mkMenu(ResourceBundle b, String name) {
-		String menuLabel;
-		try { menuLabel = b.getString(name+".label"); }
-		catch (MissingResourceException e) { menuLabel=name; }
-		return new JMenu(menuLabel);
-	}
-
-	/** Convenience routine to make a MenuItem */
-	public JMenuItem mkMenuItem(ResourceBundle b, String menu, String name) {
-		String miLabel;
-		try { miLabel = b.getString(menu + "." + name + ".label"); }
-		catch (MissingResourceException e) { miLabel=name; }
-		String key = null;
-		try { key = b.getString(menu + "." + name + ".key"); }
-		catch (MissingResourceException e) { key=null; }
-
-		if (key == null)
-			return new JMenuItem(miLabel);
-		else
-			return new JMenuItem(miLabel/*, new MenuShortcut(key.charAt(0))*/);
 	}
 }
