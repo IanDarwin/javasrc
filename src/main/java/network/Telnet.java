@@ -26,12 +26,10 @@ public class Telnet {
 			Socket s = new Socket(host, portNum);
 
 			// Connect the remote to our stdout
-			new Pipe(new DataInputStream(s.getInputStream()),
-				new DataOutputStream(System.out)).start();
+			new Pipe(s.getInputStream(), System.out).start();
 
 			// Connect our stdin to the remote
-			new Pipe(new DataInputStream(System.in),
-				new DataOutputStream(s.getOutputStream())).start();
+			new Pipe(System.in, s.getOutputStream()).start();
 
 		} catch(IOException e) {
 			System.out.println(e);
@@ -47,25 +45,23 @@ public class Telnet {
  */
 class Pipe extends Thread {
 	DataInputStream is;
-	DataOutputStream os;
+	PrintStream os;
 
 	// Constructor
-	Pipe(DataInputStream is, DataOutputStream os) {
-		this.is = is;
-		this.os = os;
+	Pipe(InputStream is, OutputStream os) {
+		this.is = new DataInputStream(is);
+		this.os = new PrintStream(os);
 	}
 
 	// Do something method
 	public void run() {
 		String line;
 		try {
-			while ((line = is.readLine()) != null)
-				// Write each char as a byte.
-				for (int i=0; i<line.length(); i++)
-					os.write((byte)line.charAt(i));
-				os.write((byte)'\r');
-				os.write((byte)'\n');
+			while ((line = is.readLine()) != null) {
+				os.print(line);
+				os.print("\r\n");
 				os.flush();
+			}
 		} catch(IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
