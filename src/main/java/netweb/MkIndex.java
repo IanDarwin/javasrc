@@ -187,7 +187,7 @@ public class LinkChecker extends Frame implements Runnable {
 				theTag.append((char)i);
 		}
 		catch (IOException e) {
-		   System.err.println("I/O Error: " + e);
+		   System.err.println("IO Error: " + e);
 		}     
 		catch (Exception e) {
 		   System.err.println(e);
