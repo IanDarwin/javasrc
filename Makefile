@@ -32,6 +32,9 @@ build:
 
 # For any subdirectory that doesn't already have a Makefile, create a simple one
 makefiles:
+		for dir in introspection language numbers; do \
+			cp Makefile.exclude-errors $$dir/Makefile;
+		done
 		for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
 			echo "===> $$dir/Makefile"; \
 			cp Makefile.simple $$dir/Makefile; \
