@@ -25,8 +25,8 @@
 			quiet="true"
 			package="javacook-src"
 			dest="${build}"/>
-		<echo message="javasrc.home=${user.dir}/${build.work}" 
-			file="${build.work}/build.properties" append="true"/>
+		<replace token="//CHANGEME//" value="${user.dir}/${build.work}" 
+			file="${build.work}/build.properties"/>
 	</target>
 
 	<target name="api" depends="get">
