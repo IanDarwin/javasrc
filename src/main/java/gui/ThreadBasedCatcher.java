@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 /**
- * name - purpose
+ * ThreadBasedCatcher - Demonstrate catching uncaught exceptions 
+ * thrown in an unrelated Thread.
  * @author ian
  * @verion $Id$
  */
