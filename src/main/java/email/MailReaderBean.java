@@ -80,6 +80,7 @@ public class MailReaderBean extends JSplitPane implements MailConstants {
 
 		// The Southern (Bottom) child is a textarea to display the msg.
 		bodyText = new JTextArea(15, 80);
+		bodyText.setEditable(false);	// incoming mail is read-only
 		this.setBottomComponent(new JScrollPane(bodyText));
 
 		// Add a notification listener for the tree; this will
