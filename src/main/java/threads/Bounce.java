@@ -36,14 +36,15 @@ class Sprite extends Component implements Runnable {
 	 * This version is very stupid, and just moves them around
 	 * at some 45-degree angle.
 	 */
-    public synchronized void run() {
+    public void run() {
 		int width = parent.getSize().width;
 		int height = parent.getSize().height;
-        x = (int)(Math.random() * width);
-        y = (int)(Math.random() * height);
+		// Random location
+		x = (int)(Math.random() * width);
+		y = (int)(Math.random() * height);
+		// Flip coin for x & y directions
 		int xincr = Math.random()>0.5?1:-1;
 		int yincr = Math.random()>0.5?1:-1;
-		// while (Thread.currentThread() == t) {
 		while (!done) {
 			width = parent.getSize().width;
 			height = parent.getSize().height;
@@ -60,7 +61,7 @@ class Sprite extends Component implements Runnable {
 			setLocation(x, y);
 			repaint();
 			try {
-				wait(250);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 				return;
 			}
@@ -111,13 +112,11 @@ public class Bounce extends Applet implements ActionListener {
 		v.addElement(s);
     }
 
-    public synchronized void stop() {
-		// remove in backwards order for removeElementAt();
-		for (int i=v.size()-1; i>=0; i--) {
-			((Sprite)(v.elementAt(i))).stop();
-			v.removeElementAt(i);
+    public void stop() {
+		for (int i=0; i<v.size(); i++) {
+			((Sprite)(v.get(i))).stop();
 		}
-		// notify();
+		v.clear();
     }
 }
 

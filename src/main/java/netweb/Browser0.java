@@ -21,7 +21,13 @@ public class Browser0 {
 		}
 		try {
 			URL Web = new URL(loc);
-			data = (String)Web.getContent();
+			BufferedReader is = new BufferedReader(
+				new InputStreamReader(
+				Web.openStream()));
+			String line;
+			while ((line = is.readLine()) != null)
+				System.out.println(line);
+			is.close();
 		} catch (MalformedURLException e) {
 			System.out.println("MalformedURLException: " + e);
 		} catch (IOException e) {
