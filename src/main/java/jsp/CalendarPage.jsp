@@ -33,7 +33,7 @@
 	}
  %>
 
-<form method=post action="/tmp/CalendarPage.jsp">
+<form method=post action="CalendarPage.jsp">
 	Month: <select name=month>
 	<% for (int i=0; i<months.length; i++) {
 		if (i==mm)
