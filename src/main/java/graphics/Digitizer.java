@@ -5,6 +5,7 @@ import java.net.URL;
 
 /**
  * Digitizer - load an Image and let you click on it.
+ * STAUTS - NOT WORKING!!
  */
 public class Digitizer extends JComponent {
 	Container cp;
