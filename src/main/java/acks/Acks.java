@@ -1,5 +1,3 @@
-// Acks - pop up a bunch of dialogs, to thank some people in the Java style.
-// $Id$
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,7 +6,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * OneAck - popup one dialog, to thank some people in the Java style.
+ * OneAck - popup some dialogs, to thank some people in the Java style.
+ * @version $Id$
  */
 class OneAck extends Frame {
 	final int COLS=45;
