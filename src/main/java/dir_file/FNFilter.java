@@ -16,7 +16,7 @@ public class FNFilter {
 }
 
 /** This class implements the FilenameFilter interface.
- * The Accept method only returns true for .java and .class files.
+ * The Accept method returns true for .java, .class and .jar files.
  */
 class OnlyJava implements FilenameFilter {
 	public boolean accept(File dir, String s) {
