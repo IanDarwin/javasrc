@@ -6,6 +6,7 @@
 	<property name="src" value="."/>
 	<property name="build" value="."/>
 	<property name="jdo.jar" value="../lib/jdo.jar"/>
+	<property name="jta.jar" value="../lib/jta.jar"/>
 	<property name="jdori.jar" value="../lib/jdori.jar"/>
 	<property name="jdori-enhancer.jar" value="../lib/jdori-enhancer.jar"/>
 
@@ -23,7 +24,7 @@
  	   <java fork="true"
 			classname="com.sun.jdori.enhancer.Main"
 			classpath="${jdori-enhancer.jar}:${jdori.jar}:${jdo.jar}:${antlr.jar}">
- 	       <arg line="-s . MyData.class MyData$DES.class"/>
+ 	       <arg line="-s . MyData.class MyData$DES.class Date.class"/>
 	    </java>
 	</target>
 	
