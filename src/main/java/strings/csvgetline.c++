@@ -2,9 +2,10 @@
  * Excerpted from 'The Practice of Programming'
  * by Brian W. Kernighan and Rob Pike.
  *
- * Included by permission of the http://tpop.awl.com/ web site, which says:
- * "You may use this code for any purpose, as long as you leave the copyright
- * notice and book citation attached." I have done so.
+ * Included by permission of the http://tpop.awl.com/ web site, 
+ * which says:
+ * "You may use this code for any purpose, as long as you leave 
+ * the copyright notice and book citation attached." I have done so.
  */
 
 #include <iostream>
