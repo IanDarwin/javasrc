@@ -26,13 +26,16 @@ public class Grep2 {
 	/** are we to print only lines that DONT match? */
 	protected boolean inVert = false;
 
-	/** Construct a Grep object for each pattern, and run it
+	/** Construct a Grep2 object for each pattern, and run it
 	 * on all input files listed in argv.
+	 * Be aware that a few of the command-line options are not
+	 * acted upon in this version - this is an exercise for the reader!
 	 */
 	public static void main(String[] argv) throws RESyntaxException {
 
 		if (argv.length < 1) {
-		    System.err.println("Usage: Grep pattern [filename...]");
+		    System.err.println(
+			"Usage: Grep2 pattern [-chilsnv][-f pattfile][filename...]");
 		    System.exit(1);
 		}
 		String pattern = null;
@@ -85,7 +88,7 @@ public class Grep2 {
 		Grep2 pg = new Grep2(pattern, args);
 
 		if (argv.length == ix)
-			pg.process(new InputStreamReader(System.in), "(standard input");
+			pg.process(new InputStreamReader(System.in), "(standard input)");
 		else
 			for (int i=ix; i<argv.length; i++) {
 				try {
@@ -117,7 +120,6 @@ public class Grep2 {
 	}
         
 	/** Do the work of scanning one file
-	 * @param	patt	RE	Regular Expression object
 	 * @param	ifile	Reader	Reader object already open
 	 * @param	fileName String	Name of the input file
 	 */

@@ -7,7 +7,7 @@ import org.apache.regexp.*;
  */
 public class REmatch {
 	public static void main(String[] argv) throws RESyntaxException {
-		//+
+		
 		String patt = "Q[^u]\\d+\\.";
 		RE r = new RE(patt);
 		String line = "Order QT300. Now!";

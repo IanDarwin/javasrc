@@ -16,14 +16,14 @@ public class Grep1 {
 	public static void main(String[] argv) throws Exception {
 
 		if (argv.length < 1) {
-		    System.err.println("Usage: Grep pattern [filename]");
+		    System.err.println("Usage: Grep1 pattern [filename]");
 		    System.exit(1);
 		}
 
 		Grep1 pg = new Grep1(argv[0]);
 
 		if (argv.length == 1)
-			pg.process(new InputStreamReader(System.in), "(standard input", false);
+			pg.process(new InputStreamReader(System.in), "(standard input)", false);
 		else
 			for (int i=1; i<argv.length; i++) {
 				pg.process(new FileReader(argv[i]), argv[i], true);
@@ -36,7 +36,6 @@ public class Grep1 {
 	}
         
 	/** Do the work of scanning one file
-	 * @param patt RE Regular Expression object
 	 * @param ifile Reader Reader object already open
 	 * @param fileName String Name of the input file
 	 * @param printFileName Boolean - true to print filename
