@@ -63,10 +63,10 @@ public class TarList {
 			case TarEntry.LF_SYMLINK:
 				sb.append('l');
 				break;
-			case TarEntry.LF_CHR:		// UNIX device file
+			case TarEntry.LF_CHR:		// UNIX character device file
 				sb.append('c');
 				break;
-			case TarEntry.LF_BLK:		// UNIX device file
+			case TarEntry.LF_BLK:		// UNIX block device file
 				sb.append('b');
 				break;
 			case TarEntry.LF_FIFO:		// UNIX named pipe
