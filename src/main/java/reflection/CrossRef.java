@@ -17,7 +17,7 @@ import java.lang.reflect.*;
  * The part in "{ ... }" is left as an exercise for the reader. :-(
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
- *
+ * @version	$Id$
  */
 public class CrossRef {
 	/** Counter of fields/methods printed. */
