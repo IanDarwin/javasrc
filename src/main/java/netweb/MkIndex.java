@@ -5,15 +5,18 @@ import java.io.*;
 
 /** A simple HTML Link Checker. 
  * Sorta working, but not ready for prime time.
- * Need to start a Thread and be able to stop it, in case we get into a loop.
+ * Needs code simplification/elimination.
  * Need to have a -depth N argument to limit depth of checking.
- * Responses not really adequate; should check at least for 404-type errors!
+ * Responses not adequate; need to check at least for 404-type errors!
+ * When all that is said and done, display in a Tree instead of a TextArea.
  *
  * @author	Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * Routine "readTag" stolen shamelessly from from
  * Elliott Rusty Harold's "ImageSizer" program.
  */
-public class LinkChecker extends Frame {
+public class LinkChecker extends Frame implements Runnable {
+	protected Thread t = null;
+	protected Runnable selfRef;
 	protected TextField textFldURL;
 	protected TextArea textWindow;
 	protected Panel p;
@@ -24,13 +27,14 @@ public class LinkChecker extends Frame {
 		LinkChecker lc = new LinkChecker();
 		if (args.length == 1)
 			lc.textFldURL.setText(args[0]);
-		lc.setSize(400, 350);
+		lc.setSize(500, 400);
 		lc.setVisible(true);
 	}
   
 	/** Construct a LinkChecker */
 	public LinkChecker() {
 		super("LinkChecker");
+		selfRef = this;
         addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 			setVisible(false);
@@ -47,47 +51,46 @@ public class LinkChecker extends Frame {
 		p.add(checkButton = new Button("Check URL"));
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textWindow.setText("");
-				checkAt(textFldURL.getText());
-				textWindow.append("-- All done --");
+				if (t!=null && t.isAlive())
+					return;
+				t = new Thread(selfRef);
+				t.start();
 			}
 		});
 		p.add(killButton = new Button("Stop"));
-			killButton.setEnabled(false); // not handled
+		killButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (t == null || !t.isAlive())
+					return;
+				t.stop();
+				textWindow.append("-- Interrupted --");
+			}
+		});
+	}
+
+	public synchronized void run() {
+		textWindow.setText("");
+		checkOut(textFldURL.getText());
+		textWindow.append("-- All done --");
 	}
   
-	public void checkAt(String pageURL) {
-		String thisLine;
-		URL root;
+	/** Start checking, given a URL by name. */
+	public void checkOut(String pageURL) {
+		String thisLine = null;
+		URL root = null;
 
-		if (pageURL != null) {
-			// Open the URL for reading
-			try {
-				if (pageURL.indexOf(":") != -1) {
-					root = new URL(pageURL);
-				}
-				else {
-					root = new URL("http://" + pageURL);
-				}
-				findLinks(root);
-			}
-			catch (MalformedURLException e) {
-				System.err.println(pageURL + 
-					" is not a parseable URL");
-				System.err.println(e);
-			}
+		if (pageURL == null) {
+			throw new IllegalArgumentException(
+				"checkOut(null) isn't very useful");
 		}
-	}
-
-	static int indent = 0;
-	public void findLinks(URL u) {
-		BufferedReader inrdr = null;
-		char thisChar = 0;
-		String tag = null;
-  
-		indent++;
+		// Open the URL for reading
 		try {
-			inrdr = new BufferedReader(new InputStreamReader(u.openStream()));
+			root = new URL(pageURL);
+			BufferedReader inrdr = null;
+			char thisChar = 0;
+			String tag = null;
+  
+			inrdr = new BufferedReader(new InputStreamReader(root.openStream()));
 			int i;
 			while ((i = inrdr.read()) != -1) {
 				thisChar = (char)i;
@@ -96,50 +99,61 @@ public class LinkChecker extends Frame {
 					// System.out.println("TAG: " + tag);
 					if (tag.toUpperCase().startsWith("<A ") ||
 						tag.toUpperCase().startsWith("<A\t")) {
-						// for (int j=0; j<2*indent; j++)
-						//	textWindow.append(" ");
-						textWindow.append(tag + " -- ");
+						
+						String href = extractHREF(tag);
+						textWindow.append(href + " -- ");
 						// don't combine previous append with this one,
 						// since this one can throw an exception!
-						textWindow.append(checkLink(u, tag) + "\n");
+						textWindow.append(checkLink(root, href) + "\n");
+
+						// If HTML, check it recursively
+						if (href.endsWith(".htm") ||
+							href.endsWith(".html")) {
+								if (href.indexOf(":") != -1)
+									checkOut(href);
+								else {
+									String newRef = root.getProtocol() +
+										 "://" + root.getHost() + "/" + href;
+									System.out.println(newRef);
+									checkOut(newRef);
+								}
+						}
 					}
 				}
 			}
 			inrdr.close();
 		}
+		catch (MalformedURLException e) {
+			textWindow.append("Can't parse " + pageURL);
+		}
 		catch (IOException e) {
-		       textWindow.append("Error reading from " + u+tag + ":" + e);
+			textWindow.append("Error " + root + ":<" + e +">\n");
 		}
 	}
 
 	/** Check one link, given its DocumentBase and the tag */
-	public String checkLink(URL u, String tag) {
-    String s1 = tag.toUpperCase();
+	public String checkLink(URL baseURL, String thisURL) {
 	URL linkURL;
 
-      int p1, p2, p3, p4;
-      p1 = s1.indexOf("HREF");
-      p2 = s1.indexOf ("=", p1);
-      p3 = s1.indexOf("\"", p2);
-      p4 = s1.indexOf("\"", p3+1);
-      String thisURL = tag.substring(p3+1, p4);
-      try {
+    try {
         if (thisURL.indexOf(":")  == -1) {
           // it's not an absolute URL
-          linkURL = new URL(u, thisURL);
+          linkURL = new URL(baseURL, thisURL);
         } else {
           linkURL = new URL(thisURL);
         }
+
+		// Open it; if the open fails we'll likely throw an exception
 		URLConnection luf = linkURL.openConnection();
-		findLinks(linkURL);	// it opened, so check it!
-		//luf.close();
+
+		// luf.close();
 		}
-      catch (MalformedURLException e) {
-        return "MALFORMED";
-      }
-      catch (IOException e) {
-		return "DEAD";
-      }
+		catch (MalformedURLException e) {
+			return "MALFORMED";
+		}
+		catch (IOException e) {
+			return "DEAD";
+		}
 		return "OK";    
     }
  
@@ -161,4 +175,20 @@ public class LinkChecker extends Frame {
 
 		return theTag.toString();
 	}
+
+	/** Extract the URL from <A HREF="http://foo/bar" ...> 
+	 * We presume that the HREF is the first tag.
+	 */
+	public String extractHREF(String tag) throws MalformedURLException {
+		String s1 = tag.toUpperCase();
+		int p1, p2, p3, p4;
+		p1 = s1.indexOf("HREF");
+		p2 = s1.indexOf ("=", p1);
+		p3 = s1.indexOf("\"", p2);
+		p4 = s1.indexOf("\"", p3+1);
+		if (p3 < 0 || p4 < 0)
+			throw new MalformedURLException(tag);
+		return tag.substring(p3+1, p4);
+	}
+
 }
