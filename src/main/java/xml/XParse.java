@@ -21,6 +21,8 @@ public class XParse {
 			if (validate)
 				f.setValidating(true);
 			DocumentBuilder p = f.newDocumentBuilder();
+			// Get local copies of DTDs...
+			p.setEntityResolver(new MyDTDResolver());
 			Document doc = p.parse(uri);
 			System.out.println("Parsed OK");
 
