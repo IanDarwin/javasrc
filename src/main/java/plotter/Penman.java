@@ -16,7 +16,6 @@ import java.util.*;
 public class Penman extends Plotter {
 	private final String OK_PROMPT = "\r\n!";
 	private final int MAX_REPLY_BYTES = 50;	// paranoid upper bound
-	private byte b, reply[] = new byte[22];
 	private SerialPort tty;
 	private DataInputStream is;
 	private DataOutputStream os;
