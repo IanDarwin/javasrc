@@ -1,5 +1,7 @@
+import com.darwinsys.util.Debug;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
@@ -7,7 +9,7 @@ import java.util.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class Grapher extends Component {
+public class Grapher extends JComponent {
 	/** Multiplier for range to allow room for a border */
 	public final static float BORDERFACTOR = 1.1f;
 

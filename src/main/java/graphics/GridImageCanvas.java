@@ -1,11 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.util.*;
 
 /**
  * GridImageCanvas - a rectangular grid of images
  */
-public class GridImageCanvas extends Panel {
+public class GridImageCanvas extends JPanel {
 	/** The LayoutManager. We provide it, not the user */
 	protected LayoutManager lm = null;
 	/** The list of Images */
@@ -101,7 +102,7 @@ System.out.println("N="+l+";sqrt="+d+";gridLayout("+w+","+w+");");
 	 * an image and a String, paint the Image
 	 * When the mouse is in our window, we showStatus() the String.
 	 */
-	class ImageCanvas extends Component {
+	class ImageCanvas extends JComponent {
 		final int PAD = 3;
 		String name;
 		Image im = null;

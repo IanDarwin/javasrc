@@ -1,20 +1,17 @@
+import com.darwinsys.util.WindowCloser;
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 /** Standalone GUI program that shows paint, repaint, and update */
-public class PaintMethods extends Label {
+public class PaintMethods extends JLabel {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
-		final Frame f = new Frame("PaintMethods demo");
+		final JFrame f = new JFrame("PaintMethods demo");
 		f.add("Center", new PaintMethods("Testing 1 2 3"));
-		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				f.setVisible(false);
-				f.dispose();
-				System.exit(0);
-			}
-		});
+		f.addWindowListener(new WindowCloser(f));
 		f.pack();
 		f.setVisible(true);
 	}
@@ -36,4 +33,3 @@ public class PaintMethods extends Label {
 		super.update(g);
 	}
 }
-

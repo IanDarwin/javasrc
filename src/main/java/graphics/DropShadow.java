@@ -2,14 +2,14 @@ import java.applet.*;
 import java.awt.*;
 
 /** 
- * DropShad -- show overlapped painting.
+ * DropShadow -- show overlapped painting.
  *
  * @author	Copyright 1995, 1997 Ian F. Darwin,
  * <A HREF="mailto:ian@darwinsys.com">ian@darwinsys.com</A>,
  * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
  * @version	$Id$
  */
-public class DropShad extends Applet {
+public class DropShadow extends Applet {
 	/** The label that is to appear in the window */
 	protected String theLabel = null;
 	/** The width and height */
@@ -30,7 +30,7 @@ public class DropShad extends Applet {
 	 * limit ourselves to the ubiquitous IllegalArgumentException.
 	 */
 	public void init() {
-		// System.out.println("In DropShad::init");
+		// System.out.println("In DropShadow init()");
 
 		theLabel = getParameter("label");
 		if (theLabel == null)

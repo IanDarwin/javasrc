@@ -1,12 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import javax.swing.*;
 
 /** Text with a Texture
  * @author	Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class TexturedText extends Component {
+public class TexturedText extends JComponent {
 	/** The image we draw in the texture */
 	protected BufferedImage bim; 
 	/** The texture for painting. */

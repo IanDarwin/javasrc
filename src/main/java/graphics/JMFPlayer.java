@@ -1,3 +1,5 @@
+import com.darwinsys.util.WindowCloser;
+
 import java.applet.*;
 import java.awt.*;
 import javax.swing.*;

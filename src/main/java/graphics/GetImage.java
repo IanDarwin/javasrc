@@ -1,4 +1,3 @@
-//+
 /*
  * For Applet, invoke as:
 <APPLET CODE="GetImage" WIDTH="100" HEIGHT="100">
@@ -6,6 +5,7 @@
  * For Application, just run it (has own main).
  */
 
+import com.darwinsys.util.WindowCloser;
 import java.awt.*;
 import java.net.*;		// for URL class
 
@@ -38,15 +38,7 @@ public class GetImage extends java.applet.Applet {
 
 	public static void main(String[] args) {
 		Frame f = new Frame("GetImage");
-		//-
-        f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				// If we do setVisible and dispose, then the Close completes
-				Outer.this.setVisible(false);
-				Outer.this.dispose();
-			}
-		});
-		//+
+        f.addWindowListener(new WindowCloser(f));
 		GetImage myApplet = new GetImage();
 		f.add(myApplet);
 		myApplet.init();

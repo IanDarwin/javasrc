@@ -1,6 +1,7 @@
 import java.awt.*;
+import javax.swing.*;
 
-public class DrawStringDemo2 extends Component {
+public class DrawStringDemo2 extends JComponent {
 	//-
 	String message = "Hello Java";
 

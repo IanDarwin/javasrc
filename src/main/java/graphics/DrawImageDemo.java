@@ -1,3 +1,11 @@
-public void paint(Graphics g) {
-	g.drawImage(0, 0, myImage, this);
+import java.awt.*;
+import javax.swing.*;
+
+public class DrawImageDemo extends JComponent {
+
+	Image myImage = null;
+
+	public void paint(Graphics g) {
+		g.drawImage(myImage, 0, 0, this);
+	}
 }

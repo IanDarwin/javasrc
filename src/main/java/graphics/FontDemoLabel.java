@@ -1,11 +1,11 @@
 import java.awt.*;
 
 /** FontDemo lists the system fonts and provides a sample of each one */
-public class FontDemo extends Frame {
+public class FontDemoLabel extends Frame {
 	String fl[];
 	Panel p;
 
-	FontDemo() {
+	public FontDemoLabel() {
 		super("Font Demo");
 
 		// get font name list
