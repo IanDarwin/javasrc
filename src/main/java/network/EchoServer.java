@@ -38,6 +38,7 @@ public class EchoServer {
 		PrintWriter os = null;
 		while (true) {
 			try {
+				System.out.println("Waiting for client...");
 				ios = sock.accept();
 				System.err.println("Accepted from " +
 					ios.getInetAddress().getHostName());

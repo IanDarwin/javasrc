@@ -12,9 +12,6 @@ import java.lang.reflect.*;
  */
 public class MyJavaP {
 
-	/** A "Modifier" object, to decode modifiers of fields/methods */
-	Modifier m = new Modifier();
-
 	/** Simple main program, construct self, process each class name
 	 * found in argv.
 	 */
@@ -34,19 +31,19 @@ public class MyJavaP {
 
 		try {
 			Class c = Class.forName(className);
-			System.out.println(m.toString(c.getModifiers()) + ' ' + c + " {");
+			System.out.println(Modifier.toString(c.getModifiers()) + ' ' + c + " {");
 			int i, mods;
-			Field fields[] = c.getFields();
+			Field fields[] = c.getDeclaredFields();
 			for (i = 0; i < fields.length; i++) {
-				if (!m.isPrivate(fields[i].getModifiers())
-				 && !m.isProtected(fields[i].getModifiers()))
+				if (!Modifier.isPrivate(fields[i].getModifiers())
+				 && !Modifier.isProtected(fields[i].getModifiers()))
 					System.out.println("\t" + fields[i]);
 			}
 
-			Method methods[] = c.getMethods();
+			Method methods[] = c.getDeclaredMethods();
 			for (i = 0; i < methods.length; i++) {
-				if (!m.isPrivate(methods[i].getModifiers())
-				 && !m.isProtected(methods[i].getModifiers()))
+				if (!Modifier.isPrivate(methods[i].getModifiers())
+				 && !Modifier.isProtected(methods[i].getModifiers()))
 					System.out.println("\t" + methods[i]);
 			}
 		} catch (ClassNotFoundException e) {

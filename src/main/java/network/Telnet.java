@@ -37,34 +37,33 @@ public class Telnet {
 		}
 		System.out.println("Connected OK");
 	}
-}
 
-/** This class handles one side of the connection. */
-/* This class handles one half of a full-duplex connection.
- * Line-at-a-time mode. Streams, not writers, are used.
- */
-class Pipe extends Thread {
-	DataInputStream is;
-	PrintStream os;
+	/* This class handles one half of a full-duplex connection.
+	 * Line-at-a-time mode. Streams, not writers, are used.
+	 */
+	class Pipe extends Thread {
+		DataInputStream is;
+		PrintStream os;
 
-	// Constructor
-	Pipe(InputStream is, OutputStream os) {
-		this.is = new DataInputStream(is);
-		this.os = new PrintStream(os);
-	}
+		// Constructor
+		Pipe(InputStream is, OutputStream os) {
+			this.is = new DataInputStream(is);
+			this.os = new PrintStream(os);
+		}
 
-	// Do something method
-	public void run() {
-		String line;
-		try {
-			while ((line = is.readLine()) != null) {
-				os.print(line);
-				os.print("\r\n");
-				os.flush();
+		// Do something method
+		public void run() {
+			String line;
+			try {
+				while ((line = is.readLine()) != null) {
+					os.print(line);
+					os.print("\r\n");
+					os.flush();
+				}
+			} catch(IOException e) {
+				throw new RuntimeException(e.getMessage());
 			}
-		} catch(IOException e) {
-			throw new RuntimeException(e.getMessage());
 		}
 	}
-}
 
+}

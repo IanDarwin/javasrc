@@ -22,9 +22,6 @@ public class CrossRef {
 	/** Counter of fields/methods printed. */
 	protected static int n = 0;
 
-	/** A "Modifier" object, to decode modifiers of fields/methods */
-	protected Modifier m = new Modifier();
-
 	/** True if we are doing classpath, so only do java. and javax. */
 	protected static boolean doingStandardClasses = true;
 	
@@ -145,12 +142,12 @@ public class CrossRef {
 		int i, mods;
 		startClass(c);
 		try {
-			Object[] fields = c.getFields();
+			Object[] fields = c.getDeclaredFields();
 			Arrays.sort(fields);
 			for (i = 0; i < fields.length; i++) {
 				Field field = (Field)fields[i];
-				if (!m.isPrivate(field.getModifiers())
-				 && !m.isProtected(field.getModifiers()))
+				if (!Modifier.isPrivate(field.getModifiers())
+				 && !Modifier.isProtected(field.getModifiers()))
 					putField(field, c);
 				else System.err.println("private field ignored: " + field);
 			}
@@ -158,8 +155,8 @@ public class CrossRef {
 			Method methods[] = c.getDeclaredMethods();
 			// Arrays.sort(methods);
 			for (i = 0; i < methods.length; i++) {
-				if (!m.isPrivate(methods[i].getModifiers())
-				 && !m.isProtected(methods[i].getModifiers()))
+				if (!Modifier.isPrivate(methods[i].getModifiers())
+				 && !Modifier.isProtected(methods[i].getModifiers()))
 					putMethod(methods[i], c);
 				else System.err.println("pvt: " + methods[i]);
 			}

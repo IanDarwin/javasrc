@@ -3,6 +3,8 @@ import java.io.*;
 
 /**
  * Threaded Echo Server, pre-allocation scheme.
+ * Each Thread waits in its accept() call for a connection; this synchronizes
+ * on the serversocket when calling its accept() method.
  * @author Ian F. Darwin.
  */
 public class EchoServerThreaded2 {
@@ -54,7 +56,8 @@ public class EchoServerThreaded2 {
 
 		public void run() 
 		{
-			/* Wait for a connection */
+			/* Wait for a connection. Synchronized on the ServerSocket
+			 * while calling its accept() method. */
 			while (true){
 				try {
 					System.out.println( getName() + " waiting");
