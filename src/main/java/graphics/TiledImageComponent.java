@@ -1,5 +1,4 @@
-import com.darwinsys.swingui.WindowCloser;
-
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
@@ -7,7 +6,7 @@ import java.net.*;
 /**
  * Demo of Tiled Image
  * @version $Id$
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class TiledImageComponent extends Container {
 	TextField nameTF, passTF, domainTF;
@@ -52,11 +51,11 @@ public class TiledImageComponent extends Container {
 
 
 	public static void main(String[] av) {
-		Frame f = new Frame("TiledImageComponent Demo");
-		f.add(new TiledImageComponent());
+		JFrame f = new JFrame("TiledImageComponent Demo");
+		f.getContentPane().add(new TiledImageComponent());
 		f.setSize(200, 200);
 		f.setVisible(true);
-		f.addWindowListener(new WindowCloser(f, true));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
 
