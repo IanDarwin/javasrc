@@ -21,11 +21,11 @@ public class CrossRef {
 		CrossRef xref = new CrossRef();
 
 		String s = (String)System.getProperties().get("java.class.path");
-		// System.out.println("ClassPath is " + s);
+		// System.err.println("ClassPath is " + s);
 		StringTokenizer st = new StringTokenizer(s, ":");
 		while (st.hasMoreTokens()) {
 			String cand = st.nextToken();
-			// System.out.println("Trying path " + cand);
+			// System.err.println("Trying path " + cand);
 			if (cand.endsWith(".zip"))
 				xref.processOneZip(cand);
 		}
@@ -53,11 +53,14 @@ public class CrossRef {
 		//	java/lang/Math.class
 		// to a class name like
 		//	java.lang.Math
-		if (!zipName.endsWith(".class"))
-			throw new IllegalArgumentException("Unexp. class name " + zipName);
+		if (!zipName.endsWith(".class")) {
+			System.err.println("Not a class: " + zipName);
+			return;
+		}
 		String className = zipName.replace(/, .).
 			substring(0, zipName.length() - 6);	// 6 for ".class"
-System.out.println("ZipName " + zipName + "; className " + className);
+		// System.err.println("ZipName " + zipName + 
+		//	"; className " + className);
 		try {
 			Class c = Class.forName(className);
 			printClass(c);
@@ -69,6 +72,9 @@ System.out.println("ZipName " + zipName + "; className " + className);
 		}
 	}
 
+	/**
+	 * Print the fields and methods of one class.
+	 */
 	public void printClass(Class c) {
 		int i;
 		try {
@@ -88,6 +94,7 @@ System.out.println("ZipName " + zipName + "; className " + className);
 		}
 	}
 
+	/** Convenience routine */
 	private final void println(String s) {
 		System.out.println(s);
 	}
