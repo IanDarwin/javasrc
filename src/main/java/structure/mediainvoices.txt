@@ -1,0 +1,6 @@
+# I invoice# cust#
+# M	media item# quantity
+M Book 2074 1
+M MUSIC_VINYL 107 1
+M MUSIC_CD 5102 5
+M book 2100 1
