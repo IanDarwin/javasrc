@@ -42,6 +42,9 @@ public class Telnet {
 }
 
 /** This class handles one side of the connection. */
+/* This class handles one half of a full-duplex connection.
+ * Line-at-a-time mode. Streams, not writers, are used.
+ */
 class Pipe extends Thread {
 	DataInputStream is;
 	DataOutputStream os;
@@ -57,7 +60,11 @@ class Pipe extends Thread {
 		String line;
 		try {
 			while ((line = is.readLine()) != null)
-				os.writeChars(line + "\r\n");
+				// Write each char as a byte.
+				for (int i=0; i<line.length(); i++)
+					os.write((byte)line.charAt(i));
+				os.write((byte)'\r');
+				os.write((byte)'\n');
 				os.flush();
 		} catch(IOException e) {
 			throw new RuntimeException(e.getMessage());
