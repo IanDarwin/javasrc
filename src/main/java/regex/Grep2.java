@@ -18,13 +18,13 @@ public class Grep2 {
 	protected boolean countOnly = false;
 	/** Are we to ignore case? */
 	protected boolean ignoreCase = false;
-	/** Are we to suppress print of filenames? */
+	/** Are we to suppress printing of filenames? */
 	protected boolean dontPrintFileName = false;
 	/** Are we to only list names of files that match? */
 	protected boolean listOnly = false;
 	/** are we to print line numbers? */
 	protected boolean numbered = false;
-	/** Are we to be silent bout errors? */
+	/** Are we to be silent about errors? */
 	protected boolean silent = false;
 	/** are we to print only lines that DONT match? */
 	protected boolean inVert = false;
