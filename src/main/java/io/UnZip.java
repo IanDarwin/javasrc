@@ -3,8 +3,8 @@ import java.util.*;
 import java.util.zip.*;
 
 /**
- * UnZip -- print or unzip a JAR or PKZIP file using JDK1.1 java.util.zip.
- * Final command-line version: extracts files.
+ * UnZip -- print or unzip a JAR or PKZIP file using java.util.zip.
+ * Command-line version: extracts files.
  * @author	Ian Darwin, Ian@DarwinSys.com
  * $Id$
  */
