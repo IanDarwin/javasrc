@@ -30,7 +30,8 @@ public class JMFPlayer extends Applet implements ControllerListener {
 			thePlayer = Manager.createPlayer(theURL);
 			thePlayer.addControllerListener(this);
 		} catch (Exception e) {
-			System.err.println("Got exception " + e);
+			System.err.println("JMF Player creation error: " + e);
+			showStatus("JMF Player creation error.");
 			return;
 		}
 		System.out.println("theURL = " + theURL);
@@ -38,17 +39,23 @@ public class JMFPlayer extends Applet implements ControllerListener {
 
 	/** Called from the Browser when the page is ready to go. */
 	public void start() {
+		if (thePlayer == null)
+			return;
 		thePlayer.start();
 	}
 
 	/** Called from the Browser when the page is being vacated. */
 	public void stop() {
+		if (thePlayer == null)
+			return;
 		thePlayer.stop();
 		thePlayer.deallocate();
 	}
 
 	/** Called from the Browser (when the applet is being un-cached?). */
 	public void destroy() {
+		if (thePlayer == null)
+			return;
 		thePlayer.close();
 	}
 

@@ -24,9 +24,9 @@ public class Grapher extends Component {
 	protected Vector data;
 
 	/** The minimum and maximum X values */
-	protected float minx = 0, maxx = 0;
+	protected float minx = Integer.MAX_VALUE, maxx = Integer.MIN_VALUE;
 	/** The minimum and maximum Y values */
-	protected float miny = 0, maxy = 0;
+	protected float miny = Integer.MAX_VALUE, maxy = Integer.MIN_VALUE;
 	/** The number of data points */
 	protected int n;
 	/** The range of X and Y values */
@@ -62,6 +62,10 @@ public class Grapher extends Component {
 			System.err.println("I/O error on line " + is.getLineNumber());
 		}
 		n = data.size();
+		if (n < 2) {
+			System.err.println("Not enough data points!");
+			return;
+		}
 
 		// find min & max
         for (int i=0 ; i < n; i++) {
@@ -75,6 +79,8 @@ public class Grapher extends Component {
 		// Compute ranges
 		xrange = maxx - minx;
 		yrange = maxy - miny;
+		System.out.println("minx,x,r = " + minx + ' ' + maxx + ' ' + xrange);
+		System.out.println("miny,y,r = " + miny + ' ' + maxy + ' ' + yrange);
 	}
 
 	/** Called by AWT when the window needs painting.
@@ -83,8 +89,8 @@ public class Grapher extends Component {
     public void paint(Graphics g) {
 		Dimension s = getSize();
 		System.out.println("Size="+s);
-		if (n == 0) {
-			System.out.println("... but no data!");
+		if (n < 2) {
+			g.drawString("Insufficient data", 10, 40);
 			return;
 		}
 
@@ -97,8 +103,8 @@ public class Grapher extends Component {
 			Apoint d = (Apoint)data.elementAt(i);
 			float x = (d.x-minx) * xfact;
 			float y = (d.y-miny) * yfact;
-			System.out.println("AT " + i + " " + d);
-			System.out.println("x = " + x + "; y = " + y);
+			System.out.println("AT " + i + " " + d + "; " +
+				"x = " + x + "; y = " + y);
 			// Draw a 5-pixel rectangle centered, so -2 both x and y.
 			// AWT numbers Y from 0 down, so invert:
 			g.drawRect(((int)x)-2, s.height-2-(int)y, 5, 5);
@@ -122,7 +128,10 @@ public class Grapher extends Component {
 		f.add(BorderLayout.CENTER, g);
 		f.setLocation(100, 100);
 		f.pack();
-		g.read("Grapher.dat");
+		if (rgs.length == 0)
+			g.read("Grapher.dat");
+		else
+			g.read(rgs[0]);
 		f.setVisible(true);
 	}
 }
