@@ -2,7 +2,7 @@ class One extends java.lang.Object {
 	int x;
 }
 
-class Two extends One implements Cloneable {
+class Two extends One /*implements Cloneable*/ {
 	int y;
 	public void foo() {
 		try {
@@ -23,6 +23,7 @@ public class CloneSub {
 		t1.x = 100;
 		t1.y = 200;
 		Two t2 = (Two)t1.clone();
+		System.out.println(t2);
 		System.out.println(t2.y);
 	}
 }
