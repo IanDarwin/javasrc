@@ -8,7 +8,7 @@ package ca.tcp.utils;
  */
 public abstract class Enum {
 	/** The name of this class, must be set in a static initializer. */
-	protected static String klass;
+	protected static String className;
 	/** The value of this instance */
 	private String value;
 	/** The maximum number of values an enum can have */
@@ -39,7 +39,7 @@ public abstract class Enum {
 				return all[i];
 			}
 		}
-		throw new IllegalArgumentException("Value '" + s + "' is not a valid " + klass + " enumeration value.");
+		throw new IllegalArgumentException("Value '" + s + "' is not a valid " + className + " enumeration value.");
 	}
 
 	public static Enum[] values() {
