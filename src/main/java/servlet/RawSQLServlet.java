@@ -58,6 +58,11 @@ public class RawSQLServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
+		if (query == null) {
+			out.println("<b>Error: malformed query, contact administrator</b>");
+			return;
+		}
+
 		// NB MUST also check for admin privs before proceding!
 		if (!query.toLowerCase().startsWith("select")) {
 			throw new SecurityException("You can only select data");
