@@ -17,8 +17,6 @@ import java.util.*;
 public class LinkChecker extends JFrame {
 	/** The "global" activation flag: set false to halt. */
 	protected boolean done = false;
-	/** The Thread reference.  */
-	protected Thread t;
 
 	/** The textfield for the starting URL.
 	 * Should have a Properties file and a JComboBox instead.
@@ -43,13 +41,6 @@ public class LinkChecker extends JFrame {
 		super("LinkChecker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
-        addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
 		cp.setLayout(new BorderLayout());
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
@@ -64,8 +55,14 @@ public class LinkChecker extends JFrame {
 				done = false;
 				checkButton.setEnabled(false);
 				killButton.setEnabled(true);
-				textWindow.setText("");
-				doCheck();
+				Thread t = new Thread() {
+					public void run() {
+						textWindow.setText("Checking...");
+						checkOut(textFldURL.getText());
+						textWindow.append("-- All done --");
+					}
+				};
+				t.start();
 			}
 		};
 		textFldURL.addActionListener(starter);
@@ -74,8 +71,6 @@ public class LinkChecker extends JFrame {
 		killButton.setEnabled(false);	// until startChecking is called.
 		killButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (t == null || !t.isAlive())
-					return;
 				done = true;
 				checkButton.setEnabled(true);
 				killButton.setEnabled(false);
@@ -102,17 +97,6 @@ public class LinkChecker extends JFrame {
 		com.darwinsys.util.UtilGUI.maximize(this);
 	}
 
-	public void doCheck() {
-		// "t" is shared, only between here and killButton's action handler
-		t = new Thread() {
-			public void run() {
-				textWindow.setText("");
-				checkOut(textFldURL.getText());
-				textWindow.append("-- All done --");
-			}
-		};
-		t.start();
-	}
   
 	/** Start checking, given a URL by name.
 	 * Calls checkLink to check each link.
