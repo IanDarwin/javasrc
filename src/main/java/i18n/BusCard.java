@@ -1,17 +1,20 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.*;
 
 /** Display your business-card information in a Java window.
  *
  * This is a very crude first attempt. The next version should
  * use a GridBagLayout.
+ * @author Ian F. Darwin
+ * @version $Id$
  */
-public class BusCard extends Frame {
+public class BusCard extends JFrame {
 
-	TextField nameTF;
-	Choice jobChoice;
-	Button B1, B2, B3, B4;
+	JLabel nameTF;
+	JComboBox jobChoice;
+	JButton B1, B2, B3, B4;
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) {
@@ -24,7 +27,9 @@ public class BusCard extends Frame {
 	public BusCard() {
 		super();
 
-		setLayout(new GridLayout(0, 1));
+		Container cp = getContentPane();
+
+		cp.setLayout(new GridLayout(0, 1));
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -34,15 +39,15 @@ public class BusCard extends Frame {
 			}
 		});
 
-		MenuBar mb = new MenuBar();
-		setMenuBar(mb);
+		JMenuBar mb = new JMenuBar();
+		setJMenuBar(mb);
 
 		ResourceBundle b = ResourceBundle.getBundle("BusCardInfo");
 
-		Menu aMenu;
+		JMenu aMenu;
 		aMenu = mkMenu(b, "filemenu");
 		mb.add(aMenu);
-		MenuItem mi = mkMenuItem(b, "filemenu", "exit");
+		JMenuItem mi = mkMenuItem(b, "filemenu", "exit");
 		aMenu.add(mi);
 		mi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -57,17 +62,17 @@ public class BusCard extends Frame {
 		mb.add(aMenu);
 		aMenu = mkMenu(b, "helpmenu");
 		mb.add(aMenu);
-		mb.setHelpMenu(aMenu);		// needed for portability (Motif, etc.).
+		//mb.setHelpMenu(aMenu);		// needed for portability (Motif, etc.).
 
 		String titlebar;
 		try { titlebar = b.getString("card"+".company"); }
 		catch (MissingResourceException e) { titlebar="BusCard Demo"; }
 		setTitle(titlebar);
 
-		Panel p1 = new Panel();
+		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(0, 1, 50, 10));
 
-		nameTF = new TextField(15);
+		nameTF = new JLabel("My Name", JLabel.CENTER);
 		nameTF.setFont(new Font("helvetica", Font.BOLD, 18));
 		String message;
 		try { message = b.getString("card"+".myname"); }
@@ -77,21 +82,21 @@ public class BusCard extends Frame {
 		nameTF.setText(message);
 		p1.add(nameTF);
 
-		jobChoice = new Choice();
+		jobChoice = new JComboBox();
 		jobChoice.setFont(new Font("helvetica", Font.BOLD, 14));
 
 		// XXX These should come from the Properties file loaded into "b"!
-		jobChoice.add("Java Consultant");
-		jobChoice.add("UNIX (OpenBSD)");
-		jobChoice.add("Internet/Firewall");
+		jobChoice.addItem("Java Consultant");
+		jobChoice.addItem("UNIX (OpenBSD)");
+		jobChoice.addItem("Internet/Firewall");
 		p1.add(jobChoice);
 
-		add(p1);
+		cp.add(p1);
 
-		Panel p2 = new Panel();
+		JPanel p2 = new JPanel();
 		p2.setLayout(new GridLayout(2, 2, 10, 10));
 
-		B1 = new Button();
+		B1 = new JButton();
 		try { message = b.getString("button1.label"); }
 		catch (MissingResourceException e) { 
 			message="Button1";
@@ -99,7 +104,7 @@ public class BusCard extends Frame {
 		B1.setLabel(message);
 		p2.add(B1);
 
-		B2 = new Button();
+		B2 = new JButton();
 		try { message = b.getString("button2.label"); }
 		catch (MissingResourceException e) { 
 			message="Button2";
@@ -107,7 +112,7 @@ public class BusCard extends Frame {
 		B2.setLabel(message);
 		p2.add(B2);
 
-		B3 = new Button();
+		B3 = new JButton();
 		try { message = b.getString("button3.label"); }
 		catch (MissingResourceException e) { 
 			message="Button3";
@@ -115,28 +120,28 @@ public class BusCard extends Frame {
 		B3.setLabel(message);
 		p2.add(B3);
 
-		B4 = new Button();
+		B4 = new JButton();
 		try { message = b.getString("button4.label"); }
 		catch (MissingResourceException e) { 
 			message="Button4";
 		}
 		B4.setLabel(message);
 		p2.add(B4);
-		add(p2);
+		cp.add(p2);
 
 		pack();
 	}
 
 	/** Convenience routine to make a Menu */
-	public Menu mkMenu(ResourceBundle b, String name) {
+	public JMenu mkMenu(ResourceBundle b, String name) {
 		String menuLabel;
 		try { menuLabel = b.getString(name+".label"); }
 		catch (MissingResourceException e) { menuLabel=name; }
-		return new Menu(menuLabel);
+		return new JMenu(menuLabel);
 	}
 
 	/** Convenience routine to make a MenuItem */
-	public MenuItem mkMenuItem(ResourceBundle b, String menu, String name) {
+	public JMenuItem mkMenuItem(ResourceBundle b, String menu, String name) {
 		String miLabel;
 		try { miLabel = b.getString(menu + "." + name + ".label"); }
 		catch (MissingResourceException e) { miLabel=name; }
@@ -145,9 +150,8 @@ public class BusCard extends Frame {
 		catch (MissingResourceException e) { key=null; }
 
 		if (key == null)
-			return new MenuItem(miLabel);
+			return new JMenuItem(miLabel);
 		else
-			return new MenuItem(miLabel, new MenuShortcut(key.charAt(0)));
+			return new JMenuItem(miLabel/*, new MenuShortcut(key.charAt(0))*/);
 	}
-
 }

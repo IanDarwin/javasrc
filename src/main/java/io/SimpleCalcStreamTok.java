@@ -35,9 +35,11 @@ public class SimpleCalc {
 	/** Construct a SimpleCalc from an existing Reader */
 	public SimpleCalc(Reader rdr) throws IOException {
 		tf = new StreamTokenizer(rdr);
-		tf.slashSlashComments(true);
-		tf.ordinaryChar('-');
-		tf.ordinaryChar('/');
+		// Control the input character set:
+		tf.slashSlashComments(true);	// treat "//" as comments
+		tf.ordinaryChar('-');		// used for subtraction
+		tf.ordinaryChar('/');	// used for division
+
 		s = new Stack();
 	}
 
