@@ -45,7 +45,7 @@ public class Weather {
 		URLConnection cx = u.openConnection();
 		cx.setContentHandlerFactory(new ContentHandlerFactory() {
 			public ContentHandler createContentHandler(String type) {
-				if (type.equals("text/x-omf-forecasts"))
+				if (type.startsWith("text/x-omf"))
 					return new OMFHandler();
 				return null;
 			}
