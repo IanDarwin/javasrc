@@ -5,21 +5,23 @@ public class EqualsDemo {
 	/** Constructor */
 	public EqualsDemo(int i, SomeClass o) {
 		int1 = i;
+		if (o == null) {
+			throw new IllegalArgumentException("Object may not be null");
+		}
 		obj1 = o;
 	}
 
+	/** Default Constructor */
 	public EqualsDemo() {
 		this(0, new SomeClass());
 	}
 
-	/** Typical run-of-the-mill "equals" method */
+	/** Demonstration "equals" method */
 	public boolean equals(Object o) {
-		if (o == null)		// caution
-			return false;
 		if (o == this)		// optimization
 			return true;
 
-		// Castable to this class?
+		// Castable to this class? (false if == null)
 		if (!(o instanceof EqualsDemo))
 			return false;
 

@@ -1,0 +1,11 @@
+<project default="run">
+	<target name="compile">
+		<javac srcdir=".">
+			<include name="JrTest.java"/>
+		</javac>
+	</target>
+
+	<target name="run" depends="compile">
+		<java className="JrTest" classpath="."/>
+	</target>
+</project>

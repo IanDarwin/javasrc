@@ -5,6 +5,7 @@ public class MyDTDResolver implements EntityResolver {
 	public static final String[] dtds = {
 		"http://java.sun.com/dtd/web-app_2_3.dtd",
 		"http://java.sun.com/j2ee/dtds/ejb-jar_2_0.dtd",
+		"http://java.sun.com/dtd/ejb-jar_2_0.dtd",
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
 	};
 

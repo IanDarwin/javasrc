@@ -7,14 +7,15 @@ import java.util.*;
  * @version $Id$
  */
 public class ObservDemo extends Object {
-	MyObserver observer;
-	MyObservable model;
+	MyView view;
+	MyModel model;
+
 	public ObservDemo() {
 
-		observer = new MyObserver();
+		view = new MyView();
 
-		model = new MyObservable(); 
-		model.addObserver(observer);
+		model = new MyModel(); 
+		model.addObserver(view);
 
 	}
 
@@ -26,21 +27,21 @@ public class ObservDemo extends Object {
 	public void demo() {
 		model.changeSomething();
 	}
-}
 
-/** The Observer normally maintains a view on the data */
-class MyObserver implements Observer {
-	/** For now, we just print the fact that we got notified. */
-	public void update( Observable obs, Object x ) {
-		System.out.println("update(" + obs + "," + x + ");");
+	/** The Observer normally maintains a view on the data */
+	class MyView implements Observer {
+		/** For now, we just print the fact that we got notified. */
+		public void update( Observable obs, Object x ) {
+			System.out.println("update(" + obs + "," + x + ");");
+		}
 	}
-}
 
-/** The Observable normally maintains the data */
-class MyObservable extends Observable {
-	public void changeSomething() {
-		// Notify observers of change
-		setChanged();
-		notifyObservers();
+	/** The Observable normally maintains the data */
+	class MyModel extends Observable {
+		public void changeSomething() {
+			// Notify observers of change
+			setChanged();
+			notifyObservers();
+		}
 	}
 }

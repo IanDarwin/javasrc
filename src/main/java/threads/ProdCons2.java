@@ -71,10 +71,10 @@ public class ProdCons2 {
 							System.out.println("Producer INTERRUPTED");
 						}
 					list.addFirst(justProduced);
-					if (done)
-						break;
 					list.notifyAll();	// must own the lock
 					System.out.println("Produced 1; List size now " + list.size());
+					if (done)
+						break;
 					// yield();	// Useful for green threads & demo programs.
 				}
 			}
@@ -95,7 +95,6 @@ public class ProdCons2 {
 		public void run() {
 			while (true) {
 				Object obj = null;
-				int len = 0;
 				synchronized(list) {
 					while (list.size() == 0) {
 						try {
@@ -105,12 +104,12 @@ public class ProdCons2 {
 							System.out.println("CONSUMER INTERRUPTED");
 						}
 					}
-					if (done)
-						break;
 					obj = list.removeLast();
 					list.notifyAll();
-					len = list.size();
+					int len = list.size();
 					System.out.println("List size now " + len);
+					if (done)
+						break;
 				}
 				process(obj);	// Outside synch section (could take time)
 				//yield(); DITTO
@@ -138,13 +137,13 @@ public class ProdCons2 {
 		int numConsumers = 3;
 		ProdCons2 pc = new ProdCons2(numProducers, numConsumers);
 
-		// Let it run for, say, 30 seconds
-		Thread.sleep(30*1000); 
+		// Let it run for, say, 10 seconds
+		Thread.sleep(10*1000); 
 
 		// End of simulation - shut down gracefully
 		synchronized(pc.list) {
 			pc.done = true;
-			pc.list.notifyAll(); // Wake up any waiters!
+			pc.list.notifyAll();
 		}
 	}
 }

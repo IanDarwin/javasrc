@@ -44,10 +44,10 @@ public class GetOptDemoNew {
 		System.out.print("Options: ");
 		System.out.print("Numeric: " + numeric_option + ' ');
 		System.out.print("Output: " + outputFileName + "; ");
-		System.out.print("Inputs: ");
-		List files = parser.getFilenameList();
-		for (int i = 0; i < files.size(); i++) {
-			System.out.print(files.get(i));
+		System.out.print("Input files: ");
+		Iterator files = parser.getFilenameList().iterator();
+		while (files.hasNext()) {
+			System.out.print(files.next());
 			System.out.print(' ');
 		}
 		System.out.println();

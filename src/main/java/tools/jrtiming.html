@@ -1,0 +1,63 @@
+<h1>Timing Results</h1>
+<p>Times for compiling and running a small self-contained test program,
+where JVM startup time will dominate:
+<h3>Jikes and Java (fastest)</h3>
+<pre>
+ian:504$ time ~/scripts/jr JrTest
++ jikes +E -d . JrTest.java
++ java JrTest
+Class JrTest.clinit<>
+SUCCESS! Program t compiled and run.
+    0.53s real     0.25s user     0.15s system
+</pre>
+
+<h3>jr - not as fast, but still fast enough</h3>
+<pre>
+ian:506$ time ./jr JrTest
+compileArgv len 1
+filename == JrTest
+runArgv len 0
+Compile OK, trying to run
+Class JrTest.clinit<>
+SUCCESS! Program t compiled and run.
+    1.53s real     0.98s user     0.17s system
+ian:507$
+</pre>
+
+<h3>Ant (slower, since it has to parse an XML file)</h3>
+<pre>
+ian:524$ r ant
+ant -f jrtest.xml
+Buildfile: jrtest.xml
+
+compile:
+
+run:
+     [java] Class JrTest.clinit<>
+     [java] SUCCESS! Program t compiled and run.
+
+BUILD SUCCESSFUL
+Total time: 2 seconds
+ian:525$ time ant -f jrtest.xml
+Buildfile: jrtest.xml
+
+compile:
+
+run:
+     [java] Class JrTest.clinit<>
+     [java] SUCCESS! Program t compiled and run.
+
+BUILD SUCCESSFUL
+Total time: 2 seconds
+    2.71s real     2.32s user     0.19s system
+</pre>
+
+<h3>javac and java (slowest, by far)</h3>
+<pre>
+ian:505$ time ~/scripts/jr -s JrTest
++ javac -d . JrTest.java
++ java JrTest
+Class JrTest.clinit<>
+SUCCESS! Program t compiled and run.
+    5.15s real     0.95s user     0.32s system
+</pre>

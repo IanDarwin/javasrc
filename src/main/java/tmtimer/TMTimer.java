@@ -3,6 +3,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
 
+import com.darwinsys.swingui.UtilGUI;
+
 /**
  * TMTimer - simple speech timer for Toastmasters or similar
  * events where speeches are time-limited.
@@ -17,9 +19,9 @@ public class TMTimer extends JFrame implements Runnable {
   public TMTimer() {
     initComponents ();
     finishGUI();
-  gotoState(READY);
+    gotoState(READY);
     pack();
-  // UtilGUI.centre(this);
+    UtilGUI.centre(this);
   }
 
   /** This method is called from within the constructor to

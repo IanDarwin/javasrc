@@ -4,6 +4,9 @@
 
 // If it does, you must be careful to avoid event propagation loops.
 
+// This example doesn't show it, but you can loop with other implementations.
+// For example, if a changed() method updates the model's data.
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,7 +25,11 @@ public class MVCLoop {
 		cp.add(b);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ch.setSelectedIndex(4);
+				int cur = ch.getSelectedIndex();
+				int len = ch.getItemCount();
+				cur++;
+				cur %= len;
+				ch.setSelectedIndex(cur);
 			}
 		});
 
