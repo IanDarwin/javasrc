@@ -42,11 +42,9 @@
 		<echo message="SerialDemoObjectStream"/>
 		<java className="SerialDemoObjectStream"
 			classpath="${classpath}"/>
-		<!--
 		<echo message="SerialDemoXML"/>
 		<java className="SerialDemoXML"
 			classpath="${classpath}"/>
-		-->
 		<echo message="SerialDemoJDO"/>
 		<java classname="SerialDemoJDO"
 			classpath="${classpath}"/>
