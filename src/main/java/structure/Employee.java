@@ -6,6 +6,7 @@ public class Employee {
 	protected long personellNumber;
 
 	Employee() {
+		// Null constructor.
 	}
 
 	Employee(String name, int pnum) {
