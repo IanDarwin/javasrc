@@ -1,0 +1,54 @@
+ian:587$ cat ../META-INF/ejb-jar.xml
+<!DOCTYPE ejb-jar PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd" >
+<ejb-jar><enterprise-beans>
+<session>
+        <display-name>ServInfo EJB</display-name>
+        <ejb-name>ServInfo1</ejb-name>
+        <home>com.darwinsys.ejb.ServInfoHome</home>
+        <remote>com.darwinsys.ejb.ServInfo</remote>
+        <ejb-class>com.darwinsys.ejb.ServInfoBean</ejb-class>
+        <session-type>Stateless</session-type>
+        <transaction-type>Container</transaction-type>
+        <env-entry>
+                <env-entry-name>duplicate</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>string one</env-entry-value>
+        </env-entry>
+</session>
+<session>
+        <display-name>ServInfo EJB</display-name>
+        <ejb-name>ServInfo2</ejb-name>
+        // classes, session-type and transaction-type identical to above
+        <env-entry>
+                <env-entry-name>duplicate</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>string two</env-entry-value>
+        </env-entry>
+</session>
+</enterprise-beans> </ejb-jar>
+
+ian:584$ cat ../ServInfoBean.java
+package com.darwinsys.ejb;
+
+import javax.ejb.*;   import javax.naming.*;
+ 
+public class ServInfoBean implements SessionBean {
+ 
+        public Object getEnv(String eName) {
+                try {
+                        Context ctx = new InitialContext();
+                        return ctx.lookup("java:comp/env/" + eName);
+                } catch (Exception ex) {
+                        return ex.toString();
+                }
+        }
+        // boilerplate methods not shown...
+}
+ian:585$ java -classpath $CLASSPATH:../ejb.jar Client
+Lookup h1
+Lookup h2
+c1 sayeth: string one
+c2 sayeth: string two
+ian:586$
