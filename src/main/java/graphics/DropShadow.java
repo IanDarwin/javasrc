@@ -43,8 +43,8 @@ public class DropShad extends Applet {
 		if ((s = getParameter("fontsize")) != null)
 			fontSize = Integer.parseInt(s);
 		if (fontName != null || fontSize != 0) {
-			System.out.println("Name " + fontName + ", size " + fontSize);
 			theFont = new Font(fontName, Font.BOLD + Font.ITALIC, fontSize);
+			System.out.println("Name " + fontName + ", font " + theFont);
 		}
 		if ((s = getParameter("offset")) != null)
 			theOffset = Integer.parseInt(s);
