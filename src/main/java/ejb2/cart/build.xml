@@ -20,6 +20,7 @@
 	<target name="copy" depends="init">
 		<mkdir dir="${build}/META-INF"/>
 		<copy file="ejb-jar.xml" todir="${build}/META-INF"/>
+		<copy file="metadata/jndi.properties" todir="${build}"/>
 	</target>
 
 	<target name="jar" depends="compile, copy">
@@ -28,5 +29,15 @@
 
 	<target name="deploy" depends="jar">
 		<copy file="${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+
+	<target name="run" depends="deploy">
+		<java classname="CartClient"
+			classpath="${build}:${jboss-client.jar}">
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
 	</target>
 </project>
