@@ -16,7 +16,7 @@ import java.util.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class ConvertToMIF implements XmlFormWalker {
+public class GenMIF implements XmlFormWalker {
 	/** The normal output writer */
 	protected PrintStream msg;
 	/** Specialized PrintStream for use by GetMark. */
@@ -29,7 +29,7 @@ public class ConvertToMIF implements XmlFormWalker {
 	protected Vector indents;
 
 	/** Construct a converter object */
-	ConvertToMIF(Document doc, PrintStream pw) {
+	GenMIF(Document doc, PrintStream pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintStream(pw);
 		smsg = new StyledPrintStream(msg);
@@ -280,7 +280,7 @@ public class ConvertToMIF implements XmlFormWalker {
 			switch (c) {
 			case '\\':	b.append("\\"); break;
 			case ' ':	b.append(' '); break;
-			case '\t':	b.append("\t"); break;
+			case '\t':	b.append("\\t"); break;
 			case '\'':	b.append("\\xd5 "); break;
 			case '<':	b.append("\\<"); break;
 			case '>':	b.append("\\>"); break;

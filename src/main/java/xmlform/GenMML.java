@@ -5,12 +5,11 @@ import com.sun.xml.tree.*;
 
 /**
  * Class with code to walk a tree and convert it to MML (not MIF).
- * TODO: Need to use MIF (not MML), alas, since MML loses named
- * character codes in input (Check current docco first through).
+ * WAY OUT OF DATE W.R.T. THE "DTD" -- DO NOT USE!!
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class ConvertToMML implements XmlFormWalker {
+public class GenMML implements XmlFormWalker {
 	/** The normal output writer */
 	PrintWriter msg;
 	/** Specialized PrintWriter for use by GetMark. */
@@ -21,7 +20,7 @@ public class ConvertToMML implements XmlFormWalker {
 	GetMark gm = new GetMark();
 
 	/** Construct a converter object */
-	ConvertToMML(Document doc, PrintWriter pw) {
+	GenMML(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
 		smsg = new StyledWriter(msg);
