@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="The vi editor from UNIX">
+   <META NAME="Author" CONTENT="Ian Darwin">
+   <TITLE>The <I>bsd.comm</I> Driver for <I>javax.comm</I></TITLE>
+</HEAD>
+<BODY BGCOLOR="White">
+<H1>The <I>bsd.comm</I> Driver for <I>javax.comm</I></H1>
+<P>The core Java APIs do not allow you to read/write serial/parallel/etc
+ports, because only on UNIX and <A HREF="http://www.openbsd.org/"
+UNIX-like systems</A> do such things have entries in the
+filesystem namespace. The UNIX "device special file" is a great idea,
+and it's too bad MacOS and that thing from Bill Gates never adopted it.
+But they didn't, and now it's too late.
+<P>To the rescue comes <A HREF="http://java.sun.com/products/comm">
+The Java Communications API</A>.
+However, the <I>javax.comm</I> package, as it's known, does not provide
+direct support for platforms other than Solaris and Win32.
+As you might expect, the code for dealing with badu rates, parity
+settings, etc., is rather platform-specific. However, there is
+no great difficulty in controlling the terminal on BSD-derived systems,
+and writing a bit of "native code" to handle this is pretty easy.
+I've made a start on it, and here it is. This source is for
+the <A HREF="http://www.openbsd.org/">OpenBSD flavor, but should
+compile without much change on the other BSD platforms.
+<UL>
+<LI><A HREF="bsd.comm/license.txt">Berkeley Copyright</A>
+<LI><A HREF="bsd.comm/javax.comm.properties">Simple properties file, just to identify my driver to the other parts of javax.comm</A>
+<LI><A HREF="bsd.comm/BSDDriver.java">Driver Interface</A>
+<LI><A HREF="bsd.comm/BSDSerialPort.java">Serial Port handler</A>
+<LI><A HREF="bsd.comm/bsdio.c">C-language portions of the code</A>
+<H2>Linux</H2>
+<P><B>Linux users:</B> please don't bother porting this to Linux.
+First, it's covered by the 
+<A HREF="bsd.comm/license.txt">Berkeley Copyright, which is imiscible
+with the GPL. This is a feature. Secondly, somebody's 
+<A HREF="http://www.interstice.com/kevinh/linuxcomm.html">
+already done a Linux version</A>.
