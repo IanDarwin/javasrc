@@ -46,6 +46,11 @@ public class FindFilter implements FilenameFilter {
 
 	/** Do the filtering. For now, only filter on name */
 	public boolean accept(File dir, String fileName) {
+		File f = new File(dir, fileName);
+		if (f.isDirectory()) {
+			return true;	// allow recursion
+		}
+
 		if (name != null) {
 			return nameRE.match(fileName);
 		}

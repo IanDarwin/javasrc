@@ -22,10 +22,10 @@ public class Find {
 				usage();
 			}
 		}
-		if (argHandler.getOptInd() == args.length) {
+		if (args.length == 0 || argHandler.getOptInd()-1 == args.length) {
 			finder.doName(".");
 		} else {
-			for (int i = argHandler.getOptInd(); i<args.length; i++)
+			for (int i = argHandler.getOptInd()-1; i<args.length; i++)
 				finder.doName(args[i]);
 		}
 	}
