@@ -5,10 +5,8 @@ import java.util.*;
  */
 public class TextToDBM {
 
-	protected final static String TEXT_NAME = 
-		"/home/ian/src/jabadot/userdb.txt";
-	protected final static String DBM_NAME = 
-		"/home/ian/src/jabadot/userdb";
+	protected final static String TEXT_NAME = "userdb.txt";
+	protected final static String DBM_NAME = "userdb";
 
 	public static void main(String[] fn) throws IOException {
 		BufferedReader is = new BufferedReader(new FileReader(TEXT_NAME));

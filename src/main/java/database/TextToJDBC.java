@@ -6,10 +6,8 @@ import java.util.*;
  */
 public class TextToJDBC {
 
-	protected final static String TEXT_NAME = 
-		"/home/ian/src/jabadot/userdb.txt";
-	protected final static String DB_URL = 
-		"jdbc:idb:userdb.prp";
+	protected final static String TEXT_NAME = "userdb.txt";
+	protected final static String DB_URL = "jdbc:idb:userdb.prp";
 
 	public static void main(String[] fn)
 	throws ClassNotFoundException, SQLException, IOException {
