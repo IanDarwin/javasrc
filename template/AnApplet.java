@@ -1,11 +1,11 @@
-import java.applet.*;
-import java.awt.*;
+import java.applet.Applet;
+import java.awt.Graphics;
 
 /* Example of an Applet.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version #Id$
  */
-public class Applet extends java.applet.Applet {
+public class AnApplet extends Applet {
 	public void init() {
 		// initialize your applet GUI here
 	}
