@@ -134,7 +134,7 @@ public class ProdCons2 {
 	throws IOException, InterruptedException {
 
 		// Start producers and consumers
-		int numProducers = 2;
+		int numProducers = 4;
 		int numConsumers = 3;
 		ProdCons2 pc = new ProdCons2(numProducers, numConsumers);
 
