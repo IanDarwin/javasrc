@@ -15,13 +15,13 @@ public class SendMime {
 	protected String message_subject = "Re: your mail";
 	/** The message CC recipient. */
 	protected String message_cc = "nobody@erewhon.com";
-	/** The message body */
+	/** The text/plain message body */
 	protected String message_body =
 		"I am unable to attend to your message, as I am busy sunning " +
 		"myself on the beach in Maui, where it is warm and peaceful. " +
 		"Perhaps when I return I'll get around to reading your mail. " +
 		"Or perhaps not.";
-	/* Some html data to be treated as part of a message. */
+	/* The text/html data. */
 	protected String html_data = 
 		"<HTML><HEAD><TITLE>My Goodness</TITLE></HEAD>" +
 		"<BODY><P>You <EM>do</EM> look a little " +
@@ -39,10 +39,11 @@ public class SendMime {
 
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
-		FileProperties props = new FileProperties(MailConstants.PROPS_FILE_NAME);
+		FileProperties props = 
+			new FileProperties(MailConstants.PROPS_FILE_NAME);
 
 		// Copy the value of Mail.send.host into mail.smtp.host
-		props.put("mail.smtp.host", MailConstants.SEND_HOST);
+		props.setProperty("mail.smtp.host", MailConstants.SEND_HOST);
 
 		// Create the Session object
 		session = Session.getDefaultInstance(props, null);
