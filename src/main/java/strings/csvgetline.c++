@@ -1,10 +1,11 @@
 /* Copyright (C) 1999 Lucent Technologies.
  * Excerpted from 'The Practice of Programming'
  * by Brian W. Kernighan and Rob Pike.
- * Reprinted by permission of the http://www.tpop.awl.com/ web site, which says:
+ *
+ * Included by permission of the http://tpop.awl.com/ web site, which says:
  * "You may use this code for any purpose, as long as you leave the copyright
- * notice and book citation attached."
- *	
+ * notice and book citation attached." I have done so.
+ */
 
 #include <iostream>
 #include <algorithm>
