@@ -10,7 +10,7 @@ public class Array1  {
 	public static void main(String[] argv) {
 		int[] monthLen1;			// declare a reference
 		monthLen1 = new int[12];		// construct it
-		int[] monthlen2 = new int[12];	// short form
+		int[] monthLen2 = new int[12];	// short form
 		// even shorter is this initializer form:
 		int[] monthLen3 = {
 				31, 28, 31, 30,
