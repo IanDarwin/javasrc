@@ -7,14 +7,14 @@ import com.sun.xml.tree.*;
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class XmlToText {
+public class XmlForm {
 	protected Reader is;
 	protected String fileName;
 
 	static PrintWriter msg = new PrintWriter(System.out, true);
 
 	/** Construct a converter given an input filename */
-	public XmlToText(String fn) {
+	public XmlForm(String fn) {
 		fileName = fn;
 	}
 
@@ -34,7 +34,8 @@ public class XmlToText {
 			XmlDocument doc = builder.getDocument();
 			if (verbose)
 				msg.println(">>>Walking " + fileName + "...");
-			new ConvertToMif(doc).walk();
+			XmlFormWalker c = new ConvertToMif(doc, msg);
+			c.convertAll();
 
 		} catch (Exception ex) {
 			System.err.println(ex);
@@ -50,7 +51,7 @@ public class XmlToText {
 		}
 		for (int i=0; i<av.length; i++) {
 			String name = av[i];
-			new XmlToText(name).convert(true);
+			new XmlForm(name).convert(true);
 		}
 	}
 }

@@ -1,3 +1,8 @@
+import java.io.*;
+import org.xml.sax.*;
+import org.w3c.dom.*;
+import com.sun.xml.tree.*;
+
 /**
  * Class with code to walk a tree and convert it to MIF.
  * For now it just outputs plain text.
@@ -5,7 +10,17 @@
  * @version $Id$
  */
 public class ConvertToMif implements XmlFormWalker {
-	public void walk() {
+	/** The normal output writer */
+	PrintWriter msg;
+	/** A tree walker object for walking the tree */
+	TreeWalker tw;
+	/** Construct a converter object */
+	ConvertToMif(Document doc, PrintWriter msg) {
+		tw = new TreeWalker(doc);
+		this.msg = msg;
+	}
+	/** Convert all the nodes in the current document. */
+	public void convertAll() {
 		for (Node p = tw.getCurrent(); p != null; p = tw.getNext())
 			if (p instanceof com.sun.xml.tree.XmlDocument)
 				continue;	// nothing to do - structural object.

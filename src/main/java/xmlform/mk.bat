@@ -1,1 +1,1 @@
-javac -d /ian/classes -deprecation XmlToText.java
+javac -d /ian/classes -deprecation XmlForm.java

@@ -1,3 +1,3 @@
 interface XmlFormWalker {
-	public abstract void walk();
+	public abstract void convertAll();
 }
