@@ -20,9 +20,9 @@
 
 	<target name="main" depends="declare">
 		<ghost 
-			ghosthome="C:\program files\symantec\ghost"
-			source="D:\" 
-			target="foo-test.gho"/>
+			ghosthome="."
+			srcDir="D:\" 
+			destFile="foo-test.gho"/>
 	</target>
 
 </project>
