@@ -2,7 +2,7 @@
 <!DOCTYPE jaws PUBLIC
 	"-//JBoss//DTD JAWS 3.0//EN"
 	"http://www.jboss.org/j2dd/dtd/jaws_3_0.dtd">
-<yaws>
+<jaws>
 
 <!-- Specify the SQL DataSource for the Recordings Database -->
 <!--
@@ -13,8 +13,9 @@
 
 <default-entity>
 	<create-table>true</create-table>
-	<!-- REALLY DANGEROUS -- remove this remove later -->
+	<!-- REALLY DANGEROUS -- remove this remove later ...
 	<remove-table>true</remove-table>
+	-->
 </default-entity>
 
 <!-- This can contain a ton of stuff about the Entity Beans.

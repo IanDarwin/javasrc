@@ -7,9 +7,9 @@
 	<enterprise-beans>
 		<session>
 		<ejb-name>CartEJB</ejb-name>
-		<home>CartHome</home>
-		<remote>Cart</remote>
-		<ejb-class>CartBean</ejb-class>
+		<home>cart.CartHome</home>
+		<remote>cart.Cart</remote>
+		<ejb-class>cart.CartBean</ejb-class>
 		<session-type>Stateless</session-type>
 		<transaction-type>Container</transaction-type>
 		</session>

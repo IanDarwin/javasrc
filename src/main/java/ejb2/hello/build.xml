@@ -21,7 +21,8 @@
 	</path>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}">
+		<javac srcdir="${src}" destdir="${build}"
+			debug="true" deprecation="true">
 			<classpath refid="project.class.path"/>
 		</javac>
 		<copy file="metadata/jndi.properties" todir="${build}"/>
@@ -37,6 +38,7 @@
 
 	<target name="deploy" depends="jar">
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<sleep seconds="5"/>
 	</target>
 
 	<target name="run" depends="deploy">

@@ -1,12 +1,13 @@
-<project name="Shopping Cart Bean" default="deploy" basedir=".">
+<project name="Shopping Cart Bean" default="run" basedir=".">
 
 	<!-- $Id$ -->
 
-	<property name="src" value="."/>
+	<property name="src" value="src"/>
 	<property name="build" value="build"/>
 	<property file="../build.properties"/>
 
 	<property name="deploy.jar" value="cart.jar"/>
+	<property name="src.jar" value="cart-src.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Create the time stamp -->
@@ -19,7 +20,7 @@
 
 	<target name="copy" depends="init">
 		<mkdir dir="${build}/META-INF"/>
-		<copy file="ejb-jar.xml" todir="${build}/META-INF"/>
+		<copy file="metadata/ejb-jar.xml" todir="${build}/META-INF"/>
 		<copy file="metadata/jndi.properties" todir="${build}"/>
 	</target>
 
@@ -29,15 +30,21 @@
 
 	<target name="deploy" depends="jar">
 		<copy file="${deploy.jar}" todir="${deploy.dir}"/>
+		<sleep seconds="5"/>
 	</target>
 
 	<target name="run" depends="deploy">
 		<java classname="CartClient"
-			classpath="${build}:${jboss-client.jar}">
+			classpath="${build}:${client.jar}">
 		</java>
 	</target>
 
 	<target name="clean">
 		<delete dir="${build}"/>
 	</target>
+
+	<target name="src.jar" depends="clean">
+		<jar jarfile="${src.jar}" basedir="."/>
+	</target>
+
 </project>

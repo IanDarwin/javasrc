@@ -1,12 +1,13 @@
 import java.util.*;
-import javax.ejb.*;
 import javax.rmi.*;
 import javax.naming.*;
-import javax.transaction.*;
+import javax.transaction.UserTransaction;
+import javax.transaction.Status;
 
 /** GetUserTX - demo of using UserTransaction (JTA) from client.
  */
-public class GetUserTX {
+public class UserTX {
+
 	public static void main(String[] args) {
 
 		UserTransaction tx;
@@ -20,15 +21,21 @@ public class GetUserTX {
 					UserTransaction.class);
 
 			System.out.println("Transaction is: " + tx);
-			System.out.println("New TX, status = " + tx.getStatus());
+			System.out.println("New TX, status = " + printStatus(tx));
 
 			tx.begin();
-			System.out.println("Begun, status = " + tx.getStatus());
+			System.out.println("Begun, status = " + printStatus(tx));
 			try {
 				method1();
 				method2();
 				tx.commit();
-				System.out.println("Committed, status = " + tx.getStatus());
+				int st = tx.getStatus();
+				if (st == Status.STATUS_COMMITTED) {
+					System.out.println("Committed, status = OK");
+				} else {
+					System.out.println("Committed, but status = " +
+						printStatus(tx));
+				}
 			} catch (Exception ex) {
 				tx.rollback();
 				System.out.println("Rolled back, status = " + tx.getStatus());
@@ -42,8 +49,26 @@ public class GetUserTX {
 	}
 
 	static void method1() {
+		// Do something to the database...
 	}
 
 	static void method2() {
+		// Do something to the database...
+	}
+
+	public static String printStatus(UserTransaction tx) throws Exception {
+		switch(tx.getStatus()) {
+		case Status.STATUS_ACTIVE: return "ACTIVE";
+		case Status.STATUS_COMMITTED: return "COMMITTED";
+		case Status.STATUS_COMMITTING: return "COMMITTING";
+		case Status.STATUS_MARKED_ROLLBACK: return "MARKED_ROLLBACK";
+		case Status.STATUS_NO_TRANSACTION: return "NO_TRANSACTION";
+		case Status.STATUS_PREPARED: return "PREPARED";
+		case Status.STATUS_PREPARING: return "PREPARING";
+		case Status.STATUS_ROLLEDBACK: return "ROLLEDBACK";
+		case Status.STATUS_ROLLING_BACK: return "ROLLING_BACK";
+		case Status.STATUS_UNKNOWN: return "UNKNOWN";
+		default: return "UNKNOWN STATUS VALUE: " + tx.getStatus();
+		}
 	}
 }

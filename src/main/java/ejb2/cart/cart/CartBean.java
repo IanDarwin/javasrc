@@ -1,5 +1,8 @@
+package cart;
+
 import javax.ejb.*;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 import javax.naming.*;
 
 /** The Implementation class for a Shopping Cart Stateful Session EJB.
@@ -8,10 +11,13 @@ public class CartBean implements SessionBean {
 
 	/** The list of items */
 	private List cartItems;
+
 	/** True if we've been checked out */
 	private boolean checkedOut;
+
 	/** The usual Session Context */
 	private SessionContext sessionContext;
+
 	/** A JNDI Context for finding other beans */
 	private Context ctx;
 
@@ -38,6 +44,11 @@ public class CartBean implements SessionBean {
 
 	public int size() {
 		return cartItems.size();
+	}
+
+	/** Expose the ENTIRE list to the client. May be slow! */
+	public List getItems() {
+		return cartItems;
 	}
 
 	/** Checking Out converts the info from this Cart to an
@@ -77,9 +88,9 @@ public class CartBean implements SessionBean {
 		return -1;
 	}
 
-	private int totalPrice(List v) {
+	private double totalPrice(List v) {
 		// not implemented yet
-		return 10000;	// i.e., 100.00
+		return 100.00;
 	}
 
 	public void ejbActivate() { }
