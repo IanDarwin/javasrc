@@ -32,8 +32,7 @@ public class ErrorHandlerTest extends JFrame {
 
 	public static void main(String[] args) {
 		// Tell AWT to invoke my Handler.
-		Properties p = System.getProperties();
-		p.setProperty("sun.awt.exception.handler", "ErrorHandler");
+		System.setProperty("sun.awt.exception.handler", "ErrorHandler");
 
 		// Now create and show the GUI.
 		new ErrorHandlerTest().setVisible(true);
