@@ -14,7 +14,7 @@ public class Rooms {
 		// MUST init these all before setting them up.
 		lobby = new Room();
 		mainHall = new Room();
-		hallofKings = new Room();
+		hallOfKings = new Room();
 
 		lobby.setAll(null, mainHall, null, null,
 		"You are standing in the lobby. There is a door to the east", null);
