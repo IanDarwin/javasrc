@@ -86,7 +86,11 @@ public class LinkChecker extends JFrame {
             public void actionPerformed(ActionEvent e) {
 			try {
 				String log = textWindow.getText();
-				com.darwinsys.util.FileIO.stringToFile(log, "linkchecker.log");
+				String fileName = "linkchecker.log";
+				com.darwinsys.util.FileIO.stringToFile(log, fileName);
+				JOptionPane.showMessageDialog(LinkChecker.this,
+					"File saved as " + fileName, "Done",
+					JOptionPane.INFORMATION_MESSAGE);
 			} catch (IOException ex) {
 				JOptionPane.showMessageDialog(LinkChecker.this,
 					"IOError",
