@@ -1,1 +1,1 @@
-java XmlToText %1.xml | more
+java XmlForm %1.xml | more
