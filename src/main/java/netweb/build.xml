@@ -6,13 +6,26 @@
 	<property name="src"   value="."/>
 	<property name="build" value="."/>
 
-	<!-- specify what to compile. This builds everything -->
+	<available property="ns.jscript" 
+		classname="netscape.javascript.JSObject"
+		classpath="${netscape-java.jar}"/>
+
 	<target name="compile">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${servletapi.jar}:${netscape-java.jar}"
+			classpath="${javacook.jar}:${servletapi.jar}"
 			failonerror="false"
-			/>
+			excludes="JScript.java"/>
 	</target>
+
+	<target name="compile_js" if="ns.jscript">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${netscape-java.jar}"
+			failonerror="false"
+			includes="JScript.java"/>
+	</target>
+
+	<target name="build" depends="compile,compile_js"/>
 
 </project>

@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import com.darwinsys.io.*;
 import com.darwinsys.util.*;
 
 /** MkIndex -- make a static index.html for a Java Source directory
@@ -166,8 +167,7 @@ public class MkIndex {
 			if (fn.endsWith("/")) {	// directory
 				String descr = null;
 				if (new File(fn + "descr.txt").exists()) {
-					descr = com.darwinsys.util.FileIO.readLine(fn + 
-						"descr.txt");
+					descr = FileIO.readLine(fn + "descr.txt");
 				};
 				if (new File(fn + "index.html").exists())
 					mkDirLink(fn+"index.html", descr!=null?descr:fn);

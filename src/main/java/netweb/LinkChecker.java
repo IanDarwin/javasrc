@@ -5,7 +5,9 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import com.darwinsys.util.*;
+import com.darwinsys.io.FileIO;
+import com.darwinsys.swingui.UtilGUI;
+import com.darwinsys.util.Debug;
 
 /** A simple HTML Link Checker. 
  * Need a Properties file to set depth, URLs to check. etc.

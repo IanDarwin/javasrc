@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-import com.darwinsys.util.*;
+import com.darwinsys.io.FileIO;
 
 /** Connect to a METCAST station and print the results */
 public class Weather {
@@ -72,7 +72,7 @@ public class Weather {
 		
 		Object response = cx.getContent();
 		if (response instanceof InputStream)
-			response = com.darwinsys.util.FileIO.inputStreamToString((InputStream)response);
+			response = FileIO.inputStreamToString((InputStream)response);
 		System.out.println(response);
 	}
 }
