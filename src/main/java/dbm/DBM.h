@@ -7,14 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*
- * Class:     DBM
- * Method:    dbminit
- * Signature: (Ljava/lang/String;)I
- */
-JNIEXPORT jint JNICALL Java_DBM_dbminit
-  (JNIEnv *, jobject, jstring);
-
+/* Inaccessible static: inuse */
 /*
  * Class:     DBM
  * Method:    dbmclose
@@ -25,19 +18,11 @@ JNIEXPORT jint JNICALL Java_DBM_dbmclose
 
 /*
  * Class:     DBM
- * Method:    fetch
- * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+ * Method:    dbminit
+ * Signature: (Ljava/lang/String;)I
  */
-JNIEXPORT jobject JNICALL Java_DBM_fetch
-  (JNIEnv *, jobject, jobject);
-
-/*
- * Class:     DBM
- * Method:    store
- * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
- */
-JNIEXPORT jint JNICALL Java_DBM_store
-  (JNIEnv *, jobject, jobject, jobject);
+JNIEXPORT jint JNICALL Java_DBM_dbminit
+  (JNIEnv *, jobject, jstring);
 
 /*
  * Class:     DBM
@@ -45,6 +30,14 @@ JNIEXPORT jint JNICALL Java_DBM_store
  * Signature: (Ljava/lang/Object;)I
  */
 JNIEXPORT jint JNICALL Java_DBM_delete
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     DBM
+ * Method:    fetch
+ * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+ */
+JNIEXPORT jobject JNICALL Java_DBM_fetch
   (JNIEnv *, jobject, jobject);
 
 /*
@@ -62,6 +55,14 @@ JNIEXPORT jobject JNICALL Java_DBM_firstkey
  */
 JNIEXPORT jobject JNICALL Java_DBM_nextkey
   (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     DBM
+ * Method:    store
+ * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
+ */
+JNIEXPORT jint JNICALL Java_DBM_store
+  (JNIEnv *, jobject, jobject, jobject);
 
 #ifdef __cplusplus
 }

@@ -1,18 +1,29 @@
 /** This class provides a dbm-compatible interface to the UNIX-style
- * database access methods described in db(3). Each unique record
- * in the database is a unique key/value pair, similar to a 
- * java.util.Hashtable but only stored on persistent medium, not
- * kept in-memory.
+ * database access methods described in dbm(3) (which is on some UNIXes
+ * a front-end to db(3).
+ * <P>Each unique record in the database is a unique key/value pair,
+ * similar to a java.util.Hashtable but stored on persistent medium, not
+ * kept in memory. Dbm was originally optimized for UNIX for fast
+ * access to individual key/value pairs.
  *
  * @author This Java/C hookup by Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class DBM {
-	public synchronized DBM(String file) {
-		if (inuse)
-			throw new IllegalArgumentException("UNIX limitation" + 
-				"Only one DBM object allowed per Java Machine");
-		inuse = true;
+	/** Since you can only have one DBM database in use at a time due
+	 * to implementation restrictions, we enforce this rule with a
+	 * class-wide boolean.
+	 */
+	protected static boolean inuse = false;
+
+	/** Construct a DBM given its filename */
+	public DBM(String file) {
+		synchronized(this) {
+			if (inuse)
+				throw new IllegalArgumentException("UNIX limitation" + 
+					"Only one DBM object allowed per Java Machine");
+			inuse = true;
+		}
 		int retCode = dbminit(file);
 		if (retCode < 0)
 			throw new IllegalArgumentException(
@@ -22,6 +33,12 @@ public class DBM {
 	private native int dbminit(String file);
 
 	private native int dbmclose();
+
+	/** Public wrapper for close method. */
+	public void close() {
+		this.dbmclose();
+		inuse = false;
+	}
 
 	public native Object fetch(Object key);
 
