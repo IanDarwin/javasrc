@@ -12,11 +12,11 @@ import java.util.Stack;
  * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
-public class SimpleCalc {
+public class SimpleCalcStreamTok {
 	/** The StreamTokenizer Input */
 	protected  StreamTokenizer tf;
 	/** The Output File */
-	protected PrintWriter out;
+	protected PrintWriter out = new PrintWriter(System.out, true);
 	/** The variable name (not used in this version) */
 	protected String variable;
 	/** The operand stack */
@@ -25,20 +25,20 @@ public class SimpleCalc {
 	/* Driver - main program */
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
-			new SimpleCalc(
+			new SimpleCalcStreamTok(
 				new InputStreamReader(System.in)).doCalc();
 		else 
 			for (int i=0; i<av.length; i++)
-				new SimpleCalc(av[i]).doCalc();
+				new SimpleCalcStreamTok(av[i]).doCalc();
 	}
 
-	/** Construct a SimpleCalc by name */
-	public SimpleCalc(String fileName) throws IOException {
+	/** Construct by filename */
+	public SimpleCalcStreamTok(String fileName) throws IOException {
 		this(new FileReader(fileName));
 	}
 
-	/** Construct a SimpleCalc from an existing Reader */
-	public SimpleCalc(Reader rdr) throws IOException {
+	/** Construct from an existing Reader */
+	public SimpleCalcStreamTok(Reader rdr) throws IOException {
 		tf = new StreamTokenizer(rdr);
 		// Control the input character set:
 		tf.slashSlashComments(true);	// treat "//" as comments
@@ -48,9 +48,9 @@ public class SimpleCalc {
 		s = new Stack();
 	}
 
-	/** Construct a SimpleCalc fom a Reader and a PrintWriter
+	/** Construct from a Reader and a PrintWriter
 	 */
-	public SimpleCalc(Reader in, PrintWriter out) throws IOException {
+	public SimpleCalcStreamTok(Reader in, PrintWriter out) throws IOException {
 		this(in);
 		setOutput(out);
 	}
@@ -76,16 +76,16 @@ public class SimpleCalc {
 				variable = tf.sval;
 				break;
 			case '+':
-				// Found + operator, perform it immediately.
+				// + operator is commutative.
 				push(pop() + pop());
 				break;
 			case '-':
-				// Found + operator, perform it (order matters).
+				// - operator: order matters.
 				tmp = pop();
 				push(pop() - tmp);
 				break;
 			case '*':
-				// Multiply works OK
+				// Multiply is commutative
 				push(pop() * pop());
 				break;
 			case '/':
@@ -94,7 +94,7 @@ public class SimpleCalc {
 				push(pop() / tmp);
 				break;
 			case '=':
-				out.println(peek());
+				out.println(pop());
 				break;
 			default:
 				out.println("What's this? iType = " + iType);
