@@ -22,8 +22,8 @@ public class DBM {
 	public DBM(String file) {
 		synchronized(this) {
 			if (inuse)
-				throw new IllegalArgumentException("UNIX limitation" + 
-					"Only one DBM object allowed per Java Machine");
+				throw new IllegalArgumentException(
+					"Only one DBM object at a time per Java Machine");
 			inuse = true;
 		}
 		fileName = file;
@@ -57,4 +57,8 @@ public class DBM {
 	public native Object firstkey();
 
 	public native Object nextkey(Object key);
+
+	public String toString() {
+		return "DBM@" + hashCode() + "[" + fileName + "]";
+	}
 }

@@ -18,7 +18,10 @@ SHARED_OBJ	= $(SHARED_UNIX)
 
 INCLUDES	= -I/usr/local/include/kaffe
 
-all:		$(CLASS) $(SHARED_OBJ)
+test:		Test.class main
+			java Test
+
+main:		$(CLASS) $(SHARED_OBJ)
 
 DBM.class: DBM.java
 		javac DBM.java

@@ -15,6 +15,18 @@
  */
 JNIEXPORT jint JNICALL Java_DBM_dbminit
   (JNIEnv *env, jobject this, jstring filename) {
+	extern int errno;
+	jboolean iscopy;
+	jint ret = 0;
+	const char *cname = (*env)->GetStringUTFChars(env, filename, &iscopy);
+	printf("Filename is %s\n", cname);
+
+	ret = dbminit(cname);
+
+	/* if GetString made this copy for us, free it up. */
+	if (iscopy) (*env)->ReleaseStringUTFChars(env, filename, cname);
+
+	return 0-errno;
 }
 
 /*
