@@ -53,9 +53,5 @@ public class SAXLister {
 				email = false;
 			}
 		}
-		/** Needed for parent constructor */
-		public PeopleHandler() throws org.xml.sax.SAXException {
-			super();
-		}
 	}
 }
