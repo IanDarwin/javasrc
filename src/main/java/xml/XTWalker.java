@@ -3,7 +3,6 @@ import org.w3c.dom.Node;
 
 /** Subclass XML Tree Walker to use the Crimson-provided TreeWalker
  * STATUS -- UNKNOWN.
- * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class XTWalker extends XTW {
