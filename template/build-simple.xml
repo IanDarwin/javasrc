@@ -14,17 +14,10 @@
 		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}" />
 	</target>
 
-	<target name="jar" depends="compile">
-		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
-			includes="META-INF/*,com/**">
-		</jar>
-	</target>
-
-	<target name="deploy" depends="jar">
-	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	<target name="clean">
 	</target>
 </project>

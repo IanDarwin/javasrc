@@ -3,7 +3,7 @@
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
+	<property name="build" value="build"/>
 	<property name="build.compiler" value="jikes"/>
 
 	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
@@ -25,6 +25,10 @@
 	</target>
 
 	<target name="deploy" depends="jar">
-	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
 	</target>
 </project>
