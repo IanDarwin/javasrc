@@ -28,21 +28,28 @@ public class Redir extends Applet implements Runnable {
 			// debug...
 			// showStatus("URL = " + theNewURL);
 
-			t = new Thread(this);
-			t.start();
-
 		} catch (Exception err) {
 			System.err.println("Error!\n" + err);
 			showStatus("Error, look in Java Console for details!");
 		}
 	}
 
+	public void start() {
+		if (theNewURL == null)
+			return;
+
+		t = new Thread(this);
+		t.start();
+	}
+
+	/** Print a little message to the user. */
 	public void paint(Graphics g) {
 		if (urlString != null)
 			g.drawString(urlString, 20, 50);
 		else
 			g.drawString("Initializing...", 20, 50);
 	}
+
 	/** If users moves off the page, set Thread t to null so
 	 * we dont showDocument from within the middle of the new page!
 	 */
@@ -55,14 +62,22 @@ public class Redir extends Applet implements Runnable {
 	 * moved off the page, actually passing control to the new page.
 	 */
 	public void run() {
-		try {
-			Thread.sleep(NSECONDS * 1000);
-		} catch (InterruptedException e) {
-			// so what?
-		}
+		for (int i=NSECONDS; i>=0; i--) {
+			try {
+				Thread.sleep(1000);
+				if (t == null)
+					return;
+			} catch (InterruptedException e) {
+				// so what?
+			}
+			showStatus(Integer.toString(i));
 
-		if (t != null)
+			if (t == null)
+				return;
+
+			showStatus("Ignition!");
 			// "And then a miracle occurs..."
 			getAppletContext().showDocument(theNewURL);
+		}
 	}
 }
