@@ -1,9 +1,10 @@
 import java.text.*;
+import java.util.*;
 
 public class RomanNumberSimple {
 	public static void main(String[] args) {
-		NumberFormat nf = new RomanNumberFormat();
-		int year = Calendar.getInstance().getYear();
-		System.out.println(year + " -> " + nf.format(year);
+		RomanNumberFormat nf = new RomanNumberFormat();
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		System.out.println(year + " -> " + nf.format(year));
 	}
 }
