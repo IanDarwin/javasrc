@@ -98,6 +98,8 @@ public class MkIndex {
 				continue;
 			} else if (fn.equals("CVS")) {		// Ignore CVS subdirectories
 				continue;						// dont mention it
+			} else if (fn.charAt(0) == '.') {	// UNIX dot-file
+				continue;
 			} else if (fn.endsWith(".class")) {	// nag about .class files
 				System.err.println("Ignoring " + fn);
 				continue;
