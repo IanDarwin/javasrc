@@ -110,7 +110,7 @@ public class MkIndex {
 			name.endsWith(".jar") ||
 			name.endsWith(".bak")) {
 			if (verbose) {
-				System.err.println("Ignoring " + file.getPath());
+				System.err.println("Ignoring " + name);
 			}
 			return true;
 		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
