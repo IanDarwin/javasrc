@@ -54,7 +54,11 @@ public abstract class APIFormatter {
 			List entries = new ArrayList();
 			ZipFile zipFile = null;
 
-			zipFile = new ZipFile(new File(fileName));
+			try {
+				zipFile = new ZipFile(new File(fileName));
+			} catch (ZipException zz) {
+				throw new FileNotFoundException(zz.toString() + fileName);
+			}
 			Enumeration all = zipFile.entries();
 
 			// Put the entries into the List for sorting...
@@ -62,7 +66,6 @@ public abstract class APIFormatter {
 				ZipEntry zipEntry = (ZipEntry)all.nextElement();
 				entries.add(zipEntry);
 			}
-			System.out.println("entries.size = " + entries.size());
 
 			// Sort the entries (by class name)
 			// Collections.sort(entries);
@@ -115,5 +118,5 @@ public abstract class APIFormatter {
 
 	/** Format the fields and methods of one class, given its name.
 	 */
-	protected abstract void doClass(Class c);
+	protected abstract void doClass(Class c) throws IOException;
 }
