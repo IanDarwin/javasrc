@@ -16,7 +16,7 @@ public class TMTimerUtil {
 	 * return an Iterator (HashMap?) whose keys are the labels
 	 * and whose values are an array of ints with the seconds.
 	 */
-	 public static Iterator parseProps(Properties p) {
+	 public static HashMap parseProps(Properties p) {
 		HashMap h = new HashMap();
 	 	Enumeration it = p.keys();
 		while (it.hasMoreElements()) {
@@ -24,8 +24,9 @@ public class TMTimerUtil {
 			String val = (String)p.getProperty(key);
 			// System.out.println("Key " + key + " = " + val);
 			int[] data = new int[3];
-			// TODO parse val, store in data
+			// parse val, store in data
 			StringTokenizer st = new StringTokenizer(val);
+			// TODO if (st.countTokens() != 3) throw exception
 			int ix = 0;
 			while (st.hasMoreElements()) {
 				String t = (String)st.nextElement();
@@ -33,7 +34,7 @@ public class TMTimerUtil {
 			}
 			h.put(key, data);
 		}
-		return h.values().iterator();
+		return h;
 	}
 
 	public static int mmssToInt(String t) {
@@ -47,6 +48,19 @@ public class TMTimerUtil {
 			int nSec = Integer.parseInt(mm) * 60 + Integer.parseInt(ss);
 			return nSec;
 		}
+	}
+
+	/* Quickly format a seconds count into printable. */
+	public static String intToMmss(int ns) {
+		if (ns < 10)
+			return "0:0" + ns;
+		if (ns < 60)
+			return "0:" + ns;
+		int rem = ns%60;
+		if (rem < 10)
+			return ns/60 + ":0" + rem;
+		else
+			return ns/60 + ":" + rem;
 	}
 
 	public static void getProperties(Properties p, String progname) {
