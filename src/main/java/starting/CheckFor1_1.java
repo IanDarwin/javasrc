@@ -1,6 +1,6 @@
 /** Check *by features* for JDK >= 1.1 */
 public class TestFor1_1 {
-	public static void main(String[] args) { 
+	public static void main(String[] args) {
 		try {
 			Class.forName("java.lang.reflect.Constructor");
 		} catch (ClassNotFoundException e) {
