@@ -21,7 +21,7 @@ public class ResultSetUpdate {
 			rs = stmt.executeQuery("SELECT * FROM Users where nick=\"ian\"");
 
 			// Get the resultset ready, update the passwd field, commit
-			rs.next();
+			rs.first();
 			rs.updateString("password", "unguessable");
 			rs.updateRow();
 

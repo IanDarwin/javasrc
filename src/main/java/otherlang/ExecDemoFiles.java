@@ -1,3 +1,5 @@
+import com.darwinsys.util.ExecAndPrint;
+
 /**
  * Create, list and remove some files
  */
@@ -8,13 +10,15 @@ public class ExecDemoFiles {
 		Runtime rt = Runtime.getRuntime();
 
 		// Create three temporary files
-		rt.exec("mktemp 1-XXXXXX");
-		rt.exec("mktemp 2-XXXXXX");
-		rt.exec("mktemp 3-XXXXXX");
-		
+		rt.exec("mktemp file1");
+		rt.exec("mktemp file2");
+		rt.exec("mktemp file3"); 
 
 		// Run the "ls" (directory lister) program
 		// with its output sent into a file
-		rt.exec("/bin/ls ?-* | dd of=jnk");
+		String[] args = { "ls", "-l", "file1", "file2", "file3" };
+		ExecAndPrint.run(args);
+
+		rt.exec("rm file1 file2 file3");
 	}
 }

@@ -5,10 +5,6 @@ import java.io.*;
  * read its output, and print its exit status.
  */
 public class ExecDemoWait {
-	/** The program to run */
-	public static String program = "ls";
-	/** The arguments to pass it */
-	public static String[] newArgs = {};
 
 	public static void main(String argv[]) throws IOException { 
 
@@ -26,8 +22,8 @@ public class ExecDemoWait {
 		System.out.println("In Main after exec");
 
 		// getInputStream gives an Input stream connected to 
-		// the process p's standard output (and vice versa). We use
-		// that to construct a BufferedReader so we can readLine() it.
+		// the process p's standard output. Just use it to make
+		// a BufferedReader to readLine() what the program writes out.
 		is = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
 		while ((line = is.readLine()) != null)

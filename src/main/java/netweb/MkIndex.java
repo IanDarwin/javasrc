@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import com.darwinsys.util.*;
 
-/** MkIndex -- make an index.html for a Java Source directory
+/** MkIndex -- make a static index.html for a Java Source directory
  *
  * REQUIRES JDK1.2 OR LATER FOR SORT!!
  *
