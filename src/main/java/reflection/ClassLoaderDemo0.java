@@ -11,11 +11,13 @@ public class ClassLoaderDemo0 extends ClassLoader {
 	protected Hashtable cache = new Hashtable();
 
 	/** INSERT HERE THE RESULT OF DUMPING DEMO.CLASS */
+	byte[] data /* = ... */;
+	int dataLength;
 
 	/** END OF INSERTION OF THE RESULT OF DUMPING DEMO.CLASS */
 
 	/** "load", that is, generate, the data for the class */
-	private byte genClassData(String name)[] {
+	private byte[] genClassData(String name) {
 		if (dataLength != data.length)	// EXPECT COMPILE ERROR in javasrc
 			throw new IllegalArgumentException(
 				"data corrupt, " + dataLength + "!=" + data.length);

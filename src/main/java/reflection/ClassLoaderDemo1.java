@@ -58,7 +58,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 	};
 
 	/** "load", that is, make up, the data for the class */
-	private byte genClassData(String name)[] {
+	private byte[] genClassData(String name) {
 		if (dataLength != data.length)
 			throw new IllegalArgumentException("data corrupt");
 		byte[] bd = new byte[data.length];

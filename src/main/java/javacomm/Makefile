@@ -13,3 +13,6 @@ checkpath:
 classes:
 		@echo "===> Building in `pwd`"
 		$(JAVACC) *.java
+
+clean:
+		rm -f *.class
