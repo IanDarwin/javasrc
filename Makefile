@@ -1,4 +1,4 @@
-SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io tar textproc javacomm dir_file graphics gui i18n network netweb servlet_jsp DBM JDBC email xml rmi packaging beans threads introspection otherlang native1.1 template
+SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io tar textproc javacomm dir_file graphics gui i18n network netweb servlet jsp DBM JDBC email xml rmi packaging beans threads introspection otherlang native1.1 template
 
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
 # $Id$
