@@ -13,9 +13,9 @@ public class IteratorDemo {
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the list...
-		l.addElement(source.getDate());
-		l.addElement(source.getDate());
-		l.addElement(source.getDate());
+		l.add(source.getDate());
+		l.add(source.getDate());
+		l.add(source.getDate());
 
 		int i = 0;
 
