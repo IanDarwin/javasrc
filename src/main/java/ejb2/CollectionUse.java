@@ -19,8 +19,7 @@ public class CollectionUse {
 
 		Iterator it = c.iterator();
 		while (it.hasNext()) {
-			MyBean b = (MyBean)PortableRemoteObject.narrow(
-				it.next(), MyBean.class);
+			MyBean b = (MyBean)it.next();
 			//
 			// can now call methods in this MyBean
 		}
