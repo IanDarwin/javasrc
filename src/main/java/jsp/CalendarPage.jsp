@@ -5,6 +5,7 @@
 	<meta name="version"
 		content="$Id$">
 </head>
+<body bgcolor="white">
 <h1>Print a month page, for the Western calendar.</h1>
 <P>Author Ian F. Darwin, ian@darwinsys.com
 
@@ -20,11 +21,14 @@
 			out.println("Year " + yyString + " invalid");
 		}
 	}
+	Calendar c = Calendar.getInstance();
 	if (!yyok)
-		yy = 2000;	// XX from new Calendar().
+		yy = c.get(Calendar.YEAR);
 
 	String mmString = request.getParameter("month");
-	if (mmString != null) {
+	if (mmString == null) {
+		mm = c.get(Calendar.MONTH);
+	} else {
 		for (int i=0; i<months.length; i++)
 			if (months[i].equals(mmString)) {
 				mm = i;
@@ -73,7 +77,8 @@
 <table border=1>
 <tr><th colspan=7><%= months[mm] %>  <%= yy %></tr>
 
-<%		Calendar calendar = new GregorianCalendar(yy, mm, 1); %>
+<%		GregorianCalendar calendar = new GregorianCalendar(yy, mm, 1); %>
+
 <tr><td>Su<td>Mo<td>Tu<td>We<td>Th<td>Fr<td>Sa</tr>
 
 <%
@@ -82,7 +87,7 @@
 		leadGap = calendar.get(Calendar.DAY_OF_WEEK)-1;
 
 		int daysInMonth = dom[mm];
-		if (isLeap(calendar.get(Calendar.YEAR)) && mm == 1)
+		if (calendar.isLeapYear(calendar.get(Calendar.YEAR)) && mm == 1)
 			++daysInMonth;
 
 		out.print("<tr>");
@@ -107,18 +112,3 @@
 %>
 </tr>
 </table>
-<%!
-	/**
-	 * isLeap() returns true if the given year is a Leap Year.
-	 *
-	 * "a year is a leap year if it is divisible by 4
-	 * but not by 100, except that years divisible by 400
-	 * *are* leap years." 
-	 *	-- Kernighan & Ritchie, _The C Programming Language_, p 37.
-	 */
-	public boolean isLeap(int year) {
-		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
-			return true;
-		return false;
-	}
-%>
