@@ -1,14 +1,15 @@
 /*
  * For Applet, invoke as:
-<APPLET CODE="GetImage" WIDTH="100" HEIGHT="100">
-</APPLET>
+ * <applet code="GetImage" width="100" height="100">
+ * </applet>
  * For Application, just run it (has own main).
  */
 
 import java.awt.*;
 import java.net.*;		// for URL class
 
-import com.darwinsys.swingui.WindowCloser;
+import com.darwinsys.swingui.WindowCloser;	// EXPECT DEPRECATION WARNING
+// This program could be updated to JApplet and JFrame if anybody has time.
 
 /** This program, which can be an Applet or an Application,
  * shows a form of Toolkit.getImage() which works the same
