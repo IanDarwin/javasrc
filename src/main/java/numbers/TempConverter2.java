@@ -16,11 +16,11 @@ public class TempConverter2 extends TempConverter {
 
 	// Constructor
 	public TempConverter2() {
-		df = new DecimalFormat("##.###");
+		df = new DecimalFormat("#0.00");
 	}
 
 	protected void print(float f, float c) {
-		System.out.println(f + " " + df.format(c));
+		System.out.println(df.format(f) + " " + df.format(c));
 	}
 
 	protected void start() {

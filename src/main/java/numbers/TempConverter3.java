@@ -1,6 +1,6 @@
 import java.text.*;
 
-/* Print a table of fahrenheit and celsius temperatures, with decimal
+/* Print a table of Fahrenheit and Celsius temperatures, with decimal
  * points lined up.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
@@ -19,7 +19,7 @@ public class TempConverter3 extends TempConverter2 {
 	// Constructor
 	public TempConverter3() {
 		super();
-		dff = new DecimalFormat("##.#");
+		dff = new DecimalFormat("#0.0");
 		fp = new FieldPosition(NumberFormat.INTEGER_FIELD);
 	}
 
