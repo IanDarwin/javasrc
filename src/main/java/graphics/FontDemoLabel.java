@@ -12,7 +12,8 @@ public class FontDemoLabel extends JFrame {
 		Container cp = getContentPane();
 
 		// get font name list
-		fl = (Toolkit.getDefaultToolkit()).getFontList();
+		fl = GraphicsEnvironment.getLocalGraphicsEnvironment().
+			getAvailableFontFamilyNames();
 
 		// IGNORE the setLayout and North/South stuff...
 		// we will discuss it in a few pages!
