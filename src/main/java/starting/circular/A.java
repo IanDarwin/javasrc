@@ -1,4 +1,4 @@
-package circular;
+package starting.circular;
 
 public class A {
 	B bample;
