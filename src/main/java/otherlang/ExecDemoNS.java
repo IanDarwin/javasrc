@@ -3,21 +3,22 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 import com.darwinsys.util.Debug;
 
 /**
- * ExecDemoNS shows how to execute a 32-bit Windows program from within Java.
+ * ExecDemoNS shows how to execute a program from within Java.
  */
 public class ExecDemoNS extends JFrame {
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
 
-	/** A process object tracks one external running process */
-	Process p;
+	/** A stack of process objects; each entry tracks one external running process */
+	Stack<Process> pStack = new Stack<Process>();
 
 	/** main - instantiate and run */
-	public static void main(String av[]) throws Exception { 
+	public static void main(String av[]) throws Exception {
 		String program = av.length == 0 ? "netscape" : av[0];
 		new ExecDemoNS(program).setVisible(true);
 	}
@@ -29,7 +30,7 @@ public class ExecDemoNS extends JFrame {
 	public ExecDemoNS(String prog) {
 		super("ExecDemo: " + prog);
 		String osname = System.getProperty("os.name");
-		if (osname == null) 
+		if (osname == null)
 			throw new IllegalArgumentException("no os.name");
 		if (prog.equals("netscape"))
 			program = // Windows or UNIX only for now, sorry Mac fans
@@ -76,9 +77,9 @@ public class ExecDemoNS extends JFrame {
 
 					// Start Netscape from the Java Application.
 
-					p = Runtime.getRuntime().exec(program + " " + helpURL);
+					pStack.push(Runtime.getRuntime().exec(program + " " + helpURL));
 
-					Debug.println("trace", "In main after exec");
+					Debug.println("trace", "In main after exec " + pStack.size());
 
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(ExecDemoNS.this,
@@ -91,14 +92,18 @@ public class ExecDemoNS extends JFrame {
 	}
 
 	public void doWait() {
+		if (pStack.size() == 0) return;
+		Debug.println("trace", "Waiting for process " + pStack.size());
 		try {
-			p.waitFor();	// wait for process to complete
-			Debug.println("trace", "Process is done");
+			pStack.peek().waitFor();
+				// wait for process to complete (does not work as expected for Windows programs)
+			Debug.println("trace", "Process " + pStack.size() + " is done");
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this,
 				"Error" + ex, "Error",
 				JOptionPane.ERROR_MESSAGE);
 		}
+		pStack.pop();
 	}
 
 }
