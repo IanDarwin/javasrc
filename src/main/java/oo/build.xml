@@ -18,8 +18,11 @@
 			classpath="${darwinsys.jar}:${junit.jar}"
 			deprecation="true"
 			excludes="${excludes}"
-			failOnError="false"
-		/>
+			failOnError="false">
+				<!-- exclude programs that are not intended to compile -->
+				<exclude name="SingletonCheat1.java"/>
+				<exclude name="SingletonCheat2.java"/>
+		</javac>
 	</target>
 
 	<target name="regress" depends="build">
