@@ -94,7 +94,7 @@ public class SimpleCalcStreamTok {
 				push(pop() / tmp);
 				break;
 			case '=':
-				out.println(pop());
+				out.println(peek());
 				break;
 			default:
 				out.println("What's this? iType = " + iType);
