@@ -21,36 +21,36 @@ public class SAXLister {
 	
 	public SAXLister(String[] args) throws SAXException, IOException {
 		XMLReader parser = XMLReaderFactory
-				.createXMLReader("org.apache.xerces.parsers.SAXParser");
+				.createXMLReader();
 		// should load properties rather than hardcoding class name
 		parser.setContentHandler(new PeopleHandler());
-		parser.parse(args.length == 1 ? args[0] : "parents.xml");
+		parser.parse(args.length == 1 ? args[0] : "people.xml");
 	}
 	
 	/** Inner class provides DocumentHandler
 	 */
 	class PeopleHandler extends DefaultHandler {
-		boolean parent = false;
-		boolean kids = false;
+		boolean person = false;
+		boolean email = false;
 		public void startElement(String nsURI, String localName,
 				String rawName, Attributes attributes) throws SAXException {
 			Debug.println("docEvents", "startElement: " + localName + ","
 					+ rawName);
 			// Consult rawName since we aren't using xmlns prefixes here.
 			if (rawName.equalsIgnoreCase("name"))
-				parent = true;
-			if (rawName.equalsIgnoreCase("children"))
-				kids = true;
+				person = true;
+			if (rawName.equalsIgnoreCase("email"))
+				email = true;
 		}
 		public void characters(char[] ch, int start, int length) {
-			if (parent) {
-				System.out.println("Parent:  " +
+			if (person) {
+				System.out.println("Person:  " +
 					new String(ch, start, length));
-				parent = false;
-			} else if (kids) {
-				System.out.println("Children: " + 
+				person = false;
+			} else if (email) {
+				System.out.println("Email: " + 
 					new String(ch, start, length));
-				kids = false;
+				email = false;
 			}
 		}
 		/** Needed for parent constructor */
