@@ -2,7 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/** PrintDemoGfx -- Construct and print a GfxDemoCanvas.  JDK1.1 VERSION. */
+/** PrintDemoGfx -- Construct and print a GfxDemoCanvas.  
+ * JDK1.1 VERSION, using the older PrintJob.
+ */
 public class PrintDemoGfx1_1 {
 
 	/** Simple demo main program. */

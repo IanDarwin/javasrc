@@ -3,22 +3,17 @@ import javax.servlet.http.*;
 import java.io.*;
 
 /** A quiz-show "buzzer" servlet: the first respondant wins the chance
- * to answer the skill-testing question. Correct operation depends on
- * running in a Servlet container that CORRECTLY implements the Servlet
- * spec, that is, a SINGLE INSTANCE of this servlet class exists, and it
- * is run in a thread pool. This class does not implement "SingleThreadModel"
- * so a correct Servlet implementation will use a single instance.
+ * to answer the skill-testing question. 
  * <p>
- * If you needed to work differently, you could synchronize on an object
- * stored in the Servlet Application Context, at a slight increased cost
- * in terms of system overhead.
+ * Previous versions of this code used shared static variables, but this
+ * is not reliable, since most web engines now use custom class loaders
+ * that may load a servlet class more than once.  The "right" way is to 
+ * synchronize on an object stored in the Servlet Application Context.
  */
 public class BuzzInServlet extends HttpServlet {
 
-	/** This controls the access */
-	protected static boolean buzzed = false;
-	/** who got the buzz? */
-	protected static String winner; 
+	/** The attribute name used throughout. */
+	protected final static String WINNER = "buzzin.winner";
 
 	/** doGet is called from the contestants web page.
 	 * Uses a synchronized code block to ensure that
@@ -27,14 +22,17 @@ public class BuzzInServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		boolean igotit = false;
+		ServletContext application = getServletContext();
 
+		boolean iWon = false;
+		String user = request.getRemoteHost() + '@' + request.getRemoteAddr();
 
 		// Do the synchronized stuff first, and all in one place.
-		synchronized(this) {
-			if (!buzzed) {
-				igotit = buzzed = true;
-				winner = request.getRemoteHost() + '/' + request.getRemoteAddr();
+		synchronized(application) {
+			if (application.getAttribute(WINNER) == null) {
+				application.setAttribute(WINNER, user);
+				application.log("BuzzInServlet: WINNER " + user);
+				iWon = true;
 			}
 	 	}
 
@@ -44,14 +42,13 @@ public class BuzzInServlet extends HttpServlet {
 		out.println("<html><head><title>Thanks for playing</title></head>");
 		out.println("<body bgcolor=\"white\">");
 
-		if (igotit) {
+		if (iWon) {
 			out.println("<b>YOU GOT IT</b>");
-			getServletContext().log("BuzzInServlet: WINNER " +
-				request.getRemoteUser());
 			// TODO - output HTML to play a sound file :-)
 		} else {
 				out.println("Thanks for playing, " + request.getRemoteAddr());
-				out.println(", but " + winner + " buzzed in first");
+				out.println(", but " + application.getAttribute(WINNER) + 
+					" buzzed in first");
 		}
 		out.println("</body></html>");
 	}
@@ -68,6 +65,8 @@ public class BuzzInServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
+		ServletContext application = getServletContext();
+
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
@@ -77,13 +76,18 @@ public class BuzzInServlet extends HttpServlet {
 			String command = request.getParameter("command");
 			if (command.equals("reset")) {
 				// Synchronize what you need, no more, no less.
-				synchronized(this) {
-					buzzed = false;
-					winner = null;
+				synchronized(application) {
+					application.setAttribute(WINNER, null);
 				}
 				out.println("RESET");
 			} else if (command.equals("show")) {
-				synchronized(this) {
+				String winner = null;
+				synchronized(application) {
+					winner = (String)application.getAttribute(WINNER);
+				}
+				if (winner == null) {
+					out.println("<b>No winner yet!</b>");
+				} else {
 					out.println("<b>Winner is: </b>" + winner);
 				}
 			}

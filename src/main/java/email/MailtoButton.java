@@ -78,7 +78,7 @@ public class MailtoButton extends Applet {
 		if ((s = getParameter("fontsize")) != null)
 			fontSize = Integer.parseInt(s);
 		if (fontName != null || fontSize != 0) {
-			System.out.println("Name " + fontName + ", size " + fontSize);
+			// System.out.println("Name " + fontName + ", size " + fontSize);
 			theFont = new Font(fontName, Font.BOLD, fontSize);
 		}
 		

@@ -1,0 +1,12 @@
+Run the two installers.
+
+Take all defaults, but for Jakarta-Tomcat, be sure to
+include the "NT Service" option.
+
+Copy the third file, buzzin.war, to \jakarta-tomcat-4\webabbs.
+
+Start the tomcat service.
+
+Buzzin should be ready.
+
+Better reporting and more user friendly later.
