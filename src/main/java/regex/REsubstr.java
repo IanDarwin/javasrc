@@ -6,7 +6,7 @@ import java.util.regex.*;
  * @version $Id$
  */
 public class REsubstr {
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 		//+
 		String patt = "Q[^u]\\d+\\.";
 		Pattern r = Pattern.compile(patt);

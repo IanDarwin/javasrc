@@ -33,7 +33,7 @@ public class Grep2 {
 	 * Be aware that a few of the command-line options are not
 	 * acted upon in this version - this is an exercise for the reader!
 	 */
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 
 		if (argv.length < 1) {
 		    System.err.println(
@@ -87,7 +87,13 @@ public class Grep2 {
 		if (patt == null)
 			patt = argv[ix];
 
-		Grep2 pg = new Grep2(patt, args);
+		Grep2 pg = null;
+		try {
+			pg = new Grep2(patt, args);
+		} catch (PatternSyntaxException ex) {
+			System.err.println("RE Syntax error in " + patt);
+			return;
+		}
 
 		if (argv.length == ix)
 			pg.process(new InputStreamReader(System.in), "(standard input)");

@@ -6,7 +6,7 @@ import java.util.regex.*;
  * @version $Id$
  */
 public class NLMatch {
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 
 		String input = "I dream of engines\nmore engines, all day long";
 		System.out.println("INPUT: " + input);

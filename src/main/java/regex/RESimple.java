@@ -6,7 +6,7 @@ import java.util.regex.*;
  * @version $Id$
  */
 public class RESimple {
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 		String pattern = "^Q[^u]\\d+\\.";
 		String input = "QA777. is the next flight. It is on time.";
 

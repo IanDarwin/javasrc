@@ -8,7 +8,7 @@ import java.util.regex.*;
  * John Quincy Adams
  */
 public class REmatchTwoFields {
-	public static void main(String[] args) throws PatternSyntaxException {
+	public static void main(String[] args) {
 		String inputLine = "Adams, John Quincy";
 		// Construct an RE with parens to "grab" both field1 and field2
 		Pattern r = Pattern.compile("(.*), (.*)");

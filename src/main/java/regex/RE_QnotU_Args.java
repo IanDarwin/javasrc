@@ -6,7 +6,7 @@ import java.util.regex.*;
  * @version $Id$
  */
 public class RE_QnotU_Args {
-	public static void main(String[] argv) throws PatternSyntaxException {
+	public static void main(String[] argv) {
 		String patt = "^Q[^u]\\d+\\.";
 		Pattern r = Pattern.compile(patt);
 		for (int i=0; i<argv.length; i++) {

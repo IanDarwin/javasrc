@@ -48,3 +48,12 @@ public final class Matcher {
 	// information methods
     public Pattern pattern();
 }
+
+/* String, showing only the RE-related methods */
+public final class String {
+    public boolean matches(String regex);
+    public String replaceFirst(String regex, String newStr);
+    public String replaceAll(String regex, String newStr);
+    public String[] split(String regex);
+    public String[] split(String regex, int max);
+}
