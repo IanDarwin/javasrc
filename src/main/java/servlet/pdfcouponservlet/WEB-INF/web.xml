@@ -1,0 +1,19 @@
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+
+    <!-- Servlet definitions -->
+
+    <servlet>
+        <servlet-name>PDFCouponServlet</servlet-name>
+        <servlet-class>PDFCouponServlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet name mappings.  -->
+
+    <servlet-mapping>
+        <servlet-name>PDFCouponServlet</servlet-name>
+        <url-pattern>/servlet/PDFCouponServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
