@@ -10,7 +10,7 @@ public class MailLister {
 	static StringFormat subjFmt = new StringFormat(40, StringFormat.JUST_LEFT);
 
 	public static void main(String argv[]) throws Exception {
-		String fileName = PROPS_FILE_NAME;
+		String fileName = MailConstants.PROPS_FILE_NAME;
 
 		if (argv.length < 5) {
 			System.err.println("Usage: MailLister protocol host user pw root");
