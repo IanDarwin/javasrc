@@ -15,6 +15,6 @@ public class RESimple {
 		boolean found = p.matcher(input).lookingAt();
 
 		System.out.println("'" + pattern + "'" +
-			(found ? " matches " : " doesn't match '") + input + "'");
+			(found ? " matches '" : " doesn't match '") + input + "'");
 	}
 }
