@@ -4,4 +4,4 @@ export CLASSPATH="$CLASSPATH:`pwd`"
 
 cd ..
 
-java MkIndex
+java MkIndex > index-byname.html
