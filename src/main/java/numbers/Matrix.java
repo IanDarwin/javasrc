@@ -29,6 +29,8 @@ public class Matrix {
 		return result;
 	}
 
+	/** Matrix print.
+	 */
 	public static void mprint(int[][] a) {
 		int rows = a.length;
 		int cols = a[0].length;
