@@ -16,7 +16,6 @@ public class MailLister {
 		String user = argv[2];
 		String password = argv[3];
 		String root = argv[4];
-		String pattern = "%";
 		boolean recursive = false;
 
 		// Start with a Session object, as usual
@@ -28,14 +27,8 @@ public class MailLister {
 		Store store = session.getStore(protocol);
 		store.connect(host, user, password);
 
-		// Map the given folder
-		Folder folder = store.getFolder(root);
-		if (folder == null || !folder.exists()) {
-			System.out.println("Invalid folder");
-			System.exit(1);
-		}
-
-		// Get Folder object, and list it
+		// Get Folder object for root, and list it
+		// If root name = "", getDefaultFolder(), else getFolder(root)
 		Folder rf;
 		if (root.length() != 0) {
 			System.out.println("Getting folder " + root + ".");
@@ -46,7 +39,7 @@ public class MailLister {
 		}
 
 		if (rf.getType() == Folder.HOLDS_FOLDERS) {
-			Folder[] f = rf.list(pattern);
+			Folder[] f = rf.list();
 			for (int i = 0; i < f.length; i++)
 				listFolder(f[i], "", recursive);
 		} else

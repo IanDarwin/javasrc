@@ -1,73 +1,145 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 import javax.swing.tree.*;
+import javax.swing.event.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 /**
- * Display a mailbox, currently faked.
+ * Display a mailbox or mailboxes.
  * @version $Id$
  */
-public class MailReaderBean extends JPanel {
+public class MailReaderBean extends JSplitPane {
 
-    public MailReaderBean() {
-		super();
+	private JTextArea bodyText;
 
-		DefaultMutableTreeNode inbox;
-		DefaultMutableTreeNode javaone;
-		DefaultMutableTreeNode personal;
-		DefaultMutableTreeNode spam;	
+    public MailReaderBean(
+		String protocol,
+		String host,
+		String user,
+		String password,
+		String rootName) throws Exception {
 
-		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Mail Boxes");
+		super(VERTICAL_SPLIT);
 
-		top.add( inbox = new DefaultMutableTreeNode("INBOX") );
+		boolean recursive = false;
 
-		top.add( javaone = new DefaultMutableTreeNode("javaone") );
-		top.add( personal = new DefaultMutableTreeNode("personal") );
-		top.add( spam = new DefaultMutableTreeNode("spam") );
+		// Start with a Mail Session object
+		Session session = Session.getDefaultInstance(
+			System.getProperties(), null);
+		session.setDebug(false);
 
-		inbox.add(new DefaultMutableTreeNode(
-			"ian@darwinsys.com    Call home"));
-		inbox.add(new DefaultMutableTreeNode(
-			"jag@sun.com                Re: Oak"));
-		inbox.add( new DefaultMutableTreeNode(
-			"legal@low_isp.net    Re: unsolicited email"));
+		// Get a Store object for the given protocol
+		Store store = session.getStore(protocol);
+		store.connect(host, user, password);
 
-		// next few fakes stolen from MetalWorks!
-		personal.add( new DefaultMutableTreeNode("Hi") );
-		personal.add( new DefaultMutableTreeNode("Good to hear from you") );
-		personal.add( new DefaultMutableTreeNode("Re: Thank You") );
+		// Get Folder object for root, and list it
+		// If root name = "", getDefaultFolder(), else getFolder(root)
+		FolderNode top;
+		if (rootName.length() != 0) {
+			// System.out.println("Getting folder " + rootName + ".");
+			top = new FolderNode(store.getFolder(rootName));
+		} else {
+			// System.out.println("Getting default folder.");
+			top = new FolderNode(store.getDefaultFolder());
+		}
+		if (top == null || !top.f.exists()) {
+			System.out.println("Invalid folder " + rootName);
+			return;
+		}
 
-		javaone.add( new DefaultMutableTreeNode("Thanks for your order") );
-		javaone.add( new DefaultMutableTreeNode("Price Quote") );
-		javaone.add( new DefaultMutableTreeNode("Here is the invoice") );
-		javaone.add( new DefaultMutableTreeNode("Project Metal: delivered on time") );
-		javaone.add( new DefaultMutableTreeNode("Your salary raise approved") );
+		if (top.f.getType() == Folder.HOLDS_FOLDERS) {
+			Folder[] f = top.f.list();
+			for (int i = 0; i < f.length; i++)
+				listFolder(top, new FolderNode(f[i]), recursive);
+		} else
+				listFolder(top, top, false);
 
-		spam.add( new DefaultMutableTreeNode("Buy Now") );
-		spam.add( new DefaultMutableTreeNode("Make $$$ Now") );
-		spam.add( new DefaultMutableTreeNode("HOT HOT HOT") );
-		spam.add( new DefaultMutableTreeNode("Buy Now") );
-		spam.add( new DefaultMutableTreeNode("Don't Miss This") );
-		spam.add( new DefaultMutableTreeNode("Buy Now") );
-		spam.add( new DefaultMutableTreeNode("Last Chance") );
-		spam.add( new DefaultMutableTreeNode("Buy Now") );
-		spam.add( new DefaultMutableTreeNode("Make $$$ Now") );
-		spam.add( new DefaultMutableTreeNode("To Hot To Handle") );
-		spam.add( new DefaultMutableTreeNode("I'm waiting for your call") );
-
+		// Now that (all) the foldernodes and treenodes are in,
+		// construct a JTree object from the top of the list down,
+		// make the JTree scrollable (put in JScrollPane),
+		// and add it as the MailComposeBean's Northern child.
 		JTree tree = new JTree(top);
 		JScrollPane treeScroller = new JScrollPane(tree);
 		treeScroller.setBackground(tree.getBackground());
-		add(treeScroller);
+		this.add(treeScroller);
+
+		// The Southern (Bottom) child is a textarea to display the msg.
+		bodyText = new JTextArea(20, 80);
+		this.add(new JScrollPane(bodyText));
+
+		// Add a notification listener for the tree; this will
+		// display the clicked-upon message
+		TreeSelectionListener tsl = new TreeSelectionListener() {
+			public void valueChanged(TreeSelectionEvent evt) {
+				Object[] po = evt.getPath().getPath();	// yes, repeat it.
+				Object o = po[po.length - 1];	// last node in path
+				if (o instanceof FolderNode) {
+					// System.out.println("Select folder " + o.toString());
+					return;
+				}
+				if (o instanceof MessageNode) {
+					bodyText.setText("");
+					try {
+						Message m = ((MessageNode)o).m;
+
+						bodyText.append("To: ");
+						Object[] tos = m.getAllRecipients();
+						for (int i=0; i<tos.length; i++) {
+							bodyText.append(tos[i].toString());
+							bodyText.append(" ");
+						}
+						bodyText.append("\n");
+
+						bodyText.append("Subject: " + m.getSubject() + "\n");
+						bodyText.append("From: ");
+						Object[] froms = m.getFrom();
+						for (int i=0; i<froms.length; i++) {
+							bodyText.append(froms[i].toString());
+							bodyText.append(" ");
+						}
+						bodyText.append("\n");
+
+						bodyText.append("Date: " + m.getSentDate() + "\n");
+						bodyText.append("\n");
+
+						bodyText.append(m.getContent().toString());
+
+						// Start reading at top of message(!)
+						bodyText.setCaretPosition(0);
+					} catch (Exception e) {
+						bodyText.append(e.toString());
+					}
+				} else 
+					System.err.println("UNEXPECTED SELECTION: " + o.getClass());
+			}
+		};
+		tree.addTreeSelectionListener(tsl);
 	}
 
-	public Dimension getPreferredSize() {
-		return new Dimension(325, 200);
-	}
-
-	public Dimension getMinimumSize() {
-		return new Dimension(200, 170);
+	static void listFolder(FolderNode top, FolderNode folder, boolean recurse) throws Exception {
+		// System.out.println(folder.f.getName() + folder.f.getFullName());
+		if ((folder.f.getType() & Folder.HOLDS_MESSAGES) != 0) {
+			Message[] msgs = folder.f.getMessages();
+			for (int i=0; i<msgs.length; i++) {
+				MessageNode m = new MessageNode(msgs[i]);
+				Address from = m.m.getFrom()[0];
+				String fromAddress;
+				if (from instanceof InternetAddress)
+					fromAddress = ((InternetAddress)from).getAddress();
+				else
+					fromAddress = from.toString();
+				top.add(new MessageNode(msgs[i]));
+			}
+		}
+		if ((folder.f.getType() & Folder.HOLDS_FOLDERS) != 0) {
+			if (recurse) {
+				Folder[] f = folder.f.list();
+				for (int i=0; i < f.length; i++)
+					listFolder(new FolderNode(f[i]), top, recurse);
+				}
+		}
 	}
 
   	/** Start a new file, prompting to save the old one first. */
@@ -142,9 +214,13 @@ public class MailReaderBean extends JPanel {
 	public void doSynch(){}
 
 	/* test case */
-	public static void main(String a[]) {
+	public static void main(String[] args) throws Exception {
 		final JFrame jf = new JFrame("MailReaderBean");
-		MailReaderBean mb = new MailReaderBean();
+		String mbox = "/var/mail/ian";
+		if (args.length > 0)
+			mbox = args[0];
+		MailReaderBean mb = new MailReaderBean("mbox", "localhost",
+			"", "", mbox);
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);
