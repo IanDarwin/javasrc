@@ -50,15 +50,15 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		System.out.println("theURL = " + theURL);
 
 		// Start the player: this will notify our ControllerListener.
-		thePlayer.start();
+		thePlayer.start();		// start playing
 	}
 
 	/** Called to stop the audio, as from a Stop button or menuitem */
 	public void stop() {
 		if (thePlayer == null)
 			return;
-		thePlayer.stop();
-		thePlayer.deallocate();
+		thePlayer.stop();		// stop playing!
+		thePlayer.deallocate();	// free system resources
 	}
 
 	/** Called when we are really finished (as from an Exit button). */
