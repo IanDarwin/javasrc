@@ -34,4 +34,5 @@ subdirs:
 		DIR=`grep javacook-src /cvs/CVSROOT/modules | \
 		sed -e 's/.*-a//' -e 's@javasrc/@@g'`; \
 		for d in $$DIR; do if [ -d $$d ]; then LIST="$$LIST $$d"; fi; done; \
+		(echo "SUBDIR=	$$DIR"; grep -v SUBDIR= Makefile) > Makefile.new; \
 		mv Makefile.new Makefile
