@@ -1,0 +1,24 @@
+<!-- Session bean using MusicRec Entity
+ *** Seriously INCOMPLETe (just excerpts)
+ -->
+
+<ejb-jar>
+  <enterprise-beans>
+	<session>
+	<ejb-name>MusicSession</ejb-name>
+	<ejb-local-ref>
+		<ejb-ref-name>MusicRec</ejb-ref-name>
+		<ejb-ref-type>Entity</ejb-ref-type>
+		<local-home>MusicRecLocalHome</local-home>
+		<local>MusicRecLocal</local>
+	</ejb-local-ref>
+	</session>
+	
+	<entity>
+	<ejb-name>MusicRec</ejb-name>
+	<local-home>MusicRecLocalHome</local-home>
+	<local>MusicRecLocal</local>
+	<ejb-class>MusicRecBean</ejb-class>
+	</entity>
+  </enterprise-beans>
+</ejb-jar>
