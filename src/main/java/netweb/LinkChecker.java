@@ -17,6 +17,10 @@ import com.darwinsys.util.*;
  * Java Swing, section on "MultiThreading Issues with Swing".
  * As it stands, the GUI thread is locked up until the complete
  * checking is completed, which could take a long time.
+ * <p>
+ * TODO: parse using an XML parser, though this would fail for most web
+ * sites today (and how much longer do you think we must maintain
+ * so much ad-hoc code for parsing the almost-regular kludge known as HTML?)
  *
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
@@ -218,7 +222,7 @@ public class LinkChecker extends JFrame {
 			}
 			urlGetter.close();
 		} catch (IOException e) {
-			System.err.println("Error " + ":(" + e +")");
+			System.err.println("Error: (" + e +")");
 		}
 	}
 
@@ -286,6 +290,9 @@ public class LinkChecker extends JFrame {
 			throw new MalformedURLException("Can't find " + attrib + " in " + tag);
 		}
 		p2 = tag.indexOf ("=", p1);
+
+		// This fails to handle unquoted href, which some dinosaurs insist
+		// on using, saying the parser can sort it out. Phhhhhhhht!!!!
 		p3 = tag.indexOf("\"", p2);
 		p4 = tag.indexOf("\"", p3+1);
 		if (p3 < 0 || p4 < 0) {
