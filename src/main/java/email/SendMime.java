@@ -21,8 +21,8 @@ public class SendMime {
 		"myself on the beach in Maui, where it is warm and peaceful. " +
 		"Perhaps when I return I'll get around to reading your mail. " +
 		"Or perhaps not.";
-	/* Some data to be treated as part of a message. */
-	protected String data = 
+	/* Some html data to be treated as part of a message. */
+	protected String html_data = 
 		"<HTML><HEAD><TITLE>My Goodness</TITLE></HEAD>" +
 		"<BODY><P>You <EM>do</EM> look a little " +
 		"<font color=green>GREEN</FONT>" +
@@ -74,7 +74,7 @@ public class SendMime {
 			textPart.setText(message_body);	// sets type to "text/plain"
 
 			BodyPart pixPart = new MimeBodyPart();
-			pixPart.setContent(data, "text/plain");	// "text/html"?
+			pixPart.setContent(html_data, "text/html");
 
 			// Collect the Parts into the MultiPart
 			mp.addBodyPart(textPart);
@@ -87,9 +87,8 @@ public class SendMime {
 			Transport.send(mesg);
 
 		} catch (MessagingException ex) {
-			while ((ex = (MessagingException)ex.getNextException()) != null) {
-				ex.printStackTrace();
-			}
+			System.err.println(ex);
+			ex.printStackTrace(System.err);
 		}
 	}
 
