@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.*;
 import java.util.Random;
-import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class IntsServlet extends HttpServlet {
