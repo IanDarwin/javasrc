@@ -2,20 +2,25 @@ import java.io.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
+import java.lang.reflect.*;
 import java.util.*;
 
 /**
  * Class with code to walk a tree and convert it to Maker Interchange
  * Format (MIF). Must make MIF (not MML) since, alas, MML loses named
  * character codes in input.
+ * <P>
+ * Along the way, we do some book-specific things, like running
+ * another Java class and grabbing the output back into here.
+ *
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class ConvertToMIF implements XmlFormWalker {
 	/** The normal output writer */
-	protected PrintWriter msg;
-	/** Specialized PrintWriter for use by GetMark. */
-	protected StyledWriter smsg;
+	protected PrintStream msg;
+	/** Specialized PrintStream for use by GetMark. */
+	protected StyledPrintStream smsg;
 	/** A tree walker object for walking the tree */
 	protected TreeWalker tw;
 	/** A GetMark converter for source code. */
@@ -24,10 +29,13 @@ public class ConvertToMIF implements XmlFormWalker {
 	protected Vector indents;
 
 	/** Construct a converter object */
-	ConvertToMIF(Document doc, PrintWriter pw) {
+	ConvertToMIF(Document doc, PrintStream pw) {
 		tw = new TreeWalker(doc);
-		msg = new PrintWriter(pw);
-		smsg = new StyledWriter(msg);
+		msg = new PrintStream(pw);
+		smsg = new StyledPrintStream(msg);
+		// Reassign System.out to go there as well, so when we
+		// run other main classes, their output gets grabbed.
+		System.setOut(smsg);
 		indents = new Vector();
 		indents.addElement("");
 	}
@@ -83,8 +91,14 @@ public class ConvertToMIF implements XmlFormWalker {
 
 	protected void doElement(Element p) {
 		String tag = p.getTagName().toLowerCase();
+		//
+		// STRUCTURE TAGS
+		//
 		if (tag.equals("chapter")) {
 			doChapter(p);
+		//
+		// PARAGRAPH TAGS
+		//
 		} else if (tag.equals("chaptertitle")) {
 			doParagraph("ChapterTitleLeft", p);
 		} else if (tag.equals("sc")) {
@@ -94,27 +108,26 @@ public class ConvertToMIF implements XmlFormWalker {
 		} else if (tag.equals("p")) {
 			doParagraph("Body", p);
 		} else if (tag.equals("pr")) {
-			pgfTag("HeadB");
-			pgfString("Problem");
-			endTag();
+			makeUpParagraph("HeadB", "Problem");
 		} else if (tag.equals("so")) {
-			pgfTag("HeadB");
-			pgfString("Solution");
-			endTag();
+			makeUpParagraph("HeadB", "Solution");
 		} else if (tag.equals("di")) {
-			pgfTag("HeadB");
-			pgfString("Discussion");
-			endTag();
+			makeUpParagraph("HeadB", "Discussion");
 		} else if (tag.equals("sa")) {
-			pgfTag("HeadB");
-			pgfString("See Also");
-			endTag();
+			makeUpParagraph("HeadB", "See Also");
 		} else if (tag.equals("code")) {
 			doCode(p);
 		} else if (tag.equals("example")) {
 			doExample(p);
 		} else if (tag.equals("runoutput")) {
 			doRun(p);
+		//
+		// STYLE TAGS
+		//
+		} else if (tag.equals("literal")) {	// code
+			//
+		} else if (tag.equals("bt")) {	// book title
+			//
 		} else
 			System.err.println("IGNORING UNHANDLED TAG " + tag + '(' +
 				p.getClass() + '@' + p.hashCode() + ')');
@@ -131,9 +144,17 @@ public class ConvertToMIF implements XmlFormWalker {
 		endTag();	// end of Pgf, not of Para!
 	}
 
+	/** Generate a paragraph from the input */
 	protected void doParagraph(String tag, Element p) {
 		indent(); pgfTag(tag);
 		doChildren(p);
+		endTag();
+	}
+
+	/** Synthesize a paragraph when we know its content. */
+	protected void makeUpParagraph(String tag, String contents) {
+		indent(); pgfTag(tag);
+		pgfString(contents);
 		endTag();
 	}
 
@@ -149,20 +170,19 @@ public class ConvertToMIF implements XmlFormWalker {
 		if (marked != null)
 			doMarks = true;
 	
-		pgfTag("Example");
+		makeUpParagraph("Example", "Example XX: " + fname);
+
+		// Each line of output from gm.process() is a separate Para!
 		try {
-			fname = "/javasrc/" + fname;	// XX dir should be parameter
+			fname = System.getProperty("codedir", ".") + '/' + fname;	
 			LineNumberReader is = new LineNumberReader(new FileReader(fname));
 			gm.process(fname, is, smsg);
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
-		endTag();
 	}
 
-	/** Run a java Program and capture the output.
-	 * TODO use class.forName.findStaticMethod() and call its main method.
-	 * (then need to be writing stdout, or dup2 stdout).
+	/** Run a java class' Main Program and capture the output.
 	 */
 	protected void doRun(Element p) {
 		NamedNodeMap attrs = p.getAttributes();
@@ -171,17 +191,34 @@ public class ConvertToMIF implements XmlFormWalker {
 			throw new IllegalArgumentException(
 				"node " + p + "lacks required CMD Attribute");
 		String className = myClass.getNodeValue();
-		pgfTag("Example");
+
+		makeUpParagraph("Example", "Example XX: " + className);
+
 		try {
-			String cmd = "java " + className;	// XX dir should be parameter
-			Process proc = Runtime.getRuntime().exec(cmd);
-			LineNumberReader is = new LineNumberReader(
-				new InputStreamReader(proc.getInputStream()));
-			gm.process(className, is, smsg);
-		} catch(IOException e) {
-			throw new IllegalArgumentException(e.toString());
+			// First, find the class.
+			Class c = Class.forName(className);
+
+			// Create a dummy argv to pass it.
+			String[] argv = new String[0];
+
+			// Create the array of Argument Types
+			Class[] argTypes = {
+				argv.getClass(),	// array is Object!
+			};
+
+			// Now find the method
+			Method m = c.getMethod("main", argTypes);
+
+			// Create the actual argument array
+			Object passedArgv[] = { argv };
+
+			// Now invoke the method.
+			System.err.println("Invoking " + c + '.' + m);
+			m.invoke(null, passedArgv);
+
+		} catch (Exception e) {
+			System.err.println(e);
 		}
-		endTag();
 	}
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
@@ -195,7 +232,7 @@ public class ConvertToMIF implements XmlFormWalker {
 	protected void pgfString(String s) {
 		indent();
 		startTag("ParaLine");
-		mifString("String", s);
+		mifString(s);
 		endTag();
 	}
 
@@ -229,11 +266,11 @@ public class ConvertToMIF implements XmlFormWalker {
 	}
 
 	/** Do the minumum needed to make "line" a valid MIF string. */
-	protected void mifString(String tag, String line) {
+	protected void mifString(String line) {
 		// Make new, big enough for translations
 		StringBuffer b = new StringBuffer(line.length() * 2);
 		b.append('<');
-		b.append(tag);
+		b.append("String");	// maybe parameterize?
 		b.append(' ');
 		b.append('`');
 
@@ -256,16 +293,26 @@ public class ConvertToMIF implements XmlFormWalker {
 		indent(); msg.println(b.toString());
 	}
 
-	/** Simply subclass PrintWriter so we don't have to modify
+	/** Simply subclass PrintStream so we don't have to modify
 	 * GetMark to change the format of lines that it writes, or
 	 * resort to other kluges like passing it a prefix and/or suffix.
+	 * <P>
+	 * The goal is to make each LINE of output be a separate paragraph,
+	 * since that's how Frame does Tables, and since O'Reilly uses
+	 * Frame Tables for multi-line code examples.
+	 * <P>
+	 * Note that we never actually write anything to the StyledPrintStream's
+	 * internal buffer: its println() method indirectly writes to msg.
+	 * This is an example of "subclassing for indirect effect".
 	 */
-	public class StyledWriter extends PrintWriter {
-		public StyledWriter(PrintWriter p) {
+	public class StyledPrintStream extends PrintStream {
+		public StyledPrintStream(PrintStream p) {
 			super(p, true);
 		}
 		public void println(String s) {
-			super.println("<CellBody>" + s);
+			indent(); pgfTag("CellBody");
+			pgfString(s);
+			endTag();	// end of Para
 		}
 	}
 }

@@ -11,7 +11,7 @@ public class XmlForm {
 	protected Reader is;
 	protected String fileName;
 
-	protected static PrintWriter msg = new PrintWriter(System.out, true);
+	protected static PrintStream msg = System.out;
 
 	/** Construct a converter given an input filename */
 	public XmlForm(String fn) {
