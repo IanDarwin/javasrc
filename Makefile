@@ -63,7 +63,7 @@ makefiles:
 		@for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
 			echo "===> $$dir/Makefile.simple"; \
 				cp Makefile.simple $$dir/Makefile; \
-			else echo "[bypassed--NOT A DIRECTORY]"; \
+			else echo "[bypassed--EXISTS]"; \
 			fi \
 		done
 
