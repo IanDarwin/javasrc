@@ -1,4 +1,5 @@
 import java.net.*;
+import java.util.StringTokenizer;
 import java.io.*;
 
 /**
@@ -24,37 +25,33 @@ public class WebServer0 {
 	/**
 	 * Main method, just creates a server and call its runServer().
 	 */
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws Exception {
 		System.out.println("DarwinSys JavaWeb Server 0.0 starting...");
 		WebServer0 w = new WebServer0();
-		w.runServer();		// never returns!!
+		w.runServer(HTTP);		// never returns!!
 	}
 
-	/**
-	 * Constructor, just create the server socket.
+	/** Get the actual ServerSocket; deferred until after Constructor
+	 * so subclass can mess with ServerSocketFactory (e.g., to do SSL).
+	 * @param port The port number to listen on
 	 */
-	WebServer0() {
-		try {
-			s = new ServerSocket(HTTP);
-		} catch(IOException e) {
-			System.err.println(e);
-			System.exit(0);
-			return;
-		}
+	protected ServerSocket getServerSocket(int port) throws Exception {
+		return new ServerSocket(port);
 	}
 
 	/** RunServer accepts connections and passes each one to handler. */
-	public void runServer() {
-		Socket us;		// user socket, gotten from accept()
+	public void runServer(int port) throws Exception {
+		s = getServerSocket(port);
 		while (true) {
 			try {
-				us = s.accept();
+				Socket us = s.accept();
+				Handler(us);
 			} catch(IOException e) {
 				System.err.println(e);
 				System.exit(0);
 				return;
 			}
-			Handler(us);
+
 		}
 	}
 
@@ -70,25 +67,23 @@ public class WebServer0 {
 			System.out.println("Accepted connection from " + from);
 			is = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			request = is.readLine();
-			// TODO new StreamTokenizer(request); to parse it
+			StringTokenizer st = new StringTokenizer(request);
 			System.out.println("Request: " + request);
 			String nullLine = is.readLine();
 			os = new PrintWriter(s.getOutputStream(), true);
 			os.println("HTTP/1.0 200 Here is your data");
 			os.println("Content-type: text/html");
-			os.println("Server-name: Java WebServer 0");
-			String reply = "<HTML><HEAD>" +
-				"<TITLE>Wrong System Reached</TITLE></HEAD>\n" +
-				"<H1>Welcome, " + from + ", but...</H1>\n" +
-				"<P>You have reached a desktop machine " +
+			os.println("Server-name: DarwinSys NULL Java WebServer 0");
+			String reply = "<html><head>" +
+				"<title>Wrong System Reached</title></head>\n" +
+				"<h1>Welcome, " + from + ", but...</h1>\n" +
+				"<p>You have reached a desktop machine " +
 				"that does not run a real Web service.\n" +
-				"<P>Please pick another system!\n" +
-				"<P>Or view <A HREF=\"file:///C:/javasrc/WebServer0.java\">" +
-				"the WebServer0 source (at a Course 47x site only)</A> " +
-				"or <A HREF=\"http://www.darwinsys.com/java/server.html\">" +
-				" at the Course Authors Web Site</A>.\n" +
-				"<HR><I>Java-based WebServer0</I><HR>\n" +
-				"</HTML>\n";
+				"<p>Please pick another system!</p>\n" +
+				"<p>Or view <A HREF=\"http://www.darwinsys.com/java/server.html\">" +
+				"the WebServer0 source (at the Authors Web Site)</A>.</p>\n" +
+				"<hr/><em>Java-based WebServer0</em><hr/>\n" +
+				"</html>\n";
 			os.println("Content-length: " + reply.length());
 			os.println("");
 			os.println(reply);

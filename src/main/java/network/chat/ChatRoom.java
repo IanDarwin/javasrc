@@ -20,8 +20,6 @@ import java.net.*;
  * one for reading and one for writing.</p>
  * <p>
  * Server multiplexes messages back to all clients.</p>
- * <p>
- * TODO in V2: consider using Java's MultiCastSocket.</p>
  * @author Ian Darwin
  * @version $Id$
  */

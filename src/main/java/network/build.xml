@@ -13,9 +13,28 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${build}:${darwinsys.jar}"
+			classpath="${build}:${darwinsys.jar}:${log4j.jar}"
 			debug="true" deprecation="true"
 		/>
+	</target>
+
+	<target name="run.logdemos" depends="build">
+		<echo message="==> Log4JDemo"/>
+		<java classname="Log4JDemo"
+			classpath="${build}:${darwinsys.jar}:${log4j.jar}">
+		</java>
+		<echo message="==> Log4JDemo2"/>
+		<java classname="Log4JDemo2"
+			classpath="${build}:${darwinsys.jar}:${log4j.jar}">
+		</java>
+		<echo message="==> Log14Demo"/>
+		<java classname="Log14Demo"
+			classpath="${build}:${darwinsys.jar}">
+		</java>
+		<echo message="==> Log14Demo2"/>
+		<java classname="Log14Demo2"
+			classpath="${build}:${darwinsys.jar}">
+		</java>
 	</target>
 
 	<target name="clean">
