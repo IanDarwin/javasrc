@@ -2,7 +2,7 @@ package com.darwinsys.client;
 
 import java.rmi.*;
 
-/** ClientInterface -- the interface for the client callback */
-public interface ClientInterface extends Remote {
+/** Client -- the interface for the client callback */
+public interface Client extends Remote {
 	public void alert(String mesg) throws RemoteException;
 }
