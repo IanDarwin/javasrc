@@ -34,6 +34,7 @@ public class CompTest {
 		} catch (Exception e) {
 			System.err.println("Component under test got exception in construction or initialization");
 			System.err.println(e.toString());
+			System.exit(1);
 		}
 
 		// create a Frame, and "Component c" to it.
@@ -58,7 +59,11 @@ public class CompTest {
 				System.exit(0);
 			}
 		});
-		f.pack();
+
+		// Set things reasonably sized.
+		// Alternately, c.getPreferredSize() and if zero, hard code its size.
+		f.setSize(300, 200);
+
 		f.setLocation(200, 200);
 		f.setVisible(true);
 	}
