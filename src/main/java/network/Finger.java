@@ -40,7 +40,8 @@ public class Finger {
 				os.print("/W ");	// wide mode
 
 			// Write request, with \n so readLine() doesn't hang!
-			os.println(s);
+			os.print("\r\n");
+			os.flush();
 
 			// Whatever we get back, we print.
 			// No timeout policy -- if it hangs, user can INTR.
