@@ -11,8 +11,6 @@ import java.lang.reflect.*;
  * @version	$Id$
  */
 public class MyJavaP {
-	/** Counter of fields/methods printed. */
-	static int n = 0;
 
 	/** A "Modifier" object, to decode modifiers of fields/methods */
 	Modifier m = new Modifier();
@@ -21,13 +19,13 @@ public class MyJavaP {
 	 * found in argv.
 	 */
 	public static void main(String argv[]) {
-		MyJavaP xref = new MyJavaP();
+		MyJavaP pp = new MyJavaP();
 
 		if (argv.length == 0) {
 			System.err.println("Usage: javap className [...]");
 			System.exit(1);
 		} else for (int i=0; i<argv.length; i++)
-			xref.doClass(argv[i]);
+			pp.doClass(argv[i]);
 	}
 
 	/** Format the fields and methods of one class, given its name.

@@ -22,7 +22,9 @@ public class EchoClientOneLine {
 			BufferedReader is = new BufferedReader(new 
 				InputStreamReader(sock.getInputStream()));
 			PrintWriter os = new PrintWriter(sock.getOutputStream(), true);
-			os.println(mesg);
+			// Do the CRLF ourself since println appends only a \r on
+			// platforms where that is the native line ending.
+			os.print(mesg + "\r\n");
 			String reply = is.readLine();
 			System.out.println("Sent \"" + mesg  + "\"");
 			System.out.println("Got  \"" + reply + "\"");

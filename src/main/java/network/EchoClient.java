@@ -35,7 +35,9 @@ public class EchoClient {
 				System.out.print(">>");
 				if ((line = stdin.readLine()) == null)
 					break;
-				os.println(line);
+				// Do the CRLF ourself since println appends only a \r on
+				// platforms where that is the native line ending.
+				os.print(line + "\r\n");
 				String reply = is.readLine();
 				System.out.println(reply);
 			} while (line != null);
