@@ -12,8 +12,8 @@ public class ScannerTest extends TestCase {
 
 		Scanner sDate = Scanner.create(sampleDate);
 		int dom = sDate.nextInt();
-		String mon = sDate.nextString();
-		int year = sDate.nextYear();
+		String mon = sDate.next().toString();
+		int year = sDate.nextInt();
 
 		assertEquals(dom, 25);
 		assertEquals(mon, "Dec");
