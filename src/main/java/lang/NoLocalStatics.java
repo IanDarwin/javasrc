@@ -6,7 +6,7 @@ public class NoLocalStatics {
 		NoLocalStatics t = new NoLocalStatics();
 		t.process();
 	}
-	void process() {				// EXPECT COMPILE ERROR
+	void process() {
 		static int a = 42;			// EXPECT COMPILE ERROR
 		System.out.println("Process: " + a);
 	}

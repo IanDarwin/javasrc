@@ -7,6 +7,6 @@ public class NullStaticMethod {
 	public static void main(String[] argv) {
 		System.out.println("XXX ");
 		NullStaticMethod2 x = null;
-		x.invoke();
+		x.invoke();			// EXPECT COMPILE WARNING
 	}
 }
