@@ -6,7 +6,9 @@ import java.net.*;
  * SpamRat: The Fury.
  * Read a SPAM mail message and generate an EMail compose window to the
  * SPAM-artist's ISP.
- * This version just prints the Received line with the offending ISP. 
+ * Of course, you must have saved the email message using a Mail User
+ * Agent (MUA, or mail reader program) that preserves all header lines!
+ *
  * TODO: 0) extract the ISP's name, do host lookup if numeric,
  *	do whois netblock lookup if that fails.
  *  1) Handle root spammers (use 2nd-last Received): need a heuristic
@@ -36,16 +38,30 @@ public class SpamRat {
 			}
     }
 
+	/** Display an error message. */
+	protected void error(String mesg, boolean terminate) {
+		System.err.println(mesg);
+		// if (myFrame != null) {
+			// display it in a dialog.
+		// }
+		if (terminate) {
+			System.exit(0);
+		}
+	}
+
 	/** the name of the file we are reading */
 	String spamFileName;
 	/** the Reader for the file we are reading */
 	LineNumberReader is;
 
-	public SpamRat(String fName) throws IOException {
-		File f = new File(spamFileName = fName);
+	/** Constructor
+	 * @param fileName - name of file containing a SPAM message.
+	 */
+	public SpamRat(String fileName) throws IOException {
+		File f = new File(spamFileName = fileName);
 		if (!f.isFile() || !f.canRead())
-			System.err.println("Can't read file " + fName);
-		is = new IndentContLineReader(new FileReader(fName));
+			System.err.println("Can't read file " + fileName);
+		is = new IndentContLineReader(new FileReader(fileName));
 	}
 
     /** process one file, given an open LineReader */
@@ -129,10 +145,11 @@ public class SpamRat {
 			System.err.println("Warning: IP " + realIP + " did not resolve");
 		}
 
-		flame(realName, realIP, fakeName);
+		sendFlame(realName, realIP, fakeName);
 	}
 
-	protected void flame(String host, String IP, String fakeName) {
+	/** Display the response in a mail compose window. */
+	protected void sendFlame(String host, String IP, String fakeName) {
 		System.out.println("To: abuse@" + host);
 		System.out.println("Subject: SPAM from your site!");
 		System.out.println("Cc: postmaster");
@@ -142,6 +159,7 @@ public class SpamRat {
 		System.out.println("by or through you, " + host + "(" + IP + ")");
 		System.out.println("pretending to be " + fakeName);
 		System.out.println("Please react accordingly.");
+		System.out.println();
 
 		// TODO IOutil.copy(spamFileName, ...);
 	}

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * PrintFile -- Print a file named onthe command line
+ * PrintFile -- Print a file named on the command line
  */
 public class PrintFile extends Frame {
 	/** The number of pages to print */
