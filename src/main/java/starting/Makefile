@@ -10,3 +10,6 @@ special:	../TestForClass.class
 
 ../TestForClass.class: TestForClass.java
 		$(JAVACC) -d .. TestForClass.java
+
+clean:
+		@rm -f *.class
