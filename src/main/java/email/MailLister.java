@@ -6,14 +6,17 @@ import javax.mail.internet.*;
 * List all available folders.
 */
 public class MailLister {
-	static StringFormat fromFmt = new StringFormat(20, StringFormat.JUST_LEFT);
-	static StringFormat subjFmt = new StringFormat(40, StringFormat.JUST_LEFT);
+	static StringFormat fromFmt = 
+		new StringFormat(20, StringFormat.JUST_LEFT);
+	static StringFormat subjFmt = 
+		new StringFormat(40, StringFormat.JUST_LEFT);
 
 	public static void main(String argv[]) throws Exception {
 		String fileName = MailConstants.PROPS_FILE_NAME;
 
 		if (argv.length < 5) {
-			System.err.println("Usage: MailLister protocol host user pw root");
+			System.err.println(
+				"Usage: MailLister protocol host user pw root");
 			System.exit(0);
 		}
 		String protocol = argv[0];
@@ -64,7 +67,8 @@ public class MailLister {
 				listFolder(rf, "", false);
 	}
 
-	static void listFolder(Folder folder, String tab, boolean recurse) throws Exception {
+	static void listFolder(Folder folder, String tab, boolean recurse)
+	throws Exception {
 		folder.open(Folder.READ_WRITE);
 		System.out.println(tab + "Name: " + folder.getName() + '(' +
 			folder.getFullName() + ')');
