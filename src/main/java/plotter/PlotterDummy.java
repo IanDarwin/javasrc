@@ -1,8 +1,5 @@
 package Plotter;
 
-import java.io.*;
-import java.lang.*;
-
 /** Plotter class for testing higher-level software. */
 public class PlotterDummy extends Plotter {
 
