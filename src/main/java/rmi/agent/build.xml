@@ -1,10 +1,10 @@
-<project name="XXX" default="build" basedir=".">
+<project name="Agent System Demo" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property file="../build.properties"/>
+	<property name="build.compiler" value="jikes"/>
 
 	<target name="init">
 		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
@@ -12,11 +12,15 @@
 	</target>
 
 	<target name="build" depends="init">
-		<javac srcdir="${src}" destdir="${build}"
-			deprecation="true"
-		/>
+		<javac srcdir="${src}" destdir="${build}" />
+		<rmic classname="agents.AgentImpl" base="${build}"/>
+		<rmic classname="servers.RunServerImpl" base="${build}"/>
 	</target>
 
 	<target name="clean">
+		<delete>
+			<fileset dir="." includes="**/*.class"/>
+		</delete>
 	</target>
+
 </project>
