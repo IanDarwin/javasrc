@@ -25,20 +25,26 @@ public class GetOptDemo {
 				doHelp(1);
 			}
 		}
-		System.out.println("Options:");
-		System.out.println("Numeric options:" + numeric_option);
-		System.out.println("Output file: " + outFileName);
+		System.out.print("Options: ");
+		System.out.print("Numeric: " + numeric_option + ' ');
+		System.out.print("Output: " + outFileName + ' ');
+		System.out.print("; Input: ");
 		if (go.optind() == args.length) {
-			sortFile("(standard input)");
+			doFile("(standard input)");
 		} else for (int i=go.optind(); i<args.length; i++)
-			sortFile(args[i]);
+			doFile(args[i]);
+		System.out.println();
 	}
+
+	/** Stub for providing help on usage
+	 * You can write a longer help than this, certainly.
+	 */
 	static void doHelp(int returnValue) {
-		// You can write a longer help than this, certainly.
-		System.out.println("Usage: GetOptDemo [-h]-[n][-o outfile] file ...");
+		System.err.println("Usage: GetOptDemo [-h]-[n][-o outfile] file ...");
 		System.exit(returnValue);
 	}
-	static void sortFile(String fileName) {
-		System.out.println("Would now sort file " + fileName);
+	/** Stub to demonstrate processine one file. */
+	static void doFile(String fileName) {
+		System.out.print(fileName + ' ');
 	}
 }
