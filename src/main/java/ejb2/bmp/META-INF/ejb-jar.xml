@@ -12,6 +12,7 @@
 		<ejb-class>Bean</ejb-class>
 		<persistence-type>Bean</persistence-type>
 		<transaction-type>Container</transaction-type>
+		<primary-key-class>Integer</primary-key-class>
 		</entity>
 	</enterprise-beans>
 </ejb-jar>

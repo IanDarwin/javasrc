@@ -2,6 +2,8 @@ import CDService.*;
 import org.omg.CosNaming.*;
 import org.omg.CORBA.*;
 
+import com.darwinsys.util.*;
+
 /** This is a simple Applet that just lists the CDs and tracks. */
 public class CDListApplet extends java.applet.Applet {
 	public void init() {

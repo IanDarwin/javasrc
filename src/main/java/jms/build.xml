@@ -4,7 +4,8 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
+
+	<property file="../build.properties"/>
 
 	<property name="deploy.dir" value="/tmp/deploy"/>
 	<property name="deploy.jar" value="jmschat.jar"/>
@@ -15,7 +16,9 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${jms.jar}"
+			failonerror="false"/>
 	</target>
 
 	<target name="jar" depends="compile">

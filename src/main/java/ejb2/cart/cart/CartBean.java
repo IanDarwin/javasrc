@@ -1,11 +1,15 @@
-import javax.ejb.*
+import javax.ejb.*;
+import java.util.*;
 
 public class CartBean implements SessionBean {
 
 	private ArrayList cartItems;
 
 	public void ejbCreate() {
-		cartItems = new Vector();
+		cartItems = new ArrayList();
+	}
+	public void ejbRemove() {
+		cartItems = null;
 	}
 
 	public void add(Object o) {
@@ -13,12 +17,14 @@ public class CartBean implements SessionBean {
 	}
 
 	public void checkOut() {
-		OrderHome ordHome = (OrderHome) ... lookup
+		OrderHome ordHome = null;
+		// ordHome = (OrderHome) ... lookup
 
 		// Order is Entity bean; create creates in DBMS
 		Order ord = ordHome.create(custID, cartItems);
 
-		BillingHome bHome = (BillingHome) ... lookup
+		BillingHome bHome = null
+		// bHome = (BillingHome) ... lookup
 		Billing b = bHome.create(custID);
 
 		b.setTotal(totalPrice(cartItems));
@@ -28,4 +34,8 @@ public class CartBean implements SessionBean {
 		// not implemented yet
 		return 10000;	// i.e., 100.00
 	}
+
+	public void ejbActivate() { }
+	public void ejbPassivate() { }
+
 }

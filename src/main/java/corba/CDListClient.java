@@ -2,6 +2,8 @@ import CDService.*;
 import org.omg.CosNaming.*;
 import org.omg.CORBA.*;
 
+import com.darwinsys.util.*;
+
 /** This is a simple client that just lists the CDs and tracks. */
 public class CDListClient {
 	public static void main(String[] argv) {

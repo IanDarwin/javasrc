@@ -5,31 +5,33 @@ import java.util.*;
 import javax.naming.*;
 
 /**
- * Replacement for the BMP example on page 576-7-45.
- * It will compile but will not run yet!
+ * Replacement for the BMP example on page 576-7-15.
+ * STATUS: INCOMPLETE!!!
+ * It will compile but will NOT run yet!
  */
 public class EntityEJB implements EntityBean {
-	private String title;	// pkey
+	private EntityContext ctx;
+	private Integer id;	// pkey
+	private Recording fields;
 	private int stockCount = 0;
 	private double price = 0;
 
 	/** findByPrimaryKey is a required Entity Bean method.
 	 * This method runs with no PrimaryKey in the Context yet;
 	 * it does not actually allocate the bean instance fields.
-	 * Using String title as a PKEY is a bit lame...
 	 */
-	public String ejbFindByPrimaryKey(String pKey) throws FinderException {
+	public Integer ejbFindByPrimaryKey(Integer pKey) throws FinderException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(
-				"select title from Recordings where title = ?");
-			ps.setString(1, pKey);
+				"select title from Recordings where id = ?");
+			ps.setInt(1, pKey.intValue());
 			rs = ps.executeQuery();
 			if (!rs.next()) {
-				throw new ObjectNotFoundException(pKey);
+				throw new ObjectNotFoundException(pKey.toString());
 			}
 			if (rs.next()) {
 				throw new FinderException("Duplicate pkey!? " + pKey);
@@ -56,11 +58,11 @@ public class EntityEJB implements EntityBean {
         try {
             con = getConnection();
             ps = con.createStatement();
-            rs = ps.executeQuery("select title from Recordings");
+            rs = ps.executeQuery("select id from Recordings");
             while (rs.next()) {
 				// Returning the pKey in this Collection will cause the 
 				// container to assign and load a bean for this pkey.
-				c.add(rs.getString(1));
+				c.add(rs.getObject(1));
 			}
         } catch (SQLException ex) {
             throw new FinderException(ex.toString());
@@ -102,17 +104,34 @@ public class EntityEJB implements EntityBean {
 		}
 	}
 
-	public void ejbLoad() { }
+	public void ejbLoad() { 
+		Integer pkey = (Integer)ctx.getPrimaryKey();
+		// This must be implemented!!!
+		throw new IllegalStateException(
+		"You used my bean before I finished writing it!");
+	}
  
-	public void ejbStore() { }
+	public void ejbStore() { 
+		// This must be implemented!!!
+		throw new IllegalStateException(
+		"You used my bean before I finished writing it!");
+	}
  
 	public void ejbActivate() { }
 
 	public void ejbPassivate() { }
  
-	public void ejbRemove() { }
+	public void ejbRemove() {
+		// This must be implemented!!!
+		throw new IllegalStateException(
+		"You used my bean before I finished writing it!");
+	}
  
-	public void setEntityContext(javax.ejb.EntityContext $1) { }
+	public void setEntityContext(EntityContext ctx) { 
+		this.ctx = ctx;
+	}
  
-	public void unsetEntityContext() { }
+	public void unsetEntityContext() {
+		ctx = null;
+	}
 }

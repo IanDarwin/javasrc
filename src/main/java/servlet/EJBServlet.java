@@ -9,7 +9,7 @@ import javax.rmi.*;
 
 public class EJBServlet extends HttpServlet {
 
-	protected Hello hello;
+	protected Hello hello;	// EXPECT COMPILE ERRORS - demo only
 
 	public void init() throws ServletException {
 

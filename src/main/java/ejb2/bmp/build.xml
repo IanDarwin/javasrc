@@ -4,7 +4,7 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
+	<property name="build.compiler" value="modern"/>
 
 	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 	<property name="deploy.jar" value="bmp.jar"/>

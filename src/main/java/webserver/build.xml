@@ -5,9 +5,10 @@
   <!-- set global properties for this build -->
   <property name="src" value="."/>
   <property name="build" value="."/>
-  <property name="build.compiler" value="jikes"/>
 
-  <property name="deploy.dir" value="."/>
+	<property file="../build.properties"/>
+
+	<property name="deploy.dir" value="."/>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -21,7 +22,7 @@
 
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="com-darwinsys-util.jar"/>
+		  classpath="${javacook.jar}:${junit.jar}:${servletapi.jar}"/>
   </target>
 
 </project>
