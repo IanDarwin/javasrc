@@ -33,13 +33,12 @@ public class TestOpenMailRelay {
 
 	/** Try the given mail server, writing output to the given PrintStream */
 	public static void process(String suspect_relay, PrintStream pw) {
-		
+		pw.println("processs: trying: " + suspect_relay);
 		try {
 			// Redirect all output from mail API to the given stream.
 			System.setOut(pw);
 			System.setErr(pw);
-			Sender2 sm = new Sender2();
-			sm.props.put("mail.smtp.host", suspect_relay);
+			Sender2 sm = new Sender2(suspect_relay);
 			sm.addRecipient("nobody@erewhon.moc");
 			sm.setFrom(MY_TARGET);
 			sm.setSubject("Testing for open mail relay, see " + RSS_SITE);

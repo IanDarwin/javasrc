@@ -30,13 +30,25 @@ public class Sender2 {
 	/** Properties object used to pass props into the MAIL API */
 	Properties props = new Properties();
 
-	/** Construct the Sender2 object */
+	/** Construct a Sender2 object */
 	public Sender2() throws MessagingException {
 
 		// Your LAN must define the local SMTP as "mailhost"
 		// for this simple-minded version to be able to send mail...
-		// Otherwise, use the -h option.
 		props.put("mail.smtp.host", "mailhost");
+		finish();
+	}
+
+	/** Construct a Sender2 object.
+	 * @param hostName - the name of the host to send to/via.
+	 */
+	public Sender2(String hostName) throws MessagingException {
+
+		props.put("mail.smtp.host", hostName);
+		finish();
+	}
+
+	private void finish() {
 
 		// Create the Session object
 		session = Session.getDefaultInstance(props, null);
