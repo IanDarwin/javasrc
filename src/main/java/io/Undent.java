@@ -1,7 +1,7 @@
 import java.io.*;
 
 /** Undent - remove leading spaces
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 
@@ -38,7 +38,7 @@ public class Undent {
             while ((inputLine = is.readLine()) != null) {
 				int i;
 				for (i=0; i<nSpaces; i++) {
-					if (!Character.isSpace(inputLine.charAt(i)))
+					if (!Character.isWhitespace(inputLine.charAt(i)))
 						break;
 				}
                 System.out.println(inputLine.substring(i));
