@@ -1,7 +1,6 @@
 package network;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 public class Log4JDemo2 {
 	public static void main(String[] args) {

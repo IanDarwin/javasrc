@@ -1,10 +1,13 @@
 package NETWatch;
 
-import java.awt.*;
-import javax.swing.*;
-import java.net.*;
-import java.rmi.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.Properties;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /** Displays one machines status.
  * Part of the NetWatch program: watch the network

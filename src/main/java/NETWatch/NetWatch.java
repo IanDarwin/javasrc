@@ -1,10 +1,12 @@
 package NETWatch;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.swing.JOptionPane;
 
 /** Main program for the NetWatch program: watch the network status
  * on a bunch of machines (i.e., in a classroom or lab). Currently only
