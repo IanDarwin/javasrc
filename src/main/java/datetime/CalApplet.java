@@ -28,11 +28,11 @@ public class CalApplet extends Applet implements ActionListener {
 		p.add(mmText = new TextField(""+(mm+1)));
 		mmText.addActionListener(this);
 
-		// The action for chaning the day just highlights that day.
+		// The action for changing the day just highlights that day.
 		p.add(ddText = new TextField(""+dd));
 		ddText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cal.setDay(Integer.parseInt(ddText.getText()));
+				cal.setDayActive(Integer.parseInt(ddText.getText()));
 			}
 		});
 		add("South", p);
