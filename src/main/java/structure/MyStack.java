@@ -1,14 +1,24 @@
+/** A surprisingly lax Stack implementation. */
 public class MyStack<T> {
-	private T[] data = new T[10];
+	public final int MAX = 10;
+	private T[] data = new T[MAX];
 
 	public void push(T obj) {
 		data[ix++] = obj;
 	}
 
+	public boolean hasNext() {
+		return ix >= 0;
+	}
+
+	public boolean hasRoom() {
+		return ix < (MAX - 1);
+	}
+
 	public T pop() {
-		if (ix < 0) {
-			throw new ArrayIndexOutofBoundsException(-1);
+		if (hasNext()) {
+			return data[ix--];
 		}
-		return data[ix--];
+		throw new ArrayIndexOutofBoundsException(-1);
 	}
 }
