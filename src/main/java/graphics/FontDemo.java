@@ -5,8 +5,10 @@ import java.awt.*;
  * @author	Madhu Siddalangiah (revised)
  */
 public class FontDemo extends Frame {
-
+	/** The list of Fonts */
 	String fontList[];
+	/** How much space between each name */
+	static final int YINCR = 20;
 
 	/** Construct a FontDemo -- Sets title and gets 
 	 * array of fonts on the system
@@ -15,9 +17,14 @@ public class FontDemo extends Frame {
 		setTitle("Font Demo");
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		fontList = toolkit.getFontList();
+		// For JDK 1.1: returns about 10 names (Serif, SansSerif, etc.)
+		// fontList = toolkit.getFontList();
+		// For JDK 1.2: a much longer list; most of the names that come
+		// with your OS (e.g., Arial, Lucida, Lucida Bright, Lucida Sans...)
+		fontList = GraphicsEnvironment.getLocalGraphicsEnvironment().
+			getAvailableFontFamilyNames();
 
-		setSize(150, 200);
+		setSize(250, fontList.length * YINCR);
 	}
 
 	/** Draws the font names in its font.
@@ -28,7 +35,7 @@ public class FontDemo extends Frame {
 			Font font = new Font(fontList[i], Font.BOLD, 14);
 			g.setFont(font);
 			int x = 20;
-			int y = 20 + (20 * i);
+			int y = 20 + (YINCR * i);
 			g.drawString(fontList[i], x, y);
 		}
 	}

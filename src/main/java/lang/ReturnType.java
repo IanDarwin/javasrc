@@ -11,5 +11,5 @@ public class ReturnType {
 	}
 
 	String d = demo();	// asigns "Goodbye cruel world" to d
-	int e = demo();		// compile-time error
+	int e = demo();		// EXPECT COMPILE ERROR
 }

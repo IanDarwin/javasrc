@@ -23,6 +23,7 @@ public class GfxDemoCanvas extends Canvas {
 	public void paint(Graphics g) {
 		width = getSize().width;
 		height = getSize().height;
+		g.setColor(Color.black);
 		g.drawRect(0, 0, width-1, height-1);
 		g.setColor(Color.red);
 		g.fillRect(0, 0, width/2, height/2);

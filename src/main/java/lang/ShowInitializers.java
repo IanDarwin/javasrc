@@ -6,4 +6,10 @@ public class ShowInitializers {
 			int rate;		// un-initialized by default
 			doSomethingWith(rate);	// EXPECT COMPILE ERROR
 		}
+
+		/** This method is not shown in the course notes.
+		 * It doesn't do anything with its input. 
+		 */
+		public void doSomethingWith(int r) {
+		}
 }

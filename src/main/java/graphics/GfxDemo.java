@@ -8,11 +8,13 @@ public class GfxDemo extends Frame {
 
 	GfxDemo(String s) {
 		setTitle(s);
-		setSize(width=400, height=300);
+		width=400;
+		height=300;
+		setSize(width, height);
 	}
 	GfxDemo(String s, int w, int h) {
 		setTitle(s);
-		setSize(width=w, height=h);
+		setSize(width=w, height=h);	// a short form
 	}
 
 	public void paint(Graphics g) {
