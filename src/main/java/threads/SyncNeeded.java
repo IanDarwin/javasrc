@@ -44,7 +44,7 @@
 /** Show a method that may fail due to lack of synchronization */
 public class SyncNeeded {
 
-	public static final int MAX = 4000;
+	public static final int MAX = 10000;
 
 	protected static int[] data;
 	protected static int ix = 0;
@@ -52,8 +52,8 @@ public class SyncNeeded {
 	public static void main(String[] args) throws InterruptedException { 
 		class R implements Runnable {
 			public void run() {
-				// System.out.println("Running " +
-				//	 Thread.currentThread().getName());
+				// System.out.println(
+				//	"Running " + Thread.currentThread().getName());
 
 				// This statement may do bad things!
 				data[ix] = ix++;

@@ -79,6 +79,7 @@ public class ProdCons1 {
 
 	public static void main(String[] args) throws IOException {
 		ProdCons1 pc = new ProdCons1();
+		System.out.println("Ready (p to produce, c to consume):");
 		int i;
 		while ((i = System.in.read()) != -1) {
 			char ch = (char)i;
