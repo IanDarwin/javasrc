@@ -52,8 +52,9 @@ public class GridImageCanvas extends JPanel {
 		}
 		gic.doLayout();
 		f.pack();
-		f.show();
+		f.setVisible(true);
 	}
+	
 	public void addImage(Image i, String s) {
 		vi.addElement(i);
 		vs.addElement(s);
@@ -76,9 +77,10 @@ public class GridImageCanvas extends JPanel {
 		int w;
 		if (d%1 != 0.0){
 			w = ((int)d)+1;
-		} else
+		} else {
 			w = (int)d;
-System.out.println("N="+l+";sqrt="+d+";gridLayout("+w+","+w+");");
+		}
+		// System.out.println("N="+l+";sqrt="+d+";gridLayout("+w+","+w+");");
 		grid.setLayout(lm = new GridLayout(w, w));
 		for (int i=0; i<l; i++) {
 			ImageCanvas ic = new ImageCanvas((Image)vi.elementAt(i),
