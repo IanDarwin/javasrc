@@ -20,6 +20,7 @@ public class TarEntry {
 
 	// Next fourteen fields constitute one physical record.
 	// Padded to TarFile.RECORDSIZE bytes on tape/disk.
+	// Lazy Evaluation: just read fields in raw form, only format when asked.
 
 	/** File name */
 	byte[]	name = new byte[NAMSIZ];
@@ -44,11 +45,6 @@ public class TarEntry {
 	byte[]	devminor = new byte[8];
 
 	// End of the physical data fields.
-
-	/* The checksum field is filled with this while checksum being computed. */
-	public static final byte[] CHKBLANKS = {
-		0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 
-	}; /* 8 blanks, no null */
 
 	/* The magic field is filled with this if uname and gname are valid. */
 	public static final byte TMAGIC[] = {
@@ -168,7 +164,7 @@ public class TarEntry {
 	/** Returns the modification time of the entry */
 	public long getTime() {
 		try {
-			return Long.parseLong(new String(mtime).trim());
+			return Long.parseLong(new String(mtime).trim(),8);
 		} catch (IllegalArgumentException e) {
 			return 0;
 		}
@@ -226,61 +222,7 @@ public class TarEntry {
 		return type == LF_CHR || type == LF_BLK || type == LF_FIFO;
 	}
 
-	protected StringBuffer sb;
-	/** Shift used in formatting permissions */
-	protected static int shft[] = { 6, 3, 0 };
-	/** Format strings used in permissions */
-	protected static String rwx[] = {
-		"---", "--x", "-w-", "-wx",
-		"r--", "r-x", "rw-", "rwx"
-	};
-
 	public String toString() {
-		sb = new StringBuffer();
-		switch(type) {
-			case LF_OLDNORMAL:
-			case LF_NORMAL:
-			case LF_CONTIG:
-				sb.append('f');
-				break;
-			case LF_DIR:
-				sb.append('d');
-				break;
-			case LF_LINK:
-				sb.append('f');
-				break;
-			case LF_SYMLINK:
-				sb.append('l');
-				break;
-			case LF_CHR:
-				sb.append('c');
-				break;
-			case LF_BLK:
-				sb.append('b');
-				break;
-			case LF_FIFO:
-				sb.append('p');
-				break;
-			default:
-				sb.append('?');
-				break;
-		}
-		int mode = getMode();
-
-		for (int i=0; i<3; i++) {
-			sb.append(rwx[mode >> shft[i] & 007]);
-		}
-		sb.append(' ');
-		sb.append(getUname()).append('/').append(getGname());
-		sb.append(' ').append(getSize()).append(' ');
-		sb.append("mtime=").append(getTime()).append(' ');
-
-		sb.append(getName());
-		if (isLink())
-			sb.append(" link to " ).append(getLinkName());
-		if (isSymLink())
-			sb.append(" -> " ).append(getLinkName());
-
-		return sb.toString();
-	}
+		return "TarEntry[" + getName() + ']';
+	} 
 }

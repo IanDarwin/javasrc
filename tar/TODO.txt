@@ -1,0 +1,9 @@
+Have the reading code check the checksum!
+
+Write getEntry().
+
+Write getInputStream(). Here's how: seek on the file, malloc a buffer
+big enough to hold the file, read it into memory, return a
+ByteArrayInputStream.
+
+Think about writing Tar files?

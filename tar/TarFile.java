@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-/*
+/**
  * Tape Archive Lister, patterned loosely after java.util.ZipFile.
  * Since, unlike Zip files, there is no central directory, you have to
  * read the entire file either to be sure of having a particular file's
  * entry, or to know how many entries there are in the archive.
- * Written by Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
 
@@ -98,8 +98,9 @@ public class TarFile {
 
 	/* Returns an enumeration of the Tar file entries. */
 	public Enumeration entries() throws IOException, TarException {
-		if (!read)
+		if (!read) {
 			readFile();
+		}
 		return list.elements();
 	}
 
