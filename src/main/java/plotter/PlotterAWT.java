@@ -10,7 +10,6 @@ import java.awt.event.*;
  */
 public class PlotterAWT extends Plotter {
 	Frame f;
-	Image os;
 	PCanvas p;
 	Graphics g;
 	Font font;
@@ -18,7 +17,7 @@ public class PlotterAWT extends Plotter {
 	PlotterAWT() {
 		super();
 		f = new Frame("Plotter");
-		p = new PCanvas(os, MAXX, MAXY);
+		p = new PCanvas(MAXX, MAXY);
 		f.add(p);
 		f.pack();
 		f.setVisible(true);
@@ -73,10 +72,12 @@ public class PlotterAWT extends Plotter {
 	 * things that have been drawn.
 	 */
 	class PCanvas extends Canvas {
+		Image os;
 		int width;
 		int height;
+		Graphics pg;
 
-		PCanvas(Image im, int x, int y) {
+		PCanvas(int x, int y) {
 			width = x;
 			height = y;
 			setBackground(Color.white);
@@ -84,16 +85,16 @@ public class PlotterAWT extends Plotter {
 		}
 
 		public Graphics getOsGraphics() {
-			checkOS();
-			return g;
+			addNotify();
+			return pg;
 		}
-		private void checkOS() {
-			// This createImage fails mysteriously if done in a constructor!
+
+		public void addNotify() {
+			super.addNotify();
 			os = createImage(width, height);
-			// System.out.println("PCanvas.checkOS(): image= " + os);
 			if (os == null)
 				throw new IllegalArgumentException("createImage failed");
-			g = os.getGraphics();
+			pg = os.getGraphics();
 		}
 
 		public void paint(Graphics pg) {
