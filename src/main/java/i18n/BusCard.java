@@ -3,6 +3,9 @@ import java.awt.event.*;
 import java.util.*;
 
 /** Display your business-card information in a Java window.
+ *
+ * This is a very crude first attempt. The next version should
+ * use a GridBagLayout.
  */
 public class BusCard extends Frame {
 
