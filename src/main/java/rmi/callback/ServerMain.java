@@ -5,7 +5,7 @@ public class ServerMain {
 		// System.setSecurityManager(new RMISecurityManager());
 		try {
 			com.darwinsys.callback.RegisterImpl im =
-				com.darwinsys.new callback.RegisterImpl();
+				new com.darwinsys.callback.RegisterImpl();
 			System.out.println("Server starting...");
 			Naming.rebind("Server", im);
 			System.out.println("Server ready.");

@@ -4,7 +4,7 @@ import org.omg.CORBA.*;
 
 /** This is a simple client that just lists the CDs and tracks. */
 public class CDListClient {
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		try {
 			// create and initialize the ORB
 			Debug.println("corba", "Initializing the ORB");

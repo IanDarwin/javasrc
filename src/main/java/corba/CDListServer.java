@@ -53,7 +53,7 @@ public class CDListServer {
 	}
 
 	/** Execution of Java programs starts at main() */
-	public static void main(String argv[])
+	public static void main(String[] argv)
 	{
 		new CDListServer().runServer(argv);
 	}
