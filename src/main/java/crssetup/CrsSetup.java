@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class CrsSetup extends JFrame {
 	/** The version number */
-	final static String VERSION = "0.4";
+	final static String VERSION = "$Version";
 	/** How many machines to go up to */
 	final int NUSERS = 22;
 	/** The link to us in the Startup folder, to remove it when done */
@@ -36,8 +36,10 @@ public class CrsSetup extends JFrame {
 	final String defCOURSE = "471";
 	/** The current machine name */
 	int machNameber = 0;
+	/** The default network */
+	finale String DEFAULT_NET = "200.1.1";
 	/** The current network */
-	String netName = null;
+	String netName = DEFAULT_NET;
 
 	// VIEW
 	/** The contentpane */
@@ -104,8 +106,7 @@ public class CrsSetup extends JFrame {
 		tp.setLayout(new BoxLayout(tp, BoxLayout.Y_AXIS));
 		ip = new JComboBox();
 		ip.setToolTipText("Set IP network number");
-		ip.addItem("-------");
-		ip.addItem("200.1.1");
+		ip.addItem(DEFAULT_NET);
 		ip.addItem("204.92.76");
 		ip.addItem("204.92.77");
 		ip.addItem("206.138.217");
@@ -126,12 +127,12 @@ public class CrsSetup extends JFrame {
 		tp.setLayout(new BoxLayout(tp, BoxLayout.Y_AXIS));
 		mach = new JComboBox();
 		mach.setToolTipText("Set Machine nameber");
-		mach.setEditable(false);	// don't allow user to type values.
+		mach.setEditable(true);	// allow user to type other values.
 		// mach.setMaximumSize(new Dimension(Integer.MAX_VALUE,20));
 		mach.addItem("-----------");
 		for (int i=1; i<=NUSERS; i++)
 			mach.addItem(""+i);
-		mach.addItem("44");
+		mach.addItem("44");			// instructor-notebook
 
 		mach.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -171,7 +172,7 @@ public class CrsSetup extends JFrame {
 		snuffB.setToolTipText("Remove the Startup link that runs me at reboot");
 		snuffB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				removeStartupLink();
+				removeStartupLink(true);
 			}
 		});
 
@@ -253,19 +254,21 @@ public class CrsSetup extends JFrame {
 				"Creation Failed", JOptionPane.WARNING_MESSAGE);
 	}
 
-	private void removeStartupLink() {
+	private void removeStartupLink(boolean chatty) {
 			File sl = new File(STARTUP_LINK);
 			if (!sl.exists()) {
-				JOptionPane.showMessageDialog(this,
-					"I think I'm already outa here.",
-					"Already removed?", JOptionPane.INFORMATION_MESSAGE);
+				if (chatty)
+					JOptionPane.showMessageDialog(this,
+						"I think I'm already outa here.",
+						"Already removed?", JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
-			if (sl.delete())
-				JOptionPane.showMessageDialog(this, 
-					"OK, goodbye forever...",
-					"Removal Succeeded", JOptionPane.INFORMATION_MESSAGE);
-			else
+			if (sl.delete()) {
+				if (chatty)
+					JOptionPane.showMessageDialog(this, 
+						"OK, goodbye forever...",
+						"Removal Succeeded", JOptionPane.INFORMATION_MESSAGE);
+			} else
 				JOptionPane.showMessageDialog(this,
 					"Tried to unlink, but failed.",
 					"Removal Failed", JOptionPane.WARNING_MESSAGE);
@@ -368,7 +371,7 @@ public class CrsSetup extends JFrame {
 			return;
 
 		// Still here, presume successful, so unlink.
-		removeStartupLink();
+		removeStartupLink(false);
 
 		// Suggest a reboot
 		String choices[] = { "Reboot now", "Reboot later" };
