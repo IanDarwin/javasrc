@@ -1,3 +1,4 @@
+import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -6,11 +7,13 @@ import java.awt.event.*;
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class Mover extends Component implements Runnable {
+public class Mover extends Applet implements Runnable {
 	/** The done or not done flag */
 	protected volatile boolean done = false;
 	/** The current Image, or null */
 	protected Image img;
+	/** The NAME of the current Image, or null */
+	protected String imageName;
 	/** the size of the current image */
 	protected int imgWid = 0, imgHt = 0;
 	/** DEFAULT msec between updates */
@@ -22,6 +25,9 @@ public class Mover extends Component implements Runnable {
 	/** The Thread that keeps us ticking */
 	protected Thread ticker;
 
+	// THESE CONSTRUCTORS ARE ONLY NEEDED FOR TESTING AS A NON-APPLET
+	// YOU DON'T NEED THEM FOR AN APPLET-ONLY SOLUTION.
+
 	/** Construct a Mover, given an Image and using a default pause interval. */
 	Mover(String imgName) {
 		this(imgName, DEFAULT_INTERVAL);
@@ -30,7 +36,19 @@ public class Mover extends Component implements Runnable {
 	/** Construct a Mover, given an Image and a pause interval. */
 	Mover(String imgName, int pauseInt) {
 		interval = pauseInt;
-		setImage(imgName);
+		imageName = imgName;
+		init();
+	}
+
+	/** Since we have the above Constructors, we need this one for Applet */
+	Mover() {
+	}
+
+	/** Setup a Mover applet. */
+	public void init() {
+		if (imageName == null)
+			imageName = "mover.gif";
+		setImage(imageName);
 		setSize(imgWid = img.getWidth(this),
 			    imgHt  = img.getHeight(this));
 	}
@@ -58,7 +76,6 @@ public class Mover extends Component implements Runnable {
 
 		img = Toolkit.getDefaultToolkit().getImage(fn);
 
-		// ----- This part omitted from course notes for brevity -----
 		// Use a MediaTracker to show the "best"? way of waiting
 		// for an image to load, and how to check for errors.
 		MediaTracker mt = new MediaTracker(this);
@@ -73,7 +90,6 @@ public class Mover extends Component implements Runnable {
 			throw new IllegalArgumentException(
 				"Couldn't load image " + fn);
 		}
-		// ----- End of part omitted from course notes for brevity -----
 	}
 
 	/** Return how big we'd like to be. If image loaded, use its size.
@@ -115,6 +131,7 @@ public class Mover extends Component implements Runnable {
 		final Frame f = new Frame("Mover Demo");
 		final Mover m = new Mover("mover.gif", 10);
 		f.add(m);
+		m.init();
 		m.start();
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
