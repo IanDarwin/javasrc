@@ -1,12 +1,6 @@
 import java.lang.reflect.*;
 
-/** This class is just here to give us something to work on,
- * with a println() call that will prove we got here. */
-class X {
-	public void work(String s) {
-		System.out.println("Working on \"" + s + "\"");
-	}
-}
+
 
 /**
  * Get a given method, and invoke it.
@@ -14,7 +8,14 @@ class X {
  * @version $Id$
  */
 public class GetMethod {
-
+	
+	/** This class is just here to give us something to work on,
+	 * with a println() call that will prove we got here. */
+	static class X {
+		public void work(String s) {
+			System.out.println("Working on \"" + s + "\"");
+		}
+	}
 	public static void main(String[] argv) {
 		try {
 			Class clX = X.class; // or Class.forName("X");
