@@ -6,11 +6,48 @@
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
-	<property name="src-jar" value="/tmp/javasrc.jar"/>
-	<property name="src-tar"
-		value="${user.home}/webs/default/tmp/javasrc.tar"/>
+	<property name="src-jar" value="javacooksrc2.jar"/>
+	<property file="build.properties"/>
 
-	<target name="init">
+	<!-- Right away, make sure javasrc.home has been set
+	 (this must be set as an absolute path, alas, so that
+	 you can invoke builds from here OR from the relevant subdirs). -->
+
+	<available file="${javasrc.home}/build.xml" 
+		type="file" property="javasrc.home.present"/>
+
+	<target name="check" unless="javasrc.home.present">
+		<fail>Can not open ${javasrc.home}/build.xml.
+		Please check javasrc.home setting in build.properties.</fail>
+	</target>
+
+	<!-- List of subdirectories for build and export -->
+	<property name="subdirs"
+		value="acks applet ChartBean classloader crssetup
+		datetime DBM dir_file email environ gc graphics
+		gui i18n introspection io
+		javacomm.api javacomm javadoc jdb
+		JDBC JMS JNDI jndi-services
+		jsp jsptags language NETWatch netweb network numbers 
+		oo otherlang packaging
+		performance Plotter quizzes RE rmi
+		seating servlet ShowDocument signals starting strings
+		structure tar testing textproc threads tmtimer tools
+		webserver wildmat XColor xml xmlform"
+		/>
+	<property name="optsubdirs"
+		value="beans prefs RE-apache"/>
+
+	<property name="local.lib" value="${user.dir}/lib"/>
+
+	<!-- The "foreach" task used to iterate over "subdirs" is part of
+	 *** the "ant-contrib" package. If you have that package installed
+	 *** you can remove this, but I want this to work for everybody.
+	 -->
+	<taskdef name="foreach" classname="net.sf.antcontrib.logic.ForEach"
+		classpath="${ant-contrib.jar}:${junit.jar}"/>
+
+	<target name="init" depends="check">
 		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
 
 		<tstamp/>
@@ -18,7 +55,7 @@
 		<!-- conditional properties -->
 		<available property="avail.prefs" className="java.util.prefs.Preferences"/>
 
-		<available property="avail.RE.1.4" className="java.util.regex.Pattern"/>
+		<available property="avail.BSF" className="org.apache.bsf.BSFManager"/>
 
 		<available property="avail.RE.apache" className="org.apache.regexp.RE"/>
 
@@ -29,186 +66,95 @@
 			</and>
 		</condition>
 
-		<available property="avail.jmf" classname="javax.media.Controllerlistener" />
+		<available property="avail.jmf" 
+			classname="javax.media.Controllerlistener" />
 
 		<available property="avail.nio" className="java.nio.Buffer"/>
 
-		
-		<available property="avail.imageio.1.4" className="java.awt.image.ColorModel"/>
+		<available property="avail.imageio.1.4" 
+			className="java.awt.image.ColorModel"/>
 
 		<available property="avail.jdom" className="org.jdom.Document"/>
 		
-		<condition property="avail.javacomm">
-			<available className="javax.comm.CommPortOpen"/>
-		</condition>
+		<available property="avail.javacomm" 	
+			className="javax.comm.CommPortOpen"/>
 
 		<available property="avail.pdflib" className="com.pdflib.Document"/>
 		
 	</target>
 
-	<!-- index everything, for findJava.org -->
-	<target name="index">
-		<ant antfile="buildindex.xml" inheritAll="false"/>
-	</target>
-
 	<!-- compile APIs needed by other parts of the file -->
 	<target name="api" depends="init">
-		<echo message="==> com.darwinsys"/>
-		<ant target="jar" dir="com.darwinsys" inheritAll="false"/>
+		<echo message="==> darwinsys"/>
+		<ant target="jar" dir="darwinsys" inheritAll="false"/>
 		<echo message="==> spdf"/>
 		<ant target="jar" dir="spdf"/>
 	</target>
 
 	<!-- compile everything, for JavaCookbook reliability :-) -->
 	<target name="build" description="compile all" depends="api">
-		<echo message="==> acks"/>
-		<ant dir="acks"/>
-		<echo message="==> applet"/>
-		<ant dir="applet"/>
-		<echo message="==> beans"/>
-		<ant dir="beans"/>
-		<echo message="==> ChartBean"/>
-		<ant dir="ChartBean"/>
-		<echo message="==> classloader"/>
-		<ant dir="classloader"/>
-		<echo message="==> cookiecutter"/>
-		<ant dir="cookiecutter"/>
-		<echo message="==> crssetup"/>
-		<ant dir="crssetup"/>
-		<echo message="==> datetime"/>
-		<ant dir="datetime"/>
-		<echo message="==> DBM"/>
-		<ant dir="DBM"/>
-		<echo message="==> dir_file"/>
-		<ant dir="dir_file"/>
-		<echo message="==> email"/>
-		<ant dir="email"/>
-		<echo message="==> environ"/>
-		<ant dir="environ"/>
-		<echo message="==> gc"/>
-		<ant dir="gc"/>
-		<echo message="==> graphics"/>
-		<ant dir="graphics"/>
-		<echo message="==> gui"/>
-		<ant dir="gui"/>
-		<echo message="==> i18n"/>
-		<ant dir="i18n"/>
-		<echo message="==> introspection"/>
-		<ant dir="introspection"/>
-		<echo message="==> io"/>
-		<ant dir="io"/>
-		<echo message="==> javacomm"/>
-		<!-- javacomm.api must precede javacomm -->
-		<ant dir="javacomm.api"/>
-		<echo message="==> javacomm"/>
-		<ant dir="javacomm"/>
-		<echo message="==> javadoc"/>
-		<ant dir="javadoc"/>
-		<echo message="==> jdb"/>
-		<ant dir="jdb"/>
-		<echo message="==> JDBC"/>
-		<ant dir="JDBC"/>
-		<echo message="==> JMS"/>
-		<ant dir="JMS"/>
-		<echo message="==> JNDI"/>
-		<ant dir="JNDI"/>
-		<echo message="==> jndi-services"/>
-		<ant dir="jndi-services"/>
-		<echo message="==> jsp"/>
-		<ant dir="jsp"/>
-		<echo message="==> jsptabs"/>
-		<ant dir="jsptags"/>
-		<echo message="==> language"/>
-		<ant dir="language"/>
-		<echo message="native1.1 not built -- you have to tweak the Makefile"/>
-		<echo message="==> NETwatch"/>
-		<ant dir="NETWatch"/>
-		<echo message="==> netweb"/>
-		<ant dir="netweb"/>
-		<echo message="==> network"/>
-		<ant dir="network"/>
-		<echo message="==> numbers"/>
-		<ant dir="numbers"/>
-		<echo message="==> oo"/>
-		<ant dir="oo"/>
-		<echo message="==> otherlang"/>
-		<ant dir="otherlang"/>
-		<echo message="==> packaging"/>
-		<ant dir="packaging"/>
-		<echo message="==> performance"/>
-		<ant dir="performance"/>
-		<echo message="==> Plotter"/>
-		<ant dir="Plotter"/>
-		<echo message="==> prefs"/>
-		<ant target="prefs"/>
-		<echo message="==> quizzes"/>
-		<ant dir="quizzes"/>
-		<echo message="==> RE"/>
-		<ant target="RE.1.4"/>
-		<echo message="==> RE-apache"/>
-		<ant target="RE.apache"/>
-		<echo message="==> RMI"/>
-		<ant dir="rmi"/>
-		<echo message="==> search"/>
-		<ant dir="search"/>
-		<echo message="==> seating"/>
-		<ant dir="seating"/>
-		<echo message="==> servlet"/>
-		<ant dir="servlet"/>
-		<echo message="==> ShowDocument"/>
-		<ant dir="ShowDocument"/>
-		<echo message="==> signals"/>
-		<ant dir="signals"/>
-		<echo message="==> starting"/>
-		<ant dir="starting"/>
-		<echo message="==> strings"/>
-		<ant dir="strings"/>
-		<echo message="==> structure"/>
-		<ant dir="structure"/>
-		<echo message="==> tar"/>
-		<ant dir="tar"/>
-		<echo message="==> testing"/>
-		<ant dir="testing"/>
-		<echo message="==> textproc"/>
-		<ant dir="textproc"/>
-		<echo message="==> threads"/>
-		<ant dir="threads"/>
-		<echo message="==> tmtimer"/>
-		<ant dir="tmtimer"/>
-		<echo message="==> tools"/>
-		<ant dir="tools"/>
-		<echo message="==> webserver"/>
-		<ant dir="webserver"/>
-		<echo message="==> wildmat"/>
-		<ant dir="wildmat"/>
-		<echo message="==> XColor"/>
-		<ant dir="XColor"/>
-		<echo message="==> xml"/>
-		<ant dir="xml"/>
-		<echo message="==> xmlform"/>
-		<ant dir="xmlform"/>
+		<foreach list="${subdirs}" 
+			delimiter=" " target="build.sub" param="dir"/>
+	</target>
+
+	<target name="build.sub" description="nested build">
+		<ant dir="${dir}"/>
 	</target>
 
 	<!-- optional targets -->
-	<target name="prefs" if="avail.prefs">
-		<ant dir="prefs"/>
+	<target name="build.optional" depends="beans,prefs,RE.apache"/>
+
+	<target name="beans" if="avail.BSF">
+		<ant dir="beans"/>
 	</target>
 
-	<target name="RE.1.4" if="avail.RE.1.4">
-		<ant dir="RE"/>
+	<target name="prefs" if="avail.prefs">
+		<ant dir="prefs"/>
 	</target>
 
 	<target name="RE.apache" if="avail.RE.apache">
 		<ant dir="RE-apache"/>
 	</target>
 
-	<target name="src-jar">
-		<ant file="build-export-src.xml"/>
+	<target name="jar">
+		<!-- To be sure it's correct, the distro is built
+		 ** by re-getting everything from CVS, building the API, etc.
+		 ** Hence the separate Ant file.
+		 -->
+		<ant antfile="build-export-src.xml"/>
 	</target>
 
-	<target name="src-tar">
-		<tar jarfile="${src-tar}" basedir=".">
-		</tar>
+	<!-- Kludge to make up a Jar from the working directory -->
+	<!-- Can do this using jar task if we convert subdirs to a PATH? -->
+	<target name="interim">
+		<echo file="mkinterim">
+#!/bin/sh
+rm *.class */*.class
+cd ..
+set -x
+jar cvf ./javasrc/javacooksrc2.jar \
+		./javasrc/Readme-Interim.txt \
+		./javasrc/build-export-src.properties \
+		./javasrc/build-export-src.xml \
+		./javasrc/build.properties 	\
+		./javasrc/build.xml         \
+		./javasrc/about.html		\
+		./javasrc/images            \
+		./javasrc/index-bychapter.html \
+		./javasrc/index.html		\
+		./javasrc/jabadex.html		\
+		./javasrc/jabadot.html		\
+		./javasrc/darwinsys		\
+		./javasrc/spdf			    \
+		./javasrc/lib				\
+		</echo>
+		<foreach list="${subdirs} ${optsubdirs}" 
+			delimiter=" " target="interim.append" param="dir"/>
+		<chmod file="mkinterim" perm="ugo+rx"/>
+		<exec executable="mkinterim"/>
+	</target>
+	<target name="interim.append">
+		<echo file="mkinterim" append="true" message="./javasrc/${dir} "/>
 	</target>
 
 	<!-- clean up -->
