@@ -7,18 +7,26 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+/** Simple push-button demo using SWT.
+ * @version $Id$
+ */
 public class ButtonDemo {
 
+	static Shell s;
+	
 	/**
 	 * Simple Demo Main Program
 	 */
 	public static void main(String[] args) {
-		new ButtonDemo();
+		Display d = new Display();
+		ButtonDemo bd = new ButtonDemo(d);
+		SWTUtil.mainEventLoop(d, s);
 	}
 	
-	ButtonDemo() {
-		Display d = new Display();
-		Shell s = new Shell(d);
+	/** Construct the GUI */
+	ButtonDemo(Display d) {
+
+		s = new Shell(d);
 		s.setText("Button Demo");
 		s.setSize(200, 150);
 		final Button b = new Button(s, SWT.PUSH);
@@ -35,6 +43,5 @@ public class ButtonDemo {
 			}			
 		});
 		s.open();
-		SWTUtil.mainEventLoop(d, s);
 	}
 }
