@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.*;
 
 /** DateDiff -- compute the difference between two dates.
  */
@@ -7,13 +7,13 @@ public class DateDiff {
 		/** The ending date. This value
 		 * doubles as a Y2K countdown time.
 		 */
-		Date d1 = new Date(99,11,31,23,59);	// Ignore Deprecation
+		Date d1 = new GregorianCalendar(1999,11,31,23,59).getTime();
 
 		/** Today's date */
 		Date d2 = new Date();
 
-		// Get seconds from each, and subtract.
-		long diff = d1.getTime() - d2.getTime();
+		// Get msec from each, and subtract.
+		long diff = d2.getTime() - d1.getTime();
 
 		System.out.println("Difference between " + d2 + "\n" +
 			"\tand Y2K is " +

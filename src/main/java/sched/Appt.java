@@ -138,7 +138,6 @@ public class Appt implements Comparable {
 	//-----------------------------------------------------------------
 	//	METHODS - COMPARISON
 	//-----------------------------------------------------------------
-	/** Construct an Appointment. */
 	/** compareTo method, from Comparable interface.
 	 * Compare this Appointment against another, for purposes of sorting.
 	 * <P>Only date and time participate, not repetition!

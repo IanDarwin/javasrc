@@ -1,14 +1,19 @@
 import java.rmi.*;
 
+import com.darwinsys.callback.*;
+
 public class ServerMain {
 	public static void main(String[] args) {
 		// System.setSecurityManager(new RMISecurityManager());
 		try {
-			com.darwinsys.callback.RegisterImpl im =
-				new com.darwinsys.callback.RegisterImpl();
-			System.out.println("Server starting...");
-			Naming.rebind("Server", im);
-			System.out.println("Server ready.");
+			System.out.println("Server: Constructing TickerServerImpl");
+			com.darwinsys.callback.TickerServerImpl im =
+				new com.darwinsys.callback.TickerServerImpl();
+
+			System.out.println("Server: Registering with RMI...");
+			Naming.rebind(com.darwinsys.callback.TickerServer.LOOKUP_NAME, im);
+			System.out.println("Server: bound and ready.");
+			im.start();		// start background thread running.
 		} catch (Exception e) {
 			System.err.println(e);
 			System.exit(1);

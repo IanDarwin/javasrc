@@ -5,7 +5,6 @@ import java.util.*;
 public class DateParse1 {
 	public static void main(String[] args) {
 
-		//+
 		SimpleDateFormat formatter
 			= new SimpleDateFormat ("yyyy-MM-dd");
 		String input = args.length == 0 ? "1818-11-11" : args[0];
@@ -14,10 +13,8 @@ public class DateParse1 {
 		try {
 			t = formatter.parse(input);
 			System.out.println(t);
-			System.out.println(t.getTime());
 		} catch (ParseException e) {
 			System.out.println("unparseable using " + formatter);
 		}
-		//-
 	}
 }

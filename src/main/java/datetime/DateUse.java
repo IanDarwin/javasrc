@@ -13,7 +13,7 @@ public class DateUse {
 
 		// Create a Date object for May 5, 1986
 		Calendar c = Calendar.getInstance();
-		c.set(86, 04, 05);		// May 5, 1986
+		c.set(1986, 04, 05);		// May 5, 1986
 		Date d1 = c.getTime();
 
 		// Create a Date object for today.

@@ -5,19 +5,14 @@ import java.text.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class FormatPlurals0 {
-	//+
+public class FormatPluralsChoice extends FormatPlurals {
 	static double[] limits = { 0, 1, 2 };
 	static String[] formats = { "items", "item", "items"};
 	static ChoiceFormat myFormat = new ChoiceFormat(limits, formats);
 
 	public static void main(String[] argv) {
-		report(0);
+		report(0);	// inherited method
 		report(1);
 		report(2);
 	}
-	public static void report(int n) {
-		System.out.println("We used " + n + " " + myFormat.format(n));
-	}
-	//-
 }

@@ -18,6 +18,7 @@ public class FloatCmp {
 			System.out.println(da + " != " + db);
 		}
 
+		// Show that comparing two NaNs is not a good idea:
 		double d1 = Double.NaN;
 		double d2 = Double.NaN;
 		if (d1 == d2)
