@@ -2,34 +2,31 @@ import java.util.*;
 import javax.naming.*;
 
 /** Example of lookup up filenames in a JNDI "file system context".
+ * N.B. Will ONLY work if you have the "File System Context Provider" JAR
+ * on your CLASSPATH!!
  * @version $Id$
  */
 public class LookupFile {
-	Properties env = new Properties();
 
-	public static void main(String[] av) {
+	/** The class name for the FileSystemContext service provider */
+	final static String SP = "com.sun.jndi.fscontext.RefFSContextFactory";
+
+	public static void main(String[] av) throws NamingException {
 		LookupFile lf = new LookupFile();
 		for (int i=0; i<av.length; i++)
 			System.out.println(av[i] + "-->" + lf.look(av[i]));
 	}
 
-	/** The service provider */
-	final static String SP = "com.sun.jndi.fscontext.RefFSContextFactory";
-
 	/** The naming context */
 	Context ctx = null;
 
 	/** Constructor */
-	public LookupFile() {
-		env.setProperty(Context.INITIAL_CONTEXT_FACTORY, SP);
-		env.setProperty(Context.PROVIDER_URL, "/");
+	public LookupFile() throws NamingException {
+		System.getProperties().setProperty(Context.INITIAL_CONTEXT_FACTORY, SP);
+		System.getProperties().setProperty(Context.PROVIDER_URL, "/");
 
-		try {
-			// Create the initial context
-			ctx = new InitialContext(env);
-		} catch (NamingException e) {
-			System.err.println("Problem Creating Context with " + SP);
-		}
+		// Create the initial context
+		ctx = new InitialContext(env);
 	}
 
 	/** Look up an object in the filesystem. */
