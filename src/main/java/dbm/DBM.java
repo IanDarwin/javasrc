@@ -39,12 +39,9 @@ public class DBM {
 		System.loadLibrary("jdbm");
 	}
 
+	/** serialize an Object to byte array. */
 	protected byte[] objToBytes(Object o) {
-		if (o instanceof String) 
-			return o.toBytes();
-		else { // serialize to byte array.
-			return null;
-		}
+		return null;
 	}
 
 	protected native int dbminit(String file);
@@ -65,7 +62,7 @@ public class DBM {
 
 	protected native int dbmstore(Object key, Object content);
 
-	protected native int delete(Object key[]);
+	protected native int delete(Object key);
 
 	public native Object firstkey();
 

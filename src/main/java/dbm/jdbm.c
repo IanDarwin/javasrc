@@ -2,6 +2,7 @@
 #include "DBM.h"	/* current directory - for our class information */
 #include <stdio.h>
 #include <dbm.h>	/* system directory - for UNIX DBM library information */
+#include <string.h>	/* needed for strerror */
 
 #ident	"$Id$"
 

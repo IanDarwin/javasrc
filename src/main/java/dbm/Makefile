@@ -18,8 +18,11 @@ SHARED_OBJ	= $(SHARED_UNIX)
 
 INCLUDES	= -I/usr/local/include/kaffe
 
-test:		Test.class main
+test:		Test.class main testdb
 			java Test
+testdb:		/tmp/mydb.dir /tmp/mydb.pag
+/tmp/mydb.dir /tmp/mydb.pag:
+			touch /tmp/mydb.dir /tmp/mydb.pag
 
 main:		$(CLASS) $(SHARED_OBJ)
 
