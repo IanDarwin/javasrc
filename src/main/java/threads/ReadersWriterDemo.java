@@ -91,9 +91,13 @@ public class ReadersWriterDemo {
 
 	/** print the current totals */
 	private void print(Iterator iter) {
+		boolean first = true;
 		while (iter.hasNext()) {
 			BallotPosition pair = (BallotPosition) iter.next();
+			if (!first)
+				System.out.print(", ");
 			System.out.print(pair.getName() + "(" + pair.getVotes() + ")");
+			first = false;
 		}
 		System.out.println();
 	}
