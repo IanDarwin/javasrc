@@ -137,9 +137,9 @@ public class CardLayDemo2 extends Frame {
 		});
 
 		setLayout(new BorderLayout());
-		add("North", tp);
-		add("Center", mainP);
-		add("South", bp);
+		add(tp, BorderLayout.NORTH);
+		add(mainP, BorderLayout.CENTER);
+		add(bp, BorderLayout.SOUTH);
 
 		pack();
 

@@ -22,7 +22,7 @@ public class ColorChooser extends JFrame
         super("Ian Darwin's Color Demo");
         JButton jButton;
 		cPane = getContentPane();
-        cPane.add("North", jButton = new JButton("Choose Color..."));
+        cPane.add(jButton = new JButton("Choose Color..."), BorderLayout.NORTH);
 		jButton.setToolTipText("Click here to see the Color Chooser");
         jButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent)
@@ -30,7 +30,7 @@ public class ColorChooser extends JFrame
 				ColorChooser.this.cd.setVisible(true);
 			}
 		});
-        cPane.add("Center", demo = new MyCanvas(300,150));
+        cPane.add(demo = new MyCanvas(300,150), BorderLayout.CENTER);
 		demo.setToolTipText("This is the last color you chose");
         pack();
         addWindowListener(new WindowAdapter() {

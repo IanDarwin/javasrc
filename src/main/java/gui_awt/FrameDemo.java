@@ -17,11 +17,11 @@ public class FrameDemo extends Frame {
 		top_frame.add(new TextField(10));
 		top_frame.add(new Label("Password"));
 		top_frame.add(new TextField(10));
-		add("North", top_frame);
+		add(top_frame, BorderLayout.NORTH);
 		Panel bottom_frame = new Panel();
 		bottom_frame.add(new Button("OK"));
 		bottom_frame.add(new Button("Cancel"));
-		add("South", bottom_frame);
+		add(bottom_frame, BorderLayout.SOUTH);
 		pack();
 	}
 }

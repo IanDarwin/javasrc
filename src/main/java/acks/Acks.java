@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -42,11 +41,11 @@ class OneAck extends Frame {
 		s.append("\n");
 
 		// Each dialog has a TextArea on top...
-		add("North", ta = new TextArea(s.toString(), rows, COLS));
+		add(ta = new TextArea(s.toString(), rows, COLS), BorderLayout.NORTH);
 
 		// And a panel with one push Button on the bottom.
 		Panel p;
-		add("South",  p = new Panel());
+		add(p = new Panel(), BorderLayout.NORTH);
 		Rectangle r = new Rectangle(x, y, width, height);
 		// System.out.println(title+"->"+r);
 		setBounds(r);
@@ -129,13 +128,13 @@ public class Acks extends Frame {
 		Label lab1 = 
 			new Label(courseTitle, Label.CENTER);
 		lab1.setFont(bigFont);
-		add("North", lab1);
+		add(lab1, BorderLayout.NORTH);
 		Label lab2 = 
 			new Label("The author thanks everyone mentioned here.",
 			Label.CENTER);
 		lab2.setFont(bigFont);
-		add("Center", lab2);
-		add("South", cp = new Panel());
+		add(lab2, BorderLayout.CENTER);
+		add(cp = new Panel(), BorderLayout.SOUTH);
 			Button b;
 			cp.add(b = new Button("New"));
 			b.addActionListener(new ActionListener() {

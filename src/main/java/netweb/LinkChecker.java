@@ -109,9 +109,9 @@ public class LinkChecker extends JFrame {
 			}
 		});
 		// Now lay out the main GUI - URL & buttons on top, text larger
-		cp.add("North", p);
+		cp.add(p, BorderLayout.NORTH);
 		textWindow = new JTextArea(80, 40);
-		cp.add("Center", new JScrollPane(textWindow));
+		cp.add(new JScrollPane(textWindow), BorderLayout.CENTER);
 		UtilGUI.maximize(this);
 	}
 

@@ -16,8 +16,8 @@ public class Bounce extends Applet implements ActionListener {
 		Button b = new Button("Start");
 		b.addActionListener(this);
 		setLayout(new BorderLayout());
-		add("North", b);
-		add("Center", p = new Panel());
+		add(b, BorderLayout.NORTH);
+		add(p = new Panel(), BorderLayout.CENTER);
 		p.setLayout(null);
 		String imgName = getParameter("imagefile");
 		if (imgName == null) imgName = "duke.gif";

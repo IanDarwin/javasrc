@@ -203,7 +203,7 @@ public class JModem extends javax.swing.JFrame {
       );
       connectPanel.add (connectButton);
 
-    getContentPane ().add (connectPanel, "North");
+    getContentPane().add(connectPanel, BorderLayout.NORTH);
 
     xferPanel = new javax.swing.JPanel ();
     xferPanel.setLayout (new java.awt.FlowLayout ());
@@ -271,7 +271,7 @@ public class JModem extends javax.swing.JFrame {
       );
       xferPanel.add (xferButton);
 
-    getContentPane ().add (xferPanel, "South");
+    getContentPane ().add (xferPanel, BorderLayout.SOUTH);
 
   }//GEN-END:initComponents
 

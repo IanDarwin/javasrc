@@ -18,7 +18,7 @@ public class CalApplet extends Applet implements ActionListener {
 		mm = d.get(Calendar.MONTH);
 		dd = d.get(Calendar.DAY_OF_MONTH);
 
-		add("North", cal    = new Cal(yy, mm, dd));
+		add(cal    = new Cal(yy, mm, dd), BorderLayout.NORTH);
 		p = new Panel();
 		p.setLayout(new FlowLayout());
 
@@ -35,7 +35,7 @@ public class CalApplet extends Applet implements ActionListener {
 				cal.setDayActive(Integer.parseInt(ddText.getText()));
 			}
 		});
-		add("South", p);
+		add(p, BorderLayout.SOUTH);
 	}
 
 	public void actionPerformed(ActionEvent e) {

@@ -29,7 +29,7 @@ public class YesNoDialog extends Dialog implements ActionListener{
 		this.parent = parent;
 		setLayout(new BorderLayout(10, 10));
 		msgLab = new Label(msg, Label.CENTER);
-		add("North", msgLab);
+		add(msgLab, BorderLayout.NORTH);
 
 		Panel p = new Panel();
 		p.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -45,7 +45,7 @@ public class YesNoDialog extends Dialog implements ActionListener{
 			p.add(cB = new Button(canLab));
 			cB.addActionListener(this);
 		}
-		add("South",  p);
+		add(p, BorderLayout.SOUTH);
 		pack();
 	}
 

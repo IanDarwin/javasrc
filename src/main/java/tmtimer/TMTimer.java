@@ -137,7 +137,7 @@ public class TMTimer extends JFrame implements Runnable {
         redTF.setText ("0:00");
         fieldsPanel.add (redTF);
 
-      timesPanel.add (fieldsPanel, "Center");
+      timesPanel.add (fieldsPanel, Borderlayout.CENTER);
 
       runningTimesPanel = new javax.swing.JPanel ();
       runningTimesPanel.setLayout (new javax.swing.BoxLayout (runningTimesPanel, 1));
@@ -156,15 +156,15 @@ public class TMTimer extends JFrame implements Runnable {
         maxTime.setFont (new java.awt.Font ("Dialog", 3, 36));
         runningTimesPanel.add (maxTime);
 
-      timesPanel.add (runningTimesPanel, "East");
+      timesPanel.add (runningTimesPanel, Borderlayout.EAST);
 
-    getContentPane ().add (timesPanel, "North");
+    getContentPane ().add (timesPanel, BorderLayout.NORTH);
 
     bigFlag = new javax.swing.JLabel ();
     bigFlag.setPreferredSize (new java.awt.Dimension(500, 300));
     bigFlag.setOpaque (true);
     bigFlag.setHorizontalAlignment (javax.swing.SwingConstants.CENTER);
-    getContentPane ().add (bigFlag, "Center");
+    getContentPane().add(bigFlag, BorderLayout.CENTER);
 
   }//GEN-END:initComponents
 
