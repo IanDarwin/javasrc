@@ -3,7 +3,7 @@ import java.util.*;
 
 /** Convert the database from text form to DBM form.
  */
-public class UserConvert {
+public class TextToDBM {
 
 	protected final static String TEXT_NAME = 
 		"/home/ian/src/jabadot/userdb.txt";

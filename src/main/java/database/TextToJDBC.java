@@ -4,7 +4,7 @@ import java.util.*;
 
 /** Convert the database from text form to JDBC form.
  */
-public class UserToJDBC {
+public class TextToJDBC {
 
 	protected final static String TEXT_NAME = 
 		"/home/ian/src/jabadot/userdb.txt";
