@@ -11,7 +11,7 @@ public class FileStatus {
 
 		// Ensure that a filename (or something) was given in argv[0]
 		if (argv.length == 0) {
-			System.err.println("Usage: Status filename");
+			System.err.println("Usage: FileStatus filename");
 			System.exit(1);
 		}
 		for (int i = 0; i< argv.length; i++) {
