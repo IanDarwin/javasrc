@@ -1,10 +1,6 @@
-// import com.darwinsys.regexp.RE;				// my RE package
-// import com.darwinsys.regexp.RESyntaxException;	// my RE package
-import org.apache.regexp.RE;					// Apache regexp
-import org.apache.regexp.RESyntaxException;		// Apache regexp
+import org.apache.regexp.*;
 import java.io.*;
 
-//+
 /** A command-line grep-like program. No options, but takes a pattern
  * and an arbitrary list of text files.
  */
@@ -70,4 +66,3 @@ public class Grep1 {
 		} catch (IOException e) { System.err.println(e); }
 	}
 }
-//-
