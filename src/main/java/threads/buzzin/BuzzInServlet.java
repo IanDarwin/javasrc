@@ -9,7 +9,7 @@ import java.io.*;
  * is run in a thread pool. This class does not implement "SingleThreadModel"
  * so a correct Servlet implementation will use a single instance.
  * <p>
- * If you needed to work differently, you could synchronized on an object
+ * If you needed to work differently, you could synchronize on an object
  * stored in the Servlet Application Context, at a slight increased cost
  * in terms of system overhead.
  */
