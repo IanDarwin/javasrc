@@ -4,14 +4,14 @@ import java.text.*;
 import com.darwinsys.lang.SysDep;
 
 /**
- * Timer for processing sqrt and I/O operations.
+ * TimeComputation for processing sqrt and I/O operations.
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class Timer {
+public class TimeComputation {
 	public static void main(String[] argv) {
 		try {
-			new Timer().run();
+			new TimeComputation().run();
 		} catch (IOException e) {
 			System.err.println(e);
 		}
