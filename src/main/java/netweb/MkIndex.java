@@ -112,7 +112,7 @@ public class MkIndex {
 			return;
 		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
 			return;						// don't mention it
-		} else if (name.charAt(0) == '.' && name.length() > 0) {// UNIX dot-file
+		} else if (name.charAt(0) == '.' && name.length() > 1) {// UNIX dot-file
 			return;
 		}
 
