@@ -7,9 +7,18 @@ public class ReturnType {
 		return 4;
 	}
 	String demo() {
-		return "Goodbye cruel world";
+		return "Goodbye world";
 	}
 
-	String d = demo();	// asigns "Goodbye cruel world" to d
-	int e = demo();		// EXPECT COMPILE ERROR
+	void doTheWork() {
+		String d = demo();	// assigns "Goodbye cruel world" to d
+		// int e = demo();		// EXPECT COMPILE ERROR
+		int e = idemo();		// Get it right
+		System.out.println("d="+d);
+		System.out.println("e="+e);
+	}
+
+	public static void main(String a[]) {
+		new ReturnType().doTheWork();
+	}
 }
