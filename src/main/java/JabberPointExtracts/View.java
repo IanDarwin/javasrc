@@ -49,6 +49,8 @@ public class View extends Component implements Observer {
 					g.drawString(m.label, indent, y);
 					y += s.leading;
 					break;
+				// TODO: use subclasses instead of type code
+				// and support images and other fancy things
 				default:
 					throw new IllegalArgumentException(
 					"Unknown type (" + m.type + ") found in View.paint()");
