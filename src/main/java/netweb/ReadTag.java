@@ -17,6 +17,7 @@ public class ReadTag {
 			System.err.println("Usage: ReadTag URL [...]");
 			return;
 		}
+
 		for (int i=0; i<args.length; i++) {
 			ReadTag rt = new ReadTag(args[0]);
 			String tag;
@@ -46,7 +47,7 @@ public class ReadTag {
 		while ((i = inrdr.read()) != -1) {
 			char thisChar = (char)i;
 			if (thisChar == '<') {
-				String tag = readTag(inrdr);
+				String tag = readTag();
 				return tag;
 			}
 		}
@@ -58,11 +59,11 @@ public class ReadTag {
 	}
 
 	/** Read one tag. Adapted from code by Elliotte Rusty Harold */
-	public String readTag(BufferedReader is) throws IOException {
+	protected String readTag() throws IOException {
 		StringBuffer theTag = new StringBuffer("<");
 		int i = '<';
 	  
-		while (i != '>' && (i = is.read()) != -1) {
+		while (i != '>' && (i = inrdr.read()) != -1) {
 				theTag.append((char)i);
 		}     
 		return theTag.toString();
