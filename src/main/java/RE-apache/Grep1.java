@@ -15,7 +15,7 @@ public class Grep1 {
 	 */
 	public static void main(String argv[]) {
 
-		if (argv.length == 0) {
+		if (argv.length < 1) {
 		    System.err.println("Usage: Grep pattern [filename]");
 		    System.exit(1);
 		}
