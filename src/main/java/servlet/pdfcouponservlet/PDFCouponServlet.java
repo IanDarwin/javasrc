@@ -17,6 +17,9 @@ public class PDFCouponServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/pdf");
+
+		// Tell browser to try to display inline, but if not,
+		// to save under the given filename.
 		response.setHeader("Content-disposition",
 			"inline; filename=\"MyCoupon.pdf\"");
 
@@ -35,6 +38,8 @@ public class PDFCouponServlet extends HttpServlet {
 		p1.add(new Text(p, "at " + new Date().toString()));
 		p.add(p1);
 		p.setAuthor("Ian F. Darwin");
+
+		// Write the PDF file page
 		p.writePDF();
 	}
 }
