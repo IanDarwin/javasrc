@@ -46,6 +46,9 @@ public class ReminderService {
 		}
 	}
 
+	/** Display a message on the console and in the GUI.
+	 * Used both by Item tasks and by mainline parser.
+	 */
 	void message(String message) {
 		System.out.println("\007" + message);
 		JOptionPane.showMessageDialog(null,
