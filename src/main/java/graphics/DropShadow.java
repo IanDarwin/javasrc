@@ -63,7 +63,7 @@ public class DropShad extends Applet {
 		g.drawString(theLabel, 30, 50);
 	}
 	
-	/** Give Parameter info the the AppletViewer, just for those
+	/** Give Parameter info to the AppletViewer, just for those
 	 * writing HTML without hardcopy documentation :-)
 	 */
 	public String[][] getParameterInfo() {

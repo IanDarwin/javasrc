@@ -35,7 +35,7 @@ public class TexturedText extends Component {
 	}
 
 	protected static Color[] colors = {
-		Color.green, Color.red, Color.blue, Color.yellow,
+		Color.red, Color.blue, Color.yellow,
 	};
 
 	/** Construct the object */

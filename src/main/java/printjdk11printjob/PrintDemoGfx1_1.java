@@ -1,33 +1,45 @@
 import java.awt.*;
-import java.util.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-/**
- * PrintDemoGfx -- Construct a GfxDemoCanvas and print it.
- * Uses the JDK1.1 print methods.
- */
+/** PrintDemoGfx -- Construct and print a GfxDemoCanvas.  JDK1.1 VERSION. */
 public class PrintDemoGfx1_1 {
+
+	/** Simple demo main program. */
 	public static void main(String av[]) {
-		Frame f = new Frame("Printing Test Dummy Frame");
-
-		f.setVisible(true);
-		PrintJob pjob = Toolkit.getDefaultToolkit().getPrintJob(f,
-			"Printing Test", (Properties)null);
-		if (pjob == null)
-			return;				// user cancelled
-
-		// Fetch the Print Graphics object
-		Graphics pg = pjob.getGraphics();
+		final JFrame f = new JFrame("Printing Test Dummy Frame");
 
 		// Construct the object we want to print. Contrived:
 		// this object would already exist in a real program.
-		GfxDemoCanvas thing = new GfxDemoCanvas(400, 300);
+		final GfxDemoCanvas thing = new GfxDemoCanvas(500, 300);
 
-		// Now (drum roll please), ask "thing" to paint itself
-		// on the printer, by calling its paint() method with 
-		// a Printjob Graphics instead of a Window Graphics.
-		thing.paint(pg);
+		f.getContentPane().add(thing, BorderLayout.CENTER);
 
-		pg.dispose(); // end of this page
-		pjob.end();	// end of print job.
+		JButton printButton = new JButton("Print");
+		f.getContentPane().add(printButton, BorderLayout.SOUTH);
+
+		printButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				PrintJob pjob = Toolkit.getDefaultToolkit().getPrintJob(f,
+					"Printing Test", null);
+
+				if (pjob == null)
+					return;				// user cancelled
+
+				// Fetch the Print Graphics object
+				Graphics pg = pjob.getGraphics();
+
+				// Now (drum roll please), ask "thing" to paint itself
+				// on the printer, by calling its paint() method with 
+				// a Printjob Graphics instead of a Window Graphics.
+				thing.paint(pg);
+				pg.dispose(); // end of this page
+				pjob.end();	// end of print job.
+			}
+		});
+
+		f.pack();
+		f.setVisible(true);
 	}
 }

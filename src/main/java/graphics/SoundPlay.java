@@ -4,10 +4,10 @@ import java.net.*;
 /** Simple program to try out the "new Sound" stuff in JDK1.2 --
  * allows Applications, not just Applets, to play Sound.
  */
-public class Play {
+public class SoundPlay {
 	static String defSounds[] = {
-		"test.wav",
-		"file:///windows/media/Beethovens Fur Elise.rmi",
+		"file:///javasrc/graphics/test.wav",
+		"file:///music/midi/Beet5th.mid",
 	};
 	public static void main(String av[]) {
 		if (av.length == 0)
@@ -17,14 +17,14 @@ public class Play {
 			try {
 				URL snd = new URL(av[i]);
 				// open to see if works or throws exception, close to free fds
-				snd.openConnection().getInputStream().close();
+				// snd.openConnection().getInputStream().close();
 				Applet.newAudioClip(snd).play();
 			} catch (Exception e) {
 				System.err.println(e);
 			}
 	 	}
 		// With this call, program exits before/during play.
-		// Without it, program hangs forever after play.
+		// Without it, on some versions, program hangs forever after play.
 		// System.exit(0);
 	}
 }

@@ -28,6 +28,6 @@ public class GfxDemoCanvas extends Canvas {
 		g.setColor(Color.red);
 		g.fillRect(0, 0, width/2, height/2);
 		g.setColor(Color.blue);
-		g.drawString("Hello World of Blue", (width/2)+10, (height/2)+10);
+		g.drawString("Welcome to My Blue Heaven", (width/2)+10, (height/2)+10);
 	}
 }
