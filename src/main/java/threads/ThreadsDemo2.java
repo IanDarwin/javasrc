@@ -35,13 +35,17 @@ public class ThreadsDemo2 implements Runnable {
 	/** Run does the work. We override the run() method in Runnable. */ 
 	public void run() {
 		while (count-- > 0) {
-			System.out.println(mesg);
+			println(mesg);
 			try {
 				Thread.sleep(100);	// 100 msec
 			} catch (InterruptedException e) {
 				return;
 			}
 		}
-		System.out.println(mesg + " thread all done.");
+		println(mesg + " thread all done.");
+	}
+
+	void println(String s) {
+		System.out.println(s);
 	}
 }

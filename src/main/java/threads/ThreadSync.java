@@ -4,7 +4,7 @@
  * @author	Ian Darwin
  * @version	1.0
  */
-public class ThreadsDemo1 extends Thread {
+public class ThreadSync extends Thread {
 	String mesg;
 	int count;
 
@@ -21,29 +21,27 @@ public class ThreadsDemo1 extends Thread {
 		println(mesg + " all done.");
 	}
 
-	void println(String s) {
+	/* The output routine has been synchronized to interlock the Threads */
+	synchronized void println(String s) {
 		System.out.println(s);
 	}
 
 	/**
-	 * Construct a ThreadsDemo1 object.
+	 * Construct a ThreadSync object.
 	 * @param	String m	Message to display
 	 * @param	int n		How many times to display it
 	 */
-	public ThreadsDemo1(String m, int n) {
+	public ThreadSync(String m, int n) {
 		count = n;
 		mesg  = m;
 		setName(m + " runner Thread");
 	}
 
 	/**
-	 * Main program, test driver for ThreadsDemo1 class.
+	 * Main program, test driver for ThreadSync class.
 	 */
 	public static void main(String[] argv) {
-		// could say: new ThreadsDemo1("Hello from X", 10).run();
-		// could say: new ThreadsDemo1("Hello from Y", 15).run();
-		// But then it wouldn't be multi-threaded!
-		new ThreadsDemo1("Hello from X", 10).start();
-		new ThreadsDemo1("Hello from Y", 15).start();
+		new ThreadSync("Hello from X", 10).start();
+		new ThreadSync("Hello from Y", 15).start();
 	}
 }

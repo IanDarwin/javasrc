@@ -16,14 +16,13 @@ public class ThreadsOne extends Applet implements Runnable {
 	Thread t;
 	int count;
 
-	/** run() - do the work of the thread. Must be synchronized in case
+	/** run() - do the work of the thread. Might get confused if
 	 * the user pushes the button a second time before we finish.
 	 */
 	public void run() {
 		int c = count;
 		while (c-- > 0) {
-			// ""+someInt is a quick way to make it a String.
-			lab.setText(""+c);
+			lab.setText(Integer.toString(c));
 			try {
 				Thread.sleep(100);	// 100 msec
 			} catch (Exception e) {
