@@ -1,0 +1,21 @@
+This is what you would need to add to your web.xml to add this Servlet.
+Index: web.xml
+===================================================================
+RCS file: /cvs/src/jabadot/WEB-INF/web.xml,v
+retrieving revision 1.2
+diff -r1.2 web.xml
+63a64,68
+>     <servlet>
+>         <servlet-name>RawSQLServlet</servlet-name>
+>         <servlet-class>jabadot.RawSQLServlet</servlet-class>
+>     </servlet>
+> 
+68d72
+< 
+73d76
+< 
+76a80,83
+>     </servlet-mapping>
+>     <servlet-mapping>
+>         <servlet-name>RawSQLServlet</servlet-name>
+>         <url-pattern>/jabadot/RawSQLServlet</url-pattern>
