@@ -1,4 +1,4 @@
-package cardlayout;
+package gui.cardlayout;
 
 import java.applet.*;
 import java.awt.*;

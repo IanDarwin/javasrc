@@ -1,9 +1,5 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
-import java.util.*;
-
 /** A PDFObject represents one node in the tree of a PDF file.
  * @author Ian Darwin, http://www.darwinsys.com/
  */

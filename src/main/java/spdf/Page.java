@@ -1,9 +1,6 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 /** Represent one Page of a PDF file. */
 public class Page extends PDFDict {

@@ -1,4 +1,4 @@
-package regress;
+package JDBC.regress;
 
 import java.io.FileReader;
 import java.io.Reader;

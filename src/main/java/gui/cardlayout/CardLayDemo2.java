@@ -1,4 +1,4 @@
-package cardlayout;
+package gui.cardlayout;
 
 import java.awt.*;
 import java.awt.event.*;

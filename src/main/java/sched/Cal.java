@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class Cal extends JPanel implements JDModule, DateSelectedListener {
+public class Cal extends JPanel /* implements JDModule, DateSelectedListener */ {
 	/** The top panel, for "go to date" */
 	protected JPanel gotoPanel;
 	/** The main view, showing day view, month view or year view */

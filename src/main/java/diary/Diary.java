@@ -100,10 +100,10 @@ public class Diary extends Frame {
 		hm.add(mi = mkMenuItem(b, "help", "about"));
 		mi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showInfoDialog(Diary.this, 
+				JOptionPane.showMessageDialog(Diary.this, 
 				VERSION + "\n" +
 				"Copyright (c) 1997 Ian F. Darwin\n" +
-				"Free via email from http://www.darwinsys.com/",
+				"Free download from http://javacook.darwinsys.com/",
 				VERSION, JOptionPane.ERROR_MESSAGE);
 			}
 		});

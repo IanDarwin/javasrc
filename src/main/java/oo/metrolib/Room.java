@@ -1,4 +1,4 @@
-package metrolib;
+package oo.metrolib;
 
 /** A Room is one location in the game.
  */

@@ -1,3 +1,5 @@
+package JDBC.datasource;
+
 import java.sql.Connection;
 
 import javax.naming.InitialContext;
@@ -11,12 +13,11 @@ public class DarwinsDataDelivery {
 		// Test it out...
 		Connection conn = ds.getConnection("student", "student");
 		// System.out.println("Connection = " + conn);
-		// conn.close();
 
-		// Bind it into JNDI
-		System.getProperties().setProperty("java.naming.factory.initial",
+		// Bind datasource into JNDI
+		System.setProperty("java.naming.factory.initial",
 			"com.sun.jndi.rmi.registry.RegistryContextFactory");
-		System.getProperties().setProperty("java.naming.provider.url",
+		System.setProperty("java.naming.provider.url",
 			"rmi://localhost/");
 		new InitialContext().rebind("darwinsys/RainData", ds);
 	}

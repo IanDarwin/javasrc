@@ -1,4 +1,4 @@
-package arraylisttable;
+package gui.arraylisttable;
 
 import javax.swing.*;
 import java.util.*;

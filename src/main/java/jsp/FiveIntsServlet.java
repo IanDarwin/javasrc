@@ -1,10 +1,11 @@
 package jsp;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
-import javax.servlet.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class FiveIntsServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp) 

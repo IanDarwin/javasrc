@@ -1,4 +1,4 @@
-package cardlayout;
+package gui.cardlayout;
 
 /* CardLayout Demo: Login Applet */
 

@@ -10,7 +10,7 @@ import java.util.zip.*;
  * @author	YOUR NAME HERE
  * @version	0.1
  */
-public class MakeList {
+public class HINTS /*rename to MakeList*/ {
 	/** The output file name. */
 	public static final String FILENAME = "ClassDoc.properties";
 
@@ -32,10 +32,10 @@ public class MakeList {
 	}
 
 	/** Construct a MakeList */
-	public MakeList() {
+	public HINTS() {
 		try {
-			file = // XXX Make a PrintWriter for FILENAME
-		} catch (IOException e) {
+			file = null;// XXX Make a PrintWriter for FILENAME
+		} catch (Exception e) {
 			System.err.println("ERROR: " + e);
 			System.exit(1);
 		}
@@ -44,20 +44,20 @@ public class MakeList {
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String fileName) {
 		try {
-			ZipFile zippy = // XXX Make a ZipFile for 
+			ZipFile zippy = null;// XXX Make a ZipFile for 
 					// the file named in "fileName"
 		
-			Enumeration all = // XXX Get the list from "zippy"
-			while (// XXX More elements in the list) {
+			Enumeration all = null;// XXX Get the list from "zippy"
+			while (true/* XXX More elements in the list*/) {
 				// XXX get the next element from the enumeration
 				// cast it to a ZipEntry
 				// pass it on to doClass
 			}
-		} catch (IOException err) {
+		} catch (Exception err) {
 			System.err.println("IO Error: " + err);
 			return;
 		}
-		file.flush();	// N.B. to complete the output
+		//XXXfile.flush();	// N.B. to complete the output
 	}
 
 	/** Format the fields and methods of one class, given its name.

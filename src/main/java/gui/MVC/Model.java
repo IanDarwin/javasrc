@@ -1,4 +1,4 @@
-package MVC;
+package gui.MVC;
 
 import java.util.*;
 import javax.swing.event.*;

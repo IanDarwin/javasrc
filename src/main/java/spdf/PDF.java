@@ -1,7 +1,5 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
 import java.io.*;
 import java.text.*;
 import java.util.*;

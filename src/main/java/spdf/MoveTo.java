@@ -1,7 +1,5 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
 /** Represent one Move object ("moveto") in a PDF file. */
 public class MoveTo extends PDFObject {
 	protected int x, y;

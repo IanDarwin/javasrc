@@ -1,7 +1,5 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
 import java.util.*;
 
 /** A PDFDict ias a PDFObject that is all, or mostly, a Dictionary.

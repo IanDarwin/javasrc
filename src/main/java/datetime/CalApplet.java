@@ -1,5 +1,6 @@
 package datetime;
 
+import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Panel;
@@ -10,7 +11,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /** An Applet to display a "Cal" calendar component */
-public class CalApplet extends AnApplet implements ActionListener {
+public class CalApplet extends Applet implements ActionListener {
 	int yy, mm, dd;
 	Cal cal;
 	Panel p;

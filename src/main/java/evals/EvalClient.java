@@ -2,8 +2,7 @@ package evals;
 
 // INCOMPLETE 
 
-import java.util.*;
-import java.rmi.*;
+import java.rmi.Naming;
 
 public class EvalClient implements NetEvalInfo {
 

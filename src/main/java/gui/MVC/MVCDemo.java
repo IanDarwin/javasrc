@@ -1,4 +1,6 @@
-package MVC;
+package gui.MVC;
+
+import graphics.Grapher;
 
 import java.awt.*;
 import java.awt.event.*;

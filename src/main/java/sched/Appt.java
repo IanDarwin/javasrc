@@ -43,7 +43,7 @@ public class Appt implements Comparable {
 	/** The repetition type for yearly repetition */
 	public static final int YEARLY = 5;
 	/** The count factor meaning forever */
-	public static final int FOREVER = Integer.MAXINT;
+	public static final int FOREVER = Integer.MAX_VALUE;
 
 	//-----------------------------------------------------------------
 	//	MAIN CLASS VARIABLES -- REPETITION
@@ -105,10 +105,10 @@ public class Appt implements Comparable {
 
 		System.out.println(gc.getTime().toString());
 
-		for (i=0; i<count && 
+		for (int i=0; i<r_count && 
 			gc.get(Calendar.YEAR)<=year && 
 			gc.get(Calendar.MONTH)<=month && 
-			gc.get(Calendar.DAY)<=DAY) {
+			gc.get(Calendar.DAY_OF_MONTH)<=day; i++) {
 			switch(r_type) {
 			case HOURLY:
 				break;

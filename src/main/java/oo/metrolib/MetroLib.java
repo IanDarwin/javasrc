@@ -1,4 +1,4 @@
-package metrolib;
+package oo.metrolib;
 
 import java.io.*;
 

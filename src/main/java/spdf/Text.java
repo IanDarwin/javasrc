@@ -1,10 +1,5 @@
 package spdf;
 
-package com.darwinsys.spdf;
-
-import java.io.*;
-import java.util.*;
-
 /** Represent one Text object in a PDF file. */
 public class Text extends PDFObject {
 	protected int x, y;

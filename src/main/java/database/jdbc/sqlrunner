@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Change this to where you have SQLRunner installed
-SQLRUNNER_DIR=${HOME}/javasrc/JDBC
+SQLRUNNER_DIR=${HOME}/workspace/javasrc/build
 
 # Change this to where you have the darwinsys.jar file installed
 DARWINSYS_JAR=${HOME}/lib/darwinsys.jar
@@ -17,4 +17,4 @@ set -x
 
 export CLASSPATH="${SQLRUNNER_DIR}:${DARWINSYS_JAR}:${DRIVER_JARS}"
 
-java SQLRunner -f ${FILE} $*
+java JDBC.SQLRunner -f ${FILE} $*

@@ -7,20 +7,20 @@ import java.io.*;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class RandomRead {
+public class ReadRandom {
 	final static String FILENAME = "random.dat";
 	protected String fileName;
 	protected RandomAccessFile seeker;
 
 	public static void main(String[] argv) throws IOException {
-		RandomRead r = new RandomRead(FILENAME);
+		ReadRandom r = new ReadRandom(FILENAME);
 
 		System.out.println("Offset is " + r.readOffset());
 		System.out.println("Message is \"" + r.readMessage() + "\".");
 	}
 
 	/** Constructor: save filename, construct RandomAccessFile */
-	public RandomRead(String fname) throws IOException {
+	public ReadRandom(String fname) throws IOException {
 		fileName = fname;
 		seeker = new RandomAccessFile(fname, "r");
 	}

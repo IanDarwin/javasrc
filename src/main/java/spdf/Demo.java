@@ -1,9 +1,5 @@
 package spdf;
 
-import com.darwinsys.spdf.PDF;
-import com.darwinsys.spdf.Page;
-import com.darwinsys.spdf.Text;
-import com.darwinsys.spdf.MoveTo;
 import java.io.*;
 
 /** A simple text test of SPDF package

@@ -1,4 +1,4 @@
-package MVC;
+package gui.MVC;
 
 import javax.swing.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package datatransfer;
+package gui.datatransfer;
 
 import java.awt.*;
 import java.awt.event.*;

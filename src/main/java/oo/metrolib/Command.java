@@ -1,4 +1,4 @@
-package metrolib;
+package oo.metrolib;
 
 public class Cmd {
 	public final static int HELP = 'h';

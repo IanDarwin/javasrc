@@ -1,7 +1,7 @@
 package evals;
 
 import java.awt.*;
-import com.sun.java.swing.*;
+import javax.swing.*;
 
 public class Grapher extends JPanel {
 	JProgressBar counter, crsScore, insScore;

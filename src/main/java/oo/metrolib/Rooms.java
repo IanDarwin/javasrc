@@ -1,4 +1,4 @@
-package metrolib;
+package oo.metrolib;
 
 /** This is the rooms data structure.
  * In a real game this would be generated from a database!

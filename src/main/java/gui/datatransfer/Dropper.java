@@ -1,4 +1,4 @@
-package datatransfer;
+package gui.datatransfer;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
@@ -17,7 +17,6 @@ import javax.swing.TransferHandler;
 
 /**
  * Dropper - show File Drop Target from Drag-n-Drop
- * 
  * @version $Id$
  */
 public class Dropper extends JFrame {
