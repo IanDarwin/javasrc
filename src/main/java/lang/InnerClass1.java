@@ -5,13 +5,6 @@
 public class InnerClass1 {
 	String msg = "Hello";
 
-	class Inner {
-		public void doTheWork() {
-			// print member of enclosing class
-			System.out.println(msg);
-		}
-	}
-
 	void doWork() {
 		Inner i = new Inner();
 		i.doTheWork();
@@ -22,5 +15,12 @@ public class InnerClass1 {
 	public static void main(String av[]) {
 		InnerClass1 p = new InnerClass1();
 		p.doWork();
+	}
+
+	class Inner {
+		public void doTheWork() {
+			// print member of enclosing class
+			System.out.println(msg);
+		}
 	}
 }

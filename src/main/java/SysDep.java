@@ -1,4 +1,4 @@
-/** Some things that are System Dependant.
+/** Some things that are System Dependent.
  * All methods are static, like java.lang.Math.
  * @author Ian Darwin
  * @version $Id$

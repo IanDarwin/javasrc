@@ -2,11 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** Provide a pop-up menu using a Frame.
+ * On most platforms, changing the mouse "settings" changes how the
+ * isPopupTrigger() method behaves instantly - which is as it should be!
  */
 public class PopupDemo extends Frame {
 	/** "main" method - for testing. */
 	public static void main(String av[]) {
-        new PopupDemo("Hello").setVisible(true);
+		new PopupDemo("Hello").setVisible(true);
 	}
 
 	/** Construct the main program */
@@ -14,7 +16,8 @@ public class PopupDemo extends Frame {
 		super(title);
 
 		setLayout(new FlowLayout());
-        add(new PopupContainer("Hello, and welcome to the world of Java"));
+		add(new PopupContainer(
+			"Hello, and welcome to the world of Java"));
 		pack();
 		setVisible(true);
 	}
