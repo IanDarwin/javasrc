@@ -1,4 +1,4 @@
-package io;
+//package io;
 
 import java.io.Serializable;
 
@@ -10,6 +10,7 @@ public class MyData implements Serializable {
 
 	/** This constructor is required for use by JDO */
 	public MyData() {
+		// Nothing to do
 	}
 
 	public MyData(String name, String clear) {
