@@ -84,7 +84,7 @@ public class LinkList implements List {
 				break;
 			t = t.next;
 		}
-		return i;
+		return i - 1;	// subtract one for mandatory head node.
 	}
 
     public boolean isEmpty() {
@@ -142,13 +142,26 @@ public class LinkList implements List {
 		return 0;
 	}
 
-	/** ListIterator extends Iterator (LI can substitute for Iterator) */
-    public Iterator iterator() {
-		return listIterator();
+    public ListIterator listIterator() {
+		throw new UnsupportedOperationException("listIterator");
 	}
 
-    public ListIterator listIterator() {
-		return null;
+    public Iterator iterator() {
+		return new Iterator() {
+			TNode t = first;
+			int i = 0;
+			public boolean hasNext() {
+				return t != last;
+			}
+			public Object next() {
+				if (t == last)
+					throw new ArrayIndexOutOfBoundsException();
+				return t = t.next;
+			}
+			public void remove() {
+				throw new UnsupportedOperationException("remove");
+			}
+		};
 	}
 
     public ListIterator listIterator(int where) {
