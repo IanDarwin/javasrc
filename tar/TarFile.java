@@ -1,57 +1,85 @@
+import java.io.*;
+import java.util.*;
+
 /*
- * Tape Archive Lister
+ * Tape Archive Lister, patterned loosely after java.util.ZipFile.
+ * Since, unlike Zip files, there is no central directory, you have to
+ * read the entire file either to be sure of having a particular file's
+ * entry, or to know how many entries there are in the archive.
  * Written by Ian Darwin, ian@darwinsys.com
- *
- * Tar format info taken from John Gilmore's public domain tar program,
- * @(#)tar.h 1.21 87/05/01	Public Domain, which said:
- * "Created 25 August 1985 by John Gilmore, ihnp4!hoptoad!gnu." (
- * John is now gnu@toad.com, and by another path tar.h is GPL'd under GNU Tar.
+ * @version $Id$
  */
 
-public class Tar {
+public class TarFile {
+	/** True after we've done the expensive read. */
+	protected boolean read = false;
+	/** The list of entries found in the archive */
+	protected ArrayList list;
 
-	/** Size of header block on tape.  */
-	public static final int	RECORDSIZE	512
+	/** Size of header block on tape. */
+	public static final int	RECORDSIZE = 512;
 
-	/* The checksum field is filled with this while the checksum is computed. */
-	public static final byte[] CHKBLANKS = {
-		' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
-	}; /* 8 blanks, no null */
+	/* Size of each block, in records */
+	protected int		blocking;
+	/* Size of each block, in bytes */
+	protected int		blocksize;
 
-	/* The magic field is filled with this if uname and gname are valid. */
-	public static final String	TMAGIC		"ustar  "	/* 7 chars and a null */
+	/** File containing archive */
+	protected String	fileName;
 
-	protected int		blocking;	/* Size of each block, in records */
-	protected int		blocksize;	/* Size of each block, in bytes */
-	protected String	ar_file;	/* File containing archive */
-
-	/*
-	 * Flags from the command line
-	 */
-	protected boolean f_reblock;		/* -B */
-	protected boolean f_create;			/* -c */
-	protected boolean f_diff;			/* -d */
-	protected boolean f_sayblock;		/* -D */
-	protected boolean f_follow_links;	/* -h */
-	protected boolean f_ignorez;		/* -i */
-	protected boolean f_keep;			/* -k */
-	protected boolean f_modified;		/* -m */
-	protected boolean f_oldarch;		/* -o */
-	protected boolean f_use_protection;	/* -p */
-	protected boolean f_sorted_names;	/* -s */
-	protected boolean f_list;			/* -t */
-	protected boolean f_namefile;		/* -T */
-	protected boolean f_verbose;		/* -v */
-	protected boolean f_extract;		/* -x */
-	protected boolean f_compress;		/* -z */
-
-	/** Represents one "link" found in the archive.
-	 */
+	/** Represents one "link" found in the archive. */
 	class link {
 		link	next;
 		int		dev;
 		int		ino;
 		short		linkcount;
-		byte		name[NAMSIZ+1];
+		byte		name[];		// max length = NAMSIZ+1
 	};
+
+	/** Construct (open) a Tar file by name */
+	public TarFile(String name) {
+		fileName = name;
+		list = new ArrayList();
+		read = false;
+	}
+
+	/** Construct (open) a Tar file by File */
+	public TarFile(java.io.File name) throws IOException {
+		this(name.getCanonicalPath());
+	}
+
+	/* Close the Tar file. */
+	public void close() {
+		return;
+	}
+
+	/* Returns an enumeration of the Tar file entries. */
+	public Enumeration entries() {
+		return null;
+	}
+
+	/** Returns the Tar entry for the specified name, or null if not found. */
+	public TarEntry getEntry(String name) {
+		return null;
+	}
+
+	/** Returns an InputStream for reading the contents of the 
+	 * specified entry from the archive.
+	 * May cause the entire file to be read.
+	 */
+	public InputStream getInputStream(TarEntry entry) {
+		return null;
+	}
+
+	/** Returns the path name of the Tar file. */
+	public String getName() {
+		return null;
+	}
+
+	/** Returns the number of entries in the Tar archive.
+	 * May cause the entire file to be read.
+	 */
+	public int size() {
+		return 0;
+	}
 }
