@@ -1,4 +1,4 @@
-<project name="DarwinSys Java WebServer" default="compile" basedir=".">
+<project name="DarwinSys Toy WebServer" default="compile" basedir=".">
 
   <!-- $Id$ -->
 
