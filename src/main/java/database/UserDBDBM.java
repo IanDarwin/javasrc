@@ -1,10 +1,9 @@
 package database;
 
-package jabadot;
-
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
 import java.sql.SQLException;
+
+import DBM.DBM;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
@@ -13,8 +12,9 @@ import java.sql.SQLException;
  * to ensure that there is only ever one instance of this class.
  */
 public class UserDBDBM extends UserDB {
+	
 	protected final static String DEF_NAME = 
-		"/home/ian/src/jabadot/jabadb";		// It appends .pag
+		"/home/ian/src/jabadot/jabadb";		// DBM appends .pag
 
 	protected DBM db;
 
@@ -48,5 +48,21 @@ public class UserDBDBM extends UserDB {
 		// Add it to the on-disk version: store in DB with
 		// key = nickname, value = object.
 		db.store(nu.getName(), nu);
+	}
+
+	/* (non-Javadoc)
+	 * @see database.UserDB#setPassword(java.lang.String, java.lang.String)
+	 */
+	public void setPassword(String nick, String newPass) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see database.UserDB#deleteUser(java.lang.String)
+	 */
+	public void deleteUser(String nick) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 }

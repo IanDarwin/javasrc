@@ -1,9 +1,9 @@
 package database;
 
-package jabadot;
-
 import java.io.*;
 import java.util.*;
+
+import DBM.DBM;
 
 /** Convert the database from text form to DBM form.
  */

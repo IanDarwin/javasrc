@@ -1,7 +1,5 @@
 package database;
 
-package jabadot;
-
 import java.io.*;
 import java.util.*;
 import java.sql.SQLException;
@@ -85,7 +83,22 @@ public class UserDBText extends UserDB {
 			.append(u.city).append(':')
 			.append(u.prov).append(':')
 			.append(u.country).append(':')
-			.append(u.privs)
 			.toString();
+	}
+
+	/* (non-Javadoc)
+	 * @see database.UserDB#setPassword(java.lang.String, java.lang.String)
+	 */
+	public void setPassword(String nick, String newPass) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see database.UserDB#deleteUser(java.lang.String)
+	 */
+	public void deleteUser(String nick) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,13 +1,24 @@
 package database;
 
-package jabadot;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-import java.util.*;
-import java.sql.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 
 /** A User Database Administrator program
  * This does NOT use the UserDB interface as it needs
@@ -147,7 +158,8 @@ public class JDAdmin extends JFrame {
 				rs.getString(UserDB.CITY),
 				rs.getString(UserDB.PROVINCE),
 				rs.getString(UserDB.COUNTRY),
-				rs.getInt(UserDB.PRIVS));
+				new Date(), new Date(),
+				null, false,false);
 			userList.add(u);
 		}
 		rs.close();
