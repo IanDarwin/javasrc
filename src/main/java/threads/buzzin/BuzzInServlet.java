@@ -75,6 +75,7 @@ public class BuzzInServlet extends HttpServlet {
 			out.println("<body bgcolor=\"white\">");
 			String command = request.getParameter("command");
 			if (command.equals("reset")) {
+
 				// Synchronize what you need, no more, no less.
 				synchronized(application) {
 					application.setAttribute(WINNER, null);
@@ -100,7 +101,7 @@ public class BuzzInServlet extends HttpServlet {
 			out.println("<html><head><title>Nice try, but... </title><head>");
 			out.println("<body bgcolor=\"white\">");
 			out.println(
-				"Your paltry attempts to breach security are rebuffed!");
+				"I'm sorry, Dave, but you know I can't allow you to do that.");
 		}
 		out.println("</body></html>");
 	}
