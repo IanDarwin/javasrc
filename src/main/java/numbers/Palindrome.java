@@ -45,7 +45,7 @@ public class Palindrome {
 
 	/** Check if a number is palindromic. */
 	static boolean isPalindrome(long num) {
-		if (num >= 0 && num < 9)
+		if (num >= 0 && num <= 9)
 			return true;
 		int nDigits = 0;
 		while (num > 0) {

@@ -16,10 +16,6 @@ import java.util.*;
  */
 public class SmtpTalk implements SysExits {
 	BufferedReader is;
-	/** The file used to write. Do NOT change to a PrintWriter as we
-	 *  have no wish to send mail commands in the form
-	 *  of 16-bit UniCode characters...
-	 */
 	PrintStream os;
 	private boolean debug = true;
 	private String host;

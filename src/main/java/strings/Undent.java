@@ -6,7 +6,7 @@ import java.io.*;
  */
 public class Undent {
 	/** the maximum number of spaces to remove. */
-	protected int nSpaces = 10;
+	protected int nSpaces;
 
 	Undent(int n) {
 		nSpaces = n;

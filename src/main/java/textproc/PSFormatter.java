@@ -56,7 +56,7 @@ public class PSFormatter {
 		startPage();		// emit top-of-page (ending previous)
 
 		while ((line = br.readLine()) != null) {
-			if (line.startsWith("") || line.trim().equals(".bp")) {
+			if (line.startsWith("\f") || line.trim().equals(".bp")) {
 				startPage();
 				continue;
 			}
