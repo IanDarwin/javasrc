@@ -7,14 +7,25 @@
 	<property name="build" value="."/>
 
 	<!-- specify what to compile. This builds everything -->
-	<target name="compile">
+	<target name="compile" depends="detect">
 		<!-- Compile the java code from ${src} into ${build}.
 		 *** failonerror set false because of 1.4 constructs that will
-		 *** won't compile on 1.3, and a few "expect compile error" cases...
+		 *** not compile on 1.3, and a few "expect compile error" cases...
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
 			failonerror="false"
 			classpath="${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${servletapi.jar}"/>
+	</target>
+
+	<target name="detect">
+		<echo message="Using javacook.jar: ${javacook.jar}"/>
+		<echo message="Using junit.jar: ${junit.jar}"/>
+		<echo message="Using jaxp.jar: ${jaxp.jar}"/>
+		<echo message="Using crimson.jar: ${crimson.jar}"/>
+		<echo message="Using jdom.jar: ${jdom.jar}"/>
+		<echo message="Using xalan.jar: ${xalan.jar}"/>
+		<echo message="Using servletapi.jar: ${servletapi.jar}"/>
+		<echo message='classpath=${javacook.jar}:${junit.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${servletapi.jar}'/>
 	</target>
 
 </project>

@@ -62,6 +62,6 @@ public class StyleServlet extends HttpServlet {
 	}
 
 	void output_body(String XML_FILE, PrintWriter out) {
-		com.darwinsys.util.FileIO.copy(XML_FILE, out);
+		com.darwinsys.util.FileIO.copyFile(XML_FILE, out, false);
 	}
 }

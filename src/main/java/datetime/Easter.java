@@ -16,15 +16,13 @@ import java.applet.*;
  * years around the present.
  */
 public class Easter {
-	protected int year;
-	protected GregorianCalendar gc;
 
 	/* Compute the day of the year that Easter falls on.
 	 * Step names E1 E2 etc., are direct references to Knuth, Vol 1, p 155.
 	 * @exception IllegalArgumentexception If the year is before 1582 (since the
 	 * 		algorithm only works on the Gregorian calendar).
 	 */
-	protected void findHolyDay() {
+	public static final Calendar findHolyDay(int year) {
 		if (year <= 1582) {
 			throw new IllegalArgumentException("Algorithm invalid before April 1583");
 		}
@@ -42,27 +40,9 @@ public class Easter {
 		n += 30 * (n < 21?1:0);		/* E6: */
 		n += 7 - ((d+n)%7);
 		if (n>31)			/* E7: */
-			gc = new GregorianCalendar(year, 4-1, n-31);	/* April */
+			return new GregorianCalendar(year, 4-1, n-31);	/* April */
 		else
-			gc =  new GregorianCalendar(year, 3-1, n);	/* March */
-	}
-
-	public String toString() {
-		String months[] = { "Jan", "Feb", "Mar", "Apr", "May" };
-		StringBuffer sb = new StringBuffer("Easter: ");
-		sb.append(gc.get(GregorianCalendar.DAY_OF_MONTH));
- 		sb.append(' ');
-		sb.append(months[gc.get(GregorianCalendar.MONTH)]);
- 		sb.append(',');
- 		sb.append(' ');
- 		sb.append(gc.get(Calendar.YEAR));
- 		sb.append('.');
-		return sb.toString();
-	}
-
-	public Easter(int y) {
-		year = y;
-		findHolyDay();
+			return  new GregorianCalendar(year, 3-1, n);	/* March */
 	}
 
 	/** Main program, when used as a standalone application */
@@ -70,12 +50,13 @@ public class Easter {
 
 		if (argv.length == 0) {
 			int thisYear = new GregorianCalendar().get(Calendar.YEAR);
-			System.out.println( new Easter(thisYear));
+			Calendar c = Easter.findHolyDay(thisYear);
+			System.out.println( c.getTime());
 		} else for (int i=0; i<argv.length; i++) {
 			int year = 0;
 			try {
 				year = Integer.parseInt(argv[i]);
-				System.out.println( new Easter(year));
+				System.out.println(Easter.findHolyDay(year).getTime());
 			} catch (IllegalArgumentException e) {
 				System.err.println("Year " + argv[i] + " invalid (" + e.getMessage() + ").");
 			}
