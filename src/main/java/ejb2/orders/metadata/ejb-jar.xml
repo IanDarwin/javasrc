@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC 
+"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN"
+	"http://java.sun.com/j2ee/dtds/ejb-jar-1.1.1.dtd">
+<!-- This partial Deployment Descriptor for Order
+	will likely need to be merged into the overall EJB DD.
+	-->
+<ejb-jar>
+<enterprise-beans>
+<entity>
+	<display-name>Order EJB</display-name>
+	<ejb-name>Order</ejb-name>
+	<home>OrderHome</home>
+	<remote>Order</remote>
+	<ejb-class>OrderBean</ejb-class>
+</entity>
+<enterprise-beans>
+<ejb-jar>
