@@ -40,5 +40,5 @@ public class FloatCmp {
 		if (a==b) return true;
 		// If the difference is less than epsilon, treat as equal.
 		return Math.abs(a - b) < EPSILON * Math.max(Math.abs(a), Math.abs(b));
-
+	}
 }
