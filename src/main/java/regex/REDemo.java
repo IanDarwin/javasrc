@@ -5,6 +5,9 @@ import javax.swing.text.*;
 import java.util.regex.*;
 
 /** Standalone Swing GUI application for demonstrating REs.
+ * <br>
+ * TODO: 
+ * Show the entire match, and $1 and up as captures that matched.
  * @author	Ian Darwin, ian@darwinsys.com
  * @version #Id$
  */
@@ -36,19 +39,28 @@ public class REDemo extends JPanel {
 		patternTF = new JTextField(20);
 		patternTF.getDocument().addDocumentListener(new PatternListener());
 		top.add(patternTF);
-		compiledOK = new JCheckBox("Syntax OK?");
+		top.add(new JLabel("Syntax OK?"));
+		compiledOK = new JCheckBox();
 		top.add(compiledOK);
 
+		ChangeListener cl = new ChangeListener() {
+			public void stateChanged(ChangeEvent ce) {
+				tryMatch();
+			}
+		};
 		JPanel switchPane = new JPanel();
 		ButtonGroup bg = new ButtonGroup();
 		match = new JRadioButton("Match");
 		match.setSelected(true);
+		match.addChangeListener(cl);
 		bg.add(match);
 		switchPane.add(match);
 		find = new JRadioButton("Find");
+		find.addChangeListener(cl);
 		bg.add(find);
 		switchPane.add(find);
 		findAll = new JRadioButton("Find All");
+		findAll.addChangeListener(cl);
 		bg.add(findAll);
 		switchPane.add(findAll);
 
