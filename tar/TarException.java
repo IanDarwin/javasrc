@@ -3,6 +3,6 @@ public class TarException extends java.io.IOException {
 		super();
 	}
 	public TarException(String msg) {
-		super(String msg);
+		super(msg);
 	}
 }

@@ -1,13 +1,13 @@
+import java.io.*;
+
 /** One entry in an archive file.
  * @author Ian Darwin
  * @version $Id$
- */
-
-/*
+ * @note
  * Tar format info taken from John Gilmore's public domain tar program,
  * @(#)tar.h 1.21 87/05/01	Public Domain, which said:
  * "Created 25 August 1985 by John Gilmore, ihnp4!hoptoad!gnu."
- * John is now gnu@toad.com, and by another path tar.h is GPL'd under GNU Tar.
+ * John is now gnu@toad.com, and by another path tar.h is GPL'd in GNU Tar.
  */
 public class TarEntry {
 	/** Where in the tar archive this entry's HEADER is found. */
@@ -19,7 +19,7 @@ public class TarEntry {
 	public static final int	TGNMLEN	= 32;
 
 	// Next fourteen fields constitute one physical record.
-	// Padded to RECORDSIZE bytes long on tape/disk.
+	// Padded to TarFile.RECORDSIZE bytes on tape/disk.
 
 	/** File name */
 	byte[]	name = new byte[NAMSIZ];
@@ -36,7 +36,7 @@ public class TarEntry {
 	/* checksum field */
 	byte[]	chksum = new byte[8];
 	byte	type;
-	byte[]	linkname = new byte[NAMSIZ];
+	byte[]	linkName = new byte[NAMSIZ];
 	byte[]	magic = new byte[8];
 	byte[]	uname = new byte[TUNMLEN];
 	byte[]	gname = new byte[TGNMLEN];
@@ -56,9 +56,9 @@ public class TarEntry {
 		0, 0, 0, 0, 0, 0, 0x20, 0x20, 0
 	}; /* 7 chars and a null */
 
-	/* Type value for Normal disk file, Unix compat */
+	/* Type value for Normal file, Unix compatibility */
 	public static final int	LF_OLDNORMAL ='\0';		
-	/* Type value for Normal disk file */
+	/* Type value for Normal file */
 	public static final int	LF_NORMAL = '0';
 	/* Type value for Link to previously dumped file */
 	public static final int LF_LINK = 	'1';
@@ -75,14 +75,122 @@ public class TarEntry {
 	/* Type value for Contiguous file */
 	public static final int LF_CONTIG = '7';
 
-	/** Returns the name of the file this entry represents. */
-	public String getName() {
-		return new String(name);
+	/* Constructor that reads the entry's header. */
+	public TarEntry(RandomAccessFile is) throws IOException, TarException {
+
+		while (((fileOffset = is.getFilePointer()) %
+			TarFile.RECORDSIZE) != 0)
+				is.readByte();
+
+		is.read(name);
+		is.read(mode);
+		is.read(uid);
+		is.read(gid);
+		is.read(size);
+		is.read(mtime);
+		is.read(chksum);
+		type = is.readByte();
+		is.read(linkName);
+		is.read(magic);
+		is.read(uname);
+		is.read(gname);
+		is.read(devmajor);
+		is.read(devminor);
+
+		// TODO if checksum() fails,
+		//	throw new TarException("Failed to find next header");
+
 	}
 
+	/** Returns the name of the file this entry represents. */
+	public String getName() {
+		return new String(name).trim();
+	}
+
+	public String getTypeName() {
+		switch(type) {
+		case LF_OLDNORMAL:
+		case LF_NORMAL:
+			return "file";
+		case LF_LINK:
+			return "link w/in archive";
+		case LF_SYMLINK:
+			return "symlink";
+		case LF_CHR:
+		case LF_BLK:
+		case LF_FIFO:
+			return "special file";
+		case LF_DIR:
+			return "directory";
+		case LF_CONTIG:
+			return "contig";
+		default:
+			throw new IllegalStateException("TarEntry.getTypeName: type " + type + " invalid");
+		}
+	}
+
+	/** Returns the UNIX-specific "mode" (type+permissions) of the entry */
+	public int getMode() {
+		try {
+			return Integer.parseInt(new String(mode).trim(), 8);
+		} catch (IllegalArgumentException e) {
+			return 0;
+		}
+	}
+
+	/** Returns the size of the entry */
+	public int getSize() {
+		try {
+			return Integer.parseInt(new String(size).trim(), 8);
+		} catch (IllegalArgumentException e) {
+			return 0;
+		}
+	}
+
+	/** Returns the name of the file this entry is a link to,
+	 * or null if this entry is not a link.
+	 */
+	public String getLinkName() {
+		if (isLink())
+			return null;
+		return new String(linkName).trim();
+	}
+
+	
 	/** Returns the modification time of the entry */
 	public long getTime() {
-		return 0;
+		try {
+			return Long.parseLong(new String(mtime).trim());
+		} catch (IllegalArgumentException e) {
+			return 0;
+		}
+	}
+
+	/** Returns the string name of the userid */
+	public String getUname() {
+		return new String(uname).trim();
+	}
+
+	/** Returns the string name of the group id */
+	public String getGname() {
+		return new String(gname).trim();
+	}
+
+	/** Returns the numeric userid of the entry */
+	public int getuid() {
+		try {
+			return Integer.parseInt(new String(uid).trim());
+		} catch (IllegalArgumentException e) {
+			return -1;
+		}
+	}
+	/** Returns the numeric gid of the entry */
+	public int getgid() {
+		try {
+			return Integer.parseInt(new String(gid).trim());
+		} catch (IllegalArgumentException e) {
+			return -1;
+		}
 	}
 
 	/** Returns true if this entry represents a file */
@@ -95,8 +203,41 @@ public class TarEntry {
 		return type == LF_DIR;
 	}
 
+	/** Returns true if this a link (OR A SYMLINK??) */
+	boolean isLink() {
+		return type == LF_LINK || type == LF_SYMLINK;
+	}
+
 	/** Returns true if this entry represents some type of UNIX special file */
 	boolean isSpecial() {
 		return type == LF_CHR || type == LF_BLK || type == LF_FIFO;
+	}
+
+	protected StringBuffer sb;
+
+	public String toString() {
+		sb = new StringBuffer("TarEntry[");
+		sb.append(getName()).append(',');
+		sb.append(getTypeName()).append(',');
+		sb.append("mode=").append(Integer.toString(getMode(),8)).append(',');
+		sb.append("uid=").append(getuid()).append(',');
+		sb.append("gid=").append(getgid()).append(',');
+		sb.append("size=").append(getSize()).append(',');
+		sb.append("mtime=").append(getTime()).append(',');
+		if (isLink())
+			sb.append('@').append(getLinkName()).append(',');
+		bytesAppend(magic).append(',');
+		sb.append(getUname()).append(',');
+		sb.append(getGname()).append(',');
+		bytesAppend(chksum).append(',');
+
+		sb.append(']');
+		return sb.toString();
+	}
+
+	protected StringBuffer bytesAppend(byte[] bytes) {
+		for (int i=0; i<bytes.length; i++)
+			sb.append((char)bytes[i]);
+		return sb;	// for subsequent .append()s
 	}
 }
