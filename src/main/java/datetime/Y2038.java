@@ -1,4 +1,3 @@
-//+
 /** When does the UNIX date get into trouble? */
 
 public class Y2038 {
@@ -9,7 +8,6 @@ public class Y2038 {
 		// millions of 64-bit UNIXes by then).
 
 		long expiry = 0x7FFFFFFFL * 1000;
-		System.out.println("Expiry as a long is " + expiry);
 
 		System.out.println("32-bit UNIX expires on " +
 			Long.toHexString(expiry) + " or " +
@@ -24,4 +22,3 @@ public class Y2038 {
 		
 	}
 }
-//-
