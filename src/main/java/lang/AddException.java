@@ -21,7 +21,7 @@ public class AddException {
 }
 
 class AddException2 extends AddException {
-	public void run() throws IOException {	// COMPILE ERROR EXPECTED
+	public void run() throws IOException {	// EXPECT COMPILE ERROR
 	}
 }
 
