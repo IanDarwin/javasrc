@@ -102,7 +102,7 @@ public class TModem {
 		DataInputStream foo;
 
 		foo = new DataInputStream(new FileInputStream(tfile));
-		System.err.println( "file open, ready to send\r\n");
+		System.err.println( "file open, ready to send");
 		errorcount = 0;
 		blocknumber = 1;
 
@@ -119,7 +119,7 @@ public class TModem {
 				++errorcount;
 		} while (character != NAK && errorcount < MAXERRORS);
 
-		System.err.println( "transmission beginning\r\n");
+		System.err.println( "transmission beginning");
 		if (errorcount == MAXERRORS) {
 			xerror();
 		}
@@ -153,7 +153,7 @@ public class TModem {
 			putchar(EOT);
 			isAck = getchar() == ACK;
 		}
-		System.err.println( "Transmission complete.\r\n");
+		System.err.println( "Transmission complete.");
 	}
 
 
@@ -173,9 +173,9 @@ public class TModem {
 
 		/* wait for the user or remote to get his act together */
 		gotChar = false;
-		new IOTimer(SLEEP, "receive from remote"); 
+		new IOTimer(SLEEP, "receive from remote").start(); 
 
-		System.err.println( "Starting...\r\n");
+		System.err.println( "Starting...");
 		putchar(NAK);
 		errorcount = 0;
 		blocknumber = 1;
@@ -187,7 +187,7 @@ public class TModem {
 				try {
 					byte not_ch;
 					if (character != SOH) {
-						System.err.println( "Not SOH\r\n");
+						System.err.println( "Not SOH");
 						if (++errorcount < MAXERRORS)
 							continue rxLoop;
 						else
@@ -197,12 +197,12 @@ public class TModem {
 					not_ch = (byte)(~getchar());
 					System.err.println( "[" +  character + "] ");
 					if (character != not_ch) {
-						System.err.println( "Blockcounts not ~\r\n");
+						System.err.println( "Blockcounts not ~");
 						++errorcount;
 						continue rxLoop;
 					}
 					if (character != blocknumber) {
-						System.err.println( "Wrong blocknumber\r\n");
+						System.err.println( "Wrong blocknumber");
 						++errorcount;
 						continue rxLoop;
 					}
@@ -212,7 +212,7 @@ public class TModem {
 						checksum += sector[index];
 					}
 					if (checksum != getchar()) {
-						System.err.println( "Bad checksum\r\n");
+						System.err.println( "Bad checksum");
 						errorcount++;
 						continue rxLoop;
 					}
@@ -236,7 +236,7 @@ public class TModem {
 		putchar(ACK);
 		putchar(ACK);
 
-		System.err.println( "Completed.\r\n");
+		System.err.println( "Completed.");
 	}
 
 	byte getchar() throws IOException {

@@ -29,6 +29,15 @@ public class JModem extends javax.swing.JFrame {
   protected JTextArea theTextArea;
   /** A file transfer program */
   protected TModem xferProg;
+  /** The state for disconnected and connected */
+  private int S_DISCONNECTED = 0, S_CONNECTED = 1;
+  /** The state, either disconnected or connected */
+  private int state = S_DISCONNECTED;
+  private int S_INTERACT = 0, S_XFER = 1;
+  /** The online state, either interactive or in xfer. Used by the
+   * main reader thread to avoid reading data meant for the xfer program.
+   */
+  private int submode = S_INTERACT;
 
   /** Initializes the Form */
   public JModem() {
@@ -281,6 +290,11 @@ public class JModem extends javax.swing.JFrame {
 
   /** Finish the initializations. */
   private void finishConstructor() {
+  	// THINGS THAT WE'LL GET THE GUI BUILDER TO DO SOON.
+	setTitle("JModem");
+    d8RadioButton.setSelected(true);
+    pNoneRadioButton.setSelected(true);
+	sendRadioButton.setSelected(true);
 
 	/** A TextArea subclass with funky keypress forwarding: send to
 	 * remote, not to local. This IS a terminal emulator, after all.
@@ -303,8 +317,8 @@ public class JModem extends javax.swing.JFrame {
 			}
 			char ch = evt.getKeyChar();
 			if (ch == '\n') {    // XX if systemtype == dos
-				sendChar('\r');
-				// sendChar('\n');
+				// sendChar('\r');
+				sendChar('\n');
 				return;
 			}
 			sendChar(ch);
@@ -346,13 +360,11 @@ public class JModem extends javax.swing.JFrame {
     ButtonGroup b1 = new ButtonGroup();
     b1.add(d7RadioButton);
     b1.add(d8RadioButton);
-    d8RadioButton.setSelected(true);
 
     ButtonGroup b2 = new ButtonGroup();
     b2.add(pNoneRadioButton);
     b2.add(pEvenRadioButton);
     b2.add(pOddRadioButton);
-    pNoneRadioButton.setSelected(true);
 
     ButtonGroup b3 = new ButtonGroup();
     b3.add(sendRadioButton);
@@ -398,6 +410,11 @@ public class JModem extends javax.swing.JFrame {
   private void xferButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xferButtonActionPerformed
 
     // Do the transfer, using TModem class.
+	if (state != S_CONNECTED) {
+		err("Must be connected to do file transfers");
+		return;
+	}
+	xferButton.setEnabled(false);
 	if (xferProg == null) {
 		xferProg = new TModem(serialInput, serialOutput); // discarded in disconnect
 	}
@@ -406,10 +423,17 @@ public class JModem extends javax.swing.JFrame {
 		err("Filename must be given");
 		return;
 	}
+	submode = S_XFER;
+
+	// Do the transfer!  If we are sending, send a "tmodem -r" to 
+	// the other side; if receiving, send "tmodem -s" to ask it
+	// to send the file.
 	try {
-		if (xferButton.isSelected()) {
+		if (sendRadioButton.isSelected()) {
+			sendString("tmodem -r " + fileName + "\r\n");
 			xferProg.send(fileName);
 		} else {
+			sendString("tmodem -s " + fileName + "\r\n");
 			xferProg.receive(fileName);
 		}
 	} catch (InterruptedException e) {
@@ -418,22 +442,23 @@ public class JModem extends javax.swing.JFrame {
 	} catch (IOException e) {
 		err("IO Exception in transfer:\n" + e);
 		return;
+	} finally {
+		submode = S_INTERACT;
 	}
 	JOptionPane.showMessageDialog(this, "Transfer completed",
 		"JModem", JOptionPane.INFORMATION_MESSAGE);
 
   }//GEN-LAST:event_xferButtonActionPerformed
 
-  private int S_DISCONNECTED = 0, S_CONNECTED = 1;
-  private int state = S_DISCONNECTED;
-  private int S_INTERACT = 0, S_XFER = 1;
-  private int submode = S_INTERACT;
 
+  /** This method basically toggles between Connected mode and
+   * disconnected mode.
+   */
   private void connectButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
   if (state == S_CONNECTED) {
     disconnect();
     connectButton.setText("Connect");
-  theTextArea.setEditable(false);
+    theTextArea.setEditable(false);
   } else {
     try {
       connect();
@@ -445,14 +470,13 @@ public class JModem extends javax.swing.JFrame {
       return;
     }
     connectButton.setText("Disconnect");
-  theTextArea.setEditable(true);
-  theTextArea.requestFocus();
+    theTextArea.setEditable(true);
+    theTextArea.requestFocus();
   }
   }
 
-  protected void err(String s) {
-  JOptionPane.showMessageDialog(this,
-    "Port in use: close other app, or use different port.",
+  protected void err(String message) {
+  JOptionPane.showMessageDialog(this, message, 
     "JModem Error", JOptionPane.ERROR_MESSAGE);
   return;
   }
@@ -512,21 +536,29 @@ public class JModem extends javax.swing.JFrame {
     int nbytes = buf.length;
       public void run() {
         do {
-        try {
-          nbytes = serialInput.read(buf, 0, buf.length);
-        } catch (IOException ev) {
-          err("Error reading from remote:\n" + ev.toString());
-          return;
-        }
-		// XXX need an appendChar() method in MyTextArea
-        String tmp = new String(buf, 0, nbytes);
-        theTextArea.append(tmp);
-		theTextArea.setCaretPosition(theTextArea.getText().length());
+          try {
+			// If the xfer program is running, stay out of its way.
+		    if (submode == S_XFER) {
+				Thread.sleep(1000);
+				continue;
+			}
+            nbytes = serialInput.read(buf, 0, buf.length);
+          } catch (IOException ev) {
+            err("Error reading from remote:\n" + ev.toString());
+            return;
+          } catch (InterruptedException e) {
+		  	// canthappen 
+		  }
+		  // XXX need an appendChar() method in MyTextArea
+          String tmp = new String(buf, 0, nbytes);
+          theTextArea.append(tmp);
+		  theTextArea.setCaretPosition(theTextArea.getText().length());
         } while (serialInput != null);
       }
     });
     serialReadThread.start();
 
+    // Finally, record the fact that we're online.
     state = S_CONNECTED;
 
   }//GEN-LAST:event_connectButtonActionPerformed
@@ -555,15 +587,26 @@ public class JModem extends javax.swing.JFrame {
   private void sendChar(char ch) {
     if (state != S_CONNECTED)
       return;
-    // theTextArea.append(ch);
-  // System.err.println("--> " + ch);
-  try {
-    serialOutput.write(ch);
-  } catch (IOException e) {
-    err("Output error on remote:\n" + e.toString() +
-      "\nClosing connection.");
-    disconnect();
+    // System.err.println("--> " + ch);
+    try {
+      serialOutput.write(ch);
+    } catch (IOException e) {
+      err("Output error on remote:\n" + e.toString() +
+        "\nClosing connection.");
+      disconnect();
+    }
   }
+
+  private void sendString(String s) {
+    if (state != S_CONNECTED)
+      return;
+    try {
+      serialOutput.write(s.getBytes());
+    } catch (IOException e) {
+      err("Output error on remote:\n" + e.toString() +
+        "\nClosing connection.");
+      disconnect();
+    }
   }
 
   /** Exit the Application */
