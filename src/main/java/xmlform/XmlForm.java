@@ -34,7 +34,7 @@ public class XmlForm {
 			XmlDocument doc = builder.getDocument();
 			if (verbose)
 				System.err.println(">>>Walking " + fileName + "...");
-			XmlFormWalker c = new ConvertToMif(doc, msg);
+			XmlFormWalker c = new ConvertToMIF(doc, msg);
 			c.convertAll();
 
 		} catch (Exception ex) {

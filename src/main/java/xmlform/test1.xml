@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
-<CH> Compiling, Running and Debugging
-	<SC>Introduction</SC>
-	<PR></PR>
-	<P>You have a problem.</P>
-	<SO></SO>
-	<P>I have the solution.</P>
-	<P>This is the text of the introduction. We learn about the 
-	<CODE>class</CODE> in Java.</P>
-	<EXAMPLE HREF="GetMark.java"></EXAMPLE>
-	<P>The <CODE>public class foo</CODE> contains lots of stuff</P>
-</CH>
+<SC>Introduction</SC>
+<PR></PR>
+<P>You have a problem.</P>
+<SO></SO>
+<P>I have the solution.</P>

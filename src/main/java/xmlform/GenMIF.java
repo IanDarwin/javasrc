@@ -6,13 +6,12 @@ import java.util.*;
 
 /**
  * Class with code to walk a tree and convert it to Maker Interchange
- * Format (MIF). Must be MIF (not MML) since, alas, MML loses named
+ * Format (MIF). Must make MIF (not MML) since, alas, MML loses named
  * character codes in input.
- * PARTLY IMPLEMENTED: need to make Walker do recursive descent of tree!!
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class ConvertToMif implements XmlFormWalker {
+public class ConvertToMIF implements XmlFormWalker {
 	/** The normal output writer */
 	protected PrintWriter msg;
 	/** Specialized PrintWriter for use by GetMark. */
@@ -25,7 +24,7 @@ public class ConvertToMif implements XmlFormWalker {
 	protected Vector indents;
 
 	/** Construct a converter object */
-	ConvertToMif(Document doc, PrintWriter pw) {
+	ConvertToMIF(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
 		smsg = new StyledWriter(msg);
@@ -49,16 +48,15 @@ public class ConvertToMif implements XmlFormWalker {
 	protected Stack tagStack = new Stack();
 	protected void startTag(String tag) {
 		++indent;
-		indent();
-		msg.println('<' + tag);
+		indent(); msg.println('<' + tag);
 		tagStack.push(tag);
 	}
 
 	protected void endTag() {
-		indent();
-		msg.println('>' + " # end of " + tagStack.pop());
+		indent(); msg.println('>' + " # end of " + tagStack.pop());
 		indent--;
 	}
+
 	/** Convert all the nodes in the current document. */
 	public void convertAll() {
 
@@ -68,7 +66,7 @@ public class ConvertToMif implements XmlFormWalker {
 			doNode(p);
 	}
 
-	public void doNode(Node p) {
+	protected void doNode(Node p) {
 		if (p instanceof com.sun.xml.tree.XmlDocument)
 			return;	// nothing to do - structural object.
 		// else if (p instanceof com.sun.xml.tree.Doctype)
@@ -85,7 +83,7 @@ public class ConvertToMif implements XmlFormWalker {
 
 	protected void doElement(Element p) {
 		String tag = p.getTagName().toLowerCase();
-		if (tag.equals("ch")) {
+		if (tag.equals("chapter")) {
 			doChapter(p);
 		} else if (tag.equals("sc")) {
 			doSection(p);
@@ -119,23 +117,26 @@ public class ConvertToMif implements XmlFormWalker {
 	}
 
 	protected void doChapter(Element p) {
-		pgfTag("<ChapterTitle>");
+		msg.println("# START OF CHAPTER");
 	}
 
 	protected void doSection(Element p) {
 		pgfTag("HeadA");
+		doChildren(p);
 		endTag();
 	}
 
 	protected void doSubSection(Element p) {
 		pgfTag("HeadB");
+		doChildren(p);
 		endTag();
 	}
 
 	protected void pgfTag(String s) {
 		startTag("Para");
-		indent();
-		msg.println("<PgfTag `" + s + "'>");
+		startTag("Pgf");
+		indent(); msg.println("<PgfTag `" + s + "'>");
+		endTag();
 	}
 
 	protected void doParagraph(Element p) {
@@ -181,7 +182,7 @@ public class ConvertToMif implements XmlFormWalker {
 		String className = myClass.getNodeValue();
 		pgfTag("Example");
 		try {
-			String cmd = "cd /javasrc; java " + className;	// XX dir should be parameter
+			String cmd = "java " + className;	// XX dir should be parameter
 			Process proc = Runtime.getRuntime().exec(cmd);
 			LineNumberReader is = new LineNumberReader(
 				new InputStreamReader(proc.getInputStream()));
@@ -194,6 +195,7 @@ public class ConvertToMif implements XmlFormWalker {
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
 		String s = p.getData().trim();
+		// System.err.println("doCData: String: " + s);
 		if (s.length() == 0)	// Sun's parser returns extra 1-space "Text"s
 			return;
 		pgfString(s);
@@ -201,7 +203,9 @@ public class ConvertToMif implements XmlFormWalker {
 
 	protected void pgfString(String s) {
 		indent();
+		startTag("ParaLine");
 		mifString("String", s);
+		endTag();
 	}
 
 	protected void doCode(Element p) {
@@ -211,17 +215,30 @@ public class ConvertToMif implements XmlFormWalker {
 	}
 	protected void doChildren(Element p) {
 		NodeList nodes = p.getChildNodes();
-		for (int i=0; i<nodes.getLength(); i++) {
+		int numElem = nodes.getLength();
+		// System.err.println("Element has " + numElem + " children");
+		for (int i=0; i<numElem; i++) {
 			Node n = nodes.item(i);
+			if (n == null) {
+				continue;
+			}
+			// System.err.println("NODE " + n.getClass());
 			if (n instanceof CharacterData) {
+				// System.err.println("\tCDATA");
 				doCData((CharacterData)n);
 				p.removeChild(n);
-			}
+			} else if (n instanceof Element) {
+				// System.err.println("\tELEMENT");
+				doChildren((Element)n);
+				p.removeChild(n);
+			} else
+				System.err.println( "Warning: unhandled child node " +
+					n.getClass());
 		}
 	}
 
 	/** Do the minumum needed to make "line" a valid MIF string. */
-	protected String mifString(String tag, String line) {
+	protected void mifString(String tag, String line) {
 		// Make new, big enough for translations
 		StringBuffer b = new StringBuffer(line.length() * 2);
 		b.append('<');
@@ -245,7 +262,7 @@ public class ConvertToMif implements XmlFormWalker {
 		b.append(' ');
 		b.append('\'');
 		b.append('>');
-		return b.toString();
+		indent(); msg.println(b.toString());
 	}
 
 	/** Simply subclass PrintWriter so we don't have to modify
