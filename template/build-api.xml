@@ -54,6 +54,7 @@
 				<classpath>
 						<pathelement location="${build}"/>
 						<pathelement location="${junit.jar}"/>
+						<pathelement location="${darwinsys.jar}"/>
 				</classpath>
 				<formatter type="plain"/>
 				<test name="regress.XXX"/>
