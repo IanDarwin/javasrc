@@ -68,18 +68,28 @@ public class SpamRat {
     public void process() {
 
 		/* and the last shall be first, and the first shall be last */
-		String last = findLastReceived(is);
-		System.out.println("First receipt = " + last);
+		findReceived(is);
+		for (int i=0; i<3; i++) {
+			String line = (String)theStack.pop();
+			System.out.println("Last-"+i+" receipt = " + line);
 
-		// Get the IP out of it. Normal lines look like:
-		// Received: from once.com (ip-pdx08-14.teleport.com [206.163.123.238])
-		//	by kim.teleport.com (8.8.5/8.7.3) with SMTP id MAA17284;
-		//	Sat, 5 Jul 1997 12:48:00 -0700 (PDT)
-		handle(last);
+			// Get the IP out of it. Normal lines look like:
+			// Received: from once.com (ip-08-14.teleport.com [206.163.123.238])
+			//	by kim.teleport.com (8.8.5/8.7.3) with SMTP id MAA17284;
+			//	Sat, 5 Jul 1997 12:48:00 -0700 (PDT)
+			try {
+				handle(line);
+			} catch (EmptyStackException e) {
+				return;
+			} catch (Exception e) {
+				System.out.println("** BOGUS ** " + e);
+			}
+		}
 	}
 
-	protected String findLastReceived(LineNumberReader is) {
-		Stack theStack = new Stack();
+	Stack theStack;
+	protected Stack findReceived(LineNumberReader is) {
+		theStack = new Stack();
         try {
             String line;
 
@@ -101,7 +111,7 @@ public class SpamRat {
 			return null;
 		}
 		Debug.println("end", "Popping " + theStack.peek());
-		return (String)theStack.pop();
+		return theStack;
     }
 
 	/** Break out lines like this:

@@ -133,9 +133,9 @@ public class MkIndex {
 			// make the link to that file, else to the directory itself.
 			if (fn.endsWith("/")) {	// directory
 				String descr = null;
-				if (new File(fn + "comment.txt").exists()) {
+				if (new File(fn + "descr.txt").exists()) {
 					descr = com.darwinsys.util.FileIO.readLine(fn + 
-						"comment.txt");
+						"descr.txt");
 				};
 				if (new File(fn + "index.html").exists())
 					mkDirLink(fn+"index.html", descr!=null?descr:fn);

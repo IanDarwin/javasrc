@@ -1,0 +1,1 @@
+CookieCutter: viewing and deleting cookies from Netscape database.

@@ -1,0 +1,1 @@
+Examples related to Java browser Applets.
