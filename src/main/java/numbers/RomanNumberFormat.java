@@ -5,11 +5,13 @@ import java.util.*;
  * Roman Number class. Not localized, since Roman's a Dead Dead Language
  * and we don't display Roman Numbers differently in different Locales.
  * Filled with quick-n-dirty algorithms.
+ *
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class RomanNumberFormat extends Format {
 
+	/** Characters used in "Arabic to Roman", that is, format() methods. */
 	static char A2R[][] = {
 			{ 0, 'M' },
 			{ 0, 'C', 'D', 'M' },
@@ -38,9 +40,10 @@ public class RomanNumberFormat extends Format {
 	/* Format the given Number as a Roman Numeral, returning the
 	 * Stringbuffer (updated), and updating the FieldPosition.
 	 * This method is the REAL FORMATTING ENGINE.
+	 * Method signature is overkill, but required as a subclass of Format.
 	 */
 	public StringBuffer format(Object on, StringBuffer sb, FieldPosition fp) {
-		if (!on instanceof Number)
+		if (!(on instanceof Number))
 			throw new IllegalArgumentException(on + " must be a Number object");
 		if (fp.getField() != NumberFormat.INTEGER_FIELD)
 			throw new IllegalArgumentException(fp + " must be FieldPosition(NumberFormat.INTEGER_FIELD");
@@ -88,8 +91,11 @@ public class RomanNumberFormat extends Format {
 
 	/** Parse a generic object, returning an Object */
 	public Object parseObject(String what, ParsePosition where) {
+		throw new IllegalArgumentException("Parsing not implemented");
 		// TODO PARSING HERE
-		return new Long(0);
+		// if (!(what instanceof String)
+		// 	throw new IllegalArgumentException(what + " must be String");
+		// return new Long(0);
 	}
 
 	/* Implement a toy stack */
