@@ -1,1 +1,1 @@
-start java -Djava.compiler=NONE WebServer
+start java -Djava.compiler=NONE Httpd

@@ -3,7 +3,7 @@ import java.net.*;
 import java.text.*;
 import java.util.*;
 
-/** Called from WebServer to handle one connection.
+/** Called from Httpd to handle one connection.
  * We are created with just a Socket, and read the
  * HTTP request, extract a name , read it (saving it
  * in Hashtable h for next time), and write it back.
@@ -18,7 +18,7 @@ public class Handler extends Thread {
 	/** outputStream, to Viewer */
 	PrintStream os;
 	/** Main program */
-	WebServer parent;
+	Httpd parent;
 	/** The default filename in a directory. */
 	final static String DEF_NAME = "/index.html";
 
@@ -28,7 +28,7 @@ public class Handler extends Thread {
 	static Hashtable h = new Hashtable();
 
 	/** Construct a Handler */
-	Handler(WebServer ws, Socket sock) {
+	Handler(Httpd ws, Socket sock) {
 		super();
 		parent = ws;
 		clntSock = sock;
@@ -114,17 +114,12 @@ public class Handler extends Thread {
 			os.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
 			os.println("<H1>Contents of directory " + rqName + "</H1>");
 			String fl[] = f.list();
-			Arrays.sort(fl);
+			// Arrays.sort(fl);
 			for (int i=0; i<fl.length; i++)
 				os.println("<BR><A HREF=\"" + fl[i] + "\">" +
-					fl[i] + "</A>");
-			os.println("<HR>");
-			os.println("<ADDRESS>Java Web Server,");
-			String myAddr = "http://www.darwinsys.com/freeware/";
-			os.println("<A HREF=\"" + myAddr + "\">" +
-				myAddr + "</A>");
-			os.println("</ADDRESS>");
-			os.println("</HTML>");
+				"<IMG ALIGN=absbottom BORDER=0 SRC=\"internal-gopher-unknown\">" +
+				' ' + fl[i] + "</A>");
+			sendEnd();
 		} else if (f.canRead()) {
 			doFile(rqName, f, headerOnly, os);
 		}
@@ -178,7 +173,7 @@ public class Handler extends Thread {
 		return guess;
 	}
 
-	/** Sends an error response, by number */
+	/** Sends an error response, by number, hopefully localized. */
 	protected void errorResponse(int errNum, String errMsg) {
 
 		// Check for localized messages
@@ -196,9 +191,17 @@ public class Handler extends Thread {
 		os.println("<HEAD><TITLE>Error " + errNum + "--" + response +
 			"</TITLE></HEAD>");
 		os.println("<H1>" + errNum + " " + response + "</H1>");
+		sendEnd();
+	}
+
+	/** Send the tail end of any page we make up. */
+	protected void sendEnd() {
 		os.println("<HR>");
-		os.println("JavaWeb 0.1");
-		os.println("<HR>");
+		os.println("<ADDRESS>Java Web Server,");
+		String myAddr = "http://www.darwinsys.com/freeware/";
+		os.println("<A HREF=\"" + myAddr + "\">" +
+			myAddr + "</A>");
+		os.println("</ADDRESS>");
 		os.println("</HTML>");
 		os.println("");
 	}

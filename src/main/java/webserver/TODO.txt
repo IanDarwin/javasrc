@@ -3,4 +3,7 @@ General:
 Handler.java:
 	BUGLET: index.html if found is not cached
 	BUG: Can't get to files in subdirectories!!
-	TODO: add images to directory listing
+	TODO: when adding images to directory listing,
+		discriminate between files and directories.
+
+

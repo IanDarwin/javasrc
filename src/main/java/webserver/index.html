@@ -4,6 +4,7 @@
    <META NAME="GENERATOR" CONTENT="The vi editor from UNIX">
    <META NAME="Author" CONTENT="Ian Darwin">
    <TITLE>A Baby Webserver in Java</TITLE>
+   <LINK REL ="stylesheet" TYPE="text/css" HREF="/stylesheet.css" TITLE="Style">
 </HEAD>
 <BODY BACKGROUND="webcrawler.gif" BGCOLOR="#c0d0e0" ALT="Ya gotta crawl...">
 <H1>A Baby Webserver in Java</H1>
@@ -11,14 +12,14 @@
 It's small and simple, threaded, and does caching.
 Lots of room to grow!
 <P>NO SECURITY (other than checking for ../ in filenames). USE AT OWN RISK.
-<P>NO CGI. NO SERVLETS. Yet.
+<P>NO CGI. Ever. NO SERVLETS. Yet.
 <P>NO CONFIGURATION to speak of. NO RECONFIGURATION - just kill & restart it.
 <P>NO claim (yet) that it's compliant with the HTTP RFC standard.
 <P>NO DOCUMENTATION YET (therefore, you are not reading this page yet :-)).
 <P>Just source code:
 <UL>
 	<LI><A HREF="legal-notice.txt">Please read these conditions of use.</A>
-	<LI><A HREF="WebServer.java">WebServer, the main class</A>
+	<LI><A HREF="Httpd.java">Httpd, the main class</A>
 	<LI><A HREF="Handler.java">Handler, threaded, created for each request</A>
 	<LI><A HREF="httpd.properties">The main config file, such as it is</A>
 	<LI><A HREF="mime.properties">The Mime Type config file.</A>
@@ -28,3 +29,5 @@ Lots of room to grow!
 	<LI>The Startup Script <A HREF="run.bat">for DOS</A> and
 		<A HREF="run.sh">for UNIX.</A>
 </UL>
+<HR>
+<P>$Id$

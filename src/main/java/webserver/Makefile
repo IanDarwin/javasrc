@@ -1,2 +1,2 @@
 all:
-	javac WebServer.java
+	javac Httpd.java Handler.java

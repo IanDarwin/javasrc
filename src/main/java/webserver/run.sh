@@ -1,2 +1,2 @@
 set -x
-java WebServer
+java Httpd

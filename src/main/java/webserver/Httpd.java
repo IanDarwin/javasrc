@@ -14,7 +14,7 @@ import java.util.*;
  *	Web Standard logfile formats.
  *	More property definitions...
  */
-public class WebServer {
+public class Httpd {
 	/** The default port number */
 	public static final int HTTP = 80;
 	/** The server socket used to connect from clients */
@@ -28,12 +28,12 @@ public class WebServer {
 
 	public static void main(String argv[]) {
 		System.out.println("DarwinSys JavaWeb Server 0.1 starting...");
-		WebServer w = new WebServer();
+		Httpd w = new Httpd();
 		w.runServer();
 		// NOTREACHED
 	}
 
-	WebServer() {
+	Httpd() {
 		super();
 		// A ResourceBundle can't load from the same basename as your class,
 		// but a simple Properties can.
@@ -50,7 +50,7 @@ public class WebServer {
 				sock = new ServerSocket(portNum);
 			}
 		} catch(NumberFormatException e) {
-			System.err.println("WebServer: \"" + portNumString +
+			System.err.println("Httpd: \"" + portNumString +
 				"\" not a valid number, unable to start server");
 			System.exit(1);
 		} catch(IOException e) {
