@@ -10,6 +10,11 @@ import javax.swing.table.*;
  * to be able to do ANYTHING to the database,
  * to go beyond, and to repair any errors introduced
  * by bugs in the UserDB code and/or queries. :-)
+ *
+ * If using InstantDB, therefore, you MUST NOT RUN THIS PROGRAM
+ * while users have access to the system, or the database will
+ * get worse instead of better!
+ *
  * @version $Id$
  */
 public class JDAdmin extends JFrame {
@@ -229,7 +234,7 @@ public class JDAdmin extends JFrame {
 			User u = (User) userList.get(row);
 			switch (col) {
 			// DB Schemas start at one, Java columns at zero.
-			case UserDB.PASSWORD-1:
+			case UserDBSchema.PASSWORD-1:
 				String newPass = (String)val;		// Get new value
 				try {
 					setPasswordStatement.setString(1, newPass);		// ready,
