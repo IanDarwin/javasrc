@@ -1,6 +1,6 @@
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class MyRequest implements HttpServletRequest {
 	/* Construct a dummy MyRequest */
