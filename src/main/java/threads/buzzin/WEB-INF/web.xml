@@ -22,7 +22,27 @@
 
     <servlet-mapping>
         <servlet-name>BuzzInServlet</servlet-name>
-        <url-pattern>/servlet/BuzzInServlet</url-pattern>
+        <url-pattern>/hosts/BuzzInServlet</url-pattern>
     </servlet-mapping>
+
+  <!-- Define the ShowHosts-only area, by defining
+   *** a "Security Constraint" on this Application,
+   *** mapping it to the subdirectory (URL) that we want to restrict.
+   -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>ShowHosts</web-resource-name>
+      <url-pattern>/hosts/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>host</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- Define the Login Configuration for this Application -->
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Show-Hosts-only Area</realm-name>
+  </login-config>
 
 </web-app>

@@ -1,12 +1,23 @@
-Run the two installers.
+Run the two installers (first java, then tomcat).
 
-Take all defaults, but for Jakarta-Tomcat, be sure to
-include the "NT Service" option.
+	Take all defaults, but for Jakarta-Tomcat, be sure to
+	include the "NT Service" option.
 
-Copy the third file, buzzin.war, to \jakarta-tomcat-4\webabbs.
+unzip the third file, buzzin.war, to \jakarta-tomcat-4\webabbs\buzzin.
+
+You have to do a bit of editing with notepad or vi:
+	1)	open TOMCAT_HOME/conf/server.xml
+		find "tomcat root context"
+		insert "tomcat-server.xml" from buzzin into the file you're editing
+		save server.xml
+
+	2)	open buzzin/WEB-INF/hosts.xml
+		add or change a password
+		(players may have seen the distributed version; remove unused!!)
+		save the file
 
 Start the tomcat service.
 
-Buzzin should be ready.
+Buzzin should be ready: visit http://yourmachine/buzzin/ to try it.
 
 Better reporting and more user friendly later.

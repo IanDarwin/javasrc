@@ -99,9 +99,6 @@ public class BuzzInServlet extends HttpServlet {
 	 * Post is used for administrative functions:
 	 * 1) to display the winner;
 	 * 2) to reset the buzzer for the next question.
-	 * <p>
-	 * In real life the password would come from a Servlet Parameter
-	 * or a configuration file, instead of being hardcoded in an "if".
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
@@ -109,10 +106,13 @@ public class BuzzInServlet extends HttpServlet {
 		ServletContext application = getServletContext();
 
 		response.setContentType("text/html");
+		HttpSession session = request.getSession();
+
 		PrintWriter out = response.getWriter();
 
-		if (request.getParameter("password").equals("syzzy")) {
-			out.println("<html><head><title>Welcome back, host</title><head>");
+		if (request.isUserInRole("host")) {
+			out.println("<html><head><title>Welcome back, " +
+				request.getUserPrincipal().getName() + "</title><head>");
 			out.println("<body bgcolor=\"white\">");
 			String command = request.getParameter("command");
 			if (command.equals("reset")) {
@@ -121,28 +121,33 @@ public class BuzzInServlet extends HttpServlet {
 				synchronized(application) {
 					application.setAttribute(WINNER, null);
 				}
-				out.println("RESET");
+				session.setAttribute("buzzin.message", "RESET");
 			} else if (command.equals("show")) {
 				String winner = null;
 				synchronized(application) {
 					winner = (String)application.getAttribute(WINNER);
 				}
 				if (winner == null) {
-					out.println("<b>No winner yet!</b>");
+					session.setAttribute("buzzin.message",
+						"<b>No winner yet!</b>");
 				} else {
-					out.println("<b>Winner is: </b>" + winner);
+					session.setAttribute("buzzin.message",
+						"<b>Winner is: </b>" + winner);
 				}
 			}
 			else {
-				out.println("<html><head><title>ERROR</title><head>");
-				out.println("<body bgcolor=\"white\">");
-				out.println("ERROR: Command " + command + " invalid.");
+				session.setAttribute("buzzin.message",
+					"ERROR: Command " + command + " invalid.");
 			}
+			RequestDispatcher rd = application.getRequestDispatcher(
+				"/hosts/index.jsp");
+			rd.forward(request, response);
 		} else {
 			out.println("<html><head><title>Nice try, but... </title><head>");
 			out.println("<body bgcolor=\"white\">");
 			out.println(
 				"I'm sorry, Dave, but you know I can't allow you to do that.");
+			out.println("Even if you are " + request.getUserPrincipal());
 		}
 		out.println("</body></html>");
 	}

@@ -1,0 +1,12 @@
+        <!-- buzzinservlet -->
+        <Context path="/buzzin"
+            docBase="buzzin" 
+			debug="0" reloadable="true">
+			<!-- Define a "Realm" to authenticate users.
+			 *** N.B. The specification that "host/*" is restricted,
+			 *** appears in the WEB-INF/web.xml file for this Context.
+			 -->
+			<Realm className="org.apache.catalina.realm.MemoryRealm"
+			pathname="webapps/buzzin/WEB-INF/hosts.xml"
+			/>
+        </Context>
