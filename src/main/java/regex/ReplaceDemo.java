@@ -19,5 +19,15 @@ public class ReplaceDemo {
 		Pattern r = Pattern.compile(patt);
 		Matcher m = r.matcher(input);
 		System.out.println(input + " --> " + m.replaceAll("daemon"));
+
+		// Show the appendReplacement method
+		m.reset();
+		StringBuffer sb = new StringBuffer("before -->");
+		m.find();
+		m.appendReplacement(sb, "stuff");	// Copy up to before first match,
+											// plus the word "stuff"
+		m.appendTail(sb);					// copy remainder
+		sb.append("<-- after");
+		System.out.println(sb.toString());
 	}
 }
