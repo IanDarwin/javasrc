@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.datatransfer.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * Demonstrate various aspects of Swing "data transfer".
@@ -15,7 +16,7 @@ public class Transfer extends JFrame {
 
 	private JTextField tf;
 	private JLabel l;
-	private JComboBox propertyNameCombo;
+	private JComboBox propertyComboBox;
 
 	public Transfer() {
 
@@ -23,20 +24,28 @@ public class Transfer extends JFrame {
 		Container cp = new Box(BoxLayout.X_AXIS);
 		setContentPane(cp);
 		JPanel firstPanel = new JPanel();
-		propertyNameCombo = new JComboBox();
-		propertyNameCombo.addItem("font");
-		propertyNameCombo.addItem("text");
-		propertyNameCombo.addItem("background");
-		propertyNameCombo.addItem("foreground");
-		firstPanel.add(propertyNameCombo);
+		propertyComboBox = new JComboBox();
+		propertyComboBox.addItem("text");
+		propertyComboBox.addItem("font");
+		propertyComboBox.addItem("background");
+		propertyComboBox.addItem("foreground");
+		firstPanel.add(propertyComboBox);
 		cp.add(firstPanel);
-		tf = new JTextField(10);
+		cp.add(Box.createGlue());
+
+		tf = new JTextField("Hello");
+		tf.setForeground(Color.RED);
 		tf.setDragEnabled(true);
 		cp.add(tf);
+
 		cp.add(Box.createGlue());
+
 		l = new JLabel("Hello");
+		l.setBackground(Color.YELLOW);
 		cp.add(l);
+
 		cp.add(Box.createGlue());
+
 		JSlider stryder = new JSlider(SwingConstants.VERTICAL);
 		stryder.setMinimum(10);
 		stryder.setMaximum(72);
@@ -45,8 +54,9 @@ public class Transfer extends JFrame {
 		setSize(500, 300);
 
 		// Add Listeners and Converters
-		mySetTransferHandlers();
+		setMyTransferHandlers((String)propertyComboBox.getSelectedItem());
 
+		// Mousing in the Label starts a Drag.
 		MouseListener myDragListener = new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				JComponent c = (JComponent)e.getSource();
@@ -55,11 +65,30 @@ public class Transfer extends JFrame {
 			}
 		};
 		l.addMouseListener(myDragListener);
+
+		// Selecting in the ComboBox makes that the property that is xfered.
+		propertyComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ce) {
+				JComboBox bx = (JComboBox)ce.getSource();
+				String prop = (String)bx.getSelectedItem();
+				setMyTransferHandlers(prop);
+			}
+		});
+
+		// Typing a word and pressing enter in the TextField tries
+		// to set that as the font name.
+		tf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				JTextField jtf = (JTextField)evt.getSource();
+				String fontName = jtf.getText();
+				Font font = new Font(fontName, Font.BOLD, 18);
+				tf.setFont(font);
+			}
+		});
 	}
 
-	private void mySetTransferHandlers() {
-		TransferHandler th = 
-			new TransferHandler((String)propertyNameCombo.getSelectedItem());
+	private void setMyTransferHandlers(String s) {
+		TransferHandler th = new TransferHandler(s);
 		tf.setTransferHandler(th);
 		l.setTransferHandler(th);
 	}
