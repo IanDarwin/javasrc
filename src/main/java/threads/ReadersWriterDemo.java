@@ -79,7 +79,7 @@ public class ReadersWriterDemo {
 			}
 		}.start();
 		
-		// In the main thread, wait a while then terminate the run. later.
+		// In the main thread, wait a while then terminate the run.
 		try {
 			Thread.sleep(10 *1000);
 		} catch (InterruptedException ex) {
