@@ -5,11 +5,11 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="jdo.jar" value="../lib/jdo.jar"/>
-	<property name="jta.jar" value="../lib/jta.jar"/>
-	<property name="jdori.jar" value="../lib/jdori.jar"/>
-	<property name="antlr.jar" value="../lib/antlr.jar"/>
-	<property name="btree.jar" value="../lib/btree.jar"/>
+	<property name="jdo.jar" value="../jars/jdo.jar"/>
+	<property name="jta.jar" value="../jars/jta.jar"/>
+	<property name="jdori.jar" value="../jars/jdori.jar"/>
+	<property name="antlr.jar" value="../jars/antlr.jar"/>
+	<property name="btree.jar" value="../jars/btree.jar"/>
 	<property name="classpath"
 		value=".:${darwinsys.jar}:${jdo.jar}:${jdori.jar}:${jta.jar}:${antlr.jar}:${btree.jar}"/>
 
@@ -20,14 +20,20 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${classpath}"/>
+			classpath="${classpath}">
+			<exclude name="CalcToken.java"/>
+			<exclude name="FormatterDemo.java"/>
+			<exclude name="ReadStdinInt15.java"/>
+			<exclude name="SimpleCalcScanner.java"/>
+			<exclude name="ScannerTest.java"/>
+		</javac>
 	</target>
 	
 	<target name="enhance" depends="build" >
  	   <java fork="true"
 			classname="com.sun.jdori.enhancer.Main"
 			classpath="${classpath}">
- 	       <arg line="-s . io/MyData.class"/>
+ 	       <arg line="-s . MyData.class"/>
 	    </java>
 	</target>
 	

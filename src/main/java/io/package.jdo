@@ -4,6 +4,6 @@
     "http://java.sun.com/dtd/jdo_1_0.dtd">
 <jdo>
     <package name="">
-        <class name="io.MyData"/>
+        <class name="MyData"/>
     </package>
 </jdo>
