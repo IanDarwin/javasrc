@@ -16,8 +16,4 @@ class Room {
 		entryMessage = inMsg;
 		exitMessage = outMsg;
 	}
-
-	public String toString() {
-		return "Room[" + north + "," + east + "," + south + "," + west + "]";
-	}
 }
