@@ -1,6 +1,9 @@
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.Address;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Store;
+import javax.mail.internet.InternetAddress;
 
 import com.darwinsys.lang.StringFormat;
 import com.darwinsys.util.FileProperties;

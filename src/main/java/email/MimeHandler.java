@@ -1,4 +1,5 @@
 import javax.activation.*;
+
 import java.awt.datatransfer.*;
 import java.io.*;
 
@@ -66,7 +67,7 @@ public class MimeHandler {
 
 		DataHandler dh = new DataHandler(ds);
 
-		dh.setDataContentHandlerFactory(new MyDataContentHandlerFactory());
+		DataHandler.setDataContentHandlerFactory(new MyDataContentHandlerFactory());
 
 		Object data = dh.getContent();
 

@@ -1,8 +1,10 @@
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /** 
  * MailtoButton -- look like a mailto, but not visible to spiders.
