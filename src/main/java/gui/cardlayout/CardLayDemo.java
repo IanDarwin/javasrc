@@ -1,3 +1,5 @@
+package cardlayout;
+
 /* CardLayout Demo: Login Applet */
 
 import java.applet.*;

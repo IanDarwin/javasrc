@@ -1,3 +1,5 @@
+package arraylisttable;
+
 /** Class to hold a name and a value from a Properties; the
  * ArrayList contains one of these per Properties entry.
  * Needs to be a non-inner class only to allow the Panel
