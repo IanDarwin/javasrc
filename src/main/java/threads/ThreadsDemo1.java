@@ -68,8 +68,8 @@ public class ThreadsDemo1 extends Thread {
 
 	/**
 	 * Construct a ThreadsDemo1 object.
-	 * @param	String m	Message to display
-	 * @param	int n		How many times to display it
+	 * @param m Message to display
+	 * @param n How many times to display it
 	 */
 	public ThreadsDemo1(String m, int n) {
 		count = n;

@@ -61,9 +61,8 @@ public class ThreadsDemo3 {
 
 	/**
 	 * Construct a ThreadDemo object
-	 *
-	 * @param	String m	Message to display
-	 * @param	int n		How many times to display it
+	 * @param m Message to display
+	 * @param n How many times to display it
 	 */
 	public ThreadsDemo3(String m, int n) {
 		count = n;

@@ -59,9 +59,8 @@ public class ThreadsDemo2 implements Runnable {
 
 	/**
 	 * Construct a ThreadDemo object
-	 *
-	 * @param	String m	Message to display
-	 * @param	int n		How many times to display it
+	 * @param m Message to display
+	 * @param n How many times to display it
 	 */
 	public ThreadsDemo2(String m, int n) {
 		count = n;
