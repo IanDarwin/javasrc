@@ -13,6 +13,14 @@ extern int errno;
  * This is the native implentation of our Java-DBM hookup.
  */
 
+/* Convenience routine: make datum into jbyteArray */
+jbyteArray datumToByteArray(JNIEnv *env, datum d) {
+
+	jbyteArray value = (*env)->NewByteArray(env, d.dsize);
+	(*env)->SetByteArrayRegion(env, value, 0, d.dsize, d.dptr);
+	return value;
+}
+
 /*
  * Method:    dbminit
  * Signature: (Ljava/lang/String;)I
@@ -99,7 +107,6 @@ JNIEXPORT jint JNICALL Java_DBM_dbmstore
 JNIEXPORT jbyteArray JNICALL Java_DBM_dbmfetch
   (JNIEnv *env, jobject this, jbyteArray key) {
 	datum k, v;
-	jbyteArray value;
 
 	// Create the C-language "datum" for "key"
 	k.dsize = (*env)->GetArrayLength(env, key);
@@ -112,11 +119,7 @@ JNIEXPORT jbyteArray JNICALL Java_DBM_dbmfetch
 		return NULL;
 	}
 
-	// printf("In fetch, found it, keylen %d, vallen %d\n", k.dsize, v.dsize);
-	value = (*env)->NewByteArray(env, v.dsize);
-	(*env)->SetByteArrayRegion(env, value, 0, v.dsize, v.dptr);
-
-	return value;
+	return datumToByteArray(env, v);
 }
 
 /*
