@@ -36,7 +36,7 @@ import java.util.Map;
  * 	public final static Direction DIRECTION_IN = new Direction("I");
  * 	/** The status value for the OUTPUT direction, that is, a file checkout or download *
  * 	public final static Direction DIRECTION_OUT = new Direction("O");
- * }
+ * }</pre>
  */
 public abstract class Enum implements Serializable {
 	/** The name of this class, set in constructor. */
@@ -44,7 +44,7 @@ public abstract class Enum implements Serializable {
 	/** The value of this instance */
 	private String value;
 
-	/** This maps from each class's Class object to its List of subclasses */
+	/** This map, shared by all subclasses, maps from each class's Class object to its List of subclasses */
 	private static Map map = new HashMap();
 	
 	/** Get the list for this Class */
@@ -70,7 +70,11 @@ public abstract class Enum implements Serializable {
 		return value;
 	}
 
-	/** Returns the given Enum instance for the given String.
+	/** Returns the given Enum instance for the given String. It is expected that the subclass will 
+	 * use this in a valueOf() method with a more narrow return type, e.g.,
+	 * <pre>public static Direction valueOf(String val) {
+	 * 	return (Direction)Enum.getValueOf(KLASSNAME, val);
+	 * }</pre>
 	 * @throws IllegalArgumentException if the input is not one of the valid values.
 	 */
 	public static Enum getValueOf(String klass, String val) {
