@@ -10,7 +10,7 @@ retests:	REtest.class
 RE.class:	Int.class Match.class
 			javac RE.java SE*.java
 
-programs:	Grep1.class
+programs:	Grep1.class Grep2.class RegUse1.class RegUse2.class REsubstr.class
 
 Grep1.class: RE.class
 
