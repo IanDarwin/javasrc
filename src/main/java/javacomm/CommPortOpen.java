@@ -19,10 +19,6 @@ public class CommPortOpen {
 	protected DataInputStream is;
 	/** The output stream */
 	protected PrintStream os;
-	/** The last line read from the serial port. */
-	protected String response;
-	/** A flag to control debugging output. */
-	protected boolean debug = true;
 	/** The chosen Port Identifier */
 	CommPortIdentifier thePortID;
 	/** The chosen Port itself */
