@@ -101,6 +101,11 @@ public class LinkChecker extends Frame implements Runnable {
 						tag.toUpperCase().startsWith("<A\t")) {
 						
 						String href = extractHREF(tag);
+
+						// Can't really validate these!
+						if (href.startsWith("mailto:"))
+							continue;
+
 						textWindow.append(href + " -- ");
 						// don't combine previous append with this one,
 						// since this one can throw an exception!
@@ -124,7 +129,7 @@ public class LinkChecker extends Frame implements Runnable {
 			inrdr.close();
 		}
 		catch (MalformedURLException e) {
-			textWindow.append("Can't parse " + pageURL);
+			textWindow.append("Can't parse " + pageURL + "\n");
 		}
 		catch (IOException e) {
 			textWindow.append("Error " + root + ":<" + e +">\n");
@@ -133,20 +138,26 @@ public class LinkChecker extends Frame implements Runnable {
 
 	/** Check one link, given its DocumentBase and the tag */
 	public String checkLink(URL baseURL, String thisURL) {
-	URL linkURL;
+		URL linkURL;
 
-    try {
-        if (thisURL.indexOf(":")  == -1) {
-          // it's not an absolute URL
-          linkURL = new URL(baseURL, thisURL);
-        } else {
-          linkURL = new URL(thisURL);
-        }
+		try {
+			if (thisURL.indexOf(":")  == -1) {
+			  // it's not an absolute URL
+			  linkURL = new URL(baseURL, thisURL);
+			} else {
+			  linkURL = new URL(thisURL);
+			}
 
-		// Open it; if the open fails we'll likely throw an exception
-		URLConnection luf = linkURL.openConnection();
-
-		// luf.close();
+			// Open it; if the open fails we'll likely throw an exception
+			URLConnection luf = linkURL.openConnection();
+			if (luf instanceof HttpURLConnection) {
+				HttpURLConnection huf = (HttpURLConnection)linkURL.openConnection();
+				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
+				if (luf.getResponseCode() == -1)
+					return "Server error: bad HTTP response";
+				return s;
+			} else
+				return "(non-HTTP)";
 		}
 		catch (MalformedURLException e) {
 			return "MALFORMED";
@@ -154,7 +165,6 @@ public class LinkChecker extends Frame implements Runnable {
 		catch (IOException e) {
 			return "DEAD";
 		}
-		return "OK";    
     }
  
 	/** Read one tag. Adapted from code by Elliott Rusty Harold */
