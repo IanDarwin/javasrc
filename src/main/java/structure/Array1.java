@@ -1,6 +1,8 @@
 import java.util.*;
 
-/** Array Examples
+/** Review examples of arrays: shows array allocation, processing,
+ * storing objects in Arrays,, two-dimensional arrays, and lengths.
+ *
  * @author Ian Darwin
  * @version $Id$
  */

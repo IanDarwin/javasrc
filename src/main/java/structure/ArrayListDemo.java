@@ -11,9 +11,9 @@ public class ArrayListDemo {
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the ArrayList...
-		al.addElement(source.getDate());
-		al.addElement(source.getDate());
-		al.addElement(source.getDate());
+		al.add(source.getDate());
+		al.add(source.getDate());
+		al.add(source.getDate());
 
 		// First print them out using a for loop.
 		System.out.println("Retrieving by index:");

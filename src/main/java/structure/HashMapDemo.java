@@ -9,16 +9,17 @@ public class HashDemo {
 		// Construct and load it.
 		Hashtable h = new Hashtable();
 		h.put("Adobe", "Mountain View, CA");
-		h.put("IBM", "White Plains, NJ");
+		h.put("IBM", "White Plains, NY");
 		h.put("Learning Tree", "Los Angeles, CA");
 		h.put("Microsoft", "Redmond, WA");
 		h.put("Netscape", "Mountain View, CA");
+		h.put("O'Reilly", "Sebastopol, CA");
 		h.put("Sun", "Mountain View, CA");
 
 		// Two versions of the "retrieval" phase.
 		// Version 1: get one pair's value given its key
 		// (presumably the key would really come from user input):
-		String queryString = "Learning Tree";
+		String queryString = "O'Reilly";
 		System.out.println("You asked about " + queryString + ".");
 		String resultString = (String)h.get(queryString);
 		System.out.println("They are located in: " + resultString);
