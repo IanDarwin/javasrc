@@ -4,10 +4,9 @@
 public class ExecDemoSimple {
 	public static void main(String av[]) throws Exception { 
 		
-		// Run the "ls" (directory lister) program
-		Process p = Runtime.getRuntime().exec("/bin/ls");
+		// Run the "notepad" program or a similar editor
+		Process p = Runtime.getRuntime().exec("kwrite");
 
 		p.waitFor();
-
 	}
 }

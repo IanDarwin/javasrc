@@ -9,6 +9,6 @@ public class ExecDemoRm {
 			new File("/tmp/ww" + i).createNewFile();
 		}
 		Runtime.getRuntime().exec("ls -l /tmp/ww? > /tmp/report");
-		// Runtime.getRuntime().exec("rm -f /tmp/ww?");
+		Runtime.getRuntime().exec("rm -f /tmp/ww?");
 	}
 }

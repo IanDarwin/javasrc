@@ -1,3 +1,5 @@
+import com.darwinsys.util.*;
+
 import java.io.*;
 
 /**
@@ -16,7 +18,7 @@ public class ExecDemoLs {
 		
 		p = Runtime.getRuntime().exec(PROGRAM);
 
-		System.out.println("In Main after exec");
+		Debug.println("exec", "In Main after exec");
 
 		// getInputStream gives an Input stream connected to 
 		// the process p's standard output (and vice versa). We use
@@ -26,7 +28,7 @@ public class ExecDemoLs {
 		while ((line = is.readLine()) != null)
 			System.out.println(line);
 		
-		System.out.println("In Main after EOF");
+		Debug.println("exec", "In Main after EOF");
 
 		return;
 	}
