@@ -13,12 +13,13 @@ import java.util.*;
  * TODO add another Thread to flash the screen if the resume time is passed.
  *
  * @author	Ian Darwin
- * @version	0.7
+ * @version	$Id$
  */
 public class BreakEnd extends Frame implements Runnable {
 	Label nowLabel;
 	Label endsLabel;
 	Thread t;
+	Font f;
 
 	/** Main method to start me up. */
 	public static void main(String av[]) {
@@ -95,9 +96,7 @@ public class BreakEnd extends Frame implements Runnable {
 		} else	mesg = "Class resumes at " + s + " ";
 		cp.add(BorderLayout.CENTER,
 			endsLabel = new Label(mesg, Label.CENTER));
-		Font f = new Font("Helvetica", Font.PLAIN, 42);
-		nowLabel.setFont(f);
-		endsLabel.setFont(f);
+		setFontSize(40);
 		Button b;
 		cp.add(BorderLayout.SOUTH, b = new Button("Done"));
 		b.addActionListener(new ActionListener() {
@@ -115,5 +114,21 @@ public class BreakEnd extends Frame implements Runnable {
 			System.exit(0);
 			}
 		});
+		addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent e) {
+				Dimension d = getSize();
+				if (d.height < 100)
+					setFontSize(72);
+				else
+					setFontSize(d.height/4);
+			}
+		});
+	}
+
+    protected void setFontSize(int sz) {
+		System.out.println("Setting font size to " + sz);
+		Font f = new Font("Helvetica", Font.PLAIN, sz);
+		nowLabel.setFont(f);
+		endsLabel.setFont(f);
 	}
 }
