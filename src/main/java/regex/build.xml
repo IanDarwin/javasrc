@@ -20,11 +20,11 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}:${junit.jar}"/>
+			classpath="${darwinsys.jar}:${junit.jar}"/>
 	</target>
 
 	<target name="REDemo" depends="build">
-		<java className="REDemo" classpath="${build}:${javacook.jar}">
+		<java className="REDemo" classpath="${build}:${darwinsys.jar}">
 		</java>
 	</target>
 

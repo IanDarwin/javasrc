@@ -14,7 +14,7 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failOnError="false"
-			classpath="${javacook.jar}:${servletapi.jar}"/>
+			classpath="${darwinsys.jar}:${servletapi.jar}"/>
 	</target>
 
 </project>

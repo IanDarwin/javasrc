@@ -13,7 +13,7 @@
 	<target name="compile">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${servletapi.jar}"
+			classpath="${darwinsys.jar}:${servletapi.jar}"
 			deprecation="true"
 			failonerror="false"
 			excludes="AppletJavaScript.java"/>
@@ -22,7 +22,7 @@
 	<target name="compile_js" if="ns.jscript">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${netscape-java.jar}"
+			classpath="${darwinsys.jar}:${netscape-java.jar}"
 			failonerror="false"
 			includes="AppletJavaScript.java"/>
 	</target>

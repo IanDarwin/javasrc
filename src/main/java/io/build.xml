@@ -12,7 +12,7 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}"/>
+			classpath="${darwinsys.jar}"/>
 	</target>
 
 </project>

@@ -16,7 +16,7 @@
 		<echo message=
 		"Ignore deprecation; it is needed until the Compiler API is public"/>
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}"
+			classpath="${darwinsys.jar}"
 			deprecation="true"
 			/>
 	</target>

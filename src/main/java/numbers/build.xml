@@ -15,7 +15,7 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${javacook.jar}:${junit.jar}"/>
+			classpath="${darwinsys.jar}:${junit.jar}"/>
 	</target>
 
 </project>

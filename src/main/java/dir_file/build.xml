@@ -10,7 +10,7 @@
 	<target name="build">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}"
+			classpath="${darwinsys.jar}"
 			deprecation="true"/>
 	</target>
 

@@ -11,7 +11,7 @@
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
-			classpath="${javacook.jar}:${bsf.jar}"/>
+			classpath="${darwinsys.jar}:${bsf.jar}"/>
 	</target>
 
 </project>

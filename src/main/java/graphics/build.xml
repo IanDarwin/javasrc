@@ -9,7 +9,7 @@
 	<!-- specify what to compile. This builds everything -->
 	<target name="build">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${jmf.jar}"
+			classpath="${darwinsys.jar}:${jmf.jar}"
 			deprecation="true"
 			excludes="JMFPlayer.java"/>
 	</target>
@@ -17,7 +17,7 @@
 	<target name="build_jmf" if="avail.jmf">
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
-			classpath="${javacook.jar}:${jmf.jar}"
+			classpath="${darwinsys.jar}:${jmf.jar}"
 			includes="JMFPlayer.java"/>
 	</target>
 

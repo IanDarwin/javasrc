@@ -17,7 +17,7 @@
 		<!-- Compile the java code from ${src} into ${build}. -->
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
-			classpath="${javacook.jar}:${junit.jar}:${regexp-jakarta.jar}"/>
+			classpath="${darwinsys.jar}:${junit.jar}:${regexp-jakarta.jar}"/>
 	</target>
 
 </project>

@@ -19,8 +19,8 @@
 	</target>
 
 	<target name="run-reveng" depends="build">
-		<java classpath=".:${javacook.jar}" className="RevEngAPI">
-			<arg value="${javacook.jar}"/>
+		<java classpath=".:${darwinsys.jar}" className="RevEngAPI">
+			<arg value="${darwinsys.jar}"/>
 		</java>
 	</target>
 

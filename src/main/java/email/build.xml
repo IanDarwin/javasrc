@@ -10,7 +10,7 @@
 	<target name="build">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${mail.jar}:${activation.jar}"
+			classpath="${darwinsys.jar}:${mail.jar}:${activation.jar}"
 			deprecation="true"
 			excludes="Alias-newstuff/**"
 			failonerror="false"/>
