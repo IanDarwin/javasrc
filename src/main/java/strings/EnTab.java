@@ -2,7 +2,7 @@ import java.io.*;
 
 import com.darwinsys.util.Debug;
 
-/** entab- replace blanks by tabs and blanks.
+/** EnTab: replace blanks by tabs and blanks.
  * Transmuted from K&R Software Tools book into C.
  * Transmuted again, years later, into Java.
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -10,7 +10,7 @@ import com.darwinsys.util.Debug;
  */
 public class EnTab {
 
-	/** Main program: just create an EnTab program, and pass
+	/** Main program: just create an EnTab object, and pass
 	 * the standard input or the named file(s) through it.
 	 */
 	public static void main(String[] argv) throws IOException {
