@@ -15,4 +15,4 @@ classes:
 		$(JAVACC) $$(ls *.java | egrep -v $$(grep -l "EXPECT COMPILE ERROR" *.java | tr '\012' '|' | sed -e 's/|$$//'))
 
 clean:
-		rm -f *.class
+		@rm -f *.class

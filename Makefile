@@ -41,6 +41,10 @@ checkpaths:
 build:
 		@for dir in $(SUBDIR); do ( cd $$dir; make -k "JAVACC=$(JAVACC)"); done
 
+clean:
+		@for dir in $(SUBDIR); do echo "===> cleaning in $$dir"; \
+			( cd $$dir; make clean ); done
+
 # For any subdirectory that doesn't already have a Makefile, create a simple one
 makefiles:
 		@for dir in $(SUBDIRS_WITH_ERROR_DEMOS); do \

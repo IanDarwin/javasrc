@@ -11,4 +11,4 @@ classes:
 		$(JAVACC) *.java
 
 clean:
-		rm -f *.class
+		@m -f *.class
