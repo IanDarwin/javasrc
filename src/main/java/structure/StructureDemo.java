@@ -7,7 +7,7 @@ import java.util.*;
 public class StructureDemo {
 
 	/** The max number of Objects to return */
-	int MAX;
+	private final int MAX;
 
 	/** Construct a StructureDemo */
 	StructureDemo(int m) {
