@@ -32,7 +32,6 @@ public class LinkChecker extends JFrame {
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		lc.setLocation(50, 50);
 		if (args.length == 0)
 			return;
 		lc.textFldURL.setText(args[0]);
