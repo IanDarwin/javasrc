@@ -31,7 +31,7 @@ public class TestDayAppt {
 		if (!a.equals(a))
 			throw new RuntimeException(
 				"a.equals(a) failed!");
-		if (!a.fromString(a.toString()).equals(a))
+		if (!Appt.fromString(a.toString()).equals(a))
 			throw new RuntimeException(
 				"fromString(toString()) not idempotent");
 

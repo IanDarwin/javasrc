@@ -1,4 +1,4 @@
-package jabadex.cal;
+package sched;
 
 public class DateSelectedEvent extends java.util.EventObject {
 	protected int yy, mm, dd;

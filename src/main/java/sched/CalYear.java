@@ -2,8 +2,7 @@ package sched;
 
 // XXX need to move "selection" logic from CalMonth to Cal
 
-import javax.swing.*;
-import java.awt.GridLayout;
+import javax.swing.JPanel;
 
 /** This CalYear is all prototype, and surely sucks performance-wise.
  */
