@@ -20,6 +20,7 @@ public class Servlet extends HttpServlet
 		// ...
 
 		// Output section in MVC: dispatch to JSP to display the work.
+		// (Remember the URL for an RD **MUST** be absolute).
 		RequestDispatcher rd = application.getRequestDispatcher("/foo.jsp");
 		rd.forward(request, response);
 
@@ -40,7 +41,7 @@ public class Servlet extends HttpServlet
 		// BOILERPLATE ending
 		out.println("</body>");
 		out.println("</html>");
-		out.close();
+		out.flush();
 
 	}
 
@@ -74,6 +75,6 @@ public class Servlet extends HttpServlet
 		// BOILERPLATE ending
 		out.println("</body>");
 		out.println("</html>");
-		out.close();
+		out.flush();
 	}
 }

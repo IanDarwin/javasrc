@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /** The AWT "Robot" class allows you to control the GUI by moving
  * the mouse, pressing the mouse, entering keys, etc.
- * IN real life it would be used to test one component from
+ * In real life it would be used to test one component from
  * a generic testing harness; here I simply use it within the class.
  * <p>
  * TODO: split into generic test harness and "gui tester".
