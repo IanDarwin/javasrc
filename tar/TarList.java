@@ -9,7 +9,11 @@ import java.util.*;
  */
 public class TarList {
 	public static void main(String argv[]) throws IOException, TarException {
-		new TarList(argv.length == 0 ? "demo.tar" : argv[0]).list();
+		if (argv.length == 0) {
+			System.err.println("Usage: TarList archive");
+			System.exit(1);
+		}
+		new TarList(argv[0]).list();
 	}
 	/** The TarFile we are reading */
 	TarFile tf;

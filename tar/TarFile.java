@@ -106,6 +106,11 @@ public class TarFile {
 
 	/** Returns the Tar entry for the specified name, or null if not found. */
 	public TarEntry getEntry(String name) {
+		for (int i=0; i<list.size(); i++) {
+			TarEntry e = (TarEntry)list.elementAt(i);
+			if (name.equals(e.getName()))
+				return e;
+		}
 		return null;
 	}
 
