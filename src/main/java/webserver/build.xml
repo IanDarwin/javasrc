@@ -20,8 +20,9 @@
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${darwinsys.jar}:${junit.jar}:${servletapi.jar}"
-			deprecation="true"
-		/>
+			deprecation="true">
+			<exclude name="HttpdConcurrent.java"/>
+		</javac>
   </target>
 
 </project>

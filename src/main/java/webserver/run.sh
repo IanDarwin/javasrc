@@ -1,2 +1,2 @@
 set -x
-java -Xmx44M Httpd $*
+java -classpath .:../jars/darwinsys.jar -Xmx44M Httpd $*

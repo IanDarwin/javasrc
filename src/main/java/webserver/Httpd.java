@@ -1,18 +1,16 @@
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Properties;
+
+import com.darwinsys.util.FileProperties;
 
 /**
  * A very very simple Web server.
- *
- * NO SECURITY. ALMOST NO CONFIGURATION.
- * NO CGI. NO SERVLETS.
- *
+ * <p>
+ * NO SECURITY. ALMOST NO CONFIGURATION. NO CGI. NO SERVLETS.
+ *<p>
  * This version is threaded. I/O is done in Handler.
- *
- * TODO
- *	Web Standard logfile formats.
- *	More property definitions...
+ * @version $Id$
  */
 public class Httpd {
 	/** The default port number */
@@ -20,13 +18,13 @@ public class Httpd {
 	/** The server socket used to connect from clients */
 	protected ServerSocket sock;
 	/** A Properties, for loading configuration info */
-	protected Properties wsp;
+	private Properties wsp;
 	/** A Properties, for loading mime types into */
-	protected Properties mimeTypes;
+	private Properties mimeTypes;
 	/** The root directory */
-	protected String rootDir;
+	private String rootDir;
 
-	public static void main(String argv[]) {
+	public static void main(String argv[]) throws Exception {
 		System.out.println("DarwinSys JavaWeb Server 0.1 starting...");
 		Httpd w = new Httpd();
 		if (argv.length == 2 && argv[0].equals("-p")) {
@@ -34,7 +32,6 @@ public class Httpd {
 		} else {
 			w.startServer(HTTP);
 		}
-
 		w.runServer();
 		// NOTREACHED
 	}
@@ -44,28 +41,27 @@ public class Httpd {
 	 * we pass that to the Handler constructor, which creates a Thread,
 	 * which we start.
 	 */
-	void runServer() {
+	void runServer() throws Exception  {
 		while (true) {
-			try {
-				Socket clntSock = sock.accept();
-				new Handler(this, clntSock).start();
-			} catch(IOException e) {
-				System.err.println(e);
-			}
+				final Socket clntSock = sock.accept();
+				Thread t = new Thread(){
+					public void run() {
+						new Handler(Httpd.this).process(clntSock);
+					}
+				};
+				t.start();
 		}
 	}
 
 	/** Construct a server object for a given port number */
-	Httpd() {
+	Httpd() throws Exception {
 		super();
-		// A ResourceBundle can't load from the same basename as your class,
-		// but a simple Properties can.
-		wsp=loadProps("httpd.properties");
+		wsp=new FileProperties("httpd.properties");
 		rootDir = wsp.getProperty("rootDir", ".");
-		mimeTypes = loadProps(wsp.getProperty("mimeProperties", "mime.properties"));
+		mimeTypes = new FileProperties(wsp.getProperty("mimeProperties", "mime.properties"));
 	}
 
-	public void startServer(int portNum) {
+	public void startServer(int portNum) throws Exception {
 		String portNumString = null;
 		if (portNum == HTTP) {
 			portNumString = wsp.getProperty("portNum");
@@ -73,36 +69,22 @@ public class Httpd {
 				portNum = Integer.parseInt(portNumString);
 			}
 		}
-		try {
-			sock = new ServerSocket(portNum);
-			System.out.println("Listening on port " + portNum);
-		} catch(NumberFormatException e) {
-			System.err.println("Httpd: \"" + portNumString +
-				"\" not a valid number, unable to start server");
-			System.exit(1);
-		} catch(IOException e) {
-			System.err.println("Network error " + e);
-			System.err.println("Unable to start server");
-			System.exit(1);
-		}
+		sock = new ServerSocket(portNum);
+		System.out.println("Listening on port " + portNum);
+	
 	}
 
-	/** Load the Properties. */
-	protected Properties loadProps(String fname) {
-		Properties sp = new Properties();
+	public String getMimeType(String type) {
+		return mimeTypes.getProperty(type);
+	}
+	public String getMimeType(String type, String dflt) {
+		return mimeTypes.getProperty(type, dflt);
+	}
+	public String getServerProperty(String name) {
+		return wsp.getProperty(name);
+	}
 
-		try {
-			// Create input file to load from.
-			FileInputStream ifile = new FileInputStream(fname);
-
-			sp.load(ifile);
-		} catch (FileNotFoundException notFound) {
-			System.err.println(notFound);
-			System.exit(1);
-		} catch (IOException badLoad) {
-			System.err.println(badLoad);
-			System.exit(1);
-		}
-		return sp;
+	public String getRootDir() {
+		return rootDir;
 	}
 }

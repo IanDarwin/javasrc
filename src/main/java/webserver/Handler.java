@@ -1,21 +1,20 @@
 import java.io.*;
 import java.net.*;
-import java.text.*;
 import java.util.*;
 
-/** Called from Httpd to handle one connection.
+import com.darwinsys.util.Debug;
+
+/** Called from Httpd in a Thread to handle one connection.
  * We are created with just a Socket, and read the
  * HTTP request, extract a name, read it (saving it
  * in Hashtable h for next time), and write it back.
  * <p>
  * TODO split into general handler stuff and "FileServlet",
  *	then handle w/ either user HttpServlet subclasses or FileServlet.
- * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class Handler extends Thread {
-	/** The Socket that we read from and write to. */
-	protected Socket clntSock;
+public class Handler {
+
 	/** inputStream, from Viewer */
 	protected BufferedReader is;
 	/** outputStream, to Viewer */
@@ -32,24 +31,19 @@ public class Handler extends Thread {
 	 */
 	private static Hashtable h = new Hashtable();
 
-	/** A sequence number for thread identification */
-	private static int n = 0;
-
-	/** Construct a Handler */
-	Handler(Httpd prnt, Socket sock) {
-		super("client thread " + ++n);
-		parent = prnt;
-		clntSock = sock;
-		// First time, put in null handler.
-		if (h.size() == 0) {
-			h.put("", "<HTML><BODY><B>Unknown server error".getBytes());
-		}
+	static {
+		h.put("", "<html><body><b>Unknown server error</b>".getBytes());
 	}
 
+	/** Construct a Handler */
+	Handler(Httpd parent) {
+		this.parent = parent;
+	}
+	
 	protected static final int RQ_INVALID = 0, RQ_GET = 1, RQ_HEAD = 2,
 		RQ_POST = 3; 
 
-	public void run() {
+	public void process(Socket clntSock) {
 		String request;		// what Viewer sends us.
 		int methodType = RQ_INVALID;
 		try {
@@ -91,7 +85,7 @@ public class Handler extends Thread {
 					if ((ix=hdrLine.indexOf(':')) != -1) {
 						String hdrName = hdrLine.substring(0, ix);
 						String hdrValue = hdrLine.substring(ix+1).trim();
-						System.out.println("hdr("+hdrName+","+hdrValue+")");
+						Debug.println("hdr", hdrName+","+hdrValue);
 						map.put(hdrName, hdrValue);
 					} else {
 						System.err.println("INVALID HEADER: " + hdrLine);
@@ -140,7 +134,7 @@ public class Handler extends Thread {
 			content = (byte[])o;
 			System.out.println("Using cached file " + rqName);
 			sendFile(rqName, headerOnly, content, os);
-		} else if ((f = new File(parent.rootDir + rqName)).isDirectory()) {
+		} else if ((f = new File(parent.getRootDir() + rqName)).isDirectory()) {
 			// Directory with index.html? Process it.
 			File index = new File(f, DEF_NAME);
 			if (index.isFile()) {
@@ -175,9 +169,9 @@ public class Handler extends Thread {
 		String fl[] = dir.list();
 		Arrays.sort(fl);
 		for (int i=0; i<fl.length; i++)
-			os.println("<BR><A HREF=\"" + fl[i] + "\">" +
-			"<IMG ALIGN=absbottom BORDER=0 SRC=\"internal-gopher-unknown\">" +
-			' ' + fl[i] + "</A>");
+			os.println("<br/><a href=\"" + fl[i] + "\">" +
+			"<img align='center' border='0' src=\"/images/file.jpg\">" +
+			' ' + fl[i] + "</a>");
 	}
 
 	/** Send one file, given a File object. */
@@ -208,7 +202,8 @@ public class Handler extends Thread {
 
 	/** The type for unguessable files */
 	final static String UNKNOWN = "unknown/unknown";
-	String guessMime(String fn) {
+	
+	protected String guessMime(String fn) {
 		String lcname = fn.toLowerCase();
 		int extenStartsAt = lcname.lastIndexOf('.');
 		if (extenStartsAt<0) {
@@ -217,10 +212,7 @@ public class Handler extends Thread {
 			return UNKNOWN;
 		}
 		String exten = lcname.substring(extenStartsAt);
-		String guess = parent.mimeTypes.getProperty(exten, UNKNOWN);
-
-		// System.out.println("guessMime: input " + fn + 
-		// 	", extention " + exten + ", result " + guess);
+		String guess = parent.getMimeType(exten, UNKNOWN);
 
 		return guess;
 	}
@@ -239,22 +231,22 @@ public class Handler extends Thread {
 		os.println("HTTP/1.0 " + errNum + " " + response);
 		os.println("Content-type: text/html");
 		os.println();
-		os.println("<HTML>");
-		os.println("<HEAD><TITLE>Error " + errNum + "--" + response +
-			"</TITLE></HEAD>");
-		os.println("<H1>" + errNum + " " + response + "</H1>");
+		os.println("<html>");
+		os.println("<head><title>Error " + errNum + "--" + response +
+			"</title></head>");
+		os.println("<h1>" + errNum + " " + response + "</h1>");
 		sendEnd();
 	}
 
 	/** Send the tail end of any page we make up. */
 	protected void sendEnd() {
-		os.println("<HR>");
-		os.println("<ADDRESS>Java Web Server,");
+		os.println("<hr>");
+		os.println("<address>Java Web Server,");
 		String myAddr = "http://www.darwinsys.com/freeware/";
-		os.println("<A HREF=\"" + myAddr + "\">" +
-			myAddr + "</A>");
-		os.println("</ADDRESS>");
-		os.println("</HTML>");
+		os.println("<a href=\"" + myAddr + "\">" +
+			myAddr + "</a>");
+		os.println("</address>");
+		os.println("</html>");
 		os.println();
 	}
 }
