@@ -82,8 +82,10 @@ public class proxy {
 					os.println(aline);
 				}
 				is.close();
+				from.close();
 				os.flush();
 				os.close();
+				to.close();
 			} catch (IOException e) {
 				throw new IllegalArgumentException(e.toString());
 			}
