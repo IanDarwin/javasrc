@@ -32,16 +32,21 @@ public class CrossRef {
 	public static void main(String argv[]) {
 		CrossRef xref = new CrossRef();
 
-		String s = System.getProperties().getProperty("java.class.path");
-		// System.err.println("ClassPath is " + s);
-		String pathSep = System.getProperties().getProperty("path.separator");
-		StringTokenizer st = new StringTokenizer(s, pathSep);
-		while (st.hasMoreTokens()) {
-			String cand = st.nextToken();
-			// System.err.println("Trying path " + cand);
-			if (cand.endsWith(".zip"))
-				xref.processOneZip(cand);
-		}
+		if (argv.length == 0) {
+			String s = System.getProperties().getProperty("java.class.path");
+			// System.err.println("ClassPath is " + s);
+			String pathSep = System.getProperties().
+				getProperty("path.separator");
+			StringTokenizer st = new StringTokenizer(s, pathSep);
+			while (st.hasMoreTokens()) {
+				String cand = st.nextToken();
+				System.err.println("Trying path " + cand);
+				if (cand.endsWith(".zip") || cand.endsWith(".jar"))
+					xref.processOneZip(cand);
+			}
+		} else for (int i=0; i<argv.length; i++)
+			xref.processOneZip(argv[i]);
+
 		System.err.println("All done! Found " + n + " entries.");
 		System.exit(0);
 	}
@@ -64,13 +69,15 @@ public class CrossRef {
 	/** Format the fields and methods of one class, given its name.
 	 */
 	protected void doClass(String zipName) {
+		if (System.getProperties().getProperty("debug.names") != null)
+			System.out.println("doClass(" + zipName + ");");
 		// Ignore package/directory, other odd-ball stuff.
 		if (!zipName.endsWith(".class")) {
 			System.err.println("Not a class: " + zipName);
 			return;
 		}
 		// Ignore sun.* etc.
-		if (!zipName.startsWith("java/")){
+		if (!zipName.startsWith("java")){
 			return;
 		}
 	
@@ -80,8 +87,9 @@ public class CrossRef {
 		//	java.lang.Math
 		String className = zipName.replace(/, .).
 			substring(0, zipName.length() - 6);	// 6 for ".class"
-		// System.err.println("ZipName " + zipName + 
-		//	"; className " + className);
+		if (System.getProperties().getProperty("debug.names") != null)
+			System.err.println("ZipName " + zipName + 
+				"; className " + className);
 		try {
 			Class c = Class.forName(className);
 			printClass(c);
