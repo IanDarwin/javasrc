@@ -2,7 +2,7 @@ import java.util.Date;
 
 /**
  * Linked list class
- *
+ * @deprecated	Supplanted by java.util.LinkList
  * @author	Ian Darwin, ian@darwinsys.com
  */
 public class LinkList {
