@@ -5,7 +5,8 @@
 	<P>You have a problem.</P>
 	<SO></SO>
 	<P>I have the solution.</P>
-	<P>This is the text of the introduction...</P>
+	<P>This is the text of the introduction. We learn about the 
+	<CODE>class</CODE> in Java.</P>
 	<EXAMPLE HREF="GetMark.java"></EXAMPLE>
 	<P>The <CODE>public class foo</CODE> contains lots of stuff</P>
 </CH>

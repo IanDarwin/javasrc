@@ -5,23 +5,26 @@ import com.sun.xml.tree.*;
 
 /**
  * Class with code to walk a tree and convert it to MML (not MIF).
- * TODO: 1) put <TblCell> around each line read from GetMark.
- *	2) Handle code in CODE paragraphs.
+ * TODO: Need to use MIF (not MML), alas, since MML loses named
+ * character codes in input (Check current docco first through).
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class ConvertToMif implements XmlFormWalker {
 	/** The normal output writer */
 	PrintWriter msg;
+	/** Specialized PrintWriter for use by GetMark. */
+	StyledWriter smsg;
 	/** A tree walker object for walking the tree */
 	TreeWalker tw;
 	/** A GetMark converter for source code. */
 	GetMark gm = new GetMark();
 
 	/** Construct a converter object */
-	ConvertToMif(Document doc, PrintWriter msg) {
+	ConvertToMif(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
-		this.msg = msg;
+		msg = new PrintWriter(pw);
+		smsg = new StyledWriter(msg);
 	}
 	/** Convert all the nodes in the current document. */
 	public void convertAll() {
@@ -98,7 +101,7 @@ public class ConvertToMif implements XmlFormWalker {
 		try {
 			fname = "/javasrc/" + fname;
 			LineNumberReader is = new LineNumberReader(new FileReader(fname));
-			gm.process(fname, is, msg);
+			gm.process(fname, is, smsg);
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
@@ -112,6 +115,27 @@ public class ConvertToMif implements XmlFormWalker {
 	}
 
 	protected void doCode(Element p) {
-		msg.println("<Code>");
+		msg.print("<Code>");
+		NodeList nodes = p.getChildNodes();
+		for (int i=0; i<nodes.getLength(); i++) {
+			Node n = nodes.item(i);
+			if (n instanceof CharacterData) {
+				doCData((CharacterData)n);
+				p.removeChild(n);
+			}
+		}
+		msg.print("<Plain>");
+	}
+	/** Simply subclass PrintWriter so we don't have to modify
+	 * GetMark to change the format of lines that it writes, or
+	 * resort to other kluges like passing it a prefix and/or suffix.
+	 */
+	public class StyledWriter extends PrintWriter {
+		public StyledWriter(PrintWriter p) {
+			super(p, true);
+		}
+		public void println(String s) {
+			super.println("<CellBody>" + s);
+		}
 	}
 }

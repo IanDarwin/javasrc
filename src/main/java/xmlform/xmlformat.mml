@@ -1,6 +1,9 @@
 <MML 1.00 - Formats for XmlForm>
 <Comment *** $Id$
 >
+<!DefineFont Plain
+	<Family	Garamond>
+>
 <!DefineFont Code
 	<Family	Courier>
 >
@@ -8,22 +11,26 @@
 	<Family	Courier>
 >
 <!DefinePar ChapterTitle
-	<Family	Times>
+	<Family	Garamond>
 	<pts	18>
 	<Bold>
 >
 <!DefinePar HeadA
-	<Family	Times>
+	<Family	Garamond>
 	<pts	14>
 	<Bold>
 >
 <!DefinePar HeadB
-	<Family	Times>
+	<Family	Garamond>
 	<pts	12>
 	<Bold>
 >
 <!DefinePar Body
-	<Family	Times>
+	<Family	Garamond>
 	<pts	10>
 	<Plain>
+>
+<!DefinePar CellBody
+	<Code>
+	<pts	9>
 >

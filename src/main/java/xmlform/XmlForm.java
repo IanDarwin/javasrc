@@ -11,7 +11,7 @@ public class XmlForm {
 	protected Reader is;
 	protected String fileName;
 
-	static PrintWriter msg = new PrintWriter(System.out, true);
+	protected static PrintWriter msg = new PrintWriter(System.out, true);
 
 	/** Construct a converter given an input filename */
 	public XmlForm(String fn) {
@@ -53,5 +53,6 @@ public class XmlForm {
 			String name = av[i];
 			new XmlForm(name).convert(true);
 		}
+		msg.close();
 	}
 }
