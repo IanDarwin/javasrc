@@ -8,44 +8,52 @@ import java.awt.event.*;
  * @version $Id$
  */
 public class GetNumber extends Frame {
-	/** The textfield to enter */
-	protected TextField textField;
-	/** The value, if a double */
-	protected double dvalue = 0d;
-	/** The value, if int */
-	protected int ivalue = 0;
 
+	/** The input textField */
+	private TextField textField;
+	/** The results area */
+	private TextField statusLabel;
+
+	/** Constructor: set up the GUI */
 	public GetNumber() {
-		setLayout(new FlowLayout());
-		add(new Label("Number:"));
-		add(textField = new TextField(10));
+		Panel p = new Panel();
+		p.add(new Label("Number:"));
+		p.add(textField = new TextField(10));
+		add(BorderLayout.NORTH, p);
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String s = textField.getText();
-				//+
-				System.out.println("Input is " + s);
-				if (s.indexOf('.') >0 ||
-					s.indexOf('d') >0 || s.indexOf('e') >0)
-					try {
-						dvalue = Double.parseDouble(s);
-						System.out.println("It's a double: " + dvalue);
-						return;
-					} catch (NumberFormatException e) {
-						System.out.println("Invalid a double: " + s);
-						return;
-					}
-				else // did not contain . or d or e, so try as int.
-					try {
-						ivalue = Integer.parseInt(s);
-						System.out.println("It's an int: " + ivalue);
-						return;
-					} catch (NumberFormatException e2) {
-						System.out.println("Not a number:" + s);
-					}
-				}
-				//-
+				statusLabel.setText(process(s).toString());
+			}
 		});
+		add(BorderLayout.SOUTH, statusLabel = new TextField(10));
 		pack();
+	}
+
+	private static Number NAN = new Double(Double.NaN);
+
+	/* Process one String, returning it as a Number subclass
+	 * Does not require the GUI.
+	 */
+	public Number process(String s) {
+		if (s.matches(".*[.dDeEfF]")) {
+			try {
+				double dValue = Double.parseDouble(s);
+				System.out.println("It's a double: " + dValue);
+				return new Double(dValue);
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid a double: " + s);
+				return NAN;
+			}
+		} else // did not contain . d e or f, so try as int.
+			try {
+				int iValue = Integer.parseInt(s);
+				System.out.println("It's an int: " + iValue);
+				return new Integer(iValue);
+			} catch (NumberFormatException e2) {
+				System.out.println("Not a number:" + s);
+				return NAN;
+			}
 	}
 
 	public static void main(String[] ap) {
