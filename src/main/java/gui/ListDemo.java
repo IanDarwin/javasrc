@@ -1,7 +1,8 @@
 import java.awt.*;
 
-// Demonstrate ScrollingList
-
+/** Demonstrate old AWT ScrollingList.
+ * Note: You should normally use a Swing JList instead.
+ */
 public class ListDemo extends Frame {
 	List list = null;
 

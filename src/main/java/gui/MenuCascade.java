@@ -69,7 +69,7 @@ public class MenuCascade extends JFrame {
 		mb.add(hm);
 
 		// the main window
-		cp.add(new JLabel("Menu Demo Window", 200, 150));
+		cp.add(new MyCanvas("Menu Demo Window", 200, 150));
 		pack();
 	}
 

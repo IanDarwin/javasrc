@@ -49,7 +49,7 @@ public class FileTree extends JPanel
 		String[] tmp = dir.list();
 		for (int i=0; i<tmp.length; i++)
 			ol.addElement(tmp[i]);
-		Collections.sort(ol, new StringIgnoreCaseComparator());
+		Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);
 		File f;
 		Vector files = new Vector();
 		// Make two passes, one for Dirs and one for Files. This is #1.

@@ -2,7 +2,9 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/** Demonstrate use of two buttons, using a single ActionListener */
+/** Demonstrate use of two buttons, using a single ActionListener,
+ * being the class itself.
+ */
 public class ButtonDemo2a extends Applet implements ActionListener {
 	Button b1, b2;
 

@@ -12,6 +12,10 @@ class MyCanvas extends JLabel {
 	protected int pad;
 	protected Color col = Color.white;
 
+	MyCanvas(int w, int h) {
+		this("", w, h);
+	}
+
 	MyCanvas(String l, int w, int h) {
 		super(l, JLabel.CENTER);
 		width = w; height = h;

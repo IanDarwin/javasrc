@@ -278,7 +278,7 @@ public class Unicode extends JFrame {
 			can = new Button("Cancel");
 			can.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					hide();
+					setVisible(false);
 				}
 			});
 
@@ -293,7 +293,7 @@ public class Unicode extends JFrame {
 					}
 					if (n >= 0 && n <= 255) {
 						gotoPage(startNum = n*QUADSIZE);
-						hide();
+						setVisible(false);
 					} else
 						Toolkit.getDefaultToolkit().beep();
 				}

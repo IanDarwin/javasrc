@@ -8,7 +8,7 @@ import java.io.*;
  * @author	Ian Darwin, ian@darwinsys.com
  * @version	$Id$
  */
-public class ProgMeterStrmDemo extends JFrame implements Runnable {
+public class ProgressMeterStrmDemo extends JFrame implements Runnable {
 
 	public void readTheFile() throws IOException {
 		// OK, we're going to read a file. Do it...
@@ -48,14 +48,14 @@ public class ProgMeterStrmDemo extends JFrame implements Runnable {
 		}
 	}
 
-	public ProgMeterStrmDemo() {
+	public ProgressMeterStrmDemo() {
 		new Thread(this).start();
 	}
 
 	public static void main(String[] av) {
-		ProgMeterStrmDemo demo = new ProgMeterStrmDemo();
+		ProgressMeterStrmDemo demo = new ProgressMeterStrmDemo();
 		demo.setSize(100, 100);
-		demo.getContentPane().add(new JLabel("ProgMeterStrmDemo"));
+		demo.getContentPane().add(new JLabel("ProgressMeterStrmDemo"));
 		demo.pack();
 		demo.setVisible(true);
 
