@@ -1,6 +1,4 @@
 import java.util.Formatter;
-import java.util.Date;
-import java.util.Calendar;
 
 /** Demonstrate some usage patterns and format-code examples 
  * of the Formatter class (new in J2SE 1.5).
@@ -21,14 +19,14 @@ public class FormatterDemo {
 		Object result = fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
 		System.out.println(result);
 
-		// A shorter way of doing things.
-		System.out.println(fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI));
-
-		// Even shorter, except that this way you must
-		// explicitly add the newline delimiter
+		// A shorter way of doing things. But this
+		// way you must provide the newline delimiter
 		System.out.format("%1$04d - the year of %2$f%n", 1951, Math.PI);
 
 		// So is this
 		System.out.printf("%1$04d - the year of %2$f%n", 1951, Math.PI);
+
+		// Format doubles with more control
+		System.out.printf("PI is about %1$4.2f", Math.PI);
 	}
 }
