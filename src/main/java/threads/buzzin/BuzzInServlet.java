@@ -48,7 +48,7 @@ public class BuzzInServlet extends HttpServlet {
 			out.println("<b>YOU GOT IT</b>");
 			getServletContext().log("BuzzInServlet: WINNER " +
 				request.getRemoteUser());
-			// TODO - output HTML to play a sound file
+			// TODO - output HTML to play a sound file :-)
 		} else {
 				out.println("Thanks for playing, " + request.getRemoteAddr());
 				out.println(", but " + winner + " buzzed in first");
@@ -79,15 +79,13 @@ public class BuzzInServlet extends HttpServlet {
 				// Synchronize what you need, no more, no less.
 				synchronized(this) {
 					buzzed = false;
+					winner = null;
 				}
 				out.println("RESET");
 			} else if (command.equals("show")) {
-				// Is this unnecessarily paranoid?
-				String w;
 				synchronized(this) {
-					w = winner;
+					out.println("<b>Winner is: </b>" + winner);
 				}
-				out.println("<b>Winner is: </b>" + w);
 			}
 			else {
 				out.println("<html><head><title>ERROR</title><head>");
