@@ -46,7 +46,10 @@
  */
 public class AutoSave extends Thread {
 	/** The FileSave interface is implemented by the main class. */
-	FileSaver model;
+	protected FileSaver model;
+	/** How long to sleep between tries */
+	public static final int MINUTES = 5;
+	private static final int SECONDS = MINUTES * 60;
 
 	public AutoSave(FileSaver m) {
 		super("AutoSave Thread");
@@ -57,7 +60,7 @@ public class AutoSave extends Thread {
 	public void run() {
 		while (true) {		// entire run method runs forever.
 			try {
-				sleep(30*1000);
+				sleep(SECONDS*1000);
 			} catch (InterruptedException e) {
 				// do nothing with it
 			}
