@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Tue Mar 16 03:18:15 GMT 1999*/
+/* DO NOT EDIT */
+
+grant codeBase "file:///C:/" {
+  permission java.net.SocketPermission "server:80", "connect";
+};
+
