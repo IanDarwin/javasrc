@@ -20,13 +20,14 @@ public class BSDDriver implements CommDriver {
 		System.out.println("BSDDriver.initialize()");
 		System.loadLibrary("bsdcommio");
 
-		/* Now register port names with CommPortIdentifier */
+		// Now register port names with CommPortIdentifier.
+		// XX This ought to be loaded from a Proprties file.
 		CommPortIdentifier.addPortName("Serial 1",
-					CommPortIdentifier.PORT_SERIAL, this);
+				CommPortIdentifier.PORT_SERIAL, this);
 		CommPortIdentifier.addPortName("Serial 2",
-					CommPortIdentifier.PORT_SERIAL, this);
-		// CommPortIdentifier.addPortName("lpr",
-		//			CommPortIdentifier.PORT_PARALLEL, this);
+				CommPortIdentifier.PORT_SERIAL, this);
+		CommPortIdentifier.addPortName("lpr",
+				CommPortIdentifier.PORT_PARALLEL, this);
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class BSDDriver implements CommDriver {
 					thePort = (CommPort) new BSDSerialPort(portName);
 				break;
 				case CommPortIdentifier.PORT_PARALLEL:
-					throw new IOException("Parallel not written yet");
+					thePort = (CommPort) new BSDParallelPort(portName);
 			}
 		} catch (Exception ex) {
 			throw new IllegalArgumentException(ex.toString());
