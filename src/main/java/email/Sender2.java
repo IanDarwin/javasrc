@@ -1,3 +1,4 @@
+import com.darwinsys.util.*;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
@@ -113,19 +114,19 @@ public class Sender2 {
 				switch(c) {
 				case 'h':
 					// XXX sm.setMailHost();
-					sm.props.put("mail.smtp.host", go.optarg);
+					sm.props.put("mail.smtp.host", go.optarg());
 					break;
 				case 't':
-					sm.addRecipient(go.optarg);
+					sm.addRecipient(go.optarg());
 					break;
 				case 'c':
-					sm.addCCRecipient(go.optarg);
+					sm.addCCRecipient(go.optarg());
 					break;
 				case 'f':
-					sm.setFrom(go.optarg);
+					sm.setFrom(go.optarg());
 					break;
 				case 's':
-					sm.setSubject(go.optarg);
+					sm.setSubject(go.optarg());
 					break;
 				default:
 					System.err.println("Unknown option character " + c);

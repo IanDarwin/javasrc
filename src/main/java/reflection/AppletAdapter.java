@@ -5,10 +5,9 @@ import java.net.*;
 import java.util.*;
 
 /*
- * Browser5 - AppletAdaptor, partial solution to Exercise 8.1, AppletViewer.
+ * AppletAdaptor: partial implementation of AppletStub and AppletContext.
  *
- * This code should not need to be modified; only write your Browser
- * code to instantiate and use this puppy.
+ * This code is far from finished, as you will see.
  *
  * @author	Ian Darwin, ian@darwinsys.com, for Learning Tree Course 478
  */
@@ -30,7 +29,6 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		showStatus("AppletAdapter constructed");	// now it can be said
 	}
 
-
 	/****************** AppletStub ***********************/
 	/** Called when the applet wants to be resized.  */
 	public void appletResize(int w, int h) {
@@ -44,14 +42,14 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 
 	/** Gets the base URL.  */
 	public URL getCodeBase() {
-		//return new URL("file:.");
-		return null;
+		return getClass().getResource(".");
 	}
+
 	/** Gets the document URL.  */
 	public URL getDocumentBase() {
-		//return new URL("file:.");
-		return null;
+		return getClass().getResource(".");
 	}
+
 	/** Returns the value of the named parameter in the HTML tag.  */
 	public String getParameter(String name) {
 		String value = null;

@@ -12,8 +12,7 @@ import java.lang.reflect.*;
  * with sort and awk/perl. Try: 
 	java CrossRef | 
 		uniq | # squeeze out polymorphic forms early
-		grep ' method ' |
-		sort | awk '{ ... }' > crossref-methods.txt
+		sort | awk '$2=="method" { ... }' > crossref-methods.txt
  * The part in "{ ... }" is left as an exercise for the reader. :-(
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
@@ -21,31 +20,45 @@ import java.lang.reflect.*;
  */
 public class CrossRef {
 	/** Counter of fields/methods printed. */
-	static int n = 0;
+	protected static int n = 0;
 
 	/** A "Modifier" object, to decode modifiers of fields/methods */
-	Modifier m = new Modifier();
+	protected Modifier m = new Modifier();
 
+	/** True if we are doing classpath, so only do java. and javax. */
+	protected static boolean doingStandardClasses = true;
+	
 	/** Simple main program, construct self, process each .ZIP file
-	 * found in CLASSPATH.
+	 * found in CLASSPATH or in argv.
 	 */
 	public static void main(String[] argv) {
 		CrossRef xref = new CrossRef();
 
+		xref.doArgs(argv);
+	}
+
+	protected void doArgs(String[] argv) {
+
 		if (argv.length == 0) {
+			// No arguments, look in CLASSPATH
 			String s = System.getProperties().getProperty("java.class.path");
-			// System.err.println("ClassPath is " + s);
+			//  break apart with path sep.
 			String pathSep = System.getProperties().
 				getProperty("path.separator");
 			StringTokenizer st = new StringTokenizer(s, pathSep);
+			// Process each classpath
 			while (st.hasMoreTokens()) {
 				String cand = st.nextToken();
 				System.err.println("Trying path " + cand);
 				if (cand.endsWith(".zip") || cand.endsWith(".jar"))
-					xref.processOneZip(cand);
+					processOneZip(cand);
 			}
-		} else for (int i=0; i<argv.length; i++)
-			xref.processOneZip(argv[i]);
+		} else {
+			// We have arguments, process them as zip files
+			doingStandardClasses = false;
+			for (int i=0; i<argv.length; i++)
+				processOneZip(argv[i]);
+		}
 
 		System.err.println("All done! Found " + n + " entries.");
 		System.exit(0);
@@ -53,16 +66,27 @@ public class CrossRef {
 
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String classes) {
+			ArrayList entries = new ArrayList();
+
 			try {
 				ZipFile zippy = 
-				new ZipFile(new File(classes));
+					new ZipFile(new File(classes));
 				Enumeration all = zippy.entries();
+				// For each entry, get its name and put it into "entries"
 				while (all.hasMoreElements()) {
-					doClass(((ZipEntry)(all.nextElement())).getName());
+					entries.add(((ZipEntry)(all.nextElement())).getName());
 				}
 			} catch (IOException err) {
 				System.err.println("IO Error: " + err);
 				return;
+			}
+
+			// Sort the entries (by class name)
+			Collections.sort(entries);
+
+			// Process the entries
+			for (int i=0; i< entries.size(); i++) {
+				doClass((String)entries.get(i));
 			}
 	}
 
@@ -71,21 +95,27 @@ public class CrossRef {
 	protected void doClass(String zipName) {
 		if (System.getProperties().getProperty("debug.names") != null)
 			System.out.println("doClass(" + zipName + ");");
+
 		// Ignore package/directory, other odd-ball stuff.
 		if (zipName.endsWith("/")) {
 			System.err.println("Starting directory " + zipName);
 			return;
 		}
+		// Ignore META-INF stuff
+		if (zipName.startsWith("META-INF/")) {
+			return;
+		}
+		// Ignore images, HTML, whatever else we find.
 		if (!zipName.endsWith(".class")) {
 			System.err.println("Ignoring " + zipName);
 			return;
 		}
-		// Ignore sun.* etc.
-		if (!zipName.startsWith("java")){
+		// If doing CLASSPATH, Ignore com.sun.* which are "internal API".
+		if (doingStandardClasses && zipName.startsWith("com.sun")){
 			return;
 		}
 	
-		// Convert the zip file entry, like
+		// Convert the zip file entry name, like
 		//	java/lang/Math.class
 		// to a class name like
 		//	java.lang.Math
@@ -113,16 +143,20 @@ public class CrossRef {
 	 */
 	protected void printClass(Class c) {
 		int i, mods;
+		startClass(c);
 		try {
-			Field fields[] = c.getFields();
+			Object[] fields = c.getFields();
+			Arrays.sort(fields);
 			for (i = 0; i < fields.length; i++) {
-				if (!m.isPrivate(fields[i].getModifiers())
-				 && !m.isProtected(fields[i].getModifiers()))
-					putField(fields[i], c);
-				else System.err.println("pvt: " + fields[i]);
+				Field field = (Field)fields[i];
+				if (!m.isPrivate(field.getModifiers())
+				 && !m.isProtected(field.getModifiers()))
+					putField(field, c);
+				else System.err.println("private field ignored: " + field);
 			}
 
-			Method methods[] = c.getMethods();
+			Method methods[] = c.getDeclaredMethods();
+			// Arrays.sort(methods);
 			for (i = 0; i < methods.length; i++) {
 				if (!m.isPrivate(methods[i].getModifiers())
 				 && !m.isProtected(methods[i].getModifiers()))
@@ -132,6 +166,7 @@ public class CrossRef {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
+		endClass();
 	}
 
 	/** put a Field's information to the standard output.
@@ -142,21 +177,25 @@ public class CrossRef {
 		++n;
 	}
 	/** put a Method's information to the standard output.
-	 * Ignores ubiquitous methods listed in the "if" statement.
 	 * Marked protected so you can override it (hint, hint).
 	 */
-	protected void putMethod(Method meth, Class c) {
-		String methName = meth.getName();
-		if (methName.equals("wait") ||
-			methName.equals("notify") ||
-			methName.equals("toString"))
-			return;
+	protected void putMethod(Method method, Class c) {
+		String methName = method.getName();
 		println(methName + " method " + c.getName() + " ");
 		++n;
 	}
+	/** Print the start of a class. Unused in this version,
+	 * designed to be overridden */
+	protected void startClass(Class c) {
+	}
+
+	/** Print the end of a class. Unused in this version,
+	 * designed to be overridden */
+	protected void endClass() {
+	}
 
 	/** Convenience routine, short for System.out.println */
-	private final void println(String s) {
+	protected final void println(String s) {
 		System.out.println(s);
 	}
 }

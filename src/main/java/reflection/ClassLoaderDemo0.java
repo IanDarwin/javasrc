@@ -9,6 +9,7 @@ import java.util.*;
 public class ClassLoaderDemo0 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable cache = new Hashtable();
+
 	/** INSERT HERE THE RESULT OF DUMPING DEMO.CLASS */
 
 	/** END OF INSERTION OF THE RESULT OF DUMPING DEMO.CLASS */

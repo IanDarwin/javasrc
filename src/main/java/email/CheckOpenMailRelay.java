@@ -1,3 +1,4 @@
+import com.darwinsys.util.*;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;

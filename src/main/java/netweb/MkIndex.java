@@ -27,9 +27,9 @@ public class MkIndex {
 	File dirFile;
 
 	/** Make an index */
-	public static void main(String[] av) throws IOException {
+	public static void main(String[] args) throws IOException {
 		MkIndex mi = new MkIndex();
-		String inDir = av.length > 0 ? av[0] : ".";
+		String inDir = args.length > 0 ? args[0] : ".";
 		mi.open(inDir, OUTPUTFILE);		// open files
 		mi.BEGIN();		// print HTML header
 		mi.process();		// do bulk of work
