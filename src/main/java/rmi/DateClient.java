@@ -13,7 +13,7 @@ public class DateClient {
 		try {
 			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
 			Date today = netConn.getRemoteDate();
-			System.out.println(today.toString()); // XX use a DateFormat...
+			System.out.println(today.toString()); // Could use a DateFormat...
 		} catch (Exception e) {
 			System.err.println("RemoteDate exception: " + e.getMessage());
 			e.printStackTrace();
