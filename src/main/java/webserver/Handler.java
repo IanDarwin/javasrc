@@ -79,11 +79,11 @@ public class Handler extends Thread {
 				
 			doFile(rqName, type == RQ_HEAD, os);
 			os.flush();
-			this.sleep(100);
+			// this.sleep(100);
 			clntSock.close();
 		} catch (IOException e) {
 			System.out.println("IOException " + e);
-		} catch (InterruptedException e2) {
+		// } catch (InterruptedException e2) {
 			// do nothing...
 		}
 		System.out.println("END OF REQUEST");
@@ -100,32 +100,42 @@ public class Handler extends Thread {
 			sendFile(rqName, headerOnly, content, os);
 		} else if ((f = new File(parent.rootDir + rqName)).isDirectory()) {
 			// Directory with index.html? Process it.
-			File index;
-			if ((index = new File(f, DEF_NAME)).isFile()) {
+			File index = new File(f, DEF_NAME);
+			if (index.isFile()) {
 				doFile(rqName + DEF_NAME, index, headerOnly, os);
 				return;
 			}
-			// Directory? Do not cache; always make up dir list.
-			System.out.println("DIRECTORY FOUND");
-			os.println("HTTP/1.0 200 directory found");
-			os.println("Content-type: text/html");
-			os.println("");
-			os.println("<HTML>");
-			os.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
-			os.println("<H1>Contents of directory " + rqName + "</H1>");
-			String fl[] = f.list();
-			// Arrays.sort(fl);
-			for (int i=0; i<fl.length; i++)
-				os.println("<BR><A HREF=\"" + fl[i] + "\">" +
-				"<IMG ALIGN=absbottom BORDER=0 SRC=\"internal-gopher-unknown\">" +
-				' ' + fl[i] + "</A>");
-			sendEnd();
+			else {
+				// Directory? Do not cache; always make up dir list.
+				System.out.println("DIRECTORY FOUND");
+				doDirList(rqName, f, headerOnly, os);
+				sendEnd();
+			}
 		} else if (f.canRead()) {
+			// REGULAR FILE
 			doFile(rqName, f, headerOnly, os);
 		}
 		else {
 			errorResponse(404, "File not found");
 		}
+	}
+
+	void doDirList(String rqName, File dir, boolean justAHead, PrintStream os) {
+		os.println("HTTP/1.0 200 directory found");
+		os.println("Content-type: text/html");
+		os.println("Date: " + new Date().toString());
+		os.println("");
+		if (justAHead)
+			return;
+		os.println("<HTML>");
+		os.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
+		os.println("<H1>Contents of directory " + rqName + "</H1>");
+		String fl[] = dir.list();
+		Arrays.sort(fl);
+		for (int i=0; i<fl.length; i++)
+			os.println("<BR><A HREF=\"" + fl[i] + "\">" +
+			"<IMG ALIGN=absbottom BORDER=0 SRC=\"internal-gopher-unknown\">" +
+			' ' + fl[i] + "</A>");
 	}
 
 	/** Send one file, given a File object. */
