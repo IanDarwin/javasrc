@@ -21,7 +21,7 @@ public class Telnet {
 		if (av.length >= 2)
 			portNum = Integer.parseInt(av[1]);
 		else portNum = 23;
-		System.out.println("Host" + host + "; port " + portNum);
+		System.out.println("Host " + host + "; port " + portNum);
 		try {
 			Socket s = new Socket(host, portNum);
 
