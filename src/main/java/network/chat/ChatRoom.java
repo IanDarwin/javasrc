@@ -100,7 +100,7 @@ public class ChatRoom extends Applet {
 		tf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loggedIn) {
-					pw.println(tf.getText());
+					pw.println(Chat.CMD_BCAST+tf.getText());
 					tf.setText(""); 
 				}
 			}
