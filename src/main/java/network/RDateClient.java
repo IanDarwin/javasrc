@@ -12,8 +12,12 @@ public class DaytimeBinary {
 	public static final short TIME_PORT = 37;
 	/** Seconds between 1970, the time base for Date(long) and Time.
 	 * Factors in leap years (up to 2100), hours, minutes, and seconds.
+	 * Subtract 1 day for 1900, add in 1/2 day for 1969/1970.
 	 */
-	public static final long BASE_DIFF = (long)((1970-1900)*365.25*24*60*60);
+	protected static final long BASE_DAYS = 
+		(long)(((1970 - 1900) * 365.25) - 1 + .5);
+	/* Seconds since 1970 */
+	public static final long BASE_DIFF = (BASE_DAYS * 24 * 60 * 60);
 	/** Convert from seconds to milliseconds */
 	public static final int MSEC = 1000;
 
@@ -28,9 +32,10 @@ public class DaytimeBinary {
 			Socket sock = new Socket(hostName, TIME_PORT);
 			DataInputStream is = new DataInputStream(new 
 				BufferedInputStream(sock.getInputStream()));
-			// Unfortunately there is no readUnsignedInt method, so
-			// long remoteTime = is.readInt();
-			// Cant be used. Instead we must synthesize it:
+			// Need to read 4 bytes from the network, unsigned.
+			// Do it yourself; there is no readUnsignedInt().
+			// Long is 8 bytes on Java, but we are using the
+			// existing daytime protocol, which uses 4-byte ints.
 			long remoteTime = (
 				((long)(is.readUnsignedByte() & 0xff) << 24) |
 				((long)(is.readUnsignedByte() & 0xff) << 16) |

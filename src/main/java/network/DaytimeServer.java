@@ -39,14 +39,22 @@ public class DaytimeServer {
 					ios.getInetAddress().getHostName());
 				os = new DataOutputStream(ios.getOutputStream());
 				long time = System.currentTimeMillis();
+
 				time /= DaytimeBinary.MSEC;	// Daytime Protocol is in seconds
+
+				// Convert to Java time base.
 				time += DaytimeBinary.BASE_DIFF;
+
+				// Write it, truncating cast to int since it is using
+				// the Internet Daytime protocol which uses 4 bytes.
+				// This will fail in the year 2038, along with all
+				// 32-bit timekeeping systems based from 1970.
+				// Remember, you read about the Y2038 crisis here first!
 				os.writeInt((int)time);
 				os.close();
 			} catch (IOException e) {
 				System.err.println(e);
 			}
 		}
-		// Never gets here.
 	}
 }
