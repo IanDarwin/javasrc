@@ -103,14 +103,32 @@ public class Acks extends Frame {
 
 	/** Construct an Acks object, by making a ton of OneAcks from list */
 	Acks(String fname) {
-		super("Learning Tree Java Course");
+		super();
 		acksFileName = fname;
+		Properties p = new Properties();
+
+		try {
+			// Create input file to load from.
+			FileInputStream ifile = new FileInputStream(fname);
+
+			p.load(ifile);
+		} catch (FileNotFoundException notFound) {
+			System.err.println(notFound);
+			System.exit(1);
+		} catch (IOException badLoad) { 
+			System.err.println(badLoad);
+			System.exit(1);
+		}
+
+		String courseTitle = p.getProperty("courseTitle");	// no "."!
+		if (courseTitle != null)
+			setTitle(courseTitle);
+
 		Panel cp;
 		Font bigFont = new Font("Helvetica", Font.BOLD, 18);
 		setLayout(new BorderLayout());
 		Label lab1 = 
-			new Label("Learning Tree Java Programming",
-			Label.CENTER);
+			new Label(courseTitle, Label.CENTER);
 		lab1.setFont(bigFont);
 		add("North", lab1);
 		Label lab2 = 
@@ -164,24 +182,6 @@ public class Acks extends Frame {
 		int newY = (them.height- us.height)/ 2;
 		setLocation(newX, newY);
 
-		Properties p = new Properties();
-
-		try {
-			// Create input file to load from.
-			FileInputStream ifile = new FileInputStream(fname);
-
-			p.load(ifile);
-		} catch (FileNotFoundException notFound) {
-			System.err.println(notFound);
-			System.exit(1);
-		} catch (IOException badLoad) { 
-			System.err.println(badLoad);
-			System.exit(1);
-		}
-
-		String courseTitle = p.getProperty("courseTitle");	// no "."!
-		if (courseTitle != null)
-			setTitle(courseTitle);
 
 		// Now get a list of all the properties in the file
 		Enumeration e = p.propertyNames();
