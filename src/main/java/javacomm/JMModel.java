@@ -20,7 +20,7 @@ import javax.comm.UnsupportedCommOperationException;
  * @author	 Ian F. Darwin, http://www.darwinsys.com/
  * @version	 $Id$
  */
-public class JMModel extends java.lang.Object {
+public class JMModel {
 	/** The View */
 	JModem theGUI;
 
@@ -65,7 +65,9 @@ public class JMModel extends java.lang.Object {
 		theGUI = gui;
 	}
 
-	protected String DEFAULT_LOG_FILE = "jmodemlog.txt";;
+	protected String DEFAULT_LOG_FILE = "jmodemlog.txt";
+
+	private boolean done = false;
 
 	/** Use normal java.io to save the JTextArea's session log
 	 * into a file.
@@ -85,7 +87,7 @@ public class JMModel extends java.lang.Object {
 	}
 
 	/** Load the list of Serial Ports into the chooser.
-	 * This code is far too chummy with the innards of class JModem.
+	 * XXX This code is far too chummy with the innards of class JModem.
 	 */
 	void populateComboBox() {
 		// get list of ports available on this particular computer,
@@ -164,6 +166,8 @@ public class JMModel extends java.lang.Object {
 		int nbytes = buf.length;
 			public void run() {
 				do {
+					if (done)
+						return;
 					try {
 						// If the xfer program is running, stay out of its way.
 							if (submode == S_XFER) {
@@ -172,14 +176,14 @@ public class JMModel extends java.lang.Object {
 						}
 						nbytes = serialInput.read(buf, 0, buf.length);
 					} catch (IOException ev) {
-					theGUI.err("Error reading from remote:\n" + ev.toString());
-					return;
+						theGUI.err("Error reading from remote:\n" + ev.toString());
+						return;
 					}
 					// XXX need an appendChar() method in MyTextArea
 					String tmp = new String(buf, 0, nbytes);
 					theGUI.theTextArea.append(tmp);
 					theGUI.theTextArea.setCaretPosition(
-					theGUI.theTextArea.getText().length());
+							theGUI.theTextArea.getText().length());
 				} while (serialInput != null);
 			}
 		});
@@ -192,11 +196,9 @@ public class JMModel extends java.lang.Object {
 
 	/** Break our connection to the serial port. */
 	void disconnect() {
+		done = true;
 		// Tell java.io we are done with the input and output
-		try {
-			serialReadThread.stop();	// IGNORE DEPRECATION WARNINGS; the Java
-			// API still lacks a reliable termination method for Threads
-			// that are blocked on e.g., local disk reads.
+		try {			
 			serialInput.close();
 			serialOutput.close();
 			serialOutput = null;
