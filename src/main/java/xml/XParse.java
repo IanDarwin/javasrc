@@ -11,14 +11,14 @@ import org.xml.sax.SAXParseException;
 public class XParse {
 
 	/** Convert the file */
-	public static void parse(String fileName) {
+	public static void parse(String fileName, boolean validate) {
 		try {
 			System.err.println("Parsing " + fileName + "...");
 
 			// Make the document a URL so relative DTD works.
 			String uri = "file:" + new File(fileName).getAbsolutePath();
 
-			XmlDocument doc = XmlDocument.createXmlDocument(uri);
+			XmlDocument doc = XmlDocument.createXmlDocument(uri, validate);
 			System.out.println("Parsed OK");
 
 		} catch (SAXParseException ex) {
@@ -48,8 +48,12 @@ public class XParse {
 			System.err.println("Usage: XParse file");
 			return;
 		}
+		boolean validate = false;
 		for (int i=0; i<av.length; i++) {
-			parse(av[i]);
+			if (av[i].equals("-validate"))
+				validate = true;
+			else
+				parse(av[i], validate);
 		}
 	}
 }
