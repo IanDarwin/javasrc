@@ -4,11 +4,12 @@
 int
 main(int argc, char *argv[])
 {
-	JavaVM *jvm;       /* The Java VM we will use */
-	JNIEnv *myEnv;       /* pointer to native environment */
+	JavaVM *jvm;		/* The Java VM we will use */
+	JNIEnv *myEnv;		/* pointer to native environment */
 	JDK1_1InitArgs jvmArgs; /* JNI initialization arguments */
 	jclass myClass;		/* pointer to the class type */
-	jmethodID myMethod;		/* pointer to the main() method */
+	jmethodID myMethod;	/* pointer to the main() method */
+	jthrowable tossed;	/* Exception object, if we get one. */
 	
 	JNI_GetDefaultJavaVMInitArgs(&jvmArgs);	/* set up the argument pointer */
 	/* Could change values now, like: jvmArgs.classpath = ...; */
@@ -25,7 +26,7 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
-	/* find the static void main(String[])  method of that class */
+	/* find the static void main(String[]) method of that class */
 	myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "main", "([Ljava/lang/String;)V");
 	/* MyMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I"); */
 	if (myMethod == NULL) {
@@ -35,8 +36,12 @@ main(int argc, char *argv[])
 
 	/* finally, call the method. */
 	(*myEnv)->CallStaticVoidMethod(myEnv, myClass, myMethod, 100);
+	if ((tossed = (*myEnv)->ExceptionOccurred(myEnv)) != NULL) {
+		fprintf(stderr, "%s: Error Exception detected:\n", argv[0]);
+		(*myEnv)->ExceptionDescribe(myEnv);	/* writes on stderr */
+		(*myEnv)->ExceptionClear(myEnv);	/* OK, we're done with it. */
+	}
 	
 	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
-
 	return 0;
 }
