@@ -92,6 +92,10 @@ public class Penman extends Plotter {
 	// PRIVATE COMMUNICATION ROUTINES
 	//
 
+	/** Set up communication. 
+	 * <br/>
+	 * XXX: Should probably re-use CommPortOpen instead.
+	 */
 	private void init_comm(String portName) throws NoSuchPortException,PortInUseException,
 			IOException,UnsupportedCommOperationException {
 
