@@ -23,7 +23,7 @@ public class CrossRef extends APIFormatter {
 	/** Simple main program, construct self, process each .ZIP file
 	 * found in CLASSPATH or in argv.
 	 */
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws IOException {
 		CrossRef xref = new CrossRef();
 		xref.doArgs(argv);
 	}
@@ -31,30 +31,32 @@ public class CrossRef extends APIFormatter {
 	/**
 	 * Print the fields and methods of one class.
 	 */
-	protected void printClass(Class c) {
+	protected void doClass(Class c) {
 		int i, mods;
 		startClass(c);
 		try {
-			Object[] fields = c.getDeclaredFields();
-			Arrays.sort(fields);
+			Field[] fields = c.getDeclaredFields();
+			Arrays.sort(fields, new Comparator() {
+				public int compare(Object o1, Object o2) {
+					return ((Field)o1).getName().compareTo(((Field)o2).getName());
+				}
+			});
 			for (i = 0; i < fields.length; i++) {
 				Field field = (Field)fields[i];
-				if (!Modifier.isPrivate(field.getModifiers())
-				 && !Modifier.isProtected(field.getModifiers()))
+				if (!Modifier.isPrivate(field.getModifiers()))
 					putField(field, c);
-				else System.err.println("private field ignored: " + field);
+				// else System.err.println("private field ignored: " + field);
 			}
 
 			Method methods[] = c.getDeclaredMethods();
 			// Arrays.sort(methods);
 			for (i = 0; i < methods.length; i++) {
-				if (!Modifier.isPrivate(methods[i].getModifiers())
-				 && !Modifier.isProtected(methods[i].getModifiers()))
+				if (!Modifier.isPrivate(methods[i].getModifiers()))
 					putMethod(methods[i], c);
-				else System.err.println("pvt: " + methods[i]);
+				// else System.err.println("pvt: " + methods[i]);
 			}
 		} catch (Exception e) {
-			System.err.println(e);
+			e.printStackTrace();
 		}
 		endClass();
 	}
