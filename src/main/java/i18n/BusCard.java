@@ -41,7 +41,7 @@ public class BusCard extends JFrame {
 		JMenuBar mb = new JMenuBar();
 		setJMenuBar(mb);
 
-		ResourceBundle b = ResourceBundle.getBundle("BusCardInfo");
+		ResourceBundle b = ResourceBundle.getBundle("BusCard");
 
 		JMenu aMenu;
 		aMenu = I18N.mkMenu(b, "filemenu");
