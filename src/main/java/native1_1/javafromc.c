@@ -26,13 +26,14 @@ main(int argc, char *argv[])
 	}
 
 	/* find the static void main(String[])  method of that class */
-	/* myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "main", "([L/java/lang/String;)V"); */
-	myMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I");
+	myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "main", "([Ljava/lang/String;)V");
+	/* MyMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I"); */
 	if (myMethod == NULL) {
 		fprintf(stderr, "GetStaticMethodID failed\n");
 		exit(1);
 	}
-	/* finally, call the method */
+
+	/* finally, call the method. */
 	(*myEnv)->CallStaticVoidMethod(myEnv, myClass, myMethod, 100);
 	
 	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
