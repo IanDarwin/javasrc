@@ -13,28 +13,38 @@ public class MailLister {
 
 	public static void main(String argv[]) throws Exception {
 		String fileName = MailConstants.PROPS_FILE_NAME;
+		String protocol = null;
+		String host = null;
+		String user = null;
+		String password = null;
+		String root = null;
 
-		if (argv.length < 5) {
+		// If argc == 1, assume it's a Properties file.
+		if (argv.length == 1) {
+			fileName = argv[0];
+			FileProperties fp = new FileProperties(fileName);
+			fp.load();
+			protocol = fp.getProperty(MailConstants.RECV_PROTO);
+			host = fp.getProperty(MailConstants.RECV_HOST);
+			user = fp.getProperty(MailConstants.RECV_USER);
+			password = fp.getProperty(MailConstants.RECV_PASS);
+			root = fp.getProperty(MailConstants.RECV_ROOT);
+		}
+		// If not, assume listing all args in long form.
+		else if (argv.length == 5) {
+			protocol = argv[0];
+			host = argv[1];
+			user = argv[2];
+			password = argv[3];
+			root = argv[4];
+		}
+		// Otherwise give up.
+		else {
 			System.err.println(
 				"Usage: MailLister protocol host user pw root");
 			System.exit(0);
 		}
-		String protocol = argv[0];
-		String host = argv[1];
-		String user = argv[2];
-		String password = argv[3];
-		String root = argv[4];
 
-		// An alternate way of setting the values, based on Properties.
-		// if (argv.length > 0) {
-		// 	fileName = argv[0];
-		// FileProperties fp = new FileProperties(fileName);
-		// fp.load();
-		// String protocol = fp.getProperty(MailConstants.RECV_PROTO);
-		// String host = fp.getProperty(MailConstants.RECV_HOST);
-		// String user = fp.getProperty(MailConstants.RECV_USER);
-		// String password = fp.getProperty(MailConstants.RECV_PASS);
-		// String root = fp.getProperty(MailConstants.RECV_ROOT);
 
 		boolean recursive = false;
 

@@ -44,12 +44,18 @@ public class Sender2 {
 		mesg = new MimeMessage(session);
 	}
 
-	public void sendFile(String fileName) {
-		System.out.println("Would now send file " + fileName);
+	public void sendFile(String fileName) throws MessagingException {
+		// Now the message body.
+		setBody(message_body);
+			
+		sendFile();
+	}
+
+	/** Send the file with no filename, assuming you've already called
+	 * the setBody() method.
+	 */
+	public void sendFile() {
 		try {
-			// Now the message body.
-			mesg.setText(message_body);
-			// XXX I18N: use setText(msgText.getText(), charset)
 			
 			// Finally, send the message! (use static Transport method)
 			Transport.send(mesg);
@@ -64,28 +70,37 @@ public class Sender2 {
 	/** Stub for providing help on usage
 	 * You can write a longer help than this, certainly.
 	 */
-	static void usage(int returnValue) {
+	protected static void usage(int returnValue) {
 		System.err.println("Usage: Sender2 [-t to][-c cc][-f from][-s subj] file ...");
 		System.exit(returnValue);
 	}
 
-	void add_recipient(String message_recip) throws MessagingException {
+	public void addRecipient(String message_recip) throws MessagingException {
 		// TO Address 
 		InternetAddress toAddress = new InternetAddress(message_recip);
 		mesg.addRecipient(Message.RecipientType.TO, toAddress);
 	}
-	void add_cc_recipient(String message_cc) throws MessagingException { 
+
+	public void addCCRecipient(String message_cc) throws MessagingException { 
 		// CC Address
 		InternetAddress ccAddress = new InternetAddress(message_cc);
 		mesg.addRecipient(Message.RecipientType.CC, ccAddress);
 	}
-	void set_from(String sender) throws MessagingException {
+
+	public void setFrom(String sender) throws MessagingException {
 		// From Address - this should come from a Properties...
 		mesg.setFrom(new InternetAddress(sender));
 	}
-	void set_subject(String message_subject) throws MessagingException {
+
+	public void setSubject(String message_subject) throws MessagingException {
 		// The Subject
 		mesg.setSubject(message_subject);
+	}
+
+	/** Set the message body. */
+	public void setBody(String message_body) throws MessagingException {
+		mesg.setText(message_body);
+		// XXX I18N: use setText(msgText.getText(), charset)
 	}
 
 	/** Driver to parse options and control Sender */
@@ -101,16 +116,16 @@ public class Sender2 {
 					sm.props.put("mail.smtp.host", go.optarg);
 					break;
 				case 't':
-					sm.add_recipient(go.optarg);
+					sm.addRecipient(go.optarg);
 					break;
 				case 'c':
-					sm.add_cc_recipient(go.optarg);
+					sm.addCCRecipient(go.optarg);
 					break;
 				case 'f':
-					sm.set_from(go.optarg);
+					sm.setFrom(go.optarg);
 					break;
 				case 's':
-					sm.set_subject(go.optarg);
+					sm.setSubject(go.optarg);
 					break;
 				default:
 					System.err.println("Unknown option character " + c);
