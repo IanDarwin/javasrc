@@ -37,7 +37,7 @@ public class RawSQLServlet extends HttpServlet {
 
 			// Get the connection
 			log(getClass() + ": Getting Connection");
-			Connection conn = DriverManager.getConnection (
+			conn = DriverManager.getConnection (
 				application.getInitParameter("db.url"),
 				application.getInitParameter("db.user"),
 				application.getInitParameter("db.password"));
