@@ -3,46 +3,54 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 import org.apache.xerces.parsers.SAXParser;
 
-/** Simple lister - extract name and email tags from a user file.
- * Updated for SAX 2.0
+/** Simple lister - extract name and children tags from a user file.
+ * Version for SAX 2.0
  * @author Ian Darwin
  * @version $Id$
  */
 public class SaxLister {
 
-	class PeopleHandler extends DefaultHandler {
-
-		boolean name = false;
-		boolean mail = false;
-
-		public void startElement(String nsURI, String strippedName,
-			String tagName, Attributes attributes)
-		throws SAXException {
-			if (tagName.equalsIgnoreCase("name"))
-				name = true;
-			if (tagName.equalsIgnoreCase("email"))
-				mail = true;
-		}
-
-		public void characters(char[] ch, int start, int length) {
-			if (name) {
-				System.out.println("Name:  " + new String(ch, start, length));
-				name = false;
-			} else if (mail) {
-				System.out.println("Email: " + new String(ch, start, length));
-				mail = false;
-			}
-		}
-	}
-
-	public void list() throws Exception {
+	public static void main(String[] args) throws Exception { 
 		XMLReader parser = XMLReaderFactory.createXMLReader(
 			"org.apache.xerces.parsers.SAXParser");	// should load properties
+
 		parser.setContentHandler(new PeopleHandler());
-		parser.parse("people.xml");
+
+		parser.parse(args.length==1?args[0]:"parents.xml");
+	}
+}
+
+class PeopleHandler extends DefaultHandler {
+
+	boolean parent = false;
+	boolean kids = false;
+
+	public void startElement(String nsURI, String localName,
+		String rawName, Attributes attributes)
+	throws SAXException {
+
+		com.darwinsys.util.Debug.println("docEvents",
+			"startElement: " + localName + "," + rawName);
+
+		// Consult rawName since we aren't using xmlns prefixes here.
+		if (rawName.equalsIgnoreCase("name"))
+			parent = true;
+		if (rawName.equalsIgnoreCase("children"))
+			kids = true;
 	}
 
-	public static void main(String[] args) throws Exception { 
-		new SaxLister().list();
+	public void characters(char[] ch, int start, int length) {
+		if (parent) {
+			System.out.println("Parent:  " + new String(ch, start, length));
+			parent = false;
+		} else if (kids) {
+			System.out.println("Children: " + new String(ch, start, length));
+			kids = false;
+		}
+	}
+
+	/** Needed for parent constructor */
+	public PeopleHandler() throws org.xml.sax.SAXException {
+		super();
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<xsl:template match="parentcommittee">
+<xsl:template match="parent_committee">
 
 <html>
 <head><title>Your Committee</title></head>
