@@ -1,6 +1,7 @@
 This is an attempt to build a JNDI Provider that will let you
-look things up in the "Services" map, so if you need to connect
-to, say, an Echo server, instead of hard-coding the port 7, you
+look things up in the "Services" map (/etc/services file),
+so that if you need to connect to, say, an Echo server,
+instead of hard-coding the port 7, you
 can look up "echo" and get back the 7. This is how things have
 been done since time immemorial on UNIX; the routine there is
 called getservbyname().
