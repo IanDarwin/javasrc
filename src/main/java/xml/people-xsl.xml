@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="/xml/train_table.xsl"?>
+<!DOCTYPE people SYSTEM "people.dtd">
+
+<people>
+<person>
+	<name>Ian Darwin</name>
+	<email>ian@darwinsys.com</email>
+	<country>Canada</country>
+</person>
+</people>
