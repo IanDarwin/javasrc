@@ -40,7 +40,7 @@ public class CommPortModem extends CommPortOpen {
 
 		// The modem sends an extra blank line by way of a prompt.
 		// Here we read and discard it.
-		String junk = os.readLine();
+		String junk = is.readLine();
 		if (junk.length() != 0) {
 			System.err.print("Warning unexpected response: ");
 			System.err.println(junk);

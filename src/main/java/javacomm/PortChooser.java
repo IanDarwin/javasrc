@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import com.darwinsys.util.WindowCloser;
 
 /**
  * Choose a port, any port!
