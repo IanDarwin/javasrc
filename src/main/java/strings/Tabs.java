@@ -31,7 +31,7 @@ public class Tabs {
 	}
 
 	/* tabpos - returns true if col is a tab stop */
-	boolean tabpos(int col, boolean tabstops[]) {
+	boolean tabpos(int col) {
 		/** If line too long, just put tabs whereever, don't throw exception */
 		if (col > tabstops.length-1)
 			return(true);
