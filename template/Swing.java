@@ -14,9 +14,9 @@ public class Swing extends JComponent {
 	public static void main(String av[]) {
 		// create a Swing object, tell it to show up
 		final JFrame f = new JFrame("Swing");
-		Swing o = new Swing();
-		f.getContentPane().add(o);
-		o.quitButton.addActionListener(new ActionListener() {
+		Swing comp = new Swing();
+		f.getContentPane().add(comp);
+		comp.quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				f.setVisible(false);
 				f.dispose();

@@ -6,8 +6,20 @@ public class GUI0 {
 
 	/** "main" method */
 	public static void main(String av[]) {
+		Button quitButton;
+
 		// create a GUI0 object and make it show
 		Frame f = new Frame();
+		f.setLayout(new FlowLayout());
+		f.add(new Label("Hello, and welcome to the world of Java"));
+		f.add(quitButton = new Button("Exit"));
+		quitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+				System.exit(0);
+			}
+		});
 
 		// Set the Frame's windowListener to be a trivial WindowAdapter
 		// subclass that just calls System.exit(). Not ideal but works here.
@@ -18,18 +30,8 @@ public class GUI0 {
 				return;
 			}
 		});
-		f.add(new MyGUI());
+		f.add(new TextArea(24,80));
 		f.pack();
 		f.setVisible(true);
 	}
 }
-
-/** MyGUI is the actual GUI for this program */
-class MyGUI extends Panel {
-	/** Construct an object of this class */
-	public MyGUI() {
-		setLayout(new FlowLayout());
-		add(new Button("Hello, and welcome to the world of Java"));
-	}
-}
- 

@@ -36,4 +36,3 @@ public class GUI extends Frame {
 		pack();
 	}
 }
-
