@@ -12,7 +12,7 @@ import java.text.*;
 public class TModem {
 
 	protected final byte CPMEOF = 26;		/* control/z */
-	protected final int MAXERRORS = 10;		/* max number of times to retry one block */
+	protected final int MAXERRORS = 10;		/* max times to retry one block */
 	protected final int SECSIZE	= 128;		/* cpm sector, transmission block */
 	protected final int SENTIMOUT = 30;		/* timeout time in send */
 	protected final int	SLEEP	= 30;		/* timeout time in recv */
@@ -25,20 +25,21 @@ public class TModem {
 	protected final byte	NAK	= 0x15;	/* Negative AcKnowlege */
 
 	public static void main(String[] argv) throws 
-		IOException, InterruptedExeption {
+		IOException, InterruptedException {
 
-		/* argc must == 2, i.e., `tmodem -s filename' */
-		if (argc != 2) 
+		/* argc must == 2, i.e., `java TModem -s filename' */
+		if (argv.length != 2) 
 			usage();
 
-		if (!argv[0].startsWith('-')
+		if (argv[0].charAt(0) != '-')
 			usage();
+
 		switch (argv[0].charAt(1)){
 		case 'r': 
-			rec(argv[1]); 
+			new TModem().rec(argv[1]); 
 			break;
 		case 's': 
-			sen(argv[1]); 
+			new TModem().sen(argv[1]); 
 			break;
 		default: 
 			usage();
@@ -49,40 +50,35 @@ public class TModem {
 	/*
 	 * send a file to the remote
 	 */
-	sen(String tfile) throws IOException, InterruptedExeption
+	void sen(String tfile) throws IOException, InterruptedException
 	{
 
-		register uchar checksum, index, blocknumber, errorcount;
-		uchar sector[SECSIZE];
-		int foo, nbytes;
+		char checksum, index, blocknumber, errorcount;
+		byte[] sector = new byte[SECSIZE];
+		int nbytes;
+		DataInputStream foo;
 
-		if ((foo = open(tfile, 0)) == -1) {
-			(void) fprintf(stderr, "can't open %s for send!\r\n", tfile);
-			die(1);
-		}
-		(void) fprintf(stderr, "file open, ready to send\r\n");
+		foo = new DataInputStream(new FileInputStream(tfile));
+		System.err.println( "file open, ready to send\r\n");
 		errorcount = 0;
 		blocknumber = 1;
-		(void) signal(SIGALRM, timeout);
-		(void) alarm(SENTIMOUT);
+		alarm(SENTIMOUT);
 
 		while ((getchar() != NAK) && (errorcount < MAXERRORS))
 			++errorcount;
-		(void) alarm(0);
-	#ifdef DEBUG
-		(void) fprintf(stderr, "transmission beginning\r\n");
-	#endif
+		alarm(0);
+
+		System.err.println( "transmission beginning\r\n");
 		if (errorcount == MAXERRORS) {
 			xerror();
 		}
-		while (nbytes=read(foo, sector, sizeof sector)) {
+
+		while ((nbytes=System.in.read(sector))!=0) {
 			if (nbytes<SECSIZE)
 				sector[nbytes]=CPMEOF;
 			errorcount = 0;
 			while (errorcount < MAXERRORS) {
-	#ifdef DEBUG
-				(void) fprintf(stderr, "{%d} ", blocknumber);
-	#endif
+				System.err.println( "{" + blocknumber + "} ");
 				putchar(SOH);	/* here is our header */
 				putchar(blocknumber);	/* the block number */
 				putchar(~blocknumber);	/* & its complement */
@@ -101,64 +97,56 @@ public class TModem {
 				xerror();
 			++blocknumber;
 		}
-		index = 1;
-		while (index) {
+		boolean isAck = false;
+		while (!isAck) {
 			putchar(EOT);
-			index = getchar() == ACK;
+			isAck = getchar() == ACK;
 		}
-		(void) fprintf(stderr, "Transmission complete.\r\n");
+		System.err.println( "Transmission complete.\r\n");
 	}
+
 
 	/*
 	 * receive a file from the remote
 	 */
-	rec(String tfile) throws IOException, InterruptedExeption
+	void rec(String tfile) throws IOException, InterruptedException
 	{
-		register uchar checksum, index, blocknumber, errorcount, character;
-		uchar sector[SECSIZE];
-		int foo;
+		char checksum, index, blocknumber, errorcount;
+		byte character;
+		byte[] sector = new byte[SECSIZE];
+		DataOutputStream foo;
 
-		if ((foo = creat(tfile, 0666)) == -1) {
-			perror(tfile);
-			die(1);
-		}
-		printf("you have %d seconds...",SLEEP);
-		(void) sleep(SLEEP);	/* wait for the user to get his act together */
-	#ifdef DEBUG
-		(void) fprintf(stderr, "Starting...\r\n");
-	#endif
+		foo = new DataOutputStream(new FileOutputStream(tfile));
+
+		System.out.println("you have " + SLEEP + " seconds...");
+		Thread.sleep(SLEEP*1000);	/* wait for the user to get his act together */
+		System.err.println( "Starting...\r\n");
 		putchar(NAK);
 		errorcount = 0;
 		blocknumber = 1;
+		rxLoop:
 		while ((character = getchar()) != EOT) {
-			register uchar not_ch;
+		try {
+			byte not_ch;
 			if (character != SOH) {
-	#ifdef DEBUG
-				(void) fprintf(stderr, "Not SOH\r\n");
-	#endif
+				System.err.println( "Not SOH\r\n");
 				if (++errorcount < MAXERRORS)
-					goto nakit;
+					continue rxLoop;
 				else
 					xerror();
 			}
 			character = getchar();
-			not_ch = ~getchar();
-	#ifdef DEBUG
-			(void) fprintf(stderr, "[%d] ", character);
-	#endif
+			not_ch = (byte)(~getchar());
+			System.err.println( "[" +  character + "] ");
 			if (character != not_ch) {
-	#ifdef DEBUG
-				(void) fprintf(stderr, "Blockcounts not ~\r\n");
-	#endif
+				System.err.println( "Blockcounts not ~\r\n");
 				++errorcount;
-				goto nakit;
+				continue rxLoop;
 			}
 			if (character != blocknumber) {
-	#ifdef DEBUG
-				(void) fprintf(stderr, "Wrong blocknumber\r\n");
-	#endif
+				System.err.println( "Wrong blocknumber\r\n");
 				++errorcount;
-				goto nakit;
+				continue rxLoop;
 			}
 			checksum = 0;
 			for (index = 0; index < SECSIZE; index++) {
@@ -166,53 +154,64 @@ public class TModem {
 				checksum += sector[index];
 			}
 			if (checksum != getchar()) {
-	#ifdef DEBUG
-				(void) fprintf(stderr, "Bad checksum\r\n");
-	#endif
+				System.err.println( "Bad checksum\r\n");
 				errorcount++;
-				goto nakit;
+				continue rxLoop;
 			}
 			putchar(ACK);
 			blocknumber++;
-			if (write(foo, sector, sizeof sector) != sizeof sector)
-				warn("write failed, blocknumber %d", blocknumber);
-			if (!errorcount)
-				continue;
-	nakit:
-			putchar(NAK);
+			try {
+				foo.write(sector);
+			} catch (IOException e) {
+				System.err.println("write failed, blocknumber " + blocknumber);
+			}
+		} finally {
+			if (errorcount != 0)
+				putchar(NAK);
 		}
-		(void) close(foo);
+		}
+		foo.close();
 
 		putchar(ACK);	/* tell the other end we accepted his EOT 	*/
 		putchar(ACK);
 		putchar(ACK);
 
-		(void) fprintf(stderr, "Completed.\r\n");
+		System.err.println( "Completed.\r\n");
 	}
 
+	byte getchar() throws IOException {
+		return (byte)System.in.read();
+	}
+
+	void putchar(int c) throws IOException {
+		System.out.print((char)c);
+	}
+
+	void alarm(int seconds) {
+		System.out.println("Would wait for " + seconds + " seconds.");
+	}
 
 	/* give message that we timed out, and then die */
-	static void timeout(int signum)
+	void timeout(int signum)
 	{
-		(void) fprintf(stderr, "Timed out waiting for NAK from remote system\r\n");
+		System.err.println( "Timed out waiting for NAK from remote system\r\n");
 		die(1);
 	}
 
 	/* give user minimal usage message */
-	usage()
+	static void usage()
 	{
-		(void) fprintf(stderr,"usage: %s -r/-s file\n", progname);
-		exit(1);
-	}
-
-	xerror()
-	{
-		(void) fprintf(stderr, "too many errors...aborting\r\n");
+		System.err.println("usage: TModem -r/-s file");
 		die(1);
 	}
 
-	die(int how)
-	register int how;
+	void xerror()
+	{
+		System.err.println("too many errors...aborting");
+		die(1);
+	}
+
+	static void die(int how)
 	{
 		System.exit(how);
 	}
