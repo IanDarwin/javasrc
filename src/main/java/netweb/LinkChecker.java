@@ -14,7 +14,6 @@ import java.io.*;
  *
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
- * @author Routine "readTag" from Elliott Rusty Harold's "ImageSizer" program.
  */
 public class LinkChecker extends Frame implements Runnable {
 	protected Thread t = null;
@@ -106,7 +105,7 @@ public class LinkChecker extends Frame implements Runnable {
 	 */
 	public void checkOut(String rootURLString) {
 		URL rootURL = null;
-		BufferedReader inrdr = null;
+		GetURLs urlGetter = null;
 
 		if (rootURLString == null) {
 			textWindow.append("checkOut(null) isn't very useful");
@@ -116,7 +115,7 @@ public class LinkChecker extends Frame implements Runnable {
 		// Open the root URL for reading
 		try {
 			rootURL = new URL(rootURLString);
-			inrdr = new BufferedReader(new InputStreamReader(rootURL.openStream()));
+			urlGetter = new GetURLs(rootURL);
 		} catch (MalformedURLException e) {
 			textWindow.append("Can't parse " + rootURLString + "\n");
 			return;
@@ -140,55 +139,46 @@ public class LinkChecker extends Frame implements Runnable {
 		}
 
 		try {
-			int i;
-			while ((i = inrdr.read()) != -1) {
-				if (done) {
-					textWindow.append("\n-- Interrupted --");
-					return;
-				}
-				char thisChar = (char)i;
-				if (thisChar == '<') {
-					String tag = readTag(inrdr);
-					// System.out.println("TAG: " + tag);
-					if (tag.toUpperCase().startsWith("<A ") ||
-						tag.toUpperCase().startsWith("<A\t")) {
+			ArrayList urlTags = urlGetter.getURLs();
+			Iterator urlIterator = urls.iterator();
+			while (urlIterator.hasNext()) {
+				String tag = urlIterator.next();
+				System.out.println(tag);
 						
-						String href = extractHREF(tag);
+				String href = extractHREF(tag);
 
-						// Can't really validate these!
-						if (href.startsWith("mailto:"))
-							continue;
+				// Can't really validate these!
+				if (href.startsWith("mailto:"))
+					continue;
 
-						if (href.startsWith("..") || href.startsWith("#"))
-							// nothing doing!
-							continue; 
+				if (href.startsWith("..") || href.startsWith("#"))
+					// nothing doing!
+					continue; 
 
-						for (int j=0; j<indent; j++)
-							textWindow.append("\t");
+				for (int j=0; j<indent; j++)
+					textWindow.append("\t");
 
-						textWindow.append(href + " -- ");
-						// don't combine previous append with this one,
-						// since this one can throw an exception!
-						textWindow.append(checkLink(rootURL, href) + "\n");
+				textWindow.append(href + " -- ");
+				// don't combine previous append with this one,
+				// since this one can throw an exception!
+				textWindow.append(checkLink(rootURL, href) + "\n");
 
-						// If HTML, check it recursively
-						if (href.endsWith(".htm") ||
-							href.endsWith(".html")) {
-								++indent;
-								if (href.indexOf(':') != -1)
-									checkOut(href);
-								else {
-									String newRef = 
-										 rootURLdirString + '/' + href;
-									// System.out.println("MADE " + newRef);
-									checkOut(newRef);
-								}
-								--indent;
+				// If HTML, check it recursively
+				if (href.endsWith(".htm") ||
+					href.endsWith(".html")) {
+						++indent;
+						if (href.indexOf(':') != -1)
+							checkOut(href);
+						else {
+							String newRef = 
+								 rootURLdirString + '/' + href;
+							// System.out.println("MADE " + newRef);
+							checkOut(newRef);
 						}
-					}
+						--indent;
 				}
 			}
-			inrdr.close();
+			urlGetter.close();
 		} catch (IOException e) {
 			System.err.println("Error " + ":(" + e +")");
 		}
