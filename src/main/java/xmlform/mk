@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -x
-
-CLASSPATH=$CLASSPATH:/c/jdk1.2/jre/lib/ext/xml.jar
-CLASSPATH=$CLASSPATH:/c/ian/classes
-
-jikes -classpath $CLASSPATH -d /c/ian/classes XmlForm.java GenMIF.java
