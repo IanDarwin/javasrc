@@ -153,9 +153,11 @@ public class LinkChecker extends Frame implements Runnable {
 			if (luf instanceof HttpURLConnection) {
 				HttpURLConnection huf = (HttpURLConnection)linkURL.openConnection();
 				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
-				if (luf.getResponseCode() == -1)
+				if (huf.getResponseCode() == -1)
 					return "Server error: bad HTTP response";
 				return s;
+			// } else if (luf instanceof FileURLConnection) {
+			// 	return "(File)";
 			} else
 				return "(non-HTTP)";
 		}
