@@ -24,7 +24,7 @@ public class LinkListTest extends TestCase {
 	public void testGet() {
 
 		assertTrue(list.lookup("Hello"));
-		System.err.println("Lookup seems to work");
+		System.out.println("Lookup seems to work");
 	}
 
 	public void testSize() {
