@@ -10,6 +10,14 @@ extern "C" {
 /* Inaccessible static: inuse */
 /*
  * Class:     DBM
+ * Method:    dbminit
+ * Signature: (Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_DBM_dbminit
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     DBM
  * Method:    dbmclose
  * Signature: ()I
  */
@@ -19,26 +27,18 @@ JNIEXPORT jint JNICALL Java_DBM_dbmclose
 /*
  * Class:     DBM
  * Method:    dbmfetch
- * Signature: (Ljava/lang/Object;)[B
+ * Signature: ([B)[B
  */
 JNIEXPORT jbyteArray JNICALL Java_DBM_dbmfetch
-  (JNIEnv *, jobject, jobject);
-
-/*
- * Class:     DBM
- * Method:    dbminit
- * Signature: (Ljava/lang/String;)I
- */
-JNIEXPORT jint JNICALL Java_DBM_dbminit
-  (JNIEnv *, jobject, jstring);
+  (JNIEnv *, jobject, jbyteArray);
 
 /*
  * Class:     DBM
  * Method:    dbmstore
- * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
+ * Signature: ([B[B)I
  */
 JNIEXPORT jint JNICALL Java_DBM_dbmstore
-  (JNIEnv *, jobject, jobject, jobject);
+  (JNIEnv *, jobject, jbyteArray, jbyteArray);
 
 /*
  * Class:     DBM
