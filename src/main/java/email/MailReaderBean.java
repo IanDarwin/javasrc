@@ -8,16 +8,15 @@ import javax.mail.internet.*;
 
 /**
  * Display a mailbox or mailboxes.
- * This can NOT merge with the version in javasrc/email, because of
- * the domain-specific "implements module" stuff.
+ * This is the generic version in javasrc/email, split off from
+ * JabaDex because of the latter's domain-specific "implements module" stuff.
  * @version $Id$
  */
-public class MailReaderBean extends JSplitPane implements JDModule {
+public class MailReaderBean extends JSplitPane {
 
 	private JTextArea bodyText;
 
 	/* Construct a mail reader bean with all defaults.
-	 * SICK: should use JDdefaults() to get the defaults.
 	 */
 	public MailReaderBean() throws Exception {
 		this("smtp", "mailhost", "user", "nopasswd", "/");
@@ -172,75 +171,4 @@ public class MailReaderBean extends JSplitPane implements JDModule {
 			}
 		});
 	}
-
-	/** JDModule is the interface exported by the major modules
-	 * in JabaDex (Person, Todo, Calendar, Mail, Properties, etc.).
-	 */
-
-	/** Start a new file, prompting to save the old one first. */
-	public void newFile() { }
-
-	/** Load new model from fn; if null, prompt for new fname */
-	public void loadFile(String fn) { }
-
-	/** Save the current model's data in fn. 
-	 * If null, use current fname or prompt for a filename. */
-	public void saveFile(String fn) { }
-
-	/** Export the file in a (portable?) format.
-	 */
-	 public void exportFile() { }
-
-	/** Ask the model if it has any unsaved changes, don't save otherwise */
-	public boolean hasUnsavedChanges() { return false; }
-
-	/** If the module wants AutoSave when the user enables it. */
-	public boolean wantAutoSave() { return false; }
-
-	/** Start the module's print routine */
-	public void doPrint() { }
-
-	/** Create a new item (usually by dialog?) */
-	public void newItem() { }
-
-	/** Modify the current via a dialog */
-	public void modItem() { }
-
-	/** Get the module to control a MenuItem. This might not be the
-	 * most natural approach; might be better to get ask the Module
-	 * to provid the menuItems, since it probably knows what actions
-	 * it wants to do for them... But then the Module would be
-	 * both a Model and a View/Controller...
-	 */
-	public void ownThisMenuItem(JMenuItem mi) { }
-
-	/** Enable the menuItems you own */
-	public void beingShown() { }
-
-	/** Disable the menuItems you own */
-	public void beingHidden() { }
-
-	/** Edit->Copy */
-	public void editCopy() { }
-
-	/** Edit->Cut */
-	public void editCut() { }
-
-	/** Edit->Paste */
-	public void editPaste() { }
-
-	/** Edit->Delete */
-	public void editDelete() { }
-
-	/** If can undo */
-	public boolean hasUndoableChange() { return false; }
-
-	/** Edit->Undo */
-	public void undoChange() { }
-
-	/** Edit->ReDo */
-	public void redoChange() { }
-
-	/** Synchronize with a PDA (tentative - functionality may go elsewhere) */
-	public void doSynch() { }
 }
