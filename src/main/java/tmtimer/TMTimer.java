@@ -19,7 +19,7 @@ public class TMTimer extends JFrame implements Runnable {
     finishGUI();
   gotoState(READY);
     pack();
-  UtilGUI.centre(this);
+  // UtilGUI.centre(this);
   }
 
   /** This method is called from within the constructor to
