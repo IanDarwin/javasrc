@@ -12,14 +12,17 @@ public class UseLocales {
 
 		DateFormat defaultDateFormatter = DateFormat.getDateInstance(
 			DateFormat.MEDIUM);
-		DateFormat spainDateFormatter = DateFormat.getDateInstance(
+		DateFormat frDateFormatter = DateFormat.getDateInstance(
 			DateFormat.MEDIUM, frLocale);
 		DateFormat ukDateFormatter = DateFormat.getDateInstance(
 			DateFormat.MEDIUM, ukLocale);
 
 		Date now = new Date();
-		System.out.println(defaultDateFormatter.format(now));
-		System.out.println(spainDateFormatter.format(now));
-		System.out.println(ukDateFormatter.format(now));
+		System.out.println("Default: " + ' ' +
+			defaultDateFormatter.format(now));
+		System.out.println(frLocale.getDisplayName() + ' ' +
+			frDateFormatter.format(now));
+		System.out.println(ukLocale.getDisplayName() + ' ' +
+			ukDateFormatter.format(now));
 	}
 }

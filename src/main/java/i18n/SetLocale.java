@@ -5,10 +5,6 @@ import java.util.*;
 public class SetLocale {
 	public static void main(String[] args) {
 
-		// Locale[] ll = Locale.getAvailableLocales();
-		// for (int i=0; i<ll.length; i++)
-			// System.out.println(ll[i]);
-
 		switch (args.length) {
 		case 0:
 			Locale.setDefault(Locale.FRANCE);

@@ -5,11 +5,6 @@ import java.util.*;
 public class UseDefaultLocale {
 	public static void main(String[] args) {
 
-		// List the locales
-		// Locale[] ll = Locale.getAvailableLocales();
-		// for (int i=0; i<ll.length; i++)
-			// System.out.println(ll[i]);
-
 		DateFormat df = DateFormat.getInstance();
 		NumberFormat nf = NumberFormat.getInstance();
 
