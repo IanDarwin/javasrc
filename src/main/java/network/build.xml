@@ -13,7 +13,8 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			deprecation="true"
+			classpath="${build}:${darwinsys.jar}"
+			debug="true" deprecation="true"
 		/>
 	</target>
 
