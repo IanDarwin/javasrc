@@ -16,9 +16,9 @@ sort -f xref.methods >> methods.htm
 
 sort -f xref.fields  >> fields.htm
 
-dir *.htm
+del xref.*
 
-REM move methods.htm ../lt47xserver/xref
-REM move fields.htm ../lt47xserver/xref
+ls -l fields.htm methods.htm
 
-REM del xref.*
+echo If that worked, you may want to run crossrefinst.bat
+

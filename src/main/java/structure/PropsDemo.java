@@ -7,6 +7,7 @@ public class PropsDemo {
 	public static void main(String argv[]) {
 		Properties p = new Properties();
 
+		// Same data as HashDemo
 		p.setProperty("Adobe", "Mountain View, CA");
 		p.setProperty("IBM", "White Plains, NJ");
 		p.setProperty("Learning Tree", "Los Angeles, CA");

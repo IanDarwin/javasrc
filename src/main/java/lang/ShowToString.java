@@ -13,7 +13,6 @@ public class ShowToString {
 	public static void main(String argv[]) {
 
 		System.out.println("An Object\t" + new Object());
-		System.out.println("An Integer\t" + new Integer(42));
 		System.out.println("A Date  \t" + new Date());
 		System.out.println("A GregorianCalendar\t" + new GregorianCalendar());
 		System.out.println("An Exception\t" + new Exception("Hi!"));
