@@ -1,7 +1,8 @@
+import java.io.*;
 import java.util.*;
 
 public class Test {
-	public static void main(String javaNamesCauseRSI[]) {
+	public static void main(String javaNamesCauseRSI[]) throws IOException {
 		DBM d = new DBM("/tmp/mydb");
 		System.out.println(d);
 		d.store("today", new Date());
@@ -14,6 +15,7 @@ public class Test {
 		}
 		d.close();
 		d2 = new DBM("/tmp/mydb");
+		System.out.println("d2 contains " + d2.fetch("here"));
 		System.out.println("d2 contains " + d2.fetch("today"));
 		d2.close();
 	}

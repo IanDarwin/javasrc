@@ -6,6 +6,7 @@
 # Configuration Section
 
 CC			= cc
+CFLAGS		+= -Wall
 CC_SHARED	= -fpic
 LD_SHARED	= -shared
 CLASS		= DBM.class
@@ -33,7 +34,7 @@ DBM.class: DBM.java
 #		javah -jni DBM
 
 jdbm.o:	jdbm.c DBM.h
-	$(CC) -c $(INCLUDES) $(CSRCS) 
+	$(CC) $(CFLAGS) -c $(INCLUDES) $(CSRCS) 
 
 $(SHARED_OBJ):	$(OBJS) $(HDR)
 	$(LD) $(LD_SHARED) $(OBJS) -o $(SHARED_OBJ)
