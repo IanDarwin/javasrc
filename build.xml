@@ -120,11 +120,10 @@
 
 	<target name="index">
 		<!-- Update the index.html -->
-		<javac srcdir="${build.work}/netweb" 
+		<javac srcdir="netweb" 
 			classpath="${darwinsys.jar}" 
 			includes="MkIndex.java"/>
-		<java classpath="${build.work}/netweb:${darwinsys.jar}" 
-			dir="${build.work}" fork="yes"
+		<java classpath="netweb:${darwinsys.jar}" fork="yes"
 			classname="MkIndex"/>
 	</target>
 

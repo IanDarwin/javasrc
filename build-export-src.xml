@@ -14,7 +14,7 @@
 
 	<property name="CVSROOT" value="ian@darian:/cvs"/>
 
-	<!-- This init is different; it ensures that build is clean and exists -->
+	<!-- This init is different; it runs clean every time -->
 	<target name="init" depends="clean">
 		<tstamp/>
 		<mkdir dir="${build.work}"/>
@@ -29,16 +29,17 @@
 			file="${build.work}/build.properties"/>
 	</target>
 
-	<target name="api" depends="get">
+	<target name="api" ><!--depends="get"-->
 		<ant dir="${build.work}/darwinsys" target="dist"
 			inheritAll="false"/>
+		<copy file="${build.work}/darwinsys/build/darwinsys.jar"
+			todir="${javasrc.lib}"/>
 	</target>
 
 	<target name="index" depends="api">
 		<!-- Update the index.html for just what we exported -->
-		<javac srcdir="${build.work}/netweb" includes="MkIndex.java"/>
-		<java classpath="${build.work}/netweb" classname="MkIndex"
-			dir="${build.work}" fork="yes"/>
+		<ant dir="${build.work}" target="index"
+			inheritAll="false"/>
 	</target>
 
 	<target name="jar" depends="index">
