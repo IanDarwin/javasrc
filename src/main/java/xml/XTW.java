@@ -4,6 +4,7 @@ import org.w3c.dom.*;
 import javax.xml.parsers.*;
 
 /** XML Tree Walker
+ * UPDATED FOR JAXP.
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
