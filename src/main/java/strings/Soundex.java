@@ -48,7 +48,7 @@ public class Soundex {
 	 * from: AEHIOUWYBFPVCGJKQSXZDTLMNR
 	 * to:   00000000111122222222334556
 	 */
-	public static final char MAP[] = {
+	public static final char[] MAP = {
 		//A  B   D   D   E   F   G   H   I   J   K   L   M
 		'0','1','2','3','0','1','2','0','0','2','2','4','5',
 		//N  O   P   W   R   S   T   U   V   W   X   Y   Z
@@ -70,7 +70,10 @@ public class Soundex {
 			char c = t.charAt(i);
 			if (c == ',')
 				break;
-			if (!(c>='A' && c<='Z')) 	// only handles ASCII letters
+			// Check to see if the given character is alphabetic.
+			// Text is already converted to uppercase. Algorithm
+			// only handles ASCII letters, do NOT use Character.isLetter()!
+			if (!(c>='A' && c<='Z')) 
 				continue;
 			if (c == prev)
 				continue;				// double letter
