@@ -18,7 +18,7 @@ import com.darwinsys.util.*;
  */
 public class MkIndex {
 	/** The output file that we create */
-	public static final String OUTPUTFILE = "index.html";
+	public static final String OUTPUTFILE = "index_byname.html";
 	/** The main output stream */
 	PrintWriter out;
 	/** The background color for the page */
