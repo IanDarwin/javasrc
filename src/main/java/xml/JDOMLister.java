@@ -15,7 +15,7 @@ public class JDOMLister {
 			SAXBuilder b = new SAXBuilder(true);	// true -> validate
 
 			// Create a JDOM document.
-			Document doc = b.build(new File("parents+dtd.xml"));
+			Document doc = b.build(new File("people+dtd.xml"));
 
 			// Create an output formatter, and have it write the doc.
 			new XMLOutputter().output(doc, System.out);
