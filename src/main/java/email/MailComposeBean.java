@@ -83,7 +83,7 @@ public class MailComposeBean extends JPanel {
 		// Bottom is a panel with Send and Cancel buttons.
 		JPanel tp = new JPanel();
 		tp.setLayout(new GridLayout(3,2));
-		cp.add("North", tp);
+		cp.add(BorderLayout.NORTH, tp);
 
 		tfs = new JTextField[MAXTF];
 
@@ -101,7 +101,7 @@ public class MailComposeBean extends JPanel {
 		tp.add(tfs[CC] = ccTF = new JTextField(35));
 
 		// Centre is the TextArea
-		cp.add("Center", msgText = new JTextArea(70, 10));
+		cp.add(BorderLayout.CENTER, msgText = new JTextArea(70, 10));
 		msgText.setBorder(BorderFactory.createTitledBorder("Message Text"));
 
 		// Bottom is the apply/cancel button
@@ -126,7 +126,7 @@ public class MailComposeBean extends JPanel {
 				maybeKillParent();
 			}
 		});
-		cp.add("South", bp);
+		cp.add(BorderLayout.SOUTH, bp);
 	}
 
 	public Dimension getPreferredSize() {

@@ -29,9 +29,9 @@ public class Telnet {
 			new Pipe(new DataInputStream(s.getInputStream()),
 				new DataOutputStream(System.out)).start();
 
-			// Connect out stdin to the remote
+			// Connect our stdin to the remote
 			new Pipe(new DataInputStream(System.in),
-			new DataOutputStream(s.getOutputStream())).start();
+				new DataOutputStream(s.getOutputStream())).start();
 
 		} catch(IOException e) {
 			System.out.println(e);
@@ -58,6 +58,7 @@ class Pipe extends Thread {
 		try {
 			while ((line = is.readLine()) != null)
 				os.writeChars(line + "\r\n");
+				os.flush();
 		} catch(IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}

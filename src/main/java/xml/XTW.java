@@ -1,3 +1,4 @@
+import com.darwinsys.util.*;
 import java.io.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
@@ -52,7 +53,7 @@ public class XTW {
 		}
 		NodeList nodes = p.getChildNodes();
 		int numElem = nodes.getLength();
-		// System.err.println("Element has " + numElem + " children");
+		Debug.println("xml-tree", "Element has " + numElem + " children");
 		for (int i=0; i<numElem; i++) {
 			Node n = nodes.item(i);
 			if (n == null) {

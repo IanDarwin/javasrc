@@ -12,6 +12,7 @@ public class FloatCmp {
 		final double EPSILON = 0.0000001;
 		if (da == db) {
 			System.out.println("Java considers " + da + "==" + db);
+		// else compare with our own equals method
 		} else if (equals(da, db, 0.0000001)) {
 			System.out.println("True within epsilon " + EPSILON);
 		} else {
