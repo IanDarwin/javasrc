@@ -1,4 +1,4 @@
-SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io tar textproc javacomm dir_file graphics gui i18n network netweb servlet jsp DBM JDBC email xml rmi packaging beans threads introspection otherlang native1.1 template
+SUBDIR=	 com.darwinsys.util language starting environ strings RE numbers datetime structure oo Plotter io tar textproc javacomm dir_file graphics gui filterGUI i18n network applet netweb servlet jsp quizzes spdf DBM JDBC Contrib/JDBCDriver-Moss email xml xmlform rmi NETWatch packaging beans ChartBean threads webserver introspection otherlang native1.1 template
 
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
 # $Id$
@@ -60,10 +60,11 @@ makefiles:
 			else echo "[bypassed--NOT A DIRECTORY]"; \
 			fi \
 		done
-		@for dir in $(SUBDIR); do if [ ! -f $$dir/Makefile ]; then \
+		@for dir in $(SUBDIR); do if [ -f $$dir/Makefile -o $$dir/build.xml ]; then \
+			echo "===> [$$dir bypassed--Makefile or build.xml found]"; \
+			else \
 			echo "===> $$dir/Makefile.simple"; \
 				cp Makefile.simple $$dir/Makefile; \
-			else echo "[bypassed--EXISTS]"; \
 			fi \
 		done
 
