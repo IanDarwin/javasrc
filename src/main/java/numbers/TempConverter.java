@@ -9,18 +9,22 @@ public class TempConverter {
 	public static void main(String args[]) {
 		TempConverter t = new TempConverter();
 		t.start();
-		for (int i=-40; i<=120; i+=10) {
-			float c = (i-32)*(5f/9);
-			t.print(i, c);
-		}
+		t.data();
 		t.end();
 	}
 
 	protected void start() {
 	}
 
+	protected void data() {
+		for (int i=-40; i<=120; i+=10) {
+			float c = (i-32)*(5f/9);
+			print(i, c);
+		}
+	}
+
 	protected void print(float f, float c) {
-		System.out.println(f + " f = " + c + " c.");
+		System.out.println(f + " " + c);
 	}
 
 	protected void end() {

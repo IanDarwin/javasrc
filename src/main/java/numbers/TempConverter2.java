@@ -7,7 +7,12 @@ import java.text.*;
 public class TempConverter2 extends TempConverter {
 	protected DecimalFormat df;
 
-	// We don't need a main program; it's inherited from TempConverter.
+	public static void main(String args[]) {
+		TempConverter t = new TempConverter2();
+		t.start();
+		t.data();
+		t.end();
+	}
 
 	// Constructor
 	public TempConverter2() {
@@ -15,7 +20,7 @@ public class TempConverter2 extends TempConverter {
 	}
 
 	protected void print(float f, float c) {
-		System.out.println(f + " f = " + df.format(c) + " c.");
+		System.out.println(f + " " + df.format(c));
 	}
 
 	protected void start() {
