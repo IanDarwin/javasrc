@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.tree.*;
+import javax.swing.event.*;
 import java.io.*;
 import java.util.*;
 
@@ -19,6 +20,15 @@ public class FileTree extends JPanel
 
 		// Make a tree list with all the nodes, and make it a JTree
 		JTree tree = new JTree(addNodes(null, dir));
+
+		// Add a listener
+		tree.addTreeSelectionListener(new TreeSelectionListener() {
+			public void valueChanged(TreeSelectionEvent e) {
+				DefaultMutableTreeNode node =
+					(DefaultMutableTreeNode)e.getPath().getLastPathComponent();
+				System.out.println("You selected " + node);
+			}
+		});
 
 		// Lastly, put the JTree into a JScrollPane.
 		JScrollPane scrollpane = new JScrollPane();
@@ -76,12 +86,14 @@ public class FileTree extends JPanel
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {System.exit(0);}
 		});
-		frame.setLayout(new BoxLayout(frame, BoxLayout.X_AXIS));
 
-		if (av.length == 0)
+		if (av.length == 0) {
 			frame.add(new FileTree(new File(".")));
-		else for (int i=0; i<av.length; i++)
-			frame.add(new FileTree(new File(av[i])));
+		} else {
+			frame.setLayout(new BoxLayout(frame, BoxLayout.X_AXIS));
+			for (int i=0; i<av.length; i++)
+				frame.add(new FileTree(new File(av[i])));
+		}
 
 		frame.pack();
 		frame.setVisible(true);

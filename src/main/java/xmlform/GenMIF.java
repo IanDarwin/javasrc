@@ -158,15 +158,14 @@ public class ConvertToMif implements XmlFormWalker {
 			return;
 		pgfString(s);
 	}
+
 	protected void pgfString(String s) {
 		indent();
-		msg.print("<String `");
-		msg.print(s);			// XXX make sb, translate special chars
-		msg.println("'>");
+		mifString("String", s);
 	}
 
 	protected void doCode(Element p) {
-		msg.print("<Code>");
+		msg.print("<Literal>");
 		NodeList nodes = p.getChildNodes();
 		for (int i=0; i<nodes.getLength(); i++) {
 			Node n = nodes.item(i);
@@ -177,6 +176,35 @@ public class ConvertToMif implements XmlFormWalker {
 		}
 		msg.print("<Plain>");
 	}
+
+	/** Do the minum needed to make "line" a valid MIF string. */
+	protected String mifString(String tag, String line) {
+		// Make new, big enough for translations
+		StringBuffer b = new StringBuffer(line.length() * 2);
+		b.append('<');
+		b.append(tag);
+		b.append(' ');
+		b.append('`');
+
+		// Process each character.
+		for (int i=0; i<line.length(); i++) {
+			char c = line.charAt(i);
+			switch (c) {
+			case '\\':	b.append("\\"); break;
+			case ' ':	b.append(' '); break;
+			case '\t':	b.append("\t"); break;
+			case '\'':	b.append("\\xd5 "); break;
+			case '<':	b.append("\\<"); break;
+			case '>':	b.append("\\>"); break;
+			default:	b.append(c); break;
+			}
+		}
+		b.append(' ');
+		b.append('\'');
+		b.append('>');
+		return b.toString();
+	}
+
 	/** Simply subclass PrintWriter so we don't have to modify
 	 * GetMark to change the format of lines that it writes, or
 	 * resort to other kluges like passing it a prefix and/or suffix.
