@@ -8,7 +8,7 @@ import java.io.*;
  * kept in memory. Dbm was originally optimized for UNIX for fast
  * access to individual key/value pairs.
  *
- * @author This Java/C hookup by Ian F. Darwin, ian@darwinsys.com
+ * @author This Java/C hookup by Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class DBM {

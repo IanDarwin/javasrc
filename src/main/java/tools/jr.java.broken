@@ -20,7 +20,7 @@ import com.darwinsys.util.Debug;
  * (then you can e.g., tee the output).
  * Parts of this code will be superceded by JSR199.
  * <P>
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class jr {

@@ -9,7 +9,7 @@ import java.util.*;
  *
  * This code is far from finished, as you will see.
  *
- * @author	Ian Darwin, ian@darwinsys.com, for Learning Tree Course 478
+ * @author	Ian Darwin, http://www.darwinsys.com/, for Learning Tree Course 478
  */
 public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 	/** The status window at the bottom */

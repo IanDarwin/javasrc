@@ -1,7 +1,7 @@
 import java.io.*;
 /**
  * DANGEROUS Program to remove files matching a name in a directory
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class KillFilesByName {
 	public static void main(String[] argv) {

@@ -3,7 +3,7 @@ package com.darwinsys.spdf;
 import java.util.*;
 
 /** A PDFDict ias a PDFObject that is all, or mostly, a Dictionary.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  */
 public abstract class PDFDict extends PDFObject {
 	/** The Dictionary is a HashTable. Put the keys without a 

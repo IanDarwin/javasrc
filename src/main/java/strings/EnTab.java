@@ -5,7 +5,7 @@ import com.darwinsys.util.Debug;
 /** entab- replace blanks by tabs and blanks.
  * Transmuted from K&R Software Tools book into C.
  * Transmuted again, years later, into Java.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class EnTab {

@@ -87,7 +87,8 @@ public class PlotterAWT extends Plotter {
 		}
 
 		/** This is called by AWT after the native window peer is created,
-		 * and is a good time to create images and the like.
+		 * and before paint() is called for the first time, so
+		 * is a good time to create images and the like.
 		 */
 		public void addNotify() {
 			super.addNotify();

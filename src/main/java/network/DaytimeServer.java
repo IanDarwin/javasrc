@@ -3,7 +3,7 @@ import java.net.*;
 
 /**
  * DaytimeServer - server for the standard binary time service.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class DaytimeServer {

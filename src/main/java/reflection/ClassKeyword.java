@@ -3,7 +3,7 @@ import java.util.*;
  * Show the class keyword and getClass() method in action.
  * The class keyword can be applied to any type known at compile time.
  * 
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ClassKeyword {

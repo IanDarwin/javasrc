@@ -1,7 +1,7 @@
 import com.darwinsys.lang.GetOpt;
 
 /** Trivial demonstration of GetOpt, the old way. If -h present, print help.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GetOptSimple {

@@ -9,7 +9,7 @@ import java.util.*;
  * and installed separately from the JDK before you can even compile this 
  * program.
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TestProg {

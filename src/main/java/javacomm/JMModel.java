@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * JMModel -- Communications I/O for JModem. No GUI stuff here.
- * @author	 Ian F. Darwin, ian@darwinsys.com
+ * @author	 Ian F. Darwin, http://www.darwinsys.com/
  * @version	 $Id$
  */
 public class JMModel extends java.lang.Object {

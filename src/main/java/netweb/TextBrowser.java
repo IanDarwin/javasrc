@@ -4,7 +4,7 @@ import java.io.*;
 /**
  * TextBrowser - URL/text mode getter.
  * Display the contents of a text-only URL
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class TextBrowser {
 

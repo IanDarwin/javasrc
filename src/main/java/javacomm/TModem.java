@@ -7,7 +7,7 @@ import java.text.*;
  * A.D. 2000 - dragged from the archives for use in Java Cookbook.
  *
  * @author C version by Andrew Scott Beals, sjobrg.andy%mit-oz@mit-mc.arpa.
- * @author Java version by Ian F. Darwin, ian@darwinsys.com
+ * @author Java version by Ian F. Darwin, http://www.darwinsys.com/
  * $Id$
  */
 public class TModem {

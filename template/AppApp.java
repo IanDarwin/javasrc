@@ -4,7 +4,7 @@ import java.applet.*;
 
 /**
  * Example of a class that can be used as an Applet or an Application
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version #Id$
  */
 public class AppApp extends Applet {

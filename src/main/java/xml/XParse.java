@@ -4,7 +4,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.*;
 
 /** Parse an XML file using DOM, via JAXP.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class XParse {

@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 
 /** Simple console-mode (command-line) chat client.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ConsChat {

@@ -1,7 +1,7 @@
 import com.darwinsys.lang.GetOpt;
 
 /** Template main program using GetOpt.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class mainopts {

@@ -4,11 +4,12 @@ import java.util.zip.*;
 import java.lang.reflect.*;
 
 /**
+ * <p>
  * APIFormatter reads one or more Zip files, gets all entries from each
  * and, for each entry that ends in ".class", loads it with Class.forName()
  * and hands it off to a doClass(Class c) method declared in a subclass.
  * <br/>TODO<br/>
- * use GETOPT to control doingStandardClasses, verbosity level, etc.
+ * Use GETOPT to control doingStandardClasses, verbosity level, etc.
  * @author	Ian Darwin, Ian@DarwinSys.com
  * @version	$Id$
  */

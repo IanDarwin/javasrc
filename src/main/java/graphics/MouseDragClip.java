@@ -1,15 +1,14 @@
-import com.darwinsys.swingui.WindowCloser;
-
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 /** MouseDragClip -- implement simple mouse drag in a window.
  * Speed up by using clipping regions.
- *
+ * <p>
  * This version "works" for very simple cases (only drag down
  * and to the right, never move up or back :-) ).
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class MouseDragClip extends Canvas 
 		implements MouseListener, MouseMotionListener {
@@ -32,7 +31,8 @@ public class MouseDragClip extends Canvas
 
 	// "main" method
 	public static void main(String[] av) {
-		Frame f = new Frame("Mouse Dragger");
+		JFrame f = new JFrame("Mouse Dragger");
+		Container cp = f.getContentPane();
 
 		if (av.length < 1) {
 			System.err.println("Usage: MouseDragClip imagefile");
@@ -43,15 +43,15 @@ public class MouseDragClip extends Canvas
 		// create a MouseDragClip object
 		MouseDragClip j = new MouseDragClip(im);
 
-		f.setLayout(new BorderLayout());
-		f.add(BorderLayout.NORTH,
+		cp.setLayout(new BorderLayout());
+		cp.add(BorderLayout.NORTH,
 			new Label("Hello, and welcome to the world of Java"));
-		f.add(BorderLayout.CENTER, j);
-		f.add(BorderLayout.SOUTH, status = new Label());
-		f.addWindowListener(new WindowCloser(f));
-		f.pack();
+		cp.add(BorderLayout.CENTER, j);
+		cp.add(BorderLayout.SOUTH, status = new Label());
 		status.setSize(f.getSize().width, status.getSize().height);
+		f.pack();
 		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/** Construct the MouseDragClip object, given an Image */

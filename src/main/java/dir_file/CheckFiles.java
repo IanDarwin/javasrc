@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Get a list of files, and check if any files are missing.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class CheckFiles {

@@ -1,33 +1,29 @@
 import java.applet.*;
 import java.awt.*;
-// import java.awt.event.*;		// only in JDK1.1
+import java.awt.event.*;
 import java.net.*;
 
 /**
+ * <p>
  * SumUp is a simple applet that adds up some numbers.
- * This version is for JDK 1.0 and later; code for 1.1 is present
- * but commented out.
- * <P>
- * To make this ready for production, we should implement a little
- * language either in HTML PARAMs, such as
- * <PRE>
- *	&ltPARAM NAME=title1 value="Option One">
- *	&ltPARAM NAME=values1 value="0|100|200|300|400">
- *	&ltPARAM NAME=title1 value="Option Two">
- *	&ltPARAM NAME=values1 value="0|400|600|800|1000">
- * </PRE>
- * <BR>or<BR>
+ * To make this really useful for production, should implement a "little
+ * language" either in HTML PARAMs, such as
+ * <pre>
+ *	&ltparam name="title1" value="Option One">
+ *	&ltparam name="values1" value="0|100|200|300|400">
+ *	&ltparam name="title1" value="Option Two">
+ *	&ltparam name="values1" value="0|400|600|800|1000">
+ * </pre>
+ * <br/>or<br/>
  * in a configuration file which we download and parse (see
  * TreeLink.java in this directory) or load as a Properties file
- * (see MenuIntl.java) - note that as of today we can't load
- * Properties files into an Applet for some reason.
- * <P>
+ * (see MenuIntl.java). </p>
+ * <p>
  * Also, of course, the URL to go to should be a PARAM.
- * Not to mention the colors (see ColorName and/or XColor).
- *
- * @author Ian F. Darwin, ian@darwinsys.com
+ * Not to mention the colors (see ColorName and/or XColor).</p>
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-public class SumUp extends Applet /* 1.1: implements ActionListener */ {
+public class SumUp extends Applet implements ActionListener {
 	/** The array of Choice items */
 	protected Choice cs[] = new Choice[10];
 	/** How many are actually in the array. */
@@ -67,20 +63,14 @@ public class SumUp extends Applet /* 1.1: implements ActionListener */ {
 
 		sendButton = new Button("Send it");
 		add(sendButton);						// connect Button into Applet
-		// Next line needed for 1.1 version
-		// sendButton.addActionListener(this);	// connect it back to Applet
-		// or, better yet, have its own actionListener separate from that
-		// used by all the Choice items.
+		sendButton.addActionListener(this);		// connect it back to Applet
 	}
 
-	/** action() is called when a "high level" action happens
+	/** actionPerforformed() is called when a "high level" action happens
 	 *  (like the user pushing a Button!) in one of the components
-	 *  added to this Applet. In JDK1.1 this would be actionPerformed(),
-	 *  but the customer needed this Applet to work on the Internet at
-	 *  a time when many users' browsers were still at JDK1.0.
+	 *  added to this Applet. 
 	 */
-	//public void actionPerformed(ActionEvent e) {	// 1.1
-	public boolean action(Event e, Object name) {	// 1.0
+	public void actionPerformed(ActionEvent e) {	// 1.1
 		int total = 0;
 		for (int i=0; i<numChoices; i++) {
 			String text = cs[i].getSelectedItem();
@@ -90,22 +80,18 @@ public class SumUp extends Applet /* 1.1: implements ActionListener */ {
 		}
 		resultField.setText(Integer.toString(total));
 
-		// Now, if that was the Send button, do it.
-		if (sendButton == e.target) {
-			try {
-				URL myNewURL = new URL(
-					"http://server/cgi-bin/credit?SUM=" + total);
+		try {
+			URL myNewURL = new URL(
+				"http://server/cgi-bin/credit?sum=" + total);
 
-				// System.out.println("URL = " + myNewURL); // debug...
+			// System.out.println("URL = " + myNewURL); // debug...
 
-				// "And then a miracle occurs..."
-				getAppletContext().showDocument(myNewURL);
+			// "And then a miracle occurs..."
+			getAppletContext().showDocument(myNewURL);
 
-			} catch (Exception err) {
-				System.err.println("Error!\n" + err);
-				showStatus("Error, look in Java Console for details!");
-			}
+		} catch (Exception err) {
+			System.err.println("Error!\n" + err);
+			showStatus("Error, look in Java Console for details!");
 		}
-		return true;		// (1.0) yes, we did something, thank you.
 	}
 }

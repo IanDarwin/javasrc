@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * Get date/time using a Calendar, but use toString (uck!).
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Date1 {

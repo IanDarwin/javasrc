@@ -13,6 +13,7 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
+			classpath="${junit.jar}"
 			deprecation="true"
 			source="1.4"
 		/>

@@ -6,6 +6,10 @@
 	<property name="src"   value="."/>
 	<property name="build" value="."/>
 
+	<!-- These APIs are now in the JDK1.4 rt.jar -->
+	<property name="jaxp.jar" value="."/>
+	<property name="crimson.jar" value="."/>
+
 	<target name="build" depends="detect">
 		<!-- Compile the java code from ${src} into ${build}.
 		 *** failonerror set false because of 1.4 constructs that will

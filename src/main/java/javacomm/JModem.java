@@ -7,7 +7,7 @@ import javax.swing.*;
  * JModem - simple communications program.
  * WARNING this file was built with the NetBeans Developer IDE
  * and parts of it should not be modified with a text editor.
- * @author    Ian F. Darwin, ian@darwinsys.com
+ * @author    Ian F. Darwin, http://www.darwinsys.com/
  * @version   $Id$
  */
 public class JModem extends javax.swing.JFrame {
@@ -282,7 +282,7 @@ public class JModem extends javax.swing.JFrame {
   }//GEN-LAST:event_saveLogFileMenuItemActionPerformed
 
   private void helpAboutMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAboutMenuItemActionPerformed
-    note("JModem 0.0 (c) 2000 Ian F. Darwin\nian@darwinsys.com");
+    note("JModem 0.0 (c) 2000 Ian F. Darwin\nhttp://www.darwinsys.com/");
   }//GEN-LAST:event_helpAboutMenuItemActionPerformed
 
   private void baudComboBoxActionPerformed (java.awt.event.ActionEvent evt) {

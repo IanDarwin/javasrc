@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.*;
 
 /** A simple FileFilter class that works by filename extension,
- * like the one in the JDK demo called ExtentionFilter, which
+ * like the one in the JDK demo called ExampleFileFilter, which
  * has been announced to be supported in a future Swing release.
  */
 class JFileFilter extends javax.swing.filechooser.FileFilter {

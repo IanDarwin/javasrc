@@ -1,7 +1,7 @@
 /** An example of a Singleton implementation in Java.
  * The Singleton design pattern is described in GOF; the idea is to ensure
  * that only one instance of the class will exist in a given application.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Singleton {

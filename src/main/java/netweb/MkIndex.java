@@ -10,7 +10,7 @@ import com.darwinsys.io.FileIO;
  * the list of files, grep out .class and javadoc output files, |sort.
  * Now it's all in Java (including the ls-ing and the sorting).
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @Version $Id$
  */
 public class MkIndex {

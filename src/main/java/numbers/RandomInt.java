@@ -3,7 +3,7 @@ import java.util.*;
 /** Generate random ints by asking Random() for
  * a series of random integers from 1 to 10, inclusive.
  *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class RandomInt {

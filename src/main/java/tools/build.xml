@@ -17,8 +17,9 @@
 		"Ignore deprecation; it is needed until the Compiler API is public"/>
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${darwinsys.jar}"
-			deprecation="true"
-			/>
+			deprecation="true">
+			<exclude name="jr.java"/>
+		</javac>
 	</target>
 
 	<target name="run" depends="build">

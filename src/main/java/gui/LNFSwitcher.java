@@ -7,7 +7,7 @@ import javax.swing.plaf.metal.*;
 
 /**
  * A Look-and-feel switcher.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
 public class LNFSwitcher {

@@ -4,7 +4,7 @@ import java.util.*;
 
 /** NetLog - NetLog client API.
  * @see		NetLogSimple -- demonstration example usage.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version Copyright (C) 1995, 1996 Ian Darwin
  */
 public class NetLog {

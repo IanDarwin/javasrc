@@ -12,9 +12,10 @@
 		  ** failOnError=false because of wierd DataSource definition found.
 		  -->
 		<javac srcdir="${src}" destdir="${build}"
-			deprecation="true"
+			classpath="${darwinsys.jar}:${servletapi.jar}"
+			debug="true" deprecation="true"
 			failOnError="false"
-			classpath="${darwinsys.jar}:${servletapi.jar}"/>
+			/>
 	</target>
 
 </project>

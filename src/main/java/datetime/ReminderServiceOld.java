@@ -7,7 +7,7 @@ import javax.swing.*;
  * Read a file of reminders, sleep until each is due, beep.
  * Much of this logic has been uperceded by java.util.Timer, which is used
  * in the non-Old version of this program.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ReminderServiceOld {

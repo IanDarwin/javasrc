@@ -1,5 +1,5 @@
 /** StrCharAt - show String.charAt()
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 

@@ -101,7 +101,7 @@ public class Diary extends Frame {
 				JOptionPane.showInfoDialog(Diary.this, 
 				VERSION + "\n" +
 				"Copyright (c) 1997 Ian F. Darwin\n" +
-				"Free via email from ian@darwinsys.com",
+				"Free via email from http://www.darwinsys.com/",
 				VERSION, JOptionPane.ERROR_MESSAGE);
 			}
 		});

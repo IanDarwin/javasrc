@@ -6,7 +6,7 @@ import com.darwinsys.util.Debug;
 
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Find {

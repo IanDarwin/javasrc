@@ -3,7 +3,7 @@ package com.darwinsys.spdf;
 import java.util.*;
 
 /** A PDFObject represents one node in the tree of a PDF file.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  */
 public abstract class PDFObject extends java.lang.Object {
 	/** The containing PDF file */

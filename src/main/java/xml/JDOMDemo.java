@@ -1,7 +1,3 @@
-/*
- * Simple demo of JDOM
- */
-
 import org.jdom.*;
 import org.jdom.input.SAXBuilder;
 import org.jdom.input.DOMBuilder;
@@ -9,8 +5,11 @@ import org.jdom.output.*;
 
 import java.io.IOException;
 import java.util.*;
+import java.io.IOException;
 
-
+/*
+ * Simple demo of JDOM
+ */
 public class JDOMDemo {
 
     public static void main(String[] args) {
@@ -50,11 +49,17 @@ public class JDOMDemo {
             } catch (JDOMException e) { // indicates a well-formedness or other error
                 System.out.println(args[i] + " is not a well formed XML document.");
                 System.out.println(e.getMessage());
+<<<<<<< JDOMDemo.java
+            } catch (IOException ex) {
+				System.out.println(args[i] + ": " + ex);
+			}
+=======
             } catch (IOException ex) {
 				System.out.println("Input or Output error:" + ex);
 			}     
+>>>>>>> 1.3
         }
-    }  
+    }
 
     public static void demo(Document doc) {
 

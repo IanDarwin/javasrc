@@ -4,7 +4,7 @@ import java.io.*;
 /**
  * A very very simple proxy server.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
 public class proxy {

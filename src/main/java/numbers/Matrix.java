@@ -2,7 +2,7 @@
  * Multiply two matrices.
  * Only defined for int: clone the code (or wait for Templates)
  * for long, float, and double.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Matrix {

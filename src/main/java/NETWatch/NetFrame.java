@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 /** Main GUI component for the NetWatch program.
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version	$Id$
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */

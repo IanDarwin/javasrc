@@ -8,7 +8,7 @@ import com.darwinsys.io.FileIO;
 import com.darwinsys.util.FileProperties;
 
 /** Graph of a book's sales rank on a given bookshop site.
- * @author Ian F. Darwin, ian@darwinsys.com, Java Cookbook author,
+ * @author Ian F. Darwin, http://www.darwinsys.com/, Java Cookbook author,
  *	originally translated fairly literally from Perl into Java.
  * @author Patrick Killelea <p@patrick.net>: original Perl version,
  *	from the 2nd edition of his book "Web Performance Tuning".

@@ -9,7 +9,7 @@ import java.util.*;
 import com.darwinsys.util.Debug;
 
 /** Simple Graphing program.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Grapher extends JPanel {

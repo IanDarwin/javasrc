@@ -11,7 +11,7 @@ import java.util.*;
  * and installed separately from the JDK before you can even compile this 
  * program.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class Penman extends Plotter {
 	private final String OK_PROMPT = "\r\n!";

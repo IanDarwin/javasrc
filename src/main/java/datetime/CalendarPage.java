@@ -3,7 +3,7 @@ import java.text.*;
 
 /** Print a month page.
  * Only works for the Western calendar. 
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class CalendarPage {

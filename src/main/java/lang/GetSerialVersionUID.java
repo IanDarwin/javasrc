@@ -4,7 +4,7 @@ import java.io.*;
  * This program shows how to use getSerialVersionUID for a class that
  * isn't in a package and thus not findable to the normal "serialver" tool.
  *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  */
 public class GetSerVersUID {
 	static final String ident = "$Id$";

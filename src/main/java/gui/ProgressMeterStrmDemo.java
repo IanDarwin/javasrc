@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Demonstrate ProgressMeterInputStream.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
 public class ProgressMeterStrmDemo extends JFrame implements Runnable {

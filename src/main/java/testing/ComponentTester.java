@@ -7,7 +7,7 @@ import java.awt.event.*;
  * A generic main program, for testing a Component-based GUI class that 
  * has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class CompTest {

@@ -3,7 +3,7 @@ import java.awt.event.*;
 
 /**
  * Program to draw grids.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 class GridsCanvas extends Canvas {
 	int width, height;

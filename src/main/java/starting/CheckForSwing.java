@@ -1,4 +1,5 @@
-/** Test for presence of Swing on classpath at runtime. */
+/** Test for presence of Swing on classpath at runtime.
+ */
 public class TestForSwing {
 	public static void main(String[] args) {
 		try {

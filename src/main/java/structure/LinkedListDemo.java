@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Demo of 1.2 java.util.LinkedList class
  * using same example as my older LinkList class.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class LinkedListDemo {

@@ -5,7 +5,7 @@ import com.darwinsys.util.Debug;
 
 /**
  * Simple UDP client - contact the standard ascii time service
- * @author Ian Darwin, ian@darwinsys.com.
+ * @author Ian Darwin, http://www.darwinsys.com/.
  */
 public class DaytimeUDP {
 	/** The UDP port number */

@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 /** Demonstrate use of standard Object Serialization. */
-public class SerialDemo extends SerialDemoAbstractBase {
+public class SerialDemoObjectStream extends SerialDemoAbstractBase {
 	protected static final String FILENAME = "serial.dat";
 
 	public static void main(String[] s) throws Exception {

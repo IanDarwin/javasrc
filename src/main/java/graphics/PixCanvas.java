@@ -4,7 +4,7 @@ import java.awt.*;
  * PixCanvas - a helper class for PhotoUI, or any other
  * program that needs to store and display Images.
  * Originally written as part of the "Photo manipulation GUI" for JabaDex
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $DarwinSys 1.1$
  */
 public class PixCanvas extends Canvas {

@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Simple demo of avoiding side-effects by using Object.clone()
  * to duplicate an object before passing it to your enemy's methods.
- * A bit of a Java hack: Cloneable has no methods, but is tested
+ * Cloneable is a "marker" interface: it has no methods, but is tested
  * for by Object.clone. If you implement it, you tell Object.clone that
  * your data is stable enough that field-by-field copy is OK.
  */
@@ -14,6 +14,7 @@ class Enemy {
 		md.td.setYear(71);
 	}
 }
+
 public class SideEffects implements Cloneable {
 	/** When we clone a "SideEffects", this REFERENCE gets cloned */
 	public Date td;	
@@ -21,7 +22,7 @@ public class SideEffects implements Cloneable {
 	volatile int year;
 
 	public static void main(String[] argv) throws CloneNotSupportedException {
-		new SideEffects().run();
+		new SideEffects().process();
 	}
 
 	SideEffects() {
@@ -29,7 +30,7 @@ public class SideEffects implements Cloneable {
 		year = td.getYear();
 	}
 
-	public void run() throws CloneNotSupportedException {
+	public void process() throws CloneNotSupportedException {
 		Enemy r = new Enemy();
 		System.out.println("We have seen the enemy, and he is " + r);
 		System.out.println("Today is " + td + "; nice weather, isn't it?");

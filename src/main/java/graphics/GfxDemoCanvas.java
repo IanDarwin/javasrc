@@ -7,7 +7,7 @@ import java.awt.*;
  * while PrintDemoGFx creates one of these and calls its paint()
  * method with a Printer Graphics object.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class GfxDemoCanvas extends Canvas {
 	int width, height;

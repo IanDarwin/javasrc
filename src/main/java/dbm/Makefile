@@ -1,5 +1,5 @@
 # Makefile for the Java Native Methods in the DBM class.
-# Ian Darwin, ian@darwinsys.com, http://www.darwinsys.com
+# Ian Darwin, http://www.darwinsys.com/, http://www.darwinsys.com
 
 # $Id$
 

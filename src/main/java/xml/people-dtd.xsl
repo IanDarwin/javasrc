@@ -4,7 +4,7 @@
 <people>
 <person>
 	<name>Ian Darwin</name>
-	<email>ian@darwinsys.com</email>
+	<email>http://www.darwinsys.com/</email>
 	<country>Canada</country>
 </person>
 </people>

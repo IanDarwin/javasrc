@@ -8,7 +8,7 @@ import java.util.*;
  * MailtoButton -- look like a mailto, but not visible to spiders.
  *
  * @author	Copyright 1995, 1997 Ian F. Darwin,
- * <A HREF="mailto:ian@darwinsys.com">ian@darwinsys.com</A>,
+ * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>,
  * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
  * @version	$Id$
  */

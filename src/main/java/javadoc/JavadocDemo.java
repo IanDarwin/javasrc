@@ -5,7 +5,7 @@ import java.awt.event.*;
 /**
  * JavadocDemo - a simple applet to show JavaDoc comments.
  * <P>Note: this is just a commented version of HelloApplet.
- * @author Ian F. Darwin, <A HREF="mailto:ian@darwinsys.com">ian@darwinsys.com</A>
+ * @author Ian F. Darwin, <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>
  * @version $Id$
  * @see java.applet.Applet
  * @see javax.swing.JApplet

@@ -13,7 +13,7 @@ import java.io.*;
  * Can't claim to be fully standards-conforming, but has been
  * tested with Netscape Communicator and with the Lynx text browser.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  * @see		webserver/* for more fully-fleshed-out version(s).
  */

@@ -5,7 +5,7 @@ import java.util.*;
 
 /** Bean to display a month calendar in a JPanel. 
  * Only works for the Western calendar. 
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Cal extends JPanel {

@@ -3,7 +3,7 @@ import org.jdom.Element;
 import org.jdom.output.XMLOutputter;
 
 /** Make up and write an XML document, using JDOM
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class DocWriteJDOM {

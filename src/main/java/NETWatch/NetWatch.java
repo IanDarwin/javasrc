@@ -7,7 +7,7 @@ import java.util.*;
 /** Main program for the NetWatch program: watch the network status
  * on a bunch of machines (i.e., in a classroom or lab). Currently only
  * for RMI, but can be extended for TCP socket, CORBA ORB, etc.
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version	$Id$
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */

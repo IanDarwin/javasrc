@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Open a serial port using Java Communications.
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortOpen {
 	/** How long to wait for the open to finish up. */

@@ -5,7 +5,7 @@ import java.util.*;
  * This is <b>not</b> intended to be a usable List, and it is certainly
  * not going to be optimal in terms of performance; it is just
  * here to remind you how much work the existing List implementations do.
- * <br>
+ * <br/>
  * TODO: scrap this and start again, subclassing AbstractSequentialList
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin

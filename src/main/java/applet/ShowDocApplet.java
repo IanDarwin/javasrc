@@ -4,7 +4,7 @@ import java.applet.*;
 import java.net.*;
 
 /** ShowDocApplet: Demonstrate showDocument().
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  */ 
 public class ShowDocApplet extends Applet {
 	// String targetString = "http://www.darwinsys.com/javacook/secret.html";

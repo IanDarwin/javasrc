@@ -4,7 +4,7 @@ import java.lang.reflect.*;
 
 /**
  * Show loading a class and finding and calling its Main method.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class InvokeMain {

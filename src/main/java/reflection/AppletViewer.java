@@ -8,7 +8,7 @@ import java.util.*;
 
 /*
  * AppletViewer - a simple Applet Viewer program.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class AppletViewer {
 	/** The main Frame of this program */

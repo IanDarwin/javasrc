@@ -12,7 +12,7 @@ import java.util.*;
  * @Note: The URL used was garnered empirically, is not documented,
  * and is subject to change without notice! USE AT OWN RISK.
  *
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 

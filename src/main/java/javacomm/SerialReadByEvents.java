@@ -7,7 +7,7 @@ import java.util.*;
  * Read from a Serial port, notifying when data arrives.
  * Simulation of part of an event-logging service.
  * @version $Id$
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class SerialReadByEvents extends CommPortOpen 
 	implements SerialPortEventListener {

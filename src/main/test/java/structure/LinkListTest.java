@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Linked list class, written out in full using Java.
  * @deprecated	Supplanted by java.util.LinkedList
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest {
 	public static void main(String[] argv) {

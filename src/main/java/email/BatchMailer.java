@@ -65,7 +65,7 @@ public class BatchMailer {
 			try {
 				// This should be a bit more flexible :-(
 				Mailer.send("mailhost", 
-					customer, "ian@darwinsys.com", subject, messageBody);
+					customer, "http://www.darwinsys.com/", subject, messageBody);
 				System.out.println(customer + " HANDOFF OK");
 			} catch (MessagingException e) {
 				System.out.println(customer + " failed: " + e.toString());

@@ -10,7 +10,7 @@ import java.net.*;
  * mode in the protocol are defined in terms of ASCII, not UniCode.
  *
  * @author	Chris R. Brown, original C version
- * @author	Java version by Ian Darwin, ian@darwinsys.com.
+ * @author	Java version by Ian Darwin, http://www.darwinsys.com/.
  */
 public class RemCat {
 	/** The UDP port number */

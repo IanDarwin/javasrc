@@ -3,7 +3,7 @@ import java.lang.reflect.*;
 /**
  * Time the main method of other classes, for performance tuning.
  * A variation of Time, which takes multiple class names and no args.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TimeNoArgs {

@@ -26,7 +26,7 @@ public class LookupFile {
 		System.getProperties().setProperty(Context.PROVIDER_URL, "/");
 
 		// Create the initial context
-		ctx = new InitialContext(env);
+		ctx = new InitialContext();
 	}
 
 	/** Look up an object in the filesystem. */

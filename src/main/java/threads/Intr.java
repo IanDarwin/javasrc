@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Ian F. Darwin, ian@darwinsys.com, 1996-2002.
+ * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *
@@ -43,7 +43,7 @@
 
 /**
  * Interrupt a read, and then resume it.
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class Intr implements Runnable {
 	/** The Thread we are timing. */

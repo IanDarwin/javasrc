@@ -4,7 +4,7 @@ import javax.xml.parsers.*;
 
 /** Make up and write an XML document, using DOM
  * UPDATED FOR JAXP.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class DocWriteDOM {

@@ -3,7 +3,7 @@ import java.util.regex.*;
 /**
  * Quick demo of RE substitution: correct "demon" and other
  * spelling variants to the correct, non-satanic "daemon".
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ReplaceDemo {

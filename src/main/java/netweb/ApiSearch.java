@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 /*
  * ApiSearch.java -- look up an API name in the api database
  * 
- * @author  Ian Darwin, ian@darwinsys.com
+ * @author  Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ApiSearch extends HttpServlet

@@ -7,7 +7,7 @@ import java.util.*;
  * Subclasses CommPortOpen and adds send/expect handling for dealing
  * with Hayes-type modems.
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortModem extends CommPortOpen {
 	/** The last line read from the serial port. */

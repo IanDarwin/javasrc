@@ -1,6 +1,21 @@
-put ColorNames into com.darwinsys.swingui?
-Get rid of JDBC/testdatasource.
+Remove com.darwinsys/src/com/darwinsys/swingui/layout/tablayout and regress
+Remove xbutton*
 
-Finish CircleLayout, move to com.darwinsys.swingui.layout.
+mv buildindex.html search
+
+mv strings/CSVRE to RE-apache
+	Better: update for 1.4!
+
+add images to CVSROOT/modules
+
+javacomm.api - make a jar, use it in javacomm.
+
+mv language lang
+
+Rename com.darwinsys directory to darwinsys.
+
+put ColorNames into com.darwinsys.swingui?
+
+Get rid of JDBC/testdatasource.
 
 Clean up spdf.jar deploy and its use in PDFcouponservlet.

@@ -25,7 +25,7 @@ public class XTWalker extends XTW {
 		// NOTE -- YOU HAVE TO WRITE YOUR OWN TREEWALKER CLASS.
 		// OTHERWISE JUST USE XTW AS IT IS, NOT THIS SUBCLASS.
 
-		TreeWalker tw = new TreeWalker(p);
+		XTWalker tw = new XTWalker(p);
 		Node n;
 		while ((n = (Node)tw.getNext()) != null) {
 

@@ -6,7 +6,7 @@ import java.util.*;
  * and we don't display Roman Numbers differently in different Locales.
  * Filled with quick-n-dirty algorithms.
  *
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class RomanNumberFormat extends Format {

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.sql.*;
+import java.io.PrintWriter;
 
 /** Load a driver and connect to a database.
  */
@@ -12,7 +13,7 @@ public class Connect {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
 			// Enable logging
-			DriverManager.setLogStream(System.err);
+			DriverManager.setLogWriter(new PrintWriter((System.err)));
 
 			System.out.println("Getting Connection");
 			Connection conn = 

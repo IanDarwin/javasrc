@@ -3,7 +3,7 @@ import java.text.*;
 
 /**
  * How quickly can you press return?
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Timer0 {

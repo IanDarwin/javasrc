@@ -23,7 +23,7 @@ public class StyleServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws IOException, ServletException {
 
-		/** Servlet API 2.1: Web App Root/WEB-INF/web.xml includes
+		/** Servlet API 2.1: Web App Root/WEB-INF/web.xml contains
 		 * context-param name & value elements; this retrieves 'em.
 		 */
 		ServletContext ctx = getServletContext();
@@ -46,7 +46,7 @@ public class StyleServlet extends HttpServlet {
 		} else {
 			// Any other browser, output HTML
 			transform_into_html(out);
-		} 
+		}
 	}
 
 	void output_stylesheet_ref(PrintWriter out) {

@@ -1,6 +1,6 @@
 /**
  * Can you call a static method of an abstract class?
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public abstract class AbstractStatic {

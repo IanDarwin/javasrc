@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Dial a phone using the Java Communications Package.
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortDial extends CommPortModem {
 

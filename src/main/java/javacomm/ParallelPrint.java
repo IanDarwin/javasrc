@@ -5,7 +5,7 @@ import javax.comm.*;
 /**
  * Print to a serial port using Java Communications.
  *
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
   */
 public class ParallelPrint extends CommPortOpen {
 

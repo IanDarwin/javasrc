@@ -5,7 +5,7 @@ import com.darwinsys.lang.SysDep;
 
 /**
  * TimeComputation for processing sqrt and I/O operations.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TimeComputation {

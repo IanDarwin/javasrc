@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Ian F. Darwin, ian@darwinsys.com, 1996-2002.
+ * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *
@@ -46,7 +46,7 @@ import java.awt.event.*;
 
 /**
  * Mover -- move an image, slowly.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Mover extends Applet implements Runnable {

@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Class with code to walk a tree and convert it to MML (not MIF).
  * WAY OUT OF DATE W.R.T. THE "DTD" -- DO NOT USE!!
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GenMML implements XmlFormWalker {

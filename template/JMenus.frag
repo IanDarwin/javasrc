@@ -41,7 +41,7 @@
 				public void actionPerformed(ActionEvent evt) {
 					JOptionPane.showMessageDialog(JrLister.this,
 						"Program - a great new program\n" +
-						"Copyright Ian F. Darwin, ian@darwinsys.com",
+						"Copyright Ian F. Darwin, http://www.darwinsys.com/",
 						"About This Program",
 						JOptionPane.INFORMATION_MESSAGE);
 				}

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * This program tries to do I/O in each direction using a separate Thread.
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortThreaded extends CommPortOpen {
 

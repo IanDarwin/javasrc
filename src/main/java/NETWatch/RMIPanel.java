@@ -5,7 +5,7 @@ import java.rmi.*;
 import java.util.*;
 
 /** Displays one machines status, for RMI..
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  * @version	$Id$
  */

@@ -9,7 +9,7 @@ import java.awt.event.*;
  *
  * Does try to leave the cursor in exactly the right position.
  *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @author Bjorn Gudehus, gothic@celestica.com
  */
 public class FieldEdit extends Applet {

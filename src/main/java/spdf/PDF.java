@@ -11,7 +11,7 @@ import java.util.*;
  * The Adobe PDF Specification which they publish grants everyone
  * permission to write code to generate and/or process PDF files.
  * A PDF Object represents one PDF file.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class PDF {

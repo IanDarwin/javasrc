@@ -2,7 +2,7 @@ import java.io.*;
 
 /**
  * Delete a file from within Java, with error handling.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Delete2 {

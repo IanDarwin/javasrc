@@ -8,19 +8,19 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
-	<property name="build.work" value="build//javasrc"/>
-	<property name="build.compiler" value="jikes"/>
+	<property name="build.work" value="build/javasrc"/>
 
 	<property name="dist.jar" value="javacooksrc2.jar"/>
 
 	<property name="CVSROOT" value="ian@darian:/cvs"/>
 
-	<target name="init">
+	<!-- This init is different; it ensures that build is clean and exists -->
+	<target name="init" depends="clean">
 		<tstamp/>
-		<mkdir dir="${build}"/>
+		<mkdir dir="${build.work}"/>
 	</target>
 
-	<target name="get">
+	<target name="get" depends="init">
 		<cvs cvsRoot="${CVSROOT}" command="export" date="now"
 			quiet="true"
 			package="javacook-src"
@@ -28,7 +28,7 @@
 	</target>
 
 	<target name="api" depends="get">
-		<ant dir="${build.work}/com.darwinsys.util" target="dist"
+		<ant dir="${build.work}/com.darwinsys" target="dist"
 			inheritAll="false"/>
 	</target>
 
@@ -40,7 +40,7 @@
 	</target>
 
 	<target name="jar" depends="index">
-		<jar jarFile="${dist.jar}" includes="${build.work}"/>
+		<jar jarFile="${dist.jar}" includes="${build.work}/**"/>
 	</target>
 
 	<target name="dist" depends="jar"/>
@@ -58,13 +58,14 @@
 		<mail subject="Java Cookbook Download Updated" 
 			message=
 				"${dist.jar} updated at javacook.darwinsys.com/download.html"
-			from="Ian Darwin &lt;ian@darwinsys.com&gt;"
-			tolist="ian@darwinsys.com"
-			cclist="ian@darwinsys.com"
+			from="Ian Darwin &lt;http://www.darwinsys.com/&gt;"
+			tolist="http://www.darwinsys.com/"
+			cclist="http://www.darwinsys.com/"
 			/>
 	</target>
 
 	<target name="clean">
 		<delete dir="${build.work}"/>
+		<delete file="${dist.jar}"/>
 	</target>
 </project>

@@ -4,7 +4,7 @@ import java.awt.image.*;
 import javax.swing.*;
 
 /** Text with a Texture
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TexturedText extends JComponent {

@@ -4,10 +4,10 @@ import javax.swing.event.*;
 import java.util.regex.*;
 
 /** Standalone Swing GUI application for demonstrating REs.
- * <br>
+ * <br/>
  * TODO: 
  * Show the entire match, and $1 and up as captures that matched.
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version #Id$
  */
 public class REDemo extends JPanel {

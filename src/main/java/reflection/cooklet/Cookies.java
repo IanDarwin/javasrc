@@ -1,7 +1,7 @@
 /**
  * This is the part of the Cookies application that loads
  * the user-defined subclass.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Cookies {

@@ -4,7 +4,7 @@ import java.awt.event.*;
 /**
  * GetNumber - program to determine if a number is float or int.
  *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GetNumber extends Frame {

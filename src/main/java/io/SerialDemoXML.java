@@ -6,6 +6,8 @@ import java.io.*;
  */
 public class SerialDemoXML extends SerialDemoAbstractBase {
 
+	public static final String FILENAME = "serial.xml";
+
 	public static void main(String[] args) throws IOException {
 		new SerialDemoXML().save();
 		new SerialDemoXML().dump();

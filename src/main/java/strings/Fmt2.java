@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Fmt - format text (like Berkeley UNIX fmt, with a few troff commands).
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Fmt2 extends Fmt {

@@ -1,7 +1,6 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
-import com.darwinsys.swingui.WindowCloser;
 
 /** MouseDrag -- implement simple mouse drag in a window.
  */
@@ -20,7 +19,8 @@ public class MouseDrag extends Component
 
 	// "main" method
 	public static void main(String[] av) {
-		Frame f = new Frame("Mouse Dragger");
+		JFrame f = new JFrame("Mouse Dragger");
+		Container cp = f.getContentPane();
 
 		if (av.length < 1) {
 			System.err.println("Usage: MouseDrag imagefile");
@@ -31,15 +31,15 @@ public class MouseDrag extends Component
 		// create a MouseDrag object
 		MouseDrag j = new MouseDrag(im);
 
-		f.setLayout(new BorderLayout());
-		f.add(BorderLayout.NORTH,
+		cp.setLayout(new BorderLayout());
+		cp.add(BorderLayout.NORTH,
 			new Label("Hello, and welcome to the world of Java"));
-		f.add(BorderLayout.CENTER, j);
-		f.add(BorderLayout.SOUTH, status = new Label());
-		f.addWindowListener(new WindowCloser(f));
-		f.pack();
+		cp.add(BorderLayout.CENTER, j);
+		cp.add(BorderLayout.SOUTH, status = new Label());
 		status.setSize(f.getSize().width, status.getSize().height);
+		f.pack();
 		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	// "Constructor" - creates the object
@@ -59,12 +59,15 @@ public class MouseDrag extends Component
 	/** Called when the mouse has been clicked on a component. */
 	public void mouseClicked(MouseEvent e)  {
 	}
+
 	/** Called when the mouse enters a component. */
 	public void mouseEntered(MouseEvent e)  {
 	}
+
 	/** Called when the mouse exits a component. */
 	public void mouseExited(MouseEvent e)  {
 	}
+
 	/** Called when the mouse has been pressed. */
 	public void mousePressed(MouseEvent e)  {
 		Point p = e.getPoint();

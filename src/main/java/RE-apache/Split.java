@@ -4,7 +4,7 @@ import org.apache.regexp.*;
  * Example of using RE `split' method.
  * Remember that `split' makes you specify the boundaries; not
  * the patterns you want to extract but what's between them.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Split {

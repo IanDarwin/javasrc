@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * BordLayPanel.java - BorderLayout with a Panel
- * @author	Ian Darwin, ian@darwinsys.com, for Learning Tree Course 478
+ * @author	Ian Darwin, http://www.darwinsys.com/, for Learning Tree Course 478
  */
 public class BordLayPanel extends Frame {
 	TextField fileName;
