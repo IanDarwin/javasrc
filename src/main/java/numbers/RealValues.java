@@ -2,7 +2,7 @@ import java.text.*;
 /**
  * Show real values.
  * @author Ian F. Darwin, ian@darwinsys.com
- * @version #Id$
+ * @version $Id$
  */
 public class RealValues {
 	public static void main(String argv[]) {
