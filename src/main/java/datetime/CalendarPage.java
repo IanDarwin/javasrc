@@ -16,7 +16,7 @@ public class CalendarPage {
 	};
 
 	/** The days in each month. */
-	public final static int dom[] = {
+	public final static int[] dom = {
 			31, 28, 31, 30,	/* jan feb mar apr */
 			31, 30, 31, 31, /* may jun jul aug */
 			30, 31, 30, 31	/* sep oct nov dec */
