@@ -85,10 +85,14 @@ public class ConvertToMIF implements XmlFormWalker {
 		String tag = p.getTagName().toLowerCase();
 		if (tag.equals("chapter")) {
 			doChapter(p);
+		} else if (tag.equals("chaptertitle")) {
+			doParagraph("ChapterTitleLeft", p);
 		} else if (tag.equals("sc")) {
-			doSection(p);
+			doParagraph("HeadA", p);
+		} else if (tag.equals("ss")) {
+			doParagraph("HeadB", p);
 		} else if (tag.equals("p")) {
-			doParagraph(p);
+			doParagraph("Body", p);
 		} else if (tag.equals("pr")) {
 			pgfTag("HeadB");
 			pgfString("Problem");
@@ -120,28 +124,15 @@ public class ConvertToMIF implements XmlFormWalker {
 		msg.println("# START OF CHAPTER");
 	}
 
-	protected void doSection(Element p) {
-		pgfTag("HeadA");
-		doChildren(p);
-		endTag();
-	}
-
-	protected void doSubSection(Element p) {
-		pgfTag("HeadB");
-		doChildren(p);
-		endTag();
-	}
-
 	protected void pgfTag(String s) {
 		startTag("Para");
 		startTag("Pgf");
 		indent(); msg.println("<PgfTag `" + s + "'>");
-		endTag();
+		endTag();	// end of Pgf, not of Para!
 	}
 
-	protected void doParagraph(Element p) {
-		indent();
-		pgfTag("Body");
+	protected void doParagraph(String tag, Element p) {
+		indent(); pgfTag(tag);
 		doChildren(p);
 		endTag();
 	}
