@@ -8,7 +8,10 @@
 	<property name="jdo.jar" value="../lib/jdo.jar"/>
 	<property name="jta.jar" value="../lib/jta.jar"/>
 	<property name="jdori.jar" value="../lib/jdori.jar"/>
-	<property name="jdori-enhancer.jar" value="../lib/jdori-enhancer.jar"/>
+	<property name="antlr.jar" value="../lib/antlr.jar"/>
+	<property name="btree.jar" value="../lib/btree.jar"/>
+	<property name="classpath"
+		value=".:${darwinsys.jar}:${jdo.jar}:${jdori.jar}:${jta.jar}:${antlr.jar}:${btree.jar}"/>
 
 	<!-- specify what to compile. has failonerror=false because needs 1.4 -->
 	<target name="build">
@@ -17,36 +20,36 @@
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${darwinsys.jar}:${jdo.jar}"/>
+			classpath="${classpath}"/>
 	</target>
 	
 	<target name="enhance" depends="build" >
  	   <java fork="true"
 			classname="com.sun.jdori.enhancer.Main"
-			classpath="${jdori-enhancer.jar}:${jdori.jar}:${jdo.jar}:${antlr.jar}">
- 	       <arg line="-s . MyData.class MyData$DES.class Date.class"/>
+			classpath="${classpath}">
+ 	       <arg line="-s . io/MyData.class"/>
 	    </java>
 	</target>
 	
 	<target name="createdatastore" depends="enhance"
 		description="Initialize JDO datastore">
 		<java className="JDOCreateDataStore"
-			classpath="${jdo.jar}:${jdori.jar}:."/>
+			classpath="${classpath}"/>
 	</target>
 	
 	<target name="run" depends="createdatastore">
 		<!-- All these classes need JDO classpath since MyData is enhanced. -->
 		<echo message="SerialDemoObjectStream"/>
 		<java className="SerialDemoObjectStream"
-			classpath="${jdo.jar}:${jdori.jar}:."/>
+			classpath="${classpath}"/>
 		<!--
 		<echo message="SerialDemoXML"/>
 		<java className="SerialDemoXML"
-			classpath="${jdo.jar}:${jdori.jar}:."/>
+			classpath="${classpath}"/>
 		-->
 		<echo message="SerialDemoJDO"/>
 		<java classname="SerialDemoJDO"
-			classpath="${jdo.jar}:${jdori.jar}:."/>
+			classpath="${classpath}"/>
 	</target>
 
 </project>
