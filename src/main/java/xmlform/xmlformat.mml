@@ -1,0 +1,11 @@
+<MML 1.00 - Formats for XmlForm>
+<Comment *** $Id$ >
+<!DefineFont Code
+	<Family	Courier>
+>
+<!DefinePar HeadA>
+>
+<!DefinePar HeadB>
+>
+<!DefinePar Body>
+>

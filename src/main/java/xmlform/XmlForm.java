@@ -22,7 +22,7 @@ public class XmlForm {
 	public void convert(boolean verbose) {
 		try {
 			if (verbose)
-				msg.println(">>>Parsing " + fileName + "...");
+				System.err.println(">>>Parsing " + fileName + "...");
 			// Make the document a URL so relative DTD works.
 			String uri = "file:" + new File(fileName).getAbsolutePath();
 			XmlDocumentBuilder  builder = new XmlDocumentBuilder();
@@ -33,7 +33,7 @@ public class XmlForm {
 			instance.parse(uri);
 			XmlDocument doc = builder.getDocument();
 			if (verbose)
-				msg.println(">>>Walking " + fileName + "...");
+				System.err.println(">>>Walking " + fileName + "...");
 			XmlFormWalker c = new ConvertToMif(doc, msg);
 			c.convertAll();
 
@@ -41,7 +41,7 @@ public class XmlForm {
 			System.err.println(ex);
 		}
 		if (verbose)
-			msg.println(">>>Done " + fileName + "...");
+			System.err.println(">>>Done " + fileName + "...");
 	}
 
 	public static void main(String av[]) {
