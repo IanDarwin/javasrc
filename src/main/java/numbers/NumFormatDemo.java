@@ -19,7 +19,7 @@ public class NumFormatTest {
 		NumberFormat defForm = NumberFormat.getInstance();
 		NumberFormat ourForm = new DecimalFormat("##0.##");
 		// toPattern() will reveal the combination of #0., etc
-		// that this particular local uses to format with!
+		// that this particular Locale uses to format with!
 		System.out.println("defForm's pattern is " +
 			((DecimalFormat)defForm).toPattern());
 		System.out.println(intlNumber + " formats as " +
