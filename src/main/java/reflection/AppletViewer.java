@@ -1,10 +1,11 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.applet.*;
-import java.lang.reflect.*;
-import java.net.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 /*
  * AppletViewer - a simple Applet Viewer program.
