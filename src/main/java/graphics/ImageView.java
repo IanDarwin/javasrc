@@ -1,20 +1,30 @@
 import java.awt.*;
+import javax.swing.*;
 import java.net.*;
 
 /**
  * Standalone Image Viewer - works with any AWT-supported format.
  */
-public class ImageView extends Frame {
+public class ImageView extends JComponent {
 	/** The Image object */
-	Image im;
+	protected Image im;
 	/** Size of the image */
-	int width, height;
+	protected int width, height;
+	/** The graphical component */
+	protected Container cp;
+	/** The name of the image file */
+	protected String fileName;
 
 	/** Construct an ImageView viewer, given a filename. */
-	ImageView(String s) {
-		super("ImageView: " + s);
-		URL url = getClass().getResource(s);
-		// System.out.println(url);
+	public ImageView(String fileName) {
+		this.fileName = fileName;
+		cp = this;
+
+	}
+
+	public void loadImage() {
+
+		URL url = getClass().getResource(fileName);
 		im = Toolkit.getDefaultToolkit().getImage(url);
 
 		// ----- This part omitted from course notes for brevity -----
@@ -29,7 +39,7 @@ public class ImageView extends Frame {
 			return;
 		}
 		if (mt.isErrorID(0)) {
-			System.err.println("Couldn't load image file " + s);
+			System.err.println("Couldn't load image file " + fileName);
 			return;
 		}
 
@@ -46,10 +56,17 @@ public class ImageView extends Frame {
 	}
 
 	public static void main(String[] arg) {
-		if (arg.length == 0)
-			System.err.println("Usage: ImageView file");
-		else
-			for (int i=0; i<arg.length; i++)
-				new ImageView(arg[i]).setVisible(true);
+		if (arg.length == 0) {
+			System.err.println("Usage: ImageView file [...]");
+		} else {
+			for (int i=0; i<arg.length; i++) {
+				JFrame jf = new JFrame("ImageView: " + arg[i]);
+				ImageView iv = new ImageView(arg[i]);
+				jf.getContentPane().add(iv);
+				iv.loadImage();
+				jf.setSize(iv.getSize());
+				jf.setVisible(true);
+			}
+		}
 	}
 }
