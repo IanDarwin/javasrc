@@ -1,10 +1,11 @@
-<project name="XXX" default="build" basedir=".">
+<project name="Java Cookbook, Packaging Chapter" default="run" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
+	<property name="build" value="build"/>
 	<property file="../build.properties"/>
+	<property name="jarfile" value="${build}/jar-main.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
@@ -17,6 +18,24 @@
 		/>
 	</target>
 
+	<!-- Create a Jar that includes the main-class attribute; this file
+	 *** is runnable on any J2SE platform, and (it it is a GUI application)
+	 *** can be invoked by double-clicking on Mac OS X.
+	 -->
+	<target name="jar-main" depends="build">
+		<jar
+			jarfile="${jarfile}"
+			manifest="manifest.stub"
+			basedir="${build}"
+			includes="HelloWorld.class" 
+			update="no"/>
+	</target>
+
+	<target name="run" depends="jar-main">
+		<java fork="true" jar="${jarfile}"/>
+	</target>
+
 	<target name="clean">
+		<delete dir="${build}"/>
 	</target>
 </project>
