@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class CrsSetup extends JFrame {
 	/** The version number */
-	final static String VERSION = "$Version";
+	final static String VERSION = "$Version$";
 	/** How many machines to go up to */
 	final int NUSERS = 22;
 	/** The link to us in the Startup folder, to remove it when done */
