@@ -64,7 +64,7 @@ public class TestOpenMailRelayGUI extends JFrame {
 		p.add(hostTextField = new JTextField(10));
 		hostTextField.addActionListener(runner);
 
-		goButton.add(b = new JButton("Try"));
+		p.add(goButton = new JButton("Try"));
 		goButton.addActionListener(runner);
 
 		JButton cb;
