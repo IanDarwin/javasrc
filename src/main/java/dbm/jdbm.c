@@ -9,7 +9,6 @@
  * This is the native implentation of our Java-DBM hookup.
  */
 /*
- * Class:     DBM
  * Method:    dbminit
  * Signature: (Ljava/lang/String;)I
  */
@@ -18,19 +17,28 @@ JNIEXPORT jint JNICALL Java_DBM_dbminit
 	extern int errno;
 	jboolean iscopy;
 	jint ret = 0;
+	int err;
 	const char *cname = (*env)->GetStringUTFChars(env, filename, &iscopy);
 	printf("Filename is %s\n", cname);
 
 	ret = dbminit(cname);
+	err = errno;
 
 	/* if GetString made this copy for us, free it up. */
-	if (iscopy) (*env)->ReleaseStringUTFChars(env, filename, cname);
+	if (iscopy)
+		(*env)->ReleaseStringUTFChars(env, filename, cname);
 
-	return 0-errno;
+	// If dbminit() failed, throw exception containing strerror(errno)
+	if (ret < 0) {
+		jclass myClass = (*env)->FindClass(env,
+			"java/lang/IllegalArgumentException");
+		(*env)->ThrowNew(env, myClass, strerror(err));
+	}
+
+	return 0;
 }
 
 /*
- * Class:     DBM
  * Method:    dbmclose
  * Signature: ()I
  */
@@ -39,7 +47,6 @@ JNIEXPORT jint JNICALL Java_DBM_dbmclose
 }
 
 /*
- * Class:     DBM
  * Method:    fetch
  * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
  */
@@ -48,7 +55,6 @@ JNIEXPORT jobject JNICALL Java_DBM_fetch
 }
 
 /*
- * Class:     DBM
  * Method:    store
  * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
  */
@@ -57,7 +63,6 @@ JNIEXPORT jint JNICALL Java_DBM_store
 }
 
 /*
- * Class:     DBM
  * Method:    delete
  * Signature: (Ljava/lang/Object;)I
  */
@@ -66,7 +71,6 @@ JNIEXPORT jint JNICALL Java_DBM_delete
 }
 
 /*
- * Class:     DBM
  * Method:    firstkey
  * Signature: ()Ljava/lang/Object;
  */
@@ -75,7 +79,6 @@ JNIEXPORT jobject JNICALL Java_DBM_firstkey
 }
 
 /*
- * Class:     DBM
  * Method:    nextkey
  * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
  */
