@@ -33,6 +33,7 @@ public class REDemo extends JPanel {
 		JPanel top = new JPanel();
 		top.add(new JLabel("Pattern:", JLabel.RIGHT));
 		patternTF = new JTextField(20);
+		patternTF.getDocument().addDocumentListener(new PatternListener());
 		top.add(patternTF);
 		compiledOK = new JCheckBox("Compiled OK?");
 		// compiledOK.setEditable(false);
@@ -41,6 +42,7 @@ public class REDemo extends JPanel {
 		JPanel mid = new JPanel();
 		mid.add(new JLabel("String:", JLabel.RIGHT));
 		stringTF = new JTextField(20);
+		stringTF.getDocument().addDocumentListener(new StringListener());
 		mid.add(stringTF);
 		matches = new JCheckBox("Matches?");
 		// matches.setEditable(false);
@@ -65,5 +67,69 @@ public class REDemo extends JPanel {
 		add(top);
 		add(mid);
 		add(bot);
+	}
+
+	void tryCompile() {
+		pattern = null;
+		try {
+			pattern = Pattern.compile(patternTF.getText());
+			matcher = pattern.matcher("");
+			compiledOK.setSelected(true);
+		} catch (PatternSyntaxException ex) {
+			compiledOK.setSelected(false);
+		}
+	}
+
+	void tryMatch() {
+		findCountTF.setText("");
+		if (!compiledOK.isSelected())
+			return;
+		matcher.reset(stringTF.getText());
+		if (match.isSelected() && matcher.matches()) {
+			matches.setSelected(true);
+			return;
+		}
+		if (find.isSelected() && matcher.find()) {
+			matches.setSelected(true);
+			return;
+		}
+		if (findAll.isSelected()) {
+			int i = 0;
+			while (matcher.find()) {
+				++i;
+			}
+			findCountTF.setText(Integer.toString(i));
+		}
+		matches.setSelected(false);
+	}
+
+	/** Any change to the pattern tries to compile the result. */
+	class PatternListener implements DocumentListener {
+		public void changedUpdate(DocumentEvent ev) {
+			tryCompile();
+		}
+
+		public void insertUpdate(DocumentEvent ev) {
+			tryCompile();
+		}
+
+		public void removeUpdate(DocumentEvent ev) {
+			tryCompile();
+		}
+	}
+
+	/** Any change to the input string tries to match the result */
+	class StringListener implements DocumentListener {
+		public void changedUpdate(DocumentEvent ev) {
+			tryMatch();
+		}
+
+		public void insertUpdate(DocumentEvent ev) {
+			tryMatch();
+		}
+
+		public void removeUpdate(DocumentEvent ev) {
+			tryMatch();
+		}
 	}
 }
