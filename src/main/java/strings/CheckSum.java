@@ -1,6 +1,6 @@
 import java.io.*;
 
-/** CheckSum - remove leading spaces
+/** CheckSum - print the checksum of a file
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
@@ -22,7 +22,10 @@ public class CheckSum {
     }
 
 
-    /** CheckSum one file, given an open BufferedReader.
+    /** CheckSum one text file, given an open BufferedReader.
+	 * Checksumm does not include line endings, so will give the
+	 * same value for given text on any platform. Do not use
+	 * on binary files!
 	 */
     public int process(BufferedReader is) {
 		int sum = 0;
