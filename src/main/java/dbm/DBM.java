@@ -82,14 +82,14 @@ public class DBM {
 		inuse = false;
 	}
 
-	protected native byte[] dbmfetch(Object key);
+	protected native byte[] dbmfetch(byte[] key);
 
 	public Object fetch(Object key) throws IOException {
 		byte[] datum = dbmfetch(toByteArray(key));
 		return toObject(datum);
 	}
 
-	protected native int dbmstore(Object key, Object content);
+	protected native int dbmstore(byte[] key, byte[] content);
 
 	public void store(Object key, Object value) throws IOException {
 		dbmstore(toByteArray(key), toByteArray(value));
