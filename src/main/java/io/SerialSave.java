@@ -4,14 +4,9 @@ import javax.swing.*;
 
 /** Show Object Serialization saving a file.
  */
-public class SerialSave extends JFrame {
-	/** The list of user objects to be saved */
-	protected Vector usrList = new Vector();
-	/** The JList used to display the users */
-	protected JList visList = new JList();
+public class SerialSave extends SerialSaveAbstractBase {
 	/** The filename */
 	protected final String FILENAME = "users.ser";
-	protected final String BACKFILENAME = FILENAME + ".bak";
 
 	/**
 	 * Save (serialize) current list to a file. Java 1.1's 
@@ -30,7 +25,7 @@ public class SerialSave extends JFrame {
 		try {
 			File f = new File(FILENAME);
 			if (f.exists()) {
-				String fn = FILENAME, bfn = BACKFILENAME;
+				String fn = FILENAME, bfn = FILENAME + ".bak";
 				File bk = new File(bfn);
 				if (bk.exists()) {
 					// println("Deleting " + bk.getName());

@@ -4,7 +4,8 @@ import java.io.*;
 /** Show the XML serialization added to "java.beans.*" in JDK1.4.
  * Subclass "SerialDemo" to get most of the infrastructure
  */
-public class SerialDemoXML extends SerialDemo {
+public class SerialDemoXML extends SerialDemoAbstractBase {
+
 	public static void main(String[] args) throws IOException {
 		new SerialDemoXML().save();
 		new SerialDemoXML().dump();

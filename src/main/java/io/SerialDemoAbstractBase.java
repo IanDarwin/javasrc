@@ -1,14 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-/** Demonstrate use of standard Object Serialization. */
-public class SerialDemo extends SerialDemoAbstractBase {
-	protected static final String FILENAME = "serial.dat";
+/** Demonstrate use of Serialization. */
+public abstract class SerialDemoAbstractBase {
 
-	public static void main(String[] s) throws Exception {
-		new SerialDemo().save();		// in parent class; calls write
-		new SerialDemo().dump();
-	}
+	protected static final String FILENAME = "serial.dat";
 
 	/** Does the actual serialization */
 	public void write(Object theGraph) throws IOException {
