@@ -1,0 +1,18 @@
+Input: A|B|C|D
+Output 0 was: A
+Output 1 was: B
+Output 2 was: C
+Output 3 was: D
+Output 4 was: null
+Input: A||C|D
+Output 0 was: A
+Output 1 was: null
+Output 2 was: C
+Output 3 was: D
+Output 4 was: null
+Input: A|||D|E
+Output 0 was: A
+Output 1 was: null
+Output 2 was: null
+Output 3 was: D
+Output 4 was: E
