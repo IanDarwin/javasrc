@@ -7,7 +7,5 @@ of > > ---------- Done skipping.
 
 ... etc: lines being outputted AFTER the ending > of their Para.
 
-Use CellCode for examples.
+Use Code for examples.
 
-XML attributes: LABEL={yes,no}
-				MARK={yes,no}
