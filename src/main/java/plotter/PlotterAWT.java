@@ -1,9 +1,16 @@
 package Plotter;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
 
-import com.darwinsys.swingui.WindowCloser;
+import javax.swing.JFrame;
 
 /**
  * A Plotter subclass for drawing into an AWT Window. Reflecting back
@@ -12,19 +19,20 @@ import com.darwinsys.swingui.WindowCloser;
  * @author	Ian Darwin
  */
 public class PlotterAWT extends Plotter {
-	Frame f;
+	JFrame f;
 	PCanvas p;
 	Graphics g;
 	Font font;
 	FontMetrics fontMetrics;
 	PlotterAWT() {
 		super();
-		f = new Frame("Plotter");
+		f = new JFrame("Plotter");
+		Container cp = f.getContentPane();
 		p = new PCanvas(MAXX, MAXY);
-		f.add(p);
+		cp.add(p, BorderLayout.CENTER);
 		f.pack();
 		f.setVisible(true);
-        f.addWindowListener(new WindowCloser(f, true));
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		g = p.getOsGraphics();
 	}
 
