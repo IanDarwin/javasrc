@@ -1,7 +1,7 @@
 import java.io.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import org.xml.sax.*;
 
 /** Parse an XML file using DOM, via JAXP.
  * @author Ian Darwin, ian@darwinsys.com
@@ -24,12 +24,18 @@ public class XParse {
 			Document doc = p.parse(uri);
 			System.out.println("Parsed OK");
 
+		} catch (SAXParseException ex) {
+			System.err.println("+================================+");
+			System.err.println("|       *SAX Parse Error*        |");
+			System.err.println("+================================+");
+			System.err.println(ex.toString());
+			System.err.println("At line " + ex.getLineNumber());
+			System.err.println("+================================+");
 		} catch (SAXException ex) {
 			System.err.println("+================================+");
-			System.err.println("|         *Parse Error*          |");
+			System.err.println("|          *SAX Error*           |");
 			System.err.println("+================================+");
-			System.err.println(ex.getClass());
-			System.err.println(ex.getMessage());
+			System.err.println(ex.toString());
 			System.err.println("+================================+");
 		} catch (Exception ex) {
 			System.err.println("+================================+");
@@ -46,7 +52,7 @@ public class XParse {
 		}
 		boolean validate = false;
 		for (int i=0; i<av.length; i++) {
-			if (av[i].equals("-validate"))
+			if (av[i].equals("-v"))
 				validate = true;
 			else
 				parse(av[i], validate);
