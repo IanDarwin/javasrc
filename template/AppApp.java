@@ -3,6 +3,8 @@ import java.applet.*;
 
 /**
  * Example of a class that can be used as an Applet or an Application
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version #Id$
  */
 public class AppApp extends Applet {
 	boolean inAnApplet = true;

@@ -1,7 +1,11 @@
 import java.applet.*;
 import java.awt.*;
 
-public class Applet extends Applet {
+/* Example of an Applet.
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version #Id$
+ */
+public class Applet extends java.applet.Applet {
 	public void init() {
 		// initialize your applet GUI here
 	}

@@ -1,6 +1,9 @@
 import java.awt.*;
 
-/** Template Graphics2D object */
+/** Template Graphics2D object
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version #Id$
+ */
 public class G2D extends Component {
 
 	/** Construct the drawing object */

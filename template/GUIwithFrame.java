@@ -1,7 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
 
-/** Simple GUI demonstration: construct a Frame and populate it */
+/** Simple GUI demonstration: construct a Frame and populate it.
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version #Id$
+ */
 public class GUI0 {
 
 	/** "main" method */
