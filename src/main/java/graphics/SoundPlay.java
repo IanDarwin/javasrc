@@ -4,9 +4,9 @@ import java.net.*;
 /** Simple program to try out the "new Sound" stuff in JDK1.2 --
  * allows Applications, not just Applets, to play Sound.
  */
-public class P {
+public class Play {
 	static String defSounds[] = {
-		"file:///windows/media/chord.wav",
+		"test.wav",
 		"file:///windows/media/Beethovens Fur Elise.rmi",
 	};
 	public static void main(String av[]) {
