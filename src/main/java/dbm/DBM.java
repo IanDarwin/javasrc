@@ -1,3 +1,5 @@
+import java.io.*;
+
 /** This class provides a dbm-compatible interface to the UNIX-style
  * database access methods described in dbm(3) (which is on some UNIXes
  * a front-end to db(3).
@@ -15,6 +17,7 @@ public class DBM {
 	 * class-wide boolean.
 	 */
 	protected static boolean inuse = false;
+
 	/** Save the filename for messages, etc. */
 	protected String fileName;
 
@@ -39,9 +42,34 @@ public class DBM {
 		System.loadLibrary("jdbm");
 	}
 
+	protected ByteArrayOutputStream bo;
+
 	/** serialize an Object to byte array. */
-	protected byte[] objToBytes(Object o) {
-		return null;
+	protected byte[] toByteArray(Object o) throws IOException {
+		if (bo == null)
+			bo = new ByteArrayOutputStream(1024);
+		bo.reset();
+		ObjectOutputStream os = new ObjectOutputStream(bo);
+		os.writeObject(o);
+		os.close();
+		return bo.toByteArray();
+	}
+
+
+	/** un-serialize an Object from a byte array. */
+	protected Object toObject(byte[] b) throws IOException {
+		Object o;
+
+		ByteArrayInputStream bi = new ByteArrayInputStream(b);
+		ObjectInputStream os = new ObjectInputStream(bi);
+		try {
+			o = os.readObject();
+		} catch (ClassNotFoundException ex) {
+			// Convert ClassNotFoundException to I/O error
+			throw new IOException(ex.getMessage());
+		}
+		os.close();
+		return o;
 	}
 
 	protected native int dbminit(String file);
@@ -56,11 +84,16 @@ public class DBM {
 
 	protected native byte[] dbmfetch(Object key);
 
-	public Object fetch(Object key) {
-		return null;
+	public Object fetch(Object key) throws IOException {
+		byte[] datum = dbmfetch(toByteArray(key));
+		return toObject(datum);
 	}
 
 	protected native int dbmstore(Object key, Object content);
+
+	public void store(Object key, Object value) throws IOException {
+		dbmstore(toByteArray(key), toByteArray(value));
+	}
 
 	protected native int delete(Object key);
 

@@ -46,6 +46,18 @@ JNIEXPORT jint JNICALL Java_DBM_dbminit
  */
 JNIEXPORT jint JNICALL Java_DBM_dbmclose
   (JNIEnv *env, jobject this) {
+
+	ret = dbmclose();
+	err = errno;
+
+	// If dbm failed, throw exception containing strerror(errno)
+	if (ret < 0) {
+		jclass myClass = (*env)->FindClass(env,
+			"java/lang/IllegalArgumentException");
+		(*env)->ThrowNew(env, myClass, strerror(err));
+	}
+
+	return 0;
 }
 
 /*
