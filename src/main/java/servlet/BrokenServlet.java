@@ -44,6 +44,9 @@ import javax.servlet.http.*;
 
 /*
  * BrokenServlet -- so where is it broken, anyway?
+ * Servlet containers normally run a single instance of Servlets
+ * with multiple Threads running in them; think what might happen
+ * to the "out" field with multiple threads running.
  * 
  * @version $Id$
  */
