@@ -39,11 +39,6 @@ public class StringAlign extends Format {
 		String s = (String)obj;
 		String wanted = s.substring(0, Math.min(s.length(), maxChars));
 
-		// If no space left for justification, return maxChars' worth */
-		// if (wanted.length() > maxChars) {
-		// 	where.append(wanted);
-		// }
-		// else
 		// Get the spaces in the right place.
 		switch (just) {
 			case JUST_RIGHT:
