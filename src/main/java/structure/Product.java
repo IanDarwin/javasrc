@@ -2,7 +2,7 @@ import com.darwinsys.util.Debug;
 
 public class Product {
 	String title;
-	String author;
+	String artist;
 	Media  media;
 
 	public Product(String artist, String title, Media media) {
@@ -15,13 +15,13 @@ public class Product {
 		case music_cd:
 			Debug.println("media", title + " is a CD");
 			break;
-		case Media.music_vinyl:
+		case music_vinyl:
 			Debug.println("media", title + " is a relic");
 			break;
-		case Media.movie_vhs:
+		case movie_vhs:
 			Debug.println("media", title + " is on tape");
 			break;
-		case Media.movie_dvd:
+		case movie_dvd:
 			Debug.println("media", title + " is on DVD");
 			break;
 		default:
