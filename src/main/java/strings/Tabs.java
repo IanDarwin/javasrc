@@ -47,7 +47,7 @@ public class Tabs {
 	}
 	
 	/** isTabStop - returns true if given column is a tab stop.
-	 * @argument col - the current column number
+	 * @param col - the current column number
 	 */
 	public boolean isTabStop(int col) {
 		if (col > tabstops.length - 1) {
