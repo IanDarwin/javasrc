@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-/** This is the Bounce class; create and start Sprites. */
+/** This is the Bounce class; create and start Sprites, using Threads. */
 public class Bounce extends Applet implements ActionListener {
 	/** The main Panel */
 	protected Panel p;

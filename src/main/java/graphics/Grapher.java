@@ -9,7 +9,7 @@ import java.util.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class Grapher extends JComponent {
+public class Grapher extends JPanel {
 	/** Multiplier for range to allow room for a border */
 	public final static float BORDERFACTOR = 1.1f;
 
@@ -87,10 +87,11 @@ public class Grapher extends JComponent {
 		Debug.println("range", "miny,y,r = " + miny +' '+ maxy +' '+ yrange);
 	}
 
-	/** Called by AWT when the window needs painting.
+	/** Called when the window needs painting.
 	 * Computes X and Y range, scales.
 	 */
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		Dimension s = getSize();
 		if (n < 2) {
 			g.drawString("Insufficient data", 10, 40);
@@ -119,7 +120,7 @@ public class Grapher extends JComponent {
 	}
 
 	public static void main(String[] rgs) {
-		final Frame f = new Frame("Grapher");
+		final JFrame f = new JFrame("Grapher");
         f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				f.setVisible(false);
@@ -128,7 +129,7 @@ public class Grapher extends JComponent {
 			}
 		});
 		Grapher g = new Grapher();
-		f.add(BorderLayout.CENTER, g);
+		f.setContentPane(g);
 		f.setLocation(100, 100);
 		f.pack();
 		if (rgs.length == 0)
