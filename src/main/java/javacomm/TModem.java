@@ -24,6 +24,22 @@ public class TModem {
 	protected final byte	ACK	= 6;	/* ACKnowlege */
 	protected final byte	NAK	= 0x15;	/* Negative AcKnowlege */
 
+	protected InputStream inStream;
+	protected OutputStream outStream;
+
+	/** Construct a TModem */
+	public TModem(InputStream is, OutputStream os) {
+		inStream = is;
+		outStream = os;
+	}
+
+	/** Construct a TModem with default files (stdin and stdout). */
+	public TModem() {
+		inStream = System.in;
+		outStream = System.out;
+	}
+
+	/** A main program, for direct invocation. */
 	public static void main(String[] argv) throws 
 		IOException, InterruptedException {
 
@@ -36,10 +52,10 @@ public class TModem {
 
 		switch (argv[0].charAt(1)){
 		case 'r': 
-			new TModem().rec(argv[1]); 
+			new TModem().receive(argv[1]); 
 			break;
 		case 's': 
-			new TModem().sen(argv[1]); 
+			new TModem().send(argv[1]); 
 			break;
 		default: 
 			usage();
@@ -50,7 +66,7 @@ public class TModem {
 	/*
 	 * send a file to the remote
 	 */
-	void sen(String tfile) throws IOException, InterruptedException
+	void send(String tfile) throws IOException, InterruptedException
 	{
 
 		char checksum, index, blocknumber, errorcount;
@@ -73,7 +89,7 @@ public class TModem {
 			xerror();
 		}
 
-		while ((nbytes=System.in.read(sector))!=0) {
+		while ((nbytes=inStream.read(sector))!=0) {
 			if (nbytes<SECSIZE)
 				sector[nbytes]=CPMEOF;
 			errorcount = 0;
@@ -109,7 +125,7 @@ public class TModem {
 	/*
 	 * receive a file from the remote
 	 */
-	void rec(String tfile) throws IOException, InterruptedException
+	void receive(String tfile) throws IOException, InterruptedException
 	{
 		char checksum, index, blocknumber, errorcount;
 		byte character;
@@ -180,11 +196,11 @@ public class TModem {
 	}
 
 	byte getchar() throws IOException {
-		return (byte)System.in.read();
+		return (byte)inStream.read();
 	}
 
 	void putchar(int c) throws IOException {
-		System.out.print((char)c);
+		outStream.write(c);
 	}
 
 	void alarm(int seconds) {

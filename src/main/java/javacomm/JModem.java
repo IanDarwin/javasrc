@@ -24,9 +24,11 @@ public class JModem extends javax.swing.JFrame {
   /** A buffer for the read listener; preallocated once. */
   static byte[] buf = new byte[BUFSIZE];
   /** A Thread for reading from the remote. */
-  Thread serialReadThread;
+  protected Thread serialReadThread;
   /** The TextArea */
-  JTextArea theTextArea;
+  protected JTextArea theTextArea;
+  /** A file transfer program */
+  protected TModem xferProg;
 
   /** Initializes the Form */
   public JModem() {
@@ -394,7 +396,32 @@ public class JModem extends javax.swing.JFrame {
   }//GEN-LAST:event_evenRadioButtonActionPerformed
 
   private void xferButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xferButtonActionPerformed
+
     // Do the transfer, using TModem class.
+	if (xferProg == null) {
+		xferProg = new TModem(serialInput, serialOutput); // discarded in disconnect
+	}
+	String fileName = xferFileNameTF.getText();
+	if (fileName.length() == 0) {
+		err("Filename must be given");
+		return;
+	}
+	try {
+		if (xferButton.isSelected()) {
+			xferProg.send(fileName);
+		} else {
+			xferProg.receive(fileName);
+		}
+	} catch (InterruptedException e) {
+		err("Timeout");
+		return;
+	} catch (IOException e) {
+		err("IO Exception in transfer:\n" + e);
+		return;
+	}
+	JOptionPane.showMessageDialog(this, "Transfer completed",
+		"JModem", JOptionPane.INFORMATION_MESSAGE);
+
   }//GEN-LAST:event_xferButtonActionPerformed
 
   private int S_DISCONNECTED = 0, S_CONNECTED = 1;
@@ -519,6 +546,8 @@ public class JModem extends javax.swing.JFrame {
     // Tell javax.comm we are done with the port.
     thePort.removeEventListener();
     thePort.close();
+	// Discard TModem object, if present.
+	xferProg = null;
     // Tell rest of program we are no longer online.
     state = S_DISCONNECTED;
   }
