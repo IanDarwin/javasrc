@@ -6,7 +6,7 @@
 public class Problem {
 	public static void main(String argv[]) {
 		//+
-		System.out.println(System.getproperties());
+		System.out.println(System.getproperties()); // EXPECT COMPILE ERROR 
 		//-
 	}
 }

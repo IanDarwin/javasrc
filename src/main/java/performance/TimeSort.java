@@ -1,3 +1,5 @@
+import com.darwinsys.util.*;
+
 /**
  * Time a bunch of sorting.
  * @author Ian F. Darwin, ian@darwinsys.com

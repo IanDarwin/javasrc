@@ -4,12 +4,12 @@ package com.acme.stuff;
 
 import java.util.*;
 
-public class X extends A implements Fun, Action {
+public class Overall extends Object implements Fun, Action {
 
 	int num;		// object-wide data
 	float tmp;		// (each X object has own num, tmp)
 
-	public X() {	// Constructor - same name as class
+	public Overall() {	// Constructor - same name as class
 		// initializations...
 	}
 
@@ -26,4 +26,11 @@ public class X extends A implements Fun, Action {
 	public void def() {
 		// more computation, presumably using xyz
 	}
+}
+
+// Stuff below here is just to get this to compile.
+
+interface Fun {
+}
+interface Action {
 }

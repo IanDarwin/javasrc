@@ -38,7 +38,7 @@ public class JColorDemo extends JFrame
 					JColorDemo.this,				// parent
 					"Swing Demo Color Popup",	// title
 					getBackground());			// default
-System.out.println(ch);
+				System.out.println("Your selected color is " + ch);
 				if (ch != null) {
 					demo.setBackground(ch);
 					demo.repaint();
@@ -49,7 +49,7 @@ System.out.println(ch);
 			new JLabel("Your One True Color", JLabel.CENTER));
 		demo.setToolTipText("This is the last color you chose");
         pack();
-        addWindowListener(new WindowCloser(this, true));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/** good old main */

@@ -1,0 +1,35 @@
+<project name="Servlet-based Chat Room" default="compile" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="WEB-INF/classes"/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="deploy.dir" value="WEB-INF/classes"/>
+	<property name="deploy.jar" value="XXX.jar"/>
+
+	<property name="servletapi.jar"
+		value="/usr/local/jakarta-servletapi-4/lib/servlet.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
+		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" 
+		classpath=".:${servletapi.jar}"
+		/>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,com/**">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>

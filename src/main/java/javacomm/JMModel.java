@@ -100,7 +100,7 @@ public class JMModel extends java.lang.Object {
 
 			// Set the serial port parameters.
 			thePort.setSerialPortParams(
-				baudot[theGUI.portsComboBox.getSelectedIndex()],		// baud
+				baudot[theGUI.baudComboBox.getSelectedIndex()],		// baud
 				theGUI.getDataBits() == 7 ?
 				SerialPort.DATABITS_7 : SerialPort.DATABITS_8,
 				SerialPort.STOPBITS_1,							// stop bits

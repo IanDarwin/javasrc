@@ -1,6 +1,7 @@
 import java.io.*;
 import org.w3c.dom.*;
-import com.sun.xml.tree.*;
+import java.lang.reflect.*;
+import java.util.*;
 
 /**
  * Class with code to walk a tree and convert it to MML (not MIF).
@@ -10,18 +11,18 @@ import com.sun.xml.tree.*;
  */
 public class GenMML implements XmlFormWalker {
 	/** The normal output writer */
-	PrintWriter msg;
+	PrintStream msg;
 	/** Specialized PrintWriter for use by GetMark. */
-	StyledWriter smsg;
-	/** A tree walker object for walking the tree */
-	TreeWalker tw;
+	StyledPrintStream smsg;
 	/** A GetMark converter for source code. */
 	GetMark gm = new GetMark();
 
+	Document theDocument;
+
 	/** Construct a converter object */
-	GenMML(Document doc, PrintWriter pw) {
-		tw = new TreeWalker(doc);
-		msg = new PrintWriter(pw);
+	GenMML(Document doc, PrintStream pw) {
+		theDocument = doc;
+		msg = new PrintStream(pw);
 		smsg = new StyledPrintStream(msg);
 	}
 
@@ -31,22 +32,31 @@ public class GenMML implements XmlFormWalker {
 		msg.println("<MML 1.00 -- MML produced by XmlForm>");
 		msg.println("<Include \"xmlformat.mml\">");
 
-		for (Node p = tw.getCurrent(); p != null; p = tw.getNext())
-			doNode(p);
+		doRecursive(theDocument);
 	}
 
+    protected void doRecursive(Node n) {
+        NodeList kids;
+        if (n == null)
+            return;
+
+        doNode(n);
+
+        kids = n.getChildNodes();
+        int nkids = kids.getLength();
+        for (int i=0; i<nkids; i++) {
+            doRecursive(kids.item(i));
+        }
+    }
+
 	public void doNode(Node p) {
-		if (p instanceof com.sun.xml.tree.XmlDocument)
-			return;	// nothing to do - structural object.
-		// else if (p instanceof com.sun.xml.tree.Doctype)
-		//	return;	// ditto
-		else if (p instanceof Element)
+		if (p.getNodeType() == Node.ELEMENT_NODE)
 			doElement((Element)p);
-		else if (p instanceof org.w3c.dom.CharacterData)
+		else if (p.getNodeType() == Node.TEXT_NODE)
 			doCData((org.w3c.dom.CharacterData)p);
 		else
 			System.err.println("IGNORING non-Element: " +
-				p.getClass() + : + p.toString() + "\n" +
+				p.getClass() + ':' + p.toString() + "\n" +
 				p.getNodeValue());
 	}
 
@@ -66,8 +76,6 @@ public class GenMML implements XmlFormWalker {
 			msg.println("<HeadB>Solution");
 		} else if (tag.equals("di")) {
 			msg.println("<HeadB>Discussion");
-		} else if (tag.equals("code")) {
-			doCode(p);
 		} else if (tag.equals("b")) {
 			doBold(p);
 		} else if (tag.equals("i")) {
@@ -75,8 +83,8 @@ public class GenMML implements XmlFormWalker {
 		} else if (tag.equals("example")) {
 			doExample(p);
 		} else
-			System.err.println("IGNORING UNHANDLED TAG " + tag + ( +
-				p.getClass() + @ + p.hashCode() + ));
+			System.err.println("IGNORING UNHANDLED TAG " + tag + '(' +
+				p.getClass() + '@' + p.hashCode() + ')');
 	}
 
 	protected void doChapter(Element p) {
@@ -143,8 +151,8 @@ public class GenMML implements XmlFormWalker {
 	 * GetMark to change the format of lines that it writes, or
 	 * resort to other kluges like passing it a prefix and/or suffix.
 	 */
-	public class StyledWriter extends PrintWriter {
-		public StyledWriter(PrintWriter p) {
+	public class StyledPrintStream extends PrintStream {
+		public StyledPrintStream(PrintStream p) {
 			super(p, true);
 		}
 		public void println(String s) {

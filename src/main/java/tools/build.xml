@@ -1,4 +1,4 @@
-<project name="XXX" default="compile" basedir=".">
+<project name="Tools" default="compile" basedir=".">
 
 	<!-- $Id$ -->
 

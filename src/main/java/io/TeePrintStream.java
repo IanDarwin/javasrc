@@ -23,7 +23,7 @@ public class TeePrintStream extends PrintStream {
 
 	/** A simple test case. */
 	public static void main(String[] args) throws IOException {
-		TeePrintStream ts = new TeePrintStream(System.err, "err.log");
+		TeePrintStream ts = new TeePrintStream(System.err, "err.log", true);
 		System.setErr(ts);
 		System.err.println("An imitation error message");
 		ts.close();
@@ -59,7 +59,7 @@ public class TeePrintStream extends PrintStream {
 	 */
 	public TeePrintStream(PrintStream orig, String fn, boolean flush)
 	throws IOException {
-		this(new FileOutputStream(fn), flush);
+		this(orig, new FileOutputStream(fn), flush);
 	}
 
 	/** Return true if either stream has an error. */

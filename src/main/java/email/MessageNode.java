@@ -2,6 +2,8 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.swing.tree.*;
 
+import com.darwinsys.util.*;
+
 /** A Mutable Tree Node that is also a Message. */
 public class MessageNode extends DefaultMutableTreeNode {
 	Message m;

@@ -12,7 +12,7 @@ public class SerialDemoXML extends SerialDemo {
 
 	/** Save the data to disk. */
 	public void write(Object theGraph) throws IOException {
-		XMLEncoder os = new XMLEncoder(
+		XMLEncoder os = new XMLEncoder(		// NEEDS JDK 1.4
 			new BufferedOutputStream(
 				new FileOutputStream(FILENAME)));
 		os.writeObject(theGraph);
@@ -21,7 +21,7 @@ public class SerialDemoXML extends SerialDemo {
 
 	/** Display the data */
 	public void dump() throws IOException {
-		XMLDecoder is = new XMLDecoder(
+		XMLDecoder is = new XMLDecoder(		// NEEDS JDK 1.4
 			new BufferedInputStream(
 				new FileInputStream(FILENAME)));
 		System.out.println(is.writeObject());

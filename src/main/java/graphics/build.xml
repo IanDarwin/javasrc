@@ -1,0 +1,15 @@
+<project name="Java Cookbook Examples" default="compile" basedir=".">
+
+	<!-- include global build properties -->
+	<property file="../build.properties"/>
+
+	<property name="build" value="."/>
+
+	<!-- specify what to compile. This builds everything -->
+	<target name="compile">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${jmf.jar}"/>
+	</target>
+
+</project>

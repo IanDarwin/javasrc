@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.*;
 
 /**
- * DaytimeBinary - connect to the Daytime (ascii) service.
+ * DaytimeBinary - connect to the standard Daytime (binary) service.
  * @author Ian F. Darwin
  * @version $Id$
  */
@@ -37,10 +37,10 @@ public class DaytimeBinary {
 			// Long is 8 bytes on Java, but we are using the
 			// existing daytime protocol, which uses 4-byte ints.
 			long remoteTime = (
-				((long)(is.readUnsignedByte() & 0xff) << 24) |
-				((long)(is.readUnsignedByte() & 0xff) << 16) |
-				((long)(is.readUnsignedByte() & 0xff) <<  8) |
-				((long)(is.readUnsignedByte() & 0xff) <<  0));
+				((long)(is.readUnsignedByte()) << 24) |
+				((long)(is.readUnsignedByte()) << 16) |
+				((long)(is.readUnsignedByte()) <<  8) |
+				((long)(is.readUnsignedByte()) <<  0));
 			System.out.println("Remote time is " + remoteTime);
 			System.out.println("BASE_DIFF is " + BASE_DIFF);
 			System.out.println("Time diff == " + (remoteTime - BASE_DIFF));

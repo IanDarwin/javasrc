@@ -24,14 +24,12 @@ public class MailClient extends JComponent implements MailConstants {
 		this(PROPS_FILE_NAME);
 	}
 
-	/** Construct the MailClient JComponent with no Properties filename */
+	/** Construct the MailClient JComponent with a Properties filename */
 	public MailClient(String propsFileName) throws Exception {
 		super();
 
-		// Get the Properties for the mail reader and sender.
-		// Save them in System.properties so other code can find them.
-		FileProperties mailProps = new FileProperties(propsFileName);
-		mailProps.load();
+		// Construct and load the Properties for the mail reader and sender.
+		Properties mailProps = new FileProperties(propsFileName);
 
 		// Gather some key values
 		String proto = mailProps.getProperty(RECV_PROTO);

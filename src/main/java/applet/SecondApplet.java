@@ -29,7 +29,9 @@ public class SecondApplet extends FirstApplet {
 			throw new IllegalArgumentException("SecondApplet needs colors!");
 		colors = new Color[nColors];
 		for (int i=0; i<nColors; i++)
-			colors[i] = ColorName.lookup(getParameter("color" + i));
+			// colors[i] = ColorName.lookup(getParameter("color" + i));
+			// ColorName isn't in com.darwinsys.util; hack to make this compile
+			colors[i] = new Color(i, 123, 456);
 	}
 
 	/** paint() is an AWT Component method, called when the 

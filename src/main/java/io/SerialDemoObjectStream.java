@@ -5,7 +5,7 @@ import java.util.*;
 public class SerialDemo {
 	protected static final String FILENAME = "serial.dat";
 
-	public static void main(String[] s) throws IOException {
+	public static void main(String[] s) throws Exception {
 		new SerialDemo().save();
 		new SerialDemo().dump();
 	}
@@ -31,7 +31,7 @@ public class SerialDemo {
 		os.close();
 	}
 
-	public void dump() throws IOException {
+	public void dump() throws IOException, ClassNotFoundException {
 		ObjectInputStream is = new ObjectInputStream(
 			new FileInputStream(FILENAME));
 		System.out.println(is.readObject());

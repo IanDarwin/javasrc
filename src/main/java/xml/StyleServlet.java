@@ -17,9 +17,9 @@ public class StyleServlet extends HttpServlet {
 		 * context-param name & value elements; this retrieves 'em.
 		 */
 		ServletContext ctx = getServletContext();
-             String value = getServletContext().getInitParameter("name");
-		XML_FILE = ctx.getInitParam("xml_file_name");
-		SHEET_FILE = ctx.getInitParam("xsl_sheet_name"); 
+		String value = ctx.getInitParameter("name");
+		XML_FILE = ctx.getInitParameter("xml_file_name");
+		SHEET_FILE = ctx.getInitParameter("xsl_sheet_name"); 
 
 		String browser = request.getHeader("user-agent");
 		PrintWriter out = response.getWriter();

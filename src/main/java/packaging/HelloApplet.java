@@ -22,7 +22,7 @@ public class HelloApplet extends JApplet {
 		if (buttonLabel == null) {
 			buttonLabel = "Draw/Don't Draw";
 		}
-		cp.add(b = new JButton(ButtonLabel));
+		cp.add(b = new JButton(buttonLabel));
 		b.addActionListener(new ActionListener() {
 			/*  Button - toggle the state of the "requested" flag, to draw or
 			 *  not to draw.

@@ -5,10 +5,10 @@ interface X {
 	public void b();
 }
 
-abstract class A implements X {
+abstract class AA implements X {
 	public void a() {}
 }
 
-class B extends A {
+class BB extends AA {
 	public void b()  {}
 }

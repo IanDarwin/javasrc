@@ -1,4 +1,6 @@
-/** Show various forms of nested classes */
+/** Show various forms of nested classes.
+ * Not all nested classes are "inner classes".
+ */
 class A extends Object {
 	public class B {	// member class
 		public class BB {

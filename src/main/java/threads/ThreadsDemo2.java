@@ -41,10 +41,8 @@
 
 /** 
  * Threaded demo application, using Runnable.
- *
  * @author	Ian Darwin
- *
- * @version	1.0
+ * @version	$Id$
  */
 public class ThreadsDemo2 implements Runnable {
 	String mesg;

@@ -13,7 +13,7 @@ class PrivProt0 {
 public class PrivProt {
 	public static void main(String[] s) {
 		PrivProt0 a = new PrivProt0(2,4);
-		int x = a.a;
+		int x = a.a;			// EXPECT COMPILE ERROR
 		int y = a.b;
 		System.out.println("Here they are: "+x+','+y);
 	}

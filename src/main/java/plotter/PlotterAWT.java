@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
 
+import com.darwinsys.util.*;
+
 /**
  * A Plotter subclass for drawing into an AWT Window. Reflecting back
  * to AWT gives us a "known working" plotter to test on.
  * You can also steal this as a basis for your own plotter driver!
  * 
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin
  */
 public class PlotterAWT extends Plotter {
 	Frame f;
@@ -21,29 +23,26 @@ public class PlotterAWT extends Plotter {
 		f.add(p);
 		f.pack();
 		f.setVisible(true);
-        f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				// If we do setVisible and dispose, then the Close completes
-				PlotterAWT.this.f.setVisible(false);
-				PlotterAWT.this.f.dispose();
-				System.exit(0);
-			}
-		});
+        f.addWindowListener(new WindowCloser(f, true));
 		g = p.getOsGraphics();
 	}
+
 	public void drawBox(int w, int h) {
 		g.drawRect(curx, cury, w, h);
 		p.repaint();
 	}
+
 	public void rmoveTo(int incrx, int incry){
 		moveTo(curx += incrx, cury += incry);
 	}
+
 	public void moveTo(int absx, int absy){
 		if (!penIsUp)
 			g.drawLine(curx, cury, absx, absy);
 		curx = absx;
 		cury = absy;
 	}
+
 	public void setdir(float deg){}
 	void penUp(){ penIsUp = true; }
 	void penDown(){ penIsUp = false; }
@@ -72,33 +71,34 @@ public class PlotterAWT extends Plotter {
 	 * things that have been drawn.
 	 */
 	class PCanvas extends Canvas {
-		Image os;
+		Image offScreenImage;
 		int width;
 		int height;
 		Graphics pg;
 
-		PCanvas(int x, int y) {
-			width = x;
-			height = y;
+		PCanvas(int w, int h) {
+			width = w;
+			height = h;
 			setBackground(Color.white);
 			setForeground(Color.red);
 		}
 
 		public Graphics getOsGraphics() {
-			addNotify();
 			return pg;
 		}
 
+		/** This is called by AWT after the native window peer is created,
+		 * and is a good time to create images and the like.
+		 */
 		public void addNotify() {
 			super.addNotify();
-			os = createImage(width, height);
-			if (os == null)
-				throw new IllegalArgumentException("createImage failed");
-			pg = os.getGraphics();
+			offScreenImage = createImage(width, height);
+			// assert (offScreenImage != null);
+			pg = offScreenImage.getGraphics();
 		}
 
 		public void paint(Graphics pg) {
-			pg.drawImage(os, 0, 0, null);
+			pg.drawImage(offScreenImage, 0, 0, null);
 		}
 		public Dimension getPreferredSize() {
 			return new Dimension(width, height);

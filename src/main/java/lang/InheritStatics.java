@@ -1,9 +1,9 @@
 // Show that you do inherit static fields.
 
 /** This is the class that we extend. */
-class SomeOtherClass {
-	SomeOtherClass() {
-		System.out.println("In SomeOtherClass::<init>");
+class AnOtherClass {
+	AnOtherClass() {
+		System.out.println("In AnOtherClass::<init>");
 	}
 	static int foo = 24;
 	static int bar() {
@@ -12,7 +12,7 @@ class SomeOtherClass {
 }
 
 /** This is the subclass */
-public class InheritStatics extends SomeOtherClass {
+public class InheritStatics extends AnOtherClass {
 	public static void main(String[] c) {
 		new InheritStatics().run();
 	}

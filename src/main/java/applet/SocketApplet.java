@@ -42,7 +42,7 @@ public class SocketApplet extends Applet {
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.gridx = TEXT_COL; gbc.gridy = 1;
 		add(passTF=new TextField(10), gbc);
-		passTF.setEchoChar(*);
+		passTF.setEchoChar('*');
 
 		gbc.gridx = LABEL_COL; gbc.gridy = 2;
 		gbc.anchor = GridBagConstraints.EAST;

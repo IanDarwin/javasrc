@@ -55,7 +55,9 @@ public class Telnet {
 		public void run() {
 			String line;
 			try {
-				while ((line = is.readLine()) != null) {
+				// Deprecation warning ok for now; need to read bytes not chars.
+				// Will soon change to use BufferedReader(..."ISO-8859-1");
+				while ((line = is.readLine()) != null) { // IGNORE DEPRECATION WARNING
 					os.print(line);
 					os.print("\r\n");
 					os.flush();

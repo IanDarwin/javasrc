@@ -3,6 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
+import com.darwinsys.util.I18N;
+
 /** This is a partly-internationalized version of MenuDemo.
  * To try it out, use
  *		java MenuIntl2

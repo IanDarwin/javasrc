@@ -16,13 +16,13 @@ interface I2 {
  */
 public class MultInterfaces implements I1, I2 {
 	public void test(int i) {
-		System.out.println("In T::I1::test");
+		System.out.println("In MultiInterfaces.I1.test");
 	}
 	public void test(String s) {
-		System.out.println("In T::I2::test");
+		System.out.println("In MultiInterfaces.I2.test");
 	}
 	public static void main(String[] a) {
-		T t = new T();
+		MultiInterfaces t = new MultiInterfaces();
 		t.test(42);
 		t.test("Hello");
 	}

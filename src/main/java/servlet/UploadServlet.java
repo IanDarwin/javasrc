@@ -4,7 +4,7 @@ import java.io.*;
 
 public class UploadServlet extends HttpServlet {
 
-	public void doPost(HttpServletRequest request,
+	public void doPut(HttpServletRequest request,
 			HttpServletResponse response)
 	throws IOException, javax.servlet.ServletException {
 
@@ -40,5 +40,8 @@ public class UploadServlet extends HttpServlet {
 		is.close();
 		os.close();
 		out.println("Successfully uploaded!");
+
+		// Now you have to use JAF or something to
+		// handle the MIME headers in the stream...
 	}
 }

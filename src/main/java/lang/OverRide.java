@@ -2,21 +2,21 @@
 public class OverRide {
 	public static void main(String[] av) {
 		System.out.println("Calling an A's version of xyz");
-		new A().xyz();
+		new AAA().xyz();
 		System.out.println("Calling a B's version of xyz");
-		new B().xyz();
+		new BBB().xyz();
 	}
 }
 
-class A {
+class AAA {
 	void xyz() {
-		System.out.println("In A.xyz");
+		System.out.println("In AAA.xyz");
 	}
 }
 
-class B extends A {
+class BBB extends AAA {
 	void xyz() {
-		System.out.println("In B.xyz");
+		System.out.println("In BBB.xyz");
 		super.xyz();
 	}
 }

@@ -93,7 +93,7 @@ public class SmtpTalk implements SysExits {
 	}
 
 	/** Convenience routine to print message & exit, like
-	 * K&P error(), perl die(1,), ...
+	 * K&P error(), perl die(), ...
 	 * @param ret Numeric value to pass back
 	 * @param msg Error message to be printed on stdout.
 	 */

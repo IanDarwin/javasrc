@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.*;
 
 /**
- * DaytimeObject - connect to the Daytime (ascii) service.
+ * DaytimeObjectServer - server for the non-standard Time (object) service.
  * @author Ian F. Darwin
  * @version $Id$
  */

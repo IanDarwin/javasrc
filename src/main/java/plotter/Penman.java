@@ -109,14 +109,14 @@ public class Penman extends Plotter {
 		CommPortIdentifier port =
 			CommPortIdentifier.getPortIdentifier(portName);
 
-		// This form of openPort takes an Application Name and a timeout.
-		tty = (SerialPort) port.openPort("Penman Driver", 1000);
+		// This form of open takes an Application Name and a timeout.
+		tty = (SerialPort) port.open("Penman Driver", 1000);
 
 		// set up the serial port
 		tty.setSerialPortParams(9600, SerialPort.DATABITS_8,
 			SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-		tty.setFlowcontrolMode(SerialPort.FLOWCTRL_RTSCTS_OUT|
-			SerialPort.FLOWCTRL_RTSCTS_OUT);
+		tty.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_OUT|
+			SerialPort.FLOWCONTROL_RTSCTS_OUT);
 
 		// Get the input and output streams
 		is = new DataInputStream(tty.getInputStream());

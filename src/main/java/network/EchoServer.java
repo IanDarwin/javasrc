@@ -51,6 +51,7 @@ public class EchoServer {
 				while ((echoLine = is.readLine()) != null) {
 					System.err.println("Read " + echoLine);
 					os.print(echoLine + "\r\n");
+					os.flush();
 					System.err.println("Wrote " + echoLine);
 				}
 				System.err.println("All done!");

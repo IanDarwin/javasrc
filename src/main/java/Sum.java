@@ -11,13 +11,14 @@ public class Sum {
             case 0: c.process("Stdin", new BufferedInputStream(
                         new DataInputStream(System.in))); break;
             default:
-		for (int i=0; i<av.length; i++)
+				for (int i=0; i<av.length; i++) {
                     try {
                         c.process(av[i],
 						new BufferedInputStream(new FileInputStream(av[i])));
                     } catch (FileNotFoundException e) {
                         System.err.println(e);
                     }
+				}
         }
     }
 

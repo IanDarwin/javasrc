@@ -2,8 +2,7 @@
  * with "javap -c" or equivalent; you will be enlightened
  * as to the true nature of while loops compared to for loops.
   */
-class Loops {
-
+class Loops {	// EXPECT WARNING ABOUT NAME
 
 	 public static void main(String[] args) {
 		 	for (int i=0; i<10; i++) {

@@ -1,7 +1,9 @@
 import java.text.*;
 import java.util.*;
 
-public class Patt {
+import com.darwinsys.util.I18N;
+
+public class ShowDate {
 	public static void main(String[] args) {
 		DateFormat df = DateFormat.getDateTimeInstance(
 			DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.CANADA_FRENCH);

@@ -2,6 +2,7 @@
  import java.util.*;
  import java.io.*;
 
+/*
  * Following up on the javadoc for java.sql.Connection,
  * make a TypeMap that maps a *structured* UDT into a
  * MusicRecording "automatically".

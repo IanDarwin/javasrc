@@ -5,7 +5,7 @@
 
 package x;
 
-import Unnamed1;
+import Unnamed1;	// EXPECT COMPILE ERROR (1.4 or later)
 
 public class Unnamed {
 	public static void main(String[] args) {

@@ -1,8 +1,14 @@
+/** Demonstration of cloning. */
 public class Clone1 implements Cloneable {
 
-	/** Clone this object. Just call super.clone() to do the work */
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
+	/** Clone this object. Call super.clone() to do the work */
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException ex) {
+			System.out.println("Now that's a surprise!!");
+			throw new InternalError(ex.toString());
+		}
 	}
 
 	int x;
@@ -12,14 +18,9 @@ public class Clone1 implements Cloneable {
 		Clone1 c = new Clone1();
 		c.x = 100;
 		c.y = 200;
-		try {
-			Object d = c.clone();
-			System.out.println("c=" + c);
-			System.out.println("d=" + d);
-		} catch (CloneNotSupportedException ex) {
-			System.out.println("Now that's a surprise!!");
-			System.out.println(ex);
-		}
+		Object d = c.clone();
+		System.out.println("c=" + c);
+		System.out.println("d=" + d);
 	}
 
 	/** Display the current object as a string */

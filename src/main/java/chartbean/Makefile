@@ -1,12 +1,12 @@
 BDK_HOME	= C:/bdk
-#BDK_HOME	= /local/java/bdk
+#BDK_HOME	= /usr/local/java/bdk
 PKG			= darwinsys
 BEAN_CLASSES = ${PKG}/ChartData.class ${PKG}/Chart.class \
 			${PKG}/ChartBeanInfo.class
-JAVAC		= javac -g
-# The "-d ." seems redundant but, without it, javac puts .class files in
-# the current directory, ignoring the package structure, but with "-d .",
-# it uses the package structure.
+
+#JAVAC		= javac -g
+JAVAC		= jikes
+# The "-d ." is needed to get classes into their correct directory structure
 OUTDIR		= -d .
 
 all:	${PKG}/ChartTest.class ${BEAN_CLASSES}

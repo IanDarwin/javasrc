@@ -1,6 +1,8 @@
 import java.io.*;
 import java.text.*;
 
+import com.darwinsys.util.SysDep;
+
 /**
  * Timer for processing sqrt and I/O operations.
  * @author Ian Darwin, ian@darwinsys.com

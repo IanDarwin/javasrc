@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * DaytimeServer - send the binary time.
+ * DaytimeServer - server for the standard binary time service.
  * @author	Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -17,7 +17,7 @@ public class DaytimeServer {
 		new DaytimeServer(PORT).runService();
 	}
 
-	/** Construct an EchoServer on the given port number */
+	/** Construct a DaytimeServer on the given port number */
 	public DaytimeServer(int port) {
 		try {
 			sock = new ServerSocket(port);

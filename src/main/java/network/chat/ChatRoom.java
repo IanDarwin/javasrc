@@ -18,8 +18,7 @@ import java.net.*;
  * Server multiplexes messages back to all clients.
  * <P>
  * TODO in V2: use Java's MultiCastSocket, if it works OK on '95.
- *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin
  * @version $Id$
  */
 public class ChatRoom extends Applet {
@@ -52,7 +51,7 @@ public class ChatRoom extends Applet {
 	/** The message that we paint */
 	protected String paintMessage;
 
-	/** Init, inherited from Applet */
+	/** init, overriding the version inherited from Applet */
 	public void init() {
 		paintMessage = "Creating Window for Chat";
 		repaint();

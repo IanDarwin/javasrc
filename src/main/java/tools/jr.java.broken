@@ -84,9 +84,9 @@ public class jr extends sun.tools.javac.Main {
 	 * args, so put them into runtime Argv.
 	 */
 	protected void process(String argv[]) {
-		Vector compileArgv = new Vector();
+		List compileArgv = new ArrayList();
 		String fileName = null;
-		Vector runArgv = new Vector();
+		List runArgv = new ArrayList();
 
 		// process arguments as described above.
 		for (int i=0; i<argv.length; i++) {
@@ -95,17 +95,17 @@ public class jr extends sun.tools.javac.Main {
 			if (fileName == null) {	// not seen filename yet
 				if (argv[i].startsWith("-g") ||
 					(thisOpt = findArg(compileOpts, argv[i])) != null) {
-						compileArgv.addElement(argv[i]);
+						compileArgv.add(argv[i]);
 						if (thisOpt != null && thisOpt.takesArg)
-							compileArgv.addElement(argv[1+i++]);
+							compileArgv.add(argv[1+i++]);
 				} else {
 					// This is it - we have a filename
 					fileName = argv[i];
-					compileArgv.addElement(fileName + ".java");
+					compileArgv.add(fileName + ".java");
 				}
 			} else {
 				// post-filename, goes into runtime argv
-				runArgv.addElement(argv[i]);
+				runArgv.add(argv[i]);
 			}
 		}
 
@@ -114,7 +114,8 @@ public class jr extends sun.tools.javac.Main {
 		System.out.println("runArgv has " + runArgv.size());
 
 		// Try running the compiler
-		if (compile((String[])compileArgv.toArray(String.class))) {
+		Object[] strings = { String.class };
+		if (compile((String[])compileArgv.toArray(strings))) {
 			System.out.println("Compile OK, trying to run");
 			try {
 				// Fetch the Class object for the just-compiled class

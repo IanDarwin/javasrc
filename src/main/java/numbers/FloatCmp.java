@@ -4,7 +4,7 @@
  * @version $Id$
  */
 public class FloatCmp {
-	final static final double EPSILON = 0.0000001;
+	final static double EPSILON = 0.0000001;
 	public static void main(String[] argv) {
 		double da = 3 * .3333333333;
 		double db = 0.99999992857;

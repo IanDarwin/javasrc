@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * DaytimeText - connect to the Daytime (ascii) service.
+ * DaytimeText - connect to the standard Daytime (ascii) service.
  * @author Ian F. Darwin
  * @version $Id$
  */

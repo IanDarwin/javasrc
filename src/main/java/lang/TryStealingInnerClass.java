@@ -3,12 +3,20 @@
 // inner class named MyActionListener. You will find that you can't,
 // since it has no visible constructor!
 
-class ButtonDemo2$1$MyActionListener {
+class ButtonDemo2 {
+	// Create an inner class which may be named ButtonDemo2$1
+	Object o = new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+			}
+	};
 }
 
 public class TryStealingInnerClass {
 	public static void main(String[] a) {
-		Object o = new ButtonDemo2$1$MyActionListener();
+		new TryStealingInnerClass().doIt();
+	}
+	public void doIt() {
+		Object o = new ButtonDemo2$1$();	// EXPECT COMPILE ERROR
 		System.out.println(o.toString());
 	}
 }

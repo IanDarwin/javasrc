@@ -443,7 +443,7 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JLabel portsLabel;
   protected javax.swing.JComboBox portsComboBox;
   private javax.swing.JLabel buadLabel;
-  private javax.swing.JComboBox baudComboBox;
+  protected javax.swing.JComboBox baudComboBox;
   private javax.swing.JPanel databitsPanel;
   private javax.swing.JPanel parityPanel;
   private javax.swing.JLabel sysTypeLabel;

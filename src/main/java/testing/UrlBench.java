@@ -7,7 +7,7 @@ import java.io.*;
  * > buttons in a form, and force a submit? I need to hammer a script to see how * > it handles, and 'click-submit-back-click-submit-back' ad infinitum doesn't  * > cut it.
  */
 
-public class URLBanger {
+public class UrlBench {
         /** The test target must be entered here as a full URL
          * and can include any number of parameters in the
          * usual form.
@@ -21,8 +21,9 @@ public class URLBanger {
                         BufferedReader is = new BufferedReader(
                                 new InputStreamReader(u.openStream()));
                         String line;
-                        while ((line = is.readLine()) != null)
-                                System.out.println(line);
+                        while ((line = is.readLine()) != null) {
+                                // System.out.println(line);
+						}
                 }
         }
 }

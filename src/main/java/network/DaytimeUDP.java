@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Simple UDP client - contact the time service
+ * Simple UDP client - contact the standard ascii time service
  * @author Ian Darwin, ian@darwinsys.com.
  */
 public class DaytimeUDP {

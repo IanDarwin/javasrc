@@ -3,6 +3,8 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+import com.darwinsys.util.I18N;
+
 /** Display your business-card information in a Java window.
  *
  * This is a first attempt. The next version should use a GridBagLayout.

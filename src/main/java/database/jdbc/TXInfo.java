@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class TX {
+public class TXInfo {
 	public static void main(String[] a) throws Exception {
 	Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 	Connection con = DriverManager.getConnection(

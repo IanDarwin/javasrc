@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class TestCookieAccessor {
+public class TestCookieIO {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Vector al = new CookieAccessor().read("cookies.txt");
 		System.out.println(al.size());

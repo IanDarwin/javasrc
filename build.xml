@@ -6,25 +6,101 @@
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
-	<property name="build" value="build"/>
-	<!-- Specify the compiler to use. -->
-	<property name="build.compiler" value="modern"/>
 
 	<target name="init">
 		<!-- Create the time stamp -->
 		<tstamp/>
-		<!-- Create the build directory structure used by compile -->
-		<mkdir dir="${build}"/>
 	</target>
 
-	<!-- specify what to compile. This builds everything -->
-	<target name="compile" depends="init">
-		<!-- Compile the java code from ${src} into ${build} -->
-		<javac srcdir="${src}" destdir="${build}"
-			classpath="com-darwinsys-util.jar"/>
-	</target>
-
+	<!-- index everything, for findJava.org -->
 	<target name="index">
 		<ant antfile="buildindex.xml" inheritAll="false"/>
+	</target>
+
+	<target name="util">
+		<ant target="deploy" dir="com.darwinsys.util"/>
+	</target>
+
+	<!-- compile everything, for JavaCookbook reliability :-) -->
+	<target name="compile" description="compile all" depends="util">
+		<ant target="compile" dir="acks"/>
+		<ant target="compile" dir="applet"/>
+		<ant target="compile" dir="beans"/>
+		<echo message="==> ChartBean"/>
+		<ant target="compile" dir="ChartBean"/>
+		<ant target="compile" dir="classloader"/>
+		<ant target="compile" dir="ColumnLayout"/>
+		<ant target="compile" dir="com.darwinsys.regexp"/>
+		<ant target="compile" dir="cookiecutter"/>
+		<ant target="compile" dir="crssetup"/>
+		<ant target="compile" dir="datetime"/>
+		<ant target="compile" dir="DBM"/>
+		<ant target="compile" dir="dir_file"/>
+		<ant target="compile" dir="email"/>
+		<ant target="compile" dir="environ"/>
+		<ant target="compile" dir="filterGUI"/>
+		<ant target="compile" dir="gc"/>
+		<ant target="compile" dir="graphics"/>
+		<ant target="compile" dir="gui"/>
+		<ant target="compile" dir="i18n"/>
+		<ant target="compile" dir="introspection"/>
+		<ant target="compile" dir="io"/>
+		<echo message="==> javacomm"/>
+		<!-- javacomm.api must precede javacomm -->
+		<ant target="compile" dir="javacomm.api"/>
+		<ant target="compile" dir="javacomm"/>
+		<ant target="compile" dir="javadoc"/>
+		<ant target="compile" dir="jdb"/>
+		<echo message="==> JDBC"/>
+		<ant target="compile" dir="JDBC"/>
+		<ant target="compile" dir="JDBCDriver"/>
+		<ant target="compile" dir="JMS"/>
+		<ant target="compile" dir="JNDI"/>
+		<ant target="compile" dir="jndi-services"/>
+		<ant target="compile" dir="jsp"/>
+		<ant target="compile" dir="jsptags"/>
+		<echo message="==> language"/>
+		<ant target="compile" dir="language"/>
+		<ant target="compile" dir="native1.1"/>
+		<ant target="compile" dir="NETWatch"/>
+		<ant target="compile" dir="netweb"/>
+		<ant target="compile" dir="network"/>
+		<ant target="compile" dir="numbers"/>
+		<echo message="==> oo"/>
+		<ant target="compile" dir="oo"/>
+		<ant target="compile" dir="otherlang"/>
+		<ant target="compile" dir="packaging"/>
+		<ant target="compile" dir="performance"/>
+		<ant target="compile" dir="Plotter"/>
+		<ant target="compile" dir="prefs"/>
+		<ant target="compile" dir="quizzes"/>
+		<echo message="==> RE"/>
+		<ant target="compile" dir="RE"/>
+		<ant target="compile" dir="RelLayout"/>
+		<ant target="compile" dir="rmi"/>
+		<ant target="compile" dir="search"/>
+		<ant target="compile" dir="seating"/>
+		<ant target="compile" dir="servlet"/>
+		<ant target="compile" dir="ShowDocument"/>
+		<ant target="compile" dir="signals"/>
+		<echo message="==> spdf"/>
+		<ant target="compile" dir="spdf"/>
+		<echo message="==> starting"/>
+		<ant target="compile" dir="starting"/>
+		<ant target="compile" dir="strings"/>
+		<ant target="compile" dir="structure"/>
+		<ant target="compile" dir="TabLayout"/>
+		<ant target="compile" dir="tar"/>
+		<ant target="compile" dir="testing"/>
+		<ant target="compile" dir="textproc"/>
+		<ant target="compile" dir="threads"/>
+		<ant target="compile" dir="tmtimer"/>
+		<ant target="compile" dir="tools"/>
+		<echo message="==> webserver"/>
+		<ant target="compile" dir="webserver"/>
+		<ant target="compile" dir="wildmat"/>
+		<ant target="compile" dir="XColor"/>
+		<ant target="compile" dir="xml"/>
+		<ant target="compile" dir="xmlform"/>
 	</target>
 </project>
