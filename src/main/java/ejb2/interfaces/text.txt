@@ -1,0 +1,18 @@
+Using Interfaces to enforce method correctness in EJBs
+
+* Bean cannot implement the Remote interface (due to RemoteException)
+* However classes can implement more than one interface
+	- can not add exceptions when implementing.
+	- not required to have all throwses.
+
+SO: WRite a standalone interface listing the methods, WITH RemoteException
+
+.so MyMethods.java
+
+In the Remote interface, EXTEND this interface
+
+.so Remote.java
+
+In the Bean Implementation, IMPLEMENT the interface
+
+.so Bean.java
