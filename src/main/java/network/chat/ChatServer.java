@@ -1,18 +1,15 @@
+package chat;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
 /** Trivial Chat Server to go with our Trivial Chat Client.
  *
- * Does not implement any form of "anonymous nicknames" - this is
- * a good thing, given how a few people have abused anonymous 
- * chat rooms in the past.
- *
  * WARNING -- this code is believed thread-safe but has NOT been 100% vetted 
  * by a team of world-class experts for Thread-safeness.
  * DO NOT BUILD ANYTHING CRITICAL BASED ON THIS until you have done so.
  * See the various books on Threaded Java for design issues.
- * YOU HAVE BEEN WARNED!!
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
@@ -157,8 +154,6 @@ public class ChatServer {
 				log("IO Exception: " + e);
 			} finally {
 				// the sock ended, so we're done, bye now
-				// Can NOT send a good-bye message, until we have
-				// a simple command-based protocol in place.
 				System.out.println(login + SEP + "All Done");
 				synchronized(clients) {
 					clients.remove(this);

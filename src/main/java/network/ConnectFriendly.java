@@ -1,4 +1,7 @@
-import java.net.*;
+import java.net.ConnectException;
+import java.net.NoRouteToHostException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 /* Client with error handling */
 public class ConnectFriendly {

@@ -3,7 +3,7 @@ import java.net.*;
 
 /**
  * ListenInside -- make a server socket that listens only on
- * a particular interface, in this case, one called "inside".
+ * a particular interface, in this case, one named by INSIDE_HOST.
  * @author Ian F. Darwin
  * @version $Id$
  */
@@ -32,9 +32,10 @@ public class ListenInside {
 		}
 	}
 
-	/** This would do something with one client. */
+	/** Hold server's conversation with one client. */
 	static void process(Socket s) throws IOException {
-		System.out.println("Accept from inside " + s.getInetAddress());
+		System.out.println("Connected from  " + INSIDE_HOST + 
+			": " + s.getInetAddress(  ));
 		// The conversation would be here.
 		s.close();
 	}

@@ -33,11 +33,13 @@ public class Finger {
 		System.out.println("[" + user + "@" + host + "]");
 		try {
 			sock = new Socket(host, 7);
-			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			is =
+				new BufferedReader(
+					new InputStreamReader(sock.getInputStream()));
 			os = new PrintStream(sock.getOutputStream());
 
-			if (true)		// long flag
-				os.print("/W ");	// wide mode
+			if (true) // long flag
+				os.print("/W "); // wide mode
 
 			// Write request, with \n so readLine() doesn't hang!
 			os.print("\r\n");

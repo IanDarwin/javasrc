@@ -30,9 +30,7 @@ public class EchoServerThreaded2 {
 		
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
-			System.err.println("Could not create ServerSocket " + e);
-			System.exit(1);
-			return;	/*NOTREACHED*/
+			throw new RuntimeException("Could not create ServerSocket " + e);
 		}
 
 		// Create a series of threads and start them.
@@ -57,8 +55,9 @@ public class EchoServerThreaded2 {
 		public void run() 
 		{
 			/* Wait for a connection. Synchronized on the ServerSocket
-			 * while calling its accept() method. */
-			while (true){
+			 * while calling its accept() method.
+			 */
+			while (true) {
 				try {
 					System.out.println( getName() + " waiting");
 
@@ -69,8 +68,8 @@ public class EchoServerThreaded2 {
 					}
 					System.out.println(getName() + " starting, IP=" + 
 						clientSocket.getInetAddress());
-					DataInputStream is = new DataInputStream(
-						clientSocket.getInputStream());
+					BufferedReader is = new BufferedReader(
+						new InputStreamReader(clientSocket.getInputStream()));
 					PrintStream os = new PrintStream(
 						clientSocket.getOutputStream(), true);
 					String line;

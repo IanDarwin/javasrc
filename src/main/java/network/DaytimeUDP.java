@@ -19,7 +19,7 @@ public class DaytimeUDP {
 	 */
 	public static void main(String[] argv) throws IOException {
 		if (argv.length < 1) {
-			System.err.println("usage: java DayTime host");
+			System.err.println("usage: java DayTimeUDP host");
 			System.exit(1);
 		}
 		String host = argv[0];

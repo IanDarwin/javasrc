@@ -2,12 +2,13 @@ import java.io.*;
 import java.net.*;
 
 /**
+ * <p>
  * RemCat - remotely cat (DOS type) a file, using the TFTP protocol.
  * Inspired by the "rcat" exercise in Learning Tree Course 363, 
- * <I>UNIX Network Programming</I>, by Dr. Chris Brown.
- *
+ * <I>UNIX Network Programming</I>, by Dr. Chris Brown.</p>
+ * <[>
  * Note that the TFTP server is NOT "internationalized"; the name and
- * mode in the protocol are defined in terms of ASCII, not UniCode.
+ * mode *in the protocol* are defined in terms of ASCII, not UniCode.</p>
  *
  * @author	Chris R. Brown, original C version
  * @author	Java version by Ian Darwin, http://www.darwinsys.com/.
@@ -27,15 +28,16 @@ public class RemCat {
 	protected static boolean debug = false;
 
 	/** TFTP op-code for a read request */
-	public final int OP_RRQ = 1,
-		/** TFTP op-code for a read request */
-		OP_WRQ = 2,
-		/** TFTP op-code for a read request */
-		OP_DATA	 = 3,
-		/** TFTP op-code for a read request */
-		OP_ACK	 = 4,
-		/** TFTP op-code for a read request */
-		OP_ERROR = 5;
+	public final int OP_RRQ = 1;
+	/** TFTP op-code for a read request */
+	public final int OP_WRQ = 2;
+	/** TFTP op-code for a read request */
+	public final int OP_DATA = 3;
+	/** TFTP op-code for a read request */
+	public final int OP_ACK	= 4;
+	/** TFTP op-code for a read request */
+	public final int OP_ERROR = 5;
+
 	protected final static int PACKET_SIZE = 516;	// == 2 + 2 + 512
 	protected String host;
 	protected InetAddress servAddr;
@@ -79,7 +81,6 @@ public class RemCat {
 	 * naturally smart enough :-) to use network byte order.
 	 */
 	void readFile(String path) throws IOException {
-		byte[] bTemp;
 		buffer[0] = 0;
 		buffer[OFFSET_REQUEST] = OP_RRQ;		// read request
 		int p = 2;			// number of chars into buffer
@@ -87,7 +88,7 @@ public class RemCat {
 		// Convert filename String to bytes in buffer , using "p" as an
 		// offset indicator to get all the bits of this request
 		// in exactly the right spot.
-		bTemp = path.getBytes();	// i.e., ASCII
+		byte[] bTemp = path.getBytes();	// i.e., ASCII
 		System.arraycopy(bTemp, 0, buffer, p, path.length());
 		p += path.length();
 		buffer[p++] = 0;		// null byte terminates string

@@ -1,6 +1,8 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
 
 /** NetLog - NetLog client API.
  * @see		NetLogSimple -- demonstration example usage.

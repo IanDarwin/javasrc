@@ -1,3 +1,5 @@
+package chat;
+
 /** Constants and Class Methods for Java Chat Clients and Server.
  *
  * The protocol:

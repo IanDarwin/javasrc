@@ -45,14 +45,13 @@ public class EchoServerThreaded {
 			sock = s;
 		}
 
-		public void run() 
-		{
+		public void run() {
 			System.out.println("Socket starting: " + sock);
 			try {
-				DataInputStream is = new DataInputStream(
-					sock.getInputStream());
-				PrintStream os = new PrintStream(
-					sock.getOutputStream(), true);
+				BufferedReader is =
+					new BufferedReader(
+						new InputStreamReader(sock.getInputStream()));
+				PrintStream os = new PrintStream(sock.getOutputStream(), true);
 				String line;
 				while ((line = is.readLine()) != null) {
 					os.print(line + "\r\n");

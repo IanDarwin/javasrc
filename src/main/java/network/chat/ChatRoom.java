@@ -1,23 +1,27 @@
+package chat;
+
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
-/** Simple Chat Room Applet.
+/** 
+ * <p>
+ * Simple Chat Room Applet.
  * Writing a Chat Room seems to be one of many obligatory rites (or wrongs)
- * of passage for Java experts these days.
- * <P>
- * This one is a toy because it doesn't much of a command protocol, which
+ * of passage for Java experts these days.</p>
+ * <p>
+ * This one is a toy because it doesn't have much of a protocol, which
  * means we can't query the server as to * who's logged in,
- *  or anything fancy like that. However, it works OK for small groups.
- * <P>
+ * or anything fancy like that. However, it works OK for small groups.</p>
+ * <p>
  * Uses client socket w/ two Threads (main and one constructed),
- * one for reading and one for writing.
- * <P>
- * Server multiplexes messages back to all clients.
- * <P>
- * TODO in V2: use Java's MultiCastSocket, if it works OK on '95.
+ * one for reading and one for writing.</p>
+ * <p>
+ * Server multiplexes messages back to all clients.</p>
+ * <p>
+ * TODO in V2: consider using Java's MultiCastSocket.</p>
  * @author Ian Darwin
  * @version $Id$
  */

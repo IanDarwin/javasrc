@@ -39,25 +39,23 @@ public class Telnet {
 	}
 
 	/* This class handles one half of a full-duplex connection.
-	 * Line-at-a-time mode. Streams, not writers, are used.
+	 * Line-at-a-time mode.
 	 */
 	class Pipe extends Thread {
-		DataInputStream is;
+		BufferedReader is;
 		PrintStream os;
 
-		// Constructor
+		/** Construct a Pipe to read from is and write to os */
 		Pipe(InputStream is, OutputStream os) {
-			this.is = new DataInputStream(is);
+			this.is = new BufferedReader(new InputStreamReader(is));
 			this.os = new PrintStream(os);
 		}
 
-		// Do something method
+		/** Do the reading and writing. */
 		public void run() {
 			String line;
 			try {
-				// Deprecation warning ok for now; need to read bytes not chars.
-				// Will soon change to use BufferedReader(..."ISO-8859-1");
-				while ((line = is.readLine()) != null) { // IGNORE DEPRECATION WARNING
+				while ((line = is.readLine()) != null) {
 					os.print(line);
 					os.print("\r\n");
 					os.flush();
@@ -67,5 +65,4 @@ public class Telnet {
 			}
 		}
 	}
-
 }
