@@ -1,0 +1,16 @@
+/* Decompiled by Mocha from HelloWorld.class */
+/* Originally compiled from HelloWorld.java */
+
+import java.io.PrintStream;
+
+public class HelloWorld
+{
+    public static void main(String astring[])
+    {
+        System.out.println("Hello, World");
+    }
+
+    public HelloWorld()
+    {
+    }
+}
