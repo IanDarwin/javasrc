@@ -133,7 +133,8 @@ public class MailReaderBean extends JPanel implements MailConstants {
 						bodyText.append(e.toString());
 					}
 				} else 
-					System.err.println("UNEXPECTED SELECTION: " + o.getClass());
+					System.err.println(
+						"UNEXPECTED SELECTION: " + o.getClass());
 			}
 		};
 		tree.addTreeSelectionListener(tsl);

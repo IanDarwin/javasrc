@@ -2,7 +2,7 @@ Things you might do to improve MailClient:
   MailComposeBean
 	Do the sending in a new Thread, so you don't lock up the GUI.
 	Extract the GUI code in MailComposeBean into its own class, and use
-		it in MailReaderBean instead of all those calls to TextArea.add();
+		it in MailReaderBean instead of all those calls to TextArea.append();
 		-- Also add Reload button, using same code.
 		-- Add FolderNotificationListener to replace button!
   MailReaderBean

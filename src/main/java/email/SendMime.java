@@ -35,7 +35,7 @@ public class SendMime {
 	protected Message mesg;
 
 	/** Do the work: send the mail to the SMTP server.  */
-	public void doSend() {
+	public void doSend() throws IOException, MessagingException {
 
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
@@ -43,7 +43,8 @@ public class SendMime {
 			new FileProperties(MailConstants.PROPS_FILE_NAME);
 
 		// Copy the value of Mail.send.host into mail.smtp.host
-		props.setProperty("mail.smtp.host", MailConstants.SEND_HOST);
+		props.setProperty("mail.smtp.host", 
+			props.getProperty(MailConstants.SEND_HOST));
 
 		// Create the Session object
 		session = Session.getDefaultInstance(props, null);
@@ -93,7 +94,7 @@ public class SendMime {
 	}
 
 	/** Simple test case driver */
-	public static void main(String av[]) {
+	public static void main(String av[]) throws Exception {
 		SendMime sm = new SendMime();
 		sm.doSend();
 	}
