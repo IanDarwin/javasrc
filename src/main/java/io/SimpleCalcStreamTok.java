@@ -1,5 +1,10 @@
-import java.io.*;
-import java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.StreamTokenizer;
+import java.util.Stack;
 
 /**
  * SimpleCalc -- simple calculator to show StringTokenizer
@@ -8,9 +13,10 @@ import java.util.*;
  * @version	$Id$
  */
 public class SimpleCalc {
-	/** The StreamTokenizer */
+	/** The StreamTokenizer Input */
 	protected  StreamTokenizer tf;
-
+	/** The Output File */
+	protected PrintWriter out;
 	/** The variable name (not used in this version) */
 	protected String variable;
 	/** The operand stack */
@@ -40,6 +46,20 @@ public class SimpleCalc {
 		tf.ordinaryChar('/');	// used for division
 
 		s = new Stack();
+	}
+
+	/** Construct a SimpleCalc fom a Reader and a PrintWriter
+	 */
+	public SimpleCalc(Reader in, PrintWriter out) throws IOException {
+		this(in);
+		setOutput(out);
+	}
+	
+	/**
+	 * Change the output destination.
+	 */
+	public void setOutput(PrintWriter out) {
+		this.out = out;
 	}
 
 	protected void doCalc() throws IOException {
@@ -74,10 +94,10 @@ public class SimpleCalc {
 				push(pop() / tmp);
 				break;
 			case '=':
-				System.out.println(peek());
+				out.println(peek());
 				break;
 			default:
-				System.out.println("What's this? iType = " + iType);
+				out.println("What's this? iType = " + iType);
 			}
 		}
 	}
