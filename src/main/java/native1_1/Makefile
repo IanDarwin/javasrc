@@ -22,6 +22,8 @@ HelloWorld.class: HelloWorld.java
 HelloWorld.h:	HelloWorld.class
 		javah -jni HelloWorld
 
+HelloWorld.o::	HelloWorld.h
+
 libhello.so:	$(CSRCS)
 	$(CC) $(INCLUDES) -G $(CSRCS) -o libhello.so
 
@@ -32,7 +34,8 @@ testjavafromc:	javafromc.all hello.all
 	@echo
 	LD_LIBRARY_PATH="$(LIBDIR):." CLASSPATH="$(CLASSPATH)" ./javafromc HelloWorld
 	@echo
-	@echo "That was, in case you didn't notice, C->Java->C."
+	@echo "That was, in case you didn't notice, C->Java->C. And,"
+	@echo "incidentally, a replacement for JDK program \"java\" itself!"
 	@echo
 
 
