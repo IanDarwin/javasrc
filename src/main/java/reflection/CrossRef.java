@@ -32,9 +32,10 @@ public class CrossRef {
 	public static void main(String argv[]) {
 		CrossRef xref = new CrossRef();
 
-		String s = (String)System.getProperties().get("java.class.path");
+		String s = System.getProperties().getProperty("java.class.path");
 		// System.err.println("ClassPath is " + s);
-		StringTokenizer st = new StringTokenizer(s, ":");
+		String pathSep = System.getProperties().getProperty("path.separator");
+		StringTokenizer st = new StringTokenizer(s, pathSep);
 		while (st.hasMoreTokens()) {
 			String cand = st.nextToken();
 			// System.err.println("Trying path " + cand);
@@ -129,10 +130,16 @@ public class CrossRef {
 		++n;
 	}
 	/** put a Methods information to the standard output.
+	 * Ignores ubiquitous methods listed in the "if" statement.
 	 * Marked protected so you can override it (hint, hint).
 	 */
 	protected void putMethod(Method meth, Class c) {
-		println(meth.getName() + " method " + c.getName() + " ");
+		String methName = meth.getName();
+		if (methName.equals("wait") ||
+			methName.equals("notify") ||
+			methName.equals("toString"))
+			return;
+		println(methName + " method " + c.getName() + " ");
 		++n;
 	}
 
