@@ -6,6 +6,9 @@
  * @version $Id$.
  */
 public class Palindrome {
+
+	public static boolean verbose = true;
+
 	public static void main(String[] argv) {
 		for (int i=0; i<argv.length; i++)
 			try {
@@ -18,7 +21,7 @@ public class Palindrome {
 			} catch (NumberFormatException e) {
 				System.err.println(argv[i] + "-> INVALID");
 			} catch (IllegalStateException e) {
-				System.err.println(argv[i] + "-> TOO BIG(went negative)");
+				System.err.println(argv[i] + "-> " + e);
 			} 
 	}
 
@@ -27,10 +30,11 @@ public class Palindrome {
 	 */
 	static long findPalindrome(long num) {
 		if (num < 0)
-			throw new IllegalStateException("went negative");
+			throw new IllegalStateException("negative");
 		if (isPalindrome(num))
 			return num;
-		System.out.println("Trying " + num);
+		if (verbose)
+ 			System.out.println("Trying " + num);
 		return findPalindrome(num + reverseNumber(num));
 	}
 
@@ -45,8 +49,10 @@ public class Palindrome {
 
 	/** Check if a number is palindromic. */
 	static boolean isPalindrome(long num) {
+		// Consider any single digit to be as palindromic as can be
 		if (num >= 0 && num <= 9)
 			return true;
+
 		int nDigits = 0;
 		while (num > 0) {
 			digits[nDigits++] = num % 10;
