@@ -118,7 +118,7 @@ public class MakeAPI extends APIFormatter {
 				out.print(trim(classes[j].getName()) + ' ' + argNames[j]);
 			}
 			out.println(") {");
-			out.println("\treturn;");
+			out.println("\treturn " + defaultValue(m.getReturnType()) + ';');
 			out.println("\t}");
 		}
 
@@ -187,6 +187,13 @@ public class MakeAPI extends APIFormatter {
 				out.print(' ');
 			}
 		}
+	}
+
+	private String defaultValue(Class c) {
+		if (c.getName().equals("boolean"))
+			return "false";
+		// XXX else if object type return null;
+		else return "0";
 	}
 
 	public void startFile() {
