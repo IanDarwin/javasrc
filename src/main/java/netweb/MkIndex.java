@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class MkIndex {
 	/** The output file that we create */
-	public static final String OUTPUTFILE = "index.htm";
+	public static final String OUTPUTFILE = "index.html";
 	/** The main output stream */
 	PrintWriter out;
 	/** The background color for the page */
