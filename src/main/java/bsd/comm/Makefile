@@ -1,17 +1,13 @@
 # Makefile for the bsd.comm package.
-
 # Ian Darwin, ian@darwinsys.com, http://www.darwinsys.com
-
 # $Id$
 
 # Configuration Section
-
 CSRCS		= bsdcommio.c
 SOBJS		= bsdcommio.o
 SHLIB	= libbsdcommio.so
 
 #JAVAC=		javac
-#JAVAC=		guavac
 JAVAC=		jikes +E
 
 INCDIR		= /usr/local/include

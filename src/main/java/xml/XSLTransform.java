@@ -3,7 +3,8 @@ import java.net.*;
 import java.io.*;
 
 /**
- *  Demonstrate transforming a file using XSLT.
+ * Demonstrate transforming a file using XSLT, with old Apache Xalan API.
+ * See also: JAXPTransform.
  */
 public class XSLTransform {
 

@@ -1,1 +1,9 @@
-java org.apache.xalan.xslt.Process -in tbl1.xml -xsl tbl1.xsl -out tmp.html
+case $# in
+	2)	;;
+	*)	echo "Usage: $0 xml-in xsl-in [>outfile]" >&2;;
+esac
+
+INFILE=$1
+XSLSHEET=$2
+
+java org.apache.xalan.xslt.Process -in $INFILE -xsl $XSLSHEET

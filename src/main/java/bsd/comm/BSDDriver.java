@@ -34,7 +34,7 @@ public class BSDDriver implements CommDriver {
 	 * getCommPort() will be called by CommPortIdentifier from its openPort()
 	 * method. portName is a string that was registered earlier (presumably
 	 * by our intialize() method!) using CommPortIdentifier.addPortName().
-	 * getCommPort() returns an object that extends a Port object, currently
+	 * getCommPort() returns an object that extends a Port object; currently
 	 * only SerialPort or ParallelPort are supported. 
 	 */
 	public CommPort getCommPort(String portName, int portType) {

@@ -1,4 +1,5 @@
 public class BSDParallelPort extends javax.comm.ParallelCommPort {
+
 	/** The name of the default port */
 	public static final String DEFAULT_PARALLEL_PORT = "lp";
 
@@ -13,6 +14,7 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 
 	/* Native method to open the named device special file */
 	protected native int bsdlpopen(String fn);
+
 	/* Native method to set the tty parameters */
 	protected native int bsdsetmode(int mode);
 	
@@ -42,7 +44,7 @@ public class BSDParallelPort extends javax.comm.ParallelCommPort {
 		System.out.println("BSDParallelPort.<init>");
 		if (!closed)
 			throw new IllegalStateException("Port opened already");
-		filename = "/dev/ttya";	// TODO lookup in table.
+		filename = "/dev/lp";	// TODO lookup in table.
 		try {
 			instr = new FileInputStream(filename);
 			oustr = new FileOutputStream(filename);
