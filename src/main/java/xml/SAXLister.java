@@ -44,11 +44,12 @@ public class SAXLister {
 		}
 		public void characters(char[] ch, int start, int length) {
 			if (parent) {
-				System.out.println("Parent:  " + new String(ch, start, length));
+				System.out.println("Parent:  " +
+					new String(ch, start, length));
 				parent = false;
 			} else if (kids) {
-				System.out
-						.println("Children: " + new String(ch, start, length));
+				System.out.println("Children: " + 
+					new String(ch, start, length));
 				kids = false;
 			}
 		}
