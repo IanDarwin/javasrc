@@ -164,7 +164,7 @@ public class MailComposeBean extends JPanel {
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
 		Properties props = new Properties();
-		String serverHost = System.getProperty("Mail.server");
+		String serverHost = System.getProperties().getProperty("Mail.server");
 		if (serverHost == null) {
 			JOptionPane.showMessageDialog(parent,
 				"\"Mail.server\" must be set in System.properties",
@@ -177,7 +177,7 @@ public class MailComposeBean extends JPanel {
 		session = Session.getDefaultInstance(props, null);
 		session.setDebug(true);		// XXX
 
-		String myAddress = System.getProperty("Mail.address");
+		String myAddress = System.getProperties().getProperty("Mail.address");
 		if (myAddress == null) {
 			JOptionPane.showMessageDialog(parent,
 				"\"Mail.address\" must be set in System.properties",
@@ -288,8 +288,8 @@ public class MailComposeBean extends JPanel {
 	/** Simple test case driver */
 	public static void main(String av[]) {
 		final JFrame jf = new JFrame("DarwinSys Compose Mail Tester");
-		System.setProperty("Mail.server", "mailhost");
-		System.setProperty("Mail.address", "nobody@home");
+		System.getProperties().setProperty("Mail.server", "mailhost");
+		System.getProperties().setProperty("Mail.address", "nobody@home");
 		MailComposeBean sm = 
 			new MailComposeBean(jf, "Test Mailer", "spam-magnet@darwinsys.com", 500, 400);
 		sm.setSize(500, 400);

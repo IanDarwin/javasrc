@@ -1,5 +1,6 @@
 import java.util.Properties;
 import javax.mail.*;
+import javax.mail.internet.*;
 
 /**
 * List all available folders.
@@ -44,20 +45,36 @@ public class MailLister {
 			rf = store.getDefaultFolder();
 		}
 
-		Folder[] f = rf.list(pattern);
-		for (int i = 0; i < f.length; i++)
-			listFolder(f[i], "", recursive);
+		if (rf.getType() == Folder.HOLDS_FOLDERS) {
+			Folder[] f = rf.list(pattern);
+			for (int i = 0; i < f.length; i++)
+				listFolder(f[i], "", recursive);
+		} else
+				listFolder(rf, "", false);
 	}
 
 	static void listFolder(Folder folder, String tab, boolean recurse) throws Exception {
-		System.out.println(tab + "Name: " + folder.getName());
-		System.out.println(tab + "Full Name: " +
-		folder.getFullName());
+		System.out.println(tab + "Name: " + folder.getName() + '(' +
+			folder.getFullName() + ')');
 		if (!folder.isSubscribed())
 			System.out.println(tab + "Not Subscribed");
-		if (((folder.getType() & Folder.HOLDS_MESSAGES) != 0) &&
-			folder.hasNewMessages())
+		if ((folder.getType() & Folder.HOLDS_MESSAGES) != 0) {
+			if (folder.hasNewMessages())
 				System.out.println(tab + "Has New Messages");
+			else
+				System.out.println(tab + "No New Messages");
+			Message[] msgs = folder.getMessages();
+			for (int i=0; i<msgs.length; i++) {
+				Message m = msgs[i];
+				Address from = m.getFrom()[0];
+				String fromAddress;
+				if (from instanceof InternetAddress)
+					fromAddress = ((InternetAddress)from).getAddress();
+				else
+					fromAddress = from.toString();
+				System.out.println(fromAddress + "\t" + m.getSubject());
+			}
+		}
 		if ((folder.getType() & Folder.HOLDS_FOLDERS) != 0) {
 			System.out.println(tab + "Is Directory");
 		if (recurse) {

@@ -8,7 +8,7 @@ import javax.swing.tree.*;
  * Display a mailbox, currently faked.
  * @version $Id$
  */
-public class MailReaderBean extends JPanel implements JDModule {
+public class MailReaderBean extends JPanel {
 
     public MailReaderBean() {
 		super();
@@ -21,6 +21,7 @@ public class MailReaderBean extends JPanel implements JDModule {
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Mail Boxes");
 
 		top.add( inbox = new DefaultMutableTreeNode("INBOX") );
+
 		top.add( javaone = new DefaultMutableTreeNode("javaone") );
 		top.add( personal = new DefaultMutableTreeNode("personal") );
 		top.add( spam = new DefaultMutableTreeNode("spam") );
