@@ -4,16 +4,23 @@ public class DrawStringDemo2 extends Component {
 	//-
 	String message = "Hello Java";
 
+	/** Paint is called (by AWT) when it's time to draw the text. */
 	public void paint(Graphics g) {
+		// Get the current Font, and ask it for its FontMetrics.
 		FontMetrics fm = getFontMetrics(getFont());
-		// Get the width of the String;
+
+		// Use the FontMetrics to get the width of the String.
+		// Subtract this from width, divide by 2, that's our starting point.
 		int textX = (getSize().width - fm.stringWidth(message))/2;
 		if (textX<0)		// If string too long, start at 0
 			textX = 0;
-		// Same drill for the height
+
+		// Same as above but for the height
 		int textY = (getSize().height - fm.getLeading())/2;
 		if (textY<0)
 			textY = 0;
+
+		// Now draw the text at the computed spot.
 		g.drawString(message, textX, textY);
 	}
 	//-
