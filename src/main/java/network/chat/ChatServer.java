@@ -29,7 +29,7 @@ public class ChatServer {
 	public static void main(String argv[]) {
 		System.out.println("DarwinSys ChatRoom Server 0.1 starting...");
 		ChatServer w = new ChatServer();
-		System.out.println("**ERROR* DarwinSys ChatRoom Server 0.1 quitting");
+		System.out.println("**ERROR* Chat Server 0.1 quitting");
 	}
 
 	/** Construct (and run!) a Chat Service */
@@ -37,7 +37,7 @@ public class ChatServer {
 		clients = new Vector();
 		try {
 			servSock = new ServerSocket(ChatRoom.PORTNUM);
-			System.out.println("DarwinSys ChatRoom Server Listening on port " +
+			System.out.println("DarwinSys Chat Server Listening on port " +
 				ChatRoom.PORTNUM);
 			while (true) {
 				Socket us = servSock.accept();
@@ -51,7 +51,9 @@ public class ChatServer {
 				else {
 					cl.send(IDENT, "Welcome! you're the latest of " +
 						clients.size() + " users.");
-					cl.broadcast(IDENT, cl.handle + " joins us, for a total of " + clients.size() + " users");
+					cl.broadcast(IDENT, cl.handle + 
+						" joins us, for a total of " + 
+						clients.size() + " users");
 				}
 			}
 		} catch(IOException e) {
@@ -73,7 +75,8 @@ public class ChatServer {
 		/* Construct a Chat Handler */
 		public ChatHandler(Socket sock, String clnt) throws IOException {
 			handle = clnt;
-			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			is = new BufferedReader(
+				new InputStreamReader(sock.getInputStream()));
 			pw = new PrintWriter(sock.getOutputStream(), true);
 		}
 
@@ -99,9 +102,11 @@ public class ChatServer {
 						"I'm so lonely I could cry...");
 				} else if (clients.size() == 1) {
 					ChatHandler last = (ChatHandler)clients.elementAt(0);
-					last.send(IDENT, "Hey, you're talking to yourself again");
+					last.send(IDENT,
+						"Hey, you're talking to yourself again");
 				} else {
-					broadcast(IDENT, "There are now only " + clients.size() + " users");
+					broadcast(IDENT,
+						"There are now only " + clients.size() + " users");
 				}
 			}
 		}

@@ -24,7 +24,7 @@ public class WebServer0 {
 	/**
 	 * Main method, just creates a server and call its runServer().
 	 */
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		System.out.println("DarwinSys JavaWeb Server 0.0 starting...");
 		WebServer0 w = new WebServer0();
 		w.runServer();		// never returns!!

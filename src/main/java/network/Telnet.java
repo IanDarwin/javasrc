@@ -10,7 +10,7 @@ import java.io.*;
 public class Telnet {
 	String host;
 	int portNum;
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 		new Telnet().talkTo(argv);
 	}
 	private void talkTo(String av[]) {

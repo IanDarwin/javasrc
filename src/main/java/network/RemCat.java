@@ -42,7 +42,7 @@ public class RemCat {
 	protected byte buffer[];
 	protected DatagramPacket inp, outp;
 
-	public static void main(String argv[]) throws IOException {
+	public static void main(String[] argv) throws IOException {
 		if (argv.length < 2) {
 			System.err.println("usage: rcat host filename[...]");
 			System.exit(1);
