@@ -12,7 +12,7 @@ public class GetResourceDemo {
 	/** The demo itself */
 	public void demo() {
 		// Find the ClassLoader that loaded us.
-		// Regard it as the One True Classloader for this app.
+		// Regard it as the One True ClassLoader for this app.
 		ClassLoader loader = this.getClass().getClassLoader();
 
 		// Use the loader's getResource() method to open the file.
