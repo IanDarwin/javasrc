@@ -59,9 +59,10 @@ public class EchoServerThreaded2 {
 				try {
 					System.out.println( getName() + " waiting");
 
+					Socket clientSocket;
 					// Wait here for the next connection.
 					synchronized(servSock) {
-						Socket clientSocket = servSock.accept();
+						clientSocket = servSock.accept();
 					}
 					System.out.println(getName() + " starting, IP=" + 
 						clientSocket.getInetAddress());
