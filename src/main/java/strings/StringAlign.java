@@ -1,6 +1,8 @@
 import java.text.*;
 
-/** Bare-minimum String formatter (string aligner). */
+/** Bare-minimum String formatter (string aligner).
+ * XXX When 1.5 is common, change from ints to enum for alignment.
+ */
 public class StringAlign extends Format {
 	/* Constant for left justification. */
 	public static final int JUST_LEFT = 'l';
@@ -16,6 +18,12 @@ public class StringAlign extends Format {
 	/** Current max length */
 	private int maxChars;
 
+    /** Construct a StringAlign formatter; length and alignment are
+     * passed to the Constructor instead of each format() call as the
+     * expected common use is in repetitive formatting e.g., page numbers.
+     * @param nChars - the length of the output
+     * @param just - one of JUST_LEFT, JUST_CENTRE or JUST_RIGHT
+     */
 	public StringAlign(int maxChars, int just) {
 		switch(just) {
 		case JUST_LEFT:
@@ -32,7 +40,12 @@ public class StringAlign extends Format {
 		this.maxChars = maxChars;
 	}
 
-	/** Format a String */
+	/** Format a String.
+     * @param input _ the string to be aligned.
+     * @parm where - the StringBuffer to append it to.
+     * @param ignore - a FieldPosition (may be null, not used but
+     * specified by the general contract of Format).
+     */
 	public StringBuffer format(
 		Object obj, StringBuffer where, FieldPosition ignore)  {
 
@@ -46,12 +59,10 @@ public class StringAlign extends Format {
 				where.append(wanted);
 				break;
 			case JUST_CENTRE:
-				int startPos = where.length();
-				pad(where, (maxChars - wanted.length())/2);
+				int toAdd = maxChars - wanted.length();
+				pad(where, toAdd/2);
 				where.append(wanted);
-				pad(where, (maxChars - wanted.length())/2);
-				// Adjust for "rounding error"
-				pad(where, maxChars - (where.length() - startPos));
+				pad(where, toAdd - toAdd/2);
 				break;
 			case JUST_LEFT:
 				where.append(wanted);
