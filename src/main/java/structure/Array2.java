@@ -10,7 +10,8 @@ public class Array2  {
 		final int MAX = 10;
 		Calendar dates[] = new Calendar[MAX];
 		Calendar c;
-		while ((c=getDate()) != null) {
+		StructureDemo source = new StructureDemo(21);
+		while ((c=source.getDate()) != null) {
 
 			// if (nDates >= dates.length) {
 			// 	System.err.println("Too Many Dates! Simplify your life!!");
@@ -27,15 +28,5 @@ public class Array2  {
 			dates[nDates++] = c;
 		}
 		System.out.println("Array size = " + dates.length);
-	}
-
-	static int n;
-	/* Dummy method to return a sequence of 21 Calendar references,
-	 * so the array should be sized >= 21.
-	 */
-	public static Calendar getDate() {
-		if (n++ > 21)
-			return null;
-		return Calendar.getInstance();
 	}
 }
