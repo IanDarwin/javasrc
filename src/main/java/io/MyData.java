@@ -17,7 +17,7 @@ public class MyData implements Serializable {
 		// Save the clear text p/w in the object, it won't get serialized
 		passwordClear = clear;
 		// So we must save the encryption! Encryption not shown here.
-		passwordCypher = passwordClear;
+		passwordCypher = "x8skwkl'";
 	}
 
 	public String toString() {
