@@ -8,7 +8,9 @@ import java.util.*;
  */
 public class Grep2 {
 	/** The pattern we're looking for */
-	protected RE pattern;
+	protected Pattern pattern;
+	/** The matcher for this pattern */
+	protected Matcher matcher;
 	/** The Reader for the current file */
     protected BufferedReader d;
 	/** Are we to only count lines, instead of printing? */
@@ -38,7 +40,7 @@ public class Grep2 {
 			"Usage: Grep2 pattern [-chilsnv][-f pattfile][filename...]");
 		    System.exit(1);
 		}
-		String pattern = null;
+		String patt = null;
 
 		GetOpt go = new GetOpt("cf:hilnsv");
 		BitSet args = new BitSet();
@@ -52,7 +54,7 @@ public class Grep2 {
 				case 'f':
 					try {
 						BufferedReader b = new BufferedReader(new FileReader(go.optarg()));
-						pattern = b.readLine();
+						patt = b.readLine();
 						b.close();
 					} catch (IOException e) {
 						System.err.println("Can't read pattern file " + go.optarg());
@@ -82,10 +84,10 @@ public class Grep2 {
 
 		int ix = go.getOptInd();
 
-		if (pattern == null)
-			pattern = argv[ix-1];
+		if (patt == null)
+			patt = argv[ix];
 
-		Grep2 pg = new Grep2(pattern, args);
+		Grep2 pg = new Grep2(patt, args);
 
 		if (argv.length == ix)
 			pg.process(new InputStreamReader(System.in), "(standard input)");
@@ -115,8 +117,11 @@ public class Grep2 {
 			silent = true;
 		if (args.get('V'))
 			inVert = true;
-		int caseMode = ignoreCase?RE.MATCH_CASEINDEPENDENT:RE.MATCH_NORMAL;
-		pattern = new RE(arg, caseMode);
+		int caseMode = ignoreCase?
+			Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE :
+			0;
+		pattern = Pattern.compile(arg, caseMode);
+		matcher = pattern.matcher("");
 	}
         
 	/** Do the work of scanning one file
@@ -133,7 +138,7 @@ public class Grep2 {
 		    
 			while ((inputLine = d.readLine()) != null) {
 				matcher.reset(inputLine);
-				if (pattern.lookingAt()) {
+				if (matcher.lookingAt()) {
 					if (countOnly)
 						matches++;
 					else {

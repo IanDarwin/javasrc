@@ -7,6 +7,8 @@ import java.io.*;
 public class Grep1 {
 	/** The pattern we're looking for */
 	protected Pattern pattern;
+	/** The matcher for this pattern */
+	protected Matcher matcher;
 	/** The Reader for the current file */
     protected BufferedReader d;
 
@@ -34,7 +36,7 @@ public class Grep1 {
 	public Grep1(String patt) throws PatternSyntaxException {
 		// compile the regular expression, with .* around so it will
 		// match anywhere in the input line
-		pattern = Pattern.compile(".*" + patt + ".*");
+		pattern = Pattern.compile(patt);
 	}
 
 	/** Do the work of scanning one file
@@ -52,8 +54,8 @@ public class Grep1 {
 			d = new BufferedReader(ifile);
 		    
 			while ((inputLine = d.readLine()) != null) {
-				Matcher m = pattern.matcher(inputLine);
-				if (m.matches()) {
+				matcher.reset(inputLine);
+				if (matcher.lookingAt()) {
 					if (printFileName) {
 						System.out.print(fileName + ": ");
 					}
