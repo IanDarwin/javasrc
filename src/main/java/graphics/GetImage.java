@@ -25,11 +25,12 @@ public class GetImage extends java.applet.Applet {
 		// Applet-only version:
 		// Image = getImage(getCodeBase(), "Duke.gif");
 		
-		// Portable version:
+		// Portable version: getClass().getResource() works in either
+		// applet or application, 1.1 or 1.3, returns URL for file name.
 		URL url = getClass().getResource("Duke.gif");
 		image = getToolkit().getImage(url);
-		// Shorter portable version:
-		image = getToolkit().getImage(getClass().getResource("Duke.gif"));
+		// Shorter portable version: same but avoids temporary variables
+		// image = getToolkit().getImage(getClass().getResource("Duke.gif"));
 	}
 
 	public void paint(Graphics g) {
