@@ -24,7 +24,9 @@
 	<target name="regress" depends="build">
 		<junit printsummary="yes">
 			<formatter type="brief"/>
-			<test name="regress.EqualsDemoTest"/>
+			<test name="EqualsDemoTest"/>
+			<test name="SingletonTest"/>
+			<test name="Clone1Test"/>
 		</junit>
 	</target>
 
