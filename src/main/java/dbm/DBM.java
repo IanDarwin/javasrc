@@ -55,7 +55,6 @@ public class DBM {
 		return bo.toByteArray();
 	}
 
-
 	/** un-serialize an Object from a byte array. */
 	protected Object toObject(byte[] b) throws IOException {
 		Object o;
@@ -82,24 +81,53 @@ public class DBM {
 		inuse = false;
 	}
 
+	protected void checkInUse() {
+		if (!inuse)
+			throw new IllegalStateException("Method called when DBM not open");
+	}
+
 	protected native byte[] dbmfetch(byte[] key);
 
+	/** Fetch using byte arrays */
+	public byte[] fetch(byte[] key) throws IOException {
+		checkInUse();
+		return dbmfetch(key);
+	}
+
+	/** Fetch using Objects */
 	public Object fetch(Object key) throws IOException {
+		checkInUse();
 		byte[] datum = dbmfetch(toByteArray(key));
 		return toObject(datum);
 	}
 
 	protected native int dbmstore(byte[] key, byte[] content);
 
+	/** Store using byte arrays */
+	public void store(byte[] key, byte[] value) throws IOException {
+		checkInUse();
+		dbmstore(key, value);
+	}
+
+	/** Store using Objects */
 	public void store(Object key, Object value) throws IOException {
+		checkInUse();
 		dbmstore(toByteArray(key), toByteArray(value));
 	}
 
 	protected native int delete(Object key);
 
-	public native Object firstkey();
+	public native byte[] firstkey() throws IOException;
 
-	public native Object nextkey(Object key);
+	public Object firstkeyObject() throws IOException {
+		return toObject(firstkey());
+	}
+
+	public native byte[] nextkey(byte[] key) throws IOException;
+
+	public Object nextkey(Object key) throws IOException {
+		return toObject(nextkey(toByteArray(key)));
+	}
 
 	public String toString() {
 		return "DBM@" + hashCode() + "[" + fileName + "]";

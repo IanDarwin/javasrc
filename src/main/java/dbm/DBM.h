@@ -51,18 +51,18 @@ JNIEXPORT jint JNICALL Java_DBM_delete
 /*
  * Class:     DBM
  * Method:    firstkey
- * Signature: ()Ljava/lang/Object;
+ * Signature: ()[B
  */
-JNIEXPORT jobject JNICALL Java_DBM_firstkey
+JNIEXPORT jbyteArray JNICALL Java_DBM_firstkey
   (JNIEnv *, jobject);
 
 /*
  * Class:     DBM
  * Method:    nextkey
- * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+ * Signature: ([B)[B
  */
-JNIEXPORT jobject JNICALL Java_DBM_nextkey
-  (JNIEnv *, jobject, jobject);
+JNIEXPORT jbyteArray JNICALL Java_DBM_nextkey
+  (JNIEnv *, jobject, jbyteArray);
 
 #ifdef __cplusplus
 }

@@ -8,6 +8,8 @@
 CC			= cc
 CFLAGS		+= -Wall
 CC_SHARED	= -fpic
+JAVAC		= jikes
+JAVAC_FLAGS = +E 		# jikes, for UNIX-like non-full-screen messages
 LD_SHARED	= -shared
 CLASS		= DBM.class
 CSRCS		= jdbm.c
@@ -28,7 +30,9 @@ testdb:		/tmp/mydb.dir /tmp/mydb.pag
 main:		$(CLASS) $(SHARED_OBJ)
 
 DBM.class: DBM.java
-		javac DBM.java
+		$(JAVAC) $(JAVAC_FLAGS) DBM.java
+Test.class: Test.java
+		$(JAVAC) $(JAVAC_FLAGS) Test.java
 
 #DBM.h:	DBM.class
 #		javah -jni DBM

@@ -14,9 +14,18 @@ public class Test {
 			System.out.println("Correctly threw " + e);
 		}
 		d.close();
+
+		System.out.println("Now close, re-open, and fetch");
 		d2 = new DBM("/tmp/mydb");
 		System.out.println("d2 contains " + d2.fetch("here"));
 		System.out.println("d2 contains " + d2.fetch("today"));
 		d2.close();
+
+		System.out.println("Now try iterating");
+		DBM d3 = new DBM("/tmp/mydb");
+		byte[] ba;
+		for (ba = d3.firstkey(); ba != null; ba = d3.nextkey(ba)) {
+			System.out.println(new String(ba));
+		}
 	}
 }

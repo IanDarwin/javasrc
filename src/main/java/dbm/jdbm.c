@@ -133,19 +133,19 @@ JNIEXPORT jint JNICALL Java_DBM_delete
 
 /*
  * Method:    firstkey
- * Signature: ()Ljava/lang/Object;
+ * Signature: ()[B
  */
-JNIEXPORT jobject JNICALL Java_DBM_firstkey
+JNIEXPORT jbyteArray JNICALL Java_DBM_firstkey
   (JNIEnv *env, jobject this) {
 	return NULL;
 }
 
 /*
  * Method:    nextkey
- * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
+ * Signature: ([B)[B
  */
-JNIEXPORT jobject JNICALL Java_DBM_nextkey
-  (JNIEnv *env, jobject this, jobject key) {
+JNIEXPORT jbyteArray JNICALL Java_DBM_nextkey
+  (JNIEnv *env, jobject this, jbyteArray key) {
 	return NULL;
 }
 
