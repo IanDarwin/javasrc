@@ -1,8 +1,9 @@
 import java.io.*;
 import org.w3c.dom.*;
-import com.sun.xml.tree.*;
+import javax.xml.parsers.*;
 
 /** Make up and write an XML document, using DOM
+ * UPDATED FOR JAXP.
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -10,14 +11,26 @@ public class DocWriteDOM {
 
 	public static void main(String[] av) throws IOException {
 		DocWriteDOM dw = new DocWriteDOM();
-		XmlDocument doc = dw.makeDoc();
-		doc.write(System.out);
+		Document doc = dw.makeDoc();
+
+		// Sadly, the write() method is not in the DOM spec, so we
+		// have to cast the Document to its implementing class
+		// in order to call the Write method.
+		//
+		// WARNING
+		//
+		// This code therefore depends upon the particular
+		// parser implementation.
+		//
+		((org.apache.crimson.tree.XmlDocument)doc).write(System.out);
 	}
 
 	/** Generate the XML document */
-	protected XmlDocument makeDoc() {
+	protected Document makeDoc() {
 		try {
-			XmlDocument doc = new XmlDocument();
+			DocumentBuilderFactory fact = DocumentBuilderFactory.newInstance();
+			DocumentBuilder parser = fact.newDocumentBuilder();
+			Document doc = parser.newDocument();
 
 			Node root = doc.createElement("Poem");
 			doc.appendChild(root);
