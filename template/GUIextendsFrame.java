@@ -1,11 +1,17 @@
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
 
 /** Template standalone GUI application.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version #Id$
  */
-public class GUIextendsFrame extends Frame {
+public class GUIextendsFrame extends JFrame {
 	boolean unsavedChanges = false;
 	Button quitButton;
 
@@ -18,9 +24,10 @@ public class GUIextendsFrame extends Frame {
 	/** Construct the object including its GUI */
 	public GUIextendsFrame() {
 		super("GUIextendsFrame");
-		setLayout(new FlowLayout());
-		add(new Label("Hello, and welcome to the world of Java"));
-		add(quitButton = new Button("Exit"));
+		Container cp = getContentPane();
+		cp.setLayout(new FlowLayout());
+		cp.add(new Label("Hello, and welcome to the world of Java"));
+		cp.add(quitButton = new Button("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -28,15 +35,6 @@ public class GUIextendsFrame extends Frame {
 				System.exit(0);
 			}
 		});
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// addWindowListener(new WindowAdapter() {
-		// 	public void windowClosing(WindowEvent e) {
-		// 		setVisible(false);
-		// 		dispose();
-		// 		System.exit(0);
-		// 	}
-		// });
-			
 		pack();
 	}
 }
