@@ -1,0 +1,7 @@
+This is a text file with spaces and tabs, for testing Tab-related software.
+NOSPACESHERE
+SPACE HERE
+SPACE AT END 
+a b c d e
+a         b        c
+a b c d e
