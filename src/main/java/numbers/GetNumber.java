@@ -22,6 +22,7 @@ public class GetNumber extends Frame {
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				String s = textField.getText();
+				//+
 				System.out.println("Input is " + s);
 				if (s.indexOf('.') >0 ||
 					s.indexOf('d') >0 || s.indexOf('e') >0)
@@ -42,6 +43,7 @@ public class GetNumber extends Frame {
 						System.out.println("Not a number:" + s);
 					}
 				}
+				//-
 		});
 		pack();
 	}
