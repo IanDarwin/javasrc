@@ -3,5 +3,3 @@ Get rid of JDBC/testdatasource.
 Get conditionals working: 1.4.
 
 Clean up spdf.jar deploy and its use in PDFcouponservlet.
-
-rename gui/[CE]* to lowercase
