@@ -20,7 +20,7 @@ public class TempConverter {
 	}
 
 	protected void print(float f, float c) {
-		System.out.println(i + " f = " + c + " c.");
+		System.out.println(f + " f = " + c + " c.");
 	}
 
 	protected void end() {
