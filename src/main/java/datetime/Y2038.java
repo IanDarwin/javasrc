@@ -3,16 +3,20 @@
 
 public class Y2038 {
 	public static void main(String[] a) {
+
 		// This should yield 2038AD, the hour of doom for the
 		// last remaining 32-bit UNIX systems (there will be
 		// millions of 64-bit UNIXes by then).
-		long expiry = Long.parseLong("7FFFFFFF",16)*1000;
+
+		long expiry = 0x7FFFFFFFL * 1000;
+		System.out.println("Expiry as a long is " + expiry);
+
 		System.out.println("32-bit UNIX expires on " +
 			Long.toHexString(expiry) + " or " +
-			new java.util.Date(1000*0x7FFFFFFF));
+			new java.util.Date(expiry));
 		// Why doesn't it?
 
-		// Try inverting:
+		// Try going from msec of current time into a Date
 		long now = System.currentTimeMillis();
 		System.out.println(
 			"Passing " + Long.toHexString(now) + " --> " +
