@@ -18,7 +18,7 @@ public class JFrameDemo extends JFrame {
 	/** Construct the object including its GUI */
 	public JFrameDemo() {
 		super("JFrameDemo");
-		add(quitButton = new Button("Exit"));
+		getContendPane().add(quitButton = new Button("Exit"));
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
