@@ -5,7 +5,6 @@ import java.util.*;
  */
 public class DateCalAdd {
 	public static void main(String[] av) {
-		//+
 		/** Today's date */
 		Calendar now = Calendar.getInstance();
 
@@ -15,9 +14,8 @@ public class DateCalAdd {
 		System.out.println("It is now " + 
 			formatter.format(now.getTime()));
 
-		now.add(Calendar.DAY_OF_YEAR, -700);
-		System.out.println("Seven hundred days ago was " + 
+		now.add(Calendar.DAY_OF_YEAR, - (365 * 2));
+		System.out.println("Two years ago was " + 
 			formatter.format(now.getTime()));
-		//-
 	}
 }
