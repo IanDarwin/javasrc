@@ -5,10 +5,9 @@ import java.util.*;
  */
 public class VectorDemo {
 	public static void main(String argv[]) {
-		Vector v;
-		Enumeration e;
+		Vector v = new Vector();
 
-		v = new Vector();
+		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the Vector...
@@ -19,7 +18,7 @@ public class VectorDemo {
 		// First print them out using a for loop.
 		System.out.println("Retrieving by index:");
 		for (int i = 0; i<v.size(); i++) {
-			System.out.println("Element " + i + " = " + v.elementAt(i));
+			System.out.println("Element " + i + " = " + v.get(i));
 		}
 	}
 }
