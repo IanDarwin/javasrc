@@ -39,11 +39,10 @@ public class SendMime {
 
 		// We need to pass info to the mail server as a Properties, since
 		// JavaMail (wisely) allows room for LOTS of properties...
-		Properties props = new Properties();
+		FileProperties props = new FileProperties(MailConstants.PROPS_FILE_NAME);
 
-		// Your LAN must define the local SMTP server as "mailhost"
-		// for this simple-minded version to be able to send mail...
-		props.put("mail.smtp.host", "mailhost");
+		// Copy the value of Mail.send.host into mail.smtp.host
+		props.put("mail.smtp.host", MailConstants.SEND_HOST);
 
 		// Create the Session object
 		session = Session.getDefaultInstance(props, null);
