@@ -1,0 +1,6 @@
+# A list of company names and "addresses" to be loaded by PropsDemo
+# run as java PropsDemo < propsdemo.dat
+Nippon Kogaku=Japan
+Sony=Japan
+Ericsson=Sweden
+Acorn=United Kingdom
