@@ -76,9 +76,11 @@ public class BusCard extends JFrame {
 		jobChoice = new JComboBox();
 		jobChoice.setFont(new Font("helvetica", Font.BOLD, 14));
 
-		// XXX These should come from the Properties file loaded into "b"!
+		// Get Job Titles ofrom the Properties file loaded into "b"!
+		String next;
+		int i=1;
 		do {
-			String next = I18N.getString(b, "job_title" + i, null);
+			next = I18N.getString(b, "job_title" + i++, null);
 			if (next != null)
 				jobChoice.addItem(next);
 		} while (next != null);
