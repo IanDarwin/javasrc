@@ -98,11 +98,6 @@ public abstract class NetPanel extends JPanel implements Runnable {
 		done = true;
 	}
 
-	/** True if the given host is believed to be up. */
-	protected int getState() {
-		return state;
-	}
-	
 	/** Record the new state of the current machine.
 	 * If this machine has changed state, set its color
 	 * @param newState - one of the five valid states in the introduction.
