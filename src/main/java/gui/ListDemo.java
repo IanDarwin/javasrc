@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 
 /** Demonstrate old AWT ScrollingList.
  * Note: You should normally use a Swing JList instead.
@@ -10,14 +11,15 @@ public class ListDemo extends Frame {
 		super(s);
 		setLayout(new FlowLayout());
 		list = new List(10, false);
-		list.addItem("Hello");
-		list.addItem("Goodbye");
-		add(list);
-	}
+		list.add("Hello");
+		list.add("Goodbye");
+		list.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				System.out.println("Selected: " + list.getSelectedItem());
+			}
+		});
 
-	public boolean action(Event e, Object o) {
-		System.out.println(e.target + "=" + (String)o);
-		return true;
+		add(list);
 	}
 
 	public static void main(String[] s) {
