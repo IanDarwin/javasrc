@@ -1,0 +1,5 @@
+#!/bin/sh -e
+set -x
+jikes +E Demo.java
+mkdir idl 2>/dev/null
+rmic -d idl -iiop -idl Demo
