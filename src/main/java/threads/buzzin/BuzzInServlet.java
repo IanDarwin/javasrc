@@ -1,5 +1,6 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.*;
 
 /** A quiz-show "buzzer" servlet: the first respondant wins the chance
  * to answer the skill-testing question. Correct operation depends on
@@ -23,7 +24,9 @@ public class BuzzInServlet {
 	 * Uses a synchronized code block to ensure that
 	 * only one contestant can change the state of "buzzed".
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException
+	{
 		boolean igotit = false;
 		synchronized(this) {
 			if (!buzzed) {
@@ -36,9 +39,11 @@ public class BuzzInServlet {
 
 		if (igotit) {
 			out.println("YOU WIN");
+			getServletContext().log("BuzzInServlet: WINNER " +
+				request.getRemoteUser());
 			// TODO - output HTML to play a sound file
 		} else {
-				out.println("Thanks for playing, " + request.getRemoteUser);
+				out.println("Thanks for playing, " + request.getRemoteUser());
 				out.println(", but " + winner + " buzzed in first");
 		}
 	}
@@ -46,16 +51,22 @@ public class BuzzInServlet {
 	/** The Post method is used from an Administrator page (only in the
 	 * instructor/host's localweb directory). It is used to reset the
 	 * buzzer for the next question.
+	 * <p>
+	 * In real life the password would come from a Servlet Parameter
+	 * or a configuration file.
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException
+	{
 		PrintWriter out = response.getWriter();
-		if (request.getParameter("hosthost").equals("syzzy") {
-			synchonized(this) {
+		if (request.getParameter("hosthost").equals("syzzy")) {
+			synchronized(this) {
 				buzzed = false;
 			}
 			out.println("RESET");
 		} else {
-			out.println("Your paltry attempts to breach security are rebuffed!");
+			out.println(
+				"Your paltry attempts to breach security are rebuffed!");
 		}
 	}
 }
