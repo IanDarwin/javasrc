@@ -4,7 +4,16 @@ import java.io.*;
 import java.text.*;
 import java.util.*;
 
-/** Represent one PDF file. */
+/** The main class for the Darwin Open Systems
+ * {Simple,Stupid,Simplistic} PDF API.
+ * PDF is Adobe's Portable Document Format, and is probably a trademark
+ * of Adobe Systems Inc, Mountain View, California.
+ * The Adobe PDF Specification which they publish grants everyone
+ * permission to write code to generate and/or process PDF files.
+ * A PDF Object represents one PDF file.
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
+ */
 public class PDF {
 	/** The output writer */
 	protected PrintWriter out;
