@@ -55,10 +55,10 @@ public class MkIndex {
 		println("<HEAD>");
 		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
 		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <title>" + TITLE + </title>");
+		println("    <title>" + TITLE + "</title>");
 		println("</HEAD>");
 		println("<body bgcolor=\"" + BGCOLOR + "\">");
-		println("<h1>" + TITLE + </h1>");
+		println("<h1>" + TITLE + "</h1>");
 		if (new File("about.html").exists()) {
 			FileIO.copyFile("about.html", out, false);
 		} else {
