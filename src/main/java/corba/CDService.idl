@@ -1,0 +1,17 @@
+/* The CD Lookup */
+module CDService {
+	struct CD {
+		long cdNumber;
+		string title;
+	};
+
+	struct Track {
+		string title;
+		short runSeconds;
+	};
+
+	interface CDList {
+		CD nextCD();
+		Track  nextTrack();
+	};
+};

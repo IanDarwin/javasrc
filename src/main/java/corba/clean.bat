@@ -1,0 +1,2 @@
+del *.class
+deltree CDService
