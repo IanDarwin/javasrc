@@ -1,5 +1,8 @@
-import org.xml.sax.*;
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 
 public class MyDTDResolver implements EntityResolver {
 	public static final String[] dtds = {

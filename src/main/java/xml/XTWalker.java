@@ -1,8 +1,8 @@
 import org.apache.crimson.tree.TreeWalker;
 import org.w3c.dom.Node;
 
-/** Subclass XML Tree Walker to use the provided TreeWalker
- * STATUS -- INCOMPLETE.
+/** Subclass XML Tree Walker to use the Crimson-provided TreeWalker
+ * STATUS -- UNKNOWN.
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -25,7 +25,7 @@ public class XTWalker extends XTW {
 		// NOTE -- YOU HAVE TO WRITE YOUR OWN TREEWALKER CLASS.
 		// OTHERWISE JUST USE XTW AS IT IS, NOT THIS SUBCLASS.
 
-		XTWalker tw = new XTWalker(p);
+		TreeWalker tw = new TreeWalker(p);
 		Node n;
 		while ((n = (Node)tw.getNext()) != null) {
 

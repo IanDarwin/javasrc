@@ -1,11 +1,15 @@
-import org.jdom.*;
-import org.jdom.input.SAXBuilder;
-import org.jdom.input.DOMBuilder;
-import org.jdom.output.*;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
-import java.io.IOException;
-import java.util.*;
-import java.io.IOException;
+import org.jdom.Comment;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.ProcessingInstruction;
+import org.jdom.input.DOMBuilder;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.DOMOutputter;
 
 /*
  * Simple demo of JDOM
@@ -49,15 +53,10 @@ public class JDOMDemo {
             } catch (JDOMException e) { // indicates a well-formedness or other error
                 System.out.println(args[i] + " is not a well formed XML document.");
                 System.out.println(e.getMessage());
-<<<<<<< JDOMDemo.java
             } catch (IOException ex) {
-				System.out.println(args[i] + ": " + ex);
-			}
-=======
-            } catch (IOException ex) {
-				System.out.println("Input or Output error:" + ex);
+				System.out.println("Input or Output error:" + 
+					args[i] + ": " + ex);
 			}     
->>>>>>> 1.3
         }
     }
 

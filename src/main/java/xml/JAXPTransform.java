@@ -1,6 +1,9 @@
-import java.io.*;
-import javax.xml.transform.*;
-import javax.xml.transform.stream.*;
+import java.io.File;
+
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 /** Illustrate simplest use of JAXP to transform using XSL */
 public class JAXPTransform {

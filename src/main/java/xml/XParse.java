@@ -1,7 +1,11 @@
-import java.io.*;
-import javax.xml.parsers.*;
+import java.io.File;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.Document;
-import org.xml.sax.*;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /** Parse an XML file using DOM, via JAXP.
  * @author Ian Darwin, http://www.darwinsys.com/

@@ -1,7 +1,9 @@
-import java.io.*;
-import org.jdom.*;
-import org.jdom.input.*;
-import org.jdom.output.*;
+import java.io.File;
+
+import org.jdom.Document;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.XMLOutputter;
 
 /**
  * List an XML file after building it into a JDOM Document.

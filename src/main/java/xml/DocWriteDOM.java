@@ -1,6 +1,10 @@
-import java.io.*;
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 /** Make up and write an XML document, using DOM
  * UPDATED FOR JAXP.
