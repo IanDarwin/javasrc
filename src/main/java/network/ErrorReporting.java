@@ -4,7 +4,7 @@ import java.net.*;
 public class ErrorReporting {
 	public static void main(String[] argv) {
 		int tcp_port = 80;
-		String server_name = "localhost";
+		String server_name = argv.length == 0 ? "localhost" : argv[0];
 		try {
 			Socket sock = new Socket(server_name, tcp_port);
 

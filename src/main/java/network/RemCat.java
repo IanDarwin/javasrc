@@ -9,10 +9,11 @@ import java.net.*;
  * Note that the TFTP server is NOT "internationalized"; the name and
  * mode in the protocol are defined in terms of ASCII, not UniCode.
  *
+ * @author	Chris R. Brown, original C version
  * @author	Java version by Ian Darwin, ian@darwinsys.com.
  */
 public class RemCat {
-	/** The filename */
+	/** The UDP port number */
 	public final static int TFTP_PORT = 69;
 	/** The mode we will use - octet for everything. */
 	protected final String MODE = "octet";
@@ -35,7 +36,7 @@ public class RemCat {
 		OP_ACK	 = 4,
 		/** TFTP op-code for a read request */
 		OP_ERROR = 5;
-	protected final static int PACKET = 516;	// == 2 + 2 + 512
+	protected final static int PACKET_SIZE = 516;	// == 2 + 2 + 512
 	protected String host;
 	protected InetAddress servAddr;
 	protected DatagramSocket sock;
@@ -67,9 +68,9 @@ public class RemCat {
 		this.host = host;
 		servAddr = InetAddress.getByName(host);
 		sock = new DatagramSocket();
-		buffer = new byte[PACKET];
-		inp = new DatagramPacket(buffer, PACKET);
-		outp = new DatagramPacket(buffer, PACKET, servAddr, TFTP_PORT);
+		buffer = new byte[PACKET_SIZE];
+		outp = new DatagramPacket(buffer, PACKET_SIZE, servAddr, TFTP_PORT);
+		inp = new DatagramPacket(buffer, PACKET_SIZE);
 	}
 
 	void readFile(String path) throws IOException {
