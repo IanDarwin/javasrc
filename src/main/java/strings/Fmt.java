@@ -10,18 +10,22 @@ public class Fmt {
 	/** The file that we read and format */
 	BufferedReader in;
 
+	/** If files present, format each, else format the standard input. */
 	public static void main(String av[]) throws IOException {
 		if (av.length == 0)
-			new Fmt("-").format();
+			new Fmt(System.in).format();
 		else for (int i=0; i<av.length; i++)
 			new Fmt(av[i]).format();
 	}
-	/** Construct a Formatter given a filename, or "-" for stdin */
+
+	/** Construct a Formatter given a filename */
 	public Fmt(String fname) throws IOException {
-		if ("-".equals(fname))
-			in = new BufferedReader(new InputStreamReader(System.in));
-		else
-			in = new BufferedReader(new FileReader(fname));
+		in = new BufferedReader(new FileReader(fname));
+	}
+
+	/** Construct a Formatter given an open Stream */
+	public Fmt(InputStream file) throws IOException {
+		in = new BufferedReader(new InputStreamReader(file));
 	}
 
 	/** Format the File contained in a constructed Fmt object */
