@@ -1,4 +1,5 @@
 import javax.comm.*;
+import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
@@ -359,24 +360,31 @@ public class JModem extends javax.swing.JFrame {
 		try {
 			connect();
 		} catch (PortInUseException pue) {
-			JOptionPane.showMessageDialog(this,
-			  "Port in use: close other app, or use different port.",
-			  "JModem Error", JOptionPane.ERROR_MESSAGE);
+			err("Port in use: close other app, or use different port.");
 			return;
 		} catch (UnsupportedCommOperationException uoe) {
-			JOptionPane.showMessageDialog(this,
-			  "Unsupported options error: try different settings",
-			  "JModem Error", JOptionPane.ERROR_MESSAGE);
+			err("Unsupported options error: try different settings");
 			return;
 		}
 		connectButton.setText("Disconnect");
 	}
   }
 
+  protected void err(String s) {
+	JOptionPane.showMessageDialog(this,
+	  "Port in use: close other app, or use different port.",
+	  "JModem Error", JOptionPane.ERROR_MESSAGE);
+	return;
+  }
+
   private SerialPort thePort;
+
+  private InputStream serialInput;
+  private PrintWriter serialOutput;
 
   private void connect() throws PortInUseException, 
   		UnsupportedCommOperationException {
+
     // Open the specified serial port
 	CommPortIdentifier cpi = (CommPortIdentifier)portsIDmap.get(
 		portsComboBox.getSelectedItem());
@@ -386,23 +394,41 @@ public class JModem extends javax.swing.JFrame {
 	int parity = 0;
 	if (pNoneRadioButton.isSelected()) parity = SerialPort.PARITY_NONE;
 	if (pEvenRadioButton.isSelected()) parity = SerialPort.PARITY_EVEN;
-	if (pOddRadioButton.isSelected()) parity  = SerialPort.PARITY_ODD;
+	if (pOddRadioButton.isSelected())  parity = SerialPort.PARITY_ODD;
 	thePort.setSerialPortParams(
 		baudot[portsComboBox.getSelectedIndex()],		// baud
-		d7RadioButton.isSelected() ?				// data bits
+		d7RadioButton.isSelected() ?					// data bits
 			SerialPort.DATABITS_7 : SerialPort.DATABITS_8,
 		SerialPort.STOPBITS_1,							// stop bits
 		parity);										// parity
 
-	System.out.println("SysType " + sysTypeComboBox.getSelectedItem());
+	// Get the streams
+	try {
+		serialInput = thePort.getInputStream();
+	} catch (IOException e) {
+		err("Error getting input stream:\n" + e.toString());
+		return;
+	}
+	try {
+		serialOutput = new PrintWriter(thePort.getOutputStream());
+	} catch (IOException e) {
+		err("Error getting output stream:\n" + e.toString());
+		return;
+	}
+
 	state = S_CONNECTED;
+
   }//GEN-LAST:event_connectButtonActionPerformed
 
   private void disconnect() {
   	System.out.println("Disconnecting!");
 	// Tell java.io we are done with the input and output
-	inStream.close();
-	outStream.close();
+	try {
+		serialInput.close();
+		serialOutput.close();
+	} catch (IOException e) {
+		err("IO Exception closing port:\n" + e.toString());
+	}
 	// Tell javax.comm we are done with the port.
 	thePort.close();
 	// Tell rest of program we are no longer online.
