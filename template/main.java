@@ -1,10 +1,10 @@
 /**
  * Template for standalone, line-mode main program.
  * @author Ian F. Darwin, ian@darwinsys.com
- * @version #Id$
+ * @version XXX Id$
  */
-public class Main {
+public class XXX {
 	public static void main(String argv[]) {
-		System.out.println("Hello, World of Java");
+		System.out.println("XXX ");
 	}
 }
