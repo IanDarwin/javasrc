@@ -1,10 +1,15 @@
-import java.awt.*;
-import java.net.*;
-import java.io.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-import javax.swing.text.html.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 
 /**
  * Browser1 - Get the contents of a URL, write to stdout
