@@ -1,7 +1,4 @@
-package regress;
-
 import junit.framework.*;
-import StringAlign;
 
 /** StringAlign Test program.  */
 public class StringAlignTest extends TestCase {
@@ -19,9 +16,9 @@ public class StringAlignTest extends TestCase {
 	public void testLeft() {
 		for (int i=0; i<mesg.length; i++) {
 			System.out.println("Input String \"" + mesg[i] + "\"");
-			dump(StringAlign.JUST_LEFT, 5,
+			assertEquals(mesg[i].substring(0, 5),
 				new StringAlign(5, StringAlign.JUST_LEFT).format(mesg[i]));
-			dump(StringAlign.JUST_LEFT, 10,
+			assertEquals(mesg[i].trim(),
 				new StringAlign(10, StringAlign.JUST_LEFT).format(mesg[i]));
 		}
 	}
