@@ -16,7 +16,6 @@
 	<classpathentry kind="lib" path="/JavaCookJars/jdom.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/jdo.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/j2ee.jar"/>
-	<classpathentry kind="lib" path="/JavaCookJars/darwinsys.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/commons-logging.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/btree.jar"/>
 	<classpathentry kind="lib" path="/JavaCookJars/antlr.jar"/>
