@@ -1,5 +1,7 @@
 package sun.tools.javac;
 
+import com.darwinsys.util.Debug;
+
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -20,7 +22,7 @@ import java.util.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class jr extends Main {
+public class jr extends sun.tools.javac.Main {
 
 	/** Main - just delegate to non-static methods */
 	public static void main(String[] argv) {
@@ -74,7 +76,7 @@ public class jr extends Main {
     	new opt("-verbose", false),		// control runtime verbosity
     	new opt("-version", false),		// print program version
 		new opt("-X", false),			// help for non-standard options
-	}
+	};
 
 	/** Do the work of one jr instance. Walk through argv, putting
 	 * compile args into compileArgv. First non-compiler-arg should
