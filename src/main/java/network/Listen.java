@@ -28,7 +28,7 @@ public class Listen {
 
 	/** This would do something with one client. */
 	static void process(Socket s) throws IOException {
-		System.out.println("Accept from inside " + s.getInetAddress());
+		System.out.println("Accept from client " + s.getInetAddress());
 		// The conversation would be here.
 		s.close();
 	}

@@ -5,16 +5,16 @@ import javax.naming.*;
  * Uses the RMI registry via the JNDI service provider; needs rmiregistry
  * @version $Id$
  */
-public class T1 {
+public class JNDIPublish  {
 
 	public static void main(String[] av) throws NamingException {
-		TData d = new TData();
+		JNDIData d = new JNDIData();
 		d.setMessage("Qwerty Uiop!");
 
 		System.getProperties().put("java.naming.factory.initial",
 		 	"com.sun.jndi.rmi.registry.RegistryContextFactory");
 		System.getProperties().put("java.naming.provider.url",
-		 	"rmi://localhost:24689");
+		 	"rmi://localhost/");
 
 		Context ctx = new InitialContext();
 

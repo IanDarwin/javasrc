@@ -51,8 +51,7 @@ public class BreakEnd extends Frame implements Runnable {
 		// To format a non-localized two-digit number
 		NumberFormat form = new DecimalFormat("00");
 		try {
-			// XX Why do we have to add one to hour?
-			result = form.format(h+1) + ":" + form.format(m);
+			result = form.format(h) + ":" + form.format(m);
 		} catch (IllegalArgumentException iae) {
 			JOptionPane.showMessageDialog(this,
 				"Formatting Error!" + iae,	// message

@@ -11,11 +11,14 @@ public class StopClose extends Thread {
 				new InputStreamReader(io.getInputStream()));
 			System.out.println("StopClose reading");
 
-			// The following line will deadlock, since HTTP requires
-			// that the client send a request line (like "GET / HTTP/1.0")
+			// The following line will deadlock (intentionally), since HTTP 
+			// enjoins the client to send a request (like "GET / HTTP/1.0")
 			// and a null line, before reading the response.
 
 			String line = is.readLine();	// DEADLOCK
+
+			// Should only get out of the readLine if an interrupt
+			// is thrown, as a result of closing the socket.
 
 			// So we shouldn't get here, ever:
 			System.out.println("StopClose FINISHED!?");
@@ -26,6 +29,7 @@ public class StopClose extends Thread {
 
 	public void shutDown() throws IOException {
 		if (io != null) {
+			// This is supposed to interrupt the waiting read.
 			io.close();
 		}
 	}

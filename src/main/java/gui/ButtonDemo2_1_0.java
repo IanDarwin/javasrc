@@ -1,8 +1,9 @@
 import java.applet.*;
 import java.awt.*;
 
-/** Demonstrate use of Button */
-public class ButtonDemo2 extends Applet {
+/** Demonstrate use of AWT Button, JDK1.0 way
+ */
+public class ButtonDemo2_1_0 extends Applet {
 	Button	b1, b2;
 
 	public void init() {

@@ -16,7 +16,7 @@ import javax.swing.*;
  * @author	Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class Unicode extends Frame {
+public class Unicode extends JFrame {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {

@@ -26,6 +26,7 @@ public class IOTimer extends Thread {
 		System.out.println("Will now interrupt sleep of " + timedThread);
 		timedThread.interrupt();
 	}
+
 	/** Simple test case */
 	public static void main(String[] ap) {
 		byte b[] = new byte[10];

@@ -1,9 +1,9 @@
 import java.io.*;
 
 /*
- I will create three temp files, ls them, and rm them
-*/
-public class Wildcards {
+ * create some temp files, ls them, and rm them
+ */
+public class ExecDemoRm {
 	public static void main(String[] args) throws IOException {
 		for (int i=0; i<10; i++) {
 			new File("/tmp/ww" + i).createNewFile();

@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.net.*;
-import java.io.*; 
+import java.io.*;
 
 /**
  * Threaded NetLog Server, pre-allocation schema.
@@ -12,6 +12,9 @@ public class NetLogServer {
 	public static final int PORT = 65432;
 
 	public static final int NUM_THREADS = 8;
+
+	JFrame theFrame;
+	JTextArea theTextArea;
 
 	/** Main method, to start the servers. */
 	public static void main(String[] av)
@@ -27,7 +30,7 @@ public class NetLogServer {
 
 		try {
 			servSock = new ServerSocket(PORT);
-		
+
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
 			System.err.println("Could not create ServerSocket " + e);
@@ -39,7 +42,8 @@ public class NetLogServer {
 		theFrame  = new JFrame("NetLog Server");
 		theTextArea = new JTextArea(24, 80);
 		theTextArea.setEditable(false);
-		theFrame.getContentPane().add(theTextArea);
+		theTextArea.setBorder(BorderFactory.createTitledBorder("NetLogServer"));
+		theFrame.getContentPane().add(new JScrollPane(theTextArea));
 
 		// Now start the Threads
 		for (int i=0; i<numThreads; i++) {
@@ -55,8 +59,6 @@ public class NetLogServer {
 		});
 
 	}
-	JFrame theFrame;
-	JTextArea theTextArea;
 
 	public synchronized void log(int tid, String s) {
 		StringBuffer sb = new StringBuffer();
@@ -74,6 +76,7 @@ public class NetLogServer {
 
 		sb.append('\n');
 		theTextArea.append(sb.toString());
+		theTextArea.setCaretPosition(theTextArea.getText().length());
 		theFrame.toFront();
 	}
 
@@ -87,21 +90,17 @@ public class NetLogServer {
 			super();
 			servSock = s;
 			tid = i;
+			setName("Thread " + tid);
 		}
 
-		/** Like Thread.getName(), which is alas final */
-		public String myName() {
-			return "Thread " + tid;
-		}
-
-		public void run() 
+		public void run()
 		{
 			/* Wait for a connection */
 			while (true){
 				try {
-					// log(tid, myName() + " waiting");
+					// log(tid, getName() + " waiting");
 					Socket clientSocket = servSock.accept();
-					log(tid,myName() + " START, IP=" + 
+					log(tid,getName() + " START, IP=" +
 						clientSocket.getInetAddress());
 					BufferedReader is = new BufferedReader(
 						new InputStreamReader(clientSocket.getInputStream()));
@@ -110,10 +109,10 @@ public class NetLogServer {
 						// System.out.println(">> " + line);
 						log(tid,line);
 					}
-					log(tid,myName() + " ENDED ");
+					log(tid,getName() + " ENDED ");
 					clientSocket.close();
 				} catch (IOException ex) {
-					log(tid, myName() + ": IO Error on socket " + ex);
+					log(tid, getName() + ": IO Error on socket " + ex);
 					return;
 				}
 			}

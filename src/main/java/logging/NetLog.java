@@ -17,8 +17,16 @@ public class NetLog {
 	}
 
 	public NetLog(int po) throws IOException {
+		this(InetAddress.getLocalHost(), po);
+	}
+
+	public NetLog(String host, int po) throws IOException {
+		this(InetAddress.getInetAddress(host), po);
+	}
+
+	public NetLog(InetAddress host, int po) throws IOException {
 		port = po;
-		sock = new Socket(InetAddress.getLocalHost(), po);
+		sock = new Socket(host, po);
 		os = new PrintWriter(
 			new OutputStreamWriter(
 				sock.getOutputStream(), "8859_1"), true);
