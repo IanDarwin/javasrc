@@ -3,12 +3,25 @@ import java.text.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class TempConverterPrintf {
-	public static void main(String unusedArgs[]) {
-		DecimalFormat df = new DecimalFormat("##.###");
+public class TempConverter {
+
+	public static void main(String args[]) {
+		TempConverter t = new TempConverter();
+		t.start();
 		for (int i=-40; i<=120; i+=10) {
 			float c = (i-32)*(5f/9);
-			System.out.println(i + " f = " + df.format(c) + " c.");
+			t.print(i, c);
 		}
+		t.end();
+	}
+
+	protected void start() {
+	}
+
+	protected void print(float f, float c) {
+		System.out.println(i + " f = " + c + " c.");
+	}
+
+	protected void end() {
 	}
 }
