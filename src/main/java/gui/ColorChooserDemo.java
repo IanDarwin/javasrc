@@ -61,25 +61,3 @@ public class ColorChooser extends JFrame
     }
 }
 
-class MyCanvas extends JComponent {
-	int width, height;
-	Color col = Color.white;
-	protected Dimension preferredSize;
-
-	MyCanvas(int w, int h) {
-		preferredSize = new Dimension(width = w, height = h);
-		setSize(preferredSize);
-	}
-	public Dimension getPreferredSize() {
-		return preferredSize;
-	}
-	void setColor(Color c) {
-		col = c;
-		repaint();
-	}
-	public void paint(Graphics g) {
-		Dimension d = getSize();
-		g.setColor(col);
-		g.fillRect(0, 0, d.width-1, d.height-1);
-	}
-}

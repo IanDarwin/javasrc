@@ -8,8 +8,9 @@ import javax.swing.*;
  */
 
 class MyCanvas extends JLabel {
-	int width, height;
-	int pad;
+	protected int width, height;
+	protected int pad;
+	protected Color col = Color.white;
 
 	MyCanvas(String l, int w, int h) {
 		super(l, JLabel.CENTER);
@@ -26,5 +27,16 @@ class MyCanvas extends JLabel {
 
 	public Dimension getPreferredSize() {
 		return new Dimension(width+pad, height+pad);
+	}
+
+	public void setColor(Color c) {
+		col = c;
+		repaint();
+	}
+
+	public void paint(Graphics g) {
+		Dimension d = getSize();
+		g.setColor(col);
+		g.fillRect(0, 0, d.width-1, d.height-1);
 	}
 }
