@@ -1,12 +1,16 @@
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JApplet;
+import javax.swing.JButton;
 
 /**
- * HelloApplet is a simple applet that toggles a message
+ * HelloAppletForIntrospection is a simple applet that toggles a message
  * when you click on a Draw button.
  */
-public class HelloApplet extends JApplet {
+public class HelloAppletForIntrospection extends JApplet {
 
 	/** The flag which controls drawing the message. */
 	protected boolean requested;
