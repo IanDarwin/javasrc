@@ -94,7 +94,11 @@ public class GenMIF implements XmlFormWalker {
 		//
 		// STRUCTURE TAGS
 		//
-		if (tag.equals("chapter")) {
+		if (tag.equals("head")) {
+			System.out.println(">>>>Start HEAD");
+		} else if (tag.equals("body")) {
+			System.out.println(">>>>Start BODY");
+		} else if (tag.equals("chapter")) {
 			doChapter(p);
 		//
 		// PARAGRAPH TAGS
