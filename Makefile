@@ -16,7 +16,7 @@ SHELL=	/bin/sh
 # There are three types of Makefiles in SUBDIR/*. Most of them
 # are not in CVS, but are copied from Makefile.simple by "make makefiles"
 # The few listed there:
-SUBDIRS_WITH_ERROR_DEMOS= introspection language numbers netweb
+SUBDIRS_WITH_ERROR_DEMOS= introspection language numbers oo netweb
 # are similarly copied by "make makefiles" from "Makefile.exclude-errors";
 # these directories have files (discussed in the book) that show
 # why certain features won't compile without change.

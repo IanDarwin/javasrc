@@ -1,11 +1,20 @@
-public class  AllClasses {
+import java.awt.event.*;
+import javax.swing.*;
+
+public class AllClasses {
 	/** Inner class can be used anywhere in this file */
 	public class Data {
 		int x;
 		int y;
 	}
 	public void getResults() {
-		addActionListener...
+		JButton b = new JButton("Press me");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("Thanks for pressing me");
+			}
+		});
+	}
 }
 
 /** Class contained in same file as AllClasses, but can be used
