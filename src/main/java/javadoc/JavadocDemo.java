@@ -1,6 +1,7 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Calendar;
 
 /**
  * JavadocDemo - a simple applet to show JavaDoc comments.
@@ -14,7 +15,6 @@ public class JavadocDemo extends Applet {
 
 	/** init() is an Applet method called by the browser to initialize.
 	 * Init normally sets up the GUI, and this version is no exception.
-	 * @return	None.
 	 */
 	public void init() {
 		// We create and add a pushbutton here, 
@@ -54,7 +54,7 @@ public class JavadocDemo extends Applet {
 	 * @throws java.lang.IllegalArgumentException on Sundays.
 	 */
 	public JavadocDemo() {
-		if (new java.util.Date().getDay() == 0) {
+		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == 0) {
 			throw new IllegalArgumentException("Never On A Sunday");
 		}
 	}
