@@ -54,7 +54,7 @@ public class NewsWire extends Applet {
 				StringTokenizer st = new StringTokenizer(txt, "|");
 				if (st.countTokens() < 3) {
 					eprintln("NewsWire: Bad input: " + txt);
-					return;
+					continue;
 				}
 				String origin = st.nextToken();
 				String text = st.nextToken();
@@ -63,9 +63,9 @@ public class NewsWire extends Applet {
 				hash.put(text, u);
 				vect.addElement(text);
 			}
-		} catch(MalformedURLException mfc) {
+		} catch (MalformedURLException mfc) {
 			eprintln("NewsWire: Error: " + mfc);
-		} catch(IOException billg) {
+		} catch (IOException billg) {
 			eprintln("NewsWire: Error: " + billg);
 		}
 
@@ -93,7 +93,6 @@ public class NewsWire extends Applet {
 	public void stop() {
 		done = true;
 	}
-
 
 	/** Paint -- called periodically */
 	public void paint(Graphics g) {
