@@ -5,6 +5,8 @@ import com.sun.xml.tree.*;
 
 /**
  * Class with code to walk a tree and convert it to MML (not MIF).
+ * TODO: 1) put <TblCell> around each line read from GetMark.
+ *	2) Handle code in CODE paragraphs.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -13,6 +15,8 @@ public class ConvertToMif implements XmlFormWalker {
 	PrintWriter msg;
 	/** A tree walker object for walking the tree */
 	TreeWalker tw;
+	/** A GetMark converter for source code. */
+	GetMark gm = new GetMark();
 
 	/** Construct a converter object */
 	ConvertToMif(Document doc, PrintWriter msg) {
@@ -83,8 +87,21 @@ public class ConvertToMif implements XmlFormWalker {
 		msg.println("<Body>");
 	}
 
-	protected void doCode(Element p) {
-		msg.println("<Code>");
+	protected void doExample(Element p) {
+		NamedNodeMap attrs = p.getAttributes();
+		Node href;
+		if ((href = attrs.getNamedItem("HREF")) == null)
+			throw new IllegalArgumentException(
+				"node " + p + "lacks required HREF Attribute");
+		String fname = href.getNodeValue();
+		msg.println("<Example>");
+		try {
+			fname = "/javasrc/" + fname;
+			LineNumberReader is = new LineNumberReader(new FileReader(fname));
+			gm.process(fname, is, msg);
+		} catch(IOException e) {
+			throw new IllegalArgumentException(e.toString());
+		}
 	}
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
@@ -94,7 +111,7 @@ public class ConvertToMif implements XmlFormWalker {
 		msg.println(s);
 	}
 
-	protected void doExample(Element p) {
-		msg.println("<Example>");
+	protected void doCode(Element p) {
+		msg.println("<Code>");
 	}
 }

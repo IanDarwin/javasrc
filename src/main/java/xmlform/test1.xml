@@ -6,6 +6,6 @@
 	<SO></SO>
 	<P>I have the solution.</P>
 	<P>This is the text of the introduction...</P>
-	<EXAMPLE SRC="Foo.java"></EXAMPLE>
+	<EXAMPLE HREF="GetMark.java"></EXAMPLE>
 	<P>The <CODE>public class foo</CODE> contains lots of stuff</P>
 </CH>

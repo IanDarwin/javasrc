@@ -1,11 +1,29 @@
 <MML 1.00 - Formats for XmlForm>
-<Comment *** $Id$ >
+<Comment *** $Id$
+>
 <!DefineFont Code
 	<Family	Courier>
 >
-<!DefinePar HeadA>
+<!DefineFont Example
+	<Family	Courier>
 >
-<!DefinePar HeadB>
+<!DefinePar ChapterTitle
+	<Family	Times>
+	<pts	18>
+	<Bold>
 >
-<!DefinePar Body>
+<!DefinePar HeadA
+	<Family	Times>
+	<pts	14>
+	<Bold>
+>
+<!DefinePar HeadB
+	<Family	Times>
+	<pts	12>
+	<Bold>
+>
+<!DefinePar Body
+	<Family	Times>
+	<pts	10>
+	<Plain>
 >
