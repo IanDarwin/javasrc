@@ -8,7 +8,7 @@ import javax.servlet.http.*;
  * @author  Ian Darwin
  * @version $Id$
  */
-public class Servlet extends HttpServlet
+public class ForwardException extends HttpServlet
 {
 	/** Called in response to a GET request (data encoded in the URL) */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,8 +23,9 @@ public class Servlet extends HttpServlet
 		try {
 			// to do: logic code and main HTML goes here.
 
-			// simulate an error condition
-			throw new RuntimeException("Test exception");
+			// simulate an error condition happening at run time.
+			if (this instanceof Servlet)
+				throw new RuntimeException("Test exception");
 
 			out.println("<!DOCTYPE html PUBLIC " +
 				"\"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n" +
@@ -39,7 +40,7 @@ public class Servlet extends HttpServlet
 			out.println("</html>");
 			out.close();
 
-		catch (Exception ex) {
+		} catch (Exception exc) {
 
 			// dispatch to JSP to display the error.
 			RequestDispatcher rd = application.getRequestDispatcher("/oops.jsp");
