@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class TextToJDBC {
 
-	protected final static String TEXT_NAME = "userdb.txt";
-	protected final static String DB_URL = "jdbc:idb:userdb.prp";
+	protected final static String TEXT_NAME = "users.txt";
+	protected final static String DB_URL = "jdbc:idb:jabadb.prp";
 
 	public static void main(String[] fn)
 	throws ClassNotFoundException, SQLException, IOException {
@@ -27,8 +27,8 @@ public class TextToJDBC {
 		Statement stmt = conn.createStatement();
 
 		System.out.println("Creating table and index");
-		stmt.executeUpdate("DROP TABLE userdb");
-		stmt.executeUpdate("CREATE TABLE userdb (\n" +
+		stmt.executeUpdate("DROP TABLE users");
+		stmt.executeUpdate("CREATE TABLE users (\n" +
 			"name     char(12) PRIMARY KEY,\n" +
 			"password char(20),\n" +
 			"fullName char(30),\n" +
@@ -38,12 +38,12 @@ public class TextToJDBC {
 			"country  char(20),\n" +
 			"privs    int\n" +
 			")");
-		stmt.executeUpdate("CREATE INDEX nickIndex ON userdb (name)");
+		stmt.executeUpdate("CREATE INDEX nickIndex ON users (name)");
 		stmt.close();
 
 		// put the data in the table
 		PreparedStatement ps = conn.prepareStatement(
-			"INSERT INTO userdb VALUES (?,?,?,?,?,?,?,?)");
+			"INSERT INTO users VALUES (?,?,?,?,?,?,?,?)");
 
 		String line;
 		while ((line = is.readLine()) != null) {

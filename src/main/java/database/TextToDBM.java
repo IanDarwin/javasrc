@@ -7,8 +7,8 @@ import java.util.*;
  */
 public class TextToDBM {
 
-	protected final static String TEXT_NAME = "userdb.txt";
-	protected final static String DBM_NAME = "userdb";
+	protected final static String TEXT_NAME = "users.txt";
+	protected final static String DBM_NAME = "users";
 
 	public static void main(String[] fn) throws IOException {
 		BufferedReader is = new BufferedReader(new FileReader(TEXT_NAME));

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class UserDBText extends UserDB {
 	protected final static String DEF_NAME = 
-		"/home/ian/src/jabadot/userdb.txt";
+		"/home/ian/src/jabadot/jabadb.txt";
 
 	protected String fileName;
 

@@ -52,7 +52,7 @@ public class JDAdmin extends JFrame {
 		// Do this before the GUI, since JDBC does more-delayed
 		// type checking than Swing...
 		
-		String dbDriver = JDConstants.getProperty("jabadot.userdb.driver");
+		String dbDriver = JDConstants.getProperty("jabadot.jabadb.driver");
 		try {
 			Class.forName(dbDriver);
 		} catch (ClassNotFoundException ex) {
@@ -61,12 +61,12 @@ public class JDAdmin extends JFrame {
 				JOptionPane.ERROR_MESSAGE);
 		}
 		conn = DriverManager.getConnection(
-			JDConstants.getProperty("jabadot.userdb.url"));
-		listUsersStatement = conn.prepareStatement("select * from userdb");
+			JDConstants.getProperty("jabadot.jabadb.url"));
+		listUsersStatement = conn.prepareStatement("select * from users");
 		deleteUserStatement = 
-			conn.prepareStatement("delete from userdb where name = ?");
+			conn.prepareStatement("delete from users where name = ?");
 		setPasswordStatement = conn.prepareStatement(
-			"update userdb SET password = ? where name = ?");
+			"update users SET password = ? where name = ?");
 
 		// INIT THE GUI
 		Container cp = getContentPane();

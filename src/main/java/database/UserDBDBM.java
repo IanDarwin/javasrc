@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class UserDBDBM extends UserDB {
 	protected final static String DEF_NAME = 
-		"/home/ian/src/jabadot/userdb";		// It appends .pag
+		"/home/ian/src/jabadot/jabadb";		// It appends .pag
 
 	protected DBM db;
 
