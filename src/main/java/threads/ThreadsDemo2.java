@@ -40,7 +40,7 @@
  */
 
 /** 
- * Threaded demo application, using Runnable.
+ * Threaded demo application, version 2, using Runnable.
  * @author	Ian Darwin
  * @version	$Id$
  */
@@ -58,7 +58,7 @@ public class ThreadsDemo2 implements Runnable {
 	}
 
 	/**
-	 * Construct a ThreadDemo object
+	 * Construct a ThreadsDemo2 object
 	 * @param m Message to display
 	 * @param n How many times to display it
 	 */
