@@ -1,12 +1,11 @@
-<project name="Music Recording Enterprise Bean" default="compile" basedir=".">
+<project name="Music Recording Enterprise Bean" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
 
-	<property name="j2ee.jar" value="/usr/home/ian/classes/ext/j2ee.jar"/>
+	<property file="../build.properties"/>
 
 	<property name="deploy.jar" value="../beans/music.jar"/>
 
@@ -15,9 +14,9 @@
 		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath=".:${j2ee.jar}:${deploy.jar}:com-darwinsys-util.jar"/>
+			classpath=".:${j2ee.jar}:${deploy.jar}:${javacook.jar}"/>
 	</target>
 
 </project>

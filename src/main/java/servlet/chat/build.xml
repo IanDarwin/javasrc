@@ -1,16 +1,13 @@
-<project name="Servlet-based Chat Room" default="compile" basedir=".">
+<project name="Servlet-based Chat Room" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="WEB-INF/classes"/>
-	<property name="build.compiler" value="jikes"/>
+	<property file="../../build.properties"/>
 
 	<property name="deploy.dir" value="WEB-INF/classes"/>
 	<property name="deploy.jar" value="XXX.jar"/>
-
-	<property name="servletapi.jar"
-		value="/usr/local/jakarta-servletapi-4/lib/servlet.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
@@ -29,7 +26,9 @@
 		</jar>
 	</target>
 
+	<target name="build" depends="jar"/>
+
 	<target name="deploy" depends="jar">
-	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>
 </project>

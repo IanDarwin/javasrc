@@ -5,7 +5,7 @@
   <!-- set global properties for this build -->
   <property name="src" value="."/>
   <property name="build" value="."/>
-  <property name="build.compiler" value="jikes"/>
+	<property file="../../../build.properties"/>
 
   <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
   <property name="deploy.jar" value="serverinfo.jar"/>
@@ -22,7 +22,7 @@
 
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath=".:${deploy.jar}:com-darwinsys-util.jar"/>
+		  classpath=".:${deploy.jar}:${javacook.jar}"/>
   </target>
 
   <target name="jar" depends="compile">

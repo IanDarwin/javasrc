@@ -6,9 +6,12 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/** Servlet to draw a Graphical Chart in response to a user request
+ */
 public class ChartServlet extends HttpServlet {
 	private static int W = 300, H = 200;
-	// public static void main(String[] arg)
+
+	/** Draw a Graphical Chart in response to a user request */
 	public void doGet(HttpServletRequest request,
 		HttpServletResponse response)
 	throws IOException {
@@ -22,20 +25,19 @@ public class ChartServlet extends HttpServlet {
 
 		// Get the Image's Graphics, and draw.
 		Graphics2D g = img.createGraphics();
+
+		// In real life this would call some charting software...
 		g.setColor(Color.white);
 		g.fillRect(0,0, W, H);
 		g.setColor(Color.green);
 		g.fillOval(100, 75, 50, 50);
 
 		// Write the output
-		OutputStream os =
-			response.getOutputStream();
-		ImageOutputStream ios =
-			ImageIO.createImageOutputStream(os);
-		if (ImageIO.write(img, "jpeg", ios)) {
-			// System.out.println("Written as JPEG");
-		} else {
-			System.out.println("Boo hoo");
+		OutputStream os = response.getOutputStream();
+		ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+
+		if (!ImageIO.write(img, "jpeg", ios)) {
+			log("Boo hoo, failed to write JPEG");
 		}
 		ios.close();
 		os.close();

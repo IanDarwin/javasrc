@@ -1,10 +1,10 @@
-import com.darwinsys.util.FileProperties;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 import java.io.*;
 import java.util.*;
+
+import com.darwinsys.util.FileProperties;
 
 /** Process a raw SQL query; use ResultSetMetaData to format it.
  */

@@ -1,10 +1,11 @@
-<project name="BMP Demo Enterprise Bean" default="compile" basedir=".">
+<project name="BMP Demo Enterprise Bean" default="build" basedir=".">
 
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="modern"/>
+
+	<property file="../../build.properties"/>
 
 	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 	<property name="deploy.jar" value="bmp.jar"/>
@@ -24,7 +25,9 @@
 		</jar>
 	</target>
 
+	<target name="build" depends="jar"/>
+
 	<target name="deploy" depends="jar">
-	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>
 </project>

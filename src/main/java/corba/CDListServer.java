@@ -3,7 +3,7 @@ import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
 
-import com.darwinsys.util.*;
+import com.darwinsys.util.Debug;
 
 /** 
  * Main class of the CDList service "server" program.

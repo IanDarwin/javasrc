@@ -1,28 +1,25 @@
-<project name="DarwinSys Toy WebServer" default="compile" basedir=".">
+<project name="DarwinSys Toy WebServer" default="build" basedir=".">
 
   <!-- $Id$ -->
 
-  <!-- set global properties for this build -->
-  <property name="src" value="."/>
-  <property name="build" value="."/>
+	<!-- set global properties for this build -->
+	<property name="src" value="."/>
+	<property name="build" value="."/>
 
 	<property file="../build.properties"/>
 
 	<property name="deploy.dir" value="."/>
 
   <target name="init">
-    <!-- Create the time stamp -->
     <tstamp/>
-    <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
   </target>
 
-  <!-- specify what to compile. This builds everything -->
-  <target name="compile" depends="init">
-
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"
-		  classpath="${javacook.jar}:${junit.jar}:${servletapi.jar}"/>
+	<!-- specify what to compile. This builds everything -->
+	<target name="build" depends="init">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${javacook.jar}:${junit.jar}:${servletapi.jar}"/>
   </target>
 
 </project>

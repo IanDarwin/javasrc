@@ -1,11 +1,12 @@
-<project name="Server Info Enterprise Bean" default="compile" basedir=".">
+<project name="Server Info Enterprise Bean" default="build" basedir=".">
 
   <!-- $Id$ -->
 
   <!-- set global properties for this build -->
   <property name="src" value="."/>
   <property name="build" value="."/>
-  <property name="build.compiler" value="jikes"/>
+
+	<property file="../../../build.properties"/>
 
   <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 
@@ -17,11 +18,10 @@
   </target>
 
   <!-- specify what to compile. This builds everything -->
-  <target name="compile" depends="init">
-
+  <target name="build" depends="init">
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="com-darwinsys-util.jar:../bean/ejb.jar"/>
+		  classpath="${javacook.jar}:../bean/ejb.jar"/>
   </target>
 
 </project>

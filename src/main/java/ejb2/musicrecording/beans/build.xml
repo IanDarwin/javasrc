@@ -4,9 +4,8 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
 
-	<property name="j2ee.jar" value="/usr/home/ian/classes/ext/j2ee.jar"/>
+	<property file="../../../build.properties"/>
 
 	<property name="deploy.dir" value="/home/ian/jboss/server/default/deploy"/>
 	<property name="deploy.dir" value="/home/ftp/tmp/"/>
@@ -19,7 +18,7 @@
 
 	<target name="compile" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath=".:${j2ee.jar}:${deploy.jar}:com-darwinsys-util.jar"/>
+			classpath=".:${j2ee.jar}:${deploy.jar}:${javacook.jar}"/>
 	</target>
 
 	<target name="jar" depends="compile">
