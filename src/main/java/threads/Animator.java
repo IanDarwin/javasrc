@@ -45,7 +45,7 @@ public class Animator extends Applet implements Runnable {
 				y=0;
 			repaint();		// Tell AWT to call our paint().
 			try {
-				sleep(250);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 				return;
 			}

@@ -46,6 +46,7 @@ public class Mover extends Applet implements Runnable {
 
 	/** Setup a Mover applet. */
 	public void init() {
+		imageName = getParameter("imagename");
 		if (imageName == null)
 			imageName = "mover.gif";
 		setImage(imageName);
@@ -53,6 +54,10 @@ public class Mover extends Applet implements Runnable {
 
 	public void start() {
 		done = false;
+		startThread();
+	}
+
+	protected void startThread() {
 		ticker = new Thread(this);
 		ticker.setName("Ticker animation");
 		ticker.setPriority(Thread.MAX_PRIORITY);
