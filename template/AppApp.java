@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import java.applet.*;
 
 /**
@@ -20,8 +21,8 @@ public class AppApp extends Applet {
 		Frame f = new Frame("AppApp Demo");
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				Browser5.this.hide();
-				Browser5.this.dispose();
+				AppApp.this.hide();
+				AppApp.this.dispose();
 			}
 		});
 		f.setLayout(new BorderLayout());
