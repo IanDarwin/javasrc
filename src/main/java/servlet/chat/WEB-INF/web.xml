@@ -17,6 +17,11 @@
 
 	<description>A simple Servlet-based chat listener.</description>
 
+	<!-- Register ChatListener. It implements multiple Listener intrfaces! -->
+	<listener>
+		<listener-class>darwinsys.chat.ChatListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>ChatServlet</servlet-name>
 		<servlet-class>darwinsys.chat.ChatServlet</servlet-class>
@@ -25,10 +30,5 @@
 		<servlet-name>ChatServlet</servlet-name>
 		<url-pattern>/ChatServlet</url-pattern>
 	</servlet-mapping>
-
-	<!-- Register ChatListener. It implements multiple Listener intrfaces! -->
-	<listener>
-		<listener-class>darwinsys.chat.ChatListener</listener-class>
-	</listener>
 
 </web-app>

@@ -1,42 +1,36 @@
-package sun.tools.javac;
+package com.darwinsys.tools;
 
 import com.darwinsys.util.Debug;
 
 import java.lang.reflect.*;
 import java.util.*;
 
-/** A first attempt at getting Sun's compiler to compile a file.
- * We also run the file for you if it compiles OK, else not;
- * this should be a big speedup as it avoids loading the JVM a
+/** User javac to compile a file and run it iff it compiles OK;
+ * this is a time-save as it avoids loading the JVM a
  * second time.
- * <P>
+ * <p>
+ * Usage: jr [cmd-opts] ClassName [jvm-opts] [arg[...]]
+ * <p>
+ * Restrictions: does not currently implement e.g. CLASSPATH
+ * correctly.
+ * <p>
  * You are "not supposed" to call sun.tools.javac directly, since
  * it's not in the public API "java.*". However, it's a big convenience 
  * to be able to specify e.g., an OutputFilterStream for the output
  * (then you can e.g., tee the output).
+ * Parts of this code will be superceded by JSR199.
  * <P>
- * You also are "not supposed" to put your classes into sun.*, but
- * in this case we have to because the required method initResource()
- * has default (package) visibility, and we need to call it.
- *
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class jr extends sun.tools.javac.Main {
+public class jr {
 
 	/** Main - just delegate to non-static methods */
 	public static void main(String[] argv) {
-		initResource();	// this is probably needed.
 		new jr().process(argv);
 	}
 
-	/** Construct a compiler instance. */
-	jr() {
-		// Guess (correctly) that it takes error output file and input filename
-		// Write to system.out, not system.err, for ease of redirection in
-		// "glorified program loader" environments, like DOS window of MS-Win.
-		super(System.out, "t.java");
-	}
+	private sun.tools.javac.Main compiler;
 
 
 	/** List of all normal Compile options
@@ -109,31 +103,60 @@ public class jr extends sun.tools.javac.Main {
 			}
 		}
 
-		System.out.println("compileArgv has " + compileArgv.size());
-		System.out.println("filename is " + fileName);
-		System.out.println("runArgv has " + runArgv.size());
+		System.out.println("compileArgv len " + compileArgv.size());
+		System.out.println("filename == " + fileName);
+		System.out.println("runArgv len " + runArgv.size());
+
+		// java.Main constructor takes error output file and input filename
+		// Write to system.out, not system.err, for ease of redirection in
+		// "glorified program loader" environments, like DOS window of MS-Win.
+		compiler = new sun.tools.javac.Main(System.out, fileName);
+
+		Object[] cStrings = new String[compileArgv.size()];
 
 		// Try running the compiler
-		Object[] strings = { String.class };
-		if (compile((String[])compileArgv.toArray(strings))) {
+		if (compiler.compile((String[])compileArgv.toArray(cStrings))) {
+
 			System.out.println("Compile OK, trying to run");
+			Method m;
+
+			// Must convert run args to String[], then wrap
+			// that in Object[] for passing to invoke().
+			String[] rStrings = new String[runArgv.size()];
+			runArgv.toArray(rStrings);
+			Object[] finalArgs = { rStrings };
+
+			// Try running the new program
 			try {
 				// Fetch the Class object for the just-compiled class
 				// (it's probably still in memory).
 				Class c = Class.forName(fileName);
+
 				// Now clean up compiler-only stuff.
 				System.gc();
+
 				// Get a String Class Array to find main(String[] av)
-				Class[] argvType = (Class[])Array.newInstance(String.class,0);
+				Class[] argvType = { String[].class };
+
 				// Now find main(String[] av)
-				Method m = c.getMethod("main", argvType);
-				// Hey, why not invoke it now that we've found it?
-				m.invoke(null, runArgv.toArray());
+				m = c.getMethod("main", argvType);
+				Debug.println("methods", "Found main method: " + m);
+
 			} catch (Exception e) {
-				System.out.println("NOOOOOoooo! ... " + e);
+				System.out.println("Oops! Caught exception in setup: " + e);
+				e.printStackTrace();
+				return;
+			}
+
+			// Hey, why not invoke it now that we've found it?
+			try {
+				m.invoke(null, finalArgs);
+			} catch (Exception e) {
+				System.out.println("Uncaught Exception in main(): " + e);
+				e.printStackTrace();
 			}
 		} else {
-			System.out.println("Compile bad, exiting");
+			System.out.println("Compile failed, not running");
 		}
 	}
 }

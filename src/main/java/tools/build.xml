@@ -28,6 +28,19 @@
 			/>
 	</target>
 
+	<target name="run" depends="compile">
+		<java className="com.darwinsys.tools.jr">
+			<arg value="JrTest"/>
+			<arg value="ArgOne"/>
+			<arg value="ArgTwo"/>
+			<classpath>
+				<pathelement location="."/>
+				<pathelement location="${tools.jar}"/>
+				<pathelement location="${darwinsys.jar}"/>
+			</classpath>
+		</java>
+	</target>
+
 	<target name="jar" depends="compile">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
 			includes="META-INF/*,com/**">
