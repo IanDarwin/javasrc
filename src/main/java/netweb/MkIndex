@@ -6,4 +6,4 @@ export CLASSPATH="$CLASSPATH:`pwd`"
 
 cd ..
 
-java MkIndex > index-byname.html
+java MkIndex # program overwrites index-byname.html
