@@ -1,7 +1,5 @@
 package ChartBean;
 
-package com.darwinsys.charts;
-
 import java.beans.*;
 import java.lang.reflect.*;
 
