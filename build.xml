@@ -87,6 +87,8 @@
 	<target name="api" depends="init">
 		<echo message="==> darwinsys"/>
 		<ant target="jar" dir="darwinsys" inheritAll="false"/>
+		<copy file="darwinsys/build/darwinsys.jar"
+			todir="${javasrc.lib}"/>
 		<echo message="==> spdf"/>
 		<ant target="jar" dir="spdf"/>
 	</target>
@@ -114,47 +116,6 @@
 
 	<target name="RE.apache" if="avail.RE.apache">
 		<ant dir="RE-apache"/>
-	</target>
-
-	<target name="jar">
-		<!-- To be sure it's correct, the distro is built
-		 ** by re-getting everything from CVS, building the API, etc.
-		 ** Hence the separate Ant file.
-		 -->
-		<ant antfile="build-export-src.xml"/>
-	</target>
-
-	<!-- Kludge to make up a Jar from the working directory -->
-	<!-- Can do this using jar task if we convert subdirs to a PATH? -->
-	<target name="interim">
-		<echo file="mkinterim">
-#!/bin/sh
-rm *.class */*.class
-cd ..
-set -x
-jar cvf ./javasrc/javacooksrc2.jar \
-		./javasrc/Readme-Interim.txt \
-		./javasrc/build-export-src.properties \
-		./javasrc/build-export-src.xml \
-		./javasrc/build.properties 	\
-		./javasrc/build.xml         \
-		./javasrc/about.html		\
-		./javasrc/images            \
-		./javasrc/index-bychapter.html \
-		./javasrc/index.html		\
-		./javasrc/jabadex.html		\
-		./javasrc/jabadot.html		\
-		./javasrc/darwinsys		\
-		./javasrc/spdf			    \
-		./javasrc/lib				\
-		</echo>
-		<foreach list="${subdirs} ${optsubdirs}" 
-			delimiter=" " target="interim.append" param="dir"/>
-		<chmod file="mkinterim" perm="ugo+rx"/>
-		<exec executable="mkinterim"/>
-	</target>
-	<target name="interim.append">
-		<echo file="mkinterim" append="true" message="./javasrc/${dir} "/>
 	</target>
 
 	<!-- clean up -->
