@@ -14,5 +14,8 @@ classes:
 		@echo "===> Building in `pwd`"
 		$(JAVAC) *.java
 
+CodeRed:
+	jikes -d $$HOME/webs/daroadweb/WEB-INF/classes CodeRed.java
+
 clean:
 		@rm -f *.class
