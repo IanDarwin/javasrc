@@ -1,13 +1,18 @@
 <title>Cart Bean?</title>
 <h1>Cart Bean?</h1>
-<p>This is NOT a finished bean, just a few scratchings.
+<p>This is not a fully-working cart bean, just a few scratchings.
 Should a Cart be implemented as:
 <ul>
 <li>A servlet? Light weight, not persistent
 <li>A stateful session bean? Moderate weight, maybe more scaleable
 <li>An entity bean? Heavy weight, but persistent!
 </ul>
-At any rate, here are some starting points
+The point is, you have to decide what is the best way to implement
+your cart, based on such factors as the cost of items you sell,
+the volume of your site, and so on.
+</p>
+<p>At any rate, here are some starting points for the stateful session
+version:
 <ul>
 <li><a href="CartHome.java">CartHome.java</a>, the home interface</li>
 <li><a href="Cart.java">Cart.java</a>, the remote interface</li>
