@@ -1,14 +1,22 @@
 import java.io.*;
 import java.lang.reflect.*;
 
-/** Make up a compilable version of the API, for use outside Sun license.
- * All public API info is public on Sun's web site, so this does not disclose
+/** Make up a compilable version of a given Sun or other API, 
+ * so developers can compile against it without a licensed copy. In Sun's case,
+ * all public API info is public on Sun's web site, so this does not disclose
  * anything that is Sun Confidential.
+ * <p>This is a clean-room implementation: I did not look at the code
+ * for Sun's javap or any similar tool in preparing this program.
  * XXX TODO:<ul>
- * <li>Fixup class names by making package statement, dropping . part of name
- * <li>Handle arrays (names begin [L)
+ * <li>Class printing: add superclasses.
+ * <li>Collapse common code in printing Constructors and Methods
+ * <li>Method printing: add exceptions
+ * <li>Arguments: Handle arrays (names begin [L)
+ * <li>Provide default (0, false, null) based on type; use in return statements
+ *		and in assigment to protected final variables.
  * </ul>
- * $Id$
+ * @author Ian Darwin, http://www.darwinsys.com/
+ * @version $Id$
  */
 public class MakeAPI extends APIFormatter {
 
@@ -16,10 +24,19 @@ public class MakeAPI extends APIFormatter {
 		new MakeAPI().doArgs(argv);
 	}
 
-	private String[] argNames = { "a", "b", "c", "d", "e", "f", "g", "h" };
+	private final String[] argNames = {
+		"a", "b", "c", "d", "e", "f", "g", "h"
+	};
 
+	/** NOT THREAD SAFE */
+	private String className;
+	private int classNameOffset;
+
+	/** Generate a .java file for the outline of the given class. */
 	public void doClass(Class c) throws IOException {
-		String className = c.getName();
+		className = c.getName();
+		// pre-compute offset for stripping package name
+		classNameOffset = className.lastIndexOf('.') + 1;
 
 		// Inner class
 		if (className.indexOf('$') != -1)
@@ -46,7 +63,7 @@ public class MakeAPI extends APIFormatter {
 		// print class header
 		int cMods = c.getModifiers();
 		printMods(cMods, out);
-		out.print(" class ");
+		out.print("class ");
 		out.print(trim(c.getName()));
 		out.print(' ');
 		// XXX get superclass 
@@ -59,8 +76,20 @@ public class MakeAPI extends APIFormatter {
 				out.println();
 				out.println("\t// Constructors");
 			}
+			Constructor cons = ctors[i];
+			int mods = cons.getModifiers();
+			if (Modifier.isPrivate(mods))
+				continue;
 			out.print('\t');
-			out.println(ctors[i] + "{}");
+			printMods(mods, out);
+			out.print(trim(cons.getName()) + "(");
+			Class[] classes = cons.getParameterTypes();
+			for (int j = 0; j<classes.length; j++) {
+				if (j > 0) out.print(", ");
+				out.print(trim(classes[j].getName()) + ' ' + argNames[j]);
+			}
+			out.println(") {");
+			out.print("\t}");
 		}
 
 		// print method names
@@ -78,16 +107,15 @@ public class MakeAPI extends APIFormatter {
 				continue;
 			out.print('\t');
 			printMods(mods, out);
-			out.print(' ');
 			out.print(m.getReturnType());
 			out.print(' ');
-			out.print(m.getName() + "(");
+			out.print(trim(m.getName()) + "(");
 			Class[] classes = m.getParameterTypes();
 			for (int j = 0; j<classes.length; j++) {
 				if (j > 0) out.print(", ");
-				out.print(classes[j].getName() + ' ' + argNames[j]);
+				out.print(trim(classes[j].getName()) + ' ' + argNames[j]);
 			}
-			out.println(") + {");
+			out.println(") {");
 			out.println("\treturn;");
 			out.println("\t}");
 		}
@@ -105,11 +133,10 @@ public class MakeAPI extends APIFormatter {
 				continue;
 			out.print('\t');
 			printMods(mods, out);
-			out.print(' ');
-			out.print(f.getType().getName());
+			out.print(trim(f.getType().getName()));
 			out.print(' ');
 			out.print(f.getName());
-			if (Modifier.isPublic(mods) && Modifier.isFinal(mods)) {
+			if (Modifier.isFinal(mods)) {
 				try {
 					out.print(" = " + f.get(null));
 				} catch (IllegalAccessException ex) {
@@ -121,6 +148,11 @@ public class MakeAPI extends APIFormatter {
 		out.println("}");
 		//out.flush();
 		out.close();
+	}
+
+	private String trim(String theName) {
+		return theName.startsWith(className) ?
+			theName.substring(classNameOffset) : theName;
 	}
 
 	private class ModInfo {
