@@ -1,5 +1,5 @@
 /**
- * Template for standalone, line-mode main program.
+ * Simple example of using RE: static call version.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */

@@ -1,5 +1,5 @@
 /**
- * Template for standalone, line-mode main program.
+ * Simple use of RE's: save-the-pattern-for-reuse version.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
