@@ -52,6 +52,9 @@ public class MenuIntl extends JFrame {
 
 		JMenu fm = mkMenu(b, "file");
 		fm.add(mi = mkMenuItem(b, "file", "open"));
+		// In finished code there would be a call to
+		// mi.addActionListener(...) after *each* of 
+		// these mkMenuItem calls!
 		fm.add(mi = mkMenuItem(b, "file", "new"));
 		fm.add(mi = mkMenuItem(b, "file", "save"));
 		fm.add(mi = mkMenuItem(b, "file", "exit"));
