@@ -14,6 +14,6 @@ public class FinalArgs {
 	}
 	void myFunc(final Calendar d) {
 		// d = null;	// this will not compile
-		d.set(Calendar.YEAR(1999); // this will compile, and changes the object
+		d.set(Calendar.YEAR, 1999); // this will compile, and changes the object
 	}
 }
