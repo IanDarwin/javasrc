@@ -1,4 +1,6 @@
 Things you might do to improve MailClient:
+	Extract the GUI code in MailComposeBean into its own class, and use
+		it in MailReaderBean instead of all those calls to TextArea.add();
 	Move MailReaderBean loading code into a method, so we can load a new mbox.
 	MailReaderBean needs a Reply button (implement addActionListener)
 	MailReaderBean - handle HTML mail - use DataHandler.

@@ -17,18 +17,19 @@ public class MailClient extends JComponent {
 	MailComposeFrame mcb;
 
 	/** Construct the MailClient JComponent by creating its GUI */
-	public MailClient() {
+	public MailClient() throws Exception {
 		super();
 		setLayout(new BorderLayout());
 		JTabbedPane tbp = new JTabbedPane();
 		add(BorderLayout.CENTER, tbp);
-		tbp.addTab("Reading", mrb = new MailReaderBean());
+		tbp.addTab("Reading", mrb =
+			new MailReaderBean("mbox", "localhost", "", "", "/var/mail/ian"));
 		tbp.addTab("Sending", mcb = new MailComposeFrame());
 		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
 	}
 
 	/** "main program" method - construct and show */
-	public static void main(String av[]) throws IOException {
+	public static void main(String av[]) throws Exception {
 
 		// create a MailClient object
 		final JFrame f = new JFrame("MailClient");
