@@ -6,7 +6,7 @@ import java.lang.reflect.Modifier;
 /**
  * JavaP prints structural information about classes.
  * For each class, all public fields and methods are listed.
- * "Reflectance" is used to look up the information.
+ * The "Reflection" API is used to look up the information.
  *
  * @version	$Id$
  */
