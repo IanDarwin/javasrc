@@ -5,6 +5,10 @@ To build the files in this book, you must add the Jar file
 into your classpath. Please update your classpath settings
 (referring to Recipe 2.x if necessary), and try again.
 
+You can get the jar file from the book website, 
+http://www.darwinsys.com/javacook, or by building it
+in the subdirectory "com.darwinsys.util" here.
+
 $Id$
 
 
