@@ -25,12 +25,18 @@ public class DaytimeObject {
 
 			// Read and validate the Object
 			Object o = is.readObject();
-			if (!(o instanceof Date))
-				throw new IllegalArgumentException("Wanted Date, got " + o);
+			if (o == null) {
+				System.err.println("Read null from server!");
+			} else if ((o instanceof Date)) {
 
-			// Valid, so cast to Date, and print
-			Date d = (Date) o;
-			System.out.println("Time on " + hostName + " is " + d.toString());
+				// Valid, so cast to Date, and print
+				Date d = (Date) o;
+				System.out.println("Server host is " + hostName);
+				System.out.println("Time there is " + d.toString());
+
+			} else {
+				throw new IllegalArgumentException("Wanted Date, got " + o);
+			}
 		} catch (ClassNotFoundException e) {
 			System.err.println("Wanted date, got INVALID CLASS (" + e + ")");
 		} catch (IOException e) {

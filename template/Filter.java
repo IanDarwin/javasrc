@@ -10,7 +10,7 @@ public class Filter {
 
     /** Process one file
 	 */
-    public void process(String fileName, LineNumberReader is) {
+    protected void process(String fileName, LineNumberReader is) {
         try {
             String inputLine;
 

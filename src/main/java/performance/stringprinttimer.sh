@@ -2,8 +2,10 @@
 
 # Time the StringPrint programs a few times.
 
-for f in A AA B A AA B 
-do
-	echo -n $f
-	time java StringPrint$f >/dev/null
-done
+# Direct standard output to bit bucket, since they print a LOT;
+# Time programs are usually smart enough to report on another file
+# like standard error, for this reason
+
+jr TimeNoArgs \
+	StringPrintA StringPrintAA StringPrintB \
+	StringPrintA StringPrintAA StringPrintB   > /dev/null
