@@ -2,7 +2,6 @@ JAVACC?=	jikes +E
 SPECIAL= TestForClass.java
 
 all:	classes special
-		$(JAVACC) $(SRCS)
 
 classes:
 		$(JAVACC) *.java
