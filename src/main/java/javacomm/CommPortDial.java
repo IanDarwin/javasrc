@@ -7,15 +7,23 @@ import java.util.*;
  *
  * @author	Ian F. Darwin, ian@darwinsys.com
  */
-public class CommPortDial extends CommPortOpen {
+public class CommPortDial extends CommPortModem {
+
 	protected static String number = "000-0000";
 
 	public static void main(String ap[])
-		throws IOException, NoSuchPortException,PortInUseException {
+		throws IOException, NoSuchPortException,PortInUseException,
+			UnsupportedCommOperationException {
 		if (ap.length == 1)
 			number = ap[0];
 		new CommPortDial().converse();
 		System.exit(0);
+	}
+
+	public CommPortDial() 
+		throws IOException, NoSuchPortException, PortInUseException,
+			UnsupportedCommOperationException {
+		super(null);
 	}
 
 	protected void converse() throws IOException {
@@ -23,22 +31,19 @@ public class CommPortDial extends CommPortOpen {
 		String resp;		// the modem response.
 
 		// Send the reset command
-		os.println("ATZ");
+		send("ATZ");
 
-		// Read the echo of it.
-		resp = is.readLine();
-		System.out.println("Modem echoed " + resp);
+		expect("OK");
 
-		// an extra blank line - is it a CRLF issue?
-		resp = is.readLine();
-		System.out.println("Modem replied " + resp);
+		send("ATDT" + number);
 
-		os.println("ATDT" + number);
+		expect("OK");
 
-		// This will get an OK prompt if there's a modem there:
-		resp = is.readLine();
-		System.out.println("Modem replied " + resp);
-
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// nothing to do
+		}
 		is.close();
 		os.close();
 	}

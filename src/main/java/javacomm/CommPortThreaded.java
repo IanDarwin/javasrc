@@ -12,51 +12,30 @@ import java.util.*;
  *
  * @author	Ian F. Darwin, ian@darwinsys.com
  */
-public class CommPortIO {
-	SerialPort ttya;
+public class CommPortThreaded extends CommPortOpen {
 
-	public static void main(String ap[]) {
-		CommPortIO cp;
+	public static void main(String ap[])
+		throws IOException, NoSuchPortException,PortInUseException,
+			UnsupportedCommOperationException {
+		CommPortThreaded cp;
 		try {
-			cp = new CommPortIO();
-			cp.report();
-			cp.traffic();
+			cp = new CommPortThreaded();
+			cp.converse();
 		} catch(Exception e) {
 			System.err.println("You blew it! Here's why:\n");
 			e.printStackTrace();
 		}
 	}
 
-	private void report() throws NoSuchPortException,PortInUseException {
-		// get list of ports available on this particular computer.
-		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
-
-		// Print the list. A GUI program would put these in a chooser!
-		while (pList.hasMoreElements()) {
-			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
-			System.out.println("Port " + cpi.getName());
-		}
-		
-		// Open a port. For now, hard-code name (ugh).
-		String portName = "COM1";	// or "Serial 1" on UNIX
-		CommPortIdentifier port =
-			CommPortIdentifier.getPortIdentifier(portName);
-		// This form of openPort takes an Application Name and a timeout.
-		ttya = (SerialPort) port.open("JavaJoe", 1000);
+	public CommPortThreaded()
+		throws IOException, NoSuchPortException, PortInUseException,
+			UnsupportedCommOperationException {
+		super(null);
 	}
 
-	private void traffic() 
-		throws IOException,UnsupportedCommOperationException {
+	protected void converse() throws IOException {
 
 		String resp;		// the modem response.
-
-		// set up the serial port
-		ttya.setSerialPortParams(9600, SerialPort.DATABITS_8,
-			SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-
-		// Get the input and output streams
-		DataInputStream is = new DataInputStream(ttya.getInputStream());
-		PrintStream os = new PrintStream(ttya.getOutputStream());
 
 		new DataThread(is, System.out).start();
 		new DataThread(new DataInputStream(System.in), os).start();

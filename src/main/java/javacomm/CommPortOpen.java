@@ -19,6 +19,10 @@ public class CommPortOpen {
 	protected DataInputStream is;
 	/** The output stream */
 	protected PrintStream os;
+	/** The last line read from the serial port. */
+	protected String response;
+	/** A flag to control debugging output. */
+	protected boolean debug = true;
 
 	public static void main(String ap[])
 		throws IOException, NoSuchPortException, PortInUseException,
@@ -29,6 +33,7 @@ public class CommPortOpen {
 		System.exit(0);
 	}
 
+	/* Constructor */
 	public CommPortOpen(Frame f)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
@@ -68,16 +73,11 @@ public class CommPortOpen {
 	/** This method will be overridden by non-trivial subclasses
 	 * to hold a conversation. 
 	 */
-	public void converse() throws IOException {
+	protected void converse() throws IOException {
 
-		// Input/Output code not shown.
-		System.out.println("Ready to read and write port " +
-			portName + " using is and os...");
+		System.out.println("Ready to read and write port.");
 
-		try {
-			Thread.sleep(TIMEOUTSECONDS * 2 * 1000);
-		} catch (InterruptedException canthappen) {
-		}
+		// Input/Output code not written -- must subclass.
 
 		// Finally, clean up.
 		is.close();
