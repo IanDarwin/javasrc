@@ -63,13 +63,40 @@ public class TModem {
 		die(0);
 	}
 
+	/** A flag used to communicate with inner class IOTimer */
+	protected boolean gotChar;
+
+	/** An inner class to provide a read timeout for alarms. */
+	class IOTimer extends Thread {
+		String message;
+		long milliseconds;
+
+		/** Construct an IO Timer */
+		IOTimer(long sec, String mesg) {
+			milliseconds = 1000 * sec;
+			message = mesg;
+		}
+		
+		/** Implement the timer */
+		public void run() {
+			try {
+				Thread.sleep(milliseconds);
+			} catch (InterruptedException e) {
+				// can't happen
+			}
+			if (!gotChar)
+				System.err.println("Timed out waiting for " + message);
+				die(1);
+		}
+	}
+
 	/*
 	 * send a file to the remote
 	 */
 	void send(String tfile) throws IOException, InterruptedException
 	{
-
 		char checksum, index, blocknumber, errorcount;
+		byte character;
 		byte[] sector = new byte[SECSIZE];
 		int nbytes;
 		DataInputStream foo;
@@ -78,11 +105,19 @@ public class TModem {
 		System.err.println( "file open, ready to send\r\n");
 		errorcount = 0;
 		blocknumber = 1;
-		alarm(SENTIMOUT);
 
-		while ((getchar() != NAK) && (errorcount < MAXERRORS))
-			++errorcount;
-		alarm(0);
+		// The C version uses "alarm()", a UNIX-only system call,
+		// to detect if the read times out. Here we do detect it
+		// by using a Thread, the IOTimer class defined above.
+		gotChar = false;
+		new IOTimer(SENTIMOUT, "NAK to start send").start();
+
+		do {
+			character = getchar();
+			gotChar = true;
+			if (character != NAK && errorcount < MAXERRORS)
+				++errorcount;
+		} while (character != NAK && errorcount < MAXERRORS);
 
 		System.err.println( "transmission beginning\r\n");
 		if (errorcount == MAXERRORS) {
@@ -135,57 +170,66 @@ public class TModem {
 		foo = new DataOutputStream(new FileOutputStream(tfile));
 
 		System.out.println("you have " + SLEEP + " seconds...");
-		Thread.sleep(SLEEP*1000);	/* wait for the user to get his act together */
+
+		/* wait for the user or remote to get his act together */
+		gotChar = false;
+		new IOTimer(SLEEP, "receive from remote"); 
+
 		System.err.println( "Starting...\r\n");
 		putchar(NAK);
 		errorcount = 0;
 		blocknumber = 1;
 		rxLoop:
-		while ((character = getchar()) != EOT) {
-		try {
-			byte not_ch;
-			if (character != SOH) {
-				System.err.println( "Not SOH\r\n");
-				if (++errorcount < MAXERRORS)
-					continue rxLoop;
-				else
-					xerror();
-			}
+		do { 
 			character = getchar();
-			not_ch = (byte)(~getchar());
-			System.err.println( "[" +  character + "] ");
-			if (character != not_ch) {
-				System.err.println( "Blockcounts not ~\r\n");
-				++errorcount;
-				continue rxLoop;
+			gotChar = true;
+			if (character != EOT) {
+				try {
+					byte not_ch;
+					if (character != SOH) {
+						System.err.println( "Not SOH\r\n");
+						if (++errorcount < MAXERRORS)
+							continue rxLoop;
+						else
+							xerror();
+					}
+					character = getchar();
+					not_ch = (byte)(~getchar());
+					System.err.println( "[" +  character + "] ");
+					if (character != not_ch) {
+						System.err.println( "Blockcounts not ~\r\n");
+						++errorcount;
+						continue rxLoop;
+					}
+					if (character != blocknumber) {
+						System.err.println( "Wrong blocknumber\r\n");
+						++errorcount;
+						continue rxLoop;
+					}
+					checksum = 0;
+					for (index = 0; index < SECSIZE; index++) {
+						sector[index] = getchar();
+						checksum += sector[index];
+					}
+					if (checksum != getchar()) {
+						System.err.println( "Bad checksum\r\n");
+						errorcount++;
+						continue rxLoop;
+					}
+					putchar(ACK);
+					blocknumber++;
+					try {
+						foo.write(sector);
+					} catch (IOException e) {
+						System.err.println("write failed, blocknumber " + blocknumber);
+					}
+				} finally {
+				if (errorcount != 0)
+					putchar(NAK);
 			}
-			if (character != blocknumber) {
-				System.err.println( "Wrong blocknumber\r\n");
-				++errorcount;
-				continue rxLoop;
-			}
-			checksum = 0;
-			for (index = 0; index < SECSIZE; index++) {
-				sector[index] = getchar();
-				checksum += sector[index];
-			}
-			if (checksum != getchar()) {
-				System.err.println( "Bad checksum\r\n");
-				errorcount++;
-				continue rxLoop;
-			}
-			putchar(ACK);
-			blocknumber++;
-			try {
-				foo.write(sector);
-			} catch (IOException e) {
-				System.err.println("write failed, blocknumber " + blocknumber);
-			}
-		} finally {
-			if (errorcount != 0)
-				putchar(NAK);
 		}
-		}
+		} while (character != EOT);
+
 		foo.close();
 
 		putchar(ACK);	/* tell the other end we accepted his EOT 	*/
@@ -201,17 +245,6 @@ public class TModem {
 
 	void putchar(int c) throws IOException {
 		outStream.write(c);
-	}
-
-	void alarm(int seconds) {
-		System.out.println("Would wait for " + seconds + " seconds.");
-	}
-
-	/* give message that we timed out, and then die */
-	void timeout(int signum)
-	{
-		System.err.println( "Timed out waiting for NAK from remote system\r\n");
-		die(1);
 	}
 
 	/* give user minimal usage message */
