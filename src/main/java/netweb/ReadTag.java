@@ -1,53 +1,60 @@
 import java.io.*;
 import java.net.*;
 
-/** A simple HTML tag printer.
+/** A simple but reusable HTML tag extractor.
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
  */
 public class ReadTag {
+	/** The URL that this ReadTag object is reading */
+	protected URL theURL = null;
+	/** The Reader for this object */
+	protected BufferedReader inrdr = null;
   
-	public static void main(String[] args) {
+	/* Simple main showing one way of using the ReadTag class. */
+	public static void main(String[] args) throws MalformedURLException, IOException {
 		if (args.length == 0) {
 			System.err.println("Usage: ReadTag URL [...]");
 			return;
 		}
-		ReadTag lc = new ReadTag();
 		for (int i=0; i<args.length; i++) {
-			lc.readURL(args[0]);
+			ReadTag rt = new ReadTag(args[0]);
+			String tag;
+			while ((tag = rt.nextTag()) != null) {
+				System.out.println(tag);
+			}
+			rt.close();
 		}
 	}
   
-	/** Read a given URL, printing the tags.  */
-	public void readURL(String theURLString) {
-		URL theURL = null;
-		BufferedReader inrdr = null;
+	/** Constructor */
+	public ReadTag(String theURLString) throws 
+			IOException, MalformedURLException {
 
 		if (theURLString == null) {
-			System.err.println("checkOut(null) isn't very useful");
-			return;
+			throw new MalformedURLException("ReadTag(null) isn't very useful");
 		}
 
 		// Open the URL for reading
-		try {
-			int i;
-			theURL = new URL(theURLString);
-			inrdr = new BufferedReader(new InputStreamReader(theURL.openStream()));
+		theURL = new URL(theURLString);
+		inrdr = new BufferedReader(new InputStreamReader(theURL.openStream()));
+	}
 
-			while ((i = inrdr.read()) != -1) {
-				char thisChar = (char)i;
-				if (thisChar == '<') {
-					String tag = readTag(inrdr);
-					System.out.println(tag);
-				}
+	/** Read the next tag.  */
+	public String nextTag() throws IOException {
+		int i;
+		while ((i = inrdr.read()) != -1) {
+			char thisChar = (char)i;
+			if (thisChar == '<') {
+				String tag = readTag(inrdr);
+				return tag;
 			}
-			inrdr.close();
-		} catch (MalformedURLException e) {
-			System.err.println("Can't parse " + theURLString);
-			return;
-		} catch (IOException e) {
-			System.err.println("IO Error " + ":(" + e +")");
 		}
+		return null;
+	}
+
+	public void close() throws IOException {
+		inrdr.close();
 	}
 
 	/** Read one tag. Adapted from code by Elliotte Rusty Harold */
