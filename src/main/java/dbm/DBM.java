@@ -126,7 +126,10 @@ public class DBM {
 	public native byte[] nextkey(byte[] key) throws IOException;
 
 	public Object nextkey(Object key) throws IOException {
-		return toObject(nextkey(toByteArray(key)));
+		byte[] ba = nextkey(toByteArray(key));
+		if (ba == null)
+			return null;
+		return toObject(ba);
 	}
 
 	public String toString() {

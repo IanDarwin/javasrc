@@ -161,6 +161,7 @@ JNIEXPORT jbyteArray JNICALL Java_DBM_nextkey
 	datum d = nextkey(byteArrayToDatum(env, key));
 	if (d.dptr == NULL)
 		return NULL;
+	// printf("Java_DBM_nextkey, d.dptr=%x, d.dsize=%d\n", d.dptr, d.dsize);
 	return datumToByteArray(env, d);
 }
 

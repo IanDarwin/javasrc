@@ -25,7 +25,8 @@ public class TestDBM {
 		DBM d3 = new DBM("/tmp/mydb");
 		Object o;
 		for (o = d3.firstkeyObject(); o != null; o = d3.nextkey(o)) {
-			System.out.println("Key=\"" + o + "\"; value=\"" + d3.fetch(o));
+			System.out.println("Key=\"" + o + "\"; " +
+				"value=\"" + d3.fetch(o) + "\"");
 		}
 	}
 }
