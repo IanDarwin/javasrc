@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.text.*;
 import java.util.*;
+import com.darwinsys.util.*;
 
 /** BreakEnd - 
  * Tool to display current time and time that class starts/resumes.
@@ -16,10 +17,14 @@ import java.util.*;
  * @version	$Id$
  */
 public class BreakEnd extends Frame implements Runnable {
-	Label nowLabel;
-	Label endsLabel;
-	Thread t;
-	Font f;
+	protected Label nowLabel;
+	protected Label endsLabel;
+	/** A thread to run the clock ticker */
+	protected Thread t;
+	/** The font for the large text */
+	protected Font f;
+	/** The maximum sensible font size given current monitors. */
+	public static final int MAXFONTSIZE = 200;
 
 	/** Main method to start me up. */
 	public static void main(String[] av) {
@@ -33,13 +38,7 @@ public class BreakEnd extends Frame implements Runnable {
 		}
 		BreakEnd b = new BreakEnd(av[0]);
 		b.pack();
-
-		// After packing the Frame, centre it on the screen.
-		Dimension us = b.getSize(), 
-			them = Toolkit.getDefaultToolkit().getScreenSize();
-		int newX = (them.width - us.width) / 2;
-		int newY = (them.height- us.height)/ 2;
-		b.setLocation(newX, newY);
+		UtilGUI.centre(b);
 
 		b.setVisible(true);
 	}
@@ -119,12 +118,14 @@ public class BreakEnd extends Frame implements Runnable {
 				if (d.height < 100)
 					setFontSize(72);
 				else
-					setFontSize(d.height/4);
+					setFontSize(d.height/6);
 			}
 		});
 	}
 
     protected void setFontSize(int sz) {
+		if (sz > MAXFONTSIZE)
+			sz = MAXFONTSIZE;
 		System.out.println("Setting font size to " + sz);
 		Font f = new Font("Helvetica", Font.PLAIN, sz);
 		nowLabel.setFont(f);

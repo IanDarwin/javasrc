@@ -52,9 +52,8 @@ public class XTW {
 			return;
 		}
 		NodeList nodes = p.getChildNodes();
-		int numElem = nodes.getLength();
 		Debug.println("xml-tree", "Element has " + numElem + " children");
-		for (int i=0; i<numElem; i++) {
+		for (int i = 0; i < nodes.getLength(); i++) {
 			Node n = nodes.item(i);
 			if (n == null) {
 				continue;

@@ -1,0 +1,4 @@
+protocol=pop3; type=store; class=dog.mail.pop3.POP3Store; vendor=dog@dog.net.uk;
+protocol=nntp; type=store; class=dog.mail.nntp.NNTPStore; vendor=dog@dog.net.uk;
+protocol=nntp; type=transport; class=dog.mail.nntp.NNTPTransport; vendor=dog@dog.net.uk;
+protocol=mbox; type=store; class=dog.mail.mbox.MboxStore; vendor=dog@dog.net.uk;

@@ -1,0 +1,6 @@
+Revise and reorganize the code to make a high-level layer
+(abstract) and a series of implementations:
+	- text line-mode as at present;
+	- RMI
+	- JMS
+	

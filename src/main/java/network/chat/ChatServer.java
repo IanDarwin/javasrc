@@ -27,11 +27,13 @@ public class ChatServer {
 	/** The list of my current clients */
 	protected ArrayList clients;
 	/** Debugging state */
-	private boolean DEBUG = false;
+	private static boolean DEBUG = false;
 
 	/** Main just constructs a ChatServer, which should never return */
 	public static void main(String[] argv) {
 		System.out.println("DarwinSys Chat Server 0.1 starting...");
+		if (argv.length == 1 && argv[0].equals("-debug"))
+			DEBUG = true;
 		ChatServer w = new ChatServer();
 		w.runServer();			// should never return.
 		System.out.println("**ERROR* Chat Server 0.1 quitting");

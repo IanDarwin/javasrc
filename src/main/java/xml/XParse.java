@@ -1,10 +1,9 @@
 import java.io.*;
-import org.w3c.dom.*;
-import com.sun.xml.tree.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
-/** Parse an XML file using DOM.
+/** Parse an XML file using DOM, via JAXP.
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
@@ -18,28 +17,25 @@ public class XParse {
 			// Make the document a URL so relative DTD works.
 			String uri = "file:" + new File(fileName).getAbsolutePath();
 
-			XmlDocument doc = XmlDocument.createXmlDocument(uri, validate);
+			DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
+			if (validate)
+				f.setValidating(true);
+			DocumentBuilder p = f.newDocumentBuilder();
+			Document doc = p.parse(uri);
 			System.out.println("Parsed OK");
 
-		} catch (SAXParseException ex) {
+		} catch (SAXException ex) {
 			System.err.println("+================================+");
 			System.err.println("|         *Parse Error*          |");
 			System.err.println("+================================+");
-			System.err.println("+ Line " + ex.getLineNumber ()
-								+ ", uri " + ex.getSystemId ());
 			System.err.println(ex.getClass());
 			System.err.println(ex.getMessage());
 			System.err.println("+================================+");
-		} catch(SAXException ex) {
+		} catch (Exception ex) {
 			System.err.println("+================================+");
-			System.err.println("|         *SAX XML Error*        |");
+			System.err.println("|           *XML Error*          |");
 			System.err.println("+================================+");
 			System.err.println(ex.toString()); 
-		} catch (IOException ex) {
-			System.err.println("+================================+");
-			System.err.println("|     *Input/Output Error*       |");
-			System.err.println("+================================+");
-			System.err.println(ex.toString());
 		}
 	}
 

@@ -1,8 +1,5 @@
+<!-- Try to get non-well-formed-XML to be output by XSL-T --
 <?xml version="1.0"?>
-<!--
- XSL Stylesheet that transforms Parent Committee XML document into
- valid HTML document.
- -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:template match="parent_committee">
@@ -18,8 +15,9 @@
 
 	<xsl:for-each select="parent">
 		<tr>
-			<td><xsl:value-of select="name"/></td>
+			&lt;td&gt;<xsl:value-of select="name"/>
 			<td><xsl:value-of select="children"/></td>
+			%lt;mifTag &lt;foo
 		</tr>
 	</xsl:for-each>
 

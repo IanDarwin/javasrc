@@ -79,9 +79,15 @@ public class EvalServlet extends HttpServlet {
 
 		out.print("<P>You rated the course a ");
 		out.println(courseGrade);
+		if (courseGrade <= 2) {
+			out.print("<B>That is a low score!!</B>");
+		}
 
 		out.print("<P>You rated the instructor's performance a ");
 		out.println(instrGrade);
+		if (instrGrade <= 2) {
+			out.print("<B>That is a low score!!</B>");
+		}
 
 		out.print("<P>You rated the pace as ");
 		out.println(pace);
@@ -97,7 +103,9 @@ public class EvalServlet extends HttpServlet {
 			out.println('\"');
 		}
 
-		if (request.getParameter("reviewed") != null) {
+		String reviewed;
+		if (((reviewed = request.getParameter("reviewed")) != null) &&
+			"true".equals(reviewed)) {
 			loggit(name, host, courseGrade, instrGrade, pace,
 				best, improve);
 			out.println("<H3>Done!</H3><P>Your comments have been recorded.");
@@ -106,9 +114,14 @@ public class EvalServlet extends HttpServlet {
 			// Kludge - seem to have to use POST here to
 			// let the browser "see" the query string...
 			out.print("<FORM METHOD=POST ACTION=");
-			out.print(HttpUtils.getRequestURL(request).
-				append("?reviewed=true&").
-				append(request.getQueryString()));
+			out.print(
+				// Under JRun, host changed to "localhost"!!
+				// HttpUtils.getRequestURL(request).
+				new StringBuffer(
+					"http://instructor:8080/servlet/EvalServlet").
+					append("?reviewed=true&").
+					append("?reviewed=true&").
+					append(request.getQueryString()));
 			out.println(">");
 			out.print("<INPUT TYPE=submit VALUE=\"Press here to confirm\">");
 			out.println("</FORM>");

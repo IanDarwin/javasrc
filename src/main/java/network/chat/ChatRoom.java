@@ -23,12 +23,14 @@ import java.net.*;
  * @version $Id$
  */
 public class ChatRoom extends Applet {
-	/** The state */
+	/** Whether we are being run as an Applet or an Application */
+	protected boolean inAnApplet = true;
+	/** The state of logged-in-ness */
 	protected boolean loggedIn;
 	/* The Frame, for a pop-up, durable Chat Room. */
 	protected Frame cp;
 	/** The default port number */
-	protected static int PORTNUM = 7777;
+	protected static int PORTNUM = Chat.PORTNUM;
 	/** The actual port number */
 	protected int port;
 	/** The network socket */
@@ -46,7 +48,7 @@ public class ChatRoom extends Applet {
 	/** The LogOUT button */
 	protected Button lob;
 	/** The TitleBar title */
-	final static String TITLE = "Chat: Ian Darwin's Toy Chat Room Applet";
+	final static String TITLE = "Chat: Ian Darwin's Toy Chat Room Client";
 	/** The message that we paint */
 	protected String paintMessage;
 
@@ -56,9 +58,11 @@ public class ChatRoom extends Applet {
 		repaint();
 		cp = new Frame(TITLE);
 		cp.setLayout(new BorderLayout());
-		String portNum = getParameter("port");
+		String portNum = null;
+		if (inAnApplet)
+			portNum = getParameter("port");
 		port = PORTNUM;
-		if (portNum == null)
+		if (portNum != null)
 			port = Integer.parseInt(portNum);
 
 		// The GUI
@@ -129,22 +133,29 @@ public class ChatRoom extends Applet {
 		repaint();
 	}
 
+	protected String serverHost = "localhost";
+
 	/** LOG ME IN TO THE CHAT */
 	public void login() {
+		showStatus("In login!");
 		if (loggedIn)
 			return;
+		if (inAnApplet)
+			serverHost = getCodeBase().getHost();
 		try {
-			sock = new Socket(getCodeBase().getHost(), port);
+			sock = new Socket(serverHost, port);
 			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			pw = new PrintWriter(sock.getOutputStream(), true);
 		} catch(IOException e) {
-			showStatus("Can't get socket: " + e);
+			showStatus("Can't get socket to " + 
+				serverHost + "/" + port + ": " + e);
 			cp.add(new Label("Can't get socket: " + e));
 			return;
 		}
+		showStatus("Got socket");
 
-		// construct and start the reader: from server to textarea
-		// make a Thread to avoid lockups.
+		// Construct and start the reader: from server to textarea.
+		// Make a Thread to avoid lockups.
 		new Thread(new Runnable() {
 			public void run() {
 				String line;
@@ -191,5 +202,21 @@ public class ChatRoom extends Applet {
 		g.fillRect(0, 0, w, 0);
 		g.setColor(Color.black);
 		g.drawString(paintMessage, 10, (h/2)-5);
+	}
+
+
+	/** a showStatus that works for Applets or non-Applets alike */
+	public void showStatus(String mesg) {
+		if (inAnApplet)
+			super.showStatus(mesg);
+		System.out.println(mesg);
+	}
+
+	/** A main method to allow the client to be run as an Application */
+	public static void main(String[] args) {
+		ChatRoom room101 = new ChatRoom();
+		room101.inAnApplet = false;
+		room101.init();
+		room101.start();
 	}
 }
