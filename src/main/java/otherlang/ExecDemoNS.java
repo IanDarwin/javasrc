@@ -14,27 +14,31 @@ public class ExecDemoNS extends JFrame {
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
 
-	/** The path to the Netscape binary  */
-	protected static String netscape;
-
 	/** A process object tracks one external running process */
 	Process p;
 
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception { 
-		new ExecDemoNS().setVisible(true);
+		String program = av.length == 0 ? "netscape" : av[0];
+		new ExecDemoNS(program).setVisible(true);
 	}
 
+	/** The path to the binary executable that we will run */
+	protected static String program;
+
 	/** Constructor - set up strings and things. */
-	public ExecDemoNS() {
-		super("ExecDemo: Netscape");
+	public ExecDemoNS(String prog) {
+		super("ExecDemo: " + prog);
 		String osname = System.getProperty("os.name");
 		if (osname == null) 
 			throw new IllegalArgumentException("no os.name");
-		netscape = // Windows or UNIX only for now, sorry Mac fans
-			(osname.toLowerCase().indexOf("windows")!=-1) ?
-			"c:/program files/netscape/communicator/program/netscape.exe" :
-			"/usr/local/netscape/netscape";
+		if (prog.equals("netscape"))
+			program = // Windows or UNIX only for now, sorry Mac fans
+				(osname.toLowerCase().indexOf("windows")!=-1) ?
+				"c:/program files/netscape/communicator/program/netscape.exe" :
+				"/usr/local/netscape/netscape";
+		else
+			program = prog;
 
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
@@ -42,7 +46,7 @@ public class ExecDemoNS extends JFrame {
 		cp.add(b=new JButton("Exec"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				doHelp();
+				runProg();
 			}
 		});
 		cp.add(b=new JButton("Wait"));
@@ -61,7 +65,7 @@ public class ExecDemoNS extends JFrame {
 	}
 
 	/** Start the help, in its own Thread. */
-	public void doHelp() {
+	public void runProg() {
 
 		new Thread() {
 			public void run() {
@@ -71,10 +75,9 @@ public class ExecDemoNS extends JFrame {
 					URL helpURL = this.getClass().getClassLoader().
 						getResource(HELPFILE);
 
-					// Start Netscape from the Java Application. A Java
-					// Applet would not be allowed to, nor need to :-)
+					// Start Netscape from the Java Application.
 
-					p = Runtime.getRuntime().exec(netscape + " " + helpURL);
+					p = Runtime.getRuntime().exec(program + " " + helpURL);
 
 					Debug.println("trace", "In main after exec");
 
