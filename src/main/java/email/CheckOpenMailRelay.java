@@ -19,7 +19,10 @@ public class TestOpenMailRelay {
 				" suspected_relay");
 			System.exit(1);
 		}
-		String suspect_relay = args[0];
+		process(args[0]);
+	}
+
+	public static void process(String suspect_relay) {
 		try {
 			Sender2 sm = new Sender2();
 			sm.props.put("mail.smtp.host", suspect_relay);
