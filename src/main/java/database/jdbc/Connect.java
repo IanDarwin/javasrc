@@ -4,7 +4,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 
-/** Load a driver and connect to a database.
+/** Test of loading a driver and connecting to a database.
+ * The URL assumes you have the M$ Example "Companies" database
+ * configured as a System DSN (or user DSN for your user) in the
+ * ODBC control panel.
  */
 public class Connect {
 
@@ -33,7 +36,7 @@ public class Connect {
 				warn = warn.getNextWarning();
 		    }
 
-			// Process the connection here...
+			// Do something with the connection here...
 
 			conn.close();	// All done with that DB connection
 
