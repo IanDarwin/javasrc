@@ -103,6 +103,10 @@ public class ConvertToMif implements XmlFormWalker {
 			pgfTag("HeadB");
 			pgfString("Discussion");
 			endTag();
+		} else if (tag.equals("sa")) {
+			pgfTag("HeadB");
+			pgfString("See Also");
+			endTag();
 		} else if (tag.equals("code")) {
 			doCode(p);
 		} else if (tag.equals("example")) {
@@ -120,10 +124,12 @@ public class ConvertToMif implements XmlFormWalker {
 
 	protected void doSection(Element p) {
 		pgfTag("HeadA");
+		endTag();
 	}
 
 	protected void doSubSection(Element p) {
 		pgfTag("HeadB");
+		endTag();
 	}
 
 	protected void pgfTag(String s) {
@@ -135,6 +141,8 @@ public class ConvertToMif implements XmlFormWalker {
 	protected void doParagraph(Element p) {
 		indent();
 		pgfTag("Body");
+		doChildren(p);
+		endTag();
 	}
 
 	protected void doExample(Element p) {
@@ -149,7 +157,7 @@ public class ConvertToMif implements XmlFormWalker {
 		if (marked != null)
 			doMarks = true;
 	
-		msg.println("<Example>");
+		pgfTag("Example");
 		try {
 			fname = "/javasrc/" + fname;	// XX dir should be parameter
 			LineNumberReader is = new LineNumberReader(new FileReader(fname));
@@ -157,6 +165,7 @@ public class ConvertToMif implements XmlFormWalker {
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
+		endTag();
 	}
 
 	/** Run a java Program and capture the output.
@@ -165,22 +174,23 @@ public class ConvertToMif implements XmlFormWalker {
 	 */
 	protected void doRun(Element p) {
 		NamedNodeMap attrs = p.getAttributes();
-		Node class;
-		if ((class = attrs.getNamedItem("CLASS")) == null)
+		Node myClass;
+		if ((myClass = attrs.getNamedItem("CLASS")) == null)
 			throw new IllegalArgumentException(
 				"node " + p + "lacks required CMD Attribute");
-		String className = class.getNodeValue();
-		msg.println("<Example>");
+		String className = myClass.getNodeValue();
+		pgfTag("Example");
 		try {
 			String cmd = "cd /javasrc; java " + className;	// XX dir should be parameter
-			Process p = Runtime.getRuntime().exec(cmd);
+			Process proc = Runtime.getRuntime().exec(cmd);
 			LineNumberReader is = new LineNumberReader(
-				new InputStreamReader(p.getInputStream()));
-			gm.process(fname, is, smsg);
+				new InputStreamReader(proc.getInputStream()));
+			gm.process(className, is, smsg);
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
-	
+		endTag();
+	}
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
 		String s = p.getData().trim();
@@ -196,6 +206,10 @@ public class ConvertToMif implements XmlFormWalker {
 
 	protected void doCode(Element p) {
 		msg.print("<Literal>");
+		doChildren(p);
+		msg.print("<Plain>");
+	}
+	protected void doChildren(Element p) {
 		NodeList nodes = p.getChildNodes();
 		for (int i=0; i<nodes.getLength(); i++) {
 			Node n = nodes.item(i);
@@ -204,10 +218,9 @@ public class ConvertToMif implements XmlFormWalker {
 				p.removeChild(n);
 			}
 		}
-		msg.print("<Plain>");
 	}
 
-	/** Do the minum needed to make "line" a valid MIF string. */
+	/** Do the minumum needed to make "line" a valid MIF string. */
 	protected String mifString(String tag, String line) {
 		// Make new, big enough for translations
 		StringBuffer b = new StringBuffer(line.length() * 2);
