@@ -5,12 +5,13 @@ import javax.sql.rowset.CachedRowSet;
  * classes are (as of Beta 1) still in the unsupported "com.sun" package.
  */
 public class CachedRowSetDemo {
+	public static final String ROWSET_IMPL_CLASS = "com.sun.rowset.CachedRowSetImpl";
 	public static void main(String[] args) throws Exception {
 		CachedRowSet rs;
 
 		// Create the class with class.forName to avoid importing
 		// from the unsupported com.sun packages.
-		Class c = Class.forName("com.sun.rowset.CachedRowSetImpl");
+		Class c = Class.forName(ROWSET_IMPL_CLASS);
 		rs = (CachedRowSet)c.newInstance();
 
 		rs.setUrl("jdbc:postgresql:tmclub");
