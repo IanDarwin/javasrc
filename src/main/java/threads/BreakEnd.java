@@ -42,6 +42,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.text.*;
 import java.util.*;
 import com.darwinsys.util.*;
@@ -55,21 +56,28 @@ import com.darwinsys.util.*;
  * TODO 
  * <ul>
  *	<li>add another Thread to flash the screen if the resume time is passed.
- *	<li>add a Slider to set the point size, and shrinkwrap to that.
  * </ul>
  *
  * @author	Ian Darwin
  * @version	$Id$
  */
 public class BreakEnd extends JFrame implements Runnable {
+	/** Label for the current time. */
 	protected JLabel nowLabel;
+	/** Label for when break ends. */
 	protected JLabel endsLabel;
+	/** JSlider for font sizes */
+	protected JSlider fontSize;
 	/** A thread to run the clock ticker */
-	protected Thread t;
+	protected Thread ticker;
 	/** The font for the large text */
 	protected Font f;
+	/** The minimum allowable font size */
+	protected static final int FONT_SIZE_MIN = 10;
 	/** The maximum sensible font size given current monitors. */
-	public static final int MAXFONTSIZE = 200;
+	protected static final int FONT_SIZE_MAX = 150;
+	/** Default point size */
+	protected static final int FONT_SIZE_DEFAULT = 50;
 
 	/** Main method to start me up. */
 	public static void main(String[] av) {
@@ -82,7 +90,6 @@ public class BreakEnd extends JFrame implements Runnable {
 			return;
 		}
 		BreakEnd b = new BreakEnd(av[0]);
-		b.pack();
 		UtilGUI.centre(b);
 
 		b.setVisible(true);
@@ -96,8 +103,12 @@ public class BreakEnd extends JFrame implements Runnable {
 		String result = null;
 		int h = d.get(Calendar.HOUR_OF_DAY);
 		int m = d.get(Calendar.MINUTE);
+		int s = d.get(Calendar.SECOND);
 		try {
-			result = form.format(h) + ":" + form.format(m);
+			result = form.format(h) + ":" +
+				form.format(m) + ":" +
+				form.format(s);
+			// Why not just use a DateFormat for that?
 		} catch (IllegalArgumentException iae) {
 			JOptionPane.showMessageDialog(this,
 				"Formatting Error!" + iae,	// message
@@ -108,7 +119,7 @@ public class BreakEnd extends JFrame implements Runnable {
 	}
 
 	public void run() {
-		while (t.isAlive()) {
+		while (ticker.isAlive()) {
 			Calendar d = new GregorianCalendar();
 			nowLabel.setText("Time is now " + toHHMM_String(d));
 			try {
@@ -130,7 +141,32 @@ public class BreakEnd extends JFrame implements Runnable {
 		// cp = this;
 		cp.setLayout(new BorderLayout());
 
-		cp.add(BorderLayout.NORTH,
+		fontSize = new JSlider(JSlider.HORIZONTAL,
+			FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_DEFAULT);
+		fontSize.setMajorTickSpacing(10);
+		fontSize.setPaintTicks(true);
+		fontSize.setPaintLabels(true);
+		fontSize.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
+
+
+		fontSize.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				JSlider source = (JSlider)e.getSource();
+				if (!source.getValueIsAdjusting()) {
+					int points = (int)source.getValue();
+					setFontSize(points);
+				}
+			}
+		});
+		//add the slider to the content pane
+		cp.add(BorderLayout.NORTH, fontSize);
+
+		// Make a panel for CENTER to hold two labels above each other
+		JPanel timesPanel = new JPanel();
+		timesPanel.setLayout(new GridLayout(2,1));
+
+		cp.add(BorderLayout.CENTER, timesPanel);
+		timesPanel.add(
 			nowLabel =  new JLabel("Time now is: 00:00:00", JLabel.CENTER));
 	
 		String mesg = null;
@@ -139,13 +175,13 @@ public class BreakEnd extends JFrame implements Runnable {
 			int newMinutes = d.get(Calendar.MINUTE)+
 				Integer.parseInt(s.substring(1))+1;
 			d.set(Calendar.MINUTE, newMinutes);
-			mesg = "Class resumes at " + toHHMM_String(d);
+			mesg = "We start at " + toHHMM_String(d);
 		} else {
-			mesg = "Class resumes at " + s + " ";
+			mesg = "We start at " + s + " ";
 		}
-		cp.add(BorderLayout.CENTER,
+		timesPanel.add(BorderLayout.CENTER,
 			endsLabel = new JLabel(mesg, JLabel.CENTER));
-		setFontSize(40);
+		setFontSize(FONT_SIZE_DEFAULT);
 		JButton b;
 		cp.add(BorderLayout.SOUTH, b = new JButton("Done"));
 		b.addActionListener(new ActionListener() {
@@ -154,7 +190,12 @@ public class BreakEnd extends JFrame implements Runnable {
 			}
 		});
 
-		(t = new Thread(this)).start();
+		// Pack should be done here so the ComponentAdapter's
+		// componentResized doesn't fire and shrink the size
+		pack();
+
+		// Start the timer thread now. Tick, tick, tick.
+		(ticker = new Thread(this)).start();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -162,20 +203,21 @@ public class BreakEnd extends JFrame implements Runnable {
 			public void componentResized(ComponentEvent e) {
 				Dimension d = getSize();
 				if (d.height < 100)
-					setFontSize(72);
+					setFontSize(15);
 				else
-					setFontSize(d.height/6);
+					setFontSize(d.height/7);
 			}
 		});
 	}
 
 	/** Set the font to the given size */
     protected void setFontSize(int sz) {
-		if (sz > MAXFONTSIZE)
-			sz = MAXFONTSIZE;
+		if (sz > FONT_SIZE_MAX)
+			sz = FONT_SIZE_MAX;
 		System.out.println("Setting font size to " + sz);
 		Font f = new Font("Helvetica", Font.PLAIN, sz);
 		nowLabel.setFont(f);
 		endsLabel.setFont(f);
+		fontSize.setValue(sz);
 	}
 }
