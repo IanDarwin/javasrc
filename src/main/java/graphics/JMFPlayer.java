@@ -1,10 +1,16 @@
-import java.applet.*;
-import java.awt.*;
-import javax.swing.*;
-import java.net.*;
-import java.io.*;
-import java.util.*;
-import javax.media.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.media.ControllerEvent;
+import javax.media.ControllerListener;
+import javax.media.Manager;
+import javax.media.Player;
+import javax.media.RealizeCompleteEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.
