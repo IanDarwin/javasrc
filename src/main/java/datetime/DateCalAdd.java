@@ -14,7 +14,7 @@ public class DateCalAdd {
 		System.out.println("It is now " + 
 			formatter.format(now.getTime()));
 
-		now.add(Calendar.YEAR, - 2);
+		now.add(Calendar.YEAR, -2);
 		System.out.println("Two years ago was " + 
 			formatter.format(now.getTime()));
 	}
