@@ -1,7 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
-//import javax.swing.text.*;
 import java.util.regex.*;
 
 /** Standalone Swing GUI application for demonstrating REs.
@@ -21,7 +20,7 @@ public class REDemo extends JPanel {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
-		final JFrame f = new JFrame("REDemo");
+		JFrame f = new JFrame("REDemo");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		REDemo comp = new REDemo();
 		f.setContentPane(comp);
@@ -101,17 +100,17 @@ public class REDemo extends JPanel {
 		}
 	}
 
-	protected void tryMatch() {
+	protected boolean tryMatch() {
 		if (pattern == null)
-			return;
+			return false;
 		matcher.reset(stringTF.getText());
 		if (match.isSelected() && matcher.matches()) {
 			setMatches(true);
-			return;
+			return true;
 		}
 		if (find.isSelected() && matcher.find()) {
 			setMatches(true);
-			return;
+			return true;
 		}
 		if (findAll.isSelected()) {
 			int i = 0;
@@ -120,10 +119,11 @@ public class REDemo extends JPanel {
 			}
 			if (i > 0) {
 				setMatches(i);
-				return;
+				return true;
 			}
 		}
 		setMatches(false);
+		return false;
 	}
 
 	/** Any change to the pattern tries to compile the result. */
