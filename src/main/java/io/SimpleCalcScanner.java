@@ -66,7 +66,7 @@ public class SimpleCalcScanner {
 			if (scan.hasNextDouble()) {
 				push(scan.nextDouble());
 			} else {
-				String token = scan.hasNext().toString();
+				String token = scan.next().toString();
 				if (token.equals("+")) {
 					// Found + operator, perform it immediately.
 					push(pop() + pop());
