@@ -41,12 +41,6 @@ public class Fmt {
 				}
 				continue;
 			}
-			if (w.startsWith(".")) {// troff command, send verbatim.
-				if (col>0) System.out.print("\n");	// flush
-				System.out.println(w);
-				col = 0;
-				continue;
-			}
 
 			// otherwise it's text, so format it.
 			StringTokenizer st = new StringTokenizer(w);
