@@ -24,6 +24,8 @@ public class ReaderIter {
 				// Print whatever matched.
 				// Use CharacterIterator.substring(offset, end);
 				System.out.println(line.substring(start, end));
+				// Easier method:
+				System.out.println(m.group(0));
 			}
 		}
 	}
