@@ -169,12 +169,12 @@ public class LinkChecker extends JFrame {
 
 				// Can't really validate these!
 				if (href.startsWith("mailto:")) {
-					textWindow.append(href + " -- not checking");
+					textWindow.append(href + " -- not checking\n");
 					continue;
 				}
 
 				if (href.startsWith("..") || href.startsWith("#")) {
-					textWindow.append(href + " -- not checking");
+					textWindow.append(href + " -- not checking\n");
 					// nothing doing!
 					continue; 
 				}
@@ -194,8 +194,7 @@ public class LinkChecker extends JFrame {
 
 				// Now see if the URL is off-site.
 				if (!hrefURL.getHost().equals(rootURL.getHost())) {
-					textWindow.append("-- OFFSITE -- not following");
-					textWindow.append("\n");
+					textWindow.append("-- OFFSITE -- not following\n");
 					continue;
 				}
 				textWindow.append("\n");
