@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Test {
+public class TestDBM {
 	public static void main(String javaNamesCauseRSI[]) throws IOException {
 		DBM d = new DBM("/tmp/mydb");
 		System.out.println(d);

@@ -21,8 +21,8 @@ SHARED_OBJ	= $(SHARED_UNIX)
 
 INCLUDES	= -I/usr/local/include/kaffe
 
-test:		Test.class main testdb
-			java Test
+test:		TestDBM.class main testdb
+			java TestDBM
 testdb:		/tmp/mydb.dir /tmp/mydb.pag
 /tmp/mydb.dir /tmp/mydb.pag:
 			touch /tmp/mydb.dir /tmp/mydb.pag
@@ -31,8 +31,8 @@ main:		$(CLASS) $(SHARED_OBJ)
 
 DBM.class: DBM.java
 		$(JAVAC) $(JAVAC_FLAGS) DBM.java
-Test.class: Test.java
-		$(JAVAC) $(JAVAC_FLAGS) Test.java
+TestDBM.class: TestDBM.java
+		$(JAVAC) $(JAVAC_FLAGS) TestDBM.java
 
 #DBM.h:	DBM.class
 #		javah -jni DBM
