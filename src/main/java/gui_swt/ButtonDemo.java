@@ -12,21 +12,19 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class ButtonDemo {
 
-	static Shell s;
-	
 	/**
 	 * Simple Demo Main Program
 	 */
 	public static void main(String[] args) {
 		Display d = new Display();
-		ButtonDemo bd = new ButtonDemo(d);
+		Shell s = new Shell(d);
+		ButtonDemo bd = new ButtonDemo(d, s);
 		SWTUtil.mainEventLoop(d, s);
 	}
 	
 	/** Construct the GUI */
-	ButtonDemo(Display d) {
-
-		s = new Shell(d);
+	ButtonDemo(Display d, Shell s) {
+		
 		s.setText("Button Demo");
 		s.setSize(200, 150);
 		final Button b = new Button(s, SWT.PUSH);
