@@ -11,7 +11,7 @@ import javax.swing.*;
  * Must remain Swing-based despite problems on older systems, since
  * apparently only Swing components can use TTF fonts in this implementation.
  * <p>
- * Does NOT work in Applet (requires JApplet) nor in JApplet due to
+ * Did NOT work for me in Applet nor JApplet due to
  * security problems (requires to create a temp file). Could be made
  * to work by providing a policy file.
  * @author	Ian Darwin
