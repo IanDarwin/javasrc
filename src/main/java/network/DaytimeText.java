@@ -7,7 +7,7 @@ import java.net.*;
  * @version $Id$
  */
 public class DaytimeText {
-	public final short TIME_PORT = 37;
+	public static final short TIME_PORT = 13;
 
 	public static void main(String argv[]) {
 		String hostName;
