@@ -1,3 +1,5 @@
+package com.darwinsys.callback;
+
 import java.rmi.*;
 
 import com.darwinsys.callback.*;

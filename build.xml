@@ -13,13 +13,39 @@
 		<tstamp/>
 
 		<!-- conditional properties -->
-		<condition property="RE_1.4">
+		<condition property="avail.prefs">
+			<available className="java.util.prefs.Preferences"/>
+		</condition>
+
+		<condition property="avail.RE.1.4">
 			<available className="java.util.regex.Pattern"/>
 		</condition>
 
-		<condition property="imageio_1.4">
-			<!-- XXX -->
-			<available className="java.util.regex.Pattern"/>
+		<condition property="avail.RE.apache">
+			<available className="org.apache.regexp.RE"/>
+		</condition>
+
+		<condition property="avail.javamail">
+			<and>
+				<available className="javax.mail.Message"/>
+				<available className="javax.activation.Handler"/>
+			</and>
+		</condition>
+
+		<condition property="avail.nio">
+			<available className="java.nio.Buffer"/>
+		</condition>
+
+		<condition property="avail.imageio.1.4">
+			<available className="java.awt.image.ColorModel"/>
+		</condition>
+
+		<condition property="avail.jdom">
+			<available className="org.jdom.Document"/>
+		</condition>
+		
+		<condition property="avail.javacomm">
+			<available className="javax.comm.CommPortOpen"/>
 		</condition>
 		
 	</target>
@@ -65,8 +91,6 @@
 		<ant dir="email"/>
 		<echo message="==> environ"/>
 		<ant dir="environ"/>
-		<echo message="==> filterGUI"/>
-		<ant dir="filterGUI"/>
 		<echo message="==> gc"/>
 		<ant dir="gc"/>
 		<echo message="==> graphics"/>
@@ -122,17 +146,19 @@
 		<echo message="==> Plotter"/>
 		<ant dir="Plotter"/>
 		<echo message="==> prefs"/>
-		<ant dir="prefs"/>
+		<ant target="prefs"/>
 		<echo message="==> quizzes"/>
 		<ant dir="quizzes"/>
-		<echo message="==> RE"/><ant target="RE"/>
+		<echo message="==> RE"/>
+		<ant target="RE.1.4"/>
 		<echo message="==> RE-apache"/>
-		<ant dir="RE-apache"/>
+		<ant target="RE.apache"/>
 		<echo message="==> RMI"/>
 		<ant dir="rmi"/>
 		<echo message="==> search"/>
 		<ant dir="search"/>
-		<echo message="==> seating"/> <ant dir="seating"/>
+		<echo message="==> seating"/>
+		<ant dir="seating"/>
 		<echo message="==> servlet"/>
 		<ant dir="servlet"/>
 		<echo message="==> ShowDocument"/>
@@ -170,7 +196,22 @@
 	</target>
 
 	<!-- optional targets -->
-	<target name="RE" if="RE_1.4">
-		<ant target="build" dir="RE"/>
+	<target name="prefs" if="avail.prefs">
+		<ant dir="prefs"/>
 	</target>
+
+	<target name="RE.1.4" if="avail.RE.1.4">
+		<ant dir="RE"/>
+	</target>
+
+	<target name="RE.apache" if="avail.RE.apache">
+		<ant dir="RE-apache"/>
+	</target>
+
+	<!-- clean up -->
+	<!--
+	<target name='clean'>
+		<delete dir="${build}"/>
+	</target>
+	-->
 </project>

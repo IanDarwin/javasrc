@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 import org.apache.regexp.*;
-import com.darwinsys.util.GetOpt;
+import com.darwinsys.lang.GetOpt;
 
 /** A command-line grep-like program. Some options, and takes a pattern
  * and an arbitrary list of text files.
