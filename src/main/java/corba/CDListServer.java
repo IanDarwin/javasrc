@@ -9,7 +9,7 @@ import com.darwinsys.util.Debug;
  * Main class of the CDList service "server" program.
  * As is usual for the Client and Server, this class was written by hand,
  * unlike all the goo that is generated directly from the IDL file.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class CDListServer {

@@ -1,5 +1,5 @@
 Using Interfaces to enforce remote method correctness in EJBs
-	by Ian F. Darwin, ian@darwinsys.com
+	by Ian F. Darwin, http://www.darwinsys.com/
 
 * Bean cannot implement the Remote interface (due to RemoteException)
 * However classes can implement more than one interface

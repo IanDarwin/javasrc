@@ -8,7 +8,7 @@ import java.util.*;
  * This program can <b>not</b> be run; it just shows the code for one part
  * of the EJB-use puzzle.
  *
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class CollectionUse {

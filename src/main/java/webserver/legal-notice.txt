@@ -2,7 +2,7 @@ Copyright (c) Ian F. Darwin 1995-1999.
 Software written by Ian F. Darwin and others.
 
 /*
- * Copyright (c) Ian F. Darwin, ian@darwinsys.com, 1996, 1997, 1998, 1999.
+ * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996, 1997, 1998, 1999.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *

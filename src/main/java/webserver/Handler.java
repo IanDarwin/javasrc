@@ -10,7 +10,7 @@ import java.util.*;
  * <p>
  * TODO split into general handler stuff and "FileServlet",
  *	then handle w/ either user HttpServlet subclasses or FileServlet.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class Handler extends Thread {
