@@ -26,8 +26,6 @@ public class Fmt {
 
 	/** Format the File contained in a constructed Fmt object */
 	public void format() throws IOException {
-		if (in == null)
-			throw new IllegalArgumentException("FMT: FileReader not initialized");
 		String w, f;
 		int col = 0;
 		while ((w = in.readLine()) != null) {
@@ -61,6 +59,5 @@ public class Fmt {
 		}
 		if (col>0) System.out.print("\n");
 		in.close();
-		in = null;		/* prevent tragic accidents */
 	}
 }

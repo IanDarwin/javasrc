@@ -7,3 +7,8 @@ This should
 be its own paragraph.
 .sp 2
 More text?
+.nf
+And this should
+be unformatted,
+rather like a <PRE>
+in HTML text.

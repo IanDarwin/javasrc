@@ -35,7 +35,7 @@ public class Fmt2 extends Fmt {
 		new Command("br") { void action() { spaceLine(0); } },
 		new Command("bp") { void action() { put("\f"); /*formfeed*/} },
 		new Command("fi") { void action() { mode = MODE_FI; } },
-		new Command("nf") { void action() { mode = MODE_NF; } },
+		new Command("nf") { void action() { mode = MODE_NF; spaceLine(0);} },
 		new Command("sp") { void action() { spaceLine(1); } },
 	};
 
@@ -46,7 +46,7 @@ public class Fmt2 extends Fmt {
 outer:
 		while ((w = in.readLine()) != null) {
 			if (w.length() == 0) {	// null line
-				spaceLine(0);
+				spaceLine(1);
 				continue;
 			}
 			if (w.startsWith(".")) {// troff command, handle it.
@@ -64,7 +64,13 @@ outer:
 				continue;
 			}
 
-			// otherwise it's text, so format it.
+			// otherwise it's text, so deal with it.
+			if (mode == MODE_NF) {
+				putln(w);
+				continue;
+			}
+
+			// else, we have to format it.
 			StringTokenizer st = new StringTokenizer(w);
 			while (st.hasMoreTokens()) {
 				f = st.nextToken();
