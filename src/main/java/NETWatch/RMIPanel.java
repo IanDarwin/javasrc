@@ -1,10 +1,9 @@
 package NETWatch;
 
-import java.awt.*;
-import javax.swing.*;
-import java.net.*;
-import java.rmi.*;
-import java.util.*;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.util.Properties;
 
 /** Displays one machines status, for RMI..
  * @author	Ian F. Darwin, http://www.darwinsys.com/

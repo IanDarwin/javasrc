@@ -1,8 +1,6 @@
 package i18n;
 
-import java.io.*;
-import java.text.*;
-import java.util.*;
+import java.util.Locale;
 
 /** Print the default locale */
 public class DefaultLocale {

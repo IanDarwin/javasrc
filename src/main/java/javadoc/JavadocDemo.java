@@ -1,8 +1,9 @@
 package javadoc;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Calendar;
 
 /**

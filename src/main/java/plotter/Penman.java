@@ -1,8 +1,14 @@
 package Plotter;
 
-import java.io.*;
-import javax.comm.*;
-import java.util.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+import javax.comm.CommPortIdentifier;
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.SerialPort;
+import javax.comm.UnsupportedCommOperationException;
 
 /**
  * A Plotter subclass for drawing on a Penman plotter.
