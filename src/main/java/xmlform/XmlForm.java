@@ -38,7 +38,7 @@ public class XmlForm {
 			c.convertAll();
 
 		} catch (Exception ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		}
 		if (verbose)
 			System.err.println(">>>Done " + fileName + "...");

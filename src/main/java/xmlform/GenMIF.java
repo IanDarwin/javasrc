@@ -2,35 +2,67 @@ import java.io.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
+import java.util.*;
 
 /**
- * Class with code to walk a tree and convert it to MML (not MIF).
- * TODO: Need to use MIF (not MML), alas, since MML loses named
- * character codes in input (Check current docco first through).
+ * Class with code to walk a tree and convert it to Maker Interchange
+ * Format (MIF). Must be MIF (not MML) since, alas, MML loses named
+ * character codes in input.
+ * PARTLY IMPLEMENTED: need to make Walker do recursive descent of tree!!
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
 public class ConvertToMif implements XmlFormWalker {
 	/** The normal output writer */
-	PrintWriter msg;
+	protected PrintWriter msg;
 	/** Specialized PrintWriter for use by GetMark. */
-	StyledWriter smsg;
+	protected StyledWriter smsg;
 	/** A tree walker object for walking the tree */
-	TreeWalker tw;
+	protected TreeWalker tw;
 	/** A GetMark converter for source code. */
-	GetMark gm = new GetMark();
+	protected GetMark gm = new GetMark();
+	/** Vector used to print indented lines */
+	protected Vector indents;
 
 	/** Construct a converter object */
 	ConvertToMif(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
 		smsg = new StyledWriter(msg);
+		indents = new Vector();
+		indents.addElement("");
+	}
+
+	protected int indent = 0;
+	protected void indent() {
+		if (indent > indents.size()) {
+			StringBuffer sb = new StringBuffer();
+			for (int i=0; i<indent; i++) {
+				sb.append(' ');
+				sb.append(' ');
+			}
+			indents.addElement(sb.toString());
+		}
+		msg.print(indents.elementAt(indent>0?indent-1:0));
+	}
+
+	protected Stack tagStack = new Stack();
+	protected void startTag(String tag) {
+		++indent;
+		indent();
+		msg.println('<' + tag);
+		tagStack.push(tag);
+	}
+
+	protected void endTag() {
+		indent();
+		msg.println('>' + " # end of " + tagStack.pop());
+		indent--;
 	}
 	/** Convert all the nodes in the current document. */
 	public void convertAll() {
 
-		msg.println("<MML 1.00 -- MML produced by XmlForm>");
-		msg.println("<Include \"xmlformat.mml\">");
+		msg.println("<MIFFile 3.00 -- MIF produced by XmlForm>");
 
 		for (Node p = tw.getCurrent(); p != null; p = tw.getNext())
 			doNode(p);
@@ -60,11 +92,17 @@ public class ConvertToMif implements XmlFormWalker {
 		} else if (tag.equals("p")) {
 			doParagraph(p);
 		} else if (tag.equals("pr")) {
-			msg.println("<HeadB>Problem");
+			pgfTag("HeadB");
+			pgfString("Problem");
+			endTag();
 		} else if (tag.equals("so")) {
-			msg.println("<HeadB>Solution");
+			pgfTag("HeadB");
+			pgfString("Solution");
+			endTag();
 		} else if (tag.equals("di")) {
-			msg.println("<HeadB>Discussion");
+			pgfTag("HeadB");
+			pgfString("Discussion");
+			endTag();
 		} else if (tag.equals("code")) {
 			doCode(p);
 		} else if (tag.equals("example")) {
@@ -75,19 +113,26 @@ public class ConvertToMif implements XmlFormWalker {
 	}
 
 	protected void doChapter(Element p) {
-		msg.println("<ChapterTitle>");
+		pgfTag("<ChapterTitle>");
 	}
 
 	protected void doSection(Element p) {
-		msg.println("<HeadA>");
+		pgfTag("HeadA");
 	}
 
 	protected void doSubSection(Element p) {
-		msg.println("<HeadB>");
+		pgfTag("HeadB");
+	}
+
+	protected void pgfTag(String s) {
+		startTag("Para");
+		indent();
+		msg.println("<PgfTag `" + s + "'>");
 	}
 
 	protected void doParagraph(Element p) {
-		msg.println("<Body>");
+		indent();
+		pgfTag("Body");
 	}
 
 	protected void doExample(Element p) {
@@ -111,7 +156,13 @@ public class ConvertToMif implements XmlFormWalker {
 		String s = p.getData().trim();
 		if (s.length() == 0)	// Sun's parser returns extra 1-space "Text"s
 			return;
-		msg.println(s);
+		pgfString(s);
+	}
+	protected void pgfString(String s) {
+		indent();
+		msg.print("<String `");
+		msg.print(s);			// XXX make sb, translate special chars
+		msg.println("'>");
 	}
 
 	protected void doCode(Element p) {

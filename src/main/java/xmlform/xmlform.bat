@@ -1,1 +1,1 @@
-java XmlForm %1 > %1.mml
+java XmlForm %1.xml > %1.mif
