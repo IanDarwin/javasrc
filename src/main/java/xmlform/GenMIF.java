@@ -109,30 +109,26 @@ public class GenMIF implements XmlFormWalker {
 			doChapter(p);
 		//
 		// PARAGRAPH TAGS
+		// This is the application-specific bit of code.
+		// SHOULD BE MAP RULES, NOT HARD-CODED.
 		//
-		} else if (tag.equals("chaptertitle")) {
+		} else if (tag.equals("title")) {
 			doParagraph("ChapterTitle", p);
-		} else if (tag.equals("sc")) {
+		} else if (tag.equals("simplesect")) {
 			doParagraph("HeadA", p);
-		} else if (tag.equals("ss")) {
-			doParagraph("HeadB", p);
-		} else if (tag.equals("p")) {
+		} else if (tag.equals("sect1")) {
+			doParagraph("HeadA", p);
+		} else if (tag.equals("para")) {
 			doParagraph("Body", p);
-		} else if (tag.equals("pr")) {
-			makeUpParagraph("HeadB", "Problem");
-		} else if (tag.equals("so")) {
-			makeUpParagraph("HeadB", "Solution");
-		} else if (tag.equals("di")) {
-			makeUpParagraph("HeadB", "Discussion");
-		} else if (tag.equals("sa")) {
-			makeUpParagraph("HeadB", "See Also");
-		} else if (tag.equals("code")) {
-			doCode(p);
-		} else if (tag.equals("example")) {
-			doExample(p);
+		} else if (tag.equals("sect2")) {
+			doParagraph("HeadB", p);
+		} else if (tag.equals("programlisting")) {
+			doPre(p);
+		} else if (tag.equals("graphic")) {
+			doPre(p);
 		} else if (tag.equals("runoutput")) {
 			doRun(p);
-		} else if (tag.equals("pre")) {
+		} else if (tag.equals("figure")) {
 			doPre(p);
 		//
 		// STYLE TAGS
