@@ -8,6 +8,7 @@ public class StrSort {
 	static public String rawStrings[] = {
 		"Qwerty",
 		"Ian",
+		"de Raadt",
 		"Java",
 		"Gosling",
 		"Alpha",

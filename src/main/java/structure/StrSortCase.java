@@ -1,14 +1,15 @@
 import java.util.*;
 
 /**
- * StrSort demonstrates sorting of strings using Collections.sort
- * ANd ignoring case.
+ * StrSortCase demonstrates sorting of strings using Collections.sort
+ * AND ignoring case.
  */
-public class StrSort {
+public class StrSortCase {
 	/** The list of strings to be sorted */
 	static public String rawStrings[] = {
 		"Qwerty",
 		"Ian",
+		"de Raadt",
 		"Java",
 		"Gosling",
 		"Alpha",
@@ -33,7 +34,7 @@ public class StrSort {
 	public static void main(String argv[]) {
 		//+
 		System.out.println("StrSort Demo Ignoring Case");
-		StrSort s = new StrSortCase();
+		StrSortCase s = new StrSortCase();
 		s.load();
 		s.dump("Before");
 		Collections.sort(s.v, String.CASE_INSENSITIVE_ORDER);
