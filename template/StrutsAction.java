@@ -3,7 +3,6 @@ package actions;
 import jabacart.*;
 
 import org.apache.struts.action.*;
-import com.amazon.soap.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,6 +21,12 @@ public class DummyAction extends Action {
 
 		ActionErrors errors = new ActionErrors();
 		ActionMessages messages = new ActionMessages();
+
+        // if (!(form instanceof DynaActionForm)) {
+		// 	throw new IllegalArgumentException( /* "can't happen" */
+		// 		"Input form not a valid DynaForm, configuration error?");
+		// }
+		// DynaActionForm theForm = (DynaActionForm)form;
 
 		// if (success) {
 		// 	messages.add(ActionErrors.GLOBAL_MESSAGE,
