@@ -1,3 +1,6 @@
+import com.darwinsys.util.*;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
@@ -13,23 +16,24 @@ import java.util.*;
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
  */
-public class LinkChecker extends Frame implements Runnable {
+public class LinkChecker extends JFrame implements Runnable {
 	protected Thread t = null;
 	/** The "global" activation flag: set false to halt. */
 	boolean done = false;
-	protected Panel p;
+	protected JPanel p;
 	/** The textfield for the starting URL.
 	 * Should have a Properties file and a JComboBox instead.
 	 */
-	protected TextField textFldURL;
-	protected Button checkButton;
-	protected Button killButton;
-	protected TextArea textWindow;
+	protected JTextField textFldURL;
+	protected JButton checkButton;
+	protected JButton saveButton;
+	protected JButton killButton;
+	protected JTextArea textWindow;
 	protected int indent = 0;
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		lc.setSize(500, 400);
+		lc.pack();
 		lc.setLocation(150, 150);
 		lc.setVisible(true);
 		if (args.length == 0)
@@ -54,19 +58,20 @@ public class LinkChecker extends Frame implements Runnable {
 	/** Construct a LinkChecker */
 	public LinkChecker() {
 		super("LinkChecker");
+		Container cp = getContentPane();
         addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-			setVisible(false);
-			dispose();
-			System.exit(0);
+				setVisible(false);
+				dispose();
+				System.exit(0);
 			}
 		});
-		setLayout(new BorderLayout());
-		p = new Panel();
+		cp.setLayout(new BorderLayout());
+		p = new JPanel();
 		p.setLayout(new FlowLayout());
-		p.add(new Label("URL"));
-		p.add(textFldURL = new TextField(40));
-		p.add(checkButton = new Button("Check URL"));
+		p.add(new JLabel("URL"));
+		p.add(textFldURL = new JTextField(30));
+		p.add(checkButton = new JButton("Check URL"));
 		// Make a single action listener for both the text field (when
 		// you hit return) and the explicit "Check URL" button.
 		ActionListener starter = new ActionListener() {
@@ -76,7 +81,7 @@ public class LinkChecker extends Frame implements Runnable {
 		};
 		textFldURL.addActionListener(starter);
 		checkButton.addActionListener(starter);
-		p.add(killButton = new Button("Stop"));
+		p.add(killButton = new JButton("Stop"));
 		killButton.setEnabled(false);	// until startChecking is called.
 		killButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,10 +90,24 @@ public class LinkChecker extends Frame implements Runnable {
 				stopChecking();
 			}
 		});
+		p.add(saveButton = new JButton("Save Log"));
+		saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+			try {
+				String log = textWindow.getText();
+				FileIO.stringToFile(log, "linkchecker.log");
+			} catch (IOException ex) {
+				JOptionPane.showMessageDialog(LinkChecker.this,
+					"IOError",
+					ex.toString(),
+					JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		// Now lay out the main GUI - URL & buttons on top, text larger
-		add("North", p);
-		textWindow = new TextArea(80, 40);
-		add("Center", textWindow);
+		cp.add("North", p);
+		textWindow = new JTextArea(80, 40);
+		cp.add("Center", textWindow);
 	}
 
 	public void doCheck() {
@@ -123,7 +142,7 @@ public class LinkChecker extends Frame implements Runnable {
 			rootURL = new URL(rootURLString);
 			urlGetter = new GetURLs(rootURL);
 		} catch (MalformedURLException e) {
-			textWindow.append("Can't parse " + rootURLString + "\n");
+			textWindow.append("Can't parse URL " + rootURLString + "\n");
 			return;
 		} catch (FileNotFoundException e) {
 			textWindow.append("Can't open file " + rootURLString + "\n");
@@ -151,7 +170,7 @@ public class LinkChecker extends Frame implements Runnable {
 				if (done)
 					return;
 				String tag = (String)urlIterator.next();
-				System.out.println(tag);
+				Debug.println("TAG", tag);
 						
 				String href = extractHREF(tag);
 
