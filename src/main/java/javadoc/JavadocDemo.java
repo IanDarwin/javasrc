@@ -33,11 +33,11 @@ public class JavadocDemo extends Applet {
 	 */
 	public void paint(Graphics g) {
 		int w = getSize().width, h=getSize().height;
-		g.setColor(Color.yellow);
+		g.setColor(Color.YELLOW);
 		g.fillRect(0, 0, w/2, h);
-		g.setColor(Color.green);
+		g.setColor(Color.GREEN);
 		g.fillRect(w/2, 0, w, h);
-		g.setColor(Color.black);
+		g.setColor(Color.BLACK);
 		g.drawString("Welcome to Java", 50, 50);
 	}
 
