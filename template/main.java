@@ -5,6 +5,8 @@
  */
 public class XXX {
 	public static void main(String argv[]) {
+		//+
 		System.out.println("XXX ");
+		//-
 	}
 }
