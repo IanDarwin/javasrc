@@ -25,7 +25,6 @@ public abstract class Plotter {
 	}
 	abstract void rmoveTo(int incrx, int incry);
 	abstract void moveTo(int absx, int absy);
-	abstract void setdir(float deg);
 	abstract void penUp();
 	abstract void penDown();
 	abstract void penColor(int c);

@@ -70,10 +70,6 @@ public class Penman extends Plotter {
 		send("M" + curx + "," + cury + ","); expect(OK_PROMPT);
 	}
 
-	public void setdir(float deg) {
-		dir = deg;
-	}
-
 	private void setPenState(boolean up) {
 		penIsUp = up;
 		System.err.println("Pen Up is ["+penIsUp+"]");
