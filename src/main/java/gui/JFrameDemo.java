@@ -32,4 +32,7 @@ public class JFrameDemo extends JFrame {
 			
 		pack();
 	}
+	public static void main(String[] args) {
+		new JFrameDemo().setVisible(true);
+	}
 }
