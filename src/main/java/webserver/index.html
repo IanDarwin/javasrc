@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="The vi editor from UNIX">
+   <META NAME="Author" CONTENT="Ian Darwin">
+   <TITLE>A Baby Webserver in Java</TITLE>
+</HEAD>
+<BODY BACKGROUND="baby.gif" BGCOLOR="#c0d0e0">
+<H1>A Baby Webserver in Java</H1>
+<P>Written by Ian Darwin, ian@darwinsys.com, as a simple demonstration.
+It's small and simple, threaded, and does caching.
+Lots of room to grow!
+<P>NO SECURITY. USE AT OWN RISK.
+<P>NO CGI. NO SERVLETS.
+<P>NO CONFIGURATION to speak of. NO RECONFIGURATION - just kill & restart it.
+<P>NO claim (yet) that it's compliant with the HTTP RFC standard.
+<P>NO DOCUMENTATION YET (therefore, you are not reading this page yet :-)).
+<P>Just source code:
+<UL>
+	<LI><A HREF="WebServer.java">WebServer, the main class</A>
+	<LI><A HREF="Handler.java">Handler, threaded, created for each request</A>
+	<LI><A HREF="httpd.properties">The main config file, such as it is</A>
+	<LI><A HREF="mime.properties">The Mime Type config file.</A>
+	<LI><A HREF="errors.properties">The (Internationalizable?) error message file.</A>
+	<LI>The Makefile <A HREF="build.bat">for DOS</A> and
+		<A HREF="Makefile">for UNIX.</A>
+	<LI>The Startup Script<A HREF="run.bat">for DOS</A> and
+		<A HREF="run.sh">for UNIX.</A>
+</UL>
