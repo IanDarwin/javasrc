@@ -1,5 +1,5 @@
 /*
- * Simple demo of JDom
+ * Simple demo of JDOM
  */
 
 import org.jdom.*;
@@ -9,13 +9,13 @@ import org.jdom.output.*;
 import java.util.*;
 
 
-public class JDomDemo {
+public class JDOMDemo {
 
     public static void main(String[] args) {
   
 		// Must be at least one file or URL argument
         if (args.length == 0) {
-            System.out.println("Usage: java JDomDemo URL [...]"); 
+            System.out.println("Usage: java JDOMDemo URL [...]"); 
         } 
         
         SAXBuilder saxBuilder = new SAXBuilder();

@@ -8,7 +8,7 @@ import org.apache.xerces.parsers.SAXParser;
  * @author Ian Darwin
  * @version $Id$
  */
-public class SaxLister {
+public class SAXLister {
 
 	public static void main(String[] args) throws Exception { 
 		XMLReader parser = XMLReaderFactory.createXMLReader(

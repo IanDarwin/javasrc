@@ -2,14 +2,14 @@ import java.io.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 
-/** Make up and write an XML document
+/** Make up and write an XML document, using DOM
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$
  */
-public class DocWrite {
+public class DocWriteDOM {
 
 	public static void main(String[] av) throws IOException {
-		DocWrite dw = new DocWrite();
+		DocWriteDOM dw = new DocWriteDOM();
 		XmlDocument doc = dw.makeDoc();
 		doc.write(System.out);
 	}
