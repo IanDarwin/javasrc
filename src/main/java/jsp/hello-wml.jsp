@@ -1,4 +1,4 @@
-<%@page contentType="text/vnd.wap.wml" %>
+<%@page contentType="text/vnd.wap.wml" import="java.util.*" %>
 <?xml "version=1.0"?>
 <!DOCTYPE wml PUBLIC>
 <wml>
