@@ -3,7 +3,7 @@
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version ?Id$
  */
-public class ??? {
+public class main {
 	public static void main(String[] argv) {
 		//+
 		System.out.println("XXX ");

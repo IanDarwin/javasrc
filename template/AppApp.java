@@ -18,11 +18,11 @@ public class AppApp extends Applet {
 
 	public static void main(String[] av) {
 		AppApp app = new AppApp();
-		Frame f = new Frame("AppApp Demo");
+		final Frame f = new Frame("AppApp Demo");
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				AppApp.this.hide();
-				AppApp.this.dispose();
+				f.hide();
+				f.dispose();
 			}
 		});
 		f.setLayout(new BorderLayout());

@@ -14,7 +14,7 @@ public class G2D extends Component {
 	/** Paint this component, casting "Graphics g" to a Graphics2D object */
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
-		g2.draw(something);
+		// g2.draw(something);
 	}
 
 	public Dimension getPreferredSize() {

@@ -5,13 +5,13 @@ import java.awt.event.*;
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version #Id$
  */
-public class GUI0 {
+public class GUIwithFrame {
 
 	/** "main" method */
 	public static void main(String[] av) {
 		Button quitButton;
 
-		// create a GUI0 object and make it show
+		// create a GUIwithFrame object and make it show
 		final Frame f = new Frame();
 		f.setLayout(new FlowLayout());
 		f.add(new Label("Hello, and welcome to the world of Java"));

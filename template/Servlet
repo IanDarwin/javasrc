@@ -8,7 +8,7 @@ import javax.servlet.http.*;
  * @author  __USER__
  * @version $Id$ Created on __DATE__, __TIME__
  */
-public class MyServlet extends HttpServlet
+public class Servlet_DoGetPost extends HttpServlet
 {
 	/** Called in response to a GET request (data encoded in the URL) */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

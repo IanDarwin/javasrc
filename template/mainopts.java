@@ -1,3 +1,5 @@
+import com.darwinsys.util.GetOpt;
+
 /** Template main program using GetOpt.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
@@ -6,6 +8,7 @@ public class mainopts {
 	public static void main(String[] argv) {
 		String argChars = "o:hv";
 		GetOpt go = new GetOpt("ho:v");
+		boolean verbose = false;
 
 		char c;
 		while ((c =go.getopt(argv)) != 0) {
@@ -17,13 +20,13 @@ public class mainopts {
 					System.out.print("-o Option " + go.optarg());
 					break;
 				case 'v':
-					verbose = 1;
+					verbose = true;
 					break;
 				default:
 					System.err.println("Unknown option char " + ((char)c));
 			}
 		}
-		for (int i=go.optind(); i<argv.length; i++)
-			System.out.println("Filename-like arg " + args[i]);
+		for (int i=go.getOptInd(); i<argv.length; i++)
+			System.out.println("Filename-like arg " + argv[i]);
 	}
 }
