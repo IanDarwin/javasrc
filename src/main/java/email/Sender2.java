@@ -39,7 +39,7 @@ public class Sender2 {
 
 		// Create the Session object
 		session = Session.getDefaultInstance(props, null);
-		session.setDebug(true);		// Verbose!
+		// session.setDebug(true);		// Verbose!
 		
 		// create a message
 		mesg = new MimeMessage(session);
