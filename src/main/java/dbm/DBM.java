@@ -15,6 +15,8 @@ public class DBM {
 	 * class-wide boolean.
 	 */
 	protected static boolean inuse = false;
+	/** Save the filename for messages, etc. */
+	protected String fileName;
 
 	/** Construct a DBM given its filename */
 	public DBM(String file) {
@@ -24,16 +26,17 @@ public class DBM {
 					"Only one DBM object allowed per Java Machine");
 			inuse = true;
 		}
-		int retCode = dbminit(file);
+		fileName = file;
+		int retCode = dbminit(fileName);
 		if (retCode < 0)
 			throw new IllegalArgumentException(
 				"dbminit failed, code = " + retCode);
 	}
-			
-	// Static code blocks are executed once, when class file is loaded
+
+	// Static code blocks are executed once, when class file is loaded.
 	// This is here to ensure that the shared library gets loaded.
 	static {
-		System.loadlibrary("jdbm");
+		System.loadLibrary("jdbm");
 	}
 	private native int dbminit(String file);
 
