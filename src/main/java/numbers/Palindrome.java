@@ -2,8 +2,7 @@
  * its digits in reverse order, until a Palindrome occurs.
  * e.g., 42->66 (42+24); 1951->5995 (1951+1591=3542; 3542+2453=5995).
  * <P>TODO:
- * <BR>Handle negative numbers.
- * <BR>Rewrite rev() without using Strings.
+ * <BR>Handle negative numbers?
  * @author Ian Darwin, ian@darwinsys.com
  * @version $Id$.
  */
@@ -12,20 +11,20 @@ public class Palindrome {
 		for (int i=0; i<argv.length; i++)
 		try {
 			System.out.println(argv[i] + "->" + 
-				tryNum(Long.parseLong(argv[i])));
+				findPalindrome(Long.parseLong(argv[i])));
 		} catch (NumberFormatException e) {
 			System.err.println(argv[i] + "->" + " TOO BIG");
 		} 
 	}
 
-	static long tryNum(long num) {
-		if (isPal(num))
+	static long findPalindrome(long num) {
+		if (isPalindrome(num))
 			return num;
 		System.out.println("Trying " + num);
-		return tryNum(num + rev(num));
+		return findPalindrome(num + reverseNumber(num));
 	}
 
-	static boolean isPal(long num) {
+	static boolean isPalindrome(long num) {
 		if (num >= 0 && num < 9)
 			return true;
 		String nn = Long.toString(num);
@@ -36,11 +35,23 @@ public class Palindrome {
 		return true;
 	}
 
-	static long rev(long num) {
-		String nn = Long.toString(num);
-		StringBuffer nb = new StringBuffer();
-		for (int i=nn.length(); i>0; i--)
-			nb.append(nn.charAt(i-1));
-		return Long.parseLong(nb.toString());
+	/** The number of digits in Long.MAX_VALUE */
+	protected static final int MAX_DIGITS = 19;
+
+	/* Statically allocated array to avoid new-ing each time. */
+	static long[] digits = new long[MAX_DIGITS];
+
+	static long reverseNumber(long num) {
+		int nDigits = 0;
+		while (num > 0) {
+			digits[nDigits++] = num % 10;
+			num /= 10;
+		}
+		long ret = 0;
+		for (int i=0; i<nDigits; i++) {
+			ret *= 10;
+			ret += digits[i];
+		}
+		return ret;
 	}
 }
