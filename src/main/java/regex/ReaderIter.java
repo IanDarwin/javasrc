@@ -9,19 +9,23 @@ public class ReaderIter {
 		// The RE pattern
 		Pattern patt = Pattern.compile("[A-Za-z][a-z]+");
 		// A FileReader (see the I/O chapter)
-		Reader r = new FileReader(args[0]);
+		BufferedReader r = new BufferedReader(new FileReader(args[0]));
 
-		// For each match in the input, extract and print it.
+		// For each line of input, try matching in it.
+		String line;
 		while ((line = r.readLine()) != null) {
-			Match m = patt.matcher(line);
-			// Get the starting position of the text
-			int start = patt.getParenStart(0);
-			// Get ending position; also updates for NEXT match.
-			end = patt.getParenEnd(0);
-			// Print whatever matched.
-			System.out.println("start=" + start + "; end=" + end);
-			// Use CharacterIterator.substring(offset, end);
-			System.out.println(in.substring(start, end));
+			// For each match in the line, extract and print it.
+			Matcher m = patt.matcher(line);
+			while (m.find()) {
+				// Get the starting position of the text
+				int start = m.start(0);
+				// Get ending position
+				int end = m.end(0);
+				// Print whatever matched.
+				System.out.println("start=" + start + "; end=" + end);
+				// Use CharacterIterator.substring(offset, end);
+				System.out.println(line.substring(start, end));
+			}
 		}
 	}
 }

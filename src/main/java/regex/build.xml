@@ -2,6 +2,10 @@
 
 	<!-- include global build properties -->
 	<property file="../build.properties"/>
+	<!-- Override the above for this directory, since jikes (1.17) fails badly
+	 *** on several of the Java files in this directory, esp those w/ \\ in 'em.
+	 -->
+	<!-- <property name="build.compiler" value="javac"/> -->
 
 	<property name="src" value="."/>
 	<property name="build" value="."/>
