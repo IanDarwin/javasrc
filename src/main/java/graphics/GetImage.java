@@ -5,10 +5,12 @@
  * For Application, just run it (has own main).
  */
 
-import java.awt.*;
-import java.net.*;		// for URL class
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 
-import javax.swing.*;
+import javax.swing.JApplet;
+import javax.swing.JFrame;
 
 /** This program, which can be an Applet or an Application,
  * shows a form of Toolkit.getImage() which works the same

@@ -7,15 +7,18 @@ import java.awt.TextField;
 
 import javax.swing.JFrame;
 
+import com.darwinsys.util.Debug;
+
 /**
- * Demo of Tiled Image
+ * Demo of tiling an Image across a component; draw the image repeatedly
+ * in the paint() method.
  * @version $Id$
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class TiledImageComponent extends Container {
-	TextField nameTF, passTF, domainTF;
-	Image im;
-	String IMAGE_NAME = "background.gif";
+	protected TextField nameTF, passTF, domainTF;
+	protected Image im;
+	public static final String DEFAULT_IMAGE_NAME = "background.gif";
 
 	/** Set things up nicely. */
 	public TiledImageComponent() {
@@ -32,7 +35,7 @@ public class TiledImageComponent extends Container {
 		add(l = new Label("Domain:", Label.CENTER));
 		add(domainTF=new TextField(10));
 
-		im = getToolkit().getImage(IMAGE_NAME);
+		im = getToolkit().getImage(DEFAULT_IMAGE_NAME);
 	}
 
 	/** paint()  - just tile the background.  */
@@ -46,12 +49,11 @@ public class TiledImageComponent extends Container {
 
 		for (int i = 0; i<=w; i+=iw) {
 			for (int j = 0; j<=h; j+=ih) {
-				// System.out.println("drawImage(im,"+i+","+j+")");
+				Debug.println("draw", "drawImage(im,"+i+","+j+")");
 				g.drawImage(im, i, j, this);
 			}
 		}
 	}
-
 
 	public static void main(String[] av) {
 		JFrame f = new JFrame("TiledImageComponent Demo");
