@@ -4,7 +4,12 @@ public class RomanNumberDemo {
 		//+
 		RomanNumberFormat nf = new RomanNumberFormat();
 		System.out.println("Test of " + nf);
-		System.out.println("0->" + nf.format(0));
+		try {
+			System.out.println("0->" + nf.format(0));
+			System.out.println("Failed to object to zero");
+		} catch (NumberFormatException ex) {
+			System.out.println("Correctly rejected zero");
+		}
 		System.out.println("42->" + nf.format(42));
 		System.out.println("678->" + nf.format(678));
 		System.out.println("1999->" + nf.format(1999));
