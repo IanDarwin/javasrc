@@ -379,7 +379,7 @@ public class JModem extends javax.swing.JFrame {
     }
     portsComboBox.setSelectedIndex(0);
 
-    // Load up the baud-rate combo box
+    // Load up the baud rate combo box
     for (int i=0; i<baudot.length; i++) {
       baudComboBox.addItem(Integer.toString(baudot[i]));
     }
@@ -451,14 +451,14 @@ public class JModem extends javax.swing.JFrame {
   }
   xferButton.setEnabled(false);
   if (xferProg == null) {
-    xferProg = new TModem(serialInput, serialOutput); // discarded in disconnect
+    xferProg = new TModem(serialInput, serialOutput, 
+      new PrintWriter(System.out)); // TModem object discarded in disconnect()
   }
   String fileName = xferFileNameTF.getText();
   if (fileName.length() == 0) {
     err("Filename must be given");
     return;
   }
-  submode = S_XFER;
 
   // Do the transfer!  If we are sending, send a "tmodem -r" to
   // the other side; if receiving, send "tmodem -s" to ask it
@@ -470,9 +470,13 @@ public class JModem extends javax.swing.JFrame {
 	    return;
 	  }
       sendString("tmodem -r " + fileName + "\r\n");
+	  delay(500);		// let command echo back to us
+      submode = S_XFER;
       xferProg.send(fileName);
     } else {
       sendString("tmodem -s " + fileName + "\r\n");
+	  delay(500);		// let command echo back to us
+      submode = S_XFER;
       xferProg.receive(fileName);
     }
   } catch (InterruptedException e) {
@@ -481,6 +485,9 @@ public class JModem extends javax.swing.JFrame {
   } catch (IOException e) {
     err("IO Exception in transfer:\n" + e);
     return;
+  } catch (ProtocolBotchException ev) {
+    err("Protocol failure:\n" + ev);
+	return;
   } finally {
     submode = S_INTERACT;
   }
@@ -583,22 +590,20 @@ public class JModem extends javax.swing.JFrame {
       public void run() {
         do {
           try {
-      // If the xfer program is running, stay out of its way.
-        if (submode == S_XFER) {
-        Thread.sleep(1000);
-        continue;
-      }
+            // If the xfer program is running, stay out of its way.
+              if (submode == S_XFER) {
+                delay(1000);
+              continue;
+            }
             nbytes = serialInput.read(buf, 0, buf.length);
           } catch (IOException ev) {
-            err("Error reading from remote:\n" + ev.toString());
-            return;
-          } catch (InterruptedException e) {
-        // canthappen
-      }
-      // XXX need an appendChar() method in MyTextArea
+          err("Error reading from remote:\n" + ev.toString());
+          return;
+          }
+          // XXX need an appendChar() method in MyTextArea
           String tmp = new String(buf, 0, nbytes);
           theTextArea.append(tmp);
-      theTextArea.setCaretPosition(theTextArea.getText().length());
+          theTextArea.setCaretPosition(theTextArea.getText().length());
         } while (serialInput != null);
       }
     });
@@ -628,6 +633,15 @@ public class JModem extends javax.swing.JFrame {
   xferProg = null;
     // Tell rest of program we are no longer online.
     state = S_DISCONNECTED;
+  }
+
+  /** Convenience routine, due to useless InterruptedException */
+  public void delay(long milliseconds) {
+  	try {
+  		Thread.sleep(milliseconds);
+  	} catch (InterruptedException e) {
+  		// can't happen
+  	}
   }
 
   private void sendChar(char ch) {
