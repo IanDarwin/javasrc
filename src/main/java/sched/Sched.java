@@ -24,6 +24,8 @@ public class Sched {
 
 			while ((inputLine = is.readLine()) != null) {
 				Appt a = Appt.fromString(inputLine);
+				// Repeat daily for 5 days.
+				a.setRep(Appt.DAILY, 1, 5);
 				if (a.matches(year, month, day))
 					System.out.println(a);
 				else ++nonMatches;

@@ -6,14 +6,11 @@ import java.util.*;
  */
 public class Appt implements Comparable {
 
-
 	//-----------------------------------------------------------------
 	//	MAIN CLASS VARIABLES -- APPOINTMENT
 	//-----------------------------------------------------------------
 	/** What we have to do at this time. */
 	String target;	
-	/** How often it recurs -- MAY BE NULL */
-	Repeat when;
 	/** The year (Gregorian calendar) when the appointment is */
 	int year;
 	/** The month (0-origin) */
@@ -33,28 +30,30 @@ public class Appt implements Comparable {
 	public static final int NONE = 0;
 	/** The repetition type for no repetition */
 	public static final int HOURLY = 1;
-	/** The repetition type for no repetition */
+	/** The repetition type for daily repetition */
 	public static final int DAILY = 2;
-	/** The repetition type for no repetition */
+	/** The repetition type for weekly repetition */
 	public static final int WEEKLY = 3;
-	/** The repetition type for no repetition */
-	public static final int MONTHLY = 4;
 	/** The month repetition meaning "The 12th of every month" */
 	public static final int MONTHLY_NUMDAY_OF_M = 41;
 	/** The month repetition meaning "The 2nd Tuesday of every month" */
 	public static final int MONTHLY_WEEKDAY_OF_M = 42;
-	/** The repetition type for no repetition */
+	/** The repetition type for yearly repetition */
 	public static final int YEARLY = 5;
+	/** The count factor meaning forever */
+	public static final int FOREVER = Integer.MAXINT;
 
 	//-----------------------------------------------------------------
 	//	MAIN CLASS VARIABLES -- REPETITION
 	//-----------------------------------------------------------------
-	/** The repetition type for this Repeat object */
-	protected int type = NONE;
+	/** The repetition type for this repeated object */
+	protected int r_type = NONE;
 	/** The interval: 2=every other (hour, day, month, year) */
 	protected int r_interval = NONE;
 	/** The number of times to repeat this event */
 	protected int r_count = NONE;
+	/** The Calendar object used for date calculations. */
+	protected static GregorianCalendar gc;
 
 	//-----------------------------------------------------------------
 	//	METHODS - CONSTRUCTOR(S)
@@ -67,20 +66,72 @@ public class Appt implements Comparable {
 		day  = d;
 		hour = h;
 		minute = min;
+		if (gc == null)
+			gc = new GregorianCalendar();
 	}
 
 	//-----------------------------------------------------------------
 	//	METHODS - REPETITION
 	//-----------------------------------------------------------------
+	public void setRep(int typ, int intv, int count) {
+		r_type = typ;
+		r_interval = intv;
+		r_count = count;
+	}
+
+	/** Decide whether a given Appointment matches the given y/m/d.
+	 */
 	public boolean matches(int y, int m, int d) {
 		// Do the simple case first!
 		if (year == y && month == m && day == d)
 			return true;
-		// XXX consider using a GregorianCalendar for calculations
-		// from here on in...
+		// If NOT today AND no repetition, not interesting.
+		if (r_count == NONE)
+			return false;
+
+		// Else potentially interesting!
+
 		// System.out.println("ME:"+year+","+month+","+day);
 		// System.out.println("YE:"+y   +","+m    +","+d  );
 
+		// using our GregorianCalendar for calculations from here on... 
+		gc.set(Calendar.YEAR,  year);
+		gc.set(Calendar.MONTH, month-1);
+		gc.set(Calendar.DAY_OF_MONTH, day);
+		gc.set(Calendar.HOUR,  hour);
+		gc.set(Calendar.MINUTE, minute);
+
+		System.out.println(gc.getTime().toString());
+
+		for (i=0; i<count && 
+			gc.get(Calendar.YEAR)<=year && 
+			gc.get(Calendar.MONTH)<=month && 
+			gc.get(Calendar.DAY)<=DAY) {
+			switch(r_type) {
+			case HOURLY:
+				break;
+			case DAILY:
+				gc.add(Calendar.DAY_OF_MONTH, r_interval);
+				break;
+			case WEEKLY:
+				break;
+			case MONTHLY_NUMDAY_OF_M:
+				break;
+			case MONTHLY_WEEKDAY_OF_M:
+				break;
+			case YEARLY:
+				break;
+			}
+
+			// OK, we did the increment. Now see if it
+			// matches the date we're looking for.
+			if (gc.get(Calendar.YEAR) == y &&
+			    gc.get(Calendar.MONTH) == m &&
+			    gc.get(Calendar.DAY_OF_MONTH) == d)
+			    return true;
+		} 
+
+		// We got out of the loop without finding a match, so...
 		return false;
 	}
 
