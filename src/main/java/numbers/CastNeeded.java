@@ -2,7 +2,7 @@
 public class CastNeeded {
 	//+
 	public static void main(String[] argv) {
-		int i, k;
+		int i;
 		double j = 2.75;
 		i = j;			// EXPECT COMPILE ERROR
 		i = (int)j;		// with cast; i gets 2
