@@ -13,11 +13,11 @@ public class UserDBText extends UserDB {
 
 	protected String fileName;
 
-	protected void init() throws IOException {
+	protected static void init() throws IOException {
 		singleton = new UserDBText(DEF_NAME);
 	}
 
-	public UserDB getInstance() throws IOException {
+	public static UserDB getInstance() throws IOException {
 		if (singleton == null) {
 			init();
 		}

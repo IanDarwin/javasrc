@@ -13,11 +13,11 @@ public class UserDBDBM extends UserDB {
 
 	protected DBM db;
 
-	protected void init() throws IOException {
+	protected static void init() throws IOException {
 		singleton = new UserDBDBM(DEF_NAME);
 	}
 
-	public UserDB getInstance() throws IOException {
+	public static UserDB getInstance() throws IOException {
 		if (singleton == null) {
 			init();
 		}
