@@ -3,21 +3,25 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-/** This is the Bounce class; create and start Sprites. */
-public class Bounce extends Applet implements ActionListener {
+/** ImageMover: Move one image around */
+public class ImageMover extends Applet implements ActionListener {
+	Sprite s;
 	Panel p;
 	Image img;
-	Vector v;
 
     public void init() {
-		Button b = new Button("Start");
-		b.addActionListener(this);
-		setLayout(new BorderLayout());
-		add("North", b);
-		add("Center", p = new Panel());
-		p.setLayout(null);
 		String imgName = getParameter("imagefile");
-		if (imgName == null) imgName = "duke.gif";
+		if (imgName == null) 
+			throw new IllegalArgumentException("imagefile parameter required");
+		String orientation = getParameter("orientation");
+		if (imgName == null) 
+			throw new IllegalArgumentException("orientation parameter required");
+		if (orientation.equalsIgnoreCase("horizontal")
+			mode = HORIZONTAL;
+		else if (orientation.equalsIgnoreCase("vertical")
+			mode = VERTICAL;
+		else
+			mode = DIAGONAL;
 		img = getImage(getCodeBase(), imgName);
 		MediaTracker mt = new MediaTracker(this);
 		mt.addImage(img, 0);
@@ -31,21 +35,12 @@ public class Bounce extends Applet implements ActionListener {
 			throw new IllegalArgumentException(
 				"Couldn't load image " + imgName);
 		}
-		v = new Vector();
-    }
-
-    public void actionPerformed(ActionEvent e) {
-		System.out.println("Creat-ing another one!");
 		Sprite s = new Sprite(this, img);
-		p.add(s);
-		v.addElement(s);
+		this.add(s);
     }
 
     public void stop() {
-		for (int i=0; i<v.size(); i++) {
-			((Sprite)(v.get(i))).stop();
-		}
-		v.clear();
+		s.stop();
     }
 }
 
