@@ -1,4 +1,4 @@
-public class StringPrintC {
+public class StringPrintAA {
 	public static void main(String[] argv) {
 		Object o = "Hello World";
 		for (int i=0; i<100000; i++) {
