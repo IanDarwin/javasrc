@@ -8,6 +8,9 @@
 
 	<property name="getmark.dir" value="../io"/>
 
+	<!-- Name for test output file created if you run xmlform target. -->
+	<property name="tmp.mif" value="tmp.mif"/>
+
 	<target name="build">
 		<!-- Make sure ../io is up to date, for GetMark -->
 		<!--
@@ -24,10 +27,15 @@
 	<target name="xmlform">
 		<java classname="XmlForm"
 			classpath="${build}:${darwinsys.jar}:${jaxp.jar}:${crimson.jar}:${jdom.jar}:${xalan.jar}:${getmark.dir}"
-			output="tmp.mif">
+			output="${tmp.mif}">
 			<arg value="test1.xml"/>
 		</java>
-		<echo message="Now compare test1.mif with tmp.mif"/>
+		<echo message="Now compare test1.mif with ${tmp.mif}"/>
+	</target>
+
+	<target name="clean">
+		<delete file="*.class"/>
+		<delete file="${tmp.mif}"/>
 	</target>
 
 </project>
