@@ -39,10 +39,7 @@ public class CheckSum {
             is.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
-		} finally {
-			return sum;
-        }
-		//-
+		}
+		return sum;
     }
-	//-
 }
