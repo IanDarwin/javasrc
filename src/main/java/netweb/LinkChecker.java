@@ -44,9 +44,8 @@ public class LinkChecker extends JFrame {
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		if (args.length == 0)
-			return;
-		lc.textFldURL.setText(args[0]);
+		if (args.length >= 1)
+			lc.textFldURL.setText(args[0]);
 		lc.setVisible(true);
 	}
   
@@ -179,6 +178,10 @@ public class LinkChecker extends JFrame {
 				textWindow.append(href + " -- ");
 
 				// Can't really validate these!
+				if (href == null) {
+					textWindow.append(" !! null? !!");
+					continue;
+				}
 				if (href.startsWith("mailto:")) {
 					textWindow.append(href + " -- not checking\n");
 					continue;
