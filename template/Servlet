@@ -18,15 +18,19 @@ public class Servlet extends HttpServlet
 		PrintWriter out = response.getWriter(); 
 
 		// BOILERPLATE beginning
-		out.println("<HTML>");
-		out.println("<HEAD><TITLE>Servlet Output</TITLE></HEAD>");
-		out.println("<BODY>");
+		out.println("<!DOCTYPE html PUBLIC " +
+			"\"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n" +
+			"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"\n" +
+			">");
+		out.println("<html>");
+		out.println("<head><title>Servlet Output</title></head>");
+		out.println("<body>");
 
 		// to do: logic code and main HTML goes here.
 
 		// BOILERPLATE ending
-		out.println("</BODY>");
-		out.println("</HTML>");
+		out.println("</body>");
+		out.println("</html>");
 		out.close();
 	}
 
@@ -35,22 +39,29 @@ public class Servlet extends HttpServlet
 		throws ServletException, IOException {
 
 		// One of the following:
+
+		// Delegate to doGet:
 		// doGet(request, response);
 
-		// Or:
+		// Do work different than that of doGet
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
 
 		// BOILERPLATE beginning
-		out.println("<HTML>");
-		out.println("<HEAD><TITLE>Servlet Output</TITLE></HEAD>");
-		out.println("<BODY>");
+		out.println("<!DOCTYPE html PUBLIC " +
+			"\"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n" +
+			"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"\n" +
+			">");
+
+		out.println("<html>");
+		out.println("<head><title>Servlet Output</title></head>");
+		out.println("<body>");
 
 		// to do: logic code and main HTML goes here.
 
 		// BOILERPLATE ending
-		out.println("</BODY>");
-		out.println("</HTML>");
+		out.println("</body>");
+		out.println("</html>");
 		out.close();
 	}
 }
