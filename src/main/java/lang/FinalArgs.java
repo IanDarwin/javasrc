@@ -9,11 +9,11 @@ public class FinalArgs {
 	}
 	void run() {
 		System.out.println("Hummm de dummm...");
-		myFunc(new Date());
+		myFunc(Calendar.getInstance());
 		System.out.println("Once upon a time...");
 	}
-	void myFunc(final Date d) {
+	void myFunc(final Calendar d) {
 		// d = null;	// this will not compile
-		d.setYear(99);	// this will compile, and changes the object
+		d.set(Calendar.YEAR(1999); // this will compile, and changes the object
 	}
 }
