@@ -18,6 +18,14 @@ JNIEXPORT jint JNICALL Java_DBM_dbmclose
 
 /*
  * Class:     DBM
+ * Method:    dbmfetch
+ * Signature: (Ljava/lang/Object;)[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_DBM_dbmfetch
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     DBM
  * Method:    dbminit
  * Signature: (Ljava/lang/String;)I
  */
@@ -26,18 +34,18 @@ JNIEXPORT jint JNICALL Java_DBM_dbminit
 
 /*
  * Class:     DBM
+ * Method:    dbmstore
+ * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
+ */
+JNIEXPORT jint JNICALL Java_DBM_dbmstore
+  (JNIEnv *, jobject, jobject, jobject);
+
+/*
+ * Class:     DBM
  * Method:    delete
  * Signature: (Ljava/lang/Object;)I
  */
 JNIEXPORT jint JNICALL Java_DBM_delete
-  (JNIEnv *, jobject, jobject);
-
-/*
- * Class:     DBM
- * Method:    fetch
- * Signature: (Ljava/lang/Object;)Ljava/lang/Object;
- */
-JNIEXPORT jobject JNICALL Java_DBM_fetch
   (JNIEnv *, jobject, jobject);
 
 /*
@@ -55,14 +63,6 @@ JNIEXPORT jobject JNICALL Java_DBM_firstkey
  */
 JNIEXPORT jobject JNICALL Java_DBM_nextkey
   (JNIEnv *, jobject, jobject);
-
-/*
- * Class:     DBM
- * Method:    store
- * Signature: (Ljava/lang/Object;Ljava/lang/Object;)I
- */
-JNIEXPORT jint JNICALL Java_DBM_store
-  (JNIEnv *, jobject, jobject, jobject);
 
 #ifdef __cplusplus
 }
