@@ -18,21 +18,17 @@ public class FormatterDemo {
 		// For the full(!) story, see javadoc for java.util.Formatter.
 
 		Formatter fmtr = new Formatter();
-		System.out.println(fmtr.format("%1$4d-%2$02d-%3$2d", 2004, 6, 28));
+		String result = fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
+		System.out.println(result);
 
-		// This is short for the above, except that you
-		// need explicitly to add the newline delimiter
-		System.out.format("%1$4d-%2$02d-%3$02d%n", 2004, 6, 28);
+		// A shorter way of doing things.
+		System.out.println(fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI));
+
+		// Even shorter, except that this way you must
+		// explicitly add the newline delimiter
+		System.out.format(fmtr.format(format("%1$04d - the year of %2$f", 1951, Math.PI));
 
 		// So is this
-		System.out.printf("%1$4d-%2$02d-%3$2d%n", 2004, 6, 28);
-
-		// Format fields from a Date object: multiple fields from "1$"
-		// (hard-coded formatting for Date not advisable; see I18N chapter)
-		Date today = Calendar.getInstance().getTime();
-		System.out.printf("%1$tB %1$td, %1$tY%n", today);	// e.g., July 4, 2004
-
-		// Format floating point numbers
-		System.out.printf("%1$7.2f%n", Math.PI);
+		System.out.printf(fmtr.format(format("%1$04d - the year of %2$f", 1951, Math.PI));
 	}
 }
