@@ -26,7 +26,7 @@ public class AppApp extends Applet {
 		final Frame f = new Frame("AppApp Demo");
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				f.hide();
+				f.setVisible(false);
 				f.dispose();
 			}
 		});
