@@ -8,17 +8,22 @@ import java.io.*;
  * @version $Id$
  */
 public class Telnet {
+	String host;
+	int portNum;
 	public static void main(String argv[]) {
 		new Telnet().talkTo(argv);
 	}
 	private void talkTo(String av[]) {
-		String host = av[0];
-		String serv = av[1];
-		int servNum = Integer.parseInt(serv);
-		System.out.println("Host" + host + "; serv " + serv + "/" +
-			servNum);
+		if (av.length >= 1)
+			host = av[0];
+		else
+			host = "localhost";
+		if (av.length >= 2)
+			portNum = Integer.parseInt(av[1]);
+		else portNum = 23;
+		System.out.println("Host" + host + "; port " + portNum);
 		try {
-			Socket s = new Socket(host, servNum);
+			Socket s = new Socket(host, portNum);
 
 			// Connect the remote to our stdout
 			new Pipe(new DataInputStream(s.getInputStream()),
