@@ -20,6 +20,6 @@ public class ToyStack {
 	}
 	/* Implement a toy stack version of peek */
 	protected int peek() {
-		return stack[depth];
+		return stack[depth-1];
 	}
 }
