@@ -1,0 +1,24 @@
+# This file contains my default Mail properties.
+# 
+# Values for sending
+#
+# CHANGE THIS ONE
+Mail.address=user@host.domain
+# Change this if you don't use SMTP for outgoing mail.
+Mail.send.proto=smtp
+# CHANGE THIS to your ISP's mail server
+Mail.send.host=localhost
+# Set this TRUE ONLY if you want debugging chatter from mail
+Mail.send.debug=true
+#
+# Values for receiving
+# Normally set this to POP or IMAP
+Mail.receive.protocol=mbox
+# CHANGE THIS to your ISP's pop or imap server
+Mail.receive.host=localhost
+# Change this to your POP or IMAP account name
+Mail.receive.user=ian
+# Can hardcode your password here, but better to leave as * which means ask
+Mail.receive.pass=*
+# Might need to change this on some systems.
+Mail.receive.root=/INBOX
