@@ -1,4 +1,6 @@
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
@@ -14,19 +16,8 @@ public class Grapher extends JPanel {
 	/** Multiplier for range to allow room for a border */
 	public final static double BORDERFACTOR = 1.1f;
 
-	/* Small inner class to hold x, y. Called Apoint to differentiate
-	 * from java.awt.Point.
-	 */
-	class Apoint {
-		double x;
-		double y;
-		public String toString() {
-			return "Apoint("+x+","+y+")";
-		}
-	}
-
-	/** The list of Apoint points. */
-	protected java.util.List data;
+	/** The list of Point points. */
+	protected List data;
 
 	/** The minimum and maximum X values */
 	protected double minx = Integer.MAX_VALUE, maxx = Integer.MIN_VALUE;
@@ -40,14 +31,23 @@ public class Grapher extends JPanel {
 		figure();
 	}
 
-	public void setListData(java.util.List newData) {
+	/** Set the list data from a list of Strings, where the
+	 * x coordinate is incremented automatically, and the y coordinate
+	 * is made from the String in the list.
+	 */
+	public void setListDataFromYStrings(List newData) {
 		data.clear();
 		for (int i=0; i < newData.size(); i++) {
-			Apoint p = new Apoint();
-			p.x = i;
-			p.y = Double.parseDouble((String)newData.get(i));
+			Point p = new Point();
+			p.setLocation(i, Double.parseDouble((String)newData.get(i)));
 			data.add(p);
 		}
+		figure();
+	}
+
+	/** Set the list from an existing List, as from GraphReader.read() */
+	public void setListData(List newData) {
+		data = newData;
 		figure();
 	}
 
@@ -55,7 +55,7 @@ public class Grapher extends JPanel {
 	private void figure() {
 		// find min & max
         for (int i=0 ; i < data.size(); i++) {
-			Apoint d = (Apoint)data.get(i);
+			Point d = (Point)data.get(i);
 			if (d.x < minx) minx = d.x;
 			if (d.x > maxx) maxx = d.x;
 			if (d.y < miny) miny = d.y;
@@ -86,7 +86,7 @@ public class Grapher extends JPanel {
 
 		// Scale and plot the data
         for (int i=0 ; i < data.size(); i++) {
-			Apoint d = (Apoint)data.get(i);
+			Point d = (Point)data.get(i);
 			double x = (d.x-minx) * xfact;
 			double y = (d.y-miny) * yfact;
 			Debug.println("point", "AT " + i + " " + d + "; " +
@@ -101,7 +101,7 @@ public class Grapher extends JPanel {
 		return new Dimension(150, 150);
 	}
 
-	public static void main(String[] rgs) {
+	public static void main(String[] args) {
 		final JFrame f = new JFrame("Grapher");
         f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -114,12 +114,10 @@ public class Grapher extends JPanel {
 		f.setContentPane(g);
 		f.setLocation(100, 100);
 		f.pack();
-/*
-		if (rgs.length == 0)
-			g.read("Grapher.dat");
+		if (args.length == 0)
+			g.setListData(GraphReader.read("Grapher.dat"));
 		else
-			g.read(rgs[0]);
- */
+			g.setListData(GraphReader.read(args[0]));
 		f.setVisible(true);
 	}
 }
