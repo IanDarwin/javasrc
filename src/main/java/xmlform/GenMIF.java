@@ -128,10 +128,10 @@ public class GenMIF implements XmlFormWalker {
 		//
 		// STYLE TAGS
 		//
-		} else if (tag.equals("literal")) {	// code
-			//
-		} else if (tag.equals("bt")) {	// book title
-			//
+		} else if (tag.equals("kb")) {	// keyboard, map to code
+			System.err.println("<KB> handler not written yet");
+		} else if (tag.equals("bt")) {	// book title, map to Citation
+			System.err.println("<BT> handler not written yet");
 		} else
 			System.err.println("IGNORING UNHANDLED TAG " + tag + '(' +
 				p.getClass() + '@' + p.hashCode() + ')');
