@@ -12,7 +12,7 @@ SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io ta
 #JAVAC=	javac
 #JAVAC=	guavac
 #JAVAC=	kaffe
-JAVAC=	jikes +E
+#JAVAC=	jikes +E
 # Make sure the user picked one.
 JAVAC?= javac
 
