@@ -66,27 +66,24 @@ public class JDBCQuery {
 	}
 
 	// Format and print any warnings from the connection
-	private static boolean checkForWarning(SQLWarning warn) throws SQLException  {
-             boolean rc = false;
+	private static void checkForWarning(SQLWarning warn) throws SQLException  {
 
-             // If a SQLWarning object was given, display the
-             // warning messages.  Note that there could be
-             // multiple warnings chained together
+	     // If a SQLWarning object was given, display the
+	     // warning messages.  Note that there could be
+	     // multiple warnings chained together
 
-             if (warn != null) {
-                     System.out.println("*** Warning ***\n");
-                     rc = true;
-                     while (warn != null) {
-                             System.out.println("SQLState: " +
-                                     warn.getSQLState());
-                             System.out.println("Message:  " +
-                                     warn.getMessage());
-                             System.out.println("Vendor:   " +
-                                     warn.getErrorCode());
-                             System.out.println("");
-                             warn = warn.getNextWarning();
-                     }
-             }
-             return rc;
+	     if (warn != null) {
+		     System.out.println("*** Warning ***\n");
+		     while (warn != null) {
+			     System.out.println("SQLState: " +
+				     warn.getSQLState());
+			     System.out.println("Message:  " +
+				     warn.getMessage());
+			     System.out.println("Vendor:   " +
+				     warn.getErrorCode());
+			     System.out.println("");
+			     warn = warn.getNextWarning();
+		     }
+	     }
      }
 }
