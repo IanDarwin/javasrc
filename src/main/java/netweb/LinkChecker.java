@@ -179,7 +179,7 @@ public class LinkChecker extends JFrame {
 
 				// Can't really validate these!
 				if (href == null) {
-					textWindow.append(" !! null? !!");
+					textWindow.append(" null? !!\n");
 					continue;
 				}
 				if (href.startsWith("mailto:")) {
@@ -273,9 +273,11 @@ public class LinkChecker extends JFrame {
 		int p1, p2, p3, p4;
 
 		if (caseTag.startsWith("<a") && 
-			Character.isWhitespace(caseTag.charAt(2)))
+			Character.isWhitespace(caseTag.charAt(2))) {
 			attrib = "href";		// A
-		else
+		} else if (caseTag.startsWith("<applet ")){
+			attrib = "code";
+		} else
 			attrib = "src";			// image, frame
 		// XXX refactor to use 1.5 enum here
 		if (attrib.equals("href") && caseTag.indexOf("name") != -1) {
