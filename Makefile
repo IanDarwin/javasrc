@@ -11,6 +11,7 @@ JAVACC=	jikes +E
 # Make sure the user picked one.
 JAVACC?= javac
 
+MAKE?=	make		# could also be gmake, nmake, ...
 SHELL=	/bin/sh
 
 # There are three types of Makefiles in SUBDIR/*. Most of them
@@ -39,11 +40,11 @@ checkpaths:
 
 # Then build everything.
 build:
-		@for dir in $(SUBDIR); do ( cd $$dir; make -k "JAVACC=$(JAVACC)"); done
+		@for dir in $(SUBDIR); do ( cd $$dir; $(MAKE) -k "JAVACC=$(JAVACC)"); done
 
 clean:
 		@for dir in $(SUBDIR); do echo "===> cleaning in $$dir"; \
-			( cd $$dir; make clean ); done
+			( cd $$dir; $(MAKE) clean ); done
 
 # For any subdirectory that doesn't already have a Makefile, create a simple one
 makefiles:
