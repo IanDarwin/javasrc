@@ -1,9 +1,11 @@
-#!/bin/sh
-set -xe
-jikes -d . *.java
+spdf.jar:
+	jikes -d . *.java
+	jar cvf spdf.jar com
 
-jar cvf spdf.jar com &
+test:
+	java Demo > /tmp/demo.pdf
+	xpdf        /tmp/demo.pdf
 
-java Demo > /tmp/demo.pdf
-xpdf        /tmp/demo.pdf
+clean:
+	-rm -rf com *.class
 
