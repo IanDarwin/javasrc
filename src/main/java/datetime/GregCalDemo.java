@@ -12,5 +12,9 @@ public class GregCalDemo {
 		System.out.println("It was then " + d1.getTime());
 		System.out.println("It is now " + d2.getTime());
 		System.out.println("It is now " + d3.getTime());
+		d3.set(Calendar.YEAR, 1915);
+		d3.set(Calendar.MONTH, Calendar.APRIL);
+		d3.set(Calendar.DAY_OF_MONTH, 12);
+		System.out.println("D3 set to " + d3.getTime());
 	}
 }
