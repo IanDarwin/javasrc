@@ -9,13 +9,13 @@ import javax.mail.internet.*;
  * @author Ian F. Darwin
  * @version $Id$
  */
-public class TestOpenRelay {
+public class TestOpenMailRelay {
 
 
 	/** Driver to parse options and control Sender */
 	public static void main(String args[]) {
 		if (args.length != 1) {
-			System.err.println("Usage: " + "TestOpenRelay" +
+			System.err.println("Usage: " + "TestOpenMailRelay" +
 				" suspected_relay");
 			System.exit(1);
 		}
@@ -30,8 +30,9 @@ public class TestOpenRelay {
 				suspect_relay + "\n" +
 				"is in fact an open mail relay site.\n" +
 				"For more information on the notion of open mail relays,\n" +
-				"please visit site " + "http://www.vix.org/rbl/.\n" +
-				"Please join the fight against spam by closing all open mail relays!");
+				"please visit site " + "http://www.vix.org/rbl/.\n" + // XXX
+				"Please join the fight against spam by closing all open mail relays!"\n +
+				"If this open relay has been closed, please accept our thanks.\n");
 			sm.sendFile();
 		} catch (MessagingException e) {
 			System.err.println(e);
