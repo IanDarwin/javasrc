@@ -18,11 +18,12 @@ public class ErrorHandler extends java.lang.Object {
 	/** Default constructor must exist (I know it's the default;
 	 * this is here in case somebody adds any other constructor).
 	 */
-	public class ErrorHandler() {
+	public ErrorHandler() {
+		System.out.println("CONSTRUCTED");
 	}
 
 	public void handle(Throwable t) {
 		System.err.println("Hey, I caught it!");
-		t.printStackTrace(System.err);
+		System.err.println(t.toString());
 	}
 }
