@@ -1,0 +1,5 @@
+Inner classes
+
+if (done) throw new ISA("Twice")
+
+
