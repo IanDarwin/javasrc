@@ -1,3 +1,4 @@
+import com.darwinsys.util.FileProperties;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

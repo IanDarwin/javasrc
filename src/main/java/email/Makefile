@@ -13,3 +13,6 @@ checkpath:
 classes:
 		@echo "===> Building in `pwd`"
 		$(JAVACC) *.java
+
+clean:
+		@echo Not removing classes due to TestOpenMailRelay program.

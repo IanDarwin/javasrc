@@ -133,9 +133,9 @@ public class Sender2 {
 					usage(1);
 				}
 			}
-			if (go.optind() == args.length) {
+			if (go.getOptInd() == args.length) {
 				sm.sendFile("(standard input)");
-			} else for (int i=go.optind(); i<args.length; i++)
+			} else for (int i=go.getOptInd(); i<args.length; i++)
 				sm.sendFile(args[i]);
 		} catch (MessagingException e) {
 			System.err.println(e);
