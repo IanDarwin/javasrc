@@ -1,0 +1,17 @@
+// ExitWindowsEx flags
+//	EWX_FORCE	Forces processes to terminate. Instead of bringing up
+//		the "application not responding" dialog box for the user, this 
+//		value forces an application to terminate if it does not respond.
+//	EWX_LOGOFF	Shuts down all processes running in the security context
+//		of the process that called the ExitWindowsEx function. Then it 
+//		logs the user off.
+//	EWX_POWEROFF	Shuts down the system and turns off the power. The
+//		application must have the SE_SHUTDOWN_NAME privilege (for more 
+//		information, see the Remarks section) and the system must support
+//		the power-off feature.
+//	EWX_REBOOT	Shuts down the system and then restarts the system.
+//		The application must have the SE_SHUTDOWN_NAME privilege.
+//	EWX_SHUTDOWN	Shuts down the system to a point at which it is safe
+//		to turn off the power. All file buffers have been flushed to disk,
+//		and all processes have stopped. The application must have 
+//		the SE_SHUTDOWN_NAME privilege.

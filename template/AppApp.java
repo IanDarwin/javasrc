@@ -1,0 +1,48 @@
+import java.awt.*;
+import java.applet.*;
+
+/**
+ * Example of a class that can be used as an Applet or an Application
+ */
+public class TemplateAppApp extends Applet {
+	boolean inAnApplet = true;
+	Label status;		// for Application showStatus()
+
+	public void init() {
+		add(new Label("This is my demo Applet"));
+		showStatus("My applet is running");
+	}
+
+	public static void main(String av[]) {
+		TemplateAppApp app = new TemplateAppApp();
+		Frame f = new Frame("TemplateAppApp Demo");
+		f.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				Browser5.this.hide();
+				Browser5.this.dispose();
+			}
+		});
+		f.setLayout(new BorderLayout());
+		app.inAnApplet = false;
+		f.add("Center", app);
+		// Must do this before init() since init() may use showStatus()
+		f.add("South", app.status = new Label());
+		f.setSize(300, 200);
+		app.status.setSize(f.getSize().width, app.status.getSize().height);
+
+		// Here we pretend to be a browser!
+		// A fancier version would make an AppletStub and pass it
+		// into the Applet with getAppletStub().
+		app.init();
+		app.start();
+
+		f.setVisible(true);
+	}
+	public void showStatus(String s) {
+		 if (inAnApplet) {
+			 super.showStatus(s);	// call version in Browser
+		 } else {
+			 status.setText(s);		// do it yourself.
+		 }
+	}
+}

@@ -1,0 +1,4 @@
+The master copy of this directory is in the 47x "javasrc" directory.
+
+When it changes, update it there, then copy this entire directory
+into the web servers "chat" directory (under ~www?).

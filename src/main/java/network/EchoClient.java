@@ -1,0 +1,53 @@
+import java.io.*;
+import java.net.*;
+
+/** EchoClient - simple line-mode echo client. Reads from stdin,
+ * writes to console.
+ * Talks to a UNIX "echo" server or a surrogate for it (EchoServer.java).
+ * @author	Ian Darwin, Learning Tree, Course 471/478 author.
+ * @version Copyright (C) 1995, 1996 Learning Tree International
+ */
+public class EchoClient {
+	/** Main program: construct an EchoClient object and use
+	 * its "converse" method to call the Echo server.
+	 */
+	public static void main(String argv[]) {
+		EchoClient c = new EchoClient();
+		c.converse(argv.length==1?argv[0]:"localhost");
+	}
+
+	/** Hold one conversation with the named host's echo server */
+	protected void converse(String hostname) {
+		Socket sock = null;
+		try {
+			int i;
+			sock = new Socket(hostname, 7);	// echo server.
+			BufferedReader stdin = new BufferedReader(
+				new InputStreamReader(System.in));
+			BufferedReader is = new BufferedReader(
+				new InputStreamReader(sock.getInputStream(), "8859_1"));
+			PrintWriter os = new PrintWriter(
+				new OutputStreamWriter(
+					sock.getOutputStream(), "8859_1"), true);
+
+			String line;
+			do {
+				System.out.print(">>");
+				if ((line = stdin.readLine()) == null)
+					break;
+				os.println(line);
+				String reply = is.readLine();
+				System.out.println(reply);
+			} while (line != null);
+		} catch (IOException e) {	// handles all input/output errors
+			System.err.println(e);
+		} finally {					// cleanup
+			try {
+				if (sock != null)
+					sock.close();
+			} catch (IOException ignoreMe) {
+				// nothing
+			}
+		}
+	}
+}

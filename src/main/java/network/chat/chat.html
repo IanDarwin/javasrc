@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE>Java ChatRoom Demo</TITLE></HEAD>
+<BODY BGCOLOR=Black TEXT=White Link=White VLink=White>
+<H1>Java ChatRoom Applet Demo</H1>
+<P>This is a <EM>very</EM> simple Chat Room applet.
+Note that if you try to load it from your <EM>local</EM> machine
+as opposed to a server, you won't have much luck, since Java Applets
+are only allowed - for very good security reasons - to open a network
+connection back to where they came from!  Load it from the server instead.
+<HR>
+<APPLET code="ChatRoom" WIDTH=500 HEIGHT=100>
+	<PARAM NAME=PORT VALUE=7777>
+	<P>This will only work with a Java-1.1-enabled browser.<P>
+</APPLET>
+<P>The Chat Room should appear in its own window. If it does not,
+check to make sure that you have a JDK1.1-enabled Web Browser
+(Netscape 4.1.5 or later, MSIE 4.x or later, or JDK1.1 AppletViewer).
+Check to make sure that the Chat Window is not hidden behind another
+window, too (on systems with an IconPanel or a TaskBar, look there!).
+<HR>
+<P>Use <A HREF="ChatRoom.java">The Source</A>, Luke.
+Alternately, see <A HREF="ChatServer.java">the server source</A>.
+<HR>
+Ian Darwin, <address>ian@darwinsys.com</address> 
+</BODY>
+</HEAD>

@@ -1,0 +1,61 @@
+#/bin/sh -f
+
+# run the CrossRef generator, postprocess the output
+
+# <BR>TO VIEW IN A WEB BROWSER, USE "View->Document Source"!!!<BR>
+
+rm -f xref.*	# clean up cruft from previous runs
+
+echo "<TITLE>Non-private Field Reference</TITLE>"	>  fields.htm
+echo "<H1>Non-private Field Reference</H1>"		>> fields.htm
+echo "<DL>"						>> fields.htm
+echo "<TITLE>Non-private Method Reference</TITLE>"	>  methods.htm
+echo "<H1>Non-private Method Reference</H1>"		>> methods.htm
+echo "<P>Excludes ubiquitous methods: toString, notify, wait.">>methods.htm
+echo "<DL>"						>> methods.htm
+
+java -noclassgc CrossRef |
+	#tee /tmp/xref |
+	#cat /tmp/xref |
+	sort -fu | 
+	awk 
+$2 == "field" {
+	if (fields[$1] == "")
+		fields[$1] = $3;
+	else
+		fields[$1] = fields[$1] ", " $3
+	next
+	}
+$2 == "method" {
+	if (methods[$1] == "")
+		methods[$1] = $3;
+	else
+		methods[$1] = methods[$1] ", " $3
+	next
+	}
+	{
+	print "INVALID INPUT", $0
+	}
+END	{
+	# print "Methods cross-reference"
+	for (m in methods) {
+		print "<DT>" m "<DD>" methods[m] >> "xref.methods"
+		}
+	# print "Public Fields cross-reference"
+	for (f in fields) {
+		print "<DT>" f "<DD>" fields[f] >> "xref.fields"
+		}
+	}
+
+
+grep INVALID INPUT xref.*
+
+sort -f xref.methods >> methods.htm
+
+sort -f xref.fields  >> fields.htm
+
+ls -l *.htm
+
+mv methods.htm fields.htm ~/lt471/server/xref
+
+rm -f xref.*

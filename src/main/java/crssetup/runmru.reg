@@ -1,0 +1,8 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU]
+"c"="A:\\setup\\1"
+"b"="C:\\build\\crssetup\\1"
+"a"="regedit\\1"
+"MRUList"="cba"
+

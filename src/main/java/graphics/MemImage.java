@@ -1,0 +1,53 @@
+import java.awt.*;
+import java.awt.image.*;
+
+/** MemImage is an in-memory icon showing a Color gradient. */
+public class MemImage extends Component {
+
+	/** Demo main program, showing two ways to use it.
+	 * Create a small MemImage and set it as this Frame's iconImage. 
+	 * Also display a larger version of the same image in the Frame.
+	 */
+	public static void main(String av[]) {
+		Frame f = new Frame("MemImage.java");
+		f.add(new MemImage());
+		f.setIconImage(new MemImage(16,16).img);
+		f.pack();
+		f.setVisible(true);
+	}
+
+	/** The image */
+	private Image img;
+	/** The image width */
+	private int w;
+	/** The image height */
+	private int h;
+
+	/** Construct a MemImage with a default size */
+	public MemImage() {
+		this(100,100);
+	}
+
+	/** Construct a MemImage with a specified width and height */
+	public MemImage(int w, int h) {
+		this.w = w;
+        this.h = h;
+        int pix[] = new int[w * h];
+        int index = 0;
+        for (int y = 0; y < h; y++) {
+            int red = (y * 255) / (h - 1);
+            for (int x = 0; x < w; x++) {
+                int blue = (x * 255) / (w - 1);
+                pix[index++] = (255 << 24) | (red << 16) | blue;
+            }
+        }
+        img = createImage(new MemoryImageSource(w, h, pix, 0, w));
+		setSize(getPreferredSize());
+	}
+	public Dimension getPreferredSize() {
+		return new Dimension(w, h);
+	}
+	public void paint(Graphics g) {
+		g.drawImage(img, 0, 0, getSize().width, getSize().height, this);
+	}
+}

@@ -1,0 +1,33 @@
+import java.net.*;
+import java.io.*;
+
+/**
+ * Browser0 - Get the contents of a URL, write to stdout
+ */
+public class GetFromURL {
+	public static void main(String av[]) {
+		new GetFromURL(av);
+	}
+
+	GetFromURL(String av[]) {
+		String loc = null;
+		String data = null;
+		switch(av.length) {
+			case 0: loc = "http://localhost/"; break;
+			case 1: loc = av[0]; break;
+			default:
+				System.err.println("Usage: getFromURL [url]");
+				System.exit(1);
+		}
+		try {
+			URL Web = new URL(loc);
+			data = (String)Web.getContent();
+		} catch (MalformedURLException e) {
+			System.out.println("MalformedURLException: " + e);
+		} catch (IOException e) {
+			System.out.println("IOException: " + e);
+		}
+		if (data != null)
+			System.out.println("Data " + data);
+	}
+}

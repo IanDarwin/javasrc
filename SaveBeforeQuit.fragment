@@ -1,0 +1,19 @@
+File SaveBeforeQuit.fragment
+class SaveBeforeQuitDialog extends YesNoDialog {
+	SomeMainClass j;
+	public SaveBeforeQuitDialog(SomeMainClass parent) {
+		super(parent, "Really Quit", 
+			"You have unsaved changes. Save before Quit?",
+			"Yes, Save and Quit", 
+			"No, Quit without Saving", "Cancel");
+		this.j = parent;
+	}
+	public void yes() {	// save then quit
+		j.saveFile(null);
+		System.exit(0);
+	}
+	public void no() {	// no, dont save, but do quit
+		System.exit(0);
+	}
+	// no need to override cancel method; it already does nothing.
+}

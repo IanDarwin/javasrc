@@ -1,0 +1,7 @@
+This is
+some text
+.br
+or so it seems. Let us try a blank line:
+
+This should
+be its own paragraph.

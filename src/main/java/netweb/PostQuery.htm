@@ -1,0 +1,17 @@
+<TITLE>PostQuery Demo</TITLE>
+<BODY BGCOLOR="White">
+<P>This is a demo of posting to a URL: just using a CGI tester to show
+the results.
+<HR>
+<P>First, as an APPLET:
+<APPLET CODE="PostQuery" WIDTH=200 HEIGHT=100>
+	<PARAM NAME=serverURL VALUE="http://darian/cgi-bin/test-cgi.pl">
+	<PARAM NAME=serverURL VALUE="http://hoohoo.ncsa.uiuc.edu/cgi-bin/post-query">
+</APPLET>
+<HR>
+<P>Here is the same server query as an HTML Form:
+<FORM METHOD=POST ACTION="http://hoohoo.ncsa.uiuc.edu/cgi-bin/post-query">
+<INPUT NAME=KEY Value="Some Value">
+<INPUT TYPE=SUBMIT VALUE="Do it!">
+</FORM>
+<HR>

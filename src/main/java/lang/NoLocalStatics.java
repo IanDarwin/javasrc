@@ -1,0 +1,14 @@
+/**
+ * Show that you can't have static variables in a method, unlike C/C++
+ */
+public class NoLocalStatics {
+	public static void main(String argv[]) {
+		System.out.println("Hello, World of Java");
+		NoLocalStatics t = new NoLocalStatics();
+		t.process();
+	}
+	void process() {				// EXPECT COMPILE ERROR
+		static int a = 42;			// EXPECT COMPILE ERROR
+		System.out.println("Process: " + a);
+	}
+}
