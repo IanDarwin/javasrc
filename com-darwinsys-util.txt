@@ -1,0 +1,10 @@
+CLASSPATH SETTINGS
+
+To build the files in this book, you must add the Jar file
+	com-darwinsys-util.jar
+into your classpath. Please update your classpath settings
+(referring to Recipe 2.x if necessary), and try again.
+
+$Id$
+
+

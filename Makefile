@@ -11,17 +11,19 @@ JAVAC=	jikes +E
 all:	checkpaths build
 
 # Make sure the user has installed Java, and has my classes on their CLASSPATH
+# Since at least one "javap" version stupidly returns 0 on failure, I use
+# my own little TestForClass program here.
 checkpaths:
 		# Ensure java findable
 		which java >/dev/null
 		# Ensure com.darwinsys.util on CLASSPATH
-		javap com.darwinsys.GetOpt || { \
-			cat com.darwinsys-util.txt; exit 1 \
+		java TestForClass com.darwinsys.util.GetOpt || { \
+			cat com-darwinsys-util.txt; exit 1; \
 		}
 
 # Then build everything.
 build:
-		for dir in ${SUBDIRS}; ( cd $$dir; make "JAVACC=${JAVACC}"); done
+		for dir in ${SUBDIRS}; do ( cd $$dir; make "JAVACC=$(JAVACC)"); done
 
 # Don't worry about (or try to use) this rule; it is only used by the book's
 # author when adding a subdirectory to the list of files included.
