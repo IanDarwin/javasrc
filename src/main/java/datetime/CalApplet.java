@@ -1,10 +1,14 @@
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /** An Applet to display a "Cal" calendar component */
-public class CalApplet extends Applet implements ActionListener {
+public class CalApplet extends AnApplet implements ActionListener {
 	int yy, mm, dd;
 	Cal cal;
 	Panel p;

@@ -1,7 +1,7 @@
-import java.applet.*;
-import java.awt.*;
-import java.util.Date;
+import java.applet.Applet;
+import java.awt.Graphics;
 import java.text.DateFormat;
+import java.util.Date;
 
 /** An Applet to display the current time */
 public class ClockApplet extends Applet implements Runnable {
@@ -29,7 +29,7 @@ public class ClockApplet extends Applet implements Runnable {
 		while (timerThread != null) {
 			repaint();	// request a redraw
 			try {
-				timerThread.sleep(1000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e){ /* do nothing*/ }
 		}
 	}

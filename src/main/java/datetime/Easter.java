@@ -1,5 +1,5 @@
-import java.util.*;
-import java.applet.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /** Easter - compute the day on which Easter falls.
  *

@@ -1,11 +1,14 @@
-import java.util.Locale;
-import com.ibm.icu.util.Calendar;
-import java.text.DateFormat;
-import com.ibm.icu.util.IslamicCalendar;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.FlowLayout;
-import javax.swing.*;
+import java.awt.Font;
+import java.text.DateFormat;
+import java.util.Locale;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import com.ibm.icu.util.Calendar;
 
 public class IBMCalDemo {
 	public static void main(String[] args) {
