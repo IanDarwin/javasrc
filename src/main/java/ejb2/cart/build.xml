@@ -1,0 +1,32 @@
+<project name="Shopping Cart Bean" default="deploy" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="build"/>
+	<property file="../build.properties"/>
+
+	<property name="deploy.jar" value="cart.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" classpath="${j2ee.jar}"/>
+	</target>
+
+	<target name="copy" depends="init">
+		<mkdir dir="${build}/META-INF"/>
+		<copy file="ejb-jar.xml" todir="${build}/META-INF"/>
+	</target>
+
+	<target name="jar" depends="compile, copy">
+		<jar jarfile="${deploy.jar}" basedir="${build}"/>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy file="${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>
