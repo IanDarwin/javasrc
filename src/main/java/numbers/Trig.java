@@ -1,7 +1,7 @@
 /**
  * Demonstrate a few of the Math functions for Trigonometry.
  * @author Ian F. Darwin, ian@darwinsys.com
- * @version #Id$
+ * @version $Id$
  */
 public class Trig {
 	public static void main(String argv[]) {

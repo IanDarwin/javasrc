@@ -6,7 +6,7 @@
  * another class, the messages will come out in the "expected" order.
  *
  * @author Ian F. Darwin, ian@darwinsys.com
- * @version #Id$
+ * @version $Id$
  */
 public class StaticIniDemo {
 
