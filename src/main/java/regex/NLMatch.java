@@ -13,19 +13,21 @@ public class NLMatch {
 		System.out.println();
 
 		String[] patt = {
-			"engines\nmore engines",
+			"engines.more engines",
 			"engines$"
 		};
 
 		for (int i = 0; i < patt.length; i++) {
 			System.out.println("PATTERN " + patt[i]);
 
-			boolean found = Pattern.matches(patt[i], input);
+			boolean found;
+			Pattern p1l = Pattern.compile(patt[i]);
+			found = p1l.matcher(input).lookingAt();
 			System.out.println("DEFAULT match " + found);
 
-			r.setMatchFlags(RE.MATCH_MULTILINE);
-			found = r.match(input);
-			System.out.println("MATCH_MULTILINE match was " + found);
+			Pattern pml = Pattern.compile(patt[i], Pattern.DOTALL);
+			found = pml.matcher(input).lookingAt();
+			System.out.println("DOTALL match was " + found);
 			System.out.println();
 		}
 	}
