@@ -45,13 +45,13 @@ public class MkIndex {
 		MkIndex mi = new MkIndex();
 		String inDir = args.length > 0 ? args[0] : ".";
 		mi.open(inDir, OUTPUTFILE);		// open files
-		mi.BEGIN();		// print HTML header
+		mi.begin();		// print HTML header
 		System.out.println("** Start Pass One **");
 		for (int i=0; i<args.length; i++)
 			mi.process(new File(args[i]));	// "We do ALL the work..."
 		mi.writeNav();	// Write navigator
 		mi.writeList();	// Write huge list of files
-		mi.END();		// print trailer.
+		mi.end();		// print trailer.
 		mi.close();		// close files
 	}
 
@@ -65,7 +65,7 @@ public class MkIndex {
 	}
 
 	/** Write the HTML headers */
-	void BEGIN() throws IOException {
+	void begin() throws IOException {
 		println("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'");
 		println("	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'");
 		println(">");
@@ -161,7 +161,7 @@ public class MkIndex {
 			// Need to make a link into this directory.
 			// IF there is a descr.txt file, use it for the text
 			// of the link, otherwise, use the directory name.
-			// But, if there is an index.html or index.html file,
+			// But, if there is an index.html (or index.htm) file,
 			// make the link to that file, else to the directory itself.
 			if (fn.endsWith("/")) {	// directory
 				String descr = null;
@@ -199,7 +199,7 @@ public class MkIndex {
 	}
 
 	/** Write the trailers and a signature */
-	void END() {
+	void end() {
 		System.out.println("Finishing the HTML");
 		println("</ul>");
 		flush();

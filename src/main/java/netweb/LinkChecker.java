@@ -28,7 +28,7 @@ import com.darwinsys.util.Debug;
  * @version $Id$
  */
 public class LinkChecker extends JFrame {
-	/** The "global" activation flag: set false to halt. */
+	/** The "global" activation flag: set true to halt. */
 	protected boolean done = false;
 
 	/** The textfield for the starting URL.
@@ -40,6 +40,7 @@ public class LinkChecker extends JFrame {
 	protected JButton killButton;
 	protected JTextArea textWindow;
 	protected int indent = 0;
+	protected Map hash = new HashMap();
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
@@ -128,6 +129,10 @@ public class LinkChecker extends JFrame {
 			textWindow.append("checkOut(null) isn't very useful");
 			return;
 		}
+		if (hash.get(rootURLString) != null) {
+			return;	// already visited
+		}
+		hash.put(rootURLString, Boolean.TRUE);
 
 		// Open the root URL for reading. May be a filename or a real URL.
 		try {
@@ -256,25 +261,6 @@ public class LinkChecker extends JFrame {
 		}
     }
  
-	/** Read one tag. Adapted from code by Elliott Rusty Harold */
-	public String readTag(BufferedReader is) {
-		StringBuffer theTag = new StringBuffer("<");
-		int i = '<';
-	  
-		try {
-			while (i != '>' && (i = is.read()) != -1)
-				theTag.append((char)i);
-		}
-		catch (IOException e) {
-		   System.err.println("IO Error: " + e);
-		}     
-		catch (Exception e) {
-		   System.err.println(e);
-		}     
-
-		return theTag.toString();
-	}
-
 	/** Extract the URL from <sometag attrs HREF="http://foo/bar" attrs ...> 
 	 * We presume that the HREF is correctly quoted!!!!!
 	 * TODO: Handle Applets.
@@ -283,10 +269,15 @@ public class LinkChecker extends JFrame {
 		String caseTag = tag.toLowerCase(), attrib;
 		int p1, p2, p3, p4;
 
-		if (caseTag.startsWith("<a "))
+		if (caseTag.startsWith("<a") && 
+			Character.isWhiteSpace(caseTag.charAt(2)))
 			attrib = "href";		// A
 		else
 			attrib = "src";			// image, frame
+		// XXX refactor to use 1.5 enum here
+		if (attrib.equals("href") && caseTag.indexOf("name") != -1) {
+			return;		// silently ignore <a name=...>
+		}
 		p1 = caseTag.indexOf(attrib);
 		if (p1 < 0) {
 			throw new MalformedURLException("Can't find " + attrib + " in " + tag);
@@ -295,6 +286,7 @@ public class LinkChecker extends JFrame {
 
 		// This fails to handle unquoted href, which some dinosaurs insist
 		// on using, saying the parser can sort it out. Phhhhhhhht!!!!
+		// XXX should handle single-quoted hrefs here
 		p3 = tag.indexOf("\"", p2);
 		p4 = tag.indexOf("\"", p3+1);
 		if (p3 < 0 || p4 < 0) {

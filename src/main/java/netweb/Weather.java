@@ -3,8 +3,10 @@ import java.net.*;
 
 import com.darwinsys.io.FileIO;
 
-/** Connect to a METCAST station and print the results */
+/** Connect to a METCAST station and print the results
+ */
 public class Weather {
+
 	public static final String request = 
 	"(ReqID (bounding-box 90. -180. -90. 180.)\n" +
     "  (st_constraint (block_id \"716240\"))\n" +
@@ -66,7 +68,7 @@ public class Weather {
 
 		System.out.println("Sending Request");
 		os.writeBytes("mbl-stmt=" + URLEncoder.encode(request));
-		os.close();
+		os.flush();
 
 		System.out.println("Getting the Response");
 		
