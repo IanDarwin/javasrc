@@ -2,9 +2,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import com.sun.java.swing.*;
-import com.sun.java.swing.border.*;
-import com.sun.java.swing.tree.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.tree.*;
 
 /**
   * Display a mailbox, initially faked.
