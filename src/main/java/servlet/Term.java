@@ -1,3 +1,5 @@
+package servlet;
+
 public class Term {
 	/** The term being defined */
 	public String term;

@@ -1,3 +1,5 @@
+package jndi-services;
+
 /*
  * @(#)FlatNameParser.java	1.3 99/07/26
  *

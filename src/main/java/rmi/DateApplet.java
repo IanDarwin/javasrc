@@ -1,3 +1,5 @@
+package rmi;
+
 package darwinsys.distdate;
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-import javax.ejb.*
+import javax.ejb.*;
 
 public class BillingBean extends EntityBean {
 	int amount;

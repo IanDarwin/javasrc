@@ -1,3 +1,5 @@
+package jndi-services;
+
 package com.darwinsys.jndi;
 
 import java.util.*;

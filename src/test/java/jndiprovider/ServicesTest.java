@@ -1,3 +1,5 @@
+package jndi-services;
+
 import java.util.*;
 import javax.naming.*;
 

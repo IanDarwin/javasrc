@@ -1,3 +1,5 @@
+package ejb;
+
 import javax.naming.*;
 import javax.rmi.*;
 import java.util.*;

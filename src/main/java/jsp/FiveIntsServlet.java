@@ -1,3 +1,5 @@
+package jsp;
+
 import java.util.Random;
 import javax.servlet.*;
 import javax.servlet.*;

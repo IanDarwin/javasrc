@@ -1,3 +1,5 @@
+package CORBA;
+
 import CDService.*;
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;

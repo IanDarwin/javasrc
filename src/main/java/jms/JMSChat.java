@@ -1,3 +1,5 @@
+package JMS;
+
 import javax.jms.*;
 import java.awt.*;
 import java.awt.event.*;
