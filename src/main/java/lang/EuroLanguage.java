@@ -1,5 +1,6 @@
 /* Make sure the compiler accepts European languages everywhere.
- * If you rename the class to, say, Español, many runtimes will be confused.
+ * May require a locale to be set before it will compile!
+ * But if you rename the class to, say, Español, many runtimes will be confused.
  */
 public class EuroLanguage {
 	public static int número;

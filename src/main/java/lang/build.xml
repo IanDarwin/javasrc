@@ -11,6 +11,8 @@
 			deprecation="true"
 			failonerror="false"
 			classpath="${darwinsys.jar}:${junit.jar}">
+				<!-- exclude programs that are having trouble compiling -->
+				<exclude name="EuroLanguage.java"/>
 				<!-- exclude programs that are not intended to compile -->
 				<exclude name="ByteAdd2.java"/>
 				<exclude name="CastingDemo.java"/>
