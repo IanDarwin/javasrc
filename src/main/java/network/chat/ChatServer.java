@@ -87,7 +87,7 @@ public class ChatServer {
 		protected PrintWriter pw;
 		/** The client's host */
 		protected String clientIP;
-		/** String handle */
+		/** String form of user's handle (name) */
 		protected String login;
 
 		/* Construct a Chat Handler */
@@ -136,9 +136,10 @@ public class ChatServer {
 							cl.psend(login, mesg);
 						break;
 					case Chat.CMD_QUIT:
-						broadcast(CHATMASTER_ID, "Goodbye to " + login + "@" + clientIP);
+						broadcast(CHATMASTER_ID,
+							"Goodbye to " + login + "@" + clientIP);
 						close();
-						return;		// END OF THIS CHATHANDLER
+						return;		// The end of this ChatHandler
 						
 					case Chat.CMD_BCAST:
 						if (login != null)
@@ -159,7 +160,7 @@ public class ChatServer {
 					clients.remove(this);
 					if (clients.size() == 0) {
 						System.out.println(CHATMASTER_ID + SEP +
-							"Im so lonely I could cry...");
+							"I'm so lonely I could cry...");
 					} else if (clients.size() == 1) {
 						ChatHandler last = (ChatHandler)clients.get(0);
 						last.send(CHATMASTER_ID,
