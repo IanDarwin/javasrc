@@ -48,4 +48,6 @@ javafromc.o:	javafromc.c
 	$(CC) -c $(INCLUDES) javafromc.c
 
 clean:
-	rm -f *.class *.o HelloWorld.h
+	rm -f core *.class *.o HelloWorld.h
+clobber: clean
+	rm -f javafromc
