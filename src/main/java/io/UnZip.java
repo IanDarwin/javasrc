@@ -4,22 +4,21 @@ import java.util.zip.*;
 
 /**
  * UnZip -- print or unzip a JAR or PKZIP file using JDK1.1 java.util.zip.
- *
  * Final command-line version: extracts files.
- *
  * @author	Ian Darwin, Ian@DarwinSys.com
  * $Id$
  */
 public class UnZip {
+	/** Constants for mode listing or mode extracting. */
 	public static final int LIST = 0, EXTRACT = 1;
 	/** Whether we are extracting or just printing TOC */
-	int mode = LIST;
+	protected int mode = LIST;
 
 	/** The ZipFile that is used to read an archive */
-	ZipFile zippy;
+	protected ZipFile zippy;
 
 	/** The buffer for reading/writing the ZipFile data */
-	byte[] b;
+	protected byte[] b;
 
 	/** Simple main program, construct an UnZipper, process each
 	 * .ZIP file from argv[] through that object.
@@ -55,12 +54,12 @@ public class UnZip {
 	}
 
 	/** For a given Zip file, process each entry. */
-	public void unZip(String classes) {
+	public void unZip(String fileName) {
 		try {
-			zippy = new ZipFile(new File(classes));
+			zippy = new ZipFile(fileName);
 			Enumeration all = zippy.entries();
 			while (all.hasMoreElements()) {
-				getFile(((ZipEntry)(all.nextElement())).getName());
+				getFile(((ZipEntry)(all.nextElement())));
 			}
 		} catch (IOException err) {
 			System.err.println("IO Error: " + err);
@@ -71,19 +70,19 @@ public class UnZip {
 	/** Process one file from the zip, given its name.
 	 * Either print the name, or create the file on disk.
 	 */
-	protected void getFile(String zipName) throws IOException {
+	protected void getFile(ZipEntry e) throws IOException {
+		String zipName = e.getName();
 		if (mode == EXTRACT) {
 			// double-check that the file is in the zip
 			// if a directory, mkdir it (remember to
 			// create intervening subdirectories if needed!)
 			if (zipName.endsWith("/")) {
-				pavePath(zipName);
+				new File(zipName).mkdirs();
 				return;
 			}
 			// Else must be a file; open the file for output
 			System.err.println("Creating " + zipName);
 			FileOutputStream os = new FileOutputStream(zipName);
-			ZipEntry e = zippy.getEntry(zipName);
 			InputStream  is = zippy.getInputStream(e);
 			int n = 0;
 			while ((n = is.read(b)) >0)
@@ -92,14 +91,10 @@ public class UnZip {
 			os.close();
 		} else
 			// Not extracting, just list
-			System.out.println("File " + zipName);
-	}
-
-	/** Pave the path to a directory, making all intervening 
-	 * directories if necessary.
-	 */
-	protected void pavePath(String fqdn) {
-		System.out.println("Paving " + fqdn + "...");
-		new File(fqdn).mkdirs();
+			if (e.isDirectory()) {
+				System.out.println("Directory " + zipName);
+			} else {
+				System.out.println("File " + zipName);
+			}
 	}
 }
