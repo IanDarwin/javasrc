@@ -6,12 +6,12 @@ public class NumSeries {
 
 		// When you want an ordinal list of numbers, use a for loop
 		// starting at 1.
-		for (int i = 1; i <= 12; i++)
+		for (int i = 1; i <= months.length; i++)
 			System.out.println("Month # " + i);
 	
 		// When you want a set of array indices, use a for loop
 		// starting at 0.
-		for (int i = 0; i < 12; i++)
+		for (int i = 0; i < months.length; i++)
 			System.out.println("Month " + months[i]);
 
 		// For a discontiguous set of integers, try a BitSet
@@ -22,7 +22,7 @@ public class NumSeries {
 		b.set(3);	// April
 
 		// Presumably this would be somewhere else in the code.
-		for (int i = 0; i<12; i++) {
+		for (int i = 0; i<months.length; i++) {
 			if (b.get(i))
 				System.out.println("Month " + months[i] + " requested");
 		}
