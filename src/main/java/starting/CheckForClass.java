@@ -21,5 +21,6 @@ public class TestForClass {
 			System.exit(1);		// Class not found.
 		}
 		/** NotReached */
+		System.exit(2);
 	}
 }
