@@ -20,6 +20,7 @@ import java.net.*;
  * TODO in V2: use Java's MultiCastSocket, if it works OK on '95.
  *
  * @author Ian Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class ChatRoom extends Applet {
 	/** The state */
