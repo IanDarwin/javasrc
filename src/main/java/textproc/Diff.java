@@ -585,8 +585,9 @@ public class Diff {
 	     if ( newblock < 0 ) skipnew();         // already printed.
 	     else if ( oldblock >= newblock ) {     // assume new's blk moved.
 		  blocklen[newother] = -1;         // stamp block as "printed".
-		  println( ">>>> " + newother + " MOVED TO BEFORE " +
-			 printoldline );
+		  println( ">>>> " + newother + 
+			" THRU " + (newother + newblock - 1) + 
+			" MOVED TO BEFORE " + printoldline );
 		  for( ; newblock > 0; newblock--, printnewline++ )
 		       newinfo.symbol[ printnewline ].showSymbol();
 		  anyprinted = true;
