@@ -12,7 +12,7 @@
 
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-			classpath="${javacook.jar}:${tools.jar}"
+			classpath="${javacook.jar}"
 			/>
 	</target>
 
@@ -23,7 +23,6 @@
 			<arg value="ArgTwo"/>
 			<classpath>
 				<pathelement location="."/>
-				<pathelement location="${tools.jar}"/>
 				<pathelement location="${darwinsys.jar}"/>
 			</classpath>
 		</java>
