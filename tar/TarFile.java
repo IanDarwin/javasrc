@@ -27,15 +27,6 @@ public class TarFile {
 	/** File containing archive */
 	protected String	fileName;
 
-	/** Represents one "link" found in the archive. */
-	class link {
-		link	next;
-		int		dev;
-		int		ino;
-		short		linkcount;
-		byte		name[];		// max length = NAMSIZ+1
-	};
-
 	/** Construct (open) a Tar file by name */
 	public TarFile(String name) {
 		fileName = name;
