@@ -22,7 +22,7 @@ public class JTreeDemo extends JFrame {
 		super("JTreeDemo");
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
-			
+
 		root = new DefaultMutableTreeNode("root");
 
 		child = new DefaultMutableTreeNode("Colors"); 
@@ -34,7 +34,11 @@ public class JTreeDemo extends JFrame {
 
 		myTree = new JTree(root);
 
-		cp.add(BorderLayout.CENTER, myTree);
+		// cp.add(BorderLayout.CENTER, myTree);
+		//JScrollPane scroller = new JScrollPane();
+		//scroller.getViewport().add(myTree);
+		JScrollPane scroller = new JScrollPane(myTree);
+		cp.add(BorderLayout.CENTER, scroller);
 
 		cp.add(BorderLayout.NORTH, addButton = new JButton("Add"));
 		addButton.addActionListener(new ActionListener() {
