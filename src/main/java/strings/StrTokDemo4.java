@@ -18,6 +18,8 @@ public class StrTokDemo4 {
 			String s = st.nextToken();
 			if (s.equals("|")) {
 				if (i++>=MAXFIELDS)
+					// This is messy: See StrTokDemo4b which uses 
+					// a Vector to allow any number of fields.
 					throw new IllegalArgumentException("Input line " +
 						line + " has too many fields");
 				continue;
