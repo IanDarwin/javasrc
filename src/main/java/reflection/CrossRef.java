@@ -72,8 +72,12 @@ public class CrossRef {
 		if (System.getProperties().getProperty("debug.names") != null)
 			System.out.println("doClass(" + zipName + ");");
 		// Ignore package/directory, other odd-ball stuff.
+		if (zipName.endsWith("/")) {
+			System.err.println("Starting directory " + zipName);
+			return;
+		}
 		if (!zipName.endsWith(".class")) {
-			System.err.println("Not a class: " + zipName);
+			System.err.println("Ignoring " + zipName);
 			return;
 		}
 		// Ignore sun.* etc.
