@@ -12,8 +12,18 @@ import java.net.*;
  * @author	Java version by Ian Darwin, ian@darwinsys.com.
  */
 public class RemCat {
+	/** The filename */
 	public final static int TFTP_PORT = 69;
+	/** The mode we will use - octet for everything. */
 	protected final String MODE = "octet";
+
+	/** The offset for the code/response as a byte */
+	protected final int OFFSET_REQUEST = 1;
+	/** The offset for the packet number as a byte */
+	protected final int OFFSET_PACKETNUM = 3;
+
+	/** Debugging flag */
+	protected static boolean debug = false;
 
 	/** TFTP op-code for a read request */
 	public final int OP_RRQ = 1,
@@ -37,11 +47,13 @@ public class RemCat {
 			System.err.println("usage: rcat host filename[...]");
 			System.exit(1);
 		}
-		System.out.println("Java RemCat starting");
+		if (debug)
+			System.err.println("Java RemCat starting");
 		RemCat rc = new RemCat(argv[0]);
 		for (int i = 1; i<argv.length; i++) {
-			System.out.println("-- Starting file " + argv[0] + 
-				":" + argv[i] + "---");
+			if (debug)
+				System.err.println("-- Starting file " + 
+					argv[0] + ":" + argv[i] + "---");
 			rc.readFile(argv[i]);
 		}
 	}
@@ -63,7 +75,7 @@ public class RemCat {
 		 * naturally smart enough :-) to use network byte order.
 		 */
 		buffer[0] = 0;
-		buffer[1] = OP_RRQ;		// read request
+		buffer[OFFSET_REQUEST] = OP_RRQ;		// read request
 		int p = 2;			// number of chars into buffer
 		path.getBytes(0, path.length(), buffer, p); // file name
 		p += path.length();
@@ -82,26 +94,37 @@ public class RemCat {
 		int len = 0;
 		do {
 			sock.receive(inp);
-			if (buffer[3] == OP_ERROR) {
-				System.err.println("rcat: "+new String(buffer));
+			if (debug)
+				System.err.println(
+					"Packet # " + Byte.toString(buffer[OFFSET_PACKETNUM])+
+					"RESPONSE CODE " + Byte.toString(buffer[OFFSET_REQUEST]));
+			if (buffer[OFFSET_REQUEST] == OP_ERROR) {
+				System.err.println("rcat ERROR: " +
+					new String(buffer, 4, inp.getLength()-4));
+				return;
 			}
-			else {
-				System.err.println("Got a packet of size " +
+			if (debug)
+				System.err.println("Got packet of size " +
 					inp.getLength());
-				/* Ack the packet. The block number we 
-				 * want to ack is already in 'buffer' so 
-				 * we just change the opcode. The ACK is 
-				 * sent to the port number which the server 
-				 * just sent the data from, NOT to port 
-				 * TFTP_PORT.
-				 */
-				buffer[1] = OP_ACK;
-				outp.setLength(4);
-				outp.setPort(inp.getPort());
-				sock.send(outp);
-				}
-			} while (inp.getLength() == PACKET);
-			System.err.println("Leaving loop, size " +
-					inp.getLength());
+
+			/* Print the data from the packet */
+			System.out.write(buffer, 4, inp.getLength()-4);
+
+			/* Ack the packet. The block number we 
+			 * want to ack is already in 'buffer' so 
+			 * we just change the opcode. The ACK is 
+			 * sent to the port number which the server 
+			 * just sent the data from, NOT to port 
+			 * TFTP_PORT.
+			 */
+			buffer[OFFSET_REQUEST] = OP_ACK;
+			outp.setLength(4);
+			outp.setPort(inp.getPort());
+			sock.send(outp);
+		} while (inp.getLength() == PACKET);
+
+		if (debug)
+			System.err.println("** ALL DONE** Leaving loop, last size " +
+				inp.getLength());
 	}
 }
