@@ -20,3 +20,6 @@ public class AllClasses {
 /** Class contained in same file as AllClasses, but can be used
  * (with a warning) in other contexts.
  */
+class AnotherClass {
+	// methods and fields here...
+}

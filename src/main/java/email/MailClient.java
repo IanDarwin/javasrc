@@ -16,6 +16,8 @@ public class MailClient extends JComponent implements MailConstants {
 	MailReaderBean mrb;
 	/** The send mode */
 	MailComposeFrame mcb;
+	/** The Aliases panel */
+	AliasBean alb;
 
 	/** Construct the MailClient JComponent a default Properties filename */
 	public MailClient() throws Exception {
@@ -44,12 +46,23 @@ public class MailClient extends JComponent implements MailConstants {
 		if (!proto.equals("mbox") && (pass == null || pass.equals("ASK"))) {
 			String np;
 			do {
-				// VERY INSECURE -- should use JDialog + JPasswordField!
-				np = JOptionPane.showInputDialog(null,
-				"Please enter password for " + proto + " user  " +
-					user + " on " + host + "\n" +
-					"(warning: password WILL echo)",
-				"Password request", JOptionPane.QUESTION_MESSAGE);
+				//np = JOptionPane.showInputDialog(null,
+				//"Please enter password for " + proto + " user  " +
+				//		user + " on " + host + "\n" +
+				//		"(warning: password WILL echo)",
+				//	"Password request", JOptionPane.QUESTION_MESSAGE);
+
+				// Kludge so JOptionPane prompts for password in no-echo.
+				// Create "message" using JPanel, JLabel, & JPasswordField
+				// Courtesy of Marc Loy.
+				JPanel p = new JPanel();
+				p.add(new JLabel("Password for " + proto + " user " +
+						user + " on " + host));
+				JPasswordField jpf = new JPasswordField(20);
+				p.add(jpf);
+				JOptionPane.showMessageDialog(null, p,
+					"Password request", JOptionPane.QUESTION_MESSAGE);
+				np = new String(jpf.getPassword());
 			} while (np == null || (np != null && np.length() == 0));
 			mailProps.setProperty(RECV_PASS, np);
 		}
@@ -64,6 +77,9 @@ public class MailClient extends JComponent implements MailConstants {
 		add(BorderLayout.CENTER, tbp);
 		tbp.addTab("Reading", mrb = new MailReaderBean());
 		tbp.addTab("Sending", mcb = new MailComposeFrame());
+		tbp.addTab("Aliases", alb = new AliasBean());
+		tbp.addTab("List sending", new JLabel("Under construction",
+			JLabel.CENTER));
 		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
 		// System.out.println("Leaving Constructor");
 	}

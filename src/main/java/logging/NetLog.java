@@ -2,31 +2,32 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-/** NetLog - simple NetLog client.
+/** NetLog - NetLog client API.
+ * @see		NetLogSimple -- demonstration example usage.
  * @author	Ian Darwin, ian@darwinsys.com
  * @version Copyright (C) 1995, 1996 Ian Darwin
  */
 public class NetLog {
-	protected final static int NETLOG_PORT = 65432;
+	protected final static int NETLOG_PORT = NetLogServer.PORT;
 	protected int port = NETLOG_PORT;
 	protected Socket sock = null;
-	PrintWriter os;
+	protected PrintWriter os;
 
 	public NetLog() throws IOException {
 		this(NETLOG_PORT);
 	}
 
-	public NetLog(int po) throws IOException {
-		this(InetAddress.getLocalHost(), po);
+	public NetLog(int prtNum) throws IOException {
+		this(InetAddress.getLocalHost(), prtNum);
 	}
 
-	public NetLog(String host, int po) throws IOException {
-		this(InetAddress.getByName(host), po);
+	public NetLog(String host, int prtNum) throws IOException {
+		this(InetAddress.getByName(host), prtNum);
 	}
 
-	public NetLog(InetAddress host, int po) throws IOException {
-		port = po;
-		sock = new Socket(host, po);
+	public NetLog(InetAddress host, int prtNum) throws IOException {
+		port = prtNum;
+		sock = new Socket(host, prtNum);
 		os = new PrintWriter(
 			new OutputStreamWriter(
 				sock.getOutputStream(), "8859_1"), true);
@@ -60,15 +61,5 @@ public class NetLog {
 	public void close() {
 		os.close();
 		os = null;
-	}
-
-	public static void main(String[] args) throws IOException {
-		NetLog nl = new NetLog();
-		nl.log("Hello Java");
-		nl.log(new Date());
-		nl.log(nl);
-		nl.log(null);
-		nl.log("");
-		nl.close();
 	}
 }

@@ -2,38 +2,29 @@ import java.net.*;
 import java.io.*;
 
 /**
- * A very very very simple Web server.
- *
- * There is only one response to all requests, and it's hard-coded.
- * This version is not threaded and doesn't do very much.
- * Really just a proof of concept.
- * However, it is still useful on notebooks in case somebody connects
- * to you on the Web port by accident (or otherwise).
- *
- * Can't claim to be fully standards-conforming, but has been
- * tested with Netscape Communicator and with the Lynx text browser.
+ * A very simple network server using a simple Thread pool.
  *
  * @author	Ian Darwin, ian@darwinsys.com
  * @version	$Id$
- * @see		webserver/* for more fully-fleshed-out version(s).
  */
-public class WebServer0 {
-	public static final int HTTP = 80;
+public class ThreadPoolServer implements Runnable {
+	public static final int PORT = 2000;
+	public static final int POOL_MIN = 10;
 	ServerSocket s;
 
 	/**
 	 * Main method, just creates a server and call its runServer().
 	 */
 	public static void main(String[] argv) {
-		System.out.println("DarwinSys JavaWeb Server 0.0 starting...");
-		WebServer0 w = new WebServer0();
+		System.out.println("Thread Pool Server 0.0 starting...");
+		ThreadPoolServer w = new ThreadPoolServer();
 		w.runServer();		// never returns!!
 	}
 
 	/**
 	 * Constructor, just create the server socket.
 	 */
-	WebServer0() {
+	ThreadPoolServer() {
 		try {
 			s = new ServerSocket(HTTP);
 		} catch(IOException e) {
@@ -41,10 +32,13 @@ public class WebServer0 {
 			System.exit(0);
 			return;
 		}
+		for (int i = 0; i<POOL_MIN; i++) {
+			new Thread(this).start();
+		}
 	}
 
 	/** RunServer accepts connections and passes each one to handler. */
-	public void runServer() {
+	public void run() {
 		Socket us;		// user socket, gotten from accept()
 		while (true) {
 			try {
@@ -54,20 +48,21 @@ public class WebServer0 {
 				System.exit(0);
 				return;
 			}
-			Handler(us);
+			getThread();
+			handler(us);
+			freeThread();
 		}
 	}
 
-	/** Handler() handles one conversation with a Web client.
-	 * This is the only part of the program that "knows" HTTP.
+	/** handler() handles one conversation with a client.
 	 */
-	public void Handler(Socket s) {
+	public void handle(Socket s) {
 		BufferedReader is;	// inputStream, from Viewer
 		PrintWriter os;		// outputStream, to Viewer
-		String request;		// what Viewer sends us.
 		try {
 			String from = s.getInetAddress().toString();
-			System.out.println("Accepted connection from " + from);
+			System.out.println(Thread.getCurrent().getName() +
+				"Accepted connection from " + from);
 			is = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			request = is.readLine();
 			// TODO new StreamTokenizer(request); to parse it

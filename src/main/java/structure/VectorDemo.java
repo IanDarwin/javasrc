@@ -11,9 +11,9 @@ public class VectorDemo {
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the Vector...
-		v.addElement(source.getDate());
-		v.addElement(source.getDate());
-		v.addElement(source.getDate());
+		v.add(source.getDate());
+		v.add(source.getDate());
+		v.add(source.getDate());
 
 		// First print them out using a for loop.
 		System.out.println("Retrieving by index:");
