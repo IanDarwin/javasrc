@@ -59,4 +59,12 @@ public class StopBoolean extends Thread {
 	public void shutDown() {
 		done = true;
 	}
+
+	public static void main(String[] args) 
+	throws InterruptedException {
+		StopBoolean t1 = new StopBoolean();
+		t1.start();
+		Thread.sleep(1000*5);
+		t1.shutDown();
+	}
 }

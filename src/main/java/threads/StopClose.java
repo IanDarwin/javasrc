@@ -76,4 +76,12 @@ public class StopClose extends Thread {
 			io.close();
 		}
 	}
+
+	public static void main(String[] args) 
+	throws InterruptedException, IOException {
+		StopClose t = new StopClose();
+		t.start();
+		Thread.sleep(1000*5);
+		t.shutDown();
+	}
 }
