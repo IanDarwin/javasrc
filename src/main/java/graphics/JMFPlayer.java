@@ -52,8 +52,8 @@ public class JMFPlayer extends Applet implements ControllerListener {
 
 	/** Called by JMF when the Player is ready to go. */
 	public synchronized void controllerUpdate(ControllerEvent event) {
-		System.out.println("controllerUpdate(" + event + ")");
 		if (event instanceof RealizeCompleteEvent) {
+			System.out.println("controllerUpdate(" + event + ")");
 			if ((visualComponent = thePlayer.getVisualComponent()) != null)
 				add("Center", visualComponent);
 			if ((controlComponent = 
