@@ -1,57 +1,66 @@
 import java.io.*;
-import com.darwinsys.util.FileIO;
 import java.net.*;
 import java.text.*;
 import java.util.*;
 import java.util.regex.*;
 
+import com.darwinsys.util.FileIO;
+import com.darwinsys.util.FileProperties;
+
 /** Graph of a book's sales rank on a given bookshop site.
  * @author Ian F. Darwin, ian@darwinsys.com, Java Cookbook author,
- *	translated fairly literally from Perl into Java.
+ *	originally translated fairly literally from Perl into Java.
  * @author Patrick Killelea <p@patrick.net>: original Perl version,
  *	from the 2nd edition of his book "Web Performance Tuning".
  * @version $Id$
  */
 public class BookRank {
-	public final static String ISBN = "0937175307";
-	public final static String DATA_FILE = "lint.sales";
-	public final static String GRAPH_FILE = "lint.png";
-	public final static String TITLE = "Checking C Prog w/ Lint";
-	public final static String QUERY =
-			"http://www.quickbookshops.web/cgi-bin/search?isbn=";
+	public final static String DATA_FILE = "book.sales";
+	public final static String GRAPH_FILE = "book.png";
 
 	/** Grab the sales rank off the web page and log it. */
 	public static void main(String[] args) throws Exception {
+
+		Properties p = new FileProperties("bookrank.properties");
+		String title = p.getProperty("title", "NO TITLE IN PROPERTIES");
+		// The url must have the "isbn=" at the very end, or otherwise
+		// be amenable to being string-catted to, like the default.
+		String url = p.getProperty("url", "http://test.ing/test.cgi?isbn=");
+		// The 10-digit ISBN for the book.
+		String isbn  = p.getProperty("isbn", "0000000000");
+		// The RE pattern (MUST have ONE capture group for the number)
+		String pattern = p.getProperty("pattern", "Rank: (\\d+)");
 
 		// Looking for something like this in the input:
 		//	 <b>QuickBookShop.web Sales Rank: </b>
 		//	 26,252
 		//	 </font><br>
 
-		// Patrick Killelea's original RE formulation : match number with
-		// comma included, just print minus ",". Loses if fall below 100,000.
-		Pattern r = Pattern.compile(" Sales Rank: </b>\\s*(\\d*),*(\\d+)\\s");
-		// Java: should use "[\d,]+" to extract the number and 
-		// NumberFormat.getInstance().parse() to convert to int.
+		Pattern r = Pattern.compile(pattern);
 
 		// Open the URL and get a Reader from it.
 		BufferedReader is = new BufferedReader(new InputStreamReader(
-			new URL(QUERY + ISBN).openStream()));
+			new URL(url + isbn).openStream()));
 		// Read the URL looking for the rank information, as
 		// a single long string, so can match RE across multi-lines.
 		String input = FileIO.readerToString(is);
+		// System.out.println(input);
 
 		// If found, append to sales data file.
 		Matcher m = r.matcher(input);
-		if (r.lookingAt(input)) {
+		if (m.lookingAt()) {
 			PrintWriter FH = new PrintWriter(
 				new FileWriter(DATA_FILE, true));
 			String date = // `date +'%m %d %H %M %S %Y'`;
 				new SimpleDateFormat("MM dd hh mm ss yyyy ").
 				format(new Date());
-			// Paren 1 is the optional thousands; paren 2 is low 3 digits.
-			FH.println(date + r.group(1) + r.group(2));
+			// Paren 1 is the numbers that matched
+			// XXX need to remove "," from it...
+			FH.println(date + m.group(1));
 			FH.close();
+		} else {
+			System.err.println("WARNING: pattern `" + pattern +
+				"' did not match in `" + url + isbn + "'!");
 		}
 
 		// Whether current data found or not, draw the graph, using 
@@ -69,11 +78,11 @@ public class BookRank {
 			"set yrange [1:60000] reverse\n" +
 			"set timefmt \"%m %d %H %M %S %Y\"\n" +
 			"plot \"" + DATA_FILE + 
-				"\" using 1:7 title \"" + TITLE + "\" with lines\n" 
+				"\" using 1:7 title \"" + title + "\" with lines\n" 
 		;
 
-		Process p = Runtime.getRuntime().exec("/usr/local/bin/gnuplot");
-		PrintWriter gp = new PrintWriter(p.getOutputStream());
+		Process proc = Runtime.getRuntime().exec("/usr/local/bin/gnuplot");
+		PrintWriter gp = new PrintWriter(proc.getOutputStream());
 		gp.print(gnuplot_cmd);
 		gp.close();
 	}
