@@ -107,6 +107,8 @@ public class ConvertToMif implements XmlFormWalker {
 			doCode(p);
 		} else if (tag.equals("example")) {
 			doExample(p);
+		} else if (tag.equals("runoutput")) {
+			doRun(p);
 		} else
 			System.err.println("IGNORING UNHANDLED TAG " + tag + '(' +
 				p.getClass() + '@' + p.hashCode() + ')');
@@ -144,13 +146,36 @@ public class ConvertToMif implements XmlFormWalker {
 		String fname = href.getNodeValue();
 		msg.println("<Example>");
 		try {
-			fname = "/javasrc/" + fname;
+			fname = "/javasrc/" + fname;	// XX dir should be parameter
 			LineNumberReader is = new LineNumberReader(new FileReader(fname));
 			gm.process(fname, is, smsg);
 		} catch(IOException e) {
 			throw new IllegalArgumentException(e.toString());
 		}
 	}
+
+	/** Run a java Program and capture the output.
+	 * TODO use class.forName.findStaticMethod() and call its main method.
+	 * (then need to be writing stdout, or dup2 stdout).
+	 */
+	protected void doRun(Element p) {
+		NamedNodeMap attrs = p.getAttributes();
+		Node href;
+		if ((href = attrs.getNamedItem("CMD")) == null)
+			throw new IllegalArgumentException(
+				"node " + p + "lacks required CMD Attribute");
+		String fname = href.getNodeValue();
+		msg.println("<Example>");
+		try {
+			String cmd = "cd /javasrc; java " + fname;	// XX dir should be parameter
+			Process p = Runtime.getRuntime().exec(cmd);
+			LineNumberReader is = new LineNumberReader(
+				new InputStreamReader(p.getInputStream()));
+			gm.process(fname, is, smsg);
+		} catch(IOException e) {
+			throw new IllegalArgumentException(e.toString());
+		}
+	
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
 		String s = p.getData().trim();
