@@ -88,8 +88,7 @@
 		<ant target="compile" dir="Plotter"/>
 		<ant target="compile" dir="prefs"/>
 		<ant target="compile" dir="quizzes"/>
-		<echo message="==> RE"/>
-		<ant target="RE-1.4"/>
+		<echo message="==> RE"/><ant target="RE"/>
 		<ant target="compile" dir="RE-apache"/>
 		<ant target="compile" dir="RelLayout"/>
 		<ant target="compile" dir="rmi"/>
