@@ -31,7 +31,7 @@ public class RandomRead {
 
 	/** Read the message at the given offset */
 	public String readMessage() throws IOException {
-		seeker.seek(readOffset());	// move to where
+		seeker.seek(readOffset());	// move to the offset
 		return seeker.readLine();	// and read the String
 	}
 }
