@@ -5,7 +5,6 @@ import java.util.*;
 public class BatchMailer {
 	public static void main(String[] args) throws IOException {
 		BatchMailer b = new BatchMailer();
-		b.setSubject("OpenBSD");
 		b.readTemplate();
 		b.readCustList();
 		b.sendMails();
@@ -18,7 +17,7 @@ public class BatchMailer {
 	  */
 	public void readTemplate() throws IOException {
 		messageBody = null;
-		BufferedReader is = new BufferedReader(new FileReader("to.obsd.cust");
+		BufferedReader is = new BufferedReader(new FileReader("template.txt"));
 		String line;
 		StringBuffer bs = new StringBuffer();
 		while ((line = is.readLine() != null) {
@@ -35,7 +34,7 @@ public class BatchMailer {
 	  */
 	public void readCustList() throws IOException {
 		messageBody = null;
-		BufferedReader is = new BufferedReader(new FileReader("obsd.custlist");
+		BufferedReader is = new BufferedReader(new FileReader("obsd.custlist"));
 		String line;
 		StringBuffer bs = new StringBuffer();
 		while ((line = is.readLine() != null) {
