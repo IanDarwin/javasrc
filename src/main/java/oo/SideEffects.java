@@ -11,7 +11,7 @@ class Enemy {
 	public void munge(SideEffects md) {
 		System.out.println("Object is " + md);
 		md.year = 0;
-		md.td.setYear(71);
+		md.td.setYear(71);	  // Ignore deprecation warnings
 	}
 }
 

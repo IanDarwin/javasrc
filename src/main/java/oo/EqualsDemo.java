@@ -1,6 +1,6 @@
 public class EqualsDemo {
-	int int1;
-	SomeClass obj1;
+	private int int1;
+	private SomeClass obj1;
 
 	/** Constructor */
 	public EqualsDemo(int i, SomeClass o) {
