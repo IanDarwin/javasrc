@@ -1,6 +1,6 @@
-import com.sun.java.swing.*;
-import com.sun.java.swing.text.*;
-import com.sun.java.swing.border.*;
+import javax.swing.*;
+import javax.swing.text.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
