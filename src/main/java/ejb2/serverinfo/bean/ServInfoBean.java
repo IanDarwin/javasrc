@@ -4,9 +4,10 @@ import javax.ejb.*;
 import javax.naming.*;
 
 /**
- *  Implementation Class for ServInfo.
+ * Implementation Class for ServInfo EJB.
  *
  * @author Ian Darwin, with help from MkEjb
+ * @version $Id$
  */
 public class ServInfoBean implements SessionBean {
 
@@ -14,6 +15,11 @@ public class ServInfoBean implements SessionBean {
 
 	// implementation of main logic
 
+	/** getEnv retrieves an object from the java:comp/env environment
+	 * in the EJB container, and returns it to the client.
+	 * @param eName the JNDI name the object is under; the string java:comp/env/
+	 * will be prepended in the bean and should not be included.
+	 */
 	public Object getEnv(String eName) { 
 		try {
 			Context ctx = new InitialContext();
@@ -34,7 +40,7 @@ public class ServInfoBean implements SessionBean {
 		return;
 	}
 
-	// No Find methods  for session bean
+	// No Find methods for session bean
 
 	/** reference to passed Session context */
 	private SessionContext ctx;

@@ -1,0 +1,5 @@
+#!/bin/sh -f
+
+set -v
+
+java -classpath .:$CLASSPATH:../bean/ejb.jar Client

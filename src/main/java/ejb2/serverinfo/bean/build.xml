@@ -1,4 +1,4 @@
-<project name="Server Info Enterprise Bean" default="jar" basedir=".">
+<project name="Server Info Enterprise Bean" default="deploy" basedir=".">
 
   <!-- $Id$ -->
 
@@ -8,6 +8,7 @@
   <property name="build.compiler" value="jikes"/>
 
   <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
+  <property name="deploy.jar" value="serverinfo.jar"/>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -21,20 +22,17 @@
 
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath=".:com-darwinsys-util.jar"/>
+		  classpath=".:${deploy.jar}:com-darwinsys-util.jar"/>
   </target>
 
   <target name="jar" depends="compile">
-
-    <!-- Build the ejb.jar -->
-    <jar jarfile="${build}/ejb.jar" basedir="${build}"
+    <jar jarfile="${build}/${deploy.jar}" basedir="${build}"
 		includes="META-INF/*,com/**">
     </jar>
   </target>
 
-<!--
   <target name="deploy" depends="jar">
-	<copy file="${build}/ejb.jar" todir="${deploy.dir}"/>
+	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
   </target>
- -->
+
 </project>

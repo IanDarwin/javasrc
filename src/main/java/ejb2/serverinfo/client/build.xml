@@ -21,7 +21,7 @@
 
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="com-darwinsys-util.jar:../ejb.jar"/>
+		  classpath="com-darwinsys-util.jar:../bean/ejb.jar"/>
   </target>
 
 </project>
