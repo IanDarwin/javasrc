@@ -49,11 +49,11 @@ public class GetMark {
 						while (Character.isWhitespace(inputLine.charAt(indent)))
 							++indent;
 					}
-					++nLines;
-					if (inputLine.length() == 0)
-						out.println();
+					if (indent == NOINDENT || inputLine.length() == 0)
+						out.println(inputLine);
 					else
 						out.println(inputLine.substring(indent));
+					++nLines;
 				}
             }
             is.close();
