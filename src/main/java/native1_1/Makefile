@@ -5,6 +5,8 @@
 # let me know how much! :-)
 # Ian Darwin, ian@darwinsys.com, http://www.darwinsys.com
 
+# $Id$
+
 # Configuration Section
 
 CSRCS		= HelloWorld.c

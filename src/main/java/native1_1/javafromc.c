@@ -1,5 +1,13 @@
+/*
+ * This is a C program that calls Java code.
+ * This could be used as a model for building Java into an
+ * existing application as an extention language, for example.
+ */
+
 #include <stdio.h>
 #include <jni.h>
+
+#ident	"$Id$"
 	
 int
 main(int argc, char *argv[])

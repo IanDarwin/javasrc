@@ -1,5 +1,6 @@
 /**
  * A trivial class to show Java Native Interface 1.1 usage from Java.
+ * @version	$Id$
  */
 public class HelloWorld {
 	int myNumber = 42;        // used to show argument passing

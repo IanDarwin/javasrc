@@ -2,6 +2,11 @@
 #include "HelloWorld.h"
 #include <stdio.h>
 
+#ident	"$Id$"
+
+/*
+ * This is the 1.1 implentation of displayHelloWorld.
+ */
 void Java_HelloWorld_displayHelloWorld(JNIEnv *env, jobject this)
 {
 	jfieldID fldid;
