@@ -1,6 +1,6 @@
 #!/bin/ksh 
 
-JBOSSHOME=~/jboss/jboss
+JBOSSHOME=~/jboss
 
 CLASSPATH=.
 
