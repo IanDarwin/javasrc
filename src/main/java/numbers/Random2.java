@@ -6,7 +6,7 @@ import java.util.*;
 public class Random2 {
 	public static void main(String[] argv) {
 		//+
-		// java.util.Random methods are non-static, do need to construct Math
+		// java.util.Random methods are non-static, so need to construct
 		Random r = new Random();
 		for (int i=0; i<10; i++)
 		System.out.println("A double from java.util.Random is " + r.nextDouble());
