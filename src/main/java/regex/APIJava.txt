@@ -1,0 +1,21 @@
+public final class Pattern {
+    public static final int UNIX_LINES;
+    public static final int CASE_INSENSITIVE;
+    public static final int COMMENTS;
+    public static final int MULTILINE;
+    public static final int DOTALL;
+    public static final int UNICODE_CASE;
+    public static final int CANON_EQ;
+	// Factory methods (no public constructors)
+    public static Pattern compile(String);
+    public static Pattern compile(String, int);
+	// Method to get a Matcher for this Pattern
+    public Matcher matcher(CharSequence);
+	// Information methods
+    public String pattern();
+    public int flags();
+	// Convenience methods
+    public static boolean matches(String, CharSequence);
+    public String[] split(CharSequence, int);
+    public String[] split(CharSequence);
+}
