@@ -43,7 +43,7 @@ public class PerformanceTester {
 		System.out.println("Elapsed time in milliseconds for " +
 			NOBJECTS + " objects = " + (endtime - starttime));
 
-		System.out.println("Objects per milliseconds: " +
+		System.out.println("Objects per millisecond: " +
 			(NOBJECTS / (endtime - starttime)));
 	}
 }
