@@ -7,6 +7,8 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 	<property name="src-jar" value="/tmp/javasrc.jar"/>
+	<property name="src-tar"
+		value="${user.home}/webs/default/tmp/javasrc.tar"/>
 
 	<target name="init">
 		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
@@ -51,12 +53,10 @@
 
 	<!-- compile APIs needed by other parts of the file -->
 	<target name="api" depends="init">
-		<echo message="==> com.darwinsys.util"/>
-		<ant target="jar" dir="com.darwinsys.util" inheritAll="false"/>
+		<echo message="==> com.darwinsys"/>
+		<ant target="jar" dir="com.darwinsys" inheritAll="false"/>
 		<echo message="==> spdf"/>
 		<ant target="jar" dir="spdf"/>
-		<echo message="==> RE-darwinsys"/>
-		<ant dir="com.darwinsys.regexp"/>
 	</target>
 
 	<!-- compile everything, for JavaCookbook reliability :-) -->
@@ -203,9 +203,13 @@
 	</target>
 
 	<target name="src-jar">
-		<jar jarfile="${src-jar}"
-			basedir=".">
+		<jar jarfile="${src-jar}" basedir=".">
 		</jar>
+	</target>
+
+	<target name="src-tar">
+		<tar jarfile="${src-tar}" basedir=".">
+		</tar>
 	</target>
 
 	<!-- clean up -->
