@@ -5,8 +5,7 @@ import javax.swing.*;
 
 /** Display your business-card information in a Java window.
  *
- * This is a very crude first attempt. The next version should
- * use a GridBagLayout.
+ * This is a first attempt. The next version should use a GridBagLayout.
  * @author Ian F. Darwin
  * @version $Id$
  */
@@ -78,9 +77,11 @@ public class BusCard extends JFrame {
 		jobChoice.setFont(new Font("helvetica", Font.BOLD, 14));
 
 		// XXX These should come from the Properties file loaded into "b"!
-		jobChoice.addItem("Java Consultant");
-		jobChoice.addItem("UNIX (OpenBSD)");
-		jobChoice.addItem("Internet/Firewall");
+		do {
+			String next = I18N.getString(b, "job_title" + i, null);
+			if (next != null)
+				jobChoice.addItem(next);
+		} while (next != null);
 		p1.add(jobChoice);
 
 		cp.add(p1);
