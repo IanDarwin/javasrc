@@ -13,7 +13,7 @@ public class MyStackDemo {
 		MyStack ms2 = new MyStack();
 		ms2.push("billg");
 		ms2.push("scottm");
-		ms3.push(new java.util.Date());
+		ms2.push(new java.util.Date());
 		
 		// Show that it is broken 
 		try {
