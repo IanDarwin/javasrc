@@ -19,7 +19,7 @@ public class CommPortLister {
 		// by calling static method in CommPortIdentifier.
 		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
 
-		// Process the list, putting serial and parallel into ComboBoxes
+		// Process the list.
 		while (pList.hasMoreElements()) {
 			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
 			System.out.print("Port " + cpi.getName() + " ");

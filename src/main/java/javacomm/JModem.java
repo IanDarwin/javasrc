@@ -1,4 +1,6 @@
-
+import javax.comm.*;
+import java.util.*;
+import javax.swing.*;
 
 /**
  * JModem - simple communications program.
@@ -9,8 +11,9 @@ public class JModem extends javax.swing.JFrame {
 
   /** Initializes the Form */
   public JModem() {
-    initComponents ();
-    pack ();
+    initComponents();
+  finishConstructor();
+    pack();
   }
 
   /** This method is called from within the constructor to
@@ -42,6 +45,20 @@ public class JModem extends javax.swing.JFrame {
 
       jMenuBar1.add(fileMenu);
 
+      helpMenu = new javax.swing.JMenu ();
+      helpMenu.setText ("Help");
+        helpAboutMenuItem = new javax.swing.JMenuItem ();
+        helpAboutMenuItem.setText ("Item");
+        helpAboutMenuItem.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              helpAboutMenuItemActionPerformed (evt);
+            }
+          }
+        );
+        helpMenu.add(helpAboutMenuItem);
+
+      jMenuBar1.add(helpMenu);
+
 
     setJMenuBar(jMenuBar1);
     connectPanel = new javax.swing.JPanel ();
@@ -52,31 +69,50 @@ public class JModem extends javax.swing.JFrame {
       connectPanelLabel.setForeground (java.awt.Color.red);
       connectPanel.add (connectPanelLabel);
 
+      portLabel = new javax.swing.JLabel ();
+      portLabel.setText ("Port:");
+      connectPanel.add (portLabel);
+
+      portsComboBox = new javax.swing.JComboBox ();
+      portsComboBox.addActionListener (new java.awt.event.ActionListener () {
+          public void actionPerformed (java.awt.event.ActionEvent evt) {
+            portsComboBoxActionPerformed (evt);
+          }
+        }
+      );
+      connectPanel.add (portsComboBox);
+
       buadLabel = new javax.swing.JLabel ();
       buadLabel.setText ("Speed");
       connectPanel.add (buadLabel);
 
       baudComboBox = new javax.swing.JComboBox ();
+      baudComboBox.addActionListener (new java.awt.event.ActionListener () {
+          public void actionPerformed (java.awt.event.ActionEvent evt) {
+            baudComboBoxActionPerformed (evt);
+          }
+        }
+      );
       connectPanel.add (baudComboBox);
 
-      jPanel3 = new javax.swing.JPanel ();
-      jPanel3.setPreferredSize (new java.awt.Dimension(50, 50));
-      jPanel3.setMinimumSize (new java.awt.Dimension(0, 0));
-      jPanel3.setLayout (new javax.swing.BoxLayout (jPanel3, 1));
+      databitsPanel = new javax.swing.JPanel ();
+      databitsPanel.setPreferredSize (new java.awt.Dimension(50, 50));
+      databitsPanel.setMinimumSize (new java.awt.Dimension(0, 0));
+      databitsPanel.setLayout (new javax.swing.BoxLayout (databitsPanel, 1));
 
         d7RadioButton = new javax.swing.JRadioButton ();
         d7RadioButton.setText ("7");
-        jPanel3.add (d7RadioButton);
+        databitsPanel.add (d7RadioButton);
 
         d8radioButton = new javax.swing.JRadioButton ();
         d8radioButton.setText ("8");
-        jPanel3.add (d8radioButton);
+        databitsPanel.add (d8radioButton);
 
-      connectPanel.add (jPanel3);
+      connectPanel.add (databitsPanel);
 
-      jPanel4 = new javax.swing.JPanel ();
-      jPanel4.setPreferredSize (new java.awt.Dimension(50, 50));
-      jPanel4.setLayout (new javax.swing.BoxLayout (jPanel4, 1));
+      parityPanel = new javax.swing.JPanel ();
+      parityPanel.setPreferredSize (new java.awt.Dimension(50, 50));
+      parityPanel.setLayout (new javax.swing.BoxLayout (parityPanel, 1));
 
         pEvenRadioButton = new javax.swing.JRadioButton ();
         pEvenRadioButton.setText ("Even");
@@ -86,7 +122,7 @@ public class JModem extends javax.swing.JFrame {
             }
           }
         );
-        jPanel4.add (pEvenRadioButton);
+        parityPanel.add (pEvenRadioButton);
 
         pOddRadioButton = new javax.swing.JRadioButton ();
         pOddRadioButton.setText ("Odd");
@@ -96,7 +132,7 @@ public class JModem extends javax.swing.JFrame {
             }
           }
         );
-        jPanel4.add (pOddRadioButton);
+        parityPanel.add (pOddRadioButton);
 
         pNoneRadioButton = new javax.swing.JRadioButton ();
         pNoneRadioButton.setText ("None");
@@ -106,9 +142,13 @@ public class JModem extends javax.swing.JFrame {
             }
           }
         );
-        jPanel4.add (pNoneRadioButton);
+        parityPanel.add (pNoneRadioButton);
 
-      connectPanel.add (jPanel4);
+      connectPanel.add (parityPanel);
+
+      sysTypeLabel = new javax.swing.JLabel ();
+      sysTypeLabel.setText ("Remote:");
+      connectPanel.add (sysTypeLabel);
 
       sysTypeComboBox = new javax.swing.JComboBox ();
       sysTypeComboBox.addActionListener (new java.awt.event.ActionListener () {
@@ -204,12 +244,82 @@ public class JModem extends javax.swing.JFrame {
 
   }//GEN-END:initComponents
 
-  private void recvRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recvRadioButtonActionPerformed
+  private void helpAboutMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAboutMenuItemActionPerformed
+    JOptionPane.showMessageDialog(this,
+      "JModem 0.0 (c) 2000 Ian F. Darwin\nian@darwinsys.com",
+      "About JModem", JOptionPane.INFORMATION_MESSAGE);
+  }//GEN-LAST:event_helpAboutMenuItemActionPerformed
+
+  private void baudComboBoxActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portsComboBoxActionPerformed
     // Add your handling code here:
+  }//GEN-LAST:event_portsComboBoxActionPerformed
+
+  private void portsComboBoxActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portsComboBoxActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_portsComboBoxActionPerformed
+
+  private int[] baudot = { 9600, 19200, 38400, 57600, 115200 };
+  private String sysTypes[] = { "Unix", "DOS", "Other" };
+
+  private HashMap portsIDmap = new HashMap();
+
+  /** Finish the initializations. */
+  private void finishConstructor() {
+
+    // get list of ports available on this particular computer,
+    // by calling static method in CommPortIdentifier.
+    Enumeration pList = CommPortIdentifier.getPortIdentifiers();
+
+    // Process the list of ports, putting serial ports into ComboBox
+    while (pList.hasMoreElements()) {
+      CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
+      if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
+        portsComboBox.addItem(cpi.getName());
+		portsIDmap.put(cpi.getName(), cpi);
+      }
+    }
+	portsComboBox.setSelectedIndex(0);
+
+	// Load up the baud-rate combo box
+	for (int i=0; i<baudot.length; i++) {
+		baudComboBox.addItem(Integer.toString(baudot[i]));
+	}
+	baudComboBox.setSelectedIndex(0);
+
+	// Load up the System Type combo box
+	for (int i=0; i<sysTypes.length; i++) {
+		sysTypeComboBox.addItem(sysTypes[i]);
+	}
+	sysTypeComboBox.setSelectedIndex(0);
+
+	// put radio buttons into groups to enforce single-selection
+	ButtonGroup b1 = new ButtonGroup();
+	b1.add(d7RadioButton);
+	b1.add(d8radioButton);
+
+	ButtonGroup b2 = new ButtonGroup();
+	b2.add(pNoneRadioButton);
+	b2.add(pEvenRadioButton);
+	b2.add(pOddRadioButton);
+
+	ButtonGroup b3 = new ButtonGroup();
+	b3.add(sendRadioButton);
+	b3.add(recvRadioButton);
+
+	ButtonGroup b4 = new ButtonGroup();
+	b4.add(xferModeTextRadioButton);
+	b4.add(xferModeBinRadioButton);
+  }
+
+  private int M_RECEIVE = -1, M_SEND = +1;
+  private int xferDirection = M_RECEIVE;
+
+  private void recvRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recvRadioButtonActionPerformed
+    xferDirection = M_RECEIVE;
   }//GEN-LAST:event_recvRadioButtonActionPerformed
 
   private void sendRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRadioButtonActionPerformed
-    // Add your handling code here:
+    xferDirection = M_SEND;
   }//GEN-LAST:event_sendRadioButtonActionPerformed
 
   private void exitMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
@@ -236,10 +346,71 @@ public class JModem extends javax.swing.JFrame {
     // Do the transfer, using TModem class.
   }//GEN-LAST:event_xferButtonActionPerformed
 
+  private int S_DISCONNECTED = 0, S_CONNECTED = 1;
+  private int state = S_DISCONNECTED;
+  private int S_INTERACT = 0, S_XFER = 1;
+  private int submode = S_INTERACT;
+
   private void connectButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
+	if (state == S_CONNECTED) {
+		disconnect();
+		connectButton.setText("Connect");
+	} else {
+		try {
+			connect();
+		} catch (PortInUseException pue) {
+			JOptionPane.showMessageDialog(this,
+			  "Port in use: close other app, or use different port.",
+			  "JModem Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (UnsupportedCommOperationException uoe) {
+			JOptionPane.showMessageDialog(this,
+			  "Unsupported options error: try different settings",
+			  "JModem Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		connectButton.setText("Disconnect");
+	}
+  }
+
+  private SerialPort thePort;
+
+  private void connect() throws PortInUseException, 
+  		UnsupportedCommOperationException {
     // Open the specified serial port
+	CommPortIdentifier cpi = (CommPortIdentifier)portsIDmap.get(
+		portsComboBox.getSelectedItem());
+	thePort = (SerialPort)cpi.open("JModem", 15*1000);
+
+	// Set the serial port parameters.
+	int parity = 0;
+	if (pNoneRadioButton.isSelected()) parity = SerialPort.PARITY_NONE;
+	if (pEvenRadioButton.isSelected()) parity = SerialPort.PARITY_EVEN;
+	if (pOddRadioButton.isSelected()) parity  = SerialPort.PARITY_ODD;
+	thePort.setSerialPortParams(
+		baudot[portsComboBox.getSelectedIndex()],		// baud
+		d7RadioButton.isSelected() ?				// data bits
+			SerialPort.DATABITS_7 : SerialPort.DATABITS_8,
+		SerialPort.STOPBITS_1,							// stop bits
+		parity);										// parity
+
+	System.out.println("SysType " + sysTypeComboBox.getSelectedItem());
+	state = S_CONNECTED;
   }//GEN-LAST:event_connectButtonActionPerformed
 
+  private void disconnect() {
+  	System.out.println("Disconnecting!");
+	// Tell java.io we are done with the input and output
+	inStream.close();
+	outStream.close();
+	// Tell javax.comm we are done with the port.
+	thePort.close();
+	// Tell rest of program we are no longer online.
+	state = S_DISCONNECTED;
+  }
+
+  private void sendChar() {
+  }
 
   /** Exit the Application */
   private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
@@ -254,8 +425,8 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JLabel connectPanelLabel;
   private javax.swing.JLabel buadLabel;
   private javax.swing.JComboBox baudComboBox;
-  private javax.swing.JPanel jPanel3;
-  private javax.swing.JPanel jPanel4;
+  private javax.swing.JPanel databitsPanel;
+  private javax.swing.JPanel parityPanel;
   private javax.swing.JComboBox sysTypeComboBox;
   private javax.swing.JButton connectButton;
   private javax.swing.JRadioButton d7RadioButton;
@@ -276,6 +447,11 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JMenuBar jMenuBar1;
   private javax.swing.JMenu fileMenu;
   private javax.swing.JMenuItem exitMenuItem;
+  private javax.swing.JComboBox portsComboBox;
+  private javax.swing.JLabel portLabel;
+  private javax.swing.JMenu helpMenu;
+  private javax.swing.JMenuItem helpAboutMenuItem;
+  private javax.swing.JLabel sysTypeLabel;
 // End of variables declaration//GEN-END:variables
 
 
