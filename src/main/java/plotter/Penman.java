@@ -101,13 +101,13 @@ public class Penman extends Plotter {
 			IOException,UnsupportedCommOperationException {
 
 		// get list of ports available on this particular computer.
-		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
+		// Enumeration pList = CommPortIdentifier.getPortIdentifiers();
 
 		// Print the list. A GUI program would put these in a chooser!
-		while (pList.hasMoreElements()) {
-			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
+		// while (pList.hasMoreElements()) {
+			// CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
 			// System.err.println("Port " + cpi.getName());
-		}
+		// }
 		
 		// Open a port. 
 		CommPortIdentifier port =
@@ -127,7 +127,10 @@ public class Penman extends Plotter {
 		os = new DataOutputStream(tty.getOutputStream());
 	}
 
-	/** Send a command to the plotter */
+	/** Send a command to the plotter. Although the argument is a String,
+	 * we send each char as a *byte*, so avoid 16-bit characters!
+	 * Not that it matters: the Penman only knows about 8-bit chars.
+	 */
 	private	void send(String s) {
 		System.err.println("sending " + s + "...");
 		try {

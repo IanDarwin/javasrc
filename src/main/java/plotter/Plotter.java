@@ -2,6 +2,9 @@
  * Plotter abstract class. Must be subclassed 
  * for X, DOS, Penman, HP plotter, etc.
  *
+ * Coordinate space: X = 0 at left, increases to right.
+ *		Y = 0 at top, increases downward (same as AWT).
+ *
  * @author	Ian F. Darwin
  */
 public abstract class Plotter {
@@ -11,8 +14,6 @@ public abstract class Plotter {
 	protected int curx;
 	/** Current Y co-ordinate (same reference frame as AWT!) */
 	protected int cury;
-	/** The current direction of motion */
-	protected float dir;
 	/** The current state: up or down */
 	protected boolean penIsUp;
 	/** The current color */

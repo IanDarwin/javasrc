@@ -1,1 +1,3 @@
+#!/bin/sh
+set -x
 javac Plotter.java PlotterAWT.java Penman.java PlotDriver.java
