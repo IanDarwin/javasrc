@@ -55,9 +55,9 @@ public class BookRank {
 			String date = // `date +'%m %d %H %M %S %Y'`;
 				new SimpleDateFormat("MM dd hh mm ss yyyy ").
 				format(new Date());
-			// Paren 1 is the numbers that matched
-			// XXX need to remove "," from it...
-			FH.println(date + m.group(1));
+			// Paren 1 is the digits (and maybe ','s) that matched
+			Matcher noComma = Pattern.compile(",").matcher(m.group(1));
+			FH.println(date + noComma(replaceAll(""));
 			FH.close();
 		} else {
 			System.err.println("WARNING: pattern `" + pattern +
