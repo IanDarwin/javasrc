@@ -4,10 +4,6 @@
     "http://java.sun.com/dtd/jdo_1_0.dtd">
 <jdo>
     <package name="">
-        <class name="MyData"/>
+        <class name="io.MyData"/>
     </package>
-	<package name="java.util">
-		<class name="ArrayList"/>
-		<class name="Date"/>
-	</package>
 </jdo>
