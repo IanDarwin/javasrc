@@ -9,14 +9,12 @@ public class BSFSample {
 
 		// register scripting language
 		String[] fntypes = { ".py" };
-		manager.registerScriptingEngine("jpython",
-			"org.apache.bsf.engines.jpython.JPythonEngine", fntypes);
+		manager.registerScriptingEngine("jython",
+			"org.apache.bsf.engines.jython.JythonEngine", fntypes);
 
 		try {
-			BSFEngine jpythonengine = manager.loadScriptingEngine("jpython");
-
-			// try an expression 
-			Object r = manager.eval("jpython", "testString", 0, 0, "22.0/7");
+			// try an expression
+			Object r = manager.eval("jython", "testString", 0, 0, "22.0/7");
 			System.out.println("Result type is " + r.getClass().getName());
 			System.out.println("Result value is " + r);
 		} catch (Exception ex) {
