@@ -1,0 +1,21 @@
+daroad$ java TextBrowser file:///c:/autoexec.bat http://localhost/nosuchfile
+*** Loading file:///c:/autoexec.bat... ***
+PATH=%PATH%;C:\bin;C:\jdk1.2\bin;C:\cygnus\cygwin-b20\H-i586-cygwin32\bin;"C:\Program Files\Borland\bcc55\Bin";.
+doskey > nul:
+set CVSROOT=ian@darian:/cvs
+set VIM=C:\vim-5.3
+set KJAVA_HOME=C:\kjava
+SET CLASSPATH=C:\PROGRA~1\JMF2.0\LIB\SOUND.JAR;C:\PROGRA~1\JMF2.0\LIB\JMF.JAR;C:\WINDOWS\JAVA\CLASSES\SOUND.JAR;C:\WINDOWS\JAVA\CLASSES\JMF.JAR;.;C:\IAN\CLASSES
+set JIKESPATH=.;C:/jdk1.2/jre/lib/rt.jar;\jdk1.2\jre\lib\ext\comm.jar;C:/ian/classes
+*** Loading http://localhost/nosuchfile... ***
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML><HEAD>
+<TITLE>404 Not Found</TITLE>
+</HEAD><BODY>
+<H1>Not Found</H1>
+The requested URL /nosuchfile was not found on this server.<P>
+<HR>
+<ADDRESS>Apache/1.3.12 Server at daroad Port 80</ADDRESS>
+</BODY></HTML>
+daroad$ 
+Script done on Wed May  3 20:49:01 2000

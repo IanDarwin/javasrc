@@ -22,20 +22,24 @@ public class MkIndex {
 	PrintWriter out;
 	/** The background color for the page */
 	public static final String BGCOLOR="#33ee33";
+	/** The File object, for directory listing. */
+	File dirFile;
 
 	/** Make an index */
 	public static void main(String av[]) {
 		MkIndex mi = new MkIndex();
-		mi.open();		// open files
+		String inDir = av.length > 0 ? av[0] : ".";
+		mi.open(inDir, OUTPUTFILE);		// open files
 		mi.BEGIN();		// print HTML header
 		mi.process();		// do bulk of work
 		mi.END();		// print trailer.
 		mi.close();		// close files
 	}
 
-	void open() {
+	void open(String dir, String outFile) {
+		dirFile = new File(dir);
 		try {
-			out = new PrintWriter(new FileWriter(OUTPUTFILE));
+			out = new PrintWriter(new FileWriter(outFile));
 		} catch (IOException e) {
 			System.err.println(e);
 		}
@@ -47,10 +51,10 @@ public class MkIndex {
 		println("<HEAD>");
 		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
 		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <TITLE>Ian Darwin's Java Programming Online Source Examples</TITLE>");
+		println("    <TITLE>Ian Darwins Java Programming Online Source Examples</TITLE>");
 		println("</HEAD>");
 		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
-		println("<H1>Ian Darwin's Java Programming Online Source Examples</H1>");
+		println("<H1>Ian Darwins Java Programming Online Source Examples</H1>");
 		println("<P>The following files are online.");
 		println("Some of these files are still experimental!</P>");
 		println("<P>Most of these files are Java source code.");
@@ -58,14 +62,15 @@ public class MkIndex {
 		println("The HTML files must be saved to disk and the applets compiled,");
 		println("before you can run them!");
 		println("<P>All files are Copyright &copy;: All rights reserved.");
-		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use");
-		println("(may be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met).");
+		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use.");
+		println("May be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met.");
 		println("</P>");
 		println("<HR>");
 	}
 
 	/** Array of letters that exist
-	 * XXX fold case here so don't get f and F as distinct entries!
+	 * XXX fold case here so dont get f and F as distinct entries!
+	 * This only works for ASCII characters (8-bit chars).
 	 */
 	boolean[] exists = new boolean[255];
 
@@ -76,10 +81,10 @@ public class MkIndex {
 	void process() {
 
 		System.out.println("Start PASS ONE -- from directory to Vector...");
-		String[] fl = new File(".").list();
+		String[] fl = dirFile.list();
 		for (int i=0; i<fl.length; i++) {
 			String fn = fl[i];
-			if (fn.equals(OUTPUTFILE)) { // we'll have no self-reference here!
+			if (fn.equals(OUTPUTFILE)) { // well have no self-reference here!
 				System.err.println("Ignoring " + OUTPUTFILE);
 				continue;
 			} else if (fn.endsWith(".bak")) {		// delete .bak files
@@ -87,7 +92,7 @@ public class MkIndex {
 				new File(fn).delete();
 				continue;
 			} else if (fn.equals("CVS")) {		// Ignore CVS subdirectories
-				continue;						// don't mention it
+				continue;						// dont mention it
 			} else if (fn.endsWith(".class")) {	// nag about .class files
 				System.err.println("Ignoring " + fn);
 				continue;
@@ -99,7 +104,7 @@ public class MkIndex {
 		}
 
 		System.out.println("Writing the Alphabet Navigator...");
-		for (char c = 'A'; c<='Z'; c++)
+		for (char c = A; c<=Z; c++)
 			if (exists[c])
 				print("<A HREF=\"#" + c + "\">" + c + "</A> ");
 
