@@ -21,7 +21,8 @@ public class BookRank {
 	/** Grab the sales rank off the web page and log it. */
 	public static void main(String[] args) throws Exception {
 
-		Properties p = new FileProperties("bookrank.properties");
+		Properties p = new FileProperties(
+			args.length == 0 ? "bookrank.properties" : args[1]);
 		String title = p.getProperty("title", "NO TITLE IN PROPERTIES");
 		// The url must have the "isbn=" at the very end, or otherwise
 		// be amenable to being string-catted to, like the default.
@@ -48,7 +49,7 @@ public class BookRank {
 
 		// If found, append to sales data file.
 		Matcher m = r.matcher(input);
-		if (m.lookingAt()) {
+		if (m.find()) {
 			PrintWriter FH = new PrintWriter(
 				new FileWriter(DATA_FILE, true));
 			String date = // `date +'%m %d %H %M %S %Y'`;
