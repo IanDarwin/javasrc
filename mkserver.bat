@@ -9,6 +9,7 @@ javac -deprecation TreeLayout.java
 move Tree*.class ..\server
 javac -deprecation URLButton.java
 move URLButton.class ..\server
+cd webserver
 javac -deprecation WebServer.java
-move Handler.class ..\server
-move WebServer.class ..\server
+move Handler.class ..\..\server
+move WebServer.class ..\..\server
