@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 /**
  * Report on a file's status in Java
@@ -45,13 +46,19 @@ public class FileStatus {
 		if (f.canWrite()) {
 			System.out.println("File is writable.");
 		}
+		// Report on the modification time.
+		Date d = new Date();
+		d.setTime(f.lastModified());
+		System.out.println("Last modified " + d);
+
+		// See if file, directory, or other. If file, print size.
 		if (f.isFile()) {
 			// Report on the file's size
 			System.out.println("File size is " + f.length() + " bytes.");
 		} else if (f.isDirectory()) {
 			System.out.println("It's a directory");
 		} else {
-			System.out.println("Neither a file nor a directory!");
+			System.out.println("I dunno! Neither a file nor a directory!");
 		}
 
 		System.out.println();	// blank line between entries
