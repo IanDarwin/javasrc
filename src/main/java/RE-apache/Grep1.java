@@ -1,6 +1,7 @@
 import RE;
 import java.io.*;
 
+//+
 /** A command-line grep-like program. No options, but takes a pattern
  * and an arbitrary list of text files.
  */
@@ -66,3 +67,4 @@ public class Grep1 {
 		} catch (IOException e) { System.err.println(e); }
 	}
 }
+//-
