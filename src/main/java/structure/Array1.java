@@ -8,18 +8,18 @@ import java.util.*;
  */
 public class Array1  {
 	public static void main(String[] argv) {
-		int monthLen1[];			// declare a reference
+		int[] monthLen1;			// declare a reference
 		monthLen1 = new int[12];		// construct it
-		int monthlen2[] = new int[12];	// short form
+		int[] monthlen2 = new int[12];	// short form
 		// even shorter is this initializer form:
-		int monthLen3[] = {
+		int[] monthLen3 = {
 				31, 28, 31, 30,
 				31, 30, 31, 31,
 				30, 31, 30, 31,
 		};
 		
 		final int MAX = 10;
-		Calendar days[] = new Calendar[MAX];
+		Calendar[] days = new Calendar[MAX];
 		for (int i=0; i<MAX; i++) {
 			// Note that this actually stores GregorianCalendar
 			// etc. instances into a Calendar Array
@@ -28,7 +28,7 @@ public class Array1  {
 	 
 		// Two-Dimensional Arrays
 		// Want a 10-by-24 array
-		int me[][] = new int[10][];
+		int[][] me = new int[10][];
 		for (int i=0; i<10; i++)
 			me[i] = new int[24];
 
