@@ -24,8 +24,13 @@ public class GetMark {
 		LineNumberReader is,
 		PrintStream out) {
 		//+
+		int nLines = 0;
 		try {
 			String inputLine;
+			// Number of chars representing no indent
+			final int NOINDENT = 0;
+			// Number of chars to strip off to remove indentation
+			int indent = NOINDENT;
 
 			while ((inputLine = is.readLine()) != null) {
 				if (inputLine.trim().equals(startMark)) {
@@ -33,16 +38,29 @@ public class GetMark {
 						System.err.println("ERROR: START INSIDE START, " +
 							fileName + : + is.getLineNumber());
 					printing = true;
+					indent = NOINDENT;
 				} else if (inputLine.trim().equals(endMark)) {
 					if (!printing)
-						System.err.println("ERROR: STOP INSIDE STOP, " +
+						System.err.println("ERROR: STOP WHILE STOPPED, " +
 							fileName + : + is.getLineNumber());
 					printing = false;
-				} else if (printing)
-					out.println(inputLine);
+				} else if (printing) {
+					if (indent == NOINDENT) {
+						while (Character.isWhitespace(inputLine.charAt(indent)))
+							++indent;
+					}
+					++nLines;
+					if (inputLine.length() == 0)
+						out.println();
+					else
+						out.println(inputLine.substring(indent));
+				}
             }
             is.close();
 			out.flush(); // Must not close - caller may still need it.
+			if (nLines == 0)
+				System.err.println("ERROR: No marks in " + fileName +
+					"; no output generated!");
 		//-
         } catch (IOException e) {
             System.out.println("IOException: " + e);
