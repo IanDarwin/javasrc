@@ -64,29 +64,28 @@ public class Soundex {
 		String t = s.toUpperCase();
 
 		StringBuffer res = new StringBuffer();
-		char prev = '?';
+		char c, prev = '?';
 
-		for (int i=0; i<t.length() && res.length() < 4; i++) {
-			char c = t.charAt(i);
-			if (c == ',')
-				break;
+		// Main loop: find up to 4 chars that map.
+		for (int i=0; i<t.length() && res.length() < 4 &&
+			(c = t.charAt(i)) != ','; i++) {
+
 			// Check to see if the given character is alphabetic.
 			// Text is already converted to uppercase. Algorithm
 			// only handles ASCII letters, do NOT use Character.isLetter()!
-			if (!(c>='A' && c<='Z')) 
-				continue;
-			if (c == prev)
-				continue;				// double letter
-			prev = c;
+			// Also, skip double letters.
+			if (c>='A' && c<='Z' && c != prev) {
+				prev = c;
 
-			// First char is installed unchanged, for sorting.
-			if (i==0)
-				res.append(c);
-			else {
-				char m = MAP[c-'A'];
-				Debug.println("inner", c + " --> " + m);
-				if (m != '0')
-					res.append(m);
+				// First char is installed unchanged, for sorting.
+				if (i==0)
+					res.append(c);
+				else {
+					char m = MAP[c-'A'];
+					Debug.println("inner", c + " --> " + m);
+					if (m != '0')
+						res.append(m);
+				}
 			}
 		}
 		if (res.length() == 0)
