@@ -53,6 +53,8 @@ public class Servlet extends HttpServlet
 		// Delegate to doGet:
 		// doGet(request, response);
 
+		ServletContext application = getServletContext();
+
 		// Alternate Version: Do work different than that of doGet
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
