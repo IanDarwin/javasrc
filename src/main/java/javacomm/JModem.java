@@ -575,9 +575,7 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JMenuItem helpAboutMenuItem;
 // End of variables declaration//GEN-END:variables
 
-
   public static void main(java.lang.String[] args) {
-    new JModem ().show ();
-  }
-
+    new JModem().setVisible(true);
+  } 
 }
