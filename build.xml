@@ -1,0 +1,30 @@
+<project name="Java Cookbook Examples" default="compile" basedir=".">
+
+  <!-- Ant buildfile for Java Cookbook examples.
+    $Id$
+    -->
+
+  <!-- set global properties for this build -->
+  <property name="src" value="."/>
+  <property name="build" value="build"/>
+  <!-- Specify the compiler to use. 
+	Using jikes is supported but requires rt.jar in classpath.
+	-->
+  <property name="build.compiler" value="modern"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- specify what to compile. This builds everything -->
+  <target name="compile" depends="init">
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"
+		  classpath="com-darwinsys-util.jar"/>
+  </target>
+
+</project>
