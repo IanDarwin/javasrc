@@ -11,7 +11,7 @@ public class BordLayDemo2 extends Frame {
 		new MyCanvas(cp[NORTH], 100, 150, Color.red),
 		new MyCanvas(cp[EAST ], 100, 100, Color.green),
 		new MyCanvas(cp[SOUTH], 100, 100, Color.red),
-		new MyCanvas(cp[WEST ],  50, 100, Color.blue),
+		new MyCanvas(cp[WEST ], 100, 100, Color.blue),
 		new MyCanvas(cp[CENTER], 10, 10,  Color.black),
 	};
 
@@ -20,7 +20,7 @@ public class BordLayDemo2 extends Frame {
 		setLayout(new BorderLayout());
 		for (int i = 1; i<=5; i++)
 			if (b.get(i))
-				add(cp[i], canvases[i]);
+				add(canvases[i], cp[i]);
 		pack();
 		setVisible(true);
 	}
