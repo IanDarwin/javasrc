@@ -70,6 +70,8 @@ public class Redir extends Applet implements Runnable {
 			} catch (InterruptedException e) {
 				// so what?
 			}
+			if (t == null)
+				return;
 			showStatus(Integer.toString(i));
 
 			if (t == null)
