@@ -7,6 +7,6 @@ public class SubstringComparator implements java.util.Comparator {
 		String s2 = o2.toString().substring(1);
 		return s1.compareTo(s2);
 		// or, more concisely:
-		// return o1.substring(1).equals(o2.substring(1));
+		// return o1.toString().substring(1).equals(o2.toString().substring(1));
 	}
 }
