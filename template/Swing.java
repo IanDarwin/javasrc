@@ -40,7 +40,6 @@ public class Swing extends JComponent {
 		super();
 		add(new Label("Hello, and welcome to the world of Java"));
 		add(quitButton = new JButton("Exit")); 
-		pack();
 	}
 
 	// public Dimension getMinimumSize() {
