@@ -1,3 +1,5 @@
+package com.darwinsys.util;
+
 /** Just some quick-and-dirty time format.
  * Nothing to do with Apple's excellent multimedia format!
  */
