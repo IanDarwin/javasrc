@@ -1,5 +1,3 @@
-import java.util.Date;
-
 /** Show use of Argv to get an integer value from command line */
 public class ArgvNumber {
 	/** Main program */
