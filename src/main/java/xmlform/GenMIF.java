@@ -1,9 +1,21 @@
 package xmlform;
 
-import java.io.*;
-import org.w3c.dom.*;
-import java.lang.reflect.*;
-import java.util.*;
+import io.GetMark;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.PrintStream;
+import java.lang.reflect.Method;
+import java.util.Stack;
+import java.util.Vector;
+
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  * Class with code to walk a tree and convert it to Maker Interchange
