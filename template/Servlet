@@ -3,12 +3,12 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 /*
- * __NAME__.java
+ * Name -- function
  * 
- * @author  __USER__
- * @version $Id$ Created on __DATE__, __TIME__
+ * @author  YOURNAME
+ * @version $Id$
  */
-public class Servlet_DoGetPost extends HttpServlet
+public class Servlet extends HttpServlet
 {
 	/** Called in response to a GET request (data encoded in the URL) */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +34,10 @@ public class Servlet_DoGetPost extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
+		// One of the following:
+		// doGet(request, response);
+
+		// Or:
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
 
