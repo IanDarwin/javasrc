@@ -6,7 +6,7 @@ import java.util.*;
 
 /** Standalone MailClient GUI application.
  * @author	Ian Darwin, ian@darwinsys.com
- * @version #Id$
+ * @version $Id$
  */
 public class MailClient extends JComponent {
 	/** The quit button */
@@ -15,6 +15,17 @@ public class MailClient extends JComponent {
 	MailReaderBean mrb;
 	/** The send mode */
 	MailComposeFrame mcb;
+
+	/** Construct the MailClient JComponent by creating its GUI */
+	public MailClient() {
+		super();
+		setLayout(new BorderLayout());
+		JTabbedPane tbp = new JTabbedPane();
+		add(BorderLayout.CENTER, tbp);
+		tbp.addTab("Reading", mrb = new MailReaderBean());
+		tbp.addTab("Sending", mcb = new MailComposeFrame());
+		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
+	}
 
 	/** "main program" method - construct and show */
 	public static void main(String av[]) throws IOException {
@@ -49,16 +60,5 @@ public class MailClient extends JComponent {
 		f.setSize    (500,400);
 
 		f.setVisible(true);
-	}
-
-	/** Construct the MailClient including its GUI */
-	public MailClient() {
-		super();
-		setLayout(new BorderLayout());
-		JTabbedPane tbp = new JTabbedPane();
-		add(BorderLayout.CENTER, tbp);
-		tbp.addTab("Reading", mrb = new MailReaderBean());
-		tbp.addTab("Sending", mcb = new MailComposeFrame());
-		add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
 	}
 }
