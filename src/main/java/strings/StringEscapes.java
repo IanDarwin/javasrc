@@ -10,6 +10,6 @@ public class StringEscapes {
 		System.out.println("A tab key: \t(what comes after)");
 		System.out.println("A newline: \n(what comes after)");
 		System.out.println("A UniCode character: \u0207");
-		System.out.println("A backshlash character: \\");
+		System.out.println("A backslash character: \\");
 	}
 }

@@ -4,8 +4,8 @@ import java.net.*;
 /**
  * EchoServer - create server socket, do I-O on it.
  *
- * @author	Ian Darwin, Learning Tree, Course 471/478
- * @version Copyright (c) 1995, 1996, 1997 Ian F. Darwin
+ * @author  Ian Darwin
+ * @version Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
  */
 public class EchoServer {
 	/** Our server-side rendezvous socket */
@@ -64,7 +64,10 @@ public class EchoServer {
 					if (ios != null)
 						ios.close();
 				} catch (IOException e) {
-					// nothing
+					// These are unlikely, but might indicate that
+					// the other end shut down early, a disk filled up
+					// but wasn't detected until close, etc.
+					System.err.println("IO Error in close");
 				}
 			}
 		}

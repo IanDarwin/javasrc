@@ -14,7 +14,7 @@ public class Tabs {
 	/** The longest line that we worry about tabs for. */
 	public final static int MAXLINE  = 250;
 	/** the current tab stops */
-	protected boolean tabstops[];
+	protected boolean[] tabstops;
 
 	/** Construct a Tabs object with a given tab stop settings */
 	public Tabs(int n) {
@@ -34,7 +34,7 @@ public class Tabs {
 		int i;
 		for (i = 0; i < tabstops.length; i++) {
 			tabstops[i] = 0 == (i % tabSpace);
-			Debug.println("settabs", "Tabs["+i+"]="+tabstops[i]);
+			Debug.println("settabs", "Tabs[" + i + "]=" + tabstops[i]);
 		}
 	}
 
@@ -45,8 +45,8 @@ public class Tabs {
 	 */
 	boolean tabpos(int col) {
 		if (col > tabstops.length-1)
-			return(true);
+			return true;
 		else 
-			return(tabstops[col]);
+			return tabstops[col];
 	}
 }

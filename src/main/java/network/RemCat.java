@@ -42,6 +42,10 @@ public class RemCat {
 	protected byte buffer[];
 	protected DatagramPacket inp, outp;
 
+	/** The main program that drives this network client.
+	 * @param argv[0] hostname, running TFTP server
+	 * @param argv[1..n] filename(s), must be at least one
+	 */
 	public static void main(String[] argv) throws IOException {
 		if (argv.length < 2) {
 			System.err.println("usage: rcat host filename[...]");
@@ -77,12 +81,18 @@ public class RemCat {
 		buffer[0] = 0;
 		buffer[OFFSET_REQUEST] = OP_RRQ;		// read request
 		int p = 2;			// number of chars into buffer
+
+		// Convert filename String to bytes in buffer , using "p" as an
+		// offset indicator to get all the bits of this request
+		// in exactly the right spot.
 		path.getBytes(0, path.length(), buffer, p); // file name
 		p += path.length();
-		buffer[p++] = 0;
-		MODE.getBytes(0, MODE.length(), buffer, p); // mode
+		buffer[p++] = 0;		// null byte terminates string
+
+		// Similarly, convert MODE ("octet") to bytes in buffer
+		MODE.getBytes(0, MODE.length(), buffer, p);
 		p += MODE.length();
-		buffer[p++] = 0;
+		buffer[p++] = 0;		// null terminate
 
 		/* Send Read Request to tftp server */
 		outp.setLength(p);

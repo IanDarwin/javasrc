@@ -6,7 +6,7 @@ public class StringAlign extends Format {
 	public static final int JUST_LEFT = 'l';
 	/* Constant for centering. */
 	public static final int JUST_CENTRE = 'c';
-	/* Constant for centering, for those who spell "centre" the American way. */
+	/* Centering Constant, for those who spell "centre" the American way. */
 	public static final int JUST_CENTER = JUST_CENTRE;
 	/** Constant for right-justified Strings. */
 	public static final int JUST_RIGHT = 'r';
