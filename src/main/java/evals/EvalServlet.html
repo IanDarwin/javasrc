@@ -1,0 +1,42 @@
+<TITLE>Learning Tree Daily Evaluation</TITLE>
+<BODY BGCOLOR=Yellow>
+<H1 ALIGN=CENTER>Daily Evaluation</H1>
+<P>Your answers to the following will assist in our goal
+of continually improving this course's content and delivery. Thank you!
+</P>
+
+<FORM METHOD=GET ACTION=http://instructor:8080/servlet/EvalServlet>
+
+<P><B>Your Name: </B><INPUT TYPE=text NAME=name SIZE="20"></P>
+
+<TABLE BORDER="1" WIDTH="100%">
+<TR><TH>Course
+<TR>
+	<TD><INPUT TYPE=radio NAME=course VALUE="4" CHECKED>Good
+	<TD><INPUT TYPE=radio NAME=course VALUE="3">OK
+	<TD><INPUT TYPE=radio NAME=course VALUE="2">Fair
+	<TD><INPUT TYPE=radio NAME=course VALUE="1">Poor
+	<TD><INPUT TYPE=radio NAME=course VALUE="0">Unacceptable
+<TR><TH>Instructor
+<TR>
+	<TD><INPUT TYPE=radio NAME=instr VALUE="4" CHECKED>Good
+	<TD><INPUT TYPE=radio NAME=instr VALUE="3">OK
+	<TD><INPUT TYPE=radio NAME=instr VALUE="2">Fair
+	<TD><INPUT TYPE=radio NAME=instr VALUE="1">Poor
+	<TD><INPUT TYPE=radio NAME=instr VALUE="0">Unacceptable
+<TR><TH>Pace
+<TR>
+	<TD><INPUT TYPE=radio NAME=pace VALUE="ok" CHECKED>OK
+	<TD><INPUT TYPE=radio NAME=pace VALUE="fast">Fast
+	<TD><INPUT TYPE=radio NAME=pace VALUE="slow">Slow
+</TABLE>
+
+<H3>What was the best part of today's class?</H3>
+<TEXTAREA NAME=best COLS=60 ROWS=4></TEXTAREA>
+
+<H3>What improvements, if any, would you suggest?</H3>
+<TEXTAREA NAME=improve COLS=60 ROWS=4></TEXTAREA>
+
+<P ALIGN=CENTER><INPUT type=submit VALUE="Review evaluation">
+</FORM>
+</BODY>
