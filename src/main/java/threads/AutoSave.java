@@ -70,3 +70,20 @@ public class AutoSave extends Thread {
 	// 1) saveFile() must now be synchronized.
 	// 2) method that shuts down main program be synchronized on *SAME* object
 }
+
+/** Local copy of FileSaver interface, for compiling AutoSave demo. */
+interface FileSaver {
+	/** Load new model from fn; if null, prompt for new fname */
+	public void loadFile(String fn);
+
+	/** Ask the model if it wants AutoSave done for it */
+	public boolean wantAutoSave();
+
+	/** Ask the model if it has any unsaved changes, don't save otherwise */
+	public boolean hasUnsavedChanges();
+
+	/** Save the current model's data in fn. 
+	 * If fn == null, use current fname or prompt for a filename if null.
+	 */
+	public void saveFile(String fn);
+}

@@ -52,12 +52,13 @@ public class Intr implements Runnable {
 	/** How long to give the Thread */
 	int time;
 
-	public Intr(Thread t, int mSec) {
-		System.out.println("Intr.<init>: Thread " + t);
-		t.setPriority(Thread.MAX_PRIORITY);
-		t.setName("TimedThread");
-		timedThread = t;
+	public Intr(int mSec) {
 		time = mSec;
+		timedThread = new Thread(this);
+		System.out.println("Intr.<init>: Thread " + timedThread);
+		timedThread.setPriority(Thread.MAX_PRIORITY);
+		timedThread.setName("TimedThread");
+		timedThread.start();
 	}
 
 	public void run() {
@@ -82,8 +83,7 @@ public class Intr implements Runnable {
 	public static void main(String[] ap) {
 		byte b[] = new byte[10];
 		System.out.println("Creating Intr");
-		Intr me = new Intr(Thread.currentThread(), 2000);
-		me.start();
+		Intr me = new Intr(2000);
 		System.out.println("Starting read");
 		for (int i=1; i<=5; i++) {
 			try {
