@@ -1,8 +1,13 @@
-import java.beans.*;
-import java.io.*;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /** Show the XML serialization added to "java.beans.*" in JDK1.4.
- * Subclass "SerialDemo" to get most of the infrastructure
+ * Subclass "SerialDemoAbstratBase" to get most of infrastructure
  */
 public class SerialDemoXML extends SerialDemoAbstractBase {
 
