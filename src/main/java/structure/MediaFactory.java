@@ -1,7 +1,6 @@
 /*
- * MediaFactory - give out Media enumerations
- * @author ian
- * @verion $Id$
+ * MediaFactory - give out Media enumeration constants
+ * @version $Id$
  */
 public class MediaFactory {
 
