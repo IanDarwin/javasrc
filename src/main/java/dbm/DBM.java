@@ -63,9 +63,9 @@ public class DBM {
 		return null;
 	}
 
-	protected native int dbmstore(byte[] key, byte[] content);
+	protected native int dbmstore(Object key, Object content);
 
-	protected native int delete(Object byte[]);
+	protected native int delete(Object key[]);
 
 	public native Object firstkey();
 
