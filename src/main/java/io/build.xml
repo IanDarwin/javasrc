@@ -50,4 +50,20 @@
 			classpath="${classpath}"/>
 	</target>
 
+	<!-- Simple Regression Tests -->
+	<target name="regress" >
+		<taskdef name="junit" 
+			classname="org/apache/tools/ant/taskdefs/optional/junit/JUnitTask"
+			classpath="${ant-junit.jar}:${junit.jar}"/>
+		<junit printsummary="yes" fork="no" haltonfailure="yes">
+				<classpath>
+						<pathelement location="${build}"/>
+						<pathelement location="${junit.jar}"/>
+						<pathelement location="${darwinsys.jar}"/>
+				</classpath>
+				<formatter type="plain"/>
+				<test name="SimpleCalcTest"/>
+		</junit>
+	</target>
+
 </project>
