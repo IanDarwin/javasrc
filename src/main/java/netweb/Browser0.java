@@ -4,12 +4,12 @@ import java.io.*;
 /**
  * Browser0 - Get the contents of a URL, write to stdout
  */
-public class GetFromURL {
+public class Browser0 {
 	public static void main(String av[]) {
-		new GetFromURL(av);
+		new Browser0(av);
 	}
 
-	GetFromURL(String av[]) {
+	Browser0(String av[]) {
 		String loc = null;
 		String data = null;
 		switch(av.length) {
