@@ -27,16 +27,15 @@ public class CrossRef {
 			String cand = st.nextToken();
 			// System.out.println("Trying path " + cand);
 			if (cand.endsWith(".zip"))
-				xref.processOneZip(argv);
+				xref.processOneZip(cand);
 		}
 	}
 
 	/** For each Zip file, for each entry, xref it */
-	public void processOneZip(String classes[]) {
-		for (int i=0; i<classes.length; i++)
+	public void processOneZip(String classes) {
 			try {
 				ZipFile zippy = 
-				new ZipFile(new File(classes[i]));
+				new ZipFile(new File(classes));
 				Enumeration all = zippy.entries();
 				while (all.hasMoreElements())
 				 doClass(((ZipEntry)(all.nextElement())).getName());
