@@ -1,8 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-import io.*;
-import io.MyData;
+//import io.MyData;
 
 /** Demonstrate use of Serialization. Typical Subclass main will be:
  *	public static void main(String[] s) throws Exception {
