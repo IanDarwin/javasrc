@@ -16,11 +16,12 @@ public class ColorChooser extends JFrame
     JColorChooser cc;
     JDialog cd;
     MyCanvas demo;
+	Container cPane;
 
     public ColorChooser() {
         super("Ian Darwin's Color Demo");
         JButton jButton;
-		Container cPane = getContentPane();
+		cPane = getContentPane();
         cPane.add("North", jButton = new JButton("Choose Color..."));
 		jButton.setToolTipText("Click here to see the Color Chooser");
         jButton.addActionListener(new ActionListener() {
@@ -44,13 +45,13 @@ public class ColorChooser extends JFrame
 			cc = new JColorChooser(getBackground()),
 			new ActionListener() {
 				public void actionPerformed(ActionEvent actionEvent) {
-					ColorChooser.this.demo.setColor(cc.getColor());
+					ColorChooser.this.demo.setBackground(cc.getColor());
 				}
 			},
 			new ActionListener() {
 				public void actionPerformed(ActionEvent actionEvent)
 				{
-					ColorChooser.this.demo.setColor(getBackground());
+					ColorChooser.this.demo.setBackground(getBackground());
 				}
 			});
 	}
