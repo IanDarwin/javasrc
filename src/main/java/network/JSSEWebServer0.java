@@ -14,7 +14,7 @@ public class JSSEWebServer0 extends WebServer0 {
 		JSSEWebServer0 w = new JSSEWebServer0();
 		w.runServer(HTTPS);		// never returns!!
 	}
-	
+
 	/** Get an HTTPS ServerSocket using JSSE.
 	 * @see WebServer0#getServerSocket(int)
 	 * @throws ClassNotFoundException if the SecurityProvider cannot be instantiated.
