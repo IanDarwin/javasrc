@@ -9,78 +9,80 @@ public class MetroLib {
 		room = Rooms.getFirstRoom();
 	}
 
+	/** Main program, get the game going and run it. */
 	public static void main(String[] args) throws IOException {
 		println("This is a trivial game demonstrating OO structures.");
-		println("You can move north south east or west");
 		BufferedReader is = new BufferedReader(
 			new InputStreamReader(System.in));
 		MetroLib game = new MetroLib();
+		println("You can in general move north south east or west");
+		println("");
+		// Manually print out first room's message.
+		println(game.room.entryMessage);
+
+		// Main loop: run the game.
 		int cmd;
 		while ((cmd = game.parseCmd(is)) != Cmd.QUIT) {
 			game.play(cmd);
 		}
 	}
 
+	/** Read a line and delegate it to the parser */
 	int parseCmd(BufferedReader is) throws IOException {
 		String line = is.readLine();
-		if (line == null)
-			return Cmd.QUIT;
-		if (line.equalsIgnoreCase("north"))
-			return Cmd.NORTH;
-		if (line.equalsIgnoreCase("east"))
-			return Cmd.EAST;
-		if (line.equalsIgnoreCase("south"))
-			return Cmd.SOUTH;
-		if (line.equalsIgnoreCase("west"))
-			return Cmd.WEST;
-
-		// more later...
-
-		return Cmd.UNKNOWN;
+		return Cmd.parseCmd(line);
 	}
 
 	void play(int cmd) {
-		boolean entered = false, noWay = false;
-println("IN PLAY: room=" + room);
+		Room newRoom = null;
+		boolean noWay = false;
 		switch(cmd) {
 		case Cmd.UNKNOWN:
 			println("Unknown command!");
 			break;
 		case Cmd.NORTH:
 			if (room.north != null) {
-				room = room.north;
-				entered = true;
+				newRoom = room.north;
 			} else
 				noWay = true;
 			break;
 		case Cmd.EAST:
 			if (room.east != null) {
-				room = room.east;
-				entered = true;
+				newRoom = room.east;
 			} else
 				noWay = true;
 			break;
 		case Cmd.SOUTH:
 			if (room.south != null) {
-				room = room.south;
-				entered = true;
+				newRoom = room.south;
 			} else
 				noWay = true;
 			break;
 		case Cmd.WEST:
 			if (room.west != null) {
-				room = room.west;
-				entered = true;
+				newRoom = room.west;
 			} else
 				noWay = true;
 			break;
+		case Cmd.HELP:
+			println("Sorry, help not written yet. I cannot help it");
+			break;
+		default:
+			println("LOGIC ERROR: Unhandled case " + (char)cmd);
+			break;
 		}
-		if (entered && noWay)
-			println("LOGIC ERROR");
-		if (entered)
-			println(room.entryMessage);
-		if (noWay)
+		if (noWay) {
 			println("I see no way to go in that direction");
+			return;
+		}
+		if (newRoom != null) {
+			if (room.exitMessage != null) {
+				println(room.exitMessage);
+			}
+			// The magic happens: we change rooms.
+			room = newRoom;
+			println(room.entryMessage);
+		}
 	}
 
 	static void println(String s) {

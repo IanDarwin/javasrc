@@ -17,11 +17,13 @@ public class Rooms {
 		hallOfKings = new Room();
 
 		lobby.setAll(null, mainHall, null, null,
-		"You are standing in the lobby. There is a door to the east", null);
+			"You are standing in the lobby. There is a door to the east", 
+			"Come visit this generic lobby again soon");
 		mainHall.setAll(null, hallOfKings, null, lobby,
-		"You are in the Great Hall. There are doors to the east and west", null);
+			"You are in the Great Hall. There are doors to the east and west",
+			null);
 		hallOfKings.setAll(null, null, null, mainHall,
-		"You are in the Hall of Kings. there is a door to the west", null);
+			"You are in the Hall of The Mountain Kings. There is a door to the west", null);
 	}
 
 	public static Room getFirstRoom() {
