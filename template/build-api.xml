@@ -44,6 +44,22 @@
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>
 
+	<!-- Simple Regression Tests -->
+	<target name="regress" depends="build">
+		<taskdef name="junit" 
+			classname="org/apache/tools/ant/taskdefs/optional/junit/JUnitTask"
+			classpath="${ant-junit.jar}:${junit.jar}"/>
+
+		<junit printsummary="yes" fork="no" haltonfailure="yes">
+				<classpath>
+						<pathelement location="${build}"/>
+						<pathelement location="${junit.jar}"/>
+				</classpath>
+				<formatter type="plain"/>
+				<test name="regress.XXX"/>
+		</junit>
+	</target>
+
 	<target name="clean">
 		<delete dir="${build}"/>
 	</target>
