@@ -1,22 +1,34 @@
 import java.io.*;
 
 /** GetMark -- get marked lines.
+ * This can be used either as a standalone utility via the included
+ * "main" program wrapper, or inside other classes.
+ * <p>
  * In this version, the marks are hard-coded; ideally they would come
- * from a FileProperties object.
+ * from a Properties or Preferences object.
  *
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
-
 public class GetMark {
-	//+
 	/** the default starting mark. */
 	public final String startMark = "//+";
 	/** the default ending mark. */
 	public final String endMark = "//-";
+	/** Set this to TRUE for running in "exclude" mode (e.g., for
+	 * building exercises from solutions) and to FALSE for running
+	 * in "extract" mode (e.g., writing a book and ommittin the
+	 * imports and "public class" stuff).
+	 */
+	public final static boolean START = true;
 	/** True if we are currently inside marks. */
-	protected boolean printing = false;
+	protected boolean printing = START;
+	/** True if you want line numbers */
+	protected final boolean number = false;
 	//-
+	/* This part should be excluded! */
+	int foo = 42;
+	//+
 
     /** Get Marked parts of one file, given an open LineNumberReader.
 	 */
@@ -27,32 +39,25 @@ public class GetMark {
 		int nLines = 0;
 		try {
 			String inputLine;
-			// Number of chars representing no indent
-			final int NOINDENT = 0;
-			// Number of chars to strip off to remove indentation
-			int indent = NOINDENT;
 
 			while ((inputLine = is.readLine()) != null) {
 				if (inputLine.trim().equals(startMark)) {
 					if (printing)
+						// These go to stderr, so you can redirect the output
 						System.err.println("ERROR: START INSIDE START, " +
 							fileName + ':' + is.getLineNumber());
 					printing = true;
-					indent = NOINDENT;
 				} else if (inputLine.trim().equals(endMark)) {
 					if (!printing)
 						System.err.println("ERROR: STOP WHILE STOPPED, " +
 							fileName + ':' + is.getLineNumber());
 					printing = false;
 				} else if (printing) {
-					if (indent < inputLine.length() && indent == NOINDENT) {
-						while (Character.isWhitespace(inputLine.charAt(indent)))
-							++indent;
+					if (number) {
+						out.print(nLines);
+						out.print(": ");
 					}
-					if (indent == NOINDENT || inputLine.length() == 0)
-						out.println(inputLine);
-					else
-						out.println(inputLine.substring(indent));
+					out.println(inputLine);
 					++nLines;
 				}
             }
@@ -68,7 +73,10 @@ public class GetMark {
     }
 
 	/** This simple main program looks after filenames and
-	 * opening files and such like for you.
+	 * opening files and such like for you, when GetMark is being
+	 * used standalone.
+	 * XXX TODO options parsing, allow include/exclude, number, etc.
+	 * to be set from the command line.
 	 */
     public static void main(String[] av) {
         GetMark o = new GetMark();
