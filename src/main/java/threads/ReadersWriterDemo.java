@@ -8,9 +8,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @version $Id$
  */
 public class ReadersWriterDemo {
+	private static final int NUM_READER_THREADS = 3;
 	public static void main(String[] args) {
 		new ReadersWriterDemo().demo();
 	}
+	
+	private boolean done = false;
 	
 	private BallotBox theData;
 
@@ -23,7 +26,7 @@ public class ReadersWriterDemo {
 		List questionsList = new ArrayList();
 		questionsList.add("Agree");
 		questionsList.add("Disagree");
-		box = new BallotBox(questionsList);
+		theData = new BallotBox(questionsList);
 	}
 	
 	/**
@@ -32,35 +35,60 @@ public class ReadersWriterDemo {
 	private void demo() {
 		
 		// Start two reader threads
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < NUM_READER_THREADS; i++) {
 			new Thread() {
 				public void run() {
-					lock.readLock().lock();
-					Iterator results = theData.iterator();
-					lock.readLock().unlock();
-					print(results);
-					try {
-						Thread.sleep(999);
-					} catch (InterruptedException ex) {
+					while(!done) {
+						Iterator results = null;
+						try {
+							lock.readLock().lock();
+							results = theData.iterator();
+						} finally {
+							// Unlock in finally to be sure.
+							lock.readLock().unlock();
+						}
+						// Now lock has been freed, take time to print
+						print(results);
+						try {
+							Thread.sleep(((long)(Math.random()* 1000)));
+						} catch (InterruptedException ex) {
+							// nothing to do
+						}
 					}
 				}
 			}.start();
 		}
-		// Start one writer thread
+		// Start one writer thread to simulate occasional voting
 		new Thread() {
 			public void run() {
-				lock.writeLock().lock();
-				theData.voteFor(0);
-				try {
-					Thread.sleep(1400);
-				} catch (InterruptedException ex) {
+				while(!done) {
+					try {
+						lock.writeLock().lock();
+						theData.voteFor(
+								(((int)(Math.random()*
+								theData.getCandidateCount()))));
+					} finally {
+						lock.writeLock().unlock();
+					}
+					try {
+						Thread.sleep(((long)(Math.random()*1500)));
+					} catch (InterruptedException ex) {
+						// nothing to do
+					}
 				}
 			}
 		}.start();
 		
+		// In the main thread, wait a while then terminate the run. later.
+		try {
+			Thread.sleep(10 *1000);
+		} catch (InterruptedException ex) {
+			// nothing to do
+		} finally {
+			done = true;
+		}	
 	}
-	BallotBox box;
-	
+
 	/** print the current totals */
 	private void print(Iterator iter) {
 		while (iter.hasNext()) {
