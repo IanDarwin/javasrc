@@ -48,29 +48,36 @@ public class MkIndex {
 
 	/** Write the HTML headers */
 	void BEGIN() throws IOException {
-		println("<HTML>");
-		println("<HEAD>");
-		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
-		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <title>" + TITLE + "</title>");
-		println("</HEAD>");
+		println("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'");
+		println("	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'");
+>
+		println();
+		println("<html>");
+
+		println("<head>");
+		println("	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'>");
+		println("	<meta name='Generator' content='Java MkIndex'/>");
+		println("	<link rel='stylesheet' type='text/css' href='/stylesheet.css' title='style'/>
+		println("	<title>" + TITLE + "</title>");
+		println("</head>");
+		println();
 		println("<body bgcolor=\"" + BGCOLOR + "\">");
 		println("<h1>" + TITLE + "</h1>");
 		if (new File("about.html").exists()) {
 			FileIO.copyFile("about.html", out, false);
 		} else {
-			println("<P>The following files are online.");
-			println("Some of these files are still experimental!</P>");
-			println("<P>Most of these files are Java source code.");
+			println("<p>The following files are online.");
+			println("Some of these files are still experimental!</p>");
+			println("<p>Most of these files are Java source code.");
 			println("If you load an HTML file from here, the applets will not run!");
 			println("The HTML files must be saved to disk and the applets compiled,");
-			println("before you can run them!");
+			println("before you can run them!</p>");
 		}
-		println("<P>All files are Copyright &copy;: All rights reserved.");
+		println("<p>All files are Copyright &copy;: All rights reserved.");
 		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use.");
 		println("May be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met.");
-		println("</P>");
-		println("<HR>");
+		println("</p>");
+		println("<hr />");
 	}
 
 	/** Array of letters that exist. Should
