@@ -66,6 +66,7 @@ makefiles.clean:
 			rm $$dir/Makefile; \
 		fi; \
 		done
+
 # Don't worry about (or try to use) this rule; it is only used by the book's
 # author when adding a subdirectory to the list of files included.
 subdirs:
