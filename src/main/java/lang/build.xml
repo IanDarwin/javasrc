@@ -13,7 +13,10 @@
 			classpath="${darwinsys.jar}:${junit.jar}">
 				<!-- exclude programs that are having trouble compiling -->
 				<exclude name="EuroLanguage.java"/>
+				<!-- exclude classes that need extra API that is problematic-->
+				<exclude name="UsePackage.java"/>
 				<!-- exclude programs that are not intended to compile -->
+				<exclude name="AddException.java"/>
 				<exclude name="ByteAdd2.java"/>
 				<exclude name="CastingDemo.java"/>
 				<exclude name="ChangeArrayLength.java"/>
