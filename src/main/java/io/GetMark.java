@@ -18,33 +18,23 @@ public class GetMark {
 	protected boolean printing = false;
 	//-
 
-    public static void main(String av[]) {
-        GetMark c = new GetMark();
-        switch(av.length) {
-            case 0: c.process(new BufferedReader(
-                        new InputStreamReader(System.in))); break;
-            default:
-		for (int i=0; i<av.length; i++)
-			try {
-				c.process(new BufferedReader(new FileReader(av[i])));
-			} catch (FileNotFoundException e) {
-				System.err.println(e);
-			}
-        }
-    }
-
-
-    /** Get Marked parts of one file, given an open BufferedReader.
+    /** Get Marked parts of one file, given an open LineNumberReader.
 	 */
-    public void process(BufferedReader is) {
+    public void process(String fileName, LineNumberReader is) {
 		//+
         try {
             String inputLine;
 
             while ((inputLine = is.readLine()) != null) {
 				if (inputLine.trim().equals(startMark)) {
+					if (printing)
+						System.err.println("ERROR: START INSIDE START, " +
+							fileName + : + is.getLineNumber());
 					printing = true;
 				} else if (inputLine.trim().equals(endMark)) {
+					if (!printing)
+						System.err.println("ERROR: STOP INSIDE STOP, " +
+							fileName + : + is.getLineNumber());
 					printing = false;
 				} else if (printing)
 					System.out.println(inputLine);
@@ -56,4 +46,23 @@ public class GetMark {
         }
     }
 	//-
+
+	/** This simple main program looks after filenames and
+	 * opening files and such like for you.
+	 */
+    public static void main(String av[]) {
+        GetMark o = new GetMark();
+        if (av.length == 0) {
+            o.process("standard input", new LineNumberReader(
+				new InputStreamReader(System.in)));
+		} else {
+			for (int i=0; i<av.length; i++)
+				try {
+					o.process(av[i],
+						new LineNumberReader(new FileReader(av[i])));
+				} catch (FileNotFoundException e) {
+					System.err.println(e);
+				}
+        }
+    }
 }

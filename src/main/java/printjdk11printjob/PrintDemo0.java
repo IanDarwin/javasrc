@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.*;
 
 /**
- * PrintDemo0 -- Print Demo Program
+ * PrintDemo0 -- Print Demo Program - JDK1.1 Version
  *      Prints three pages (or so).
  */
 public class PrintDemo0 extends Frame {

@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.*;
 
 /**
- * PrintDemo1 -- Print Demo Program
+ * PrintDemo1 -- Print Demo Program - JDK1.1 Version
  *      Prints three pages (or so).
  */
 public class PrintDemo1 extends Frame implements ActionListener {

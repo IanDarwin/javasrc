@@ -26,7 +26,7 @@ public class CompTest {
 			System.err.println("Component under test got exception in construction or initialization");
 			System.err.println(e.toString());
 		}
-		cp.add(BorderLayout.CENTER, c); // ClassCastException?
+		cp.add(BorderLayout.CENTER, c);
 		JButton quitButton;
 		cp.add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
 		quitButton.addActionListener(new ActionListener() {

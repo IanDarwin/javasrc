@@ -8,6 +8,8 @@ import java.util.*;
  * @version $Id$
  */
 public class Grapher extends Component {
+	/** Multiplier for range to allow room for a border */
+	public final static float BORDERFACTOR = 1.1f;
 
 	/* Small inner class to hold x, y. Called Apoint to differentiate
 	 * from java.awt.Point.
@@ -77,10 +79,10 @@ public class Grapher extends Component {
         }
 
 		// Compute ranges
-		xrange = maxx - minx;
-		yrange = maxy - miny;
-		System.out.println("minx,x,r = " + minx + ' ' + maxx + ' ' + xrange);
-		System.out.println("miny,y,r = " + miny + ' ' + maxy + ' ' + yrange);
+		xrange = (maxx - minx) * BORDERFACTOR;
+		yrange = (maxy - miny) * BORDERFACTOR;
+		Debug.println("range", "minx,x,r = " + minx +' '+ maxx +' '+ xrange);
+		Debug.println("range", "miny,y,r = " + miny +' '+ maxy +' '+ yrange);
 	}
 
 	/** Called by AWT when the window needs painting.
@@ -88,7 +90,6 @@ public class Grapher extends Component {
 	 */
     public void paint(Graphics g) {
 		Dimension s = getSize();
-		System.out.println("Size="+s);
 		if (n < 2) {
 			g.drawString("Insufficient data", 10, 40);
 			return;
@@ -103,7 +104,7 @@ public class Grapher extends Component {
 			Apoint d = (Apoint)data.elementAt(i);
 			float x = (d.x-minx) * xfact;
 			float y = (d.y-miny) * yfact;
-			System.out.println("AT " + i + " " + d + "; " +
+			Debug.println("point", "AT " + i + " " + d + "; " +
 				"x = " + x + "; y = " + y);
 			// Draw a 5-pixel rectangle centered, so -2 both x and y.
 			// AWT numbers Y from 0 down, so invert:
