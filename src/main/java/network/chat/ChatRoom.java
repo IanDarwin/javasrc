@@ -8,10 +8,9 @@ import java.net.*;
  * Writing a Chat Room seems to be one of many obligatory rites (or wrongs)
  * of passage for Java experts these days.
  * <P>
- * This one is a toy because it doesn't have any command protocol, which
- * means we can't send a goodbye message, or query the server as to
- * who's logged in, or anything fancy like that. However, it works OK
- * for small groups.
+ * This one is a toy because it doesn't much of a command protocol, which
+ * means we can't query the server as to * who's logged in,
+ *  or anything fancy like that. However, it works OK for small groups.
  * <P>
  * Uses client socket w/ two Threads (main and one constructed),
  * one for reading and one for writing.
@@ -157,6 +156,9 @@ public class ChatRoom extends Applet {
 				}
 			}
 		}).start();
+
+		// FAKE LOGIN FOR NOW
+		pw.println(Chat.CMD_LOGIN + "AppletUser");
 		loggedIn = true;
 	}
 
