@@ -27,15 +27,16 @@ public class MakeAPI extends APIFormatter {
 
 		// get directory part, mkdirs it
 		// create the file.
+		PrintStream out = System.out;	// fake for now
 
 		// print class header
-		System.out.println(c.toString() + '{');
+		out.println(c.toString() + '{');
 
 		// print constructors, methods and fields to it.
 		Constructor[] ctors = c.getDeclaredConstructors();
 		for (int i=0; i< ctors.length; i++) {
-			System.out.print('\t');
-			System.out.println(ctors[i] + "{}");
+			out.print('\t');
+			out.println(ctors[i] + "{}");
 		}
 		Method[] mems = c.getDeclaredMethods();
 		for (int i=0; i< mems.length; i++) {
@@ -43,30 +44,30 @@ public class MakeAPI extends APIFormatter {
 			int mods = m.getModifiers();
 			if (isPrivate(mods))
 				continue;
-			System.out.print('\t');
-			//System.out.print(modNames[mods]);
-			System.out.print(mods);
-			System.out.print(m.getReturnType());
-			System.out.print(m.getName() + "(");
+			out.print('\t');
+			//out.print(modNames[mods]);
+			out.print(mods);
+			out.print(m.getReturnType());
+			out.print(m.getName() + "(");
 			Class[] classes = m.getParameterTypes();
-			for (int j=0; j<classes.length; j++) {
-				if (j>0) System.out.println(", ");
+			for (int j = 0; j<classes.length; j++) {
+				if (j > 0) out.println(", ");
 				println(classes[j].getName() + ' ' + argNames[j]);
 			}
-			System.out.println(") + {");
-			System.out.println("\treturn;");
-			System.out.println("\t}");
+			out.println(") + {");
+			out.println("\treturn;");
+			out.println("\t}");
 		}
 		Field[] flds = c.getDeclaredFields();
 		for (int i=0; i< flds.length; i++) {
-			System.out.print('\t');
-			System.out.println(flds[i]);
+			out.print('\t');
+			out.println(flds[i]);
 		}
-		System.out.println("}");
+		out.println("}");
 		// close output file.
 	}
 
 	private final boolean isPrivate(int i) {
-		return false;
+		return i & Modifiers.PRIVATE;
 	}
 }
