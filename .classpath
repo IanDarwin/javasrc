@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="gui"/>
+	<classpathentry kind="src" path="xml"/>
+	<classpathentry kind="src" path="graphics"/>
+	<classpathentry kind="src" path="introspection"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/JavaCookJars"/>
+	<classpathentry kind="src" path="/darwinsys-api"/>
+	<classpathentry kind="lib" path="/JavaCookJars/xerces.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/xalan.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/servletapi.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/postgresql.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/mm.mysql-2.0.11-bin.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/mail.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/log4j.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/junit.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/jta.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/jdori-enhancer.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/jdori.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/jdom.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/jdo.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/j2ee.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/db2jcc.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/darwinsys.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/btree.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/antlr.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/ant-junit.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/ant-contrib-0.6.jar"/>
+	<classpathentry kind="lib" path="/JavaCookJars/activation.jar"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>
