@@ -6,11 +6,9 @@ import java.io.*;
 import java.util.*;
 import javax.media.*;
 
-import com.darwinsys.swingui.WindowCloser;
-
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class JMFPlayer extends JPanel implements ControllerListener {
@@ -93,6 +91,6 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		frameCP.add(BorderLayout.CENTER, p);
 		f.setSize(200, 200);
 		f.setVisible(true);
-		f.addWindowListener(new WindowCloser(f, true));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
