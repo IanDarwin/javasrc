@@ -1,6 +1,10 @@
 import java.io.*;
+import java.text.*;
+
 /**
- * Timer for standalone, line-mode application.
+ * Timer for processing sqrt and I/O operations.
+ * @author Ian Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class Timer {
 	public static void main(String argv[]) {
@@ -11,16 +15,20 @@ public class Timer {
 		}
 	}
 	public void run() throws IOException {
+
 		DataOutputStream n = new DataOutputStream(
-			new BufferedOutputStream(new FileOutputStream("nul:")));
+			new BufferedOutputStream(new FileOutputStream(SysDep.getDevNull())));
 		long t0, t1;
 		System.out.println("Java Starts at " + (t0=System.currentTimeMillis()));
 		double k;
-		for (int i=0; i<1000000; i++) {
+		for (int i=0; i<100000; i++) {
 			k = 2.1 * Math.sqrt((double)i);
 			n.writeDouble(k);
 		}
 		System.out.println("Java Ends at " + (t1=System.currentTimeMillis()));
-		System.out.println("Time=" + (t1-t0));
+		double deltaT = t1-t0;
+		System.out.println("This run took " + 
+			DecimalFormat.getInstance().format(deltaT/1000.) + " seconds.");
 	}
+
 }
