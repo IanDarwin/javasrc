@@ -6,7 +6,12 @@ import javax.mail.internet.*;
 * List all available folders.
 */
 public class MailLister {
+	static StringFormat fromFmt = new StringFormat(20, StringFormat.JUST_LEFT);
+	static StringFormat subjFmt = new StringFormat(40, StringFormat.JUST_LEFT);
+
 	public static void main(String argv[]) throws Exception {
+		String fileName = PROPS_FILE_NAME;
+
 		if (argv.length < 5) {
 			System.err.println("Usage: MailLister protocol host user pw root");
 			System.exit(0);
@@ -16,6 +21,18 @@ public class MailLister {
 		String user = argv[2];
 		String password = argv[3];
 		String root = argv[4];
+
+		// An alternate way of setting the values, based on Properties.
+		// if (argv.length > 0) {
+		// 	fileName = argv[0];
+		// FileProperties fp = new FileProperties(fileName);
+		// fp.load();
+		// String protocol = fp.getProperty(MailConstants.RECV_PROTO);
+		// String host = fp.getProperty(MailConstants.RECV_HOST);
+		// String user = fp.getProperty(MailConstants.RECV_USER);
+		// String password = fp.getProperty(MailConstants.RECV_PASS);
+		// String root = fp.getProperty(MailConstants.RECV_ROOT);
+
 		boolean recursive = false;
 
 		// Start with a Session object, as usual
@@ -65,7 +82,11 @@ public class MailLister {
 					fromAddress = ((InternetAddress)from).getAddress();
 				else
 					fromAddress = from.toString();
-				System.out.println(fromAddress + "\t" + m.getSubject());
+				StringBuffer sb = new StringBuffer();
+				fromFmt.format(fromAddress, sb, null);
+				sb.	append("  ");
+				subjFmt.format(m.getSubject(), sb, null);
+				System.out.println(sb.toString());
 			}
 		}
 		if ((folder.getType() & Folder.HOLDS_FOLDERS) != 0) {

@@ -6,6 +6,7 @@ Things you might do to improve MailClient:
 	MailReaderBean - handle HTML mail - use DataHandler.
 	Menus.
 	Options:
-		Aliases for composing.
+		Aliases in outgoing mail (done in JabaDex).
 		Various reply options (Reply to sender, reply to all, etc.)
 		Compose/Reply Templates.
+	GUI to set things like protocol, hostname, etc. (done in JabaDex).

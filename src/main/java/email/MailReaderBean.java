@@ -10,28 +10,41 @@ import javax.mail.internet.*;
  * Display a mailbox or mailboxes.
  * @version $Id$
  */
-public class MailReaderBean extends JSplitPane {
+public class MailReaderBean extends JSplitPane implements MailConstants {
 
 	private JTextArea bodyText;
+	private String protocol;
+	private String host;
+	private String user;
+	private String password;
+	private String rootName;
 
-    public MailReaderBean(
-		String protocol,
-		String host,
-		String user,
-		String password,
-		String rootName) throws Exception {
+    public MailReaderBean() throws Exception {
 
 		super(VERTICAL_SPLIT);
 
 		boolean recursive = false;
+
+		// Get the properties to be sure we can open the mail connection
+		protocol = System.getProperty(RECV_PROTO);
+		host = System.getProperty(RECV_HOST);
+		user = System.getProperty(RECV_USER);
+		password = System.getProperty(RECV_PASS);
+		rootName = System.getProperty(RECV_ROOT);
+		int port = System.getProperty(RECV_PORT) == null ? -1 :
+			Integer.parseInt(System.getProperty(RECV_PORT));
 
 		// Start with a Mail Session object
 		Session session = Session.getDefaultInstance(
 			System.getProperties(), null);
 		session.setDebug(false);
 
-		// Get a Store object for the given protocol
-		Store store = session.getStore(protocol);
+		// Construct a javax.mail.URLName representing all the information.
+		URLName connection = new URLName(protocol,
+               host, port, rootName, user, password);
+
+		// Use the URLName to get a Store object to read the mail from
+		Store store = session.getStore(connection);
 		store.connect(host, user, password);
 
 		// Get Folder object for root, and list it
@@ -148,8 +161,7 @@ public class MailReaderBean extends JSplitPane {
 		String mbox = "/var/mail/ian";
 		if (args.length > 0)
 			mbox = args[0];
-		MailReaderBean mb = new MailReaderBean("mbox", "localhost",
-			"", "", mbox);
+		MailReaderBean mb = new MailReaderBean();
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);
