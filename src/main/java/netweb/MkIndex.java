@@ -47,20 +47,19 @@ public class MkIndex {
 		println("<HEAD>");
 		println("    <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">");
 		println("    <META NAME=\"GENERATOR\" CONTENT=\"Java MkIndex\">");
-		println("    <TITLE>Learning Tree Java Programming Online Source Examples</TITLE>");
+		println("    <TITLE>Ian Darwin's Java Programming Online Source Examples</TITLE>");
 		println("</HEAD>");
 		println("<BODY BGCOLOR=\"" + BGCOLOR + "\">");
-		println("<H1>Learning Tree Java Programming Online Source Examples</H1>");
-		println("<P>The following files are online. Most are described");
-		println("in the Course Notes by file name.");
-		println("Files not so mentioned are experimental!</P>");
+		println("<H1>Ian Darwin's Java Programming Online Source Examples</H1>");
+		println("<P>The following files are online.");
+		println("Some of these files are still experimental!</P>");
 		println("<P>Most of these files are Java source code.");
 		println("If you load an HTML file from here, the applets will not run!");
 		println("The HTML files must be saved to disk and the applets compiled,");
 		println("before you can run them!");
 		println("<P>All files are Copyright &copy;: All rights reserved.");
 		println("See the accompanying <A HREF=\"legal-notice.txt\">Legal Notice</A> for conditions of use");
-		println("(may be used by students of Learning Tree Java Courses for educational purposes, and for commercial use if certain conditions are met).");
+		println("(may be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met).");
 		println("</P>");
 		println("<HR>");
 	}
