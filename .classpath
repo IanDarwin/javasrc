@@ -20,7 +20,8 @@
 	<classpathentry output="JNDI" kind="src" path="JNDI"/>
 	<classpathentry output="jsp" kind="src" path="jsp"/>
 	<classpathentry output="jsptags" kind="src" path="jsptags"/>
-	<classpathentry output="lang" kind="src" path="lang"/>
+    <classpathentry excluding="loops/|ByteAdd2.java|AddException.java|CastingDemo.java|ChangeArrayLength.java|CommentBug.java|CompileError.java|ConsRecurs.java|Constructors.java|ImportConflict.java|InitializersDemo.java|InnerMethods.java|InterfaceNoConstructor.java|NoLocalStatics.java|OverLoadReturn.java|PrivProt.java|ProtectedClass.java|ReturnType.java|ShowInitializers.java|Switch.java|SwitchByte.java|TryStealingInnerClass.java|Unnamed.java|EuroLanguage.java|ImportNonPublic.java|UsePackage.java"
+	output="lang" kind="src" path="lang"/>
 	<classpathentry output="metadata" kind="src" path="metadata"/>
 	<classpathentry output="native1.1" kind="src" path="native1.1"/>
 	<classpathentry output="netweb" kind="src" path="netweb"/>
