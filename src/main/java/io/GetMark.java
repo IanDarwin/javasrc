@@ -1,11 +1,56 @@
 import java.io.*;
 
 /** GetMark -- get marked lines.
- * This can be used either as a standalone utility via the included
- * "main" program wrapper, or inside other classes.
  * <p>
- * In this version, the marks are hard-coded; ideally they would come
- * from a Properties or Preferences object.
+ * GetMark is a general tool for including/excluding parts of a file.
+ * It can be used, for example, to extract parts of a file for use
+ * in documentation, or to delete parts of a file such as the working
+ * part of a solution.
+ * <p>
+ * The marks that it looks for are simple, and can be left in the
+ * master source (they never print). The mark //+ (as looked for
+ * with line.trim().equals("//+) in Java) begins printing, and the
+ * opposite mark //- stops printing.
+ * <p>
+ * So, for a course exercise, you would develop the working
+ * solution and comment it neatly, and add a //- mark after the TODO
+ * comments but before the working solution, and a //+ mark after it.
+ * For example:
+ * </p><pre>
+ * 	public methodA() {
+ * 		// TODO:
+ * 		// Look up the object to be invoked.
+ * 		// Use a Lookup Name of "ex31object"
+ * 
+ * 		//-
+ * 		Object o = Naming.lookup("ex31object");
+ * 		//+
+ * 
+ * 		// TODO #2
+ * 		// Downcast the looked up object using the IIOP portability
+ * 
+ * 		//-
+ * 		Ex31Object obj = (Ex31Object)PortableRemoteObject.narrow(
+ * 			o, Ex31Object.class);
+ * 		//-
+ * 	}
+ * </pre><p>
+ * You could use this in a script:
+ * <p><pre>
+ * for f in *.java
+ * do
+ *    echo $f
+ *    java GetMark $f &gt; ../solutions/$f
+ * done
+ * </pre><p>
+ * For an example of using GetMark for extraction
+ * (GetMark first appeared in my 
+ * <a href="http://javacook.darwinsys.com/">Java Cookbook</a>),
+ * see the comments in the code for GetMark itself.
+ * <p>
+ * In this version, the mode (include or extract) and the strings for
+ * the marks are hard-coded; ideally they would come
+ * from a Properties or Preferences object and/or from the command line.
  *
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
@@ -31,6 +76,8 @@ public class GetMark {
 	//+
 
     /** Get Marked parts of one file, given an open LineNumberReader.
+	 * This is the main operation of this class, and can be used
+	 * inside other programs or from the main() wrapper.
 	 */
     public void process(String fileName,
 		LineNumberReader is,
