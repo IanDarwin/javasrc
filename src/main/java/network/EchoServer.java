@@ -25,7 +25,8 @@ public class EchoServer {
 		try {
 			sock = new ServerSocket(port);
 		} catch (IOException e) {
-			System.err.println("I/O error in setup\n" + e);
+			System.err.println("I/O error in setup");
+			System.err.println(e);
 			System.exit(1);
 		}
 	}
