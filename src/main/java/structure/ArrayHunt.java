@@ -5,9 +5,11 @@ import java.util.*;
  * @version $Id$
  */
 public class ArrayHunt  {
-	protected final static int MAX    = 4000; // how many random ints
-	protected final static int NEEDLE = 1999; // value to look for
-	int haystack[];
+	/** the maximum (and actual) number of random ints to allocate */
+	protected final static int MAX    = 4000;
+	/** the value to look for */
+	protected final static int NEEDLE = 1999;
+	int[] haystack;
 	Random r;
 
 	public static void main(String[] argv) {
