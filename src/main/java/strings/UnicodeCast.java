@@ -1,6 +1,4 @@
-import java.io.*;
-
-/** Convert Unicode, ASCII and byte/int. */
+/** Convert among Unicode, ASCII and byte/int. */
 public class UnicodeCast {
 	public static void main(String[] args) {
 

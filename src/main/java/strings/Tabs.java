@@ -30,20 +30,26 @@ public class Tabs {
 	}
 
 	/** settabs - set initial tab stops */
-	public void settabs() {
-		int i;
-		for (i = 0; i < tabstops.length; i++) {
-			tabstops[i] = 0 == (i % tabSpace);
-			Debug.println("settabs", "Tabs[" + i + "]=" + tabstops[i]);
+	private void settabs() {
+		for (int i = 0; i < tabstops.length; i++) {
+			tabstops[i] = ((i+1) % tabSpace) == 0;
+			Debug.println("tabs", "Tabs[" + i + "]=" + tabstops[i]);
 		}
 	}
-
-	/** tabpos - returns true if given column is a tab stop.
+	
+	/**
+	 * @return Returns the tabSpace.
+	 */
+	public int getTabSpacing() {
+		return tabSpace;
+	}
+	
+	/** isTabStop - returns true if given column is a tab stop.
 	 * If current input line is too long, we just put tabs whereever, 
 	 * no exception is thrown.
 	 * @argument col - the current column number
 	 */
-	boolean tabpos(int col) {
+	public boolean isTabStop(int col) {
 		if (col > tabstops.length-1)
 			return true;
 		else 
