@@ -1,5 +1,6 @@
 package tmtimer;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -139,7 +140,7 @@ public class TMTimer extends JFrame implements Runnable {
         redTF.setText ("0:00");
         fieldsPanel.add (redTF);
 
-      timesPanel.add (fieldsPanel, Borderlayout.CENTER);
+      timesPanel.add (fieldsPanel, BorderLayout.CENTER);
 
       runningTimesPanel = new javax.swing.JPanel ();
       runningTimesPanel.setLayout (new javax.swing.BoxLayout (runningTimesPanel, 1));
@@ -158,7 +159,7 @@ public class TMTimer extends JFrame implements Runnable {
         maxTime.setFont (new java.awt.Font ("Dialog", 3, 36));
         runningTimesPanel.add (maxTime);
 
-      timesPanel.add (runningTimesPanel, Borderlayout.EAST);
+      timesPanel.add (runningTimesPanel, BorderLayout.EAST);
 
     getContentPane ().add (timesPanel, BorderLayout.NORTH);
 
