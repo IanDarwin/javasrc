@@ -1,18 +1,18 @@
 import java.io.*;
 
 /**
- * Read a file and print, using BufferedReader and System.out
+ * Vis - make special characters visible.
  */
-public class CatFile {
+public class Vis {
 
     public static void main(String av[]) {
-        CatFile c = new CatFile();
+        Vis v = new Vis();
         if (av.length == 0)
-            c.process(new BufferedReader(
-					new InputStreamReader(System.in)));
+            v.process(new BufferedReader(
+				new InputStreamReader(System.in)));
 		else for (int i=0; i<av.length; i++)
 			try {
-				c.process(new BufferedReader(new FileReader(av[i])));
+				v.process(new BufferedReader(new FileReader(av[i])));
 			} catch (FileNotFoundException e) {
 				System.err.println(e);
 			}
@@ -24,7 +24,16 @@ public class CatFile {
             String inputLine;
 
             while ((inputLine = is.readLine()) != null) {
-                System.out.println(inputLine);
+                for (int i=0; i<inputLine.length(); i++){
+					char c = inputLine.charAt(i);
+					switch(c) {
+						case '\t': System.out.print("\\t"); break;
+						case '\r': System.out.print("\\r"); break;
+						case '\n': System.out.print("\\n"); break;
+						default: System.out.print(c); break;
+					}
+				}
+				System.out.println();
             }
             is.close();
         } catch (IOException e) {
