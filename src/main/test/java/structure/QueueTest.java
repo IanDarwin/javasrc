@@ -21,7 +21,7 @@ public class QueueTest extends TestCase {
 		assertEquals(q.q_take(), "Two");
 		q.q_add("Three");
 		assertEquals(q.q_take(), "Three");
-		assert(q.size() ==  0);
+		assertTrue(q.size() ==  0);
 		System.out.println("DONE");
 	}
 }

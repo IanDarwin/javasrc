@@ -23,14 +23,14 @@ public class EqualsDemoTest extends TestCase {
 	}
 
 	public void testSymmetry() { 
-		assert(d1.equals(d1));
+		assertTrue(d1.equals(d1));
 	}
 
 	public void testSymmetric() {
-		assert(d1.equals(d2) && d2.equals(d1));
+		assertTrue(d1.equals(d2) && d2.equals(d1));
 	}
 
 	public void testCaution() {
-		assert(!d1.equals(null));
+		assertTrue(!d1.equals(null));
 	}
 }
