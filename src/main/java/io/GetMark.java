@@ -20,12 +20,14 @@ public class GetMark {
 
     /** Get Marked parts of one file, given an open LineNumberReader.
 	 */
-    public void process(String fileName, LineNumberReader is) {
+    public void process(String fileName,
+		LineNumberReader is,
+		PrintWriter out) {
 		//+
-        try {
-            String inputLine;
+		try {
+			String inputLine;
 
-            while ((inputLine = is.readLine()) != null) {
+			while ((inputLine = is.readLine()) != null) {
 				if (inputLine.trim().equals(startMark)) {
 					if (printing)
 						System.err.println("ERROR: START INSIDE START, " +
@@ -37,9 +39,10 @@ public class GetMark {
 							fileName + : + is.getLineNumber());
 					printing = false;
 				} else if (printing)
-					System.out.println(inputLine);
+					out.println(inputLine);
             }
             is.close();
+			// Must not close pw - caller may still need it.
 		//-
         } catch (IOException e) {
             System.out.println("IOException: " + e);
@@ -52,14 +55,15 @@ public class GetMark {
 	 */
     public static void main(String av[]) {
         GetMark o = new GetMark();
+		PrintWriter pw = new PrintWriter(System.out);
         if (av.length == 0) {
             o.process("standard input", new LineNumberReader(
-				new InputStreamReader(System.in)));
+				new InputStreamReader(System.in)), pw);
 		} else {
 			for (int i=0; i<av.length; i++)
 				try {
 					o.process(av[i],
-						new LineNumberReader(new FileReader(av[i])));
+						new LineNumberReader(new FileReader(av[i])), pw);
 				} catch (FileNotFoundException e) {
 					System.err.println(e);
 				}
