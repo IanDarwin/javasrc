@@ -8,48 +8,41 @@ import javax.mail.internet.*;
 
 /**
  * Display a mailbox or mailboxes.
+ * This can NOT merge with the version in javasrc/email, because of
+ * the domain-specific "implements module" stuff.
  * @version $Id$
  */
-public class MailReaderBean extends JPanel implements MailConstants {
+public class MailReaderBean extends JSplitPane implements JDModule {
 
 	private JTextArea bodyText;
-	private String protocol;
-	private String host;
-	private String user;
-	private String password;
-	private String rootName;
 
-    public MailReaderBean() throws Exception {
+	/* Construct a mail reader bean with all defaults.
+	 * SICK: should use JDdefaults() to get the defaults.
+	 */
+	public MailReaderBean() throws Exception {
+		this("smtp", "mailhost", "user", "nopasswd", "/");
+	}
 
-		//super(VERTICAL_SPLIT);
-		super();
-		setLayout(new BorderLayout());
+	/* Construct a mail reader bean with all values. */
+    public MailReaderBean(
+		String protocol,
+		String host,
+		String user,
+		String password,
+		String rootName)
+	throws Exception {
+
+		super(VERTICAL_SPLIT);
 
 		boolean recursive = false;
-
-		// Get the properties to be sure we can open the mail connection
-		protocol = System.getProperty(RECV_PROTO);
-		host = System.getProperty(RECV_HOST);
-		user = System.getProperty(RECV_USER);
-		password = System.getProperty(RECV_PASS);
-		rootName = System.getProperty(RECV_ROOT);
-		int port = System.getProperty(RECV_PORT) == null ? -1 :
-			Integer.parseInt(System.getProperty(RECV_PORT));
 
 		// Start with a Mail Session object
 		Session session = Session.getDefaultInstance(
 			System.getProperties(), null);
 		session.setDebug(false);
 
-		// Construct a javax.mail.URLName representing all the information.
-		URLName connection = new URLName(protocol,
-               host, port, rootName, user, password);
-
-		// This printout is VERY INSECURE; beware shoulder surfers
-		// System.out.println("connection = " + connection);
-
-		// Use the URLName to get a Store object to read the mail from
-		Store store = session.getStore(connection);
+		// Get a Store object for the given protocol
+		Store store = session.getStore(protocol);
 		store.connect(host, user, password);
 
 		// Get Folder object for root, and list it
@@ -80,15 +73,12 @@ public class MailReaderBean extends JPanel implements MailConstants {
 		// and add it as the MailComposeBean's Northern child.
 		JTree tree = new JTree(top);
 		JScrollPane treeScroller = new JScrollPane(tree);
-		tree.setVisibleRowCount(8);
-		//this.setTopComponent(treeScroller);
-		this.add(treeScroller, BorderLayout.NORTH);
+		treeScroller.setBackground(tree.getBackground());
+		this.setTopComponent(treeScroller);
 
 		// The Southern (Bottom) child is a textarea to display the msg.
-		bodyText = new JTextArea(10, 80);
-		bodyText.setEditable(false);	// incoming mail is read-only
-		// this.setBottomComponent(new JScrollPane(bodyText));
-		this.add(new JScrollPane(bodyText), BorderLayout.SOUTH);
+		bodyText = new JTextArea(15, 80);
+		this.setBottomComponent(new JScrollPane(bodyText));
 
 		// Add a notification listener for the tree; this will
 		// display the clicked-upon message
@@ -133,15 +123,14 @@ public class MailReaderBean extends JPanel implements MailConstants {
 						bodyText.append(e.toString());
 					}
 				} else 
-					System.err.println(
-						"UNEXPECTED SELECTION: " + o.getClass());
+					System.err.println("UNEXPECTED SELECTION: " + o.getClass());
 			}
 		};
 		tree.addTreeSelectionListener(tsl);
 	}
 
 	static void listFolder(FolderNode top, FolderNode folder, boolean recurse) throws Exception {
-		folder.f.open(Folder.READ_WRITE);
+		// System.out.println(folder.f.getName() + folder.f.getFullName());
 		if ((folder.f.getType() & Folder.HOLDS_MESSAGES) != 0) {
 			Message[] msgs = folder.f.getMessages();
 			for (int i=0; i<msgs.length; i++) {
@@ -170,7 +159,8 @@ public class MailReaderBean extends JPanel implements MailConstants {
 		String mbox = "/var/mail/ian";
 		if (args.length > 0)
 			mbox = args[0];
-		MailReaderBean mb = new MailReaderBean();
+		MailReaderBean mb = new MailReaderBean("mbox", "localhost",
+			"", "", mbox);
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);
@@ -182,4 +172,75 @@ public class MailReaderBean extends JPanel implements MailConstants {
 			}
 		});
 	}
+
+	/** JDModule is the interface exported by the major modules
+	 * in JabaDex (Person, Todo, Calendar, Mail, Properties, etc.).
+	 */
+
+	/** Start a new file, prompting to save the old one first. */
+	public void newFile() { }
+
+	/** Load new model from fn; if null, prompt for new fname */
+	public void loadFile(String fn) { }
+
+	/** Save the current model's data in fn. 
+	 * If null, use current fname or prompt for a filename. */
+	public void saveFile(String fn) { }
+
+	/** Export the file in a (portable?) format.
+	 */
+	 public void exportFile() { }
+
+	/** Ask the model if it has any unsaved changes, don't save otherwise */
+	public boolean hasUnsavedChanges() { return false; }
+
+	/** If the module wants AutoSave when the user enables it. */
+	public boolean wantAutoSave() { return false; }
+
+	/** Start the module's print routine */
+	public void doPrint() { }
+
+	/** Create a new item (usually by dialog?) */
+	public void newItem() { }
+
+	/** Modify the current via a dialog */
+	public void modItem() { }
+
+	/** Get the module to control a MenuItem. This might not be the
+	 * most natural approach; might be better to get ask the Module
+	 * to provid the menuItems, since it probably knows what actions
+	 * it wants to do for them... But then the Module would be
+	 * both a Model and a View/Controller...
+	 */
+	public void ownThisMenuItem(JMenuItem mi) { }
+
+	/** Enable the menuItems you own */
+	public void beingShown() { }
+
+	/** Disable the menuItems you own */
+	public void beingHidden() { }
+
+	/** Edit->Copy */
+	public void editCopy() { }
+
+	/** Edit->Cut */
+	public void editCut() { }
+
+	/** Edit->Paste */
+	public void editPaste() { }
+
+	/** Edit->Delete */
+	public void editDelete() { }
+
+	/** If can undo */
+	public boolean hasUndoableChange() { return false; }
+
+	/** Edit->Undo */
+	public void undoChange() { }
+
+	/** Edit->ReDo */
+	public void redoChange() { }
+
+	/** Synchronize with a PDA (tentative - functionality may go elsewhere) */
+	public void doSynch() { }
 }
