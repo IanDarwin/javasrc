@@ -44,7 +44,7 @@ public class NetFrame extends JFrame {
 				}
 				propsDialog.setVisible(true);
 				// TODO fetch protocol
-				
+
 			}
 		});
 
@@ -66,12 +66,17 @@ public class NetFrame extends JFrame {
 		cp.setLayout(new GridLayout(0,1));
 	}
 
-	/** CONSTRUCT PANELS, ONE FOR EACH HOST. */ 
+	/** CONSTRUCT PANELS, ONE FOR EACH HOST. */
 	protected void addHost(String hostName, Properties props) {
 		cp.add(new RMIPanel(hostName, props));
-			
-		// If it got too tall, make it multi columns.
-		if (cp.getComponents().length > 12)
+
+		// If asked for ncolumns, make it so.
+		// Else If it got too tall, make it multi columns.
+		String nc = props.getProperty("netwatch.gui.columns");
+		if (nc != null) {
+			int n = Integer.parseInt(nc);
+			cp.setLayout(new GridLayout(0, n));
+		} else if (cp.getComponents().length > 12)
 			cp.setLayout(new GridLayout(0,3));
 		else if (cp.getComponents().length > 6)
 			cp.setLayout(new GridLayout(0,2));

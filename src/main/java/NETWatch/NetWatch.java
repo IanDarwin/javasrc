@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
-import com.darwinsys.util.*;
+//import com.darwinsys.util.*;
 
 /** Main program for the NetWatch program: watch the network status
  * on a bunch of machines (i.e., in a classroom or lab). Currently only
@@ -59,7 +59,7 @@ public class NetWatch {
 
 		// All done. Pack the Frame and show it.
 		f.pack();
-		UtilGUI.centre(f);
+		// UtilGUI.centre(f);
 		f.setVisible(true);
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

@@ -76,7 +76,7 @@ public class StringFormat extends Format {
 	}
 
 	/** ParseObject is required, but not useful here. */
-	Object parseObject (String source, ParsePosition pos)  {
+	public Object parseObject (String source, ParsePosition pos)  {
 		return source;
 	}
 
