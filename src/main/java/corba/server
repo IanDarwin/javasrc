@@ -1,0 +1,4 @@
+# Start the CDList server. We dont background it; use & if you want it.
+# Better to run in a separate terminal window.
+
+java -Ddebug.corba CDListServer -ORBInitialPort 1066
