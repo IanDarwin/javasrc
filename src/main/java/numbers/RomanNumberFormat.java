@@ -47,7 +47,7 @@ public class RomanNumberFormat extends Format {
 			throw new IllegalArgumentException(on + " must be a Number object");
 		if (fp.getField() != NumberFormat.INTEGER_FIELD)
 			throw new IllegalArgumentException(fp + " must be FieldPosition(NumberFormat.INTEGER_FIELD");
-		int n = ((Number)on).intValue();
+		int n = ((Number)on).intValue();	// TODO: check in range.
 
 		// First, put the digits on a tiny stack. Must be 4 digits.
 		for (int i=0; i<4; i++) {
