@@ -2,9 +2,14 @@
 
 cd /home/ian/javasrc/jdbc
 
+DARWINSYS_JAR=$HOME/lib/darwinsys.jar
+
 # Since Drivers almost always come in a Jar file, put its name here...
 DRIVER_JARS=lib/hsqldb.jar:lib/postgresql.jar
 
 set -x
 
-java -classpath .:${DRIVER_JARS} SQLRunner $*
+# Change this to db.properties for your own use.
+FILE=db.properties.ian
+
+java -classpath .:${DARWINSYS_JAR}:${DRIVER_JARS} SQLRunner -f ${FILE} $*
