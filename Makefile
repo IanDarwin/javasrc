@@ -1,3 +1,4 @@
+SUBDIR=	 starting environ strings RE numbers datetime structure Plotter io tar textproc javacomm dir_file graphics gui i18n network netweb servlet_jsp DBM JDBC email xml rmi packaging beans threads introspection otherlang native1.1 template
 
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
 # $Id$
@@ -36,5 +37,5 @@ subdirs:
 		DIR=`grep javacook-src /cvs/CVSROOT/modules | \
 		sed -e 's/.*-a//' -e 's@javasrc/@@g'`; \
 		for d in $$DIR; do if [ -d $$d ]; then LIST="$$LIST $$d"; fi; done; \
-		(echo "SUBDIR=	$$DIR"; grep -v '^SUBDIR=' Makefile) > Makefile.new; \
+		(echo "SUBDIR=	$$LIST"; grep -v '^SUBDIR=' Makefile) > Makefile.new; \
 		mv Makefile.new Makefile
