@@ -1,33 +1,80 @@
 import javax.ejb.*;
 import java.util.*;
+import javax.naming.*;
 
+/** The Implementation class for a Shopping Cart Stateful Session EJB.
+ */
 public class CartBean implements SessionBean {
 
-	private ArrayList cartItems;
+	/** The list of items */
+	private List cartItems;
+	/** True if we've been checked out */
+	private boolean checkedOut;
+	/** The usual Session Context */
+	private SessionContext sessionContext;
+	/** A JNDI Context for finding other beans */
+	private Context ctx;
 
-	public void ejbCreate() {
+	public void ejbCreate() throws CreateException {
 		cartItems = new ArrayList();
+		checkedOut = false;
+		// try {
+			// ctx = new InitialContext();
+		// } catch (NamingException ex) {
+			// throw new CreateException("Couldn't get InitialContext: " + ex);
+		// }
 	}
 	public void ejbRemove() {
 		cartItems = null;
 	}
 
-	public void add(Object o) {
+	public void add(Product o) {
 		cartItems.add(o);
 	}
 
+	public void remove(Product o) {
+		cartItems.remove(o);
+	}
+
+	public int size() {
+		return cartItems.size();
+	}
+
+	/** Checking Out converts the info from this Cart to an
+	 * Order and a Billing. These are both required, so this
+	 * method MUST be declared to be transactional in the deployment
+	 * descriptor!!
+	 */
 	public void checkOut() {
-		OrderHome ordHome = null;
-		// ordHome = (OrderHome) ... lookup
+		// Order is Entity bean; create() makes entry in DBMS
 
-		// Order is Entity bean; create creates in DBMS
-		Order ord = ordHome.create(custID, cartItems);
+		//OrderHome ordHome = null;
+		// ordHome = (OrderHome) ctx.lookup("OrderEJB");
+		// Order ord = ordHome.create(custID, cartItems);
 
-		BillingHome bHome = null
-		// bHome = (BillingHome) ... lookup
-		Billing b = bHome.create(custID);
+		// Billing is Entity bean; create() makes entry in DBMS
+		// BillingHome bHome = null
+		// bHome = (BillingHome) ctx.lookup("BillingEJB");
+		// Billing b = bHome.create(custID);
 
-		b.setTotal(totalPrice(cartItems));
+		// b.setTotal(totalPrice(cartItems));
+		checkedOut = true;
+	}
+
+	public int getOrderNumber() {
+		if (!checkedOut) {
+			throw new IllegalStateException(
+				"getOrderNumber called when not checked out");
+		}
+		return -1;
+	}
+
+	public int getBillingNumber() {
+		if (!checkedOut) {
+			throw new IllegalStateException(
+				"getBillingNumber called when not checked out");
+		}
+		return -1;
 	}
 
 	private int totalPrice(List v) {
@@ -38,4 +85,7 @@ public class CartBean implements SessionBean {
 	public void ejbActivate() { }
 	public void ejbPassivate() { }
 
+	public void setSessionContext(SessionContext ctx) {
+		this.sessionContext = ctx;
+	}
 }
