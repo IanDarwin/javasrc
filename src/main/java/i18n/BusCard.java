@@ -94,19 +94,19 @@ public class BusCard extends JFrame {
 		p2.setLayout(new GridLayout(2, 2, 10, 10));
 
 		B1 = new JButton();
-		B1.setLabel(I18N.getString(b, "button1.label", "BUTTON LABEL"));
+		B1.setText(I18N.getString(b, "button1.label", "BUTTON LABEL"));
 		p2.add(B1);
 
 		B2 = new JButton();
-		B2.setLabel(I18N.getString(b, "button2.label", "BUTTON LABEL"));
+		B2.setText(I18N.getString(b, "button2.label", "BUTTON LABEL"));
 		p2.add(B2);
 
 		B3 = new JButton();
-		B3.setLabel(I18N.getString(b, "button3.label", "BUTTON LABEL"));
+		B3.setText(I18N.getString(b, "button3.label", "BUTTON LABEL"));
 		p2.add(B3);
 
 		B4 = new JButton();
-		B4.setLabel(I18N.getString(b, "button4.label", "BUTTON LABEL"));
+		B4.setText(I18N.getString(b, "button4.label", "BUTTON LABEL"));
 		p2.add(B4);
 		cp.add(p2);
 
