@@ -87,13 +87,13 @@ public class RemCat {
 		// Convert filename String to bytes in buffer , using "p" as an
 		// offset indicator to get all the bits of this request
 		// in exactly the right spot.
-		bTemp = path.getBytes();
+		bTemp = path.getBytes("ISO8859_1");	// i.e., ASCII
 		System.arraycopy(bTemp, 0, buffer, p, path.length());
 		p += path.length();
 		buffer[p++] = 0;		// null byte terminates string
 
 		// Similarly, convert MODE ("octet") to bytes in buffer
-		bTemp = MODE.getBytes();
+		bTemp = MODE.getBytes("ISO8859_1");	// i.e., ASCII
 		System.arraycopy(bTemp, 0, buffer, p, MODE.length());
 		p += MODE.length();
 		buffer[p++] = 0;		// null terminate
