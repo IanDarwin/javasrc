@@ -17,11 +17,12 @@ import java.io.*;
 public class LinkChecker extends Frame implements Runnable {
 	protected Thread t = null;
 	protected Runnable selfRef;
-	protected TextField textFldURL;
-	protected TextArea textWindow;
 	protected Panel p;
-	protected Button checkButton;
-	protected Button killButton;
+		protected TextField textFldURL;
+		protected Button checkButton;
+		protected Button killButton;
+	protected TextArea textWindow;
+	protected int indent = 0;
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
@@ -43,11 +44,10 @@ public class LinkChecker extends Frame implements Runnable {
 			}
 		});
 		setLayout(new BorderLayout());
-		textFldURL = new TextField(40);
-		add("North", textFldURL);
-		textWindow = new TextArea(80, 40);
-		add("Center", textWindow);
-		add("South", p = new Panel());
+		p = new Panel();
+		p.setLayout(new FlowLayout());
+		p.add(new Label("URL"));
+		p.add(textFldURL = new TextField(40));
 		p.add(checkButton = new Button("Check URL"));
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -66,6 +66,10 @@ public class LinkChecker extends Frame implements Runnable {
 				textWindow.append("-- Interrupted --");
 			}
 		});
+		// Now lay out the main GUI - URL & buttons on top, text larger
+		add("North", p);
+		textWindow = new TextArea(80, 40);
+		add("Center", textWindow);
 	}
 
 	public synchronized void run() {
@@ -106,6 +110,8 @@ public class LinkChecker extends Frame implements Runnable {
 						if (href.startsWith("mailto:"))
 							continue;
 
+						for (int j=0; j<indent; j++)
+							textWindow.append("\t");
 						textWindow.append(href + " -- ");
 						// don't combine previous append with this one,
 						// since this one can throw an exception!
@@ -114,14 +120,16 @@ public class LinkChecker extends Frame implements Runnable {
 						// If HTML, check it recursively
 						if (href.endsWith(".htm") ||
 							href.endsWith(".html")) {
+								++indent;
 								if (href.indexOf(":") != -1)
 									checkOut(href);
 								else {
 									String newRef = root.getProtocol() +
 										 "://" + root.getHost() + "/" + href;
-									System.out.println(newRef);
+									// System.out.println(newRef);
 									checkOut(newRef);
 								}
+								--indent;
 						}
 					}
 				}
@@ -132,7 +140,7 @@ public class LinkChecker extends Frame implements Runnable {
 			textWindow.append("Can't parse " + pageURL + "\n");
 		}
 		catch (IOException e) {
-			System.err.println("Error " + root + ":<" + e +">\n");
+			System.err.println("Error " + ":(" + e +")");
 		}
 	}
 
