@@ -4,7 +4,7 @@ import java.awt.*;
  * @author	Ian Darwin (original)
  * @author	Madhu Siddalangiah (revised)
  */
-public class FontDemo extends Frame {
+public class FontDemo extends Canvas {
 	/** The list of Fonts */
 	String fontList[];
 	/** How much space between each name */
@@ -14,7 +14,6 @@ public class FontDemo extends Frame {
 	 * array of fonts on the system
 	 */
 	public FontDemo() {
-		setTitle("Font Demo");
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		// For JDK 1.1: returns about 10 names (Serif, SansSerif, etc.)
@@ -42,6 +41,8 @@ public class FontDemo extends Frame {
 
 	/** Simple main program to start it running */
 	public static void main(String args[]) {
-		new FontDemo().setVisible(true);
+		Frame f = new Frame("Font Demo");
+		f.add(new FontDemo());
+		f.setVisible(true);
 	}
 }
