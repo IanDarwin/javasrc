@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 /** Show both ServletContext.getInitParameter and Servlet.getInitParameter!
  * The following configuration info is for Tomcat and J2EE XML:
  * The ServletContext init parameters are set as context-param in web.xml
- * as <contet-param><param-name></>param-value></>
+ * as <context-param><param-name></>param-value></>
  * The Servlet's own init parameters are set in web.xml as
  *	<servlet>...<init-param><param-name>...</><param-value>...</></>
  */
@@ -20,7 +20,7 @@ public class InitParams extends HttpServlet {
 		ServletConfig cfg = getServletConfig();
 		ServletContext ctx = getServletContext();
 
-		CONTEXT_PARM = ctx.getInitParameter("myContextParm");
+		CONTEXT_PARM = ctx.getInitParameter("myParm");
 		CURR_DIR = getServletContext().getRealPath("/");
 	}
 
@@ -28,13 +28,14 @@ public class InitParams extends HttpServlet {
 		HttpServletResponse response) 
 		throws ServletException, IOException {
 
-		String SERVLET_PARM = getInitParameter("myServletParm");
+		String SERVLET_PARM = getInitParameter("myParm");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<b>Hello</b>");
 		out.println("<p>CONTEXT_PARM = " + CONTEXT_PARM);
 		out.println("<p>SERVLET_PARM = " + SERVLET_PARM);
 		out.println("<p>CURR_DIR = " + CURR_DIR);
+		out.println("<h6>$Id$</h6>");
 	}
 
 }
