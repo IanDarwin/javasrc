@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.sql.*;
-
 /** Load some drivers.  */
 public class LoadDriver {
 

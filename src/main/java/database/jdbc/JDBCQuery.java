@@ -1,5 +1,9 @@
-import java.awt.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
 
 /** A trivial example of a database query performed with JDBC. The database 
  * being queried only exists locally on Windows'95; it the MS Access 

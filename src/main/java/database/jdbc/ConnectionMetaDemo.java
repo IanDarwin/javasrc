@@ -1,6 +1,8 @@
-import java.awt.*;
-import java.sql.*;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
 
 /** Load a driver and connect to a database.
  */
