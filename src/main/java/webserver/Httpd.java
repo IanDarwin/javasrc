@@ -75,6 +75,7 @@ public class Httpd {
 		}
 		try {
 			sock = new ServerSocket(portNum);
+			System.out.println("Listening on port " + portNum);
 		} catch(NumberFormatException e) {
 			System.err.println("Httpd: \"" + portNumString +
 				"\" not a valid number, unable to start server");
