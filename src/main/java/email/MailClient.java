@@ -37,7 +37,7 @@ public class MailClient extends JComponent implements MailConstants {
 		String host  = mailProps.getProperty(RECV_HOST);
 
 		if (proto==null)
-			throw new IllegalArgumentException("Mail.receive.protocol==null");
+			throw new IllegalArgumentException(RECV_PROTO + "==null");
 
 		// Protocols other than "mbox" need a password.
 		if (!proto.equals("mbox") && (pass == null || pass.equals("ASK"))) {

@@ -223,7 +223,8 @@ public class MailComposeBean extends JPanel {
 		System.getProperties().setProperty("Mail.server", "mailhost");
 		System.getProperties().setProperty("Mail.address", "nobody@home");
 		MailComposeBean sm =
-			new MailComposeBean(jf, "Test Mailer", "spam-magnet@darwinsys.com", 500, 400);
+			new MailComposeBean(jf, 
+			"Test Mailer", "spam-magnet@darwinsys.com", 500, 400);
 		sm.setSize(500, 400);
 		jf.getContentPane().add(sm);
 		jf.setLocation(100, 100);

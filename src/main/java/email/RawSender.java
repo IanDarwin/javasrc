@@ -9,6 +9,7 @@ import java.util.*;
  * OBSOLETE!! Use javax.mail instead, now that its available!
  *
  * Needs more parameterization - bit of a hack to start.
+ * Should use same interface as Mailer (subclass, and override doSend()).
  *
  * @author	Ian Darwin
  * @version	$Id$
@@ -16,7 +17,7 @@ import java.util.*;
 public class SmtpTalk implements SysExits {
 	BufferedReader is;
 	/** The file used to write. Do NOT change to a PrintWriter as we
-	 *  have no wish to send mail (commands or text!) in the form
+	 *  have no wish to send mail commands in the form
 	 *  of 16-bit UniCode characters...
 	 */
 	PrintStream os;
@@ -38,7 +39,8 @@ public class SmtpTalk implements SysExits {
 
 			System.out.println("SMTP Talker ready");
 
-			st.converse("MAILER-DAEMON@daroad.darwinsys.com", argv[1], "Test message", "Hello there");
+			st.converse("MAILER-DAEMON@daroad.darwinsys.com", 
+				argv[1], "Test message", "Hello there");
 		} catch (SMTPException ig) {
 			System.err.println(ig.getMessage());
 			System.exit(ig.getCode());
@@ -65,21 +67,12 @@ public class SmtpTalk implements SysExits {
 		}
 	}
 
-	protected boolean expect_reply(String rspNum) throws SMTPException {
-		String s = null;
-		try {
-			s = is.readLine();
-		} catch(IOException e) {
-			die(EX_IOERR,"I/O error reading from host " + host + " " + e);
-		}
-		if (debug) System.out.println("<<< " + s);
-		return s.startsWith(rspNum + " ");
-	}
-
+	/** Send a command with an operand */
 	protected void send_cmd(String cmd, String oprnd) {
 		send_cmd(cmd + " " + oprnd);
 	}
 
+	/* Send a command with no operand */
 	protected void send_cmd(String cmd) {
 		if (debug)
 			System.out.println(">>> " + cmd);
@@ -91,10 +84,22 @@ public class SmtpTalk implements SysExits {
 		os.print(text + "\r\n");
 	}
 
+	/** Expect (read and check for) a given reply */
+	protected boolean expect_reply(String rspNum) throws SMTPException {
+		String s = null;
+		try {
+			s = is.readLine();
+		} catch(IOException e) {
+			die(EX_IOERR,"I/O error reading from host " + host + " " + e);
+		}
+		if (debug) System.out.println("<<< " + s);
+		return s.startsWith(rspNum + " ");
+	}
+
 	/** Convenience routine to print message & exit, like
 	 * K&P error(), perl die(1,), ...
-	 * @param	ret	Numeric value to pass back
-	 * @param	msg	Error message to be printed on stdout.
+	 * @param ret Numeric value to pass back
+	 * @param msg Error message to be printed on stdout.
 	 */
 	protected void die(int ret, String msg) throws SMTPException {
 		throw new SMTPException(ret, msg);
@@ -105,20 +110,24 @@ public class SmtpTalk implements SysExits {
 	 */
 	public void converse(String sender, String recipients,
 		String subject, String body) throws SMTPException {
-		StringTokenizer st = new StringTokenizer(recipients);
 
-		if (!expect_reply("220")) die(EX_PROTOCOL,"did not get SMTP greeting");
+		if (!expect_reply("220")) die(EX_PROTOCOL,
+			"did not get SMTP greeting");
 
 		send_cmd("HELO", "darwinsys.com");
-		if (!expect_reply("250")) die(EX_PROTOCOL,"did not ack our HELO");
+		if (!expect_reply("250")) die(EX_PROTOCOL,
+			"did not ack our HELO");
 
 		send_cmd("MAIL", "From:<"+sender+">");	// no spaces!
-		if (!expect_reply("250")) die(EX_PROTOCOL,"did not ack our MAIL");
+		if (!expect_reply("250")) die(EX_PROTOCOL,
+			"did not ack our MAIL command");
 
+		StringTokenizer st = new StringTokenizer(recipients);
 		while (st.hasMoreTokens()) {
 			String r = st.nextToken();
 			send_cmd("RCPT", "To:<" + r + ">");
-			if (!expect_reply("250")) die(EX_PROTOCOL,"didnt ack RCPT " + r);
+			if (!expect_reply("250")) die(EX_PROTOCOL,
+				"didnt ack RCPT " + r);
 		}
 		send_cmd("DATA");
 		if (!expect_reply("354")) die(EX_PROTOCOL,"did not want our DATA!");
