@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Calendar;
 
 /** Review examples of arrays: shows array allocation, processing,
  * storing objects in Arrays,, two-dimensional arrays, and lengths.
