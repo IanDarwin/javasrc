@@ -45,8 +45,8 @@ public class GetOptDemo {
 		System.exit(returnValue);
 	}
 
-	/** Stub to demonstrate processine one file. */
+	/** Stub to demonstrate processing one file. */
 	static void doFile(String fileName) {
-		System.out.println(fileName + ' ');
+		System.out.print(fileName + ' ');
 	}
 }

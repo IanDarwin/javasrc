@@ -1,10 +1,11 @@
 /**
  * StrSort demonstrates sorting of strings using a quicksort.
+ * This is for JDK 1.0, which lacked the Collections API.
  * The actual sort is borrowed from the Java Demo Applet SortDemo,
  * whose copyright allows its use.
  */
 
-public class StrSort {
+public class StrSort1_0 {
 	/** The list of strings to be sorted */
 	static public String a[] = {
 		"Qwerty",
@@ -24,7 +25,7 @@ public class StrSort {
 	/** Simple main program to test the sorting */
 	public static void main(String[] argv) {
 		System.out.println("StrSort Demo in Java");
-		StrSort s = new StrSort();
+		StrSort1_0 s = new StrSort1_0();
 		s.dump(a, "Before");
 		s.QuickSort(a, 0, a.length-1);
 		s.dump(a, "After");

@@ -1,22 +1,22 @@
 import java.util.*;
 
-/** ArrayList to array */
+/** List to array */
 public class ToArray {
 	public static void main(String[] args) {
-		ArrayList al = new ArrayList();
-		al.add("Blobbo");
-		al.add("Cracked");
-		al.add("Dumbo");
-		// al.add(new Date());	// Don't mix and match!
+		List list = new ArrayList();
+		list.add("Blobbo");
+		list.add("Cracked");
+		list.add("Dumbo");
+		// list.add(new Date());	// Don't mix and match!
 
 		// Convert a collection to Object[], which can store objects
 		// of any type.
-		Object[] ol = al.toArray();
+		Object[] ol = list.toArray();
 		System.out.println("Array of Object has length " + ol.length);
 
 		// This would throw an ArrayStoreException if the line
-		// "al.add(new Date())" above were uncommented.
-		String[] sl = (String[]) al.toArray(new String[0]);
+		// "list.add(new Date())" above were uncommented.
+		String[] sl = (String[]) list.toArray(new String[0]);
 		System.out.println("Array of String has length " + ol.length);
 	}
 }

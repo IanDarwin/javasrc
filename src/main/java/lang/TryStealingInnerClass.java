@@ -1,3 +1,5 @@
+import java.awt.event.*;
+
 // This file is to show what happens if you try to access an inner class
 // created in another class. Here we try to steal ButtonDemo2.java's
 // inner class named MyActionListener. You will find that you can't,
@@ -5,7 +7,7 @@
 
 class ButtonDemo2 {
 	// Create an inner class which may be named ButtonDemo2$1
-	Object o = new java.awt.event.ActionListener() {
+	Object o = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 			}
 	};

@@ -30,7 +30,7 @@ public class DarwinsDataSource implements DataSource, Remote, Serializable {
 	}
 
 	/** Attempt to establish a database connection using defaults. */
-	public java.sql.Connection getConnection() throws SQLException {
+	public java.sql.Connection getConnection() throws java.sql.SQLException {
 		return getConnection(null, null);
 	}
 
@@ -38,7 +38,7 @@ public class DarwinsDataSource implements DataSource, Remote, Serializable {
 	 * username and password as credentials.
 	 */
 	public java.sql.Connection getConnection(String userName, String passWord)
-	throws SQLException {
+	throws java.sql.SQLException {
 
 		try {
 			Class.forName(driverName);

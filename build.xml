@@ -7,9 +7,18 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 
+	<!-- conditional properties -->
+	<condition property="RE_1.4">
+		<available class="java.util.regex.Pattern"/>
+	</condition>
+
+	<condition property="imageio_1.4">
+		<available class="java.util.regex.Pattern"/>
+	</condition>
+	
+
 	<target name="init">
-		<!-- Create the time stamp -->
-		<tstamp/>
+		<tstamp/><!-- Create time stamp variables -->
 	</target>
 
 	<!-- index everything, for findJava.org -->
@@ -17,12 +26,16 @@
 		<ant antfile="buildindex.xml" inheritAll="false"/>
 	</target>
 
-	<target name="util">
-		<ant target="deploy" dir="com.darwinsys.util"/>
+	<!-- compile APIs needed by other parts of the file -->
+	<target name="api" depends="init">
+		<echo message="==> com.darwinsys.util"/>
+		<ant target="jar" dir="com.darwinsys.util"/>
+		<echo message="==> spdf"/>
+		<ant target="jar" dir="spdf"/>
 	</target>
 
 	<!-- compile everything, for JavaCookbook reliability :-) -->
-	<target name="compile" description="compile all" depends="util">
+	<target name="compile" description="compile all" depends="api">
 		<ant target="compile" dir="acks"/>
 		<ant target="compile" dir="applet"/>
 		<ant target="compile" dir="beans"/>
@@ -53,7 +66,6 @@
 		<ant target="compile" dir="jdb"/>
 		<echo message="==> JDBC"/>
 		<ant target="compile" dir="JDBC"/>
-		<ant target="compile" dir="JDBCDriver"/>
 		<ant target="compile" dir="JMS"/>
 		<ant target="compile" dir="JNDI"/>
 		<ant target="compile" dir="jndi-services"/>
@@ -83,8 +95,6 @@
 		<ant target="compile" dir="servlet"/>
 		<ant target="compile" dir="ShowDocument"/>
 		<ant target="compile" dir="signals"/>
-		<echo message="==> spdf"/>
-		<ant target="compile" dir="spdf"/>
 		<echo message="==> starting"/>
 		<ant target="compile" dir="starting"/>
 		<ant target="compile" dir="strings"/>

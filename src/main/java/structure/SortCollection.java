@@ -5,14 +5,14 @@ import java.util.*;
  */
 public class SortCollection {
 	public static void main(String[] unused) {
-		Vector v = new Vector();
-		v.add("painful");
-		v.add("mainly");
-		v.add("gaining");
-		v.add("raindrops");
+		List l = new Vector();
+		l.add("painful");
+		l.add("mainly");
+		l.add("gaining");
+		l.add("raindrops");
 		
-		Collections.sort(v);
-		for (int i=0; i<v.size(); i++)
-			System.out.println(v.elementAt(i));
+		Collections.sort(l);
+		for (int i=0; i<l.size(); i++)
+			System.out.println(l.get(i));
 	}
 }

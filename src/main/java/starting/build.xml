@@ -4,12 +4,11 @@
     $Id$
     -->
 
-  <!-- set global properties for this build -->
-  <property name="src" value="."/>
-  <property name="build" value="."/>
-  <!-- Specify the compiler to use. 
-	Using jikes is supported but requires rt.jar in classpath. -->
-  <property name="build.compiler" value="modern"/>
+	<!-- set global properties for this build -->
+	<property file="../build.properties"/>
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -23,7 +22,7 @@
 
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}"
-		  classpath="../com-darwinsys-util.jar"/>
+		  classpath="${javacook.jar}"/>
   </target>
 
 </project>

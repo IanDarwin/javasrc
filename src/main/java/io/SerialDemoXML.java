@@ -24,7 +24,7 @@ public class SerialDemoXML extends SerialDemo {
 		XMLDecoder is = new XMLDecoder(		// NEEDS JDK 1.4
 			new BufferedInputStream(
 				new FileInputStream(FILENAME)));
-		System.out.println(is.writeObject());
+		System.out.println(is.readObject());
 		is.close();
 	}
 }

@@ -9,9 +9,10 @@ import java.io.*;
  */
 public interface DataSource {
 
-	public Connection getConnection();
+	public Connection getConnection() throws SQLException;
 
-	public Connection getConnection(String username, String password);
+	public Connection getConnection(String username, String password)
+		throws SQLException;
 
 	public int getLoginTimeout();
 

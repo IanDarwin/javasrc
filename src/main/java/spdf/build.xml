@@ -3,10 +3,10 @@
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
+	<property name="build" value="build"/>
 	<property name="build.compiler" value="jikes"/>
 
-	<property name="deploy.dir" value="./deploy"/>
+	<property name="deploy.dir" value="../lib"/>
 	<property name="deploy.jar" value="spdf.jar"/>
 
 	<target name="init">
@@ -26,6 +26,6 @@
 
 	<target name="deploy" depends="jar">
 		<mkdir dir="${deploy.dir}"/> <!-- Create target directory -->
-		<copy file="${deploy.dir}/${deploy.jar}" todir="${deploy.dir}"/>
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
 	</target>
 </project>

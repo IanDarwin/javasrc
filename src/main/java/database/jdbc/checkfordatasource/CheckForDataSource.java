@@ -8,7 +8,8 @@ import javax.sql.*;
  */
 public class TestDataSource {
 
-	public static void main(String[] argv) throws NamingException {
+	public static void main(String[] argv) 
+		throws NamingException, SQLException {
 
 		Context ctx = new InitialContext();
 

@@ -19,7 +19,7 @@ public class ExceptionDemo2 {
 				return;		// cut off println below if makeObj failed.
 			} finally {
 				System.err.println("All done");
-				if (i==null)
+				if (o==null)
 					System.exit(0);
 			}
 			System.out.println(o);	// process the created object in some way

@@ -53,8 +53,12 @@ public class UnZip {
 			mode = m;
 	}
 
+	/** Cache of paths we've mkdir()ed. */
+	protected SortedSet dirsMade;
+
 	/** For a given Zip file, process each entry. */
 	public void unZip(String fileName) {
+		dirsMade = new TreeSet();
 		try {
 			zippy = new ZipFile(fileName);
 			Enumeration all = zippy.entries();
@@ -67,20 +71,46 @@ public class UnZip {
 		}
 	}
 
+	protected boolean warnedMkDir = false;
+
 	/** Process one file from the zip, given its name.
 	 * Either print the name, or create the file on disk.
 	 */
 	protected void getFile(ZipEntry e) throws IOException {
 		String zipName = e.getName();
-		if (mode == EXTRACT) {
-			// double-check that the file is in the zip
-			// if a directory, mkdir it (remember to
-			// create intervening subdirectories if needed!)
+		switch (mode) {
+		case EXTRACT:
+			if (zipName.startsWith("/")) {
+				if (!warnedMkDir)
+					System.out.println("Ignoring absolute paths");
+				warnedMkDir = true;
+				zipName = zipName.substring(1);
+			}
+			// if a directory, just return. We mkdir for every file,
+			// since some widely-used Zip creators don't put out
+			// any directory entries, or put them in the wrong place.
 			if (zipName.endsWith("/")) {
-				new File(zipName).mkdirs();
 				return;
 			}
 			// Else must be a file; open the file for output
+			// Get the directory part.
+			int ix = zipName.lastIndexOf('/');
+			if (ix > 0) {
+				String dirName = zipName.substring(0, ix);
+				if (!dirsMade.contains(dirName)) {
+					File d = new File(dirName);
+					// If it already exists as a dir, don't do anything
+					if (!(d.exists() && d.isDirectory())) {
+						// Try to create the directory, warn if it fails
+						System.out.println("Creating Directory: " + dirName);
+						if (!d.mkdirs()) {
+							System.err.println(
+							"Warning: unable to mkdir " + dirName);
+						}
+						dirsMade.add(dirName);
+					}
+				}
+			}
 			System.err.println("Creating " + zipName);
 			FileOutputStream os = new FileOutputStream(zipName);
 			InputStream  is = zippy.getInputStream(e);
@@ -89,12 +119,17 @@ public class UnZip {
 				os.write(b, 0, n);
 			is.close();
 			os.close();
-		} else
+			break;
+		case LIST:
 			// Not extracting, just list
 			if (e.isDirectory()) {
 				System.out.println("Directory " + zipName);
 			} else {
 				System.out.println("File " + zipName);
 			}
+			break;
+		default:
+			throw new IllegalStateException("mode value (" + mode + ") bad");
+		}
 	}
 }
