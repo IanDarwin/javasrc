@@ -7,19 +7,34 @@
 	<property name="build" value="."/>
 
 	<target name="build">
-		<echo message="Not compiling in language. Use build.failures to try al. TODO move failures out"/>
-	</target>
-
-	<!-- specify what to build. This builds everything -->
-	<target name="build.failures">
-		<!-- Compile the java code from ${src} into ${build}.
-		 *** failonerror set false because of 1.4 constructs that will
-		 *** won't compile on 1.3, and a few "expect compile error" cases...
-		  -->
 		<javac srcdir="${src}" destdir="${build}"
 			deprecation="true"
 			failonerror="false"
-			classpath="${darwinsys.jar}:${junit.jar}"/>
+			classpath="${darwinsys.jar}:${junit.jar}">
+				<!-- exclude programs that are not intended to compile -->
+				<exclude name="ByteAdd2.java"/>
+				<exclude name="CastingDemo.java"/>
+				<exclude name="ChangeArrayLength.java"/>
+				<exclude name="CommentBug.java"/>
+				<exclude name="CompileError.java"/>
+				<exclude name="ConsRecurs.java"/>
+				<exclude name="Constructors.java"/>
+				<exclude name="ImportConflict.java"/>
+				<exclude name="ImportNonPublic.java"/>
+				<exclude name="InitializersDemo.java"/>
+				<exclude name="InnerMethods.java"/>
+				<exclude name="InterfaceNoConstructor.java"/>
+				<exclude name="NoLocalStatics.java"/>
+				<exclude name="OverLoadReturn.java"/>
+				<exclude name="PrivProt.java"/>
+				<exclude name="ProtectedClass.java"/>
+				<exclude name="ReturnType.java"/>
+				<exclude name="ShowInitializers.java"/>
+				<exclude name="Switch.java"/>
+				<exclude name="SwitchByte.java"/>
+				<exclude name="TryStealingInnerClass.java"/>
+				<exclude name="Unnamed.java"/>
+		</javac>
 	</target>
 
 </project>
