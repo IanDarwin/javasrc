@@ -3,6 +3,11 @@ SUBDIR=	 starting environ strings RE numbers datetime structure oo Plotter io ta
 # Makefile for building files in The Java Cookbook (O'Reilly, 2001, Ian Darwin)
 # $Id$
 
+# The use of Make in this tree has been deliberately kept VERY simple
+# so it can work on BSD make, GNU make, Solaris make, etc., etc.,
+# all of which have different "include" and other rule formats.
+# The only "modern" make feature used is "?=".
+
 # Pick a Java compiler. Any Java compiler that works.
 #JAVAC=	javac
 #JAVAC=	guavac
@@ -77,7 +82,7 @@ makefiles.clean:
 # Don't worry about (or try to use) this rule; it is only used by the book's
 # author when adding a subdirectory to the list of files included.
 subdirs:
-		# Prevent end user from clobbering their Makefile
+		# Prevent end user from clobbering their Makefile:
 		grep javacook-src /cvs/CVSROOT/modules >/dev/null
 		# get from "modules" the list of subdirectories, update Makefile
 		DIR=`grep javacook-src /cvs/CVSROOT/modules | \

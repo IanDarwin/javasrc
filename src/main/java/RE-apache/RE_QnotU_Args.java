@@ -1,7 +1,7 @@
 import org.apache.regexp.*;
 
 /**
- * Simple example of using RE class.
+ * Match the "Q[^u] pattern against strings from command line.
  * @author Ian F. Darwin, ian@darwinsys.com
  * @version $Id$
  */
