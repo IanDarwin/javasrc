@@ -28,25 +28,32 @@ public class BuzzInServlet extends HttpServlet {
 	throws ServletException, IOException
 	{
 		boolean igotit = false;
+
+
+		// Do the synchronized stuff first, and all in one place.
 		synchronized(this) {
 			if (!buzzed) {
 				igotit = buzzed = true;
-				winner = request.getRemoteUser();
+				winner = request.getRemoteHost() + '/' + request.getRemoteAddr();
 			}
 	 	}
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
+		out.println("<html><head><title>Thanks for playing</title></head>");
+		out.println(("<body bgcolor=\"white\">");
+
 		if (igotit) {
-			out.println("YOU WIN");
+			out.println("<b>YOU GOT IT</b>");
 			getServletContext().log("BuzzInServlet: WINNER " +
 				request.getRemoteUser());
 			// TODO - output HTML to play a sound file
 		} else {
-				out.println("Thanks for playing, " + request.getRemoteUser());
+				out.println("Thanks for playing, " + request.getRemoteAddr());
 				out.println(", but " + winner + " buzzed in first");
 		}
+		out.println("</body></html>");
 	}
 
 	/** The Post method is used from an Administrator page (only in the
@@ -61,14 +68,22 @@ public class BuzzInServlet extends HttpServlet {
 	{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+
+
 		if (request.getParameter("password").equals("syzzy")) {
+			out.println("<html><head><title>Welcome back, host</title><head>");
+			out.prinltn("<body bgcolor=\"white\">");
+			// Synchronize what you need, no more, no less.
 			synchronized(this) {
 				buzzed = false;
 			}
 			out.println("RESET");
 		} else {
+			out.println("<html><head><title>Nice try, but... </title><head>");
+			out.prinltn("<body bgcolor=\"white\">");
 			out.println(
 				"Your paltry attempts to breach security are rebuffed!");
 		}
+		out.println("</body></html>");
 	}
 }
