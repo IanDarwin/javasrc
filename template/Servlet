@@ -11,11 +11,11 @@ import javax.servlet.http.*;
 public class Servlet_DoGetPost extends HttpServlet
 {
 	/** Called in response to a GET request (data encoded in the URL) */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter(); 
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter(); 
 
 		// BOILERPLATE beginning
 		out.println("<HTML>");
@@ -31,11 +31,11 @@ public class Servlet_DoGetPost extends HttpServlet
 	}
 
 	/** Called in response to a POST request (data unencoded on the socket) */
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter(); 
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter(); 
 
 		// BOILERPLATE beginning
 		out.println("<HTML>");

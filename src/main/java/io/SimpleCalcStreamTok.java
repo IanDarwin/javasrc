@@ -49,10 +49,10 @@ public class SimpleCalc {
 
 		while ((iType = tf.nextToken()) != tf.TT_EOF) {
 			switch(iType) {
-			case tf.TT_NUMBER: // Found a number, push value to stack
+			case StreamTokenizer.TT_NUMBER: // Found a number, push value to stack
 				push(tf.nval);
 				break;
-			case tf.TT_WORD:
+			case StreamTokenizer.TT_WORD:
 				// Found a variable, save its name. Not used here. */
 				variable = tf.sval;
 				break;

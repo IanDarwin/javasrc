@@ -17,9 +17,9 @@ public class DrawStringDemo2 extends JComponent {
 			textX = 0;
 
 		// Same as above but for the height
-		int textY = (getSize().height - fm.getLeading())/2;
-		if (textY<0)
-			textY = 0;
+		int textY = (getSize().height - fm.getAscent())/2 - fm.getDescent();
+		if (textY < 0)
+			textY = getSize().height - fm.getDescent() - 1;
 
 		// Now draw the text at the computed spot.
 		g.drawString(message, textX, textY);

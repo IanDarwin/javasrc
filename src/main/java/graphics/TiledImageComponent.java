@@ -42,8 +42,8 @@ public class TiledImageComponent extends Container {
 			return;				// live to try again later.
 		int w = getSize().width, h = getSize().height;
 		// System.out.println(iw + "," + ih + "; " + w + ", " + h);
-		for (int i = 0; i<w+iw; i+=iw) {
-			for (int j = 0; j<h+ih; j+=ih) {
+		for (int i = 0; i<=w; i+=iw) {
+			for (int j = 0; j<=h; j+=ih) {
 				// System.out.println("drawImage(im,"+i+","+j+")");
 				g.drawImage(im, i, j, this);
 			}
