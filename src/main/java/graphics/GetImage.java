@@ -1,10 +1,3 @@
-/*
- * For Applet, invoke as:
- * <applet code="GetImage" width="100" height="100">
- * </applet>
- * For Application, just run it (has own main).
- */
-
 import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;
@@ -14,7 +7,12 @@ import javax.swing.JFrame;
 
 /** This program, which can be an Applet or an Application,
  * shows a form of Toolkit.getImage() which works the same
- * in either Applet or Application!
+ * in either Applet or Application.
+ * <p>
+ * For Applet, invoke as:
+ * <applet code="GetImage" width="100" height="100">
+ * </applet>
+ * For Application, just run it (has own main).
  */
 public class GetImage extends JApplet {
 
