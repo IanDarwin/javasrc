@@ -6,7 +6,7 @@ import java.util.Properties;
  * Demonstrate Properties reading/writing.
  * @see HashTableDemo, for the older Hashtable.
  */
-public class PropsComanies {
+public class PropsCompanies {
 
 	public static void main(String[] argv) throws java.io.IOException {
 
