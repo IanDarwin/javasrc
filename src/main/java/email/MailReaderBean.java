@@ -9,7 +9,7 @@ import javax.swing.tree.*;
 /**
   * Display a mailbox, initially faked.
   */
-public class MailReaderBean extends JPanel {
+public class MailReaderBean extends JPanel implements JDModule {
 
     public MailReaderBean() {
 		super();
@@ -70,6 +70,62 @@ public class MailReaderBean extends JPanel {
 		return new Dimension(200, 170);
 	}
 
+  	/** Start a new file, prompting to save the old one first. */
+	public void newFile(){}
+
+	/** Load new model from fn{} if null, prompt for new fname */
+	public void loadFile(String fn){}
+
+	/** Save the current model's data in fn. 
+	 * If null, use current fname or prompt for a filename. */
+	public void saveFile(String fn){}
+
+	/** Export the file in a (portable?) format.
+	 */
+	 public void exportFile(){}
+
+	/** Ask the model if it has any unsaved changes, don't save otherwise */
+	public boolean hasUnsavedChanges(){ return false; }
+
+	/** If the module wants AutoSave when the user enables it. */
+	public boolean wantAutoSave(){ return false; }
+
+	/** Start the module's print routine */
+	public void doPrint(){
+		JOptionPane.showMessageDialog(null,
+			"Can't Print Mail Yet", "TODO",
+			JOptionPane.INFORMATION_MESSAGE);
+	}
+	/** Create a new item (usually by dialog?) */
+	public void newItem(){}
+
+	/** Modify the current via a dialog */
+	public void modItem(){}
+
+	/** Edit->Copy */
+	public void editCopy(){}
+
+	/** Edit->Cut */
+	public void editCut(){}
+
+	/** Edit->Paste */
+	public void editPaste(){}
+
+	/** Edit->Delete */
+	public void editDelete(){}
+
+	/** If can undo */
+	public boolean hasUndoableChange(){ return false; }
+
+	/** Edit->Undo */
+	public void undoChange(){}
+
+	/** Edit->ReDo */
+	public void redoChange(){}
+
+	/** Synchronize with a PDA (tentative - functionality may go elsewhere) */
+	public void doSynch(){}
+
 	/* test case */
 	public static void main(String a[]) {
 		final JFrame jf = new JFrame("MailReaderBean");
@@ -77,7 +133,7 @@ public class MailReaderBean extends JPanel {
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);
-        jf.addWindowListener(new WindowAdapter() {
+		jf.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 			jf.setVisible(false);
 			jf.dispose();
