@@ -1,8 +1,13 @@
-import java.io.*;
-import java.net.*;
-import java.text.*;
-import java.util.*;
-import java.util.regex.*;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.darwinsys.io.FileIO;
 import com.darwinsys.util.FileProperties;
@@ -50,15 +55,15 @@ public class BookRank {
 		// If found, append to sales data file.
 		Matcher m = r.matcher(input);
 		if (m.find()) {
-			PrintWriter FH = new PrintWriter(
+			PrintWriter pw = new PrintWriter(
 				new FileWriter(DATA_FILE, true));
 			String date = // `date +'%m %d %H %M %S %Y'`;
 				new SimpleDateFormat("MM dd hh mm ss yyyy ").
 				format(new Date());
-			// Paren 1 is the digits (and maybe ','s) that matched
+			// Paren 1 is the digits (and maybe ','s) that matched; remove comma
 			Matcher noComma = Pattern.compile(",").matcher(m.group(1));
-			FH.println(date + noComma(replaceAll(""));
-			FH.close();
+			pw.println(date + noComma.replaceAll(""));
+			pw.close();
 		} else {
 			System.err.println("WARNING: pattern `" + pattern +
 				"' did not match in `" + url + isbn + "'!");
