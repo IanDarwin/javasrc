@@ -18,13 +18,10 @@
 		/>
 	</target>
 
-	<target name="declare" depends="build">
 		<taskdef name="ghost" 
 			classname="com.darwinsys.ant.GhostTask"
 			classpath="${build}"/>
-		<taskdef name="http" 
-			classname="com.darwinsys.ant.HttpTask"
-			classpath="${build}"/>
+	<target name="declare" depends="build">
 	</target>
 
 	<target name="jar" depends="build">
@@ -36,10 +33,6 @@
 			ghosthome="."
 			srcDir="D:\" 
 			destFile="foo-test.gho"/>
-	</target>
-
-	<target name="testhttp" depends="declare">
-		<http url="http://localhost/"/>
 	</target>
 
 </project>
