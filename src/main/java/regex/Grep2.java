@@ -4,8 +4,8 @@ import java.util.regex.*;
 
 import com.darwinsys.lang.GetOpt;
 
-/** A command-line grep-like program. Some options, and takes a pattern
- * and an arbitrary list of text files.
+/** A command-line grep-like program. Accepts some command-line options,
+ * and takes a pattern and a list of text files.
  */
 public class Grep2 {
 	/** The pattern we're looking for */
