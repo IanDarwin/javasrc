@@ -127,10 +127,16 @@ public class GhostTask extends Task {
 
 	/** We should be all set now; run the task */
 	public void execute() throws BuildException {
-		if (srcDir == null)
-			die("src parameter is not set");
-		if (destFile == null)
+		if (srcDir == null) {
+			die("srcDir parameter is not set");
+		}
+		if (srcDir.indexOf(':') == -1) {
+			die("srcDir " + srcDir + 
+				" does not look like a DOS drive:directory path");
+		}
+		if (destFile == null) {
 			die("dstFile parameter is not set");
+		}
 		System.out.println("Ghost is: " + ghostHome + "\\" + "ghost.exe");
 		File d = new File(ghostHome);
 		if (!d.isDirectory()) {
@@ -173,4 +179,3 @@ public class GhostTask extends Task {
 		// No news is good news; ant will say "BUILD SUCCESSFUL" if no failure.
 	}
 }
-
