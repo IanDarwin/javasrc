@@ -4,7 +4,7 @@ import com.darwinsys.lang.ExecAndPrint;
  * Create, list and remove some files
  */
 public class ExecDemoFiles {
-	public static void main(String av[]) throws Exception { 
+	public static void main(String av[]) throws Exception {
 		
 		// Get and save the Runtime object.
 		Runtime rt = Runtime.getRuntime();
@@ -12,7 +12,7 @@ public class ExecDemoFiles {
 		// Create three temporary files
 		rt.exec("mktemp file1");
 		rt.exec("mktemp file2");
-		rt.exec("mktemp file3"); 
+		rt.exec("mktemp file3");
 
 		// Run the "ls" (directory lister) program
 		// with its output sent into a file

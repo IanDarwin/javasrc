@@ -1,12 +1,12 @@
 import java.io.*;
 
 /**
- * ExecDemo shows how to execute an external program 
+ * ExecDemo shows how to execute an external program
  * read its output, and print its exit status.
  */
 public class ExecDemoWait {
 
-	public static void main(String argv[]) throws IOException { 
+	public static void main(String argv[]) throws IOException {
 
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();
@@ -21,7 +21,7 @@ public class ExecDemoWait {
 
 		System.out.println("In Main after exec");
 
-		// getInputStream gives an Input stream connected to 
+		// getInputStream gives an Input stream connected to
 		// the process p's standard output. Just use it to make
 		// a BufferedReader to readLine() what the program writes out.
 		is = new BufferedReader(new InputStreamReader(p.getInputStream()));

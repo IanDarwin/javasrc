@@ -13,7 +13,7 @@ public class ExecDemoPartial {
 	/** Set to true to end the loop */
 	static boolean done = false;
 
-	public static void main(String argv[]) throws IOException { 
+	public static void main(String argv[]) throws IOException {
 
 		BufferedReader is;	// reader for output of process
 		String line;
@@ -37,7 +37,7 @@ public class ExecDemoPartial {
 		};
 		waiter.start();
 
-		// getInputStream gives an Input stream connected to 
+		// getInputStream gives an Input stream connected to
 		// the process p's standard output (and vice versa). We use
 		// that to construct a BufferedReader so we can readLine() it.
 		is = new BufferedReader(new InputStreamReader(p.getInputStream()));
