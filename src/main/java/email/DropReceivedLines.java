@@ -12,7 +12,7 @@ public class DropReceivedLines {
 		// to treat the Received: lines as one.
 		try {
 			if (av.length == 0) 
-				d.process(new IndentContLineReader(
+				d.process(new BufferedReader(
 						new InputStreamReader(System.in)), 
 						new PrintWriter(System.out));
 			else for (int i=0; i<av.length; i++)
@@ -31,8 +31,8 @@ public class DropReceivedLines {
 		File old = new File(fileName);
 		String newFileName = fileName + ".TMP";
 		File newf = new File(newFileName);
-		IndentContLineReader is =
-				new IndentContLineReader(new FileReader(fileName));
+		BufferedReader is =
+				new BufferedReader(new FileReader(fileName));
 		PrintWriter p = new PrintWriter(new FileWriter(newFileName));
 		process(is, p);		// call other process(), below
 		p.close();
@@ -42,7 +42,9 @@ public class DropReceivedLines {
 	}
 
     /** process one file, given an open LineReader */
-    public void process(LineNumberReader is, PrintWriter out) throws IOException {
+    public void process(BufferedReader ins, PrintWriter out)
+		throws IOException {
+		IndentContLineReader is = new IndentContLineReader(ins);
         try {
             String lin;
 
