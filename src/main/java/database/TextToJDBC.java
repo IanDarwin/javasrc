@@ -29,14 +29,14 @@ public class TextToJDBC {
 		System.out.println("Creating table and index");
 		stmt.executeUpdate("DROP TABLE userdb");
 		stmt.executeUpdate("CREATE TABLE userdb (\n" +
-			"name		char(12) PRIMARY KEY,\n" +
-			"password	char(20),\n" +
-			"fullName 	char(30),\n" +
-			"email		char(60),\n" +
-			"city		char(20),\n" +
-			"prov		char(20),\n" +
-			"country	char(20),\n" +
-			"privs		int\n" +
+			"name     char(12) PRIMARY KEY,\n" +
+			"password char(20),\n" +
+			"fullName char(30),\n" +
+			"email    char(60),\n" +
+			"city     char(20),\n" +
+			"prov     char(20),\n" +
+			"country  char(20),\n" +
+			"privs    int\n" +
 			")");
 		stmt.executeUpdate("CREATE INDEX nickIndex ON userdb (name)");
 		stmt.close();
