@@ -1,32 +1,28 @@
 import junit.framework.TestCase;
-
-/*
- * Created on Mar 7, 2004
- *
- * To change the template for this generated file go to
- * Window - Preferences - Java - Code Generation - Code and Comments
- */
+import java.util.Date;
 
 /**
+ * JUnit test for MyStack.
  * @author ian
- *
- * To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class MyStackTest extends TestCase {
-	MyStack ss;
-	MyStack sd;
+	MyStack<String> ss;
+	MyStack<Date> sd;
+	
+	public static void main(String[] args) {
+		junit.textui.TestRunner.run(MyStackTest.class);
+	}
 	
 	public void setUp() {
-		ss = new MyStack();
-		sd = new MyStack();
+		ss = new MyStack<String>();
+		sd = new MyStack<Date>();
 	}
 	public void testPush() {
 		int i = 0; 
 		do {
 			ss.push("Hello #" + i++);
 		} while (ss.hasRoom());
-		assertEquals(i, MyStack.MAX)
+		assertEquals(i, MyStack.MAX);
 	}
 
 	public void testHasNext() {
