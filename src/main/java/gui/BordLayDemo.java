@@ -4,7 +4,7 @@ import java.awt.*;
 /** BorderLayout demo. Also shows off BitSet class from java.util.
  * <P>Do <B>not</B> assume from this demo that BorderLayout forces
  * e.g., East and West to be same width, or North and South to be
- * same height. See BorderLayDemo2 for counter examples.
+ * same height. See BordLayDemo2 for counter examples.
  */
 public class BordLayDemo extends Frame {
 	String cp[] = { "", "North", "East", "South", "West", "Center" };
@@ -15,7 +15,7 @@ public class BordLayDemo extends Frame {
 		setLayout(new BorderLayout());
 		for (int i = 1; i<=5; i++)
 			if (b.get(i))
-				add(cp[i], new Button(cp[i]));
+				add(new Button(cp[i]), cp[i]);
 		pack();
 		setVisible(true);
 	}
