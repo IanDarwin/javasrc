@@ -11,7 +11,7 @@ public class Array2  {
 		Calendar dates[] = new Calendar[MAX];
 		Calendar c;
 		StructureDemo source = new StructureDemo(21);
-		while ((c=source.getDate()) != null) {
+		while ((c=(Calendar)source.getDate()) != null) {
 
 			// if (nDates >= dates.length) {
 			// 	System.err.println("Too Many Dates! Simplify your life!!");
