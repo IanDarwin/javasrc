@@ -43,8 +43,8 @@ public class proxy {
 			ServerSocket s = new ServerSocket(localPort);
 			while (true) {
 				Socket us = s.accept();
-				String from = s.getInetAddress().toString();
-				System.out.println("Accepted connection from " + from);
+				// String from = s.getInetAddress().toString();
+				// System.out.println("Accepted connection from " + from);
 				Socket dest = new Socket(destIP, destPort);
 				new Copier(us, dest).start();
 				new Copier(dest, us).start();
@@ -65,7 +65,9 @@ public class proxy {
 		}
 
 		public String toString() {
-		return "Copier["+from.getInetAddress()+"-->"+to.getInetAddress()+"]";
+			// return "Copier["+from.getInetAddress()+"-->"
+			//	+to.getInetAddress()+"]";
+			return "Copier";
 		}
 
 		public void run() {
@@ -74,7 +76,7 @@ public class proxy {
 				String aline;
 				BufferedReader is = 
 					new BufferedReader(new InputStreamReader(from.getInputStream()));
-				PrintWriter os = new PrintWriter(to.getOutputStream());
+				PrintWriter os = new PrintWriter(to.getOutputStream(), true);
 				while ((aline = is.readLine()) != null) {
 					System.out.println(">> " + aline);
 					os.println(aline);
