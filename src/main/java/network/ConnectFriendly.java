@@ -24,7 +24,7 @@ public class ConnectFriendly {
 			System.err.println(server_name + " connect refused");
 			return;
 		} catch (java.io.IOException e) {
-			System.err.println(server_name + ' ' + e.getMessage());
+			System.err.println(server_name +   + e.getMessage());
 			return;
 		}
 	}

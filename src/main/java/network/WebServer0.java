@@ -4,13 +4,13 @@ import java.io.*;
 /**
  * A very very very simple Web server.
  *
- * There is only one response to all requests, and it's hard-coded.
- * This version is not threaded and doesn't do very much.
+ * There is only one response to all requests, and its hard-coded.
+ * This version is not threaded and doesnt do very much.
  * Really just a proof of concept.
  * However, it is still useful on notebooks in case somebody connects
  * to you on the Web port by accident (or otherwise).
  *
- * Can't claim to be fully standards-conforming, but has been
+ * Cant claim to be fully standards-conforming, but has been
  * tested with Netscape Communicator and with the Lynx text browser.
  *
  * @author	Ian Darwin, ian@darwinsys.com
@@ -86,7 +86,7 @@ public class WebServer0 {
 				"<P>Or view <A HREF=\"file:///C:/javasrc/WebServer0.java\">" +
 				"the WebServer0 source (at a Course 47x site only)</A> " +
 				"or <A HREF=\"http://www.darwinsys.com/java/server.html\">" +
-				" at the Course Author's Web Site</A>.\n" +
+				" at the Course Authors Web Site</A>.\n" +
 				"<HR><I>Java-based WebServer0</I><HR>\n" +
 				"</HTML>\n";
 			os.println("Content-length: " + reply.length());

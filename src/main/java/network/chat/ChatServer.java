@@ -47,9 +47,9 @@ public class ChatServer {
 				clients.addElement(cl);
 				cl.start();
 				if (clients.size() == 1)
-					cl.send(IDENT, "Welcome! you're the first one here");
+					cl.send(IDENT, "Welcome! youre the first one here");
 				else {
-					cl.send(IDENT, "Welcome! you're the latest of " +
+					cl.send(IDENT, "Welcome! youre the latest of " +
 						clients.size() + " users.");
 					cl.broadcast(IDENT, cl.handle + 
 						" joins us, for a total of " + 
@@ -80,7 +80,7 @@ public class ChatServer {
 			pw = new PrintWriter(sock.getOutputStream(), true);
 		}
 
-		/** Each ChatHandler is a Thread, so here's the run() method,
+		/** Each ChatHandler is a Thread, so heres the run() method,
 		 * which handles this conversation.
 		 */
 		public void run() {
@@ -92,18 +92,18 @@ public class ChatServer {
 			} catch (IOException e) {
 				// null
 			} finally {
-				// the sock ended, so we're done, bye now
+				// the sock ended, so were done, bye now
 				// Can NOT send a good-bye message, until we have
 				// a simple command-based protocol in place.
 				System.out.println(handle + SEP + "All Done");
 				clients.removeElement(this);
 				if (clients.size() == 0) {
 					System.out.println(IDENT + SEP +
-						"I'm so lonely I could cry...");
+						"Im so lonely I could cry...");
 				} else if (clients.size() == 1) {
 					ChatHandler last = (ChatHandler)clients.elementAt(0);
 					last.send(IDENT,
-						"Hey, you're talking to yourself again");
+						"Hey, youre talking to yourself again");
 				} else {
 					broadcast(IDENT,
 						"There are now only " + clients.size() + " users");

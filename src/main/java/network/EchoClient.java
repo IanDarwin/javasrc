@@ -5,7 +5,7 @@ import java.net.*;
  * writes to console.
  * Talks to a UNIX "echo" server or a surrogate for it (EchoServer.java).
  * @author	Ian Darwin, Learning Tree, Course 471/478 author.
- * @version Copyright (C) 1995, 1996 Learning Tree International
+ * @version Copyright (C) 1995, 1996 Ian F. Darwin
  */
 public class EchoClient {
 	/** Main program: construct an EchoClient object and use
@@ -16,7 +16,7 @@ public class EchoClient {
 		c.converse(argv.length==1?argv[0]:"localhost");
 	}
 
-	/** Hold one conversation with the named host's echo server */
+	/** Hold one conversation with the named hosts echo server */
 	protected void converse(String hostname) {
 		Socket sock = null;
 		try {

@@ -31,6 +31,6 @@ public class ShowDocApplet extends Applet {
 	}
 
 	public void stop() {
-		System.out.println("Ack! It's been fun being an Applet. Goodbye!");
+		System.out.println("Ack! Its been fun being an Applet. Goodbye!");
 	}
 }

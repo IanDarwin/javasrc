@@ -30,7 +30,7 @@ public class DaytimeBinary {
 				BufferedInputStream(sock.getInputStream()));
 			// Unfortunately there is no readUnsignedInt method, so
 			// long remoteTime = is.readInt();
-			// Can't be used. Instead we must synthesize it:
+			// Cant be used. Instead we must synthesize it:
 			long remoteTime = (
 				((long)(is.readUnsignedByte() & 0xff) << 24) |
 				((long)(is.readUnsignedByte() & 0xff) << 16) |

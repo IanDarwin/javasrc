@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * RemCat - remotely cat (DOS 'type') a file, using the TFTP protocol.
+ * RemCat - remotely cat (DOS type) a file, using the TFTP protocol.
  * Inspired by the "rcat" exercise in Learning Tree Course 363, 
  * <I>UNIX Network Programming</I>, by Dr. Chris Brown.
  *
@@ -111,7 +111,7 @@ public class RemCat {
 			System.out.write(buffer, 4, inp.getLength()-4);
 
 			/* Ack the packet. The block number we 
-			 * want to ack is already in 'buffer' so 
+			 * want to ack is already in buffer so 
 			 * we just change the opcode. The ACK is 
 			 * sent to the port number which the server 
 			 * just sent the data from, NOT to port 
