@@ -1,9 +1,13 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import com.darwinsys.util.Debug;
 
