@@ -56,12 +56,14 @@ public class BuzzInServlet extends HttpServlet {
 		out.println("</body></html>");
 	}
 
-	/** The Post method is used from an Administrator page (only in the
-	 * instructor/host's localweb directory). It is used to reset the
-	 * buzzer for the next question.
+	/** The Post method is used from an Administrator page (which should
+	 * only be installed in the instructor/host's localweb directory). 
+	 * Post is used for administrative functions:
+	 * 1) to display the winner;
+	 * 2) to reset the buzzer for the next question.
 	 * <p>
 	 * In real life the password would come from a Servlet Parameter
-	 * or a configuration file.
+	 * or a configuration file, instead of being hardcoded in an "if".
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
@@ -69,15 +71,29 @@ public class BuzzInServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-
 		if (request.getParameter("password").equals("syzzy")) {
 			out.println("<html><head><title>Welcome back, host</title><head>");
 			out.println("<body bgcolor=\"white\">");
-			// Synchronize what you need, no more, no less.
-			synchronized(this) {
-				buzzed = false;
+			String command = request.getParameter("command");
+			if (command.equals("reset")) {
+				// Synchronize what you need, no more, no less.
+				synchronized(this) {
+					buzzed = false;
+				}
+				out.println("RESET");
+			} else if (command.equals("show")) {
+				// Is this unnecessarily paranoid?
+				String w;
+				synchronized(this) {
+					w = winner;
+				}
+				out.println("<b>Winner is: </b>" + w);
 			}
-			out.println("RESET");
+			else {
+				out.println("<html><head><title>ERROR</title><head>");
+				out.println("<body bgcolor=\"white\">");
+				out.println("ERROR: Command " + command + " invalid.");
+			}
 		} else {
 			out.println("<html><head><title>Nice try, but... </title><head>");
 			out.println("<body bgcolor=\"white\">");
