@@ -5,13 +5,13 @@ Received: by DarwinSys.Com (SMI-8.6/SMI-SVR4)
 Received: from gatekeeper.sq.com(really [192.31.6.127]) by sq.sq.com
 	via sendmail with smtp
 	id <m0wkaxd-000rObC@sq.sq.com>
-	for <ian@darwinsys.com>; Sat, 5 Jul 1997 15:57:37 -0400 (EDT)
+	for <foo@darwinsys.com>; Sat, 5 Jul 1997 15:57:37 -0400 (EDT)
 	(Smail-3.2.0.92 1997-Feb-9 #5 built 1997-Apr-25)
 Received: from sq by darwinsys.com.darwinsys.com; Sat,  5 Jul 1997 17:20 EDT
 Received: from gatekeeper.sq.com(really [192.31.6.127]) by sq.sq.com
 	via sendmail with smtp
 	id <m0wkaxd-000rObC@sq.sq.com>
-	for <ian@darwinsys.com>; Sat, 5 Jul 1997 15:57:37 -0400 (EDT)
+	for <foo@darwinsys.com>; Sat, 5 Jul 1997 15:57:37 -0400 (EDT)
 	(Smail-3.2.0.92 1997-Feb-9 #5 built 1997-Apr-25)
 Received: from yonge.cs.toronto.edu(128.100.1.8) by gatekeeper.sq.com via smap (V1.3)
 	id sma014165; Sat Jul  5 15:57:05 1997

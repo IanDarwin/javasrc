@@ -8,7 +8,7 @@ import java.io.*;
  *	X is a continuation character, which must be in column 6
  *	DDD is executable statement
  *	... is commentary.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class FortranLineReader extends ContLineReader {

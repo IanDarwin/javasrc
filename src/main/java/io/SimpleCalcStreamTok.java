@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * SimpleCalc -- simple calculator to show StringTokenizer
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
 public class SimpleCalc {

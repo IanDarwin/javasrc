@@ -2,7 +2,7 @@ import java.io.*;
 
 /**
  * Multiple lines output from one method.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GoodNewline {

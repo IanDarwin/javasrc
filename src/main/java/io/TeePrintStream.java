@@ -14,7 +14,7 @@ import java.io.*;
  * <P>I only override Constructors, the write(), check() and close() methods,
  * since any of the print() or println() methods must go through these.
  * Thanks to Svante Karlsson for help formulating this.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TeePrintStream extends PrintStream {

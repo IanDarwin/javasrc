@@ -4,7 +4,7 @@ import java.io.*;
  * using the readLine() method. The other Reader methods (readInt()) etc.)
  * must not be used.  Must subclass to provide the actual implementation
  * of readLine().
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public abstract class ContLineReader extends LineNumberReader {

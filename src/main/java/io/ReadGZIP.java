@@ -3,7 +3,7 @@ import java.util.zip.*;
 
 /**
  * Read some data from a gzip file.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class ReadGZIP {

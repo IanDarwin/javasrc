@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * ScanStreamTok - show scanning a file with StringTokenizer.
  *
- * @author	Ian Darwin, ian@darwinsys.com
+ * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
 public class ScanStreamTok {

@@ -1,5 +1,5 @@
 /* C Program to create the random-access file for the RandomAccessFile example
- * Ian F. Darwin, ian@darwinsys.com
+ * Ian F. Darwin, http://www.darwinsys.com/
  * $Id$
  */
 

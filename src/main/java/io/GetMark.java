@@ -65,7 +65,7 @@ import java.io.*;
  * the marks are hard-coded; ideally they would come
  * from a Properties or Preferences object and/or from the command line.
  *
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GetMark {

@@ -2,7 +2,7 @@ import java.io.*;
 
 /** Subclass of LineNumberReader to allow reading of lines continued
  * with an escape character.
- * @author Ian Darwin, ian@darwinsys.com
+ * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class EscapeContLineReader extends ContLineReader {

@@ -2,7 +2,7 @@ import java.io.*;
 
 /**
  * Read a file containing an offset, and a String at that offset.
- * @author Ian F. Darwin, ian@darwinsys.com
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class RandomRead {
