@@ -10,11 +10,11 @@ public class DateCalAdd {
 
 		/* Do "DateFormat" using "simple" format. */
 		SimpleDateFormat formatter
-			= new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+			= new SimpleDateFormat ("E yyyy/MM/dd 'at' hh:mm:ss a zzz");
 		System.out.println("It is now " + 
 			formatter.format(now.getTime()));
 
-		now.add(Calendar.DAY_OF_YEAR, - (365 * 2));
+		now.add(Calendar.YEAR, - 2);
 		System.out.println("Two years ago was " + 
 			formatter.format(now.getTime()));
 	}
