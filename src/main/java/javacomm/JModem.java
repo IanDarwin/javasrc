@@ -27,32 +27,50 @@ public class JModem extends javax.swing.JFrame {
     );
     getContentPane ().setLayout (new java.awt.BorderLayout ());
 
+    jMenuBar1 = new javax.swing.JMenuBar ();
+      fileMenu = new javax.swing.JMenu ();
+      fileMenu.setText ("File");
+        exitMenuItem = new javax.swing.JMenuItem ();
+        exitMenuItem.setText ("Exit");
+        exitMenuItem.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              exitMenuItemActionPerformed (evt);
+            }
+          }
+        );
+        fileMenu.add(exitMenuItem);
+
+      jMenuBar1.add(fileMenu);
+
+
+    setJMenuBar(jMenuBar1);
     connectPanel = new javax.swing.JPanel ();
     connectPanel.setLayout (new java.awt.FlowLayout ());
 
-      jLabel1 = new javax.swing.JLabel ();
-      jLabel1.setText ("Connection");
-      connectPanel.add (jLabel1);
+      connectPanelLabel = new javax.swing.JLabel ();
+      connectPanelLabel.setText ("Connection");
+      connectPanelLabel.setForeground (java.awt.Color.red);
+      connectPanel.add (connectPanelLabel);
 
-      jLabel2 = new javax.swing.JLabel ();
-      jLabel2.setText ("Speed");
-      connectPanel.add (jLabel2);
+      buadLabel = new javax.swing.JLabel ();
+      buadLabel.setText ("Speed");
+      connectPanel.add (buadLabel);
 
-      jComboBox2 = new javax.swing.JComboBox ();
-      connectPanel.add (jComboBox2);
+      baudComboBox = new javax.swing.JComboBox ();
+      connectPanel.add (baudComboBox);
 
       jPanel3 = new javax.swing.JPanel ();
       jPanel3.setPreferredSize (new java.awt.Dimension(50, 50));
       jPanel3.setMinimumSize (new java.awt.Dimension(0, 0));
       jPanel3.setLayout (new javax.swing.BoxLayout (jPanel3, 1));
 
-        jRadioButton1 = new javax.swing.JRadioButton ();
-        jRadioButton1.setText ("7");
-        jPanel3.add (jRadioButton1);
+        d7RadioButton = new javax.swing.JRadioButton ();
+        d7RadioButton.setText ("7");
+        jPanel3.add (d7RadioButton);
 
-        jRadioButton2 = new javax.swing.JRadioButton ();
-        jRadioButton2.setText ("8");
-        jPanel3.add (jRadioButton2);
+        d8radioButton = new javax.swing.JRadioButton ();
+        d8radioButton.setText ("8");
+        jPanel3.add (d8radioButton);
 
       connectPanel.add (jPanel3);
 
@@ -60,22 +78,46 @@ public class JModem extends javax.swing.JFrame {
       jPanel4.setPreferredSize (new java.awt.Dimension(50, 50));
       jPanel4.setLayout (new javax.swing.BoxLayout (jPanel4, 1));
 
-        jRadioButton3 = new javax.swing.JRadioButton ();
-        jRadioButton3.setText ("Even");
-        jPanel4.add (jRadioButton3);
+        pEvenRadioButton = new javax.swing.JRadioButton ();
+        pEvenRadioButton.setText ("Even");
+        pEvenRadioButton.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              evenRadioButtonActionPerformed (evt);
+            }
+          }
+        );
+        jPanel4.add (pEvenRadioButton);
 
-        jRadioButton4 = new javax.swing.JRadioButton ();
-        jRadioButton4.setText ("Odd");
-        jPanel4.add (jRadioButton4);
+        pOddRadioButton = new javax.swing.JRadioButton ();
+        pOddRadioButton.setText ("Odd");
+        pOddRadioButton.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              oddRadioButtonActionPerformed (evt);
+            }
+          }
+        );
+        jPanel4.add (pOddRadioButton);
 
-        jRadioButton5 = new javax.swing.JRadioButton ();
-        jRadioButton5.setText ("None");
-        jPanel4.add (jRadioButton5);
+        pNoneRadioButton = new javax.swing.JRadioButton ();
+        pNoneRadioButton.setText ("None");
+        pNoneRadioButton.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              pNoneRadioButtonActionPerformed (evt);
+            }
+          }
+        );
+        jPanel4.add (pNoneRadioButton);
 
       connectPanel.add (jPanel4);
 
-      jComboBox3 = new javax.swing.JComboBox ();
-      connectPanel.add (jComboBox3);
+      sysTypeComboBox = new javax.swing.JComboBox ();
+      sysTypeComboBox.addActionListener (new java.awt.event.ActionListener () {
+          public void actionPerformed (java.awt.event.ActionEvent evt) {
+            sysTypeComboBoxActionPerformed (evt);
+          }
+        }
+      );
+      connectPanel.add (sysTypeComboBox);
 
       connectButton = new javax.swing.JButton ();
       connectButton.setText ("Connect");
@@ -92,41 +134,54 @@ public class JModem extends javax.swing.JFrame {
     xferPanel = new javax.swing.JPanel ();
     xferPanel.setLayout (new java.awt.FlowLayout ());
 
-      jLabel3 = new javax.swing.JLabel ();
-      jLabel3.setText ("Transfer");
-      xferPanel.add (jLabel3);
+      xferPanelLabel = new javax.swing.JLabel ();
+      xferPanelLabel.setText ("File Transfer");
+      xferPanelLabel.setForeground (java.awt.Color.red);
+      xferPanel.add (xferPanelLabel);
 
       jPanel6 = new javax.swing.JPanel ();
       jPanel6.setLayout (new javax.swing.BoxLayout (jPanel6, 1));
 
-        jRadioButton6 = new javax.swing.JRadioButton ();
-        jRadioButton6.setText ("Send");
-        jPanel6.add (jRadioButton6);
+        sendRadioButton = new javax.swing.JRadioButton ();
+        sendRadioButton.setText ("Send");
+        sendRadioButton.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              sendRadioButtonActionPerformed (evt);
+            }
+          }
+        );
+        jPanel6.add (sendRadioButton);
 
-        jRadioButton7 = new javax.swing.JRadioButton ();
-        jRadioButton7.setText ("Receive");
-        jPanel6.add (jRadioButton7);
+        recvRadioButton = new javax.swing.JRadioButton ();
+        recvRadioButton.setText ("Receive");
+        recvRadioButton.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+              recvRadioButtonActionPerformed (evt);
+            }
+          }
+        );
+        jPanel6.add (recvRadioButton);
 
       xferPanel.add (jPanel6);
 
-      jLabel4 = new javax.swing.JLabel ();
-      jLabel4.setText ("Filename:");
-      xferPanel.add (jLabel4);
+      xferFilenameLabel = new javax.swing.JLabel ();
+      xferFilenameLabel.setText ("Filename:");
+      xferPanel.add (xferFilenameLabel);
 
-      jTextField1 = new javax.swing.JTextField ();
-      jTextField1.setPreferredSize (new java.awt.Dimension(100, 20));
-      xferPanel.add (jTextField1);
+      xferFileNameTF = new javax.swing.JTextField ();
+      xferFileNameTF.setPreferredSize (new java.awt.Dimension(100, 20));
+      xferPanel.add (xferFileNameTF);
 
       jPanel7 = new javax.swing.JPanel ();
       jPanel7.setLayout (new javax.swing.BoxLayout (jPanel7, 1));
 
-        jRadioButton8 = new javax.swing.JRadioButton ();
-        jRadioButton8.setText ("Text");
-        jPanel7.add (jRadioButton8);
+        xferModeTextRadioButton = new javax.swing.JRadioButton ();
+        xferModeTextRadioButton.setText ("Text");
+        jPanel7.add (xferModeTextRadioButton);
 
-        jRadioButton9 = new javax.swing.JRadioButton ();
-        jRadioButton9.setText ("Binary");
-        jPanel7.add (jRadioButton9);
+        xferModeBinRadioButton = new javax.swing.JRadioButton ();
+        xferModeBinRadioButton.setText ("Binary");
+        jPanel7.add (xferModeBinRadioButton);
 
       xferPanel.add (jPanel7);
 
@@ -143,9 +198,39 @@ public class JModem extends javax.swing.JFrame {
     getContentPane ().add (xferPanel, "South");
 
     theTextArea = new javax.swing.JTextArea ();
+    theTextArea.setColumns (80);
+    theTextArea.setRows (15);
     getContentPane ().add (theTextArea, "Center");
 
   }//GEN-END:initComponents
+
+  private void recvRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recvRadioButtonActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_recvRadioButtonActionPerformed
+
+  private void sendRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRadioButtonActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_sendRadioButtonActionPerformed
+
+  private void exitMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    System.exit(0);
+  }//GEN-LAST:event_exitMenuItemActionPerformed
+
+  private void sysTypeComboBoxActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysTypeComboBoxActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_sysTypeComboBoxActionPerformed
+
+  private void pNoneRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pNoneRadioButtonActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_pNoneRadioButtonActionPerformed
+
+  private void oddRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oddRadioButtonActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_oddRadioButtonActionPerformed
+
+  private void evenRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_evenRadioButtonActionPerformed
+    // Add your handling code here:
+  }//GEN-LAST:event_evenRadioButtonActionPerformed
 
   private void xferButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xferButtonActionPerformed
     // Do the transfer, using TModem class.
@@ -166,28 +251,31 @@ public class JModem extends javax.swing.JFrame {
   private javax.swing.JPanel connectPanel;
   private javax.swing.JPanel xferPanel;
   private javax.swing.JTextArea theTextArea;
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JComboBox jComboBox2;
+  private javax.swing.JLabel connectPanelLabel;
+  private javax.swing.JLabel buadLabel;
+  private javax.swing.JComboBox baudComboBox;
   private javax.swing.JPanel jPanel3;
-  private javax.swing.JRadioButton jRadioButton1;
-  private javax.swing.JRadioButton jRadioButton2;
   private javax.swing.JPanel jPanel4;
-  private javax.swing.JRadioButton jRadioButton3;
-  private javax.swing.JRadioButton jRadioButton4;
-  private javax.swing.JRadioButton jRadioButton5;
-  private javax.swing.JComboBox jComboBox3;
+  private javax.swing.JComboBox sysTypeComboBox;
   private javax.swing.JButton connectButton;
-  private javax.swing.JLabel jLabel3;
+  private javax.swing.JRadioButton d7RadioButton;
+  private javax.swing.JRadioButton d8radioButton;
+  private javax.swing.JRadioButton pEvenRadioButton;
+  private javax.swing.JRadioButton pOddRadioButton;
+  private javax.swing.JRadioButton pNoneRadioButton;
+  private javax.swing.JLabel xferPanelLabel;
   private javax.swing.JPanel jPanel6;
-  private javax.swing.JRadioButton jRadioButton6;
-  private javax.swing.JRadioButton jRadioButton7;
-  private javax.swing.JLabel jLabel4;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JLabel xferFilenameLabel;
+  private javax.swing.JTextField xferFileNameTF;
   private javax.swing.JPanel jPanel7;
-  private javax.swing.JRadioButton jRadioButton8;
-  private javax.swing.JRadioButton jRadioButton9;
   private javax.swing.JButton xferButton;
+  private javax.swing.JRadioButton sendRadioButton;
+  private javax.swing.JRadioButton recvRadioButton;
+  private javax.swing.JRadioButton xferModeTextRadioButton;
+  private javax.swing.JRadioButton xferModeBinRadioButton;
+  private javax.swing.JMenuBar jMenuBar1;
+  private javax.swing.JMenu fileMenu;
+  private javax.swing.JMenuItem exitMenuItem;
 // End of variables declaration//GEN-END:variables
 
 
