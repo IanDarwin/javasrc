@@ -1,0 +1,27 @@
+<project name="Buzzin Quiz-Show Servlet" default="compile" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="deploy.dir" value="/tmp"/>
+	<property name="deploy.jar" value="buzzin.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}/WEB-INF/classes" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${deploy.dir}/${deploy.jar}" basedir="${build}"
+			includes="*,hosts/**,WEB-INF/**">
+		</jar>
+	</target>
+
+</project>
