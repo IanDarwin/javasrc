@@ -31,7 +31,6 @@ public class TarFile {
 	public TarFile(String name) {
 		fileName = name;
 		list = new Vector();
-		read = false;
 	}
 
 	/** Construct (open) a Tar file by File */
