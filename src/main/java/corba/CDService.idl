@@ -11,7 +11,7 @@ module CDService {
 	};
 
 	interface CDList {
-		CD nextCD();
+		CD getCD(in long cdNum);
 		Track  nextTrack();
 	};
 };

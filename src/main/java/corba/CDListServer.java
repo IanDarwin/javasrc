@@ -17,18 +17,17 @@ public class CDListServer {
 	};
 
 	class CDListServant extends _CDListImplBase {
-		private int cdNum = 0;
-		private int trkNum;
-		public CD nextCD() {
-			if (cdNum>=(myCDList.length-1))
-				return null;
+		private int trkNum = 0;
+		public CD getCD(int cdNum) {
+			if (cdNum>(myCDList.length-1))
+				throw new IllegalArgumentException("CD number too big");
 			trkNum = 0;
-			return myCDList[cdNum++];
+			return myCDList[cdNum];
 		}
 		public Track  nextTrack() {
 			if (trkNum++ > 4)
 				return null;
-			return new Track("Hippocamelephantocamelus", (short)120);
+			return new Track("Track #" + trkNum, (short)120);
 		}
 	}
 
@@ -63,6 +62,7 @@ public class CDListServer {
 			// (fully-qualified because of ORG.OMG.CORBA.Object)
 			// is equivalent to a UNIX pause() system call, that is,
 			// an indefinite wait.
+			System.out.println("Server: Waiting for clients...");
 			java.lang.Object sync = new java.lang.Object();
 			synchronized (sync) {
 				sync.wait();

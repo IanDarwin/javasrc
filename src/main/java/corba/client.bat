@@ -1,2 +1,2 @@
 REM run the client.
-java CDListClient -ORBInitialPort 1050
+java CDListClient -ORBInitialPort 1066

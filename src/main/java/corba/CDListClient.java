@@ -21,13 +21,14 @@ public class CDListClient {
 
 			// Now get CDs from the server and print them.
 			CD aCD;
-			while ((aCD = cdListRef.nextCD()) != null) {
-				System.out.println(aCD);
+			for (int i=0; i<3; i++) {
+				aCD = cdListRef.getCD(i);
+				System.out.println(aCD.title);
 				// Slightly unrealistic: nextTrack() should be a method
 				// of the CD object, not the CDList object.
-				for (int i=0; i<4; i++) {
+				for (int t=0; t<4; t++) {
 					Track aTrack = cdListRef.nextTrack();
-					System.out.println(aTrack);
+					System.out.println(aTrack.title);
 				}
 			}
 
