@@ -13,14 +13,36 @@ public class MyData implements Serializable {
 	}
 
 	public MyData(String name, String clear) {
-		userName = name;
-		// Save the clear text p/w in the object, it won't get serialized
-		passwordClear = clear;
-		// So we must save the encryption! Encryption not shown here.
-		passwordCypher = "x8skwkl'";
+		setUserName(name);
+		setPassword(clear);
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String s) {
+		this.userName = s;
+	}
+
+	public String getPasswordCypher() {
+		return passwordCypher;
+	}
+
+	/** Save the clear text p/w in the object, it won't get serialized
+	 * So we must save the encryption! Encryption not shown here.
+	 */
+	public void setPassword(String s) {
+		this.passwordClear = s;
+		passwordCypher = encrypt(passwordClear);
 	}
 
 	public String toString() {
 		return "MyData[" + userName + ",XXXXX]";
+	}
+
+	/** In real life this would use Java Cryptography */
+	protected String encrypt(String s) {
+		return "fjslkjlqj2TOP+SECRETkjlskl";
 	}
 }
