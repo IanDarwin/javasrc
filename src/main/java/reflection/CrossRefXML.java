@@ -19,7 +19,6 @@ public class CrossRefXML extends CrossRef {
 
 	protected void putField(Field fld, Class c) {
 		println("<field>" + fld + "</field>");
-		++n;
 	}
 
 	/** put a Method's information to the standard output.
@@ -27,7 +26,6 @@ public class CrossRefXML extends CrossRef {
 	 */
 	protected void putMethod(Method method, Class c) {
 		println("<method>" + method + "</method>");
-		++n;
 	}
 
 	/** Print the end of a class. 
