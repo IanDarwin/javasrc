@@ -1,6 +1,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
+import java.util.*;
 import com.pdflib.*;
 
 /** Output the dictionary in fancy(?) PDF.
@@ -38,10 +39,15 @@ public class TermsServletPDF extends HttpServlet {
 
 			p.setfont(font, 14);
 
+			// XXX for now just use one term from the Iterator
+			Iterator e = new TermsAccessor("terms.txt").iterator();
+			Term t = (Term)e.next();
 			p.set_text_pos(50, 700);
-			p.show("Name");
+			p.show("Term: ");
+			p.continueText(t.term);
 			p.set_text_pos(70, 666);
-			p.show("Value of definition");
+			p.show("Definition: ");
+			p.continueText(t.definition);
 			p.end_page();
 
 			p.close();
