@@ -72,7 +72,7 @@ public class BuzzInServlet extends HttpServlet {
 
 		if (request.getParameter("password").equals("syzzy")) {
 			out.println("<html><head><title>Welcome back, host</title><head>");
-			out.prinltn("<body bgcolor=\"white\">");
+			out.println("<body bgcolor=\"white\">");
 			// Synchronize what you need, no more, no less.
 			synchronized(this) {
 				buzzed = false;
@@ -80,7 +80,7 @@ public class BuzzInServlet extends HttpServlet {
 			out.println("RESET");
 		} else {
 			out.println("<html><head><title>Nice try, but... </title><head>");
-			out.prinltn("<body bgcolor=\"white\">");
+			out.println("<body bgcolor=\"white\">");
 			out.println(
 				"Your paltry attempts to breach security are rebuffed!");
 		}
