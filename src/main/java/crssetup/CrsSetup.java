@@ -37,7 +37,7 @@ public class CrsSetup extends JFrame {
 	/** The current machine name */
 	int machNameber = 0;
 	/** The default network */
-	finale String DEFAULT_NET = "200.1.1";
+	final String DEFAULT_NET = "200.1.1";
 	/** The current network */
 	String netName = DEFAULT_NET;
 
