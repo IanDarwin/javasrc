@@ -1,0 +1,11 @@
+TODO for XmlForm
+$Id$
+
+Handle <LITERAL> <BT> and other Style Tags.
+
+Find out why occasionally CDATAs appear outside of Paras,
+sometimes even broken in mid-word!!?
+
+Make Examples come out right.
+
+Maybe handle tables?

@@ -213,7 +213,7 @@ public class GenMIF implements XmlFormWalker {
 			Object passedArgv[] = { argv };
 
 			// Now invoke the method.
-			System.err.println("Invoking " + c + '.' + m);
+			System.err.println("Invoking " + m + "...");
 			m.invoke(null, passedArgv);
 
 		} catch (Exception e) {
