@@ -44,7 +44,7 @@ public class GetImage extends JApplet {
 		JFrame f = new JFrame("GetImage");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GetImage myApplet = new GetImage();
-		f.getContentPane().add(myApplet);
+		f.setContentPane(myApplet);
 		myApplet.init();
 		f.setSize(100, 100);
 		f.setVisible(true);
