@@ -4,8 +4,6 @@ import com.darwinsys.io.FileIO;
 
 /** MkIndex -- make a static index.html for a Java Source directory
  * <p>
- * REQUIRES JDK1.2 OR LATER FOR SORT!!
- * <p>
  * Started life as an awk script that used "ls" to get
  * the list of files, grep out .class and javadoc output files, |sort.
  * Now it's all in Java (including the ls-ing and the sorting).
@@ -37,31 +35,27 @@ public class MkIndex {
 	PrintWriter out;
 	/** The background color for the page */
 	public static final String BGCOLOR="#33ee33";
-	/** The File object, for directory listing. */
-	File dirFile;
 
 	/** Make an index */
 	public static void main(String[] args) throws IOException {
 		MkIndex mi = new MkIndex();
-		String inDir = args.length > 0 ? args[0] : ".";
-		mi.open(inDir, OUTPUTFILE);		// open files
+		mi.setWriter(new PrintWriter(new FileWriter(OUTPUTFILE)));
 		mi.begin();		// print HTML header
 		System.out.println("** Start Pass One **");
-		for (int i=0; i<args.length; i++)
-			mi.process(new File(args[i]));	// "We do ALL the work..."
+		if (args.length > 0) {
+			for (int i=0; i<args.length; i++)
+				mi.process(new File(args[i]));	// "We do ALL the work..."
+		} else {
+			mi.process(new File("."));
+		}
 		mi.writeNav();	// Write navigator
 		mi.writeList();	// Write huge list of files
 		mi.end();		// print trailer.
 		mi.close();		// close files
 	}
 
-	void open(String dir, String outFile) {
-		dirFile = new File(dir);
-		try {
-			out = new PrintWriter(new FileWriter(outFile));
-		} catch (IOException e) {
-			System.err.println(e);
-		}
+	void setWriter(PrintWriter aWriter) {
+		out = aWriter;
 	}
 
 	/** Write the HTML headers */
@@ -118,10 +112,11 @@ public class MkIndex {
 			return;
 		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
 			return;						// don't mention it
-		} else if (name.charAt(0) == '.') {	// UNIX dot-file
+		} else if (name.charAt(0) == '.' && name.length() > 0) {// UNIX dot-file
 			return;
 		}
 
+		System.out.println("Indexing: " + name);
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();
 			for (int i=0; i<files.length; i++) {
