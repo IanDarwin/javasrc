@@ -19,10 +19,12 @@ class SMTPException extends IOException {
  * SMTP talker class, usable standalone (as a SendMail(8) backend)
  * or inside applications such as JabaDex that need to send mail..
  *
+ * OBSOLETE!! Use javax.mail instead, now that its available!
+ *
  * Needs more parameterization - bit of a hack to start.
  *
  * @author	Ian Darwin
- * @version	0.5, February 25, 1997
+ * @version	$Id$
  */
 public class SmtpTalk implements SysExits {
 	BufferedReader is;
