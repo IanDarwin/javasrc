@@ -108,7 +108,9 @@ public class MkIndex {
 		if (name.startsWith("index") ||
 			name.endsWith(".class") ||
 			name.endsWith(".bak")) {
-			System.err.println("Ignoring " + file.getPath());
+			if (verbose) {
+				System.err.println("Ignoring " + file.getPath());
+			}
 			return;
 		} else if (name.equals("CVS")) {		// Ignore CVS subdirectories
 			return;						// don't mention it
