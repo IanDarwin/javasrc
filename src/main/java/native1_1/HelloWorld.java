@@ -10,7 +10,10 @@ public class HelloWorld {
 
 	// Application main, call its display method
 	public static void main(String args[]) {
-		System.out.println("HelloWorld starting...");
+		System.out.println("HelloWorld starting; args.length="+
+			args.length+"...");
+		for (int i=0; i<args.length; i++)
+			System.out.println("args["+i+"]="+args[i]);
 		HelloWorld hw = new HelloWorld();
 		hw.displayHelloWorld();		// call the native function
 		System.out.println("Back in Java, \"myNumber\" now " + hw.myNumber);
