@@ -5,14 +5,17 @@ import java.util.*;
 import javax.naming.*;
 
 /**
- * Replacement for the BMP example on page 576-7-45
+ * Replacement for the BMP example on page 576-7-45.
+ * It will compile but will not run yet!
  */
-public class Bean implements EntityBean {
+public class EntityEJB implements EntityBean {
 	private String title;	// pkey
 	private int stockCount = 0;
 	private double price = 0;
 
 	/** findByPrimaryKey is a required Entity Bean method.
+	 * This method runs with no PrimaryKey in the Context yet;
+	 * it does not actually allocate the bean instance fields.
 	 * Using String title as a PKEY is a bit lame...
 	 */
 	public String ejbFindByPrimaryKey(String pKey) throws FinderException {
@@ -69,13 +72,17 @@ public class Bean implements EntityBean {
 		return c;
 	}
 
-	public String ejbCreate() {
-		// dummy for now
+	public String ejbCreate(Recording rec) {
+		fields = rec;
 		return null;
 	}
 
-	public void ejbPostCreate() {
+	public void ejbPostCreate(Recording rec) {
 		// dummy for now
+	}
+
+	public Recording getRecording() {
+		return fields;
 	}
 
 	/** Just to compile, does not work. */
@@ -84,7 +91,7 @@ public class Bean implements EntityBean {
 		((DataSource)new InitialContext().lookup("MyPool")).getConnection();
 	}
 
-	/** Just to compile, does not work. */
+	/** Clean up JDBC objects in the correct order */
 	private void cleanup(Connection co, Statement st, ResultSet rs) {
 		try {
 			if (rs != null) rs.close();
