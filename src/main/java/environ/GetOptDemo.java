@@ -1,3 +1,5 @@
+import com.darwinsys.util.GetOpt;
+
 /** Simple demonstration of GetOpt. Accept the '-n' and '-o outfile'
  * options as shown for sort, and also -h for help.
  * @author Ian F. Darwin, ian@darwinsys.com
@@ -40,7 +42,7 @@ public class GetOptDemo {
 	 * You can write a longer help than this, certainly.
 	 */
 	static void doHelp(int returnValue) {
-		System.err.println("Usage: GetOptDemo [-h]-[n][-o outfile] file ...");
+		System.err.println("Usage: GetOptDemo [-h][-n][-o outfile] file ...");
 		System.exit(returnValue);
 	}
 	/** Stub to demonstrate processine one file. */
