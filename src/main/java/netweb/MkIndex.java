@@ -6,12 +6,9 @@ import com.darwinsys.util.*;
  *
  * REQUIRES JDK1.2 OR LATER FOR SORT!!
  *
- * Original version was an awk script that used "ls" to get
+ * Started life as an awk script that used "ls" to get
  * the list of files, grep out .class and javadoc output files, |sort.
- *
- * Translated from awk to Java in October, 1997 to use java.io.File methods
- *
- * Revised June 1998 to use Collections.sort() instead of running external sort.
+ * Now it's all in Java (including the ls-ing and the sorting).
  *
  * @author	Ian F. Darwin, ian@darwinsys.com
  * @Version $Id$
