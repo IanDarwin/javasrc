@@ -69,8 +69,7 @@ public class LNFSwitcher {
 		bg.add(bDefault);
 		cp.add(bDefault);
 
-		previousButton = bDefault;
-		bDefault.setSelected(true);
+		(previousButton = bDefault).setSelected(true);
 
 		theFrame.pack();
 		theFrame.setVisible(true);
