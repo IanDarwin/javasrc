@@ -13,6 +13,8 @@ import com.darwinsys.io.FileIO;
  */
 public class MkIndex {
 
+	private boolean verbose = false;
+
 	class NameMap implements Comparable {
 		String name, nameLC;
 		String path;
