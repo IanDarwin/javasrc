@@ -1,6 +1,14 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.Random;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /** Program to generate an iCalendar event.
  * Can be used as a main program or as a Servlet.
@@ -38,6 +46,8 @@ public class CalEventMaker extends javax.servlet.http.HttpServlet {
 		String ddEnd = request.getParameter("ddEnd");
 
 		response.setContentType("ical");	// BLEARGH
+		
+		PrintWriter out = response.getWriter();
 
 		writeEvent(out, event,
 			Integer.parseInt(yyStart),
@@ -55,8 +65,8 @@ public class CalEventMaker extends javax.servlet.http.HttpServlet {
 	{
 		int thisyear = Calendar.getInstance().get(Calendar.YEAR);
 		writeEvent(out, event, 
-			2003, startMon, startYear,
-			2003, endMon, endYear);
+			2003, startMon, startDay,
+			2003, endMon, endDay);
 	}
 
 	/** Write an event.
