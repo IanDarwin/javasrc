@@ -29,7 +29,7 @@
 			file="${build.work}/build.properties"/>
 	</target>
 
-	<target name="api" ><!--depends="get"-->
+	<target name="api" depends="get">
 		<ant dir="${build.work}/darwinsys" target="dist"
 			inheritAll="false"/>
 		<copy file="${build.work}/darwinsys/build/darwinsys.jar"
