@@ -39,8 +39,6 @@
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-// import - none
-
 /**
  * Catch a ThreadDeath by hitting a Thread with stop.
  */

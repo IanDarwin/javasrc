@@ -39,9 +39,9 @@
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.applet.*;
-import java.awt.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
 
 /** Animator - move a rectangle diaganolly across the screen
  * using a Thread.

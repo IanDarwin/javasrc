@@ -39,8 +39,8 @@
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /** Extend Mover by adding the ability to start and stop the thread
  * just by clocking the mouse.
@@ -72,7 +72,7 @@ public class Mover3 extends Mover implements MouseListener {
 		int w = getSize().width;
 		while (!done) {
 			try {
-                Thread.currentThread().sleep(interval);
+                Thread.sleep(interval);
 
                 synchronized(this) {
                     while (threadSuspended)

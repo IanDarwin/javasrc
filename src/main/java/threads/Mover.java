@@ -39,10 +39,13 @@
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-//import javax.swing.*;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
 
 /**
  * Mover -- move an image, slowly.
