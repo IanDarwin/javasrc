@@ -1,0 +1,31 @@
+<project name="SPDF API and Tester" default="compile" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="deploy.dir" value="./deploy"/>
+	<property name="deploy.jar" value="XXX.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,com/**">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<mkdir dir="${deploy.dir}"/> <!-- Create target directory -->
+		<copy file="${deploy.dir}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>
