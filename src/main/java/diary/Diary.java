@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
@@ -97,10 +98,11 @@ public class Diary extends Frame {
 		hm.add(mi = mkMenuItem(b, "help", "about"));
 		mi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new InfoDialog(Diary.this, VERSION, 
+				JOptionPane.showInfoDialog(Diary.this, 
 				VERSION + "\n" +
 				"Copyright (c) 1997 Ian F. Darwin\n" +
-				"Free via email from ian@darwinsys.com").show();
+				"Free via email from ian@darwinsys.com",
+				VERSION, JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
