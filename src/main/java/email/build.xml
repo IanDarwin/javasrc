@@ -11,7 +11,7 @@
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}"
 			classpath="${darwinsys.jar}:${mail.jar}:${activation.jar}"
-			deprecation="true"
+			debug="true" deprecation="true"
 			excludes="Alias-newstuff/**"
 			failonerror="false"/>
 	</target>
