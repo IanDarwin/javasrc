@@ -14,7 +14,7 @@ public class ArrayDemo  {
 				30, 31, 30, 31
 		};
 		
-		final static int MAX = 10;
+		final int MAX = 10;
 		Employee staff[] = new Employee[MAX];
 		for (int i=0; i<MAX; i++)
 			   staff[i] = new Employee("NoName", i);
