@@ -11,9 +11,9 @@ public class MyStackDemo {
 
 		// Old way of using Collections: not type safe.
 		MyStack ms2 = new MyStack();
-		ms2.push("billg");
-		ms2.push("scottm");
-		ms2.push(new java.util.Date());
+		ms2.push("billg");               // EXPECT WARNING
+		ms2.push("scottm");              // EXPECT WARNING
+		ms2.push(new java.util.Date());  // EXPECT WARNING
 		
 		// Show that it is broken 
 		try {
