@@ -1,6 +1,6 @@
 import java.io.*;
 import org.w3c.dom.*;
-import com.sun.xml.tree.*;
+import javax.xml.parsers.*;
 
 /** Convert a simple XML file to text.
  * @author Ian Darwin, ian@darwinsys.com
@@ -23,8 +23,12 @@ public class XmlForm {
 			if (verbose)
 				System.err.println(">>>Parsing " + fileName + "...");
 			// Make the document a URL so relative DTD works.
-			String uri = "file:" + new File(fileName).getAbsolutePath();
-			XmlDocument doc = XmlDocument.createXmlDocument(uri);
+			//String uri = "file:" + new File(fileName).getAbsolutePath();
+			InputStream uri = getClass().getResourceAsStream(fileName);
+			DocumentBuilderFactory factory =
+				DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse( uri );
 			if (verbose)
 				System.err.println(">>>Walking " + fileName + "...");
 			XmlFormWalker c = new GenMIF(doc, msg);
