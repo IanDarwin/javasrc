@@ -4,21 +4,22 @@
  * by Andrew Scott Beals
  * sjobrg.andy%mit-oz@mit-mc.arpa
  * last update->4 june 1982
- * code reorganized, cleaned up - ian darwin, 83-05-02
- * Last update for USG UNIX.
+ * code reorganized, cleaned up - ian darwin, 83-05-02, updated for USG UNIX.
+ * A.D. 2000 - dragged from the archives for use in Java Cookbook.
  * $Id$
- * todo - use getopt, change ifdef DEBUG to if(debug).
  */
 
 #include <stdio.h>
 #include <ctype.h>
-#include <signal.h>
+#include <sys/signal.h>
 
 #ifdef	USG
 #include <termio.h>
 #else	USG
 #include <sgtty.h>
 #endif	USG
+#define stty(fd,buf) ioctl(fd,TIOCSETP,buf)
+#define gtty(fd,buf) ioctl(fd, TIOCGETP, buf)
 
 #define uchar	unsigned char
 
@@ -43,6 +44,8 @@ struct sgttyb ttyhold, ttymode;
 #endif	USG
 
 char *progname;
+
+static void timeout(int signum);
 
 main(argc, argv)
 int argc;
@@ -94,7 +97,7 @@ char	*tfile;
 
 	register uchar checksum, index, blocknumber, errorcount;
 	uchar sector[SECSIZE];
-	int foo, nbytes, timeout();
+	int foo, nbytes;
 
 #ifdef	USG
 	if (ioctl(0, TCSETAW, &ttymode) != 0)
@@ -237,7 +240,7 @@ char	*tfile;
 		(void) fflush(stdout);
 		blocknumber++;
 		if (write(foo, sector, sizeof sector) != sizeof sector)
-			warning("write failed, blocknumber %d", blocknumber);
+			warn("write failed, blocknumber %d", blocknumber);
 		if (!errorcount)
 			continue;
 nakit:
@@ -256,7 +259,7 @@ nakit:
 
 
 /* give message that we timed out, and then die */
-timeout()
+static void timeout(int signum)
 {
 	(void) fprintf(stderr, "Timed out waiting for NAK from remote system\r\n");
 	die(1);
