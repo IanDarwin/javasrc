@@ -114,7 +114,7 @@ public class jr extends sun.tools.javac.Main {
 		System.out.println("runArgv has " + runArgv.size());
 
 		// Try running the compiler
-		if (compile((String[])compileArgv.toArray())) {
+		if (compile((String[])compileArgv.toArray(String.class))) {
 			System.out.println("Compile OK, trying to run");
 			try {
 				// Fetch the Class object for the just-compiled class
