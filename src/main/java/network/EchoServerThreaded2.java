@@ -2,19 +2,19 @@ import java.net.*;
 import java.io.*; 
 
 /**
- * Threaded Echo Server, pre-allocation schema.
+ * Threaded Echo Server, pre-allocation scheme.
  * @author Ian F. Darwin.
  */
 public class EchoServerThreaded2 {
 
-	public static final int PORT = 7;
+	public static final int ECHOPORT = 7;
 
 	public static final int NUM_THREADS = 4;
 
 	/** Main method, to start the servers. */
 	public static void main(String[] av)
 	{
-		new EchoServerThreaded2(PORT, NUM_THREADS);
+		new EchoServerThreaded2(ECHOPORT, NUM_THREADS);
 	}
 
 	/** Constructor */
@@ -24,7 +24,7 @@ public class EchoServerThreaded2 {
 		Socket clientSocket;
 
 		try {
-			servSock = new ServerSocket(PORT);
+			servSock = new ServerSocket(ECHOPORT);
 		
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
@@ -32,6 +32,8 @@ public class EchoServerThreaded2 {
 			System.exit(1);
 			return;	/*NOTREACHED*/
 		}
+
+		// Create a series of threads and start them.
 		for (int i=0; i<numThreads; i++) {
 			new Thread(new Handler(servSock, i)).start();
 		}
@@ -56,7 +58,11 @@ public class EchoServerThreaded2 {
 			while (true){
 				try {
 					System.out.println( getName() + " waiting");
-					Socket clientSocket = servSock.accept();
+
+					// Wait here for the next connection.
+					synchronized(servSock) {
+						Socket clientSocket = servSock.accept();
+					}
 					System.out.println(getName() + " starting, IP=" + 
 						clientSocket.getInetAddress());
 					DataInputStream is = new DataInputStream(
@@ -65,7 +71,6 @@ public class EchoServerThreaded2 {
 						clientSocket.getOutputStream(), true);
 					String line;
 					while ((line = is.readLine()) != null) {
-						// System.out.println(">> " + line);
 						os.print(line + "\r\n");
 						os.flush();
 					}

@@ -1,14 +1,13 @@
 import java.net.*;
 import java.io.*;
 
-
 /**
- * Threaded Echo Server.
+ * Threaded Echo Server, sequential allocation scheme.
  * @author Ian F. Darwin.
  */
 public class EchoServerThreaded {
 
-	public final int PORT = 7;
+	public static final int ECHOPORT = 7;
 
 	public static void main(String[] av)
 	{
@@ -21,7 +20,7 @@ public class EchoServerThreaded {
 		Socket clientSocket;
 
 		try {
-			sock = new ServerSocket(PORT);
+			sock = new ServerSocket(ECHOPORT);
 		
 			System.out.println("EchoServerThreaded ready for connections.");
 
@@ -56,7 +55,6 @@ public class EchoServerThreaded {
 					sock.getOutputStream(), true);
 				String line;
 				while ((line = is.readLine()) != null) {
-					// System.out.println(">> " + line);
 					os.print(line + "\r\n");
 					os.flush();
 				}

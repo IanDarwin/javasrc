@@ -9,7 +9,7 @@ import java.net.*;
  */
 public class EchoServer {
 	/** Our server-side rendezvous socket */
-	ServerSocket sock;
+	protected ServerSocket sock;
 	/** The port number to use by default */
 	public final static int ECHOPORT = 7;
 	/** Flag to control debugging */
