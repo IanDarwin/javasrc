@@ -20,6 +20,10 @@ public abstract class Enum implements Serializable {
 	/** The maximum number of values an enum can have */
 	private static final int INITIAL_SIZE = 10;
 	
+	private static Enum[] all = new Enum[INITIAL_SIZE];
+	private static int allIndex;
+	
+	
 	/** Although this is public, the implementing subclass' constructor must be 
 	 * private to ensure typesafe enumeration pattern.
 	 */
@@ -37,10 +41,7 @@ public abstract class Enum implements Serializable {
 	public String toString() {
 		return value;
 	}
-	
-	private static Enum[] all = new Enum[INITIAL_SIZE];
-	private static int allIndex;
-	
+
 	/** Returns the given Enum instance for the given String.
 	 * @throws IllegalArgumentException if the input is not one of the valid values.
 	 */
