@@ -4,10 +4,6 @@
 
 public class IMath {
 
-	protected static long two_to_the(long x)	 {
-		return 1 << (x);
-	}
-
 	/**
 	 * Compute the square root of an integer.
 	 * <PRE>
@@ -29,7 +25,7 @@ public class IMath {
 	 * Organization: ELF, Sea Cliff, NY
 	 * </PRE>
 	 */
-	public static long isqrt(int x) {
+	public static long isqrt(long x) {
 		if (x==0)
 			return 0;
 		if (x==1)
@@ -37,12 +33,14 @@ public class IMath {
 		long u, v, q, w;
 
 	  u = x;
-	  q = two_to_the(16) * (two_to_the(16)-1);
+	  q = 1<<16 * (1<<16)-1);
+	  System.out.println("huge q = " + q);
+	  // q = Integer.MAX_VALUE;
 
 	  if (u > q)
-		return two_to_the(16);
+		return 1<<16;
 
-	  for (w = two_to_the(31); w > 0; w >>= 2) {
+	  for (w = 1<<31; w > 0; w >>= 2) {
 		v = (q - w) >> 1;
 		if (u > v) {
 		  u -= v;
