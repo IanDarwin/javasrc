@@ -95,9 +95,10 @@ public class Grapher extends Component {
         for (int i=0 ; i < n; i++) {
 			Apoint d = (Apoint)data.elementAt(i);
 			float x = (d.x-minx) * xfact;
-			float y = d.y * yfact;
+			float y = (d.y-miny) * yfact;
 			System.out.println("AT " + i + " " + d);
 			System.out.println("x = " + x + "; y = " + y);
+			// Draw a 5-pixel rectangle centered, so -2 both x and y.
 			// AWT numbers Y from 0 down, so invert:
 			g.drawRect(((int)x)-2, s.height-2-(int)y, 5, 5);
 		}
