@@ -8,7 +8,17 @@ import javax.rmi.*;
 
 public class EJBServlet extends HttpServlet {
 
-	protected Hello hello;	// EXPECT COMPILE ERRORS - demo only
+	/** Compile-only Session EJB home interface */
+	interface HelloHome{
+		Hello create();
+	}
+	
+	/** Compile-only Session EJB interface */
+	interface Hello {
+		String hello();
+	}
+
+	protected Hello hello;
 
 	public void init() throws ServletException {
 
