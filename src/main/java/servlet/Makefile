@@ -14,6 +14,9 @@ classes:
 		@echo "===> Building in `pwd`"
 		$(JAVAC) *.java
 
+InitParams:
+	jikes -d $$HOME/webs/daroadweb/WEB-INF/classes InitParams.java
+
 CodeRed:
 	jikes -d $$HOME/webs/daroadweb/WEB-INF/classes CodeRed.java
 
