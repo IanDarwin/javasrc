@@ -21,7 +21,8 @@ public class ProcessBuilderDemo {
 		ProcessBuilder builder = new ProcessBuilder(command);
 		Map<String, String> environ = builder.environment();
 		environ.put("PATH", "/windows;/windows/system32;/winnt");
-		builder.directory(new File(System.getProperty("user.home")));
+		builder.directory(
+			new File(System.getProperty("user.home")));
 
 		final Process godot = builder.start();
 		
