@@ -7,11 +7,10 @@ import java.io.*;
  */
 
 public class FNFilter2 implements FilenameFilter {
-	public boolean accept(File dir, String s) {
-		if (s.endsWith(".gif"))
-			return true;
-		// others: jpeg, eps, etc?
-		return false;
+
+	public static void main(String av[]) {
+		FNFilter2 ff = new FNFilter2();
+		ff.process(".");
 	}
 
 	public void process(String dir) {
@@ -20,8 +19,11 @@ public class FNFilter2 implements FilenameFilter {
 		for (int i=0; i<objects.length; i++)
 			System.out.println(objects[i]);
 	}
-	public static void main(String av[]) {
-		FNFilter2 ff = new FNFilter2();
-		ff.process(".");
+
+	public boolean accept(File dir, String s) {
+		if (s.endsWith(".java"))
+			return true;
+		// others?
+		return false;
 	}
 }
