@@ -1,8 +1,11 @@
 package netweb;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class GetURLs {
 	/** The tag reader */
@@ -24,20 +27,6 @@ public class GetURLs {
 		"<frame ", "<FRAME ",
 	};
 
-	public ArrayList getURLs() throws IOException {
-		ArrayList al = new ArrayList();
-		String tag;
-		while ((tag = reader.nextTag()) != null) {
-			for (int i=0; i<wantTags.length; i++) {
-				if (tag.startsWith(wantTags[i])) {
-					al.add(tag);
-					continue;		// optimization
-				}
-			}
-		}
-		return al;
-	}
-
 	public void close() throws IOException {
 		if (reader != null) 
 			reader.close();
@@ -47,7 +36,8 @@ public class GetURLs {
 		String theURL = argv.length == 0 ?
 			"http://localhost/" : argv[0];
 		GetURLs gu = new GetURLs(theURL);
-		ArrayList urls = gu.getURLs();
+		gu.reader.setWantedTags(GetURLs.wantTags);
+		List urls = gu.reader.readTags();
 		Iterator urlIterator = urls.iterator();
 		while (urlIterator.hasNext()) {
 			System.out.println(urlIterator.next());

@@ -70,7 +70,7 @@ public class Weather {
 		System.out.println(request);
 
 		System.out.println("Sending Request");
-		os.writeBytes("mbl-stmt=" + URLEncoder.encode(request));
+		os.writeBytes("mbl-stmt=" + URLEncoder.encode(request, "UTF-8"));
 		os.flush();
 
 		System.out.println("Getting the Response");

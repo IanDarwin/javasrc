@@ -1,14 +1,35 @@
 package netweb;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import com.darwinsys.io.FileIO;
-import com.darwinsys.swingui.UtilGUI; 
+import com.darwinsys.swingui.UtilGUI;
 import com.darwinsys.util.Debug;
 
 /** A simple HTML Link Checker. 
@@ -169,7 +190,8 @@ public class LinkChecker extends JFrame {
 		}
 
 		try {
-			ArrayList urlTags = urlGetter.getURLs();
+			urlGetter.reader.setWantedTags(GetURLs.wantTags);
+			List urlTags = urlGetter.reader.readTags();
 			Iterator urlIterator = urlTags.iterator();
 			while (urlIterator.hasNext()) {
 				if (done)
