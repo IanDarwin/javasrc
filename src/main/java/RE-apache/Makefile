@@ -1,4 +1,4 @@
-all:		runtests
+all:		runtests programs
 
 runtests:	Test.class tests RE.class 
 			java Test < mytests
@@ -9,5 +9,9 @@ retests:	REtest.class
 # javac and most other java compilers are Ok with this.
 RE.class:	Int.class Match.class
 			javac RE.java SE*.java
+
+programs:	Grep1.class
+
+Grep1.class: RE.class
 
 .include	<bsd.java.mk>
