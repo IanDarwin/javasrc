@@ -3,29 +3,55 @@
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
-	<property name="build.compiler" value="jikes"/>
-	<property name="j2ee.jar" value="${user.home}/jboss/client/jboss-j2ee.jar"/>
+	<property name="build" value="build"/>
+	<property file="../build.properties"/>
 
-	<property name="deploy.dir" value="${user.home}/jboss/server/default/deploy"/>
 	<property name="deploy.jar" value="hello.jar"/>
+	<property name="src.jar" value="hello-src.jar"/>
 
 	<target name="init">
 		<tstamp/> <!-- Create the time stamp -->
 		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
 	</target>
 
-	<target name="compile" depends="init">
-		<javac srcdir="${src}" destdir="${build}" classpath="${j2ee.jar}"/>
+	<path id="project.class.path">
+		<pathelement location="${build}"/>
+		<pathelement location="${j2ee.jar}"/>
+		<pathelement location="${client.jar}"/>
+	</path>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="project.class.path"/>
+		</javac>
+		<copy file="metadata/jndi.properties" todir="${build}"/>
+		<mkdir dir="${build}/META-INF"/>
+		<copy file="metadata/ejb-jar.xml" todir="${build}/META-INF"/>
 	</target>
 
-	<target name="jar" depends="compile">
+	<target name="jar" depends="build">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
-			includes="META-INF/*,*.class">
+			includes="META-INF/*,*.class,*.properties">
 		</jar>
 	</target>
 
 	<target name="deploy" depends="jar">
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+
+	<target name="run" depends="deploy">
+		<java classname="HelloClient">
+			<classpath refid="project.class.path"/>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete file="${src.jar}"/>
+	</target>
+
+	<target name="src.jar" depends="clean">
+		<jar jarfile="${src.jar}" basedir=".." includes="hello/**">
+		</jar>
 	</target>
 </project>
