@@ -1,1 +1,1 @@
-start java WebServer
+start java -Djava.compiler=NONE WebServer

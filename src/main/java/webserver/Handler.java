@@ -7,6 +7,8 @@ import java.util.*;
  * We are created with just a Socket, and read the
  * HTTP request, extract a name , read it (saving it
  * in Hashtable h for next time), and write it back.
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class Handler extends Thread {
 	/** The Socket that we read from and write to. */
@@ -17,6 +19,8 @@ public class Handler extends Thread {
 	PrintStream os;
 	/** Main program */
 	WebServer parent;
+	/** The default filename in a directory. */
+	final static String DEF_NAME = "/index.html";
 
 	/** The Hashtable used to cache all URLs we've read.
 	 * Static, shared by all instances of Handler (one per request).
@@ -28,7 +32,7 @@ public class Handler extends Thread {
 		super();
 		parent = ws;
 		clntSock = sock;
-		// System.out.println("Handler::<init>");
+		// First time, put in null handler.
 		if (h.size() == 0) {
 			h.put("", "<HTML><BODY><B>Unknown server error");
 		}
@@ -75,7 +79,7 @@ public class Handler extends Thread {
 				
 			doFile(rqName, type == RQ_HEAD, os);
 			os.flush();
-			this.sleep(1000);
+			this.sleep(100);
 			clntSock.close();
 		} catch (IOException e) {
 			System.out.println("IOException " + e);
@@ -85,46 +89,64 @@ public class Handler extends Thread {
 		System.out.println("END OF REQUEST");
 	}
 
-	/** Processes one file */
+	/** Processes one file request */
 	void doFile(String rqName, boolean headerOnly, PrintStream os) throws IOException {
-		if (rqName.endsWith("/"))
-			rqName += "index.html";
-		// strip leading / from rqName
-		while (rqName.startsWith("/"))
-			rqName = rqName.substring(1);
 		File f;
-		byte[] content;
-		content = (byte[])h.get(rqName);
-		if (content != null) {
+		byte[] content = null;
+		Object o = h.get(rqName);
+		if (o != null && o instanceof byte[]) {
+			content = (byte[])o;
 			System.out.println("Using cached file " + rqName);
 			sendFile(rqName, headerOnly, content, os);
-		} else if ((f = new File("./"+rqName)).isDirectory()) {
+		} else if ((f = new File(parent.rootDir + rqName)).isDirectory()) {
+			// Directory with index.html? Process it.
+			File index;
+			if ((index = new File(f, DEF_NAME)).isFile()) {
+				doFile(rqName + DEF_NAME, index, headerOnly, os);
+				return;
+			}
+			// Directory? Do not cache; always make up dir list.
 			System.out.println("DIRECTORY FOUND");
 			os.println("HTTP/1.0 200 directory found");
 			os.println("Content-type: text/html");
 			os.println("");
 			os.println("<HTML>");
-			os.println("Contents of directory " + rqName);
+			os.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
+			os.println("<H1>Contents of directory " + rqName + "</H1>");
 			String fl[] = f.list();
+			Arrays.sort(fl);
 			for (int i=0; i<fl.length; i++)
-				os.println("<BR>File " + fl[i]);
+				os.println("<BR><A HREF=\"" + fl[i] + "\">" +
+					fl[i] + "</A>");
 			os.println("<HR>");
+			os.println("<ADDRESS>Java Web Server,");
+			String myAddr = "http://www.darwinsys.com/freeware/";
+			os.println("<A HREF=\"" + myAddr + "\">" +
+				myAddr + "</A>");
+			os.println("</ADDRESS>");
 			os.println("</HTML>");
 		} else if (f.canRead()) {
-			System.out.println("Loading file " + rqName);
-			InputStream in = new FileInputStream(rqName);
-			byte c_content[] = new byte[(int)f.length()];
-			int n = in.read(c_content);
-			content = c_content;
-			h.put(rqName, content);
-			sendFile(rqName, headerOnly, content, os);
-		} else {
+			doFile(rqName, f, headerOnly, os);
+		}
+		else {
 			errorResponse(404, "File not found");
 		}
 	}
 
-	/** Send one file.
-	 * TODO add a boolean justHead and if true, return before content.
+	/** Send one file, given a File object. */
+	void doFile(String rqName, File f, boolean headerOnly, PrintStream os) throws IOException {
+		System.out.println("Loading file " + rqName);
+		InputStream in = new FileInputStream(f);
+		byte c_content[] = new byte[(int)f.length()];
+		// Single large read, should be fast.
+		int n = in.read(c_content);
+		h.put(rqName, c_content);
+		sendFile(rqName, headerOnly, c_content, os);
+		in.close();
+	}
+
+	/** Send one file, given the filename and contents.
+	 * boolean justHead - if true, send heading and return.
 	 */
 	void sendFile(String fname, boolean justHead,
 		byte[] content, PrintStream os) throws IOException {
