@@ -15,7 +15,7 @@ public class TestMain extends Thread {
 
 		TestMain tm = new TestMain();
 		tm.openFiles();
-		com.darwinsys.signal.LibSignal.setSignalHandler(tm);		// Pass in the Runnable
+		LibSignal.setSignalHandler(tm);		// Pass in the Runnable
 
 		// Maybe we don't need to sleep, as we have
 		// created a non-daemon thread and not stopped it.

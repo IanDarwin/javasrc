@@ -1,7 +1,5 @@
 package signals;
 
-package com.darwinsys.signal;
-
 /**
  * This is Ian Darwin's signal handler for Java JDK 1.1.
  * The general plan is:
