@@ -12,9 +12,9 @@ public class CommPortOpen {
 	/** How long to wait for the open to finish up. */
 	public static final int TIMEOUTSECONDS = 30;
 	/** The baud rate to use. */
-	public static final int BAUD = 9600;
-	/** The parent Frame, for the chooser. */
-	protected Frame parent;
+	public static final int BAUD = 19200;
+	/** The parent JFrame, for the chooser. */
+	protected JFrame parent;
 	/** The input stream */
 	protected DataInputStream is;
 	/** The output stream */
@@ -34,7 +34,7 @@ public class CommPortOpen {
 	}
 
 	/* Constructor */
-	public CommPortOpen(Frame f)
+	public CommPortOpen(JFrame f)
 		throws IOException, NoSuchPortException, PortInUseException,
 			UnsupportedCommOperationException {
 		

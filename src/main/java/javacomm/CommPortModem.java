@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.*;
 import javax.comm.*;
 import java.util.*;
+import javax.swing.*;
 
 /**
  * Subclasses CommPortOpen and adds send/expect handling for dealing
@@ -10,12 +11,14 @@ import java.util.*;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortModem extends CommPortOpen {
+
 	/** The last line read from the serial port. */
 	protected String response;
+
 	/** A flag to control debugging output. */
 	protected boolean debug = true;
 
-	public CommPortModem(Frame f)
+	public CommPortModem(JFrame f)
 		throws IOException, NoSuchPortException,PortInUseException,
 			UnsupportedCommOperationException {
 		super(f);
