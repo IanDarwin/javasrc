@@ -5,7 +5,7 @@ import javax.naming.*;
  * @version $Id$
  */
 public class LookupFile {
-	Hashtable env = new Hashtable();
+	Properties env = new Properties();
 
 	public static void main(String[] av) {
 		LookupFile lf = new LookupFile();
@@ -21,7 +21,8 @@ public class LookupFile {
 
 	/** Constructor */
 	public LookupFile() {
-		env.put(Context.INITIAL_CONTEXT_FACTORY, SP);
+		env.setProperty(Context.INITIAL_CONTEXT_FACTORY, SP);
+		env.setProperty(Context.PROVIDER_URL, "/");
 
 		try {
 			// Create the initial context
