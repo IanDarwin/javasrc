@@ -22,7 +22,7 @@ public class TMTimerUtil {
 		while (it.hasMoreElements()) {
 			String key = (String)it.nextElement();
 			String val = (String)p.getProperty(key);
-			System.out.println("Key " + key + " = " + val);
+			// System.out.println("Key " + key + " = " + val);
 			int[] data = new int[3];
 			// TODO parse val, store in data
 			StringTokenizer st = new StringTokenizer(val);
