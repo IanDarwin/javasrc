@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Fmt - format text (like Berkeley UNIX fmt).
+ * Fmt - format text (like Berkeley UNIX fmt, with a few troff commands).
+ * @author Ian F. Darwin, ian@darwinsys.com
+ * @version $Id$
  */
 public class Fmt2 extends Fmt {
 	/** The maximum column width */
@@ -13,6 +15,8 @@ public class Fmt2 extends Fmt {
 	protected final int MODE_NF = 0;
 	/** The current formatting mode */
 	protected int mode = MODE_FI;
+	/** The current output column. */
+	protected int col = 0;
 
 	public static void main(String av[]) throws IOException {
 		if (av.length == 0)
@@ -28,37 +32,33 @@ public class Fmt2 extends Fmt {
 
 	/** The Array of commands */
 	Command[] commands = {
-		new Command("br") { void action() { skipLine(); } },
+		new Command("br") { void action() { spaceLine(0); } },
 		new Command("bp") { void action() { put("\f"); /*formfeed*/} },
 		new Command("fi") { void action() { mode = MODE_FI; } },
 		new Command("nf") { void action() { mode = MODE_NF; } },
-		new Command("sp") { void action() { skipLine(); } },
+		new Command("sp") { void action() { spaceLine(1); } },
 	};
 
 	/** Format the File contained in a constructed Fmt object */
 	public void format() throws IOException {
 		String w, f;
-		int col = 0;
+		col = 0;
 outer:
 		while ((w = in.readLine()) != null) {
 			if (w.length() == 0) {	// null line
-				skipLine();		// end current line
-				if (col>0) {
-					skipLine();	// output blank line
-					col = 0;
-				}
+				spaceLine(0);
 				continue;
 			}
 			if (w.startsWith(".")) {// troff command, handle it.
 				for (int i=0; i<commands.length; i++) {
 					Command v = commands[i];
-					if (v.cmdName.equals(w.substring(1, 2))) {
+					if (v.cmdName.equals(w.substring(1, 3))) {
 						v.action();
 						continue outer;
 					} 
 				}
 				// else an unrecognized troff command
-				if (col>0) skipLine();	// flush
+				if (col>0) putln();	// flush
 				putln(w);
 				col = 0;
 				continue;
@@ -70,31 +70,40 @@ outer:
 				f = st.nextToken();
 
 				if (col + f.length() > COLWIDTH) {
-					skipLine();
+					putln();
 					col = 0;
 				}
 				put(f + " ");
 				col += f.length() + 1;
 			}
 		}
-		if (col>0) skipLine();
+		if (col>0) putln();
 		in.close();
 	}
 
-	/** Put a string to the output, with a newline */
+	/* Break the current line, and output nLines blank lines */
+	void spaceLine(int nLines) {
+		if (col>0) {
+			putln();	// output blank line
+			col = 0;
+		}
+		for (int i=0; i<nLines; i++)
+			putln();
+	}
+
+	/** Put a string to the output, with a newline, i.e., output a newline */
 	protected void putln(String s) {
-		System.out.print(s);
-		System.out.print('\n');
+		System.out.println(s);
+	}
+
+	/** Put the null string to the output as a line */
+	protected void putln() {
+		System.out.println();
 	}
 
 	/** Put a string to the output */
 	protected void put(String s) {
 		System.out.print(s);
-	}
-
-	/** Output a newline */
-	protected void skipLine() {
-		System.out.println();
 	}
 }
 
