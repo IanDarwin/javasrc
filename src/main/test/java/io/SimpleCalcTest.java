@@ -15,16 +15,13 @@ public class SimpleCalcTest extends TestCase {
 		"2.0\n" +
 		"3.142857142857143\n";
 
-	char[] outputChars = new char[100];
-
-
 	public void testIt() throws Exception {
 		BufferedReader is = new BufferedReader(
 			new StringReader(TEST));
 		StringWriter fluffy = new StringWriter();
 		PrintWriter ps = new PrintWriter(fluffy);
 
-		SimpleCalc sc = new SimpleCalc(is, ps);
+		SimpleCalcStreamTok sc = new SimpleCalcStreamTok(is, ps);
 		assertEquals(EXPECT, fluffy.getBuffer().toString());
 	}
 }
