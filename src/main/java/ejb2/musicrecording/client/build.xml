@@ -1,0 +1,23 @@
+<project name="Music Recording Enterprise Bean" default="compile" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property name="build.compiler" value="jikes"/>
+
+	<property name="j2ee.jar" value="/usr/home/ian/classes/ext/j2ee.jar"/>
+
+	<property name="deploy.jar" value="../beans/music.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+			classpath=".:${j2ee.jar}:${deploy.jar}:com-darwinsys-util.jar"/>
+	</target>
+
+</project>
