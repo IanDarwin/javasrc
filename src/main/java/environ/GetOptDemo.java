@@ -1,8 +1,10 @@
 import com.darwinsys.lang.GetOpt;
 
-/** Simple demonstration of GetOpt. Accept the '-n' and '-o outfile'
- * options as shown for sort, and also -h for help.
- * @author Ian F. Darwin, ian@darwinsys.com
+/** Demonstrate the modern way of using GetOpt. This allows a subset of
+ * <pre>UNIX sort options: sort -n -o outfile infile1 infile2</pre>
+ * which means: sort numerically (-n), writing to file "outfile" (-o
+ * outfile), sort from infile1 and infile2.
+ * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class GetOptDemo {
