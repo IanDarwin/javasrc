@@ -1,5 +1,3 @@
-import com.darwinsys.util.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -16,11 +14,12 @@ import java.util.*;
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  * @version $Id$
  */
-public class LinkChecker extends JFrame implements Runnable {
-	protected Thread t = null;
+public class LinkChecker extends JFrame {
 	/** The "global" activation flag: set false to halt. */
-	boolean done = false;
-	protected JPanel p;
+	protected boolean done = false;
+	/** The Thread reference.  */
+	protected Thread t;
+
 	/** The textfield for the starting URL.
 	 * Should have a Properties file and a JComboBox instead.
 	 */
@@ -33,31 +32,17 @@ public class LinkChecker extends JFrame implements Runnable {
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		lc.pack();
-		lc.setLocation(150, 150);
-		lc.setVisible(true);
+		lc.setLocation(50, 50);
 		if (args.length == 0)
 			return;
 		lc.textFldURL.setText(args[0]);
+		lc.setVisible(true);
 	}
   
-	public void startChecking() {
-		done = false;
-		checkButton.setEnabled(false);
-		killButton.setEnabled(true);
-		textWindow.setText("");
-		doCheck();
-	}
-
-	public void stopChecking() {
-		done = true;
-		checkButton.setEnabled(true);
-		killButton.setEnabled(false);
-	}
-
 	/** Construct a LinkChecker */
 	public LinkChecker() {
 		super("LinkChecker");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
         addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -67,16 +52,21 @@ public class LinkChecker extends JFrame implements Runnable {
 			}
 		});
 		cp.setLayout(new BorderLayout());
-		p = new JPanel();
+		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
 		p.add(new JLabel("URL"));
 		p.add(textFldURL = new JTextField(30));
 		p.add(checkButton = new JButton("Check URL"));
+
 		// Make a single action listener for both the text field (when
 		// you hit return) and the explicit "Check URL" button.
 		ActionListener starter = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startChecking();
+				done = false;
+				checkButton.setEnabled(false);
+				killButton.setEnabled(true);
+				textWindow.setText("");
+				doCheck();
 			}
 		};
 		textFldURL.addActionListener(starter);
@@ -87,7 +77,9 @@ public class LinkChecker extends JFrame implements Runnable {
 			public void actionPerformed(ActionEvent e) {
 				if (t == null || !t.isAlive())
 					return;
-				stopChecking();
+				done = true;
+				checkButton.setEnabled(true);
+				killButton.setEnabled(false);
 			}
 		});
 		p.add(saveButton = new JButton("Save Log"));
@@ -95,7 +87,7 @@ public class LinkChecker extends JFrame implements Runnable {
             public void actionPerformed(ActionEvent e) {
 			try {
 				String log = textWindow.getText();
-				FileIO.stringToFile(log, "linkchecker.log");
+				com.darwinsys.util.FileIO.stringToFile(log, "linkchecker.log");
 			} catch (IOException ex) {
 				JOptionPane.showMessageDialog(LinkChecker.this,
 					"IOError",
@@ -107,20 +99,20 @@ public class LinkChecker extends JFrame implements Runnable {
 		// Now lay out the main GUI - URL & buttons on top, text larger
 		cp.add("North", p);
 		textWindow = new JTextArea(80, 40);
-		cp.add("Center", textWindow);
+		cp.add("Center", new JScrollPane(textWindow));
+		com.darwinsys.util.UtilGUI.maximize(this);
 	}
 
 	public void doCheck() {
-		if (t!=null && t.isAlive())
-			return;
-		t = new Thread(this);
+		// "t" is shared, only between here and killButton's action handler
+		t = new Thread() {
+			public void run() {
+				textWindow.setText("");
+				checkOut(textFldURL.getText());
+				textWindow.append("-- All done --");
+			}
+		};
 		t.start();
-	}
-
-	public synchronized void run() {
-		textWindow.setText("");
-		checkOut(textFldURL.getText());
-		textWindow.append("-- All done --");
 	}
   
 	/** Start checking, given a URL by name.
@@ -142,7 +134,7 @@ public class LinkChecker extends JFrame implements Runnable {
 			try {
 				rootURL = new URL(rootURLString);
 			} catch (MalformedURLException e) {
-				// If not a valid URL, try again as a file.
+				// Neat Trick: if not a valid URL, try again as a file.
 				rootURL = new File(rootURLString).toURL();
 			}
 			// Either way, now try to open it.
@@ -173,7 +165,7 @@ public class LinkChecker extends JFrame implements Runnable {
 				if (done)
 					return;
 				String tag = (String)urlIterator.next();
-				Debug.println("TAG", tag);
+				com.darwinsys.util.Debug.println("TAG", tag);
 						
 				String href = extractHREF(tag);
 
