@@ -1,0 +1,3 @@
+Anyone who uses this program for sending UNSOLICITED commerical email
+(UCE, aka SPAM) is hereby sentenced to be flogged to death with a
+soggy wet MVS coredump listing.
