@@ -23,7 +23,7 @@ public class CalendarPage {
 	};
 
 	/** Compute which days to put where, in the Cal panel */
-	public void print(int yy, int mm) {
+	public void print(int mm, int yy) {
 		/** The number of days to leave blank at the start of this month */
 		int leadGap = 0;
 
@@ -34,7 +34,7 @@ public class CalendarPage {
 
 		if (mm < 0 || mm > 11)
 			throw new IllegalArgumentException("Month " + mm + " bad, must be 0-11");
-		Calendar calendar = new GregorianCalendar(yy, mm, 1);
+		GregorianCalendar calendar = new GregorianCalendar(yy, mm, 1);
 
 		System.out.println("Su Mo Tu We Th Fr Sa");
 
@@ -43,7 +43,7 @@ public class CalendarPage {
 		leadGap = calendar.get(Calendar.DAY_OF_WEEK)-1;
 
 		int daysInMonth = dom[mm];
-		if (isLeap(calendar.get(Calendar.YEAR)) && mm == 1)
+		if (calendar.isLeapYear(calendar.get(Calendar.YEAR)) && mm == 1)
 			++daysInMonth;
 
 		// Blank out the labels before 1st day of month
@@ -67,28 +67,18 @@ public class CalendarPage {
 		System.out.println();
 	}
 
-	/**
-	 * isLeap() returns true if the given year is a Leap Year.
-	 *
-	 * "a year is a leap year if it is divisible by 4
-	 * but not by 100, except that years divisible by 400
-	 * *are* leap years." 
-	 *	-- Kernighan & Ritchie, _The C Programming Language_, p 37.
-	 */
-	public boolean isLeap(int year) {
-		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
-			return true;
-		return false;
-	}
-
 	/** For testing, a main program */
 	public static void main(String av[]) {
+		int month, year;
 
 		CalendarPage cp = new CalendarPage();
-		cp.print(1995, 2-1);
 
-		// and the current month.
-		cp.print(2000, 6-1);
-
+		// print the current month.
+		if (av.length == 2) {
+			cp.print(Integer.parseInt(av[0])-1, Integer.parseInt(av[1]));
+		} else {
+			Calendar c = Calendar.getInstance();
+			cp.print(c.get(Calendar.MONTH), c.get(Calendar.YEAR));
+		}
 	}
 }
