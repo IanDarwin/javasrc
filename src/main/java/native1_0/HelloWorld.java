@@ -1,4 +1,4 @@
-package native1.0;
+package native1_0;
 
 /**
  * A trivial class to show native method usage from Java.
