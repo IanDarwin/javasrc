@@ -8,7 +8,7 @@ import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 
 /**
- * This is a Shopping Cart Stateful Session bean that is
+ * This Shopping Cart Stateful Session bean is
  * really an example of the XDoclet EJB tags.
  * @see Product
  * @ejb.bean
