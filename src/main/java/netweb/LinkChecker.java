@@ -137,13 +137,16 @@ public class LinkChecker extends JFrame implements Runnable {
 			return;
 		}
 
-		// Open the root URL for reading
+		// Open the root URL for reading. May be a filename or a real URL.
 		try {
-			rootURL = new URL(rootURLString);
+			try {
+				rootURL = new URL(rootURLString);
+			} catch (MalformedURLException e) {
+				// If not a valid URL, try again as a file.
+				rootURL = new File(rootURLString).toURL();
+			}
+			// Either way, now try to open it.
 			urlGetter = new GetURLs(rootURL);
-		} catch (MalformedURLException e) {
-			textWindow.append("Can't parse URL " + rootURLString + "\n");
-			return;
 		} catch (FileNotFoundException e) {
 			textWindow.append("Can't open file " + rootURLString + "\n");
 			return;
