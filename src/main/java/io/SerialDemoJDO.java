@@ -1,11 +1,11 @@
-import javax.jdo.*;
-import javax.jdo.spi.PersistenceCapable;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Properties;
+
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
 
 /**
  * A demonstration of serialization using JDO.
