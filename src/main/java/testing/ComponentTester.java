@@ -61,9 +61,13 @@ public class CompTest {
 		});
 
 		// Set things reasonably sized.
-		// Alternately, c.getPreferredSize() and if zero, hard code its size.
-		f.setSize(300, 200);
-
+		Dimension d = c.getPreferredSize();
+		if (d.width == 0 || d.height == 0) {
+			// component doesn't have getPreferredSize() yet, hard code a size.
+			f.setSize(300, 200);
+		} else {
+			f.pack();
+		}
 		f.setLocation(200, 200);
 		f.setVisible(true);
 	}
