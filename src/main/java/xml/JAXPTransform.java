@@ -8,14 +8,18 @@ import javax.xml.transform.stream.StreamSource;
 /** Illustrate simplest use of JAXP to transform using XSL */
 public class JAXPTransform {
 	public static void main(String[] args) throws Exception {
-
+		// Require three input args
+		if (args.length != 3) {
+			System.out.println("Usage: java JAXPTransform inputFile.xml inputFile.xsl outputFile");
+			System.exit(1);
+		}
 		// Create a transformer object
 		Transformer tx = TransformerFactory.newInstance().newTransformer(
-			new StreamSource(new File("parents.xsl")));
+			new StreamSource(new File(args[0])));
 
 		// Use its transform() method to perform the transformation
 		tx.transform(
-			new StreamSource(new File("parents+dtd.xml")),
-			new StreamResult(System.out));
+			new StreamSource(new File(args[1])),
+			new StreamResult(new File(args[2])));
 	}
 }
