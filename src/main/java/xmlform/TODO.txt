@@ -1,9 +1,12 @@
-MIF: "C:\book\javacook\xml.fm" (2942): Invalid opcode: ParaLine.
---- Skipping these chars:< String "flyweight" or ultra-light. > >
----------- Done skipping.
-MIF: "C:\book\javacook\xml.fm" (2945): Invalid opcode: ParaLine.
---- Skipping these chars:< String That is, we only create one of each
-of > > ---------- Done skipping.
+Walk the tree using recursion, instead of a linear walk.
+This should eliminate the problem of:
+
+	MIF: "C:\book\javacook\xml.fm" (2942): Invalid opcode: ParaLine.
+	--- Skipping these chars:< String "flyweight" or ultra-light. > >
+	---------- Done skipping.
+	MIF: "C:\book\javacook\xml.fm" (2945): Invalid opcode: ParaLine.
+	--- Skipping these chars:< String That is, we only create one of each
+	of > > ---------- Done skipping.
 
 ... etc: lines being outputted AFTER the ending > of their Para.
 

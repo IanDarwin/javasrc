@@ -1,5 +1,4 @@
 import java.io.*;
-import org.xml.sax.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 
@@ -25,13 +24,7 @@ public class XmlForm {
 				System.err.println(">>>Parsing " + fileName + "...");
 			// Make the document a URL so relative DTD works.
 			String uri = "file:" + new File(fileName).getAbsolutePath();
-			XmlDocumentBuilder  builder = new XmlDocumentBuilder();
-			Parser instance = new com.sun.xml.parser.Parser();
-			instance.setDocumentHandler(builder);
-			builder.setParser(instance);
-			builder.setDisableNamespaces(false);
-			instance.parse(uri);
-			XmlDocument doc = builder.getDocument();
+			XmlDocument doc = XmlDocument.createXmlDocument(uri);
 			if (verbose)
 				System.err.println(">>>Walking " + fileName + "...");
 			XmlFormWalker c = new GenMIF(doc, msg);

@@ -1,5 +1,4 @@
 import java.io.*;
-import org.xml.sax.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 import java.lang.reflect.*;
@@ -252,6 +251,7 @@ public class GenMIF implements XmlFormWalker {
 		endTag();
 	}
 
+	/** Code is inserted, but only between / / + and / / - tags */
 	protected void doCode(Element p) {
 		NamedNodeMap attrs = p.getAttributes();
 		Node href;
@@ -271,6 +271,7 @@ public class GenMIF implements XmlFormWalker {
 			throw new IllegalArgumentException(e.toString());
 		}
 	}
+
 	protected void doPre(Element p) {
 		makeUpParagraph("Code", "// ");
 	}

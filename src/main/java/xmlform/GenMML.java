@@ -1,5 +1,4 @@
 import java.io.*;
-import org.xml.sax.*;
 import org.w3c.dom.*;
 import com.sun.xml.tree.*;
 
@@ -23,7 +22,8 @@ public class GenMML implements XmlFormWalker {
 	GenMML(Document doc, PrintWriter pw) {
 		tw = new TreeWalker(doc);
 		msg = new PrintWriter(pw);
-		smsg = new StyledWriter(msg);
+		smsg = new StyledPrintStream(msg);
+	}
 
 	/** Convert all the nodes in the current document. */
 	public void convertAll() {
@@ -46,7 +46,7 @@ public class GenMML implements XmlFormWalker {
 			doCData((org.w3c.dom.CharacterData)p);
 		else
 			System.err.println("IGNORING non-Element: " +
-				p.getClass() + ':' + p.toString() + "\n" +
+				p.getClass() + : + p.toString() + "\n" +
 				p.getNodeValue());
 	}
 
@@ -75,8 +75,8 @@ public class GenMML implements XmlFormWalker {
 		} else if (tag.equals("example")) {
 			doExample(p);
 		} else
-			System.err.println("IGNORING UNHANDLED TAG " + tag + '(' +
-				p.getClass() + '@' + p.hashCode() + ')');
+			System.err.println("IGNORING UNHANDLED TAG " + tag + ( +
+				p.getClass() + @ + p.hashCode() + ));
 	}
 
 	protected void doChapter(Element p) {
@@ -114,7 +114,7 @@ public class GenMML implements XmlFormWalker {
 
 	protected void doCData(org.w3c.dom.CharacterData p) {
 		String s = p.getData().trim();
-		if (s.length() == 0)	// Sun's parser returns extra 1-space "Text"s
+		if (s.length() == 0)	// Suns parser returns extra 1-space "Text"s
 			return;
 		msg.println(s);
 	}
@@ -139,7 +139,7 @@ public class GenMML implements XmlFormWalker {
 			}
 		}
 	}
-	/** Simply subclass PrintWriter so we don't have to modify
+	/** Simply subclass PrintWriter so we dont have to modify
 	 * GetMark to change the format of lines that it writes, or
 	 * resort to other kluges like passing it a prefix and/or suffix.
 	 */
