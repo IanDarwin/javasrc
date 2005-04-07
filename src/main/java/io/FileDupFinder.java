@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -23,6 +24,12 @@ public class FileDupFinder implements FileHandler {
 	private Map seenFiles = new HashMap();
 	private static final int BUFSIZE = 65536;
 	byte[] data = new byte[BUFSIZE];
+	private PrintWriter out;
+	
+	public void init() throws IOException {
+		out = new PrintWriter(new File("/home/ian/fred"));
+		System.out.println("Starting...");
+	}
 	
 	/** Called to digest a file, report if the digest is in the Map, else add it to the Map.
 	 * Note that it leaves the first file it sees with a given digest in the Map.
@@ -36,7 +43,7 @@ public class FileDupFinder implements FileHandler {
 
 		String hashedPath = null;
 		if ((hashedPath = (String)seenFiles.get(hash)) != null) {
-			System.out.println(f + " " + hashedPath);
+			out.println(f + " " + hashedPath);
 			return;
 		}
 		seenFiles.put(hash, f.getCanonicalPath());
@@ -71,5 +78,9 @@ public class FileDupFinder implements FileHandler {
 		String result = TCPPasswordUtils.toHex(digest);
 
 		return result;
+	}
+
+	public void destroy() throws IOException {
+		out.close();
 	}
 }
