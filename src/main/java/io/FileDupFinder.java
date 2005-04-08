@@ -2,6 +2,7 @@ package ca.tcp.fileindex;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -27,7 +28,7 @@ public class FileDupFinder implements FileHandler {
 	private PrintWriter out;
 	
 	public void init() throws IOException {
-		out = new PrintWriter(new File("/home/ian/fred"));
+		out = new PrintWriter(new FileWriter("/home/ian/fred"));
 		System.out.println("Starting...");
 	}
 	
