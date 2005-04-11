@@ -176,9 +176,9 @@ public class Handler {
 		out.println("");
 		if (justAHead)
 			return;
-		out.println("<HTML>");
-		out.println("<TITLE>Contents of directory " + rqName + "</TITLE>");
-		out.println("<H1>Contents of directory " + rqName + "</H1>");
+		out.println("<html>");
+		out.println("<head><title>Contents of directory " + rqName + "</title></head>");
+		out.println("<body><h1>Contents of directory " + rqName + "</h1>");
 		String fl[] = dir.list();
 		Arrays.sort(fl);
 		for (int i=0; i<fl.length; i++)
