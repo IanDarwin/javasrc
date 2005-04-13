@@ -1,6 +1,9 @@
 package ChartBean;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
 /**
  * Simple charting bean. This version just draws a Pie Chart.

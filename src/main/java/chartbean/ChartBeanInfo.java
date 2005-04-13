@@ -1,7 +1,9 @@
 package ChartBean;
 
-import java.beans.*;
-import java.lang.reflect.*;
+import java.beans.BeanDescriptor;
+import java.beans.MethodDescriptor;
+import java.beans.SimpleBeanInfo;
+import java.lang.reflect.Method;
 
 /** BeanInfo for our Chart Demo */
 public class ChartBeanInfo extends SimpleBeanInfo {

@@ -1,5 +1,7 @@
 package ChartBean;
 
+/** Simple POJO for chart data
+ */
 public class ChartData {
 	String name;
 	int value;
