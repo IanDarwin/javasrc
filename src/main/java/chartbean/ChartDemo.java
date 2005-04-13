@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** Simple GUI driver for Chart, showing it used as a plain Component */
-public class ChartTest extends Frame {
+public class ChartDemo extends Frame {
 	boolean unsavedChanges = false;
 	Button drawButton;
 	Button quitButton;
@@ -13,13 +13,13 @@ public class ChartTest extends Frame {
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		// create a ChartTest object
-		ChartTest j = new ChartTest();
+		ChartDemo j = new ChartDemo();
 		// send message telling it to show up
 		j.setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public ChartTest() {
+	public ChartDemo() {
 		super("ChartTest");
 		setLayout(new FlowLayout());
 		add(new Label("Simple demo of a Java Chart Bean"));
