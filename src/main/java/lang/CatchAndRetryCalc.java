@@ -3,7 +3,7 @@ package lang;
 import javax.swing.JOptionPane;
 
 /**
- * Calculator that catches and retries Arithmetic errors
+ * Calculator <em>simulator</em> that catches and retries Arithmetic errors
  * @author Ian Darwin
  */
 public class CatchAndRetryCalc {
@@ -13,7 +13,9 @@ public class CatchAndRetryCalc {
 	}
 
 	/**
-	 * This is the calculator.
+	 * This is the calculator simulator.  Not a real calculator, but showing
+	 * how one could catch ArithmeticExceptions and not have it be the end
+	 * of the running application, but instead retry the calculation.
 	 */
 	private void calc() {
 		boolean done = false;
