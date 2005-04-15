@@ -1,4 +1,4 @@
-package structure1.5;
+package structure50;
 
 /** These are the product categories that we sell
  */

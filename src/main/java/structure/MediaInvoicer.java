@@ -1,4 +1,4 @@
-package structure1.5;
+package structure50;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package structure1.5;
+package structure50;
 
 /*
  * MediaFactory - give out Media enumeration constants

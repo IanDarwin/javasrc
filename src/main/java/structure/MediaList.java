@@ -1,4 +1,4 @@
-package structure1.5;
+package structure50;
 
 /** Simple demo to print all the types of media. */
 public class MediaList {
