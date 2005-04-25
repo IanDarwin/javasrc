@@ -5,25 +5,24 @@ import java.net.*;
 import java.util.*;
 
 /**
- * SMTP talker class, usable standalone (as a SendMail(8) backend)
- * or inside applications such as JabaDex that need to send mail..
- *
- * OBSOLETE!! Use javax.mail instead, now that it's available!
+ * "Raw" SMTP talker class, usable standalone (as a SendMail(8) backend)
+ * or inside applications that need to send mail..
  *
  * Needs more parameterization - bit of a hack to start.
  * Should use same interface as Mailer (subclass, and override doSend()).
  *
  * @author	Ian Darwin
+ * @deprecated Use javax.mail instead, which almost certainly provides a more
+ * complete implementation of the SMTP specification.
  * @version	$Id$
  */
-public class SmtpTalk implements SysExits {
+public class RawSender implements SysExits {
 	BufferedReader is;
 	PrintStream os;
 	private boolean debug = true;
 	private String host;
 
 	/** A simple main program showing the class in action.
-	 *
 	 * TODO generalize to accept From arg, read msg on stdin
 	 */
 	public static void main(String[] argv) {
@@ -33,7 +32,7 @@ public class SmtpTalk implements SysExits {
 		}
 
 		try {
-			SmtpTalk st = new SmtpTalk(argv[0]);
+			RawSender st = new RawSender(argv[0]);
 
 			System.out.println("SMTP Talker ready");
 
@@ -47,7 +46,7 @@ public class SmtpTalk implements SysExits {
 
 	/** Constructor taking a server hostname as argument.
 	 */
-	SmtpTalk(String server) throws SMTPException {
+	RawSender(String server) throws SMTPException {
 		host = server;
 		try {
 			Socket s = new Socket(host, 25);
