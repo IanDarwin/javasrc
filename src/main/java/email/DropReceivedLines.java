@@ -21,7 +21,7 @@ public class DropReceivedLines {
 			else for (int i=0; i<av.length; i++)
 				d.process(av[i]);
 		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
+			System.err.println("Can't read file: " + e);
 		} catch (IOException e) {
 			System.err.println("I/O error " + e);
 		}
