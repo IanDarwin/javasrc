@@ -57,13 +57,7 @@ public class MailClient extends JComponent implements MailConstants {
 		if (!proto.equals("mbox") && (pass == null || pass.equals("ASK"))) {
 			String np;
 			do {
-				//np = JOptionPane.showInputDialog(null,
-				//"Please enter password for " + proto + " user  " +
-				//		user + " on " + host + "\n" +
-				//		"(warning: password WILL echo)",
-				//	"Password request", JOptionPane.QUESTION_MESSAGE);
-
-				// Kludge so JOptionPane prompts for password in no-echo.
+				// Make JOptionPane prompt for password in no-echo.
 				// Create "message" using JPanel, JLabel, & JPasswordField
 				// Courtesy of Marc Loy.
 				JPanel p = new JPanel();
