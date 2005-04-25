@@ -9,6 +9,6 @@ public class Header {
 		text = v;
 	}
 	public String toString() {
-		return new StringBuffer("Header[").append(type).append(",").append(text).append("]").toString();
+		return new StringBuffer("Header[").append(type).append(": ").append(text).append("]").toString();
 	}
 }
