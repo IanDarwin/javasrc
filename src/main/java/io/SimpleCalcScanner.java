@@ -43,10 +43,6 @@ public class SimpleCalcScanner {
 	/** Construct a SimpleCalcScanner from an open Reader */
 	public SimpleCalcScanner(Reader rdr) throws IOException {
 		scan = new Scanner(rdr);
-		// Control the input character set:
-		scan.slashSlashComments(true);	// treat "//" as comments
-		scan.ordinaryChar('-');		// used for subtraction
-		scan.ordinaryChar('/');	// used for division
 	}
 
 	/** Construct a SimpleCalcScanner from a Reader and a PrintWriter */
