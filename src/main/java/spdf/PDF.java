@@ -19,10 +19,10 @@ public class PDF {
 	protected PrintWriter out;
 
 	/** The list of pages */
-	protected ArrayList pages;
+	protected List<Page> pages;
 
 	/** The list of object xrefs */
-	protected ArrayList xrefs;
+	protected List<Long> xrefs;
 
 	/** The root object */
 	PDFObject rootObj = new RootObject(this);
@@ -52,8 +52,8 @@ public class PDF {
 	public PDF(PrintWriter o) {
 		out = o;
 
-		pages = new ArrayList();
-		xrefs = new ArrayList();
+		pages = new ArrayList<Page>();
+		xrefs = new ArrayList<Long>();
 
 	}
 

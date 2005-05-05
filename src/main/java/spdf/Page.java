@@ -1,10 +1,11 @@
 package spdf;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** Represent one Page of a PDF file. */
 public class Page extends PDFDict {
-	protected ArrayList objects = new ArrayList();
+	protected List<PDFObject> objects = new ArrayList<PDFObject>();
 
 	public Page(PDF m) {
 		super(m);
