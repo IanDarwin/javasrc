@@ -2,40 +2,38 @@ package sched;
 
 import java.util.*;
 
+import junit.framework.TestCase;
+
 /** Confirm that Appts compare, sort, print, and read back correctly.
  * @version $Id$
  */
-public class TestDayAppt {
-	public static void main(String[] va) {
-		TreeSet days = new TreeSet();
+public class TestDayAppt extends TestCase {
+	
+	public void testFactoryAndGetters() {
+		
 		// Exercise static factory method.
-		days.add(Appt.fromString("1951 4 24 6 0 birthday"));
-		days.add(Appt.fromString("1956 9 3 13 10 birthday"));
-		days.add(Appt.fromString("2001 1 1 0 0 3rd millenium"));
-
-		// Exercise constructor.
-		days.add(new Appt("go home", 1999, 1, 23, 12, 11));
-
+		Appt a1 = Appt.fromString("1951 4 24 6 0 birthday");
+		assertEquals("fromString and getters", 1951, a1.getYear());
+		assertEquals("fromString and getters",    4, a1.getMonth());
+		assertEquals("fromString and getters",   24, a1.getDay());
+		assertEquals("fromString and getters",    6, a1.getHour());
+		assertEquals("fromString and getters",    0, a1.getMinute());
+		assertEquals("fromString and getters", "birthday", a1.getText());
+	}
+	
+	public void testConstructorAndComparisons() {
+		TreeSet<Appt> days =  new TreeSet<Appt>();
 		// Exercise compareTo() method by inserting duplicates
 		// into the TreeSet - ensure that only one copy is added.
 		days.add(new Appt("go home", 1999, 1, 23, 12, 10));
 		days.add(new Appt("go home", 1999, 1, 23, 12, 10));
-
-		// Print the whole mess. Exercises toString().
-		Iterator it = days.iterator();
-		while (it.hasNext())
-			System.out.println(it.next());
+		assertEquals("compareto", 1, days.size());
 
 		Appt a = new Appt("testing 1 2 3", 1, 2, 3, 1, 2);
 
-		if (!a.equals(a))
-			throw new RuntimeException(
-				"a.equals(a) failed!");
-		if (!Appt.fromString(a.toString()).equals(a))
-			throw new RuntimeException(
-				"fromString(toString()) not idempotent");
-
-		System.out.println();
-		System.out.println("All tests passed.");
+		assertEquals("a is a", a, a);	
+		
+		assertEquals("fromString(toString()) idempotent", 
+			Appt.fromString(a.toString()), a);
 	}
 }

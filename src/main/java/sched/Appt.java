@@ -12,7 +12,7 @@ public class Appt implements Comparable {
 	//	MAIN CLASS VARIABLES -- APPOINTMENT
 	//-----------------------------------------------------------------
 	/** What we have to do at this time. */
-	String target;	
+	String text;	
 	/** The year (Gregorian calendar) when the appointment is */
 	int year;
 	/** The month (0-origin) */
@@ -62,7 +62,7 @@ public class Appt implements Comparable {
 	//-----------------------------------------------------------------
 	/** Construct an Appointment. */
 	public Appt(String targ, int y, int mo, int d, int h, int min) {
-		target = targ;
+		text = targ;
 		year = y;
 		month  = mo;
 		day  = d;
@@ -168,7 +168,7 @@ public class Appt implements Comparable {
 			return -1;
 		if (minute > a2.minute)
 			return +1;
-		return target.compareTo(a2.target);
+		return text.compareTo(a2.text);
 	}
 
 	/** Compare this appointment against another, for equality.
@@ -184,7 +184,7 @@ public class Appt implements Comparable {
 			hour != a2.hour ||
 			minute != a2.minute)
 			return false;
-		return target.equals(a2.target);
+		return text.equals(a2.text);
 	}
 
 	/** Return a String representation of this Appt.
@@ -194,7 +194,7 @@ public class Appt implements Comparable {
 		return new StringBuffer().append(year).append(' ').
 			append(month).append(' ').append(day).append(' ').
 			append(hour).append(' ').append(minute).append(' ').
-			append(target).toString();
+			append(text).toString();
 	}
 
 	/** Factory: build a String representation into an Appt.
@@ -217,4 +217,34 @@ public class Appt implements Comparable {
 		}
 		return new Appt(sb.toString(), y, m, d, h, i);
 	}
+
+	public int getDay() {
+		return day;
+	}
+	
+
+	public int getHour() {
+		return hour;
+	}
+	
+
+	public int getMinute() {
+		return minute;
+	}
+	
+
+	public int getMonth() {
+		return month;
+	}
+	
+
+	public String getText() {
+		return text;
+	}
+	
+
+	public int getYear() {
+		return year;
+	}
+	
 }
