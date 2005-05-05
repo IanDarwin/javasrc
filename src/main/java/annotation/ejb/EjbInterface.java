@@ -1,3 +1,5 @@
+package annotation.ejb;
+
 public enum EjbInterface {
 	/** The Remote Home Interface */
 	REMOTE_HOME,
