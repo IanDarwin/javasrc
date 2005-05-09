@@ -21,7 +21,6 @@ public class CookieAccessorTest extends TestCase{
 		Cookie c = list.get(2);
 		assertNotNull("Get last cookie from list", c);
 		assertEquals("get domain", "www.teknosurf3.com", c.getDomain());
-		System.out.println(c.getPath());
 		assertEquals("get path", "/cgi-bin", c.getPath());
 		assertEquals("get name", "teknoacc", c.getName());
 		assertEquals("get value", "3063250613", c.getValue());

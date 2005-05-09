@@ -57,9 +57,9 @@ public class CookieAccessor {
 				continue;
 			}
 
-			// The order that Netscape uses in this file is a wonder to behold.
+			// The order that Netscape uses in the columns of this file is a wonder to behold.
 			String domain = (String)st.nextToken();
-			boolean clientSide = st.nextToken().equals("TRUE")?true:false;
+			boolean clientSide = st.nextToken().equals("TRUE");
 
 			// Some slimeball sites use "" as the path. Correct on the fly.
 			String path;
@@ -67,7 +67,7 @@ public class CookieAccessor {
 				path = "/";
 			else
 				path = (String)st.nextToken();
-			boolean secure = st.nextToken().equals("TRUE")?true:false;
+			boolean secure = st.nextToken().equals("TRUE");
 			int expiry = Integer.parseInt(st.nextToken());
 			String name = (String)st.nextToken();
 			String value = (String)st.nextToken();
@@ -80,7 +80,7 @@ public class CookieAccessor {
 
 			ret.add(c);
 		}
-
+		is.close();
 		return ret;
 	}
 
