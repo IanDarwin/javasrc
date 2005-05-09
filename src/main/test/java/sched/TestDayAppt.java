@@ -21,6 +21,30 @@ public class TestDayAppt extends TestCase {
 		assertEquals("fromString and getters", "birthday", a1.getText());
 	}
 	
+	public void testFactoryFailures() {
+        
+		try {
+			Appt a1 = Appt.fromString(null);
+			fail("did not throw expected NullPointerException");
+		} catch (NullPointerException e) {
+			// OK
+		}
+		
+		try {
+			Appt a1 = Appt.fromString("random garbage");
+			fail("did not throw expected IllegalArumentException");
+		} catch (IllegalArgumentException e) {
+			// OK
+		}
+		
+		try {
+			Appt a1 = Appt.fromString("1951 foo 24 6 0 birthday");
+			fail("did not throw expected IllegalArumentException");
+		} catch (IllegalArgumentException e) {
+			// OK
+		}
+	}
+	
 	public void testConstructorAndComparisons() {
 		TreeSet<Appt> days =  new TreeSet<Appt>();
 		// Exercise compareTo() method by inserting duplicates
