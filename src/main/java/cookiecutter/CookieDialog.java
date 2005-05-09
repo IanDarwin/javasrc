@@ -1,19 +1,27 @@
 package cookiecutter;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class CookieDialog extends JDialog {
-	Cookie undoableCookie;
-	JTextField url;
-	JTextField name;
-	JTextField value;
-	JCheckBox fromJavaScript;
-	JTextField path;
-	JCheckBox secure;
-	JTextField expDate;
-	JButton okButton, cancelButton;
+	private Cookie undoableCookie;
+	private JTextField url;
+	private JTextField name;
+	private JTextField value;
+	private JCheckBox fromJavaScript;
+	private JTextField path;
+	private JCheckBox secure;
+	private JTextField expDate;
+	private JButton okButton, cancelButton;
 
 	CookieDialog(JFrame jf, String title) {
 		super(jf, title, true);
@@ -67,7 +75,6 @@ public class CookieDialog extends JDialog {
 		path.setText(c.path);
 		name.setText(c.name);
 		value.setText(c.value);
-		// XXX
 	}
 
 	public Cookie getCookie() {
@@ -88,10 +95,5 @@ public class CookieDialog extends JDialog {
 		);
 	}
 
-	public static void main(String[] args) {
-		CookieDialog cd = new CookieDialog(null, "Test");
-		System.out.println("Setting Visible");
-		cd.setVisible(true);
-		System.out.println("Dialog done, cookie = " + cd.getCookie());
-	}
+
 }

@@ -1,23 +1,33 @@
 package cookiecutter;
 
-import java.io.*;
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.table.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 
 /** CookieCutter - program to show, and let you winnow, your Cookie collection.
  */
 public class CookieCutter {
 	/** Main data structure: a Vector of Cookie objects. */
-	protected Vector cookies;
+	protected List<Cookie> cookies;
 	protected JFrame f;
 	protected MyTableModel tModel;
 	protected JTable table;
 	protected JButton editButton, delButton, saveButton, exitButton;
 	protected CookieDialog cd;
-	protected CookieAccessor ioModule;
+	protected CookieAccessor accessor;
 	protected final static String DEFAULT_FILENAME = "cookies.txt";
 	protected String fileName = DEFAULT_FILENAME;
 
@@ -32,9 +42,9 @@ public class CookieCutter {
 		JPanel bottomPanel;
 		fileName = argv.length == 1 ? argv[0] : DEFAULT_FILENAME;
 
-		cookies = (ioModule = new CookieAccessor()).read(fileName);
-		// This doesn't work yet on some platforms...
-		// Collections.sort(cookies);
+		accessor = new CookieAccessor();
+		cookies = accessor.read(fileName);
+		Collections.sort(cookies);
 
 		f = new JFrame("CookieCutter");
 		Container cp = f.getContentPane();
@@ -50,15 +60,15 @@ public class CookieCutter {
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				synchronized(cookies) {
-				if (cd == null) {
-					cd = new CookieDialog(f, "CookieCutter Edit");
-				}
-
-				int row = table.getSelectedRow();
-				System.out.println("Selected row is " + row);
-				cd.setCookie((Cookie) cookies.elementAt(row));
-				cd.setVisible(true);
-				cookies.setElementAt(cd.getCookie(), row);
+					if (cd == null) {
+						cd = new CookieDialog(f, "CookieCutter Edit");
+					}
+	
+					int row = table.getSelectedRow();
+					System.out.println("Selected row is " + row);
+					cd.setCookie((Cookie) cookies.get(row));
+					cd.setVisible(true);
+					cookies.set(row, cd.getCookie());
 				}
 			}
 		});
@@ -83,7 +93,7 @@ public class CookieCutter {
 					JOptionPane.QUESTION_MESSAGE);
 				try {
 					synchronized(cookies) {
-						ioModule.write(fileName, cookies);
+						accessor.write(fileName, cookies);
 					}
 				} catch (IOException ex) {
 					JOptionPane.showMessageDialog(f,
@@ -145,7 +155,7 @@ public class CookieCutter {
 		 * MUST BE IN SAME ORDER as setValueAt();
 		 */
 		public Object getValueAt(int row, int col)  {
-			Cookie c = (Cookie) cookies.elementAt(row);
+			Cookie c = (Cookie) cookies.get(row);
 			switch (col) {
 			case 0: return c.getDomain();
 			case 1: return c.getPath();
@@ -160,7 +170,7 @@ public class CookieCutter {
 
 		/** Set a value in a cell. MUSE BE IN SAME ORDER AS getValueAt. */
 		public void setValueAt(Object val, int row, int col)  {
-			Cookie c = (Cookie) cookies.elementAt(row);
+			Cookie c = (Cookie) cookies.get(row);
 			switch (col) {
 			case 0: c.setDomain(val.toString()); break;
 			case 1: c.setPath(val.toString()); break;

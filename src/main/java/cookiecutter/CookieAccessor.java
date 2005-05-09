@@ -1,7 +1,16 @@
 package cookiecutter;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /** Input and Output module for CookieCutter.
  * Lines being read/written should look like this, tab separated:
@@ -17,12 +26,17 @@ public class CookieAccessor {
 	protected static String MAGIC = "# Netscape HTTP Cookie File";
 	protected static String COMMENT = "#";
 
-	public Vector read(String fileName) 
+	public List<Cookie> read(String fileName) 
 		throws FileNotFoundException, IOException {
+		Reader is = new FileReader(fileName);
+		
+		return read(is, fileName);
+	}
+	
+	public List<Cookie> read(Reader rdr, String fileName) throws IOException {
+		List<Cookie> ret = new ArrayList<Cookie>();
 
-		Vector ret = new Vector();
-
-		BufferedReader is = new BufferedReader(new FileReader(fileName));
+		BufferedReader is = new BufferedReader(rdr);
 
 		if (!is.readLine().startsWith(MAGIC))
 			die(fileName + " not a cookies file");
@@ -64,7 +78,7 @@ public class CookieAccessor {
 				expiry,
 				secure, clientSide);
 
-			ret.addElement(c);
+			ret.add(c);
 		}
 
 		return ret;
@@ -72,7 +86,7 @@ public class CookieAccessor {
 
 	/** Write the remaining cookies back to the file. Overwrites file.
 	 */
-	public void write(String fileName, Vector data) throws IOException {
+	public void write(String fileName, List<Cookie> data) throws IOException {
 
 		// If file exists, rename to .bak, deleting old .bak first.
 		File f = new File(fileName);
@@ -90,7 +104,7 @@ public class CookieAccessor {
 		is.println();
 
 		for (int i=0; i<data.size(); i++) {
-			Cookie c = (Cookie) data.elementAt(i);
+			Cookie c = (Cookie) data.get(i);
 			is.println(c.getDomain() + "\t" +
 				(c.isClient()?"TRUE":"FALSE") + "\t" +
 				c.getPath() + "\t" +
