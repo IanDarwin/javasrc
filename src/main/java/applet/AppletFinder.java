@@ -13,13 +13,13 @@ import java.util.*;
 public class AppletFinder {
 
 	public static void main(String[] av) {
-		String[] tags = new AppletFinder().doPage(av[0]);
-		for (int i=0;i<tags.length; i++)
-			System.out.println("APPLET: " +i+" " + tags[i]);
+		List<String> tags = new AppletFinder().doPage(av[0]);
+		for (int i=0;i<tags.size(); i++)
+			System.out.println("APPLET: " +i+" " + tags.get(i));
 	}
 
-	public String[] doPage(String pageURL) {
-		String result[] = null;
+	public List<String> doPage(String pageURL) {
+		List<String> result = null;
 		URL root;
 
 		if (pageURL != null) {
@@ -42,9 +42,9 @@ public class AppletFinder {
 		return result;
 	}
 
-	public String[] findApplets(URL u) {
+	public List<String> findApplets(URL u) {
 		BufferedReader inrdr = null;
-		Vector v = new Vector();
+		List<String> list = new ArrayList<String>();
 		char thisChar = 0;
 	  
 		try {
@@ -56,7 +56,7 @@ public class AppletFinder {
 					String tag = readTag(inrdr);
 					// System.out.println("TAG: " + tag);
 					if (tag.toUpperCase().startsWith("<APPLET"))
-						v.addElement(tag);
+						list.add(tag);
 				}
 			}
 			inrdr.close();
@@ -64,23 +64,22 @@ public class AppletFinder {
 		catch (IOException e) {
 			System.err.println("Error reading from main URL: " + e);
 		}
-		String applets[] = new String[v.size()];
-		v.copyInto(applets);
-		return applets;
+
+		return list;
 	}
  
 	public String readTag(BufferedReader is) {
-    StringBuffer theTag = new StringBuffer("<");
-    char theChar = '<';
-  
-    try {
-       while (theChar != '>' && ((theChar = (char)is.read()) != -1)) {
-         theTag.append(theChar);
-       } // end while
-     }  // end try
-     catch (IOException e) {
-        System.err.println(e);
-     }     
+	    StringBuffer theTag = new StringBuffer("<");
+	    char theChar = '<';
+	  
+	    try {
+	       while (theChar != '>' && ((theChar = (char)is.read()) != -1)) {
+	         theTag.append(theChar);
+	       } // end while
+	     }  // end try
+	     catch (IOException e) {
+	        System.err.println(e);
+	     }     
 
      return theTag.toString();
   }
