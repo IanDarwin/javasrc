@@ -10,8 +10,8 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.darwinsys.util.Debug;
 
 /**
- * Simple lister - extract name and children tags from a user file. Version for
- * SAX 2.0
+ * Simple lister - extract person and email tags from a user file. 
+ * Version for SAX 2.0
  * 
  * @author Ian Darwin
  * @version $Id$
@@ -22,9 +22,8 @@ public class SAXLister {
 	}
 	
 	public SAXLister(String[] args) throws SAXException, IOException {
-		XMLReader parser = XMLReaderFactory
-				.createXMLReader();
-		// should load properties rather than hardcoding class name
+		XMLReader parser = XMLReaderFactory.createXMLReader();
+		// should get Handler class from properties rather than hardcoding class name
 		parser.setContentHandler(new PeopleHandler());
 		parser.parse(args.length == 1 ? args[0] : "people.xml");
 	}
