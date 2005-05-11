@@ -13,7 +13,7 @@ public class DateAdd {
 
 		long t = now.getTime();
 
-		t -= 700*24*60*60*1000;
+		t -= 700L*24*60*60*1000;
 
 		Date then = new Date(t);
 
