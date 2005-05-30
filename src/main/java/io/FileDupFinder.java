@@ -1,4 +1,4 @@
-package ca.tcp.fileindex;
+package io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,13 +14,13 @@ import java.util.Map;
 import com.darwinsys.io.FileHandler;
 
 /**
- * A File Indexer plugin for the Crawler.
+ * File Duplicate Finder, a sample  plugin for the Crawler.
  * @version $Id$
  */
 public class FileDupFinder implements FileHandler {
 
 	/** Map from a program's hash to its path */
-	private Map seenFiles = new HashMap();
+	private Map<String, String> seenFiles = new HashMap<String, String>();
 	private static final int BUFSIZE = 65536;
 	private byte[] data = new byte[BUFSIZE];
 	private PrintWriter out;
