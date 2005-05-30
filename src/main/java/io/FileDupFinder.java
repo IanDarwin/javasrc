@@ -11,8 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-import ca.tcp.utils.TCPPasswordUtils;
-
 import com.darwinsys.io.FileHandler;
 
 /**
@@ -24,8 +22,9 @@ public class FileDupFinder implements FileHandler {
 	/** Map from a program's hash to its path */
 	private Map seenFiles = new HashMap();
 	private static final int BUFSIZE = 65536;
-	byte[] data = new byte[BUFSIZE];
+	private byte[] data = new byte[BUFSIZE];
 	private PrintWriter out;
+	private boolean debug = false;
 	
 	public void init() throws IOException {
 		out = new PrintWriter(new FileWriter("/home/ian/fred"));
@@ -40,8 +39,10 @@ public class FileDupFinder implements FileHandler {
 
 		String hash = getHash(f);
 		
-		// System.out.println(path + "-->" + hash); // left in so you can run this, compare with md5/md5sum...
-
+		if (debug) {
+			System.out.println(path + "-->" + hash); // left in so you can run this, compare with md5/md5sum...
+		}
+		
 		String hashedPath = null;
 		if ((hashedPath = (String)seenFiles.get(hash)) != null) {
 			out.println(f + " " + hashedPath);
@@ -76,12 +77,27 @@ public class FileDupFinder implements FileHandler {
 		byte[] digest = md.digest();
 
 		// return as hex string.
-		String result = TCPPasswordUtils.toHex(digest);
-
-		return result;
+		return toHex(digest);
 	}
 
 	public void destroy() throws IOException {
 		out.close();
 	}
+	
+    private static final char byteToHex[] = {
+		'0', '1', '2', '3', '4', '5', '6', '7',
+		'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+	};
+
+	/** Convert an array of bytes to a hex string. */
+	public static final String toHex(byte bytes[]) {
+		assert bytes != null : "invalid input to toHex()";
+		StringBuffer sb = new StringBuffer(bytes.length * 2);
+		for (int i = 0; i < bytes.length; i++) {
+			// System.out.println("input: " + bytes[i] + " ");
+			sb.append((char)byteToHex[(bytes[i] >> 4) & 0x0f]);
+			sb.append((char)byteToHex[bytes[i] & 0x0f]);
+		}
+		return (sb.toString());
+}
 }
