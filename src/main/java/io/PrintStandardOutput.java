@@ -11,8 +11,10 @@ public class PrintStandardOutput {
 
 		// Print to standard output
 		System.out.println("Hello World of Java");
-		// Print several things concatendated.
+		// Print several things concatenated.
 		System.out.println("The answer is " + myAnswer + " at this time."); 
+		
+		System.out.printf("The answer is %s at this time\n", myAnswer); // the 1.5 way
 
 		// Print to standard output using a Writer
 		PrintWriter pw = new PrintWriter(System.out);
@@ -20,7 +22,7 @@ public class PrintStandardOutput {
 
 		// Caveat printing ints and chars together
 		int i = 42;
-		pw.println(i + '=' + " the answer.");	// WRONG
+		pw.println(i + '=' + " the answer.");	// WRONG, prints "103 the answer"
 		pw.println("Note: " + i + '=' + " the answer.");	// OK
 
 		// Some of the workarounds for the caveat above:
