@@ -88,7 +88,7 @@ public class CookieCutter {
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(f,
-					"Please ensure that Netscape is not running",
+					"Please ensure that Netscape/Mozilla/Firefox is not running",
 					"Caution",
 					JOptionPane.QUESTION_MESSAGE);
 				try {
