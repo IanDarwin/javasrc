@@ -1,4 +1,6 @@
-import javax.ejb.;
+package ejb.billing;
+
+import javax.ejb.EJBObject;
 
 public interface Billing extends EJBObject {
 	/** Generate a bill in the database */

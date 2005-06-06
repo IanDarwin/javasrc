@@ -1,8 +1,20 @@
-import javax.ejb.*;
-import java.sql.*;
-import javax.sql.*;
-import java.util.*;
-import javax.naming.*;
+package ejb.bmp;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.ejb.EntityBean;
+import javax.ejb.EntityContext;
+import javax.ejb.FinderException;
+import javax.ejb.ObjectNotFoundException;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * Replacement for the BMP example on page 576-7-15.
@@ -10,6 +22,8 @@ import javax.naming.*;
  * It will compile but will NOT run yet!
  */
 public class EntityEJB implements EntityBean {
+
+	private static final long serialVersionUID = 3832898866826457656L;
 	private EntityContext ctx;
 	private Integer id;	// pkey
 	private Recording fields;
@@ -50,11 +64,11 @@ public class EntityEJB implements EntityBean {
 	}
 
 	/** Return a Collection of all Stock Items */
-	public Collection ejbFindAll() throws FinderException {
+	public Collection<Integer> ejbFindAll() throws FinderException {
 		Connection con = null;
         Statement ps = null;
         ResultSet rs = null;
-		Collection c = new ArrayList();
+		Collection<Integer> c = new ArrayList<Integer>();
         try {
             con = getConnection();
             ps = con.createStatement();
@@ -62,7 +76,7 @@ public class EntityEJB implements EntityBean {
             while (rs.next()) {
 				// Returning the pKey in this Collection will cause the 
 				// container to assign and load a bean for this pkey.
-				c.add(rs.getObject(1));
+				c.add(rs.getInt(1));
 			}
         } catch (SQLException ex) {
             throw new FinderException(ex.toString());

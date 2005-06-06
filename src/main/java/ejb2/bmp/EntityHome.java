@@ -1,6 +1,11 @@
-import javax.ejb.*;
+package ejb.bmp;
+
 import java.rmi.RemoteException;
 import java.util.Collection;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
+import javax.ejb.FinderException;
 
 public interface EntityHome extends EJBHome {
 
