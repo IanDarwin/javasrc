@@ -1,4 +1,4 @@
-package ca.tcp.utils;
+package lang;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;
@@ -9,9 +9,9 @@ import java.util.Map;
 
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
- * similar to how he extended it for Java 1.5 (with valueOf() method), but
+ * similar to how Block implemented it for Java 1.5 (with valueOf() method), but
  * implemented entirely using pre-1.5 mechanisms and syntax.
- * When we move to 1.5, change all subclasses of this to J2SE 1.5 enums.
+ * For use only on 1.3 or 1.4; on 1.5/Java 5, use the built-in version..
  * See Java Cookbook, 2nd Edition, Chapter 8.
  * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
  * info on Serializable and readResolve(); objects used in HttpSessions
@@ -37,8 +37,9 @@ import java.util.Map;
  * 	/** The status value for the OUTPUT direction, that is, a file checkout or download *
  * 	public final static Direction DIRECTION_OUT = new Direction("O");
  * }</pre>
+ * @author Ian; developed at the Toronto Centre for Phenogenomics.
  */
-public abstract class Enum implements Serializable {
+public abstract class TypesafeEnum implements Serializable {
 	/** The name of this class, set in constructor. */
 	protected String className;
 	/** The value of this instance */
@@ -55,7 +56,7 @@ public abstract class Enum implements Serializable {
 	/** Although this is public, the implementing subclass' constructor must be 
 	 * private to ensure typesafe enumeration pattern.
 	 */
-	public Enum(String klass, String val) {
+	public TypesafeEnum(String klass, String val) {
 		className = klass;
 		value = val;
 		List l = (List)map.get(klass);
@@ -77,10 +78,10 @@ public abstract class Enum implements Serializable {
 	 * }</pre>
 	 * @throws IllegalArgumentException if the input is not one of the valid values.
 	 */
-	public static Enum getValueOf(String klass, String val) {
+	public static TypesafeEnum getValueOf(String klass, String val) {
 		List l = getList(klass);
 		for (int i = 0; i < l.size(); i++) {
-			Enum e = (Enum)l.get(i);
+			TypesafeEnum e = (TypesafeEnum)l.get(i);
 			if (e.value.equals(val))	{
 				return e;
 			}
@@ -89,9 +90,9 @@ public abstract class Enum implements Serializable {
 	}
 
 	/** Return all the values of this Enumeration */
-	public Enum[] values(String klass) {
+	public TypesafeEnum[] values(String klass) {
 		List l = getList(klass);
-		return (Enum[]) l.toArray(new Enum[l.size()]);
+		return (TypesafeEnum[]) l.toArray(new TypesafeEnum[l.size()]);
 	}
 	
 	/** Needed to avoid having Serialization create objects that bypass the constructor */
