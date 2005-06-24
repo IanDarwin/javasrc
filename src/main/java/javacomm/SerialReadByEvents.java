@@ -57,16 +57,22 @@ public class SerialReadByEvents extends CommPortOpen
 		
 	}
 	public void serialEvent(SerialPortEvent ev) {
-		String line;
-		try {
-			line = is.readLine();
-			if (line == null) {
-				System.out.println("EOF on serial port.");
-				System.exit(0);
+		switch (ev.getEventType()) {
+		case SerialPortEvent.DATA_AVAILABLE:
+			String line;
+			try {
+				line = is.readLine();
+				if (line == null) {
+					System.out.println("EOF on serial port.");
+					System.exit(0);
+				}
+				os.println(line);
+			} catch (IOException ex) {
+				System.err.println("IO Error " + ex);
 			}
-			os.println(line);
-		} catch (IOException ex) {
-			System.err.println("IO Error " + ex);
+			break;
+		default:
+			System.out.println("Event type " + ev.getEventType());
 		}
 	}
 }
