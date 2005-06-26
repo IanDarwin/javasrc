@@ -3,7 +3,7 @@ package io;
 import java.io.*;
 
 /** FillDisk writes until the disk is full.
- * Like any tool,can be used for evil (DOS) or good (writing
+ * Like any tool, can be used for evil (local DoS attack) or good (writing
  * over blocks after you remove an important file).
  */
 public class FillDisk {
