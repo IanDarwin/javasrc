@@ -3,11 +3,11 @@ package structure;
 import java.util.*;
 
 /** Demonstrate use of Arrays.sort()
- * @version $id$
+ * @version $Id$
  */
 public class SortCollection {
 	public static void main(String[] unused) {
-		List l = new ArrayList();
+		List<String> l = new ArrayList<String>();
 		l.add("painful");
 		l.add("mainly");
 		l.add("gaining");
