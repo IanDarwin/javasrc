@@ -9,9 +9,9 @@ import java.util.Map;
 
 /**
  * Top-level class for Enumerations implementing Bloch's Typesafe Enum pattern,
- * similar to how Block implemented it for Java 1.5 (with valueOf() method), but
+ * similar to how he implemented it for Java 1.5 (with valueOf() method), but
  * implemented entirely using pre-1.5 mechanisms and syntax.
- * For use only on 1.3 or 1.4; on 1.5/Java 5, use the built-in version..
+ * When you move to Java 5, eschew this in favor of the built-in version..
  * See Java Cookbook, 2nd Edition, Chapter 8.
  * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
  * info on Serializable and readResolve(); objects used in HttpSessions
@@ -39,6 +39,7 @@ import java.util.Map;
  * }</pre>
  * @author Ian; developed at the Toronto Centre for Phenogenomics.
  */
+@Deprecated
 public abstract class TypesafeEnum implements Serializable {
 	/** The name of this class, set in constructor. */
 	protected String className;
@@ -46,11 +47,11 @@ public abstract class TypesafeEnum implements Serializable {
 	private String value;
 
 	/** This map, shared by all subclasses, maps from each class's Class object to its List of subclasses */
-	private static Map map = new HashMap();
+	private static Map<String,List<TypesafeEnum>> map = new HashMap<String,List<TypesafeEnum>>();
 	
 	/** Get the list for this Class */
-	private static List getList(String klass) {
-		return (List)map.get(klass);
+	private static List<TypesafeEnum> getList(String klass) {
+		return map.get(klass);
 	}
 	
 	/** Although this is public, the implementing subclass' constructor must be 
@@ -59,9 +60,9 @@ public abstract class TypesafeEnum implements Serializable {
 	public TypesafeEnum(String klass, String val) {
 		className = klass;
 		value = val;
-		List l = (List)map.get(klass);
+		List<TypesafeEnum> l = map.get(klass);
 		if (l == null) {
-			map.put(klass, l = new ArrayList());
+			map.put(klass, l = new ArrayList<TypesafeEnum>());
 		}
 		l.add(this);
 	}
@@ -91,7 +92,7 @@ public abstract class TypesafeEnum implements Serializable {
 
 	/** Return all the values of this Enumeration */
 	public TypesafeEnum[] values(String klass) {
-		List l = getList(klass);
+		List<TypesafeEnum> l = getList(klass);
 		return (TypesafeEnum[]) l.toArray(new TypesafeEnum[l.size()]);
 	}
 	
