@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.Calendar;
 
 /** Dummy source of Objects, for structure demos.
  * @author Ian Darwin
@@ -19,8 +19,7 @@ public class StructureDemo {
 	int n;
 
 
-	/* Dummy method to return a sequence of 21 Calendar references,
-	 * so the array should be sized >= 21.
+	/* Dummy method to return a sequence of Calendar references,
 	 */
 	public Object getDate() {
 		if (n++ > MAX)
