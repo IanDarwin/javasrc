@@ -126,8 +126,9 @@ public class CookieCutter {
 	}
 
 	class MyTableModel extends AbstractTableModel {
+	    private static final long serialVersionUID = 3256721762652532789L;
 
-		/** Returns the number of items in the list. */
+        /** Returns the number of items in the list. */
 		public int getRowCount()  {
 			return cookies.size();
 		}
