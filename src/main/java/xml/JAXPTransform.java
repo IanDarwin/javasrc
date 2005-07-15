@@ -6,10 +6,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-/** Illustrate simplest use of JAXP to transform using XSL
- * @param args three filenames: XML, XSL, and Output (this order is historical).
- * */
+/** Illustrate simplest use of JAXP to transform using XSL.
+ * @version $Id$
+ */
 public class JAXPTransform {
+	
+	/**
+	 * @param args three filenames: XML, XSL, and Output (this order is historical).
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		// Require three input args
