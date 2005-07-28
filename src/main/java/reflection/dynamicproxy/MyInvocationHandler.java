@@ -8,18 +8,30 @@ import java.util.List;
 import java.util.Random;
 
 /** The interface that the impl and the proxy both implement. */
-interface Maxim {
-	public String getMaxim();
-	public void addMaxim(String newQuote);
+interface Quote {
+	public String getQuote();
+	public void addQuote(String newQuote);
 }
 
 /**
  * A contrived demo of the "dynamic proxy" mechanism in J2SE.
- * @author ian
+ * @author Ian Darwin
  */
 public class ProxyDemo {
 
-	static Maxim privateImpl = new MaximImpl();
+	/** Our private implementation of the interface */
+	static final Quote privateImpl = new Quote() {
+		final List sayings = new ArrayList();
+		Random r = new Random();
+		
+		public String getQuote() {
+			// Get an int in 0..list.size()-1, get that saying from the list.
+			return (String)sayings.get((int)(Math.random()*sayings.size()));
+		}
+		public void addQuote(String s) {
+			sayings.add(s);
+		}
+	};
 	
 	/** The Handler, which is called whenever a method on the proxy is invoked.
 	 * Note that the invoke() method only needs a reference to the implementation
@@ -40,31 +52,12 @@ public class ProxyDemo {
 	 */
 	public static void main(String[] args) {
 
-		Maxim m = (Maxim) Proxy.newProxyInstance(Maxim.class.getClassLoader(),
-            new Class[] { Maxim.class }, handler);
-		System.out.println("Maxim Proxy object is " + m.getClass().getName());
-		m.addMaxim("A stitch in time... is better late than never");
-		m.addMaxim("JavaScript is to Java as George Burns is to George Washington.");
-		System.out.println("Maxim Proxy returned: " + m.getMaxim());
+		Quote m = (Quote) Proxy.newProxyInstance(Quote.class.getClassLoader(),
+            new Class[] { Quote.class }, handler);
+		System.out.println("Quote Proxy object is " + m.getClass().getName());
+		m.addQuote("A stitch in time... is better late than never");
+		m.addQuote("JavaScript is to Java as George Burns is to George Washington.");
+		m.addQuote("The more old you get, the more you forget");
+		System.out.println("Quote Proxy returned: " + m.getQuote());
 	}
 }
-
-/** Our private implementation of the interface */
-class MaximImpl implements Maxim {
-	final List sayings;
-	
-	MaximImpl() {
-		sayings = new ArrayList();
-		String first = "The older you get, the more you forget";
-		sayings.add(first);
-	}
-
-	Random r = new Random();
-	public String getMaxim() {
-		// Get an int in 0..list.size()-1, get that saying from the list.
-		return (String)sayings.get((int)(Math.random()*sayings.size()));
-	}
-	public void addMaxim(String s) {
-		sayings.add(s);
-	}
-};
