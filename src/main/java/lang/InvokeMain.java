@@ -1,7 +1,7 @@
 package lang;
 
 //+
-import java.lang.reflect.*;
+import java.lang.reflect.Method;
 //-
 
 /**
@@ -10,31 +10,39 @@ import java.lang.reflect.*;
  * @version $Id$
  */
 public class InvokeMain {
-	public static void main(String[] argv) {
-		//+
+	//+
+	public static void main(String[] args) {
+		System.out.println("In lang.InvokeMain.main()");
+
+		if (args.length == 1 && args[0].equals("quit")) {
+			return;
+		}
+		
 		try {
 			// First, find the class.
-			Class c = Class.forName("InvokeMain");	// RECURSION
+			Class c = Class.forName("lang.InvokeMain");
 			System.out.println(c);
 
 			// Create the array of Argument Types
 			Class[] argTypes = {
-				argv.getClass(),	// array is Object!
+				args.getClass(),	// array is Object!
 			};
 
 			// Now find the method
 			Method m = c.getMethod("main", argTypes);
-			System.out.println(m);
+			System.out.println("Found method" + m);
 
 			// Create the actual argument array
-			Object passedArgv[] = { argv };
+			String[] newArgs = { "quit" };
+			Object[] passedArgs = { newArgs };
 
 			// Now invoke the method.
-			m.invoke(null, passedArgv);
+			m.invoke(null, passedArgs);
 
 		} catch (Exception e) {
 			System.err.println(e);
+			//e.printStackTrace();
 		}
-		//-
 	}
+	//-
 }
