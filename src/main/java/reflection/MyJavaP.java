@@ -33,7 +33,7 @@ public class MyJavaP {
 
 		try {
 			Class c = Class.forName(className);
-			System.out.println(Modifier.toString(c.getModifiers()) + ' ' + c + " {");
+			System.out.println(c + " {");
 
 			int mods;
 			Field fields[] = c.getDeclaredFields();
@@ -59,7 +59,7 @@ public class MyJavaP {
 			System.err.println("Error: Class " + 
 				className + " not found!");
 		} catch (Exception e) {
-			System.err.println(e);
+			System.err.println("JavaP Error: " + e);
 		}
 	}
 }
