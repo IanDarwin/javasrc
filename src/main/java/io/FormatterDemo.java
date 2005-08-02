@@ -17,10 +17,15 @@ public class FormatterDemo {
 		// L - format letter (d: decimal(int); f: float; s: general; many more)
 		// For the full(!) story, see javadoc for java.util.Formatter.
 
+		// Most general (cumbersome) way of proceding.
 		Formatter fmtr = new Formatter();
 		Object result = fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
 		System.out.println(result);
 
+		// Shorter way using String.format().
+		Object stringResult = String.format("%1$04d - the year of %2$f", 1951, Math.PI);
+		System.out.println(stringResult);
+		
 		// A shorter way of doing things. But this
 		// way you must provide the newline delimiter
 		System.out.format("%04d - the year of %f%n", 1951, Math.PI);
