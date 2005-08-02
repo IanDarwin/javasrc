@@ -23,12 +23,12 @@ public class FormatterDemo {
 
 		// A shorter way of doing things. But this
 		// way you must provide the newline delimiter
-		System.out.format("%1$04d - the year of %2$f%n", 1951, Math.PI);
+		System.out.format("%04d - the year of %f%n", 1951, Math.PI);
 
 		// So is this
-		System.out.printf("%1$04d - the year of %2$f%n", 1951, Math.PI);
+		System.out.printf("%04d - the year of %f%n", 1951, Math.PI);
 
 		// Format doubles with more control
-		System.out.printf("PI is about %1$4.2f", Math.PI);
+		System.out.printf("PI is about %4.2f%n", Math.PI);
 	}
 }
