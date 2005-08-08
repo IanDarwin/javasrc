@@ -1,2 +1,0 @@
-mkdir \build
-copy * \build
