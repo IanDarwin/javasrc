@@ -32,8 +32,6 @@ public class CommPortDial extends CommPortModem {
 
 	protected void converse() throws IOException {
 
-		String resp;		// the modem response.
-
 		// Send the reset command
 		send("ATZ");
 

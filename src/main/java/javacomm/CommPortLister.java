@@ -1,7 +1,8 @@
 package javacomm;
 
-import javax.comm.*;
-import java.util.*;
+import java.util.Enumeration;
+
+import javax.comm.CommPortIdentifier;
 
 /**
  * List the ports.

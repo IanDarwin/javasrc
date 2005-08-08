@@ -40,11 +40,8 @@ public class CommPortThreaded extends CommPortOpen {
 	 */
 	protected void converse() throws IOException {
 
-		String resp;		// the modem response.
-
 		new DataThread(is, System.out).start();
 		new DataThread(new DataInputStream(System.in), os).start();
-
 	}
 
 	/** This inner class handles one side of a conversation. */

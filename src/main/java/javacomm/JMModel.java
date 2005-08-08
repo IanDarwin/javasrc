@@ -56,8 +56,6 @@ public class JMModel {
 	public final static int PARITY_ODD	= SerialPort.PARITY_ODD;
 
 	private int[] baudot = { 9600, 19200, 38400, 57600, 115200 };
-	private String sysTypes[] = { "Unix", "DOS", "Other" };
-
 	protected HashMap portsIDmap = new HashMap();
 
 	/** Constructor */

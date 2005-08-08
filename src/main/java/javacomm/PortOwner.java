@@ -1,8 +1,12 @@
 package javacomm;
 
-import javax.comm.*;
-import java.io.*;
-import javax.swing.*;
+import java.io.IOException;
+
+import javax.comm.CommPortOwnershipListener;
+import javax.comm.NoSuchPortException;
+import javax.comm.PortInUseException;
+import javax.comm.UnsupportedCommOperationException;
+import javax.swing.JOptionPane;
 
 /** Demonstrate the port conflict resolution mechanism.
  * Run two copies of this program and choose the same port in each.
