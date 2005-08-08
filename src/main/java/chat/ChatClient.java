@@ -73,7 +73,6 @@ public class ChatRoom extends Applet {
 		cp.add(BorderLayout.NORTH, ta);
 
 		Panel p = new Panel();
-		Button b;
 
 		// The login button
 		p.add(lib = new Button("Login"));
