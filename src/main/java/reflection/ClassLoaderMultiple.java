@@ -16,11 +16,15 @@ public class ClassLoaderMultiple extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable<String, Class> cache = new Hashtable<String, Class>();
 
-	/** "load", that is, make up, the data for the class */
-	private byte[] genClassData(String name) {
-		File f = new File(name + ".class");
+	/** "load", that is, make up, the data for the class 
+	 * @throws ClassNotFoundException
+	 */
+	private byte[] genClassData(String className) throws ClassNotFoundException {
+		String fileName = className.replaceAll("\\.", "/");
+		// XXX This assumes using Ant or Eclipse, classes in build/
+		File f = new File("build" + "/" + fileName + ".class");
 		if (!f.exists()) {
-			throw new IllegalArgumentException(name);
+			throw new ClassNotFoundException(className);
 		}
 		long dataLength = f.length();
 		byte[] bd = new byte[(int)dataLength];
