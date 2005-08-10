@@ -1,16 +1,20 @@
 package introspection;
 
-import java.lang.reflect.*;
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Hashtable;
 
 /**
  * Demonstration of a ClassLoader
  */
 public class ClassLoaderMultiple extends ClassLoader {
-	private static final String CLASS_TO_LOAD = "MultiDemo";
+	private static final String CLASS_TO_LOAD = "introspection.MultiDemo";
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Hashtable cache = new Hashtable();
+	protected Hashtable<String, Class> cache = new Hashtable<String, Class>();
 
 	/** "load", that is, make up, the data for the class */
 	private byte[] genClassData(String name) {
@@ -30,7 +34,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 		return bd;
 	}
 
-	public synchronized Class loadClass(String name, boolean resolve) 
+	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
 		/** We can expect to be called to resolve at least demo's
 		 * superclass (java.lang.Object). Fortunatetely, we can just
@@ -73,8 +77,8 @@ public class ClassLoaderMultiple extends ClassLoader {
 
 			/* Now try to call a method */
 
-			Method mi = c.getMethod("test", null);
-			mi.invoke(null, null);
+			Method mi = c.getMethod("test", (Class[])null);
+			mi.invoke(null, (Object[])null);
 			
 			/** Try to instantiate a second ClassLoader */
 			System.out.println("Creating second ClassLoader");
@@ -91,8 +95,8 @@ public class ClassLoaderMultiple extends ClassLoader {
 			System.out.println("The equals() comparison on Classes returns " +
 				c.equals(d));
 			
-			Method mi2 = d.getMethod("test", null);
-			mi2.invoke(null, null);
+			Method mi2 = d.getMethod("test", (Class[])null);
+			mi2.invoke(null, (Object[])null);
 
 		} catch (InvocationTargetException e) {
 			// The invoked method threw an exception. We get it
