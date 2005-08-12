@@ -1,7 +1,5 @@
 package introspection;
 
-
-
 /**
  * Utterly trivial class used by "ClassLoaderMultiple"
  * @version $Id$
