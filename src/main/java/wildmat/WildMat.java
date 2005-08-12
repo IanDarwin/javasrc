@@ -43,7 +43,8 @@ public class WildMat {
 					true);
 			case '[':
 			/* [^....] means inverse character class. */
-				if (reverse = patt.charAt(p+1) == '^')
+				reverse = patt.charAt(p+1) == '^';
+				if (reverse)
 					p++;
 				for (last = 0400, matched = false; 
 					++p<patt.length() && patt.charAt(p) != ']';
