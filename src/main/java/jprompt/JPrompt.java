@@ -9,12 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** Intended to become a better replacement for the X Window System "xprompt".
- * TODO command line options
- * TODO include timeout.
+ * TODO include timeout thread.
  */
-public class JPrompt {
+public class JPrompt extends JFrame {
 	/** The handler for all buttons */
-	private static final ActionListener handler =
+	private final ActionListener handler =
 		new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -25,20 +24,31 @@ public class JPrompt {
 	};
 	
 	/**
+	 * Constructor for JPrompt, called after main() has processed
+	 * and removed from args any options.
+	 * @param args Just the list of button labels to appear.
+	 */
+	public JPrompt(String[] args) {
+		super("Choose");
+		Container cp = getContentPane();
+		cp.setLayout(new FlowLayout());
+		
+		for (String label : args) {
+			JButton button = new JButton(label);
+			button.addActionListener(handler);
+			cp.add(button);
+		}
+		
+		pack();
+	}
+	
+	/**
 	 * The main program.
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		JFrame f = new JFrame("Choose");
-		Container cp = f.getContentPane();
-		cp.setLayout(new FlowLayout());
-		JButton fvwm = new JButton("FVWM");
-		fvwm.addActionListener(handler);
-		cp.add(fvwm);
-		JButton kde = new JButton("KDE");
-		kde.addActionListener(handler);
-		cp.add(kde);
-		f.pack();
-		f.setVisible(true);
+		// TODO process command line arguments
+		// Ideas: -b ButtonText -t TrueFalseText [-r reply ]
+		new JPrompt(args).setVisible(true);
 	}
 }
