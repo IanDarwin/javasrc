@@ -25,6 +25,7 @@ public class FileDupFinder implements FileHandler {
 	private byte[] data = new byte[BUFSIZE];
 	private PrintWriter out;
 	private boolean debug = false;
+	private File theFile;
 	
 	public void init() throws IOException {
 		out = new PrintWriter(new FileWriter("/home/ian/fred"));
@@ -56,6 +57,7 @@ public class FileDupFinder implements FileHandler {
 	 * @return
 	 */
 	private String getHash(File f) throws IOException {
+		theFile = f;
 		InputStream in = null;
 
 		MessageDigest md;
@@ -100,4 +102,8 @@ public class FileDupFinder implements FileHandler {
 		}
 		return (sb.toString());
 }
+
+	public File getFile() {
+		return theFile;
+	}
 }
