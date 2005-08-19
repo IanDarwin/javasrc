@@ -1,6 +1,13 @@
 package gui;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Make a Frame with two Panels.
  * @version $Id$
@@ -21,7 +28,14 @@ public class FrameDemo extends Frame {
 		top_frame.add(new TextField(10));
 		add(top_frame, BorderLayout.NORTH);
 		Panel bottom_frame = new Panel();
-		bottom_frame.add(new Button("OK"));
+		Button ok;
+		bottom_frame.add(ok = new Button("OK"));
+		ok.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				System.exit(0);
+			}
+		});
+
 		bottom_frame.add(new Button("Cancel"));
 		add(bottom_frame, BorderLayout.SOUTH);
 		pack();
