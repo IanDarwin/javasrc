@@ -42,7 +42,7 @@ public class JPrompt extends JFrame {
 			button.addActionListener(handler);
 			cp.add(button);
 			if (first) {
-				requestFocus(); 
+				button.requestFocus(); 
 				first = false;
 			}
 		}
