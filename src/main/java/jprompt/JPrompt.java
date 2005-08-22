@@ -1,7 +1,10 @@
 package jprompt;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,13 +36,20 @@ public class JPrompt extends JFrame {
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
 		
+		boolean first = true;
 		for (String label : args) {
 			JButton button = new JButton(label);
 			button.addActionListener(handler);
 			cp.add(button);
+			if (first) {
+				requestFocus(); 
+				first = false;
+			}
 		}
 		
 		pack();
+		
+		centre(this);
 	}
 	
 	/**
@@ -51,4 +61,15 @@ public class JPrompt extends JFrame {
 		// Ideas: -b ButtonText -t TrueFalseText [-r reply ]
 		new JPrompt(args).setVisible(true);
 	}
+	
+	/** Centre a Window, Frame, JFrame, Dialog, etc. */
+	public static void centre(Window w) {
+		// After packing a Frame or Dialog, centre it on the screen.
+		Dimension us = w.getSize(), 
+			them = Toolkit.getDefaultToolkit().getScreenSize();
+		int newX = (them.width - us.width) / 2;
+		int newY = (them.height- us.height)/ 2;
+		w.setLocation(newX, newY);
+	}
+
 }
