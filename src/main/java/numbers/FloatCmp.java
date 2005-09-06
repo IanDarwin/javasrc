@@ -20,14 +20,21 @@ public class FloatCmp {
 		} else {
 			System.out.println(da + " != " + db);
 		}
+		
+		System.out.println("NaN prints as " + Double.NaN);
 
 		// Show that comparing two NaNs is not a good idea:
 		double d1 = Double.NaN;
 		double d2 = Double.NaN;
 		if (d1 == d2)
-			System.err.println("Comparing two NaNs incorrectly returns true.");
-		if (!new Double(d1).equals(new Double(d2)))
-			System.err.println("Double(NaN).equal(NaN) incorrectly returns false.");
+			System.out.println("Comparing two NaNs incorrectly returns true.");
+		else
+			System.out.println("Comparing two NaNs correctly reports false.");
+
+		if (new Double(d1).equals(new Double(d2)))
+			System.out.println("Double(NaN).equal(NaN) correctly returns true.");
+		else
+			System.out.println("Double(NaN).equal(NaN) incorrectly returns false.");
 	}
 
 	/** Compare two doubles within a given epsilon */
@@ -42,5 +49,6 @@ public class FloatCmp {
 		if (a==b) return true;
 		// If the difference is less than epsilon, treat as equal.
 		return Math.abs(a - b) < EPSILON * Math.max(Math.abs(a), Math.abs(b));
+		// XXX Why not just this: return equals(a, b, EPSILON);
 	}
 }
