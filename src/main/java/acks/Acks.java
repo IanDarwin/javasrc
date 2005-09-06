@@ -19,9 +19,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
 
 /**
  * OneAck - popup some dialogs, to thank some people in the Java style.
@@ -41,7 +44,6 @@ class OneAck extends Frame {
 		this.propsName=propsName;
 
 		setLayout(new BorderLayout());
-		int chars = msg.length();
 		int rows = 1;		// at least 1 row
 
 		// "The 50-line text formatter" in 15 lines.
@@ -62,9 +64,6 @@ class OneAck extends Frame {
 		// Each dialog has a TextArea on top...
 		add(ta = new TextArea(s.toString(), rows, COLS), BorderLayout.NORTH);
 
-		// And a panel with one push Button on the bottom.
-		Panel p;
-		add(p = new Panel(), BorderLayout.NORTH);
 		Rectangle r = new Rectangle(x, y, width, height);
 		// System.out.println(title+"->"+r);
 		setBounds(r);
@@ -102,7 +101,7 @@ public class Acks extends Frame {
 	/** The current name to read/write */
 	String acksFileName = null;
 	/** The list of windows that have been added */
-	Vector winList = new Vector();
+	List<OneAck> winList = new Vector<OneAck>();
 
 	/** Main method, just instantiate and show.  */
 	public static void main(String[] argv) {
@@ -162,7 +161,7 @@ public class Acks extends Frame {
 						100, 100, 200, 100);
 					System.out.println("Added " + n);
 					n.setVisible(true);
-					winList.addElement(n);
+					winList.add(n);
 				}
 			});
 			cp.add(b = new Button("Save"));
@@ -171,11 +170,11 @@ public class Acks extends Frame {
 					try {
 						saveAll(winList, acksFileName);
 					} catch(IOException exc) {
-						System.err.println("Error in save: " + exc);
-						// JOptionPane.showMessageDialog(Acks.this,
-							// "I/O Error in save!\n" + exc,	// message
-							// "I/O ERROR!?",				// titlebar
-							// JOptionPane.ERROR_MESSAGE);	// icon
+						//System.err.println("Error in save: " + exc);
+						JOptionPane.showMessageDialog(Acks.this,
+							"I/O Error in save!\n" + exc,	// message
+							"I/O ERROR!?",				// titlebar
+							JOptionPane.ERROR_MESSAGE);	// icon
 					}
 				}
 			});
@@ -225,7 +224,7 @@ public class Acks extends Frame {
 					Integer.parseInt(height));
 				// System.out.println("Added " + one);
 				one.setVisible(true);
-				winList.addElement(one);
+				winList.add(one);
 			}
 		}
 	}
@@ -240,12 +239,12 @@ public class Acks extends Frame {
 	 * Once both files are saved in new format, replace this
 	 * with a call to "properties.save"
 	 */
-	protected synchronized void saveAll(Vector v, String fname) throws IOException {
+	protected synchronized void saveAll(List<OneAck> v, String fname) throws IOException {
 		PrintWriter pf = new PrintWriter(new FileWriter(fname));
 		pf.println("# Created by Acks @ " + new Date());
 		pf.println("courseTitle=" + getTitle());
 		for (int i=0; i<v.size(); i++) {
-			OneAck o = (OneAck)v.elementAt(i);
+			OneAck o = v.get(i);
 			String name = o.getPropsName();
 			Rectangle r = o.getBounds();
 			pf.println(name + ".title=" + o.getTitle());
