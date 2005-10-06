@@ -102,7 +102,7 @@ public class WalkingText extends Applet implements Runnable {
 	/** Paint is called by Applet to redraw the screen */
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		g.drawString(mesg, xloc, yloc);
+		g2.drawString(mesg, xloc, yloc);
 		// if ((xloc + textWidth) > getSize().width) {
 		// 	int negLoc = textWidth-(width-xloc);
 		// 	System.out.println("xloc, textWidth, negLoc: " + xloc + "," +
