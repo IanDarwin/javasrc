@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.darwinsys.sql.SQLUtils;
+
 /** Process a raw SQL query; use ResultSetMetaData to format it.
  */
 public class RawSQLServlet extends HttpServlet {
@@ -75,34 +77,10 @@ public class RawSQLServlet extends HttpServlet {
 			stmt.execute(query);
 			ResultSet rs = stmt.getResultSet();
 			if (rs == null) {
-				// print updatecount
-				out.println("<p>Result: updateCount = <b>" + 
-					stmt.getUpdateCount() + "</p>");
+				out.println("<b>Update Count = " + stmt.getUpdateCount());
 			} else {
-				// process resultset
-
-				out.println("<br>Your response:");
-
-				ResultSetMetaData md = rs.getMetaData();
-				int count = md.getColumnCount();
-				out.println("<table border=1>");
-				out.print("<tr>");
-				for (int i=1; i<=count; i++) {
-					out.print("<th>");
-					out.print(md.getColumnName(i));
-				}
-				out.println("</tr>");
-				while (rs.next()) {
-					out.print("<tr>");
-					for (int i=1; i<=count; i++) {
-						out.print("<td>");
-					out.print(rs.getString(i));
-				}
-				out.println("</tr>");
-				}
+				SQLUtils.resultSetToHTML(rs, out);
 			}
-			out.println("</table>");
-			// rs.close();
 		} catch (SQLException ex) {
 			out.print("<B>" + getClass() + ": SQL Error:</B>\n" + ex);
 			out.print("<pre>");
@@ -110,6 +88,8 @@ public class RawSQLServlet extends HttpServlet {
 			out.print("</pre>");
 		}
 	}
+
+
 
 	public void destroy() {
 		try {
