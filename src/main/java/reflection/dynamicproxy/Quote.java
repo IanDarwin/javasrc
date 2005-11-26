@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /** The interface that the impl and the proxy both implement. */
 interface Quote {
@@ -15,14 +14,17 @@ interface Quote {
 
 /**
  * A contrived demo of the "dynamic proxy" mechanism in J2SE.
+ * Dynamic proxies allow you to create an implementation of
+ * an interface without having to know the class name,
+ * providing more flexibility.
  * @author Ian Darwin
  */
 public class ProxyDemo {
 
 	/** Our private implementation of the interface */
 	static final Quote privateImpl = new Quote() {
-		final List sayings = new ArrayList();
-		Random r = new Random();
+		
+		final List<String> sayings = new ArrayList<String>();
 		
 		public String getQuote() {
 			// Get an int in 0..list.size()-1, get that saying from the list.
@@ -41,23 +43,24 @@ public class ProxyDemo {
 	private static InvocationHandler handler = new InvocationHandler() {
 		public Object invoke(Object proxyObject, Method method, Object[] argList) 
 			throws Throwable {
-			System.out.println("Proxy: about to invoke " + method.getName());
+			System.out.print("Proxy: invoking " + method.getName());
 			Object ret = method.invoke(privateImpl, argList);
-			System.out.println("Proxy: Invocation done.");
+			System.out.println(" Invocation done.");
 			return ret;
 		}		
 	};
 
-	/** Here's where we show the whole thing in operation.
+	/** Here we show the whole thing in operation.
 	 */
 	public static void main(String[] args) {
 
-		Quote m = (Quote) Proxy.newProxyInstance(Quote.class.getClassLoader(),
+		Quote q = (Quote) Proxy.newProxyInstance(
+			Quote.class.getClassLoader(),
             new Class[] { Quote.class }, handler);
-		System.out.println("Quote Proxy object is " + m.getClass().getName());
-		m.addQuote("A stitch in time... is better late than never");
-		m.addQuote("JavaScript is to Java as George Burns is to George Washington.");
-		m.addQuote("The more old you get, the more you forget");
-		System.out.println("Quote Proxy returned: " + m.getQuote());
+		System.out.println("Quote Proxy object is " + q.getClass().getName());
+		q.addQuote("A stitch in time... is better late than never");
+		q.addQuote("JavaScript is to Java as George Burns is to George Washington.");
+		q.addQuote("The more old you get, the more you forget");
+		System.out.println("Quote Proxy returned: " + q.getQuote());
 	}
 }
