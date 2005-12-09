@@ -9,9 +9,10 @@ public class LogRegExp implements LogExample {
 
 	public static void main(String argv[]) {
 
-		String logEntryPattern = "^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
+		String logEntryPattern = 
+		"^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
 
-		System.out.println("Using RE Pattern:");
+		System.out.println("RE Pattern:");
 		System.out.println(logEntryPattern);
 
 		System.out.println("Input line is:");
@@ -26,7 +27,8 @@ public class LogRegExp implements LogExample {
 			return;
 		}
 		System.out.println("IP Address: " + matcher.group(1));
-		System.out.println("Date&Time: " + matcher.group(4));
+		System.out.println("UserName: " + matcher.group(3));
+		System.out.println("Date/Time: " + matcher.group(4));
 		System.out.println("Request: " + matcher.group(5));
 		System.out.println("Response: " + matcher.group(6));
 		System.out.println("Bytes Sent: " + matcher.group(7));
