@@ -5,7 +5,7 @@ import java.util.regex.*;
 /**
  * Parse an Apache log file with Regular Expressions
  */
-public class LogRegExp implements LogExample {
+public class LogRegExp  {
 
 	public static void main(String argv[]) {
 
@@ -16,13 +16,14 @@ public class LogRegExp implements LogExample {
 		System.out.println(logEntryPattern);
 
 		System.out.println("Input line is:");
+		String logEntryLine = LogExample.logEntryLine;
 		System.out.println(logEntryLine);
 
 		Pattern p = Pattern.compile(logEntryPattern);
 		Matcher matcher = p.matcher(logEntryLine);
 		if (!matcher.matches() || 
-			NUM_FIELDS != matcher.groupCount()) {
-			System.err.println("Bad log entry (or problem with RE?):");
+			LogExample.NUM_FIELDS != matcher.groupCount()) {
+			System.err.println("Bad log entry (or problem with regex):");
 			System.err.println(logEntryLine);
 			return;
 		}
