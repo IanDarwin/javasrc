@@ -42,7 +42,7 @@ import java.util.*;
 
 public class ChatState {
 	/** The list of messages */
-	public List chat;
+	public List<String> chat;
 	/** The list of users */
 	public List users;
 	/** The lower bound of current messages */
@@ -51,7 +51,7 @@ public class ChatState {
 	public int last;
 
 	public ChatState() {
-		chat = new ArrayList();
+		chat = new ArrayList<String>();
 		users = new ArrayList();
 		first = last = 0;
 	}
