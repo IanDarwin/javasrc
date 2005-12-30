@@ -22,7 +22,7 @@ public class ChatServer {
 	/** The Server Socket */
 	protected ServerSocket servSock;
 	/** The list of my current clients */
-	protected ArrayList clients;
+	protected ArrayList<ChatHandler> clients;
 	/** Debugging state */
 	private static boolean DEBUG = false;
 
@@ -38,7 +38,7 @@ public class ChatServer {
 
 	/** Construct (and run!) a Chat Service */
 	ChatServer() {
-		clients = new ArrayList();
+		clients = new ArrayList<ChatHandler>();
 		try {
 			servSock = new ServerSocket(Chat.PORTNUM);
 			System.out.println("DarwinSys Chat Server Listening on port " +

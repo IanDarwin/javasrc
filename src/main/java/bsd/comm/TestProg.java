@@ -50,8 +50,6 @@ public class TestProg {
 	private void traffic() 
 		throws IOException,UnsupportedCommOperationException {
 
-		String resp;		// the modem response.
-
 		// set up the serial port
 		ttya.setSerialPortParams(9600, SerialPort.DATABITS_8,
 			SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);

@@ -28,7 +28,7 @@ public class SocketServer extends Thread {
 			BufferedReader is = new BufferedReader(
 				new InputStreamReader(s.getInputStream()));
 			String name = is.readLine();
-			String passwd = is.readLine();
+			is.readLine(); // read but ignore for now the password
 			String domain = is.readLine();
 			PrintWriter pout = new PrintWriter(s.getOutputStream(), true);
 			pout.println("Welcome to " + domain + ", " + name);
