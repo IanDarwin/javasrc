@@ -5,6 +5,7 @@ import javax.ejb.*;
 /** A trivial example showing how we could have Entity Bean
  * helper interfaces generated; here setName() is exposed to
  * both local and remote, while getName() is only exposed to local.
+ * Note: this uses my own API and is not supported by any real build tool!
  */
 public abstract class MyEJB implements EntityBean {
 
