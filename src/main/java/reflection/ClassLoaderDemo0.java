@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class ClassLoaderDemo0 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Hashtable cache = new Hashtable();
+	protected Hashtable<String,Class> cache = new Hashtable<String,Class>();
 
 	/** INSERT HERE THE RESULT OF DUMPING DEMO.CLASS */
 	byte[] data /* = ... */;
@@ -20,6 +20,9 @@ public class ClassLoaderDemo0 extends ClassLoader {
 
 	/** "load", that is, generate, the data for the class */
 	private byte[] genClassData(String name) {
+		if (data == null) {
+			throw new RuntimeException("You must initialize the data array");
+		}
 		if (dataLength != data.length)	// EXPECT COMPILE ERROR in javasrc
 			throw new IllegalArgumentException(
 				"data corrupt, " + dataLength + "!=" + data.length);
@@ -29,7 +32,7 @@ public class ClassLoaderDemo0 extends ClassLoader {
 		return bd;
 	}
 
-	public synchronized Class loadClass(String name, boolean resolve) 
+	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
 		Class c = (Class)cache.get(name);
 		if (c == null) {
@@ -64,8 +67,8 @@ public class ClassLoaderDemo0 extends ClassLoader {
 
 			/* Now try to call a method */
 
-			Method mi = c.getMethod("test", null);
-			mi.invoke(demo, null);
+			Method mi = c.getMethod("test", (Class[])null);
+			mi.invoke(demo, (Object[])null);
 
 		} catch (InvocationTargetException e) {
 			// The invoked method threw an exception. We get it

@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class ClassLoaderDemo1 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Hashtable cache = new Hashtable();
+	protected Hashtable<String,Class> cache = new Hashtable<String,Class>();
 	/** data's expected length */
 	private final int dataLength = 433;
 	/** data, obtained by dumping a compiled .class file */
@@ -69,7 +69,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		return bd;
 	}
 
-	public synchronized Class loadClass(String name, boolean resolve) 
+	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
 		/** We can expect to be called to resolve at least demo's
 		 * superclass (java.lang.Object). Fortunatetely, we can just
@@ -112,8 +112,8 @@ public class ClassLoaderDemo1 extends ClassLoader {
 
 			/* Now try to call a method */
 
-			Method mi = c.getMethod("test", null);
-			mi.invoke(demo, null);
+			Method mi = c.getMethod("test", (Class[])null);
+			mi.invoke(demo, (Object[])null);
 
 		} catch (InvocationTargetException e) {
 			// The invoked method threw an exception. We get it
@@ -131,11 +131,11 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		 */
 		System.out.println("Trying to load an unrelated class");
 		java.awt.image.DirectColorModel jnk = new java.awt.image.DirectColorModel(24,8,8,8);
-		System.out.println("Load an unrelated class - was your ClassLoader called?");
+		System.out.printf("Loaded an unrelated class (%s) - was your ClassLoader called?%n", jnk.getClass().getName());
 
 		/** Try to instantiate a second ClassLoader */
 		System.out.println("Trying to install another ClassLoader");
 		ClassLoaderDemo1 loader2 = new ClassLoaderDemo1();
-		System.out.println("Instantiated another ClassLoader...");
+		System.out.println("Instantiated another ClassLoader..." + loader2);
 	}
 }
