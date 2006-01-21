@@ -1,9 +1,16 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.undo.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.undo.UndoManager;
 
 /** Simple GUI demo of UndoManager and friends.
  * @author Ian Darwin http://www.darwinsys.com/
@@ -26,8 +33,9 @@ public class UndoDemo extends JFrame {
 		JPanel bp;
 		cp.add(bp = new JPanel(), BorderLayout.SOUTH);
 
-		// Create a javax.swing.undo.UndoManager; this is an amazing class that
-		// keeps a Stack of UndoableEdits and lets you invoke them;
+		// Create a javax.swing.undo.UndoManager; this nice class
+		// keeps a Stack of UndoableEdits and lets you invoke them.
+		// When used with a Swing Text Document or equivalent,
 		// by registering it as a Listener on the TextComponent.Document,
 		// the Document will create the UndoableEdit objects and send them
 		// to the UndoManager. Between them they do ALL the work!
