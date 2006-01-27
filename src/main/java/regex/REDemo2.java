@@ -38,10 +38,11 @@ public class REDemo2 extends REDemo {
 		if (!super.tryMatch()) {
 			return false;
 		}
-		int n = matcher.groupCount();
+		
 		matcher.reset(stringTF.getText());
+		logTextArea.setText("");
+		
 		if (match.isSelected() && matcher.matches()) {
-			logTextArea.setText("");
 			for (int i = 0; i <= matcher.groupCount(); i++) {
 				logTextArea.append(i + " " + matcher.group(i) + "\n");
 			}
@@ -51,10 +52,10 @@ public class REDemo2 extends REDemo {
 			logTextArea.setText(matcher.group());
 			return true;
 		}
-		if (findAll.isSelected()) {
-			int i;
-			for (i = 0; i < n; i++) {
-				matcher.find();
+		if (findAll.isSelected() && matcher.find()) {
+			int i;	// don't move into loop.
+			for (i = 0; i < matcher.groupCount(); i++) {
+				//matcher.find();
 				logTextArea.append(i + ": " + matcher.group(i) + "\n");
 			}
 			if (i > 0) {
