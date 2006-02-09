@@ -52,7 +52,10 @@ public class PopupDemo extends Frame {
 			enableEvents(AWTEvent.MOUSE_EVENT_MASK);
 		}
 		
-		
+		/**
+		 * This overrides processMouseEvent on the Container; better would
+		 * be to add a MouseListener (or MouseAdapter) to do this work.
+		 */
 		public void processMouseEvent(MouseEvent me) {
 			System.err.println("MouseEvent: " + me);
 			if (me.isPopupTrigger())
