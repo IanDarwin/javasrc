@@ -1,7 +1,6 @@
 package xml;
 
 import java.io.File;
-import java.io.Reader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,7 +31,7 @@ public class XTW {
 
 	/** Convert the file */
 	protected void convert(String fileName, boolean verbose) {
-		Reader is;
+		
 		try {
 			if (verbose)
 				System.err.println(">>>Parsing " + fileName + "...");
