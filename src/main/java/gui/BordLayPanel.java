@@ -25,13 +25,12 @@ public class BordLayPanel extends Frame {
 	BordLayPanel() {
 		super("BordLayPanel");
 		Panel p;
-		Button b;
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH,  p = new Panel());
 			p.setLayout(new FlowLayout());
 			p.add(new Label("FileName:"));
 			p.add(fileName  = new TextField(40));
-			p.add(b = new Button("Load"));
+			p.add(new Button("Load"));
 			// now you need to add an action listener to the button
 		add(BorderLayout.CENTER, main = new TextArea(24,80));
 		add(BorderLayout.SOUTH,  status = new Label(""));
