@@ -83,6 +83,7 @@ public class UserDBText extends UserDB {
 			.append(u.city).append(':')
 			.append(u.prov).append(':')
 			.append(u.country).append(':')
+			.append(privs)
 			.toString();
 	}
 

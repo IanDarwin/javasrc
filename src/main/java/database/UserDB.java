@@ -11,15 +11,12 @@ import java.util.List;
  * We use a Singleton access method for efficiency and to enforce
  * single access on the database, which means we can keep an in-memory
  * copy (in an ArrayList) perfectly in synch with the database.
- *
- * Of course this really should be an EJB(!). But then JabaDot
- * would need a full EJB server to run, not just Tomcat and idb.
  */
 public abstract class UserDB {
-	boolean adminPrivs, editPrivs;
+	protected boolean adminPrivs, editPrivs;
 
 	/** The in-memory copy of the data */
-	protected List users;
+	protected List<User> users;
 
 	/** The only instance of this class. */
 	protected static UserDB singleton;
@@ -63,7 +60,7 @@ public abstract class UserDB {
 	 *  while in others it may defer this until getUserList().
 	 */
 	protected UserDB() throws IOException, SQLException {
-		users = new ArrayList();
+		users = new ArrayList<User>();
 	}
 
 	/** "factory" method to get an instance, which will always be
