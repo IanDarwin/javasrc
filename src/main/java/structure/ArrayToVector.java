@@ -5,21 +5,21 @@ import java.util.*;
 /** Convert an Array to a Vector. */
 public class ArrayToVector {
 	public static void main(String[] args) {
-		Object[] a1d = {
+		String[] a1d = {
 			"Hello World",
-			new Date(),
-			Calendar.getInstance(),
+			new Date().toString(),
+			Runtime.getRuntime().toString(),
 		};
 		// Arrays.asList(Object[]) --> List
-		List l = Arrays.asList(a1d);
+		List<String> l = Arrays.asList(a1d);
 
 		// Vector contstructor takes Collection
 		// List is a subclass of Collection
-		Vector v;
-		v = new Vector(l);
+		Vector<String> v;
+		v = new Vector<String>(l);
 
 		// Or, more simply:
-		v = new Vector(Arrays.asList(a1d));
+		v = new Vector<String>(Arrays.asList(a1d));
 
 		// Just to prove that it worked.
 		Enumeration e = v.elements();
