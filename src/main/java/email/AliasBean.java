@@ -7,15 +7,13 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class AliasBean extends JPanel {
-	protected Vector aliVector;
+	protected Vector<Alias> aliVector = new Vector<Alias>();;
 	protected JList aliJList;
 	private JTextField nameTF, addrTF;
 
 	public AliasBean() {
-		aliVector = new Vector();
 		aliJList = new JList();
-		// XXX MUST FIX THIS
-		// aliJList.setSelectionMode(JList.SINGLE_SELECTION);
+		aliJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		aliJList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent evt) {
 				int i = aliJList.getSelectedIndex();
