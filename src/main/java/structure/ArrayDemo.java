@@ -5,6 +5,7 @@ package structure;
  * @version $Id$
  */
 public class ArrayDemo  {
+	@SuppressWarnings("unused")
 	public static void main(String[] argv) {
 		int ages[];			// declare a reference
 		ages = new int[10];		// construct it

@@ -9,6 +9,7 @@ import java.util.Calendar;
  * @version $Id$
  */
 public class Array1  {
+	@SuppressWarnings("unused")
 	public static void main(String[] argv) {
 		int[] monthLen1;			// declare a reference
 		monthLen1 = new int[12];		// construct it
