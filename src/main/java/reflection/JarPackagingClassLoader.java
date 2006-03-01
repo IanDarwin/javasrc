@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -28,46 +29,89 @@ public class JarPackagingClassLoader extends ClassLoader {
 	protected Map<String, Class> loadedClassesCache = new HashMap<String, Class>();
 
 	/** The Cache of Jar files we've opened */
-	protected Map<String, JarFile> jarsCache = new HashMap<String, JarFile>();
+	protected Map<File, JarFile> jarsCache = new HashMap<File, JarFile>();
+	
+	/** The list of valid Jars/dirs in our classpath */
+	protected List<File> classPathEntries = new java.util.ArrayList<File>();
+	
+	private int[] CAFE_BABE = { 0xca, 0xfe, 0xba, 0xbe };
+	
+	/** Construct a JarPackagingClassLoader.
+	 */
+	public JarPackagingClassLoader() {
+		String cPath = System.getProperty("java.class.path");
+		String[] cPaths = cPath.split(":");
+		for (String path : cPaths) {
+			File f = new File(path);
+			if (!f.exists()) {
+				System.err.printf("Warning: classpath entry %s not found%n", path);
+				continue;
+			}
+			if (f.isFile() && (f.getName().endsWith(".jar") || f.getName().endsWith(".zip"))) {
+				classPathEntries.add(f);
+				continue;
+			}
+			if (f.isDirectory()) {	
+				classPathEntries.add(f);
+				continue;
+			}
+			System.err.println("warning: invalid classpath entry " + f);
+		}
+	}
 
 	/** "load", that is, make up, the data for the class 
 	 * @throws ClassNotFoundException
 	 */
-	private byte[] genClassData(String className) throws ClassNotFoundException {
-		String cPath = System.getProperty("java.class.path");
-		String[] cPaths = cPath.split(":");	
+	private byte[] getClassData(String className) throws ClassNotFoundException {
+
 		String fileName = className.replaceAll("\\.", "/") + ".class";
 		System.out.println("Munged fileName = " + fileName);
-		for (String cPathName : cPaths) {
-			if (cPathName.endsWith(".jar")) {
-				JarFile jf = jarsCache.get(cPathName);
+		for (File classPathEntry : classPathEntries) {
+			if (classPathEntry.getName().endsWith(".jar")) {
+				JarFile jf = jarsCache.get(classPathEntry);
 				if (jf == null) {
 					try {
-						jf = new JarFile(cPathName);
-						jarsCache.put(cPathName, jf);
+						jf = new JarFile(classPathEntry);
+						jarsCache.put(classPathEntry, jf);
 						JarEntry je = jf.getJarEntry(fileName);
 						if (je == null) {
 							// not found in this JAR, try next...
 							continue;
 						}
-						long classSize = je.getSize();
+						if (je.getSize() > Integer.MAX_VALUE) {
+							throw new IOException("Entry way too big to be class file!");
+						}
+						int classSize = (int)je.getSize();
 						if (classSize > Integer.MAX_VALUE) {
 							throw new ClassFormatError(className + " Jar entry too big");
 						}
 						InputStream is = jf.getInputStream(je);
 						byte[] data = new byte[(int)classSize];
-						is.read(data);
-						System.out.println("[Loaded class " + className +
-							" from jar " + cPathName);
+						int n = 0;
+						do {
+							n += is.read(data, n, classSize - n);
+						} while (n < classSize);
+						if (n != classSize) {
+							String mesg = String.format("Only read %d bytes of %d", n, classSize);
+							System.err.println(mesg);
+							throw new IOException(mesg);
+						}
+						System.out.printf("[JarPackagingClassLoader: Loaded class %s from jar %s, size %d%n", className,
+							classPathEntry, data.length);
+						for (int i = 0; i < CAFE_BABE.length; i ++)
+							if (data[i] != (byte)CAFE_BABE[i]) {
+								throw new IOException("Not a valid Java .class");
+							}
+						System.out.println();
 						return data;
 					} catch (IOException e) {
-						System.err.printf("Warning: ClassPath Entry %s missing", cPathName);
+						System.err.printf("Warning: ClassPath Entry %s missing/invalid (%s).", classPathEntry, e);
 						continue;
 					}
 				}
 				
 			} else {
-				File f = new File(cPathName + "/" + fileName);
+				File f = new File(classPathEntry, fileName);
 				if (f.exists()) {
 					
 					long dataLength = f.length();
@@ -94,31 +138,34 @@ public class JarPackagingClassLoader extends ClassLoader {
 	public synchronized Class<?> loadClass(String className, boolean resolve) 
 			throws ClassNotFoundException {
 		System.out.printf("JarPackagingClassLoader.loadClass(%s)\n", className);
-		/** We can expect to be called to resolve at least the target's
+		
+		/** We will be called to resolve other stuff like the target's
 		 * superclass (java.lang.Object). Fortunatetely, we can just
 		 * use super.findSystemClass() to load such things...
 		 */
-		if (className.startsWith("java.") || className.startsWith("javax.")) {
+		if (className.startsWith("java.") || className.startsWith("javax.") ||
+				className.startsWith("sun;") || className.startsWith("com.sun.")) {
 			System.out.println("loadClass: SystemLoading " + className);
 			return findSystemClass(className);
 		}
 		Class c = loadedClassesCache.get(className);
 		if (c == null) {
-			System.out.println("loadClass: About to genClassData " + className);
-			byte mydata[] = genClassData(className);
-			System.out.println("loadClass: About to defineClass " + className);
-			c = defineClass(className, mydata, 0, mydata.length);
-			
+			byte mydata[] = getClassData(className);
+			c = defineClass(className, mydata, 0, mydata.length);			
 			loadedClassesCache.put(className, c);
 		} else
 			System.out.println("loadClass: found " + className + " in cache.");
 		if (resolve) {
-			System.out.println("loadClass: About to resolveClass " + className);
+			System.out.println("loadClass: calling resolveClass " + className);
 			resolveClass(c);
 		}
 		return c;
 	}
 
+	private void makeItSo() throws IOException {
+		System.err.println("Would write the classes to a new Jar file here.");
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("JarPackagingClassLoader.main()");
 		JarPackagingClassLoader loader = new JarPackagingClassLoader();
@@ -127,15 +174,19 @@ public class JarPackagingClassLoader extends ClassLoader {
 		try {
 			/* Load the target class */
 
-			System.out.println("About to load class  Demo");
+			System.out.printf("Target class %s%n", classToLoad);
 			Class c = loader.loadClass(classToLoad, true);
-			System.out.printf("About to instantiate class %s%n", classToLoad);
+			
+			System.out.printf("Finally ready to instantiate class %s%n", classToLoad);
 			Object demo = c.newInstance();
-			System.out.println("Got Demo class instantiated: " + demo);
+			System.out.println("SUCCESS: Demo class instantiated: " + demo);
+			
+			loader.makeItSo();
 
 		} catch (Exception e) {
+			System.out.println("Something is dreadfully wrong for I feel, a deep burning pain in my sta-aa-a-ck:");
 			e.printStackTrace();
-			System.out.println("Could not load/instantiate test class");
 		}
 	}
+
 }
