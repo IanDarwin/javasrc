@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<people xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./people.xsd" >
+<person>
+	<name>Ian Darwin</name>
+	<email>http://www.darwinsys.com/</email>
+	<country>Canada</country>
+</person>
+<person>
+	<name>Another Darwin</name>
+	<email type="intranet">afd@node1</email>
+	<country>Canada</country>
+</person>
+</people>

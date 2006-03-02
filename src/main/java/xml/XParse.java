@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -18,30 +17,6 @@ import org.xml.sax.SAXParseException;
  * @version $Id$
  */
 public class XParse {
-
-	/** Parse the file 
-	 * @throws ParserConfigurationException 
-	 * @throws IOException 
-	 * @throws SAXException
-	 *  */
-	public static void parse(File xmlFile, Schema schema, boolean validate) throws ParserConfigurationException, SAXException, IOException {
-
-			System.err.println("Parsing " + xmlFile.getAbsolutePath() + "...");
-
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			if (validate || schema != null)
-				dbFactory.setValidating(true);
-			if (schema != null) {
-				dbFactory.setSchema(schema);
-			}
-			DocumentBuilder parser = dbFactory.newDocumentBuilder();
-			// If not using schema, Get local copies of DTDs...
-			if (schema == null) {
-				parser.setEntityResolver(new MyDTDResolver());
-			}
-			parser.parse(xmlFile);
-			System.out.println("Parsed/Validated OK");
-	}
 
 	/**
 	 * Parse one or more XML documents with optional validation.
@@ -77,7 +52,27 @@ public class XParse {
 			    
 			} else {
 				File xmlFile = new File(av[i]);
-				parse(xmlFile, schema, validate);
+				System.err.println("Parsing " + xmlFile.getAbsolutePath() + "...");
+				
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				if (validate) {
+					if (schema != null) {
+						dbFactory.setSchema(schema);
+					} else {
+						dbFactory.setValidating(true);
+						dbFactory.setNamespaceAware(true);
+						dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
+								XMLConstants.W3C_XML_SCHEMA_NS_URI);
+					}			
+					
+				}
+				DocumentBuilder parser = dbFactory.newDocumentBuilder();
+				// If not using schema, Get local copies of DTDs...
+//				if (schema == null) {
+//					parser.setEntityResolver(new MyDTDResolver());
+//				}
+				parser.parse(xmlFile);
+				System.out.println("Parsed/Validated OK");
 			}
 		}
 		} catch (SAXParseException ex) {
