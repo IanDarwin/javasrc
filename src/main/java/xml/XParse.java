@@ -7,14 +7,13 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.*;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-/** Parse an XML file using DOM, via JAXP.
+/** Parse an XML file using DOM, via JAXP. Tries to handle both DTD-based and Schema-based validation.
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
@@ -23,24 +22,24 @@ public class XParse {
 	/** Parse the file 
 	 * @throws ParserConfigurationException 
 	 * @throws IOException 
-	 * @throws SAXException */
-	public static void parse(String fileName, Schema schema, boolean validate) throws ParserConfigurationException, SAXException, IOException {
+	 * @throws SAXException
+	 *  */
+	public static void parse(File xmlFile, Schema schema, boolean validate) throws ParserConfigurationException, SAXException, IOException {
 
-			System.err.println("Parsing " + fileName + "...");
+			System.err.println("Parsing " + xmlFile.getAbsolutePath() + "...");
 
-			// Make the document a URL so relative DTD works.
-			String uri = "file:" + new File(fileName).getAbsolutePath();
-
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			if (validate || schema != null)
-				factory.setValidating(true);
+				dbFactory.setValidating(true);
 			if (schema != null) {
-				factory.setSchema(schema);
+				dbFactory.setSchema(schema);
 			}
-			DocumentBuilder p = factory.newDocumentBuilder();
-			// Get local copies of DTDs...
-			p.setEntityResolver(new MyDTDResolver());
-			p.parse(uri);
+			DocumentBuilder parser = dbFactory.newDocumentBuilder();
+			// If not using schema, Get local copies of DTDs...
+			if (schema == null) {
+				parser.setEntityResolver(new MyDTDResolver());
+			}
+			parser.parse(xmlFile);
 			System.out.println("Parsed/Validated OK");
 	}
 
@@ -70,15 +69,16 @@ public class XParse {
 
 			    // load the W3c XML schema, represented by a Schema instance
 			    String schemaLocation = av[++i];
-				File file = new File(schemaLocation);
-				if (!file.exists()) {
+				File schemaFile = new File(schemaLocation);
+				if (!schemaFile.exists()) {
 					throw new IOException("Schema location = " + schemaLocation + " does not exist");
 				}
-				Source schemaFile = new StreamSource(file);
-			    schema = factory.newSchema(schemaFile);
+				schema = factory.newSchema(schemaFile);
 			    
-			} else
-				parse(av[i], schema, validate);
+			} else {
+				File xmlFile = new File(av[i]);
+				parse(xmlFile, schema, validate);
+			}
 		}
 		} catch (SAXParseException ex) {
 			System.err.println("+================================+");
@@ -86,13 +86,11 @@ public class XParse {
 			System.err.println("+================================+");
 			System.err.println(ex.toString());
 			System.err.println("At line " + ex.getLineNumber());
-			System.err.println("+================================+");
 		} catch (SAXException ex) {
 			System.err.println("+================================+");
 			System.err.println("|          *SAX Error*           |");
 			System.err.println("+================================+");
 			System.err.println(ex.toString());
-			System.err.println("+================================+");
 		} catch (Exception ex) {
 			System.err.println("+================================+");
 			System.err.println("|           *XML Error*          |");
