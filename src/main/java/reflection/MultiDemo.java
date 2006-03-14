@@ -6,11 +6,15 @@ package introspection;
  */
 public class MultiDemo {
 	static {
-		System.out.println("Demo loaded");
+		System.out.println("MultiDemo loaded");
 	}
 	public MultiDemo() {
 	}
 	public static void test() {
-		System.out.println("Demo.test invoked");
+		System.out.println("MultiDemo.test invoked");
+	}
+	@Override
+	public String toString() {
+		return "A MultiDemo object";
 	}
 }
