@@ -12,7 +12,7 @@ public class FormatterDemo {
 		// a format code String and 1 or more arguments.
 		// Each format code consists of the following:
 		// % - code lead-in
-		// N$ - which parameter number (1-based) after the code
+		// N$ - which parameter number (1-based) after the code - OPTIONAL
 		// N - field width
 		// L - format letter (d: decimal(int); f: float; s: general; many more)
 		// For the full(!) story, see javadoc for java.util.Formatter.
@@ -23,14 +23,12 @@ public class FormatterDemo {
 		System.out.println(result);
 
 		// Shorter way using String.format().
-		Object stringResult = String.format("%1$04d - the year of %2$f", 1951, Math.PI);
+		Object stringResult = String.format("%04d - the year of %f", 1951, Math.PI);
 		System.out.println(stringResult);
 		
-		// A shorter way of doing things. But this
-		// way you must provide the newline delimiter
-		System.out.format("%04d - the year of %f%n", 1951, Math.PI);
-
-		// So is this
+		// A shorter way using PrintStream/PrintWriter.format, more in line with
+		// other languages. But this way you must provide the newline delimiter 
+		// using %n (do NOT use \n as that is platform-dependant!).
 		System.out.printf("%04d - the year of %f%n", 1951, Math.PI);
 
 		// Format doubles with more control
