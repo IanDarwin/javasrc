@@ -16,13 +16,15 @@ public class LPDTalk {
 	final static char LIST_LONG = 4;	// CTRL/D
 	final static char REMOVE = 5;	// CTRL/E
 	final static char EOL = '\n';
-	String server = "192.168.1.250";
+	static String server = "192.168.1.250";
 	Socket s;
 	PrintStream out;
 	BufferedReader in;
 	String queue = "lp";
 	
 	public static void main(String[] args) throws IOException {
+		if (args.length == 1)
+			server = args[0];
 		
 		LPDTalk talk;
 //		talk = new LPDTalk();
@@ -49,6 +51,10 @@ public class LPDTalk {
 		in.close();
 		out.close();
 		s.close();
+	}
+	
+	private int response() throws IOException {
+		return in.read();
 	}
 	
 	/** Send a line, with EOL and flush */
@@ -78,9 +84,8 @@ public class LPDTalk {
 	private void printHelloPS()  throws IOException {
 		println(QUEUE + queue);
 		println("%!Adobe-PS");
-		println("100 100 moveto");
+		println("100 500 moveto");
 		println("/Helvetica-Narrow findfont 20 scalefont setfont");
-		//for (int i = 0; i < 100; i++)
 		println("(Hello world) show");
 		println("showpage");
 		println("");
