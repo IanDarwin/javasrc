@@ -1,4 +1,7 @@
+package oo.inherit;
+
 public class Customer extends Person {
+	
 	private int customerNumber;
 
 	public Customer(String firstName, String lastName, int number) {
@@ -10,5 +13,9 @@ public class Customer extends Person {
 		if (n < 1)
 			throw new IllegalArgumentException("Invalid customer number " + n);
 		customerNumber = n;
+	}
+
+	protected int getCustomerNumber() {
+		return customerNumber;
 	}
 }

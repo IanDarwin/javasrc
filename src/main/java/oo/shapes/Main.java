@@ -1,4 +1,7 @@
-import java.util.*;
+package oo.shapes;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 /** Part of a main program using Shape objects */
 public class Main {

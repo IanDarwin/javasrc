@@ -1,3 +1,5 @@
+package oo.inherit;
+
 public class Person {
 	String firstName;
 	String lastName;
