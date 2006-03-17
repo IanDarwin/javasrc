@@ -11,6 +11,7 @@ import java.net.Socket;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
@@ -42,7 +43,7 @@ public class Handler {
 	 * this is probably quite inefficient, but simple. Need ThreadPool).
 	 * Note that Hashtable methods *are* synchronized.
 	 */
-	private static HashMap h = new HashMap();
+	private static Map<String,Object> h = new HashMap<String,Object>();
 
 	static {
 		h.put("", "<html><body><b>Unknown server error</b>".getBytes());
