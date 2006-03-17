@@ -1,5 +1,6 @@
 package structure;
 
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +12,7 @@ public class IteratorDemo {
 
 	public static void main(String[] argv) {
 
-		List l = new ArrayList();
+		List<Date> l = new ArrayList<Date>();
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the list...

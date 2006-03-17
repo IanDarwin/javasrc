@@ -18,10 +18,10 @@ public class StrSortCase {
 		"Zulu"
 	};
 
-	Vector v = new Vector();
+	Vector<String> v = new Vector<String>();
 
 	void load() {
-		v = new Vector();
+		v = new Vector<String>();
 		for (int i=0; i<rawStrings.length; i++)
 			v.addElement(rawStrings[i]);
 	}

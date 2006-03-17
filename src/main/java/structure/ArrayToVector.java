@@ -1,6 +1,10 @@
 package structure;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
 
 /** Convert an Array to a Vector. */
 public class ArrayToVector {

@@ -11,8 +11,8 @@ import java.util.*;
 public class LinkedListDemo {
 	public static void main(String[] argv) {
 		System.out.println("Here is a demo of Java 1.2's LinkedList class");
-		LinkedList l = new LinkedList();
-		l.add(new Object());
+		LinkedList<String> l = new LinkedList<String>();
+		l.add(new Object().toString());
 		l.add("Hello");
 		l.add("end of the list");
 

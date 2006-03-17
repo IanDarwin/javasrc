@@ -1,13 +1,14 @@
 package structure;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
- * ArrayListDemo done over using an ArrayList
+ * ArrayList Demo.
  */
 public class ArrayListDemo {
 	public static void main(String[] argv) {
-		ArrayList al = new ArrayList();
+		ArrayList<Date> al = new ArrayList<Date>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);
@@ -17,7 +18,7 @@ public class ArrayListDemo {
 		al.add(source.getDate());
 		al.add(source.getDate());
 
-		// First print them out using a for loop.
+		// Print them out using a for loop.
 		System.out.println("Retrieving by index:");
 		for (int i = 0; i<al.size(); i++) {
 			System.out.println("Element " + i + " = " + al.get(i));

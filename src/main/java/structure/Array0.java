@@ -1,6 +1,6 @@
 package structure;
 
-/** Simple example
+/** Simple array example
  * @author Ian Darwin
  * @version $Id$
  */

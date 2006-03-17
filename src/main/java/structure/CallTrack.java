@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CallTrack {
 
 	/** The list of Person objects. */
-	protected List usrList = new ArrayList();
+	protected List<Person> usrList = new ArrayList<Person>();
 
 	/** The scrolling list */
 	protected java.awt.List visList = new java.awt.List();

@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
 /** Array Hunt "game" (pathetic: computer plays itself).
  * @author Ian Darwin

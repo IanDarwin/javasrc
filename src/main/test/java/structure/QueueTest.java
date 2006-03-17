@@ -13,7 +13,7 @@ public class QueueTest extends TestCase {
 	protected Queue q;
 
 	public void setUp() {
-		q = new Queue();
+		q = new Queue<String>();
 		q.q_add("One");
 		q.q_add("Two");
 	}

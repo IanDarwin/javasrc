@@ -13,7 +13,7 @@ public class HashtableDemo {
 		// Construct and load the hash. This simulates loading a
 		// database or reading from a file, or wherever the data is.
 
-		Hashtable h = new Hashtable();
+		Hashtable<String,String> h = new Hashtable<String,String>();
 
 		// The hash maps from company name to address.
 		// In real life this might map to an Address object...

@@ -1,6 +1,8 @@
 package structure;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Demonstrate the HashMap class, and an Iterator.
@@ -13,7 +15,7 @@ public class HashMapDemo {
 		// Construct and load the hash. This simulates loading a
 		// database or reading from a file, or wherever the data is.
 
-		Map map = new HashMap();
+		Map<String,String> map = new HashMap<String,String>();
 
 		// The hash maps from company name to address.
 		// In real life this might map to an Address object...

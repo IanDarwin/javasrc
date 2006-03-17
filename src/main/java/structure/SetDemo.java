@@ -9,7 +9,7 @@ import java.util.*;
 public class SetDemo {
 	public static void main(String[] argv) {
 		//+
-		Set h = new HashSet();
+		Set<String> h = new HashSet<String>();
 		h.add("One");
 		h.add("Two");
 		h.add("One"); // DUPLICATE

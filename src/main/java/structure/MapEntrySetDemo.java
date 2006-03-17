@@ -13,7 +13,7 @@ public class MapEntrySetDemo {
 		// Construct and load the hash. This simulates loading a
 		// database or reading from a file, or wherever the data is.
 
-		Map map = new HashMap();
+		Map<String,String> map = new HashMap<String,String>();
 
 		// The hash maps from company name to address.
 		// In real life this might map to an Address object...
