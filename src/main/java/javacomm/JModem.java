@@ -2,6 +2,7 @@ package javacomm;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
@@ -17,8 +18,9 @@ import javax.swing.JTextArea;
  * @version   $Id$
  */
 public class JModem extends javax.swing.JFrame {
+	private static final long serialVersionUID = 8656166709852255134L;
 
-  /** The Model. */
+/** The Model. */
   JMModel theModel;
 
   /** The TextArea */
@@ -30,8 +32,11 @@ public class JModem extends javax.swing.JFrame {
   /** The types of remote systems. */
   private String sysTypes[] = { "Unix", "DOS", "Other" };
 
-  private int M_RECEIVE = -1, M_SEND = +1;
-  private int xferDirection = M_RECEIVE;
+  enum Direction {
+	  M_RECEIVE,
+	  M_SEND;
+  }
+  private Direction xferDirection = Direction.M_RECEIVE;
 
   /** Constructor */
   public JModem() {
@@ -303,12 +308,14 @@ public class JModem extends javax.swing.JFrame {
    * remote, not to local. This IS a terminal emulator, after all.
    */
   class MyTextArea extends JTextArea {
-    MyTextArea(int r, int c) {
+	private static final long serialVersionUID = 1928110116896814495L;
+
+	MyTextArea(int r, int c) {
       super(r, c);
     }
 
     /** Handle local KeyEvents: send KeyTyped to the remote. */
-    protected void processComponentKeyEvent(java.awt.event.KeyEvent evt) {
+    protected void processComponentKeyEvent(KeyEvent evt) {
       if (evt.getID() != KeyEvent.KEY_TYPED)
         return;
 
@@ -374,11 +381,11 @@ public class JModem extends javax.swing.JFrame {
   }
 
   private void recvRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recvRadioButtonActionPerformed
-    xferDirection = M_RECEIVE;
+    xferDirection = Direction.M_RECEIVE;
   }//GEN-LAST:event_recvRadioButtonActionPerformed
 
   private void sendRadioButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRadioButtonActionPerformed
-    xferDirection = M_SEND;
+    xferDirection = Direction.M_SEND;
   }//GEN-LAST:event_sendRadioButtonActionPerformed
 
   private void exitMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
@@ -406,7 +413,7 @@ public class JModem extends javax.swing.JFrame {
   /** This method basically toggles between Connected mode and
    * disconnected mode.
    */
-  private void connectButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
+  private void connectButtonActionPerformed (ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
     if (theModel.state == JMModel.S_CONNECTED) {
       theModel.disconnect();  // calls our disconnect() if OK
     } else {
