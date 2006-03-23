@@ -23,6 +23,7 @@ public class CommPortLister {
 		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
 
 		// Process the list.
+		boolean found = false;
 		while (pList.hasMoreElements()) {
 			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
 			System.out.print("Port " + cpi.getName() + " ");
@@ -33,6 +34,9 @@ public class CommPortLister {
 			} else {
 				System.out.println("is an Unknown Port: " + cpi);
 			}
+		}
+		if (!found) {
+			System.out.println("No ports found");
 		}
 	}
 }
