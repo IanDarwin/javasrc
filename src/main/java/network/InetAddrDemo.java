@@ -1,7 +1,8 @@
 package network;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
 
 public class InetAddrDemo {
 	public static void main(String[] args)
@@ -23,5 +24,6 @@ public class InetAddrDemo {
 		// Connect to different portnum on same host as an open Socket
 		InetAddress remote = theSocket.getInetAddress();
 		Socket anotherSocket = new Socket(remote, myPortNumber);
+		System.out.println(anotherSocket); // Show that we got here...
 	}
 }
