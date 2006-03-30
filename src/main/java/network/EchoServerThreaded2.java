@@ -25,7 +25,6 @@ public class EchoServerThreaded2 {
 	public EchoServerThreaded2(int port, int numThreads)
 	{
 		ServerSocket servSock;
-		Socket clientSocket;
 
 		try {
 			servSock = new ServerSocket(ECHOPORT);

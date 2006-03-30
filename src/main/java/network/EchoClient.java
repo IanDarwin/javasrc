@@ -22,7 +22,6 @@ public class EchoClient {
 	protected void converse(String hostname) {
 		Socket sock = null;
 		try {
-			int i;
 			sock = new Socket(hostname, 7);	// echo server.
 			BufferedReader stdin = new BufferedReader(
 				new InputStreamReader(System.in));
