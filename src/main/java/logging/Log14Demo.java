@@ -1,4 +1,4 @@
-package network;
+package logging;
 
 import java.util.logging.Logger;
 
