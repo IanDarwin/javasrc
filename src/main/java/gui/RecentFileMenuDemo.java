@@ -23,17 +23,19 @@ import javax.swing.JTextArea;
 
 /**
  * Show how to make a "Recent Files" menu.
+ * XXX opening from recent adds it twice...
  * @author Ian Darwin
  */
 public class RecentFileMenuDemo extends JFrame implements ActionListener {
 	private static final String PREFS_KEY = "recentFile";
-	JMenuBar mb;
+	final JMenuBar mb;
 	/** File, Options, Help */
-	JMenu fm, om, hm;
+	final JMenu fm, om, hm;
+	final JMenu recentMenu = new JMenu("Recent Items");
 	/** Options Sub-Menu */
-	JMenu opSubm;
+	final JMenu opSubm;
 	/** The MenuItem for exiting. */
-	JMenuItem exitItem;
+	final JMenuItem exitItem;
 	/** An option that can be on or off. */
 	JCheckBoxMenuItem cb;
 	final JFileChooser chooser = new JFileChooser();
@@ -49,7 +51,6 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 
 		setJMenuBar(mb = new JMenuBar());
 
-		final JMenu recentMenu = new JMenu("Recent Items");
 		JMenuItem mi;
 		
 		// The File Menu...
@@ -59,16 +60,14 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 				public void actionPerformed(ActionEvent ev) {
 					String fileName = chooseFile();
 					try {
-						openFile(fileName);
-						putRecentFileName(fileName);
-						loadRecentMenu(recentMenu);
+						openFile(fileName);						
 					} catch (Exception e) {
 						JOptionPane.showMessageDialog(RecentFileMenuDemo.this, "IO Error reading file: " + e);
 					}
 				}				
 			});
 			fm.add(recentMenu);
-			loadRecentMenu(recentMenu);
+			loadRecentMenu();
 			fm.add(mi = new JMenuItem("Close"));
 			mi.addActionListener(this);
 			fm.addSeparator();
@@ -106,7 +105,11 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 		pack();
 	}
 
-	ActionListener recentOpener = new ActionListener() {
+	/**
+	 * ActionListener that is used by all the Menuitems in the Recent Menu;
+	 * just opens the file named by the MenuItem's text.
+	 */
+	private ActionListener recentOpener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			JMenuItem mi = (JMenuItem) e.getSource();
 			try {
@@ -118,10 +121,33 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 		
 	};
 	
+	public final static int MAX_RECENT_FILES = 5;
+
+	private List<String> recentFileNames = new ArrayList<String>();
+
 	/**
-	 * @param recentMenu
+	 * Add the given filename to the top of the recent list in Prefs and in menu.
 	 */
-	private void loadRecentMenu(JMenu recentMenu) {
+	private void putRecentFileName(String f) {
+		while (recentFileNames.size() > MAX_RECENT_FILES) {
+			recentFileNames.remove(recentFileNames.size()-1);
+		}
+		if (recentFileNames.contains(f)) {
+			recentFileNames.remove(f);
+		}
+		recentFileNames.add(0, f);
+		for (int i = 0; i < recentFileNames.size(); i++) {
+			String t = recentFileNames.get(i);
+			System.out.println("Setting " + t + " at " + i);
+			prefs.put(PREFS_KEY + i, t);
+		}
+		loadRecentMenu();
+	}
+
+	/**
+	 * Lodd or re-load the recentMenu
+	 */
+	private void loadRecentMenu() {
 		for (int i = 0; i < recentMenu.getMenuComponentCount(); i++) {
 			recentMenu.remove(0);
 		}
@@ -141,11 +167,19 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Open a file (to simulate actually loading it into the model), and update
+	 * the recent files list.
+	 */
 	private void openFile(String fileName) throws IOException {
 		new FileReader(fileName);
+		putRecentFileName(fileName);
 		System.out.println(fileName + " opened OK");
 	}
 
+	/**
+	 * Pop up a JFileChooser and return the name if the user chooses a file, else null.
+	 */
 	private String chooseFile() {
 		int returnVal = chooser.showOpenDialog(this);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -153,46 +187,16 @@ public class RecentFileMenuDemo extends JFrame implements ActionListener {
 			System.out.println("You chose a file named " + file.getPath());
 			return file.getAbsolutePath();
 		} else {
-			JOptionPane.showMessageDialog(this, "You did not choose a file!");
 			return null;
 		}
 	}
 
-	public final static int MAX_RECENT_FILES = 5;
 
-	private List<String> recentFileNames = new ArrayList<String>();
-
-	
-		
-
-
-	public void putRecentFileName(String f) {
-		while (recentFileNames.size() > MAX_RECENT_FILES) {
-			recentFileNames.remove(recentFileNames.size()-1);
-		}
-		if (recentFileNames.contains(f)) {
-			recentFileNames.remove(f);
-		}
-		recentFileNames.add(0, f);
-		for (int i = 0; i < recentFileNames.size(); i++) {
-			String t = recentFileNames.get(i);
-			System.out.println("Setting " + t + " at " + i);
-			prefs.put(PREFS_KEY + i, t);
-		}
-	}
-
-	/** Handle action events. */
+	/** Handle a few action events. */
 	public void actionPerformed(ActionEvent evt) {
-		// System.out.println("Event " + evt);
-		String cmd;
-		if ((cmd = evt.getActionCommand()) == null)
-			System.out.println("You chose a menu shortcut");
-		else
-			System.out.println("You chose " + cmd);
-		Object cmp = evt.getSource();
-		// System.out.println("Source " + cmp);
-		if (cmp == exitItem)
+		if (evt.getSource() == exitItem)
 			System.exit(0);
+		System.out.println("No action written yet for " + evt.getSource());
 	}
 
 	public static void main(String[] arg) {
