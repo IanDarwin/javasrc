@@ -1,6 +1,6 @@
 package dir_file;
 
-import java.io.*;
+import java.io.File;
 
 /**
  * Delete a file from within Java, with error handling.

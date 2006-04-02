@@ -1,7 +1,8 @@
 package dir_file;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 
 /**
  * Report on a file's status in Java

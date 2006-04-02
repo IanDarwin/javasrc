@@ -1,6 +1,7 @@
 package dir_file;
 
-import java.io.*;
+import java.io.File;
+
 /**
  * DirTree - directory lister, like UNIX ls or DOS/VMS dir
  *

@@ -1,6 +1,7 @@
 package dir_file;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Create one or more files by name.

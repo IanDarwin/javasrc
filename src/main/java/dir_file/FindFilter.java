@@ -1,7 +1,10 @@
 package dir_file;
 
-import java.io.*;
-import java.util.regex.*;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
 import com.darwinsys.util.Debug;
 
 /** Class to encapsulate the filtration for Find.

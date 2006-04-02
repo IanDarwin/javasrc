@@ -1,6 +1,7 @@
 package dir_file;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Delete a file from within Java
@@ -14,7 +15,7 @@ public class Delete {
 		// this source file. The file probably already exists.
 		// My editor creates backups by putting ~ at the end of the name.
 		File bkup = new File("Delete.java~");
-		// Quick, now, delete it immediately:
+		// Now, delete it:
 		bkup.delete();
 	}
 }

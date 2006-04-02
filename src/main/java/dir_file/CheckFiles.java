@@ -1,10 +1,14 @@
 package dir_file;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
- * Get a list of files, and check if any files are missing.
+ * Get a list of files that should be present, and check
+ * if any files are missing from the disk.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
@@ -19,12 +23,11 @@ public class CheckFiles {
 	}
 	public String FILENAME = "filelist.txt";
 
-	protected ArrayList listFromFile;
-	protected ArrayList listFromDir = new ArrayList();
+	protected ArrayList<String> listFromFile = new ArrayList<String>();
+	protected ArrayList<String> listFromDir = new ArrayList<String>();
 
 	protected void getListFromFile() {
-		listFromFile = new ArrayList();
-		BufferedReader is;
+		BufferedReader is = null;
 		try {
 			is = new BufferedReader(new FileReader(FILENAME));
 			String line;
@@ -36,12 +39,17 @@ public class CheckFiles {
 		} catch (IOException e) {
 			System.err.println("Error reading file list");
 			return;
+		} finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				// nothing to do
+			}
 		}
 	}
 
 	/** Get list of names from the directory */
 	protected void getListFromDirectory() {
-		listFromDir = new ArrayList();
 		String[] l = new java.io.File(".").list();
 		for (int i=0; i<l.length; i++)
 			listFromDir.add(l[i]);
