@@ -18,31 +18,41 @@ public class BigNumCalc {
 		System.out.println(calc.calculate(testInput));
 	}
 
-	Stack s = new Stack();
+	/**
+	 * Stack of numbers being used in the calculator.
+	 */
+	Stack<BigDecimal> stack = new Stack<BigDecimal>();
 
+	/**
+	 * Calculate a set of operands; the input is an Object array containing
+	 * either BigDecimal objects (which may be pushed onto the Stack) and
+	 * operators (which are operated on immediately).
+	 * @param input
+	 * @return
+	 */
 	public BigDecimal calculate(Object[] input) {
 		BigDecimal tmp;
 		for (int i = 0; i < input.length; i++) {
 			Object o = input[i];
 			if (o instanceof BigDecimal) {
-				s.push(o);
+				stack.push((BigDecimal) o);
 			} else if (o instanceof String) {
 				switch (((String)o).charAt(0)) {
 				// + and * are commutative, order doesn't matter
 				case '+':
-					s.push(((BigDecimal)s.pop()).add((BigDecimal)s.pop()));
+					stack.push((stack.pop()).add(stack.pop()));
 					break;
 				case '*':
-					s.push(((BigDecimal)s.pop()).multiply((BigDecimal)s.pop()));
+					stack.push((stack.pop()).multiply(stack.pop()));
 					break;
 				// - and /, order *does* matter
 				case '-':
-					tmp = (BigDecimal)s.pop();
-					s.push(((BigDecimal)s.pop()).subtract(tmp));
+					tmp = (BigDecimal)stack.pop();
+					stack.push((stack.pop()).subtract(tmp));
 					break;
 				case '/':
-					tmp = (BigDecimal)s.pop();
-					s.push(((BigDecimal)s.pop()).divide(tmp,
+					tmp = stack.pop();
+					stack.push((stack.pop()).divide(tmp,
 						BigDecimal.ROUND_UP));
 					break;
 				default:
@@ -52,6 +62,6 @@ public class BigNumCalc {
 				throw new IllegalArgumentException("Syntax error in input");
 			}
 		}
-		return (BigDecimal)s.pop();
+		return stack.pop();
 	}
 }
