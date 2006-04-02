@@ -19,13 +19,13 @@ public class ComplexTest extends TestCase {
 		assertEquals("add test", new Complex(4, 4), sum);
 	}
 	
-	public void testMultiply() {
+	public void testMultiplyAndDivide() {
 		Complex c = new Complex(3,  5);
 		Complex d = new Complex(2, -2);
 		Complex m = new Complex(16.0, 4.0);
+		assertEquals(m, c.multiply(d));
+		assertEquals(c, Complex.divide(m,d));
 	}
-	
-	// TODO: test divide
 	
 	public void testToString() {
 		assertEquals("toString Test", "3.4-5.6i", 
