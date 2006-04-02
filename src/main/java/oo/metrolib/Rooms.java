@@ -11,8 +11,14 @@ public class Rooms {
 	static {
 		System.out.println("Building rooms...");
 
-		// MUST init these all before setting them up.
-		lobby = new Room();
+		// These must be allocated first, then set up (i.e., not created and
+		// filled using a Constructor, as is more usual), because they 
+		// contain references to each other...
+		lobby = new Room() {
+			public String getEntryMessage() {
+				return "I see you made it back to the lobby.";
+			}
+		};
 		mainHall = new Room();
 		hallOfKings = new Room();
 

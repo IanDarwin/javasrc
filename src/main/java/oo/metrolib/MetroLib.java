@@ -1,6 +1,8 @@
 package oo.metrolib;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MetroLib {
 	private Room room;
@@ -12,67 +14,73 @@ public class MetroLib {
 	/** Main program, get the game going and run it. */
 	public static void main(String[] args) throws IOException {
 		println("This is a trivial game demonstrating OO structures.");
+		println("I am the last descendant of a long-lost game of great grandeur.");
+
 		BufferedReader is = new BufferedReader(
 			new InputStreamReader(System.in));
+
 		MetroLib game = new MetroLib();
-		println("You can in general move north south east or west");
+		println("Welcome! You can in general move north south east or west");
 		println("");
 		// Manually print out first room's message.
 		println(game.room.entryMessage);
 
 		// Main loop: run the game.
-		int cmd;
+		Cmd cmd;
 		while ((cmd = game.parseCmd(is)) != Cmd.QUIT) {
 			game.play(cmd);
 		}
 	}
 
 	/** Read a line and delegate it to the parser */
-	int parseCmd(BufferedReader is) throws IOException {
+	Cmd parseCmd(BufferedReader is) throws IOException {
 		String line = is.readLine();
 		return Cmd.parseCmd(line);
 	}
 
-	void play(int cmd) {
+	void play(Cmd cmd) {
 		Room newRoom = null;
 		boolean noWay = false;
 		switch(cmd) {
-		case Cmd.UNKNOWN:
+		case UNKNOWN:
 			println("Unknown command!");
 			break;
-		case Cmd.NORTH:
+		case NORTH:
 			if (room.north != null) {
 				newRoom = room.north;
 			} else
 				noWay = true;
 			break;
-		case Cmd.EAST:
+		case EAST:
 			if (room.east != null) {
 				newRoom = room.east;
 			} else
 				noWay = true;
 			break;
-		case Cmd.SOUTH:
+		case SOUTH:
 			if (room.south != null) {
 				newRoom = room.south;
 			} else
 				noWay = true;
 			break;
-		case Cmd.WEST:
+		case WEST:
 			if (room.west != null) {
 				newRoom = room.west;
 			} else
 				noWay = true;
 			break;
-		case Cmd.HELP:
+		case LOOK:
+			println(room.entryMessage);
+			return;
+		case HELP:
 			println("Sorry, help not written yet. I cannot help it");
-			break;
+			return;
 		default:
-			println("LOGIC ERROR: Unhandled case " + (char)cmd);
-			break;
+			println("LOGIC ERROR: Unhandled case " + cmd);
+			return;
 		}
 		if (noWay) {
-			println("I see no way to go in that direction");
+			println("I see no way to go in the direction " + cmd);
 			return;
 		}
 		if (newRoom != null) {
@@ -81,7 +89,7 @@ public class MetroLib {
 			}
 			// The magic happens: we change rooms.
 			room = newRoom;
-			println(room.entryMessage);
+			println(room.getEntryMessage());
 		}
 	}
 

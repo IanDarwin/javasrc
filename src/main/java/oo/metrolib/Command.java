@@ -1,15 +1,16 @@
 package oo.metrolib;
 
-public class Cmd {
-	public final static int HELP = 'h';
-	public final static int NORTH = 'n';
-	public final static int EAST = 'e';
-	public final static int SOUTH = 's';
-	public final static int WEST = 'w';
-	public final static int QUIT = 'q';
-	public final static int UNKNOWN = '?';
+public enum Cmd {
+	HELP,
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST,
+	QUIT,
+	LOOK,
+	UNKNOWN;
 
-	public static int parseCmd(String line) {
+	public static Cmd parseCmd(String line) {
 		if (line == null || line.equals("q") ||
 			line.equalsIgnoreCase("quit"))
 			return QUIT;
@@ -21,7 +22,8 @@ public class Cmd {
 			return SOUTH;
 		if (line.equals("w") || line.equalsIgnoreCase("west"))
 			return WEST;
-
+		if (line.equals("look"))
+			return LOOK;
 		if (line.equals("h") || line.equals("?") ||
 			line.equalsIgnoreCase("help"))
 			return HELP;
