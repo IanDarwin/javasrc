@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class JSCallsApplet extends Applet {
 
-//	@Override
+	@Override
 	public void init() {
 		add(new Label("A test applet"));
 		Button b = new Button("PressMe");
@@ -33,7 +33,7 @@ public class JSCallsApplet extends Applet {
 		setColor(Color.RED);
 	}
 
-// 	@Override
+ 	@Override
 	public void stop() {
 		System.out.println("in stop");
 	}
