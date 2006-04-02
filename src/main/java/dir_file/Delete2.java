@@ -25,7 +25,7 @@ public class Delete2 {
 				return;
 			}
 
-			// Quick, now, delete it immediately:
+			// Now, delete it:
 			if (target.delete())
 				System.err.println("** Deleted " + fileName + " **");
 			else
