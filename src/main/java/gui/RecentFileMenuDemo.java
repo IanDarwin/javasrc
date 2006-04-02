@@ -5,11 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.prefs.Preferences;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
@@ -22,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import com.darwinsys.swingui.RecentMenu;
 import com.darwinsys.swingui.UtilGUI;
 
 /**
@@ -29,15 +26,8 @@ import com.darwinsys.swingui.UtilGUI;
  * @author Ian Darwin
  */
 public class RecentFileMenuDemo extends JFrame {
-	public final static int MAX_RECENT_FILES = 5;
-	private static final String PREFS_KEY = "recentFile";	
-	/** The Menu of recent files */
-	final JMenu recentFilesMenu;
-	/** The List of recent files */
-	private List<String> recentFileNames = new ArrayList<String>();
-	
+
 	final JFileChooser chooser = new JFileChooser();
-	final Preferences prefs = Preferences.userNodeForPackage(RecentFileMenuDemo.class);
 
 	// Constructor
 	RecentFileMenuDemo(String s) {
@@ -51,7 +41,12 @@ public class RecentFileMenuDemo extends JFrame {
 
 		setJMenuBar(mb = new JMenuBar());
 
-		recentFilesMenu = new JMenu("Recent Items");
+		final RecentMenu recentFilesMenu = new RecentMenu(this) {
+			@Override
+			public void loadFile(String fileName) throws IOException {
+				System.out.println("Let's pretend we are loading..." + fileName);
+			}			
+		};
 		
 		JMenuItem mi;
 		
@@ -62,14 +57,20 @@ public class RecentFileMenuDemo extends JFrame {
 				public void actionPerformed(ActionEvent ev) {
 					String fileName = chooseFile();
 					try {
-						openFile(fileName);						
+						recentFilesMenu.openFile(fileName);						
 					} catch (Exception e) {
 						JOptionPane.showMessageDialog(RecentFileMenuDemo.this, "IO Error reading file: " + e);
 					}
 				}				
 			});
 			fm.add(recentFilesMenu);
-			loadRecentMenu();
+			JMenuItem clearItem = new JMenuItem("Clear Recent Files");
+			clearItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					recentFilesMenu.clear();
+				}			
+			});
+			fm.add(clearItem);
 			fm.add(mi = new JMenuItem("Close"));
 			mi.addActionListener(defaultHandler);
 			fm.addSeparator();
@@ -116,84 +117,6 @@ public class RecentFileMenuDemo extends JFrame {
 		pack();
 		UtilGUI.center(this);
 	}
-
-	/**
-	 * Open a file (to simulate actually loading it into the model), and update
-	 * the recent files list.
-	 */
-	private void openFile(String fileName) throws IOException {
-		new FileReader(fileName);
-		putRecentFileName(fileName);
-		System.out.println(fileName + " opened OK");
-	}
-
-	/**
-	 * ActionListener that is used by all the Menuitems in the Recent Menu;
-	 * just opens the file named by the MenuItem's text.
-	 */
-	private ActionListener recentOpener = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			JMenuItem mi = (JMenuItem) e.getSource();
-			try {
-				openFile(mi.getText());
-			} catch (IOException e1) {
-				JOptionPane.showMessageDialog(RecentFileMenuDemo.this, "Could not open file " + e1);
-			}
-		}
-	};
-	
-	/**
-	 * Add the given filename to the top of the recent list in Prefs and in menu.
-	 */
-	private void putRecentFileName(String f) {
-		// Trim from back end if too long
-		while (recentFileNames.size() > MAX_RECENT_FILES-1) {
-			recentFileNames.remove(recentFileNames.size()-1);
-		}
-		// Move filename to front: Remove if present, add at front.
-		if (recentFileNames.contains(f)) {
-			recentFileNames.remove(f);
-		}
-		recentFileNames.add(0, f);
-
-		// Now save from List into Prefs
-		for (int i = 0; i < recentFileNames.size(); i++) {
-			String t = recentFileNames.get(i);
-			prefs.put(PREFS_KEY + i, t);
-		}
-
-		// Finally, load menu again.
-		loadRecentMenu();
-	}
-
-	/**
-	 * Lodd or re-load the recentMenu
-	 */
-	private void loadRecentMenu() {
-		// Clear out both all menu items and List in memory
-		for (int i = recentFilesMenu.getMenuComponentCount() - 1; i >= 0; i--) {
-			recentFilesMenu.remove(0);
-		}
-		recentFileNames.clear();
-
-		// Copy from Prefs into Menu
-		JMenuItem mi;
-		for (int i = 0; i < MAX_RECENT_FILES; i++) {
-			String f = prefs.get(PREFS_KEY + i, null);
-			if (f == null) {	// Stop on first missing
-				break;
-			}
-			// Drop from list if file has been deleted.
-			if (new File(f).exists()) {
-				// Add to List in memory
-				recentFileNames.add(f);
-				// And add to Menu
-				recentFilesMenu.add(mi = new JMenuItem(f));
-				mi.addActionListener(recentOpener);
-			}
-		}
-	}
-
 
 	/**
 	 * Pop up a JFileChooser and return the name if the user chooses a file, else null.
