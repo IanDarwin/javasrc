@@ -1,11 +1,22 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.tree.*;
-import javax.swing.event.*;
-import java.io.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Display a file system in a JTree view
@@ -44,16 +55,16 @@ public class FileTree extends JPanel
 		if (curTop != null) {	// should only be null at root
 			curTop.add(curDir);
 		}
-		Vector ol = new Vector();
+		List<String> ol = new Vector<String>();
 		String[] tmp = dir.list();
 		for (int i=0; i<tmp.length; i++)
-			ol.addElement(tmp[i]);
+			ol.add(tmp[i]);
 		Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);
 		File f;
-		Vector files = new Vector();
+		List<String> files = new Vector<String>();
 		// Make two passes, one for Dirs and one for Files. This is #1.
 		for (int i=0; i<ol.size(); i++) {
-			String thisObject = (String)ol.elementAt(i);
+			String thisObject = ol.get(i);
 			String newPath;
 			if (curPath.equals("."))
 				newPath = thisObject;
@@ -62,11 +73,11 @@ public class FileTree extends JPanel
 			if ((f = new File(newPath)).isDirectory())
 				addNodes(curDir,  f);
 			else
-				files.addElement(thisObject);
+				files.add(thisObject);
 		}
 		// Pass two: for files.
 		for (int fnum=0; fnum<files.size(); fnum++)
-			curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
+			curDir.add(new DefaultMutableTreeNode(files.get(fnum)));
 		return curDir;
 	}
 
