@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import com.darwinsys.swingui.FontChooser;
+
 public class FontChooserDemo {
 
 	/** Simple main program to start it running */
