@@ -1,9 +1,15 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /** Demonstrate Swing "JList" ScrollingList.
  */
@@ -14,7 +20,7 @@ public class JListDemo extends JFrame {
 		super(s);
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
-		ArrayList data = new ArrayList();
+		List<String> data = new ArrayList<String>();
 		data.add("Hi");
 		data.add("Hello");
 		data.add("Goodbye");
