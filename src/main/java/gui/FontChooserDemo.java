@@ -17,7 +17,7 @@ public class FontChooserDemo {
 	/** Simple main program to start it running */
 	public static void main(String[] args) {
 		final JFrame f = new JFrame("FontChooser Startup");
-		final FontChooser fc = new FontChooser(f);
+		final FontChooser fontChooser = new FontChooser(f);
 		final Container cp = f.getContentPane();
 		cp.setLayout(new GridLayout(0, 1));	// one vertical column
 
@@ -29,12 +29,13 @@ public class FontChooserDemo {
 
 		theButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fc.setVisible(true);
-				Font myNewFont = fc.getSelectedFont();
+				fontChooser.setDisplayText("Let there be light");
+				fontChooser.setVisible(true);
+				Font myNewFont = fontChooser.getSelectedFont();
 				System.out.println("You chose " + myNewFont);
 				theLabel.setFont(myNewFont);
 				f.pack();		// adjust for new size
-				fc.dispose();
+				fontChooser.dispose();
 			}
 		});
 
