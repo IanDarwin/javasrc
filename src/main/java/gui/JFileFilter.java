@@ -9,7 +9,7 @@ import java.util.*;
  */
 class JFileFilter extends javax.swing.filechooser.FileFilter {
 	protected String description;
-	protected ArrayList exts = new ArrayList();
+	protected List<String> exts = new ArrayList<String>();
 
 	public void addType(String s) {
 		exts.add(s);
@@ -23,9 +23,9 @@ class JFileFilter extends javax.swing.filechooser.FileFilter {
 			return true;
 
 		} else if (f.isFile()) {
-			Iterator it = exts.iterator();
+			Iterator<String> it = exts.iterator();
 			while (it.hasNext()) {
-				if (f.getName().endsWith((String)it.next()))
+				if (f.getName().endsWith(it.next()))
 					return true;
 			}
 		}
