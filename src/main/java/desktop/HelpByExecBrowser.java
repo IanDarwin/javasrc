@@ -15,19 +15,17 @@ public class HelpDemo {
 
 	/** 
 	 * help() -- start a help viewer.
-	 * On Win32, we use the "start" command.
-	 * For UNIX, we'll try for Netscape or HotJava in the user's path.
-	 * For the Mac, not sure what we'll do.
+	 * This is platform-dependent; you should probably use the Java
+	 * Desktop Integration Components API (JDIC).
 	 */
+	@Deprecated
 	public void help() throws IOException {
 
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();
-		// A process object tracks one external running process
-		Process p;
 		
 		// Start Netscape from Java Applications (not Applets though)
-		p = r.exec("c:/windows/command/start.exe HelpDemo.htm");
+		r.exec("c:/windows/command/start.exe HelpDemo.htm");
 
 		return;
 	}
