@@ -13,7 +13,6 @@ public class ProgressMeterStrmDemo extends JFrame implements Runnable {
 
 	public void readTheFile() throws IOException {
 		// OK, we're going to read a file. Do it...
-		FileInputStream is = new FileInputStream("index.htm");
 		BufferedReader ds = new BufferedReader(
 			new InputStreamReader(
 				new ProgressMonitorInputStream(this,

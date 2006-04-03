@@ -1,13 +1,32 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.text.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.MenuShortcut;
+import java.awt.Panel;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
-// THIS VERSION USES SWING -- Could probably just change
-// all occurrences of JLabel/JButton to Label/Button for AWT.
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /** Unicode - show a page of Unicode characters.
  * BUG: Times throws a bunch of exceptions on page 2 and 3, that can
@@ -54,7 +73,6 @@ public class Unicode extends JFrame {
 		Panel p = new Panel();
 		// Make a grid, add one for labels.
 		p.setLayout(new GridLayout(ROWS+1, COLUMNS+1));
-		DecimalFormat df2d = new DecimalFormat("00");
 
 		// Add first row, just column labels.
 		p.add(new JLabel(""));
