@@ -13,4 +13,10 @@ public class ChartData {
 	ChartData(String s, int i) {
 		this(i, s);
 	}
+	public String getName() {
+		return name;
+	}
+	public int getValue() {
+		return value;
+	}
 }

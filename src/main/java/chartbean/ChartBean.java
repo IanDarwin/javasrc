@@ -54,7 +54,7 @@ public class ChartBean extends Component {
 		return title;
 	}
 	public void setData(ChartData[] newStuff) {
-		data = newStuff;
+		data = newStuff.clone();
 		repaint();
 	}
 

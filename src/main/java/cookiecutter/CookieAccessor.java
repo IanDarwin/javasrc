@@ -23,8 +23,8 @@ import java.util.StringTokenizer;
  * @version $Id$
  */
 public class CookieAccessor {
-	protected static String MAGIC = "# Netscape HTTP Cookie File";
-	protected static String COMMENT = "#";
+	protected static final String MAGIC = "# Netscape HTTP Cookie File";
+	protected static final String COMMENT = "#";
 
 	public List<Cookie> read(String fileName) 
 		throws FileNotFoundException, IOException {
@@ -37,10 +37,10 @@ public class CookieAccessor {
 		List<Cookie> ret = new ArrayList<Cookie>();
 
 		BufferedReader is = new BufferedReader(rdr);
-
-		if (!is.readLine().startsWith(MAGIC))
-			die(fileName + " not a cookies file");
 		String line;
+		if ((line = is.readLine()) == null || !line.startsWith(MAGIC))
+			die(fileName + " not a cookies file");
+
 		while ((line = is.readLine()) != null) {
 			if (line.startsWith(COMMENT))
 				continue;

@@ -31,7 +31,7 @@ public class ChatRoom extends Applet {
 	/* The Frame, for a pop-up, durable Chat Room. */
 	protected Frame cp;
 	/** The default port number */
-	protected static int PORTNUM = Chat.PORTNUM;
+	protected static final int PORTNUM = Chat.PORTNUM;
 	/** The actual port number */
 	protected int port;
 	/** The network socket */

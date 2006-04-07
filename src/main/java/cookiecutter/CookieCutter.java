@@ -163,8 +163,8 @@ public class CookieCutter {
 			case 2: return c.getName();
 			case 3: return c.getValue();
 			case 4: return Long.toString(c.getExpiry());
-			case 5: return new Boolean(c.fromJavaScript);
-			case 6: return new Boolean(c.getSecure());
+			case 5: return Boolean.valueOf(c.fromJavaScript);
+			case 6: return Boolean.valueOf(c.getSecure());
 			default: return null;
 			}
 		}

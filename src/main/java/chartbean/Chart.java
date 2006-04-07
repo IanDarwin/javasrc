@@ -61,7 +61,7 @@ public class Chart extends Component {
 		return title;
 	}
 	public void setData(ChartData[] newStuff) {
-		data = newStuff;
+		data = newStuff.clone();
 		repaint();
 	}
 	public void doDemo() {

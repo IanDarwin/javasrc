@@ -1,14 +1,17 @@
 package beans;
 
-import java.awt.*;
-import java.io.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.TextArea;
+import java.io.Serializable;
 
 /**
  * Create a Text Insert from a file.
  */ 
 public class CodeBean extends TextArea implements Serializable {
 	protected String fileName;
-	protected Font myFont;
+	protected Font myFont = null;
 
 	public String getFileName() {
 		return fileName;

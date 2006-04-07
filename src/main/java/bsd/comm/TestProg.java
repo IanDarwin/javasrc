@@ -63,7 +63,7 @@ public class TestProg {
 
 	}
 
-	class DataThread extends Thread {
+	static class DataThread extends Thread {
 		DataInputStream inStream;
 		PrintStream pStream;
 		DataThread(DataInputStream is, PrintStream os) {
