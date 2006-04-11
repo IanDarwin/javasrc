@@ -1,6 +1,8 @@
 package strings;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /** Show using a StringTokenizer including getting the delimiters back */
 public class StrTokDemo4b {

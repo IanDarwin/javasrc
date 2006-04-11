@@ -1,6 +1,9 @@
 package strings;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /** Show using a StringTokenizer including getting the delimiters back
  * This final version returns a List instead of converting to an array.

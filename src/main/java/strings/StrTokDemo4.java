@@ -1,6 +1,6 @@
 package strings;
 
-import java.util.*;
+import java.util.StringTokenizer;
 
 /** Show using a StringTokenizer including getting the delimiters back */
 public class StrTokDemo4 {

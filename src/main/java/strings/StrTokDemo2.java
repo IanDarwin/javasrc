@@ -1,6 +1,6 @@
 package strings;
 
-import java.util.*;
+import java.util.StringTokenizer;
 
 /**
  * Simple StringTokenizer demo program.

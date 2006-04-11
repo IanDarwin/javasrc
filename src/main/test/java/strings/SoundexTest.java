@@ -1,6 +1,6 @@
 package strings;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 /** Soundex Test program. Knuth's original examples, and mine. */
 public class SoundexTest extends TestCase {

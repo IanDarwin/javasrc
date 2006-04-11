@@ -1,6 +1,6 @@
 package strings;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 /** StringAlign Test program.  */
 public class StringAlignTest extends TestCase {

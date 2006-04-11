@@ -1,6 +1,8 @@
 package strings;
 
-import java.text.*;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
 
 /** Bare-minimum String formatter (string aligner).
  * XXX When 1.5 is common, change from ints to enum for alignment.
