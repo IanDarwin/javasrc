@@ -24,6 +24,7 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -95,7 +96,7 @@ class OneAck extends Frame {
 /**
  * Acks - pop up a bunch of dialogs, to thank some people in the Java style.
  */
-public class Acks extends Frame {
+public class Acks extends JFrame {
 	/** The default name to read/write */
 	final static String DATAFILENAME = "Acks.dat";
 	/** The current name to read/write */
@@ -120,6 +121,7 @@ public class Acks extends Frame {
 	/** Construct an Acks object, by making a ton of OneAcks from list */
 	Acks(String fname) {
 		super();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		acksFileName = fname;
 		Properties p = new Properties();
 
@@ -130,10 +132,10 @@ public class Acks extends Frame {
 			p.load(ifile);
 		} catch (FileNotFoundException notFound) {
 			System.err.println(notFound);
-			System.exit(1);
+			throw new RuntimeException("Read error", notFound);
 		} catch (IOException badLoad) { 
 			System.err.println(badLoad);
-			System.exit(1);
+			throw new RuntimeException("Read error", badLoad);
 		}
 
 		String courseTitle = p.getProperty("courseTitle");	// no "."!
