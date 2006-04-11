@@ -96,6 +96,8 @@ public class UserDBJDBC extends UserDB {
 			"update users SET lastLogin = ? where name = ?");
 		deleteUserStmt = conn.prepareStatement(
 			"delete from users where name = ?");
+		
+		conn.close();
 	}
 
 	/** Add one user to the list, both in-memory and on disk. */
