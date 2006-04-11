@@ -17,13 +17,6 @@ public class CalendarPage {
 		"September", "October", "November", "December"
 	};
 
-	/** The days in each month. */
-	public final static int[] dom = {
-			31, 28, 31, 30,	/* jan feb mar apr */
-			31, 30, 31, 31, /* may jun jul aug */
-			30, 31, 30, 31	/* sep oct nov dec */
-	};
-
 	/** Compute which days to put where, in the Cal panel */
 	public void print(int mm, int yy) {
 		/** The number of days to leave blank at the start of this month */
@@ -44,7 +37,7 @@ public class CalendarPage {
 		// get(DAY_OF_WEEK) returns 0 for Sunday, which is just right.
 		leadGap = calendar.get(Calendar.DAY_OF_WEEK)-1;
 
-		int daysInMonth = dom[mm];
+		int daysInMonth = CalUtils.getDaysInMonth(mm);
 		if (calendar.isLeapYear(calendar.get(Calendar.YEAR)) && mm == 1)
 			++daysInMonth;
 
@@ -71,7 +64,6 @@ public class CalendarPage {
 
 	/** For testing, a main program */
 	public static void main(String[] av) {
-		int month, year;
 
 		CalendarPage cp = new CalendarPage();
 
