@@ -16,6 +16,7 @@ public class ConsChat {
 	protected BufferedReader is;
 	protected PrintWriter pw;
 	protected BufferedReader cons;
+	final Thread chatter;
 
 	protected ConsChat() throws IOException {
 		sock = new Socket("localhost", Chat.PORTNUM);
@@ -25,7 +26,7 @@ public class ConsChat {
 
 		// Construct and start the reader: from server to stdout.
 		// Make a Thread to avoid lockups.
-		new Thread() {
+		chatter = new Thread() {
 			public void run() {
 				setName("socket reader thread");
 				System.out.println("Starting " + getName());
@@ -42,10 +43,17 @@ public class ConsChat {
 					return;
 				}
 			}
-		}.start();
+		};
 	}
 
+	/**
+	 * Start the chat thread, and hold the conversation.
+	 * @throws IOException
+	 */
 	protected void chat() throws IOException {
+		
+		chatter.start();
+
 		String text;
 
 		System.out.print("Login name: "); System.out.flush();
