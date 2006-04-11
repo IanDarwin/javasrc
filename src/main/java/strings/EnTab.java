@@ -70,7 +70,6 @@ public class EnTab {
 	 */
 	public void entab(BufferedReader is, PrintWriter out) throws IOException {
 		String line;
-		int c, col = 0, newcol;
 
 		// main loop: process entire file one line at a time.
 		while ((line = is.readLine()) != null) {

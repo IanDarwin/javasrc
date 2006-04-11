@@ -31,8 +31,6 @@ public class DeTab {
 	 */
 	public void detab(BufferedReader is, PrintWriter out) throws IOException {
 		String line;
-		char c;
-		int col;
 		while ((line = is.readLine()) != null) {
 			out.println(detabLine(line));
 		}
