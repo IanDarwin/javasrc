@@ -1,6 +1,9 @@
 package structure;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Demonstrate the HashMap class, and an Iterator.

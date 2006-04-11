@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Demo of 1.2 java.util.LinkedList class

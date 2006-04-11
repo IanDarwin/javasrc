@@ -1,6 +1,6 @@
 package structure;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 /** A simple test case for Queue */
 public class QueueTest extends TestCase {

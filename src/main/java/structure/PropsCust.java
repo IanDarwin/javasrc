@@ -1,7 +1,7 @@
 package structure;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Use a Properties object for customizing a program.

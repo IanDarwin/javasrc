@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /** List to array */
 public class ToArray {

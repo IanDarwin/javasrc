@@ -1,6 +1,8 @@
 package structure;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Test the MyMap class.

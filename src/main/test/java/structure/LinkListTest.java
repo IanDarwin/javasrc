@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.Iterator;
+
 import junit.framework.TestCase;
 
 /**

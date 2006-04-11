@@ -1,6 +1,8 @@
 package structure;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 /**
  * Demonstrate the Set interface
  * @author Ian F. Darwin, http://www.darwinsys.com/

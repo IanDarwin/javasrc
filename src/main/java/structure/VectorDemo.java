@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.Vector;
 
 /**
  * Simple demo of the Vector class.

@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.Arrays;
 
 /** Demonstrate use of SubstringComparator.
  * @version $id$

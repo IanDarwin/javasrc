@@ -1,8 +1,8 @@
 package structure;
 
-import junit.framework.TestCase;
-
 import java.util.List;
+
+import junit.framework.TestCase;
 
 /**
  * Make sure that CallTrack fragment actually works as shown.

@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Vector;
 
 /**
  * StrSortCase demonstrates sorting of strings using Collections.sort

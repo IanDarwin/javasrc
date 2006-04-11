@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 /**
  * Demonstrate the Hashtable class, and an Enumeration.

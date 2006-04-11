@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.Properties;
 
 /**
  * Demonstrate the Properties class

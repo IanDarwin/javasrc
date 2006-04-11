@@ -1,6 +1,11 @@
 package structure;
 
-import java.util.*;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 /** A simple Map implementation, implemented in terms of a
  * pair of ArrayLists just to show what a Map has to do (it would 

@@ -1,6 +1,10 @@
 package structure;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 /** Show the union and instersection of two sets. */
 public class SetStuff {

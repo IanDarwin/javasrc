@@ -1,7 +1,7 @@
 package structure;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /** Code Fragmment showing how to insert in two lists (an ArrayList
  * and an AWT List) in sorted order, using a simple linear search
