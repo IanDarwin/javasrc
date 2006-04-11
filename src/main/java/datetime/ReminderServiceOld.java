@@ -1,9 +1,15 @@
 package datetime;
 
-import java.io.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 /**
  * Read a file of reminders, sleep until each is due, beep.
@@ -22,7 +28,7 @@ public class ReminderServiceOld {
 		}
 	}
 
-	ArrayList l = new ArrayList();
+	List<Item> l = new ArrayList<Item>();
 
 	public static void main(String[] argv) throws IOException {
 		ReminderServiceOld rs = new ReminderServiceOld();
@@ -47,6 +53,7 @@ public class ReminderServiceOld {
 			String mesg = aLine.substring(pp.getIndex());
 			l.add(new Item(date, mesg));
 		}
+		is.close();
 	}
 
 	public void run() {
