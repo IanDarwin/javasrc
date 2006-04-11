@@ -46,6 +46,7 @@ public class ReminderService {
 			String mesg = aLine.substring(pp.getIndex());
 			timer.schedule(new Item(mesg), date);
 		}
+		is.close();
 	}
 
 	/** Display a message on the console and in the GUI.
