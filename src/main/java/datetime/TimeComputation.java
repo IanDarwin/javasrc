@@ -7,6 +7,7 @@ import com.darwinsys.lang.SysDep;
 
 /**
  * TimeComputation for processing sqrt and I/O operations.
+ * Does NOT include time to open or close the file.
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
@@ -33,6 +34,7 @@ public class TimeComputation {
 		double deltaT = t1-t0;
 		System.out.println("This run took " + 
 			DecimalFormat.getInstance().format(deltaT/1000.) + " seconds.");
+		n.close();
 	}
 
 }
