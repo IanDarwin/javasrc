@@ -27,7 +27,7 @@ public class ChatServer {
 	private static boolean DEBUG = false;
 
 	/** Main just constructs a ChatServer, which should never return */
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws IOException {
 		System.out.println("DarwinSys Chat Server 0.1 starting...");
 		if (argv.length == 1 && argv[0].equals("-debug"))
 			DEBUG = true;
@@ -36,17 +36,15 @@ public class ChatServer {
 		System.out.println("**ERROR* Chat Server 0.1 quitting");
 	}
 
-	/** Construct (and run!) a Chat Service */
-	ChatServer() {
+	/** Construct (and run!) a Chat Service 
+	 * @throws IOException
+	 */
+	ChatServer() throws IOException {
 		clients = new ArrayList<ChatHandler>();
-		try {
-			servSock = new ServerSocket(Chat.PORTNUM);
-			System.out.println("DarwinSys Chat Server Listening on port " +
+
+		servSock = new ServerSocket(Chat.PORTNUM);
+		System.out.println("DarwinSys Chat Server Listening on port " +
 				Chat.PORTNUM);
-		} catch(IOException e) {
-			log("IO Exception in ChatServer.<init>" + e);
-			System.exit(0);
-		}
 	}
 
 	public void runServer() {
@@ -69,7 +67,6 @@ public class ChatServer {
 			}
 		} catch(IOException e) {
 			log("IO Exception in runServer: " + e);
-			System.exit(0);
 		}
 	}
 
