@@ -143,11 +143,15 @@ public class Cal extends JPanel {
 		add(BorderLayout.SOUTH, bp);
 	}
 
-	public final static int dom[] = {
+	final static int DOM[] = {
 			31, 28, 31, 30,	/* jan feb mar apr */
 			31, 30, 31, 31, /* may jun jul aug */
 			30, 31, 30, 31	/* sep oct nov dec */
 	};
+	
+	public int[] getDaysInMonths() {
+		return DOM.clone();
+	}
 
 	/** Compute which days to put where, in the Cal panel */
 	protected void recompute() {
@@ -162,7 +166,7 @@ public class Cal extends JPanel {
 		leadGap = new GregorianCalendar(yy, mm, 1).get(Calendar.DAY_OF_WEEK)-1;
 		// System.out.println("leadGap = " + leadGap);
 
-		int daysInMonth = dom[mm];
+		int daysInMonth = DOM[mm];
 		if (isLeap(calendar.get(Calendar.YEAR)) && mm > 1)
 			++daysInMonth;
 
