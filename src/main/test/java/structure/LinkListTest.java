@@ -1,6 +1,7 @@
 package structure;
 
 import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.TestCase;
 
@@ -10,12 +11,12 @@ import junit.framework.TestCase;
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest extends TestCase {
-	LinkList list;
+	List<String> list;
 	public void setUp() {
 		System.out.println("Here is a demo of implementing a List in Java");
 		System.out.println("(you know it don't come easy....)");
 		list = new LinkList();
-		list.add(new Object());
+		list.add(new Object().toString());
 		list.add("Hello");
 		list.add("End of list");
 		System.out.println("Here is a list of all the elements, from get");
@@ -26,7 +27,7 @@ public class LinkListTest extends TestCase {
 
 	public void testGet() {
 
-		assertTrue(list.lookup("Hello"));
+		assertTrue(list.contains("Hello"));
 		System.out.println("Lookup seems to work");
 	}
 

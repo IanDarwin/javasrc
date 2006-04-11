@@ -74,13 +74,6 @@ public class LinkList implements List {
 		t.next = t2;
 	}
 
-	public boolean lookup(Object o) {
-		for (TNode p=first.next; p != null; p = p.next)
-			if (p.data==o || p.data.equals(o))
-				return true;
-		return false;
-	}
-
     public int size() {
 		TNode t = first;
 		int i;
@@ -154,7 +147,6 @@ public class LinkList implements List {
     public Iterator iterator() {
 		return new Iterator() {
 			TNode t = first;
-			int i = 0;
 			public boolean hasNext() {
 				return t != last;
 			}
