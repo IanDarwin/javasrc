@@ -31,33 +31,21 @@ public class UserDBJDBC extends UserDB {
 		" values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	/** Default constructor */
-	protected UserDBJDBC() 
-	throws NamingException, SQLException, IOException {
+	protected UserDBJDBC() throws NamingException, SQLException, IOException {
 		super();
 
-System.out.println("UserDBJDBC.<init> starting...");
-/*
-System.out.println("Getting InitialContext");
-		Context ctx = new InitialContext();
-System.out.println("Getting JNDI Context");
-		Context env = (Context)ctx.lookup("java:comp/env");
-System.out.println("Getting DataSource");
-		DataSource ds = (DataSource)env.lookup("jdbc/jabadotDB");
-System.out.println("Getting Connection");
-		Connection conn = ds.getConnection();
-System.out.println("Connection = " + conn);
-*/
-System.out.println("Loading Driver Class");
-try {
-	Class.forName("org.hsqldb.jdbcDriver");
-} catch (ClassNotFoundException ex) {
-	System.out.println("FAILED: " + ex.toString());
-	throw new IllegalStateException(ex.toString());
-}
-System.out.println("Getting Connection");
-	Connection conn = DriverManager.getConnection(
-		"jdbc:hsqldb:/home/ian/src/jabadot/WEB-INF/jabadot",
-		"jabadmin", "fredonia");
+		System.out.println("UserDBJDBC.<init> starting...");
+		
+		System.out.println("Loading Driver Class");
+		try {
+			Class.forName("org.hsqldb.jdbcDriver");
+		} catch (ClassNotFoundException ex) {
+			System.out.println("FAILED: " + ex.toString());
+			throw new IllegalStateException(ex.toString());
+		}
+		Connection conn = DriverManager.getConnection(
+			"jdbc:hsqldb:/home/ian/src/jabadot/WEB-INF/jabadot",
+			"jabadmin", "fredonia");
 
 		Statement stmt = conn.createStatement();
 
@@ -72,7 +60,7 @@ System.out.println("Getting Connection");
 			int i = 1;
 			String nick = rs.getString(i++).trim();
 			String pass = rs.getString(i++).trim();
-System.err.println(nick + " (" + pass + ")");
+			// System.err.println(nick + " (" + pass + ")");
 			String first = rs.getString(i++);
 			String last = rs.getString(i++);
 			String email = rs.getString(i++);
@@ -86,15 +74,15 @@ System.err.println(nick + " (" + pass + ")");
 			boolean adminPrivs = rs.getBoolean(i++);
 
 			// Construct a user object from the fields
-System.out.println("Constructing User object");
+			// System.out.println("Constructing User object");
 			User u = new User(nick, pass, first, last, email,
 				prov, ctry, credt, lastlog,
 				skin, editPrivs, adminPrivs);
 
-System.out.println("Adding User object " + u + " to " + users);
+			// System.out.println("Adding User object " + u + " to " + users);
 			// Add it to the in-memory copy.
 			users.add(u);
-System.err.println("User " + nick + "; pass " + pass.charAt(0));
+			// System.err.println("User " + nick + "; pass " + pass.charAt(0));
 		}
 		rs.close();		// All done with that resultset
 		stmt.close();
