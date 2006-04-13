@@ -66,7 +66,7 @@ public class StopClose extends Thread {
 			// is thrown, as a result of closing the socket.
 
 			// So we shouldn't get here, ever:
-			System.out.println("StopClose FINISHED!?");
+			System.out.printf("StopClose FINISHED after reading %s!?", line);
 		} catch (IOException ex) {
 			System.err.println("StopClose terminating: " + ex);
 		}
