@@ -50,11 +50,9 @@ package threads;
  * 	<li>Instantiate ThreadLocal and use put() to put the value in. 
  * </ol>
  * This class uses method 1, as it's easier and IMHO more reliable.
+ * In fact I don't think I've ever used method 2, but it might bear investigation...
  */
 public class ThreadLocalDemo extends Thread {
-
-	/** A serial number for clients */
-	private static int clientNum = 0;
 
 	/** This ThreadLocal holds the Client reference for each Thread.
 	 * Make ThreadLocal instance static, to show that it is not an instance variable
@@ -64,31 +62,33 @@ public class ThreadLocalDemo extends Thread {
 		// initialValue() is called magically when you first call get().
 		@Override
 		protected synchronized Client initialValue() {
-			return new Client(clientNum++);
+			return new Client();
 		}
 	};
 	@Override
 	public void run() {
 		System.out.println("Thread " + Thread.currentThread().getName() +
-			" has client " + myClient.get());
+			" sees client " + myClient.get());
 	}
 
 	public static void main(String[] args) {
 		Thread t1 = new ThreadLocalDemo();
-		Thread t2 = new ThreadLocalDemo();
 		t1.start();
+		Thread t2 = new ThreadLocalDemo();
 		t2.start();
 		Thread.yield();
-		System.out.println("main sees: " + myClient.get());
+		System.out.println("Main program sees client " + myClient.get());
 	}
 
 	/** Simple data class, in real life clients would have more fields! */
 	private static class Client {
-
+		/** A serial number for clients */
+		private static int clientNum = 0;
+		/** This Client instance's serial number */
 		private int clNum;
 
-		Client(int n) {
-			clNum = n;
+		Client() {
+			clNum = clientNum++;
 		}
 
 		public String toString() {
