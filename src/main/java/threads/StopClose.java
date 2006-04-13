@@ -51,7 +51,7 @@ public class StopClose extends Thread {
 
 	public void run() {
 		try {
-			io = new Socket("localhost", 80);	// HTTP
+			io = new Socket("java.sun.com", 80);	// HTTP
 			BufferedReader is = new BufferedReader(
 				new InputStreamReader(io.getInputStream()));
 			System.out.println("StopClose reading");
@@ -68,7 +68,7 @@ public class StopClose extends Thread {
 			// So we shouldn't get here, ever:
 			System.out.printf("StopClose FINISHED after reading %s!?", line);
 		} catch (IOException ex) {
-			System.err.println("StopClose terminating: " + ex);
+			System.out.println("StopClose terminating: " + ex);
 		}
 	}
 
@@ -77,6 +77,7 @@ public class StopClose extends Thread {
 			// This is supposed to interrupt the waiting read.
 			io.close();
 		}
+		System.out.println("StopClose.shutDown() completed");
 	}
 
 	public static void main(String[] args) 
