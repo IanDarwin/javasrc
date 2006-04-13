@@ -47,8 +47,11 @@ public class ThreadLocalDemo extends Thread {
 	/** A serial number for clients */
 	private static int clientNum = 0;
 
-	/** This ThreadLocal holds the Client reference for each Thread */
-	private ThreadLocal myClient = new ThreadLocal() {
+	/** This ThreadLocal holds the Client reference for each Thread.
+	 * Make ThreadLocal instance static, to show that it is not an instance variable
+	 * but is derived from Thread.currentThead() regardless of static/instance access
+	 */
+	private static ThreadLocal myClient = new ThreadLocal() {
 		// initialValue() is called magically when you first call get().
 		protected synchronized Object initialValue() {
 			return new Client(clientNum++);
@@ -65,10 +68,12 @@ public class ThreadLocalDemo extends Thread {
 		Thread t2 = new ThreadLocalDemo();
 		t1.start();
 		t2.start();
+		Thread.yield();
+		System.out.println("main sees: " + myClient.get());
 	}
 
 	/** Simple data class, in real life clients would have more fields! */
-	private class Client {
+	private static class Client {
 
 		private int clNum;
 
