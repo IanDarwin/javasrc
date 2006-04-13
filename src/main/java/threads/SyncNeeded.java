@@ -49,7 +49,7 @@ public class SyncNeeded {
 	public static final int MAX = 10000;
 
 	protected static int[] data;
-	protected static int ix = 0;
+	static int ix = 0;
 
 	public static void main(String[] args) throws InterruptedException { 
 		class R implements Runnable {
