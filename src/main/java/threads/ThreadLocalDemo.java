@@ -41,7 +41,16 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-/** Demonstrate use of ThreadLocal */
+/** Demonstrate use of ThreadLocal, a mechanism that provides per-thread copies of
+ * some reference, to facilitate thread-safe code.
+ * ThreadLocal is a standard Java class.
+ * There are two basic ways of putting the value into a ThreadLocal:
+ * <ol>
+ * 	<li>Subclass ThreadLocal and have initialValue() generate the value;
+ * 	<li>Instantiate ThreadLocal and use put() to put the value in. 
+ * </ol>
+ * This class uses method 1, as it's easier and IMHO more reliable.
+ */
 public class ThreadLocalDemo extends Thread {
 
 	/** A serial number for clients */
@@ -51,13 +60,14 @@ public class ThreadLocalDemo extends Thread {
 	 * Make ThreadLocal instance static, to show that it is not an instance variable
 	 * but is derived from Thread.currentThead() regardless of static/instance access
 	 */
-	private static ThreadLocal myClient = new ThreadLocal() {
+	private static ThreadLocal<Client> myClient = new ThreadLocal<Client>() {
 		// initialValue() is called magically when you first call get().
-		protected synchronized Object initialValue() {
+		@Override
+		protected synchronized Client initialValue() {
 			return new Client(clientNum++);
 		}
 	};
-
+	@Override
 	public void run() {
 		System.out.println("Thread " + Thread.currentThread().getName() +
 			" has client " + myClient.get());
