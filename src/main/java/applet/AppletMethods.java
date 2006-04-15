@@ -1,14 +1,16 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.net.*;
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.Graphics;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /** AppletMethods -- show stop/start and AudioClip methods */
 
 public class AppletMethods extends Applet {
 	/** AudioClip object, used to load and play a sound file. */
-	AudioClip snd = null;
+	transient AudioClip snd = null;
 
 	/** Initialize the sound file object and the GUI. */
 	public void init() {
