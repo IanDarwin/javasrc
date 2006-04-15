@@ -1,11 +1,15 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/** BadGuy demo -- exit from within an applet
- * (just to show that it has no effect).
+/** BadGuy demo -- call System.exit from within an applet, just to 
+ * show that it can not have the desired effect when
+ * run in a "normal" browser (it will kill the AppletViewer)).
  */
 
 public class ByeBye extends Applet implements ActionListener {
@@ -23,8 +27,8 @@ public class ByeBye extends Applet implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		// User pushed the (one and only) button, so we exit.
-		System.err.println("And now, byebye!");
-		System.exit(0);
+		System.err.println("And now, bye-bye!");
+		System.exit(0);	// Will probably throw a SecurityException
 	}
 
 }
