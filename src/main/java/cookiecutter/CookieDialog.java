@@ -13,7 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class CookieDialog extends JDialog {
-	private Cookie undoableCookie;
+	/**  */
+	private static final long serialVersionUID = 542126890915376229L;
 	private JTextField url;
 	private JTextField name;
 	private JTextField value;
@@ -57,11 +58,8 @@ public class CookieDialog extends JDialog {
 			}
 		});
 		cp.add(cancelButton = new JButton("Cancel"));
-		okButton.addActionListener(new ActionListener() {
+		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// JOptionPane.showMessageDialog(CookieDialog.this,
-					// "Cannot cancel yet", "Cannot cancel yet",
-					// JOptionPane.ERROR_DIALOG);
 				dispose();
 			}
 		});
@@ -70,7 +68,6 @@ public class CookieDialog extends JDialog {
 	}
 
 	public void setCookie(Cookie c) {
-		undoableCookie = c;
 		url.setText(c.url);
 		path.setText(c.path);
 		name.setText(c.name);
