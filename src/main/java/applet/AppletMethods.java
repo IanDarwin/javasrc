@@ -9,6 +9,8 @@ import java.net.URL;
 /** AppletMethods -- show stop/start and AudioClip methods */
 
 public class AppletMethods extends Applet {
+
+	private static final long serialVersionUID = -4376117045074079151L;
 	/** AudioClip object, used to load and play a sound file. */
 	transient AudioClip snd = null;
 

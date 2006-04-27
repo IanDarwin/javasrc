@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 
 public class ByeBye extends Applet implements ActionListener {
-	Button b1;
+	private static final long serialVersionUID = 9102867805740220884L;
 
 	public void init() {
 		System.err.println("In byebye::init()");
@@ -21,6 +21,7 @@ public class ByeBye extends Applet implements ActionListener {
 		setLayout(new FlowLayout());
 		setFont(new Font("Helvetica", Font.PLAIN, 14));
    
+		Button b1;
 		add(b1 = new Button("Exit"));
 		b1.addActionListener(this);
 	}

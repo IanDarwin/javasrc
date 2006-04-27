@@ -11,6 +11,9 @@ import netscape.javascript.*;
  * JSObject and related classes available at runtime.
  */
 public class AppletJavaScript extends Applet {
+
+	private static final long serialVersionUID = 1338170125138331189L;
+
 	/** Called to set up the Applet */
 	public void init() {
 		final TextArea ta = new TextArea();

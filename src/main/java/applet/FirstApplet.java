@@ -9,6 +9,7 @@ import java.awt.event.*;
  * Draw button.
  */
 public class FirstApplet extends Applet implements ActionListener {
+	private static final long serialVersionUID = 5013968934819168436L;
 	boolean requested;
 
 	/** init() is an Applet method called by the browser to initialize.
