@@ -1,8 +1,14 @@
 package database;
 
-import java.sql.*;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.StringTokenizer;
 
 /** Convert the database from text form to JDBC form.
  */
@@ -63,8 +69,8 @@ public class TextToJDBC {
 			String city = st.nextToken();
 			String prov = st.nextToken();
 			String ctry = st.nextToken();
-			User u = new User(nick, pass, full, email,
-				city, prov, ctry);
+			// User u = new User(nick, pass, full, email,
+			//	city, prov, ctry);
 			String privs = st.nextToken();
 			int iprivs = 0;
 			if (privs.indexOf("A") != -1) {
