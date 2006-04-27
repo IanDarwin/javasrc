@@ -53,7 +53,7 @@ public class BSFAction {
 
 		} catch (Exception ex) {
 			System.err.println(ex.toString());
-			System.exit(0);
+			return;
 		}
 
 		System.out.println("Scripting setup done, building GUI.");
