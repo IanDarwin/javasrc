@@ -8,6 +8,8 @@ import java.util.Date;
  */
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = 5394392565088707959L;
+	
 	// #name:password:name:email:City:Prov:Country:privs
 	/** The login name */
 	protected String name;
@@ -92,8 +94,8 @@ public class User implements java.io.Serializable {
 		this.prov = prov;
 		this.country = cntry;
 		this.skin = skin;
-		creationDate = credt;
-		lastLoginDate = lastlog;
+		creationDate = (Date) credt.clone();
+		lastLoginDate = (Date) lastlog.clone();
 		adminPrivs = a;
 		editPrivs = e;
 	}
@@ -226,21 +228,21 @@ public class User implements java.io.Serializable {
 
 	/** Get the Creation Date (read only field) */
 	public Date getCreationDate() {
-		return creationDate;
+		return (Date) creationDate.clone();
 	}
 	/** Set the Creation Date (read only field) */
 	public void setCreationDate(Date date) {
-		creationDate = date;
+		creationDate = (Date) date.clone();
 	}
 
 	/** Get the LastLog Date (read only field) */
 	public Date getLastLoginDate() {
-		return lastLoginDate;
+		return (Date) lastLoginDate.clone();
 	}
 
 	/** Get the LastLog Date (read only field) */
 	public void setLastLoginDate(Date d) {
-		lastLoginDate = d;
+		lastLoginDate = (Date) d.clone();
 	}
 
 	/** Return a String representation. */
