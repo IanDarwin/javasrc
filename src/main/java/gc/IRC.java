@@ -5,9 +5,11 @@ package gc;
  * Does this Java VM/GC use reference counts? RefCounting GC's
  * normally do not remove cycles...
  */
+@SuppressWarnings("unused") 
 public class IRC {
+	
 	private static int nodeCount;
-	private IRC next;
+	private IRC next;	// Setting this is what we need for keeping references...
 
 	// Constructor
 	public IRC () {
@@ -16,7 +18,7 @@ public class IRC {
 	}
 
 	// finalizer (vaguely like C++ destructor, but not guaranteed to be run)
-	public void finalize() {
+	protected void finalize() {
 		System.out.println("finalizing " + this + " down to " + --nodeCount);
 	}
 
@@ -27,6 +29,7 @@ public class IRC {
 
 		a.next = b;
 		b.next = a;
+		c.next = null;
 
 		a = b = c = null;
 
