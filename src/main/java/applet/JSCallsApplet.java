@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
  */
 public class JSCallsApplet extends Applet {
 
+	private static final long serialVersionUID = 938971166803480229L;
+
 	@Override
 	public void init() {
 		add(new Label("A test applet"));

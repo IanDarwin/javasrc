@@ -1,8 +1,11 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * FirstApplet is a simple applet that changes color when you click on a

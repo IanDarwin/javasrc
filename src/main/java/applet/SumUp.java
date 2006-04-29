@@ -1,9 +1,15 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  * <p>
@@ -26,6 +32,8 @@ import java.net.*;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class SumUp extends Applet implements ActionListener {
+
+	private static final long serialVersionUID = -3804328494521053212L;
 	/** The array of Choice items */
 	protected Choice cs[] = new Choice[10];
 	/** How many are actually in the array. */

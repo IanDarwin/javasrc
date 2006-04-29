@@ -12,6 +12,8 @@ import java.awt.event.WindowEvent;
 
 /** Simple GUI driver for Chart, showing it used as a plain Component */
 public class ChartDemo extends Frame {
+
+	private static final long serialVersionUID = -5193600104234919336L;
 	boolean unsavedChanges = false;
 	Button drawButton;
 	Button quitButton;

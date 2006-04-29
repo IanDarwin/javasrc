@@ -34,8 +34,9 @@ import javax.swing.table.AbstractTableModel;
  */
 public class JDAdmin extends JFrame {
 
+	private static final long serialVersionUID = -3463907575826646044L;
 	/** the list of users */
-	protected ArrayList userList = new ArrayList();
+	protected ArrayList<User> userList = new ArrayList<User>();
 	/** The database connection */
 	protected Connection conn;
 	/** A Statement for listing users */
@@ -201,6 +202,8 @@ public class JDAdmin extends JFrame {
 
 	// class extends TableModel...
 	class MyTableModel extends AbstractTableModel {
+
+		private static final long serialVersionUID = 7754749245721237533L;
 
 		/** Returns the number of items in the list. */
 		public int getRowCount()  {

@@ -1,14 +1,19 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * HelloApplet is a simple applet that changes color when you click on a
  * Draw button.
  */
 public class HelloApplet extends Applet implements ActionListener {
+
+	private static final long serialVersionUID = -6659164863425497190L;
 	boolean requested;
 
 	/** init() is an Applet method called by the browser to initialize.

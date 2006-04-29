@@ -1,13 +1,15 @@
 package applet;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  * Try running a CGI-BIN script from within Java.
  */
+@SuppressWarnings("serial")
 public class TryCGI extends Applet implements ActionListener {
 	protected Button goButton;
 

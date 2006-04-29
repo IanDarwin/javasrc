@@ -1,10 +1,14 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
+import java.applet.Applet;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Label;
 
 /** Null Demo, just demonstrates getParameterInfo() and getAppletInfo() */
 public class ParmInfoDemo extends Applet {
+
+	private static final long serialVersionUID = 8521479785713691244L;
 
 	/** Init routine: set a font, initialize UI components. */
 	public void init() {

@@ -16,6 +16,8 @@ import java.awt.Graphics;
  */
 public class Chart extends Component {
 
+	private static final long serialVersionUID = 1728717236721863271L;
+
 	/** The title to print on the chart */
 	protected String title;
 

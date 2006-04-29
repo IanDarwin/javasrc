@@ -1,8 +1,12 @@
 package applet;
 
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Get list of APPLET tags in one HTML file.
  *

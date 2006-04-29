@@ -19,10 +19,12 @@ import javax.servlet.http.HttpServlet;
  */
 public class JDConstants extends HttpServlet {
 
-	/** This must be a full path, since ya gotta start someplace. */
-	protected static String JABADOT_DIR;
+	private static final long serialVersionUID = -8582492192789892843L;
 
-	protected static ServletContext ctx;
+	/** This must be a full path, since ya gotta start someplace. */
+	static String JABADOT_DIR;
+
+	static ServletContext ctx;
 
 	/** This init servlet method loads the Properties. We know we'll
 	 * get called once at the beginning of time, since we're set up
@@ -30,7 +32,7 @@ public class JDConstants extends HttpServlet {
 	 */
 	public void init() throws ServletException {
 
-		ctx = getServletConfig().getServletContext();
+		setContext(getServletConfig().getServletContext());
 
 		// Get the JABADOT_DIR before all else!
 
@@ -39,7 +41,7 @@ public class JDConstants extends HttpServlet {
 		// Be sure the installer puts in in jabadot/WEB-INF/web.xml,
 		// NOT in tomcat/conf/web.xml - it will be ignored there!!
 
-		JABADOT_DIR = ctx.getInitParameter("jabadot.dir");
+		setJabadotDir(ctx.getInitParameter("jabadot.dir"));
 		if (JABADOT_DIR == null) {
 			System.out.println(
 				"+------------- ERROR --------------------");
@@ -83,5 +85,21 @@ public class JDConstants extends HttpServlet {
 		sb.append(newStr);
 		sb.append(inString.substring(start+oldStr.length()));
 		return sb.toString();
+	}
+
+	public static ServletContext getCtx() {
+		return ctx;
+	}
+
+	public static void setContext(ServletContext ctx) {
+		JDConstants.ctx = ctx;
+	}
+
+	public static String getJABADOT_DIR() {
+		return JABADOT_DIR;
+	}
+
+	public static void setJabadotDir(String jabadot_dir) {
+		JABADOT_DIR = jabadot_dir;
 	}
 }

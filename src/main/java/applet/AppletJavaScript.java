@@ -1,9 +1,13 @@
 package applet;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import netscape.javascript.*;
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import netscape.javascript.JSObject;
 
 /** Simple demonstration of an Applet invoking JavaScript.
  * SERIOUSLY BROWSER DEPENDANT; requires a Netscape "javaxx.jar" or

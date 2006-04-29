@@ -9,6 +9,8 @@ import java.awt.Graphics;
  * Depends on our ColorName class to map names to java.awt.Colors.
  */
 public class SecondApplet extends FirstApplet {
+
+	private static final long serialVersionUID = 7196171133405628779L;
 	/** the number of colors */
 	int nColors;
 	/** The array of Colors to use */

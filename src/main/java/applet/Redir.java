@@ -1,13 +1,15 @@
 package applet;
 
-import java.awt.*;
-import java.applet.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Graphics;
+import java.net.URL;
 
 /** A simple redirection applet.
  * @author Ian Darwin
  */
 public class Redir extends Applet implements Runnable {
+
+	private static final long serialVersionUID = -778316706081946913L;
 	protected String urlString;
 	protected URL theNewURL;
 	protected final static int NSECONDS = 5;

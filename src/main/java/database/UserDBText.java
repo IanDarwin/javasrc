@@ -1,8 +1,12 @@
 package database;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.StringTokenizer;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
@@ -23,32 +27,38 @@ public class UserDBText extends UserDB {
 	/** Constructor */
 	protected UserDBText(String fn) throws IOException,SQLException {
 		super();
-		fileName = fn;
-		BufferedReader is = new BufferedReader(new FileReader(fn));
-		String line;
-		while ((line = is.readLine()) != null) {
-			//name:password:fullname:City:Prov:Country:privs
-
-			if (line.startsWith("#")) {		// comment
-				continue;
+		BufferedReader is = null;
+		try {
+			fileName = fn;
+			is = new BufferedReader(new FileReader(fn));
+			String line;
+			while ((line = is.readLine()) != null) {
+				//name:password:fullname:City:Prov:Country:privs
+				
+				if (line.startsWith("#")) {		// comment
+					continue;
+				}
+				
+				StringTokenizer st =
+					new StringTokenizer(line, ":");
+				String nick = st.nextToken();
+				String pass = st.nextToken();
+				String full = st.nextToken();
+				String email = st.nextToken();
+				String city = st.nextToken();
+				String prov = st.nextToken();
+				String ctry = st.nextToken();
+				User u = new User(nick, pass, full, email,
+						city, prov, ctry);
+				String privs = st.nextToken();
+				if (privs.indexOf("A") != -1) {
+					u.setAdminPrivileged(true);
+				}
+				users.add(u);
 			}
-
-			StringTokenizer st =
-				new StringTokenizer(line, ":");
-			String nick = st.nextToken();
-			String pass = st.nextToken();
-			String full = st.nextToken();
-			String email = st.nextToken();
-			String city = st.nextToken();
-			String prov = st.nextToken();
-			String ctry = st.nextToken();
-			User u = new User(nick, pass, full, email,
-				city, prov, ctry);
-			String privs = st.nextToken();
-			if (privs.indexOf("A") != -1) {
-				u.setAdminPrivileged(true);
-			}
-			users.add(u);
+		} finally {
+			if (is != null)
+				is.close();
 		}
 	}
 

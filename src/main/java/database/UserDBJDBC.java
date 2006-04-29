@@ -1,7 +1,5 @@
 package database;
 
-// package jabadot;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -78,6 +76,7 @@ public class UserDBJDBC extends UserDB {
 			User u = new User(nick, pass, first, last, email,
 				prov, ctry, credt, lastlog,
 				skin, editPrivs, adminPrivs);
+			System.out.println("Property city has value " + city); // Should be an arg to new User()...
 
 			// System.out.println("Adding User object " + u + " to " + users);
 			// Add it to the in-memory copy.

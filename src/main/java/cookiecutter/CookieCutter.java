@@ -95,6 +95,10 @@ public class CookieCutter {
 					synchronized(cookies) {
 						accessor.write(fileName, cookies);
 					}
+					JOptionPane.showMessageDialog(f,
+							"Save complete",
+							"Done", 
+							JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException ex) {
 					JOptionPane.showMessageDialog(f,
 						"Save did not complete!\n" + ex.toString(),
@@ -102,10 +106,6 @@ public class CookieCutter {
 						JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				// JOptionPane.showMessageDialog(f,
-				// 	"Save complete",
-				// 	"Done", 
-				// 	JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 

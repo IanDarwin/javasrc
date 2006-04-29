@@ -32,7 +32,8 @@ import javax.swing.JOptionPane;
  * @version $Id$
  */
 class OneAck extends Frame {
-	final int COLS=45;
+	private static final long serialVersionUID = -8156044777264483555L;
+	final static int COLS=45;
 	/** The properties name (same as title but with no spaces) */
 	private String propsName;
 	/** The TextArea */
@@ -97,6 +98,8 @@ class OneAck extends Frame {
  * Acks - pop up a bunch of dialogs, to thank some people in the Java style.
  */
 public class Acks extends JFrame {
+
+	private static final long serialVersionUID = -6758017663808368177L;
 	/** The default name to read/write */
 	final static String DATAFILENAME = "Acks.dat";
 	/** The current name to read/write */

@@ -1,14 +1,19 @@
 package applet;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /** ShowDocApplet: Demonstrate showDocument().
  * @author Ian Darwin, http://www.darwinsys.com/
  */ 
 public class ShowDocApplet extends Applet {
+
+	private static final long serialVersionUID = 967500748015700792L;
 	// String targetString = "http://www.darwinsys.com/javacook/secret.html";
 	String targetString = "file:///c:/javasrc/network/ShowDocApplet.java";
 	/** The URL to go to */

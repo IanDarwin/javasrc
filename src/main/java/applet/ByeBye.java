@@ -27,7 +27,7 @@ public class ByeBye extends Applet implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		// User pushed the (one and only) button, so we exit.
+		// User pushed the Exit button, so we (try to) exit.
 		System.err.println("And now, bye-bye!");
 		System.exit(0);	// Will probably throw a SecurityException
 	}
