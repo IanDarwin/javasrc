@@ -38,9 +38,14 @@
 
 package chatservlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /*
  * ChatServlet
@@ -48,6 +53,8 @@ import java.io.*;
  * @version $Id$
  */
 public class ChatServlet extends HttpServlet implements ChatConstants {
+
+	private static final long serialVersionUID = -1934844910927038299L;
 
 	/** Called in response to a GET request (data encoded in the URL) */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
