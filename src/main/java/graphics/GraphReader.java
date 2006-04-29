@@ -29,7 +29,7 @@ public class GraphReader {
 	public static List read(Reader reader, String fileName) throws IOException {
 		LineNumberReader is = new LineNumberReader(reader);
 
-		List data = new ArrayList();
+		List<Point2D> data = new ArrayList<Point2D>();
 
 		String txt;
 	
