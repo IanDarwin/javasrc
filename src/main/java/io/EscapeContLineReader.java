@@ -68,24 +68,4 @@ public class EscapeContLineReader extends ContLineReader {
 		super(in);
 		escape = esc;
 	}
-
-
-	protected static String sampleTxt = 
-		"Some lines of text to test the LineReader class.\n" +
-		"This second line is continued with backslash.\\\n" +
-		"This is a  backslash continuation.\\\n" +
-		"So is this\n" +
-		"This line should be the third output line.\n" +
-		"EXPECT THE NEXT LINE TO THROW AN IOException\n" +
-		"This tests for line ending in \\";
-
-	public static void main(String[] argv) throws IOException {
-		EscapeContLineReader is = new EscapeContLineReader(
-			new StringReader(sampleTxt));
-		String aLine;
-		while ((aLine = is.readLine()) != null) {
-			System.out.println(is.getLineNumber() + ": " + aLine);
-		}
-		is.close();
-	}
 }
