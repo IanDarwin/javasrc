@@ -1,6 +1,7 @@
 package io;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public abstract class SerialDemoAbstractBase {
 
 	/** The save method in an application */
 	public void save() throws IOException {
-		List l = new ArrayList();
+		List<Serializable> l = new ArrayList<Serializable>();
 		// Gather the data
 		l.add(new MyData("Ian Darwin", "secret_java_cook"));
 		l.add(new MyData("Abby Brant", "dujordian"));

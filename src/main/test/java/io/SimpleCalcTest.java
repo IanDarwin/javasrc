@@ -24,6 +24,7 @@ public class SimpleCalcTest extends TestCase {
 		PrintWriter ps = new PrintWriter(fluffy);
 
 		SimpleCalcStreamTok sc = new SimpleCalcStreamTok(is, ps);
+		sc.doCalc();
 		assertEquals(EXPECT, fluffy.getBuffer().toString());
 	}
 }

@@ -142,6 +142,7 @@ public class SpamRat {
 
 		try {
 			InetAddress ia1 = InetAddress.getByName(realName);
+			System.out.println("Hostname resolves as " + ia1);
 		} catch (UnknownHostException e) {
 			System.err.println("Warning: Host name " + 
 				realName + " did not resolve");
@@ -155,6 +156,7 @@ public class SpamRat {
 
 		try {
 			InetAddress ia2 = InetAddress.getByName(realIP);
+			System.out.println("Hostname resolves as " + ia2);
 		} catch (UnknownHostException e) {
 			System.err.println("Warning: IP " + realIP + " did not resolve");
 		}

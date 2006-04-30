@@ -13,7 +13,7 @@ public class FortranLineReaderTest extends TestCase {
 		//junit.textui.TestRunner.run(FortranLineReaderTest.suite());
 	}
 
-	protected static String sampleTxt = 
+	protected final static String sampleTxt = 
 		"C      This is a comment.\n" +
 		"12345xdouble precision x = " +
 		"      sqrt(3.14159)\n" +

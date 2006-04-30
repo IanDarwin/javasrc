@@ -12,7 +12,7 @@ public class IndentContLineReaderTest extends TestCase {
 	public static void main(String[] args) {
 		//junit.textui.TestRunner.run(IndentContLineReaderTest.suite());
 	}
-	protected static String sampleTxt = 
+	protected final static String sampleTxt = 
 		"From: ian today now\n" +
 		"Received: by foo.bar.com\n" +
 		"	at 12:34:56 January 1, 2000\n" +

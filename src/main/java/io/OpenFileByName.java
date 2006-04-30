@@ -1,7 +1,13 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class OpenFileByName {
+	@SuppressWarnings("unused") 
 	public static void main(String[] args) throws IOException {
 		BufferedReader is = new BufferedReader(new FileReader("myFile.txt"));
 		BufferedOutputStream bytesOut = new BufferedOutputStream(

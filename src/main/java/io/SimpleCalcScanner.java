@@ -22,8 +22,8 @@ public class SimpleCalcScanner {
 	/** The variable name (not used in this version) */
 	protected String variable;
 
-	/** The operand stack */
-	protected Stack s = new Stack();
+	/** The operand stack; no operators are pushed, so it can be a stack of Doubl */
+	protected Stack<Double> s = new Stack<Double>();
 
 	/* Driver - main program */
 	public static void main(String[] av) throws IOException {
@@ -57,14 +57,13 @@ public class SimpleCalcScanner {
 	}
 
 	protected void doCalc() throws IOException {
-		int iType;
 		double tmp;
 
 		while (scan.hasNext()) {
 			if (scan.hasNextDouble()) {
 				push(scan.nextDouble());
 			} else {
-				String token = scan.next().toString();
+				String token = scan.next();
 				if (token.equals("+")) {
 					// Found + operator, perform it immediately.
 					push(pop() + pop());

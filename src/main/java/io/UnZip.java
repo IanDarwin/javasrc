@@ -1,8 +1,14 @@
 package io;
 
-import java.io.*;
-import java.util.*;
-import java.util.zip.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * UnZip -- print or unzip a JAR or PKZIP file using java.util.zip.
@@ -56,11 +62,11 @@ public class UnZip {
 	}
 
 	/** Cache of paths we've mkdir()ed. */
-	protected SortedSet dirsMade;
+	protected SortedSet<String> dirsMade;
 
 	/** For a given Zip file, process each entry. */
 	public void unZip(String fileName) {
-		dirsMade = new TreeSet();
+		dirsMade = new TreeSet<String>();
 		try {
 			zippy = new ZipFile(fileName);
 			Enumeration all = zippy.entries();

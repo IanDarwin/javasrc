@@ -35,7 +35,6 @@ public class ScanStreamTok {
 	}
 
 	protected void process() throws IOException {
-		String s = null;
 		int i;
 
 		while ((i = tf.nextToken()) != StreamTokenizer.TT_EOF) {

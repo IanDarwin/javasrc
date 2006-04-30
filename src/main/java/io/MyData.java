@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 /** Simple data class used in Serialization demos. */
 public class MyData implements Serializable {
+
+	private static final long serialVersionUID = -4965296908339881739L;
 	String userName;
 	String passwordCypher;
 	transient String passwordClear;
