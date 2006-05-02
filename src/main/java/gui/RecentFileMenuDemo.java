@@ -27,6 +27,7 @@ import com.darwinsys.swingui.UtilGUI;
  */
 public class RecentFileMenuDemo extends JFrame {
 
+	private static final long serialVersionUID = -3314639530072327565L;
 	final JFileChooser chooser = new JFileChooser();
 
 	// Constructor
@@ -42,6 +43,8 @@ public class RecentFileMenuDemo extends JFrame {
 		setJMenuBar(mb = new JMenuBar());
 
 		final RecentMenu recentFilesMenu = new RecentMenu(this) {
+			private static final long serialVersionUID = 12345L;
+
 			@Override
 			public void loadFile(String fileName) throws IOException {
 				System.out.println("Let's pretend we are loading..." + fileName);
