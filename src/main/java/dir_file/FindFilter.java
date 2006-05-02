@@ -66,4 +66,8 @@ public class FindFilter implements FilenameFilter {
 		// Catchall
 		return false;
 	}
+	
+	public String getName() {
+		return name;
+	}
 }
