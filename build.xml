@@ -7,6 +7,8 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 	<property name="src-jar" value="javacooksrc2.jar"/>
+	
+	<!-- Note that you MUST edit at least one property in the file named in this rule!! -->
 	<property file="build.properties"/>
 
 	<!-- Right away, make sure javasrc.home has been set
