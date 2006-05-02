@@ -1,5 +1,7 @@
 package structure;
 
+import java.io.IOException;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
@@ -8,7 +10,7 @@ import java.util.prefs.Preferences;
  */
 public class PrefsDemo {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		// Setup the Preferences for this application, by class.
 		Preferences prefs = Preferences.userNodeForPackage(PrefsDemo.class);
@@ -29,5 +31,7 @@ public class PrefsDemo {
 		Preferences child = prefs.node("/a/b");
 		child.putInt("meaning", 42);
 		child.putDouble("pi", Math.PI);
+		
+		prefs.exportSubtree(System.out);
 	}
 }
