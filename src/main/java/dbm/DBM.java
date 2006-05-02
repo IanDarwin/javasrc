@@ -18,7 +18,7 @@ public class DBM {
 	 * to implementation restrictions, we enforce this rule with a
 	 * class-wide boolean.
 	 */
-	protected static boolean inuse = false;
+	static boolean inuse = false;
 
 	/** Save the filename for messages, etc. */
 	protected String fileName;
@@ -26,10 +26,10 @@ public class DBM {
 	/** Construct a DBM given its filename */
 	public DBM(String file) {
 		synchronized(this) {
-			if (inuse)
+			if (isInuse())
 				throw new IllegalArgumentException(
 					"Only one DBM object at a time per Java Machine");
-			inuse = true;
+			setInuse(true);
 		}
 		fileName = file;
 		int retCode = dbminit(fileName);
@@ -80,7 +80,7 @@ public class DBM {
 	/** Public wrapper for close method. */
 	public void close() {
 		this.dbmclose();
-		inuse = false;
+		setInuse(false);
 	}
 
 	protected void checkInUse() {
@@ -136,5 +136,13 @@ public class DBM {
 
 	public String toString() {
 		return "DBM@" + hashCode() + "[" + fileName + "]";
+	}
+
+	public static boolean isInuse() {
+		return inuse;
+	}
+
+	public static void setInuse(boolean inuse) {
+		DBM.inuse = inuse;
 	}
 }
