@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
-/** A User Database Administrator program
+/** A GUI-based User Database Administrator program
  * This does NOT use the UserDB interface as it needs
  * to be able to do ANYTHING to the database,
  * to go beyond, and to repair any errors introduced
