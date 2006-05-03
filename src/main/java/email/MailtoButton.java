@@ -17,6 +17,8 @@ import java.net.URL;
  * @version	$Id$
  */
 public class MailtoButton extends Applet {
+
+	private static final long serialVersionUID = -3186706180199804315L;
 	/** The label that is to appear in the button */
 	protected String label = null;
 	/** The width and height */
@@ -37,8 +39,8 @@ public class MailtoButton extends Applet {
 	/** The HTML PARAM for the hostname -- keep it short */
 	private String TARGET2 = "H";	// for Host 
 	// Dummy
-	private String BOGON1 = "username";	// happy strings-ing, SPAM perps
-	private String BOGON2 = "hostname";	// ditto.
+	//private String BOGON1 = "username";	// happy strings-ing, SPAM perps
+	//private String BOGON2 = "hostname";	// ditto.
 	/** The string for the Subject line, if any */
 	private String subject;
 
