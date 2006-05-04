@@ -15,7 +15,7 @@ orders in your account.
 <%! 
 	Connection conn;
 	public ResultSet getResults() throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("select total from orders where customerid = ?");
+		PreparedStatement ps = conn.prepareStatement("select count(order) orders where order.customerid = ?");
 		ps.setInt(1, 1234);			// customer number
 		return ps.executeQuery(); 
 	}
