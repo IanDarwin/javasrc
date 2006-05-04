@@ -7,10 +7,18 @@ import java.util.Calendar;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/** Reboot servlet. The program accepts one parameter from
+ * the HTTP request, which must be a single numeric string == DAY_OF_YEAR % 10.
+ * The NAME of this parameger is given by pwParamaName, which may be set
+ * in the context as "passwordParamName", and if not set, defaults to
+ * DEFAULT_PARAM_NAME.
+ */
 public class RebootServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3257291322644705584L;
-	String pwParamName = "mxyzptlk";
+	private final static String DEFAULT_PARAM_NAME = "mxyzptlk";
+
+	String pwParamName = DEFAULT_PARAM_NAME;
 
 	public void init() {
 		ServletContext application = getServletContext();
@@ -49,7 +57,8 @@ public class RebootServlet extends HttpServlet {
 		}
 
 		Runtime r = Runtime.getRuntime();
-		Process p = r.exec("sudo reboot");
+		r.exec("sudo reboot");
 		out.println("It seems to be thinking about that");
+		out.flush();
 	}
 }

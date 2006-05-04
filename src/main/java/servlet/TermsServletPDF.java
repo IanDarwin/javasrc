@@ -1,9 +1,14 @@
 package servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.pdflib.*;
 
 /** Output the dictionary in fancy(?) PDF.
@@ -14,6 +19,8 @@ import com.pdflib.*;
  * @version $Id$
  */
 public class TermsServletPDF extends HttpServlet {
+
+	private static final long serialVersionUID = 5598670947585205640L;
 	/** A printwriter for getting the response. */
 	PrintWriter out;
 
