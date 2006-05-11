@@ -25,9 +25,9 @@ public class ImageIndex {
 	/** A reader for the captions file */
 	protected BufferedReader cap;
 	/** The map from filename to caption */
-	protected HashMap map = new HashMap();
+	protected HashMap<String,String> map = new HashMap<String,String>();
 	/** Vector for listing names for sorting */
-	Vector names = new Vector();
+	List<String> names = new Vector<String>();
 	/** The output file that we create */
 	public static final String OUTPUTFILE = "index.html";
 	/** The main output stream */
@@ -75,7 +75,7 @@ public class ImageIndex {
 			StringTokenizer st = new StringTokenizer(line, "\t");
 			String name = st.nextToken();
 			String desc = st.nextToken();
-			names.addElement(name);
+			names.add(name);
 			map.put(name, desc);
 		}
 		cap.close();
@@ -104,7 +104,7 @@ public class ImageIndex {
 
 		String fn;
 		for (int i=0; i<names.size(); i++) {
-			fn = (String)names.elementAt(i);
+			fn = (String)names.get(i);
 			mkLink(fn, (String)map.get(fn));
 		}
 		println("</table>");

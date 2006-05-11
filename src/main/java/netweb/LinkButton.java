@@ -1,10 +1,21 @@
 package netweb;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Synthetic button, not using Native toolkit. This is slightly fancier
  * than the XButton* classes, but still does not do everything you
@@ -17,6 +28,8 @@ import java.util.*;
  * @version	$Id$
  */
 public class LinkButton extends Applet implements MouseListener {
+
+	private static final long serialVersionUID = -3074898744148442497L;
 	/** The label that is to appear in the button */
 	protected String label = null;
 	/** The name of the image */
@@ -27,7 +40,7 @@ public class LinkButton extends Applet implements MouseListener {
 	protected int width, height;
 	/** The list of ActionListeners. Usually short, so a Vector is fine.
 	 * TODO use new AwtMulticastBroadcaster */
-	protected Vector l;
+	protected List<ActionListener> l;
 	/** Padding around the text for getMinimumSize() */
 	protected final int MIN_PAD = 5;
 	/** Padding around the text for getPreferredSize() */
@@ -82,7 +95,7 @@ public class LinkButton extends Applet implements MouseListener {
 		addMouseListener(this);
 
 		// set up the list of action handlers
-		l = new Vector();
+		l = new ArrayList<ActionListener>();
 	}
 	
 	public void start() {
@@ -191,19 +204,19 @@ public class LinkButton extends Applet implements MouseListener {
 
 	/** Add an ActionListener to our list of listeners. */
 	public void addActionListener(ActionListener listener) {
-		l.addElement(listener);
+		l.add(listener);
 	}
 
 	/** Remove an ActionListener; we'll no longer bother it. */
 	public void removeActionListener(ActionListener listener) {
-		l.removeElement(listener);
+		l.remove(listener);
 	}
 
 	/** The mouse was clicked, so notify all our ActionListeners. */
 	protected void fireButton() {
 		repaint();
 		for (int i=0; i<l.size(); i++)
-			((ActionListener)(l.elementAt(i))).actionPerformed(
+			((ActionListener)(l.get(i))).actionPerformed(
 				new ActionEvent(this,
 					ActionEvent.ACTION_PERFORMED,
 					label == null? "A LinkButton" : label));

@@ -15,7 +15,7 @@ public class Element {
 	/** The type of element, e.g., in HTML, "a", "img", etc. */
 	private final String type;	
 	/** The attributes */
-	private Map attributes = new HashMap();
+	private Map<String,String> attributes = new HashMap<String,String>();
 	/** The body text, if any, or null */
 	private String bodyText;
 	
@@ -57,7 +57,7 @@ public class Element {
 		this.bodyText = bodyText;
 	}
 	
-	/* (non-Javadoc)
+	/** Generate a strng representation of this Element.
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {

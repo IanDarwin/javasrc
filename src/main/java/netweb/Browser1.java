@@ -25,13 +25,12 @@ public class Browser1 {
 
 	Browser1(String av[]) {
 		String loc = null;
-		String data = null;
 		switch(av.length) {
 			case 0: loc = "http://localhost/"; break;
 			case 1: loc = av[0]; break;
 			default:
 				System.err.println("Usage: getFromURL [url]");
-				System.exit(1);
+				return;
 		}
 		try {
 			URL Web = new URL(loc);
@@ -49,8 +48,6 @@ public class Browser1 {
 		} catch (IOException e) {
 			System.out.println("IOException: " + e);
 		}
-		if (data != null)
-			System.out.println("Data " + data);
 	}
 	class Hyperactive implements HyperlinkListener {
 

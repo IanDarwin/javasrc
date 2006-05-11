@@ -51,6 +51,9 @@ import com.darwinsys.util.Debug;
  * @version $Id$
  */
 public class LinkChecker extends JFrame {
+
+	private static final long serialVersionUID = 1444502541573633997L;
+
 	/** The "global" activation flag: set true to halt. */
 	protected boolean done = false;
 
@@ -63,7 +66,7 @@ public class LinkChecker extends JFrame {
 	protected JButton killButton;
 	protected JTextArea textWindow;
 	protected int indent = 0;
-	protected Map hash = new HashMap();
+	protected Map<String,Boolean> hash = new HashMap<String,Boolean>();
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
@@ -186,7 +189,7 @@ public class LinkChecker extends JFrame {
 				rootURLdirString = rootURLString;
 		else {
 			rootURLdirString = rootURLString.substring(0, 
-				rootURLString.lastIndexOf('/'));	// XXX or \
+				rootURLString.lastIndexOf('/'));
 		}
 
 		try {

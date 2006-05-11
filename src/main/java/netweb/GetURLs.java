@@ -19,7 +19,7 @@ public class GetURLs {
 	}
 
 	/* The tags we want to look at */
-	public final static String[] wantTags = {
+	final static String[] wantTags = {
 		"<a ", "<A ",
 		"<applet ", "<APPLET ",
 		"<img ", "<IMG ",
