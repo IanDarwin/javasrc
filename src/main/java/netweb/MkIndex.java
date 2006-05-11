@@ -1,7 +1,14 @@
 package netweb;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 import com.darwinsys.io.FileIO;
 
 /** MkIndex -- make a static index.html for a Java Source directory
@@ -16,19 +23,6 @@ import com.darwinsys.io.FileIO;
 public class MkIndex {
 
 	private boolean verbose = false;
-
-	class NameMap implements Comparable {
-		String name, nameLC;
-		String path;
-		public NameMap(String nm, String p) {
-			name = nm;
-			nameLC = name.toLowerCase();
-			path = p;
-		}
-		public int compareTo(Object other) {
-			return nameLC.compareTo(((NameMap)other).nameLC);
-		}
-	}
 
 	/** The output file that we create */
 	public static final String OUTPUTFILE = "index-byname.html";
@@ -103,7 +97,7 @@ public class MkIndex {
 	boolean[] exists = new boolean[255];
 
 	/** List for temporary storage, and sorting */
-	ArrayList list = new ArrayList();
+	SortedMap<String,String> list = new TreeMap<String,String>();
 
 	/** Return true if a filename should be ignored. */
 	boolean ignorable(String name) {
@@ -140,7 +134,7 @@ public class MkIndex {
 			}
 		} else {
 			// file to be processed.
-			list.add(new NameMap(name, file.getPath()));
+			list.put(name, file.getPath());
 			exists[name.charAt(0)] = true;
 		}
 	}
@@ -159,15 +153,14 @@ public class MkIndex {
 		println("<ul>");
 
 		System.out.println("Sorting the list...");
-		Collections.sort(list);
-
+		
 		System.out.println("Start PASS TWO -- from List to " +
 			OUTPUTFILE + "...");
-		Iterator it = list.iterator();
+		Iterator it = list.keySet().iterator();
 		while (it.hasNext()) {
-			NameMap map = (NameMap)it.next();
-			String fn = map.name;
-			String path = map.path;
+			String fn = (String)it.next();
+			
+			String path = list.get(fn);
 			// Need to make a link into this directory.
 			// IF there is a descr.txt file, use it for the text
 			// of the link, otherwise, use the directory name.
