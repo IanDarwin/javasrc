@@ -3,7 +3,7 @@ package gui;
 import javax.swing.*;
 import java.awt.event.*;
 
-/* Show an example of closing a Window.
+/* Show an example of closing a JFrame.
  * @author Ian Darwin
  * @version $Id$
  */
