@@ -6,11 +6,10 @@ import java.io.PrintWriter;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import com.darwinsys.io.WriterToJTextArea;
+import com.darwinsys.io.TextAreaWriter;;
 
-public class WriterToJTextAreaDemo {
+public class TextAreaWriterDemo {
 	
-	private static PrintWriter out;
 	/**
 	 * @param args
 	 * @throws IOException 
@@ -22,13 +21,13 @@ public class WriterToJTextAreaDemo {
 		jf.add(ta);
 		jf.pack();
 		jf.setVisible(true);
-		WriterToJTextArea prog = new WriterToJTextArea(ta);
-		out = prog.getWriter();
+		PrintWriter out = new PrintWriter(new TextAreaWriter(ta));
 		out.println("Hello");
+		out.print("Here is a boolean: ");
+		out.println(false);
+		out.print("... and a double: ");
+		out.println(Math.PI);
 		out.flush();
-		Thread.sleep(10000);	// If main exits immediately, the output gets closed 
-								// and this causes an I/O error...
-		System.exit(0);
 	}
 }
 
