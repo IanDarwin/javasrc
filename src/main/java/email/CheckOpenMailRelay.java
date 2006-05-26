@@ -1,7 +1,7 @@
 package email;
 
 import java.io.IOException;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import javax.mail.MessagingException;
 
@@ -30,16 +30,16 @@ public class TestOpenMailRelay {
 
 	/** Try the given mail server, writing output to System.out */
 	public static void process(String suspect_relay) {
-		process(suspect_relay, System.out);
+		process(suspect_relay, new PrintWriter(System.out));
 	}
 
 	/** Try the given mail server, writing output to the given PrintStream */
-	public static void process(String suspect_relay, PrintStream pw) {
-		pw.println("processs: trying: " + suspect_relay);
+	public static void process(String suspect_relay, PrintWriter out) {
+		out.println("processs: trying: " + suspect_relay);
 		try {
 			// Redirect all output from mail API to the given stream.
-			System.setOut(pw);
-			System.setErr(pw);
+			// XXX System.setOut(out);
+			// XXX System.setErr(out);
 			Sender2 sm = new Sender2(suspect_relay);
 			sm.addRecipient("nobody@erewhon.moc");
 			sm.setFrom(MY_TARGET);
@@ -53,9 +53,9 @@ public class TestOpenMailRelay {
 				"If this open relay has been closed, please accept our thanks.\n");
 			sm.sendFile();
 		} catch (MessagingException e) {
-			pw.println(e);
+			out.println(e);
 		} catch (Exception e) {
-			pw.println(e);
+			out.println(e);
 		}
 	}
 }
