@@ -1,2 +1,3 @@
 set -x
-java -classpath .:../jars/darwinsys.jar -Xmx44M Httpd $*
+JARDIR=$HOME/lib
+java -classpath .:$JARDIR/darwinsys.jar -Xmx256M Httpd $*

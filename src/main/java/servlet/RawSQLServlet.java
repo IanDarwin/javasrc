@@ -20,6 +20,8 @@ import com.darwinsys.sql.SQLUtils;
  */
 public class RawSQLServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 4523110482208621396L;
+
 	/** The application-wide servlet context */
 	protected ServletContext application;
 
