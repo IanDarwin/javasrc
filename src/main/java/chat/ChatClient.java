@@ -24,6 +24,8 @@ import java.net.*;
  * @version $Id$
  */
 public class ChatRoom extends Applet {
+
+	private static final long serialVersionUID = -3686334002367908392L;
 	/** Whether we are being run as an Applet or an Application */
 	protected boolean inAnApplet = true;
 	/** The state of logged-in-ness */

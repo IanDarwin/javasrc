@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Create a Text Insert from a file.
  */ 
 public class CodeBean extends TextArea implements Serializable {
+	
+	private static final long serialVersionUID = -1749569826602688081L;
 	protected String fileName;
 	protected Font myFont = null;
 
