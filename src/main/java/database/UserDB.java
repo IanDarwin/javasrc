@@ -19,7 +19,7 @@ public abstract class UserDB {
 	protected List<User> users;
 
 	/** The only instance of this class. */
-	protected static UserDB singleton;
+	protected static final UserDB singleton;
 
 	public static final int NAME = 0;
 	
