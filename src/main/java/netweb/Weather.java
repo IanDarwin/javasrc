@@ -40,7 +40,7 @@ public class Weather {
 		wx.process();
 	}
 
-	protected void process() throws Exception {
+	protected void process() throws IOException {
 
 		System.out.println("Setting up URLConnection");
 
@@ -59,26 +59,30 @@ public class Weather {
 		cx.setDoInput(true);
 		cx.setDoOutput(true);
 		cx.setAllowUserInteraction(false);
+		DataOutputStream os = null;
+		try {
+			os = new DataOutputStream(cx.getOutputStream());
 
-		DataOutputStream os =
-			new DataOutputStream(cx.getOutputStream());
-
-		System.out.println("Connecting the URLConnection");
-		cx.connect();
-
-		System.out.println("Request is:");
-		System.out.println(request);
-
-		System.out.println("Sending Request");
-		os.writeBytes("mbl-stmt=" + URLEncoder.encode(request, "UTF-8"));
-		os.flush();
-
-		System.out.println("Getting the Response");
-		
-		Object response = cx.getContent();
-		if (response instanceof InputStream)
-			response = FileIO.inputStreamToString((InputStream)response);
-		System.out.println(response);
+			System.out.println("Connecting the URLConnection");
+			cx.connect();
+			
+			System.out.println("Request is:");
+			System.out.println(request);
+			
+			System.out.println("Sending Request");
+			os.writeBytes("mbl-stmt=" + URLEncoder.encode(request, "UTF-8"));
+			os.flush();
+			
+			System.out.println("Getting the Response");
+			
+			Object response = cx.getContent();
+			if (response instanceof InputStream)
+				response = FileIO.inputStreamToString((InputStream)response);
+			System.out.println(response);
+		} finally {
+			if (os != null)
+				os.close();
+		}
 	}
 }
 
