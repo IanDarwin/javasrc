@@ -7,12 +7,14 @@ import java.util.Date;
 
 /** An Applet to display the current time */
 public class ClockApplet extends Applet implements Runnable {
+
+	private static final long serialVersionUID = 1321097174379241717L;
 	/** A Thread to run the timer */
 	protected Thread timerThread;
 	/** The date object */
 	Date date = new Date();
 	/** The date format */
-	protected DateFormat format = DateFormat.getTimeInstance();
+	protected final DateFormat format = DateFormat.getTimeInstance();
 
 	/* Applet Lifestyle Methods */
 	public void start() {

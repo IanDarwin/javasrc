@@ -1,7 +1,11 @@
 package JDBC;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
+/**
+ * Print some information about transaction support on a given Driver.
+ */
 public class TXInfo {
 	public static void main(String[] a) throws Exception {
 	Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");

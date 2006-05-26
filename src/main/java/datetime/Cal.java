@@ -11,6 +11,8 @@ import java.util.*;
  * @version $Id$
  */
 public class Cal extends JPanel {
+
+	private static final long serialVersionUID = 7629639180070254280L;
 	/** The currently-interesting year (not modulo 1900!) */
 	protected int yy;
 	/** Currently-interesting month and day */

@@ -9,7 +9,7 @@ class FindNumFilter {
 	/** The value of this filter */
 	int num;
 	/** Constants for the comparison operators. */
-	final int LE = -2, LT = -1, EQ = 0, GT = +1, GE = +2;
+	final static int LE = -2, LT = -1, EQ = 0, GT = +1, GE = +2;
 	/** The current comparison operator */
 	int mode = EQ;
 

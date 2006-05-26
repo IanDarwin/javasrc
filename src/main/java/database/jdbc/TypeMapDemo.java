@@ -1,13 +1,19 @@
 package JDBC;
 
- import java.sql.*;
- import java.util.*;
- import java.io.*;
+ import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Map;
+import java.util.Properties;
 
-/*
- * Following up on the javadoc for java.sql.Connection,
- * make a TypeMap that maps a *structured* UDT into a
+/**
+ * Make a TypeMap that maps a *structured* UDT into a
  * MusicRecording "automatically".
+ * Suggested by the javadoc for java.sql.Connection,
  * @author Ian Darwin
  */
 public class TypeMapDemo {
@@ -28,9 +34,9 @@ public class TypeMapDemo {
 		int ret;
 		try {
 			s.executeUpdate("drop table MR");
+			// This should use "if defined" but not sure it works for UDTs...
 			s.executeUpdate("drop type MUSICRECORDING");
 		} catch (SQLException andDoNothingWithIt) {
-			// Should use "if defined" but not sure it works for UDTs...
 		}
  		ret = s.executeUpdate(
 			"create type MUSICRECORDING as object (" +
@@ -48,11 +54,10 @@ public class TypeMapDemo {
 			"insert into MR values(123, 'Greatest Hits', 'Ian')");
 		System.out.println("inserted " + nRows + " rows");
 
-
 		// Put the data class into the connection's Type Map
 		// If the data class were not an inner class,
 		// this would likely be done with Class.forName(...);
-		Map map = con.getTypeMap();
+		Map<String,Class<?>> map = con.getTypeMap();
 		map.put("MUSICRECORDING", MusicRecording.class);
 		con.setTypeMap(map);
 

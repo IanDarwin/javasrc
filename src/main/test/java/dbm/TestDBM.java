@@ -4,13 +4,16 @@ import java.io.*;
 import java.util.*;
 
 public class TestDBM {
-	public static void main(String javaNamesCauseRSI[]) throws IOException {
+	
+	public static void main(String args[]) throws IOException {
 		DBM d = new DBM("/tmp/mydb");
 		System.out.println(d);
 		d.store("today", new Date());
 		d.store("here", System.getProperty("user.dir"));
 		DBM d2;
-		try { d2 = new DBM("NoSuchDbAnyway"); 
+		try { 
+			d2 = new DBM("NoSuchDbAnyway"); 
+			System.out.println(d2);
 			System.out.println("** ERROR ** failed to throw Exception");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Correctly threw " + e);

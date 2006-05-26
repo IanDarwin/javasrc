@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @version $Id$
  */
 public class ReminderServiceOld {
-	class Item {
+	static class Item {
 		Date due;
 		String message;
 		Item(Date d, String m) {
@@ -67,14 +67,13 @@ public class ReminderServiceOld {
 				try {
 					Thread.sleep(interval);
 				} catch (InterruptedException e) {
-					System.exit(1);	// unexpected intr
+					return;	// unexpected intr
 				}
 				message(i.due + ": " + i.message);
 			} else
 				message("MISSED " + i.message + " at " + i.due);
 			l.remove(0);
 		}
-		System.exit(0);
 	}
 	void message(String message) {
 		System.out.println("\007" + message);

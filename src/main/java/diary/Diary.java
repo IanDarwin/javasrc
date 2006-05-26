@@ -30,6 +30,8 @@ import com.darwinsys.swingui.I18N;
 /** This just maintains a text file as a Diary, with TimeStamps.
  */
 public class Diary extends JFrame {
+
+	private static final long serialVersionUID = 221550013572729175L;
 	/** The width of the text */
 	public static final int COLS = 70;
 	/** The TextArea which displays the text, and does most of the work. */

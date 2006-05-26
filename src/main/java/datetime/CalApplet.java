@@ -12,6 +12,8 @@ import java.util.GregorianCalendar;
 
 /** An Applet to display a "Cal" calendar component */
 public class CalApplet extends Applet implements ActionListener {
+
+	private static final long serialVersionUID = 4524198484331822351L;
 	int yy, mm, dd;
 	Cal cal;
 	Panel p;
