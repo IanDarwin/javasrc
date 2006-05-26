@@ -55,7 +55,7 @@ public class ReadTag {
 	 * @param tags The tags to set.
 	 */
 	public void setWantedTags(String[] tags) {
-		this.wantedTags = tags;
+		this.wantedTags = tags.clone();
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class ReadTag {
 	}
 	
 	public List readTags() throws IOException {
-		List tags = new ArrayList();
+		List<Element> tags = new ArrayList<Element>();
 		Element aTag;
 		while ((aTag = nextTag()) != null) {
 			if (aTag.getType().startsWith(XML_ENDTAG_LEADIN)) // e.g., </html>
@@ -132,7 +132,7 @@ public class ReadTag {
 		if (i == XML_TAG_END) {
 			return tag;		// no attributes
 		}
-		readAttributes(tag, i);
+		readAttributes(tag);
 		return tag;
 	}
 
@@ -140,10 +140,10 @@ public class ReadTag {
 	 * @param tag
 	 * @throws IOException
 	 */
-	private void readAttributes(Element tag, int i) throws IOException {
-		final int S_INNAME = -1, S_EQUALS = '=', Q_NONE = 'N', Q_SQUOTE = '\'', Q_DQUOTE = '"';
+	private void readAttributes(final Element tag) throws IOException {
+		final int S_INNAME = -1, S_EQUALS = '=', /*Q_NONE = 'N',*/ Q_SQUOTE = '\'', Q_DQUOTE = '"';
 		final int S_INITIAL = S_INNAME;
-		int state = S_INNAME;
+		int i, state = S_INNAME;
 		StringBuffer attrName = new StringBuffer(), attrValue = new StringBuffer();
 		while ((i = inrdr.read()) != -1 && i != XML_TAG_END) {
 
@@ -203,7 +203,7 @@ public class ReadTag {
 
 	/* Return a String representation of this object */
 	public String toString() {
-		return "ReadTag[" + myOrigin.toString() + "]";
+		return "ReadTag[" + myOrigin + "]";
 	}
 
 
