@@ -1,18 +1,34 @@
 package email;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+import com.darwinsys.io.TextAreaWriter;
 
 /** GUI for TestOpenMailRelay, lets you run it multiple times in one JVM
  * to avoid startup delay.
  *
- * Starts each in its own Thread for faster return to ready state.
+ * Starts each invocation in its own Thread for faster return to ready state.
  *
  * Uses PipedI/OStreams to capture system.out/err into a window.
  */
-public class TestOpenMailRelayGUI extends JFrame {
+public final class TestOpenMailRelayGUI extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	public static void main(String unused[]) throws IOException {
 		new TestOpenMailRelayGUI().setVisible(true);
@@ -25,7 +41,7 @@ public class TestOpenMailRelayGUI extends JFrame {
 	/** Multi-line text area for results. */
 	protected JTextArea results;
 	/** The piped stream for the main class to write into "results" */
-	protected PrintStream ps;
+	protected PrintWriter out;
 	/** The piped stream to read from "ps" into "results" */
 	protected BufferedReader iis;
 
@@ -35,15 +51,15 @@ public class TestOpenMailRelayGUI extends JFrame {
 	 * and passes it to process() in the main class. Run in the
 	 * GUI Dispatch thread to avoid messing the GUI. -- tmurtagh.
 	 */
-	ActionListener runner = new ActionListener() {
+	final ActionListener runner = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 			goButton.setEnabled(false);
 			SwingUtilities.invokeLater(
 				new Thread() {
 					public void run() {
 						String host = hostTextField.getText().trim();
-						ps.println("Trying " + host);
-						TestOpenMailRelay.process(host, ps);
+						out.println("Trying " + host);
+						TestOpenMailRelay.process(host, out);
 						goButton.setEnabled(true);
 					}
 				});
@@ -55,8 +71,7 @@ public class TestOpenMailRelayGUI extends JFrame {
 	 */
 	public TestOpenMailRelayGUI() throws IOException {
 		super("Tests for Open Mail Relays");
-		PipedInputStream is;
-		PipedOutputStream os;
+
 		JPanel p;
 		Container cp = getContentPane();
 		cp.add(BorderLayout.NORTH, p = new JPanel());
@@ -89,29 +104,6 @@ public class TestOpenMailRelayGUI extends JFrame {
 
 		pack();			// end of GUI portion
 
-		// Create a pair of Piped Streams.
-		is = new PipedInputStream();
-		os = new PipedOutputStream(is);
-
-		iis = new BufferedReader(new InputStreamReader(is, "ISO8859_1"));
-		ps = new PrintStream(os);
-
-		// Construct and start a Thread to copy data from "is" to "os".
-		new Thread() {
-			public void run() {
-				try {
-					String line;
-					while ((line = iis.readLine()) != null) {
-						results.append(line);
-						results.append("\n");
-					}
-				} catch(IOException ex) {
-					JOptionPane.showMessageDialog(null,
-						"*** Input or Output error ***\n" + ex,
-						"Error",
-						JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		}.start();
+		out = new PrintWriter(new TextAreaWriter(results));
 	}
 }
