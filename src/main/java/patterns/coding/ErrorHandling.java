@@ -2,7 +2,7 @@ package patterns.coding;
 
 /**
  * Error handling generally belongs in user-interface code, not
- * exampleOfLibraryCode code. UI code often has to keep going in the face of
+ * in lower-level code. UI code often has to keep going in the face of
  * errors from lower level code. So, it's generally better for UI
  * code to catch errors inside a loop, rather than at the top
  * level; the antiPattern shown here terminates on the first error.
@@ -16,6 +16,17 @@ public class HandleErrorsInLoop {
 	void exampleOfLibraryCode(int i) throws Exception {
 		if (i % 5 == 0) {
 			throw new RuntimeException("Interesting data");
+		}
+	}	
+	
+	/**
+	 * This is a bad example of the above, because it will fail silently if
+	 * called from a GUI or from a Servlet - let the calling code display
+	 * errors to the user, it's the only place that knows how!
+	 */
+	void badExampleOfLibraryCode(int i) throws Exception {
+		if (i % 5 == 0) {
+			System.out.println("Interesting data");
 		}
 	}
 
