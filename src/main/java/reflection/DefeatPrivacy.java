@@ -22,6 +22,9 @@ public class DefeatPrivacy {
 		private int p = 42;
 		int q = 3;
 		public int r = 0x123;
+		public int getP() {
+			return p;
+		}
 	}
 
 	private void process() throws Exception {
