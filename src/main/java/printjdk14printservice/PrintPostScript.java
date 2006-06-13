@@ -1,4 +1,4 @@
-package graphics;
+package printing;
 
 import java.io.IOException;
 import java.io.FileOutputStream;

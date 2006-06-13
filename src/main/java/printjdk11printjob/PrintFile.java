@@ -1,4 +1,4 @@
-package graphics;
+package printing;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,7 +23,7 @@ import javax.swing.JFrame;
  * PrintFile -- Print a file named on the command line
  */
 public class PrintFile extends JFrame {
-	/**  */
+
 	private static final long serialVersionUID = -668723004626260238L;
 	/** The number of pages to print */
 	protected static final int NPAGES = 3;

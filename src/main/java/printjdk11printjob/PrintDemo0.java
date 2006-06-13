@@ -1,13 +1,15 @@
-package graphics;
+package printing;
 
-import java.awt.*;
+import java.awt.*;import javax.swing.*;
 import java.util.*;
 
 /**
  * PrintDemo0 -- Print Demo Program - JDK1.1 Version
  *      Prints three pages (or so).
  */
-public class PrintDemo0 extends Frame {
+public class PrintDemo0 extends JFrame {
+	
+	private static final long serialVersionUID = 3265356820912615227L;
 	protected static final int NPAGES = 3;
 
 	/** main program: instantiate and run. */

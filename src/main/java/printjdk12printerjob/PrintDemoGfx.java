@@ -1,9 +1,19 @@
-package graphics;
+package printing;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.print.*;
-import javax.swing.*;
+import graphics.GfxDemoCanvas;
+
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /** PrintDemoGfx -- Construct and print a GfxDemoCanvas. 
  * Java 2 VERSION, using a PrinterJob.
