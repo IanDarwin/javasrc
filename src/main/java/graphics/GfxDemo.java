@@ -1,11 +1,17 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
 
 /**
- * Graphics Demo for Learning Tree Course 471/478
+ * Graphics Demo
+ * @author Ian Darwin, originally done for Learning Tree Course 471/478
  */
-public class GfxDemo extends Frame {
+public class GfxDemo extends JFrame {
+	/**  */
+	private static final long serialVersionUID = -1379891239436602460L;
 	int width, height;
 
 	GfxDemo(String s) {
@@ -27,6 +33,7 @@ public class GfxDemo extends Frame {
 	}
 
 	public static void main(String[] a) {
+		
 		GfxDemo xyz = new GfxDemo("Default Size");
 		xyz.setVisible(true);
 
