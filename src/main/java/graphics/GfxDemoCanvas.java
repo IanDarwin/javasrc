@@ -1,17 +1,20 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JComponent;
 
 /**
- * Fancier, Canvas-based Graphics Demo for Learning Tree Course 471/478
- * This subclass of Canvas does the drawing;
- * GfxDemo2 merely creates a Frame and adds the Canvas to it,
- * while PrintDemoGFx creates one of these and calls its paint()
- * method with a Printer Graphics object.
+ * Simple demo of drawing into a Component.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-public class GfxDemoCanvas extends Canvas {
+public class GfxDemoCanvas extends JComponent {
+
+	private static final long serialVersionUID = -6695483451019630133L;
 	int width, height;
 
 	GfxDemoCanvas(int w, int h) {
@@ -22,7 +25,8 @@ public class GfxDemoCanvas extends Canvas {
 		return new Dimension(width, height);
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics g1) {
+		Graphics2D g = (Graphics2D)g1;
 		width = getSize().width;
 		height = getSize().height;
 		g.setColor(Color.black);
