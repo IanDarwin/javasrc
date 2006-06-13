@@ -1,4 +1,6 @@
-package graphics;
+package printing;
+
+import graphics.GfxDemoCanvas;
 
 import java.awt.*;
 import java.awt.event.*;

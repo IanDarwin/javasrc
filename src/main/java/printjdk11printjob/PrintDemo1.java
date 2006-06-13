@@ -1,14 +1,25 @@
-package graphics;
+package printing;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.PrintJob;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Properties;
+
+import javax.swing.JFrame;
 
 /**
  * PrintDemo1 -- Print Demo Program - JDK1.1 Version
  *      Prints three pages (or so).
  */
-public class PrintDemo1 extends Frame implements ActionListener {
+public class PrintDemo1 extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = -6995544371446195979L;
 	/** The number of pages to print */
 	protected static final int NPAGES = 3;
 	/** The actual number of pages */
