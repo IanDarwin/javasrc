@@ -118,7 +118,7 @@ public class Grapher extends JPanel {
 		f.pack();
 		List<Point2D> data = null;
 		if (args.length == 0)
-			data = GraphReader.read("Grapher.dat");
+			data = GraphReader.read("Grapher.txt");
 		else {
 			String fileName = args[0];
 			if ("-".equals(fileName)) {
