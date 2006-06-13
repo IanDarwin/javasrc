@@ -18,7 +18,7 @@ public class GraphReader {
 	 * @throws IllegalArgumentException on bad or insufficient data
 	 * @throws IOException if the file doesn't exist or is unreadable.
 	 */
-	public static List read(String fileName) throws IOException {
+	public static List<Point2D> read(String fileName) throws IOException {
 		return read(new FileReader(fileName), fileName);
 	}
 	
@@ -26,7 +26,7 @@ public class GraphReader {
 	 * @throws IllegalArgumentException on bad or insufficient data
 	 * @throws IOException if the file doesn't exist or is unreadable.
 	 */
-	public static List read(Reader reader, String fileName) throws IOException {
+	public static List<Point2D> read(Reader reader, String fileName) throws IOException {
 		LineNumberReader is = new LineNumberReader(reader);
 
 		List<Point2D> data = new ArrayList<Point2D>();

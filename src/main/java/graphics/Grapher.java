@@ -18,11 +18,14 @@ import com.darwinsys.util.Debug;
  * @version $Id$
  */
 public class Grapher extends JPanel {
+
+	private static final long serialVersionUID = -1813143391310613248L;
+
 	/** Multiplier for range to allow room for a border */
 	public final static double BORDERFACTOR = 1.1f;
 
 	/** The list of Point points. */
-	protected List data;
+	protected List<Point2D> data;
 
 	/** The minimum and maximum X values */
 	protected double minx = Integer.MAX_VALUE, maxx = Integer.MIN_VALUE;
@@ -32,7 +35,7 @@ public class Grapher extends JPanel {
 	protected double xrange, yrange;
 
 	public Grapher() {
-		data = new ArrayList();
+		data = new ArrayList<Point2D>();
 		figure();
 	}
 
@@ -51,7 +54,7 @@ public class Grapher extends JPanel {
 	}
 
 	/** Set the list from an existing List, as from GraphReader.read() */
-	public void setListData(List newData) {
+	public void setListData(List<Point2D> newData) {
 		data = newData;
 		figure();
 	}
@@ -113,7 +116,7 @@ public class Grapher extends JPanel {
 		f.setContentPane(grapher);
 		f.setLocation(100, 100);
 		f.pack();
-		List data = null;
+		List<Point2D> data = null;
 		if (args.length == 0)
 			data = GraphReader.read("Grapher.dat");
 		else {
