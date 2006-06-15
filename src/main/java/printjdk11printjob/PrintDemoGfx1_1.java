@@ -2,9 +2,15 @@ package printjdk11printjob;
 
 import graphics.GfxDemoCanvas;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.PrintJob;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /** PrintDemoGfx -- Construct and print a GfxDemoCanvas.  
  * JDK1.1 VERSION, using the older PrintJob.
