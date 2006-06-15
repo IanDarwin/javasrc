@@ -55,7 +55,7 @@ public class PrintDemoGfx {
 							if (pageNum>0)		// we only print one page
 								return Printable.NO_SUCH_PAGE;	// ie., end of job
 
-							// Now (drum roll please), ask "thing" to paint itself
+							// Now ask "thing" to paint itself
 							// on the printer, by calling its paint() method with 
 							// a Printjob Graphics instead of a Window Graphics.
 							thing.paint(pg);
