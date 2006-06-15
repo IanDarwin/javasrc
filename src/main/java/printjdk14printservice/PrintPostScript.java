@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 
 import javax.print.Doc;
 import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
 import javax.print.PrintException;
 import javax.print.SimpleDoc;
 import javax.print.StreamPrintService;
@@ -25,7 +26,7 @@ public class PrintPostScript {
 	
 	public void print() throws IOException, PrintException {
 		
-		DocFlavor.BYTE_ARRAY flavor = DocFlavor.BYTE_ARRAY.POSTSCRIPT;
+		DocFlavor flavor = DocFlavor.BYTE_ARRAY.POSTSCRIPT;
 		StreamPrintServiceFactory[] psfactories =
 			StreamPrintServiceFactory.lookupStreamPrintServiceFactories(
 				DocFlavor.SERVICE_FORMATTED.PRINTABLE,
@@ -39,7 +40,10 @@ public class PrintPostScript {
 		attrs.add(new Copies(1));
 		attrs.add(new JobName("PrintPostScript", null));
 
+		// DOES NOT WORK - you must pass SimpleDoc something that will turn into PostScript!
 		Doc doc = new SimpleDoc(this, flavor, null);
-		printService.createPrintJob().print(doc, attrs);
+		
+		DocPrintJob printJob = printService.createPrintJob();
+		printJob.print(doc, attrs);
 	}
 }

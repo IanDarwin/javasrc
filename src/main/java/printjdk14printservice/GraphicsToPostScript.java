@@ -40,14 +40,14 @@ public class GraphicsToPostScript {
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 		aset.add(new Copies(2));
 		
-//		 Tell the print system how to print our pages.
+		// Tell the print system how to print our pages.
 		pjob.setPrintable(new Printable() {
 			/** called from the printer system to print each page */
 			public int print(Graphics pg, PageFormat pf, int pageNum) {
 				if (pageNum>0)		// we only print one page
 					return Printable.NO_SUCH_PAGE;	// ie., end of job
 
-				// Now (drum roll please), ask "thing" to paint itself
+				// Now ask "thing" to paint itself
 				// on the printer, by calling its paint() method with 
 				// a Printjob Graphics instead of a Window Graphics.
 				thing.paint(pg);
