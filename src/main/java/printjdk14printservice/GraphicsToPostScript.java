@@ -1,4 +1,4 @@
-package printing;
+package printjdk14printservice;
 
 import graphics.GfxDemoCanvas;
 
