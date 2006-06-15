@@ -1,7 +1,13 @@
 package printing;
 
-import java.awt.*;import javax.swing.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.PrintJob;
+import java.util.Properties;
+
+import javax.swing.JFrame;
 
 /**
  * PrintDemo0 -- Print Demo Program - JDK1.1 Version
