@@ -4,6 +4,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 
 import javax.print.Doc;
 import javax.print.DocFlavor;
@@ -11,6 +13,7 @@ import javax.print.DocPrintJob;
 import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.print.attribute.DocAttributeSet;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.MediaSizeName;
@@ -21,7 +24,7 @@ import javax.swing.JOptionPane;
 import com.darwinsys.swingui.UtilGUI;
 
 /**
- * Show the PrintService, a more high-level API than PrintJob
+ * Show the PrintService, a more high-level API than PrintJob, from a GUI.
  */
 public class PrintServiceDemo extends JFrame {
 
@@ -67,7 +70,6 @@ public class PrintServiceDemo extends JFrame {
 				flavor, aset);
 		if (pservices.length > 0) {
 			DocPrintJob pj = pservices[0].createPrintJob();
-			// InputStreamDoc is an implementation of the Doc interface //
 			Doc doc = new MyDemoDoc(FILE_NAME, flavor);
 			try {
 				pj.print(doc, aset);
@@ -75,6 +77,40 @@ public class PrintServiceDemo extends JFrame {
 				JOptionPane.showMessageDialog(PrintServiceDemo.this,
 						"Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
 			}
+		}
+	}
+	
+	/**
+	 * Simple holder for filename and document flavor.
+	 */
+	final class MyDemoDoc implements Doc {
+		
+		private DocFlavor flavor;
+		private String fileName;
+
+		public MyDemoDoc(String fileName, DocFlavor flavor) {
+			this.fileName = fileName;
+			this.flavor = flavor;
+		}
+
+		public DocFlavor getDocFlavor() {
+			return flavor;
+		}
+
+		public Object getPrintData() throws IOException {
+			return null;
+		}
+
+		public DocAttributeSet getAttributes() {
+			return null;
+		}
+
+		public Reader getReaderForText() throws IOException {
+			return null;
+		}
+
+		public InputStream getStreamForBytes() throws IOException {
+			return getClass().getResourceAsStream(fileName);
 		}
 	}
 }
