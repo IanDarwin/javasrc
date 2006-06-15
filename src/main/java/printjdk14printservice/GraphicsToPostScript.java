@@ -15,27 +15,26 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
 
+/**
+ * Use the JDK 1.4+ PrintStreamservice to convert graphics to PostScript(tm);
+ * a sort of hybrid, uses the 1.2 PrinterJob with Print Services.
+ */
 public class GraphicsToPostScript {
-
+	
 	final static GfxDemoCanvas thing = new GfxDemoCanvas(400, 300);
 	
-	/**
-	 * Use the JDK 1.4+ PrintStreamservice to convert graphics to PostScript(tm).
-	 * @param args
-	 */
 	public static void main(String[] args) throws Exception {
-		PrinterJob pjob = PrinterJob.getPrinterJob();
 		String psMimeType = "application/postscript";
 		FileOutputStream output;
-		StreamPrintService psPrinter;
 		StreamPrintServiceFactory[] factories = PrinterJob
 				.lookupStreamPrintServices(psMimeType);
 		if (factories.length == 0) {
 			throw new IOException("Couldn't find print service");
 		}
 		output = new FileOutputStream("temp.ps");
-		psPrinter = factories[0].getPrintService(output);
+		StreamPrintService psPrinter = factories[0].getPrintService(output);
 		// psPrinter can now be set as the service on a PrinterJob 
+		PrinterJob pjob = PrinterJob.getPrinterJob();
 		pjob.setPrintService(psPrinter); // if app wants to specify this printer.
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 		aset.add(new Copies(2));
