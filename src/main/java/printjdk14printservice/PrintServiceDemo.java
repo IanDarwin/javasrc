@@ -16,7 +16,6 @@ import javax.print.PrintServiceLookup;
 import javax.print.attribute.DocAttributeSet;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.MediaSizeName;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,13 +23,15 @@ import javax.swing.JOptionPane;
 import com.darwinsys.swingui.UtilGUI;
 
 /**
- * Show the PrintService, a more high-level API than PrintJob, from a GUI.
+ * Show the PrintService, a more high-level API than PrintJob, from a GUI;
+ * the GUI consists only of a "Print" button, and the filename is hardcoded,
+ * but it's meant to be a minimal demo...
  */
 public class PrintServiceDemo extends JFrame {
 
 	private static final long serialVersionUID = 923572304627926023L;
 	
-	private static final String FILE_NAME = "duke.gif";
+	private static final String INPUT_FILE_NAME = "duke.gif";
 
 	/** main program: instantiate and show. 
 	 * @throws IOException */
@@ -40,14 +41,15 @@ public class PrintServiceDemo extends JFrame {
 
 	/** Constructor */
 	PrintServiceDemo() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 		JButton b;
 		add(b = new JButton("Print"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					print(FILE_NAME);
-				} catch (IOException e1) {
+					print(INPUT_FILE_NAME);
+				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(PrintServiceDemo.this, "Error: " + e1, "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
@@ -59,25 +61,34 @@ public class PrintServiceDemo extends JFrame {
 
 	/** Print a file by name 
 	 * @throws IOException
+	 * @throws PrintException 
 	 */
-	public void print(String fileName) throws IOException {
+	public void print(String fileName) throws IOException, PrintException {
 	
 		System.out.println("Printing " + fileName);
-		DocFlavor flavor = DocFlavor.BYTE_ARRAY.GIF;
+		DocFlavor flavor = DocFlavor.BYTE_ARRAY.POSTSCRIPT;
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-		aset.add(MediaSizeName.NA_LETTER);
+		//aset.add(MediaSizeName.NA_LETTER);
 		PrintService[] pservices = PrintServiceLookup.lookupPrintServices(
 				flavor, aset);
-		if (pservices.length > 0) {
-			DocPrintJob pj = pservices[0].createPrintJob();
-			Doc doc = new MyDemoDoc(FILE_NAME, flavor);
-			try {
-				pj.print(doc, aset);
-			} catch (PrintException e) {
-				JOptionPane.showMessageDialog(PrintServiceDemo.this,
-						"Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-			}
+		int i;
+		switch(pservices.length) {
+		case 0:
+			JOptionPane.showMessageDialog(PrintServiceDemo.this,
+					"Error: No PrintService Found", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		case 1:
+			i = 1;
+			break;
+		default:
+			i = JOptionPane.showOptionDialog(this, "Pick a printer", "Choice", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null, pservices, pservices[0]);
+			break;
 		}
+		DocPrintJob pj = pservices[i].createPrintJob();
+		Doc doc = new MyDemoDoc(INPUT_FILE_NAME, flavor);
+
+		pj.print(doc, aset);
+
 	}
 	
 	/**
