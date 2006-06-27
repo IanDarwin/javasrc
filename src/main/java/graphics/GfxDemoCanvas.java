@@ -17,7 +17,7 @@ public class GfxDemoCanvas extends JComponent {
 	private static final long serialVersionUID = -6695483451019630133L;
 	int width, height;
 
-	GfxDemoCanvas(int w, int h) {
+	public GfxDemoCanvas(int w, int h) {
 		setSize(width=w, height=h);
 	}
 
