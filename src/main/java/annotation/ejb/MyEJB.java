@@ -6,6 +6,8 @@ import javax.ejb.*;
  * helper interfaces generated; here setName() is exposed to
  * both local and remote, while getName() is only exposed to local.
  * Note: this uses my own API and is not supported by any real build tool!
+ * Nor is this exactly how EJB3 is implemented; more like a simplified
+ * "how to" example.
  */
 public abstract class MyEJB implements EntityBean {
 
