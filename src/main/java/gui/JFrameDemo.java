@@ -8,6 +8,8 @@ import javax.swing.*;
  * @version $Id$
  */
 public class JFrameDemo extends JFrame {
+
+	private static final long serialVersionUID = -3089466980388235513L;
 	JButton quitButton;
 
 	/** Construct the object including its GUI */
@@ -30,6 +32,7 @@ public class JFrameDemo extends JFrame {
 		});
 			
 		pack();
+		setLocation(500, 400);
 	}
 	public static void main(String[] args) {
 		new JFrameDemo().setVisible(true);
