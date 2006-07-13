@@ -29,10 +29,13 @@ public class CommPortLister {
 			System.out.print("Port " + cpi.getName() + " ");
 			if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
 				System.out.println("is a Serial Port: " + cpi);
+				found = true;
 			} else if (cpi.getPortType() == CommPortIdentifier.PORT_PARALLEL) {
 				System.out.println("is a Parallel Port: " + cpi);
+				found = true;
 			} else {
 				System.out.println("is an Unknown Port: " + cpi);
+				// Should we set this? found = true;
 			}
 		}
 		if (!found) {
