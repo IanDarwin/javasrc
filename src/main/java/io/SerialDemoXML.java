@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /** Show the XML serialization added to "java.beans.*" in JDK1.4.
+ * Note that only properties with public get AND set methods get serialized.
  * Subclass "SerialDemoAbstratBase" to get most of infrastructure
  */
 public class SerialDemoXML extends SerialDemoAbstractBase {
