@@ -1,8 +1,11 @@
 package network;
 
-import java.net.*;
-import java.util.StringTokenizer;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * A very very very simple Web server.
