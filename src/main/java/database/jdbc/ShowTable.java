@@ -1,9 +1,5 @@
 package JDBC;
 
-/**
- * List the Column names in an SQL database table.
- */
-
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -11,6 +7,9 @@ import java.sql.SQLException;
 
 import com.darwinsys.sql.ConnectionUtil;
 
+/**
+ * List the Column names in an SQL database table.
+ */
 public class ShowTable {
 	public static void main(String[] args) throws SQLException {
 		String config = args[0];
