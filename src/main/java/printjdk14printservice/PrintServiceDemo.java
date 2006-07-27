@@ -36,11 +36,12 @@ public class PrintServiceDemo extends JFrame {
 	/** main program: instantiate and show. 
 	 * @throws IOException */
 	public static void main(String[] av) throws IOException {
-		new PrintServiceDemo().setVisible(true);
+		new PrintServiceDemo("Print Demo").setVisible(true);
 	}
 
 	/** Constructor */
-	PrintServiceDemo() {
+	PrintServiceDemo(String title) {
+		super(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 		JButton b;
