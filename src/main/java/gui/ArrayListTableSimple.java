@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import util.ArrayListTableDatum;
-
+import com.darwinsys.util.ArrayListTableDatum;
 import com.darwinsys.swingui.ArrayListTableModel;
 import com.darwinsys.swingui.ArrayListTablePanel;
 
@@ -19,8 +18,12 @@ import com.darwinsys.swingui.ArrayListTablePanel;
  */
 public class ArrayListTableSimple extends JFrame {
 
+	private static final long serialVersionUID = 7090960394360929963L;
+
 	/** inner class for TableModel */
 	static class Model extends ArrayListTableModel {
+
+		private static final long serialVersionUID = -464608588722768902L;
 
 		/** This defines the order of the columns. Must agree with columnClasses */
 		protected String[] myColumnNames = { "Name", "Value" };
