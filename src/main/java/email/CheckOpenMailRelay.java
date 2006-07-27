@@ -1,7 +1,7 @@
 package email;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.PrintStream;
 
 import javax.mail.MessagingException;
 
@@ -11,11 +11,11 @@ import javax.mail.MessagingException;
  */
 public class TestOpenMailRelay {
 
-	/** Where to refer people that find the test messages on their system. */
+	/** Where to refer people who find the test messages on their system. */
 	public final static String RSS_SITE = "http://mail-abuse.org/rss/";
 
 	/** Where the test messages will be collected. */
-	public final static String MY_TARGET = "spam-magnet@darwinsys.com";
+	public final static String MY_TARGET = "spam-magnet@YOURDOMAINHERE.com";
 
 	/** Driver to parse options and control Sender */
 	public static void main(String[] args) throws IOException {
@@ -30,11 +30,11 @@ public class TestOpenMailRelay {
 
 	/** Try the given mail server, writing output to System.out */
 	public static void process(String suspect_relay) {
-		process(suspect_relay, new PrintWriter(System.out));
+		process(suspect_relay, System.out);
 	}
 
 	/** Try the given mail server, writing output to the given PrintStream */
-	public static void process(String suspect_relay, PrintWriter out) {
+	public static void process(String suspect_relay, PrintStream out) {
 		out.println("processs: trying: " + suspect_relay);
 		try {
 			// Redirect all output from mail API to the given stream.
