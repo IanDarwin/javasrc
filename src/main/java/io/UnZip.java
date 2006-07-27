@@ -18,15 +18,18 @@ import java.util.zip.ZipFile;
  */
 public class UnZip {
 	/** Constants for mode listing or mode extracting. */
-	public static final int LIST = 0, EXTRACT = 1;
+	public static enum Mode {
+		LIST, 
+		EXTRACT;
+	};
 	/** Whether we are extracting or just printing TOC */
-	protected int mode = LIST;
+	protected Mode mode = Mode.LIST;
 
 	/** The ZipFile that is used to read an archive */
 	protected ZipFile zippy;
 
 	/** The buffer for reading/writing the ZipFile data */
-	protected byte[] b;
+	protected byte[] b = new byte[8092];;
 
 	/** Simple main program, construct an UnZipper, process each
 	 * .ZIP file from argv[] through that object.
@@ -36,7 +39,7 @@ public class UnZip {
 
 		for (int i=0; i<argv.length; i++) {
 			if ("-x".equals(argv[i])) {
-				u.setMode(EXTRACT);
+				u.setMode(Mode.EXTRACT);
 				continue;
 			}
 			String candidate = argv[i];
@@ -49,16 +52,9 @@ public class UnZip {
 		System.err.println("All done!");
 	}
 
-	/** Construct an UnZip object. Just allocate the buffer */
-	UnZip() {
-		b = new byte[8092];
-	}
-
 	/** Set the Mode (list, extract). */
-	protected void setMode(int m) {
-		if (m == LIST ||
-		    m == EXTRACT)
-			mode = m;
+	protected void setMode(Mode m) {
+		mode = m;
 	}
 
 	/** Cache of paths we've mkdir()ed. */
