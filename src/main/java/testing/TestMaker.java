@@ -1,7 +1,5 @@
 package testing;
 
-// package testgen;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -77,7 +75,7 @@ public class GenTest {
 	}
 	
 	// Map to permute method names for overloaded methods
-	Map/*<MutableInteger>*/ emittedMap = new HashMap();
+	Map<String,MutableInteger> emittedMap = new HashMap<String,MutableInteger>();
 
 	/**
 	 * Generate a method to test one method in the target.
@@ -86,7 +84,7 @@ public class GenTest {
 	private void emit(String className, Method method, int modifiers) {
 		String name = method.getName();
 		MutableInteger n;
-		if ((n = (MutableInteger)emittedMap.get(name))  == null) {
+		if ((n = emittedMap.get(name))  == null) {
 			n = new MutableInteger(0);
 			emittedMap.put(name, n);
 		}
