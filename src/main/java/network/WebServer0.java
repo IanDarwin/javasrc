@@ -68,9 +68,8 @@ public class WebServer0 {
 			System.out.println("Accepted connection from " + from);
 			is = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			request = is.readLine();
-			StringTokenizer st = new StringTokenizer(request);
 			System.out.println("Request: " + request);
-			String nullLine = is.readLine();
+			
 			os = new PrintWriter(s.getOutputStream(), true);
 			os.println("HTTP/1.0 200 Here is your data");
 			os.println("Content-type: text/html");
