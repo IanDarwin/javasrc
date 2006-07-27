@@ -24,7 +24,7 @@ public class XParse {
 	 * extract the DTD name/location and use it, whereas Schema(etc)-based validation requires the user to do
 	 * this manually before invoking the parser.
 	 * @param av Command args, may include -v for validation, and -a schema.xsd, before the filename(s);
-	 * all must use the same Schema.
+	 * all documents parsed in this run must use the same Schema.
 	 * @throws SAXException
 	 */
 	public static void main(String[] av) throws SAXException {
