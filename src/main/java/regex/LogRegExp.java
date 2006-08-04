@@ -35,6 +35,6 @@ public class LogRegExp  {
 		System.out.println("Bytes Sent: " + matcher.group(7));
 		if (!matcher.group(8).equals("-"))
 			System.out.println("Referer: " + matcher.group(8));
-		System.out.println("Browser: " + matcher.group(9));
+		System.out.println("User-Agent: " + matcher.group(9));
 	}
 }
