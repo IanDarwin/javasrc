@@ -6,12 +6,17 @@ package RE;
 // pattern.  Demonstrates NIO mapped byte buffers, charsets, and regular
 // expressions.
 
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.util.regex.*;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.CharBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class GrepSun {
 
