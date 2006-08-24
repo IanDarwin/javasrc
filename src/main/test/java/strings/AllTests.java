@@ -15,8 +15,6 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Test for default package");
 		//$JUnit-BEGIN$
-		suite.addTestSuite(CSVTest.class);
-		suite.addTestSuite(CSVRETest.class);
 		suite.addTestSuite(EnTabTest.class);
 		suite.addTestSuite(SoundexTest.class);
 		suite.addTestSuite(StringAlignTest.class);
