@@ -1,9 +1,15 @@
 package graphics;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 public class DrawStringDemo2 extends JComponent {
+
+	private static final long serialVersionUID = -6593901790809089107L;
 	//-
 	String message = "Hello Java";
 
@@ -30,6 +36,13 @@ public class DrawStringDemo2 extends JComponent {
 
 	public Dimension getPreferredSize() {
 		return new Dimension(100, 100);
+	}
+
+	public static void main(String[] args) {
+		JFrame jf = new JFrame();
+		jf.add(new DrawStringDemo2());
+		jf.setBounds(100, 100, 100, 100);
+		jf.setVisible(true);
 	}
 }
 
