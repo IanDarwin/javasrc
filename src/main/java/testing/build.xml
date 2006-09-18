@@ -24,7 +24,7 @@
 				<pathelement location="${build}"/>
 			</classpath>
 			<formatter type="plain"/>
-			<test name="PersonTest"/>
+			<test name="AllTests"/>
 		</junit>
 	</target>
 
