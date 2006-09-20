@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.util.List;
+
 import javax.naming.*;
 
 /** This class implements a simple JMS Chat client.
@@ -13,6 +15,7 @@ import javax.naming.*;
  */
 public class JMSChat extends JFrame {
 
+	private static final long serialVersionUID = 1213151366536598385L;
 	TopicConnectionFactory	topicConnectionFactory;
 	TopicConnection			topicConnection;
 	TopicSession			topicSession;
@@ -24,7 +27,7 @@ public class JMSChat extends JFrame {
 	JTextField theMessage = new JTextField(20);
 	JLabel theLabel = new JLabel("Messages Sent:");
 	JList theMessages;
-	Vector messageStore = new Vector();
+	List<String> messageStore = new Vector<String>();
 
 
     /**
@@ -52,11 +55,10 @@ public class JMSChat extends JFrame {
 
 		Container cp = getContentPane();
 
-		theMessages = new JList(messageStore);
+		theMessages = new JList((Vector)messageStore);
 		theMessages.setPrototypeCellValue("SomeTopicName/SomeMessageString");
 		cp.add(new JScrollPane(theMessages), BorderLayout.CENTER);
 		cp.add(bottomPanel, BorderLayout.SOUTH);
-		Container c = getContentPane();
 
 		cp.add(bottomPanel, BorderLayout.SOUTH);
 		pack();
@@ -129,8 +131,8 @@ public class JMSChat extends JFrame {
 				public void onMessage(Message message) {
 					TextMessage msg = (TextMessage) message;
 					try {
-						messageStore.addElement("Incoming: " + msg.getText());
-						theMessages.setListData(messageStore);
+						messageStore.add("Incoming: " + msg.getText());
+						theMessages.setListData((Vector)messageStore);
 					} catch (JMSException ex) {
 						JOptionPane.showMessageDialog(JMSChat.this,
 							"Error in onMessage: " + ex.toString(),
@@ -157,7 +159,7 @@ public class JMSChat extends JFrame {
      */
 	public void publishMessage() {
 		try {
-			/* 
+			/*
 			 * Create and Publish a TextMessage.
 			 */
 			TextMessage textmsg1 = topicSession.createTextMessage(
