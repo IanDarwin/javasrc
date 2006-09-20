@@ -13,9 +13,9 @@ public class ProdCons15 {
 	/** Inner class representing the Producer side */
 	class Producer implements Runnable {
 
-		protected BlockingQueue queue;
+		protected BlockingQueue<Object> queue;
 
-		Producer(BlockingQueue theQueue) { this.queue = theQueue; }
+		Producer(BlockingQueue<Object> theQueue) { this.queue = theQueue; }
 
 		public void run() {
 			try {
@@ -44,9 +44,9 @@ public class ProdCons15 {
 
 	/** Inner class representing the Consumer side */
 	class Consumer implements Runnable {
-		protected BlockingQueue queue;
+		protected BlockingQueue<Object> queue;
 
-		Consumer(BlockingQueue theQueue) { this.queue = theQueue; }
+		Consumer(BlockingQueue<Object> theQueue) { this.queue = theQueue; }
 
 		public void run() {
 			try {
@@ -71,7 +71,7 @@ public class ProdCons15 {
 	}
 
 	ProdCons15(int nP, int nC) {
-		BlockingQueue myQueue = new LinkedBlockingQueue();
+		BlockingQueue<Object> myQueue = new LinkedBlockingQueue<Object>();
 		for (int i=0; i<nP; i++)
 			new Thread(new Producer(myQueue)).start();
 		for (int i=0; i<nC; i++)
