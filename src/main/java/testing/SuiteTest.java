@@ -17,7 +17,7 @@ public class SuiteTest extends TestCase {
         TestSuite suite = new TestSuite();
         suite.addTestSuite(SuiteTest.class);
   
-        TestSetup wrapper = new TestSetup(suite) {
+        TestSetup decorator = new TestSetup(suite) {
             protected void setUp() {
                 oneTimeSetUp();
             }
@@ -25,7 +25,7 @@ public class SuiteTest extends TestCase {
                 oneTimeTearDown();
             }
         };
-        return wrapper;
+        return decorator;
     }
 
     public static void oneTimeSetUp() {
