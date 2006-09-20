@@ -1,8 +1,8 @@
 package threads;
 
-import java.util.*;
-import java.io.*;
-import java.util.concurrent.*;
+import java.io.IOException;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /** Producer-Consumer in Java, for J2SE 1.5 using concurrent.
  */
@@ -87,7 +87,7 @@ public class ProdCons15 {
 		ProdCons15 pc = new ProdCons15(numProducers, numConsumers);
 
 		// Let the simulation run for, say, 10 seconds
-		Thread.sleep(10*1000); 
+		Thread.sleep(10*1000);
 
 		// End of simulation - shut down gracefully
 		pc.done = true;

@@ -1,7 +1,5 @@
 package structure;
 
-import java.io.IOException;
-import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
@@ -9,7 +7,7 @@ import java.util.prefs.Preferences;
  * @version $Id$
  */
 public class PrefsDemo {
-	
+
 	public static void main(String[] args) throws Exception {
 
 		// Setup the Preferences for this application, by class.
@@ -25,13 +23,13 @@ public class PrefsDemo {
 		// Assume the user chose new preference values: Store them back.
 		prefs.put("textFontName", "times-roman");
 		prefs.put("displayFontName", "helvetica");
-		
+
 		// Toss in a couple more values for the curious who want to look
 		// at how Preferences values are actually stored.
 		Preferences child = prefs.node("/a/b");
 		child.putInt("meaning", 42);
 		child.putDouble("pi", Math.PI);
-		
+
 		prefs.exportSubtree(System.out);
 	}
 }
