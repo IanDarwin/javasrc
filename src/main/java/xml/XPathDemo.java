@@ -15,9 +15,9 @@ import org.w3c.dom.Document;
 /**
  * Simple demo of XPath.
  */
-public class XPathDemo extends TestCase {
+public class XPathDemo {
 
-	public void testSectionNumber() throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		String doc = "<?xml version='1.0'?>" +
@@ -30,7 +30,7 @@ public class XPathDemo extends TestCase {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		String expression = "/section/sectionnumber";
 		Double secNum = (Double) xpath.evaluate(expression, document, XPathConstants.NUMBER);
-		assertEquals("Section number", 1.2, secNum);
+		System.out.println("Section number = " + secNum);
 	}
 
 }
