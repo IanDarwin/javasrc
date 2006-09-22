@@ -16,12 +16,12 @@ import org.w3c.dom.Document;
 public class XPathDemo {
 
 	public static void main(String[] args) throws Exception {
-		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		String doc = "<?xml version='1.0'?>" +
 		"<section><sectiontitle>A Discourse of Numbers</sectiontitle>" +
 		"<sectionnumber>1.2</sectionnumber>" +
 		"<SC>Introduction</SC><p></p></section>";
-		Document document = builder.parse(new ByteArrayInputStream(doc.getBytes()));
+		Document document = parser.parse(new ByteArrayInputStream(doc.getBytes()));
 
 		// evaluate the XPath expression against the Document
 		XPath xpath = XPathFactory.newInstance().newXPath();
