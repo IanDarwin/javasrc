@@ -8,14 +8,17 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
+import junit.framework.TestCase;
+
 import org.w3c.dom.Document;
 
 /**
  * Simple demo of XPath.
  */
-public class XPathDemo {
+public class XPathDemo extends TestCase {
 
-	public static void main(String[] args) throws Exception {
+	public void testSectionNumber() throws Exception {
+
 		DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		String doc = "<?xml version='1.0'?>" +
 		"<section><sectiontitle>A Discourse of Numbers</sectiontitle>" +
@@ -26,8 +29,8 @@ public class XPathDemo {
 		// evaluate the XPath expression against the Document
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		String expression = "/section/sectionnumber";
-		Double chapNum = (Double) xpath.evaluate(expression, document, XPathConstants.NUMBER);
-		System.out.println("Section number is " + chapNum);
+		Double secNum = (Double) xpath.evaluate(expression, document, XPathConstants.NUMBER);
+		assertEquals("Section number", 1.2, secNum);
 	}
 
 }
