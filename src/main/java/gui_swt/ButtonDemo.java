@@ -18,13 +18,13 @@ public class ButtonDemo {
 	public static void main(String[] args) {
 		Display d = new Display();
 		Shell s = new Shell(d);
-		ButtonDemo bd = new ButtonDemo(d, s);
+		new ButtonDemo(d, s);
 		SWTUtil.mainEventLoop(d, s);
 	}
-	
+
 	/** Construct the GUI */
 	ButtonDemo(Display d, Shell s) {
-		
+
 		s.setText("Button Demo");
 		s.setSize(200, 150);
 		final Button b = new Button(s, SWT.PUSH);
@@ -38,7 +38,7 @@ public class ButtonDemo {
 
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// nothing to do
-			}			
+			}
 		});
 		s.open();
 	}
