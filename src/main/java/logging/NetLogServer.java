@@ -34,8 +34,6 @@ public class NetLogServer {
 	public NetLogServer(int port, int numThreads)
 	{
 		ServerSocket servSock;
-		Socket clientSocket;
-
 		try {
 			servSock = new ServerSocket(PORT);
 
