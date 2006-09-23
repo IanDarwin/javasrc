@@ -7,7 +7,7 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 	<property name="src-jar" value="javacooksrc2.jar"/>
-	
+
 	<!-- Note that you MUST edit at least one property in the file named in this rule!! -->
 	<property file="build.properties"/>
 
@@ -15,7 +15,7 @@
 	 (this must be set as an absolute path, alas, so that
 	 you can invoke builds from here OR from the relevant subdirs). -->
 
-	<available file="${javasrc.home}/build.xml" 
+	<available file="${javasrc.home}/build.xml"
 		type="file" property="javasrc.home.present"/>
 
 	<target name="check" unless="javasrc.home.present">
@@ -30,7 +30,7 @@
 		gui i18n introspection io
 		javacomm.api javacomm javadoc jdb
 		JDBC JMS JNDI jndi-services
-		jsp jsptags language NETWatch netweb network numbers 
+		jsp jsptags language NETWatch netweb network numbers
 		oo otherlang packaging
 		performance Plotter quizzes RE rmi
 		seating servlet ShowDocument signals starting strings
@@ -68,36 +68,26 @@
 			</and>
 		</condition>
 
-		<available property="avail.jmf" 
+		<available property="avail.jmf"
 			classname="javax.media.Controllerlistener" />
 
 		<available property="avail.nio" className="java.nio.Buffer"/>
 
-		<available property="avail.imageio.1.4" 
+		<available property="avail.imageio.1.4"
 			className="java.awt.image.ColorModel"/>
 
 		<available property="avail.jdom" className="org.jdom.Document"/>
-		
-		<available property="avail.javacomm" 	
+
+		<available property="avail.javacomm"
 			className="javax.comm.CommPortOpen"/>
 
 		<available property="avail.pdflib" className="com.pdflib.Document"/>
-		
-	</target>
 
-	<!-- compile APIs needed by other parts of the file -->
-	<target name="api" depends="init">
-		<echo message="==> darwinsys"/>
-		<ant target="jar" dir="darwinsys" inheritAll="false"/>
-		<copy file="darwinsys/build/darwinsys.jar"
-			todir="${javasrc.lib}"/>
-		<echo message="==> spdf"/>
-		<ant target="jar" dir="spdf"/>
 	</target>
 
 	<!-- compile everything, for JavaCookbook reliability :-) -->
-	<target name="build" description="compile all" depends="api">
-		<foreach list="${subdirs}" 
+	<target name="build" description="compile all" depends="init">
+		<foreach list="${subdirs}"
 			delimiter=" " target="build.sub" param="dir"/>
 	</target>
 
@@ -122,8 +112,8 @@
 
 	<target name="index">
 		<!-- Update the index.html -->
-		<javac srcdir="netweb" 
-			classpath="${darwinsys.jar}" 
+		<javac srcdir="netweb"
+			classpath="${darwinsys.jar}"
 			includes="MkIndex.java"/>
 		<java classpath="netweb:${darwinsys.jar}" fork="yes"
 			classname="MkIndex"/>
