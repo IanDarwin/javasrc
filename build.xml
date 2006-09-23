@@ -7,6 +7,7 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 	<property name="src-jar" value="javacooksrc2.jar"/>
+	<property name="build" value="build"/>
 
 	<!-- Note that you MUST edit at least one property in the file named in this rule!! -->
 	<property file="build.properties"/>
@@ -23,36 +24,14 @@
 		Please check javasrc.home setting in build.properties.</fail>
 	</target>
 
-	<!-- List of subdirectories for build and export -->
-	<property name="subdirs"
-		value="acks applet ChartBean classloader
-		datetime DBM dir_file email environ gc graphics
-		gui i18n introspection io
-		javacomm.api javacomm javadoc jdb
-		JDBC JMS JNDI jndi-services
-		jsp jsptags language NETWatch netweb network numbers
-		oo otherlang packaging
-		performance Plotter quizzes RE rmi
-		seating servlet ShowDocument signals starting strings
-		structure tar testing textproc threads tmtimer tools
-		webserver wildmat XColor xml xmlform"
-		/>
-	<property name="optsubdirs"
-		value="beans prefs RE-apache"/>
-
 	<property name="local.lib" value="${user.dir}/lib"/>
-
-	<!-- The "foreach" task used to iterate over "subdirs" is part of
-	 *** the "ant-contrib" package. If you have that package installed
-	 *** you can remove this, but I want this to work for everybody.
-	 -->
-	<taskdef name="foreach" classname="net.sf.antcontrib.logic.ForEach"
-		classpath="${ant-contrib.jar}:${junit.jar}"/>
 
 	<target name="init" depends="check">
 		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
 
 		<tstamp/>
+
+		<mkdir dir="${build}"/>
 
 		<!-- conditional properties -->
 		<available property="avail.prefs" className="java.util.prefs.Preferences"/>
@@ -85,10 +64,77 @@
 
 	</target>
 
+	<path id="all.classpath">
+			<fileset dir="jars">
+				<include name="*.jar"/>
+			</fileset>
+			<dirset dir=".">
+			    <include name="${build}"/>
+			</dirset>
+	</path>
+
 	<!-- compile everything, for JavaCookbook reliability :-) -->
 	<target name="build" description="compile all" depends="init">
-		<foreach list="${subdirs}"
-			delimiter=" " target="build.sub" param="dir"/>
+		<javac srcdir="${src}" sourcepath="${subdirs}"
+			classpathref="all.classpath"
+			destdir="${build}"
+			target="1.5">
+			<!-- There are several categories of exclusions here:
+			1) Stuff that is intended to show problems; these
+				for the most part have "EXPECT COMPILE(R) ERROR"
+				in the code;
+			2) Contributed or Unfinished stuff;
+			3) Stuff that needs a missing JAR file;
+			4) Stuff that I don't know why it won't compile :-)
+			-->
+			<exclude name="introspection/ClassLoaderDemo0.java"/>
+			<exclude name="jdb/Problem.java"/>
+			<exclude name="lang/AddException.java"/>
+			<exclude name="lang/ByteAdd2.java"/>
+			<exclude name="lang/CastingDemo.java"/>
+			<exclude name="lang/ChangeArrayLength.java"/>
+			<exclude name="lang/CommentBug.java"/>
+			<exclude name="lang/CompileError.java"/>
+			<exclude name="lang/ConsRecurs.java"/>
+			<exclude name="lang/Constructors.java"/>
+			<exclude name="lang/ImportConflict.java"/>
+			<exclude name="lang/ImportNonPublic.java"/>
+			<exclude name="lang/InitializersDemo.java"/>
+			<exclude name="lang/InnerMethods.java"/>
+			<exclude name="lang/InterfaceNoConstructor.java"/>
+			<exclude name="lang/NoLocalStatics.java"/>
+			<exclude name="lang/OverLoadReturn.java"/>
+			<exclude name="lang/PrivProt.java"/>
+			<exclude name="lang/ProtectedClass.java"/>
+			<exclude name="lang/ReturnType.java"/>
+			<exclude name="lang/ShowInitializers.java"/>
+			<exclude name="lang/SwitchByte.java"/>
+			<exclude name="lang/TryStealingInnerClass.java"/>
+			<exclude name="lang/Unnamed.java"/>
+			<exclude name="metadata/OverridesDemo.java"/>
+			<exclude name="netweb/JScript.java"/>
+			<exclude name="numbers/CastNeeded.java"/>
+			<exclude name="numbers/SmallIntMult.java"/>
+			<exclude name="oo/AllClasses.java"/>
+			<exclude name="oo/Clone0.java"/>
+			<exclude name="oo/SingletonCheat1.java"/>
+			<exclude name="oo/SingletonCheat2.java"/>
+			<exclude name="rmi/*.java"/>
+			<exclude name="rmi/agent/*.java"/>
+			<exclude name="rmi/callback/*.java"/>
+			<exclude name="strings/WolfInStringsClothing.java"/>
+			<exclude name="unfinished/**.java"/>
+			<exclude name="Contrib/**.java"/>
+			<exclude name="Contrib/JDBCDriver-Moss/*.java"/>
+			<exclude name="Contrib/treelayout/*.java"/>
+			<exclude name="annotation/ejb/MyEJB.java"/>
+			<exclude name="graphics/QTMoviePlayer.java"/>
+			<exclude name="lang/Switch.java"/>
+			<exclude name="lang/UsePackage.java"/>
+			<exclude name="otherlang/StringDistance.java"/>
+			<exclude name="template/StrutsAction.java"/>
+			<exclude name="unfinished/pnmconv/*.java"/>
+		</javac>
 	</target>
 
 	<target name="build.sub" description="nested build">
