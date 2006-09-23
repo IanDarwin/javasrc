@@ -25,7 +25,7 @@
 
 	<!-- List of subdirectories for build and export -->
 	<property name="subdirs"
-		value="acks applet ChartBean classloader crssetup
+		value="acks applet ChartBean classloader
 		datetime DBM dir_file email environ gc graphics
 		gui i18n introspection io
 		javacomm.api javacomm javadoc jdb
