@@ -24,8 +24,7 @@ public class SerialDemoXML extends SerialDemoAbstractBase {
 	/** Save the data to disk. */
 	public void write(Object theGraph) throws IOException {
 		XMLEncoder os = new XMLEncoder(
-			new BufferedOutputStream(
-				new FileOutputStream(FILENAME)));
+				new FileOutputStream(FILENAME));
 		os.writeObject(theGraph);
 		os.close();
 	}
@@ -33,8 +32,7 @@ public class SerialDemoXML extends SerialDemoAbstractBase {
 	/** Display the data */
 	public void dump() throws IOException {
 		XMLDecoder inp = new XMLDecoder(
-			new BufferedInputStream(
-				new FileInputStream(FILENAME)));
+				new FileInputStream(FILENAME));
 		System.out.println(inp.readObject());
 		inp.close();
 	}
