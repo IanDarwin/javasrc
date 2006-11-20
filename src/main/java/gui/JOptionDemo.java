@@ -8,6 +8,7 @@ import javax.swing.*;
  * Demonstrate JOptionPane
  * @author Ian Darwin
  */
+@SuppressWarnings("serial")
 public class JOptionDemo extends JFrame {
 
 	// Constructor
@@ -17,13 +18,35 @@ public class JOptionDemo extends JFrame {
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
 
-		JButton b = new JButton("Give me a message");
+		JButton b = new JButton("Informational");
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(
 					JOptionDemo.this,
-					"This is your message: etaoin shrdlu", "Coded Message",
+					"This is your information: etaoin shrdlu", "Coded Message",
 					JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		cp.add(b);
+
+		b = new JButton("Warning");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(
+					JOptionDemo.this,
+					"This is your warning: etaoin shrdlu", "Coded Message",
+					JOptionPane.WARNING_MESSAGE);
+			}
+		});
+		cp.add(b);
+
+		b = new JButton("Error");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(
+					JOptionDemo.this,
+					"This is your error message: etaoin shrdlu", "Coded Message",
+					JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		cp.add(b);
