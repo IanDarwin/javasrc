@@ -1,6 +1,8 @@
 package oo.metrolib;
 
-public enum Cmd {
+/** The list of all valid commands, and code to find one from a String
+ */
+public enum Command {
 	HELP,
 	NORTH,
 	EAST,
@@ -10,7 +12,7 @@ public enum Cmd {
 	LOOK,
 	UNKNOWN;
 
-	public static Cmd parseCmd(String line) {
+	public static Command parseCmd(String line) {
 		if (line == null || line.equals("q") ||
 			line.equalsIgnoreCase("quit"))
 			return QUIT;

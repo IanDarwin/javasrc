@@ -26,19 +26,20 @@ public class MetroLib {
 		println(game.room.entryMessage);
 
 		// Main loop: run the game.
-		Cmd cmd;
-		while ((cmd = game.parseCmd(is)) != Cmd.QUIT) {
+		Command cmd;
+		while ((cmd = Command.parseCmd(is.readLine())) != Command.QUIT) {
 			game.play(cmd);
 		}
+		println("Farewell, voyager");
 	}
 
 	/** Read a line and delegate it to the parser */
-	Cmd parseCmd(BufferedReader is) throws IOException {
+	Command parseCmd(BufferedReader is) throws IOException {
 		String line = is.readLine();
-		return Cmd.parseCmd(line);
+		return Command.parseCmd(line);
 	}
 
-	void play(Cmd cmd) {
+	void play(Command cmd) {
 		Room newRoom = null;
 		boolean noWay = false;
 		switch(cmd) {
