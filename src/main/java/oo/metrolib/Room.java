@@ -10,6 +10,25 @@ class Room {
 	/** The message (if any) to display when leaving */
 	String exitMessage;
 
+	/** Default Constructor
+	 */
+	Room() {
+
+	}
+
+	/** Construct a Room with all its information filled in
+	 */
+	public Room(String entryMessage, String exitMessage,
+			Room north, Room east, Room south, Room west) {
+		super();
+		this.entryMessage = entryMessage;
+		this.exitMessage = exitMessage;
+		this.north = north;
+		this.east = east;
+		this.south = south;
+		this.west = west;
+	}
+
 	/**
 	 * Set up all the fields. Must be done after constructor time because
 	 * the instances have references to each other but they're all allocated at once.
@@ -27,7 +46,7 @@ class Room {
 		entryMessage = inMsg;
 		exitMessage = outMsg;
 	}
-	
+
 	public String getEntryMessage() {
 		return entryMessage;
 	}

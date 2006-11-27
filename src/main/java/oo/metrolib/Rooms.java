@@ -12,8 +12,9 @@ public class Rooms {
 		System.out.println("Building rooms...");
 
 		// These must be allocated first, then set up (i.e., not created and
-		// filled using a Constructor, as is more usual), because they 
-		// contain references to each other...
+		// filled using a Constructor, as is more usual), because they
+		// contain references to each other... The "obvious" way around
+		// this, in BrokenCopyOfRooms, does result in NullPointerExceptions.
 		lobby = new Room() {
 			public String getEntryMessage() {
 				return "I see you made it back to the lobby.";
@@ -23,7 +24,7 @@ public class Rooms {
 		hallOfKings = new Room();
 
 		lobby.setAll(null, mainHall, null, null,
-			"You are standing in the lobby. There is a door to the east", 
+			"You are standing in the lobby. There is a door to the east",
 			"Come visit this generic lobby again soon");
 		mainHall.setAll(null, hallOfKings, null, lobby,
 			"You are in the Great Hall. There are doors to the east and west",
