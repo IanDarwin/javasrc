@@ -1,3 +1,5 @@
+package oo.interfaces;
+
 /**
  * BuildingManagement - control an energy-saving building.
  * This class shows how we might control the objects in an office
@@ -6,11 +8,11 @@
  */
 public class BuildingManagement {
 
-	Asset things[] = new Asset[24];	
+	Asset things[] = new Asset[24];
 	int numItems = 0;
 
-	/** goodNight is called from a timer Thread at 2200, or when we
-	 * get the "shutdown" command from the security guard.
+	/** Scenario: goodNight() is called from a timer Thread at 2200, or when
+	 * we get the "shutdown" command from the security guard.
 	 */
 	public void goodNight() {
 		for (int i=0; i<things.length; i++)
@@ -21,7 +23,7 @@ public class BuildingManagement {
 	// goodMorning() would be the same, but call each one's powerUp().
 
 	/** Add a Asset to this building */
-	public void add(Asset thing) {	
+	public void add(Asset thing) {
 		System.out.println("Adding " + thing);
 		things[numItems++] = thing;
 	}

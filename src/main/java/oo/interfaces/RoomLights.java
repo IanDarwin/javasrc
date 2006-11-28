@@ -1,3 +1,5 @@
+package oo.interfaces;
+
 public class RoomLights extends BuildingLight implements PowerSwitchable {
 	RoomLights(int roomNumber) {
 		super(roomNumber);

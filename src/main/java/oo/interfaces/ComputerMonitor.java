@@ -1,3 +1,5 @@
+package oo.interfaces;
+
 public class ComputerMonitor extends ComputerAsset implements PowerSwitchable {
 	ComputerMonitor(int roomNumber) {
 		super(roomNumber);

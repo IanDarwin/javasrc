@@ -1,3 +1,5 @@
+package oo.interfaces;
+
 /**
  * PowerSwitchable is an Interface that will be implemented by things
  * that can safely be turned off at night. Could use X10(tm) or BlueTooth
