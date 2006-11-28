@@ -5,4 +5,9 @@ public class ComputerCPU extends ComputerAsset {
 	ComputerCPU(int deskNumber) {
 		super(deskNumber);
 	}
+
+	@Override
+	public String toString() {
+		return "CPU " + deskNumber;
+	}
 }
