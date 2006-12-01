@@ -1,4 +1,4 @@
-package cobol_sidebyside.java;
+package sidebyside.java;
 
 import java.util.Scanner;
 

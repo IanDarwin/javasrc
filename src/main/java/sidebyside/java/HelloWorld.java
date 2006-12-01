@@ -1,4 +1,4 @@
-package cobol_sidebyside.java;
+package sidebyside.java;
 
 /**
  * Basic, minimal, Hello World type program in Java.
