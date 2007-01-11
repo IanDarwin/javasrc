@@ -1,4 +1,4 @@
-package RE;
+package regex;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;

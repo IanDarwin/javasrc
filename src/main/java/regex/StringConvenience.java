@@ -1,4 +1,4 @@
-package RE;
+package regex;
 
 /**
  * StringConvenience -- demonstrate java.lang.String convenience routine

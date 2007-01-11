@@ -1,4 +1,4 @@
-package RE;
+package regex;
 
 /**
  * Common fields for Apache Log demo.

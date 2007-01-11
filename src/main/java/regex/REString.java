@@ -1,4 +1,4 @@
-package RE;
+package regex;
 
 /**
  * Simple example of using RE functionality in String class.
