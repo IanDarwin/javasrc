@@ -19,5 +19,9 @@ public class URIDemo {
 		// A URL is a type of URI
 		URL url = new URL(normalized.toString());
 		System.out.println("URL: " + url);
+
+		// Junk
+		URI uri = new URI("bean:WonderBean");
+		System.out.println(uri);
 	}
 }

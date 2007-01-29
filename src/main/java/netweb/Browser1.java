@@ -3,13 +3,13 @@ package netweb;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.event.HyperlinkEvent.EventType;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 
@@ -17,54 +17,65 @@ import javax.swing.text.html.HTMLFrameHyperlinkEvent;
  * Browser1 - Get the contents of a URL, write to stdout
  */
 public class Browser1 {
-	public static void main(String[] av) {
+	public static void main(String[] av) throws IOException {
 		new Browser1(av);
 	}
 
-	JEditorPane p;
+	final JEditorPane p;
 
-	Browser1(String av[]) {
+	Browser1(String av[]) throws IOException {
 		String loc = null;
 		switch(av.length) {
 			case 0: loc = "http://localhost/"; break;
 			case 1: loc = av[0]; break;
 			default:
-				System.err.println("Usage: getFromURL [url]");
-				return;
+				throw new IllegalArgumentException("Usage: getFromURL [url]");
 		}
-		try {
-			URL Web = new URL(loc);
-			p = new JEditorPane(Web);
-			JFrame jf = new JFrame("HTML");
-			p.setContentType("text/html");
-			p.addHyperlinkListener(new Hyperactive());
-			p.setEditable(false);
-			Container cp = jf.getContentPane();
-			cp.add(BorderLayout.NORTH, p);
-			jf.pack();
-			jf.setVisible(true);
-		} catch (MalformedURLException e) {
-			System.out.println("MalformedURLException: " + e);
-		} catch (IOException e) {
-			System.out.println("IOException: " + e);
-		}
+
+		URL Web = new URL(loc);
+		p = new JEditorPane(Web);
+		JFrame jf = new JFrame("HTML");
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		p.setContentType("text/html");
+		p.addHyperlinkListener(new Hyperactive());
+		p.setEditable(false);
+		Container cp = jf.getContentPane();
+		cp.add(BorderLayout.NORTH, p);
+		jf.pack();
+		jf.setVisible(true);
+
 	}
-	class Hyperactive implements HyperlinkListener {
+
+	private class Hyperactive implements HyperlinkListener {
 
 		public void hyperlinkUpdate(HyperlinkEvent e) {
-			if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+			final EventType eventType = e.getEventType();
+			if (eventType == HyperlinkEvent.EventType.ACTIVATED) {
 				JEditorPane pane = (JEditorPane) e.getSource();
 				if (e instanceof HTMLFrameHyperlinkEvent) {
+					System.out.println("Processing HTMLFrameHyperLink");
 					HTMLFrameHyperlinkEvent  evt = (HTMLFrameHyperlinkEvent)e;
 					HTMLDocument doc = (HTMLDocument)pane.getDocument();
 					doc.processHTMLFrameHyperlinkEvent(evt);
 				} else {
+					final URL url = e.getURL();
+					if (url == null) {
+						System.err.println("Error: URL == null");
+						return;
+					}
+					if (url.getProtocol().equals("file") && url.getFile().startsWith("/bean:")) {
+						System.out.println("Processing bean url: " + url);
+						return;
+					}
 					try {
-						pane.setPage(e.getURL());
-					} catch (Throwable t) {
+						System.out.println("Processing regular URL");
+						pane.setPage(url);
+					} catch (Exception t) {
 						t.printStackTrace();
 					}
 				}
+			} else {
+				System.out.println("Ignoring event of type " + eventType);
 			}
 		}
 	}
