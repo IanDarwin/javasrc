@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- * Show String Reversals
+ * Reverse a string by word.
  * @version $Id$
  */
 public class StringReverse {
