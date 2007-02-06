@@ -4,6 +4,6 @@ package structure50;
  */
 public enum Media {
 
-	book, music_cd, music_vinyl, movie_vhs, movie_dvd;
+	BOOK, MUSIC_CD, MUSIC_VINYL, MOVIE_VHS, MOVIE_DVD;
 
 }

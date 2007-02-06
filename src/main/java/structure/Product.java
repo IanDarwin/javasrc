@@ -11,23 +11,23 @@ public class Product {
 		this.title = title;
 		this.artist = artist;
 		switch (media) {
-		case book:
+		case BOOK:
 			Debug.println("media", title + " is a book");
 			break;
-		case music_cd:
+		case MUSIC_CD:
 			Debug.println("media", title + " is a CD");
 			break;
-		case music_vinyl:
+		case MUSIC_VINYL:
 			Debug.println("media", title + " is a relic");
 			break;
-		case movie_vhs:
+		case MOVIE_VHS:
 			Debug.println("media", title + " is on tape");
 			break;
-		case movie_dvd:
+		case MOVIE_DVD:
 			Debug.println("media", title + " is on DVD");
 			break;
 		default:
-			Debug.println("media", "Warning: " + title + 
+			Debug.println("media", "Warning: " + title +
 				": Unknown media " + media);
 			break;
 		}
