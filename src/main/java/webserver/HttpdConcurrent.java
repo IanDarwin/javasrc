@@ -7,12 +7,14 @@ import java.util.concurrent.*;
  * HttpConcurrent - Httpd Subclass using java.lang.concurrent
  */
 public class HttpdConcurrent extends Httpd {
-	Executor myThreadPool = Executors.newFixedThreadPool(5);
+
+	private final Executor myThreadPool;
 
 	public HttpdConcurrent() throws Exception {
 		super();
+		myThreadPool = Executors.newFixedThreadPool(5);		
 	}
-	
+
 	public static void main(String[] argv) throws Exception {
 		System.out.println("DarwinSys JavaWeb Server 0.1 starting...");
 		HttpdConcurrent w = new HttpdConcurrent();
