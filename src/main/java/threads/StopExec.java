@@ -94,6 +94,7 @@ public class StopExec extends Thread {
 			StopExec t = new StopExec(timeToRunProcess);
 			t.start();
 			Thread.sleep(1000*MAX_TIMEOUT);
+			// If thread is still alive, consider it hung, and kill its process.
 			if (t.isAlive()) {
 				System.err.println("HUNG PROCESS, killing it.");
 				t.shutDown();
