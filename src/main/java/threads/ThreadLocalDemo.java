@@ -31,12 +31,12 @@ package threads;
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * Java, the Duke mascot, and all variants of Sun's Java "steaming coffee
  * cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
- * pioneering role in inventing and promulgating (and standardizing) the Java 
+ * pioneering role in inventing and promulgating (and standardizing) the Java
  * language and environment is gratefully acknowledged.
- * 
+ *
  * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
@@ -47,12 +47,15 @@ package threads;
  * There are two basic ways of putting the value into a ThreadLocal:
  * <ol>
  * 	<li>Subclass ThreadLocal and have initialValue() generate the value;
- * 	<li>Instantiate ThreadLocal and use put() to put the value in. 
+ * 	<li>Instantiate ThreadLocal and use put() to put the value in.
  * </ol>
- * This class uses method 1, as it's easier and IMHO more reliable.
- * In fact I don't think I've ever used method 2, but it might bear investigation...
+ * Both methods are good.
  */
 public class ThreadLocalDemo extends Thread {
+
+	ThreadLocalDemo(String name) {
+		super.setName(name);
+	}
 
 	/** This ThreadLocal holds the Client reference for each Thread.
 	 * Make ThreadLocal instance static, to show that it is not an instance variable
@@ -72,9 +75,9 @@ public class ThreadLocalDemo extends Thread {
 	}
 
 	public static void main(String[] args) {
-		Thread t1 = new ThreadLocalDemo();
+		Thread t1 = new ThreadLocalDemo("demo 1");
 		t1.start();
-		Thread t2 = new ThreadLocalDemo();
+		Thread t2 = new ThreadLocalDemo("demo 2");
 		t2.start();
 		Thread.yield();
 		System.out.println("Main program sees client " + myClient.get());
