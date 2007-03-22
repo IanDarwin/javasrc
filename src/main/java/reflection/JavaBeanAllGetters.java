@@ -17,7 +17,7 @@ public class JavaBeanAllGetters {
 	public static void main(String[] args) throws Exception {
 
 		Object data = Calendar.getInstance();
-		BeanInfo info = Introspector.getBeanInfo(data.getClass(), Object.class);
+		BeanInfo info = Introspector.getBeanInfo(data.getClass());
 		for (PropertyDescriptor prop : info.getPropertyDescriptors()) {
 			Method m = prop.getReadMethod();
 			if (m == null) {
