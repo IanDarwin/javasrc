@@ -1,7 +1,5 @@
 package JDBC.datasource;
 
-import java.sql.Connection;
-
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
@@ -11,7 +9,7 @@ public class DarwinsDataDelivery {
 		String dbURL = "jdbc:oracle:thin:@server:1521:db570";
 		DataSource ds = new DarwinsDataSource(driver, dbURL);
 		// Test it out...
-		Connection conn = ds.getConnection("student", "student");
+		// Connection conn = ds.getConnection("student", "student");
 		// System.out.println("Connection = " + conn);
 
 		// Bind datasource into JNDI
