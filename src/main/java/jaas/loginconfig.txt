@@ -1,0 +1,4 @@
+JaasDemo {
+	com.sun.security.auth.module.UnixLoginModule required debug=true;
+};
+

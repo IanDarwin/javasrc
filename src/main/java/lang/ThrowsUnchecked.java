@@ -27,4 +27,6 @@ public class ThrowsUnchecked {
 	public int testit(String input) throws NumberFormatException {
 		return Integer.parseInt(input);
 	}
+	// Yes, I know that the testit method is redundant, that
+	// Integer.parseInt is the same; it's here for pedagogical reasons
 }

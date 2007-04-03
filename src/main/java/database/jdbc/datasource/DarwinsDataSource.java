@@ -1,53 +1,54 @@
 package JDBC.datasource;
 
-import java.sql.*;
-import javax.sql.*;
-import java.io.*;
-import java.rmi.*;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/** A simple DataSource wrapper for a JDBC connection.
- * Constructed using a drivername and dbURL
+import javax.sql.DataSource;
+
+import com.darwinsys.database.DataBaseException;
+
+/** A simple DataSource wrapper for a JDBC connection
+ * constructed using a drivername and dbURL
  * @version $Id$
  */
-public class DarwinsDataSource implements DataSource, Remote, Serializable {
+public class DarwinsDataSource implements DataSource, Serializable {
 
-	/** The SQL driver name. 
-	  */
+	private static final long serialVersionUID = -4300791498296750769L;
+
+	/** The SQL driver name. */
 	protected String driverName;
 
 	/** The Database URL */
 	protected String dbURL;
 
-	/** The LogWriter - not the same as DriverManager.getLogWriter */
+	/** The LogWriter */
 	protected PrintWriter logWriter = new PrintWriter(System.out);
 
-	public DarwinsDataSource(String driverName, String dbURL)
-	 {
+	public DarwinsDataSource(String driverName, String dbURL) {
 		this.driverName = driverName;
 		this.dbURL = dbURL;
 	}
 
 	/** Attempt to establish a database connection using defaults. */
-	public java.sql.Connection getConnection() throws java.sql.SQLException {
+	public Connection getConnection() throws SQLException {
 		return getConnection(null, null);
 	}
 
 	/** Attempt to establish a database connection using the given
 	 * username and password as credentials.
 	 */
-	public java.sql.Connection getConnection(String userName, String passWord)
-	throws java.sql.SQLException {
+	public Connection getConnection(String userName, String passWord)
+	throws SQLException {
 
 		try {
 			Class.forName(driverName);
 		} catch (ClassNotFoundException e) {
-			System.err.println("Can't load driver; check CLASSPATH!");
-			return null;
-		} catch (Exception ex) {
-			System.err.println("Can't load driver: " + ex);
-			return null;
+			throw new DataBaseException("Can't find driver", e);
 		}
-	
+
 		Connection c = DriverManager.getConnection(dbURL, userName, passWord);
 
 		return c;
@@ -55,12 +56,12 @@ public class DarwinsDataSource implements DataSource, Remote, Serializable {
 
 	/** Set the log writer for this data source. */
 	public void setLogWriter(PrintWriter out) {
-		logWriter = out;
+		DriverManager.setLogWriter(out);
 	}
 
 	/** Get the log writer for this data source. */
 	public PrintWriter getLogWriter() {
-		return logWriter;
+		return DriverManager.getLogWriter();
 	}
 
 	/** Sets the maximum time in seconds that this data source will wait

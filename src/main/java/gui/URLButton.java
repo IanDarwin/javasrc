@@ -1,14 +1,18 @@
 package gui;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Label;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.net.URL;
 
 /**
  * URLButton -- a Button-like object that jumps to a URL.
  * MUST have an Applet parent since we use Applet methods.
  */
+@SuppressWarnings("serial")
 public class URLButton extends Label implements MouseListener {
 	/** Applet parent, for showStatus() and showDocument(). */
 	Applet parent;
@@ -18,7 +22,7 @@ public class URLButton extends Label implements MouseListener {
 	URL u;
 
 	/** Construct a URLButton given a URL */
-	URLButton(Applet parent, String t, URL u) {
+	public URLButton(Applet parent, String t, URL u) {
 		super(t);
 		this.parent = parent;
 		this.t = t;

@@ -1,0 +1,7 @@
+grant codebase "file:*"
+	Principal com.sun.security.auth.UnixUserPrincipal "ian" {
+		permission java.io.FilePermission "*", "read";
+		permission java.util.PropertyPermission "*", "read, write";
+		permission java.net.SocketPermission "localhost:*", "connect, resolve";
+};
+

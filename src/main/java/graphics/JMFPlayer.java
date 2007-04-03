@@ -19,6 +19,7 @@ import javax.swing.JPanel;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
+@SuppressWarnings("serial")
 public class JMFPlayer extends JPanel implements ControllerListener {
 
     /** The player object */
@@ -80,7 +81,7 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		if (event instanceof RealizeCompleteEvent) {
 			if ((visualComponent = thePlayer.getVisualComponent()) != null)
 					cp.add(BorderLayout.CENTER, visualComponent);
-			if ((controlComponent = 
+			if ((controlComponent =
 				thePlayer.getControlPanelComponent()) != null)
 					cp.add(BorderLayout.SOUTH, controlComponent);
 			// re-size the main window
@@ -95,7 +96,7 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		JFrame f = new JFrame("JMF Player Demo");
 		Container frameCP = f.getContentPane();
 		JMFPlayer p = new JMFPlayer(f, argv.length == 0 ?
-			"file:///C:/music/midi/beet5th.mid" : argv[0]);
+			"file:/home/ian/Music/Classical/Rachmaninoff Prelude C_ min.mp3" : argv[0]);
 		frameCP.add(BorderLayout.CENTER, p);
 		f.setSize(200, 200);
 		f.setVisible(true);

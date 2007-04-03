@@ -4,7 +4,6 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
-	<property name="build.compiler" value="jikes"/>
 
 	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
 	<property name="deploy.jar" value="XXX.jar"/>
@@ -26,8 +25,7 @@
 
 	<target name="docs" depends="compile">
 		<javadoc sourcepath="${src}" destdir="${build}/docs/api"
-			packagenames="com.darwinsys.*"
-			maxmemory="32m" 
+			packagenames="XXX PACKAGENAME"
 			windowtitle="com.XXX.* - XXX Utilities"
 			Version="true" Author="true" Use="true"
 			Overview="overview.html"
@@ -45,7 +43,7 @@
 	</target>
 
 	<!-- Simple Regression Tests -->
-	<target name="regress" depends="build">
+	<target name="regress" depends="compile">
 		<taskdef name="junit" 
 			classname="org/apache/tools/ant/taskdefs/optional/junit/JUnitTask"
 			classpath="${ant-junit.jar}:${junit.jar}"/>

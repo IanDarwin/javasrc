@@ -3,7 +3,7 @@ package structure50;
 public class EnumDemo {
 
 	enum Color {
-		RED, BLUE, GREEN;
+		RED, AMBER, GREEN;
 	};
 
 	public static void main(String[] args) {
@@ -16,22 +16,29 @@ public class EnumDemo {
 		}
 		switch (color) {
 		case RED:
-			System.out.println("You like dark apples");
+			System.out.println("STOP");
 			break;
 		case GREEN:
-			System.out.println("You like light apples");
+			System.out.println("GO");
 			break;
-		case BLUE:
-			System.out.println("You like blue balloons");
+		case AMBER:
+			if (driverIsCrazy()) {
+				System.out.println("Speed up like mad!");
+			} else {
+				System.out.println("Clear the intersection");
+			}
 			break;
 		}
 	}
 
-	static String[] lines = { "Green", "blue", "RED" };
+	private static boolean driverIsCrazy() {
+		return false;	// Not me, nope!
+	}
+
+	static String[] lines = { "Green", "amber", "RED" };
 	static int i = 0;
-	
+
 	private static String getLine() {
 		return lines[i++%3];
 	}
-
 }
