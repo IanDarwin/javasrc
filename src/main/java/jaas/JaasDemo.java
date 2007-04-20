@@ -1,7 +1,6 @@
 package jaas;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,18 +10,17 @@ import java.io.IOException;
 import javax.security.auth.Subject;
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
+import javax.security.auth.callback.NameCallback;
+import javax.security.auth.callback.PasswordCallback;
+import javax.security.auth.callback.TextOutputCallback;
 import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  * This program demonstrates use of JAAS with a login configuration
@@ -38,15 +36,11 @@ public class JaasDemo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String loginConfig = System.getProperty("java.security.auth.login.config");
-		if (!"jaas/loginconfig.txt".equals(loginConfig)) {
-			System.err.println("login.config not set right, is " + loginConfig);
-		}
+		System.setProperty("java.security.auth.login.config",
+				"jaas/loginconfig.txt");
 
-		final Object securityConfig = System.getProperty("java.security.policy");
-		if (!"jaas/permissions.txt".equals(securityConfig)) {
-			System.err.println("policy config not right, is " + securityConfig);
-		}
+		System.setProperty("java.security.policy",
+				"jaas/permissions.txt");
 
 		new JaasDemo();
 	}
@@ -78,9 +72,9 @@ public class JaasDemo {
 	void runDemo() {
 		System.out.println("JaasDemo.runDemo()");
 		try {
-			CallbackHandler loginCallback = new LoginDialogWindow();
-			((JDialog)loginCallback).setVisible(true);
-			LoginContext loginContext = new LoginContext("JaasDemo", loginCallback);
+			Class.forName("com.sun.security.auth.module.UnixLoginModule");
+			LoginContext loginContext = 
+				new LoginContext("JaasDemo", new MyLoginPrompter());
 			loginContext.login();
 			// If the call to login() doesn't throw an exception, we're in!
 			Subject subject = loginContext.getSubject();
@@ -113,29 +107,34 @@ public class JaasDemo {
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(theFrame,
 					"Whew! Was not allowed to write:\n" + e, "Normal end", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	class LoginDialogWindow extends JDialog implements CallbackHandler {
-
-		private static final long serialVersionUID = -5101283531619214053L;
-
-		public LoginDialogWindow() {
-			super(theFrame, "Dummy Login", true);
-			setLayout(new GridLayout(0, 2, 5, 5));
-			add(new JLabel("UserName:"));
-			add(new JTextField(20));
-			add(new JLabel("Password:"));
-			add(new JPasswordField(20));
-			add(new JButton("OK"));
-			add(new JButton("Cancel"));
-			pack();
-		}
+	class MyLoginPrompter implements CallbackHandler {
 
 		public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 			System.out.println("LoginDialogWindow.handle()");
 			for (Callback c : callbacks) {
 				System.out.println(c);
+				if (c instanceof TextOutputCallback) {
+
+				      // display a message
+				      System.out.println(c);
+
+				    } else if (c instanceof NameCallback) {
+				    	NameCallback nc = (NameCallback)c;
+				    	String userName = JOptionPane.showInputDialog(nc.getPrompt());
+				    	nc.setName(userName);
+				    } else if (c instanceof PasswordCallback) {
+				    	PasswordCallback pc = (PasswordCallback)c;
+				    	String password = JOptionPane.showInputDialog(pc.getPrompt());
+				    	pc.setPassword(password.toCharArray());
+				    } else {
+				        throw new UnsupportedCallbackException(c,
+				         "Unrecognized Callback");
+				    }
 			}
 		}
 	}
