@@ -1,11 +1,13 @@
 package structure;
 
-/** Output a list with { } around it, and commas between elements */
+/** Output a list with { } around it, and commas between elements,
+ * so that the array "one" "two" would print as { one, two }
+ */
 public class ListFormat {
-	public static void main(String[] args) {
-		String[] data = { "one", "two", "three", "four" };
+
+	public static String format(Object[] data) {
 		StringBuffer sb = new StringBuffer();
-		for (String d : data) {
+		for (Object d : data) {
 			if (sb.length() == 0)
 				sb.append("{");
 			else
@@ -13,6 +15,6 @@ public class ListFormat {
 			sb.append(d);
 		}
 		sb.append("}");
-		System.out.println(sb);
+		return sb.toString();
 	}
 }
