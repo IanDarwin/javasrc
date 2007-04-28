@@ -1,6 +1,7 @@
 package structure;
 
-public class  ListFormat {
+/** Output a list with { } around it, and commas between elements */
+public class ListFormat {
 	public static void main(String[] args) {
 		String[] data = { "one", "two", "three", "four" };
 		StringBuffer sb = new StringBuffer();
