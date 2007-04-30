@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class FileDialogDemo extends Frame {
 	FileDialog fc;
 
-	/** Construct a FileDialogDemo */ 
+	/** Construct a FileDialogDemo */
 	FileDialogDemo() {
 		super("FileDialogDemo");
 		setSize(200, 200);
@@ -14,8 +14,8 @@ public class FileDialogDemo extends Frame {
 		// Construct, but don't show, the file dialog.
 		fc = new FileDialog(this, "Choose a file", FileDialog.LOAD);
 		// Set its starting directory to the root, not where we run it
-		// (just to show that there are some methods you can call on it).
-		fc.setDirectory("C:\\");
+		// (just to show that there are methods you can call on it).
+		fc.setDirectory("/");
 
 		Button b;
 		add(b = new Button("Browse..."));	// Create and add a Button
