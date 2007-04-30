@@ -17,10 +17,12 @@ public class Constructors {
 	public void Constructors() {	// EXPECT COMPILE ERROR some compilers
 		System.out.println("In void Constructor()");
 	}
+
 	void method1() {
-		for (int i=0; i<5; i++)
+		for (int i = 0; i < 5; i++)
 			System.out.println(i);
 	}
+
 	public static void main(String[] a) {
 		Constructors l = new Constructors();
 		l.method1();
