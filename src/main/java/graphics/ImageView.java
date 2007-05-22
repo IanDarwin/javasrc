@@ -1,13 +1,21 @@
 package graphics;
 
-import java.awt.*;
-import javax.swing.*;
-import java.net.*;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
+import java.net.URL;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 /**
  * Standalone Image Viewer - works with any AWT-supported format.
  */
 public class ImageView extends JComponent {
+
+	private static final long serialVersionUID = -7547320904301255665L;
 	/** The Image object */
 	protected Image im;
 	/** Size of the image */
@@ -53,7 +61,8 @@ public class ImageView extends JComponent {
 		setSize(width, height);
 	}
 
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		g.drawImage(im, 0, 0, this);
 	}
 

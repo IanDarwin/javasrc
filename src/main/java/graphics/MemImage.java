@@ -1,13 +1,19 @@
 package graphics;
 
-import java.awt.*;
-import java.awt.image.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.MemoryImageSource;
 
 /** MemImage is an in-memory icon showing a Color gradient. */
 public class MemImage extends Component {
 
+	private static final long serialVersionUID = 5051861823329422524L;
+
 	/** Demo main program, showing two ways to use it.
-	 * Create a small MemImage and set it as this Frame's iconImage. 
+	 * Create a small MemImage and set it as this Frame's iconImage.
 	 * Also display a larger version of the same image in the Frame.
 	 */
 	public static void main(String[] av) {
@@ -52,9 +58,12 @@ public class MemImage extends Component {
 		return img;
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(w, h);
 	}
+
+	@Override
 	public void paint(Graphics g) {
 		g.drawImage(img, 0, 0, getSize().width, getSize().height, this);
 	}

@@ -4,9 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 
 public class DrawStringDemo extends JComponent {
+
+	private static final long serialVersionUID = -7199469682507443122L;
+
 	int textX = 10, textY = 20;
 
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		g.drawString("Hello Java", textX, textY);
 	}
 

@@ -80,6 +80,7 @@ public class Grapher extends JPanel {
 	/** Called when the window needs painting.
 	 * Computes X and Y range, scales.
 	 */
+	@Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Dimension s = getSize();
@@ -105,6 +106,7 @@ public class Grapher extends JPanel {
 		}
     }
 
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(150, 150);
 	}

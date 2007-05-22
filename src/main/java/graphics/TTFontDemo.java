@@ -1,17 +1,22 @@
 package graphics;
 
-import java.awt.*;
-import java.io.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 
-/** Demo of making TrueType font usable in Java. This is a way cool facility
- * because it means you can have "application-specific" fonts in Java;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+/** Demo of making TrueType font usable in Java. This facility
+ * allows you to have "application-specific" fonts in Java;
  * your application can have its own distinctive font that the user does
  * NOT have to install into the JRE before you can use it.
  * (of course they can install it if they have privileges and want to).
  * <p>
  * Must remain Swing-based despite problems on older systems, since
- * apparently only Swing components can use TTF fonts in this implementation.
+ * only Swing components can use TTF fonts in this implementation.
  * <p>
  * Did NOT work for me in Applet nor JApplet due to
  * security problems (requires to create a temp file). Could be made
@@ -20,6 +25,8 @@ import javax.swing.*;
  * @since 1.3
  */
 public class TTFontDemo extends JLabel {
+
+	private static final long serialVersionUID = -2774152065764538894L;
 
 	/** Construct a TTFontDemo -- Create a Font from TTF.
 	 */
@@ -47,10 +54,10 @@ public class TTFontDemo extends JLabel {
 	/** Simple main program for TTFontDemo */
 	public static void main(String[] args) throws Exception {
 
-		String DEFAULT_MESSAGE = 
+		String DEFAULT_MESSAGE =
 			"What hath man wrought? Or at least rendered?";
-		String DEFAULT_FONTFILE =
-			"Kellyag_.ttf";
+		// Loaded as Resource so don't need graphics/ in front
+		String DEFAULT_FONTFILE = "Kellyag_.ttf";
 		String message = args.length == 1 ? args[0] : DEFAULT_MESSAGE;
 		JFrame f = new JFrame("TrueType Font Demo");
 

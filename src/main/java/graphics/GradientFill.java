@@ -4,11 +4,14 @@ import java.awt.*;
 
 /** Fill a Polygon with a colored gradient */
 public class GradientFill extends Component {
+
+	private static final long serialVersionUID = -4716199053804218498L;
 	/** The points we draw */
 	Polygon p;
 	/** The gradient we paint with */
 	GradientPaint gp;
 
+	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.draw(p);
@@ -30,4 +33,4 @@ public class GradientFill extends Component {
 	public Dimension getPreferredSize() {
 		return new Dimension(210, 210);
 	}
-} 
+}

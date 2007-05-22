@@ -1,12 +1,19 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Polygon;
 
 /** Fill a Polygon */
 public class PolygonFill extends Component {
-	/** The points we draw */
-	Polygon p;
 
+	private static final long serialVersionUID = -4331761165333343021L;
+	/** The points we draw */
+	private Polygon p;
+
+	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.black);
 		g.drawPolygon(p);
@@ -22,7 +29,9 @@ public class PolygonFill extends Component {
 		p.addPoint(200,0);
 		p.addPoint(200,200);
 	}
+
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(210, 210);
 	}
-} 
+}

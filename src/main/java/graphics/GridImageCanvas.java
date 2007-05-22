@@ -9,16 +9,18 @@ import java.util.*;
  * GridImageCanvas - a rectangular grid of images
  */
 public class GridImageCanvas extends JPanel {
+
+	private static final long serialVersionUID = 2355183857034568964L;
 	/** The LayoutManager. We provide it, not the user */
 	protected LayoutManager lm = null;
 	/** The list of Images */
-	protected Vector vi = new Vector();
+	protected Vector<Image> vi = new Vector<Image>();
 	/** The name of each Image */
-	protected Vector vs = new Vector();
+	protected Vector<String> vs = new Vector<String>();
 	/** The Panel, to manage the grid */
-	Panel grid;
+	protected Panel grid;
 	/** The label, for showStatus */
-	Label status;
+	protected Label status;
 
 	/** Construct a GridImageCanvas */
 	GridImageCanvas() {
@@ -54,7 +56,7 @@ public class GridImageCanvas extends JPanel {
 		f.pack();
 		f.setVisible(true);
 	}
-	
+
 	public void addImage(Image i, String s) {
 		vi.addElement(i);
 		vs.addElement(s);
@@ -101,16 +103,19 @@ public class GridImageCanvas extends JPanel {
 		status.setText(s);
 	}
 
-	/** Inner class ImageCanvas - helper class, 
+	/** Inner class ImageCanvas - helper class,
 	 * used only by GraphicImageCanvas, to store
 	 * an image and a String, paint the Image
 	 * When the mouse is in our window, we showStatus() the String.
 	 */
 	class ImageCanvas extends JComponent {
+
+		private static final long serialVersionUID = -1389720987189L;
 		final int PAD = 3;
 		String name;
 		Image im = null;
 		int w, h;
+
 		ImageCanvas(Image i, String s) {
 			name = s;
 			im = i;
@@ -137,20 +142,27 @@ public class GridImageCanvas extends JPanel {
 			setSize(w = im.getWidth(this), h = im.getHeight(this));
 			repaint();
 		}
-		
+
+		@Override
 		public Dimension getMinimumSize() {
 			// System.out.println("getMinimumSize() returns ("+w+","+h+");");
 			return new Dimension(w, h);
 		}
+
+		@Override
 		public Dimension getPreferredSize() {
 			// System.out.println("getPreferredSize() returns ("+w+","+h+");");
 			return new Dimension(w+PAD, h+PAD);
 		}
+
+		@Override
 		public Dimension getMaximumSize() {
 			// System.out.println("getMaximumSize() returns ("+w+","+h+");");
 			return new Dimension(w, h);
 		}
-		public void paint(Graphics g) {
+
+		@Override
+		public void paintComponent(Graphics g) {
 			if (im == null) {
 				g.setColor(Color.red);
 				g.fillRect(0, 0, w, h);

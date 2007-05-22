@@ -1,17 +1,29 @@
 package graphics;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.TexturePaint;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JComponent;
 
 /** Text with a Texture
  * @author	Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class TexturedText extends JComponent {
+
+	private static final long serialVersionUID = 8898234939386827451L;
 	/** The image we draw in the texture */
-	protected BufferedImage bim; 
+	protected BufferedImage bim;
 	/** The texture for painting. */
 	TexturePaint tp;
 	/** The string to draw. */
@@ -57,7 +69,8 @@ public class TexturedText extends JComponent {
 		tp = new TexturePaint(bim, r);
 	}
 
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 			RenderingHints.VALUE_ANTIALIAS_ON);
@@ -66,10 +79,12 @@ public class TexturedText extends JComponent {
 		g2.drawString(mesg, 20, 100);
 	}
 
+	@Override
 	public Dimension getMinimumSize() {
 	 	return new Dimension(250, 100);
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 	 	return new Dimension(320, 150);
 	}

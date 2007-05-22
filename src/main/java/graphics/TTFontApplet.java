@@ -10,11 +10,13 @@ import javax.swing.JLabel;
  */
 public class TTFontApplet extends JApplet {
 
-	/** Initialize the GUI */
+	private static final long serialVersionUID = 929012724140365546L;
+
+	/** Initialize Applet GUI */
 	public void init() {
 
 		String message = getParameter("message");
-		if (message == null) 
+		if (message == null)
 			message = "TrueType Font Demonstration Applet";
 
 		String fontFileName = getParameter("fontFileName");

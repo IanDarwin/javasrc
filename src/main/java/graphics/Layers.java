@@ -1,7 +1,9 @@
 package graphics;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
 
 /**
  * Layers - Try to use "alpha values (transparency) to draw in layers.
@@ -9,11 +11,14 @@ import javax.swing.*;
  * @version	$Id$
  */
 public class Layers extends JFrame {
+
+	private static final long serialVersionUID = -1292335961558342259L;
 	int width, height;
 
 	Layers(String s) {
 		this(s, 400, 300);
 	}
+
 	Layers(String s, int w, int h) {
 		setTitle(s);
 		setSize(width=w, height=h);	// a short form
@@ -21,6 +26,7 @@ public class Layers extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		Color c1 = new Color(200,100,100, 50);	// r, g, b, a
 		Color c2 = new Color(100,200,000,128);

@@ -7,14 +7,20 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+/** Demo showing code that draws text centered in a JComponent.
+ * In real life you'd just use a JLabel; this is to show the
+ * mechanics of doing such a thing.
+ */
 public class DrawStringDemo2 extends JComponent {
 
 	private static final long serialVersionUID = -6593901790809089107L;
 	//-
 	String message = "Hello Java";
 
-	/** Paint is called (by AWT) when it's time to draw the text. */
-	public void paint(Graphics g) {
+	/** Called by the window system to draw the text. */
+	@Override
+	public void paintComponent(Graphics g) {
+
 		// Get the current Font, and ask it for its FontMetrics.
 		FontMetrics fm = getFontMetrics(getFont());
 
@@ -38,8 +44,8 @@ public class DrawStringDemo2 extends JComponent {
 		return new Dimension(100, 100);
 	}
 
-	public static void main(String[] args) {
-		JFrame jf = new JFrame();
+	public static void main(final String[] args) {
+		final JFrame jf = new JFrame();
 		jf.add(new DrawStringDemo2());
 		jf.setBounds(100, 100, 100, 100);
 		jf.setVisible(true);

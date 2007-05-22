@@ -41,10 +41,12 @@ public class TextFormat extends Component {
 	public String getText() {
 		return text;
 	}
+
 	public void setText(String t) {
 		text = t;
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		if (text == null || text.length() == 0)
 			return;
@@ -55,9 +57,9 @@ public class TextFormat extends Component {
 		g2d.setColor(Color.black);
 		g2d.setFont(font);
 
-		Iterator it = layouts.iterator();
+		Iterator<TextLayout> it = layouts.iterator();
 		while (it.hasNext()) {
-			TextLayout layout = (TextLayout) it.next();
+			TextLayout layout = it.next();
 			pen.y += (layout.getAscent());
 			g2d.setFont(font);
 			layout.draw(g2d, pen.x, pen.y);

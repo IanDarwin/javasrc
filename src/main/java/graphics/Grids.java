@@ -1,42 +1,46 @@
 package graphics;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 /**
  * Program to draw grids.
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-class GridsCanvas extends Canvas {
-	int width, height;
-	int rows;
-	int cols;
+public class Grids extends JFrame {
 
-	GridsCanvas(int w, int h, int r, int c) {
-		setSize(width=w, height=h);
-		rows = r;
-		cols = c;
+	/** Inner class that is the drawing object */
+	class GridsCanvas extends JComponent {
+		int width, height;
+		int rows;
+		int cols;
+
+		GridsCanvas(int w, int h, int r, int c) {
+			setSize(width=w, height=h);
+			rows = r;
+			cols = c;
+		}
+
+		@Override
+		public void paintComponent(Graphics g) {
+			int i;
+			width = getSize().width;
+			height = getSize().height;
+
+			// draw the rows
+			int rowHt = height/(rows);
+			for (i = 0; i < rows; i++)
+				g.drawLine(0, i*rowHt, width, i*rowHt);
+
+			// draw the columns
+			int rowWid = width/(cols);
+			for (i = 0; i < cols; i++)
+				g.drawLine(i*rowWid, 0, i*rowWid, height);
+		}
 	}
 
-	public void paint(Graphics g) {
-		int i;
-		width = getSize().width;
-		height = getSize().height;
-	
-		// draw the rows
-		int rowHt = height/(rows);
-		for (i = 0; i < rows; i++)
-			g.drawLine(0, i*rowHt, width, i*rowHt);
-
-		// draw the columns
-		int rowWid = width/(cols);
-		for (i = 0; i < cols; i++)
-			g.drawLine(i*rowWid, 0, i*rowWid, height);
-	}
-}
-
-/** This is the demo class. */
-public class Grids extends Frame {
 	/* Construct a GfxDemo2 given its title, width and height.
 	 * Uses a GridBagLayout to make the Canvas resize properly.
 	 */
@@ -47,13 +51,7 @@ public class Grids extends Frame {
 		GridsCanvas xyz = new GridsCanvas(w, h, rows, cols);
 		add(xyz);
 
-        addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Normal end ... pack it up!
 		pack();

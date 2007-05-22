@@ -1,16 +1,18 @@
 package graphics;
 
-import java.applet.*;
-import java.net.*;
+import java.applet.Applet;
+import java.net.URL;
 
 /** Simple program to try out the "new Sound" stuff in JDK1.2 --
  * allows Applications, not just Applets, to play Sound.
  */
 public class SoundPlay {
+
 	static String defSounds[] = {
 		"file:///javasrc/graphics/test.wav",
 		"file:///music/midi/Beet5th.mid",
 	};
+
 	public static void main(String[] av) {
 		if (av.length == 0)
 			main(defSounds);

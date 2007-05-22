@@ -25,7 +25,8 @@ public class GfxDemoCanvas extends JComponent {
 		return new Dimension(width, height);
 	}
 
-	public void paint(Graphics g1) {
+	@Override
+	public void paintComponent(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;
 		width = getSize().width;
 		height = getSize().height;

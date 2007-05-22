@@ -1,8 +1,20 @@
 package graphics;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
 
 /** MouseDragClip -- implement simple mouse drag in a window.
  * Speed up by using clipping regions.
@@ -12,7 +24,7 @@ import java.awt.event.*;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-public class MouseDragClip extends Canvas 
+public class MouseDragClip extends Canvas
 		implements MouseListener, MouseMotionListener {
 	/** The Image we are to paint */
 	Image curImage;
@@ -144,7 +156,7 @@ public class MouseDragClip extends Canvas
 		oldX = curX; oldY = curY;
 	}
 
-	/** Invoked when the mouse moves; just update the status line 
+	/** Invoked when the mouse moves; just update the status line
 	 * with the new coordinates.
 	 */
 	public void mouseMoved(MouseEvent e) {

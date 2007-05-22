@@ -1,17 +1,31 @@
 package graphics;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
 
 /** MouseDrag -- implement simple mouse drag in a window.
  */
-public class MouseDrag extends Component 
+public class MouseDrag extends Component
 		implements MouseListener, MouseMotionListener {
+
+	private static final long serialVersionUID = 8557207971117778751L;
 	/** The Image we are to paint */
 	Image curImage;
 	/** Kludge for showStatus */
-	static Label status;
+	Label status;
 	/** true if we are in drag */
 	boolean inDrag = false;
 	/** starting location of a drag */
@@ -37,8 +51,9 @@ public class MouseDrag extends Component
 		cp.add(BorderLayout.NORTH,
 			new Label("Hello, and welcome to the world of Java"));
 		cp.add(BorderLayout.CENTER, j);
-		cp.add(BorderLayout.SOUTH, status = new Label());
-		status.setSize(f.getSize().width, status.getSize().height);
+		cp.add(BorderLayout.SOUTH, j.status = new Label());
+		j.status.setSize(
+				f.getSize().width, j.status.getSize().height);
 		f.pack();
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,6 +111,11 @@ public class MouseDrag extends Component
 		}
 	}
 
+	public void mouseMoved(MouseEvent e) {
+		showStatus("mouse Moved to " + e.getPoint());
+	}
+
+	@Override
 	public void paint(Graphics g) {
 		int w = curX - startX, h = curY - startY;
 		Dimension d = getSize();
@@ -108,8 +128,6 @@ public class MouseDrag extends Component
 		g.fillRect(startX, startY, w, h);
 	}
 
-	public void mouseMoved(MouseEvent e) {
-		showStatus("mouse Moved to " + e.getPoint());
-	}
-	
+
+
 }

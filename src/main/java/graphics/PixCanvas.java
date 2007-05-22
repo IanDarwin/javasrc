@@ -1,6 +1,12 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
 
 /**
  * PixCanvas - a helper class for PhotoUI, or any other
@@ -10,6 +16,8 @@ import java.awt.*;
  * @version $DarwinSys 1.1$
  */
 public class PixCanvas extends Canvas {
+	/**  */
+	private static final long serialVersionUID = -3674426011385158770L;
 	Image im;
 	int wid, ht;
 
@@ -63,6 +71,7 @@ public class PixCanvas extends Canvas {
 	/** Return how big we'd like to be. If image loaded, use its size.
 	 * If not, use 200, 100 (why not?).
 	 */
+	@Override
 	public Dimension getPreferredSize() {
 		if (im == null || im.getWidth(this) < 0 || im.getHeight(this) < 0)
 			return new Dimension(200, 100);
@@ -70,6 +79,7 @@ public class PixCanvas extends Canvas {
 	}
 
 	/** Actually draw the Image onto the screen */
+	@Override
 	public void paint(Graphics g) {
 		if (im == null) {
 			g.setColor(Color.red);

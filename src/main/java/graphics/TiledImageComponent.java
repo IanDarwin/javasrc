@@ -1,12 +1,12 @@
 package graphics;
 
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.TextField;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import com.darwinsys.util.Debug;
@@ -17,31 +17,34 @@ import com.darwinsys.util.Debug;
  * @version $Id$
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-public class TiledImageComponent extends Container {
+public class TiledImageComponent extends JComponent {
+
+	private static final long serialVersionUID = -8771306833824134974L;
 	protected TextField nameTF, passTF, domainTF;
 	protected Image im;
-	public static final String DEFAULT_IMAGE_NAME = "background.gif";
+	public static final String DEFAULT_IMAGE_NAME =
+		"graphics/background.gif";
 
 	/** Set things up nicely. */
 	public TiledImageComponent() {
-		Label l;
 
 		setLayout(new FlowLayout());
-		add(l = new Label("Name:", Label.CENTER));
+		add(new Label("Name:", Label.CENTER));
 		add(nameTF=new TextField(10));
 
-		add(l = new Label("Password:", Label.CENTER));
+		add(new Label("Password:", Label.CENTER));
 		add(passTF=new TextField(10));
 		passTF.setEchoChar('*');
 
-		add(l = new Label("Domain:", Label.CENTER));
+		add(new Label("Domain:", Label.CENTER));
 		add(domainTF=new TextField(10));
 
 		im = getToolkit().getImage(DEFAULT_IMAGE_NAME);
 	}
 
 	/** paint()  - just tile the background.  */
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		if (im == null)
 			return;
 		int iw = im.getWidth(this), ih=im.getHeight(this);
