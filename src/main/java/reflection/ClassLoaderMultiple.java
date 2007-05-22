@@ -12,7 +12,9 @@ import java.util.Hashtable;
  * Demonstration of a ClassLoader
  */
 public class ClassLoaderMultiple extends ClassLoader {
+
 	private static final String CLASS_TO_LOAD = "introspection.MultiDemo";
+
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable<String, Class> cache = new Hashtable<String, Class>();
 
@@ -40,6 +42,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 
 	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
+
 		/** We can expect to be called to resolve at least demo's
 		 * superclass (java.lang.Object). Fortunatetely, we can just
 		 * use super.findSystemClass() to load such things...

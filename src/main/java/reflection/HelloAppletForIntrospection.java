@@ -37,9 +37,6 @@ public class HelloAppletForIntrospection extends JApplet {
 		});
 	}
 
-	/** paint() is an AWT Component method, called when the 
-	 *  component needs to be painted.
-	 */
 	public void do_the_work() {
 		/* If the Draw button is selected, draw something */
 		if (requested) {
