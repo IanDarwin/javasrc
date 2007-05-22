@@ -1,8 +1,16 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.text.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 public class StyledText {
 	public static void main(String args[]) throws BadLocationException {

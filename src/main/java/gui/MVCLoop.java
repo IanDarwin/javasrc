@@ -9,9 +9,14 @@ package gui;
 // This example doesn't show it, but you can loop with other implementations.
 // For example, if a changed() method updates the model's data.
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 public class MVCLoop {
 	public static void main(String[] a) {

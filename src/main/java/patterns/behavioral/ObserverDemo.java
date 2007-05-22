@@ -1,6 +1,7 @@
 package gui;
 
-import java.util.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * A simple demo of Observable->Observer

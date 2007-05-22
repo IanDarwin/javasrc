@@ -1,8 +1,14 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
 
 /** Simple JFC JTree Simple application, showing default tree contents.
  * Note that the JTree will display a silly demo with not Model provided.

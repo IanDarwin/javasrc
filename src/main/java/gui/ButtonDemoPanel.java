@@ -5,8 +5,10 @@ package gui;
  </APPLET>
  */
 
-import java.applet.*;
-import java.awt.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Panel;
 
 /** Demonstrate two buttons with a Panel for Layout.
  * This version is longer than the one in the course notes;

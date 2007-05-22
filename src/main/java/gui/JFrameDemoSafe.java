@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 /** Create a JFrame class in a thread-safe way.

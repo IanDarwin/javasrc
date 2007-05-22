@@ -1,7 +1,11 @@
 package gui;
 
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /** Demo I wrote in response to a student request for how to have
  * multiple listeners (Bobs) that are already on-screen added as listeners

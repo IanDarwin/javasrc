@@ -1,8 +1,9 @@
 package gui;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Demonstrate use of two buttons, using a single ActionListener,
  * being the class itself.

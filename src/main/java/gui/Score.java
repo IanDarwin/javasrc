@@ -1,9 +1,20 @@
 package gui;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.text.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTextField;
 
 /** Class to display and update a Scoreboard for a Quiz game.
  */

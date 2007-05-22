@@ -1,6 +1,8 @@
 package gui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
 
 public class TabPaneDemo {
 	protected JTabbedPane tabPane;

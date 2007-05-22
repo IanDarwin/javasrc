@@ -1,7 +1,10 @@
 package gui;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /* Show an example of closing a JFrame.
  * @author Ian Darwin

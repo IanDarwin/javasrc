@@ -1,6 +1,6 @@
 package gui;
 
-import java.io.*;
+import java.io.IOException;
 
 /**
  * ExecDemoHelp shows how to use the Win32 "start" command to load a help file.

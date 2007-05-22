@@ -1,8 +1,8 @@
 package gui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
-/* Show an example of closing a JFrame.
+/** Show an example of closing a JFrame.
  * @author Ian Darwin
  * @version $Id$
  */

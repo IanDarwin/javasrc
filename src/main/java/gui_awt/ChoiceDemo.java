@@ -1,8 +1,15 @@
 package gui;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Choice;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /** Demonstrate use of Choice; also Font, action(), Event, ... */
 public class ChoiceDemo extends Applet {

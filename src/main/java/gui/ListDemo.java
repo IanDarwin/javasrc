@@ -1,7 +1,10 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.List;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /** Demonstrate old AWT ScrollingList.
  * Note: You should normally use a Swing JList instead.

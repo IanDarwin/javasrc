@@ -1,7 +1,11 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class JFrameFlowLayout extends JFrame {
 	public JFrameFlowLayout() {

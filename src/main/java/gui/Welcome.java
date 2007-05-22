@@ -1,11 +1,19 @@
 package gui;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 /** This program displays a simple pre-fab welcome sign.
  */
 public class Welcome extends JComponent {
+
+	private static final long serialVersionUID = -1959433620811222070L;
 
 	/** The main program or entry point. */
 	public static void main(String[] args) {
@@ -16,16 +24,18 @@ public class Welcome extends JComponent {
 	}
 
 	/** The font used to display the text */
-	Font f;
+	private Font f;
 
-	/** Construct the program */
+	/** Construct the GUI */
 	public Welcome() {
 		f = new Font("Helvetica", Font.BOLD, 100);
 		setBackground(Color.white);
+		setBorder(BorderFactory.createTitledBorder("Welcome..."));
 	}
 
 	/** Do the drawing (called automagically by window system when needed) */
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);
 		Dimension d = getSize();
 		g.fill3DRect(0, 0, d.width-1, d.height-1, true);
@@ -37,7 +47,8 @@ public class Welcome extends JComponent {
 	}
 
 	/** Say how big we'd like to be (value hardcoded for now) */
+	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(700,500);
+		return new Dimension(650, 500);
 	}
 }

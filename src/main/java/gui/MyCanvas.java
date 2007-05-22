@@ -1,7 +1,9 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JLabel;
 
 /**
  * Dummy Canvas class, to represent the real main part of an application *

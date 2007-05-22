@@ -1,7 +1,9 @@
 package gui;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /** A simple FileFilter class that works by filename extension,
  * like the one in the JDK demo called ExampleFileFilter, which

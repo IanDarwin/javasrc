@@ -1,7 +1,10 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FileDialogDemo extends Frame {
 	FileDialog fc;

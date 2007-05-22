@@ -1,6 +1,8 @@
 package gui;
 
-import java.awt.*;
+import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public class FrameIcon {
 

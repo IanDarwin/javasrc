@@ -1,7 +1,8 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /* Show an example of closing an AWT Frame.
  * @author Ian Darwin

@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import com.darwinsys.io.TextAreaWriter;;
+import com.darwinsys.io.TextAreaWriter;
 
 public class TextAreaWriterDemo {
 	

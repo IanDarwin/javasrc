@@ -2,8 +2,13 @@ package gui;
 
 // Demonstrate a listener being reused.
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ListenerReuse extends Frame {
 	public ListenerReuse() {

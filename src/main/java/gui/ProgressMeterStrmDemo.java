@@ -1,7 +1,14 @@
 package gui;
 
-import javax.swing.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ProgressMonitorInputStream;
 
 /**
  * Demonstrate ProgressMeterInputStream.

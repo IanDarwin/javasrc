@@ -1,7 +1,9 @@
 package gui;
 
-import java.util.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Frame;
+import java.util.BitSet;
 
 /** BorderLayout demo. Also shows off BitSet class from java.util.
  * <P>Do <B>not</B> assume from this demo that BorderLayout forces

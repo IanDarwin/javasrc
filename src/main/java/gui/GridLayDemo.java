@@ -1,8 +1,10 @@
 package gui;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Simple GridLayout demo program. */
 public class GridLayDemo extends Applet implements ActionListener {

@@ -9,9 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.darwinsys.util.ArrayListTableDatum;
 import com.darwinsys.swingui.ArrayListTableModel;
 import com.darwinsys.swingui.ArrayListTablePanel;
+import com.darwinsys.util.ArrayListTableDatum;
 
 /** Simple demo of the com.darwinsys.swingui.ArrayListTable{Model,Panel}.
  * The "data" is an ArrayList made from the System Properties

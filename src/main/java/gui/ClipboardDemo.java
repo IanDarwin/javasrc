@@ -1,8 +1,17 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.datatransfer.*;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.TextArea;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Taken from the Sun documentation on Clipboard API */
 public class ClipboardTest extends Frame 

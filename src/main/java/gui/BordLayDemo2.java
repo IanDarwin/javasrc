@@ -1,7 +1,9 @@
 package gui;
 
-import java.util.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Frame;
+import java.util.BitSet;
 
 /** BorderLayout demo. East and West have different widths, and North
  * and South have different heights.

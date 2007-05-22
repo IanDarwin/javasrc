@@ -1,8 +1,13 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.event.*;
+import java.awt.Component;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 
 /** Demonstrate Swing "JList" ListModel
  * @author Ian Darwin
