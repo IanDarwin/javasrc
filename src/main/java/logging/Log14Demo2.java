@@ -14,7 +14,7 @@ public class Log14Demo2 {
 				throw new IllegalArgumentException("Just testing");
 			}
 			logger.info("I created an object: " + o);
-		} catch (Throwable t) {
+		} catch (Exception t) {
 			// Long form, more control.
 			// LogRecord msg = new LogRecord(Level.SEVERE, "Caught exception");
 			// msg.setThrown(t);

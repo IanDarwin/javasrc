@@ -6,7 +6,7 @@ public class InstanceofNull {
                 try {
                         boolean match = null instanceof Object;
                         System.out.println("null instanceof Object == " + match);
-                } catch (Throwable t) {
+                } catch (Exception t) {
                         System.err.println(
                         "OK, I admit I was wrong, null instanceof Object throws " + t);
                 }

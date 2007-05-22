@@ -115,13 +115,14 @@ public class JaasDemo {
 	class MyLoginPrompter implements CallbackHandler {
 
 		public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-			System.out.println("LoginDialogWindow.handle()");
+			System.out.println(
+				"LoginDialogWindow.handle(): got " + callbacks.length + " callbacks.");
 			for (Callback c : callbacks) {
 				System.out.println(c);
 				if (c instanceof TextOutputCallback) {
 
 				      // display a message
-				      System.out.println(c);
+				      System.out.println(((TextOutputCallback)c).getMessage());
 
 				    } else if (c instanceof NameCallback) {
 				    	NameCallback nc = (NameCallback)c;
