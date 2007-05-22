@@ -8,7 +8,7 @@ public class DateParse1 {
 	public static void main(String[] args) {
 
 		SimpleDateFormat formatter
-			= new SimpleDateFormat ("yyyy-MM-dd");
+			= new SimpleDateFormat("yyyy-MM-dd");
 		String input = args.length == 0 ? "1818-11-11" : args[0];
 		System.out.print(input + " parses as ");
 		Date t;

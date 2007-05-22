@@ -12,7 +12,7 @@ public class DateCalAdd {
 
 		/* Do "DateFormat" using "simple" format. */
 		SimpleDateFormat formatter
-			= new SimpleDateFormat ("E yyyy/MM/dd 'at' hh:mm:ss a zzz");
+			= new SimpleDateFormat("E yyyy/MM/dd 'at' hh:mm:ss a zzz");
 		System.out.println("It is now " + 
 			formatter.format(now.getTime()));
 

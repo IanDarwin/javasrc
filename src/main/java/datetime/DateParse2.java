@@ -9,7 +9,7 @@ public class DateParse2 {
 
 		//+
 		SimpleDateFormat formatter =
-			new SimpleDateFormat ("yyyy-MM-dd");
+			new SimpleDateFormat("yyyy-MM-dd");
 		String input[] = { 
 			"BD: 1913-10-01 Vancouver, B.C.",
 			"MD: 1948-03-01 Ottawa, ON",

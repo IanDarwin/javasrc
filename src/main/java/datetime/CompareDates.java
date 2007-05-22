@@ -6,7 +6,7 @@ import java.text.*;
 public class CompareDates {
 	public static void main(String[] args) throws ParseException {
 
-		DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
 		// Get Date 1
 		Date d1 = df.parse(args[0]);
