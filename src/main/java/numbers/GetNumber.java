@@ -1,7 +1,12 @@
 package numbers;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * GetNumber - program to determine if a number is float or int.
@@ -37,8 +42,8 @@ public class GetNumber extends Frame {
 	/* Process one String, returning it as a Number subclass
 	 * Does not require the GUI.
 	 */
-	public Number process(String s) {
-		if (s.matches(".*[.dDeEfF]")) {
+	public static Number process(String s) {
+		if (s.matches("[+-]*\\d*\\.\\d+[dDeEfF]*")) {
 			try {
 				double dValue = Double.parseDouble(s);
 				System.out.println("It's a double: " + dValue);
@@ -53,7 +58,7 @@ public class GetNumber extends Frame {
 				System.out.println("It's an int: " + iValue);
 				return new Integer(iValue);
 			} catch (NumberFormatException e2) {
-				System.out.println("Not a number:" + s);
+				System.out.println("Not a number: " + s);
 				return NAN;
 			}
 	}
