@@ -1,6 +1,7 @@
 package numbers;
 
-/** A class to test Complex Numbers. 
+/** A class to show uses of my Complex Number class;
+ * see ComplexTest for actual unit tests.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
