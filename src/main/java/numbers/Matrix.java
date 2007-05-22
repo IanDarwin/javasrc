@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Multiply two matrices.
- * Only defined for int: TODO: rewrite using 1.5 Generics to add 
+ * Only defined for int: TODO: rewrite using 1.5 Generics to add
  * support for long, float, and double.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
@@ -23,10 +23,13 @@ public class Matrix {
 		int[][] result = new int[m1rows][m2cols];
 
 		// multiply
-		for (int i=0; i<m1rows; i++)
-			for (int j=0; j<m2cols; j++)
-				for (int k=0; k<m1cols; k++)
-				result[i][j] += m1[i][k] * m2[k][j];
+		for (int i=0; i<m1rows; i++) {
+			for (int j=0; j<m2cols; j++) {
+				for (int k=0; k<m1cols; k++) {
+					result[i][j] += m1[i][k] * m2[k][j];
+				}
+			}
+		}
 
 		return result;
 	}
@@ -43,6 +46,6 @@ public class Matrix {
 				System.out.print(" " + a[i][j] + ",");
 			System.out.println("},");
 		}
-		System.out.println(":;");
+		System.out.println("};");
 	}
 }
