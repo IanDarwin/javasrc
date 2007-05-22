@@ -51,7 +51,7 @@ public class ThreadDeathCatch {
 				public void run() {
 					try {
 						Thread.sleep(2500);
-					} catch (Throwable ex)  {
+					} catch (Exception ex)  {
 						System.out.println("Caught in run: " + ex);
 					}
 				}
@@ -60,7 +60,7 @@ public class ThreadDeathCatch {
 			// Give t time to get going...
 			Thread.sleep(1000);
 			t.stop();				// EXPECT COMPILER WARNING
-		} catch (Throwable t) {
+		} catch (Exception t) {
 			System.out.println("Caught in main: " + t);
 		}
 	}

@@ -45,7 +45,7 @@ public class IntrSelf {
 		System.out.println("Starting");
 		try {
 			Thread.currentThread().interrupt();
-		} catch (Throwable x) {
+		} catch (Exception x) {
 			System.out.println(x);
 			return;
 		}
