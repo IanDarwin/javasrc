@@ -1,7 +1,7 @@
 package network;
 
 import java.net.*;
-import java.io.*; 
+import java.io.*;
 
 /**
  * Threaded Echo Server, pre-allocation scheme.
@@ -27,8 +27,8 @@ public class EchoServerThreaded2 {
 		ServerSocket servSock;
 
 		try {
-			servSock = new ServerSocket(ECHOPORT);
-		
+			servSock = new ServerSocket(port);
+
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
 			throw new RuntimeException("Could not create ServerSocket " + e);
@@ -53,7 +53,7 @@ public class EchoServerThreaded2 {
 			setName("Thread " + threadNumber);
 		}
 
-		public void run() 
+		public void run()
 		{
 			/* Wait for a connection. Synchronized on the ServerSocket
 			 * while calling its accept() method.
@@ -67,7 +67,7 @@ public class EchoServerThreaded2 {
 					synchronized(servSock) {
 						clientSocket = servSock.accept();
 					}
-					System.out.println(getName() + " starting, IP=" + 
+					System.out.println(getName() + " starting, IP=" +
 						clientSocket.getInetAddress());
 					BufferedReader is = new BufferedReader(
 						new InputStreamReader(clientSocket.getInputStream()));
