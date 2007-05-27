@@ -28,7 +28,7 @@ public class BeanUtilsDemo {
 		System.out.println("----------------------------------");
 		
 		Map<String,Integer> dateMap = new HashMap<String,Integer>();
-		dateMap.put("day", new Integer(30));
+		dateMap.put("day", Integer.valueOf(30));
 		dateMap.put("month", 1);
 		dateMap.put("year", 2006);
 		
