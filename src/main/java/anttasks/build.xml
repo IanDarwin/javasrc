@@ -1,0 +1,27 @@
+<project default="test" name="Ant Tasks Demo">
+	<!--
+	Most directories don't have their own build.xml; this one does
+	because it is just a simple demo of extending Ant, and is
+	self-contained
+	-->
+	<target name="info">
+		<echo message="You are in ${user.dir}"/>
+	</target>
+	<path id="project.classpath">
+		<!-- Normally run in the anttasks dir, refer to project build
+		     directory as ../build
+		 -->
+		<pathelement location="../build"/>
+		<fileset dir="${user.home}/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	<taskdef name="ian" classname="anttasks.PathIteratorTask">
+		<classpath refid="project.classpath"/>
+	</taskdef>
+	<target name="test">
+	<ian>
+		<path refid="project.classpath"/>
+	</ian>
+	</target>
+</project>

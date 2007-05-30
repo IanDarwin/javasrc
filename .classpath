@@ -31,5 +31,6 @@
 	<classpathentry kind="lib" path="jars/jmf.jar"/>
 	<classpathentry kind="lib" path="jars/rowset.jar"/>
 	<classpathentry kind="lib" path="jars/swt.jar"/>
+	<classpathentry kind="lib" path="jars/ant.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>
