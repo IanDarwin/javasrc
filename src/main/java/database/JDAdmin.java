@@ -243,7 +243,7 @@ public class JDAdmin extends JFrame {
 			case UserDB.CITY-1: 	return u.getCity();
 			case UserDB.PROVINCE-1:	return u.getProv();
 			case UserDB.COUNTRY-1:	return u.getCountry();
-			case UserDB.PRIVS-1:	return new Integer(u.getPrivs());
+			case UserDB.PRIVS-1:	return Integer.valueOf(u.getPrivs());
 			default: return null;
 			}
 		}

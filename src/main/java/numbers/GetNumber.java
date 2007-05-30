@@ -47,7 +47,7 @@ public class GetNumber extends Frame {
 			try {
 				double dValue = Double.parseDouble(s);
 				System.out.println("It's a double: " + dValue);
-				return new Double(dValue);
+				return Double.valueOf(dValue);
 			} catch (NumberFormatException e) {
 				System.out.println("Invalid a double: " + s);
 				return NAN;
@@ -56,7 +56,7 @@ public class GetNumber extends Frame {
 			try {
 				int iValue = Integer.parseInt(s);
 				System.out.println("It's an int: " + iValue);
-				return new Integer(iValue);
+				return Integer.valueOf(iValue);
 			} catch (NumberFormatException e2) {
 				System.out.println("Not a number: " + s);
 				return NAN;

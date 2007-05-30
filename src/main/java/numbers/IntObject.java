@@ -7,7 +7,7 @@ package numbers;
 public class IntObject {
 	public static void main(String[] args) {
 		// int to Integer
-		Integer i1 = new Integer(42);
+		Integer i1 = Integer.valueOf(42);
 		System.out.println(i1.toString());		// or just i1
 		
 		// Integer to int
