@@ -36,11 +36,11 @@ public class JaasDemo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.setProperty("java.security.auth.login.config",
-				"jaas/loginconfig.txt");
-
-		System.setProperty("java.security.policy",
-				"jaas/permissions.txt");
+//		System.setProperty("java.security.auth.login.config",
+//				"loginconfig.txt");
+//
+//		System.setProperty("java.security.policy",
+//				"permissions.txt");
 
 		new JaasDemo();
 	}
@@ -73,13 +73,15 @@ public class JaasDemo {
 		System.out.println("JaasDemo.runDemo()");
 		try {
 			Class.forName("com.sun.security.auth.module.UnixLoginModule");
-			LoginContext loginContext = 
+			LoginContext loginContext =
 				new LoginContext("JaasDemo", new MyLoginPrompter());
+			System.out.println("Trying to login...");
 			loginContext.login();
 			// If the call to login() doesn't throw an exception, we're in!
 			Subject subject = loginContext.getSubject();
 			JOptionPane.showMessageDialog(theFrame,
-					String.format("Congratulations %s, you are logged in!", subject),
+					String.format(
+						"Congratulations %s, you are logged in!", subject),
 					"Welcome", JOptionPane.INFORMATION_MESSAGE);
 
 			// Now set the security manager to control I/O
@@ -120,10 +122,8 @@ public class JaasDemo {
 			for (Callback c : callbacks) {
 				System.out.println(c);
 				if (c instanceof TextOutputCallback) {
-
-				      // display a message
+				      // display the message: maybe a prompt...
 				      System.out.println(((TextOutputCallback)c).getMessage());
-
 				    } else if (c instanceof NameCallback) {
 				    	NameCallback nc = (NameCallback)c;
 				    	String userName = JOptionPane.showInputDialog(nc.getPrompt());
