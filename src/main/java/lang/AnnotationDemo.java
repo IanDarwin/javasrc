@@ -1,5 +1,6 @@
 package lang;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -19,4 +20,12 @@ public @interface AnnotationDemo {
 @AnnotationDemo()
 class UselessClassJustToShowAnnotation {
 
+	/** Print out the annotations attached to this class */
+	public static void main(String[] args) {
+		Class c = UselessClassJustToShowAnnotation.class;
+		System.out.println(c + " has these annotations:");
+		for (Annotation a : c.getAnnotations()) {
+			System.out.println(a);
+		}
+	}
 }
