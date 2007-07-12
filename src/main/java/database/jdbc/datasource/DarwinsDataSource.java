@@ -18,6 +18,15 @@ public class DarwinsDataSource implements DataSource, Serializable {
 
 	private static final long serialVersionUID = -4300791498296750769L;
 
+	/** Added in Java SE 6 - NOT YET IMPLEMENTED */
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		return false;
+	}
+
+	/** Added in Java SE 6 - NOT YET IMPLEMENTED */
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		return null;
+	}
 	/** The SQL driver name. */
 	protected String driverName;
 
@@ -77,4 +86,6 @@ public class DarwinsDataSource implements DataSource, Serializable {
 	public int getLoginTimeout() {
 		return DriverManager.getLoginTimeout();
 	}
+
+
 }
