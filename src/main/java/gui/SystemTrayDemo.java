@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * Requires Java 6 or later.
  */
 public class SystemTrayDemo {
-	final static TrayIcon trayIcon;
+	static TrayIcon trayIcon;
 
 	public static void main(String[] args) {
 
