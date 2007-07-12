@@ -24,6 +24,7 @@ public class ActionsDemo extends JPanel {
 		saver = new AbstractAction("Save") {
 		     public void actionPerformed(ActionEvent e) {
 		       save();
+		       setEnabled(false); // grays out both button and menu item
 		    }
 		};
 		this.add(new JButton(saver));
@@ -35,7 +36,12 @@ public class ActionsDemo extends JPanel {
 
 	protected void save() {
 		System.out.println("This would save the file");
-		saver.setEnabled(false); // grays out both button and menu item
+	}
+
+	protected void editChange() {
+		// make some changes to the data model...
+		// ...
+		saver.setEnabled(true);
 	}
 
 	/**
