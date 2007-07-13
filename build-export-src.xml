@@ -1,6 +1,6 @@
 <project name="Export JavaCook Source" default="dist" basedir=".">
 
-<!-- 
+<!--
  *** Build the jars for downloading and update the web site.
  *** List of files set in darian:/cvs/CVSROOT/modules line for javacook-src
  *** $Id$
@@ -12,7 +12,7 @@
 
 	<property name="dist.jar" value="javacooksrc2.jar"/>
 
-	<property name="CVSROOT" value="ian@darian:/cvs"/>
+	<property name="CVSROOT" value="ian@cvs:/cvs"/>
 
 	<!-- This init is different; it runs clean every time -->
 	<target name="init" depends="clean">
@@ -23,21 +23,12 @@
 	<target name="get" depends="init">
 		<cvs cvsRoot="${CVSROOT}" command="export" date="now"
 			quiet="true"
-			package="javacook-src"
+			package="javacook"
 			dest="${build}"/>
-		<replace token="//CHANGEME//" value="${user.dir}/${build.work}" 
-			file="${build.work}/build.properties"/>
 	</target>
 
-	<target name="api" depends="get">
-		<ant dir="${build.work}/darwinsys" target="dist"
-			inheritAll="false"/>
-		<copy file="${build.work}/darwinsys/build/darwinsys.jar"
-			todir="${javasrc.lib}"/>
-	</target>
-
-	<target name="index" depends="api">
-		<!-- Update the index.html for just what we exported -->
+	<target name="index" depends="get">
+		<!-- Create the index.html for just what we exported -->
 		<ant dir="${build.work}" target="index"
 			inheritAll="false"/>
 	</target>
@@ -49,21 +40,17 @@
 	<target name="dist" depends="jar"/>
 
 	<target name="deploy" depends="dist">
-
 		<scp file="${dist.jar}" todir="darwinsys.com:/www/javacook/"/>
-
-		<Sshexec 
-			host="darwinsys.com"
-			command="cd /www/javacook; unzip -fo ${dist.jar}" />
 	</target>
 
 	<target name="notify">
-		<mail subject="Java Cookbook Download Updated" 
+		<property file="build.mail.properties"/>
+		<mail subject="Java Cookbook Download Updated"
 			message=
 				"${dist.jar} updated at javacook.darwinsys.com/download.html"
-			from="Ian Darwin &lt;http://www.darwinsys.com/&gt;"
-			tolist="http://www.darwinsys.com/"
-			cclist="http://www.darwinsys.com/"
+			from="${mail.from.addr}"
+			tolist="${mail.to.list}"
+			cclist="${mail.cc.list}/"
 			/>
 	</target>
 

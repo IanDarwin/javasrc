@@ -1,12 +1,13 @@
 <project name="Java Cookbook Examples" default="build" basedir=".">
 
 	<!-- Ant buildfile for Java Cookbook examples.
-		$Id$
-		-->
+	 *** There is a separate antfile for exporting the
+	 *** source distribution; see build-export-src.xml
+	 *** $Id$
+	 -->
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
-	<property name="src-jar" value="javacooksrc2.jar"/>
 	<property name="build" value="build"/>
 
 	<property file="${user.home}/build.properties"/>
