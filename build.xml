@@ -9,8 +9,10 @@
 	<property name="src-jar" value="javacooksrc2.jar"/>
 	<property name="build" value="build"/>
 
-	<!-- Note that you MUST edit at least one property in the file named in this rule!! -->
+	<property file="${user.home}/build.properties"/>
 	<property file="build.properties"/>
+
+	<property name="javasrc.home" value="${user.dir}"/>
 
 	<!-- Right away, make sure javasrc.home has been set
 	 (this must be set as an absolute path, alas, so that
