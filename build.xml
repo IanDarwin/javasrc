@@ -14,6 +14,7 @@
 	<property file="build.properties"/>
 
 	<property name="javasrc.home" value="${user.dir}"/>
+	<property name="darwinsys.jar" value="jars/darwinsys.jar"/>
 
 	<!-- Right away, make sure javasrc.home has been set
 	 (this must be set as an absolute path, alas, so that
@@ -26,8 +27,6 @@
 		<fail>Can not open ${javasrc.home}/build.xml.
 		Please check javasrc.home setting in build.properties.</fail>
 	</target>
-
-	<property name="local.lib" value="${user.dir}/lib"/>
 
 	<target name="init" depends="check">
 		<splash imageurl="file:images/javacook.jpg" showduration="0"/>
