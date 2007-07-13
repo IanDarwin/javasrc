@@ -163,8 +163,8 @@
 		<javac srcdir="netweb"
 			classpath="${darwinsys.jar}"
 			includes="MkIndex.java"/>
-		<java classpath="netweb:${darwinsys.jar}" fork="yes"
-			classname="MkIndex"/>
+		<java classpath=".:${darwinsys.jar}" fork="yes"
+			classname="netweb.MkIndex"/>
 	</target>
 
 	<!-- clean up -->
