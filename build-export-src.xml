@@ -12,8 +12,6 @@
 
 	<property name="dist.jar" value="javacooksrc2.jar"/>
 
-	<property name="CVSROOT" value="ian@cvs:/cvs"/>
-
 	<!-- This init is different; it runs clean every time -->
 	<target name="init" depends="clean">
 		<tstamp/>
