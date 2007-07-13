@@ -33,7 +33,12 @@
 	</target>
 
 	<target name="jar" depends="index">
-		<jar jarFile="${dist.jar}" includes="${build.work}/**"/>
+		<jar jarFile="${dist.jar}" update="no">
+			<fileset>
+				<include name="${build.work}/**"/>
+				<exclude name="${build.work}/build/**"/>
+			</fileset>
+		</jar>
 	</target>
 
 	<target name="dist" depends="jar"/>
