@@ -7,4 +7,4 @@ build
 demo.ps
 .fbwarnings
 Diary.txt
-build.mail.properties
+build-export-src.properties

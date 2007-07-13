@@ -23,7 +23,7 @@
 	<target name="get" depends="init">
 		<cvs cvsRoot="${CVSROOT}" command="export" date="now"
 			quiet="true"
-			package="javacook"
+			package="javasrc"
 			dest="${build}"/>
 	</target>
 
@@ -44,7 +44,7 @@
 	</target>
 
 	<target name="notify">
-		<property file="build.mail.properties"/>
+		<property file="build-export-src.properties"/>
 		<mail subject="Java Cookbook Download Updated"
 			message=
 				"${dist.jar} updated at javacook.darwinsys.com/download.html"
