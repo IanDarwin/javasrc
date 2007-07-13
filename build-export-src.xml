@@ -9,8 +9,9 @@
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
 	<property name="build.work" value="build/javasrc"/>
-
 	<property name="dist.jar" value="javacooksrc2.jar"/>
+
+	<property file="build-export-src.properties"/>
 
 	<!-- This init is different; it runs clean every time -->
 	<target name="init" depends="clean">
@@ -42,7 +43,6 @@
 	</target>
 
 	<target name="notify">
-		<property file="build-export-src.properties"/>
 		<mail subject="Java Cookbook Download Updated"
 			message=
 				"${dist.jar} updated at javacook.darwinsys.com/download.html"
