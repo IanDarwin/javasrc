@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 import java.io.*;
 import java.util.*;
@@ -18,7 +18,7 @@ public abstract class APIFormatter {
 
 	/** True if we are doing classpath, so only do java. and javax. */
 	protected static boolean doingStandardClasses = true;
-	
+
 	protected int doArgs(String[] argv) throws IOException {
 		/** Counter of fields/methods printed. */
 		int n = 0;
@@ -53,7 +53,7 @@ public abstract class APIFormatter {
 
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String fileName) throws IOException {
-			List entries = new ArrayList();
+			List<ZipEntry> entries = new ArrayList<ZipEntry>();
 			ZipFile zipFile = null;
 
 			try {
@@ -61,21 +61,25 @@ public abstract class APIFormatter {
 			} catch (ZipException zz) {
 				throw new FileNotFoundException(zz.toString() + fileName);
 			}
-			Enumeration all = zipFile.entries();
+
+			Enumeration<? extends ZipEntry> all = (Enumeration<? extends ZipEntry>) zipFile.entries();
 
 			// Put the entries into the List for sorting...
 			while (all.hasMoreElements()) {
-				ZipEntry zipEntry = (ZipEntry)all.nextElement();
+				ZipEntry zipEntry = all.nextElement();
 				entries.add(zipEntry);
 			}
 
 			// Sort the entries (by class name)
-			// Collections.sort(entries);
+			Collections.sort(entries, new Comparator() {
+				public int compare(Object o1, Object o2) {
+					return ((ZipEntry) o1).getName().compareTo(((ZipEntry) o2).getName());
+				}
+
+			});
 
 			// Process all the entries in this zip.
-			Iterator it = entries.iterator();
-			while (it.hasNext()) {
-				ZipEntry zipEntry = (ZipEntry)it.next();
+			for (ZipEntry zipEntry : entries) {
 				String zipName = zipEntry.getName();
 
 				// Ignore package/directory, other odd-ball stuff.
@@ -83,21 +87,16 @@ public abstract class APIFormatter {
 					continue;
 				}
 
-				// Ignore META-INF stuff
-				if (zipName.startsWith("META-INF/")) {
-					continue;
-				}
-
-				// Ignore images, HTML, whatever else we find.
+				// Ignore anything not a Class
 				if (!zipName.endsWith(".class")) {
 					continue;
 				}
 
 				// If doing CLASSPATH, Ignore com.* which are "internal API".
-			// 	if (doingStandardClasses && !zipName.startsWith("java")){
-			// 		continue;
-			// 	}
-			
+				// 	if (doingStandardClasses && !zipName.startsWith("java")){
+				// 		continue;
+				// 	}
+
 				// Convert the zip file entry name, like
 				//	java/lang/Math.class
 				// to a class name like
