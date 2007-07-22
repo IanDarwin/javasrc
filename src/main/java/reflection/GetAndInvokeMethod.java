@@ -2,8 +2,6 @@ package reflection;
 
 import java.lang.reflect.Method;
 
-
-
 /**
  * Get a given method, and invoke it.
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -12,7 +10,8 @@ import java.lang.reflect.Method;
 public class GetMethod {
 	
 	/** This class is just here to give us something to work on,
-	 * with a println() call that will prove we got here. */
+	 * with a println() call that will prove we got into it.
+	 */
 	static class X {
 		public void work(String s) {
 			System.out.println("Working on \"" + s + "\"");
@@ -29,13 +28,16 @@ public class GetMethod {
 			// Now find a Method object for the given method.
 			Method worker = clX.getMethod("work", argTypes);
 
-			// To INVOKE the method, we need its actual arguments, as an array.
+			// To INVOKE the method, we need the invocation 
+			// arguments, as an Object array.
 			Object[] theData = {
 				"Chocolate Chips"
 			};
 
 			// The obvious last step: invoke the method.
+			// First arg is an instance, null if static method
 			worker.invoke(new X(), theData);
+
 		} catch (Exception e) {
 			System.err.println("Invoke() failed: " + e);
 		}
