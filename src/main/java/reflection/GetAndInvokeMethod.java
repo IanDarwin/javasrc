@@ -14,7 +14,7 @@ public class GetAndInvokeMethod {
 	 */
 	static class X {
 		public void work(String s) {
-			System.out.println("Working on \"" + s + "\"");
+			System.out.println("Called with \"" + s + "\"");
 		}
 	}
 	public static void main(String[] argv) {
