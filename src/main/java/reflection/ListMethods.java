@@ -1,6 +1,7 @@
 package reflection;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 /**
  * List the Constructors and methods

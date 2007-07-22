@@ -1,6 +1,6 @@
 package reflection;
 
-import java.util.*;
+import java.util.Calendar;
 /**
  * Show the class keyword and getClass() method in action.
  * The class keyword can be applied to any type known at compile time.

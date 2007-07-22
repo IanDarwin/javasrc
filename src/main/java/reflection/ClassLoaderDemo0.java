@@ -1,7 +1,8 @@
 package reflection;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Hashtable;
 
 /**
  * Simple Demonstration of a ClassLoader

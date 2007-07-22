@@ -1,8 +1,11 @@
 package reflection;
 
-import java.io.*;
-import java.util.*;
-import java.lang.reflect.*;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * CrossRef prints a cross-reference about all classes named in argv.

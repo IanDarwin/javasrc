@@ -1,7 +1,7 @@
 package reflection;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * Show a couple of things you can do with a Class object.

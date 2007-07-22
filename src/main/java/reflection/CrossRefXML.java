@@ -1,7 +1,8 @@
 package reflection;
 
-import java.io.*;
-import java.lang.reflect.*;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /** This class subclasss CrossRef to output the information in XML.
  * @version $Id$

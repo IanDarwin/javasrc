@@ -1,6 +1,6 @@
 package reflection;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Method;
 
 
 

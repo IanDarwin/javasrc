@@ -1,7 +1,7 @@
 package reflection;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Field;
+import java.util.Calendar;
 
 /** This class shows using Reflection to get a field from another class. */
 public class FindField {

@@ -1,6 +1,6 @@
 package reflection;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Method;
 
 /**
  * Reflect1 shows the information about the class named in argv[0].
