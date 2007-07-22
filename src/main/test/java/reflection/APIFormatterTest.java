@@ -24,9 +24,9 @@ public class APIFormatterTest extends TestCase {
 		ZipOutputStream zf = new ZipOutputStream(new FileOutputStream(file));
 		zf.putNextEntry(new ZipEntry("foo.bar"));
 		zf.write("Hello".getBytes());
-		zf.putNextEntry(new ZipEntry("reflection/GetMethod.class"));
+		zf.putNextEntry(new ZipEntry("reflection/GetAndInvokeMethod.class"));
 		InputStream is =
-			GetMethod.class.getResourceAsStream("GetMethod.class");
+			GetAndInvokeMethod.class.getResourceAsStream("GetAndInvokeMethod.class");
 		int b = 0;
 		while((b = is.read()) != -1) {
 			zf.write((byte)b);
@@ -48,7 +48,7 @@ public class APIFormatterTest extends TestCase {
 			}
 		};
 		target.processOneZip(fileName);
-		assertEquals(x, GetMethod.class);
+		assertEquals(x, GetAndInvokeMethod.class);
 		assertEquals(1, nClasses);
 		System.out.println("Pass!");
 	}

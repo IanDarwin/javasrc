@@ -7,8 +7,8 @@ import java.lang.reflect.Method;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class GetMethod {
-	
+public class GetAndInvokeMethod {
+
 	/** This class is just here to give us something to work on,
 	 * with a println() call that will prove we got into it.
 	 */
@@ -28,7 +28,7 @@ public class GetMethod {
 			// Now find a Method object for the given method.
 			Method worker = clX.getMethod("work", argTypes);
 
-			// To INVOKE the method, we need the invocation 
+			// To INVOKE the method, we need the invocation
 			// arguments, as an Object array.
 			Object[] theData = {
 				"Chocolate Chips"
