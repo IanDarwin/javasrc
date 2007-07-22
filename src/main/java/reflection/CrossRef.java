@@ -10,8 +10,8 @@ import java.lang.reflect.*;
  * "Reflectance" is used to look up the information.
  *
  * It is expected that the output will be post-processed e.g.,
- * with sort and awk/perl. Try: 
-	java CrossRef | 
+ * with sort and awk/perl. Try:
+	java CrossRef |
 		uniq | # squeeze out polymorphic forms early
 		sort | awk '$2=="method" { ... }' > crossref-methods.txt
  * The part in "{ ... }" is left as an exercise for the reader. :-(
@@ -33,16 +33,15 @@ public class CrossRef extends APIFormatter {
 	 * Print the fields and methods of one class.
 	 */
 	protected void doClass(Class c) {
-		int i, mods;
 		startClass(c);
 		try {
 			Field[] fields = c.getDeclaredFields();
-			Arrays.sort(fields, new Comparator() {
-				public int compare(Object o1, Object o2) {
-					return ((Field)o1).getName().compareTo(((Field)o2).getName());
+			Arrays.sort(fields, new Comparator<Field>() {
+				public int compare(Field o1, Field o2) {
+					return o1.getName().compareTo(o2.getName());
 				}
 			});
-			for (i = 0; i < fields.length; i++) {
+			for (int i = 0; i < fields.length; i++) {
 				Field field = (Field)fields[i];
 				if (!Modifier.isPrivate(field.getModifiers()))
 					putField(field, c);
@@ -50,8 +49,12 @@ public class CrossRef extends APIFormatter {
 			}
 
 			Method methods[] = c.getDeclaredMethods();
-			// Arrays.sort(methods);
-			for (i = 0; i < methods.length; i++) {
+			Arrays.sort(methods, new Comparator<Method>() {
+				public int compare(Method o1, Method o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
+			for (int i = 0; i < methods.length; i++) {
 				if (!Modifier.isPrivate(methods[i].getModifiers()))
 					putMethod(methods[i], c);
 				// else System.err.println("pvt: " + methods[i]);

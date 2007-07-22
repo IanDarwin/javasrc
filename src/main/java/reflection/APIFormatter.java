@@ -71,9 +71,9 @@ public abstract class APIFormatter {
 			}
 
 			// Sort the entries (by class name)
-			Collections.sort(entries, new Comparator() {
-				public int compare(Object o1, Object o2) {
-					return ((ZipEntry) o1).getName().compareTo(((ZipEntry) o2).getName());
+			Collections.sort(entries, new Comparator<ZipEntry>() {
+				public int compare(ZipEntry o1, ZipEntry o2) {
+					return o1.getName().compareTo(o2.getName());
 				}
 
 			});
@@ -117,7 +117,8 @@ public abstract class APIFormatter {
 			}
 	}
 
-	/** Format the fields and methods of one class, given its name.
+	/** Template Method to do something useful (e.g.,
+	 * format the fields and methods) of one Class.
 	 */
 	protected abstract void doClass(Class c) throws IOException;
 }
