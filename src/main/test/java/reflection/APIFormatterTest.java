@@ -19,6 +19,7 @@ public class APIFormatterTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		File file = File.createTempFile("test", ".zip");
+		file.deleteOnExit();
 		fileName = file.getAbsolutePath();
 		ZipOutputStream zf = new ZipOutputStream(new FileOutputStream(file));
 		zf.putNextEntry(new ZipEntry("foo.bar"));
