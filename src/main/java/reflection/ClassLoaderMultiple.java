@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +13,7 @@ import java.util.Hashtable;
  */
 public class ClassLoaderMultiple extends ClassLoader {
 
-	private static final String CLASS_TO_LOAD = "introspection.MultiDemo";
+	private static final String CLASS_TO_LOAD = "reflection.MultiDemo";
 
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable<String, Class> cache = new Hashtable<String, Class>();

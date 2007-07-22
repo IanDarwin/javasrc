@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;

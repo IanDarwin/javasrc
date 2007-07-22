@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,7 @@ import java.util.jar.JarFile;
  */
 public class JarPackagingClassLoader extends ClassLoader {
 	
-	private static final String DEMO_CLASS_TO_LOAD = "introspection.MultiDemo";
+	private static final String DEMO_CLASS_TO_LOAD = "reflection.MultiDemo";
 	
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Map<String, Class> loadedClassesCache = new HashMap<String, Class>();

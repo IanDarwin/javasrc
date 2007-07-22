@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 /*
  * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.

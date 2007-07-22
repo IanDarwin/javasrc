@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 import java.lang.reflect.*;
 import java.util.*;

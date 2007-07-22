@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 /**
  * Utterly trivial class used by "ClassLoaderMultiple"

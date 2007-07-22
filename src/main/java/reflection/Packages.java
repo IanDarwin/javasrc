@@ -1,4 +1,4 @@
-package introspection;
+package reflection;
 
 /**
  * Show the Packages. Requires JDK1.2.
