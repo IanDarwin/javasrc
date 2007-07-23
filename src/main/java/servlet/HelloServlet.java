@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Simple Hello World Servlet
+/** Simple Hello World Servlet, just to show syntax, and
+ * thus a very bad example. Do the world a favor:
+ * Use a framework like Struts, SpringMVC or Seam instead
+ * of writing low-level cruft like this.
  * @author Ian Darwin
  * @version $Id$
  */
