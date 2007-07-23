@@ -1,8 +1,16 @@
 package servlet;
 
-import javax.servlet.http.*;
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class UploadServlet extends HttpServlet {
 
@@ -34,7 +42,7 @@ public class UploadServlet extends HttpServlet {
 		// CHECK FOR TRAPS LIKE . or / or \ or : or File.separator in the filename
 
 		OutputStream os = new FileOutputStream(f.getPath());
-		
+
 		byte[] b = new byte[1024];
 		int n;
 		while ((n = is.read(b)) > 0)
