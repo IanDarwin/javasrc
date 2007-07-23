@@ -1,15 +1,16 @@
 package ShowDocument;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
-/** This little gem shows how to launch the Compose Mail window
+/** This shows how to launch the Compose Mail window
  * in a Browser; inspired by a discussion with a student in which
- * I guessed (correctly, it seems) that showDocument() goes through
- * enough "common code" that showDocument() with a "mailto:" URL
- * would actually work...
+ * I guessed (correctly, it seems) that in at least some browsers,
+ * showDocument() goes through enough "common code" that a
+ * showDocument() call with a "mailto:" URL does actually work...
  @author Ian Darwin
  */
 public class ShowDocMailto extends Applet {
@@ -22,7 +23,7 @@ public class ShowDocMailto extends Applet {
 			try {
 				// Get the address from a PARAM...
 				String address = getParameter("ADDRESS");
-				if (address == null) 
+				if (address == null)
 					throw new IllegalArgumentException(
 					"ShowDocMailto requires an ADDRESS Parameter in the HTML");
 
