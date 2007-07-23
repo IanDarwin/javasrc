@@ -1,7 +1,8 @@
 package signals;
 
 /**
- * This is Ian Darwin's signal handler for Java JDK 1.1.
+ * This is Ian Darwin's signal handler for Java JDK 1.x.
+ * <b>COMPLETELY UNSUPPORTED; USE AT OWN RISK. TEST EARLY AND OFTEN.</b>
  * The general plan is:
  * <UL>
  * 	<LI>your main constructs a Thread subclass, but doesn't start it.
