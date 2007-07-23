@@ -9,13 +9,14 @@ import java.util.Calendar;
 import java.util.Random;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Program to generate an iCalendar event.
  * Can be used as a main program or as a Servlet.
  */
-public class CalEventMaker extends javax.servlet.http.HttpServlet {
+public class CalEventMaker extends HttpServlet {
 
 	static int nEvent;
 	static Random r = new Random();
@@ -23,7 +24,7 @@ public class CalEventMaker extends javax.servlet.http.HttpServlet {
 	public static void main(String[] args) throws IOException {
 		String TMPFILE = "j.ics";
 		PrintWriter out = new PrintWriter(new FileWriter(TMPFILE));
-		writeEvent(out, 
+		writeEvent(out,
 			args[0], 					// description
 			Integer.parseInt(args[1]),	// mm start
 			Integer.parseInt(args[2]),	// dd start
@@ -48,7 +49,7 @@ public class CalEventMaker extends javax.servlet.http.HttpServlet {
 		String ddEnd = request.getParameter("ddEnd");
 
 		response.setContentType("ical");	// BLEARGH
-		
+
 		PrintWriter out = response.getWriter();
 
 		writeEvent(out, event,
@@ -59,16 +60,16 @@ public class CalEventMaker extends javax.servlet.http.HttpServlet {
 			Integer.parseInt(mmEnd),
 			Integer.parseInt(ddEnd));
 	}
-	
+
 	/** Write an event in the current year */
 	public static void writeEvent(PrintWriter out, String event,
 			int startMon, int startDay,
 			int endMon, int endDay)
 	{
 		int thisyear = Calendar.getInstance().get(Calendar.YEAR);
-		writeEvent(out, event, 
-			2003, startMon, startDay,
-			2003, endMon, endDay);
+		writeEvent(out, event,
+			thisyear, startMon, startDay,
+			thisyear, endMon, endDay);
 	}
 
 	/** Write an event.
