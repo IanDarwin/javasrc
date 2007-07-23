@@ -5,9 +5,9 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.mail.*;
-import javax.mail.internet.*; 
+import javax.mail.internet.*;
 
-/* This servlet responds to CodeRed by sending an email
+/* This servlet responds to the CodeRed worm by sending an email
  * to "administrator@" (and "root@") the infected site.
  * Keeps a hashtable in Application scope to only nag
  * each infested site once.
@@ -22,10 +22,11 @@ import javax.mail.internet.*;
  * executable program listed at the end of the overflowed buffer.
  */
 public class CodeRed extends HttpServlet {
+
 	// Change this to the (FQDN?) name of your mail host
 	protected final String SMTPSERVER = "localhost";
 	/** This, too, should be updated to something more FQ */
-	protected final String MYADDR = "root@darwinsys.com";
+	protected final String MYADDR = "root@your.domain";
 	/** The JavaMail session object XXX Is it threadsafe? */
 	protected Session session;
 
@@ -39,8 +40,8 @@ public class CodeRed extends HttpServlet {
 		session.setDebug(true);		// Verbose!
 	}
 
-	public void service(HttpServletRequest request, 
-		HttpServletResponse response) 
+	public void service(HttpServletRequest request,
+		HttpServletResponse response)
 	throws IOException, ServletException {
 
 		ServletContext ctx = getServletContext();
@@ -49,8 +50,8 @@ public class CodeRed extends HttpServlet {
 		out.println("<html>");
 		out.println("<head><title>Default.ida</title></head>");
 		out.println("<body text=\"white\" bgcolor=\"black\">");
-	
-		HashMap list = 
+
+		HashMap list =
 			(HashMap)ctx.getAttribute("codered.notified");
 
 		if (list == null) {
@@ -65,7 +66,7 @@ public class CodeRed extends HttpServlet {
 			return;
 		}
 
-		String message_body = 
+		String message_body =
 		"Your site, whose IP address is " +  hostIP + ", " +
 		"has requested a \".ida\" file from a web site " +
 		"that doesn't run the bug-infested Microsoft IIS server. " +
@@ -93,7 +94,7 @@ public class CodeRed extends HttpServlet {
 			// From Address - this should come from a Properties...
 			mesg.setFrom(new InternetAddress(MYADDR));
 
-			// TO Address 
+			// TO Address
 			InternetAddress toAddress = new InternetAddress(
 				"administrator@[" + hostIP + "]");
 			mesg.addRecipient(Message.RecipientType.TO, toAddress);
@@ -108,7 +109,7 @@ public class CodeRed extends HttpServlet {
 			// Now the message body.
 			mesg.setText(message_body);
 			// XXX I18N: use setText(msgText.getText(), charset)
-			
+
 			// Finally, send the message!
 			Transport.send(mesg);
 
