@@ -1,4 +1,4 @@
-package introspection;
+package reflection.cooklet;
 
 /**
  * This is the part of the Cookies application that loads

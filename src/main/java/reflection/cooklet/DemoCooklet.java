@@ -1,4 +1,4 @@
-package introspection;
+package reflection.cooklet;
 
 public class DemoCooklet extends Cooklet {
 	public void work() {
