@@ -38,7 +38,7 @@ public class MenuIntl extends JFrame {
 		JMenuBar mb = new JMenuBar();
 		setJMenuBar(mb);
 
-		ResourceBundle b = ResourceBundle.getBundle("Menus");
+		ResourceBundle b = ResourceBundle.getBundle("i18n.Menus");
 
 		String titlebar;
 		try { titlebar = b.getString("program"+".title"); }
