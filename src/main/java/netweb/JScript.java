@@ -8,7 +8,9 @@ import netscape.javascript.*;
 /* An Applet to perform JavaScript directly.
  * The import of netscape.javascript.* requires a JAR file.
  * EXPECT COMPILE ERROR unless you have the Netscape JAR file.
- * This may be e.g., $NETSCAPEHOME/java/classes/java40.jar.
+ * This may be e.g., $NETSCAPEHOME/java/classes/java40.jar,
+ * or JAVA_HOME/jre/lib/plugin.jar; you may have to look for it; try:
+ * find $JAVA_HOME $FIREFOXHOME -name \*.jar | xargs grep JSObject
  * The use of JavaScript requires <applet ... mayscript="true">
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @author Roger Goudarzi -- provided background information.
