@@ -14,10 +14,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AnnotationDemo {
 	public static final int N = 42;
+	public boolean useless() default false;
 }
 
 /** A simple example of using the annotation */
-@AnnotationDemo()
+@AnnotationDemo(useless=true)
 class UselessClassJustToShowAnnotation {
 
 	/** Print out the annotations attached to this class */
