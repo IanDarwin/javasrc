@@ -62,11 +62,13 @@ public class SystemTrayDemo {
 		};
 
 		PopupMenu popup = new PopupMenu();
-		MenuItem defaultItem = new MenuItem("Exit Demo");
-		defaultItem.addActionListener(exitListener);
-		popup.add(defaultItem);
-		MenuItem wowItem = new MenuItem("Exit Demo");
+
+		MenuItem wowItem = new MenuItem("Woot Demo");
 		popup.add(wowItem);
+
+		MenuItem quitItem = new MenuItem("Exit Demo");
+		quitItem.addActionListener(exitListener);
+		popup.add(quitItem);
 
 		trayIcon = new TrayIcon(image, "Tray Demo", popup);
 
