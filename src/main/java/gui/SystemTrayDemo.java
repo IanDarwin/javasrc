@@ -29,7 +29,7 @@ public class SystemTrayDemo {
 		}
 
 		SystemTray tray = SystemTray.getSystemTray();
-		Image image = Toolkit.getDefaultToolkit().getImage("tray.gif");
+		Image image = Toolkit.getDefaultToolkit().getImage("gui/tray.gif");
 
 		MouseListener mouseListener = new MouseListener() {
 
