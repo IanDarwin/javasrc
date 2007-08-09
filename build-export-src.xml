@@ -11,6 +11,8 @@
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
 	<property name="build.work" value="/tmp/javasrc"/>
+	<!-- must be direct subdir of above -->
+	<property name="build.work.javasrc" value="${build.work}/javasrc"/>
 	<property name="dist.jar" value="javacooksrc2.zip"/>
 
 	<!-- This init is unusual; it runs clean every time -->
@@ -33,15 +35,15 @@
 
 	<target name="index" depends="get">
 		<!-- Create the index.html for just what we exported -->
-		<ant dir="${build.work}" target="index"
+		<ant dir="${build.work.javasrc}" target="index"
 			inheritAll="false"/>
 	</target>
 
 	<target name="dist" depends="index">
 		<zip zipFile="${dist.jar}" update="no">
 			<fileset>
-				<include name="${build.work}/**"/>
-				<exclude name="${build.work}/build/**"/>
+				<include name="${build.work.javasrc}/**"/>
+				<exclude name="${build.work.javasrc}/build/**"/>
 			</fileset>
 		</zip>
 	</target>
