@@ -30,29 +30,26 @@ public class MyJavaP {
 	/** Format the fields and methods of one class, given its name.
 	 */
 	protected void doClass(String className) {
-
 		try {
 			Class c = Class.forName(className);
 			System.out.println(c + " {");
 
 			int mods;
 			Field fields[] = c.getDeclaredFields();
-			for (int i = 0; i < fields.length; i++) {
-				if (!Modifier.isPrivate(fields[i].getModifiers())
-				 && !Modifier.isProtected(fields[i].getModifiers()))
-					System.out.println("\t" + fields[i]);
+			for (Field f : fields) {
+				if (!Modifier.isPrivate(f.getModifiers())
+				 && !Modifier.isProtected(f.getModifiers()))
+					System.out.println("\t" + f + ";");
 			}
 			Constructor[] constructors = c.getConstructors();
-			for (int j = 0; j < constructors.length; j++) {
-				Constructor constructor = constructors[j];
-				System.out.println("\t" + constructor);
-				
+			for (Constructor con : constructors) {
+				System.out.println("\t" + con + ";");
 			}
 			Method methods[] = c.getDeclaredMethods();
-			for (int i = 0; i < methods.length; i++) {
-				if (!Modifier.isPrivate(methods[i].getModifiers())
-				 && !Modifier.isProtected(methods[i].getModifiers()))
-					System.out.println("\t" + methods[i]);
+			for (Method m : methods) {
+				if (!Modifier.isPrivate(m.getModifiers())) {
+					System.out.println("\t" + m + ";");
+				}
 			}
 			System.out.println("}");
 		} catch (ClassNotFoundException e) {
