@@ -8,8 +8,8 @@
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
-	<property name="build.work" value="build/javasrc"/>
-	<property name="dist.jar" value="javacooksrc2.jar"/>
+	<property name="build.work" value="/tmp/javasrc"/>
+	<property name="dist.jar" value="javacooksrc2.zip"/>
 
 	<property file="build-export-src.properties"/>
 
@@ -17,6 +17,11 @@
 	<target name="init" depends="clean">
 		<tstamp/>
 		<mkdir dir="${build.work}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.work}"/>
+		<delete file="${dist.jar}"/>
 	</target>
 
 	<target name="get" depends="init">
@@ -32,16 +37,14 @@
 			inheritAll="false"/>
 	</target>
 
-	<target name="jar" depends="index">
-		<jar jarFile="${dist.jar}" update="no">
+	<target name="dist" depends="index">
+		<zip zipFile="${dist.jar}" update="no">
 			<fileset>
 				<include name="${build.work}/**"/>
 				<exclude name="${build.work}/build/**"/>
 			</fileset>
 		</jar>
 	</target>
-
-	<target name="dist" depends="jar"/>
 
 	<target name="deploy" depends="dist">
 		<scp file="${dist.jar}" todir="darwinsys.com:/www/javacook/"/>
@@ -57,8 +60,4 @@
 			/>
 	</target>
 
-	<target name="clean">
-		<delete dir="${build.work}"/>
-		<delete file="${dist.jar}"/>
-	</target>
 </project>
