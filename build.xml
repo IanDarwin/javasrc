@@ -124,6 +124,7 @@
 			<exclude name="rmi/*.java"/>
 			<exclude name="rmi/agent/*.java"/>
 			<exclude name="rmi/callback/*.java"/>
+			<exclude name="servlet/TermsServletPDF.java"/>
 			<exclude name="strings/WolfInStringsClothing.java"/>
 			<exclude name="unfinished/**.java"/>
 			<exclude name="Contrib/**.java"/>
