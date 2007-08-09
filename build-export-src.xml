@@ -26,9 +26,9 @@
 
 	<target name="get" depends="init">
 		<cvs cvsRoot="${CVSROOT}" command="export" date="now"
-			quiet="true"
+			passfile=""
 			package="javasrc"
-			dest="${build}"/>
+			dest="${build.work}"/>
 	</target>
 
 	<target name="index" depends="get">
@@ -43,7 +43,7 @@
 				<include name="${build.work}/**"/>
 				<exclude name="${build.work}/build/**"/>
 			</fileset>
-		</jar>
+		</zip>
 	</target>
 
 	<target name="deploy" depends="dist">
