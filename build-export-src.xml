@@ -6,14 +6,14 @@
  *** $Id$
  -->
 
+	<property file="build-export-src.properties"/>
+
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
 	<property name="build.work" value="/tmp/javasrc"/>
 	<property name="dist.jar" value="javacooksrc2.zip"/>
 
-	<property file="build-export-src.properties"/>
-
-	<!-- This init is different; it runs clean every time -->
+	<!-- This init is unusual; it runs clean every time -->
 	<target name="init" depends="clean">
 		<tstamp/>
 		<mkdir dir="${build.work}"/>
