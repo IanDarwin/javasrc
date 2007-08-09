@@ -7,12 +7,12 @@ public class MyBigApp2 {
 		// stub getting name of user-defined class from config file
 		// className = "com.darwinsys.jellybeans.IanShow";
 		className = "reflection.showlet.IanShow";
-//		className = "java.lang.String"; // uncomment to test error handling
+		// className = "java.lang.String"; // uncomment to test error handling
 
 		// Create this user's ShowLet
 		Class c = Class.forName(className);
 		Object o = c.newInstance();
-		if (Showlet.class.isInstance(o)) {
+		if (o instanceof Showlet) {
 			Showlet s = (Showlet) c.newInstance();
 
 			// Now we have a showlet, make it do its thing:
