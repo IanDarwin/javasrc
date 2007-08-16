@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/** Producer-Consumer in Java, for J2SE 1.5 using concurrent.
+/** Producer-Consumer in Java, for J2SE 1.5+ using concurrent.
  */
 public class ProdCons15 {
 
-	protected boolean done = false;
+	protected volatile boolean done = false;
 
 	/** Inner class representing the Producer side */
 	class Producer implements Runnable {
@@ -38,7 +38,7 @@ public class ProdCons15 {
 			} catch (InterruptedException ex) {
 			 	System.out.println("Producer Read INTERRUPTED");
 			}
-			return(new Object());
+			return new Object();
 		}
 	}
 
