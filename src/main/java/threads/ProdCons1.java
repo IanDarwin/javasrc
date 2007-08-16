@@ -31,24 +31,24 @@ package threads;
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * Java, the Duke mascot, and all variants of Sun's Java "steaming coffee
  * cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
- * pioneering role in inventing and promulgating (and standardizing) the Java 
+ * pioneering role in inventing and promulgating (and standardizing) the Java
  * language and environment is gratefully acknowledged.
- * 
+ *
  * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.LinkedList;
 
 /** Producer-Consumer in Java. Version 1.
  */
 public class ProdCons1 {
 
-	protected LinkedList list = new LinkedList();
+	protected LinkedList<Object> list = new LinkedList<Object>();
 
 	protected void produce() {
 		int len = 0;

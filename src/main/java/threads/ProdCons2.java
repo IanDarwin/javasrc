@@ -31,18 +31,18 @@ package threads;
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * Java, the Duke mascot, and all variants of Sun's Java "steaming coffee
  * cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
- * pioneering role in inventing and promulgating (and standardizing) the Java 
+ * pioneering role in inventing and promulgating (and standardizing) the Java
  * language and environment is gratefully acknowledged.
- * 
+ *
  * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.LinkedList;
 
 /** Producer-consumer in Java, Take II.
  */
@@ -51,7 +51,7 @@ public class ProdCons2 {
 	/** Throughout the code, this is the object we synchronize on so this
 	 * is also the object we wait() and notifyAll() on.
 	 */
-	protected LinkedList list = new LinkedList();
+	protected LinkedList<Object> list = new LinkedList<Object>();
 	protected int MAX = 10;
 	protected boolean done = false; // Also protected by lock on list.
 
@@ -140,7 +140,7 @@ public class ProdCons2 {
 		ProdCons2 pc = new ProdCons2(numProducers, numConsumers);
 
 		// Let it run for, say, 10 seconds
-		Thread.sleep(10*1000); 
+		Thread.sleep(10*1000);
 
 		// End of simulation - shut down gracefully
 		synchronized(pc.list) {
