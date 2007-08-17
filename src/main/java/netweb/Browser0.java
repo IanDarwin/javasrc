@@ -20,19 +20,28 @@ public class Browser0 {
 				System.err.println("Usage: getFromURL [url]");
 				return;
 		}
+		BufferedReader is = null;
 		try {
-			URL Web = new URL(loc);
-			BufferedReader is = new BufferedReader(
+			URL web = new URL(loc);
+			is = new BufferedReader(
 				new InputStreamReader(
-				Web.openStream()));
+				web.openStream()));
 			String line;
-			while ((line = is.readLine()) != null)
+			while ((line = is.readLine()) != null) {
 				System.out.println(line);
-			is.close();
+			}
 		} catch (MalformedURLException e) {
 			System.out.println("MalformedURLException: " + e);
 		} catch (IOException e) {
 			System.out.println("IOException: " + e);
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					// almost a canthappen
+				}
+			}
 		}
 	}
 }
