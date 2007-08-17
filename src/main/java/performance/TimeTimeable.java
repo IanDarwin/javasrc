@@ -1,17 +1,19 @@
 package performance;
 
 /**
- * Benchmark driver. Runs your method "n" times.
+ * Benchmark driver. Runs the given Timeable's work method "n" times.
+ * Usage: TimeTimable [n] className [...]
  * Reports elapsed time in milliseconds and number of objects
  * processed per millisecond.
- * @param args ClassThatImplementsInterface [numberofTimes]
-
  */
 public class TimeTimeable {
 
 	private static int DEFAULT_NUMBER_OF_RUNS = 500000;
 	private static int numInvocations = DEFAULT_NUMBER_OF_RUNS;
-	
+
+	/** 
+	 * @param args ClassThatImplementsTimeable [numberOfTimes] [args...]
+	 */
 	public static void main(String[] args) throws Exception {
 		Timeable t;
 		if (args.length == 0) {
@@ -25,10 +27,12 @@ public class TimeTimeable {
 		} catch (NumberFormatException e) {
 			// nothing to do
 		}
-		for (String className : args) {
+		// Do not replace with a foreach loop
+		for (/* i already now 0 or 1*/; i < args.length; i++) {
+			String className = args[i];
 			System.out.printf("Starting class: %s%n", className);
 			t = (Timeable) Class.forName(className).newInstance();
-			t.init(args);	
+			t.init(new String[0]);
 			measureTimes(t);
 		}
 	}
@@ -36,7 +40,7 @@ public class TimeTimeable {
 	public static void measureTimes(Timeable t) {
 		long starttime = 0;
 		long endtime = 0;
-		
+
 		starttime = System.currentTimeMillis();
 		for (int i=0; i<numInvocations; i++) {
 			t.methodUnderTest();
