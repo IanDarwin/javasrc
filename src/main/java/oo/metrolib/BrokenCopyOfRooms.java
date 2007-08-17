@@ -1,6 +1,7 @@
 package oo.metrolib;
 
-/** This is the rooms data structure.
+/** This is a borked copy of the rooms data structure; see the
+ * comment in "Rooms.java" for discussion.
  * In a real game this would be generated from a database!
  */
 public class BrokenCopyOfRooms {
