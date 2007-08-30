@@ -1,15 +1,26 @@
 package i18n;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /** This is a partly-internationalized version of MenuDemo.
  * To try it out, use
  *		java MenuIntl
  *		java -Duser.language=es MenuIntl
  */
+@SuppressWarnings("serial")
 public class MenuIntl extends JFrame {
 
 	/** "main program" method - construct and show */
@@ -47,7 +58,7 @@ public class MenuIntl extends JFrame {
 
 		String message;
 		try { message = b.getString("program"+".message"); }
-		catch (MissingResourceException e) { 
+		catch (MissingResourceException e) {
 			message="Welcome to the world of Java";
 		}
 		lab.setText(message);
@@ -55,7 +66,7 @@ public class MenuIntl extends JFrame {
 		JMenu fm = mkMenu(b, "file");
 		fm.add(mi = mkMenuItem(b, "file", "open"));
 		// In finished code there would be a call to
-		// mi.addActionListener(...) after *each* of 
+		// mi.addActionListener(...) after *each* of
 		// these mkMenuItem calls!
 		fm.add(mi = mkMenuItem(b, "file", "new"));
 		fm.add(mi = mkMenuItem(b, "file", "save"));
