@@ -1,11 +1,15 @@
 package i18n;
 
-import javax.swing.*;
-import java.util.*;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  * Create one button, internationalizedly.
  */
+@SuppressWarnings("serial")
 public class OneButton extends JFrame {
 
 	public static void main(String[] args) {

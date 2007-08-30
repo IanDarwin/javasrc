@@ -1,9 +1,19 @@
 package i18n;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import com.darwinsys.swingui.I18N;
 
@@ -12,6 +22,7 @@ import com.darwinsys.swingui.I18N;
  *		java MenuIntl2
  *		java -Duser.language=es MenuIntl2
  */
+@SuppressWarnings("serial")
 public class MenuIntl2 extends JFrame {
 
 	/** "main program" method - construct and show */
@@ -40,7 +51,7 @@ public class MenuIntl2 extends JFrame {
 		JMenuBar mb = new JMenuBar();
 		setJMenuBar(mb);
 
-		ResourceBundle rb = ResourceBundle.getBundle("Widgets");
+		ResourceBundle rb = ResourceBundle.getBundle("i18n.Widgets");
 
 		String titlebar;
 		try { titlebar = rb.getString("program"+".title"); }
@@ -49,12 +60,15 @@ public class MenuIntl2 extends JFrame {
 
 		String message;
 		try { message = rb.getString("program"+".message"); }
-		catch (MissingResourceException e) { 
+		catch (MissingResourceException e) {
 			message="Welcome to the world of Java";
 		}
 		lab.setText(message);
 
 		JMenu fm = I18N.mkMenu(rb, "file");
+		// In finished code there would be a call to
+		// mi.addActionListener(...) after *each* of
+		// these mkMenuItem calls!
 		fm.add(mi = I18N.mkMenuItem(rb, "file", "open"));
 		fm.add(mi = I18N.mkMenuItem(rb, "file", "new"));
 		fm.add(mi = I18N.mkMenuItem(rb, "file", "save"));

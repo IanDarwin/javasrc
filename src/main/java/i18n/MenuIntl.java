@@ -49,7 +49,7 @@ public class MenuIntl extends JFrame {
 		JMenuBar mb = new JMenuBar();
 		setJMenuBar(mb);
 
-		ResourceBundle b = ResourceBundle.getBundle("i18n.Menus");
+		ResourceBundle b = ResourceBundle.getBundle("i18n.Widgets");
 
 		String titlebar;
 		try { titlebar = b.getString("program"+".title"); }
@@ -64,10 +64,10 @@ public class MenuIntl extends JFrame {
 		lab.setText(message);
 
 		JMenu fm = mkMenu(b, "file");
-		fm.add(mi = mkMenuItem(b, "file", "open"));
 		// In finished code there would be a call to
 		// mi.addActionListener(...) after *each* of
 		// these mkMenuItem calls!
+		fm.add(mi = mkMenuItem(b, "file", "open"));
 		fm.add(mi = mkMenuItem(b, "file", "new"));
 		fm.add(mi = mkMenuItem(b, "file", "save"));
 		fm.add(mi = mkMenuItem(b, "file", "exit"));
@@ -96,6 +96,9 @@ public class MenuIntl extends JFrame {
 		cp.add(jl);
 		pack();
 	}
+
+	// Copies of routines that are in darwinsys.jar,
+	// just here for compilation convenience
 
 	/** Convenience routine to make a JMenu */
 	public JMenu mkMenu(ResourceBundle b, String name) {
