@@ -12,6 +12,12 @@ public enum Command {
 	LOOK,
 	UNKNOWN;
 
+	@Override
+	public String toString() {
+		String s = super.toString();
+		return s.charAt(0) + s.substring(1).toLowerCase();
+	}
+
 	public static Command parseCmd(String line) {
 		if (line == null || line.equals("q") ||
 			line.equalsIgnoreCase("quit"))

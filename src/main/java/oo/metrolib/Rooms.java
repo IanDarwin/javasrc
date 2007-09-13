@@ -17,7 +17,7 @@ public class Rooms {
 		// this, in BrokenCopyOfRooms, does result in NullPointerExceptions.
 		lobby = new Room() {
 			public String getEntryMessage() {
-				return "I see you made it back to the lobby.";
+				return "I see you made it back to the lobby alive.";
 			}
 		};
 		mainHall = new Room();
