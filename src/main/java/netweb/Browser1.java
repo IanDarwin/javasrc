@@ -32,8 +32,8 @@ public class Browser1 {
 				throw new IllegalArgumentException("Usage: getFromURL [url]");
 		}
 
-		URL Web = new URL(loc);
-		p = new JEditorPane(Web);
+		URL web = new URL(loc);
+		p = new JEditorPane(web);
 		JFrame jf = new JFrame("HTML");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		p.setContentType("text/html");
