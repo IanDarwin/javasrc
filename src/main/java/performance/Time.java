@@ -17,6 +17,9 @@ public class Time {
 		Method main = c.getMethod("main", classes);
 
 		// Make new argv array, dropping class name from front.
+		// (Normally Java doesn't get the class name, but in 
+		// this case the user puts the name of the class to time
+		// as well as all its arguments...
 		String nargv[] = new String[argv.length - 1];
 		System.arraycopy(argv, 1, nargv, 0, nargv.length);
 
