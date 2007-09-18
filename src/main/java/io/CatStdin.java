@@ -9,7 +9,8 @@ public class CatStdin {
 
     public static void main(String[] av) {
         try {
-            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader is =
+            	new BufferedReader(new InputStreamReader(System.in));
             String inputLine;
 
             while ((inputLine = is.readLine()) != null) {
