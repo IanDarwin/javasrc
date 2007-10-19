@@ -1,10 +1,12 @@
 package jsp.darwin;
 
-/** Simple Password Checker Javabean.
+/** Simple Password Checker bean for login purposes.
  * Does not implement get methods, only set.
  * @version $Id$
  */
 public class PasswordChecker implements java.io.Serializable {
+
+	private static final long serialVersionUID = 6706223521308008946L;
 	protected String login, password;
 
 	/** A public no-argument constructor is required of a javabean. */
