@@ -10,7 +10,15 @@ public class ValueListHandlerTest extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		for (int i = 1; i <= 50; i++) {
+		generateList(50);
+	}
+
+	/**
+	 * @param howMany TODO
+	 * 
+	 */
+	private void generateList(int howMany) {
+		for (int i = 1; i <= howMany; i++) {
 			fixture.add(i);
 		}
 	}
