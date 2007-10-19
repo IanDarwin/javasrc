@@ -5,10 +5,13 @@ import javax.servlet.jsp.tagext.*;
 import java.io.*;
 import java.net.URL;
 
-/** JSP Custom Tag to get the contents of an arbitrary URL
+/** JSP Custom Tag to get the contents of an arbitrary URL.
+ * Not sure how this differs from jsp:include, but here it is anyway.
  */
 
 public class UrlTag extends TagSupport {
+
+	private static final long serialVersionUID = -5924248057296762557L;
 	public String theURL;
 
 	public void setURL(String u) {
