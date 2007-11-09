@@ -22,14 +22,14 @@ import java.util.TreeSet;
  * <p>
  * Be warned that the entrySet() method is <b>not implemented</b> yet.
  */
-public class MyMap implements Map {
+public class MyMap<K,V> implements Map<K,V> {
 
-	private ArrayList keys;
-	private ArrayList values;
+	private ArrayList<K> keys;
+	private ArrayList<V> values;
 
 	public MyMap() {
-		keys = new ArrayList();
-		values = new ArrayList();
+		keys = new ArrayList<K>();
+		values = new ArrayList<V>();
 	}
 
 	/** Return the number of mappings in this Map. */
@@ -53,7 +53,7 @@ public class MyMap implements Map {
 	}
 
 	/** Get the object value corresponding to key k. */
-	public Object get(Object k) {
+	public V get(Object k) {
 		int i = keys.indexOf(k);
 		if (i == -1)
 			return null;
@@ -63,14 +63,14 @@ public class MyMap implements Map {
 	/** Put the given pair (k, v) into this map, by maintaining "keys"
 	 * in sorted order.
 	 */
-	public Object put(Object k, Object v) {
+	public V put(Object k, Object v) {
 		for (int i=0; i < keys.size(); i++) {
-			Object old = keys.get(i);
+			K old = keys.get(i);
 
 			/* Does the key already exist? */
 			if (((Comparable)k).compareTo(keys.get(i)) == 0) {
-				keys.set(i, v);
-				return old;
+				keys.set(i, (K) k);
+				return values.get(i);	// XXX
 			}
 
 			/* Did we just go past where to put it?
@@ -78,21 +78,21 @@ public class MyMap implements Map {
 			 */
 			if (((Comparable)k).compareTo(keys.get(i)) == +1) {
 				int where = i > 0 ? i -1 : 0;
-				keys.add(where, k);
-				values.add(where, v);
+				keys.add(where, (K)k);
+				values.add(where, (V)v);
 				return null;
 			}
 		}
 
 		// Else it goes at the end.
-		keys.add(k);
-		values.add(v);
+		keys.add((K) k);
+		values.add((V) v);
 		return null;
 	}
 
 	/** Put all the pairs from oldMap into this map */
-	public void putAll(java.util.Map oldMap) {
-		Iterator keysIter = oldMap.keySet().iterator();
+	public void putAll(Map oldMap) {
+		Iterator<K> keysIter = oldMap.keySet().iterator();
 		while (keysIter.hasNext()) {
 			Object k = keysIter.next();
 			Object v = oldMap.get(k);
@@ -100,11 +100,11 @@ public class MyMap implements Map {
 		}
 	}
 
-	public Object remove(Object k) {
+	public V remove(Object k) {
 		int i = keys.indexOf(k);
 		if (i == -1)
 			return null;
-		Object old = values.get(i);
+		V old = values.get(i);
 		keys.remove(i);
 		values.remove(i);
 		return old;
@@ -125,33 +125,34 @@ public class MyMap implements Map {
 
 	/** The Map.Entry objects contained in the Set returned by entrySet().
 	 */
-	private class MyMapEntry implements Map.Entry, Comparable {
-		private Object key, value;
-		MyMapEntry(Object k, Object v) {
+	private class MyMapEntry implements Map.Entry<K,V>, Comparable {
+		private K key;
+		private V value;
+		MyMapEntry(K k, V v) {
 			key = k;
 			value = v;
 		}
-		public Object getKey() { return key; }
-		public Object getValue() { return value; }
-		public Object setValue(Object nv) {
+		public K getKey() { return key; }
+		public V getValue() { return value; }
+		public V setValue(V nv) {
 			throw new UnsupportedOperationException("setValue");
 		}
 		public int compareTo(Object o2) {
-			if (!(o2 instanceof MyMapEntry))
-				throw new IllegalArgumentException(
-					"Huh? Not a MapEntry?");
+			// if (!(o2 instanceof MyMapEntry))
+			// 	throw new IllegalArgumentException(
+			//		"Huh? Not a MapEntry?");
 			Object otherKey = ((MyMapEntry)o2).getKey();
 			return ((Comparable)key).compareTo((Comparable)otherKey);
 		}
     }
 
 	/** The set of Map.Entry objects returned from entrySet(). */
-	private class MyMapSet extends AbstractSet {
-		List list;
-		MyMapSet(ArrayList al) {
+	private class MyMapSet<T> extends AbstractSet<T> {
+		List<T> list;
+		MyMapSet(List<T> al) {
 			list = al;
 		}
-		public Iterator iterator() {
+		public Iterator<T> iterator() {
 			return list.iterator();
 		}
 		public int size() {
