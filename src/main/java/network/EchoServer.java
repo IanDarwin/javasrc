@@ -18,8 +18,17 @@ public class EchoServer {
 	protected boolean debug = true;
 
 	/** main: construct and run */
-	public static void main(String[] argv) {
-		new EchoServer(ECHOPORT).handle();
+	public static void main(String[] args) {
+		int p = ECHOPORT;
+		if (args.length == 1) {
+			try {
+				p = Integer.parseInt(args[0]);
+			} catch (NumberFormatException e) {
+				System.err.println("Usage: EchoServer [port#]");
+				System.exit(1);
+			}
+		}
+		new EchoServer(p).handle();
 	}
 
 	/** Construct an EchoServer on the given port number */
