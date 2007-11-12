@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 import com.darwinsys.util.Debug;
 

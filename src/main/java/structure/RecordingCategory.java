@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 /** This represents a choice of category
  */

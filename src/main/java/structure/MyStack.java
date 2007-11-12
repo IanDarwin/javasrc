@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 /** A lax Stack implementation.
  * @version $Id$

@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 import junit.framework.TestCase;
 import java.util.Date;

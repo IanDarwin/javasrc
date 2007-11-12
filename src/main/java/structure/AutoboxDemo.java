@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 public class AutoboxDemo {
 	public static void main(String[] args) {

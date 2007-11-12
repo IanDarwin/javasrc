@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 public enum MediaFancy {
 	book {

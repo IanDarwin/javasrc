@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 /**
  * Demonstrate some enums with String fields

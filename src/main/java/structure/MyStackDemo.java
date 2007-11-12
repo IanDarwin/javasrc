@@ -1,4 +1,4 @@
-package structure50;
+package structure;
 
 public class MyStackDemo {
 	public static void main(String[] args) {
@@ -12,6 +12,7 @@ public class MyStackDemo {
 		}
 
 		// Old way of using Collections: not type safe.
+		// DO NOT GENERIFY THIS
 		MyStack ms2 = new MyStack();
 		ms2.push("billg");               // EXPECT WARNING
 		ms2.push("scottm");              // EXPECT WARNING
