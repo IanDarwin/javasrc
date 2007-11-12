@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test the MyMap class.
@@ -83,5 +85,15 @@ public class MyMapTest {
 	public void testClear() {
 		map.clear();
 		assertEquals("clear test", 0, map.size());
+	}
+
+	@Test
+	// map.put("Netscape", "Mountain View, CA");
+	// map.put("Microsoft", "Redmond, WA");
+	public void testContains() {
+		assertTrue(map.containsKey("Netscape"));
+		assertTrue(map.containsValue("Mountain View, CA"));
+		assertFalse(map.containsKey("Redmond, WA"));
+		assertFalse(map.containsValue("Netscape"));
 	}
 }

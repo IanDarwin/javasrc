@@ -49,7 +49,7 @@ public class MyMap<K,V> implements Map<K,V> {
 
 	/** Return true if o is contained as a Value in this Map. */
 	public boolean containsValue(Object o) {
-		return keys.contains(o);
+		return values.contains(o);
 	}
 
 	/** Get the object value corresponding to key k. */
@@ -115,11 +115,11 @@ public class MyMap<K,V> implements Map<K,V> {
 		values.clear();
 	}
 
-	public java.util.Set keySet() {
-		return new TreeSet(keys);
+	public java.util.Set<K> keySet() {
+		return new TreeSet<K>(keys);
 	}
 
-	public java.util.Collection values() {
+	public java.util.Collection<V> values() {
 		return values;
 	}
 
