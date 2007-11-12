@@ -42,7 +42,7 @@ public class BatchMailer {
 		is.close();
 	}
 
-	protected ArrayList custList = new ArrayList();
+	protected ArrayList<String> custList = new ArrayList<String>();
 
 	/** Read the customer list. 
 	  * Format: one customer email per line.

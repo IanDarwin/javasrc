@@ -16,7 +16,7 @@ public class Model {
 	}
 
 	// Sun recommends using javax.swing.EventListenerList, but this is easier
-	List changeListeners = new ArrayList();
+	List<ChangeListener> changeListeners = new ArrayList<ChangeListener>();
 
 	public void addChangeListener(ChangeListener cl) {
 		changeListeners.add( cl);
