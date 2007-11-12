@@ -2,11 +2,11 @@ package network;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class InetAddrDemo {
-	public static void main(String[] args)
-	throws IOException {
+	public static void main(String[] args) throws IOException {
 		String ipNumber = "123.45.67.89";
 		String hostName = "www.darwinsys.com";
 
@@ -18,6 +18,14 @@ public class InetAddrDemo {
 		System.out.println(ipNumber + "'s name is " +
 			InetAddress.getByName(ipNumber).getHostName());
 
+		// Look up my localhost addresss
+		final InetAddress localHost = InetAddress.getLocalHost();
+		System.out.println("My localhost address is " +
+				localHost);
+		// Try to bind to it; this will fail if "getLocalhost()" found anything
+        // on any other interface than this host's well-known hostname-based addr
+		new ServerSocket(9999, 0, localHost);
+		
 		Socket theSocket = new Socket("server", 80);
 		int myPortNumber = 12345;
 
