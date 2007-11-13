@@ -75,11 +75,11 @@ public class MyMapTest {
 	}
 	
 	@Test
-	public void testMultiplPutThenGet(){
+	public void testMultiplePutThenGet(){
 		final String MYTOWN = "MyTown, CA";
 		map.put("Sun", MYTOWN);
 	    final String newLocation = (String)map.get("Sun");
-		System.out.println("Sun is located in: " + newLocation);
+		System.out.println("Sun has been re-located to " + newLocation);
 		assertEquals(MYTOWN, newLocation);
 		// Ensure value didn't get in as a Key (such a bug once existed)
 		assertNull(map.get(MYTOWN));
