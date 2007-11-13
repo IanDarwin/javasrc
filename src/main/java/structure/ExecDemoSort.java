@@ -19,6 +19,9 @@ public class ExecDemoSort {
 		// file contains unsorted data
 		p = r.exec("sort sortdemo.txt");
 
+		// If we stopped writing code here, the output
+		// would appear on the standard output.
+		
 		// getInputStream gives an Input stream connected to 
 		// the process p's standard output (and vice versa). We use
 		// that to construct a BufferedReader so we can readLine() it.
