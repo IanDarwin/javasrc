@@ -7,11 +7,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 
+/**
+ * Simple demo of reading an XML file using DOM.
+ */
 public class DomDemo {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) throws Throwable {
 		
 		final DocumentBuilderFactory dbFactory = 
