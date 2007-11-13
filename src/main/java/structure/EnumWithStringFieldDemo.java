@@ -14,9 +14,9 @@ public class EnumWithStringFieldDemo {
 		System.out.println(cat2);
 
 		// The better one works too but is more flexible and looks better:
-		BetterRecordingCategory cat3 = BetterRecordingCategory.JAZZ;
+		RecordingCategoryBetter cat3 = RecordingCategoryBetter.JAZZ;
 		System.out.println(cat3);
-		BetterRecordingCategory cat4 = BetterRecordingCategory.getCategory("Hip Hop");
+		RecordingCategoryBetter cat4 = RecordingCategoryBetter.getCategory("Hip Hop");
 		System.out.println(cat4);
 
 	}
