@@ -1,18 +1,19 @@
 package structure;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 public class ForeachDemo {
-	static void iterate(Collection<String> c) {
-	    for (String s : c)
- 		 System.out.println(s);
-	}
+	
 	public static void main(String args[]) {
-		List<String> l = new ArrayList<String>();
-		l.add("Toronto");
-		l.add("Stockholm");
-		iterate(l);
+		
+		String[] data = { "Toronto", "Stockholm" };
+		for (String s : data) {
+			System.out.println(s);
+		}
+		
+		List<String> list = Arrays.asList(data);
+		for (String s : list)
+			System.out.println(s);
 	}
 }
