@@ -21,7 +21,7 @@ public class CallTrackTest extends TestCase {
 		for (int i = 0; i < testData.length; i++) {
 			ct.add(testData[i]);
 		}
-		List it = ct.usrList;
+		List<Person> it = ct.usrList;
 		assertEquals(it.get(0), testData[3]);
 		assertEquals(it.get(1), testData[0]);
 		assertEquals(it.get(2), testData[2]);
