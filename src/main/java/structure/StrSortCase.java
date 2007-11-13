@@ -1,6 +1,7 @@
 package structure;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -19,18 +20,18 @@ public class StrSortCase {
 		"Zulu"
 	};
 
-	Vector<String> v = new Vector<String>();
+	List<String> v = new Vector<String>();
 
 	void load() {
 		v = new Vector<String>();
 		for (int i=0; i<rawStrings.length; i++)
-			v.addElement(rawStrings[i]);
+			v.add(rawStrings[i]);
 	}
 
 	void dump(String title) {
 		System.out.println("***** " + title + " *****");
 		for (int i=0; i<v.size(); i++)
-			System.out.println("v["+i+"]="+v.elementAt(i));
+			System.out.println("v["+i+"]="+v.get(i));
 	}
 
 	/** Simple main program to test the sorting */
