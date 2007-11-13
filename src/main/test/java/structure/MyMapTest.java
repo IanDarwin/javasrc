@@ -11,6 +11,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test the MyMap class.
@@ -72,6 +73,20 @@ public class MyMapTest {
 		}
 		
 	}
+	
+	@Test
+	public void testMultiplPutThenGet(){
+		final String MYTOWN = "MyTown, CA";
+		map.put("Sun", MYTOWN);
+	    final String newLocation = (String)map.get("Sun");
+		System.out.println("Sun is located in: " + newLocation);
+		assertEquals(MYTOWN, newLocation);
+		// Ensure value didn't get in as a Key (such a bug once existed)
+		assertNull(map.get(MYTOWN));
+		assertEquals("multiple put didn't change size",
+			NUM_ENTRIES, map.size());
+	}
+	
 	@Test
 	public void testEntrySet() {
 

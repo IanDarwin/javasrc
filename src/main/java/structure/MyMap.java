@@ -69,7 +69,7 @@ public class MyMap<K,V> implements Map<K,V> {
 
 			/* Does the key already exist? */
 			if (((Comparable)k).compareTo(keys.get(i)) == 0) {
-				keys.set(i, (K) k);
+				values.set(i, (V)v);
 				return values.get(i);	// XXX
 			}
 
