@@ -10,9 +10,7 @@ public class ArrayListGenericDemo {
 
 		// data.add(new Date()); This won't compile!
 
-		Iterator<String> it = data.iterator();
-		while (it.hasNext()) {
-			String s = it.next();
+		for (String s : data) {
 			System.out.println(s);
 		}
 	}
