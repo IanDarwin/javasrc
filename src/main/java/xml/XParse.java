@@ -39,7 +39,7 @@ public class XParse {
 			if (av[i].equals("-v"))
 				validate = true;
 			else if (av[i].equals("-a")) {
-			    // create a SchemaFactory capable of understanding WXS schemas - from the Javadoc page
+			    // create a SchemaFactory capable of understanding W3C schemas - from the Javadoc page
 			    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
 			    // load the W3c XML schema, represented by a Schema instance

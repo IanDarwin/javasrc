@@ -1,5 +1,6 @@
 package xml;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,29 +10,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.xalan.xslt.XSLTInputSource;
-import org.apache.xalan.xslt.XSLTProcessor;
-import org.apache.xalan.xslt.XSLTProcessorFactory;
-import org.apache.xalan.xslt.XSLTResultTarget;
-
 import com.darwinsys.io.FileIO;
 
-/** Output the given XML file in XML if viewable, else in HTML. */
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+/** Output the given XML file in XML if viewable, else in HTML.
+ * Has NOT been tested since conversion to JAXP!
+ */
 public class StyleServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 6129378881052027382L;
+
 	public String XML_FILE;
-	public String SHEET_FILE;
+	public String XSL_SHEET_FILE;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws IOException, ServletException {
 
-		/** Servlet API 2.1: Web App Root/WEB-INF/web.xml contains
+		/** Servlet API: Web App Root/WEB-INF/web.xml contains
 		 * context-param name & value elements; this retrieves 'em.
 		 */
 		ServletContext ctx = getServletContext();
-		String value = ctx.getInitParameter("name");
 		XML_FILE = ctx.getInitParameter("xml_file_name");
-		SHEET_FILE = ctx.getInitParameter("xsl_sheet_name"); 
+		XSL_SHEET_FILE = ctx.getInitParameter("xsl_sheet_name"); 
 
 		String browser = request.getHeader("user-agent");
 		PrintWriter out = response.getWriter();
@@ -53,27 +57,24 @@ public class StyleServlet extends HttpServlet {
 
 	void output_stylesheet_ref(PrintWriter out) {
 		out.print("<?xml-stylesheet type=\"text/xsl\" href=\"" +
-			SHEET_FILE + "\"?>");
-	}
-
-	void transform_into_html(PrintWriter out) throws ServletException {
-
-		try {
-			XSLTProcessor myProcessor = XSLTProcessorFactory.getProcessor();
-			XSLTInputSource xmlSource = new XSLTInputSource(XML_FILE);
-			XSLTInputSource xslStylesheet = new XSLTInputSource(SHEET_FILE);
-			XSLTResultTarget xmlOutput = new XSLTResultTarget(out);
-			myProcessor.process(xmlSource, xslStylesheet, xmlOutput);
-		}
-		catch (org.xml.sax.SAXException exc) {
-			throw new ServletException("XML error: " + exc.toString());
-		}
-		catch (Exception exc) {
-			throw new ServletException(exc.toString());
-		}
+			XSL_SHEET_FILE + "\"?>");
 	}
 
 	void output_body(String XML_FILE, PrintWriter out) throws IOException {
 		FileIO.copyFile(XML_FILE, out, false);
+	}
+	
+	void transform_into_html(PrintWriter out) throws ServletException {
+		try {
+			// Create a transformer object
+			Transformer tx = TransformerFactory.newInstance().newTransformer(
+					new StreamSource(new File(XSL_SHEET_FILE))); // not 0
+			
+			// Use its transform() method to perform the transformation
+			tx.transform(new StreamSource(new File(XML_FILE)), // not 1
+					new StreamResult(out));
+		} catch (Exception exc) {
+			throw new ServletException(exc.toString());
+		}
 	}
 }

@@ -68,10 +68,7 @@ public class JDOMDemo {
 	 */
 	public static void demo(Document doc) {
 
-		List children = doc.getContent();
-		Iterator iterator = children.iterator();
-		while (iterator.hasNext()) {
-			Object o = iterator.next();
+		for (Object o : doc.getContent()) {
 			if (o instanceof Element) {
 				demo((Element) o);
 			} else if (o instanceof Comment)
