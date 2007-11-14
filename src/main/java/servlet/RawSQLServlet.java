@@ -1,4 +1,4 @@
-package JDBC;
+package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
