@@ -40,7 +40,7 @@ public class XParse {
 				validate = true;
 			else if (av[i].equals("-a")) {
 			    // create a SchemaFactory capable of understanding W3C schemas - from the Javadoc page
-			    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			    SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
 			    // load the W3c XML schema, represented by a Schema instance
 			    String schemaLocation = av[++i];
@@ -48,7 +48,7 @@ public class XParse {
 				if (!schemaFile.exists()) {
 					throw new IOException("Schema location = " + schemaLocation + " does not exist");
 				}
-				schema = factory.newSchema(schemaFile);
+				schema = schemaFactory.newSchema(schemaFile);
 			    
 			} else {
 				File xmlFile = new File(av[i]);

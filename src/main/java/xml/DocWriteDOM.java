@@ -28,7 +28,8 @@ public class DocWriteDOM {
 		// This code therefore depends upon the particular
 		// parser implementation.
 		//
-		((org.apache.crimson.tree.XmlDocument)doc).write(System.out);
+		//((org.apache.crimson.tree.XmlDocument)doc).write(System.out);
+		System.out.println("Need to write the tree now, sorry...");
 	}
 
 	/** Generate the XML document */

@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="jars/jdori.jar"/>
 	<classpathentry kind="lib" path="jars/jdom.jar"/>
 	<classpathentry kind="lib" path="jars/jdo.jar"/>
-	<classpathentry kind="lib" path="jars/j2ee.jar"/>
 	<classpathentry kind="lib" path="jars/commons-logging.jar"/>
 	<classpathentry kind="lib" path="jars/btree.jar"/>
 	<classpathentry kind="lib" path="jars/antlr.jar"/>
