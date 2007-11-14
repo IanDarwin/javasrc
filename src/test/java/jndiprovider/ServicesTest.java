@@ -1,7 +1,10 @@
-package jndi-services;
+package jndiprovider;
 
-import java.util.*;
-import javax.naming.*;
+import javax.naming.Binding;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
 
 /** Find an object previously made available.
  * Uses the RMI registry via the JNDI service provider; needs rmiregistry

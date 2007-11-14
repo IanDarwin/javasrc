@@ -1,4 +1,4 @@
-package jndi-services;
+package jndiprovider;
 
 /*
  * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
@@ -50,8 +50,6 @@ package jndi-services;
  * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
-
-package com.darwinsys.jndi;
 
 import java.io.*;
 import java.util.*;

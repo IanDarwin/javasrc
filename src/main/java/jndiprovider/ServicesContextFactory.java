@@ -1,6 +1,4 @@
-package jndi-services;
-
-package com.darwinsys.jndi;
+package jndiprovider;
 
 import java.util.*;
 import javax.naming.*;

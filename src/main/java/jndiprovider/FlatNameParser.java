@@ -1,4 +1,4 @@
-package jndi-services;
+package jndiprovider;
 
 /*
  * @(#)FlatNameParser.java	1.3 99/07/26
@@ -32,7 +32,6 @@ package jndi-services;
  * maintenance of any nuclear facility. Licensee represents and warrants
  * that it will not use or redistribute the Software for such purposes. 
  */
-package com.darwinsys.jndi;
 
 import javax.naming.*;
 import java.util.Properties;
