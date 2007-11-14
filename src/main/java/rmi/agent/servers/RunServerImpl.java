@@ -1,10 +1,12 @@
-package servers;
+package rmi.agent.servers;
 
-import agents.*;
+import java.rmi.RemoteException;
+import java.rmi.server.RemoteStub;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.rmi.*;
-import java.rmi.server.*;
-import java.util.*;
+import rmi.agent.agents.AgentImpl;
 
 /** This is the main class of the server */
 public class RunServerImpl

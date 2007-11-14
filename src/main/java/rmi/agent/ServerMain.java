@@ -1,7 +1,9 @@
-import java.rmi.*;
+package rmi.agent;
 
-import agents.*;
-import servers.*;
+import java.rmi.Naming;
+
+import rmi.agent.servers.RunServer;
+import rmi.agent.servers.RunServerImpl;
 
 public class ServerMain {
 	public static void main(String[] args) {

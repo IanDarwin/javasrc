@@ -1,10 +1,10 @@
-package com.darwinsys.callback;
+package rmi.callback;
 
-import com.darwinsys.client.*;
-
-import java.rmi.*;
-import java.rmi.server.*;
-import java.util.*;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 /** This is the main class of the server */
 public class TickerServerImpl

@@ -1,9 +1,8 @@
-package servers;
+package rmi.agent.servers;
 
-import agents.*;
+import java.rmi.server.RemoteStub;
 
-import java.rmi.*;
-import java.rmi.server.*;
+import rmi.agent.agents.AgentImpl;
 
 public interface RunServer extends java.rmi.Remote {
 	public static final String LOOKUP_NAME = "RunService";

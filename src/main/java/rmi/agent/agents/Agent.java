@@ -1,6 +1,6 @@
-package agents;
+package rmi.agent.agents;
 
-import java.rmi.*;
+import java.rmi.RemoteException;
 
 public interface Agent {
 	public void setThreshold(double d) throws RemoteException;

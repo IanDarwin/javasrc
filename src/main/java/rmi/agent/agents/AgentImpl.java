@@ -1,7 +1,8 @@
-package agents;
+package rmi.agent.agents;
 
-import java.rmi.*;
-import java.io.*;
+import java.io.Serializable;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /** This is the "real" agent, which gets run remotely by the server.
  * Since it is created on the Client but exported by the Server, it

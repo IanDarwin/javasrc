@@ -1,6 +1,4 @@
-package com.darwinsys.callback;
-
-import com.darwinsys.client.*;
+package rmi.callback;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -1,10 +1,13 @@
-import agents.*;
-import servers.*;
+package rmi.agent;
 
-import java.lang.reflect.*;
-import java.io.*;
-import java.rmi.*;
-import java.rmi.server.*;
+import java.lang.reflect.Method;
+import java.rmi.Naming;
+import java.rmi.server.RemoteRef;
+import java.rmi.server.RemoteStub;
+
+import rmi.agent.servers.RunServer;
+import rmi.agent.agents.Agent;
+import rmi.agent.agents.AgentImpl;
 
 /** This class tries to be all things to all people:
  *	- main program for client to run.
