@@ -36,7 +36,7 @@
  * language and environment is gratefully acknowledged.
  */
 
-package chatservlet;
+package servlet.chatservlet;
 
 public interface ChatConstants {
 	/** The name for the Application State object, in the Context */

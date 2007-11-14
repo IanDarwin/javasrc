@@ -1,4 +1,4 @@
-package chatservlet;
+package servlet.chatservlet;
 
 import java.io.Serializable;
 

@@ -36,7 +36,7 @@
  * language and environment is gratefully acknowledged.
  */
 
-package chatservlet;
+package servlet.chatservlet;
 
 import java.util.*;
 
