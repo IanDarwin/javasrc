@@ -1,5 +1,5 @@
 
-package client;
+package jaxwsclient;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

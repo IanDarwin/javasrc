@@ -1,4 +1,4 @@
-package service.toy;
+package jaxwsservice.toy;
 
 import javax.xml.ws.Endpoint;
 
