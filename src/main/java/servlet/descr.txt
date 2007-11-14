@@ -1,1 +1,0 @@
-Servlet and JSP examples
