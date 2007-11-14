@@ -1,8 +1,8 @@
-package regress;
+package websvcregress;
 
 import java.net.MalformedURLException;
 
-import util.URLUtil;
+import websvcutil.URLUtil;
 
 import junit.framework.TestCase;
 

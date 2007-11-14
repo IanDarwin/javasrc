@@ -1,4 +1,4 @@
-package util;
+package websvcutil;
 
 import java.text.DateFormat;
 import java.text.ParseException;

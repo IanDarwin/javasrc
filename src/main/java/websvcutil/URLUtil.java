@@ -1,4 +1,4 @@
-package util;
+package websvcutil;
 
 import java.net.URL;
 import java.net.MalformedURLException;

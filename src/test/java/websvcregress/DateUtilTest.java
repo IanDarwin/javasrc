@@ -1,9 +1,9 @@
-package regress;
+package websvcregress;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import util.DateUtil;
+import websvcutil.DateUtil;
 
 import junit.framework.TestCase;
 
