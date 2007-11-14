@@ -1,8 +1,5 @@
 package rmi;
 
-package darwinsys.distdate;
-
-import java.rmi.*;
 import java.util.Date;
 
 /** A statement of what the client & server must agree upon. */

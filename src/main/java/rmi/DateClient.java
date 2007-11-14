@@ -1,9 +1,7 @@
 package rmi;
 
-package darwinsys.distdate;
-
-import java.rmi.*;
-import java.util.*;
+import java.rmi.Naming;
+import java.util.Date;
 
 /* A very simple client for the RemoteDate service. */
 public class DateClient {

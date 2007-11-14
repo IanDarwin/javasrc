@@ -1,12 +1,12 @@
 package rmi;
 
-package darwinsys.distdate;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.rmi.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.Naming;
+import java.util.Date;
 
 public class DateApplet extends Applet {
 	RemoteDate netConn = null;

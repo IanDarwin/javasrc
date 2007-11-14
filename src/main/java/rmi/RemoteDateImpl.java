@@ -1,10 +1,8 @@
 package rmi;
 
-package darwinsys.distdate;
-
-import java.rmi.*;
-import java.rmi.server.*;
-import java.util.*;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 
 public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate
 {

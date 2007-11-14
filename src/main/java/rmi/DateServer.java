@@ -1,8 +1,6 @@
 package rmi;
 
-package darwinsys.distdate;
-
-import java.rmi.*;
+import java.rmi.Naming;
 
 public class DateServer {
 	public static void main(String[] args) {
