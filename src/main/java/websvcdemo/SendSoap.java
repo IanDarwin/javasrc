@@ -1,4 +1,4 @@
-package demo;
+package websvcdemo;
 
 import java.io.BufferedReader;
 import java.io.IOException;

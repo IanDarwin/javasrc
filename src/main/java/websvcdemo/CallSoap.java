@@ -1,4 +1,4 @@
-package demo;
+package websvcdemo;
 
 import java.net.URL;
 
@@ -7,7 +7,8 @@ import javax.xml.namespace.QName;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 
-/** Simple demo of SOAP call, adapted from Apache Axis example code.
+/** Simple demo of Apache Axis 1 SOAP call
+ * @author Adapted from Apache Axis example code.
  */
 public class CallSoap {
 	public static void main(String[] args) throws Throwable {
