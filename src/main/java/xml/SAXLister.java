@@ -12,7 +12,6 @@ import com.darwinsys.util.Debug;
 /**
  * Simple lister - extract person and email tags from a user file. 
  * Version for SAX 2.0
- * 
  * @author Ian Darwin
  * @version $Id$
  */
@@ -25,7 +24,7 @@ public class SAXLister {
 		XMLReader parser = XMLReaderFactory.createXMLReader();
 		// should get Handler class from properties rather than hardcoding class name
 		parser.setContentHandler(new PeopleHandler());
-		parser.parse(args.length == 1 ? args[0] : "people.xml");
+		parser.parse(args.length == 1 ? args[0] : "xml/people.xml");
 	}
 	
 	/** Inner class provides DocumentHandler
