@@ -8,6 +8,10 @@ import javax.xml.ws.soap.SOAPFaultException;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test for the CalcService. Assumes client artifacts
+ * have been created (using e.g., wsgen jaxwsservice.Calc).
+ */
 public class CalcTest {
 
 	Calc client;
