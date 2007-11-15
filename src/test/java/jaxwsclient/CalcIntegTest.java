@@ -5,12 +5,18 @@ import static org.junit.Assert.fail;
 
 import javax.xml.ws.soap.SOAPFaultException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalcTest {
 
-	Calc client = new CalcService().getCalcPort();
+	Calc client;
 
+	@Before
+	public void initialize() {
+		client = new CalcService().getCalcPort();
+	}
+	
 	@Test
 	public void testAdd() {
 		int result = client.add(34, 66);

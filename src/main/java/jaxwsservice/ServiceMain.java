@@ -2,7 +2,7 @@ package jaxwsservice.toy;
 
 import javax.xml.ws.Endpoint;
 
-/** Java 6 and later allow simple services to be
+/** Java 6 and later allow simple web services to be
  * deployed using just the Java SE. So just run this!
  */
 public class ServiceMain {
