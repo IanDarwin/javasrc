@@ -9,8 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test for the CalcService. Assumes client artifacts
- * have been created (using e.g., wsgen jaxwsservice.Calc).
+ * Test the CalcService. Absolutely requires Java 1.5+ and
+ * JAX-WS 2.0 (which ships with Java 1.6+). 
+ * Assumes client artifacts have been created, using e.g., on Unix:
+ * $ mkdir jaxwsclient
+ * $ wsimport -d jaxwsclient -keep 'http://localhost:8080/calc?wsdl'
  */
 public class CalcTest {
 
