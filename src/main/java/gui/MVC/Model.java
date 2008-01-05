@@ -1,7 +1,10 @@
 package gui.MVC;
 
-import java.util.*;
-import javax.swing.event.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Model {
 	private List list = new ArrayList();
