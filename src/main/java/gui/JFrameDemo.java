@@ -1,6 +1,6 @@
 package gui;
 
-import java.awt.Container;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +19,7 @@ public class JFrameDemo extends JFrame {
 	public JFrameDemo() {
 		super("JFrameDemo");
 		Container cp = getContentPane();
+		cp.setLayout(new FlowLayout());
 		cp.add(quitButton = new JButton("Exit"));
 
 		// Set up so that "Close" will exit the program, 
