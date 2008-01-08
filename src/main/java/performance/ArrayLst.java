@@ -11,7 +11,7 @@ public class ArrayLst {
 		System.out.println(new ArrayLst().run());
 	}
 	public int run() {
-		ArrayList list = new ArrayList();
+		ArrayList<MutableInteger> list = new ArrayList<MutableInteger>();
 		for (int i=0; i<MAX; i++) {
 			list.add(new MutableInteger(i));
 		}
