@@ -72,4 +72,16 @@ public class MyRequest implements HttpServletRequest {
 	public void removeAttribute(String s1) { }
 	public Object getAttribute(String s1) { return null; }
 	public java.util.Enumeration getAttributeNames() { return null; }
+	public String getLocalAddr() {
+		return null;
+	}
+	public String getLocalName() {
+		return null;
+	}
+	public int getLocalPort() {
+		return 0;
+	}
+	public int getRemotePort() {
+		return 0;
+	}
 }

@@ -1,11 +1,14 @@
 package webserver;
 
-import javax.servlet.http.*;
-import java.io.*;
-import java.util.*;
+import java.io.OutputStream;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletResponse;
 
 public class MyResponse implements HttpServletResponse {
-	/** Construct a dummy Response */
+	private String encoding = "iso-8859-1";
+
+	/** Construct a Response */
 	public MyResponse() {
 	}
 	/** Construct a Response to the given Socket */
@@ -41,11 +44,19 @@ public class MyResponse implements HttpServletResponse {
 	public void flushBuffer() { }
 	public void resetBuffer() { }
 	public int getBufferSize() { return 42; }
-	public String getCharacterEncoding() { return "iso-8859-1"; }
+	public String getCharacterEncoding() {
+		return encoding;
+	}
+	public void setCharacterEncoding(String enc) {
+		this.encoding = enc;
+	}
 	public javax.servlet.ServletOutputStream getOutputStream() { return null; }
 	public java.io.PrintWriter getWriter() { return null; }
 	public boolean isCommitted() { return true; }
 	public void reset() { }
 	public void setBufferSize(int size) { }
+	public String getContentType() {
+		return null;
+	}
 
 }
