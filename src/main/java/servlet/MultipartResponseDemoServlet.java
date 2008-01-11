@@ -52,18 +52,15 @@ public class MultipartResponseDemoServlet extends HttpServlet {
 		} while (runnerThread.isAlive());
 		
 		// Now it's time to say goodbye, and to display the "final" page.
-
-		// We don't think it possible to get response.sendRedirect working here
-		// because a redirect consists of a 30x response + a location header, but
+		resp.endResponse();
+		
+		// You can't do a response.sendRedirect from here because
+		// a redirect consists of a 30x response + a location header, but
 		// sendRedirect can not set the 30x status becuase the response is well & truly committed
 		// by the time we get past all the image views provided in the multipart response.
 		
-		System.out.println("<<< about to rd(" + request.getHeader("referer") +").include()");
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/upload/folderTagger.jsp");
-//		resp.startResponse("text/html");
-		System.out.println("<< start response");
 		requestDispatcher.include(request,response);
-		System.out.println("<< end response");
-//		resp.endResponse();
+
 	}
 }
