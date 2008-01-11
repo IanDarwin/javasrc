@@ -20,29 +20,28 @@ public class MultipartResponseDemoServlet extends HttpServlet {
 	private static final long serialVersionUID = 8641553585638039793L;
 	
 	/**
-	 * Counts from 10 down to 1, alternating the count and an image.
+	 * Update the message as long as a given thread keeps running
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(">>>>>>>>>>>>>>>>>>");
+
 		MultipartResponse resp = new MultipartResponse(response);
 		PrintWriter out = resp.getWriter();
 		HttpSession session = request.getSession();
 
+		// Thread is set by our invoker.
 		Thread runnerThread = (Thread) session.getAttribute("CURRENT_RUNNING_THREAD");
 		int i = 0;
 		do {
 			resp.startResponse("text/html");
 			out.print("<html>");
 			out.print("    <body>");
-			out.print(("        <h1>image" + ++i + "</h1>"));
+			out.print(("       <h1>image" + ++i + "</h1>"));
 			out.print("        <img src=\"/images/jumping_mouse.gif\" />");
 			out.print("    </body>");
 			out.print("</html>");
 			resp.endResponse();
-			
-			System.out.println("<<<< still running");
 			
 			try {
 				Thread.sleep(3000);
