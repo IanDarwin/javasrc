@@ -16,13 +16,14 @@ public class SearchBoxDemo extends JFrame {
 	private static final long serialVersionUID = -4084286370458323419L;
 
 	private String words[] = {
-			"quinacrine",
-			"Java Cookbook",
-			"extraequilibrium",
+			"crabcatcher",
 			"execrable",
-			"intransigent",
+			"extraequilibrium",
 			"flagelliferous",
+			"intransigent",
+			"Java Cookbook",
 			"Lepidoptera",
+			"quinacrine",
 	};
 	
 	private JList vlist = new JList(words);
