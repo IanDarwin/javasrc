@@ -20,7 +20,9 @@ public class SearchBoxDemo extends JFrame {
 			"Java Cookbook",
 			"extraequilibrium",
 			"execrable",
-			"intransigent"
+			"intransigent",
+			"flagelliferous",
+			"Lepidoptera",
 	};
 	
 	private JList vlist = new JList(words);
