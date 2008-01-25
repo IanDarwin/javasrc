@@ -36,6 +36,11 @@ public class SearchBoxDemo extends JFrame {
 		demo.setVisible(true);
 	}
 	
+	/** Match a search string against the list, returning
+	 * the words that match.
+	 * @param search The string to look for.
+	 * @return A Vector (since that's what JList still needs) of matches
+	 */
 	Vector<String> match(String search) {
 		Vector<String> results = new Vector<String>();
 		if (search == null || search.length() == 0) {
