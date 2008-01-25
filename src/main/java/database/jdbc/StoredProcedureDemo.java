@@ -12,13 +12,13 @@ import com.darwinsys.sql.ConnectionUtil;
 public class StoredProcedureDemo {
 	public static void main(String[] args) throws SQLException {
 
-		Connection conn = ConnectionUtil.getConnection("jabadot");
+		Connection conn = ConnectionUtil.getConnection("ecom");
 
-		CallableStatement cs = conn.prepareCall("{call ListDefunctUsers}");
+		CallableStatement cs = conn.prepareCall("{call findOutOfStock()}");
 		ResultSet rs = cs.executeQuery();
 
 		while (rs.next()) {
-			System.out.println("Defunct user: " + rs.getString("user"));
+			System.out.println("Item: " + rs.getString("sku"));
 		}
 	}
 }
