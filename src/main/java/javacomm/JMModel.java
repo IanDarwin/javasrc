@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -218,7 +217,7 @@ public class JMModel {
 		try {
 			Thread.sleep(milliseconds);
 		} catch (InterruptedException e) {
-			// can't happen
+			System.err.println(e);
 		}
 	}
 
@@ -258,7 +257,7 @@ public class JMModel {
 		}
 		if (xferProg == null) {
 			xferProg = new TModem(serialInput, serialOutput, 
-				new PrintWriter(System.out)); // xerProg discarded in disconnect()
+				System.out);
 		}
 		String fileName = theGUI.getXferFileName();
 		if (fileName.length() == 0) {
