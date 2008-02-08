@@ -10,7 +10,7 @@ import com.darwinsys.util.FileProperties;
 /** A database MetaData query
  * @version $Id$
  */
-public class JDBCMeta {
+public class DatabaseMetaDemo {
 
 	public static void main(String[] av) {
 		try {
