@@ -1,4 +1,4 @@
-package patterns.state;
+package patterns.behavioral;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 /** A simple demo of using a State machine implemented as Java classes.
  * Not intended to be a full RPG game, sorry. 
  */
-public class Game {
+public class StateMachineDemo {
 
 	public abstract class State {
 		public abstract void lookAround();
@@ -76,7 +76,7 @@ public class Game {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Game().play();
+		new StateMachineDemo().play();
 	}
 
 }
