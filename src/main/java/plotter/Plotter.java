@@ -1,5 +1,7 @@
 package Plotter;
 
+import java.awt.Point;
+
 /**
  * Plotter abstract class. Must be subclassed 
  * for X, DOS, Penman, HP plotter, etc.
@@ -55,5 +57,12 @@ public abstract class Plotter {
 	public void drawBox(java.awt.Rectangle r) {
 		moveTo(r.x, r.y);
 		drawBox(r.width, r.height);
+	}
+	
+	/** Show the current location; useful for
+	 * testing, if nothing else.
+	 */
+	public Point getLocation() {
+		return new Point(curx, cury);
 	}
 }
