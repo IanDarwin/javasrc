@@ -2,22 +2,17 @@ package JDBC;
 
 import java.sql.*;
 
+import com.darwinsys.sql.ConnectionUtil;
+
 public class ResultSetUpdate {
     public static void main(String args[]) {
-
-        String url;
-        url = "jdbc:odbc:UserDB";
-
-		String user, pass;
-		user = "ian";
-		pass = "stjklsq";
 
         Connection con;
         Statement stmt;
 		ResultSet rs;
 
         try {
-            con = DriverManager.getConnection(url, user, pass);
+            con = ConnectionUtil.getConnection(args[0]);
 			stmt = con.createStatement(
 			ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			rs = stmt.executeQuery("SELECT * FROM Users where nick=\"ian\"");
