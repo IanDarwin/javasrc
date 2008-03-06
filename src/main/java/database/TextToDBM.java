@@ -3,7 +3,7 @@ package database;
 import java.io.*;
 import java.util.*;
 
-import DBM.DBM;
+import dbm.DBM;
 
 /** Convert the database from text form to DBM form.
  */

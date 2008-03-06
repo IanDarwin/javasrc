@@ -3,7 +3,7 @@ package database;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import DBM.DBM;
+import dbm.DBM;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
