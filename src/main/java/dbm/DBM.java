@@ -1,6 +1,10 @@
-package DBM;
+package dbm;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /** This class provides a dbm-compatible interface to the UNIX-style
  * database access methods described in dbm(3) (which is on some UNIXes

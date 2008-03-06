@@ -1,4 +1,4 @@
-package DBM;
+package dbm;
 
 import java.io.IOException;
 
