@@ -15,11 +15,6 @@ public class SingletonTest extends TestCase {
 		d2 = Singleton.getInstance();
 	}
 
-	/** constructor plumbing for junit */
-	public SingletonTest(String name) {
-		super(name);
-	}
-
 	public void testSingleness() { 
 		assertTrue(d1 == d2);
 	}
