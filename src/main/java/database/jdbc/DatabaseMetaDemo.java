@@ -2,28 +2,20 @@ package JDBC;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.darwinsys.util.FileProperties;
+import com.darwinsys.sql.ConnectionUtil;
 
 /** A database MetaData query
  * @version $Id$
  */
 public class DatabaseMetaDemo {
 
-	public static void main(String[] av) {
+	public static void main(String[] args) {
 		try {
-			FileProperties fp = new FileProperties("JDBCMeta.properties");
-
-			// Load the driver
-			Class.forName(fp.getProperty("driver"));
-
-			// Get the connection
-			Connection conn = DriverManager.getConnection (
-				fp.getProperty("dburl"),
-				fp.getProperty("user"),
-				fp.getProperty("password"));
+				// Get the connection
+			Connection conn = 
+				ConnectionUtil.getConnection(args[0]);
 
 			// Get a Database MetaData as a way of interrogating 
 			// the names of the tables in this database.
@@ -41,10 +33,6 @@ public class DatabaseMetaDemo {
 
 			System.out.println("All done!");
 
-		} catch (java.io.IOException e) {
-			System.out.println("Can't load PROPERTIES " + e);
-		} catch (ClassNotFoundException e) {
-			System.out.println("Can't load driver " + e);
 		} catch (SQLException ex) {
 			System.out.println("Database access failed:");
 			System.out.println(ex);
@@ -53,6 +41,8 @@ public class DatabaseMetaDemo {
 
 	/** Convert a TransactionIsolation int (defined in java.sql.Connection)
 	 * to the corresponding printable string.
+	 * 
+	 * XXX Remove from here once darwinsys.jar gets committed.
 	 */
 	public static String transactionIsolationToString(int txisolation) {
 		switch(txisolation) {
