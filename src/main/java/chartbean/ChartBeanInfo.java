@@ -1,4 +1,4 @@
-package ChartBean;
+package chartbean;
 
 import java.beans.BeanDescriptor;
 import java.beans.MethodDescriptor;

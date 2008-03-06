@@ -1,4 +1,4 @@
-package ChartBean;
+package chartbean;
 
 import java.awt.Button;
 import java.awt.Dimension;

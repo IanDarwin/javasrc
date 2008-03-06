@@ -1,4 +1,4 @@
-package ChartBean;
+package chartbean;
 
 import java.awt.Color;
 import java.awt.Component;

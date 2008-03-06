@@ -1,4 +1,4 @@
-package ChartBean;
+package chartbean;
 
 /** Simple POJO for chart data
  */
