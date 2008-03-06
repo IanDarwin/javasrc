@@ -20,7 +20,8 @@ public class PlotDriver {
 				throw new ClassNotFoundException("Not instanceof Plotter");
 			r = (Plotter)o;
 		} catch (ClassNotFoundException e) {
-			System.err.println("Sorry, "+argv[0]+" not a plotter class");
+			System.err.println("Sorry, class " + argv[0] +
+					" not a plotter class");
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();
