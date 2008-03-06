@@ -5,6 +5,7 @@ import java.applet.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.List;
 
 /** Newswire Applet, inspired by
  * "http://industry.java.sun.com/javanews/classes/jic10" 
@@ -17,23 +18,20 @@ import java.util.*;
  */
 public class NewsWire extends Applet {
 	/** The hashtable maps from curText to URL */
-	protected Hashtable hash;
+	protected Map<String, URL> hash =
+		new Hashtable<String, URL>();
 	/** The Vector contains all the Texts */
-	protected Vector vect;
+	protected List<String> vect =
+		new Vector<String>();
 	/** Stop the Thread when we are done */
 	boolean done = false;
 	/** The current Text */
 	protected String curText;
-	/** The current Text's index into vect */
-	protected int index;
 
 	// Initialize this NewsWire applet
 	public void init() {
 
 		showStatus("NewsWire initializing...");
-
-		hash = new Hashtable();
-		vect = new Vector();
 
 		// Read the configuration file from the URL.
 		try {
@@ -49,19 +47,18 @@ public class NewsWire extends Applet {
 			// Read the control file a line at a time, parse
 			// it, and save the links in the Hashtable indexed by 
 			// their text
-
 			while ((txt = is.readLine()) != null) {
 				StringTokenizer st = new StringTokenizer(txt, "|");
-				if (st.countTokens() < 3) {
+				if (st.countTokens() != 3) {
 					eprintln("NewsWire: Bad input: " + txt);
 					continue;
 				}
-				String origin = st.nextToken();
+				st.nextToken(); // not used, skip
 				String text = st.nextToken();
 				String bURL = st.nextToken();
 				URL u = new URL(bURL);
 				hash.put(text, u);
-				vect.addElement(text);
+				vect.add(text);
 			}
 		} catch (MalformedURLException mfc) {
 			eprintln("NewsWire: Error: " + mfc);
@@ -78,10 +75,11 @@ public class NewsWire extends Applet {
 		done = false;
 		new Thread(new Runnable() {
 			public void run() {
+				int index = 0;
 				while (!done) {
 					try {
 						Thread.sleep(1000);
-						curText = (String)vect.elementAt((++index)%vect.size());
+						curText = (String)vect.get((++index)%vect.size());
 						repaint();
 					} catch (InterruptedException e) {
 						// nothing to do
