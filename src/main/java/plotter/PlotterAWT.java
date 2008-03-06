@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -80,6 +80,7 @@ public class PlotterAWT extends Plotter {
 	 * things that have been drawn.
 	 */
 	class PCanvas extends Canvas {
+		private static final long serialVersionUID = 6827371843858633606L;
 		Image offScreenImage;
 		int width;
 		int height;

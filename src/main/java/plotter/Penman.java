@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

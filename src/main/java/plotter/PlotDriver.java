@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 /** Main program, driver for Plotter class.
  * This is to simulate a larger graphics application such as GnuPlot.

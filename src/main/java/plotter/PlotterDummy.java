@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 /** Plotter class for testing higher-level software. */
 public class PlotterDummy extends Plotter {

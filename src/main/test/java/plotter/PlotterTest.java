@@ -1,5 +1,4 @@
-package Plotter;
-
+package plotter;
 
 import java.awt.Point;
 
