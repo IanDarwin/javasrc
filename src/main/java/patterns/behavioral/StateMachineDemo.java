@@ -6,18 +6,23 @@ import java.io.InputStreamReader;
 
 /** A simple demo of using a State machine implemented as Java classes.
  * Not intended to be a full RPG game, sorry. 
+ * This is NOT the only way to implement state machines;
+ * they have been done for years in many languages as
+ * e.g., transition tables of integers.
  */
 public class StateMachineDemo {
 
-	public abstract class State {
+	enum Command { LOOK, ENTER, EXIT, QUIT }
+
+	abstract class State {
 		public abstract void lookAround();
 		public abstract void goInside();
 		public abstract void goOutside();
 		public void quitGame() {
 			// In this trivial game it makes sense to allow exit
-			// from any state, so it's the default here.
-			// In a real game, should not quit without prompting
-			// if the user is holding any valuables.
+			// from any state, so allow that here.
+			// In a real game, should not quit without e.g., 
+			// prompting the user if they're holding any valuables.
 			System.exit(0);
 		}
 	}
@@ -48,10 +53,8 @@ public class StateMachineDemo {
 		}
 	};
 
-	enum Command { LOOK, ENTER, EXIT, QUIT };
-
 	public void play(String line) {
-		Command c = Command.valueOf(line);
+		Command c = Command.valueOf(line.toUpperCase());
 		switch(c) {
 		case LOOK: state.lookAround(); break;
 		case ENTER: state.goInside(); break;
