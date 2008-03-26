@@ -41,12 +41,31 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.text.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.darwinsys.swingui.UtilGUI;
 
@@ -65,6 +84,8 @@ import com.darwinsys.swingui.UtilGUI;
  * @version	$Id$
  */
 public class BreakEnd extends JFrame implements Runnable {
+
+	private static final long serialVersionUID = 3543497759040697383L;
 	/** Label for the current time. */
 	protected JLabel nowLabel;
 	/** Label for when break ends. */
