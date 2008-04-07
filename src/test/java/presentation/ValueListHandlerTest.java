@@ -14,8 +14,7 @@ public class ValueListHandlerTest extends TestCase {
 	}
 
 	/**
-	 * @param howMany TODO
-	 * 
+	 * Make up the fake data.
 	 */
 	private void generateList(int howMany) {
 		for (int i = 1; i <= howMany; i++) {
