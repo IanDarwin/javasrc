@@ -17,4 +17,4 @@ set -x
 
 export CLASSPATH="${SQLRUNNER_DIR}:${DARWINSYS_JAR}:${DRIVER_JARS}"
 
-java JDBC.SQLRunner -f ${FILE} $*
+java com.darwinsys.sql.SQLRunner -f ${FILE} $*
