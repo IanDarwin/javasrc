@@ -1,5 +1,6 @@
 package reflection;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -31,22 +32,36 @@ public class MyJavaP {
 	 */
 	protected void doClass(String className) {
 		try {
-			Class c = Class.forName(className);
+			Class<? extends Object> c = Class.forName(className);
+
+			final Annotation[] annotations = c.getAnnotations();
+			for (Annotation a : annotations) {
+				System.out.println(a);
+			}
+
 			System.out.println(c + " {");
 
-			int mods;
 			Field fields[] = c.getDeclaredFields();
 			for (Field f : fields) {
-				if (!Modifier.isPrivate(f.getModifiers())
-				 && !Modifier.isProtected(f.getModifiers()))
+				final Annotation[] fldAnnotations = f.getAnnotations();
+				for (Annotation a : fldAnnotations) {
+					System.out.println(a);
+				}
+				if (!Modifier.isPrivate(f.getModifiers()))
 					System.out.println("\t" + f + ";");
 			}
-			Constructor[] constructors = c.getConstructors();
-			for (Constructor con : constructors) {
+			
+			Constructor<? extends Object>[] constructors = c.getConstructors();
+			for (Constructor<? extends Object> con : constructors) {
 				System.out.println("\t" + con + ";");
 			}
+			
 			Method methods[] = c.getDeclaredMethods();
 			for (Method m : methods) {
+				final Annotation[] methodAnnotations = m.getAnnotations();
+				for (Annotation a : methodAnnotations) {
+					System.out.println(a);
+				}
 				if (!Modifier.isPrivate(m.getModifiers())) {
 					System.out.println("\t" + m + ";");
 				}
