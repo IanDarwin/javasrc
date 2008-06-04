@@ -12,7 +12,7 @@ public class Pool {
 	/** The index of the next-available object in the Pool. */
 	protected int IX = 0;
 	/** The objects in the pool. */
-	protected ArrayList pool;
+	protected List<Object> pool;
 	/** The objects which are in use within the pool. */
 	protected BitSet inUse;
 	/** The initial size of the pool */
@@ -30,7 +30,7 @@ public class Pool {
 		maxSize = max;
 		incrSize = incr;
 
-		pool = new ArrayList(maxSize);
+		pool = new ArrayList<Object>(maxSize);
 		inUse = new BitSet(maxSize);
 		for (int i=0; i<initSize; i++) {
 			pool.add(factory.getInstance());
