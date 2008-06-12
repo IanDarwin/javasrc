@@ -1,7 +1,6 @@
 package jaxwsclient;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import javax.xml.ws.soap.SOAPFaultException;
 
@@ -10,7 +9,7 @@ import org.junit.Test;
 
 /**
  * Test the CalcService. Absolutely requires Java 1.5+ and
- * JAX-WS 2.0 (which ships with Java 1.6+). 
+ * JAX-WS 2.0 (which is included with Java SE 1.6+). 
  * Assumes client artifacts have been created, using e.g., on Unix:
  * $ mkdir jaxwsclient
  * $ wsimport -d jaxwsclient -keep 'http://localhost:8080/calc?wsdl'
@@ -31,14 +30,9 @@ public class CalcTest {
 		
 	}
 	
-	@Test
+	@Test(expected=SOAPFaultException.class)
 	public void testDivide() {
-		try {
-			client.divide(99, 0);
-			fail("Did not throw exception for / 0");
-		} catch (SOAPFaultException e) {
-			System.out.println("testDivide: Caught expected exception");
-		}
+		client.divide(99, 0); // should fail
 	}
 
 }
