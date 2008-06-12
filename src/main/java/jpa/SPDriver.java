@@ -11,10 +11,14 @@ import javax.persistence.Query;
 import domain.Duration;
 import domain.Track;
 
-
+/**
+ * Simple example of using Stored Procedure from within JPA,
+ * using the "Native Query" escape route.
+ */
 public class SPDriver {
 
 	public static void main(String[] args) {
+
 		EntityManagerFactory emf;
 		EntityManager em;
 		EntityTransaction entityTransaction;
@@ -36,7 +40,8 @@ public class SPDriver {
 		List<Track> list = query.getResultList();
 		System.out.println("Got results, size " + list.size());
 		for (Track t : list) {
-			System.out.println(t);
+			System.out.println(t.getTitle());
+			System.out.println(t.getDuration());
 		}
 		transaction.commit();
 	}
