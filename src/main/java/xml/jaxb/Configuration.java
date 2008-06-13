@@ -46,4 +46,42 @@ public class Configuration
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((colorName == null) ? 0 : colorName.hashCode());
+		result = PRIME * result + ((screenName == null) ? 0 : screenName.hashCode());
+		result = PRIME * result + (verbose ? 1231 : 1237);
+		result = PRIME * result + ((webProxy == null) ? 0 : webProxy.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Configuration other = (Configuration) obj;
+		if (colorName == null) {
+			if (other.colorName != null)
+				return false;
+		} else if (!colorName.equals(other.colorName))
+			return false;
+		if (screenName == null) {
+			if (other.screenName != null)
+				return false;
+		} else if (!screenName.equals(other.screenName))
+			return false;
+		if (verbose != other.verbose)
+			return false;
+		if (webProxy == null) {
+			if (other.webProxy != null)
+				return false;
+		} else if (!webProxy.equals(other.webProxy))
+			return false;
+		return true;
+	}
 }
