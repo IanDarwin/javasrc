@@ -16,6 +16,8 @@ import javax.swing.JFrame;
  * uses a JFrame-based demo because it will stick around, be visible,
  * and have a Quit button.
  * Must be started with -Dcom.sun.management.jmxremote
+ * if it is to be accessed remotely; you can usually access local
+ * MBeans even without this.
  * @version $Id$
  */
 public class JMXDemo extends JFrame {
