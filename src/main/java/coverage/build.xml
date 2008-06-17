@@ -1,0 +1,55 @@
+<project name="JavaSrc Test Coverage" default="coverage-report" basedir="..">
+
+	<property name="testreportdir" value="testreports"/>
+
+	<property name="libdir" value="lib"/>
+
+	<taskdef resource="tasks.properties">
+		<classpath location="${libdir}/cobertura.jar" />
+		<classpath location="${libdir}/cobertura.jar" />
+		<classpath location="${libdir}/asm-2.2.1.jar"/>
+		<classpath location="${libdir}/asm-tree-2.2.1.jar"/>
+		<classpath location="${libdir}/jakarta-oro-2.0.8.jar"/>
+		<classpath location="${libdir}/log4j.jar"/>
+	</taskdef>
+
+	<!-- a cobertura-instrument task that adds the logging code 
+	to the already-compiled class files. -->
+	<target name="instrument">
+	  <cobertura-instrument todir="build/instrumented-classes">
+	    <fileset dir="build">
+	      <include name="**/*.class"/>
+	    </fileset>
+	  </cobertura-instrument>
+	</target>
+
+	<target name="cover-test" depends="instrument">
+	  <mkdir dir="${testreportdir}" />
+	  <junit dir="./" failureproperty="test.failure" printSummary="yes" 
+	         fork="true" haltonerror="true">
+	    <!-- Normally you can create this task by copying your existing JUnit
+	         target, changing its name, and adding these next two lines.
+	         You may need to change the locations to point to wherever 
+	         you've put the cobertura.jar file and the instrumented classes. -->
+	    <classpath location="${user.home}/lib/junit.jar"/>
+	    <classpath location="cobertura.jar"/>
+	    <classpath location="build/instrumented-classes"/>
+	    <classpath>
+	      <fileset dir="${libdir}">
+	        <include name="*.jar" />
+	      </fileset>
+	      <pathelement path="${testclassesdir}" />
+	      <pathelement path="${classesdir}" />
+	    </classpath>
+	    <batchtest todir="${testreportdir}">
+	      <fileset dir=".">
+	        <include name="**/*Test.java" />
+	      </fileset>
+	    </batchtest>
+	  </junit>
+	</target>
+
+	<target name="coverage-report" depends="cover-test">
+	 <cobertura-report srcdir="src/java/main" destdir="cobertura"/>
+	</target>
+</project>
