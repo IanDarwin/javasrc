@@ -51,11 +51,13 @@ public class HelloApplet extends Applet implements ActionListener {
 		/* If the drawn button has been pressed, draw something */
 		if (requested) {
 			int w = getSize().width, h=getSize().height;
-			g.setColor(Color.yellow);
+			g.setColor(Color.BLACK);
+			g.drawRect(1, 1, w - 1, h - 1);
+			g.setColor(Color.YELLOW);
 			g.fillRect(0, 0, w/2, h);
-			g.setColor(Color.green);
+			g.setColor(Color.GREEN);
 			g.fillRect(w/2, 0, w, h);
-			g.setColor(Color.black);
+			g.setColor(Color.BLACK);
 			g.drawString("Welcome to Java", 50, 50);
 		}
 	}
