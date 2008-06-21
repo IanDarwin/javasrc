@@ -20,4 +20,5 @@ Sorry for the inconvenience; hopefully these issues will get resolved soon.
 
 Ian Darwin
 Java Cookbook author
-http://www.darwinsys.com/contact.html
+http://www.darwinsys.com/contact.jsp
+
