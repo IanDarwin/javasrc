@@ -9,12 +9,13 @@
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
+	<property name="lib.dir" value="lib"/>
 
 	<property file="${user.home}/build.properties"/>
 	<property file="build.properties"/>
 
 	<property name="javasrc.home" value="${user.dir}"/>
-	<property name="darwinsys.jar" value="jars/darwinsys.jar"/>
+	<property name="darwinsys.jar" value="${lib.dir}/darwinsys.jar"/>
 
 	<!-- Right away, make sure javasrc.home has been set
 	 (this must be set as an absolute path, alas, so that
@@ -67,7 +68,7 @@
 	</target>
 
 	<path id="all.classpath">
-			<fileset dir="jars">
+			<fileset dir="${lib.dir}">
 				<include name="*.jar"/>
 			</fileset>
 			<dirset dir=".">
