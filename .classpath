@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="lib/postgresql.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="lib" path="lib/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="lib/jta.jar"/>
 	<classpathentry kind="lib" path="lib/jdori-enhancer.jar"/>
 	<classpathentry kind="lib" path="lib/jdori.jar"/>
