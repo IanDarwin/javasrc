@@ -138,6 +138,7 @@
 			<exclude name="otherlang/StringDistance.java"/>
 			<exclude name="template/StrutsAction.java"/>
 			<exclude name="unfinished/pnmconv/*.java"/>
+			<exclude name="xml/XSLTransform.java"/>
 		</javac>
 	</target>
 
@@ -169,10 +170,10 @@
 			classname="netweb.MkIndex"/>
 	</target>
 
-	<!-- clean up -->
-	<!--
+	<!-- clean up... don't use in an Eclipse project directory
+	 ** or Eclipse will get confused... use Project Clean to recover. -->
 	<target name='clean'>
 		<delete dir="${build}"/>
 	</target>
-	-->
+
 </project>
