@@ -91,7 +91,7 @@ public class LinkList implements List {
 
     public Object get(int where) {
 		TNode t = first;
-		for (int i=0; i<where; i++) {
+		for (int i=0; i<=where; i++) {
 			t = t.next;
 		}
 		return t.data;
@@ -100,7 +100,15 @@ public class LinkList implements List {
     public Object set(int i, Object o) {
 		return null;
 	}
+    
     public boolean contains(Object o) {
+    	TNode t = first;
+		for (int i=0; i<=size(); i++) {
+			t = t.next;
+			if (t.data.equals(o)) {
+				return true;
+			}
+		}
 		return false;
 	}
     public Object[] toArray() {
@@ -146,7 +154,7 @@ public class LinkList implements List {
 
     public Iterator iterator() {
 		return new Iterator() {
-			TNode t = first;
+			TNode t = first.next;
 			public boolean hasNext() {
 				return t != last;
 			}
