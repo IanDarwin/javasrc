@@ -6,7 +6,7 @@ import junit.framework.TestSuite;
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite("Test for testing");
+		TestSuite suite = new TestSuite("javasrc/testing.AllTests");
 		//$JUnit-BEGIN$
 		suite.addTestSuite(IntegerTest.class);
 		suite.addTestSuite(PersonTest.class);
