@@ -1,13 +1,19 @@
 package testing;
 
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /** 
- * CompTest -- Component Tester.
- * A generic main program, for testing a Component-based GUI class that 
- * has a no-argument constructor. This seemed easier than adding a trivial
+ * CompTest -- Component Tester; NOT a JUnit Test.
+ * A generic main program, for "testing" (running) any Component-based GUI 
+ * class that has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
