@@ -1,15 +1,17 @@
 package dbm;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class TestDBM {
 	
-	@Test
+	@Ignore("Requires native code") @Test
 	public void testOne() throws IOException {
 		DBM d = new DBM("/tmp/mydb");
 		System.out.println(d);
@@ -18,7 +20,7 @@ public class TestDBM {
 		d.close();
 	}
 	
-	@Test
+	@Ignore("Requires native code") @Test
 	public void testTwoAndThree() throws Exception {
 		DBM d2 = null;
 		try { 
