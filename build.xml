@@ -137,7 +137,6 @@
 			<exclude name="lang/UsePackage.java"/>
 			<exclude name="otherlang/StringDistance.java"/>
 			<exclude name="template/StrutsAction.java"/>
-			<exclude name="unfinished/pnmconv/*.java"/>
 			<exclude name="xml/XSLTransform.java"/>
 		</javac>
 	</target>
