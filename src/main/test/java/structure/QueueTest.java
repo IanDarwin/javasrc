@@ -10,7 +10,7 @@ public class QueueTest extends TestCase {
 		super(name);
 	}
 
-	protected Queue q;
+	protected Queue<String> q;
 
 	public void setUp() {
 		q = new Queue<String>();
@@ -24,8 +24,6 @@ public class QueueTest extends TestCase {
 		q.q_add("Three");
 		assertEquals(q.q_take(), "Three");
 		assertTrue(q.size() ==  0);
-		if (q.size() == 0)
-			throw new IllegalArgumentException("q.size() returns 0 for 3");
 		System.out.println("DONE");
 	}
 }
