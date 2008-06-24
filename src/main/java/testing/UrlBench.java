@@ -1,12 +1,16 @@
 package testing;
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 /**
  * Repeatedly bang on a URL. Written to answer this query:
  * > How would one write or script a utility that would click on specified
- * > buttons in a form, and force a submit? I need to hammer a script to see how * > it handles, and 'click-submit-back-click-submit-back' ad infinitum doesn't  * > cut it.
+ * > buttons in a form, and force a submit? I need to hammer a script to see how
+ * > it handles, and 'click-submit-back-click-submit-back' ad infinitum doesn't 
+ * > cut it.
  */
 
 public class UrlBench {
