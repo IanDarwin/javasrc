@@ -7,28 +7,24 @@ import junit.framework.TestCase;
 
 /**
  * Linked list class, written out in full using Java.
- * @deprecated	Supplanted by java.util.LinkedList
- * @author	Ian Darwin, http://www.darwinsys.com/
+* @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest extends TestCase {
 	List<String> list;
+	
+	@SuppressWarnings("deprecation")
 	public void setUp() {
-		System.out.println("Here is a demo of implementing a List in Java");
-		System.out.println("(you know it don't come easy....)");
 		list = new LinkList();
 		list.add(new Object().toString());
 		list.add("Hello");
 		list.add("End of list");
-		System.out.println("Here is a list of all the elements, from get");
 		System.out.println(list.get(0));
 		System.out.println(list.get(1));
 		System.out.println(list.get(2));
 	}
 
 	public void testGet() {
-
 		assertTrue(list.contains("Hello"));
-		System.out.println("Lookup seems to work");
 	}
 
 	public void testSize() {
@@ -37,7 +33,7 @@ public class LinkListTest extends TestCase {
 
 	public void testIterator() {
 
-		Iterator li = list.iterator();
+		Iterator<String> li = list.iterator();
 		assertNotNull(li);
 
 		// Run the list frontwards
