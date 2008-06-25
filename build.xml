@@ -122,6 +122,9 @@
 			<exclude name="oo/Clone0.java"/>
 			<exclude name="oo/SingletonCheat1.java"/>
 			<exclude name="oo/SingletonCheat2.java"/>
+			<exclude name="rmi/*.java"/>
+			<exclude name="rmi/agent/*.java"/>
+			<exclude name="rmi/callback/*.java"/>
 			<exclude name="strings/WolfInStringsClothing.java"/>
 			<exclude name="unfinished/**.java"/>
 			<exclude name="Contrib/**.java"/>
