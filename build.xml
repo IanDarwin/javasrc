@@ -122,21 +122,15 @@
 			<exclude name="oo/Clone0.java"/>
 			<exclude name="oo/SingletonCheat1.java"/>
 			<exclude name="oo/SingletonCheat2.java"/>
-			<exclude name="rmi/*.java"/>
-			<exclude name="rmi/agent/*.java"/>
-			<exclude name="rmi/callback/*.java"/>
-			<exclude name="servlet/TermsServletPDF.java"/>
 			<exclude name="strings/WolfInStringsClothing.java"/>
 			<exclude name="unfinished/**.java"/>
 			<exclude name="Contrib/**.java"/>
 			<exclude name="Contrib/JDBCDriver-Moss/*.java"/>
 			<exclude name="Contrib/treelayout/*.java"/>
-			<exclude name="annotation/ejb/MyEJB.java"/>
 			<exclude name="graphics/QTMoviePlayer.java"/>
 			<exclude name="lang/Switch.java"/>
 			<exclude name="lang/UsePackage.java"/>
 			<exclude name="otherlang/StringDistance.java"/>
-			<exclude name="template/StrutsAction.java"/>
 			<exclude name="xml/XSLTransform.java"/>
 		</javac>
 	</target>
