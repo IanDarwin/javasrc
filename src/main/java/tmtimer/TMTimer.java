@@ -18,7 +18,9 @@ import com.darwinsys.swingui.UtilGUI;
  */
 public class TMTimer extends JFrame implements Runnable {
 
-  /** Constructor - Initializes the Form */
+	private static final long serialVersionUID = 8733835671732822383L;
+
+	/** Constructor - Initializes the Form */
   public TMTimer() {
     initComponents ();
     finishGUI();
@@ -251,8 +253,8 @@ public class TMTimer extends JFrame implements Runnable {
 
   /** A halt-the-timer flag */
   protected boolean done;
-  /** Iterator that maps from foo to bar. */
-   protected HashMap presetsMap;
+  /** Iterator that maps from a presets name to its list of seconds. */
+   protected Map<String,int[]> presetsMap;
   /** Map to make array processing of times easier */
   protected JTextField[] times = new JTextField[3];
   /** The three numbers for the current event */
@@ -379,7 +381,7 @@ public class TMTimer extends JFrame implements Runnable {
   public static void main(java.lang.String[] args) {
   TMTimer t = new TMTimer();
   Properties p = new Properties();
-  TMTimerUtil.getProperties(p, "TMTimer");
+  TMTimerUtil.loadProperties(p, "TMTimer");
   t.presetsMap = TMTimerUtil.parseProps(p);
   t.populateList(p);
   t.setVisible(true);

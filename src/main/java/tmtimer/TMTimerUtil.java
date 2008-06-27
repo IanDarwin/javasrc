@@ -18,9 +18,9 @@ public class TMTimerUtil {
 	 * return an Iterator (HashMap?) whose keys are the labels
 	 * and whose values are an array of ints with the seconds.
 	 */
-	 public static HashMap parseProps(Properties p) {
-		HashMap h = new HashMap();
-	 	Enumeration it = p.keys();
+	 public static Map<String,int[]> parseProps(Properties p) {
+		Map<String,int[]> h = new HashMap<String,int[]>();
+	 	Enumeration<Object> it = p.keys();
 		while (it.hasMoreElements()) {
 			String key = (String)it.nextElement();
 			String val = (String)p.getProperty(key);
@@ -65,7 +65,7 @@ public class TMTimerUtil {
 			return ns/60 + ":" + rem;
 	}
 
-	public static void getProperties(Properties p, String progname) {
+	public static void loadProperties(Properties p, String progname) {
 		String fileName = (progname + ".properties");
 		try {
 			InputStream is = new FileInputStream(fileName);
@@ -79,7 +79,7 @@ public class TMTimerUtil {
 
 	public static void main(String[] args) {
 		Properties p = new Properties();
-		TMTimerUtil.getProperties(p, "TMTimer");
+		TMTimerUtil.loadProperties(p, "TMTimer");
 		TMTimerUtil.parseProps(p);
 	}
 }
