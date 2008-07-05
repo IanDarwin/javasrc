@@ -30,8 +30,9 @@ import javax.swing.JPanel;
  * @version	$Id$
  */
 public class PortChooser extends JDialog implements ItemListener {
+	private static final long serialVersionUID = -7091059841411129363L;
 	/** A mapping from names to CommPortIdentifiers. */
-	protected HashMap map = new HashMap();
+	protected HashMap<String, CommPortIdentifier> map = new HashMap<String, CommPortIdentifier>();
 	/** The name of the choice the user made. */
 	protected String selectedPortName;
 	/** The CommPortIdentifier the user chose. */
@@ -56,7 +57,7 @@ public class PortChooser extends JDialog implements ItemListener {
 		// Get the name
 		selectedPortName = (String)((JComboBox)e.getSource()).getSelectedItem();
 		// Get the given CommPortIdentifier
-		selectedPortIdentifier = (CommPortIdentifier)map.get(selectedPortName);
+		selectedPortIdentifier = map.get(selectedPortName);
 		// Display the name.
 		choice.setText(selectedPortName);
 	}
@@ -133,14 +134,15 @@ public class PortChooser extends JDialog implements ItemListener {
 	 * what ports it has.  Since the initial information comes from
 	 * a Properties file, it may not exactly reflect your hardware.
 	 */
+	@SuppressWarnings("unchecked")
 	protected void populate() {
 		// get list of ports available on this particular computer,
 		// by calling static method in CommPortIdentifier.
-		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
+		Enumeration<CommPortIdentifier> pList = CommPortIdentifier.getPortIdentifiers();
 
 		// Process the list, putting serial and parallel into ComboBoxes
 		while (pList.hasMoreElements()) {
-			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
+			CommPortIdentifier cpi = pList.nextElement();
 			// System.out.println("Port " + cpi.getName());
 			map.put(cpi.getName(), cpi);
 			if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
