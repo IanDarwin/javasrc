@@ -56,30 +56,35 @@ public class MyMapTest {
 		System.out.println("You asked about " + queryString + ".");
 		String resultString = (String)map.get(queryString);
 		System.out.println("They are located in: " + resultString);
-		System.out.println();
 		assertEquals("get test", "Sebastopol, CA", resultString);
 
 	}
+	
 	@Test
 	public void testSequential() {
-
 		// Version 2: get ALL the keys and pairs 
 		// (maybe to print a report, or to save to disk)
 		Iterator<String> k = map.keySet().iterator();
 		while (k.hasNext()) {
 			String key = (String) k.next();
-			System.out.println("Key " + key + "; Value " +
-				(String) map.get(key));
-		}
-		
+			final String value = (String) map.get(key);
+			if (false)
+				System.out.println("Key " + key + "; Value " + value);
+		}		
 	}
 	
 	@Test
-	public void testMultiplePutThenGet(){
+	public void testPutInserts() {
+		map.put("new crud", "new value");
+		assertEquals(NUM_ENTRIES + 1, map.size());
+		assertEquals("new value", map.get("new crud"));
+	}
+	
+	@Test
+	public void testPutReplaces(){
 		final String MYTOWN = "MyTown, CA";
 		map.put("Sun", MYTOWN);
 	    final String newLocation = (String)map.get("Sun");
-		System.out.println("Sun has been re-located to " + newLocation);
 		assertEquals(MYTOWN, newLocation);
 		// Ensure value didn't get in as a Key (such a bug once existed)
 		assertNull(map.get(MYTOWN));
@@ -92,8 +97,8 @@ public class MyMapTest {
 
 		// Step 3 - try out the entrySet() method.
 		final Set<Entry<String, String>> es = map.entrySet();
-		System.out.println("entrySet() returns " + es.size() + " Map.Entry's");
-		assertEquals("entrySet test", 7, es.size());
+		// System.out.println("entrySet() returns " + es.size() + " Map.Entry's");
+		assertEquals("entrySet test", NUM_ENTRIES, es.size());
 	}
 	
 	@Test

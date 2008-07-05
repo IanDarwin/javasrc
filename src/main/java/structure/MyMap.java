@@ -63,20 +63,20 @@ public class MyMap<K,V> implements Map<K,V> {
 	/** Put the given pair (k, v) into this map, by maintaining "keys"
 	 * in sorted order.
 	 */
+	@SuppressWarnings("unchecked")
 	public V put(Object k, Object v) {
 		for (int i=0; i < keys.size(); i++) {
-			K old = keys.get(i);
-
+			
 			/* Does the key already exist? */
-			if (((Comparable)k).compareTo(keys.get(i)) == 0) {
+			if (((Comparable<K>)k).compareTo(keys.get(i)) == 0) {
 				values.set(i, (V)v);
-				return values.get(i);	// XXX
+				return values.get(i);
 			}
 
 			/* Did we just go past where to put it?
 			 * i.e., keep keys in sorted order.
 			 */
-			if (((Comparable)k).compareTo(keys.get(i)) == +1) {
+			if (((Comparable<K>)k).compareTo(keys.get(i)) == +1) {
 				int where = i > 0 ? i -1 : 0;
 				keys.add(where, (K)k);
 				values.add(where, (V)v);
@@ -165,14 +165,15 @@ public class MyMap<K,V> implements Map<K,V> {
 	 * NOT guaranteed fully to implement the contract of entrySet
 	 * declared in java.util.Map.
 	 */
-    public java.util.Set entrySet() {
+    @SuppressWarnings("unchecked")
+	public java.util.Set entrySet() {
 		if (keys.size() != values.size())
 			throw new IllegalStateException(
 				"InternalError: keys and values out of sync");
-		ArrayList al = new ArrayList();
+		ArrayList<MyMapEntry> al = new ArrayList<MyMapEntry>();
 		for (int i=0; i<keys.size(); i++) {
 			al.add(new MyMapEntry(keys.get(i), values.get(i)));
 		}
-		return new MyMapSet(al); 
+		return new MyMapSet<MyMapEntry>(al); 
 	}
 }
