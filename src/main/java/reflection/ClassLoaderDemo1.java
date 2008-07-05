@@ -7,6 +7,7 @@ import java.util.Hashtable;
 /**
  * Demonstration of a ClassLoader
  */
+@SuppressWarnings("unchecked")
 public class ClassLoaderDemo1 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable<String,Class> cache = new Hashtable<String,Class>();
@@ -70,6 +71,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		return bd;
 	}
 
+	@SuppressWarnings("unchecked")
 	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
 		/** We can expect to be called to resolve at least demo's

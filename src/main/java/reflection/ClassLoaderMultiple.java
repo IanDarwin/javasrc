@@ -11,6 +11,7 @@ import java.util.Hashtable;
 /**
  * Demonstration of a ClassLoader
  */
+@SuppressWarnings("unchecked")
 public class ClassLoaderMultiple extends ClassLoader {
 
 	private static final String CLASS_TO_LOAD = "reflection.MultiDemo";

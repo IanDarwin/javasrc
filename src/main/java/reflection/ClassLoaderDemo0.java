@@ -9,6 +9,7 @@ import java.util.Hashtable;
  * WILL NOT COMPILE OUT OF THE BOX -- WILL ONLY WORK AS PART OF
  * THE CLASSLOADER EXERCISE. See ClassLoader1 for a working version.
  */
+@SuppressWarnings("unchecked")
 public class ClassLoaderDemo0 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
 	protected Hashtable<String,Class> cache = new Hashtable<String,Class>();
