@@ -13,7 +13,7 @@ public class StrTokDemo4b {
 	public static String[] process(String line) {
 		// ArrayList is an array-like container that grows dynamically;
 		// see the chapter on Java Collections.
-		List results = new ArrayList();
+		List<String> results = new ArrayList<String>();
 
 		// Unless you ask StringTokenizer to give you the tokens,
 		// it silently discards multiple null tokens.

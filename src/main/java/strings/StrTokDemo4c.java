@@ -13,10 +13,10 @@ public class StrTokDemo4c {
 	public final static String DELIM = "|";
 
 	/** Processes one String, returns it as an array of fields */
-	public static List process(String line) {
+	public static List<String> process(String line) {
 		// A ArrayList is an array-like container that grows dynamically;
 		// see the chapter on Java Collections.
-		ArrayList results = new ArrayList();
+		ArrayList<String> results = new ArrayList<String>();
 
 		// Unless you ask StringTokenizer to give you the tokens,
 		// it silently discards multiple null tokens.
@@ -39,9 +39,9 @@ public class StrTokDemo4c {
 		return results;
 	}
 
-	public static void printResults(String input, List outputs) {
+	public static void printResults(String input, List<String> outputs) {
 		System.out.println("Input: " + input);
-		Iterator it = outputs.iterator();
+		Iterator<String> it = outputs.iterator();
 		for (int i=0; it.hasNext(); i++)
 			System.out.println("Output " + i + " was: " + it.next());
 	}
