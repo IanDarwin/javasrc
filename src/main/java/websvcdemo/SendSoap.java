@@ -11,6 +11,7 @@ import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 
 /**
+ * Just to show that it can be done; this is NOT how to do things in practice!
  * Sends a SOAPMessage to a Web service using a URL and URLConnection to send the
  * Web service's HTTP port and sending a POST request.; this is pretty much
  * what the SOAPConnection.call() method does.

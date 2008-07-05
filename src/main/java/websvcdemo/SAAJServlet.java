@@ -18,6 +18,7 @@ import javax.xml.soap.SOAPMessage;
 
 /**
  * An example of one way you might deploy SAAJ-based services.
+ * Just to show that it can be done; this is NOT how to do things in practice!
  * @author Ian Darwin
  */
 public class SAAJServlet extends HttpServlet {

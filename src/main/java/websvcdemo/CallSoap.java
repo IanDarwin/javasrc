@@ -7,7 +7,9 @@ import javax.xml.namespace.QName;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 
-/** Simple demo of Apache Axis 1 SOAP call
+/*
+ * Simple demo of Apache Axis 1 SOAP call.
+ * Just to show that it can be done; this is NOT how to do things in practice!
  * @author Adapted from Apache Axis example code.
  */
 public class CallSoap {
