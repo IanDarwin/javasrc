@@ -6,15 +6,16 @@ import java.util.List;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/** Simple data model for demos */
 public class Model {
-	private List list = new ArrayList();
+	private List<String> list = new ArrayList<String>();
 
 	public void add(String s) {
 		list.add(s);
 		fireChange();
 	}
 
-	public List getData() {
+	public List<String> getData() {
 		return list;
 	}
 
@@ -32,7 +33,7 @@ public class Model {
 	protected void fireChange() {
 		ChangeEvent evt = new ChangeEvent(this);
 		for (int i = 0; i < changeListeners.size(); i++) {
-			ChangeListener cl = (ChangeListener)changeListeners.get(i);
+			ChangeListener cl = changeListeners.get(i);
 			cl.stateChanged(evt);
 		}
 	}

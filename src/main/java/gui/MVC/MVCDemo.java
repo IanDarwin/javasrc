@@ -62,7 +62,7 @@ public class MVCDemo {
 			public void stateChanged(ChangeEvent evt) {
 				Object o = evt.getSource();
 				Model m = (Model) o;
-				vv.setListData(m.getData());
+				vv.setListDataFromYStrings(m.getData());
 			}
 		});
 		vv.setBackground(Color.YELLOW);
