@@ -30,6 +30,13 @@ public class TermsAccessorTest {
 		}
 		Reader rdr = new StringReader(sb.toString());
 		target = new TermsAccessor(rdr);
+		int targetListlength = 0;
+		Iterator<Term> iter = target.iterator();
+		while (iter.hasNext()) {
+			iter.next();
+			++targetListlength;
+		}
+		assertEquals("formatted data", terms.length, targetListlength );
 	}
 	
 	@Test
