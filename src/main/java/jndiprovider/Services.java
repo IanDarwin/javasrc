@@ -13,12 +13,6 @@ package jndiprovider;
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 3. All advertising materials mentioning features or use of this software
- *    must display the following acknowledgement:
- *        This product includes software developed by Ian F. Darwin.
- * 4. Neither the name of the author nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
  * 
  * The inner classes FlatNames and FlatBindings are from the JNDI
  * sample code, Copyright 1997, 1998, 1999 Sun Microsystems, Inc.
@@ -51,9 +45,24 @@ package jndiprovider;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.io.*;
-import java.util.*;
-import javax.naming.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.StringTokenizer;
+
+import javax.naming.Binding;
+import javax.naming.CompositeName;
+import javax.naming.Context;
+import javax.naming.Name;
+import javax.naming.NameClassPair;
+import javax.naming.NameNotFoundException;
+import javax.naming.NameParser;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.NotContextException;
+import javax.naming.OperationNotSupportedException;
 
 /**
  * A JNDI service provider that provides access to the /etc/services file.
@@ -68,9 +77,9 @@ class Services implements Context {
 	private static final String SERVICES_WNT = 
 		"c:/winnt/system32/drivers/etc/services";
 
-    private Hashtable myEnv;
+    private Hashtable<String,Object> myEnv;
 
-    private Hashtable bindings = new Hashtable(100);
+    private Hashtable<String,Object> bindings = new Hashtable<String,Object>(100);
 
     static NameParser myParser = new FlatNameParser();
 
@@ -78,9 +87,9 @@ class Services implements Context {
 	 * This non-public constructor is expected to be called only from
 	 * the ServicesContextFactory class.
 	 */
-    Services(Hashtable environment) {
+    Services(Hashtable<String,Object> environment) {
 		if (environment != null)
-			myEnv = (Hashtable)(environment.clone()); 
+			myEnv = (Hashtable<String, Object>) (environment.clone()); 
 
 		/** Do the grunt work of reading the services file, stripping comments,
 	 	 * parsing lines, and sticking into "bindings".
@@ -91,7 +100,9 @@ class Services implements Context {
 			fileName = (String)myEnv.get(PROVIDER_URL);
 		if (fileName == null || fileName.equals(""))
 			fileName = SERVICES_UNIX;
-		// XXX handle Windows too -- System.getProperty("os.name")
+		if ("windows".equals(System.getProperty("os.name"))) {
+			fileName = SERVICES_WNT;
+		}
 
 		String line = null;
 		try {
@@ -300,7 +311,7 @@ class Services implements Context {
     public Hashtable getEnvironment() throws NamingException {
 		if (myEnv == null) {
 			// Must return non-null
-			return new Hashtable(3, 0.75f);
+			return new Hashtable(5);
 		} else {
 			return (Hashtable)myEnv.clone();
 		}
