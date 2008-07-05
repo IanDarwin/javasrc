@@ -43,8 +43,9 @@ public class TermsAccessor {
 			public Object next() {
 				int i;
 				// loop, ignoring invalid lines.
-				while ((i = line.indexOf("\t"))<0 && hasNext());
-					;
+				while ((i = line.indexOf("\t"))<0 && hasNext()) {
+					/* */
+				}
 				if (line == null)
 					throw new IllegalStateException("Invalid EOF state");
 				term = line.substring(0, i);
