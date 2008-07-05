@@ -11,8 +11,12 @@ import com.darwinsys.swingui.ArrayListTablePanel;
  */
 public class ArrayListTableSimple extends JFrame {
 
+	private static final long serialVersionUID = -7452964295956088160L;
+
 	/** inner class for TableModel */
 	class Model extends ArrayListTableModel {
+
+		private static final long serialVersionUID = 6213049956185726908L;
 
 		/** This defines the order of the columns. Must agree with columnClasses */
 		protected String[] myColumnNames = { "Name", "Value" };
@@ -23,7 +27,7 @@ public class ArrayListTableSimple extends JFrame {
 		public int getColumnCount() { return 2; }
 
 		/** Construct a Model given the ArrayList */
-		public Model(ArrayList m) {
+		public Model(List<ArrayListTableDatum> m) {
 			super(m);
 			columnNames = myColumnNames;
 			columnClasses = myColumnClasses;
@@ -58,24 +62,24 @@ public class ArrayListTableSimple extends JFrame {
 		super("ArrayListTableSimple");
 
 		// Create empty ArrayList
-		ArrayList data = new ArrayList();
+		ArrayList<ArrayListTableDatum> data = new ArrayList<ArrayListTableDatum>();
 
 		// Get the System Properties
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		Iterator it = new TreeMap(p).keySet().iterator();
+		Iterator<String> it = new TreeMap(p).keySet().iterator();
 
 		// Copy them into the ArrayList
 		while (it.hasNext()) {
-			String key = (String)it.next();
+			String key = it.next();
 			String val = p.getProperty(key);
 			data.add(new ArrayListTableDatum(key, val));
 		}
 
 		// Make the Model and View
 		Model m = new Model(data);
-		JPanel v = new ArrayListTablePanel(ArrayListTableDatum.class, data, m);
+		JPanel v = new ArrayListTablePanel<ArrayListTableDatum>(ArrayListTableDatum.class, data, m);
 
 		// Make it show up in this JFrame
 		setContentPane(new JScrollPane(v));
