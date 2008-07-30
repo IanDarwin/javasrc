@@ -75,8 +75,8 @@ public class Cal extends JPanel {
 
 		setLayout(new BorderLayout());
 
-		JPanel tp = new JPanel();
-		tp.add(monthChoice = new JComboBox());
+		JPanel topPanel = new JPanel();
+		topPanel.add(monthChoice = new JComboBox());
 		for (int i=0; i<months.length; i++)
 			monthChoice.addItem(months[i]);
 		monthChoice.setSelectedItem(months[mm]);
@@ -93,7 +93,7 @@ public class Cal extends JPanel {
 		monthChoice.getAccessibleContext().setAccessibleName("Months");
 		monthChoice.getAccessibleContext().setAccessibleDescription("Choose a month of the year");
 
-		tp.add(yearChoice = new JComboBox());
+		topPanel.add(yearChoice = new JComboBox());
 		yearChoice.setEditable(true);
 		for (int i=yy-5; i<yy+5; i++)
 			yearChoice.addItem(Integer.toString(i));
@@ -108,19 +108,19 @@ public class Cal extends JPanel {
 				}
 			}
 		});
-		add(BorderLayout.CENTER, tp);
+		add(BorderLayout.CENTER, topPanel);
 
-		JPanel bp = new JPanel();
-		bp.setLayout(new GridLayout(7,7));
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setLayout(new GridLayout(7,7));
 		labs = new JButton[6][7];	// first row is days
 
-		bp.add(b0 = new JButton("S"));
-		bp.add(new JButton("M"));
-		bp.add(new JButton("T"));
-		bp.add(new JButton("W"));
-		bp.add(new JButton("R"));
-		bp.add(new JButton("F"));
-		bp.add(new JButton("S"));
+		bottomPanel.add(b0 = new JButton("S"));
+		bottomPanel.add(new JButton("M"));
+		bottomPanel.add(new JButton("T"));
+		bottomPanel.add(new JButton("W"));
+		bottomPanel.add(new JButton("R"));
+		bottomPanel.add(new JButton("F"));
+		bottomPanel.add(new JButton("S"));
 
 		ActionListener dateSetter = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -128,7 +128,7 @@ public class Cal extends JPanel {
 				if (!num.equals("")) {
 					// set the current day highlighted
 					setDayActive(Integer.parseInt(num));
-					// When this becomes a Bean, you can
+					// If this became a Bean, you could
 					// fire some kind of DateChanged event here.
 					// Also, build a similar daySetter for day-of-week btns.
 				}
@@ -138,18 +138,18 @@ public class Cal extends JPanel {
 		// Construct all the buttons, and add them.
 		for (int i=0; i<6; i++)
 			for (int j=0; j<7; j++) {
-				bp.add(labs[i][j] = new JButton(""));
+				bottomPanel.add(labs[i][j] = new JButton(""));
 				labs[i][j].addActionListener(dateSetter);
 			}
 
-		add(BorderLayout.SOUTH, bp);
+		add(BorderLayout.SOUTH, bottomPanel);
 	}
 
 	/** Compute which days to put where, in the Cal panel */
 	protected void recompute() {
 		// System.out.println("Cal::recompute: " + yy + ":" + mm + ":" + dd);
 		if (mm < 0 || mm > 11)
-			throw new IllegalArgumentException("Month " + mm + " bad, must be 0-11");
+			throw new IllegalArgumentException("Month " + mm + " out of range, must be 0-11");
 		clearDayActive();
 		calendar = new GregorianCalendar(yy, mm, dd);
 
