@@ -1,9 +1,11 @@
 package JDBC;
 
+
 /** 
  * Load some drivers.
  */
 public class LoadDriver {
+	@SuppressWarnings("unchecked")
 	public static void main(String[] av) {
 		try {
 			// Try to load the jdbc-odbc bridge driver
