@@ -43,11 +43,11 @@ public class Grapher extends JPanel {
 	 * x coordinate is incremented automatically, and the y coordinate
 	 * is made from the String in the list.
 	 */
-	public void setListDataFromYStrings(List newData) {
+	public void setListDataFromYStrings(List<String> newData) {
 		data.clear();
 		for (int i=0; i < newData.size(); i++) {
 			Point2D p = new Point2D.Double();
-			p.setLocation(i, java.lang.Double.parseDouble((String)newData.get(i)));
+			p.setLocation(i, java.lang.Double.parseDouble(newData.get(i)));
 			data.add(p);
 		}
 		figure();
