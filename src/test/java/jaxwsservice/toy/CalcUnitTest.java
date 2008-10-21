@@ -1,4 +1,4 @@
-package jaxwsclient;
+package jaxwsservice.toy;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,13 +14,13 @@ import org.junit.Test;
  * $ mkdir jaxwsclient
  * $ wsimport -d jaxwsclient -keep 'http://localhost:8080/calc?wsdl'
  */
-public class CalcTest {
+public class CalcUnitTest {
 
 	Calc client;
 
 	@Before
 	public void initialize() {
-		client = new CalcService().getCalcPort();
+		client = new Calc();
 	}
 	
 	@Test
@@ -30,7 +30,8 @@ public class CalcTest {
 		
 	}
 	
-	@Test(expected=SOAPFaultException.class)
+	// Here it throws ArithmeticException
+	@Test(expected=ArithmeticException.class)
 	public void testDivide() {
 		client.divide(99, 0); // should fail
 	}

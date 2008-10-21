@@ -18,7 +18,9 @@ public class Calc {
 	
 	public int divide(int a, int b) {
 		if (b == 0) {
-			throw new ArithmeticException("Divide by 0");
+			// slightly better-than-average message
+			throw new ArithmeticException(
+				"You tried to divide " + a + " by 0");
 		}
 		return a / b;
 	}
