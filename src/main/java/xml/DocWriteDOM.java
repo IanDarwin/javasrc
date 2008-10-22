@@ -7,29 +7,25 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
 
 /** Make up and write an XML document, using DOM
- * UPDATED FOR JAXP.
+ * Updated for JAXP, using identity Transformer
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class DocWriteDOM {
 
-	public static void main(String[] av) throws IOException {
+	public static void main(String[] av) throws Exception {
 		DocWriteDOM dw = new DocWriteDOM();
 		Document doc = dw.makeDoc();
 
-		// Sadly, the write() method is not in the DOM spec, so we
-		// have to cast the Document to its implementing class
-		// in order to call the Write method.
-		//
-		// WARNING
-		//
-		// This code therefore depends upon the particular
-		// parser implementation.
-		//
-		//((org.apache.crimson.tree.XmlDocument)doc).write(System.out);
-		System.out.println("Need to write the tree now, sorry...");
+		System.out.println("Writing the tree now...");
+		Transformer tx = TransformerFactory.newInstance().newTransformer();
+		tx.setOutputProperty(OutputKeys.INDENT, "yes");
+		tx.transform(new DOMSource(doc), new StreamResult(System.out));
 	}
 
 	/** Generate the XML document */
