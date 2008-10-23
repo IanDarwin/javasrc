@@ -15,7 +15,6 @@ import javax.jws.soap.SOAPBinding;
  * 
  */
 @WebService(name = "Calc", targetNamespace = "http://toy.service/")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface Calc {
 
 
