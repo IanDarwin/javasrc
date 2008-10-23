@@ -23,8 +23,8 @@ public class HelloServletMinimal extends HttpServlet{
 
 		response.setContentType("text/html");
 
-		out.println("<h1>Hello from a Servlet</h1>");
-		out.println("<p>Server time is now ");
-		out.println(new Date().toString());
+		out.printf("<html><head><title>Hello from a Servlet</title></head>"+
+			"<body><h1>Hello World from a Java Servlet at %s</h1>"+
+			"</body></html>", new java.util.Date());
 	}
 }
