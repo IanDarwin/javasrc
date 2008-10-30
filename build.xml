@@ -90,6 +90,7 @@
 			3) Stuff that needs a missing JAR file;
 			4) Stuff that I don't know why it won't compile :-)
 			-->
+			<exclude name="ant/PathIteratorTask.java"/>
 			<exclude name="introspection/ClassLoaderDemo0.java"/>
 			<exclude name="jdb/Problem.java"/>
 			<exclude name="lang/AddException.java"/>
