@@ -12,7 +12,7 @@ public class ServiceMain {
 		Calc impl = new Calc();
 		// Start the service running
 		Endpoint endPoint = 
-			Endpoint.publish("http://localhost:8080/calc", impl);
+			Endpoint.publish("http://localhost:9090/calc", impl);
 		System.out.println("Listening on " + endPoint);
 	}
 }

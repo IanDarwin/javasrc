@@ -2,7 +2,7 @@
 
 from SOAPpy import WSDL
 
-server = WSDL.Proxy('http://localhost:8080/calc?wsdl')
+server = WSDL.Proxy('http://localhost:9090/calc?wsdl')
 
 #server.config.dumpSOAPOut = 1
 #server.config.dumpSOAPIn = 1

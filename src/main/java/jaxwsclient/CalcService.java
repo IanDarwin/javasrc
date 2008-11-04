@@ -13,7 +13,7 @@ import javax.xml.ws.WebServiceClient;
  * Generated source version: 2.0
  * 
  */
-@WebServiceClient(name = "CalcService", targetNamespace = "http://toy.service/", wsdlLocation = "http://localhost:8080/calc?wsdl")
+@WebServiceClient(name = "CalcService", targetNamespace = "http://toy.service/", wsdlLocation = "http://localhost:9090/calc?wsdl")
 public class CalcService
     extends Service
 {
@@ -23,7 +23,7 @@ public class CalcService
     static {
         URL url = null;
         try {
-            url = new URL("http://localhost:8080/calc?wsdl");
+            url = new URL("http://localhost:9090/calc?wsdl");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
