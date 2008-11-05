@@ -1,4 +1,4 @@
-package jaxwsservice.toy;
+package jaxwsservice;
 
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;

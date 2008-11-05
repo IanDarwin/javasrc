@@ -1,4 +1,4 @@
-package jaxwsservice.toy;
+package jaxwsservice;
 
 import static org.junit.Assert.assertEquals;
 
