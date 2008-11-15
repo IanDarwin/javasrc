@@ -31,7 +31,11 @@ public class Fmt {
 	
 	/** Construct a Formatter given a filename */
 	public Fmt(String fname) throws IOException {
-		this(new BufferedReader(new FileReader(fname)));
+		if ("-".equals(fname)) {
+			in = new BufferedReader(new InputStreamReader(System.in));
+		} else {
+			in = new BufferedReader(new FileReader(fname));
+		}
 	}
 
 	/** Construct a Formatter given an open Stream */
