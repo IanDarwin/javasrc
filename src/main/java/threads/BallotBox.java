@@ -12,14 +12,19 @@ import com.darwinsys.util.ArrayIterator;
 class BallotBox {
 	BallotPosition[] data;
 	
-	public Iterator iterator() {
+	@SuppressWarnings("unchecked")
+	public Iterator<BallotPosition> iterator() {
 		return new ArrayIterator(data);
 	}
 	
-	BallotBox(List list) {
+	/** Construct a BallotBox given a List<String> 
+	 * containing e.g., the names of the candidates
+	 * or positions being voted upon.
+	 */
+	BallotBox(List<String> list) {
 		data = new BallotPosition[list.size()];
 		for (int i = 0; i < list.size(); i++) {
-			data[i] = new BallotPosition((String)list.get(i));
+			data[i] = new BallotPosition(list.get(i));
 		}
 	}
 	

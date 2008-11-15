@@ -4,11 +4,12 @@ import java.util.concurrent.locks.*;
 
 public class LockFragment {
 
+	Lock theLock = null;
+	
 	/** This file exists to hold the skeleton code at the top of Recipe 24.6 */
 	public void demo() {
-		Lock theLock = null;
+		theLock.lock();
 		try {
-			theLock.lock();
 			// do the work that is protected by the Lock
 		} finally {
 			theLock.unlock();

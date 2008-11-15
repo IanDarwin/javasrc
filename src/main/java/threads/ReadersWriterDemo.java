@@ -7,7 +7,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * Simulate multiple readers
+ * Simulate multiple readers reading from a ReadWriteLock
+ * that one writer is writing to.
  * @version $Id$
  */
 public class ReadersWriterDemo {
@@ -33,6 +34,7 @@ public class ReadersWriterDemo {
 		List<String> questionsList = new ArrayList<String>();
 		questionsList.add("Agree");
 		questionsList.add("Disagree");
+		questionsList.add("No opinion");
 		theData = new BallotBox(questionsList);
 	}
 
@@ -45,16 +47,23 @@ public class ReadersWriterDemo {
 		for (int i = 0; i < NUM_READER_THREADS; i++) {
 			new Thread() {
 				public void run() {
-					while(!done) {
-						Iterator results = null;
+					while (!done) {
+						Iterator<BallotPosition> results = null;
+						lock.readLock().lock();
 						try {
-							lock.readLock().lock();
 							results = theData.iterator();
 						} finally {
 							// Unlock in finally to be sure it gets done.
 							lock.readLock().unlock();
 						}
-						// Now lock has been freed, take time to print
+						// Now that lock has been freed, take time to print
+						// (note this is not totally threadsafe as the
+						// individual BallotPositions can still be updated
+						// while this thread is reading from them; since
+						// the ballot counts are ints this will work, but
+						// with more complex objects you might need to 
+						// make a deep copy of the objects where I
+						// just call iterator() above...).
 						print(results);
 						try {
 							Thread.sleep(((long)(Math.random()* 1000)));
@@ -68,17 +77,19 @@ public class ReadersWriterDemo {
 		// Start one writer thread to simulate occasional voting
 		new Thread() {
 			public void run() {
-				while(!done) {
+				while (!done) {
+					lock.writeLock().lock();
 					try {
-						lock.writeLock().lock();
 						theData.voteFor(
-								(((int)(Math.random()*
-								theData.getCandidateCount()))));
+							// Vote for random candidate :-)
+							// Performance: should have one PRNG per thread.
+							(((int)(Math.random()*
+							theData.getCandidateCount()))));
 					} finally {
 						lock.writeLock().unlock();
 					}
 					try {
-						Thread.sleep(((long)(Math.random()*1500)));
+						Thread.sleep(((long)(Math.random()*1000)));
 					} catch (InterruptedException ex) {
 						// nothing to do
 					}
@@ -88,7 +99,7 @@ public class ReadersWriterDemo {
 
 		// In the main thread, wait a while then terminate the run.
 		try {
-			Thread.sleep(10 *1000);
+			Thread.sleep(10 * 1000);
 		} catch (InterruptedException ex) {
 			// nothing to do
 		} finally {
@@ -97,10 +108,10 @@ public class ReadersWriterDemo {
 	}
 
 	/** print the current totals */
-	private void print(Iterator iter) {
+	private void print(Iterator<BallotPosition> iter) {
 		boolean first = true;
 		while (iter.hasNext()) {
-			BallotPosition pair = (BallotPosition) iter.next();
+			BallotPosition pair = iter.next();
 			if (!first)
 				System.out.print(", ");
 			System.out.print(pair.getName() + "(" + pair.getVotes() + ")");
