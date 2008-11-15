@@ -24,44 +24,50 @@ public class Fmt {
 			new Fmt(av[i]).format();
 	}
 
+	/** Construct a Formatter given an open Reader */
+	public Fmt(BufferedReader file) throws IOException {
+		in = file;
+	}
+	
 	/** Construct a Formatter given a filename */
 	public Fmt(String fname) throws IOException {
-		in = new BufferedReader(new FileReader(fname));
+		this(new BufferedReader(new FileReader(fname)));
 	}
 
 	/** Construct a Formatter given an open Stream */
 	public Fmt(InputStream file) throws IOException {
-		in = new BufferedReader(new InputStreamReader(file));
+		this(new BufferedReader(new InputStreamReader(file)));
 	}
 
 	/** Format the File contained in a constructed Fmt object */
 	public void format() throws IOException {
-		String w, f;
-		int col = 0;
-		while ((w = in.readLine()) != null) {
-			if (w.length() == 0) {	// null line
-				System.out.print("\n");		// end current line
-				if (col>0) {
-					System.out.print("\n");	// output blank line
-					col = 0;
-				}
-				continue;
-			}
+		String line;
+		StringBuilder out = new StringBuilder();
+		while ((line = in.readLine()) != null) {
+			if (line.length() == 0) {	// null line
+				System.out.println(out);	// end current line
+				System.out.println();	// output blank line
+				out.setLength(0);
+			} else {
+				// otherwise it's text, so format it.
+				StringTokenizer st = new StringTokenizer(line);
+				while (st.hasMoreTokens()) {
+					String word = st.nextToken();
 
-			// otherwise it's text, so format it.
-			StringTokenizer st = new StringTokenizer(w);
-			while (st.hasMoreTokens()) {
-				f = st.nextToken();
-
-				if (col + f.length() > COLWIDTH) {
-					System.out.print("\n");
-					col = 0;
+					// If this word would go past the margin,
+					// first dump out anything previous.
+					if (out.length() + word.length() > COLWIDTH) {
+						System.out.println(out);
+						out.setLength(0);
+					}
+					out.append(word).append(' ');
 				}
-				System.out.print(f + " ");
-				col += f.length() + 1;
 			}
 		}
-		if (col>0) System.out.print("\n");
-		in.close();
+		if (out.length() > 0) {
+			System.out.println(out);
+		} else {
+			System.out.println();
+		}
 	}
 }
