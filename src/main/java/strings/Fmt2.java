@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 /**
- * Fmt - format text (like Berkeley UNIX fmt, with a few troff commands).
+ * Fmt - format text (like Berkeley UNIX fmt, 
+ * with a few troff commands for good measure).
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
