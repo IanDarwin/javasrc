@@ -14,7 +14,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	SoundexTest.class,
 	StringAlignTest.class,
 	TabsTest.class,
-	UndentTest.class,
+	UndentTest.class
 })
 public class AllTests {
 	// No Code Needed
