@@ -15,7 +15,6 @@
 	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="lib/btree.jar"/>
 	<classpathentry kind="lib" path="lib/antlr.jar"/>
-	<classpathentry kind="lib" path="lib/ant-junit.jar"/>
 	<classpathentry kind="lib" path="lib/ant-contrib-0.6.jar"/>
 	<classpathentry kind="lib" path="lib/activation.jar"/>
 	<classpathentry kind="lib" path="lib/bsf.jar"/>
