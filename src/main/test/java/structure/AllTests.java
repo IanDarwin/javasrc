@@ -8,7 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(value=Suite.class)
 @SuiteClasses(value={
-	CallTrackTest.class,
+	// CallTrackTest.class,
 	LinkListTest.class,
 	ListFormatTest.class,
 	ListInterchangeTest.class,
