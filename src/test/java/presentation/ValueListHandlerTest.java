@@ -58,10 +58,17 @@ public class ValueListHandlerTest extends TestCase {
 		fixture.nextPage();
 	}
 	
-	public void testPageSize() {
+	public void testEvenPageSize() {
 		fixture.setPageSize(20);
 		assertEquals(20, fixture.nextPage().size());
 		assertEquals(20, fixture.nextPage().size());
 		assertEquals(10, fixture.nextPage().size());
+	}
+	
+	public void testOddPageSize() {
+		fixture.setPageSize(19);
+		assertEquals(19, fixture.nextPage().size());
+		assertEquals(19, fixture.nextPage().size());
+		assertEquals(12, fixture.nextPage().size());
 	}
 }
