@@ -7,7 +7,7 @@ import java.util.List;
  * A simplistic, in-memory implementation of the Value List
  * Handler (aka FastTrack) pattern. Example use:<br/>
  * In Controller:<br/>
- * ValueListHandler&lt;CatalogItem> list = new ValueListHandler(resultsList);
+ * ValueListHandler&lt;CatalogItem> list = new ValueListHandler(listOfItems);
  * <br/>In View:<br/>
  * &lt;c:forEach items=${list} item="catalogItem"><br/>
  * &lt;tr>&lt;td>${item.title}&lt;td>${item.price}&lt;/tr>
