@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 /**
  * Make sure that CallTrack fragment actually works as shown.
  */
-public class CallTrackTest extends TestCase {
+public class CallTrackTestGUI extends TestCase {
 	Person[] testData = {
 		new Person("Ian", "Darwin"),		// 1
 		new Person("Davy", "Jones"),		// 3
