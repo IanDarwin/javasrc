@@ -1,31 +1,28 @@
 package structure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
 
 public class ValueListHandlerTest extends TestCase {
 
-	ValueListHandler<Integer> fixture = new ValueListHandler<Integer>();
+	ValueListHandler<Integer> fixture;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		generateList(50);
+		fixture = new ValueListHandler<Integer>(generateList(50));
 	}
 
 	/**
 	 * Make up the fake data.
 	 */
-	private void generateList(int howMany) {
+	private List<Integer> generateList(int howMany) {
+		List<Integer> t = new ArrayList<Integer>();
 		for (int i = 1; i <= howMany; i++) {
-			fixture.add(i);
+			t.add(i);
 		}
-	}
-
-	public final void testAdd() {
-		int i = fixture.getListSize();
-		fixture.add(0);
-		assertEquals(i + 1, fixture.getListSize());
+		return t;
 	}
 
 	public final void testNextPage() {
@@ -59,5 +56,12 @@ public class ValueListHandlerTest extends TestCase {
 		fixture.nextPage();
 		fixture.nextPage();
 		fixture.nextPage();
+	}
+	
+	public void testPageSize() {
+		fixture.setPageSize(20);
+		assertEquals(20, fixture.nextPage().size());
+		assertEquals(20, fixture.nextPage().size());
+		assertEquals(10, fixture.nextPage().size());
 	}
 }

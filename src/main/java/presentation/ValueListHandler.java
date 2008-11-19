@@ -28,24 +28,18 @@ public class ValueListHandler<T> {
 		list = myList;
 	}
 
-	public void add(T t) {
-		list.add(t);
-	}
-
 	public List<T> nextPage() {
 		if (currentPage < (list.size() / pageSize)) {
 			++currentPage;
 		}
-		List<T> subList = subList();
-		return subList;
+		return subList();
 	}
 
 	public List<T> prevPage() {
 		if (currentPage > 0) {
 			--currentPage;
 		}
-		List<T> subList = subList();
-		return subList;
+		return subList();
 	}
 
 	/**
