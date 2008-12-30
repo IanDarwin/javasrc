@@ -16,23 +16,23 @@ import java.util.*;
 public class CollectionUse {
 	public static void main(String[] args) throws NamingException {
 		Context ctx = new InitialContext();
-		MyBeanHome h = (MyBeanHome) ctx.lookup("MyBeanHome");
+		RecordingHome h = (RecordingHome) ctx.lookup("RecordingHome");
 		Collection c = h.findAllByCategory("jazz");
 
 		Iterator it = c.iterator();
 		while (it.hasNext()) {
-			MyBean b = (MyBean)it.next();
+			Recording b = (Recording)it.next();
 			//
-			// can now call methods in this MyBean
+			// can now call methods in this Recording
 		}
 	}
 
 	// This is junk, just to make the main class compile
-	interface MyBeanHome {
+	interface RecordingHome {
 		public Collection findAllByCategory(String cat);
 	}
 
 	// This is junk, just to make the main class compile
-	class MyBean {
+	class Recording {
 	}
 }
