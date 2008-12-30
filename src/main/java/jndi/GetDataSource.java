@@ -1,8 +1,11 @@
 package jndi;
 
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /** Locate a JDBC DataSource using the app server's registry.
  * @version $Id$
@@ -21,8 +24,8 @@ public class GetDataSource {
 
 				Connection c = ds.getConnection();
 
-				DatabaseMetaData meta = c.getDatabaseMetaData();
-				System.out.println("Database is " + meta.getDatabaseProduct());
+				DatabaseMetaData meta = c.getMetaData();
+				System.out.println("Database is " + meta.getDatabaseProductName());
         }
 }
 
