@@ -1,8 +1,11 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import javax.ejb.*;
-import java.util.*;
-import java.rmi.*;
+import java.rmi.RemoteException;
+import java.util.Collection;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
+import javax.ejb.FinderException;
 
 /** Publisher object Remote Home interface.
  */

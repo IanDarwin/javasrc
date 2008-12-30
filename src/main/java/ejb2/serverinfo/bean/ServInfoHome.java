@@ -1,7 +1,9 @@
-package com.darwinsys.ejb;
+package ejb2.serverinfo.bean;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
 
 /**
  *  Home interface for the ServInfo EJB.

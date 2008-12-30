@@ -1,4 +1,4 @@
-package ejb2.cart.src.cart;
+package ejb2.cart.cart;
 
 import javax.ejb.*;
 import java.util.List;
@@ -12,7 +12,7 @@ public class CartBean implements SessionBean {
 	private static final long serialVersionUID = -8998524480478847292L;
 
 	/** The list of items */
-	private List cartItems;
+	private List<Product> cartItems;
 
 	/** True if we've been checked out */
 	private boolean checkedOut;
@@ -24,13 +24,8 @@ public class CartBean implements SessionBean {
 	private Context ctx;
 
 	public void ejbCreate() throws CreateException {
-		cartItems = new ArrayList();
+		cartItems = new ArrayList<Product>();
 		checkedOut = false;
-		// try {
-			// ctx = new InitialContext();
-		// } catch (NamingException ex) {
-			// throw new CreateException("Couldn't get InitialContext: " + ex);
-		// }
 	}
 	public void ejbRemove() {
 		cartItems = null;
@@ -49,7 +44,7 @@ public class CartBean implements SessionBean {
 	}
 
 	/** Expose the ENTIRE list to the client. May be slow! */
-	public List getItems() {
+	public List<Product> getItems() {
 		return cartItems;
 	}
 

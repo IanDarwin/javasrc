@@ -1,4 +1,4 @@
-package ejb2.cart.src.cart;
+package ejb2.cart.cart;
 
 import java.rmi.RemoteException;
 

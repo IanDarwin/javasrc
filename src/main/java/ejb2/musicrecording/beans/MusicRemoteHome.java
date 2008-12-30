@@ -1,8 +1,11 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import javax.ejb.*;
-import java.rmi.*;
-import java.util.*;
+import java.rmi.RemoteException;
+import java.util.Collection;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
+import javax.ejb.FinderException;
 
 /**
  * This interface is the home interface for the Music bean.

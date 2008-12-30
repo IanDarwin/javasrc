@@ -1,7 +1,8 @@
-package rain;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.EJBObject;
 
 /**
  *  List of client methods for Order

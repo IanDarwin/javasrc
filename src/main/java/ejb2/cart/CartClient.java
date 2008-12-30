@@ -1,4 +1,4 @@
-package ejb2.cart.src;
+package ejb2.cart;
 
 import java.util.Iterator;
 import java.util.List;

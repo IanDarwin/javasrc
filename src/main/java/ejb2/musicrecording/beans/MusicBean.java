@@ -1,9 +1,9 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import java.io.*;
-import java.util.*;
-import javax.ejb.*;
-import javax.naming.*;
+import javax.ejb.CreateException;
+import javax.ejb.EntityBean;
+import javax.ejb.EntityContext;
+import javax.ejb.RemoveException;
 
 /**
  * MusicBean - Implementation class for an Entity Bean representing 

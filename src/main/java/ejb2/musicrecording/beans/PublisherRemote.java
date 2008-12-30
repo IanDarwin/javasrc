@@ -1,7 +1,8 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import javax.ejb.*;
-import java.rmi.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.EJBObject;
 
 /** Publisher EJB.
  */

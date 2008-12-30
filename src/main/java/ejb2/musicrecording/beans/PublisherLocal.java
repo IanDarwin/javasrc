@@ -1,6 +1,6 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import javax.ejb.*;
+import javax.ejb.EJBLocalObject;
 
 /** Publisher EJB.
  * Local Interfaces ONLY.

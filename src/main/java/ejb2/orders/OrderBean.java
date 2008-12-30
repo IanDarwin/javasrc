@@ -1,8 +1,13 @@
-package orders;
+package ejb2.orders;
 
-import javax.ejb.*;
-import javax.naming.*;
 import java.util.Collection;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.EntityBean;
+import javax.ejb.EntityContext;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  * Implementation Class for Order EJB.

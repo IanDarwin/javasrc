@@ -1,7 +1,10 @@
-package orders;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
+import javax.ejb.FinderException;
 
 /**
  *  Home interface for the Order EJB.

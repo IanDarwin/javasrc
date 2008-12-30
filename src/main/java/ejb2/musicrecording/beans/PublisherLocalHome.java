@@ -1,7 +1,9 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import javax.ejb.*;
-import java.util.*;
+import java.util.Collection;
+
+import javax.ejb.EJBLocalHome;
+import javax.ejb.FinderException;
 
 /** Publisher object Local Home interface.
  * IMMUTABLE; no create methods.

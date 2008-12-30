@@ -1,4 +1,4 @@
-package com.darwinsys.orders;
+package ejb2.payment;
 
 import java.rmi.RemoteException;
 

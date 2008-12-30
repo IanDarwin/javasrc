@@ -1,8 +1,10 @@
-import com.darwinsys.rain.*;
+package ejb2.musicrecording.client;
 
-import javax.ejb.*;
-import java.rmi.*;
-import javax.naming.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+import ejb2.musicrecording.beans.PublisherRemote;
+import ejb2.musicrecording.beans.PublisherRemoteHome;
 
 public class PopulatePublishers {
 	static String[] pubNames = {

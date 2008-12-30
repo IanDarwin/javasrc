@@ -1,7 +1,6 @@
-package orders;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
+import javax.ejb.EJBLocalObject;
 
 /**
  *  List of client methods for OrderItem

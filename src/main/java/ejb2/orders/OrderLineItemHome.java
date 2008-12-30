@@ -1,7 +1,9 @@
-package rain;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
 
 /**
  *  Home interface for the OrderLineItem EJB.

@@ -1,7 +1,11 @@
-import com.darwinsys.ejb.*;
-import javax.naming.*;
-import java.rmi.*;
-import javax.rmi.*;
+package ejb2.serverinfo.client;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
+
+import ejb2.serverinfo.bean.ServInfo;
+import ejb2.serverinfo.bean.ServInfoHome;
 
 public class Client {
 

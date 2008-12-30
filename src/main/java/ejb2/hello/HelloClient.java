@@ -1,4 +1,4 @@
-package ejb2.hello.src;
+package ejb2.hello;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

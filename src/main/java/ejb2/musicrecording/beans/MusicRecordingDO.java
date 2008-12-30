@@ -1,4 +1,4 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
 /** Dependant-value object for Music Recording.
  * Intentionally Immutable. Send this, instead of setting

@@ -1,6 +1,8 @@
-package orders;
+package ejb2.orders;
 
-import javax.ejb.*;
+import javax.ejb.CreateException;
+import javax.ejb.EntityBean;
+import javax.ejb.EntityContext;
 
 /**
  * Bean Implementation Class for OrderItem.

@@ -1,10 +1,8 @@
-import java.util.*;
-import javax.ejb.*;
-import javax.rmi.*;
-import javax.naming.*;
+package ejb2.payment;
 
-import com.darwinsys.orders.PaymentHome;
-import com.darwinsys.orders.Payment;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
 
 public class Client {
 	public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package orders;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
 import java.util.Collection;
+
+import javax.ejb.EJBLocalObject;
 
 /**
  *  List of client methods for Order

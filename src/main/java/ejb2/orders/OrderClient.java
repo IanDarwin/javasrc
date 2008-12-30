@@ -1,6 +1,8 @@
-import javax.ejb.*;
-import javax.naming.*;
-import orders.*;
+package ejb2.orders;
+
+import javax.ejb.ObjectNotFoundException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 public class OrderClient {
 	public static void main(String[] args) throws Exception {

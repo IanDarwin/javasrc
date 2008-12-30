@@ -1,7 +1,8 @@
-package orders;
+package ejb2.orders;
 
-import java.rmi.*;
-import javax.ejb.*;
+import javax.ejb.CreateException;
+import javax.ejb.EJBLocalHome;
+import javax.ejb.FinderException;
 
 /**
  *  Home interface for the OrderItem EJB.

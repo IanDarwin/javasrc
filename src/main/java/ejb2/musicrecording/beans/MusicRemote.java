@@ -1,7 +1,8 @@
-package com.darwinsys.rain;
+package ejb2.musicrecording.beans;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.EJBObject;
 
 /**
  * MusicRemote - Entity Bean for Music Recordings in RainForest.

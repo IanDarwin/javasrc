@@ -1,12 +1,18 @@
-package com.darwinsys.orders;
+package ejb2.payment;
 
-import javax.ejb.*;
-import javax.naming.*;
-import java.sql.*;
-import javax.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class PaymentBean implements SessionBean, PaymentMethods {
 
+	private static final long serialVersionUID = 3382194638497281743L;
 	private Connection conn;
 	private PreparedStatement ps;
 	final static String PS_STRING = "insert into Payments " +

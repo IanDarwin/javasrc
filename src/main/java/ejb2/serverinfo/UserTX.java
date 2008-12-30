@@ -1,8 +1,10 @@
-import java.util.*;
-import javax.rmi.*;
-import javax.naming.*;
-import javax.transaction.UserTransaction;
+package ejb2.serverinfo;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
 import javax.transaction.Status;
+import javax.transaction.UserTransaction;
 
 /** GetUserTX - demo of using UserTransaction (JTA) from client.
  */

@@ -1,7 +1,8 @@
-package com.darwinsys.ejb;
+package ejb2.serverinfo.bean;
 
-import java.rmi.*;
-import javax.ejb.*;
+import java.rmi.RemoteException;
+
+import javax.ejb.EJBObject;
 
 /**
  *  List of client methods for ServInfo

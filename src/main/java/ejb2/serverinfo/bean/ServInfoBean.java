@@ -1,7 +1,9 @@
-package com.darwinsys.ejb;
+package ejb2.serverinfo.bean;
 
-import javax.ejb.*;
-import javax.naming.*;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 /**
  * Implementation Class for ServInfo EJB.
