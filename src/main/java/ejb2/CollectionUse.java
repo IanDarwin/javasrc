@@ -1,8 +1,11 @@
-package ejb;
+package ejb2;
 
-import javax.naming.*;
-import javax.rmi.*;
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  * Partial code to show using an Entity Bean's Collection-returning methods
@@ -14,10 +17,11 @@ import java.util.*;
  * @version $Id$
  */
 public class CollectionUse {
+
 	public static void main(String[] args) throws NamingException {
 		Context ctx = new InitialContext();
 		RecordingHome h = (RecordingHome) ctx.lookup("RecordingHome");
-		Collection c = h.findAllByCategory("jazz");
+		Collection<Recording> c = h.findAllByCategory("jazz");
 
 		Iterator it = c.iterator();
 		while (it.hasNext()) {

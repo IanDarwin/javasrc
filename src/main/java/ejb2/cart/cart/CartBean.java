@@ -1,4 +1,4 @@
-package cart;
+package ejb2.cart.src.cart;
 
 import javax.ejb.*;
 import java.util.List;
@@ -8,6 +8,8 @@ import javax.naming.*;
 /** The Implementation class for a Shopping Cart Stateful Session EJB.
  */
 public class CartBean implements SessionBean {
+
+	private static final long serialVersionUID = -8998524480478847292L;
 
 	/** The list of items */
 	private List cartItems;

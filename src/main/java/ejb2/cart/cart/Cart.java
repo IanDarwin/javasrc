@@ -1,8 +1,9 @@
-package cart;
+package ejb2.cart.src.cart;
 
-import javax.ejb.*;
 import java.rmi.RemoteException;
 import java.util.List;
+
+import javax.ejb.EJBObject;
 
 /** The Remote Interface for a Shopping Cart.
  * The whole notion is not very realistic; who'd keep a Cart

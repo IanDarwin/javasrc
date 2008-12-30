@@ -1,5 +1,9 @@
-import javax.ejb.*;
-import java.rmi.*;
+package ejb2.interfaces;
+
+import java.rmi.RemoteException;
+
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
 
 public interface Home extends EJBHome {
 

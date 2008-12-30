@@ -1,4 +1,4 @@
-package cart;
+package ejb2.cart.src.cart;
 
 /** Dummy Product class, serializable for RMI use */
 public class Product implements java.io.Serializable {

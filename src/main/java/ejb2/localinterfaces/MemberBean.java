@@ -1,5 +1,8 @@
+package ejb2.localinterfaces;
+
+import javax.ejb.EntityBean;
+
 // MemberBean.java - LocalHome interface
-import javax.ejb.*;
 public abstract class MemberBean implements EntityBean {
 	// LocalHome methods:
 	// findByPrimaryKey implemented by Container

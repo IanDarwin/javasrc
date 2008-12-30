@@ -1,9 +1,15 @@
-import java.util.*;
-import javax.ejb.*;
-import javax.rmi.*;
-import javax.naming.*;
+package ejb2.cart.src;
 
-import cart.*;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
+
+import ejb2.cart.src.cart.Cart;
+import ejb2.cart.src.cart.CartHome;
+import ejb2.cart.src.cart.Product;
 
 public class CartClient {
 	public static void main(String[] args) {

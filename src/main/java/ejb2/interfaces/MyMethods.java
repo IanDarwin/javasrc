@@ -1,5 +1,6 @@
-import javax.ejb.*;
-import java.rmi.*;
+package ejb2.interfaces;
+
+import java.rmi.RemoteException;
 
 public interface MyMethods {
 

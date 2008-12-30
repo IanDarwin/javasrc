@@ -1,7 +1,8 @@
-package ejb.bmp;
+package ejb2.bmp;
 
-import javax.ejb.*;
 import java.rmi.RemoteException;
+
+import javax.ejb.EJBObject;
 
 public interface Entity extends EJBObject {
 

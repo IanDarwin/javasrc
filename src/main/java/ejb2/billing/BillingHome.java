@@ -1,4 +1,4 @@
-package ejb.billing;
+package ejb2.billing;
 
 import javax.ejb.EJBHome;
 

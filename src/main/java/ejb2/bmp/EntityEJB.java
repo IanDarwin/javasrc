@@ -1,4 +1,4 @@
-package ejb.bmp;
+package ejb2.bmp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * Replacement for the BMP example on page 576-7-15.
+ * Replacement for the BMP example from old course 576.
  * STATUS: INCOMPLETE!!!
  * It will compile but will NOT run yet!
  */

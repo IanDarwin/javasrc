@@ -1,7 +1,8 @@
-import java.util.*;
-import javax.ejb.*;
-import javax.rmi.*;
-import javax.naming.*;
+package ejb2.interfaces;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
 
 public class Client {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ejb.bmp;
+package ejb2.bmp;
 
 import java.rmi.RemoteException;
 import java.util.Collection;

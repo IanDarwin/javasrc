@@ -1,9 +1,14 @@
-import javax.ejb.*;
+package ejb2.hello.src;
+
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class HelloEJB implements SessionBean {
 
+	private static final long serialVersionUID = 1749376925921614662L;
+	
 	/* Say Hello! */
 	public String sayHello(String name) {
 		String msg;
