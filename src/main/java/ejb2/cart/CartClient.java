@@ -7,9 +7,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
-import ejb2.cart.src.cart.Cart;
-import ejb2.cart.src.cart.CartHome;
-import ejb2.cart.src.cart.Product;
+import ejb2.cart.cart.Cart;
+import ejb2.cart.cart.CartHome;
+import ejb2.cart.cart.Product;
 
 public class CartClient {
 	public static void main(String[] args) {
@@ -33,10 +33,9 @@ public class CartClient {
 			int cartSize = theCart.size();
 
 			System.out.println("Count: should be 2; was: " + cartSize);
-			List items = theCart.getItems();
-			Iterator it = items.iterator();
-			while (it.hasNext()) {
-				System.out.println("Item " + ((Product)it.next()).itemNumber);
+			List<Product> items = theCart.getItems();
+			for (Product item : items) {
+				System.out.println(item);
 			}
 
 		} catch (Exception ex) {

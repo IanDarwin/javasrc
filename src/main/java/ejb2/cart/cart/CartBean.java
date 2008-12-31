@@ -20,9 +20,6 @@ public class CartBean implements SessionBean {
 	/** The usual Session Context */
 	private SessionContext sessionContext;
 
-	/** A JNDI Context for finding other beans */
-	private Context ctx;
-
 	public void ejbCreate() throws CreateException {
 		cartItems = new ArrayList<Product>();
 		checkedOut = false;

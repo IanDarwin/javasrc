@@ -21,7 +21,7 @@ public interface Cart extends EJBObject {
 	public int size() throws RemoteException;
 
 	/** Get the list of items */
-	public List getItems() throws RemoteException;
+	public List<Product> getItems() throws RemoteException;
 
 	/** Checkout */
 	public void checkOut() throws RemoteException;

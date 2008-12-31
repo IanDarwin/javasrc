@@ -16,4 +16,9 @@ public class Product implements java.io.Serializable {
 	public Product(int inum) {
 		itemNumber = inum;
 	}
+	
+	@Override
+	public String toString() {
+		return "Product #" + itemNumber;
+	}
 }
