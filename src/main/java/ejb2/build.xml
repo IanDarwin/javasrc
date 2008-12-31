@@ -13,7 +13,6 @@
 		<echo message="==> serverinfo"/>
 		<ant dir="serverinfo/bean"/>
 		<ant dir="serverinfo/client"/>
-		<echo message="(remember CVS cleanup up of serverinfo hierarchy)"/>
 		<echo message="==> interfaces"/>
 		<ant dir="interfaces"/>
 		<echo message="==> cart"/>
