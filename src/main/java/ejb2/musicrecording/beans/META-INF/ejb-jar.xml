@@ -4,7 +4,7 @@
 	"http://java.sun.com/j2ee/dtds/ejb-jar_2_0.dtd"
 >
 
-<!-- Deployment Descriptor for MusicRecording -->
+<!-- Deployment Descriptor for EJB2 MusicRecording -->
 <ejb-jar>
 
 <!-- Enterprise-Bean lists the beans, gives them names, and some
@@ -24,11 +24,11 @@
 <entity>
 	<display-name>Music Recording Entity EJB</display-name>
 	<ejb-name>MusicRecording</ejb-name>
-	<home>com.darwinsys.rain.MusicRemoteHome</home>
-	<remote>com.darwinsys.rain.MusicRemote</remote>
-	<local-home>com.darwinsys.rain.MusicLocalHome</local-home>
-	<local>com.darwinsys.rain.MusicLocal</local>
-	<ejb-class>com.darwinsys.rain.MusicBean</ejb-class>
+	<home>ejb2.musicrecording.beans.MusicRemoteHome</home>
+	<remote>ejb2.musicrecording.beans.MusicRemote</remote>
+	<local-home>ejb2.musicrecording.beans.MusicLocalHome</local-home>
+	<local>ejb2.musicrecording.beans.MusicLocal</local>
+	<ejb-class>ejb2.musicrecording.beans.MusicBean</ejb-class>
 	<persistence-type>Container</persistence-type>
 	<prim-key-class>java.lang.Integer</prim-key-class>
 	<reentrant>false</reentrant>
@@ -43,11 +43,11 @@
 </entity>
 <entity>
 	<ejb-name>Publisher</ejb-name>
-	<home>com.darwinsys.rain.PublisherRemoteHome</home>
-	<remote>com.darwinsys.rain.PublisherRemote</remote>
-	<local-home>com.darwinsys.rain.PublisherLocalHome</local-home>
-	<local>com.darwinsys.rain.PublisherLocal</local>
-	<ejb-class>com.darwinsys.rain.PublisherBean</ejb-class>
+	<home>ejb2.musicrecording.beans.PublisherRemoteHome</home>
+	<remote>ejb2.musicrecording.beans.PublisherRemote</remote>
+	<local-home>ejb2.musicrecording.beans.PublisherLocalHome</local-home>
+	<local>ejb2.musicrecording.beans.PublisherLocal</local>
+	<ejb-class>ejb2.musicrecording.beans.PublisherBean</ejb-class>
 	<persistence-type>Container</persistence-type>
 	<prim-key-class>java.lang.Integer</prim-key-class>
 	<reentrant>false</reentrant>
