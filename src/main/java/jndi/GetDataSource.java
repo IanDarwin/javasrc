@@ -15,17 +15,17 @@ public class GetDataSource {
         public static void main(String[] av) throws Exception {
 
 				// Exact context chosen based on "jndi.properties"
-                Context ctx = new InitialContext();
+				Context ctx = new InitialContext();
 
-                Object o = ctx.lookup("jdbc/HRDatabase");
+				Object o = ctx.lookup("jdbc/HRDatabase");
 
-                DataSource ds = (DataSource)o;
-                System.out.println("Got datasource: " + ds);
+				DataSource ds = (DataSource)o;
+				System.out.println("Got datasource: " + ds);
 
 				Connection c = ds.getConnection();
 
 				DatabaseMetaData meta = c.getMetaData();
 				System.out.println("Database is " + meta.getDatabaseProductName());
-        }
+		}
 }
 
