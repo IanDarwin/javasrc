@@ -20,18 +20,18 @@ public interface MusicLocalHome extends EJBLocalHome {
 	/**
 	 * Finds all beans with a given category.
 	 */
-	public Collection findInCategory(String catagory)
+	public Collection<MusicLocal> findInCategory(String catagory)
 		throws FinderException;
 
 	/**
 	 * Finds all the EJB greater than certain price
 	 */
-	public Collection findAllGreaterThan(double price) 
+	public Collection<MusicLocal> findAllGreaterThan(double price) 
 		throws FinderException;
 
 	/**
 	 * Finds all the EJB less than certain price
 	 */
-	public Collection findAllLessThan(double price) 
+	public Collection<MusicLocal> findAllLessThan(double price) 
 		throws FinderException;
 }

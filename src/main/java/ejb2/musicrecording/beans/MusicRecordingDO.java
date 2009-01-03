@@ -7,6 +7,8 @@ package ejb2.musicrecording.beans;
  */
 public class MusicRecordingDO implements java.io.Serializable {
 
+	private static final long serialVersionUID = -5582717458925444615L;
+
 	public static final int NO_PKEY = -1;
 
 	/** Primary key: numeric id */
