@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+
+javac -classpath ../../lib/javaee.jar -d ../../build *.java 
+rm -f /tmp/stateless.jar
+cd ../../build
+jar cvf /tmp/stateless.jar ejb3
+cp /tmp/stateless.jar $jbdd/

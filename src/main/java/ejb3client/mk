@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -ex
+
+BUILD=../../build
+
+javac -cp ${BUILD}:../../lib/javaee.jar -d ${BUILD} *.java
+java  -cp ${BUILD}:$jb/client/jbossall-client.jar:. ejb3client.StatelessClient
