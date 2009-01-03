@@ -21,13 +21,21 @@
 			classpath=".:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
 	</target>
 
-	<target name="jar" depends="compile">
+	<target name="jar">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
-			includes="META-INF/*,com/**">
+			includes="META-INF/*,ejb2/**">
 		</jar>
 	</target>
+	
+	<target name="clean">
+			<delete file="${build}/${deploy.jar}"/>
+		</target>
 
 	<target name="deploy" depends="jar">
 		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+	
+	<target name="undeploy">
+		<delete file="${deploy.dir}/${deploy.jar}"/>
 	</target>
 </project>
