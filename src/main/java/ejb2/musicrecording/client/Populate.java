@@ -18,7 +18,7 @@ public class PopulatePublishers {
 		System.out.println("Found Home: " + ph);
 		for (int i=0; i<pubNames.length; i++) {
 			PublisherRemote pub;
-			pub = ph.create(i, pubNames[i], "New York", "555-1212");
+			pub = ph.create(i, pubNames[i], "New York", "212-555-1212");
 			System.out.println("Created " + pub);
 		}
 		System.out.println("Populated Publisher Table.");
