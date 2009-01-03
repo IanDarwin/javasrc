@@ -1,4 +1,4 @@
-<project name="Music Recording Enterprise Bean" default="deploy" basedir=".">
+<project name="Music Recording Enterprise Beans" default="deploy" basedir=".">
 
 	<!-- $Id$ -->
 
