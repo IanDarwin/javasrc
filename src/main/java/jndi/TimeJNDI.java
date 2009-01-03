@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.rmi.Remote;
 import java.util.Properties;
 
 import javax.naming.Context;
@@ -49,7 +50,7 @@ public class TimeJNDI {
 			end();
 			report("Lookup of " + q);
 		}
-		static class MyObject implements Serializable {
+		static class MyObject extends Remote implements Serializable {
 			static long serialVersionUid = 0x12345678;
 			// empty
 		}
