@@ -9,6 +9,7 @@ import javax.ejb.RemoveException;
  * MusicBean - Implementation class for an Entity Bean representing 
  * one Music Recording in the RainForest application.
  * This version uses CMP2.0.
+ * Rewritten by Ian Darwin.
  */
 abstract public class MusicBean implements EntityBean {
 
