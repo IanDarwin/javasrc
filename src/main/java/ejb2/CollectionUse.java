@@ -1,7 +1,6 @@
 package ejb2;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -23,17 +22,16 @@ public class CollectionUse {
 		RecordingHome h = (RecordingHome) ctx.lookup("RecordingHome");
 		Collection<Recording> c = h.findAllByCategory("jazz");
 
-		Iterator it = c.iterator();
-		while (it.hasNext()) {
-			Recording b = (Recording)it.next();
+		for (Recording b : c) {
 			//
 			// can now call methods in this Recording
+			System.out.println(b);
 		}
 	}
 
 	// This is junk, just to make the main class compile
 	interface RecordingHome {
-		public Collection findAllByCategory(String cat);
+		public Collection<Recording> findAllByCategory(String cat);
 	}
 
 	// This is junk, just to make the main class compile

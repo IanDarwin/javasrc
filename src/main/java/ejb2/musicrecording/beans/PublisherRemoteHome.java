@@ -24,6 +24,6 @@ public interface PublisherRemoteHome extends EJBHome {
 		throws FinderException, RemoteException;
 
 	/** Get list of all (likely to be only a few dozen) */
-	public Collection findAllPublishers()
+	public Collection<PublisherRemote> findAllPublishers()
 		throws FinderException, RemoteException;
 }

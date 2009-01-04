@@ -44,7 +44,7 @@ public class ChatState {
 	/** The list of messages */
 	public List<String> chat;
 	/** The list of users */
-	public List users;
+	public List<UserState> users;
 	/** The lower bound of current messages */
 	public int first;
 	/** The upper bound of current messages */
@@ -52,7 +52,7 @@ public class ChatState {
 
 	public ChatState() {
 		chat = new ArrayList<String>();
-		users = new ArrayList();
+		users = new ArrayList<UserState>();
 		first = last = 0;
 	}
 }

@@ -19,6 +19,6 @@ public interface PublisherLocalHome extends EJBLocalHome {
 		throws FinderException;
 
 	/** Get list of all (likely to be only a few dozen) */
-	public Collection findAllPublishers()
+	public Collection<PublisherLocal> findAllPublishers()
 		throws FinderException;
 }
