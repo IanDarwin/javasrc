@@ -50,8 +50,8 @@ public class TimeJNDI {
 			end();
 			report("Lookup of " + q);
 		}
-		static class MyObject extends Remote implements Serializable {
-			static long serialVersionUid = 0x12345678;
+		static class MyObject implements Remote, Serializable {
+			final static long serialVersionUID = 0x12345678;
 			// empty
 		}
 		static void start() {
