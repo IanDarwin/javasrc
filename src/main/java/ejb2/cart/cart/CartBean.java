@@ -1,9 +1,11 @@
 package ejb2.cart.cart;
 
-import javax.ejb.*;
-import java.util.List;
 import java.util.ArrayList;
-import javax.naming.*;
+import java.util.List;
+
+import javax.ejb.CreateException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
 
 /** The Implementation class for a Shopping Cart Stateful Session EJB.
  */
