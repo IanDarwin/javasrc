@@ -80,6 +80,11 @@ abstract public class MusicBean implements EntityBean {
 		// setPublisher(rec.getPublisher());
 	}
 
+	public String toString() {
+		return String.format("MusicRecording[%d,%s,%s,$%f5.2]",
+			getId(), getTitle(), getArtist(), getPrice());
+	}
+
 	// Callback methods.
 
 	/** The obvious Entity Context object */
@@ -107,8 +112,7 @@ abstract public class MusicBean implements EntityBean {
 	public void ejbStore() {
 	}
 
-	public void ejbRemove()
-	  throws RemoveException
+	public void ejbRemove() throws RemoveException
 	{
 	}
 
