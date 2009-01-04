@@ -20,7 +20,7 @@ public interface MusicLocalHome extends EJBLocalHome {
 	/**
 	 * Finds all beans with a given category.
 	 */
-	public Collection<MusicLocal> findByCategory(String catagory)
+	public Collection<MusicLocal> findByCategory(int category)
 		throws FinderException;
 
 	/**

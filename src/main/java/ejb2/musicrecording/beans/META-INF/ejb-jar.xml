@@ -43,7 +43,7 @@
 	<query>
 		<query-method>
 			<method-name>findByCategory</method-name>
-			<method-params><method-param>java.lang.String</method-param></method-params>
+			<method-params><method-param>int</method-param></method-params>
 		</query-method>
 		<ejb-ql>
 			<![CDATA[SELECT OBJECT(r) FROM MusicRecording r WHERE r.category=?1 ]]>

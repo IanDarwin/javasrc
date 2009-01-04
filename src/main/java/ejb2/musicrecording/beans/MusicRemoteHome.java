@@ -25,7 +25,7 @@ public interface MusicRemoteHome extends EJBHome {
 	/**
 	 * Finds all beans with a given category.
 	 */
-	public Collection<MusicRemote> findByCategory(String catagory)
+	public Collection<MusicRemote> findByCategory(int category)
 		throws FinderException, RemoteException;
 
 	/**
