@@ -80,6 +80,7 @@ abstract public class MusicBean implements EntityBean {
 		// setPublisher(rec.getPublisher());
 	}
 
+	@Override
 	public String toString() {
 		return String.format("MusicRecording[%d,%s,%s,$%f5.2]",
 			getId(), getTitle(), getArtist(), getPrice());
