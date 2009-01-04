@@ -20,6 +20,8 @@
 
 <!-- This can contain a ton of stuff about the Entity Beans.
  *** Here I just use it to specify the column name mappings.
+ -->
+<!--
 <enterprise-beans>
 	<entity>
 		<cmp-field>

@@ -3,7 +3,7 @@
 	<!-- $Id$ -->
 
 	<property name="src" value="."/>
-	<property name="build" value="."/>
+	<property name="build" value="../../../build"/>
 
 	<property file="../../../build.properties"/>
 
@@ -16,12 +16,15 @@
 		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
 			classpath=".:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
+		<copy todir="${build}/">
+			<fileset dir="META-INF"/>
+		</copy>
 	</target>
 
-	<target name="jar">
+	<target name="jar" depends="build">
 		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
 			includes="META-INF/*,ejb2/**">
 		</jar>
