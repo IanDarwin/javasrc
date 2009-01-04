@@ -19,7 +19,7 @@
 	<target name="build" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
 			classpath=".:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
-		<copy todir="${build}/">
+		<copy todir="${build}/META-INF">
 			<fileset dir="META-INF"/>
 		</copy>
 	</target>

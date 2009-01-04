@@ -40,6 +40,33 @@
 	<cmp-field><field-name>category</field-name></cmp-field>
 	<cmp-field><field-name>price</field-name></cmp-field>
 	<primkey-field>id</primkey-field>
+	<query>
+		<query-method>
+			<method-name>findInCategory</method-name>
+			<method-params><method-param>java.lang.String</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.category=?1]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findAllLessThan</method-name>
+			<method-params><method-param>double</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.price < ?1 ]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findAllGreaterThan</method-name>
+			<method-params><method-param>double</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.price < ?1 ]]>
+		</ejb-ql>
+	</query>
 </entity>
 <entity>
 	<ejb-name>Publisher</ejb-name>
@@ -58,6 +85,24 @@
 	<cmp-field><field-name>city</field-name></cmp-field>
 	<cmp-field><field-name>phone</field-name></cmp-field>
 	<primkey-field>id</primkey-field>
+	<query>
+		<query-method>
+			<method-name>findAllPublishers</method-name>
+			<method-params/>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(a) FROM Publisher AS a]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findByName</method-name>
+			<method-params><method-param>java.lang.String</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(a) FROM Publisher AS a WHERE a.name=?1 ]]>
+		</ejb-ql>
+	</query>
 </entity>
 </enterprise-beans>
 
