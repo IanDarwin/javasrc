@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 /** This is the main class of the server */
@@ -11,7 +12,8 @@ public class TickerServerImpl
 	extends UnicastRemoteObject
 	implements TickerServer, Runnable
 {
-	ArrayList list = new ArrayList();
+	private static final long serialVersionUID = -464196277362659008L;
+	List<Client> list = new ArrayList<Client>();
 
 	/** Construct the object that implements the remote server.
 	 * Called from main, after it has the SecurityManager in place.

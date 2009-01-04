@@ -13,11 +13,12 @@ public class RunServerImpl
 	extends UnicastRemoteObject
 	implements RunServer
 {
+	private static final long serialVersionUID = -58057723022819850L;
 	/** The list of Agents we've received */
-	List list;
+	List<AgentImpl> list;
 
 	public RunServerImpl() throws RemoteException {
-		list = new ArrayList();
+		list = new ArrayList<AgentImpl>();
 	}
 
 	/** The remote method that "does all the work". This won't get
