@@ -8,7 +8,7 @@ public class HelloClient {
         public static void main(String[] args) {
 
                 try {
-                        // Properties from jndi.properties in current directory
+                        // Properties from jndi.properties on classpath
                         Context initial = new InitialContext();
 
                         System.out.println("Getting Home Reference...");
