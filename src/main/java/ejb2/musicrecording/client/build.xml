@@ -1,4 +1,4 @@
-<project name="Music Recording EJB Client" default="build" basedir=".">
+<project name="Music Recording EJB Client" default="run">
 
 	<!-- $Id$ -->
 
