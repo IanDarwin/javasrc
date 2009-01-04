@@ -46,7 +46,7 @@
 			<method-params><method-param>java.lang.String</method-param></method-params>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[ SELECT OBJECT(r) FROM MusicRecording r WHERE r.category = ?1 ]]>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording r WHERE r.category=?1 ]]>
 		</ejb-ql>
 	</query>
 	<query>
@@ -55,7 +55,7 @@
 			<method-params><method-param>double</method-param></method-params>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.price < ?1 ]]>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording AS r WHERE r.price < ?1 ]]>
 		</ejb-ql>
 	</query>
 	<query>
@@ -64,7 +64,7 @@
 			<method-params><method-param>double</method-param></method-params>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.price < ?1 ]]>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording AS r WHERE r.price < ?1 ]]>
 		</ejb-ql>
 	</query>
 </entity>
@@ -91,7 +91,7 @@
 			<method-params/>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[SELECT OBJECT(a) FROM Publisher AS a]]>
+			<![CDATA[SELECT OBJECT(p) FROM Publisher AS p]]>
 		</ejb-ql>
 	</query>
 	<query>
@@ -100,7 +100,7 @@
 			<method-params><method-param>java.lang.String</method-param></method-params>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[SELECT OBJECT(a) FROM Publisher AS a WHERE a.name=?1 ]]>
+			<![CDATA[SELECT OBJECT(p) FROM Publisher AS p WHERE p.name=?1 ]]>
 		</ejb-ql>
 	</query>
 </entity>
