@@ -42,16 +42,16 @@
 	<primkey-field>id</primkey-field>
 	<query>
 		<query-method>
-			<method-name>findInCategory</method-name>
+			<method-name>findByCategory</method-name>
 			<method-params><method-param>java.lang.String</method-param></method-params>
 		</query-method>
 		<ejb-ql>
-			<![CDATA[SELECT OBJECT(a) FROM MusicRecording AS a WHERE a.category=?1]]>
+			<![CDATA[ SELECT OBJECT(r) FROM MusicRecording r WHERE r.category = ?1 ]]>
 		</ejb-ql>
 	</query>
 	<query>
 		<query-method>
-			<method-name>findAllLessThan</method-name>
+			<method-name>findByPriceLessThan</method-name>
 			<method-params><method-param>double</method-param></method-params>
 		</query-method>
 		<ejb-ql>
