@@ -3,6 +3,7 @@ package JDBC;
  import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class TypeMapDemo {
 
 		Properties p = new Properties();
 		p.load(new FileInputStream("db.properties"));
-		Class c = Class.forName(p.getProperty("db.driver"));
+		Class<Driver> c = (Class<Driver>) Class.forName(p.getProperty("db.driver"));
 		System.out.println("Loaded driverClass " + c.getName());
 
 		Connection con = DriverManager.getConnection(

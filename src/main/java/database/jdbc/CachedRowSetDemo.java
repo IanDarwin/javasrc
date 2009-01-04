@@ -1,5 +1,7 @@
 package JDBC;
 
+import java.sql.Driver;
+
 import javax.sql.rowset.CachedRowSet;
 
 /** Demonstrate simple use of the CachedRowSet.
@@ -13,7 +15,7 @@ public class CachedRowSetDemo {
 
 		// Create the class with class.forName to avoid importing
 		// from the unsupported com.sun packages.
-		Class c = Class.forName(ROWSET_IMPL_CLASS);
+		Class<Driver> c = (Class<Driver>) Class.forName(ROWSET_IMPL_CLASS);
 		rs = (CachedRowSet)c.newInstance();
 
 		rs.setUrl("jdbc:postgresql:tmclub");

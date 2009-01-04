@@ -2,11 +2,10 @@ package structure;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-/** Show the union and instersection of two sets. */
+/** Show the union and intersection of two sets. */
 public class SetStuff {
 	public static void main(String[] args) {
 
@@ -32,13 +31,12 @@ public class SetStuff {
 
 	}
 
-	protected static void print(String label, Collection c) {
+	protected static void print(String label, Collection<String> c) {
 
 		System.out.println("--------------" + label + "--------------");
 
-		Iterator it = c.iterator();
-		while (it.hasNext()) {
-			System.out.println(it.next());
+		for (String s : c) {
+			System.out.println(s);
 		}
 	}
 }
