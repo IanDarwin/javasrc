@@ -37,8 +37,13 @@ public class Client {
 			mh = (MusicRemoteHome)ctx.lookup("MusicRecording");
 			System.out.println("Found Home: " + mh);
 
-			existingEntity = mh.findByPrimaryKey(new Integer(1234));
-			System.out.println("Found " + existingEntity);
+			try {
+				existingEntity = mh.findByPrimaryKey(new Integer(1234));
+				System.out.println("Found " + existingEntity);
+				existingEntity.remove();
+			} catch (Exception e) {
+				System.out.println("Caught " + e + "; this may be OK");
+			}
 			newEntity = mh.create("DarwinIan", "Greatest His/Hers", 0, 19.99);
 			System.out.println("Created " + newEntity);
 
@@ -49,11 +54,11 @@ public class Client {
 			// Can't do this in a remote client; EJB2 CMR only 
 			// works with Local interfaces!
 			// mr.setPublisher(pub);
-			
+
 			if (false) {
 				existingEntity.remove();
-				System.out.println("Gone but not forgotten");
 			}
+			
 		} catch (EJBException e) { // unchecked
 			e.printStackTrace();
 		} catch (NamingException e) {
