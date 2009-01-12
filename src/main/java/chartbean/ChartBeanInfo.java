@@ -39,7 +39,7 @@ public class ChartBeanInfo extends SimpleBeanInfo {
 			md1.setShortDescription("Run a simple demonstration");
 
 			// SETDATA(ChartData[]);
-			Class argTypes[] = { Class.forName("ChartData[]") };
+			Class<?> argTypes[] = { Class.forName("ChartData[]") };
 			m = Chart.class.getMethod("setData", argTypes);
 			MethodDescriptor md2 = new MethodDescriptor(m);
 			md2.setShortDescription("Provide array of ChartData to plot");

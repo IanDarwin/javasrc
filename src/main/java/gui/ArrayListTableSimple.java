@@ -28,7 +28,7 @@ public class ArrayListTableSimple extends JFrame {
 		/** This defines the order of the columns. Must agree with columnClasses */
 		protected String[] myColumnNames = { "Name", "Value" };
 	
-		protected Class[] myColumnClasses = { String.class, String.class };
+		protected Class<?>[] myColumnClasses = { String.class, String.class };
 
 		/** Return the width of the table */
 		public int getColumnCount() { return 2; }
@@ -76,7 +76,7 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		Iterator it = p.keySet().iterator();
+		Iterator<?> it = p.keySet().iterator();
 
 		// Copy them into the ArrayList as ArrayListTableDatum entries.
 		while (it.hasNext()) {

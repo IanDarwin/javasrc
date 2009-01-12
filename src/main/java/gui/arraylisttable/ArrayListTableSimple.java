@@ -21,7 +21,7 @@ public class ArrayListTableSimple extends JFrame {
 		/** This defines the order of the columns. Must agree with columnClasses */
 		protected String[] myColumnNames = { "Name", "Value" };
 	
-		protected Class[] myColumnClasses = { String.class, String.class };
+		protected Class<?>[] myColumnClasses = { String.class, String.class };
 
 		/** Return the width of the table */
 		public int getColumnCount() { return 2; }

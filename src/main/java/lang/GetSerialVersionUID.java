@@ -13,7 +13,7 @@ public class GetSerVersUID {
 	public static void main(String[] av) throws Exception {
 
 		// First we construct a Class object for the given class
-		Class cl = Class.forName("Candidate");
+		Class<?> cl = Class.forName("Candidate");
 
 		// Then an ObjectStreamClass for the given class
 		ObjectStreamClass ocl = ObjectStreamClass.lookup(cl);

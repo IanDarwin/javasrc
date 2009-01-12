@@ -23,7 +23,7 @@ class UselessClassJustToShowAnnotation {
 
 	/** Print out the annotations attached to this class */
 	public static void main(String[] args) {
-		Class c = UselessClassJustToShowAnnotation.class;
+		Class<?> c = UselessClassJustToShowAnnotation.class;
 		System.out.println(c + " has these annotations:");
 		for (Annotation a : c.getAnnotations()) {
 			System.out.println(a);

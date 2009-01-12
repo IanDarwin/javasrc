@@ -25,7 +25,7 @@ public class StaticIniDemo {
 	public static void main(String[] a) {
 		try {
 			System.err.println("About to load class");
-			Class c = Class.forName("StaticIniDemo");
+			Class<?> c = Class.forName("StaticIniDemo");
 			System.err.println("About to construct instance");
 			Object sd = c.newInstance();
 			System.err.println("Object is " + sd);

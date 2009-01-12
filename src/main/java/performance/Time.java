@@ -10,10 +10,10 @@ import java.lang.reflect.*;
 public class Time {
 	public static void main(String[] argv) throws Exception {
 		// Instantiate target class, from argv[0]
-		Class c = Class.forName(argv[0]);
+		Class<?> c = Class.forName(argv[0]);
 
 		// Find its static main method (use our own argv as the signature).
-		Class[] classes = { argv.getClass() };
+		Class<?>[] classes = { argv.getClass() };
 		Method main = c.getMethod("main", classes);
 
 		// Make new argv array, dropping class name from front.
