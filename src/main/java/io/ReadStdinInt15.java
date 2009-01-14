@@ -9,13 +9,8 @@ import java.util.Scanner;
 public class ReadStdinInt15 {
 	public static void main(String[] ap) {
 		int val;
-		try {
-			Scanner sc = new Scanner(System.in);      // Requires Java 5
-			val = sc.nextInt();
-		} catch (NumberFormatException ex) {
-			System.err.println("Not a valid number: " + ex);
-			return;
-		}
+		Scanner sc = new Scanner(System.in);      // Requires Java 5
+		val = sc.nextInt();
 		System.out.println("I read this number: " + val);
 	}
 }
