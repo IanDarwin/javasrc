@@ -21,7 +21,6 @@
 	<target name="copy" depends="init">
 		<mkdir dir="${build}/META-INF"/>
 		<copy file="metadata/ejb-jar.xml" todir="${build}/META-INF"/>
-		<copy file="metadata/jndi.properties" todir="${build}"/>
 	</target>
 
 	<target name="jar" depends="compile, copy">

@@ -25,7 +25,6 @@
 			debug="true" deprecation="true">
 			<classpath refid="project.class.path"/>
 		</javac>
-		<copy file="metadata/jndi.properties" todir="${build}"/>
 		<mkdir dir="${build}/META-INF"/>
 		<copy file="metadata/ejb-jar.xml" todir="${build}/META-INF"/>
 	</target>
