@@ -46,9 +46,13 @@ abstract public class MusicBean implements EntityBean {
 	// create/postCreate methods.
 
 	/** Create the Music Recording. */
-	public Integer ejbCreate(String artist_name, String title, 
+	public Integer ejbCreate(int id, String artist_name, String title, 
 		int cat, double value) throws CreateException {
-		setId(r.nextInt());
+		if (id == 0) {
+			setId(r.nextInt(20000));
+		} else {
+			setId(id);			
+		}
 		setArtist(artist_name);
 		setTitle(title);
 		setCategory(cat);
@@ -56,9 +60,18 @@ abstract public class MusicBean implements EntityBean {
 
 		return null;  // Per EJB 1.1 specification
 	}
+	
+	public void ejbPostCreate(int id, String artistName, String title,
+			int cat, double value) throws CreateException { }
+	
+	public Integer ejbCreate(String artistName, String title, 
+			int cat, double value) throws CreateException {
+		ejbCreate(0, artistName, title, cat, value);
+		return null;
+	}
 
-	public void ejbPostCreate(String artist_name, String title,
-		int cat, double value) throws CreateException { }
+	public void ejbPostCreate(String artistName, String title,
+			int cat, double value) throws CreateException { }
 
 	// "Business" - actually conversion - methods
 

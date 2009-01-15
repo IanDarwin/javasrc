@@ -16,6 +16,10 @@ public interface MusicRemoteHome extends EJBHome {
 	public MusicRemote create(String artist_name, String title,
 		int cat, double price)
 		throws CreateException, RemoteException;
+	
+	public MusicRemote create(int id, String artist_name, String title,
+			int cat, double price)
+			throws CreateException, RemoteException;
 
 	/** Find by pkey, required method.
 	 */
