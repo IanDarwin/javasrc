@@ -7,8 +7,6 @@
 
 	<property file="../../../build.properties"/>
 
-	<property name="deploy.dir" value="/home/ian/jboss/server/default/deploy"/>
-	<property name="deploy.dir" value="/home/ftp/tmp/"/>
 	<property name="deploy.jar" value="music.jar"/>
 
 	<target name="init">
