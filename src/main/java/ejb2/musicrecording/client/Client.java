@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import ejb2.musicrecording.beans.MusicCategory;
 import ejb2.musicrecording.beans.MusicRemote;
 import ejb2.musicrecording.beans.MusicRemoteHome;
 import ejb2.musicrecording.beans.PublisherRemote;
@@ -34,15 +35,15 @@ public class Client {
 		try {
 			System.out.println("Getting context");
 			ctx = new InitialContext();
-			System.out.println("Looking up Home in " + ctx);
+			System.out.println("Looking up MR Home in " + ctx);
 			mh = (MusicRemoteHome)ctx.lookup("MusicRecording");
 			System.out.println("Found Home: " + mh);
 
-			
 			newEntity = mh.create("DarwinIan", "Greatest Hits", 0, 19.99);
 			System.out.println("Created " + newEntity);
 			
-			Collection<MusicRemote> recs = mh.findAllGreaterThan(0);
+			System.out.println("Finding by category " + MusicCategory.ROCK);
+			Collection<MusicRemote> recs = mh.findByCategory(1/*MusicCategory.ROCK.ordinal()*/);
 			for (MusicRemote m : recs) {
 				System.out.println(m);
 			}
@@ -53,10 +54,6 @@ public class Client {
 			System.out.println("Finding Publisher Entity " + pubid);
 			PublisherRemote pub = ph.findByPrimaryKey(pubid);
 			System.out.println("Found publisher: " + pub);
-
-			// Can't do this in a remote client; EJB2 CMR only 
-			// works with Local interfaces!
-			// mr.setPublisher(pub);
 
 			if (false) {
 				existingEntity.remove();

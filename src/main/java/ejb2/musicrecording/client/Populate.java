@@ -3,6 +3,7 @@ package ejb2.musicrecording.client;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+import ejb2.musicrecording.beans.MusicCategory;
 import ejb2.musicrecording.beans.MusicRemote;
 import ejb2.musicrecording.beans.MusicRemoteHome;
 import ejb2.musicrecording.beans.PublisherRemote;
@@ -44,7 +45,9 @@ public class Populate {
 		System.out.println("Found Home: " + ph);
 		for (int i=0; i<musicRecs.length; i++) {
 			MusicRemote mr;
-			mr = mh.create(i+1, musicRecs[i][0], musicRecs[i][1], 1, 19.99);
+			mr = mh.create(i+1, musicRecs[i][0], // artist
+					musicRecs[i][1], 	// title
+					MusicCategory.ROCK.ordinal(), 19.99);
 			System.out.println("Created " + mr);
 		}
 		System.out.println("Populated Publisher Table.");

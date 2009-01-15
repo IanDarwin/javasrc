@@ -16,5 +16,12 @@
 <cmp-field><field-name>category</field-name></cmp-field>
 <cmp-field><field-name>price</field-name></cmp-field>
 </entity>
+<entity>
+<ejb-name>Publisher</ejb-name>
+<cmp-field><field-name>id</field-name></cmp-field>
+<cmp-field><field-name>name</field-name></cmp-field>
+<cmp-field><field-name>city</field-name></cmp-field>
+<cmp-field><field-name>phone</field-name></cmp-field>
+</entity>
 </enterprise-beans>
 </jbosscmp-jdbc>
