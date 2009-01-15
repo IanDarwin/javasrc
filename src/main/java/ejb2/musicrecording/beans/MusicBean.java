@@ -1,5 +1,6 @@
 package ejb2.musicrecording.beans;
 
+import java.util.Random;
 import javax.ejb.CreateException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
@@ -40,12 +41,14 @@ abstract public class MusicBean implements EntityBean {
 	abstract public void setPublisher(PublisherLocal val);
 	abstract public void setPublisher(PublisherRemote val);
 
+	private Random r = new Random();
+
 	// create/postCreate methods.
 
 	/** Create the Music Recording. */
 	public Integer ejbCreate(String artist_name, String title, 
 		int cat, double value) throws CreateException {
-		setId(new Integer(1234));	// XX see auto-increment how-to doc
+		setId(r.nextInt());
 		setArtist(artist_name);
 		setTitle(title);
 		setCategory(cat);
