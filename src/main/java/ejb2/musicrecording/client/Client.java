@@ -37,18 +37,23 @@ public class Client {
 			mh = (MusicRemoteHome)ctx.lookup("MusicRecording");
 			System.out.println("Found Home: " + mh);
 
+			Integer id = Integer.valueOf(1234);
 			try {
-				existingEntity = mh.findByPrimaryKey(new Integer(1234));
+				existingEntity = mh.findByPrimaryKey(id);
 				System.out.println("Found " + existingEntity);
 				existingEntity.remove();
 			} catch (Exception e) {
+				System.out.println("Did not find" + id);
 				System.out.println("Caught " + e + "; this may be OK");
 			}
-			newEntity = mh.create("DarwinIan", "Greatest His/Hers", 0, 19.99);
+			newEntity = mh.create("DarwinIan", "Greatest Hits", 0, 19.99);
 			System.out.println("Created " + newEntity);
 
+			System.out.println("Getting PublisherRemoteHome");
 			PublisherRemoteHome ph = (PublisherRemoteHome)ctx.lookup("Publisher");
-			PublisherRemote pub = ph.findByPrimaryKey(new Integer(3));
+			Integer pubid = Integer.valueOf(3);
+			System.out.println("Finding Publisher Entity " + pubid);
+			PublisherRemote pub = ph.findByPrimaryKey(pubid);
 			System.out.println("Found publisher: " + pub);
 
 			// Can't do this in a remote client; EJB2 CMR only 
