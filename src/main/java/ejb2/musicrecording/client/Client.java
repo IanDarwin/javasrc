@@ -1,6 +1,7 @@
 package ejb2.musicrecording.client;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
@@ -37,18 +38,15 @@ public class Client {
 			mh = (MusicRemoteHome)ctx.lookup("MusicRecording");
 			System.out.println("Found Home: " + mh);
 
-			Integer id = Integer.valueOf(1234);
-			try {
-				existingEntity = mh.findByPrimaryKey(id);
-				System.out.println("Found " + existingEntity);
-				existingEntity.remove();
-			} catch (Exception e) {
-				System.out.println("Did not find" + id);
-				System.out.println("Caught " + e + "; this may be OK");
-			}
+			
 			newEntity = mh.create("DarwinIan", "Greatest Hits", 0, 19.99);
 			System.out.println("Created " + newEntity);
-
+			
+			Collection<MusicRemote> recs = mh.findAllGreaterThan(0);
+			for (MusicRemote m : recs) {
+				System.out.println(m);
+			}
+			
 			System.out.println("Getting PublisherRemoteHome");
 			PublisherRemoteHome ph = (PublisherRemoteHome)ctx.lookup("Publisher");
 			Integer pubid = Integer.valueOf(3);
