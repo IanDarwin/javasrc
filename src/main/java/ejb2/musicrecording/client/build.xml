@@ -27,7 +27,7 @@
 
 	<!-- Must be run manually -->
 	<target name="populate" depends="build">
-		<java className="ejb2.musicrecording.client.PopulatePublishers"
+		<java className="ejb2.musicrecording.client.Populate"
 			classpath="${build}:${client.jar}:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
 	</target> 
 
