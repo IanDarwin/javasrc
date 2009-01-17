@@ -17,7 +17,7 @@ abstract public class MusicBean implements EntityBean {
 
 	/** No-argument constructor (required by law :-)) */
 	public MusicBean() {
-	};
+	}
 
 	// Abstract, "virtual", container managed fields
 
