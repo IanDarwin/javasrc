@@ -2,6 +2,10 @@ package ejb2.musicrecording.beans;
 
 import javax.ejb.EJBLocalObject;
 
+/**
+ * The Local Business interface for the MusicRecording Entity EJB 2.1
+ * @author Ian Darwin
+ */
 public interface MusicLocal extends EJBLocalObject {
 
 	abstract public String getArtist();

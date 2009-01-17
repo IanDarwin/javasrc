@@ -2,8 +2,8 @@ package ejb2.musicrecording.beans;
 
 import javax.ejb.EJBLocalObject;
 
-/** Publisher EJB.
- * Local Interfaces ONLY.
+/** Local Business interface for Publisher Entity.
+ * @author Ian Darwin
  */
 public interface PublisherLocal extends EJBLocalObject {
 

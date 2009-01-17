@@ -4,7 +4,9 @@ import java.rmi.RemoteException;
 
 import javax.ejb.EJBObject;
 
-/** Publisher EJB.
+/** 
+ * Remote Business interface for Publisher EJB.
+ * @author Ian Darwin
  */
 public interface PublisherRemote extends EJBObject {
 

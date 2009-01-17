@@ -27,19 +27,25 @@ public interface MusicRemoteHome extends EJBHome {
 		throws FinderException, RemoteException;
 
 	/**
-	 * Finds all beans with a given category.
+	 * Finds all beans, period
+	 */
+	public Collection<MusicRemote> findAll()
+		throws FinderException, RemoteException;
+
+	/**
+	 * Finds all Recordings with a given category.
 	 */
 	public Collection<MusicRemote> findByCategory(int category)
 		throws FinderException, RemoteException;
 
 	/**
-	 * Finds all the EJB greater than certain price
+	 * Finds all Recordings with price greater than price
 	 */
 	public Collection<MusicRemote> findAllGreaterThan(double price) 
 		throws FinderException, RemoteException;
 
 	/**
-	 * Finds all the EJB less than certain price
+	 * Finds all Recordings with price less than price
 	 */
 	public Collection<MusicRemote> findByPriceLessThan(double price) 
 		throws FinderException, RemoteException;

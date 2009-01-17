@@ -5,8 +5,9 @@ import java.util.Collection;
 import javax.ejb.EJBLocalHome;
 import javax.ejb.FinderException;
 
-/** Publisher object Local Home interface.
- * IMMUTABLE; no create methods.
+/** Local Home interface for the Publisher Entity EJB.
+ * IMMUTABLE LIST; no create methods.
+ * @author Ian Darwin
  */
 public interface PublisherLocalHome extends EJBLocalHome {
 

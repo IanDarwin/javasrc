@@ -7,7 +7,8 @@ import javax.ejb.CreateException;
 import javax.ejb.EJBHome;
 import javax.ejb.FinderException;
 
-/** Publisher object Remote Home interface.
+/** Remote Home interface for Publisher EJB Entity.
+ * @author Ian Darwin
  */
 public interface PublisherRemoteHome extends EJBHome {
 

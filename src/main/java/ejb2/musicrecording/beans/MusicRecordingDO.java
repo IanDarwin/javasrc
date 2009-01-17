@@ -44,7 +44,8 @@ public class MusicRecordingDO implements java.io.Serializable {
 
 		this(NO_PKEY, artist, title, category, publisher, price);
 	}
-	/** Get int */
+
+	/** Get identity */
 	public int getId() {
 		return id;
 	}

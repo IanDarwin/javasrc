@@ -5,8 +5,7 @@ import java.rmi.RemoteException;
 import javax.ejb.EJBObject;
 
 /**
- * MusicRemote - Entity Bean for Music Recordings in RainForest.
- * There are no methods in the Remote interface.
+ * MusicRemote - Remote Business interface for MusicRecording Entity.
  * @author Rewrite by Ian Darwin
  */
 public interface MusicRemote extends EJBObject {
@@ -19,7 +18,7 @@ public interface MusicRemote extends EJBObject {
 	public MusicRecordingDO getRecording() throws RemoteException;
 	public void setRecording(MusicRecordingDO rec) throws RemoteException;
 
-	// These methods would be illegal
+	// These methods would probably be illegal
 	// public void setPublisher(PublisherRemote p);
 	// public PublisherRemote getPublisher();
 }

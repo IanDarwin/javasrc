@@ -5,8 +5,12 @@ package ejb2.musicrecording.beans;
  * the ordinal() value is used as values in the database!!
  */
 public enum MusicCategory {
+	/** the Category for "none", "unset" or "unknown" */
 	NONE,
+	/** The Category for classical music */
 	CLASSICAL,
+	/** The Category for Jazz music */
 	JAZZ,
+	/** The Category for Rock and Roll */
 	ROCK
 }

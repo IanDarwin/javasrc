@@ -6,8 +6,13 @@ import javax.ejb.CreateException;
 import javax.ejb.EJBLocalHome;
 import javax.ejb.FinderException;
 
+/**
+ * The LocalHome interface for the MusicRecording Entity EJB2.1
+ * @author Ian Darwin
+ */
 public interface MusicLocalHome extends EJBLocalHome {
 
+	/** Create a MusicRecording with artist, title, category and price */
 	public MusicLocal create(String artist_name, String title,
 		int cat, double price)
 		throws CreateException;
@@ -15,6 +20,12 @@ public interface MusicLocalHome extends EJBLocalHome {
 	/** Find by pkey, required method.
 	 */
 	public MusicLocal findByPrimaryKey(Integer primaryKey)
+		throws FinderException;
+
+	/**
+	 * Finds all Recordings, period.
+	 */
+	public Collection<MusicLocal> findAll()
 		throws FinderException;
 
 	/**
