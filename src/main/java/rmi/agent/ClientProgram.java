@@ -45,9 +45,9 @@ public class ClientProgram {
 
 		System.out.println("Client program ready.");
 
-		Class[] args = { double.class };
+		Class<?>[] args = { double.class };
 		Method setThreshold = Agent.class.getMethod("setThreshold", args);
-		Method getThreshold = Agent.class.getMethod("getThreshold", null);
+		Method getThreshold = Agent.class.getMethod("getThreshold", (Class<?>)null);
 		//Agent myClient = null;
 		for (int i = 0; i < 10; i++) {
 
