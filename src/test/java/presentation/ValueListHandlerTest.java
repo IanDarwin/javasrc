@@ -1,18 +1,16 @@
 package structure;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class ValueListHandlerTest extends TestCase {
+public class ValueListHandlerTest {
 
-	ValueListHandler<Integer> fixture;
-
-	protected void setUp() throws Exception {
-		super.setUp();
-		fixture = new ValueListHandler<Integer>(generateList(50));
-	}
+	ValueListHandler<Integer> fixture =
+		new ValueListHandler<Integer>(generateList(50));
 
 	/**
 	 * Make up the fake data.
@@ -25,12 +23,14 @@ public class ValueListHandlerTest extends TestCase {
 		return t;
 	}
 
+	@Test
 	public final void testNextPage() {
 		List<Integer> page = fixture.nextPage();
 		assertEquals(10, page.size());
 		assertEquals(Integer.valueOf(3), page.get(3 - 1)); // -1 cuz List starts @0
 	}
 
+	@Test
 	public final void testPrevPage() {
 		fixture.nextPage();	// 1-10
 		fixture.nextPage(); // 11-20
@@ -40,6 +40,7 @@ public class ValueListHandlerTest extends TestCase {
 		assertEquals(Integer.valueOf(13), page.get(3 - 1)); // -1 cuz List starts @0
 	}
 
+	@Test
 	public final void testUnderflow() {
 		fixture.nextPage();
 		fixture.prevPage();
@@ -47,6 +48,7 @@ public class ValueListHandlerTest extends TestCase {
 		fixture.prevPage();
 	}
 
+	@Test
 	public final void testOverflow() {
 		fixture.nextPage();
 		fixture.nextPage();
@@ -58,6 +60,7 @@ public class ValueListHandlerTest extends TestCase {
 		fixture.nextPage();
 	}
 	
+	@Test
 	public void testEvenPageSize() {
 		fixture.setPageSize(20);
 		assertEquals(20, fixture.nextPage().size());
@@ -65,6 +68,7 @@ public class ValueListHandlerTest extends TestCase {
 		assertEquals(10, fixture.nextPage().size());
 	}
 	
+	@Test
 	public void testOddPageSize() {
 		fixture.setPageSize(19);
 		assertEquals(19, fixture.nextPage().size());
