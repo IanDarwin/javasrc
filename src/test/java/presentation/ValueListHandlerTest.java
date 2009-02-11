@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class ValueListHandlerTest {
 
-	ValueListHandler<Integer> fixture =
+	ValueListHandler<Integer> target =
 		new ValueListHandler<Integer>(generateList(50));
 
 	/**
@@ -25,54 +25,54 @@ public class ValueListHandlerTest {
 
 	@Test
 	public final void testNextPage() {
-		List<Integer> page = fixture.nextPage();
+		List<Integer> page = target.nextPage();
 		assertEquals(10, page.size());
 		assertEquals(Integer.valueOf(3), page.get(3 - 1)); // -1 cuz List starts @0
 	}
 
 	@Test
 	public final void testPrevPage() {
-		fixture.nextPage();	// 1-10
-		fixture.nextPage(); // 11-20
-		fixture.nextPage(); // 21-30
-		List<Integer> page = fixture.prevPage();
+		target.nextPage();	// 1-10
+		target.nextPage(); // 11-20
+		target.nextPage(); // 21-30
+		List<Integer> page = target.prevPage();
 		assertEquals(10, page.size());
 		assertEquals(Integer.valueOf(13), page.get(3 - 1)); // -1 cuz List starts @0
 	}
 
 	@Test
 	public final void testUnderflow() {
-		fixture.nextPage();
-		fixture.prevPage();
-		fixture.prevPage();
-		fixture.prevPage();
+		target.nextPage();
+		target.prevPage();
+		target.prevPage();
+		target.prevPage();
 	}
 
 	@Test
 	public final void testOverflow() {
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
-		fixture.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
+		target.nextPage();
 	}
 	
 	@Test
 	public void testEvenPageSize() {
-		fixture.setPageSize(20);
-		assertEquals(20, fixture.nextPage().size());
-		assertEquals(20, fixture.nextPage().size());
-		assertEquals(10, fixture.nextPage().size());
+		target.setPageSize(20);
+		assertEquals(20, target.nextPage().size());
+		assertEquals(20, target.nextPage().size());
+		assertEquals(10, target.nextPage().size());
 	}
 	
 	@Test
 	public void testOddPageSize() {
-		fixture.setPageSize(19);
-		assertEquals(19, fixture.nextPage().size());
-		assertEquals(19, fixture.nextPage().size());
-		assertEquals(12, fixture.nextPage().size());
+		target.setPageSize(19);
+		assertEquals(19, target.nextPage().size());
+		assertEquals(19, target.nextPage().size());
+		assertEquals(12, target.nextPage().size());
 	}
 }
