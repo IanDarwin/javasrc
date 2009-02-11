@@ -21,7 +21,7 @@ public class MyStackDemo {
 		// Show that it is broken 
 		try {
 			String bad = (String)ms2.pop();
-			System.err.println("Didn't get expected exception!");
+			System.err.println("Didn't get expected exception, popped " + bad);
 		} catch (ClassCastException ex) {
 			System.out.println("Did get expected exception.");
 		}
