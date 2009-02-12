@@ -16,8 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	MyStackTest.class,
 	QueueTest.class,
 	RandomPropsTest.class,
-	ToyStackTest.class,
-	ValueListHandlerTest.class
+	ToyStackTest.class
 })
 public class AllTests {
 	// No Code Needed
