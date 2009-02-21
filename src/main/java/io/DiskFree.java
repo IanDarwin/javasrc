@@ -1,7 +1,8 @@
 package io;
 
 import java.io.File;
-import com.darwinsys.text.ScaledNumberFormat;
+
+import com.darwinsys.util.ScaledNumberFormat;
 
 public class DiskFree {
 
