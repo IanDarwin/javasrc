@@ -16,7 +16,7 @@ public class SingletonLazy {
 	}
 	
 	/** Static 'instance' method, replete with lazy construction. Having it
-	 * all synchronized is the best way to make it thread safe (see the older paper
+	 * all synchronized is the best way to make it thread safe; see the older paper
 	 * "The "Double-Checked Locking is Broken" Declaration" signed by the likes
 	 * of Josh Bloch, Doug Lea, Bill Pugh, and others, online at 
 	 * http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html
