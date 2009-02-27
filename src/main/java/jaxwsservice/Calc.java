@@ -13,15 +13,17 @@ public class Calc {
 	}
 	
 	public int subtract(int a, int b) {
-		System.out.println("CalcImpl.add()");
+		System.out.println("CalcImpl.subtract()");
 		return a - b;
 	}
 
 	public int multiply(int a, int b) {
+		System.out.println("CalcImpl.multiply()");
 		return a * b;
 	}
 	
 	public int divide(int a, int b) {
+		System.out.println("CalcImpl.divide()");		
 		if (b == 0) {
 			// slightly better-than-average message
 			throw new ArithmeticException(
