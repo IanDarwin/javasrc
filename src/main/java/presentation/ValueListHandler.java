@@ -24,8 +24,8 @@ public class ValueListHandler<T> {
 		list = new ArrayList<T>();
 	}
 
-	public ValueListHandler(List<T> myList) {
-		list = myList;
+	public ValueListHandler(List<T> oldList) {
+		list = oldList;
 	}
 
 	public List<T> nextPage() {
