@@ -21,6 +21,8 @@ public class ReadPassword {
 					java.util.Arrays.fill(passwd, ' ');
 				}
 			}
+		} else {
+			throw new RuntimeException("No console, can't get password");
 		}
 	}
 }
