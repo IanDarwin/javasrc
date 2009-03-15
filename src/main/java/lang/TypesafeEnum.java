@@ -21,7 +21,7 @@ import java.util.Map;
  * /**
  *  * An Enum for Upload/Download Direction
  *  *
- * public class Direction extends Enum {
+ * public class Direction extends TypesafeEnum {
  * 	public static final String KLASSNAME = "Direction";
  * 	
  * 	/** Constructor must be private to ensure typesafe enumeration pattern *
