@@ -1,6 +1,6 @@
 package io;
 
-import java.io.*;
+import java.io.Console;
 
 /**
  * Read a password from the user.
