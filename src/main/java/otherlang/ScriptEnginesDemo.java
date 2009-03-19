@@ -1,4 +1,4 @@
-package scripting;
+package otherlang;
 
 import java.util.List;
 
