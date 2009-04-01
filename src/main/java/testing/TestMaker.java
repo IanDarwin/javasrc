@@ -42,7 +42,7 @@ public class GenTest {
 	 * @param fullClassName - the class to write tests for
 	 */
 	private void emit(String fullClassName, String printableClassName, String testClassName) {
-		Class klass = null;
+		Class<?> klass = null;
 		try {
 			klass = Class.forName(fullClassName);
 		} catch (ClassNotFoundException e) {
@@ -94,9 +94,9 @@ public class GenTest {
 		
 		// Get list of arguments. Declare a local var for each.
 
-		Class[] paramTypes = method.getParameterTypes();
+		Class<?>[] paramTypes = method.getParameterTypes();
 		for (int i = 0; i < paramTypes.length; i++) {
-			Class thisArgClass = paramTypes[i];
+			Class<?> thisArgClass = paramTypes[i];
 			out.print("\t\t" + thisArgClass.getName() + " arg" + i + "= ");
 			if (thisArgClass.equals(boolean.class)) {
 				out.print(false);
