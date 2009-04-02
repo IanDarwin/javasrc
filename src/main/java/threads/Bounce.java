@@ -8,16 +8,19 @@ import java.awt.MediaTracker;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
 
 /** This is the Bounce class; create and start Sprites, using Threads. */
 public class Bounce extends Applet implements ActionListener {
+
+	private static final long serialVersionUID = -5359162621719520213L;
 	/** The main Panel */
 	protected Panel p;
 	/** The image, shared by all the Sprite objects */
 	protected Image img;
 	/** A Vector of Sprite objects. */
-	protected Vector v;
+	protected List<Sprite> v;
 
     public void init() {
 		Button b = new Button("Start");
@@ -41,7 +44,7 @@ public class Bounce extends Applet implements ActionListener {
 			throw new IllegalArgumentException(
 				"Couldn't load image " + imgName);
 		}
-		v = new Vector();
+		v = new Vector<Sprite>(); // multithreaded, use Vector
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -49,12 +52,12 @@ public class Bounce extends Applet implements ActionListener {
 		Sprite s = new Sprite(this, img);
 		s.start();
 		p.add(s);
-		v.addElement(s);
+		v.add(s);
     }
 
     public void stop() {
 		for (int i=0; i<v.size(); i++) {
-			((Sprite)(v.get(i))).stop();
+			v.get(i).stop();
 		}
 		v.clear();
     }
