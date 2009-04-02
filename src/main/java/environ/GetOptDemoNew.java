@@ -20,8 +20,8 @@ public class GetOptDemoNew {
 			new GetOptDesc('o', "output-file", true),
 		};
 		GetOpt parser = new GetOpt(options);
-		Map optionsFound = parser.parseArguments(argv);
-		Iterator it = optionsFound.keySet().iterator();
+		Map<String,String> optionsFound = parser.parseArguments(argv);
+		Iterator<String> it = optionsFound.keySet().iterator();
 		while (it.hasNext()) {
 			String key = (String)it.next();
 			char c = key.charAt(0);
