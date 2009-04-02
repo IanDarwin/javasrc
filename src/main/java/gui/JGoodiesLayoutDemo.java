@@ -28,14 +28,20 @@ public class JGoodiesLayoutDemo {
 		new JGoodiesLayoutDemo();
 	}
 
+	private final JFrame jf;
+	
 	public JGoodiesLayoutDemo() {
 
-		JFrame jf = new JFrame("JGoodies Form Demo");
+		jf = new JFrame("JGoodies Form Demo");
 		jf.add(buildMainComponents(), BorderLayout.CENTER);
 		jf.add(buildBottomPanel(), BorderLayout.SOUTH);
 		jf.pack();
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
+	}
+	
+	// Delegation method
+	public void setVisible(boolean v) {
+		jf.setVisible(v);
 	}
 
 	private Component buildBottomPanel() {
