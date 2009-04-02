@@ -25,6 +25,7 @@ public class Cookie implements Comparable {
 	public boolean secure;
 	/** When to expire. Arghh! This should have been a long! Y2038 ALERT */
 	public int expDate;
+	private String comment;
 
 	/** Number of fields */
 	public final static int WIDTH = 7;
@@ -73,10 +74,6 @@ public class Cookie implements Comparable {
 	}
 	public String getDomain() { return url; }
 
-	public void setComment(String foo) { 
-		// why set what you can't get? 
-	}
-
 	public String getName() { return name; }
 
 	public int getExpiry() { return expDate; }
@@ -92,8 +89,13 @@ public class Cookie implements Comparable {
 	 */
 	public void setMaxAge(int when) { setExpiry(when); }
 
-	public String getComment() { return "This is a comment."; }
+	public String getComment() { 
+		return comment;
+	}
 
+	public void setComment(String foo) { 
+		this.comment = foo;
+	}
 	public boolean isClient() {
 		return fromJavaScript;
 	}
