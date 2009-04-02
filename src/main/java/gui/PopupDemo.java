@@ -16,7 +16,8 @@ import java.awt.event.MouseEvent;
  * isPopupTrigger() method behaves instantly - which is as it should be!
  */
 public class PopupDemo extends Frame {
-	/** "main" method - for testing. */
+
+	/** "main" demo method . */
 	public static void main(String[] av) {
 		new PopupDemo("Hello").setVisible(true);
 	}

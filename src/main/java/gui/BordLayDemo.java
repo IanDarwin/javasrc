@@ -21,7 +21,6 @@ public class BordLayDemo extends Frame {
 			if (b.get(i))
 				add(new Button(cp[i]), cp[i]);
 		pack();
-		setVisible(true);
 	}
 
 	public static void main(String[] av) {
@@ -31,16 +30,15 @@ public class BordLayDemo extends Frame {
 		b.set(SOUTH);
 		b.set(WEST);
 		b.set(CENTER);
-		new BordLayDemo("All", b);
+		new BordLayDemo("All", b).setVisible(true);
 
 		b.clear(CENTER);
-		new BordLayDemo("Compass", b);
+		new BordLayDemo("Compass", b).setVisible(true);
 
 		b.set(CENTER);
 		b.clear(NORTH);
 		b.clear(SOUTH);
-		new BordLayDemo("Horizontal", b);
-
+		new BordLayDemo("Horizontal", b).setVisible(true);
 	}
 }
 

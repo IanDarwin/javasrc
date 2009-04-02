@@ -26,7 +26,6 @@ public class BordLayDemo2 extends Frame {
 			if (b.get(i))
 				add(canvases[i], cp[i]);
 		pack();
-		setVisible(true);
 	}
 
 	public static void main(String[] av) {
@@ -36,20 +35,20 @@ public class BordLayDemo2 extends Frame {
 		b.set(SOUTH);
 		b.set(WEST);
 		b.set(CENTER);
-		new BordLayDemo2("All", b);
+		new BordLayDemo2("All", b).setVisible(true);
 
 		b.clear(CENTER);
-		new BordLayDemo2("Compass", b);
+		new BordLayDemo2("Compass", b).setVisible(true);
 
 		b.set(CENTER);
 		b.clear(NORTH);
 		b.clear(SOUTH);
-		new BordLayDemo2("Horizontal", b);
+		new BordLayDemo2("Horizontal", b).setVisible(true);
 
 		b.set(NORTH);
 		b.set(SOUTH);
 		b.clear(EAST);
 		b.clear(WEST);
-		new BordLayDemo2("Vertical", b);
+		new BordLayDemo2("Vertical", b).setVisible(true);
 	}
 }

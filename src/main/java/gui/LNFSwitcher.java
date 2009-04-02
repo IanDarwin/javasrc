@@ -74,7 +74,6 @@ public class LNFSwitcher {
 		(previousButton = bDefault).setSelected(true);
 
 		theFrame.pack();
-		theFrame.setVisible(true);
 	}
 
 	/* Class to set the Look and Feel on a frame */
@@ -105,6 +104,7 @@ public class LNFSwitcher {
 	}
 
 	public static void main(String[] argv) {
-		new LNFSwitcher();
+		LNFSwitcher o = new LNFSwitcher();
+		o.theFrame.setVisible(true);
 	}
 }
