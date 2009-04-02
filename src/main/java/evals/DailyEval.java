@@ -1,9 +1,22 @@
 package evals;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 class BorderPanel extends Panel {
 	/** Paint -- just draw a tiny border */
