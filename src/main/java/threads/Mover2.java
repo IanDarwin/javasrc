@@ -41,8 +41,9 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Extend Mover by adding the ability to start multi threads. */
 public class Mover2 extends Mover {

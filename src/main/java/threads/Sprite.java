@@ -1,6 +1,8 @@
 package threads;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
 
 /** A Sprite is one Image that moves around the screen on its own */
 public class Sprite extends Component implements Runnable {

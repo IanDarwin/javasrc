@@ -1,9 +1,14 @@
 package threads;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 /** This is the Bounce class; create and start Sprites, using Threads. */
 public class Bounce extends Applet implements ActionListener {

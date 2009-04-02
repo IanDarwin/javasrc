@@ -41,9 +41,11 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
 /** A failed attempt at catching interrupts thrown in the GUI
  * event thread.

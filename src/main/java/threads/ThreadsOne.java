@@ -41,9 +41,11 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Threaded Labels: each instance of this class

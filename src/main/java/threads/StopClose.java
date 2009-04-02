@@ -41,8 +41,10 @@ package threads;
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 
 /** Stop a thread by closing a socket.
  */
