@@ -80,7 +80,7 @@ public class EvalServer
 			// log(ident, e.c1);
 	}
 	
-	public void setVisible(boolean v) {
+	private void setVisible(boolean v) {
 		f.setVisible(v);
 	}
 

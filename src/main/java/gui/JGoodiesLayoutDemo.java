@@ -41,7 +41,7 @@ public class JGoodiesLayoutDemo {
 	}
 	
 	// Delegation method
-	public void setVisible(boolean v) {
+	void setVisible(boolean v) {
 		jf.setVisible(v);
 	}
 
