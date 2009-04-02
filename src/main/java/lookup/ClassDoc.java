@@ -1,11 +1,14 @@
 package lookup;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Properties;
 
 public class ClassDoc extends Applet {
 
@@ -65,13 +68,7 @@ public class ClassDoc extends Applet {
 			listURL = new URL(getCodeBase(),
 				"ClassDoc.properties");
 			map.load(listURL.openStream());
-		} catch (MalformedURLException exc) {
-			System.err.println(exc);
-			showStatus("ERROR See Java Console");
-		} catch (IOException exc) {
-			System.err.println(exc);
-			showStatus("ERROR See Java Console");
-		} catch (SecurityException exc) {
+		} catch (Exception exc) {
 			System.err.println(exc);
 			showStatus("ERROR See Java Console");
 		}
