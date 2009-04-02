@@ -48,6 +48,10 @@ public class Cookie implements Comparable {
 		name = n;
 		value = v;
 	}
+	
+	public Cookie() {
+		// empty
+	}
 
 	int version = 0;
 	public void setVersion(int vers) { version = vers; }
