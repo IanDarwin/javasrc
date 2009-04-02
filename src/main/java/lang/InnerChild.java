@@ -8,6 +8,9 @@ package lang;
  */
 public class InnerChild {
 	public class InnerInnerChild extends InnerChild {
+		private InnerInnerChild() {
+			// empty
+		}
 	}
 	public static void main(String[] argv) {
 		// System.out.println(new InnerChild.InnerInnerChild()); // NOT how!
