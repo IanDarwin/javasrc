@@ -130,8 +130,8 @@
 			<exclude name="strings/WolfInStringsClothing.java"/>
 			<exclude name="unfinished/**.java"/>
 			<exclude name="Contrib/**.java"/>
-			<exclude name="Contrib/JDBCDriver-Moss/*.java"/>
-			<exclude name="Contrib/treelayout/*.java"/>
+			<include name="Contrib/JDBCDriver-Moss/*.java"/>
+			<include name="Contrib/treelayout/*.java"/>
 			<exclude name="graphics/QTMoviePlayer.java"/>
 			<exclude name="lang/Switch.java"/>
 			<exclude name="lang/UsePackage.java"/>
