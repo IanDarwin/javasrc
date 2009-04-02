@@ -1,4 +1,4 @@
-<project name="Java Cookbook Examples" default="build" basedir=".">
+<project name="javasrc - Java Cookbook Examples" default="build" basedir=".">
 
 	<!-- Ant buildfile for Java Cookbook examples.
 	 *** There is a separate antfile for exporting the
