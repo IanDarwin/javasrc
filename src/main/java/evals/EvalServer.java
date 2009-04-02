@@ -4,8 +4,8 @@ import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DecimalFormat;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 
@@ -15,8 +15,9 @@ public class EvalServer
 	extends UnicastRemoteObject 
 	implements NetEvaluation,NetEvalInfo {
 
+	private static final long serialVersionUID = 8389070521175944791L;
 	/** The list of all Evaluations received */
-	private Hashtable h;
+	private Map<String, Evaluation> h;
 	/** true if driving a GUI */
 	private boolean isVisual = true;
 	/** true to provide test data */
@@ -31,18 +32,13 @@ public class EvalServer
 	public EvalServer() throws java.rmi.RemoteException {
 		super();
 		// System.out.println("In EvalServer constructor");
-		h = new Hashtable();
+		h = new HashMap<String,Evaluation>();
 		if (!isVisual)
 			return;
 		f = new JFrame("Daily Evaluation Server");
 		f.setLocation(100, 100);
 		f.setContentPane(g = new Grapher());
-		try {
-			f.pack();
-			f.setVisible(true);
-		} catch (Error e) {
-			isVisual = false;
-		}
+		f.pack();
 	}
 
 	public void sendEval(Evaluation e) 
@@ -61,10 +57,7 @@ public class EvalServer
 			// was an "overriding" evaluation
 			crsTot = insTot = nEvals = 0;
 
-			Enumeration evals;
-			Evaluation tmp = null;
-			for (evals = h.keys(); evals.hasMoreElements();) {
-				tmp = (Evaluation)h.get(evals.nextElement());
+			for (Evaluation tmp : h.values()) {
 				// System.out.println("tmp got " + tmp);
 				crsTot += tmp.course;
 				insTot += tmp.instr;
@@ -86,6 +79,10 @@ public class EvalServer
 		// if (e.c1 != null && c1.length != 0)
 			// log(ident, e.c1);
 	}
+	
+	public void setVisible(boolean v) {
+		f.setVisible(v);
+	}
 
 	public static void main(String[] av) throws java.rmi.RemoteException {
 		EvalServer eServ = null;
@@ -96,6 +93,7 @@ public class EvalServer
 			eServ = new EvalServer();
 			Naming.rebind("//"+SERVER+"/EvalServer", eServ);
 			System.out.println("EvalServer bound in registry");
+			eServ.setVisible(true);
 		} catch (Exception e) {
 			System.out.println("EvalServer err: " + e.getMessage());
 			e.printStackTrace();
