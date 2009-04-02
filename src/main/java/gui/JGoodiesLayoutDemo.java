@@ -25,7 +25,8 @@ public class JGoodiesLayoutDemo {
 	boolean debug = false;
 
 	public static void main(String[] args) {
-		new JGoodiesLayoutDemo();
+		final JGoodiesLayoutDemo demo = new JGoodiesLayoutDemo();
+		demo.setVisible(true);
 	}
 
 	private final JFrame jf;
