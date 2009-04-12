@@ -2,10 +2,10 @@ package reflection;
 
 import java.awt.Frame;
 
-/** Demonstrate "classFor" to create an instance of an object. */
+/** Demonstrate "class.forName" to create an instance of an object. */
 public class ClassForName {
 	public static void main(String[] av) {
-		Class  c = null;
+		Class<?>  c = null;
 		Object o = null;
 		try {
 			// Load the class, return a Class for it
