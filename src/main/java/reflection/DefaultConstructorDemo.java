@@ -10,10 +10,14 @@ public class DefaultConstructorDemo {
 	public static class PublicClassWithDefaultConstr {
 		// all-default
 	}
+	public static class PublicClassWithDefaultVisDefaultConstr {
+		PublicClassWithDefaultVisDefaultConstr() { }
+	}
 	/* not public */ static class DefaultClassVizDefaultConstr {
 		// all-default
 	}
 
+	// This one will fail.
 	static class NoDefaultConstructor {
 		public NoDefaultConstructor(Object o) {
 			// just to make T not have a default constructor
@@ -21,7 +25,8 @@ public class DefaultConstructorDemo {
 	}
 
 	static Class<?>[] clazzes = { 
-		PublicClassWithDefaultConstr.class, 
+		PublicClassWithDefaultConstr.class,
+		PublicClassWithDefaultVisDefaultConstr.class,
 		NoDefaultConstructor.class,
 		DefaultClassVizDefaultConstr.class
 	};
