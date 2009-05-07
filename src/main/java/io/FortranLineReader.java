@@ -33,10 +33,10 @@ public class FortranLineReader extends ContLineReader {
 	public String readLine() throws IOException {
 		// Read the first line. 
 		String s = readPhysicalLine();
-		if (s == null)
+		if (s == null) {
 			hitEOF = true;
-		if (hitEOF)
 			return null;
+		}
 		if (s.charAt(0) == COMMENT_CHAR) {
 			statementNum = null;
 			return s;
