@@ -38,13 +38,12 @@ public class DefaultConstructorDemo {
 			try {
 				// Construct an object, as if by "new Type()"
 				Constructor<?> con = c.getConstructor(new Class<?>[0]);
-				System.out.println("Find default con: " + con);
+				System.out.println("Found default con: " + con);
 				Object o = con.newInstance(new Object[0]);
 				System.out.println("WORKED: " + o);
 
 			} catch (Exception e) {
 				System.out.println("FAIL: " + e);
-				e.printStackTrace(System.out);
 			}
 		}
 	}
