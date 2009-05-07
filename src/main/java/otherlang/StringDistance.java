@@ -1,18 +1,18 @@
 package otherlang;
 
-/** Example of a Java Class that calls a Perl function.
- * <br/>
- * Does not run on its own -- for usage, see StringDistance.pl!
- */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import org.perl.inline.java.*;
+
 // requires classpath to include this file; usually something like
 // .;<perldir>/site/lib/Inline/Java/InlineJavaServer.jar
 
-/** The test class. */
+/** Example Java Class that calls Perl using
+ * a non-Java-standard API provided by Perl.
+ * <br/>
+ * Does not run on its own -- for usage, see StringDistance.pl!
+ */
 public class StringDistance extends InlineJavaPerlCaller {
   JFrame frame;           // visual container
   JTextField tf[], dist;  // text input fields, result output field
