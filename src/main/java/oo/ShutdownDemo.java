@@ -8,8 +8,9 @@ public class ShutdownDemo {
 
 		// Create an Object with a finalize() method.
 		Object f = new Object() {
-			public void finalize() {
+			public void finalize() throws Throwable {
 				System.out.println( "Running finalize()");
+				super.finalize();
 			}
 		};
 
@@ -29,7 +30,7 @@ public class ShutdownDemo {
 			System.gc();
 		}
 
-		System.out.println("Calling System.exit()");
+		System.out.println("Calling System.exit(), with f = " + f);
 		System.exit(0);
 	}
 }
