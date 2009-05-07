@@ -16,6 +16,7 @@ public class NLMatch {
 
 		String[] patt = {
 			"engines.more engines",
+			"ines\nmore",
 			"engines$"
 		};
 
