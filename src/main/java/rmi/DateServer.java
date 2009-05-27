@@ -13,7 +13,9 @@ public class DateServer {
 			RemoteDateImpl im = new RemoteDateImpl();
 
 			System.out.println("DateServer starting...");
-			// Locate it in the RMI registry.
+
+			// Publish it in the RMI registry.
+			// Of course you have to have rmiregistry or equivalent running!
 			Naming.rebind(RemoteDate.LOOKUPNAME, im);
 
 			System.out.println("DateServer ready.");
