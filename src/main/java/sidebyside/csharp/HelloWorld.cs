@@ -1,7 +1,9 @@
 /*
  * Basic, minimal Hello World type program in Microsoft C#.
  * Note how most of C# was copied from Java, changing the
- * API names to violate M$' licensing agreement with Sun.
+ * API names to allow M$ to claim they invented it.
+ * Life would be much simpler if they'd just done a Java
+ * compiler that emitted CLR codes...
  */
 
 using System;	// like import
