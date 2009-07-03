@@ -295,7 +295,7 @@ class Services implements Context {
     public Object addToEnvironment(String propName, Object propVal)
             throws NamingException {
         if (myEnv == null) {
-            myEnv = new Hashtable(5, 0.75f);
+            myEnv = new Hashtable<String,Object>(5, 0.75f);
 	} 
 	return myEnv.put(propName, propVal);
     }

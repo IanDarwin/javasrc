@@ -51,11 +51,11 @@ public class CodeRed extends HttpServlet {
 		out.println("<head><title>Default.ida</title></head>");
 		out.println("<body text=\"white\" bgcolor=\"black\">");
 
-		HashMap list =
-			(HashMap)ctx.getAttribute("codered.notified");
+		Map<String,String> list =
+			(Map<String,String>)ctx.getAttribute("codered.notified");
 
 		if (list == null) {
-			list = new HashMap();
+			list = new HashMap<String,String>();
 			ctx.setAttribute("codered.notified", list);
 		}
 
