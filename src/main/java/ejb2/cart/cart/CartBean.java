@@ -84,7 +84,7 @@ public class CartBean implements SessionBean {
 		return -1;
 	}
 
-	private double totalPrice(List v) {
+	private double totalPrice(List<Product> v) {
 		// not implemented yet
 		return 100.00;
 	}
