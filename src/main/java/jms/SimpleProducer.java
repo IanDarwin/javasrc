@@ -10,12 +10,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 public class SimpleProducer {
+	
+	public final static String QUEUE_NAME = "queue/A";
+
 	public static void main(String[] args) throws Exception {
-		final String queueName = "queue/A";
 		Context ctx = new InitialContext();
 		ConnectionFactory factory = (ConnectionFactory) ctx
 				.lookup("ConnectionFactory");
-		Destination destination = (Destination) ctx.lookup(queueName);
+		Destination destination = (Destination) ctx.lookup(QUEUE_NAME);
 		Connection connection = factory.createConnection();
 		Session session = connection.createSession(false,
 				Session.AUTO_ACKNOWLEDGE);
