@@ -9,6 +9,8 @@ import java.rmi.Naming;
 import java.util.Date;
 
 public class DateApplet extends Applet {
+	
+	private static final long serialVersionUID = 287892791;
 	RemoteDate netConn = null;
 	Button b;
 	Label statusLabel;
