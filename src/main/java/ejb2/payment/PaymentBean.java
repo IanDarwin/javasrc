@@ -39,6 +39,7 @@ public class PaymentBean implements SessionBean, PaymentMethods {
 	public void ejbRemove(){
 	}
 	 
+	@SuppressWarnings("unused")
 	private SessionContext ctx;
 
 	public void setSessionContext(javax.ejb.SessionContext cx) {
