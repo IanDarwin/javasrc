@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class HelloServlet extends HttpServlet{
 
+	private static final long serialVersionUID = -7162336215500290074L;
+
 	/** Called when the user clicks on a link to this servlet
 	 * @parameter request Encapsulates the details about the input.
 	 * @parameter response Encapsulates what you need to get a reply to the

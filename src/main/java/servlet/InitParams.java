@@ -17,7 +17,7 @@ import javax.servlet.http.*;
  *		<param-value>...</param-value></servlet>
  */
 public class InitParams extends HttpServlet {
-
+	private static final long serialVersionUID = 2989081897192L;
 	protected String CONTEXT_PARAM = "nothing";
 	protected String CURR_DIR = "nowhere";
 	protected String SERVLET_PARAM = "nuttin'";

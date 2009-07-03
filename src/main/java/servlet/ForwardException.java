@@ -10,8 +10,9 @@ import javax.servlet.http.*;
  * @author  Ian Darwin
  * @version $Id$
  */
-public class ForwardException extends HttpServlet
-{
+public class ForwardException extends HttpServlet {
+	private static final long serialVersionUID = 897198791189L;
+	
 	/** Called in response to a GET request (data encoded in the URL) */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {

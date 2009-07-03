@@ -1,10 +1,17 @@
 package servlet;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
-import javax.servlet.http.*;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class IntsServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = -28789279L;
+	
 	protected final int DEFAULT_NUMBER = 5;
 
 	/** Called when the form is filled in by the user. */
