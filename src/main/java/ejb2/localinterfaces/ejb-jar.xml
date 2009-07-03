@@ -7,9 +7,9 @@
 	<enterprise-beans>
 		<entity>
 		<ejb-name>MemberEJB</ejb-name>
-		<local-home>MemberLocalHome</local-home>
-		<local>MemberLocal</local>
-		<ejb-class>MemberBean</ejb-class>
+		<local-home>ejb2.localinterfaces.MemberLocalHome</local-home>
+		<local>ejb2.localinterfaces.MemberLocal</local>
+		<ejb-class>ejb2.localinterfaces.MemberBean</ejb-class>
 		<prim-key-class>java.lang.Integer</prim-key-class>
 		<persistence-type>Container</persistence-type>
 		<abstract-schema-name>MemberData</abstract-schema-name>
