@@ -14,7 +14,7 @@ public abstract class PublisherBean implements EntityBean {
 
 	/** No-argument constructor (required by law :-)) */
 	public PublisherBean() {
-	};
+	}
 
 	// Abstract, "virtual", container managed fields
 
