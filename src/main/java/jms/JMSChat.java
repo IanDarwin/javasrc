@@ -117,10 +117,10 @@ public class JMSChat extends JFrame {
 
 			try {
 				connectionFactory = (TopicConnectionFactory)
-					jndiContext.lookup("MyTopicConnectionFactory");
+					jndiContext.lookup("ConnectionFactory");
 				connection =
 					connectionFactory.createConnection();
-				topic = (Topic) jndiContext.lookup("MyChat");
+				topic = (Topic) jndiContext.lookup("topic/testTopic");
 			} catch (JMSException ex) {
 				JOptionPane.showMessageDialog(this,
 					"Error: " + ex.toString(),
