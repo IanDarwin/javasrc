@@ -2,14 +2,11 @@ package jndi;
 
 import java.io.InputStream;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.rmi.Remote;
 import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 /** Measure the time taken for the Initial Context constructor
  * @version $Id$

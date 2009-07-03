@@ -1,10 +1,10 @@
 package ejb3client;
 
-import ejb3.*;
-
-import javax.ejb.*;
-import javax.naming.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
+
+import ejb3.CardValidatorRemote;
 
 /**
  * Demonstrate accessing an EJB3 Stateless Session Bean
