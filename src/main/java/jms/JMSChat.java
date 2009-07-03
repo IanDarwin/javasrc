@@ -9,16 +9,18 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.Vector;
 
+import javax.jms.Connection;
+import javax.jms.Destination;
+import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
-import javax.jms.TopicConnection;
 import javax.jms.TopicConnectionFactory;
-import javax.jms.TopicPublisher;
-import javax.jms.TopicSession;
-import javax.jms.TopicSubscriber;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -38,13 +40,12 @@ import javax.swing.JTextField;
 public class JMSChat extends JFrame {
 
 	private static final long serialVersionUID = 1213151366536598385L;
-	TopicConnectionFactory	topicConnectionFactory;
-	TopicConnection			topicConnection;
-	TopicSession			topicSession;
-	TopicPublisher			topicPublisher;
-	TopicSubscriber			topicSubscriber;
-	Topic					topic;
-	Context   				jndiContext = null;
+	ConnectionFactory	connectionFactory;
+	Connection			connection;
+	Session				session;
+	MessageProducer		producer;
+	MessageConsumer		consumer;
+	Destination			topic;
 
 	JTextField theMessage = new JTextField(20);
 	JLabel theLabel = new JLabel("Messages Sent:");
@@ -112,13 +113,13 @@ public class JMSChat extends JFrame {
 	public void createConnection(String[] args) {
 		try {
 
-			jndiContext = new InitialContext();
+			Context jndiContext = new InitialContext();
 
 			try {
-				topicConnectionFactory = (TopicConnectionFactory)
+				connectionFactory = (TopicConnectionFactory)
 					jndiContext.lookup("MyTopicConnectionFactory");
-				topicConnection =
-					topicConnectionFactory.createTopicConnection();
+				connection =
+					connectionFactory.createConnection();
 				topic = (Topic) jndiContext.lookup("MyChat");
 			} catch (JMSException ex) {
 				JOptionPane.showMessageDialog(this,
@@ -135,20 +136,20 @@ public class JMSChat extends JFrame {
 			}
 
          	System.out.println("Starting topic connection");
-         	topicConnection.start();
+         	connection.start();
 
 			System.out.println("Creating topic session...");
-			topicSession = topicConnection.createTopicSession(false,1);
+			session = connection.createSession(false,1);
 			System.out.println("Created topic session: not transacted, auto ack");
 
 			System.out.println("Creating topic and publisher...");
 			//topic = topicSession.createTopic(currentTopic);
-			topicPublisher = topicSession.createPublisher(topic);
+			producer = session.createProducer(topic);
 			System.out.println("Created topic and publisher");
 
 			// Create a topic and a subscriber
-			topicSubscriber = topicSession.createSubscriber(topic);
-			topicSubscriber.setMessageListener(new MessageListener() {
+			consumer = session.createConsumer(topic);
+			consumer.setMessageListener(new MessageListener() {
 				public void onMessage(Message message) {
 					TextMessage msg = (TextMessage) message;
 					try {
@@ -163,7 +164,7 @@ public class JMSChat extends JFrame {
 					}
 				}
 			});
-			topicConnection.start();
+			connection.start();
 			System.out.println("Created subscriber and started connection...");
 		}
 		catch (Exception ex) {
@@ -183,11 +184,11 @@ public class JMSChat extends JFrame {
 			/*
 			 * Create and Publish a TextMessage.
 			 */
-			TextMessage textmsg1 = topicSession.createTextMessage(
+			Message textmsg1 = session.createTextMessage(
 				theMessage.getText());
 
 			// Send the message; we will get it back.
-			topicPublisher.publish(textmsg1);
+			producer.send(textmsg1);
 		}
 		catch (JMSException ex) {
 			JOptionPane.showMessageDialog(this,
@@ -205,15 +206,15 @@ public class JMSChat extends JFrame {
 		try {
 			// Close the publisher
 			System.out.println("Closing publisher ...");
-			topicPublisher.close();
+			producer.close();
 
 			// Close the subscriber
 			System.out.println("Closing subscriber ...");
-			topicSubscriber.close();
+			consumer.close();
 
 			System.out.println("Closing topic session and topic connection");
-			topicSession.close();
-			topicConnection.close();
+			session.close();
+			connection.close();
 		}
 		catch (JMSException ex) {
 			JOptionPane.showMessageDialog(this,
