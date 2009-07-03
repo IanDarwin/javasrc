@@ -47,6 +47,6 @@ public abstract class OrderItemBean implements EntityBean {
 	public void ejbActivate() {}
 	public void ejbPassivate() {}
 	public void ejbRemove() {}
-	public void ejbStore() {};
-	public void ejbLoad() {};
+	public void ejbStore() {}
+	public void ejbLoad() {}
 }

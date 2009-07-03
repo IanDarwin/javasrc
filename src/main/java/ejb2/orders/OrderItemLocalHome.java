@@ -11,10 +11,10 @@ import javax.ejb.FinderException;
 public interface OrderItemLocalHome extends EJBLocalHome {
 
 	// Create Methods
-	public OrderItemLocal create(Integer ord, int prod, int qty)
+	public OrderItem create(Integer ord, int prod, int qty)
 		throws CreateException;
 
 	// Find Methods
-	public  OrderItemLocal findByPrimaryKey(Integer ord)
+	public  OrderItem findByPrimaryKey(Integer ord)
 		throws FinderException;
 }

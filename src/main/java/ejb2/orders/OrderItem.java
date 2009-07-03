@@ -6,7 +6,7 @@ import javax.ejb.EJBLocalObject;
  *  List of client methods for OrderItem
  *  @author MkBean
  */
-public interface OrderItemLocal extends EJBLocalObject  {
+public interface OrderItem extends EJBLocalObject  {
 
 	public int getProduct();
 	public void setProduct(int p);

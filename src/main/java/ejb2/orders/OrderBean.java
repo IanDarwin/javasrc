@@ -22,8 +22,8 @@ public abstract class OrderBean implements EntityBean {
 	public abstract Integer getCustomer();
 
 	// Virtual CMR fields
-	public abstract Collection getOrderItems();
-	public abstract void setOrderItems(Collection c);
+	public abstract Collection<OrderItem> getOrderItems();
+	public abstract void setOrderItems(Collection<OrderItem> c);
 
 	private static int seqNumber;
 
@@ -33,7 +33,7 @@ public abstract class OrderBean implements EntityBean {
 			tmp = (OrderItemLocalHome)new InitialContext().
 				lookup("local/OrderItemEJB");
 
-			OrderItemLocal l = tmp.create(new Integer(++seqNumber), product, qty);
+			OrderItem l = tmp.create(new Integer(++seqNumber), product, qty);
 
 			getOrderItems().add(l);
 		} catch (NamingException ex) {
@@ -59,7 +59,8 @@ public abstract class OrderBean implements EntityBean {
 
 	// Find methods will be implemented by deployment.
 
-	/** reference to passed Session context */
+	/** reference to passed-in Session context */
+	@SuppressWarnings("unused")
 	private EntityContext ctx;
 
 	// method implementations imposed by {type}Bean interface
@@ -71,7 +72,7 @@ public abstract class OrderBean implements EntityBean {
 	public void ejbActivate() {}
 	public void ejbPassivate() {}
 	public void ejbRemove() {}
-	public void ejbStore() {};
-	public void ejbLoad() {};
+	public void ejbStore() {}
+	public void ejbLoad() {}
 
 }
