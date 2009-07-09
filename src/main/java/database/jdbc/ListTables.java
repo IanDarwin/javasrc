@@ -1,4 +1,4 @@
-package JDBC;
+package database.jdbc;
 
 /**
  * List the Tables in an SQL database
