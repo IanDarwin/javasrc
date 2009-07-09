@@ -21,10 +21,10 @@ public class TimeNoArgs {
 
 	protected static void doit(String arg) throws Exception {
 		// Instantiate target class, from arg
-		Class c = Class.forName(arg);
+		Class<?> c = Class.forName(arg);
 
 		// Find its static main method (use nargv as the signature).
-		Class[] classes = { nargv.getClass() };
+		Class<?>[] classes = { nargv.getClass() };
 		Method main = c.getMethod("main", classes);
 
 		System.err.println("Starting class " + c);
