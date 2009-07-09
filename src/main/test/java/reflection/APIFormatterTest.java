@@ -37,12 +37,12 @@ public class APIFormatterTest extends TestCase {
 		zf.close();
 	}
 
-	Class x = null;
+	Class<?> x = null;
 	int nClasses = 0;
 	public final void testProcessOneZip() throws Exception {
 		APIFormatter target = new APIFormatter() {
 			@Override
-			protected void doClass(Class c) throws IOException {
+			protected void doClass(Class<?> c) throws IOException {
 				++nClasses;
 				x = c;
 			}

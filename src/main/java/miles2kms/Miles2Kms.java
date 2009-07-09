@@ -13,6 +13,8 @@ import java.util.*;
  * Should add text listeners on the textfields...
  */
 public class Miles2Kms extends Applet {
+
+	private static final long serialVersionUID = 1L;
 	Scrollbar sb;
 	LabelTextField miles, kms;
 	MyModel model;
@@ -48,6 +50,8 @@ public class Miles2Kms extends Applet {
 
 /** A label and a text field together */
 class LabelTextField extends Panel implements Observer {
+
+	private static final long serialVersionUID = 1L;
 	Label l;
 	TextField tf;
 	int type;

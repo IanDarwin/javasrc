@@ -114,7 +114,7 @@ public abstract class APIFormatter {
 					substring(0, zipName.length() - 6);	// 6 for ".class"
 
 				// Now get the Class object for it.
-				Class c = null;
+				Class<?> c = null;
 				try {
 					c = Class.forName(className);
 				} catch (ClassNotFoundException ex) {
@@ -129,5 +129,5 @@ public abstract class APIFormatter {
 	/** Template Method to do something useful (e.g.,
 	 * format the fields and methods) of one Class.
 	 */
-	protected abstract void doClass(Class c) throws IOException;
+	protected abstract void doClass(Class<?> c) throws IOException;
 }

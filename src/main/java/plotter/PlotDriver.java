@@ -14,7 +14,7 @@ public class PlotDriver {
 			return;
 		}
 		try {
-			Class c = Class.forName(argv[0]);
+			Class<?> c = Class.forName(argv[0]);
 			Object o = c.newInstance();
 			if (!(o instanceof Plotter))
 				throw new ClassNotFoundException("Not instanceof Plotter");

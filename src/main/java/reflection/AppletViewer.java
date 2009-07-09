@@ -21,7 +21,7 @@ public class AppletViewer {
 	/** The name of the Applet subclass */
 	String appName = null;
 	/** The Class for the actual applet type */
-	Class ac = null;
+	Class<?> ac = null;
 	/** The Applet instance we are running, or null. Can not be a JApplet
 	 * until all the entire world is converted to JApplet. */
 	Applet ai = null;
