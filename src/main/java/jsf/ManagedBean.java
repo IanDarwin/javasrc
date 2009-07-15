@@ -12,6 +12,7 @@ public class ManagedBean {
 	 * @return
 	 */
 	public String handle() {
+		System.out.println("ManagedBean.handle()");
 		return "next";
 	}
 	
