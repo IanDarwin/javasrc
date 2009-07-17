@@ -12,7 +12,8 @@ import org.junit.Test;
  * JAX-WS 2.0 (which is included with Java SE 1.6+). 
  * Assumes client artifacts have been created, using e.g., on Unix:
  * $ mkdir jaxwsclient
- * $ wsimport -d jaxwsclient -keep 'http://localhost:9090/calc?wsdl'
+ * $ wsimport -d jaxwsclient -keep \
+ * 'http://localhost:9090/calc?wsdl'
  */
 public class CalcIntegTest {
 
