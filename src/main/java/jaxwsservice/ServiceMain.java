@@ -13,6 +13,8 @@ public class ServiceMain {
 		// Start the service running
 		Endpoint endPoint = 
 			Endpoint.publish("http://localhost:9090/calc", impl);
+		 
+		Endpoint.publish("http://localhost:9090/calc2", impl);
 		System.out.println("Listening on " + endPoint);
 	}
 }
