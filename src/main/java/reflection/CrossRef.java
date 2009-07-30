@@ -35,7 +35,7 @@ public class CrossRef extends APIFormatter {
 	/**
 	 * Print the fields and methods of one class.
 	 */
-	protected void doClass(Class c) {
+	protected void doClass(Class<?> c) {
 		startClass(c);
 		try {
 			Field[] fields = c.getDeclaredFields();
@@ -69,19 +69,19 @@ public class CrossRef extends APIFormatter {
 	}
 
 	/** put a Field's information to the standard output.  */
-	protected void putField(Field fld, Class c) {
+	protected void putField(Field fld, Class<?> c) {
 		println(fld.getName() + " field " + c.getName() + " ");
 	}
 
 	/** put a Method's information to the standard output.  */
-	protected void putMethod(Method method, Class c) {
+	protected void putMethod(Method method, Class<?> c) {
 		String methName = method.getName();
 		println(methName + " method " + c.getName() + " ");
 	}
 
 	/** Print the start of a class. Unused in this version,
 	 * designed to be overridden */
-	protected void startClass(Class c) {
+	protected void startClass(Class<?> c) {
 	}
 
 	/** Print the end of a class. Unused in this version,
