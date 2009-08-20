@@ -1,4 +1,4 @@
-package ejb;
+package ejb3;
 
 import java.lang.reflect.Method;
 
