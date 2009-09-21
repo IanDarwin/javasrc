@@ -1,15 +1,16 @@
-package gui;
+package desktop;
 
 import java.io.IOException;
 
 /**
  * ExecDemoHelp shows how to use the Win32 "start" command to load a help file.
  * Written long before JavaHelp API, which probably should be use instead.
+ * Was previously known as HelpDemo, earlier ExecDemoHelp.
  */
-public class HelpDemo {
+public class HelpByExecBrowser {
 	/** A simple main program, to show calling help(). */
 	public static void main(String[] av) throws IOException { 
-		new HelpDemo().help();
+		new HelpByExecBrowser().help();
 		return;
 	}
 
