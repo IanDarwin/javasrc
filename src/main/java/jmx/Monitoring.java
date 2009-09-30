@@ -1,4 +1,4 @@
-package webmonitoring;
+package jmx;
 
 import java.io.PrintWriter;
 import java.lang.management.ManagementFactory;
@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 /** This gives information about the runtime environment.
  */
-public class WebMonitoring {
+public class Monitoring {
 	
 	public String getOSName() {
 		return System.getProperty("os.name");
