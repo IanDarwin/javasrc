@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Ian Darwin, "inspired" by code in a previous
  * version of the course note (re-created from memory).
  */
-public class InventoryControlServlet extends HttpServlet {
+public class InventoryServletRaw extends HttpServlet {
 
 	private static final long serialVersionUID = 5349596315091650623L;
 
