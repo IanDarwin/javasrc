@@ -41,6 +41,8 @@ public class InventoryControlServlet extends HttpServlet {
 				out.println("</categories>");
 			} else if ("products".equals(command)) {
 				// same deal but for all proeucts
+			} else {
+				throw new IllegalArgumentException(command);
 			}
 		} else if ("POST".equals(method)) {
 			// do POST stuff
