@@ -2,9 +2,11 @@ package jmx;
 
 import java.io.PrintWriter;
 import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
 import java.util.Iterator;
+import java.util.List;
 
 /** This gives information about the runtime environment.
  */
@@ -14,19 +16,36 @@ public class Monitoring {
 		return System.getProperty("os.name");
 	}
 	
-	public void memUsage(PrintWriter out) {
-		Iterator it = ManagementFactory.getMemoryPoolMXBeans().iterator();  
+	public static void memUsage(PrintWriter out) {
+
+		// Overall
+		MemoryMXBean memBean = ManagementFactory.getMemoryMXBean();
+	    MemoryUsage heap = memBean.getHeapMemoryUsage();
+	    MemoryUsage nonHeap = memBean.getNonHeapMemoryUsage();
+	    out.println("Heap: " + heap);
+	    out.println("Non-heap: " + nonHeap);  
+	    
+	    // Generations details
+		List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
+		Iterator<MemoryPoolMXBean> it = memoryPoolMXBeans.iterator();  
 		while(it.hasNext()){  
 			MemoryPoolMXBean mbean = (MemoryPoolMXBean) it.next();
 			println(out, "Memory Group", mbean.getName());
 			MemoryUsage memUsage = mbean.getUsage();  
 			println(out, "Used", memUsage.getUsed());  
 		    println(out, "Committed", memUsage.getCommitted());  
-		    println(out, "High water", memUsage.getMax());  
+		    println(out, "High water", memUsage.getMax());
+		    out.println();
 		}
 	}
 
-	private void println(PrintWriter out, String name, Object value) {
+	private static void println(PrintWriter out, String name, Object value) {
 		out.println(String.format("%20s: %s", name, value));
+	}
+	
+	public static void main(String[] args) {
+		PrintWriter out = new PrintWriter(System.out);
+		memUsage(out);
+		out.close();
 	}
 }
