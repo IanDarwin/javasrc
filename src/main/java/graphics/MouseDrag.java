@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -16,7 +15,10 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-/** MouseDrag -- implement simple mouse drag in a window.
+/** MouseDrag -- implement simple mouse drag in a window--
+ * Draws a rectangle whose size varies while you drag its
+ * lower-right corner. The given image file is used
+ * as a background image for the window.
  */
 public class MouseDrag extends Component
 		implements MouseListener, MouseMotionListener {
@@ -38,11 +40,8 @@ public class MouseDrag extends Component
 		JFrame f = new JFrame("Mouse Dragger");
 		Container cp = f.getContentPane();
 
-		if (av.length < 1) {
-			System.err.println("Usage: MouseDrag imagefile");
-			System.exit(1);
-		}
-		Image im = Toolkit.getDefaultToolkit().getImage(av[0]);
+		Image im = Toolkit.getDefaultToolkit().getImage(
+				av.length == 1 ? av[0] : "graphics/duke.gif");
 
 		// create a MouseDrag object
 		MouseDrag j = new MouseDrag(im);
@@ -54,7 +53,7 @@ public class MouseDrag extends Component
 		cp.add(BorderLayout.SOUTH, j.status = new Label());
 		j.status.setSize(
 				f.getSize().width, j.status.getSize().height);
-		f.pack();
+		f.setSize(300, 300);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -87,9 +86,9 @@ public class MouseDrag extends Component
 
 	/** Called when the mouse has been pressed. */
 	public void mousePressed(MouseEvent e)  {
-		Point p = e.getPoint();
-		System.err.println("mousePressed at " + p);
-		startX = p.x; startY = p.y;
+		startX = e.getX();
+		startY = e.getY();
+		System.err.println("mousePressed at [" + startX + "," + startY + "]");
 		inDrag = true;
 	}
 
@@ -102,10 +101,9 @@ public class MouseDrag extends Component
 
 	// And two methods from MouseMotionListener:
 	public void mouseDragged(MouseEvent e) {
-		Point p = e.getPoint();
-		// System.err.println("mouse drag to " + p);
-		showStatus("mouse Dragged to " + p);
-		curX = p.x; curY = p.y;
+		curX = e.getX();
+		curY = e.getY();
+		showStatus("mouse Dragged to [" + curX + "," + curY + "]");
 		if (inDrag) {
 			repaint();
 		}
