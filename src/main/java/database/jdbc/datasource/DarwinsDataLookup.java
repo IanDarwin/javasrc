@@ -1,8 +1,9 @@
-package JDBC.datasource;
+package database.jdbc.datasource;
 
-import java.sql.*;
-import javax.sql.*;
-import javax.naming.*;
+import java.sql.Connection;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class DarwinsDataLookup {
 	public static void main(String[] argv)  throws Exception {

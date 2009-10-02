@@ -1,4 +1,4 @@
-package JDBC.datasource;
+package database.jdbc.datasource;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
