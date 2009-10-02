@@ -1,6 +1,8 @@
 package ejb3;
 
-import javax.ejb.*;
+import javax.ejb.Local;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /** A very crude demo of a Stateless Session Bean.
  * Card Validation is a good example of a stateless service.
