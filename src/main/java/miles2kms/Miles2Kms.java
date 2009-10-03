@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.applet.*;
 import java.util.*;
 
+enum Type { MILES, KMS };
+
 /**
  * A simple applet panel - miles <==> kilometers
  * @author Ian Darwin, based loosely on a long-ago temperature demo 
@@ -24,9 +26,9 @@ public class Miles2Kms extends Applet {
 		pl = new Panel();
 		pr = new Panel();
 		pl.setLayout(new BorderLayout());
-		pl.add(BorderLayout.NORTH, miles = new LabelTextField('m', "Miles", 10));
+		pl.add(BorderLayout.NORTH, miles = new LabelTextField(Type.MILES, "Miles", 10));
 		pr.add(sb = new Scrollbar(Scrollbar.VERTICAL, 0, 1, -240, 0)); 
-		pl.add(BorderLayout.SOUTH, kms = new LabelTextField('k', "Kilometers", 10));
+		pl.add(BorderLayout.SOUTH, kms = new LabelTextField(Type.KMS, "Kilometers", 10));
 		add(pr);
 		add(pl);
 
@@ -40,7 +42,7 @@ public class Miles2Kms extends Applet {
 
 	public static void main(String[] av) {
 		Miles2Kms mk = new Miles2Kms();
-		Frame f = new Frame("Miles2Kms");
+		JFrame f = new JFrame("Miles2Kms");
 		f.add(mk);
 		mk.init();
 		f.pack();
@@ -54,8 +56,8 @@ class LabelTextField extends Panel implements Observer {
 	private static final long serialVersionUID = 1L;
 	Label l;
 	TextField tf;
-	int type;
-	LabelTextField(int type, String label, int tfWidth) {
+	Type type;
+	LabelTextField(Type type, String label, int tfWidth) {
 		this.type = type;
 		add(l = new Label(label));
 		add(tf = new TextField(tfWidth));
@@ -70,10 +72,10 @@ class LabelTextField extends Panel implements Observer {
 	}
 	public void update( Observable obs, Object x ) {
 		switch(type) {
-		case 'm':
+		case MILES:
 			setText(String.valueOf(((MyModel)obs).getMiles()));
 			break;
-		case 'k':
+		case KMS:
 			setText(String.valueOf(((MyModel)obs).getKms()));
 			break;
 		}
