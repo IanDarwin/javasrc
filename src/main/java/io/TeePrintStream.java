@@ -23,13 +23,6 @@ public class TeePrintStream extends PrintStream {
 	protected PrintStream parent;
 	protected String fileName;
 
-	/** A simple test case. */
-	public static void main(String[] args) throws IOException {
-		TeePrintStream ts = new TeePrintStream(System.err, "err.log", true);
-		System.setErr(ts);
-		System.err.println("An imitation error message");
-		ts.close();
-	}
 
 	/** Construct a TeePrintStream given an existing PrintStream,
 	 * an opened OutputStream, and a boolean to control auto-flush.
