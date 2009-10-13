@@ -1,6 +1,9 @@
 package io;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 /** TeePrintStream tees all PrintStream operations into a file, rather
  * like the UNIX tee(1) command. It is a PrintStream subclass. The
@@ -16,6 +19,9 @@ import java.io.*;
  * <P>I only override Constructors, the write(), check() and close() methods,
  * since any of the print() or println() methods must go through these.
  * Thanks to Svante Karlsson for help formulating this.
+ * <br/>
+ * Note: there is another way of doing this, using a FilterStream;
+ * see the example at http://www.javaspecialists.eu/archive/Issue003.html.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
