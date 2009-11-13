@@ -1,0 +1,2 @@
+threads/ProdCons2 doesn't terminate sometimes
+	(reported by Daniel Paiva)
