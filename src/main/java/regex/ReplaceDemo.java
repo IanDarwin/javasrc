@@ -11,7 +11,7 @@ import java.util.regex.*;
 public class ReplaceDemo {
 	public static void main(String[] argv) {
 
-		// Make an RE pattern to match almost any form (deamon, demon, etc.).
+		// Make an RE pattern to match as a word only (\b=word boundary)
 		String patt = "\\bfavor\\b";
 
 		// A test input.
