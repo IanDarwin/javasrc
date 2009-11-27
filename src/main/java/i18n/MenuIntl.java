@@ -4,8 +4,6 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -39,13 +37,7 @@ public class MenuIntl extends JFrame {
 		JLabel lab;
 		cp.add(lab = new JLabel());
 
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		JMenuBar mb = new JMenuBar();
 		setJMenuBar(mb);
 
