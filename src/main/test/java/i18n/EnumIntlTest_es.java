@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** Because of static/classloader issues, this
@@ -12,9 +13,15 @@ import org.junit.Test;
  */
 public class EnumIntlTest_es {
 	
+	@BeforeClass
+	public void setupLocale() {
+		// This must happen BEFORE the first
+		// reference to the EnumIntl class
+		Locale.setDefault(new Locale("es"));
+	}
+	
 	@Test
 	public void testNorte() {
-		Locale.setDefault(new Locale("es"));
 		assertEquals("Norte", EnumIntl.NORTH.getDescription());
 	}
 }
