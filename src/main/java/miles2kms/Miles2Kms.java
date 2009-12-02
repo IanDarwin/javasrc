@@ -1,9 +1,17 @@
 package miles2kms;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.util.*;
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.Scrollbar;
+import java.awt.TextField;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JFrame;
 
 enum Type { MILES, KMS };
 
