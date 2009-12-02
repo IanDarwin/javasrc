@@ -8,10 +8,7 @@
 	<classpathentry kind="lib" path="lib/log4j.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="lib/jta.jar"/>
-	<classpathentry kind="lib" path="lib/jdori-enhancer.jar"/>
-	<classpathentry kind="lib" path="lib/jdori.jar"/>
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
-	<classpathentry kind="lib" path="lib/jdo.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="lib/btree.jar"/>
 	<classpathentry kind="lib" path="lib/antlr.jar"/>
