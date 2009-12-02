@@ -23,6 +23,9 @@ public class ReplaceDemo2 {
 		Matcher m = r.matcher(input);
 		m.find();
 		System.out.println("Replaced: " + m.replaceFirst("$2, $1"));
+		
+		// The short inline version:
+		// System.out.println("Ian Darwin".replaceFirst("(\\w+)\\s+(\\w+)", "$2, $1"));
 
 	}
 }
