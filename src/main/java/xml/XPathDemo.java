@@ -11,7 +11,8 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 
 /**
- * Simple demo of XPath.
+ * Simple demo of XPath, which is supported in JAXP (in 
+ * package javax.xml.xpath) since JDK 1.5.
  */
 public class XPathDemo {
 
