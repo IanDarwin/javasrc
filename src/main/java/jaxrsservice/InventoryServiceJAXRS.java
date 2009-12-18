@@ -1,4 +1,4 @@
-package restfulws;
+package jaxrsservice;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,7 +17,7 @@ import javax.ws.rs.Path;
  * </ul>
  * @author Ian Darwin, "inspired" by code in the course notes (re-created from memory).
  */
-public class InventoryServletJAXRS extends Object {
+public class InventoryServiceJAXRS extends Object {
 
 	private static final long serialVersionUID = 5349596315091650623L;
 
