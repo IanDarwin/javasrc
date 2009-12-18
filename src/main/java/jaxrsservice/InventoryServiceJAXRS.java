@@ -1,12 +1,8 @@
 package restfulws;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 
 /**
  * A start at a JAX-RS implementation of the RESTful
@@ -21,10 +17,11 @@ import javax.servlet.http.HttpServletResponse;
  * </ul>
  * @author Ian Darwin, "inspired" by code in the course notes (re-created from memory).
  */
-public class InventoryServletJAXRS extends HttpServlet {
+public class InventoryServletJAXRS extends Object {
 
 	private static final long serialVersionUID = 5349596315091650623L;
 
+	@GET @Path("/all")
 	protected String getCategories() {
 		String x = "<categories>";
 		for (String cat : DAOgetCategories()) {
@@ -34,6 +31,7 @@ public class InventoryServletJAXRS extends HttpServlet {
 		return x;
 	}
 	
+	@POST
 	protected String deleteRecord() {
 		return "<OK>Record Deleted</OK>";
 	}
