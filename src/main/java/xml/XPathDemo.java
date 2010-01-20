@@ -16,10 +16,6 @@ import org.w3c.dom.Document;
  */
 public class XPathDemo {
 
-	/**
-	 * @param args
-	 * @throws Exception
-	 */
 	public static void main(String[] args) throws Exception {
 
 		DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -33,7 +29,6 @@ public class XPathDemo {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		String expression = "/section/sectionnumber";
 		Number secNum = (Number) xpath.evaluate(expression, document, XPathConstants.NUMBER);
-		System.out.println("Section number = " + secNum);
+		System.out.printf("Section number = %s (a %s)", secNum, secNum.getClass().getName());
 	}
-
 }
