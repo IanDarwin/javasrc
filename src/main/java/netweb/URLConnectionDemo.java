@@ -13,8 +13,12 @@ public class URLConnectionDemo {
 	
 	    public static void main(String[] args) throws Exception {
 	    	String host = null;
+	    	int port = -1;
 	      	host = "127.0.0.1";
-	        URL url = new URL("http://" + host + ":8080/MySSOAuth");
+	      	host = "www.darwinsys.com";
+	      	port = 8080;
+	      	port = 80;
+	        URL url = new URL("http", host, port, "/java");
 	        URLConnection conn = url.openConnection();
 	        conn.setDoInput(true);
 	        conn.setDoOutput(true);
@@ -27,9 +31,7 @@ public class URLConnectionDemo {
 		
 	        System.out.println("Sending POST body");
 	        PrintWriter out = new PrintWriter(conn.getOutputStream());
-	        out.println("<cat:findCatalogItem>");
-	        out.println("	<productId>3012</productId>");
-	        out.println("</cat:findCatalogItem>");
+	        out.println("name=Ian+Darwin");
 	        out.close();
 
 	        System.out.println("Reading response");
