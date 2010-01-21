@@ -23,6 +23,7 @@ import javax.xml.soap.SOAPMessage;
  */
 public class SAAJServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 3259506014314462493L;
 	static MessageFactory fact = null;
 
 	static {
@@ -68,7 +69,7 @@ public class SAAJServlet extends HttpServlet {
 			
 		} catch (SOAPException e) {
 			response.setStatus(500);
-			System.out.print("FakeUploadServlet.doPost(): caught: ");
+			System.out.print("SAAJServlet.doPost(): caught: ");
 			e.printStackTrace();
 		}
 	}
