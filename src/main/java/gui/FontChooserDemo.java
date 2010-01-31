@@ -9,10 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.darwinsys.swingui.FontChooser;
 
 public class FontChooserDemo {
+	
+	static String sampleText = "Few grips galvanized text";
 
 	/** Simple main program to start it running */
 	public static void main(String[] args) {
@@ -21,15 +24,18 @@ public class FontChooserDemo {
 		final Container cp = f.getContentPane();
 		cp.setLayout(new GridLayout(0, 1));	// one vertical column
 
-		JButton theButton = new JButton("Change font");
-		cp.add(theButton);
+		JButton changeFontButton = new JButton("Change font");
+		cp.add(changeFontButton);
+		
+		JButton changeTextButton = new JButton("Change Text");
+		cp.add(changeTextButton);
 
-		final JLabel theLabel = new JLabel("Java is great!", JLabel.CENTER);
+		final JLabel theLabel = new JLabel(sampleText, JLabel.CENTER);
 		cp.add(theLabel);
 
-		theButton.addActionListener(new ActionListener() {
+		changeFontButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fontChooser.setDisplayText("Let there be light");
+				fontChooser.setDisplayText(sampleText);
 				fontChooser.setVisible(true);
 				Font myNewFont = fontChooser.getSelectedFont();
 				System.out.println("You chose " + myNewFont);
@@ -38,6 +44,14 @@ public class FontChooserDemo {
 				fontChooser.dispose();
 			}
 		});
+		
+		changeTextButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String txt = JOptionPane.showInputDialog(f, "New text");
+				theLabel.setText(txt);
+			}
+		});
+		
 
 		f.setSize(150, 100);
 		f.setVisible(true);
