@@ -13,7 +13,7 @@ import java.net.URLConnection;
 public class URLConnectionDemo {
 	
     public static void main(String[] args) throws Exception {
-    	String host = "192.168.1.42";
+    	String host = "192.168.2.42";
     	String path = "/andcook/seam/resource/rest/recipe/list";
     	String postBody = null;
     	String ret = converse(host, 80, path, postBody);
