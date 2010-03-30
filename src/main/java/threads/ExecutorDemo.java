@@ -5,9 +5,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * Simple demo of the Java5 Executor FixedThreadPool; start a number of threads, some of which are slow,
- * and eventually the Executor will implement throttling as we set an upper bound on the number of
- * threads it is to allow running.
+ * Simple demo of the Java5 Executor FixedThreadPool; start a number of threads, 
+ * some of which are slow, and eventually the Executor will implement throttling 
+ * because we set an upper bound on the number of threads it is to allow running.
  */
 public class ExecutorDemo {
 
@@ -63,5 +63,4 @@ public class ExecutorDemo {
 			}
 		}
 	}
-
 }
