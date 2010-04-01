@@ -21,8 +21,7 @@ import javax.swing.JFrame;
  * </UL>
  * @version $Id$
  */
-public class ColorChooser extends JFrame
-{
+public class ColorChooserDemo extends JFrame {
     JColorChooser cc;
     JDialog cd;
     MyCanvas demo;
