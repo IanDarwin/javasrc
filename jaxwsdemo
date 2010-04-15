@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -x
+
+# build and run the JAX-WS demo
+mkdir build 2>/dev/null
+javac -d build -classpath lib/junit-4.4.jar src/jaxws*/*.java
+#
+# Run the service, backgrounded.
+java -classpath build jaxwsservice.ServiceMain &
+
+# Run the Java client.
+javac -classpath build:lib/junit-4.4.jar jaxwsclient.ClientMain
+
+# Run the Perl client
+src/jaxwsclient/client.pl
