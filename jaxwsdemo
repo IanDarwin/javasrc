@@ -10,7 +10,7 @@ javac -d build -classpath lib/junit-4.4.jar src/jaxws*/*.java
 java -classpath build jaxwsservice.ServiceMain 2>/dev/null &
 
 # Give it time to start up
-sleep 2
+sleep 5
 
 # Run the Java client.
 java -classpath build:lib/junit-4.4.jar jaxwsclient.ClientMain
