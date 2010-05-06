@@ -41,7 +41,9 @@ public class GenTest {
 	 * Emit all the tests for one class.
 	 * @param fullClassName - the class to write tests for
 	 */
-	private void emit(String fullClassName, String printableClassName, String testClassName) {
+	private void emitClass(String fullClassName, 
+		String printableClassName, String testClassName) {
+
 		Class<?> klass = null;
 		try {
 			klass = Class.forName(fullClassName);
@@ -55,7 +57,7 @@ public class GenTest {
 		out.println("import junit.framework.TestCase;");
 		out.println();
 		out.println("/** Auto-generated TestCase for " + fullClassName);
-		out.println(" * @version $Id$");
+		out.println(" * @version $" /* break so not expanded by CVS*/ + "Id$");
 		out.println(" */");
 		out.println("public class " + testClassName + " extends TestCase {");
 		out.println("\tpublic " + fullClassName + " target;");
@@ -68,7 +70,7 @@ public class GenTest {
 			int m = method.getModifiers();
 			if (!Modifier.isPublic(m)) 
 				continue;
-			emit(fullClassName, method,  m);
+			emitMethod(fullClassName, method,  m);
 		}
 		out.println("}");
 		out.flush();
@@ -81,7 +83,7 @@ public class GenTest {
 	 * Generate a method to test one method in the target.
 	 * @param method The Method descriptor to be tested.
 	 */
-	private void emit(String className, Method method, int modifiers) {
+	private void emitMethod(String className, Method method, int modifiers) {
 		String name = method.getName();
 		MutableInteger n;
 		if ((n = emittedMap.get(name))  == null) {
@@ -125,4 +127,3 @@ public class GenTest {
 		out.println("\t}");
 	}
 }
-
