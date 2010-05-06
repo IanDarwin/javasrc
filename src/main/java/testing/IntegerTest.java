@@ -2,6 +2,10 @@ package testing;
 
 import junit.framework.TestCase;
 
+
+/** Demonstrate how you might use JUNit 3.8 to test the java.lang.Integer 
+ * class (this is not to say that Sun doesn't test before they ship it - they do!!).
+ */
 public class IntegerTest extends TestCase {
 	public void testDecode() throws Exception {
 		int ret;
