@@ -29,7 +29,7 @@ public class UrlBench {
                         String line;
                         while ((line = is.readLine()) != null) {
                                 // System.out.println(line);
-						}
+                        }
                 }
         }
 }
