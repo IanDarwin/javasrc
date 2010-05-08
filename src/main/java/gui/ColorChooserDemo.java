@@ -27,7 +27,7 @@ public class ColorChooserDemo extends JFrame {
     MyCanvas demo;
 	Container cPane;
 
-    public ColorChooser() {
+    public ColorChooserDemo() {
         super("Ian Darwin's Color Demo");
         JButton jButton;
 		cPane = getContentPane();
@@ -36,7 +36,7 @@ public class ColorChooserDemo extends JFrame {
         jButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				ColorChooser.this.cd.setVisible(true);
+				ColorChooserDemo.this.cd.setVisible(true);
 			}
 		});
         cPane.add(demo = new MyCanvas(300,150), BorderLayout.CENTER);
@@ -54,20 +54,20 @@ public class ColorChooserDemo extends JFrame {
 			cc = new JColorChooser(getBackground()),
 			new ActionListener() {
 				public void actionPerformed(ActionEvent actionEvent) {
-					ColorChooser.this.demo.setBackground(cc.getColor());
+					ColorChooserDemo.this.demo.setBackground(cc.getColor());
 				}
 			},
 			new ActionListener() {
 				public void actionPerformed(ActionEvent actionEvent)
 				{
-					ColorChooser.this.demo.setBackground(getBackground());
+					ColorChooserDemo.this.demo.setBackground(getBackground());
 				}
 			});
 	}
 
     public static void main(String[] astring)
     {
-        new ColorChooser().setVisible(true);
+        new ColorChooserDemo().setVisible(true);
     }
 }
 

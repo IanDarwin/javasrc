@@ -26,7 +26,7 @@ public class GenTest {
 		String testClassName = printableClassName + "Test";
 		GenTest gt = new GenTest(new PrintWriter(
 				new FileWriter(pkgName + "/" + testClassName + ".java")));
-		gt.emit(fullClassName, printableClassName, testClassName);
+		gt.emitClass(fullClassName, printableClassName, testClassName);
 		System.out.println("All Done");
 	}
 	
