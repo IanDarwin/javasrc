@@ -12,9 +12,8 @@ public class Cookies {
 		Cooklet cooklet = null;
 		String cookletClassName = argv[0];
 		try {
-			Class cookletClass = Class.forName(cookletClassName);
-			Object cookletObject = cookletClass.newInstance();
-			cooklet = (Cooklet)cookletObject;
+			Class<Cooklet> cookletClass = (Class<Cooklet>) Class.forName(cookletClassName);
+			cooklet = cookletClass.newInstance();
 		} catch (Exception e) {
 			System.err.println("Error " + cookletClassName + e);
 		}
