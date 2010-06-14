@@ -39,11 +39,11 @@
 			inheritAll="false"/>
 	</target>
 
-	<target name="dist" depends="index">
+	<target name="dist" > <!--depends="index">-->
 		<zip zipFile="${dist.jar}" update="no">
-			<fileset>
-				<include name="${build.work.javasrc}/**"/>
-				<exclude name="${build.work.javasrc}/build/**"/>
+			<fileset dir="${build.work.javasrc}">
+				<include name="*/**"/>
+				<exclude name="/build/**"/>
 			</fileset>
 		</zip>
 	</target>
