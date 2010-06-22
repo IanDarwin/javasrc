@@ -8,18 +8,28 @@ import java.text.*;
  * @version $Id$
  */
 public class FormatPluralsChoice extends FormatPlurals {
+
+	// ChoiceFormat to just give pluralized word
 	static double[] limits = { 0, 1, 2 };
 	static String[] formats = { "items", "item", "items"};
-	static ChoiceFormat myFormat = new ChoiceFormat(limits, formats);
+	static ChoiceFormat pluralizedFormat = new ChoiceFormat(limits, formats);
 
-	/** report -- using conditional operator */
-	public static void report(int n) {
-		System.out.println("We used " + n + " " + myFormat.format(n));
-	}
+	// ChoiceFormat to give English text version, quantified
+	static ChoiceFormat quantizedFormat = new ChoiceFormat(
+		"0#no reviews|1#one review|1<many reviews");
+
+	// Test data
+	static int[] data = { -1, 0, 1, 2, 3 };
 
 	public static void main(String[] argv) {
-		report(0);
-		report(1);
-		report(2);
+		System.out.println("Pluralized Format");
+		for (int i : data) {
+			System.out.println("Found " + i + " " + pluralizedFormat.format(i));
+		}
+		
+		System.out.println("Quanitzed Format");
+		for (int i : data) {
+			System.out.println("Found " + quantizedFormat.format(i));
+		}
 	}
 }
