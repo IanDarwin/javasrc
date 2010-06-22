@@ -11,7 +11,7 @@ public class FormatPluralsChoice extends FormatPlurals {
 
 	// ChoiceFormat to just give pluralized word
 	static double[] limits = { 0, 1, 2 };
-	static String[] formats = { "items", "item", "items"};
+	static String[] formats = { "reviews", "review", "reviews"};
 	static ChoiceFormat pluralizedFormat = new ChoiceFormat(limits, formats);
 
 	// ChoiceFormat to give English text version, quantified
