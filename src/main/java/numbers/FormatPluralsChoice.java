@@ -27,7 +27,7 @@ public class FormatPluralsChoice extends FormatPlurals {
 			System.out.println("Found " + i + " " + pluralizedFormat.format(i));
 		}
 		
-		System.out.println("Quanitzed Format");
+		System.out.println("Quantized Format");
 		for (int i : data) {
 			System.out.println("Found " + quantizedFormat.format(i));
 		}
