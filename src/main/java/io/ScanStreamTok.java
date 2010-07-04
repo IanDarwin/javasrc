@@ -52,7 +52,7 @@ public class ScanStreamTok {
 				System.out.println("Word, length " + tf.sval.length() + "->" + tf.sval);
 				break;
 			default:
-				System.out.println("What is it? i = " + i);
+				System.out.println("Character " + (char)i);
 			}
 		}
 	}
