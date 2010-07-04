@@ -26,12 +26,13 @@ public class ScanStreamTok {
 
 	/** Construct a file scanner by name */
 	public ScanStreamTok(String fileName) throws IOException {
-		tf = new StreamTokenizer(new FileReader(fileName));
+		this(new FileReader(fileName));
 	}
 
 	/** Construct a file scanner by existing Reader */
 	public ScanStreamTok(Reader rdr) throws IOException {
 		tf = new StreamTokenizer(rdr);
+		tf.eolIsSignificant(true);
 	}
 
 	protected void process() throws IOException {
