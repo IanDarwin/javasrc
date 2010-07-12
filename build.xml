@@ -82,6 +82,7 @@
 		<javac srcdir="${src}" sourcepath="${subdirs}"
 			classpathref="all.classpath"
 			destdir="${build}"
+			source="1.5"
 			target="1.5">
 			<!-- There are several categories of exclusions here:
 			1) Stuff that is intended to show problems; these
