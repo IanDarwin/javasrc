@@ -13,20 +13,23 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AnnotationDemo {
-	public static final int N = 42;
-	public boolean useless() default false;
+	public boolean fancy() default false;
 }
 
 /** A simple example of using the annotation */
-@AnnotationDemo(useless=true)
-class UselessClassJustToShowAnnotation {
+@AnnotationDemo(fancy=true)
+class fancyClassJustToShowAnnotation {
 
 	/** Print out the annotations attached to this class */
 	public static void main(String[] args) {
-		Class<?> c = UselessClassJustToShowAnnotation.class;
+		Class<?> c = fancyClassJustToShowAnnotation.class;
 		System.out.println(c + " has these annotations:");
 		for (Annotation a : c.getAnnotations()) {
 			System.out.println(a);
+			if (a instanceof AnnotationDemo) {
+				AnnotationDemo ad = (AnnotationDemo)a;
+				System.out.println(ad.fancy());
+			}
 		}
 	}
 }
