@@ -3,7 +3,8 @@ package io;
 import java.util.Formatter;
 
 /** Demonstrate some usage patterns and format-code examples 
- * of the Formatter class (new in J2SE 1.5).
+ * of the Formatter class and PrintStream/PrintWriter 
+ * printf() methods introduced back in Java 5.
  */
 public class FormatterDemo {
 	public static void main(String[] args) {
@@ -22,10 +23,11 @@ public class FormatterDemo {
 		Object result = fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
 		System.out.println(result);
 
-		// Shorter way using String.format().
+		// Shorter way using static String.format(), and
+		// default parameter numbering.
 		Object stringResult = String.format("%04d - the year of %f", 1951, Math.PI);
 		System.out.println(stringResult);
-		
+
 		// A shorter way using PrintStream/PrintWriter.format, more in line with
 		// other languages. But this way you must provide the newline delimiter 
 		// using %n (do NOT use \n as that is platform-dependant!).

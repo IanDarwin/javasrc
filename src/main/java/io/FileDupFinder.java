@@ -101,7 +101,7 @@ public class FileDupFinder implements FileHandler {
 			sb.append((char)byteToHex[bytes[i] & 0x0f]);
 		}
 		return (sb.toString());
-}
+	}
 
 	public File getFile() {
 		return theFile;
