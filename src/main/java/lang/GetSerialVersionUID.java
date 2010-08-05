@@ -26,7 +26,7 @@ public class GetSerVersUID implements Serializable {
 		if (uid == 0L) {
 			System.out.println("Class " + cl + " is not Serializable!");
 		} else {
-			System.out.println("// For class " + cl);
+			System.out.println("// For class " + cl.getName());
 			System.out.println(
 				"static final long serialVersionUID = " + uid + "L;");
 		}
