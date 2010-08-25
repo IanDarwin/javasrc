@@ -22,7 +22,7 @@ public class SAXLister {
 	
 	public SAXLister(String[] args) throws SAXException, IOException {
 		XMLReader parser = XMLReaderFactory.createXMLReader();
-		// should get Handler class from properties rather than hardcoding class name
+		// should get Handler class from args or from properties rather than hardcoding class name
 		parser.setContentHandler(new PeopleHandler());
 		parser.parse(args.length == 1 ? args[0] : "xml/people.xml");
 	}
