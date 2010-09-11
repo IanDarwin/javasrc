@@ -10,7 +10,7 @@ import java.util.*;
  * @author Ian F. Darwin
  * @version $Id$
  */
-public class DaytimeBinary {
+public class RDateClient {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
 	/** Seconds between 1970, the time base for Date(long) and Time.
