@@ -12,7 +12,7 @@ import org.w3c.dom.Document;
 
 /**
  * Simple demo of XPath, which is supported in JAXP (in 
- * package javax.xml.xpath) since JDK 1.5.
+ * JavaSE package javax.xml.xpath) since JDK 1.5.
  */
 public class XPathDemo {
 
@@ -23,6 +23,7 @@ public class XPathDemo {
 		"<section><sectiontitle>A Discourse of Numbers</sectiontitle>" +
 		"<sectionnumber>1.2</sectionnumber>" +
 		"<SC>Introduction</SC><p></p></section>";
+		// parse() requires an InputStream, will not accept a Reader
 		Document document = parser.parse(new ByteArrayInputStream(doc.getBytes()));
 
 		// evaluate the XPath expression against the Document
