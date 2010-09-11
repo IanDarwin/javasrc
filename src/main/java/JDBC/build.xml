@@ -1,0 +1,21 @@
+<project name="Java Cookbook Examples" default="build" basedir=".">
+
+	<!-- include global build properties -->
+	<property file="../build.properties"/>
+
+	<property name="build" value="."/>
+	<property name="src" value="."/>
+
+	<!-- specify what to compile. This builds everything -->
+	<target name="build">
+		<!-- Compile the java code from ${src} into ${build}.
+		  ** failOnError=false because of wierd DataSource definition found.
+		  -->
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${darwinsys.jar}:${servletapi.jar}"
+			debug="true" deprecation="true"
+			failOnError="false"
+			/>
+	</target>
+
+</project>
