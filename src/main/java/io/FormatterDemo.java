@@ -34,6 +34,6 @@ public class FormatterDemo {
 		System.out.printf("%04d - the year of %f%n", 1951, Math.PI);
 
 		// Format doubles with more control
-		System.out.printf("PI is about %4.2f%n", Math.PI);
+		System.out.printf("PI is approximately %4.2f%n", Math.PI);
 	}
 }
