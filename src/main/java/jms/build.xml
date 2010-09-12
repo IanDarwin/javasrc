@@ -1,0 +1,37 @@
+<project name="JMS Chat" default="build" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+
+	<property file="../build.properties"/>
+
+	<property name="deploy.dir" value="/tmp/deploy"/>
+	<property name="deploy.jar" value="jmschat.jar"/>
+
+	<available classname="javax.jms.TopicConnectionFactory" property="avail.jms"
+			classpath="${j2ee.jar}"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="build" depends="init" if="avail.jms">
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${darwinsys.jar}:${j2ee.jar}"
+			deprecation="true"
+			failonerror="false"/>
+	</target>
+
+	<target name="jar" depends="build">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,com/**">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+	<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>
