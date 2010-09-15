@@ -26,7 +26,7 @@ public class JarPackagingClassLoader extends ClassLoader {
 	private static final String DEMO_CLASS_TO_LOAD = "reflection.MultiDemo";
 	
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Map<String, Class> loadedClassesCache = new HashMap<String, Class>();
+	protected Map<String, Class<?>> loadedClassesCache = new HashMap<String, Class<?>>();
 
 	/** The Cache of Jar files we've opened */
 	protected Map<File, JarFile> jarsCache = new HashMap<File, JarFile>();
@@ -148,7 +148,7 @@ public class JarPackagingClassLoader extends ClassLoader {
 			System.out.println("loadClass: SystemLoading " + className);
 			return findSystemClass(className);
 		}
-		Class c = loadedClassesCache.get(className);
+		Class<?> c = loadedClassesCache.get(className);
 		if (c == null) {
 			byte mydata[] = getClassData(className);
 			c = defineClass(className, mydata, 0, mydata.length);			
@@ -175,7 +175,7 @@ public class JarPackagingClassLoader extends ClassLoader {
 			/* Load the target class */
 
 			System.out.printf("Target class %s%n", classToLoad);
-			Class c = loader.loadClass(classToLoad, true);
+			Class<?> c = loader.loadClass(classToLoad, true);
 			
 			System.out.printf("Finally ready to instantiate class %s%n", classToLoad);
 			Object demo = c.newInstance();

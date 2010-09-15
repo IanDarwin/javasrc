@@ -15,7 +15,7 @@ public class LinkListTest extends TestCase {
 	
 	@SuppressWarnings("deprecation")
 	public void setUp() {
-		list = new LinkList();
+		list = new LinkList<String>();
 		list.add(new Object().toString());
 		list.add("Hello");
 		list.add("End of list");

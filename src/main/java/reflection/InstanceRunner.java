@@ -47,12 +47,12 @@ import java.lang.reflect.Method;
  */
 public class InstanceRunner implements Runnable {
 
-	public /*constructor*/ InstanceRunner(java.lang.Class c, String method) {
+	public /*constructor*/ InstanceRunner(Class<?> c, String method) {
 		targetClass = c;
 		methodName = method;
 	}
 
-	private Class targetClass;
+	private Class<?> targetClass;
 	private String methodName;
 
 	/** This run method simply invokes a named method in

@@ -20,7 +20,7 @@ public class RandomPropsTest extends TestCase {
 
 	public void testSystemProps() {
 		Properties p = System.getProperties();
-		Collection values = p.values();
+		Collection<Object> values = p.values();
 		for (int i = 0; i < 10; i++) {
 			String ret = RandomProps.getRandomString(p);
 			assertNotNull(ret);

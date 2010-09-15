@@ -10,9 +10,9 @@ import java.util.Date;
  */
 public class Simple {
 	public static void main(String[] argv) throws Exception {
-		Class c = Class.forName("java.util.Date");
+		Class<Date> c = (Class<Date>) Class.forName("java.util.Date");
 
-		Date d = (Date)c.newInstance();
+		Date d = c.newInstance();
 		System.out.println("Today is " + d);
 
 		System.out.println("d is of class " + c.getName());

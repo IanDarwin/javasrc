@@ -14,8 +14,8 @@ public class ListMethods {
 			System.err.println("Usage: ListMethods className");
 			return;
 		}
-		Class c = Class.forName(argv[0]);
-		Constructor[] cons = c.getConstructors();
+		Class<?> c = Class.forName(argv[0]);
+		Constructor<?>[] cons = c.getConstructors();
 		printList("Constructors", cons);
 		Method[] meths = c.getMethods();
 		printList("Methods", meths);

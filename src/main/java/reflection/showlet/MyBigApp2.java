@@ -10,7 +10,7 @@ public class MyBigApp2 {
 		// className = "java.lang.String"; // uncomment to test error handling
 
 		// Create this user's ShowLet
-		Class c = Class.forName(className);
+		Class<?> c = Class.forName(className);
 		Object o = c.newInstance();
 		if (o instanceof Showlet) {
 			Showlet s = (Showlet) c.newInstance();

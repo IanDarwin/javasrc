@@ -15,13 +15,13 @@ import java.util.ListIterator;
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin
  */
-public class LinkList implements List {
+public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
 	class TNode {
 		TNode next;
-		Object data;
-		TNode(Object o) {
+		T data;
+		TNode(T o) {
 			data = o;
 			next = null;
 		}
@@ -41,7 +41,7 @@ public class LinkList implements List {
 	/** Construct a LinkList given another Collection.
 	 * This method is recommended by the general contract of List.
 	 */
-	public LinkList(Collection c) {
+	public LinkList(Collection<T> c) {
 		this();
 		addAll(c);
 		throw new IllegalArgumentException("Can't construct(Collection) yet");
@@ -51,7 +51,7 @@ public class LinkList implements List {
 	 * Any references held will be discarded.
 	 */
     public void clear() {
-		first = new TNode(this);
+		first = new TNode(null);
 		last = first;
 	}
 
@@ -59,13 +59,13 @@ public class LinkList implements List {
 	 * reference in the previous end, to refer to the new node.
 	 * Update "last" to refer to the new node. 
 	 */
-	public boolean add(Object o) {
+	public boolean add(T o) {
 		last.next = new TNode(o);
 		last = last.next;
 		return true;
 	}
 
-    public void add(int where, Object o) {
+    public void add(int where, T o) {
 		TNode t = first;
 		for (int i=0; i<where; i++)
 			t = t.next;
@@ -89,7 +89,7 @@ public class LinkList implements List {
 		return size() == 0;
 	}
 
-    public Object get(int where) {
+    public T get(int where) {
 		TNode t = first;
 		for (int i=0; i<=where; i++) {
 			t = t.next;
@@ -97,7 +97,7 @@ public class LinkList implements List {
 		return t.data;
 	}
 
-    public Object set(int i, Object o) {
+    public T set(int i, T o) {
 		return null;
 	}
     
@@ -120,7 +120,7 @@ public class LinkList implements List {
     public boolean remove(Object o) {
 		return false;
 	}
-    public Object remove(int i) {
+    public T remove(int i) {
 		return null;
 	}
     public boolean containsAll(Collection c) {

@@ -31,7 +31,7 @@ public class CompTest {
 		// create an instance of class named in "name", save in "Component c".
 		Component c = null;
 		try {
-			Class cf = Class.forName(name);
+			Class<?> cf = Class.forName(name);
 			Object o = cf.newInstance();
 			if (!(o instanceof Component)) {
 				System.err.println("ERROR: Class " + name +

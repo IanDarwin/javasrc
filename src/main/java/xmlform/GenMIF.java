@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -36,7 +37,7 @@ public class GenMIF implements XmlFormWalker {
 	/** A GetMark converter for source code. */
 	protected GetMark gm = new GetMark();
 	/** Vector used to print indented lines */
-	protected Vector indents;
+	protected List<String> indents;
 	/** The Document */
 	Document theDocument;
 
@@ -48,8 +49,8 @@ public class GenMIF implements XmlFormWalker {
 		// Reassign System.out to go there as well, so when we
 		// run other main classes, their output gets grabbed.
 		System.setOut(smsg);
-		indents = new Vector();
-		indents.addElement("");
+		indents = new Vector<String>();
+		indents.add("");
 	}
 
 	protected int indent = 0;
@@ -60,12 +61,12 @@ public class GenMIF implements XmlFormWalker {
 				sb.append(' ');
 				sb.append(' ');
 			}
-			indents.addElement(sb.toString());
+			indents.add(sb.toString());
 		}
-		msg.print(indents.elementAt(indent>0?indent-1:0));
+		msg.print(indents.get(indent>0?indent-1:0));
 	}
 
-	protected Stack tagStack = new Stack();
+	protected Stack<String> tagStack = new Stack<String>();
 	protected void startTag(String tag) {
 		++indent;
 		indent(); msg.println('<' + tag);
@@ -229,13 +230,13 @@ public class GenMIF implements XmlFormWalker {
 
 		try {
 			// First, find the class.
-			Class c = Class.forName(className);
+			Class<?> c = Class.forName(className);
 
 			// Create a dummy argv to pass it.
 			String[] argv = new String[0];
 
 			// Create the array of Argument Types
-			Class[] argTypes = {
+			Class<?>[] argTypes = {
 				argv.getClass(),	// array is Object!
 			};
 

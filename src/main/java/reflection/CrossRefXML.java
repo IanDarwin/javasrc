@@ -16,18 +16,18 @@ public class CrossRefXML extends CrossRef {
 
 	/** Print the start of a class.
 	 */
-	protected void startClass(Class c) {
+	protected void startClass(Class<?> c) {
 		println("<class><classname>" + c.getName() + "</classname>");
 	}
 
-	protected void putField(Field fld, Class c) {
+	protected void putField(Field fld, Class<?> c) {
 		println("<field>" + fld + "</field>");
 	}
 
 	/** put a Method's information to the standard output.
 	 * Marked protected so you can override it (hint, hint).
 	 */
-	protected void putMethod(Method method, Class c) {
+	protected void putMethod(Method method, Class<?> c) {
 		println("<method>" + method + "</method>");
 	}
 

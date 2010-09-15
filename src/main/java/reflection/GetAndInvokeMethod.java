@@ -23,10 +23,10 @@ public class GetAndInvokeMethod {
 	}
 	public static void main(String[] argv) {
 		try {
-			Class clX = X.class; // or Class.forName("X");
+			Class<?> clX = X.class; // or Class.forName("X");
 
 			// To find a method we need the array of matching Class types.
-			Class[] argTypes = {
+			Class<?>[] argTypes = {
 				int.class,
 				String.class
 			};

@@ -22,7 +22,7 @@ public class FindField {
 
 	int intFieldValue(Object o, String name)
 	throws NoSuchFieldException, IllegalAccessException {
-		Class c = o.getClass();
+		Class<?> c = o.getClass();
 		Field fld = c.getField(name);
 		int value = fld.getInt(o);
 		return value;

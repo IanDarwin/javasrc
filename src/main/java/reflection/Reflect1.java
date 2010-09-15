@@ -14,7 +14,7 @@ public class Reflect1 {
 	public void run(String classes[]) {
 		for (int i=0; i<classes.length; i++)
 			try {
-				Class c = Class.forName(classes[i]);
+				Class<?> c = Class.forName(classes[i]);
 				Method methods[] = c.getMethods();
 				for (int m = 0; m < methods.length; m++)
 					System.out.println(methods[m].toString());
