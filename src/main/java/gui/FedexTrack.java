@@ -26,7 +26,7 @@ import java.util.GregorianCalendar;
  * @version $Id$
  */
 
-public class FXTrack extends Applet {
+public class FedexTrack extends Applet {
 	GregorianCalendar gc = new GregorianCalendar(); // today
 	DecimalFormat nf = new DecimalFormat("00");
 	String shipDate;
@@ -50,7 +50,7 @@ public class FXTrack extends Applet {
 			System.out.println("URL = " + destURL);
 
 			// "And then a miracle occurs..."
-			FXTrack.this.getAppletContext().showDocument(destURL);
+			FedexTrack.this.getAppletContext().showDocument(destURL);
 		}
 	};
 
