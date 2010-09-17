@@ -1,4 +1,4 @@
-package gui;
+package gui_awt;
 
 import java.awt.Frame;
 import java.awt.Image;

@@ -1,4 +1,4 @@
-package gui;
+package gui_awt;
 
 import java.awt.Button;
 import java.awt.FileDialog;

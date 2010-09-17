@@ -1,4 +1,4 @@
-package gui;
+package gui_awt;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
