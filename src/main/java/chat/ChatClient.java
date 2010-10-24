@@ -148,13 +148,19 @@ public class ChatRoom extends Applet {
 			sock = new Socket(serverHost, port);
 			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			pw = new PrintWriter(sock.getOutputStream(), true);
+			showStatus("Got socket");
+
+			// FAKE LOGIN FOR NOW
+			pw.println(Chat.CMD_LOGIN + "AppletUser");
+
+			loggedIn = true;
+
 		} catch(IOException e) {
 			showStatus("Can't get socket to " + 
 				serverHost + "/" + port + ": " + e);
 			cp.add(new Label("Can't get socket: " + e));
 			return;
 		}
-		showStatus("Got socket");
 
 		// Construct and start the reader: from server to textarea.
 		// Make a Thread to avoid lockups.
@@ -170,10 +176,6 @@ public class ChatRoom extends Applet {
 				}
 			}
 		}).start();
-
-		// FAKE LOGIN FOR NOW
-		pw.println(Chat.CMD_LOGIN + "AppletUser");
-		loggedIn = true;
 	}
 
 	/** Log me out, Scotty, there's no intelligent life here! */
