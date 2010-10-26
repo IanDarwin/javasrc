@@ -10,11 +10,12 @@ import java.util.Properties;
  * @author Ian Darwin, http://darwinsys.com/
  *
  */
-public class AutoReloadingFactoryClass {
+public class SelfReloadingFactory {
 	private final static Properties p = new Properties();
 	private final static File f = new File("factory.props");
 	private static long timestamp;
 	
+	/** Get a particular kind of bean */
 	public static MessageRenderer getMessageRenderer() {
 		try {
 			return (MessageRenderer) 
@@ -24,15 +25,26 @@ public class AutoReloadingFactoryClass {
 		}
 	}
 
-	private static String getConfigProperty(String name) throws IOException {
+	/** Generic getBean a la Spring */
+	public static <T> T getBean(String name, Class<?> T) {
+		try {
+			return (T) Class.forName(getConfigProperty(name)).newInstance();
+		} catch (Exception e) {
+			throw new RuntimeException("Cant load Renderer " + e, e);
+		}
+	}
+
+	/** Reload the config file */
+	private static synchronized void reload() throws IOException {
+		p.load(new FileInputStream("factory.config"));
+	}
+
+	/** Read a property from the Config file, (re)loading it if necessary */
+	private static synchronized String getConfigProperty(String name) throws IOException {
 		if (f.lastModified() != timestamp) {
 			reload();
 			timestamp = f.lastModified();
 		}
 		return p.getProperty(name);
-	}
-
-	private static void reload() throws IOException {
-		p.load(new FileInputStream("factory.config"));
 	}
 }
