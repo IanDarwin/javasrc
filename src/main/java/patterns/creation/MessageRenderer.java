@@ -1,5 +1,6 @@
 package patterns.creation;
 
-public interface Renderer {
+/** Dummy interface, just for use in Factory demos */
+public interface MessageRenderer {
 	void renderMessage();
 }
