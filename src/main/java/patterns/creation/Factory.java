@@ -24,7 +24,7 @@ public class Factory {
 		}
 	}
 
-	private static Object getBean(String name) throws Exception {
+	public static Object getBean(String name) throws Exception {
 		final String clazz = props.getProperty(name);
 		final Class<? extends Object> c = Class.forName(clazz);
 		final Object o = c.newInstance();
