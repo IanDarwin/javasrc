@@ -10,7 +10,7 @@ import java.util.Properties;
  * @author Ian Darwin, http://darwinsys.com/
  *
  */
-public class SelfReloadingFactory {
+public class ReloadingFactory {
 	private final static Properties p = new Properties();
 	private final static File f = new File("factory.props");
 	private static long timestamp;
