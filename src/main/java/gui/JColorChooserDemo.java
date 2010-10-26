@@ -25,13 +25,13 @@ import javax.swing.JLabel;
  * @version $Id$
  * Originally appeared in the Linux Journal, 1999.
  */
-public class JColorDemo extends JFrame
+public class JColorChooserDemo extends JFrame
 {
 	/** A canvas to display the color in. */
     protected JLabel demo;
 
 	/** Constructor - set up the entire GUI for this program */
-    public JColorDemo() {
+    public JColorChooserDemo() {
         super("Swing Color Demo");
 		Container cp = getContentPane();
         JButton jButton;
@@ -41,7 +41,7 @@ public class JColorDemo extends JFrame
 			public void actionPerformed(ActionEvent actionEvent)
 			{
 				Color ch = JColorChooser.showDialog(
-					JColorDemo.this,				// parent
+					JColorChooserDemo.this,				// parent
 					"Swing Demo Color Popup",	// title
 					demo.getForeground());			// default
 				System.out.println("Your selected color is " + ch);
@@ -61,6 +61,6 @@ public class JColorDemo extends JFrame
 	/** good old main */
     public static void main(String[] argv)
     {
-        new JColorDemo().setVisible(true);
+        new JColorChooserDemo().setVisible(true);
     }
 }
