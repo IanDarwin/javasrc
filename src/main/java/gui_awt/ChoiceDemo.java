@@ -1,4 +1,4 @@
-package gui;
+package gui_awt;
 
 import java.applet.Applet;
 import java.awt.Button;
