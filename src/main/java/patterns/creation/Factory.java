@@ -17,7 +17,11 @@ public class Factory {
 	static Properties props = new Properties();
 
 	static {
-		props.load(new FileInputStream("patterns/creation/factory.config"));
+		try {
+			props.load(new FileInputStream("patterns/creation/factory.config"));
+		} catch (IOException e) {
+			throw new ExceptionInInitializerError(e);
+		}
 	}
 
 	private static Object getBean(String name) throws Exception {
