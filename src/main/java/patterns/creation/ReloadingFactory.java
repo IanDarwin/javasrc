@@ -21,9 +21,13 @@ public class ReloadingFactory {
 	public static void main(String[] args) throws Exception {
 		MessageRenderer p = ReloadingFactory.getBean("renderer", MessageRenderer.class);
 		System.out.println("Factory gave us a " + p.getClass() + " instance");
+		System.out.println("You now have 15sec to edit " + f.getAbsolutePath());	
+		Thread.sleep(15 * 1000);
+		MessageRenderer p2 = ReloadingFactory.getBean("renderer", MessageRenderer.class);
+		System.out.println("Factory gave us a " + p2.getClass() + " instance");
 	}
 	
-	/** Get a particular kind of bean */
+	/** Get a particular kind of bean, the MessageRenderer instance */
 	public static MessageRenderer getMessageRenderer() {
 		try {
 			return (MessageRenderer) 
@@ -33,7 +37,7 @@ public class ReloadingFactory {
 		}
 	}
 
-	/** Generic getBean a la Spring */
+	/** Generic getBean(name, TypeParameter) a la Spring 3.x */
 	public static <T> T getBean(String name, Class<?> T) {
 		try {
 			final String clazzName = getConfigProperty(name);
@@ -57,9 +61,15 @@ public class ReloadingFactory {
 
 	/** Lazily (re)load the config file */
 	private static synchronized void reload() throws IOException {
-		final FileInputStream is = new FileInputStream(f);
-		p.load(is);
-		is.close();
+		FileInputStream is = null;
+		try {
+				is = new FileInputStream(f);
+				p.load(is);
+		} finally {			
+			if (is != null) {
+				is.close();
+			}
+		}
 	}
 
 }
