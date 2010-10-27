@@ -1,4 +1,4 @@
-package gui;
+package patterns.behavioral;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -9,7 +9,7 @@ import java.util.Observer;
  * @author Ian Darwin
  * @version $Id$
  */
-public class ObservDemo extends Object {
+public class ObserverDemo extends Object {
 	MyView view;
 	MyModel model;
 
