@@ -3,6 +3,7 @@ package patterns.creation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 /** A Factory class as per page 517-2-20 that
@@ -12,8 +13,15 @@ import java.util.Properties;
  */
 public class ReloadingFactory {
 	private final static Properties p = new Properties();
-	private final static File f = new File("factory.props");
-	private static long timestamp;
+	private final static String CONFIG_FILE = "patterns/creation/factory.config";
+	private final static URL fileLoc = ReloadingFactory.class.getClassLoader().getResource(CONFIG_FILE);
+	private static File f = new File(fileLoc.getFile());	// contains full path to file!
+	private static long timestamp = -1;
+	
+	public static void main(String[] args) throws Exception {
+		MessageRenderer p = ReloadingFactory.getBean("renderer", MessageRenderer.class);
+		System.out.println("Factory gave us a " + p.getClass() + " instance");
+	}
 	
 	/** Get a particular kind of bean */
 	public static MessageRenderer getMessageRenderer() {
@@ -28,15 +36,14 @@ public class ReloadingFactory {
 	/** Generic getBean a la Spring */
 	public static <T> T getBean(String name, Class<?> T) {
 		try {
-			return (T) Class.forName(getConfigProperty(name)).newInstance();
+			final String clazzName = getConfigProperty(name);
+			if (clazzName == null) {
+				throw new RuntimeException("Config property " + name + " not found.");
+			}
+			return (T) Class.forName(clazzName).newInstance();
 		} catch (Exception e) {
-			throw new RuntimeException("Cant load Renderer " + e, e);
+			throw new RuntimeException("Can't load Renderer " + e, e);
 		}
-	}
-
-	/** Reload the config file */
-	private static synchronized void reload() throws IOException {
-		p.load(new FileInputStream("factory.config"));
 	}
 
 	/** Read a property from the Config file, (re)loading it if necessary */
@@ -47,4 +54,12 @@ public class ReloadingFactory {
 		}
 		return p.getProperty(name);
 	}
+
+	/** Lazily (re)load the config file */
+	private static synchronized void reload() throws IOException {
+		final FileInputStream is = new FileInputStream(f);
+		p.load(is);
+		is.close();
+	}
+
 }
