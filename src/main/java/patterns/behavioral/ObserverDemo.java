@@ -13,7 +13,7 @@ public class ObserverDemo extends Object {
 	MyView view;
 	MyModel model;
 
-	public ObservDemo() {
+	public ObserverDemo() {
 
 		view = new MyView();
 
@@ -23,7 +23,7 @@ public class ObserverDemo extends Object {
 	}
 
 	public static void main(String[] av) {
-		ObservDemo me = new ObservDemo();
+		ObserverDemo me = new ObserverDemo();
 		me.demo();
 	}
 
