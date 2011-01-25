@@ -2,6 +2,11 @@ package reflection;
 
 import java.lang.reflect.Field;
 
+class X {
+	private int p = 42;
+	int q = 3;
+}
+
 /**
  * Demonstrate that it is, in fact, all too easy to access private members
  * of an object using Reflection, using the default SecurityManager (so this
@@ -9,27 +14,15 @@ import java.lang.reflect.Field;
  */
 public class DefeatPrivacy {
 
-	/**
-	 * @param args
-	 * @throws Exception 
-	 */
 	public static void main(String[] args) throws Exception {
 		new DefeatPrivacy().process();
-
 	}
 	
-	class X {
-		private int p = 42;
-		int q = 3;
-		public int r = 0x123;
-		public int getP() {
-			return p;
-		}
-	}
-
 	private void process() throws Exception {
 		X x = new X();
 		System.out.println(x);
+		// System.out.println(x.p); // Won't compile
+		System.out.println(x.q);
 		Class<? extends X> class1 = x.getClass();
 		Field[] flds = class1.getDeclaredFields();
 		for (Field f : flds) {
