@@ -37,19 +37,24 @@ public class ClientMain {
 				continue;
 			}
 			int ret = 0;
-			switch(op) {
-			case '+':
-				ret = client.add(arg1, arg2);
-				break;
-			case '-':
-				ret = client.subtract(arg1, arg2);
-				break;
-			case '*':
-				ret = client.multiply(arg1, arg2);
-				break;
-			case '/':
-				ret = client.divide(arg1, arg2);
-				break;
+			try {
+				switch(op) {
+				case '+':
+					ret = client.add(arg1, arg2);
+					break;
+				case '-':
+					ret = client.subtract(arg1, arg2);
+					break;
+				case '*':
+					ret = client.multiply(arg1, arg2);
+					break;
+				case '/':
+					ret = client.divide(arg1, arg2);
+					break;
+				}
+			} catch (ArithmeticException e) {
+				System.err.println(line + " caused an arithmetic exception");
+				continue;
 			}
 			System.out.printf("%s = %d%n", line, ret);
 		}
