@@ -1,18 +1,21 @@
 package jaxwsclient;
 
-import java.io.Console;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-
 public class ClientMain {
-	public static void main(String[] args) {
-		Console con = System.console();
-		if (con==null) {
-			throw new IllegalStateException("Could not get Console");
-		}
+	public static void main(String[] args) throws IOException {
+		BufferedReader con = new BufferedReader(new InputStreamReader(System.in));
 		Calc client = new CalcService().getCalcPort();
 		String line = null;
-		while ((line = con.readLine()) != null) {
+		System.out.println("Interactive calculator. Put spaces around operators.");
+		do {
+			System.out.print(">> "); System.out.flush();
+			if ((line = con.readLine()) == null) {
+				return;
+			}
 			if (line.length() == 0 || line.startsWith("#")) {
 				continue;
 			}
@@ -52,11 +55,13 @@ public class ClientMain {
 					ret = client.divide(arg1, arg2);
 					break;
 				}
-			} catch (ArithmeticException e) {
-				System.err.println(line + " caused an arithmetic exception");
+			} catch (RuntimeException e) {
+				System.err.println(line + " caused an exception");
+				System.err.println(e.toString());
+				System.err.flush();
 				continue;
 			}
 			System.out.printf("%s = %d%n", line, ret);
-		}
+		} while (line != null);
 	}
 }
