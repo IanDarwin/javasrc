@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Taken from the Sun documentation on Clipboard API */
-public class ClipboardTest extends Frame 
+public class ClipboardDemo extends Frame 
                            implements ClipboardOwner, ActionListener {
 
     TextArea srcText, dstText;
@@ -22,8 +22,8 @@ public class ClipboardTest extends Frame
 
     Clipboard clipboard = getToolkit().getSystemClipboard();
 
-    public ClipboardTest() {
-        super("Clipboard Test");
+    public ClipboardDemo() {
+        super("Clipboard Demo");
         GridBagLayout gridbag = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
         setLayout(gridbag);
@@ -90,7 +90,7 @@ public class ClipboardTest extends Frame
        System.out.println("Clipboard contents replaced");
     }
      public static void main(String[] args) {
-        ClipboardTest test = new ClipboardTest();
+        ClipboardDemo test = new ClipboardTest();
         test.setVisible(true);
      }
 }
