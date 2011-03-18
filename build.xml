@@ -16,7 +16,7 @@
 
 	<property name="javasrc.home" value="${user.dir}"/>
 	<property name="darwinsys.jar" value="${lib.dir}/darwinsys.jar"/>
-    <property name="junit.jar" value="${lib.dir}/lib/junit-4.4.jar"/>
+	<property name="junit.jar" value="${lib.dir}/lib/junit-4.4.jar"/>
 
 	<!-- Right away, make sure javasrc.home has been set
 	 (this must be set as an absolute path, alas, so that
@@ -92,6 +92,7 @@
 			3) Stuff that needs a missing JAR file;
 			4) Stuff that I don't know why it won't compile :-)
 			-->
+			<include name="**/*.java"/>
 			<exclude name="anttasks/PathIteratorTask.java"/>
 			<exclude name="introspection/ClassLoaderDemo0.java"/>
 			<exclude name="jdb/Problem.java"/>
@@ -103,6 +104,7 @@
 			<exclude name="lang/CompileError.java"/>
 			<exclude name="lang/ConsRecurs.java"/>
 			<exclude name="lang/Constructors.java"/>
+			<exclude name="lang/EuroLanguage.java"/>
 			<exclude name="lang/ImportConflict.java"/>
 			<exclude name="lang/ImportNonPublic.java"/>
 			<exclude name="lang/InitializersDemo.java"/>
