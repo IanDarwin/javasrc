@@ -11,9 +11,9 @@ import java.util.regex.*;
  */
 public class CanonEqDemo {
 	public static void main(String[] args) {
-		String pattStr = "\u00e9gal"; // Žgal
+		String pattStr = "\u00e9gal"; // egal
 		String[] input = {
-				"\u00e9gal", // Žgal - this one had better match :-)
+				"\u00e9gal", // egal - this one had better match :-)
 				"e\u0301gal", // e + "Combining acute accent"
 				"e\u02cagal", // e + "modifier letter acute accent"
 				"e'gal", // e + single quote
