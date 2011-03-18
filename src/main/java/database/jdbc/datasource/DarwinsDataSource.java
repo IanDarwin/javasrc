@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -26,6 +28,11 @@ public class DarwinsDataSource implements DataSource, Serializable {
 	/** Added in Java SE 6 - NOT YET IMPLEMENTED */
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		return null;
+	}
+	
+	/** New - not yet implemented */
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		throw new SQLFeatureNotSupportedException();
 	}
 	/** The SQL driver name. */
 	protected String driverName;
@@ -86,6 +93,5 @@ public class DarwinsDataSource implements DataSource, Serializable {
 	public int getLoginTimeout() {
 		return DriverManager.getLoginTimeout();
 	}
-
 
 }
