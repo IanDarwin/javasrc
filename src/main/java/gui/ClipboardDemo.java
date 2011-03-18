@@ -90,7 +90,7 @@ public class ClipboardDemo extends Frame
        System.out.println("Clipboard contents replaced");
     }
      public static void main(String[] args) {
-        ClipboardDemo test = new ClipboardTest();
+        ClipboardDemo test = new ClipboardDemo();
         test.setVisible(true);
      }
 }
