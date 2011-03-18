@@ -15,7 +15,6 @@ import javax.swing.JPanel;
  */
 public class GlassExample {
 
-	/** Construct a Splash screen with the given image */
 	public static void main(String[] args) {
 		JFrame f = new JFrame("GlassPane");
 		
