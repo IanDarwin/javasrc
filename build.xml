@@ -153,10 +153,17 @@
 			forkmode="once"
 			haltonfailure="no"
 			>
-			<classpath refid="all.classpath"/>
-			<formatter type="plain" />
-			<formatter type="xml" />
-			<test name="AllTests" todir="${reports-regress}"/>
+				<classpath>
+					<pathelement location="${build-instrumented}"/>
+					<path refid="all.classpath"/>
+				</classpath>
+				<formatter type="xml" />
+				<batchtest fork="yes" todir="${reports-regress}">
+					<fileset dir="${src}">
+						<include name="**/*Test.*"/>
+						<exclude name="**/AllTest*"/>
+					</fileset>
+				</batchtest>
 		</junit>
 		<junitreport>
 			<fileset dir="${reports-regress}">
