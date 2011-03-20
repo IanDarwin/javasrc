@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -17,6 +19,12 @@ import com.darwinsys.database.DataBaseException;
 public class DarwinsDataSource implements DataSource, Serializable {
 
 	private static final long serialVersionUID = -4300791498296750769L;
+
+	/** New - not yet implemented */
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/** Added in Java SE 6 - NOT YET IMPLEMENTED */
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
@@ -86,6 +94,4 @@ public class DarwinsDataSource implements DataSource, Serializable {
 	public int getLoginTimeout() {
 		return DriverManager.getLoginTimeout();
 	}
-
-
 }
