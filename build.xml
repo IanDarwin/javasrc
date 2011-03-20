@@ -8,6 +8,8 @@
 
 	<!-- set global properties for this build -->
 	<property name="src" value="."/>
+	<property name="regress" value="regress"/>
+	<property name="reports-regress" value="reports-junit"/>
 	<property name="build" value="build"/>
 	<property name="lib.dir" value="lib"/>
 
@@ -144,11 +146,24 @@
 	</target>
 
 	<target name="regress" depends="build" description="run unit tests">
-		<junit printsummary="yes" fork="yes" haltonfailure="yes">
+		<delete dir="${reports-regress}"/>
+		<mkdir  dir="${reports-regress}"/>
+		<junit printsummary="withOutAndErr" 
+			fork="yes"
+			forkmode="once"
+			haltonfailure="no"
+			>
 			<classpath refid="all.classpath"/>
 			<formatter type="plain" />
-			<test name="AllTests" />
+			<formatter type="xml" />
+			<test name="AllTests" todir="${reports-regress}"/>
 		</junit>
+		<junitreport>
+			<fileset dir="${reports-regress}">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<report format="frames" todir="${reports-regress}"/>
+		</junitreport>
 	</target>
 
 	<target name="build.sub" description="nested build">
