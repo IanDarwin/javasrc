@@ -1,15 +1,20 @@
 package unfinished;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 /**
  * Test the IMath class
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
 public class IMathTest {
-	public static void main(String[] argv) {
-		//+
-		for (int i=-10; i<=25; i+=2)
-			System.out.println("isqrt(" + i + ") = " + IMath.isqrt(i));
-		//-
+	@Test
+	public void main() {
+		assertEquals("0", 0, isqrt(0));
+		assertEquals("1", 1, isqrt(1));
+		assertEquals("1", 1, isqrt(2));
+		assertEquals("2", 2, isqrt(4));
 	}
 }
