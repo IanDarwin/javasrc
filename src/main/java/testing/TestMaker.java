@@ -12,9 +12,9 @@ import java.util.Map;
 import com.darwinsys.lang.MutableInteger;
 
 /**
- * GenTest - generate a JUnit test case for an existing class.
+ * TestMaker - generate a JUnit test case for an existing class.
  */
-public class GenTest {
+public class TestMaker {
 	PrintWriter out;
 
 	public static void main(String[] args) throws IOException {
@@ -24,7 +24,7 @@ public class GenTest {
 		int lastDot = fullClassName.lastIndexOf('.');
 		String printableClassName = lastDot > 0 ? fullClassName.substring(lastDot + 1) : fullClassName;
 		String testClassName = printableClassName + "Test";
-		GenTest gt = new GenTest(new PrintWriter(
+		TestMaker gt = new TestMaker(new PrintWriter(
 				new FileWriter(pkgName + "/" + testClassName + ".java")));
 		gt.emitClass(fullClassName, printableClassName, testClassName);
 		System.out.println("All Done");
@@ -33,7 +33,7 @@ public class GenTest {
 	/**
 	 * Constructor
 	 */
-	public GenTest(PrintWriter writer) {
+	public TestMaker(PrintWriter writer) {
 		this.out = writer;
 	}
 
