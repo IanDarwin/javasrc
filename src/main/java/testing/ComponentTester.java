@@ -11,19 +11,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** 
- * CompTest -- Component Tester; NOT a JUnit Test.
+ * ComponentTester -- Component Tester; NOT a JUnit Test.
  * A generic main program, for "testing" (running) any Component-based GUI 
  * class that has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class CompTest {
+public class ComponentTester {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		if (av.length == 0) {
-			System.err.println("Usage: CompTest ComponentSubclass");
+			System.err.println("Usage: ComponentTester ComponentSubclass");
 			System.exit(1);
 		}
 		String name = av[0];
@@ -46,7 +46,7 @@ public class CompTest {
 		}
 
 		// create a Frame, and "Component c" to it.
-		final JFrame f = new JFrame("CompTest: " + av[0]);
+		final JFrame f = new JFrame("ComponentTester: " + av[0]);
 		Container cp = f.getContentPane();
 
 		cp.add(BorderLayout.CENTER, c);		// Add the component under test
