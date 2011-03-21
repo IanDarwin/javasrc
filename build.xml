@@ -75,6 +75,14 @@
 			<pathelement location="${build}"/>
 	</path>
 
+	<target name="copyconfig" description="copy configs to build">
+		<copy todir="${build}">
+			<fileset dir="${src}">
+			<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+
 	<!-- compile everything, for JavaCookbook reliability :-) -->
 	<target name="build" description="compile all" depends="init">
 		<javac srcdir="${src}" sourcepath="${subdirs}"
@@ -142,7 +150,7 @@
 	</target>
 
 	<!-- Regression Tests -->
-	<target name="regress" depends="build">
+	<target name="regress" depends="build,copyconfig">
 		<delete dir="${reports-regress}"/>
 		<mkdir  dir="${reports-regress}"/>
 		<junit printsummary="withOutAndErr" 
