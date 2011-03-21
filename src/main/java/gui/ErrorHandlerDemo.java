@@ -16,11 +16,13 @@ import javax.swing.JFrame;
  * But it may change at any time (hence the name sun.awt...).
  * @author Ian Darwin.
  */
-public class ErrorHandlerTest extends JFrame {
+public class ErrorHandlerDemo extends JFrame {
+
+	private static final long serialVersionUID = 0L;
 
 	/** A fairly banal GUI, just to show interaction.
 	 */
-	ErrorHandlerTest() {
+	ErrorHandlerDemo() {
 		super("GUI");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
@@ -39,6 +41,6 @@ public class ErrorHandlerTest extends JFrame {
 		System.setProperty("sun.awt.exception.handler", "ErrorHandler");
 
 		// Now create and show the GUI.
-		new ErrorHandlerTest().setVisible(true);
+		new ErrorHandlerDemo().setVisible(true);
 	}
 }

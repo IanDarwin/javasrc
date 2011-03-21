@@ -7,17 +7,19 @@ import javax.swing.*;
 /** Test for AliasBean.
  * @version $Id$
  */
-public class AliasBeanTest extends JFrame {
+public class AliasBeanDemo extends JFrame {
+
+	private static final long serialVersionUID = 0L;
 	JButton quitButton;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		// create a JFrameDemo object, tell it to show up
-		new AliasBeanTest().setVisible(true);
+		new AliasBeanDemo().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
-	public AliasBeanTest() {
+	public AliasBeanDemo() {
 		super("AliasBeanTest");
 		Container cp = getContentPane();
 

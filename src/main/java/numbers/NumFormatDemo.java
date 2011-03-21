@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 /*
  * Format a number our way and the default way.
  */
-public class NumFormatTest {
+public class NumFormatDemo {
 	//+
 	/** A number to format */
 	public static final double intlNumber = 1024.25;

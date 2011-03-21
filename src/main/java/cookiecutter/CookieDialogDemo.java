@@ -1,6 +1,6 @@
 package cookiecutter;
 
-public class CookieDialogTest {
+public class CookieDialogDemo {
 
 	public static void main(String[] args) {
 		CookieDialog cd = new CookieDialog(null, "Test");
