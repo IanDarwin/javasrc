@@ -1,4 +1,4 @@
-package XColor;
+package xcolor;
 
 import java.awt.*;
 
@@ -59,7 +59,7 @@ public class XColor extends Color {
 	}
 
 	/** Get the list of all available colors, as a pre-sorted array */
-	public String[] getColorList() {
+	public static String[] getColorList() {
 		String list[] = new String[data.length];
 		for (int i=0; i<data.length; i++)
 			list[i] = data[i].name;

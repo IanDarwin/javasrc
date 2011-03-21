@@ -1,10 +1,10 @@
-package XColor;
+package xcolor;
 
 import java.awt.*;
 import java.awt.event.*;
 
-/** Template standalone GUI application */
-public class XColorTest extends Frame {
+/** Standalone GUI application for XColor */
+public class XColorDemo extends Frame {
 	/** The Label for showStatus */
 	protected Label status;
 	/** The button to List All colors */
@@ -71,11 +71,11 @@ public class XColorTest extends Frame {
 	};
 
 	/** The list of all color names known to the XColor class */
-	protected String[] allColors = (new XColor("black")).getColorList();
+	protected String[] allColors = XColor.getColorList();
 
-	/** Constructor the XColorTest object */
-	public XColorTest() {
-		super("XColorTest");
+	/** Constructor the XColorDemo object */
+	public XColorDemo() {
+		super("XColorDemo");
 		Panel p = new Panel();
 		p.setLayout(new GridLayout(10,5));
 		Button b;
@@ -111,7 +111,7 @@ public class XColorTest extends Frame {
 			}
 		});
 		add(BorderLayout.CENTER, p);
-		add(BorderLayout.SOUTH, status = new Label("XColorTest ready; click on a color"));
+		add(BorderLayout.SOUTH, status = new Label("XColorDemo ready; click on a color"));
 		addWindowListener(new WindowAdapter() {
 			/** The WindowCloser: if get here, just go away. */
 			public void windowClosing(WindowEvent e) {
@@ -121,14 +121,15 @@ public class XColorTest extends Frame {
 
 		pack();
 	}
+
 	void showStatus(String s) {
 		status.setText(s);
 	}
  
 	/** "main program" method */
 	public static void main(String[] av) {
-		// create a XColorTest object
-		XColorTest j = new XColorTest();
+		// create a XColorDemo object
+		XColorDemo j = new XColorDemo();
 		// send message telling it to show up
 		j.setVisible(true);
 	}
