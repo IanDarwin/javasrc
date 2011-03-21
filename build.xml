@@ -154,9 +154,10 @@
 				<formatter type="xml"/>
 				<batchtest fork="yes" todir="${reports-regress}">
 					 <fileset dir="${regress}">
-					     <include name="**/*Test.java"/>
-					     <exclude name="**/AllTest*.java"/>
-					 </fileset>
+						<include name="**/*Test.java"/>
+						<exclude name="**/AllTest*.java"/>
+						<exclude name="unfinished/**.java"/>
+					</fileset>
 				</batchtest>
 		</junit>
 		<junitreport>
