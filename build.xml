@@ -137,7 +137,6 @@
 			<exclude name="rmi/agent/*.java"/>
 			<exclude name="rmi/callback/*.java"/>
 			<exclude name="strings/WolfInStringsClothing.java"/>
-			<exclude name="unfinished/**.java"/>
 			<exclude name="Contrib/**.java"/>
 			<include name="Contrib/JDBCDriver-Moss/*.java"/>
 			<include name="Contrib/treelayout/*.java"/>
@@ -161,10 +160,9 @@
 				</classpath>
 				<formatter type="xml"/>
 				<batchtest fork="yes" todir="${reports-regress}">
-					 <fileset dir="${regress}">
+					<fileset dir="${regress}">
 						<include name="**/*Test.java"/>
 						<exclude name="**/AllTest*.java"/>
-						<exclude name="unfinished/**.java"/>
 					</fileset>
 				</batchtest>
 		</junit>
