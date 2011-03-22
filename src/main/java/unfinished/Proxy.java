@@ -9,7 +9,7 @@ import java.io.*;
  * @author	Ian Darwin, http://www.darwinsys.com/
  * @version	$Id$
  */
-public class proxy {
+public class Proxy {
 	/** port number we bind to on machine where proxy runs */
 	int localPort;
 	/** destination we forward to: host name/address */
@@ -26,14 +26,14 @@ public class proxy {
 			System.exit(0);
 		}
 		System.out.println("DarwinSys Proxy Server 0.0 starting...");
-		proxy p = new proxy(argv[0], argv[1], argv[2]);
+		Proxy p = new Proxy(argv[0], argv[1], argv[2]);
 		p.runServer();		// never returns!!
 	}
 
 	/**
 	 * Constructor, just create the server socket.
 	 */
-	proxy(String port, String destIP, String destPort) {
+	Proxy(String port, String destIP, String destPort) {
 		this.localPort = Integer.parseInt(port);
 		this.destIP = destIP;
 		this.destPort = Integer.parseInt(destPort);
