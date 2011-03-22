@@ -1,7 +1,9 @@
 package unfinished;
 
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 public class GraphicsBounds {
 	public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class GraphicsBounds {
 			GraphicsConfiguration[] gc = gd.getConfigurations();
 
 			for (int i=0; i < gc.length; i++) {
-				Rectangle tmp = gc[i].get.getBounds();
+				Rectangle tmp = gc[i].getBounds();
 				// System.out.println(tmp);
 				if (tmp.x != 0 || tmp.y != 0) {
 					System.out.println("VIRTUAL: " + tmp);

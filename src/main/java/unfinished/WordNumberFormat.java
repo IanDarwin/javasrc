@@ -12,6 +12,11 @@ import java.util.*;
  */
 public class WordNumberFormat extends Format {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 0L;
+
 	class map {
 		String name;
 		long value;

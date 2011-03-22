@@ -2,7 +2,7 @@ package unfinished;
 
 import java.io.*;
 public class JapanWriter {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		PrintWriter out = new PrintWriter(
 			new OutputStreamWriter(System.out, "Cp939"));
 
