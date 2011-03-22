@@ -163,6 +163,8 @@
 					<fileset dir="${regress}">
 						<include name="**/*Test.java"/>
 						<exclude name="**/AllTest*.java"/>
+						<!-- No point running tests here automatically -->
+						<exclude name="unfinished/**.java"/>
 					</fileset>
 				</batchtest>
 		</junit>
