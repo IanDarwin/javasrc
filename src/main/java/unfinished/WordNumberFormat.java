@@ -1,7 +1,9 @@
 package unfinished;
 
-import java.text.*;
-import java.util.*;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 
 /**
  * Word Number Class. Convert english words like
@@ -12,9 +14,6 @@ import java.util.*;
  */
 public class WordNumberFormat extends Format {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 0L;
 
 	class map {
