@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 public class Log14Demo2 {
 	public static void main(String[] args) {
 
+		JULLogInitializer.init();
+
 		Logger logger = Logger.getLogger("com.darwinsys");
 
 		try {
