@@ -11,7 +11,7 @@ public class JULLogFormatter extends Formatter {
 
 	@Override
 	public String format(LogRecord record) {
-		System.out.println("LogFormatter.format()");
+		// System.out.println("LogFormatter.format()");
 		StringBuilder sb = new StringBuilder();
 		sb.append(record.getLevel());
 		sb.append(' ');
