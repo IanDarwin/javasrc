@@ -27,12 +27,12 @@ public class ChatServer {
 
 	/** Main just constructs a ChatServer, which should never return */
 	public static void main(String[] argv) throws IOException {
-		System.out.println("DarwinSys Chat Server 0.1 starting...");
+		System.out.println("DarwinSys ChatServer 0.1 starting...");
 		if (argv.length == 1 && argv[0].equals("-debug"))
 			DEBUG = true;
 		ChatServer w = new ChatServer();
 		w.runServer();			// should never return.
-		System.out.println("**ERROR* Chat Server 0.1 quitting");
+		System.out.println("**ERROR* ChatServer 0.1 quitting");
 	}
 
 	/** Construct (and run!) a Chat Service 
@@ -41,9 +41,9 @@ public class ChatServer {
 	ChatServer() throws IOException {
 		clients = new ArrayList<ChatHandler>();
 
-		servSock = new ServerSocket(Chat.PORTNUM);
+		servSock = new ServerSocket(ChatProtocol.PORTNUM);
 		System.out.println("DarwinSys Chat Server Listening on port " +
-				Chat.PORTNUM);
+				ChatProtocol.PORTNUM);
 	}
 
 	public void runServer() {
@@ -111,8 +111,8 @@ public class ChatServer {
 					char c = line.charAt(0);
 					line = line.substring(1);
 					switch (c) {
-					case Chat.CMD_LOGIN:
-						if (!Chat.isValidLoginName(line)) {
+					case ChatProtocol.CMD_LOGIN:
+						if (!ChatProtocol.isValidLoginName(line)) {
 							send(CHATMASTER_ID, "LOGIN " + line + " invalid");
 							log("LOGIN INVALID from " + clientIP);
 							continue;
@@ -122,12 +122,12 @@ public class ChatServer {
 							" joins us, for a total of " + 
 							clients.size() + " users");
 						break;
-					case Chat.CMD_MESG:
+					case ChatProtocol.CMD_MESG:
 						if (login == null) {
 							send(CHATMASTER_ID, "please login first");
 							continue;
 						}
-						int where = line.indexOf(Chat.SEPARATOR);
+						int where = line.indexOf(ChatProtocol.SEPARATOR);
 						String recip = line.substring(0, where);
 						String mesg = line.substring(where+1);
 						log("MESG: " + login + "-->" + recip + ": "+ mesg);
@@ -137,13 +137,13 @@ public class ChatServer {
 						else
 							cl.psend(login, mesg);
 						break;
-					case Chat.CMD_QUIT:
+					case ChatProtocol.CMD_QUIT:
 						broadcast(CHATMASTER_ID,
 							"Goodbye to " + login + "@" + clientIP);
 						close();
 						return;		// The end of this ChatHandler
 						
-					case Chat.CMD_BCAST:
+					case ChatProtocol.CMD_BCAST:
 						if (login != null)
 							broadcast(login, line);
 						else

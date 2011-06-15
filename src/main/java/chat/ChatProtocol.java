@@ -12,7 +12,7 @@ package chat;
  * @author Ian Darwin
  * @version $Id$
  */
-public class Chat {
+public class ChatProtocol {
 
 	// These are the first character of messages from client to server
 

@@ -34,7 +34,7 @@ import javax.swing.JFrame;
  * @author Ian Darwin
  * @version $Id$
  */
-public class ChatRoom extends JFrame {
+public class ChatClient extends JFrame {
 
 	private static final long serialVersionUID = -3686334002367908392L;
 	private static final String userName = 
@@ -44,7 +44,7 @@ public class ChatRoom extends JFrame {
 	/* The main Frame. */
 	protected JFrame cp;
 	/** The default port number */
-	protected static final int PORTNUM = Chat.PORTNUM;
+	protected static final int PORTNUM = ChatProtocol.PORTNUM;
 	/** The actual port number */
 	protected int port;
 	/** The network socket */
@@ -62,11 +62,12 @@ public class ChatRoom extends JFrame {
 	/** The LogOUT button */
 	protected Button logoutButton;
 	/** The TitleBar title */
-	final static String TITLE = "Chat: Ian Darwin's Toy Chat Room Client";
+	final static String TITLE = "ChatClient: Ian Darwin's Toy Chat Room Client";
 
 	/** set up the GUI */
-	public ChatRoom() {
+	public ChatClient() {
 		cp = this;
+		cp.setTitle(TITLE);
 		cp.setLayout(new BorderLayout());
 		port = PORTNUM;
 		
@@ -108,7 +109,7 @@ public class ChatRoom extends JFrame {
 		tf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loggedIn) {
-					pw.println(Chat.CMD_BCAST+tf.getText());
+					pw.println(ChatProtocol.CMD_BCAST+tf.getText());
 					tf.setText(""); 
 				}
 			}
@@ -135,7 +136,7 @@ public class ChatRoom extends JFrame {
 			showStatus("Got socket");
 
 			// FAKE LOGIN FOR NOW - no password neede
-			pw.println(Chat.CMD_LOGIN + userName);
+			pw.println(ChatProtocol.CMD_LOGIN + userName);
 
 			loggedIn = true;
 
@@ -181,7 +182,7 @@ public class ChatRoom extends JFrame {
 
 	/** A main method to allow the client to be run as an Application */
 	public static void main(String[] args) {
-		ChatRoom room101 = new ChatRoom();
+		ChatClient room101 = new ChatClient();
 		room101.pack();
 		room101.setVisible(true);
 	}

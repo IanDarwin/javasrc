@@ -7,9 +7,9 @@ import java.net.*;
  * @author Ian Darwin, http://www.darwinsys.com/
  * @version $Id$
  */
-public class ConsChat {
+public class ConsoleChatClient {
 	public static void main(String[] args) throws IOException {
-		new ConsChat().chat();
+		new ConsoleChatClient().chat();
 	}
 
 	protected Socket sock;
@@ -18,8 +18,8 @@ public class ConsChat {
 	protected BufferedReader cons;
 	final Thread chatter;
 
-	protected ConsChat() throws IOException {
-		sock = new Socket("localhost", Chat.PORTNUM);
+	protected ConsoleChatClient() throws IOException {
+		sock = new Socket("localhost", ChatProtocol.PORTNUM);
 		is   = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		pw   = new PrintWriter(sock.getOutputStream(), true);
 		cons = new BufferedReader(new InputStreamReader(System.in));
@@ -58,7 +58,7 @@ public class ConsChat {
 
 		System.out.print("Login name: "); System.out.flush();
 		text = cons.readLine();
-		send(Chat.CMD_LOGIN + text);
+		send(ChatProtocol.CMD_LOGIN + text);
 
 		// Main thread blocks here
 		while ((text = cons.readLine()) != null) {
