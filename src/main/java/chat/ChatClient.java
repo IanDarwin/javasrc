@@ -1,19 +1,30 @@
 package chat;
 
-import java.applet.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+import javax.swing.JFrame;
 
 /** 
  * <p>
- * Simple Chat Room Applet.
+ * Simple Chat Room GUI.
  * Writing a Chat Room seems to be one of many obligatory rites (or wrongs)
  * of passage for Java experts these days.</p>
  * <p>
  * This one is a toy because it doesn't have much of a protocol, which
- * means we can't query the server as to * who's logged in,
+ * means we can't query the server as to who's logged in,
  * or anything fancy like that. However, it works OK for small groups.</p>
  * <p>
  * Uses client socket w/ two Threads (main and one constructed),
@@ -23,15 +34,15 @@ import java.net.*;
  * @author Ian Darwin
  * @version $Id$
  */
-public class ChatRoom extends Applet {
+public class ChatRoom extends JFrame {
 
 	private static final long serialVersionUID = -3686334002367908392L;
-	/** Whether we are being run as an Applet or an Application */
-	protected boolean inAnApplet = true;
+	private static final String userName = 
+		System.getProperty("user.name", "User With No Name");
 	/** The state of logged-in-ness */
 	protected boolean loggedIn;
-	/* The Frame, for a pop-up, durable Chat Room. */
-	protected Frame cp;
+	/* The main Frame. */
+	protected JFrame cp;
 	/** The default port number */
 	protected static final int PORTNUM = Chat.PORTNUM;
 	/** The actual port number */
@@ -47,27 +58,18 @@ public class ChatRoom extends Applet {
 	/** TextArea to display conversations */
 	protected TextArea ta;
 	/** The Login button */
-	protected Button lib;
+	protected Button loginButton;
 	/** The LogOUT button */
-	protected Button lob;
+	protected Button logoutButton;
 	/** The TitleBar title */
 	final static String TITLE = "Chat: Ian Darwin's Toy Chat Room Client";
-	/** The message that we paint */
-	protected String paintMessage;
 
-	/** init, overriding the version inherited from Applet */
-	public void init() {
-		paintMessage = "Creating Window for Chat";
-		repaint();
-		cp = new Frame(TITLE);
+	/** set up the GUI */
+	public ChatRoom() {
+		cp = this;
 		cp.setLayout(new BorderLayout());
-		String portNum = null;
-		if (inAnApplet)
-			portNum = getParameter("port");
 		port = PORTNUM;
-		if (portNum != null)
-			port = Integer.parseInt(portNum);
-
+		
 		// The GUI
 		ta = new TextArea(14, 80);
 		ta.setEditable(false);		// readonly
@@ -77,27 +79,27 @@ public class ChatRoom extends Applet {
 		Panel p = new Panel();
 
 		// The login button
-		p.add(lib = new Button("Login"));
-		lib.setEnabled(true);
-		lib.requestFocus();
-		lib.addActionListener(new ActionListener() {
+		p.add(loginButton = new Button("Login"));
+		loginButton.setEnabled(true);
+		loginButton.requestFocus();
+		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
-				lib.setEnabled(false);
-				lob.setEnabled(true);
+				loginButton.setEnabled(false);
+				logoutButton.setEnabled(true);
 				tf.requestFocus();	// set keyboard focus in right place!
 			}
 		});
 
 		// The logout button
-		p.add(lob = new Button("Logout"));
-		lob.setEnabled(false);
-		lob.addActionListener(new ActionListener() {
+		p.add(logoutButton = new Button("Logout"));
+		logoutButton.setEnabled(false);
+		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				logout();
-				lib.setEnabled(true);
-				lob.setEnabled(false);
-				lib.requestFocus();
+				loginButton.setEnabled(true);
+				logoutButton.setEnabled(false);
+				loginButton.requestFocus();
 			}
 		});
 
@@ -115,24 +117,8 @@ public class ChatRoom extends Applet {
 
 		cp.add(BorderLayout.SOUTH, p);
 
-        cp.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				// If we do setVisible and dispose, then the Close completes
-				ChatRoom.this.cp.setVisible(false);
-				ChatRoom.this.cp.dispose();
-				logout();
-			}
-		});
+        cp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cp.pack();
-		// After packing the Frame, centre it on the screen.
-		Dimension us = cp.getSize(), 
-			them = Toolkit.getDefaultToolkit().getScreenSize();
-		int newX = (them.width - us.width) / 2;
-		int newY = (them.height- us.height)/ 2;
-		cp.setLocation(newX, newY);
-		cp.setVisible(true);
-		paintMessage = "Window should now be visible";
-		repaint();
 	}
 
 	protected String serverHost = "localhost";
@@ -142,16 +128,14 @@ public class ChatRoom extends Applet {
 		showStatus("In login!");
 		if (loggedIn)
 			return;
-		if (inAnApplet)
-			serverHost = getCodeBase().getHost();
 		try {
 			sock = new Socket(serverHost, port);
 			is = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			pw = new PrintWriter(sock.getOutputStream(), true);
 			showStatus("Got socket");
 
-			// FAKE LOGIN FOR NOW
-			pw.println(Chat.CMD_LOGIN + "AppletUser");
+			// FAKE LOGIN FOR NOW - no password neede
+			pw.println(Chat.CMD_LOGIN + userName);
 
 			loggedIn = true;
 
@@ -171,7 +155,7 @@ public class ChatRoom extends Applet {
 					while (loggedIn && ((line = is.readLine()) != null))
 						ta.append(line + "\n");
 				} catch(IOException e) {
-					showStatus("GAA! LOST THE LINK!!");
+					showStatus("Lost another client!\n" + e);
 					return;
 				}
 			}
@@ -191,36 +175,14 @@ public class ChatRoom extends Applet {
 		}
 	}
 
-	// It is deliberate that there is no STOP method - we want to keep
-	// going even if the user moves the browser to another page.
-	// Anti-social? Maybe, but you can use the CLOSE button to kill 
-	// the Frame, or you can exit the Browser.
-
-	/** Paint paints the small window that appears in the HTML,
-	 * telling the user to look elsewhere!
-	 */
-	public void paint(Graphics g) {
-		Dimension d = getSize();
-		int h = d.height;
-		int w = d.width;
-		g.fillRect(0, 0, w, 0);
-		g.setColor(Color.black);
-		g.drawString(paintMessage, 10, (h/2)-5);
-	}
-
-
-	/** a showStatus that works for Applets or non-Applets alike */
-	public void showStatus(String mesg) {
-		if (inAnApplet)
-			super.showStatus(mesg);
-		System.out.println(mesg);
+	public void showStatus(String message) {
+		System.out.println(message);
 	}
 
 	/** A main method to allow the client to be run as an Application */
 	public static void main(String[] args) {
 		ChatRoom room101 = new ChatRoom();
-		room101.inAnApplet = false;
-		room101.init();
-		room101.start();
+		room101.pack();
+		room101.setVisible(true);
 	}
 }

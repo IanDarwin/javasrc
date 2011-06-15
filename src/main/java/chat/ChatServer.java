@@ -8,7 +8,6 @@ import java.util.*;
  *
  * WARNING -- this code is believed thread-safe but has NOT been 100% vetted 
  * by a team of world-class experts for Thread-safeness.
- * DO NOT BUILD ANYTHING CRITICAL BASED ON THIS until you have done so.
  * See the various books on Threaded Java for design issues.
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
@@ -74,7 +73,9 @@ public class ChatServer {
 		System.out.println(s);
 	}
 
-	/** Inner class to handle one conversation */
+	/** 
+	 * The remainder of this file is an inner class that is instantiated to handle each conversation.
+	 */
 	protected class ChatHandler extends Thread {
 		/** The client socket */
 		protected Socket clientSock;
@@ -102,6 +103,10 @@ public class ChatServer {
 		public void run() {
 			String line;
 			try {
+				/*
+				 * We should stay in this loop as long as the Client remains connected,
+				 * so when this loop ends, we disconnect the client.
+				 */
 				while ((line = is.readLine()) != null) {
 					char c = line.charAt(0);
 					line = line.substring(1);
@@ -151,7 +156,7 @@ public class ChatServer {
 			} catch (IOException e) {
 				log("IO Exception: " + e);
 			} finally {
-				// the sock ended, so we're done, bye now
+				// the sock ended (darn it), so we're done, bye now
 				System.out.println(login + SEP + "All Done");
 				synchronized(clients) {
 					clients.remove(this);
