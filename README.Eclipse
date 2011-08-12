@@ -4,12 +4,21 @@ $Id$
 
 If you use the Eclipse IDE, you will find the following helpful:
 
-1) There are now three main Projects:
-	JavaCookJars - the .jar files you need to compile
+1) There are now two main Projects. You must(*) download
+   (or cvs checkout) both in order to compile the javasrc
+   examples.
 	darwinsys-api - the com.darwinsys packages (includes a lot of the
 		examples form the book which are in here rather than in the
 		per-chapter subdirectories!)
 	javasrc - the main collection, mostly per-chapter.
+	
+* Actually, javasrc contains a copy of darwinsys.jar
+so you could just delete the project reference (in
+javasrc, go to Project Properties->Build Path->Configure
+Build Path->Projects (or "Project References"), select
+DarwinSys-api, and delete it. But then you can't follow
+source references into darwinsys, so it's better just
+to have both projects in your workspace.
 
 2) Let me know what breaks :-)
 
