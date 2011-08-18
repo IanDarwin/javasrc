@@ -78,6 +78,7 @@
 	<target name="copyconfig" description="copy configs to build">
 		<copy todir="${build}">
 			<fileset dir="${src}">
+			<exclude name="build"/>
 			<include name="**/*.properties"/>
 			</fileset>
 		</copy>
