@@ -12,7 +12,7 @@ JNIEXPORT void JNICALL Java_HelloWorld_displayHelloWorld(JNIEnv *env, jobject th
   (void)printf("Hello from a Native Method\n");
 
   if (this == NULL) {
-    fprintf(stderr, "Input pointer is null!\n");
+    fprintf(stderr, "'this.' pointer is null!\n");
     return;
   }
   if ((fldid = (*env)->GetFieldID(env,
