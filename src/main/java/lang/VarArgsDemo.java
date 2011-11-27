@@ -12,7 +12,7 @@ public class VarArgsDemo {
 
 	public static void main(String[] args) {
 		process(System.out, "Hello", "Goodbye");
-		process(System.out, 42, 1066, 1776);
+		process(System.out, (int)42, (int)1066, (int)1776);
 		process(System.out, "Foo", new Date(), new Object());
 		passThrough(System.out, "%s %s %s%n", "Foo", new Date(), new Object());
 	}
@@ -36,19 +36,6 @@ public class VarArgsDemo {
 		int i = 0;
 		for (Object o : args){
 			out.print("Argument " + ++i + " is " + o + "; ");
-		}
-		System.out.println();
-	}
-	
-	/** Overload using int varargs.
-	 * @param out
-	 * @param args
-	 */
-	static void process(PrintStream out, int ... args) {
-		line();
-		System.out.println("int varargs");
-		for (int i = 0; i < args.length; i++){
-			out.print("Argument " + i + " is " + args[i] + "; ");
 		}
 		System.out.println();
 	}
