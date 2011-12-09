@@ -10,10 +10,10 @@ public class ForkJoinDemo extends RecursiveAction {
 	static int[] raw = { 19, 3, 0, -1, 57, 24, 65, Integer.MAX_VALUE, 42, 0, 3, 5 };
 	static int[] sorted = null;
 	
-	int[] mSource;
-	int[] mDest;
-	int mLength;
-	int mStart;
+	int[] source;
+	int[] dest;
+	int length;
+	int start;
 	final static int THRESHOLD = 4;
 	
 	public static void main(String[] args) {
@@ -27,24 +27,24 @@ public class ForkJoinDemo extends RecursiveAction {
 		System.out.println(']');
 	}
 	
-	public ForkJoinDemo(int[] src, int start, int length, int[] dst) {
-	    mSource = src;
-	    mStart = start;
-	    mLength = length;
-	    mDest = dst;
+	public ForkJoinDemo(int[] src, int start, int length, int[] dest) {
+	    this.source = src;
+	    this.start = start;
+	    this.length = length;
+	    this.dest = dest;
 	  }
 
 	@Override
 	protected void compute() {
 		System.out.println("ForkJoinDemo.compute()");
-		if (mLength <= THRESHOLD) { // Compute Directly
-			for (int i = mStart; i < mStart + mLength; i++) {
-				mDest[i] = mSource[i] * mSource[i];
+		if (length <= THRESHOLD) { // Compute Directly
+			for (int i = start; i < start + length; i++) {
+				dest[i] = source[i] * source[i];
 			}
 		} else {			        // Divide and Conquer    
-			int split = mLength / 2;
-			invokeAll(new ForkJoinDemo(mSource, mStart,         split,           mDest),
-					  new ForkJoinDemo(mSource, mStart + split, mLength - split, mDest));
+			int split = length / 2;
+			invokeAll(new ForkJoinDemo(source, start,         split,           dest),
+					  new ForkJoinDemo(source, start + split, length - split, dest));
 		}
 	}
 }
