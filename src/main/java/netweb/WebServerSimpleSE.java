@@ -28,7 +28,9 @@ public class SimpleServerSE {
 		        } while (j != -1);
 				is.close();
 		           
-				String message = String.format("<html><p>Hello at %s!</p></html>", new Date());
+				final String template = "<html><p>Hello at %s!</p></html>";
+				String message = String.format(template, new Date());
+				
 				rAndR.sendResponseHeaders(200, message.length());
 				rAndR.getResponseBody().write(message.getBytes());
 				rAndR.getResponseBody().close();
