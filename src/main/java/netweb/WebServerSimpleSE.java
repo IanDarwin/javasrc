@@ -25,6 +25,7 @@ public class SimpleServerSE {
 				do {
 		        	j = is.read();
 		        } while (j != -1);
+				is.close();
 		           
 				String message = "<html><p>Hello!</p></html>";
 				rAndR.sendResponseHeaders(200, message.length());
