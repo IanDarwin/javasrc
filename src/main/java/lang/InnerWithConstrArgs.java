@@ -1,4 +1,4 @@
-package play;
+package lang;
 
 public class InnerWithConstrArgs {
 	public static abstract class A {
