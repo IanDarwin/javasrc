@@ -3,6 +3,14 @@ package threads;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+/** A simple demonstration of the "Fork-Join" framework.
+ * 
+ * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
+ * This class absolutely requires Java SE 7+, so just add an exclusion rule
+ * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
+ * 
+ * @author Ian Darwin
+ */
 public class ForkJoinDemo extends RecursiveAction {
 
 	private static final long serialVersionUID = 3742774374013520116L;
