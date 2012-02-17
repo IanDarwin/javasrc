@@ -2,6 +2,7 @@ package netweb;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.util.Date;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -27,7 +28,7 @@ public class SimpleServerSE {
 		        } while (j != -1);
 				is.close();
 		           
-				String message = "<html><p>Hello!</p></html>";
+				String message = String.format("<html><p>Hello at %s!</p></html>", new Date());
 				rAndR.sendResponseHeaders(200, message.length());
 				rAndR.getResponseBody().write(message.getBytes());
 				rAndR.getResponseBody().close();
