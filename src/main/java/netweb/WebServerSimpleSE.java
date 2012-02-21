@@ -21,6 +21,7 @@ public class SimpleServerSE {
 			public void handle(HttpExchange rAndR) throws IOException {
 				System.out.println("Server...handle()");
 				
+				// Clients are expected to readfully the inputstream.
 				InputStream is = rAndR.getRequestBody();
 		        int j;
 				do {
