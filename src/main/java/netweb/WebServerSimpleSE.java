@@ -9,8 +9,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-/** Exercise the simple HTTP server built into Java SE 6+ */
-public class SimpleServerSE {
+/** Exercise the simple HTTP server built into Java SE 6+ 
+ * Note that the HttpServer is in the com.sun namespace not the "java"
+ * one so it is subject to change in future releases...
+ */
+public class WebServerSimpleSE {
 
 	private static final int PORT = 8800;
 
@@ -24,7 +27,7 @@ public class SimpleServerSE {
 				final URI uri = rr.getRequestURI();
 				System.out.printf("Server...handle(%s %s)%n", method, uri);
 				
-				// Clients are expected to readfully the inputstream.
+				// Clients are expected to read-fully the inputstream.
 				InputStream is = rr.getRequestBody();
 		        int j;
 				do {
