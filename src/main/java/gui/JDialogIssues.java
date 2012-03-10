@@ -41,6 +41,7 @@ public class JDialogIssues {
 	}
 	public static void main(String[] args) {
 		JFrame jf = new JFrame("Woo");
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setLayout(new GridLayout(0, 1));
 		final TestAction[] data = {
 			new TestAction(null, false),
