@@ -21,7 +21,7 @@ public class URLConnectionDemo {
     }
     
     public static String converse(String host, int port, String path, String postBody) throws IOException {
-		URL url = new URL("http", host, 80, path);
+		URL url = new URL("http", host, port, path);
         URLConnection conn = url.openConnection();
         boolean post = postBody != null;
         if (post)
