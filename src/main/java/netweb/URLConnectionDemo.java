@@ -34,7 +34,7 @@ public class URLConnectionDemo {
         if (post) {
         	PrintWriter out = new PrintWriter(conn.getOutputStream());
         	out.println(postBody);
-        	out.close();
+        	out.close();			// Important!
         }
 
         StringBuilder sb = new StringBuilder();

@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class DateDiff {
 	public static void main(String[] av) {
-		/** The date at the end of the last century */
+		/** The date at the end of the last century (*not* 2000-01-01 as many think) */
 		Date d1 = new GregorianCalendar(2000,11,31,23,59).getTime();
 
 		/** Today's date */
