@@ -1,5 +1,6 @@
 package lang;
 
+/** Construct an anonymous inner class that requires superclass constructor arguments. */
 public class InnerWithConstrArgs {
 	public static abstract class A {
 		String s;
@@ -9,6 +10,9 @@ public class InnerWithConstrArgs {
 		}
 	}
 	
+	// Constructing an anonymous inner class that requires superclass constructor arguments
+	// is just a matter of making sure the args are visible and passing them
+	// into the "new SuperclassName()" constructor call that creates and anon inner instance
 	public static void main(String[] args) {
 		A anA = new A("Hello") {
 			@Override
