@@ -1,4 +1,4 @@
-package java7lang;
+package lang;
 
 /** Show the 'switch on string' feature of Java 7 */-
 public class SwitchOnString {
