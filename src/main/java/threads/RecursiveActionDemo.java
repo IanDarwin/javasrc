@@ -3,7 +3,8 @@ package threads;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
-/** A simple demonstration of the "Fork-Join" framework.
+/** A trivial demonstration of the "Fork-Join" framework:
+ * square a bunch of numbers.
  * 
  * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
  * This class absolutely requires Java SE 7+, so just add an exclusion rule
