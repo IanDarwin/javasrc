@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * MediaInvoicer - Simple applicatin of Media, MediaFactory &c.
- * 
- * @author ian
+ * MediaInvoicer - Simple application of Media enum
+ * @author Ian Darwin
  * @version $Id$
  */
 public class MediaInvoicer {
@@ -36,7 +35,7 @@ public class MediaInvoicer {
 			}
 			StringTokenizer st = new StringTokenizer(line);
 			st.nextToken();
-			Media m = MediaFactory.getMedia(st.nextToken());
+			Media m = Media.getMedia(st.nextToken());
 			int stock = Integer.parseInt(st.nextToken());
 			int qty = Integer.parseInt(st.nextToken());
 			Item tmp = new Item(m, stock, qty);
