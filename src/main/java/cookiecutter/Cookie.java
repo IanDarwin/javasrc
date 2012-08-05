@@ -8,7 +8,7 @@ package cookiecutter;
  * CookieCutter application. Similar to javax.servlet.http.Cookie,
  * but NOT plug-compatible due to extra full-function constructor and methods.
  */
-public class Cookie implements Comparable {
+public class Cookie implements Comparable<Cookie> {
 
 	/** The host or domain which set the cookie */
 	public String url;
@@ -104,8 +104,7 @@ public class Cookie implements Comparable {
 		return new StringBuffer(url).append("/").append(path).toString();
 	}
 
-	public int compareTo(Object o2) {
-		Cookie c2 = (Cookie)o2;
+	public int compareTo(Cookie c2) {
 		return urlForSorting.compareTo(c2.urlForSorting);
 	}
 }

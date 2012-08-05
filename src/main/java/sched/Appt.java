@@ -6,7 +6,7 @@ import java.util.*;
  * @author Ian Darwin
  * @version $Id$
  */
-public class Appt implements Comparable {
+public class Appt implements Comparable<Appt> {
 
 	//-----------------------------------------------------------------
 	//	MAIN CLASS VARIABLES -- APPOINTMENT
@@ -146,8 +146,7 @@ public class Appt implements Comparable {
 	 * Consistent with equals().
 	 * @return -1 if this<a2, +1 if this>a2, else 0.
 	 */ 
-	public int compareTo(Object o2) {
-		Appt a2 = (Appt) o2;
+	public int compareTo(Appt a2) {
 		if (year < a2.year)
 			return -1;
 		if (year > a2.year)
