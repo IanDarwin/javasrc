@@ -24,6 +24,28 @@ public class NumericLiterals7 {
 	
 	static final int bad_ly_formatted = 1_1_1_1_1;
 	
+	/** And a fun example from Oracle (every line corrected but one corrected), from
+	 * http://docs.oracle.com/javase/7/docs/technotes/guides/language/binary-literals.html
+	 */
+	public static final short[] HAPPY_FACE = {
+		   (short)0b0000011111100000,
+		   (short)0b0000100000010000,
+		   (short)0b0001000000001000,
+		   (short)0b0010000000000100,
+		   (short)0b0100000000000010,
+		   (short)0b1000011001100001,
+		   (short)0b1000011001100001,
+		   (short)0b1000000000000001,
+		   (short)0b1000000000000001,
+		   (short)0b1001000000001001,
+		   (short)0b1000100000010001,
+		   (short)0b0100011111100010,
+		   (short)0b0010000000000100,
+		   (short)0b0001000000001000,
+		   (short)0b0000100000010000,
+		   (short)0b0000011111100000,
+		};
+	
 	public static void main(String[] args) {
 		NumberFormat mi5 = new DecimalFormat("000");
 		
