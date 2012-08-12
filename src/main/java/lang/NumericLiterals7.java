@@ -24,7 +24,7 @@ public class NumericLiterals7 {
 	
 	static final int bad_ly_formatted = 1_1_1_1_1;
 	
-	/** And a fun example from Oracle (every line corrected but one corrected), from
+	/** And a fun example from Oracle (every line but one corrected), from
 	 * http://docs.oracle.com/javase/7/docs/technotes/guides/language/binary-literals.html
 	 */
 	public static final short[] HAPPY_FACE = {
