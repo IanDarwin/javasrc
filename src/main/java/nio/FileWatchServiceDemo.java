@@ -21,7 +21,7 @@ import java.nio.file.WatchService;
 public class FileWatchServiceDemo {
 
 	final static String tempDirPath = "/tmp";
-
+	static Thread mainRunner;
 	static volatile boolean done = false;
 
 	public static void main(String[] args) throws Throwable {
@@ -32,6 +32,7 @@ public class FileWatchServiceDemo {
 			FileSystems.getDefault().newWatchService();
 		Kind<?>[] watchKinds = { ENTRY_CREATE, ENTRY_MODIFY };
 		p.register(watcher, watchKinds);
+		mainRunner = Thread.currentThread();
 		new Thread(new DemoService()).start();
 		while (!done) {
 			WatchKey key = watcher.take();
@@ -52,16 +53,18 @@ public class FileWatchServiceDemo {
 
 	static class DemoService implements Runnable {
 		public void run() {
-		    try {
-			Thread.sleep(1000);
-			System.out.println("Creating file");
-			new File(tempDirPath + "/MyFileSema.for").createNewFile();
-			Thread.sleep(1000);
-			System.out.println("Stopping WatcherServiceDemo");
-			done = true;
-		    } catch (Exception e) {
-			System.out.println("Caught UNEXPECTED " + e);
-		    }
+			try {
+				Thread.sleep(1000);
+				System.out.println("Creating file");
+				new File(tempDirPath + "/MyFileSema.for").createNewFile();
+				Thread.sleep(1000);
+				System.out.println("Stopping WatcherServiceDemo");
+				done = true;
+				Thread.sleep(1500);
+				mainRunner.interrupt();
+			} catch (Exception e) {
+				System.out.println("Caught UNEXPECTED " + e);
+			}
 		}
 	}
 }
