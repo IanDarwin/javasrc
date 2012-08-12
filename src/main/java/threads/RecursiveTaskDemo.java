@@ -21,6 +21,10 @@ import java.util.concurrent.RecursiveTask;
  * Use RecursiveTask<T> where, as in this example, each call returns
  * a value that represents the computation for its subset of the overall task.
  *
+ * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
+ * This class absolutely requires Java SE 7+, so just add an exclusion rule
+ * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
+
  * @author Ian Darwin
  */
 public class RecursiveTaskDemo extends RecursiveTask<Long> {
