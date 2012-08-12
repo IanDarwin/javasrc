@@ -16,7 +16,7 @@ public class TryWithResource {
 				System.out.println(line);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Caught expected " + e);
 		}
 		// No finally needed, no close needed - it's all done automatically!
 	}
