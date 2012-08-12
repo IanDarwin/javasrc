@@ -15,7 +15,7 @@ import java.util.concurrent.RecursiveAction;
  * 
  * @author Ian Darwin
  */
-public class ForkJoinDemo extends RecursiveAction {
+public class RecursiveActionDemo extends RecursiveAction {
 
 	private static final long serialVersionUID = 3742774374013520116L;
 
@@ -30,7 +30,7 @@ public class ForkJoinDemo extends RecursiveAction {
 	
 	public static void main(String[] args) {
 		sorted = new int[raw.length];
-		ForkJoinDemo fb = new ForkJoinDemo(raw, 0, raw.length, sorted);
+		RecursiveActionDemo fb = new RecursiveActionDemo(raw, 0, raw.length, sorted);
 		ForkJoinPool pool = new ForkJoinPool();
 		pool.invoke(fb);
 		System.out.print('[');
@@ -39,7 +39,7 @@ public class ForkJoinDemo extends RecursiveAction {
 		System.out.println(']');
 	}
 	
-	public ForkJoinDemo(int[] src, int start, int length, int[] dest) {
+	public RecursiveActionDemo(int[] src, int start, int length, int[] dest) {
 	    this.source = src;
 	    this.start = start;
 	    this.length = length;
@@ -55,8 +55,8 @@ public class ForkJoinDemo extends RecursiveAction {
 			}
 		} else {			        // Divide and Conquer    
 			int split = length / 2;
-			invokeAll(new ForkJoinDemo(source, start,         split,           dest),
-					  new ForkJoinDemo(source, start + split, length - split, dest));
+			invokeAll(new RecursiveActionDemo(source, start,         split,           dest),
+					  new RecursiveActionDemo(source, start + split, length - split, dest));
 		}
 	}
 }
