@@ -12,11 +12,22 @@ package lang;
  */
 public class MultiCatch {
 	public static void main(String[] args) {
-		String clazzName = "java.lang.Object";
-		try {
-			Class.forName(clazzName).newInstance();
-		} catch ( InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
+		for (String clazzName : new String[]{
+			"java.lang.NoSuchClass", 
+			"lang.ClassWithPrivateConstructor"
+		}) {
+			try {
+				Class.forName(clazzName).newInstance();
+			} catch ( InstantiationException | 
+				IllegalAccessException | 
+				ClassNotFoundException e) {
+
+				System.out.println("Caught expected " + e);
+			}
 		}
 	}
+}
+
+class ClassWithPrivateConstructor {
+	private ClassWithPrivateConstructor() { }
 }
