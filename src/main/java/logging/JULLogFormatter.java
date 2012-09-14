@@ -17,6 +17,10 @@ public class JULLogFormatter extends Formatter {
 		sb.append(' ');
 		sb.append(record.getMessage());
 		sb.append('\n');
+		Throwable tough = record.getThrown();
+		if (tough != null) {
+			sb.append(tough);
+		}
 		return sb.toString();
 	}
 

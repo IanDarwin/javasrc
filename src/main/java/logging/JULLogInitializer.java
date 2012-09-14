@@ -20,8 +20,8 @@ public class JULLogInitializer {
 		LogManager mgr = LogManager.getLogManager();
 		InputStream is = null;
 		try {
-			is = JULLogInitializer.class.getClassLoader().
-				getResourceAsStream("logging/" + LOGGING_CONFIG_FILE);
+			Class<?> c = JULLogInitializer.class;
+			is = c.getClassLoader().getResourceAsStream(c.getPackage().getName() + "/" + LOGGING_CONFIG_FILE);
 			if (is == null) {
 				Logger.getAnonymousLogger().severe("Could not load " + LOGGING_CONFIG_FILE);
 				return;
