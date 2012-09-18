@@ -5,7 +5,8 @@ import java.util.logging.LogRecord;
 
 /**
  * An alternate Console formatter for java.util.logging;
- * one line instead of 2 per record.
+ * one line instead of 2 per simple record (more
+ * if a Throwable is included, of course).
  */
 public class JULLogFormatter extends Formatter {
 
@@ -19,7 +20,8 @@ public class JULLogFormatter extends Formatter {
 		sb.append('\n');
 		Throwable tough = record.getThrown();
 		if (tough != null) {
-			sb.append(tough);
+			sb.append(tough).append('\n');
+			sb.append(" at ").append(tough.getStackTrace()[0].toString());
 		}
 		return sb.toString();
 	}

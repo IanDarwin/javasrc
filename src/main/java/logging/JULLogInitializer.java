@@ -6,10 +6,12 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 /**
- * Specify our own java.util.logging config file.
- * Must be invoked by the user application!
- * Use instead of -Djava.util.logging.config.file=fullPathToLogConfig
- * or modifying the JRE to install your logging config there.
+ * Alternate, contankerous way to specify our own java.util.logging config file.
+ * ************  DO NOT USE AS AN EXAMPLE **************
+ * This is NOT how you should specify logging, because it
+ * must be invoked by the user application!
+ * You should instead use -Djava.util.logging.config.file=fullPathToLogConfig
+ * -or- set this in a System Property as Log14Demo2 does - best way!
  * @author Ian Darwin
  */
 public class JULLogInitializer {

@@ -6,16 +6,16 @@ import java.util.logging.Logger;
 public class Log14Demo2 {
 	public static void main(String[] args) {
 
-		JULLogInitializer.init();
+		System.setProperty("java.util.logging.config.file", "logging/logging.properties");
 
 		Logger logger = Logger.getLogger("com.darwinsys");
 
 		try {
 			Object o = new Object();
+			logger.info("I created an object: " + o);
 			if (o != null) {	// bogus, just to show logging
 				throw new IllegalArgumentException("Just testing");
 			}
-			logger.info("I created an object: " + o);
 		} catch (Exception t) {
 			// Long form, more control.
 			// LogRecord msg = new LogRecord(Level.SEVERE, "Caught exception");
