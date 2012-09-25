@@ -10,7 +10,7 @@ import java.util.logging.LogRecord;
  */
 public class JULLogFormatter extends Formatter {
 	
-	private static boolean printStackTraces = false;	// TODO make this *dynamically* switchable
+	private static boolean printStackTraces = true;	// TODO make this *dynamically* switchable
 
 	@Override
 	public String format(LogRecord record) {
