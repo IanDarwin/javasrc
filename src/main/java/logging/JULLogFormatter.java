@@ -9,6 +9,8 @@ import java.util.logging.LogRecord;
  * if a Throwable is included, of course).
  */
 public class JULLogFormatter extends Formatter {
+	
+	private static boolean printStackTraces = false;	// TODO make this *dynamically* switchable
 
 	@Override
 	public String format(LogRecord record) {
@@ -20,10 +22,22 @@ public class JULLogFormatter extends Formatter {
 		sb.append('\n');
 		Throwable tough = record.getThrown();
 		if (tough != null) {
-			sb.append(tough).append('\n');
-			sb.append(" at ").append(tough.getStackTrace()[0].toString());
+			if (printStackTraces) {
+				for (StackTraceElement ste : tough.getStackTrace()) {
+					sb.append(ste).append("\n");
+				}
+			} else {
+				sb.append(tough);
+			}
 		}
 		return sb.toString();
 	}
 
+	public static boolean isPrintStackTraces() {
+		return printStackTraces;
+	}
+
+	public static void setPrintStackTraces(boolean printStackTraces) {
+		JULLogFormatter.printStackTraces = printStackTraces;
+	}
 }
