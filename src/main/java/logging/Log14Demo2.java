@@ -17,12 +17,12 @@ public class Log14Demo2 {
 				throw new IllegalArgumentException("Just testing");
 			}
 		} catch (Exception t) {
-			// Long form, more control.
+			// All-in-one call:
+			logger.log(Level.SEVERE, "Caught Exception", t);
+			// Alternate: Long form, more control.
 			// LogRecord msg = new LogRecord(Level.SEVERE, "Caught exception");
 			// msg.setThrown(t);
 			// logger.log(msg);
-			// All-in-one call:
-			logger.log(Level.SEVERE, "Caught Exception", t);
 		}
 	}
 }
