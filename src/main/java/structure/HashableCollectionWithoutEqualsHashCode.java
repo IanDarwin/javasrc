@@ -36,7 +36,7 @@ public class HashableCollectionWithoutEqualsHashCode {
 
 		Map<Key,String> map = new HashMap<Key,String>();
 
-		// The same object put in twice should only appear once
+		// The same key put in twice should only appear once
 		Key sandy = new Key(NAME_SANDY);
 		String putOk = map.put(sandy, TYPE_HURRICANE);
 		// map.put returns the previous value
