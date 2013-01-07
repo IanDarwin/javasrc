@@ -19,7 +19,7 @@ public class ScriptEnginesDemo {
 			System.out.println(fact.getLanguageName());
 		}
 		
-		// Run a script in the default language
+		// Run a script in the JavaScript language
 		String lang = "ECMAScript";
 		ScriptEngine engine = 
 			scriptEngineManager.getEngineByName(lang);
