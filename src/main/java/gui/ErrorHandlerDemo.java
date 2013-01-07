@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  * <p>
  * That really is all you have to do to catch GUI Exceptions.
  * But it may change at any time (hence the name sun.awt...).
+ * IN FACT IT DID CHANGE, so don't use this; the handler is completely gone by 1.7.
  * @author Ian Darwin.
  */
 public class ErrorHandlerDemo extends JFrame {

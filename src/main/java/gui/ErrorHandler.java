@@ -1,6 +1,6 @@
 package gui;
 
-/** This class is usable by AWT to handle exceptions.
+/** This class USED TO BE usable by AWT to handle exceptions.
  * System.setProperty("sun.awt.exception.handler", "ErrorHandler");
  * This usage is documented in the source code up to 1.4Beta for
  * java.awt.EventDispatchThread. This class exists in all standard
