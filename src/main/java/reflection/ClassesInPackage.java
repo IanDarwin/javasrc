@@ -14,7 +14,7 @@ import java.util.jar.JarFile;
  * You can't really do this in Java, in every case; this handles some cases only.
  * @author Ian Darwin
  */
-public class GetClassesInPackage {
+public class ClassesInPackage {
 
 	/** This approach began as a contribution by Paul Kuit at
 	 * http://stackoverflow.com/questions/1456930/, but his only
