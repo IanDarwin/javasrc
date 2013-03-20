@@ -58,6 +58,9 @@ public class GetClassesInPackage {
 					}
 				}
 				break;
+			default:
+				throw new IllegalStateException(
+				"Dunno what to do with URL " + url);
 			}
 		}
 		return list.toArray(new String[] {});
