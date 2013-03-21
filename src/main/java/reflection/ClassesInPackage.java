@@ -25,9 +25,10 @@ public class ClassesInPackage {
 	 * @throws IOException
 	 */
 	public static String[] getPackageContent(String packageName) throws IOException {
-		List<String> list = new ArrayList<String>();
-		Enumeration<URL> urls = 
-				Thread.currentThread().getContextClassLoader().getResources(packageName);
+		final String packageAsDirName = packageName.replace(".", "/");
+		final List<String> list = new ArrayList<String>();
+		final Enumeration<URL> urls = 
+				Thread.currentThread().getContextClassLoader().getResources(packageAsDirName);
 		while (urls.hasMoreElements()) {
 			URL url = urls.nextElement();
 			// System.out.println("URL = " + url);
@@ -53,7 +54,7 @@ public class ClassesInPackage {
 					JarEntry e = entries.nextElement();
 					String jarEntryName = e.getName();
 					if (!jarEntryName.endsWith("/") &&
-						jarEntryName.startsWith(packageName)) {
+						jarEntryName.startsWith(packageAsDirName)) {
 						list.add(jarEntryName);
 					}
 				}
@@ -67,7 +68,7 @@ public class ClassesInPackage {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		String[] list = getPackageContent("com/darwinsys/io");
+		String[] list = getPackageContent("com.darwinsys.io");
 		for (String name : list) {
 			System.out.println(name);
 		}
