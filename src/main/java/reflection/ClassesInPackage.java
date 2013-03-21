@@ -38,7 +38,7 @@ public class ClassesInPackage {
 				// This is the easy case! "file" is the full path to the classpath directory
 				File dir = new File(file);
 				for (File f : dir.listFiles()) {
-					list.add(packageName + "/" + f.getName());
+					list.add(packageAsDirName + "/" + f.getName());
 				}
 				break;
 			case "jar":
