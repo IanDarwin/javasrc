@@ -89,8 +89,8 @@
 		<javac srcdir="${src}" sourcepath="${subdirs}"
 			classpathref="all.classpath"
 			destdir="${build}"
-			source="1.6"
-			target="1.6">
+			source="1.7"
+			target="1.7">
 			<!-- There are several categories of exclusions here:
 			1) Stuff that is intended to show problems; these
 				for the most part have "EXPECT COMPILE(R) ERROR"
