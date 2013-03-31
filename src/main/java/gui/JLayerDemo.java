@@ -1,4 +1,4 @@
-package swingui;
+package gui;
 
 import java.awt.AWTEvent;
 import java.awt.Color;
