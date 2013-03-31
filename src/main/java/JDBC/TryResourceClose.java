@@ -7,6 +7,16 @@ import java.sql.Statement;
 
 import com.darwinsys.sql.MockJDBCConnection;
 
+/**
+ * Show the syntax for auto-closing via Closable interface.
+ * Can not be run; just shows the syntax.
+ * 
+ *  * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
+ * This class absolutely requires Java SE 7+, so just add an exclusion rule
+ * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
+ *
+ * @author Ian Darwin
+ */
 public class TryResourceClose {
 	
 	public static void main(String[] args) {
@@ -28,7 +38,7 @@ public class TryResourceClose {
 						String lastName = rs.getString(3);
 						System.out.printf("Person %d: %s %s%n", id, firstName, lastName);
 					}
-				}
+				} // No need for try { rs.close(); } catch (SQLException e) { }; Closable handles it.
 			}
 		}
 	}
