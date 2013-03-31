@@ -21,7 +21,8 @@ import javax.swing.plaf.LayerUI;
  * @author Ian Darwin
  */
 public class JLayerDemo {
-	final static Color COLOR = new Color(0, 64, 0, 64);
+	final static private int alpha = 128;
+	private static int red = 64, green = 0, blue = 64;
 
 	/**
 	 * A simple example of a LayerUI, the helper for the JLayer.
@@ -34,6 +35,7 @@ public class JLayerDemo {
 		@Override
 		public void paint(Graphics g, JComponent c) {
 			super.paint(g, c);
+			final Color COLOR = new Color(red, green, blue, alpha);
 			g.setColor(COLOR);
 			g.fillRect(0, 0, c.getWidth(), c.getHeight());
 		}
@@ -61,7 +63,7 @@ public class JLayerDemo {
 		// Catch and gab about MouseMotion events
 		@Override
 		public void eventDispatched(AWTEvent e, JLayer<? extends JComponent> l) {
-			System.out.println("Event: " + e);
+			// System.out.println("Event: " + e);
 		}
 	};
 
@@ -71,15 +73,25 @@ public class JLayerDemo {
 				final JFrame frame = new JFrame();
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-				JPanel p = new JPanel();
-				JButton jb = new JButton("A Button");
-				jb.addActionListener(new ActionListener() {
+				final JPanel p = new JPanel();
+				JButton rb = new JButton("Redder");
+				rb.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("You pressed my button!");
+						red = Math.min(255,  red + 7);
+						p.repaint();
 					}
 				});
-				p.add(jb);
+				p.add(rb);
+				JButton gb = new JButton("Greener");
+				gb.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						green = Math.min(255,  green + 7);
+						frame.repaint();
+					}
+				});
+				p.add(gb);
 
 				// Wrap the JPanel in the JLayer, and add to a JFrame
 				frame.add(new JLayer<JComponent>(p, layerUI));
