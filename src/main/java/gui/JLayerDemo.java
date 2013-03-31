@@ -25,7 +25,7 @@ public class JLayerDemo {
 
 	/**
 	 * A simple example of a LayerUI, the helper for the JLayer.
-	 * See the Oracle JavaDoc for JLayer for more details.
+	 * See the JLayer JavaDoc for more details.
 	 */
 	private static LayerUI<JComponent> layerUI = new LayerUI<JComponent>() {
 
