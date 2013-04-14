@@ -1,7 +1,6 @@
 package structure;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -36,13 +35,11 @@ public class HashMapDemo {
 		System.out.println("They are located in: " + resultString);
 		System.out.println();
 
-		// Version 2: get ALL the keys and pairs 
+		// Version 2: get ALL the keys and values 
 		// (maybe to print a report, or to save to disk)
-		Iterator k = map.keySet().iterator();
-		while (k.hasNext()) {
-			String key = (String) k.next();
+		for (String key : map.keySet()) {
 			System.out.println("Key " + key + "; Value " +
-				(String) map.get(key));
+					(String) map.get(key));
 		}
 	}
 }
