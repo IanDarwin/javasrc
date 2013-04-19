@@ -87,6 +87,7 @@ public class ArrayListTableSimple extends JFrame {
 
 		// Make the Model and View
 		Model m = new Model(data);
+		@SuppressWarnings("unchecked")		
 		JPanel v = new ArrayListTablePanel(ArrayListTableDatum.class, data, m);
 
 		// Make it show up in this JFrame
