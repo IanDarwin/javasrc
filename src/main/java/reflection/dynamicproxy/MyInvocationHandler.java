@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 /** The InvocationHandler, called whenever any method on the proxy is invoked.
  * Note that the invoke() method only needs a reference to the implementation
- * object; it does not need to figure out which method to call, because it's
- * passed a Method descriptor.
+ * object; it does not (necessarily) need to figure out which method to call,
+ * because it's passed a Method descriptor.
  */
 class MyInvocationHandler implements InvocationHandler {
 

@@ -5,7 +5,7 @@ import java.lang.reflect.Proxy;
 
 
 /**
- * A contrived demo of the "dynamic proxy" mechanism in J2SE.
+ * A contrived demo of JavaSE's "dynamic proxy" mechanism.
  * Dynamic proxies allow you to create an implementation of
  * an interface without having to know the class name,
  * providing more flexibility.
