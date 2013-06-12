@@ -24,7 +24,7 @@ public class InventoryServiceJAXRS extends Object {
 	@GET @Path("/all")
 	protected String getCategories() {
 		String x = "<categories>";
-		for (String cat : DAOgetCategories()) {
+		for (String cat : fakeDaoGetCategories()) {
 			x += "<category>" + cat + "</category>";
 		}
 		x += "</categories>";
@@ -37,7 +37,12 @@ public class InventoryServiceJAXRS extends Object {
 	}
 	
 	// Dummy methods to make the above appear to work
-	private String[] DAOgetCategories() {
-		return new String[]{ "Jazz", "Classical"};
+	private String[] fakeDaoGetCategories() {
+		return new String[]{ 
+			"Classical"
+			"Country"
+			"Jazz", 
+			"Rock", 
+		};
 	}
 }
