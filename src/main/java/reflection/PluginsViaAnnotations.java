@@ -1,5 +1,6 @@
 package reflection;
 
+/** Discover "plugins" or other add-in classes via Reflection using Annotations */
 public class PluginsViaAnnotations {
 
 	public static void findAnnotatedClasses(String packageName, Class<?> classAnnotation) {
