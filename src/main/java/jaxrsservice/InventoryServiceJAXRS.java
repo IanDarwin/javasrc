@@ -39,8 +39,8 @@ public class InventoryServiceJAXRS extends Object {
 	// Dummy methods to make the above appear to work
 	private String[] fakeDaoGetCategories() {
 		return new String[]{ 
-			"Classical"
-			"Country"
+			"Classical",
+			"Country",
 			"Jazz", 
 			"Rock", 
 		};
