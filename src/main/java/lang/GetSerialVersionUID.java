@@ -10,9 +10,10 @@ import java.io.ObjectStreamClass;
  *
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-public class GetSerVersUID implements Serializable {
+public class GetSerialVersionUID implements Serializable {
 
-	static final String ident = "$Id$";
+	private static final long serialVersionUID = 1803149669137612064L;
+
 	public static void main(String[] av) throws Exception {
 
 		// First construct a Class object for the given class
