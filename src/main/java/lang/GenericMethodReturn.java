@@ -1,13 +1,14 @@
 package lang;
 
-
-/** Simple demo of a method whose return type is based on the type of an input parameter */
+/** Simple demo of a method whose return type is based on the type of an input parameter
+  * @requires 5.0
+  */
 public class GenericMethodReturn {
 
 	public static void main(String[] args) {
-		String mess = fooble("Clled with a String", "bleah");
-		Integer num = fooble("Call with an int", 42);
-		System.out.printf("Fooble returned both a %s and a %s!\n", mess.getClass(), num.getClass());
+		String mess = fooble("Called with a String", "bleah");
+		Integer num = fooble("Called with an int", 42);
+		System.out.printf("Fooble correctly returned both a %s and a %s!\n", mess.getClass(), num.getClass());
 	}
 
 	/**
