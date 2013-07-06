@@ -47,4 +47,15 @@ public class RomanNumberFormatTest extends TestCase {
 			// OK
 		}
 	}
+
+	public void testAgain() {
+		Integer num1 = nf.parseObject("LCX", null);
+		System.out.println(num1);
+		Integer num2 = nf.parseObject("XX", null);
+		System.out.println(num2);
+		int newVal = num1.intValue() * num2.intValue();
+		System.out.println(newVal);
+		String newString = nf.format(newVal);
+		System.out.println(newString);
+	}
 }
