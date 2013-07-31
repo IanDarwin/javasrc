@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 public class ISODate {
 	public static void main(String[] args) {
 		Date d =  new Date();
-		System.out.printf("%1$tY-%1$tm-%1$td%n", d);
+		System.out.printf("%tY-%tm-%td%n", d);
 		System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(d));
 		DateFormat fullIsoDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss'Z'");
 		System.out.println(fullIsoDateFormat.format(d));
