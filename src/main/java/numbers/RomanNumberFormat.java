@@ -15,12 +15,34 @@ import java.text.ParsePosition;
  */
 public class RomanNumberFormat extends Format {
 
+	private static final long serialVersionUID = -2303809319102357783L;
+	
 	/** Characters used in "Arabic to Roman", that is, format() methods. */
-	static char A2R[][] = {
+	final static char A2R[][] = {
 			{ 0, 'M' },
 			{ 0, 'C', 'D', 'M' },
 			{ 0, 'X', 'L', 'C' },
 			{ 0, 'I', 'V', 'X' },
+	};
+	
+	static class R2A {
+		char ch;
+		public R2A(char ch, int amount) {
+			super();
+			this.ch = ch;
+			this.amount = amount;
+		}
+		int amount;
+	}
+	
+	final static R2A[] R2A = {
+		new R2A('M', 1000),
+		new R2A('D', 500),
+		new R2A('C', 100),
+		new R2A('L', 50),
+		new R2A('X', 10),
+		new R2A('V', 5),
+		new R2A('I', 1),
 	};
 
 	/** Format a given double as a Roman Numeral; just truncate to a
@@ -95,9 +117,16 @@ public class RomanNumberFormat extends Format {
 
 	/** Parse a generic object, returning an Object */
 	public Object parseObject(String what, ParsePosition where) {
-		throw new IllegalArgumentException("Parsing not implemented");
-		// TODO PARSING HERE
-		// return new Long(0);
+		int n = 0;
+		for (char ch : what.toUpperCase().toCharArray()) {
+			for (R2A r : R2A) {
+				if (r.ch == ch) {
+					n += r.amount;
+					break;
+				}
+			}
+		}		
+		return new Long(n);
 	}
 
 	/* Implement a toy stack */

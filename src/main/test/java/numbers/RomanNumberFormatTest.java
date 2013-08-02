@@ -1,7 +1,6 @@
 package numbers;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -25,14 +24,14 @@ public class RomanNumberFormatTest {
 			{ 3999, "MMMCMXCIX" },
 	};
 
+	@Test(expected=NumberFormatException.class)
+	public final void testManyFormatLong() {	
+		nf.format(0);
+		fail("Romans did not use Zero");
+	}
+	
 	@Test
-	public final void testManyFormatLong() {
-		try {
-			nf.format(0);
-			fail("Romans did not use Zero");
-		} catch (NumberFormatException e) {
-			// OK
-		}
+	public void testMore() {
 		for (Object[] o : data) {
 			assertEquals(o[1], nf.format(o[0]));
 		}
@@ -45,24 +44,16 @@ public class RomanNumberFormatTest {
 	}
 
 	@Test
-	public void testParseObject() {
-		try {
-			nf.parseObject("XIV", null);
-			fail("Did not refuse to parseObject");
-		} catch (IllegalArgumentException e) {
-			// OK
-		}
-	}
-
-	@Test @Ignore("parsing code not written yet, can't test.")
-	public void testAgain() {
-		Integer num1 = (Integer) nf.parseObject("LCX", null);
-		System.out.println(num1);
-		Integer num2 = (Integer) nf.parseObject("XX", null);
-		System.out.println(num2);
-		int newVal = num1.intValue() * num2.intValue();
+	public void testThereThereAndBackAgain() {
+		Long num1 = (Long) nf.parseObject("LCX", null);
+		assertEquals(new Long(160), num1);
+		Long num2 = (Long) nf.parseObject("XX", null);
+		assertEquals(new Long(20), num2);
+		long newVal = num1.intValue() * num2.intValue();
 		System.out.println(newVal);
 		String newString = nf.format(newVal);
 		System.out.println(newString);
+		Long num3 = (Long)nf.parseObject(newString, null);
+		assertEquals(new Long(newVal), num3);
 	}
 }
