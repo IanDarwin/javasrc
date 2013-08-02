@@ -1,13 +1,16 @@
 package numbers;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
-public class RomanNumberFormatTest extends TestCase {
+import static org.junit.Assert.*;
+
+public class RomanNumberFormatTest {
 
 	RomanNumberFormat nf;
 
+	@Before
 	protected void setUp() throws Exception {
-		super.setUp();
 		nf = new RomanNumberFormat();
 	}
 
@@ -21,6 +24,7 @@ public class RomanNumberFormatTest extends TestCase {
 			{ 3999, "MMMCMXCIX" },
 	};
 
+	@Test
 	public final void testManyFormatLong() {
 		try {
 			nf.format(0);
@@ -39,6 +43,7 @@ public class RomanNumberFormatTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testParseObject() {
 		try {
 			nf.parseObject("XIV", null);
@@ -48,10 +53,11 @@ public class RomanNumberFormatTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testAgain() {
-		Integer num1 = nf.parseObject("LCX", null);
+		Integer num1 = (Integer) nf.parseObject("LCX", null);
 		System.out.println(num1);
-		Integer num2 = nf.parseObject("XX", null);
+		Integer num2 = (Integer) nf.parseObject("XX", null);
 		System.out.println(num2);
 		int newVal = num1.intValue() * num2.intValue();
 		System.out.println(newVal);
