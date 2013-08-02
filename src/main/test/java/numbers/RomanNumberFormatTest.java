@@ -10,7 +10,7 @@ public class RomanNumberFormatTest {
 	RomanNumberFormat nf;
 
 	@Before
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		nf = new RomanNumberFormat();
 	}
 
