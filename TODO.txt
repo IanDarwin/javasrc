@@ -1,3 +1,7 @@
+google 'maven offline'
+
+pom and libs: add mockito
+
 Make a build file that checks out both javasrc and darwinsys, then renames
 and repackages darwinsys into a unified tree. This would only be for those who
 prefer a simple unified tree; the main distribs would still be darwinsys-api and javasrc.
