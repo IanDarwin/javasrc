@@ -28,15 +28,16 @@ main(int argc, char* av[]) {
 	int i;
 	switch(argc) {
 		case 0: abort();
-				break;
+			break;
 		case 1: process("Stdin", stdin);
-				break;
+			break;
 		default:
-		for (i=1; i<argc; i++) {
-					FILE *f = fopen(av[i], "r");
-					process(av[i], f);
-					close(f);
-				}
+			for (i=1; i<argc; i++) {
+				FILE *f = fopen(av[i], "r");
+				process(av[i], f);
+				close(f);
+			}
+			break;
 	}
 	return 0;
 }
