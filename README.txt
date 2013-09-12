@@ -1,8 +1,12 @@
+Warning: This repo is undergoing radical change to reorganize it for Maven/Gradle.
+Apologies for any disruption this may cause over the next few days.
+Odds are it will soon be move to github for higher-bandwidth hosting...
+
 JavaCook Source Files
 
 Please note the following changes since the Second Edition was published:
 
-*) This is now being build for Java 7. My condolences if you are on some relic
+*) This is now being built for Java 7. My condolences if you are on some relic
     platform that doesn't have Java 7 or some environment in which Java 7 is
     not yet "approved", but the world has moved on; Java 6 is a relic, is
     deprecated, and has even been EOL'd by Oracle. I am updating the Cookbook
