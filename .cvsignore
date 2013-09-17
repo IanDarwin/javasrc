@@ -12,3 +12,4 @@ cobertura.ser
 book.sales
 reports-junit
 TESTS-TestSuites.xml
+target
