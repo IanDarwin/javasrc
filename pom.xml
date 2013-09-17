@@ -84,9 +84,9 @@
     </dependency>
 
 	<dependency>
-	<groupId>javax.comm</groupId>
-	<artifactId>comm</artifactId>
-	<version>2.0.3</version>
+		<groupId>javax.comm</groupId>
+		<artifactId>comm</artifactId>
+		<version>3.0-u1</version>
 	</dependency>
 
   </dependencies>
