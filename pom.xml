@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.darwinsys</groupId>
+  <artifactId>javasrc</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>javasrc</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+  </properties>
+
+  <build>
+	<sourceDirectory>.</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+		<excludes>
+			<!-- Won't compile with UTF-8! -->
+			<exclude>lang/EuroLanguage.java</exclude>
+			<!-- These all have 'Expect compile error' -->
+			<!-- XXX replace this list with filter grep -->
+			<exclude>jdb/Problem.java</exclude>
+			<exclude>lang/AddException.java</exclude>
+			<exclude>lang/ByteAdd2.java</exclude>
+			<exclude>lang/CastingDemo.java</exclude>
+			<exclude>lang/ChangeArrayLength.java</exclude>
+			<exclude>lang/CommentBug.java</exclude>
+			<exclude>lang/CompileError.java</exclude>
+			<exclude>lang/ConsRecurs.java</exclude>
+			<exclude>lang/Constructors.java</exclude>
+			<exclude>lang/ImportConflict.java</exclude>
+			<exclude>lang/ImportNonPublic.java</exclude>
+			<exclude>lang/InitializersDemo.java</exclude>
+			<exclude>lang/InnerMethods.java</exclude>
+			<exclude>lang/InterfaceNoConstructor.java</exclude>
+			<exclude>lang/NoLocalStatics.java</exclude>
+			<exclude>lang/NullStaticMethod.java</exclude>
+			<exclude>lang/OverLoadReturn.java</exclude>
+			<exclude>lang/PrivProt.java</exclude>
+			<exclude>lang/ProtectedClass.java</exclude>
+			<exclude>lang/ReturnType.java</exclude>
+			<exclude>lang/ShowInitializers.java</exclude>
+			<exclude>lang/Switch.java</exclude>
+			<exclude>lang/TryStealingInnerClass.java</exclude>
+			<exclude>netweb/JScript.java</exclude>
+			<exclude>numbers/CastNeeded.java</exclude>
+			<exclude>numbers/SmallIntMult.java</exclude>
+			<exclude>oo/AllClasses.java</exclude>
+			<exclude>oo/Clone0.java</exclude>
+			<exclude>oo/SingletonCheat1.java</exclude>
+			<exclude>oo/SingletonCheat2.java</exclude>
+			<exclude>reflection/ClassLoaderDemo0.java</exclude>
+			<exclude>strings/WolfInStringsClothing.java</exclude>
+			<exclude>threads/StopStop.java</exclude>
+			<exclude>threads/ThreadDeathCatch.java</exclude>
+		</excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+	<groupId>com.darwinsys</groupId>
+        <artifactId>darwinsys-api</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+    </dependency>
+
+	<dependency>
+	<groupId>javax.comm</groupId>
+	<artifactId>comm</artifactId>
+	<version>2.0.3</version>
+	</dependency>
+
+  </dependencies>
+</project>
