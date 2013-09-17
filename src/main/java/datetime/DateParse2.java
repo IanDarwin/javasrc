@@ -10,7 +10,7 @@ public class DateParse2 {
 		//+
 		SimpleDateFormat formatter =
 			new SimpleDateFormat("yyyy-MM-dd");
-		String input[] = { 
+		String[] input = { 
 			"BD: 1913-10-01 Vancouver, B.C.",
 			"MD: 1948-03-01 Ottawa, ON",
 			"DD: 1983-06-06 Toronto, ON" };
@@ -25,8 +25,7 @@ public class DateParse2 {
 				default: System.err.println("Invalid code in " + aLine);
 				continue;
 			}
-			int p = aLine.indexOf(' ');
-			ParsePosition pp = new ParsePosition(p);
+			ParsePosition pp = new ParsePosition(aLine.indexOf(' '));
 			Date d = formatter.parse(aLine, pp);
 			if (d == null) {
 				System.err.println("Invalid date in " + aLine);
