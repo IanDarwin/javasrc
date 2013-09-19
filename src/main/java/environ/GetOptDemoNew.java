@@ -15,7 +15,7 @@ public class GetOptDemoNew {
 		boolean errs = false;
 		String outputFileName = null;
 
-		GetOptDesc options[] = {
+		GetOptDesc[] options = {
 			new GetOptDesc('n', "numeric", false),
 			new GetOptDesc('o', "output-file", true),
 		};
