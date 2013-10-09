@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /** Demonstrate a JButton with Lambda Action Listeners */
-public class ButtonDemo2l extends JFrame {
+public class ButtonDemo2L extends JFrame {
 
 	public ButtonDemo2L() {
 		super("ButtonDemo Lambda");
