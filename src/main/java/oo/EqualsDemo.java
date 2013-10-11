@@ -8,7 +8,7 @@ public class EqualsDemo {
 	public EqualsDemo(int i, SomeClass o) {
 		int1 = i;
 		if (o == null) {
-			throw new IllegalArgumentException("Object may not be null");
+			throw new IllegalArgumentException("Data Object may not be null");
 		}
 		obj1 = o;
 	}
@@ -23,8 +23,11 @@ public class EqualsDemo {
 		if (o == this)		// optimization
 			return true;
 
-		// Castable to this class? (false if == null)
-		if (!(o instanceof EqualsDemo))
+		if (o == null)
+			return false;
+		
+		// Of the correct class?
+		if (o.getClass() != EqualsDemo.class)
 			return false;
 
 		EqualsDemo other = (EqualsDemo)o;	// OK, cast to this class
