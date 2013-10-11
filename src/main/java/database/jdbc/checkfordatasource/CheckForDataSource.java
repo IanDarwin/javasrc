@@ -1,4 +1,4 @@
-package database.jdbc.testdatasource;
+package database.jdbc.checkfordatasource;
 
 import java.sql.Connection;
 import java.sql.SQLException;

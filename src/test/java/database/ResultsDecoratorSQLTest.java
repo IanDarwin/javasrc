@@ -1,4 +1,4 @@
-package database.jdbc.regress;
+package database;
 
 import static org.junit.Assert.assertEquals;
 
