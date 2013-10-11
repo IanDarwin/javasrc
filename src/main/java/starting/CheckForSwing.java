@@ -2,7 +2,7 @@ package starting;
 
 /** Test for presence of Swing on classpath at runtime.
  */
-public class TestForSwing {
+public class CheckForSwing {
 	public static void main(String[] args) {
 		try {
 			Class.forName("javax.swing.JButton");

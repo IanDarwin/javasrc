@@ -26,12 +26,12 @@ import com.darwinsys.io.TextAreaOutputStream;
  *
  * Uses TextAreaWriter to capture program into a window.
  */
-public final class TestOpenMailRelayGUI extends JFrame {
+public final class CheckOpenMailRelayGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String unused[]) throws IOException {
-		new TestOpenMailRelayGUI().setVisible(true);
+		new CheckOpenMailRelayGui().setVisible(true);
 	}
 
 	/** The one-line textfield for the user to type Host name/IP */
@@ -55,7 +55,7 @@ public final class TestOpenMailRelayGUI extends JFrame {
 	/** Construct a GUI and some I/O plumbing to get the output
 	 * of "TestOpenMailRelay" into the "results" textfield.
 	 */
-	public TestOpenMailRelayGUI() throws IOException {
+	public CheckOpenMailRelayGui() throws IOException {
 		super("Tests for Open Mail Relays");
 
 		runner = new ActionListener() {
@@ -65,7 +65,7 @@ public final class TestOpenMailRelayGUI extends JFrame {
 					public void run() {
 						String host = hostTextField.getText().trim();
 						out.println("Trying " + host);
-						TestOpenMailRelay.process(host, out);
+						CheckOpenMailRelay.process(host, out);
 						goButton.setEnabled(true);
 					}
 				});

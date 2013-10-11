@@ -9,7 +9,7 @@ import javax.mail.MessagingException;
  * @author Ian F. Darwin
  * @version $Id$
  */
-public class TestOpenMailRelay {
+public class CheckOpenMailRelay {
 
 	/** Where to refer people who find the test messages on their system. */
 	public final static String RSS_SITE = "http://mail-abuse.org/rss/";
@@ -20,7 +20,7 @@ public class TestOpenMailRelay {
 	/** Driver to parse options and control Sender */
 	public static void main(String[] args) throws IOException {
 		if (args.length == 0) {
-			new TestOpenMailRelayGUI().setVisible(true);
+			new CheckOpenMailRelayGui().setVisible(true);
 		} else {
 			for (int i=0; i<args.length; i++) {
 				process(args[i]);

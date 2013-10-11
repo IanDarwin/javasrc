@@ -1,7 +1,7 @@
 package starting;
 
 /** Check *by features* for JDK >= 1.1 */
-public class TestFor1_1 {
+public class CheckFor1_1 {
 	public static void main(String[] args) {
 		try {
 			Class.forName("java.lang.reflect.Constructor");
