@@ -7,7 +7,7 @@ package starting;
  * because we don't want to check it at compile time, only at runtime.
  * @return 0 if OK, 1 if class not found, 2 if used incorrectly.
  */
-public class TestForClass {
+public class CheckForClass {
 	public static void main(String[] argv) {
 		if (argv.length != 1) {
 			System.err.println("Usage: TestForClass className");

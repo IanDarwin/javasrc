@@ -1,4 +1,4 @@
-package JDBC.testdatasource;
+package JDBC.checkfordatasource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 /** See if a DataSource exists and is usable.
  * @version $Id$
  */
-public class TestDataSource {
+public class CheckForDataSource {
 
 	public static void main(String[] argv)
 		throws NamingException, SQLException {
