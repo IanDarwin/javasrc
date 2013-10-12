@@ -7,8 +7,8 @@
 	 -->
 
 	<!-- set global properties for this build -->
-	<property name="src" value="."/>
-	<property name="regress" value="."/>
+	<property name="src" value="src/main/java"/>
+	<property name="regress" value="src/test/java"/>
 	<property name="lib.dir" value="lib"/>
 	<property name="build" value="build"/>
 	<property name="reports-regress" value="reports-junit"/>
@@ -17,7 +17,7 @@
 	<property file="build.properties"/>
 
 	<property name="javasrc.home" value="${user.dir}"/>
-	<property name="darwinsys.jar" value="${lib.dir}/darwinsys.jar"/>
+	<property name="darwinsys.jar" value="${lib.dir}/darwinsys-api-1.0.1.jar"/>
 	<property name="junit.jar" value="${lib.dir}/lib/junit-4.4.jar"/>
 
 	<!-- Right away, make sure javasrc.home has been set

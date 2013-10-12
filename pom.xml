@@ -27,43 +27,51 @@
           <target>1.7</target>
 		<excludes>
 			<!-- Won't compile with UTF-8! -->
-			<exclude>lang/EuroLanguage.java</exclude>
-			<!-- These all have 'Expect compile error' -->
+			<exclude>src/main/java/lang/EuroLanguage.java</exclude>
+			<!-- javax.comm API is dead with no replacement; 
+			 *** flame Oracle not me!
+			 -->
+			<exclude>src/main/java/javacomm/*</exclude>
+			<exclude>src/main/java/plotter/Penman.java</exclude>
+			<!-- Defunct APIs -->
+			<exclude>src/main/java/graphics/QTMoviePlayer.java</exclude>
+
+			<!-- Remainder all have 'Expect compile error' -->
 			<!-- XXX replace this list with filter grep -->
-			<exclude>jdb/Problem.java</exclude>
-			<exclude>lang/AddException.java</exclude>
-			<exclude>lang/ByteAdd2.java</exclude>
-			<exclude>lang/CastingDemo.java</exclude>
-			<exclude>lang/ChangeArrayLength.java</exclude>
-			<exclude>lang/CommentBug.java</exclude>
-			<exclude>lang/CompileError.java</exclude>
-			<exclude>lang/ConsRecurs.java</exclude>
-			<exclude>lang/Constructors.java</exclude>
-			<exclude>lang/ImportConflict.java</exclude>
-			<exclude>lang/ImportNonPublic.java</exclude>
-			<exclude>lang/InitializersDemo.java</exclude>
-			<exclude>lang/InnerMethods.java</exclude>
-			<exclude>lang/InterfaceNoConstructor.java</exclude>
-			<exclude>lang/NoLocalStatics.java</exclude>
-			<exclude>lang/NullStaticMethod.java</exclude>
-			<exclude>lang/OverLoadReturn.java</exclude>
-			<exclude>lang/PrivProt.java</exclude>
-			<exclude>lang/ProtectedClass.java</exclude>
-			<exclude>lang/ReturnType.java</exclude>
-			<exclude>lang/ShowInitializers.java</exclude>
-			<exclude>lang/Switch.java</exclude>
-			<exclude>lang/TryStealingInnerClass.java</exclude>
-			<exclude>netweb/JScript.java</exclude>
-			<exclude>numbers/CastNeeded.java</exclude>
-			<exclude>numbers/SmallIntMult.java</exclude>
-			<exclude>oo/AllClasses.java</exclude>
-			<exclude>oo/Clone0.java</exclude>
-			<exclude>oo/SingletonCheat1.java</exclude>
-			<exclude>oo/SingletonCheat2.java</exclude>
-			<exclude>reflection/ClassLoaderDemo0.java</exclude>
-			<exclude>strings/WolfInStringsClothing.java</exclude>
-			<exclude>threads/StopStop.java</exclude>
-			<exclude>threads/ThreadDeathCatch.java</exclude>
+			<exclude>src/main/java/jdb/Problem.java</exclude>
+			<exclude>src/main/java/lang/AddException.java</exclude>
+			<exclude>src/main/java/lang/ByteAdd2.java</exclude>
+			<exclude>src/main/java/lang/CastingDemo.java</exclude>
+			<exclude>src/main/java/lang/ChangeArrayLength.java</exclude>
+			<exclude>src/main/java/lang/CommentBug.java</exclude>
+			<exclude>src/main/java/lang/CompileError.java</exclude>
+			<exclude>src/main/java/lang/ConsRecurs.java</exclude>
+			<exclude>src/main/java/lang/Constructors.java</exclude>
+			<exclude>src/main/java/lang/ImportConflict.java</exclude>
+			<exclude>src/main/java/lang/ImportNonPublic.java</exclude>
+			<exclude>src/main/java/lang/InitializersDemo.java</exclude>
+			<exclude>src/main/java/lang/InnerMethods.java</exclude>
+			<exclude>src/main/java/lang/InterfaceNoConstructor.java</exclude>
+			<exclude>src/main/java/lang/NoLocalStatics.java</exclude>
+			<exclude>src/main/java/lang/NullStaticMethod.java</exclude>
+			<exclude>src/main/java/lang/OverLoadReturn.java</exclude>
+			<exclude>src/main/java/lang/PrivProt.java</exclude>
+			<exclude>src/main/java/lang/ProtectedClass.java</exclude>
+			<exclude>src/main/java/lang/ReturnType.java</exclude>
+			<exclude>src/main/java/lang/ShowInitializers.java</exclude>
+			<exclude>src/main/java/lang/Switch.java</exclude>
+			<exclude>src/main/java/lang/TryStealingInnerClass.java</exclude>
+			<exclude>src/main/java/netweb/JScript.java</exclude>
+			<exclude>src/main/java/numbers/CastNeeded.java</exclude>
+			<exclude>src/main/java/numbers/SmallIntMult.java</exclude>
+			<exclude>src/main/java/oo/AllClasses.java</exclude>
+			<exclude>src/main/java/oo/Clone0.java</exclude>
+			<exclude>src/main/java/oo/SingletonCheat1.java</exclude>
+			<exclude>src/main/java/oo/SingletonCheat2.java</exclude>
+			<exclude>src/main/java/reflection/ClassLoaderDemo0.java</exclude>
+			<exclude>src/main/java/strings/WolfInStringsClothing.java</exclude>
+			<exclude>src/main/java/threads/StopStop.java</exclude>
+			<exclude>src/main/java/threads/ThreadDeathCatch.java</exclude>
 		</excludes>
         </configuration>
       </plugin>
@@ -83,11 +91,29 @@
       <version>4.8.1</version>
     </dependency>
 
-	<dependency>
-		<groupId>javax.comm</groupId>
-		<artifactId>comm</artifactId>
-		<version>3.0-u1</version>
-	</dependency>
+    <dependency>
+        <groupId>org.mod4j.org.eclipse</groupId>
+        <artifactId>swt</artifactId>
+        <version>3.5.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.jdom</groupId>
+        <artifactId>jdom</artifactId>
+        <version>1.1</version>
+    </dependency>
+
+<dependency>
+    <groupId>jgoodies</groupId>
+    <artifactId>forms</artifactId>
+    <version>1.0.5</version>
+</dependency>
+
+<dependency>
+    <groupId>ant</groupId>
+    <artifactId>ant</artifactId>
+    <version>1.7.0</version>
+</dependency>
 
   </dependencies>
 </project>

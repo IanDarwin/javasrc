@@ -33,7 +33,6 @@ public class APIFormatterTest extends TestCase {
 		}
 		is.close();
 		zf.closeEntry();
-		zf.closeEntry();
 		zf.close();
 	}
 
