@@ -1,4 +1,4 @@
-package com.darwinsys.client;
+package rmi.callback;
 
 import java.rmi.*;
 
