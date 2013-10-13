@@ -43,6 +43,11 @@
 			<exclude>gui_swt/*.java</exclude>
 			<exclude>gui/ArrayListTableSimple.java</exclude>
 			<exclude>xml/XSLTransform.java</exclude>
+			<exclude>otherlang/StringDistance.java</exclude>
+
+			<!-- Unknown issues -->
+			<exclude>lang/UsePackage.java</exclude>
+			<exclude>rmi/callback/ClientProgram.java</exclude>
 
 			<!-- Remainder all have 'Expect compile error' -->
 			<!-- XXX replace this list with filter grep -->
