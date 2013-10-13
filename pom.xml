@@ -41,7 +41,8 @@
 
 			<!-- Have yet to find a POM that works -->
 			<exclude>gui_swt/*.java</exclude>
-			<exclude>gui/ArrayListTableSimple</exclude>
+			<exclude>gui/ArrayListTableSimple.java</exclude>
+			<exclude>xml/XSLTransform.java</exclude>
 
 			<!-- Remainder all have 'Expect compile error' -->
 			<!-- XXX replace this list with filter grep -->
