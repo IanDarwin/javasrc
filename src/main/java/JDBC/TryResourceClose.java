@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.darwinsys.sql.MockJDBCConnection;
 
 /**
  * Show the syntax for auto-closing via Closable interface.
- * Can not be run; just shows the syntax.
+ *
+ * CAN NOT BE RUN; JUST SHOWS THE SYNTAX.
  * 
  *  * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
  * This class absolutely requires Java SE 7+, so just add an exclusion rule
@@ -44,6 +44,6 @@ public class TryResourceClose {
 	}
 
 	private static Connection getConnection() {
-		return new MockJDBCConnection();
+		return null;
 	}
 }
