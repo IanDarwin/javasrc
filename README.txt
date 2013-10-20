@@ -1,15 +1,16 @@
 JavaCook Source Files
 
-Please note the following changes since Java Cookbook Second Edition was published:
+Please note the following changes since the Second Edition of the
+Java Cookbook was published:
 
-*) This is now being built for Java 7. My condolences if you are on some relic
+*) This is now being built for Java 7 & 8. Sorry if you are on some relic
     platform that doesn't have Java 7 or some environment in which Java 7 is
     not yet "approved", but the world has moved on; Java 6 is a relic, is
-    deprecated, and has even been EOL'd by Oracle. I am updating the Cookbook
+    deprecated, and has been EOL'd by Oracle. I am updating the Cookbook
     for Java 8 as you read this; Java 7 is now the minimum. You can probably
     get by with a huge excludes list, but you're on your own if you do that.
 
-*)	The files are being maintained in a public CVS repository; see
+*)	The files are being maintained in a public git repository; see
 	https://github.com/IanDarwin/javasrc
 	From there you can clone it (to get updates) or download a Zip (but you
 	don't get updates).
