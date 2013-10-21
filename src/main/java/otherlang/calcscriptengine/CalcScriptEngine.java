@@ -1,4 +1,4 @@
-package otherlang.myscriptengine;
+package otherlang.calcscriptengine;
 
 import java.io.Reader;
 
@@ -7,6 +7,7 @@ import javax.script.Bindings;
 import javax.script.ScriptContext;
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
+import javax.script.SimpleBindings;
 
 public class CalcScriptEngine extends AbstractScriptEngine {
 
@@ -20,26 +21,26 @@ public class CalcScriptEngine extends AbstractScriptEngine {
 	@Override
 	public Object eval(String script, ScriptContext context)
 			throws ScriptException {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("CalcScriptEngine.eval():");
+		System.out.println(script);
+		return 42;
 	}
 
 	@Override
 	public Object eval(Reader reader, ScriptContext context)
 			throws ScriptException {
-		// TODO Auto-generated method stub
+		System.out.println("CalcScriptEngine.eval()");
 		return null;
 	}
 
 	@Override
 	public Bindings createBindings() {
-		// TODO Auto-generated method stub
-		return null;
+		Bindings ret = new SimpleBindings();
+		return ret;
 	}
 
 	@Override
 	public ScriptEngineFactory getFactory() {
 		return factory;
 	}
-
 }
