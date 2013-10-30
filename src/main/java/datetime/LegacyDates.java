@@ -10,12 +10,12 @@ public class LegacyDates {
 		Date legacyDate = new Date();
 		System.out.println(legacyDate);
 
-		ZoneOffset zoneOffset = ZoneOffset.of("+0400");
+		ZoneOffset zoneOffset1 = ZoneOffset.of("-0400");
 
 		// using the long integer-based methods
 		long longTime = legacyDate.getTime();
 		LocalDateTime convertedDate1 = LocalDateTime.ofEpochSecond(
-				longTime / 1000, (int) ((longTime % 1000) * 1000), zoneOffset);
+				longTime / 1000, (int) ((longTime % 1000) * 1000), zoneOffset1);
 		System.out.println(convertedDate1);
 
 		// Using individual values
