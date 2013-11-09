@@ -2,6 +2,9 @@ package di.spring;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+
+@Component("myView")
 public class ConsoleViewer implements View {
 
 	Model messageProvider;
@@ -11,7 +14,7 @@ public class ConsoleViewer implements View {
 		System.out.println(messageProvider.getMessage());
 	}
 
-	@Resource(name="messageProvider")
+	@Resource(name="myModel")
 	public void setModel(Model messageProvider) {
 		this.messageProvider = messageProvider;
 	}
