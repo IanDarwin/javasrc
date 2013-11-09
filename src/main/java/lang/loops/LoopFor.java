@@ -1,3 +1,5 @@
+package lang.loops;
+
 /** Compile this program and dump the compiled bytecode
  * with "javap -c" or equivalent; you will be enlightened
  * as to the true nature of while loops compared to for loops.
