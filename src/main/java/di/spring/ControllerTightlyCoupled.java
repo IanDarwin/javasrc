@@ -3,13 +3,13 @@ package di.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Controller {
+public class ControllerTightlyCoupled {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Model m = new SimpleModel();
+		ApplicationContext ctx = new AnnotationConfigApplicationContext( "di.spring");
 		View v = ctx.getBean("messageRenderer", View.class);
 		v.displayMessage();
 	}

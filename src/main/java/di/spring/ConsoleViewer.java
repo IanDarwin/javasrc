@@ -1,15 +1,14 @@
 package di.spring;
 
 import javax.annotation.Resource;
-import javax.swing.JOptionPane;
 
-public class SwingRenderer implements View {
+public class ConsoleViewer implements View {
 
 	Model messageProvider;
 	
 	@Override
 	public void displayMessage() {
-		JOptionPane.showMessageDialog(null, messageProvider.getMessage());
+		System.out.println(messageProvider.getMessage());
 	}
 
 	@Resource(name="messageProvider")

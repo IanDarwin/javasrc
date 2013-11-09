@@ -2,7 +2,7 @@ package di.spring;
 
 import javax.annotation.Resource;
 
-public class SpringMessageProvider implements Model {
+public class SpringModel implements Model {
 
 	private String message = "Hello from Spring";
 
