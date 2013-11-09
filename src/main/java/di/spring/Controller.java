@@ -6,9 +6,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Controller {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext( "di.spring");
 		View v = ctx.getBean("myView", View.class);
