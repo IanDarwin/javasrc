@@ -92,12 +92,14 @@
   </build>
 
   <dependencies>
+    <!-- My personal API -->
     <dependency>
 	<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
         <version>1.0.2</version>
     </dependency>
 
+    <!-- Test early and often -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -114,6 +116,13 @@
         <groupId>commons-beanutils</groupId>
         <artifactId>commons-beanutils-core</artifactId>
         <version>1.8.3</version>
+    </dependency>
+
+    <!-- Spring - used in a few examples -->
+    <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context</artifactId>
+	<version>3.2.4.RELEASE</version>
     </dependency>
 
     <dependency>
