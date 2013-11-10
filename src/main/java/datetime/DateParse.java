@@ -2,6 +2,7 @@ package datetime;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /** Show some date parses */
 public class DateParse {
@@ -14,5 +15,10 @@ public class DateParse {
 		String armisticeDateTime = "1914-11-11T11:11";
 		LocalDateTime aLDT = LocalDateTime.parse(armisticeDateTime);
 		System.out.println("Date/Time: " + aLDT);
+		
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd MMM uuuu");
+		String anotherDate = "27 Jan 2011";
+		LocalDate random = LocalDate.parse(anotherDate, df);
+		System.out.println(anotherDate + " parses as " + random);
 	}
 }
