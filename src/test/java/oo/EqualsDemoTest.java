@@ -7,8 +7,6 @@ import org.junit.Test;
 
 /** Some JUnit test cases for EqualsDemo.
  * Writing a full set is left as "an exercise for the reader".
- * Run as: $ java junit.textui.TestRunner EqualsDemoTest
- * @version $Id$
  */
 public class EqualsDemoTest {
 
@@ -17,7 +15,7 @@ public class EqualsDemoTest {
 	/** another object being tested */
 	EqualsDemo d2;
 
-	/** init() method */
+	/** Method to be invoked before each test method */
 	@Before
 	public void setUp() {
 		d1 = new EqualsDemo();
