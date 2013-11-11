@@ -20,5 +20,7 @@ public class DateParse {
 		String anotherDate = "27 Jan 2011";
 		LocalDate random = LocalDate.parse(anotherDate, df);
 		System.out.println(anotherDate + " parses as " + random);
+		
+		System.out.println(aLD + " formats as " + df.format(aLD));
 	}
 }
