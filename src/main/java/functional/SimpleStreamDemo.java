@@ -1,4 +1,4 @@
-package streams;
+package functional;
 
 import java.util.Arrays;
 import java.util.List;
