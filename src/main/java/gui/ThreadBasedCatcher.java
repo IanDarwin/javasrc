@@ -19,6 +19,7 @@ public class ThreadBasedCatcher extends JFrame{
 		new ThreadBasedCatcher().setVisible(true);
 	}
 	public ThreadBasedCatcher(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
 		JButton crasher = new JButton("Crash");
 		cp.add(crasher);
