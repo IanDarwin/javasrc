@@ -131,18 +131,23 @@ public class CommPortOpen {
 		os = new PrintStream(thePort.getOutputStream(), true);
 	}
 
-	/** This method will be overridden by non-trivial subclasses
+	/** A template method, which subclasses must implement. */
+	abstract void converse();
+
+	/** This method calls template method converse(), which will be provided in subclass
 	 * to hold a conversation. 
 	 */
-	protected void converse() throws IOException {
+	protected void holdConversation() throws IOException {
 
 		System.out.println("Ready to read and write port.");
 
 		// Input/Output code not written -- must subclass.
+		converse();
 
 		// Finally, clean up.
 		if (is != null)
 			is.close();
-		os.close();
+		if (os != null)
+			os.close();
 	}
 }
