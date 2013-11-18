@@ -3,12 +3,9 @@ package javacomm;
 import java.io.IOException;
 import java.util.TooManyListenersException;
 
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
 import javax.comm.SerialPort;
 import javax.comm.SerialPortEvent;
 import javax.comm.SerialPortEventListener;
-import javax.comm.UnsupportedCommOperationException;
 import javax.swing.JFrame;
 
 /**
@@ -20,17 +17,13 @@ import javax.swing.JFrame;
 public class SerialReadByEvents extends CommPortOpen 
 	implements SerialPortEventListener {
 
-	public static void main(String[] argv)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] argv) throws Exception {
 
 		new SerialReadByEvents(null).converse();
 	}
 
 	/* Constructor */
-	public SerialReadByEvents(JFrame f)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public SerialReadByEvents(JFrame f) throws Exception {
 		
 		super(f);
 	}

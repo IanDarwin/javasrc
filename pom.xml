@@ -33,10 +33,6 @@
 			<exclude>datetime/IBMCalDemo.java</exclude>
 			<exclude>graphics/QTMoviePlayer.java</exclude>
 
-			<!-- javax.comm API is dead with no replacement; 
-			 *** flame Oracle not me!
-			 -->
-			<exclude>javacomm/*</exclude>
 			<exclude>plotter/Penman.java</exclude>
 
 			<!-- Have yet to find a POM that works -->

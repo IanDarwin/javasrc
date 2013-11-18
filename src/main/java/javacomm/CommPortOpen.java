@@ -7,11 +7,8 @@ import java.io.PrintStream;
 
 import javax.comm.CommPort;
 import javax.comm.CommPortIdentifier;
-import javax.comm.NoSuchPortException;
 import javax.comm.ParallelPort;
-import javax.comm.PortInUseException;
 import javax.comm.SerialPort;
-import javax.comm.UnsupportedCommOperationException;
 import javax.swing.JFrame;
 
 /**
@@ -19,7 +16,7 @@ import javax.swing.JFrame;
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-public class CommPortOpen {
+public abstract class CommPortOpen {
 	/** How long to wait for the open to finish up. */
 	public static final int TIMEOUTSECONDS = 30;
 	/** The baud rate to use. */
@@ -35,19 +32,20 @@ public class CommPortOpen {
 	/** The chosen Port itself */
 	CommPort thePort;
 
-	public static void main(String[] argv)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] argv) throws Exception {
 
-		new CommPortOpen(null).converse();
+		new CommPortOpen(null){
+			@Override
+			void converse() {
+				throw new IllegalStateException();
+			}			
+		}.holdConversation();
 
 		System.exit(0);
 	}
 
 	/* Constructor */
-	public CommPortOpen(JFrame f)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public CommPortOpen(JFrame f) throws Exception {
 		
 		// Use the PortChooser from before. Pop up the JDialog.
 		PortChooser chooser = new PortChooser(null);
@@ -66,10 +64,9 @@ public class CommPortOpen {
 		// Get the CommPortIdentifier.
 		thePortID = chooser.getSelectedIdentifier();
 
+		System.out.println("Trying to open " + thePortID.getName() + "...");
 		// Now actually open the port.
 		// This form of openPort takes an Application Name and a timeout.
-		// 
-		System.out.println("Trying to open " + thePortID.getName() + "...");
 
 		switch (thePortID.getPortType()) {
 		case CommPortIdentifier.PORT_SERIAL:
@@ -132,7 +129,7 @@ public class CommPortOpen {
 	}
 
 	/** A template method, which subclasses must implement. */
-	abstract void converse();
+	abstract void converse() throws IOException;
 
 	/** This method calls template method converse(), which will be provided in subclass
 	 * to hold a conversation. 

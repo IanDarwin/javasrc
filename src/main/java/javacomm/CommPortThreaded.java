@@ -4,12 +4,8 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.io.InputStreamReader;
-
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.UnsupportedCommOperationException;
+import java.io.PrintStream;
 
 /**
  * This program tries to do I/O in each direction using a separate Thread.
@@ -17,9 +13,7 @@ import javax.comm.UnsupportedCommOperationException;
  */
 public class CommPortThreaded extends CommPortOpen {
 
-	public static void main(String[] ap)
-		throws IOException, NoSuchPortException,PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] ap) throws Exception {
 		CommPortThreaded cp;
 		try {
 			cp = new CommPortThreaded();
@@ -30,9 +24,7 @@ public class CommPortThreaded extends CommPortOpen {
 		}
 	}
 
-	public CommPortThreaded()
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public CommPortThreaded() throws Exception {
 		super(null);
 	}
 
