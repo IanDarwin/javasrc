@@ -41,6 +41,9 @@
 			<exclude>xml/XSLTransform.java</exclude>
 			<exclude>otherlang/StringDistance.java</exclude>
 
+			<!-- No public POM that works, due to Oracle's proprietary licensing -->
+			<exclude>javacomm/*.java</exclude>
+
 			<!-- Unknown issues -->
 			<exclude>lang/UsePackage.java</exclude>
 			<exclude>rmi/callback/ClientProgram.java</exclude>
