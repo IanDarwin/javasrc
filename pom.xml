@@ -40,6 +40,7 @@
 			<exclude>gui/ArrayListTableSimple.java</exclude>
 			<exclude>xml/XSLTransform.java</exclude>
 			<exclude>otherlang/StringDistance.java</exclude>
+			<exclude>javacomm/*.java</exclude>
 
 			<!-- Unknown issues -->
 			<exclude>lang/UsePackage.java</exclude>
