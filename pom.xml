@@ -41,9 +41,6 @@
 			<exclude>xml/XSLTransform.java</exclude>
 			<exclude>otherlang/StringDistance.java</exclude>
 
-			<!-- No public POM that works, due to Oracle's proprietary licensing -->
-			<exclude>javacomm/*.java</exclude>
-
 			<!-- Unknown issues -->
 			<exclude>lang/UsePackage.java</exclude>
 			<exclude>rmi/callback/ClientProgram.java</exclude>
@@ -164,6 +161,12 @@
     <groupId>xalan</groupId>
     <artifactId>xalan</artifactId>
     <version>2.3.1</version>
+</dependency>
+
+<dependency>
+	<groupId>org.rxtx</groupId>
+	<artifactId>rxtx</artifactId>
+	<version>2.1.7</version>
 </dependency>
 
   </dependencies>
