@@ -1,11 +1,6 @@
 package javacomm;
 
-import java.io.IOException;
-
 import javax.comm.CommPortOwnershipListener;
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.UnsupportedCommOperationException;
 import javax.swing.JOptionPane;
 
 /** Demonstrate the port conflict resolution mechanism.
@@ -16,10 +11,7 @@ public class PortOwner extends CommPortOpen {
 	/** A name for showing which of several instances of this program */
 	String myName;
 
-	public PortOwner(String name)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
-
+	public PortOwner(String name) throws Exception {
 		super(null);
 		myName = name;
 		thePortID.addPortOwnershipListener(new MyResolver());
@@ -63,9 +55,7 @@ public class PortOwner extends CommPortOpen {
 		}
 	}
 
-	public static void main(String[] argv)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] argv) throws Exception {
 
 		if (argv.length != 1) {
 			System.err.println("Usage: PortOwner aname");

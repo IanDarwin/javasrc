@@ -13,6 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
   </properties>
 
@@ -33,10 +34,6 @@
 			<exclude>datetime/IBMCalDemo.java</exclude>
 			<exclude>graphics/QTMoviePlayer.java</exclude>
 
-			<!-- javax.comm API is dead with no replacement; 
-			 *** flame Oracle not me!
-			 -->
-			<exclude>javacomm/*</exclude>
 			<exclude>plotter/Penman.java</exclude>
 
 			<!-- Have yet to find a POM that works -->
@@ -44,6 +41,7 @@
 			<exclude>gui/ArrayListTableSimple.java</exclude>
 			<exclude>xml/XSLTransform.java</exclude>
 			<exclude>otherlang/StringDistance.java</exclude>
+			<exclude>javacomm/*.java</exclude>
 
 			<!-- Unknown issues -->
 			<exclude>lang/UsePackage.java</exclude>
@@ -165,6 +163,12 @@
     <groupId>xalan</groupId>
     <artifactId>xalan</artifactId>
     <version>2.3.1</version>
+</dependency>
+
+<dependency>
+	<groupId>org.rxtx</groupId>
+	<artifactId>rxtx</artifactId>
+	<version>2.1.7</version>
 </dependency>
 
   </dependencies>

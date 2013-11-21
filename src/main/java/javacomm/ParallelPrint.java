@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.UnsupportedCommOperationException;
 import javax.swing.JFrame;
 
 /**
@@ -18,9 +15,7 @@ public class ParallelPrint extends CommPortOpen {
 
 	protected static String inputFileName;
 
-	public static void main(String[] argv)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] argv) throws Exception {
 
 		if (argv.length != 1) {
 			System.err.println("Usage: ParallelPrint filename");
@@ -34,9 +29,7 @@ public class ParallelPrint extends CommPortOpen {
 	}
 
 	/* Constructor */
-	public ParallelPrint(JFrame f)
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public ParallelPrint(JFrame f) throws Exception {
 		
 		super(f);
 	}
