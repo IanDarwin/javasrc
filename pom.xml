@@ -34,6 +34,9 @@
 			<exclude>datetime/IBMCalDemo.java</exclude>
 			<exclude>graphics/QTMoviePlayer.java</exclude>
 
+			<!-- Used private API which is no longer available -->
+			<exclude>netweb/WebServerSimpleSE.java</exclude>
+
 			<exclude>plotter/Penman.java</exclude>
 
 			<!-- Have yet to find a POM that works -->
