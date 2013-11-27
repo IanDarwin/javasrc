@@ -13,6 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
   </properties>
 
@@ -33,10 +34,9 @@
 			<exclude>datetime/IBMCalDemo.java</exclude>
 			<exclude>graphics/QTMoviePlayer.java</exclude>
 
-			<!-- javax.comm API is dead with no replacement; 
-			 *** flame Oracle not me!
-			 -->
-			<exclude>javacomm/*</exclude>
+			<!-- Used private API which is no longer available -->
+			<exclude>netweb/WebServerSimpleSE.java</exclude>
+
 			<exclude>plotter/Penman.java</exclude>
 
 			<!-- Have yet to find a POM that works -->
@@ -44,6 +44,7 @@
 			<exclude>gui/ArrayListTableSimple.java</exclude>
 			<exclude>xml/XSLTransform.java</exclude>
 			<exclude>otherlang/StringDistance.java</exclude>
+			<exclude>javacomm/*.java</exclude>
 
 			<!-- Unknown issues -->
 			<exclude>lang/UsePackage.java</exclude>
@@ -92,12 +93,14 @@
   </build>
 
   <dependencies>
+    <!-- My personal API -->
     <dependency>
 	<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
         <version>1.0.2</version>
     </dependency>
 
+    <!-- Test early and often -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -114,6 +117,13 @@
         <groupId>commons-beanutils</groupId>
         <artifactId>commons-beanutils-core</artifactId>
         <version>1.8.3</version>
+    </dependency>
+
+    <!-- Spring - used in a few examples -->
+    <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context</artifactId>
+	<version>3.2.4.RELEASE</version>
     </dependency>
 
     <dependency>
@@ -156,6 +166,12 @@
     <groupId>xalan</groupId>
     <artifactId>xalan</artifactId>
     <version>2.3.1</version>
+</dependency>
+
+<dependency>
+	<groupId>org.rxtx</groupId>
+	<artifactId>rxtx</artifactId>
+	<version>2.1.7</version>
 </dependency>
 
   </dependencies>

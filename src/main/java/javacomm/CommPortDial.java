@@ -2,10 +2,6 @@ package javacomm;
 
 import java.io.IOException;
 
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.UnsupportedCommOperationException;
-
 /**
  * Dial a phone using the Java Communications Package.
  *
@@ -15,18 +11,14 @@ public class CommPortDial extends CommPortModem {
 
 	protected static String number = "000-0000";
 
-	public static void main(String[] ap)
-		throws IOException, NoSuchPortException,PortInUseException,
-			UnsupportedCommOperationException {
+	public static void main(String[] ap) throws Exception {
 		if (ap.length == 1)
 			number = ap[0];
 		new CommPortDial().converse();
 		System.exit(0);
 	}
 
-	public CommPortDial() 
-		throws IOException, NoSuchPortException, PortInUseException,
-			UnsupportedCommOperationException {
+	public CommPortDial() throws Exception {
 		super(null);
 	}
 

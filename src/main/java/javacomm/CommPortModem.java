@@ -2,9 +2,6 @@ package javacomm;
 
 import java.io.IOException;
 
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.UnsupportedCommOperationException;
 import javax.swing.JFrame;
 
 /**
@@ -13,7 +10,7 @@ import javax.swing.JFrame;
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-public class CommPortModem extends CommPortOpen {
+public abstract class CommPortModem extends CommPortOpen {
 
 	/** The last line read from the serial port. */
 	protected String response;
@@ -22,8 +19,7 @@ public class CommPortModem extends CommPortOpen {
 	protected boolean debug = true;
 
 	public CommPortModem(JFrame f)
-		throws IOException, NoSuchPortException,PortInUseException,
-			UnsupportedCommOperationException {
+		throws Exception {
 		super(f);
 	}
 

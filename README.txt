@@ -10,13 +10,13 @@ Java Cookbook was published:
     for Java 8 as you read this; Java 7 is now the minimum. You can probably
     get by with a huge excludes list, but you're on your own if you do that.
 
-*)	The files are being maintained in a public git repository; see
+*)	The files are now in a public git repository; see
 	https://github.com/IanDarwin/javasrc
 	From there you can clone it (to get updates) or download a Zip (but you
 	don't get updates).
 
-*)	All Java files (all but 2 programs and 2 tests) are now in Java packages whose 
-    name corresponds to the directory they are in (this is how most tools including
+*)	The Java files  are now in Java packages whose name corresponds 
+	to the directory they are in (this is how most tools including
 	Ant and Eclipse expect to find things).
 	
 *)	The index-bychapter file is substantially out of date since the
