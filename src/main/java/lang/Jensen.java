@@ -9,11 +9,11 @@ import java.util.function.Function;
  * @requires 8.0
  */
 public class Jensen {
-	static Integer val = 0;
+	static Integer i = 0;
 	 
 	static double sum(int o, int lo, int hi, Function<Double,Double> term) {
 	 double tmp = 0;
-	  for (val = lo; val <= hi; val++) {
+	  for (i = lo; i <= hi; i++) {
 		double od = o;
 	    tmp += term.apply(od);
 	  }
@@ -21,6 +21,6 @@ public class Jensen {
 	}
 	 
 	public static void main(String[] args) {
-		System.out.println(sum(val, 1, 100, eval -> 1d / val));
+		System.out.println(sum(i, 1, 100, eval -> 1d / i));
 	}
 }
