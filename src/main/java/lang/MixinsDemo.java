@@ -1,6 +1,5 @@
 package lang;
 
-import java.awt.Image;
 
 interface Bar {
 	default String filter(String s) {
