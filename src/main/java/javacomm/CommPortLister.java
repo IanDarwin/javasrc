@@ -20,12 +20,13 @@ public class CommPortLister {
 	protected void list() {
 		// get list of ports available on this particular computer,
 		// by calling static method in CommPortIdentifier.
-		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
+		@SuppressWarnings("unchecked")
+		Enumeration<CommPortIdentifier> pList = CommPortIdentifier.getPortIdentifiers();
 
 		// Process the list.
 		boolean found = false;
 		while (pList.hasMoreElements()) {
-			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
+			CommPortIdentifier cpi = pList.nextElement();
 			System.out.print("Port " + cpi.getName() + " ");
 			if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
 				System.out.println("is a Serial Port: " + cpi);
