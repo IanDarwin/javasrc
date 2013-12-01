@@ -10,7 +10,8 @@ import java.util.Properties;
 public class Factory {
 
 	public static void main(String[] args) throws Exception {
-		Object p = Factory.getBean("renderer");
+		MessageRenderer p =
+			(MessageRenderer)Factory.getBean("renderer");
 		System.out.println(p.getClass());
 	}
 

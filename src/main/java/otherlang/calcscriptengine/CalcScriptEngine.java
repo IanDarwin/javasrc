@@ -30,7 +30,9 @@ public class CalcScriptEngine extends AbstractScriptEngine {
 	public Object eval(Reader reader, ScriptContext context)
 			throws ScriptException {
 		System.out.println("CalcScriptEngine.eval()");
-		return null;
+		// should read the file into a String, then
+		// return eval(scriptString, context);
+		throw new IllegalStateException("eval(Reader) not written yet");
 	}
 
 	@Override

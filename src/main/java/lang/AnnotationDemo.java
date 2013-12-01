@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AnnotationDemo {
 	public boolean fancy() default false;
+	public int order() default 42;
 }
 
 /** A simple example of using the annotation */
@@ -30,7 +31,9 @@ class FancyClassJustToShowAnnotation {
 		for (Annotation a : c.getAnnotations()) {
 			if (a instanceof AnnotationDemo) {
 				AnnotationDemo ad = (AnnotationDemo)a;
-				System.out.println("\t" +a + " with fancy=" + ad.fancy());
+				System.out.println("\t" +a + 
+					" with fancy=" + ad.fancy() + 
+					" and order " + ad.order();
 			} else {
 				System.out.println("\tSomebody else's annotation: " + a);
 			}
