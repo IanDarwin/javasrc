@@ -13,14 +13,13 @@ import java.io.InputStreamReader;
 
 public class CheckSum {
     public static void main(String[] av) {
-        CheckSum c = new CheckSum();
-		int sum = 0;
+        int sum = 0;
         if (av.length == 0)
-            sum = c.process(new BufferedReader(
+            sum = CheckSum.process(new BufferedReader(
 					new InputStreamReader(System.in)));
         else for (int i=0; i<av.length; i++)
 			try {
-				sum += c.process(new BufferedReader(new FileReader(av[i])));
+				sum += CheckSum.process(new BufferedReader(new FileReader(av[i])));
 			} catch (FileNotFoundException e) {
 				System.err.println(e);
 			}
@@ -33,7 +32,7 @@ public class CheckSum {
 	 * same value for given text on any platform. Do not use
 	 * on binary files!
 	 */
-    public int process(BufferedReader is) {
+    public static int process(BufferedReader is) {
 		int sum = 0;
         try {
             String inputLine;
@@ -44,7 +43,6 @@ public class CheckSum {
 					sum += inputLine.charAt(i);
 				}
             }
-            is.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
 		}
