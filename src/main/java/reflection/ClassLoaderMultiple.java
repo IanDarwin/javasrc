@@ -7,17 +7,17 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Demonstration of a ClassLoader
  */
-@SuppressWarnings("unchecked")
 public class ClassLoaderMultiple extends ClassLoader {
 
 	private static final String CLASS_TO_LOAD = "reflection.MultiDemo";
 
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Hashtable<String, Class> cache = new Hashtable<String, Class>();
+	protected Map<String, Class<?>> cache = new Hashtable<String, Class<?>>();
 
 	/** "load", that is, make up, the data for the class 
 	 * @throws ClassNotFoundException
@@ -52,7 +52,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 			System.out.println("loadClass: SystemLoading " + name);
 			return findSystemClass(name);
 		}
-		Class c = (Class)cache.get(name);
+		Class<?> c = cache.get(name);
 		if (c == null) {
 			System.out.println("loadClass: About to genClassData " + name);
 			byte mydata[] = genClassData(name);
@@ -72,7 +72,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 	public static void main(String[] argv) {
 		System.out.println("ClassLoaderDemo starting");
 		ClassLoaderMultiple loader = new ClassLoaderMultiple();
-		Class c = null;
+		Class<?> c = null;
 		Object demo;
 		try {
 			/* Load the "Demo" class from memory */
@@ -93,7 +93,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 			ClassLoaderMultiple loader2 = new ClassLoaderMultiple();
 			System.out.println("Instantiated another ClassLoader...");
 			
-			Class d = loader2.loadClass(CLASS_TO_LOAD, true);
+			Class<?> d = loader2.loadClass(CLASS_TO_LOAD, true);
 			
 			if (c == d) {
 				System.out.println("Classloaders returned the same Class object!");
