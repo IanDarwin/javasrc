@@ -33,7 +33,7 @@ class FancyClassJustToShowAnnotation {
 				AnnotationDemo ad = (AnnotationDemo)a;
 				System.out.println("\t" +a + 
 					" with fancy=" + ad.fancy() + 
-					" and order " + ad.order();
+					" and order " + ad.order());
 			} else {
 				System.out.println("\tSomebody else's annotation: " + a);
 			}
