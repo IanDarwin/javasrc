@@ -3,14 +3,14 @@ package reflection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Demonstration of a ClassLoader
  */
-@SuppressWarnings("unchecked")
 public class ClassLoaderDemo1 extends ClassLoader {
 	/** The Hashtable to keep track of classes, to avoid re-loading them */
-	protected Hashtable<String,Class> cache = new Hashtable<String,Class>();
+	protected Map<String,Class<?>> cache = new Hashtable<String,Class<?>>();
 	/** data's expected length */
 	private final int dataLength = 433;
 	/** data, obtained by dumping a compiled .class file */
@@ -71,7 +71,6 @@ public class ClassLoaderDemo1 extends ClassLoader {
 		return bd;
 	}
 
-	@SuppressWarnings("unchecked")
 	public synchronized Class<?> loadClass(String name, boolean resolve) 
 			throws ClassNotFoundException { 
 		/** We can expect to be called to resolve at least demo's
@@ -82,7 +81,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 			System.out.println("loadClass: SystemLoading " + name);
 			return findSystemClass(name);
 		}
-		Class c = (Class)cache.get(name);
+		Class<?> c = (Class<?>)cache.get(name);
 		if (c == null) {
 			System.out.println("loadClass: About to genClassData " + name);
 			byte mydata[] = genClassData(name);
@@ -102,7 +101,7 @@ public class ClassLoaderDemo1 extends ClassLoader {
 	public static void main(String[] argv) {
 		System.out.println("ClassLoaderDemo1 starting");
 		ClassLoaderDemo1 loader = new ClassLoaderDemo1();
-		Class c = null;
+		Class<?> c = null;
 		Object demo;
 		try {
 			/* Load the "Demo" class from memory */
