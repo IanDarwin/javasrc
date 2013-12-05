@@ -10,14 +10,8 @@ import java.util.StringTokenizer;
  * @version $Id$
  */
 public class Fmt2 extends Fmt {
-	/** The maximum column width */
-	public static final int COLWIDTH=72;
-	/** The constant for formatted mode */
-	protected final int MODE_FI = 1;
-	/** The constant for UNformatted mode */
-	protected final int MODE_NF = 0;
-	/** The current formatting mode */
-	protected int mode = MODE_FI;
+	enum Mode { FORMATTED, UNFORMATTED };
+	Mode mode;
 	/** The current output column. */
 	protected int col = 0;
 
@@ -28,17 +22,17 @@ public class Fmt2 extends Fmt {
 			new Fmt2(av[i]).format();
 	}
 
-	/** Construct a Formatter given a filename, or "-" for stdin */
-	public Fmt2(String fname) throws IOException {
-		super(fname);
+	/** Construct a Formatter given a filename */
+	public Fmt2(String inName) throws IOException {
+		super(inName);
 	}
 
 	/** The Array of commands */
 	Command[] commands = {
 		new Command("br") { void action() { spaceLine(0); } },
 		new Command("bp") { void action() { put("\f"); /*formfeed*/} },
-		new Command("fi") { void action() { mode = MODE_FI; } },
-		new Command("nf") { void action() { mode = MODE_NF; spaceLine(0);} },
+		new Command("fi") { void action() { mode = Mode.FORMATTED; } },
+		new Command("nf") { void action() { mode = Mode.UNFORMATTED; spaceLine(0);} },
 		new Command("sp") { void action() { spaceLine(1); } },
 	};
 
@@ -60,7 +54,7 @@ outer:
 						continue outer;
 					} 
 				}
-				// else an unrecognized troff command
+				// else an unrecognized troff command, treat as text + break
 				if (col>0) putln();	// flush
 				putln(w);
 				col = 0;
@@ -68,7 +62,7 @@ outer:
 			}
 
 			// otherwise it's text, so deal with it.
-			if (mode == MODE_NF) {
+			if (mode == Mode.UNFORMATTED) {
 				putln(w);
 				continue;
 			}
