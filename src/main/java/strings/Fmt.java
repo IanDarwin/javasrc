@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 /**
@@ -14,7 +15,9 @@ public class Fmt {
 	/** The maximum column width */
 	public static final int COLWIDTH=72;
 	/** The file that we read and format */
-	BufferedReader in;
+	final BufferedReader in;
+	/** Where the output goes */
+	PrintWriter out;
 
 	/** If files present, format each, else format the standard input. */
 	public static void main(String[] av) throws IOException {
@@ -23,19 +26,24 @@ public class Fmt {
 		else for (int i=0; i<av.length; i++)
 			new Fmt(av[i]).format();
 	}
+	
+	public Fmt(BufferedReader inFile, PrintWriter outFile) {
+		this.in = inFile;
+		this.out = outFile;
+	}
+	
+	public Fmt(PrintWriter out) {
+		this(new BufferedReader(new InputStreamReader(System.in)), out);
+	}
 
 	/** Construct a Formatter given an open Reader */
 	public Fmt(BufferedReader file) throws IOException {
-		in = file;
+		this(file, new PrintWriter(System.out));
 	}
 	
 	/** Construct a Formatter given a filename */
 	public Fmt(String fname) throws IOException {
-		if ("-".equals(fname)) {
-			in = new BufferedReader(new InputStreamReader(System.in));
-		} else {
-			in = new BufferedReader(new FileReader(fname));
-		}
+		this(new BufferedReader(new FileReader(fname)));
 	}
 
 	/** Construct a Formatter given an open Stream */
@@ -46,12 +54,12 @@ public class Fmt {
 	/** Format the File contained in a constructed Fmt object */
 	public void format() throws IOException {
 		String line;
-		StringBuilder out = new StringBuilder();
+		StringBuilder outBuf = new StringBuilder();
 		while ((line = in.readLine()) != null) {
 			if (line.length() == 0) {	// null line
-				System.out.println(out);	// end current line
-				System.out.println();	// output blank line
-				out.setLength(0);
+				out.println(outBuf);	// end current line
+				out.println();	// output blank line
+				outBuf.setLength(0);
 			} else {
 				// otherwise it's text, so format it.
 				StringTokenizer st = new StringTokenizer(line);
@@ -60,18 +68,18 @@ public class Fmt {
 
 					// If this word would go past the margin,
 					// first dump out anything previous.
-					if (out.length() + word.length() > COLWIDTH) {
-						System.out.println(out);
-						out.setLength(0);
+					if (outBuf.length() + word.length() > COLWIDTH) {
+						out.println(outBuf);
+						outBuf.setLength(0);
 					}
-					out.append(word).append(' ');
+					outBuf.append(word).append(' ');
 				}
 			}
 		}
-		if (out.length() > 0) {
-			System.out.println(out);
+		if (outBuf.length() > 0) {
+			out.println(outBuf);
 		} else {
-			System.out.println();
+			out.println();
 		}
 	}
 }
