@@ -31,7 +31,7 @@ public class HashMapDemo {
 		// (presumably the key would really come from user input):
 		String queryString = "O'Reilly";
 		System.out.println("You asked about " + queryString + ".");
-		String resultString = (String)map.get(queryString);
+		String resultString = map.get(queryString);
 		System.out.println("They are located in: " + resultString);
 		System.out.println();
 
