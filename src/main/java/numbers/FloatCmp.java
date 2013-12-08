@@ -14,7 +14,7 @@ public class FloatCmp {
 		// Compare two numbers that are expected to be close.
 		if (da == db) {
 			System.out.println("Java considers " + da + "==" + db);
-		// else compare with our own equals method
+		// else compare with our own equals overload
 		} else if (equals(da, db, 0.0000001)) {
 			System.out.println("True within epsilon " + EPSILON);
 		} else {
