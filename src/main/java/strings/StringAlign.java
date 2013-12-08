@@ -53,7 +53,13 @@ public class StringAlign extends Format {
 	public StringBuffer format(
 		Object obj, StringBuffer where, FieldPosition ignore)  {
 
-		String s = (String)obj;
+		String s;
+		
+		if (obj instanceof String) {
+			s = (String)obj;
+		} else {
+			s = obj.toString();
+		}
 		String wanted = s.substring(0, Math.min(s.length(), maxChars));
 
 		// Get the spaces in the right place.
