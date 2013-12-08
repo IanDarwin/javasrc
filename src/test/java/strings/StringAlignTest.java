@@ -54,4 +54,9 @@ public class StringAlignTest extends TestCase {
 	void dump(int x, int len, String mesg) {
 		System.out.println(mesg);
 	}
+	
+	public void testIntRight() {
+		assertEquals("   42",
+				new StringAlign(5, StringAlign.JUST_RIGHT).format(42));
+	}
 }
