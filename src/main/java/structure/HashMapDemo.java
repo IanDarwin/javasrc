@@ -39,7 +39,7 @@ public class HashMapDemo {
 		// (maybe to print a report, or to save to disk)
 		for (String key : map.keySet()) {
 			System.out.println("Key " + key + "; Value " +
-					(String) map.get(key));
+					map.get(key));
 		}
 	}
 }
