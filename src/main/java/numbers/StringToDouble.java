@@ -9,11 +9,11 @@ public class StringToDouble {
 		double result;
 		try {
 			result = Double.parseDouble(aNumber); 
+			System.out.println("Number is " + result);
 		} catch(NumberFormatException exc) {
 			System.out.println("Invalid number " + aNumber);
 			return;
 		}
-		System.out.println("Number is " + result);
 	}
 	// END
 }
