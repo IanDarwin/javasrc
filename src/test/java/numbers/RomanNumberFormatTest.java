@@ -14,33 +14,15 @@ public class RomanNumberFormatTest {
 		nf = new RomanNumberFormat();
 	}
 
-	Object[][] data = {
-			{ 1, "I" },
-			{ 42, "XLII" },
-			{ 678, "DCLXXVIII" },
-			{ 1999, "MCMXCIX" },
-			{ 2000, "MM" },
-			{ 2001, "MMI" },
-			{ 3999, "MMMCMXCIX" },
-	};
-
 	@Test(expected=NumberFormatException.class)
 	public final void testManyFormatLong() {	
 		nf.format(0);
 		fail("Romans did not use Zero");
 	}
 	
-	@Test
-	public void testMore() {
-		for (Object[] o : data) {
-			assertEquals(o[1], nf.format(o[0]));
-		}
-		try {
-			nf.format(4000);
-			fail("Failed to reject number >= 4000");
-		} catch (NumberFormatException e) {
-			// OK
-		}
+	@Test(expected=NumberFormatException.class)
+	public void testTooBig() {
+		nf.format(4000);
 	}
 
 	@Test
