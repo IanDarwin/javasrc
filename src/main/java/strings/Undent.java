@@ -38,7 +38,7 @@ public class Undent {
         try {
             String inputLine;
 
-			//+
+			// BEGIN
             while ((inputLine = is.readLine()) != null) {
 				int toRemove = 0;
 				for (int i=0; i<nSpaces && i < inputLine.length() && 
@@ -46,7 +46,7 @@ public class Undent {
 						++toRemove;
                 System.out.println(inputLine.substring(toRemove));
             }
-			//-
+			// END
             is.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);

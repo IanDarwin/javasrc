@@ -9,7 +9,7 @@ package numbers;
  */
 public class MatrixUse {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		int x[][] = {
 			{ 3, 2, 3 },
 			{ 5, 9, 8 },
@@ -23,7 +23,7 @@ public class MatrixUse {
 		Matrix.mprint(x);
 		Matrix.mprint(y);
 		Matrix.mprint(z);
-		//-
+		// END
 	}
 }
 

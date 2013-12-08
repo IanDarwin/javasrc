@@ -10,7 +10,7 @@ import java.util.Calendar;
  */
 public class ClassKeyword {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		System.out.println("Trying the ClassName.class keyword:");
 		System.out.println("Object class: " + Object.class);
 		System.out.println("String class: " + String.class);
@@ -23,6 +23,6 @@ public class ClassKeyword {
 		System.out.println("Trying the instance.getClass() method:");
 		System.out.println("Sir Robin the Brave".getClass());
 		System.out.println(Calendar.getInstance().getClass());
-		//-
+		// END
 	}
 }

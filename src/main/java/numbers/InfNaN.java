@@ -6,7 +6,7 @@ package numbers;
  * @version $Id$
  */
 public class InfNaN {
-	//+
+	// BEGIN
 	public static void main(String[] argv) {
 		double d = 123;
 		double e = 0;
@@ -18,5 +18,5 @@ public class InfNaN {
 		if (Double.isNaN(s))
 			System.out.println("Double.isNaN() correctly returns true");
 	}
-	//-
+	// END
 }

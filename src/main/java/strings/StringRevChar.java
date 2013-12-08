@@ -7,9 +7,9 @@ package strings;
  */
 public class StringRevChar {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		String sh = "FCGDAEB";
 		System.out.println(sh + " -> " + new StringBuilder(sh).reverse());
-		//-
+		// END
 	}
 }

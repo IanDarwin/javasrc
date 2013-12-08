@@ -6,9 +6,9 @@ package numbers;
  * @version $Id$
  */
 public class LogBase {
-	//+
+	// BEGIN
 	public static double log_base(double base, double value) {
 		return Math.log(value) / Math.log(base);
 	}
-	//-
+	// END
 }

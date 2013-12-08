@@ -10,13 +10,13 @@ import java.io.*;
  * part of a solution.
  * <p>
  * The marks that it looks for are simple, and can be left in the
- * master source (they never print). The mark //+ (as looked for
- * with line.trim().equals("//+) in Java) begins printing, and the
- * opposite mark //- stops printing.
+ * master source (they never print). The mark // BEGIN (as looked for
+ * with line.trim().equals("// BEGIN) in Java) begins printing, and the
+ * opposite mark // END stops printing.
  * <p>
  * So, for a course exercise, you would develop the working
- * solution and comment it neatly, and add a //- mark after the TODO
- * comments but before the working solution, and a //+ mark after it.
+ * solution and comment it neatly, and add a // END mark after the TODO
+ * comments but before the working solution, and a // BEGIN mark after it.
  * For example:
  * </p><pre>
  * 	public methodA() {
@@ -24,17 +24,17 @@ import java.io.*;
  * 		// Look up the object to be invoked.
  * 		// Use a Lookup Name of "ex31object"
  * 
- * 		//-
+ * 		// END
  * 		Object o = Naming.lookup("ex31object");
- * 		//+
+ * 		// BEGIN
  * 
  * 		// TODO #2
  * 		// Downcast the looked up object using the IIOP portability
  * 
- * 		//-
+ * 		// END
  * 		Ex31Object obj = (Ex31Object)PortableRemoteObject.narrow(
  * 			o, Ex31Object.class);
- * 		//+
+ * 		// BEGIN
  * 	}
  * </pre><p>
  * When run through GetMark in "exclude" mode, the above will produce:
@@ -72,9 +72,9 @@ import java.io.*;
  */
 public class GetMark {
 	/** the default starting mark. */
-	public final String startMark = "//+";
+	public final String startMark = "// BEGIN";
 	/** the default ending mark. */
-	public final String endMark = "//-";
+	public final String endMark = "// END";
 	/** Set this to TRUE for running in "exclude" mode (e.g., for
 	 * building exercises from solutions) and to FALSE for running
 	 * in "extract" mode (e.g., writing a book and ommittin the
@@ -85,10 +85,10 @@ public class GetMark {
 	protected boolean printing = START;
 	/** True if you want line numbers */
 	protected final boolean number = false;
-	//-
+	// END
 	/* This part should be excluded! */
 	int foo = 42;
-	//+
+	// BEGIN
 
     /** Get Marked parts of one file, given an open LineNumberReader.
 	 * This is the main operation of this class, and can be used
@@ -97,7 +97,7 @@ public class GetMark {
     public void process(String fileName,
 		LineNumberReader is,
 		PrintStream out) {
-		//+
+		// BEGIN
 		int nLines = 0;
 		try {
 			String inputLine;
@@ -128,7 +128,7 @@ public class GetMark {
 			if (nLines == 0)
 				System.err.println("ERROR: No marks in " + fileName +
 					"; no output generated!");
-		//-
+		// END
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }

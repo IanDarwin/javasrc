@@ -186,7 +186,7 @@ public class GenMIF implements XmlFormWalker {
 		endTag();
 	}
 
-	/** EXAMPLEs are longer than CODEs, and are not limited by //+ //-
+	/** EXAMPLEs are longer than CODEs, and are not limited by // BEGIN // END
 	 * marks, which are therefore not required.
 	 * XXX TODO wrap a TABLE around the output.
 	 */

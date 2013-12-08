@@ -151,7 +151,7 @@
     <PgfTag `Code'>
     > # end of Pgf
     <ParaLine
-    <String `\t//+ '>
+    <String `\t// BEGIN '>
     > # end of ParaLine
 > # end of Para
 <Para
@@ -191,7 +191,7 @@
     <PgfTag `Code'>
     > # end of Pgf
     <ParaLine
-    <String `\t//- '>
+    <String `\t// END '>
     > # end of ParaLine
 > # end of Para
 <Para

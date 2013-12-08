@@ -6,7 +6,7 @@ import java.util.*;
 public class DayWeek {
 
 	public static void main(String[] av) {
-		//+
+		// BEGIN
 		Calendar c = Calendar.getInstance();	// today
 
 		System.out.println("Year: " + c.get(Calendar.YEAR));
@@ -22,6 +22,6 @@ public class DayWeek {
 		System.out.println("Hour (24-hour clock): " + c.get(Calendar.HOUR_OF_DAY));
 		System.out.println("Minute: " + c.get(Calendar.MINUTE));
 		System.out.println("Second: " + c.get(Calendar.SECOND));
-		//-
+		// END
 	}
 }

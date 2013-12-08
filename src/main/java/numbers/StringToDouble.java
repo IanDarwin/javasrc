@@ -3,7 +3,7 @@ package numbers;
 
 public class StringToDouble {
 
-	//+
+	// BEGIN
 	public static void main(String[] argv) {
 		String aNumber = argv[0];	// not argv[1]
 		double result;
@@ -15,5 +15,5 @@ public class StringToDouble {
 		}
 		System.out.println("Number is " + result);
 	}
-	//-
+	// END
 }

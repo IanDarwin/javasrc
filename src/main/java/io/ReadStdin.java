@@ -8,7 +8,7 @@ package io;
 public class ReadStdin {
 	/** Simple test case */
 	public static void main(String[] ap) {
-		//+
+		// BEGIN
 		int b = 0;
 		try {
 			b = System.in.read();
@@ -16,6 +16,6 @@ public class ReadStdin {
 			System.out.println("Caught " + e);
 		}
 		System.out.println("Read this data: " + (char)b);
-		//-
+		// END
 	}
 }

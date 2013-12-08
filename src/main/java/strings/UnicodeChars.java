@@ -7,7 +7,7 @@ package strings;
  */
 public class UnicodeChars {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		StringBuffer b = new StringBuffer();
 		for (char c = 'a'; c<'d'; c++) {
 			b.append(c);
@@ -21,6 +21,6 @@ public class UnicodeChars {
 			System.out.println("Character #" + i + " is " + b.charAt(i));
 		}
 		System.out.println("Accumulated characters are " + b);
-		//-
+		// END
 	}
 }

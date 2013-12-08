@@ -6,7 +6,7 @@ import java.util.*;
 public class GregCalDemo {
 
 	public static void main(String[] av) {
-		//+
+		// BEGIN
 		GregorianCalendar d1 = new GregorianCalendar(1986, 04, 05); // May 5
 		GregorianCalendar d2 = new GregorianCalendar();	// today
 		Calendar d3 = Calendar.getInstance();	// today
@@ -18,6 +18,6 @@ public class GregCalDemo {
 		d3.set(Calendar.MONTH, Calendar.APRIL);
 		d3.set(Calendar.DAY_OF_MONTH, 12);
 		System.out.println("D3 set to " + d3.getTime());
-		//-
+		// END
 	}
 }

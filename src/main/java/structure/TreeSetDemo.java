@@ -9,7 +9,7 @@ import java.util.TreeSet;
  */
 public class TreeSetDemo {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		/* A TreeSet keeps objects in sorted order. We use a
 		 * Comparator published by String for case-insensitive
 		 * sorting order.
@@ -33,6 +33,6 @@ public class TreeSetDemo {
 		java.util.Iterator t = tm.iterator();
 		while (t.hasNext())
 			System.out.println(t.next());
-		//-
+		// END
 	}
 }

@@ -1,8 +1,8 @@
 package lang;
 
-//+
+// BEGIN
 import java.lang.reflect.Method;
-//-
+// END
 
 /**
  * Show loading a class and finding and calling its Main method.
@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * @version $Id$
  */
 public class InvokeMain {
-	//+
+	// BEGIN
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		System.out.println("In lang.InvokeMain.main()");
@@ -45,5 +45,5 @@ public class InvokeMain {
 			//e.printStackTrace();
 		}
 	}
-	//-
+	// END
 }

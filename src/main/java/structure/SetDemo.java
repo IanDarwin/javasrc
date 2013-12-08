@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class SetDemo {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		Set<String> h = new HashSet<String>();
 		h.add("One");
 		h.add("Two");
@@ -20,6 +20,6 @@ public class SetDemo {
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
-		//-
+		// END
 	}
 }

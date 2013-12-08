@@ -7,8 +7,8 @@ package jdb;
  */
 public class Problem {
 	public static void main(String argv[]) {
-		//+
+		// BEGIN
 		System.out.println(System.getproperties()); // EXPECT COMPILE ERROR 
-		//-
+		// END
 	}
 }

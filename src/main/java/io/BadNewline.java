@@ -6,7 +6,7 @@ package io;
  * @version $Id$
  */
 public class BadNewline {
-	//+
+	// BEGIN
 	String myName;
 	public static void main(String[] argv) {
 		BadNewline jack = new BadNewline("Jack Adolphus Schmidt, III");
@@ -20,7 +20,7 @@ public class BadNewline {
 	}
 
 	// The obvious Constructor is not shown for brevity; it's in the code
-	//-
+	// END
 	/* Constructor */
 	public BadNewline(String s) {
 		myName = s;

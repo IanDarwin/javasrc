@@ -1,6 +1,6 @@
 package lang;
 
-//+
+// BEGIN
 /**
  * Demonstrate an Inner Child class
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -18,4 +18,4 @@ public class InnerChild {
 		System.out.println(x.new InnerInnerChild());
 	}
 }
-//-
+// END

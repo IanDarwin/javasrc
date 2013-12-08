@@ -7,7 +7,7 @@ package strings;
  */
 public class Case {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		String name = "Java Cookbook";
 		System.out.println("Normal:\t" + name);
 		System.out.println("Upper:\t" + name.toUpperCase());
@@ -21,6 +21,6 @@ public class Case {
 			System.err.println("equalsIgnoreCase() correctly reports true");
 		else
 			System.err.println("equalsIgnoreCase() incorrectly reports false");
-		//-
+		// END
 	}
 }

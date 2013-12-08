@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class Date2 {
 	public static void main(String[] argv) {
-		//+
+		// BEGIN
 		System.out.println(Calendar.getInstance().getTime());
-		//-
+		// END
 	}
 }
