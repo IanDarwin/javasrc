@@ -7,7 +7,7 @@ import java.net.*;
  * writes to console.
  * Talks to a UNIX "echo" server or a surrogate for it (EchoServer.java).
  * @author	Ian Darwin, Learning Tree, Course 471/478 author.
- * @version Copyright (C) 1995, 1996 Ian F. Darwin
+ * Copyright (C) 1995, 1996 Ian F. Darwin
  */
 public class EchoClient {
 	/** Main program: construct an EchoClient object and use

@@ -4,10 +4,9 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 /**
- * Demo of 1.2 java.util.LinkedList class
+ * Demo of java.util.LinkedList class
  * using same example as my older LinkList class.
- * @author	Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
+ * @author Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkedListDemo {
 	public static void main(String[] argv) {

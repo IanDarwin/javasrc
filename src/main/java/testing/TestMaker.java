@@ -57,7 +57,6 @@ public class TestMaker {
 		out.println("import junit.framework.TestCase;");
 		out.println();
 		out.println("/** Auto-generated TestCase for " + fullClassName);
-		out.println(" * @version $" /* break so not expanded by CVS*/ + "Id$");
 		out.println(" */");
 		out.println("public class " + testClassName + " extends TestCase {");
 		out.println("\tpublic " + fullClassName + " target;");

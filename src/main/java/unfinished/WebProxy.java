@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  * WebProxy - simple http proxy.
  *
  * @author  Ian Darwin
- * @version Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
+ * Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
  */
 public class WebProxy {
 	/** Our server-side rendezvous socket */

@@ -7,7 +7,7 @@ import java.net.*;
  * EchoServer - create server socket, do I-O on it.
  *
  * @author  Ian Darwin
- * @version Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
+ * Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
  */
 public class EchoServer {
 	/** Our server-side rendezvous socket */

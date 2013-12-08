@@ -127,14 +127,6 @@
     <PgfTag `Code'>
     > # end of Pgf
     <ParaLine
-    <String ` * @version $Id$ '>
-    > # end of ParaLine
-> # end of Para
-<Para
-    <Pgf
-    <PgfTag `Code'>
-    > # end of Pgf
-    <ParaLine
     <String ` */ '>
     > # end of ParaLine
 > # end of Para
