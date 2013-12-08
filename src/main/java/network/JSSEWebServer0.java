@@ -23,7 +23,8 @@ public class JSSEWebServer0 extends WebServer0 {
 	 */
 	protected ServerSocket getServerSocket(int port) throws Exception {
 		
-		SSLServerSocketFactory ssf = (SSLServerSocketFactory)SSLServerSocketFactory.getDefault();
+		SSLServerSocketFactory ssf =
+			(SSLServerSocketFactory)SSLServerSocketFactory.getDefault();
 		
 		return ssf.createServerSocket(port);
 	}
