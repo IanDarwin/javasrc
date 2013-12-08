@@ -4,7 +4,6 @@ package lang;
 /**
  * Demonstrate an Inner Child class
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class InnerChild {
 	public class InnerInnerChild extends InnerChild {

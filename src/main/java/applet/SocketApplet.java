@@ -18,7 +18,6 @@ import java.net.URL;
 
 /**
  * Socket Applet for "legacy" server connection via Socket.
- * @version $Id$
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class SocketApplet extends Applet {

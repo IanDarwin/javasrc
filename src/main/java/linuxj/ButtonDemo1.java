@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** This is a ButtonDemo Application.
- * @version $Id$
  */
 public class ButtonDemo1 extends JFrame implements ActionListener {
 	JButton b1;

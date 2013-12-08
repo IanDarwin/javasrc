@@ -2,7 +2,6 @@ package numbers;
 
 /**
  * IntObject -- convert between int and Integer (needed pre-1.5)
- * @version $Id$
  */
 public class IntObject {
 	public static void main(String[] args) {

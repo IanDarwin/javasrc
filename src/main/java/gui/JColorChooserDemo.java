@@ -22,7 +22,6 @@ import javax.swing.JLabel;
  * <p>We use the last method, as it's the simplest, and is how
  * you'd most likely use it in a real application.
  *
- * @version $Id$
  * Originally appeared in the Linux Journal, 1999.
  */
 public class JColorChooserDemo extends JFrame

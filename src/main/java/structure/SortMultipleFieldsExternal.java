@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** "external sort" on multiple fields: descending by count, ascending by name
- * @version $Id$
  */
 public class SortMultipleFieldsExternal {
 

@@ -17,7 +17,6 @@ import javax.swing.JComponent;
 
 /** Text with a Texture
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TexturedText extends JComponent {
 

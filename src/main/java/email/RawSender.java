@@ -14,7 +14,6 @@ import java.util.*;
  * @author	Ian Darwin
  * @deprecated Use javax.mail instead, which almost certainly provides a more
  * complete implementation of the SMTP specification.
- * @version	$Id$
  */
 public class RawSender implements SysExits {
 	BufferedReader is;

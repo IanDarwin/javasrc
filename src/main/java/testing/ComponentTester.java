@@ -16,7 +16,6 @@ import javax.swing.JFrame;
  * class that has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ComponentTester {
 

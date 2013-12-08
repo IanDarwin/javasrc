@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** Show a JLabel containing HTML.
- * @version $Id$
  */
 public class JLabelHTMLDemo extends JFrame {
 

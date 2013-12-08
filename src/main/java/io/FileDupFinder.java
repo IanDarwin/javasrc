@@ -15,7 +15,6 @@ import com.darwinsys.io.FileHandler;
 
 /**
  * File Duplicate Finder, a sample  plugin for the Crawler.
- * @version $Id$
  */
 public class FileDupFinder implements FileHandler {
 

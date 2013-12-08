@@ -11,7 +11,6 @@ import java.io.*;
  *	DDD is executable statement
  *	... is commentary.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class FortranLineReader extends ContLineReader {
 	public static final char COMMENT_CHAR = 'C';

@@ -13,7 +13,6 @@ package gui;
  * to import awt, awt.event, swing, or anything else.
  *
  * @author	Ian Darwin
- * @version	$Id$
  */
 public class ErrorHandler extends java.lang.Object {
 

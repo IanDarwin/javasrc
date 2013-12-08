@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 /**
  * List the Constructors and methods
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ListMethods {
 	public static void main(String[] argv) throws ClassNotFoundException {

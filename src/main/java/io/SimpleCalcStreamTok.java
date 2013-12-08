@@ -12,7 +12,6 @@ import java.util.Stack;
  * SimpleCalc -- simple calculator to show StringTokenizer
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class SimpleCalcStreamTok {
 	/** The StreamTokenizer Input */

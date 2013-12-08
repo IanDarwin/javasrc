@@ -5,7 +5,6 @@ import java.util.*;
 import junit.framework.TestCase;
 
 /** Confirm that Appts compare, sort, print, and read back correctly.
- * @version $Id$
  */
 public class TestDayAppt extends TestCase {
 	

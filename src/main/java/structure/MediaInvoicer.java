@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 /**
  * MediaInvoicer - Simple application of Media enum
  * @author Ian Darwin
- * @version $Id$
  */
 public class MediaInvoicer {
 

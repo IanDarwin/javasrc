@@ -15,7 +15,6 @@ import com.darwinsys.lang.GetOpt;
  * If you give more than one file, each file will be sent to the
  * same recipient with the same subject, so you generally don't want to.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class Sender2 {
 

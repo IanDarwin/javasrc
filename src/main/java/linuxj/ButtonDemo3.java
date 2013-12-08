@@ -6,7 +6,6 @@ import java.awt.event.*;
 
 /** This is a longer ButtonDemo Application
  * that shows UI switching.
- * @version $Id$
  */
 public class ButtonDemo3 extends JFrame {
 	protected JTextArea tf;

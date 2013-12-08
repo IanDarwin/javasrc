@@ -7,7 +7,6 @@ import javax.naming.NamingException;
 /** Example of lookup up filenames in a JNDI "file system context".
  * N.B. Will ONLY work if you have the "File System Context Provider" JAR
  * on your CLASSPATH!!
- * @version $Id$
  */
 public class LookupFile {
 

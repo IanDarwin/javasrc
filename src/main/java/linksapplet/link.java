@@ -20,7 +20,6 @@ import java.net.*;
  * Java 1.0 approach, so it can workey in turkey old browsers.
  * It is now at Java 1.1, which means no Netscape 2 or 3-era browsers.
  * @author  Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class link extends Applet implements ItemListener {
 	Choice theChoice;

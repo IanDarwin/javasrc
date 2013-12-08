@@ -16,7 +16,6 @@ import com.sun.rowset.WebRowSetImpl;
 
 /**
  * ResultsDecoratorSQLTest
- * @version $Id$
  */
 public class ResultsDecoratorSQLTest {
 	protected static final String TEST_FILE = "rowsetdata.xml";

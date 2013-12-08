@@ -6,7 +6,6 @@ import java.net.*;
 /**
  * DaytimeServer - server for the standard binary time service.
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class DaytimeServer {
 	/** Our server-side rendezvous socket */

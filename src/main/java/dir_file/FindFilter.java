@@ -11,7 +11,6 @@ import com.darwinsys.util.Debug;
  * For now just setTTTFilter() methods. Really needs to be a real
  * data structure to allow complex things like
  *		-n "*.html" -a \( -size < 0 -o mtime < 5 \).
- * @version $Id$
  */
 public class FindFilter implements FilenameFilter {
 	boolean sizeSet;

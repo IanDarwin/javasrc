@@ -6,7 +6,6 @@ import java.io.IOException;
 /**
  * Delete a file from within Java
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Delete {
 	public static void main(String[] argv) throws IOException {

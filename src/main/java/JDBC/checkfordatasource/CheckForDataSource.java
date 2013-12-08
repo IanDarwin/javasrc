@@ -9,7 +9,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /** See if a DataSource exists and is usable.
- * @version $Id$
  */
 public class CheckForDataSource {
 

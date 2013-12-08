@@ -11,7 +11,6 @@ import java.text.ParsePosition;
  * Filled with quick-n-dirty algorithms.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class RomanNumberFormat extends Format {
 

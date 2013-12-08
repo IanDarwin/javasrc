@@ -20,7 +20,6 @@ import java.util.StringTokenizer;
  * See also: http://www.netscape.com/newsref/std/cookie_spec.html
  *
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class CookieAccessor {
 	protected static final String MAGIC = "# Netscape HTTP Cookie File";

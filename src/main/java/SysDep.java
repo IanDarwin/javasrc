@@ -3,7 +3,6 @@ import java.io.File;
 /** Some things that are System Dependent.
  * All methods are static.
  * @author Ian Darwin
- * @version $Id$
  */
 public class SysDep {
 

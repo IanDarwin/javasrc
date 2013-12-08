@@ -10,7 +10,6 @@ import java.util.Calendar;
  * JavadocDemo - a simple applet to show JavaDoc comments.
  * <p>Note: this is just a commented version of HelloApplet.
  * @author Ian F. Darwin, <a href="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>
- * @version $Id$
  * @see java.applet.Applet
  * @see javax.swing.JApplet
  */

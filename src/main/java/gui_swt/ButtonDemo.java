@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 /** Simple push-button demo using SWT.
- * @version $Id$
  */
 public class ButtonDemo {
 

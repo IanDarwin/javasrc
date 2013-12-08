@@ -3,7 +3,6 @@ package lang;
 /**
  * Can you change the .length of an array?
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ChangeArrayLength {
 	public static void main(String[] argv) {

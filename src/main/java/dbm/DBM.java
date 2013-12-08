@@ -15,7 +15,6 @@ import java.io.ObjectOutputStream;
  * access to individual key/value pairs.
  *
  * @author This Java/C hookup by Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class DBM {
 	/** Since you can only have one DBM database in use at a time due

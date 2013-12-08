@@ -3,7 +3,6 @@ package oo;
 import junit.framework.*;
 
 /** Some JUnit test cases for the Singleton demo.
- * @version $Id$
  */
 public class SingletonTest extends TestCase {
 

@@ -5,7 +5,6 @@ import java.util.StringTokenizer;
 
 /**
  * Reverse a string by word.
- * @version $Id$
  */
 public class StringReverse {
 	public static void main(String[] argv) {

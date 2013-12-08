@@ -2,7 +2,6 @@ package reflection;
 
 /**
  * Utterly trivial class used by "ClassLoaderMultiple"
- * @version $Id$
  */
 public class MultiDemo {
 	static {

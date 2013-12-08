@@ -4,7 +4,6 @@ import java.util.*;
 /**
  * Beep every 5 minutes.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Reminder {
 	public static void main(String[] argv) throws InterruptedException {

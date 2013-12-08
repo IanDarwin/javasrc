@@ -5,7 +5,6 @@ package numbers;
  * Only defined for int: TODO: rewrite using 1.5 Generics to add
  * support for long, float, and double.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Matrix {
 

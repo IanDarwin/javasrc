@@ -4,7 +4,6 @@ import java.io.*;
 
 /**
  * A trivial class to show usage of Ian Darwin's signal handler.
- * @version	$Id$
  */
 public class DemoMain extends Thread {
 

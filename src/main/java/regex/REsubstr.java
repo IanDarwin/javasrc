@@ -5,7 +5,6 @@ import java.util.regex.*;
 /**
  * REsubstr -- demonstrate RE Match -> String.substring()
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class REsubstr {
 	public static void main(String[] argv) {

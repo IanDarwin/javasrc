@@ -5,7 +5,6 @@ import java.net.*;
 
 /** Simple console-mode (command-line) chat client.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ConsoleChatClient {
 	public static void main(String[] args) throws IOException {

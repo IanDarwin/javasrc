@@ -52,7 +52,6 @@ import java.awt.MediaTracker;
 /**
  * Mover -- move an image, slowly.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Mover extends Applet implements Runnable {
 	/** The done or not done flag */

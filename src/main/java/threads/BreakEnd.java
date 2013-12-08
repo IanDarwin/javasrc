@@ -81,7 +81,6 @@ import com.darwinsys.swingui.UtilGUI;
  * </ul>
  *
  * @author	Ian Darwin
- * @version	$Id$
  */
 public class BreakEnd extends JFrame implements Runnable {
 

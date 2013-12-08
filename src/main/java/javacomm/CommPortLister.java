@@ -7,7 +7,6 @@ import javax.comm.CommPortIdentifier;
 /**
  * List the ports.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class CommPortLister {
 

@@ -66,7 +66,6 @@ class LabelsPanel extends PrintPanel {
 /** CardLayDemo2 -- Prototype of a Print Dialog for JabaDex
  *
  * @author Ian F. Darwin
- * @version 0.0, September, 1996
  */
 public class CardLayDemo2 extends Frame {
 	PrintPanel[] pps = new PrintPanel[2];

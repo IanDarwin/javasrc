@@ -15,7 +15,6 @@ import javax.swing.JMenuItem;
 
 /**
  * Internal Frames Demo
- * @version $Id$
  */
 public class JIFrameDemo {
 

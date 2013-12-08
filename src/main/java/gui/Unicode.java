@@ -35,7 +35,6 @@ import javax.swing.JTextField;
  * TODO - remove GoToPage as a dialog, move its textfield into main GUI.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Unicode extends JFrame {
 

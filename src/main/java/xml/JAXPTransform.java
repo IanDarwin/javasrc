@@ -7,7 +7,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 /** Illustrate simplest use of JAXP to transform using XSL.
- * @version $Id$
  */
 public class JAXPTransform {
 	

@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * "Redirect" or reassign some standard descriptors.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Redirect {
 	public static void main(String[] argv) throws IOException {

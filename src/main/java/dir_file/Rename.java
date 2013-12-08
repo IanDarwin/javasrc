@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * Rename a file in Java
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Rename {
 	public static void main(String[] argv) throws IOException {

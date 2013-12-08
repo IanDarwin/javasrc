@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * FNFilter - Ls directory lister modified to use FilenameFilter
  * @author Ian Darwin
- * @version $Id$
  */
 public class FNFilter {
 	public static void main(String argh_my_aching_fingers[]) {

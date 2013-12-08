@@ -4,7 +4,6 @@ import java.util.*;
 /**
  * Show some calendar calculations.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class CalCalcs {
 	public static void main(String[] argv) {

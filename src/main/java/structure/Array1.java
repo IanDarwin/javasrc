@@ -6,7 +6,6 @@ import java.util.Calendar;
  * storing objects in Arrays,, two-dimensional arrays, and lengths.
  *
  * @author Ian Darwin
- * @version $Id$
  */
 public class Array1  {
 	@SuppressWarnings("unused")

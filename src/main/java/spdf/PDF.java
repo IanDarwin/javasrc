@@ -12,7 +12,6 @@ import java.util.*;
  * permission to write code to generate and/or process PDF files.
  * A PDF Object represents one PDF file.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class PDF {
 	/** The output writer */

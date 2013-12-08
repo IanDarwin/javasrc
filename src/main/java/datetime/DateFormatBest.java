@@ -6,7 +6,6 @@ import java.text.*;
 /** The "best" way to format a date/time is to use
  * the DateFormat.getInstance() method, which will
  * be localized automatically.
- * @version $Id$
  */
 public class DateFormatBest {
 	public static void main(String[] args) {

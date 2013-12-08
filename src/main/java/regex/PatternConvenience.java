@@ -5,7 +5,6 @@ import java.util.regex.*;
 /**
  * PatternConvenience -- demonstrate java.util.regex.Pattern convenience routine
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class PatternConvenience {
 

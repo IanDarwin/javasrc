@@ -6,7 +6,6 @@ import javax.xml.parsers.*;
 
 /** Convert a simple XML file to text.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class XmlForm {
 	protected Reader is;

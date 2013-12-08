@@ -6,7 +6,6 @@ import java.util.Calendar;
  * The class keyword can be applied to any type known at compile time.
  * 
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ClassKeyword {
 	public static void main(String[] argv) {

@@ -5,7 +5,6 @@ package numbers;
  * return newly-created Complex objects containing the results.
  *
  * @author Ian F. Darwin, inspired by David Flanagan.
- * @version $Id$
  */
 public class Complex {
 	/** The real part */

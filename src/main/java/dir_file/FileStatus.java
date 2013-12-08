@@ -7,7 +7,6 @@ import java.util.Date;
 /**
  * Report on a file's status in Java
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class FileStatus {
 	public static void main(String[] argv) throws IOException {

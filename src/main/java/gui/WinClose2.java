@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 /** Show an example of closing a JFrame.
  * @author Ian Darwin
- * @version $Id$
  */
 public class WinClose2 {
 

@@ -21,7 +21,6 @@ import com.darwinsys.util.Debug;
  * Parts of this code will be superceded by JSR199.
  * <P>
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class jr {
 

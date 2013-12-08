@@ -21,7 +21,6 @@ import javax.swing.event.TreeSelectionListener;
  * Display a mailbox or mailboxes.
  * This is the generic version in javasrc/email, split off from
  * JabaDex because of the latter's domain-specific "implements module" stuff.
- * @version $Id$
  */
 public class MailReaderBean extends JSplitPane {
 

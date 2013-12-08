@@ -15,7 +15,6 @@ import com.darwinsys.util.Debug;
  * be line-at-a-time instead of char-at-a-time.
  * 
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class EnTab {
 	/** The Tabs (tab logic handler) */

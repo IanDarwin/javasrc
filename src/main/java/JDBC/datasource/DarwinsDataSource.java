@@ -14,7 +14,6 @@ import com.darwinsys.database.DataBaseException;
 
 /** A simple DataSource wrapper for a JDBC connection
  * constructed using a drivername and dbURL
- * @version $Id$
  */
 public class DarwinsDataSource implements DataSource, Serializable {
 

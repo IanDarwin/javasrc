@@ -5,7 +5,6 @@ import java.util.regex.*;
 /**
  * Show case control using RE class.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class CaseMatch {
 	public static void main(String[] argv) {

@@ -3,7 +3,6 @@ package numbers;
 /**
  * Format a plural correctly, by hand.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class FormatPlurals {
 	public static void main(String[] argv) {

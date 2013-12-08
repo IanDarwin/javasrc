@@ -18,7 +18,6 @@ import javax.swing.JFrame;
  * Must be started with -Dcom.sun.management.jmxremote
  * if it is to be accessed remotely; you can usually access local
  * MBeans even without this.
- * @version $Id$
  */
 public class JMXDemo extends JFrame {
 

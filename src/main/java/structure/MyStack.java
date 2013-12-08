@@ -1,7 +1,6 @@
 package structure;
 
 /** A lax Stack implementation.
- * @version $Id$
  */
 @SuppressWarnings("unchecked")
 public class MyStack<T> {

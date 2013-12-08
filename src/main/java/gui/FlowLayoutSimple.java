@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** Just a Frame
- * @version $Id$
  */
 public class FlowLayoutSimple extends JFrame {
 	JButton quitButton;

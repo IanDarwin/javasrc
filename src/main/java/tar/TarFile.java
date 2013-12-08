@@ -9,7 +9,6 @@ import java.util.*;
  * read the entire file either to be sure of having a particular file's
  * entry, or to know how many entries there are in the archive.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 
 public class TarFile {

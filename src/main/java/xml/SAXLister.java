@@ -13,7 +13,6 @@ import com.darwinsys.util.Debug;
  * Simple lister - extract person and email tags from a user file. 
  * Version for SAX 2.0
  * @author Ian Darwin
- * @version $Id$
  */
 public class SAXLister {
 	public static void main(String[] args) throws Exception {

@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 
 /** Indent - prepend leading spaces
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 
 public class Indent {

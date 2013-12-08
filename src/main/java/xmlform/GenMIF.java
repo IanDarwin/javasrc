@@ -27,7 +27,6 @@ import org.w3c.dom.NodeList;
  * another Java class and grabbing the output back into here.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class GenMIF implements XmlFormWalker {
 	/** The normal output writer */

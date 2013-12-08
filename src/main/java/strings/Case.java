@@ -3,7 +3,6 @@ package strings;
 /**
  * Control case.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Case {
 	public static void main(String[] argv) {

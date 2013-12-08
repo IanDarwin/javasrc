@@ -17,7 +17,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * Display a file system in a JTree view
  *
- * @version $Id$
  * @author Ian Darwin
  */
 public class FileTree extends JPanel 

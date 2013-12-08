@@ -11,7 +11,6 @@ import java.lang.reflect.Modifier;
  * For each class, all public fields and methods are listed.
  * The "Reflection" API is used to look up the information.
  *
- * @version	$Id$
  */
 public class MyJavaP {
 

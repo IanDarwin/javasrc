@@ -6,7 +6,6 @@ import java.util.regex.*;
  * Another demo of RE substitution: 
  * change "Ian Darwin" to "Darwin, Ian"
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ReplaceDemo2 {
 	public static void main(String[] argv) {

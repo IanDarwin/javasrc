@@ -6,7 +6,6 @@ import java.nio.channels.*;
 /**
  * One way to append to a file in Java.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class AppendFile {
 	private final File file;

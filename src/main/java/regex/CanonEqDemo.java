@@ -7,7 +7,6 @@ import java.util.regex.*;
  * entering the Spanish word for "equal" and see if they are considered equal
  * by the RE-matching engine.
  * 
- * @version $Id$
  */
 public class CanonEqDemo {
 	public static void main(String[] args) {

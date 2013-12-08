@@ -4,7 +4,6 @@ import java.util.*;
 
 /** Simple Appointment object, to represent a year-month-day-hour-minute.
  * @author Ian Darwin
- * @version $Id$
  */
 public class Appt implements Comparable<Appt> {
 

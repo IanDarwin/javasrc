@@ -37,7 +37,6 @@ import com.darwinsys.util.FileProperties;
  * If not visible, use addXXX(), setXXX(), and doSend() methods.
  *
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class MailComposeBean extends JPanel {
 

@@ -7,7 +7,6 @@ import com.darwinsys.lang.GetOpt;
  * which means: sort numerically (-n), writing to file "outfile" (-o
  * outfile), sort from infile1 and infile2.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class GetOptDemo {
 	public static void main(String[] args) {

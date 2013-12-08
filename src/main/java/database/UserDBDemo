@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * Standalone test program for UserDB.
  * @author Ian F. Darwin, ian@darwinsys.com
- * @version $Id$
  */
 public class UserDBTest {
 	public static void main(String argv[]) throws java.io.IOException {

@@ -7,7 +7,6 @@ import java.net.*;
  * ListenInside -- make a server socket that listens only on
  * a particular interface, in this case, one named by INSIDE_HOST.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class ListenInside {
 	/** The TCP port for the service. */

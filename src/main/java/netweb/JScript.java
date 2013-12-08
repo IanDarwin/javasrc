@@ -14,7 +14,6 @@ import netscape.javascript.*;
  * The use of JavaScript requires <applet ... mayscript="true">
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @author Roger Goudarzi -- provided background information.
- * @version $Id$
  */
 public class JScript extends java.applet.Applet {
 	JSObject jsObject;

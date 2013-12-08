@@ -20,7 +20,6 @@ import java.net.Socket;
  * tested with Netscape Communicator and with the Lynx text browser.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version	$Id$
  * @see		webserver/* for more fully-fleshed-out version(s).
  */
 public class WebServer0 {

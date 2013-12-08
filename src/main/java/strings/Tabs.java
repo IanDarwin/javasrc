@@ -6,7 +6,6 @@ import com.darwinsys.util.Debug;
  * <p>
  * N.B. Can only handle equally-spaced tab stops as written.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Tabs {
 	/** tabs every so often */

@@ -10,7 +10,6 @@ import junit.framework.TestCase;
 /**
  * Test the Tag Reader
  * 
- * @version $Id$
  */
 public class ReadTagTest extends TestCase {
 	

@@ -5,7 +5,6 @@ import java.io.File;
 /**
  * Delete a file from within Java, with error handling.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Delete2 {
 

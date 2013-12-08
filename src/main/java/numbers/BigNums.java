@@ -5,7 +5,6 @@ import java.math.*;
 /**
  * Demonstrate large numbers.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class BigNums {
 	public static void main(String[] argv) {

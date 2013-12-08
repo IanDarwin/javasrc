@@ -11,7 +11,6 @@ import java.util.*;
  * See the various books on Threaded Java for design issues.
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ChatServer {
 	/** What I call myself in system messages */

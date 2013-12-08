@@ -3,7 +3,6 @@ package numbers;
 /**
  * Show real values.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class RealValues {
 	public static void main(String[] argv) {

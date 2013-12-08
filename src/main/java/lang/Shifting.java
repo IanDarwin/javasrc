@@ -5,7 +5,6 @@ package lang;
  * Show some effects of shifting on ints and longs
  // END
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Shifting {
 	public static void main(String[] argv) {

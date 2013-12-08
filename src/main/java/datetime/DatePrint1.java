@@ -4,7 +4,6 @@ import java.util.*;
 /**
  * Show dates before 1970.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class DatePrint1 {
 	public static void main(String[] argv) {

@@ -3,7 +3,6 @@ package structure;
 import java.util.Arrays;
 
 /** Demonstrate use of SubstringComparator.
- * @version $id$
  */
 public class SubstrCompDemo {
 	public static void main(String[] unused) {

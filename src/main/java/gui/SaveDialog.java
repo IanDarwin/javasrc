@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 
 /*
  * Simple Save Dialog demo.
- * @version $Id$
  */
 public class SaveDialog extends JFrame {
 	boolean unsavedChanges = false;

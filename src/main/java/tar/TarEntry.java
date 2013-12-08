@@ -4,7 +4,6 @@ import java.io.*;
 
 /** One entry in an archive file.
  * @author Ian Darwin
- * @version $Id$
  * @note
  * Tar format info taken from John Gilmore's public domain tar program,
  * @(#)tar.h 1.21 87/05/01	Public Domain, which said:

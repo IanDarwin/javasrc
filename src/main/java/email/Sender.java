@@ -11,7 +11,6 @@ import javax.mail.internet.MimeMessage;
 
 /** sender -- send an email message.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class Sender {
 

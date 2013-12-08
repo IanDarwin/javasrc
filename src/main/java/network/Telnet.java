@@ -7,7 +7,6 @@ import java.io.*;
  * Telnet - connect to a given host and service
  * This does not hold a candle to a real Telnet client, but
  * shows some ideas on how to implement such a thing.
- * @version $Id$
  */
 public class Telnet {
 	String host;

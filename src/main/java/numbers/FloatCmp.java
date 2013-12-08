@@ -3,7 +3,6 @@ package numbers;
 /**
  * Floating-point comparisons.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class FloatCmp {
 	final static double EPSILON = 0.0000001;

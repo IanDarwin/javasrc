@@ -5,7 +5,6 @@ import javax.net.ssl.SSLServerSocketFactory;
 
 /**
  * JSSEWebServer - subclass trivial WebServer0 to make it use SSL.
- * @version $Id$
  */
 public class JSSEWebServer0 extends WebServer0 {
 

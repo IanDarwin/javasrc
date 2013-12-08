@@ -7,7 +7,6 @@ import java.util.Observer;
  * A simple demo of Observable->Observer
  *
  * @author Ian Darwin
- * @version $Id$
  */
 public class ObserverDemo extends Object {
 	MyView view;

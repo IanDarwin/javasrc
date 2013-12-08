@@ -13,7 +13,6 @@ import java.awt.Toolkit;
  * program that needs to store and display Images.
  * Originally written as part of the "Photo manipulation GUI" for JabaDex
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $DarwinSys 1.1$
  */
 public class PixCanvas extends Canvas {
 	/**  */

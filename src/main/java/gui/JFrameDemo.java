@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /** Just a Frame
- * @version $Id$
  */
 public class JFrameDemo extends JFrame {
 

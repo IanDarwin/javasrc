@@ -3,7 +3,6 @@ package structure;
 import junit.framework.TestCase;
 
 /**
- * @version $Id$
  */
 public class ToyStackTest extends TestCase {
 

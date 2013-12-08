@@ -11,7 +11,6 @@ import org.eclipse.swt.widgets.*;
  * The action handling is incomplete; realistically, each MenuItem would have
  * its own, task-specific SelectionListener.
  * 
- * @version $Id$
  */
 public class MenuDemo {
 

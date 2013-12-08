@@ -18,7 +18,6 @@ import javax.swing.JPanel;
  * in a pop-up window. The secret is to call pack() again
  * each time you add/subtract the bottom panel.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class MoreChoices extends JFrame {
 	Container cp;

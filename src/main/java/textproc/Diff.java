@@ -151,7 +151,6 @@ class fileInfo {
  * 1982/83 D.C.Lindsay, Symbionics: created.
  *
  * @author	Ian F. Darwin, Java version
- * @version	Java version 0.9, 1997
  * @author	D. C. Lindsay, C version (1982-1987)
  *
  */

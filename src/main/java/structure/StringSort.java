@@ -38,7 +38,6 @@ package structure;
  *
  * @author James Gosling
  * @author Kevin A. Smith
- * @version 	@(#)QSortAlgorithm.java	1.3, 29 Feb 1996
  */
 public class StringSort {
 

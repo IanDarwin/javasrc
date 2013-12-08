@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * DaytimeObject - connect to the non-standard Time (object) service.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class DaytimeObject {
 	/** The TCP port for the object time service. */

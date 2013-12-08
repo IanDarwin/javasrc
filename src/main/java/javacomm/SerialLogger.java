@@ -6,7 +6,6 @@ import java.util.*;
 
 /**
  * Read from multiple Serial ports, notifying when data arrives on any.
- * @version $Id$
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class SerialLogger {

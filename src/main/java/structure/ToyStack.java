@@ -1,7 +1,6 @@
 package structure;
 
 /** Toy Stack. 
- * @version $Id$
  */
 public class ToyStack {
 

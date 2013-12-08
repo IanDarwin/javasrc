@@ -3,7 +3,6 @@ package performance;
 /**
  * Time a bunch of sorting.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TimeSort {
 	public static void main(String[] argv) {

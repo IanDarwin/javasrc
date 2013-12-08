@@ -3,7 +3,6 @@ package io;
 /**
  * Read one byte from Standard Input - hardly useful on its own.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version 	$Id$
  */
 public class ReadStdin {
 	/** Simple test case */

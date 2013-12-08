@@ -3,7 +3,6 @@ package structure;
 import java.util.Arrays;
 
 /** Demonstrate use of Arrays.sort()
- * @version $id$
  */
 public class SortArray {
 	public static void main(String[] unused) {

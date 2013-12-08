@@ -6,7 +6,6 @@ import javax.naming.NamingException;
 
 /** Make an object available.
  * Uses the RMI registry via the JNDI service provider; needs rmiregistry
- * @version $Id$
  */
 public class JNDIPublish  {
 

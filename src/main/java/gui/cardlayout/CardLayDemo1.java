@@ -6,7 +6,6 @@ import java.awt.event.*;
 
 /** Simpler CardLayout demo: cycles through some labels.
  * @author Ian Darwin
- * @version $Id$
  */
 public class CardLayDemo1 extends Applet {
 	CardLayout cardlay;

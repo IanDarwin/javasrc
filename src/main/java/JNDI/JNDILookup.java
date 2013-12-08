@@ -6,7 +6,6 @@ import javax.naming.NamingException;
 
 /** Find an object previously made available.
  * Uses the RMI registry via the JNDI service provider; needs rmiregistry
- * @version $Id$
  */
 public class JNDILookup {
 

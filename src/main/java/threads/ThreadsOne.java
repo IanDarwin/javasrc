@@ -52,7 +52,6 @@ import java.awt.event.ActionListener;
  * runs its own thread, with a counter that counts down to zero.
  * <br/>Older version	0.5, July 1997, for JDK1.1
  * @author	Ian Darwin
- * @version $id$
  */
 public class ThreadsOne extends Applet implements Runnable {
 	Label lab;	

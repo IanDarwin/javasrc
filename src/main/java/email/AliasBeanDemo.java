@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /** Test for AliasBean.
- * @version $Id$
  */
 public class AliasBeanDemo extends JFrame {
 

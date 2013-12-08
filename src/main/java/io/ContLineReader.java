@@ -9,7 +9,6 @@ import java.io.*;
  * implementation of readLine().
  * 
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public abstract class ContLineReader extends LineNumberReader {
 	/** Line number of first line in current (possibly continued) line */

@@ -5,7 +5,6 @@ package numbers;
  * Only defined for int: clone the code (or wait for Templates)
  * for long, float, and double.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class MatrixUse {
 	public static void main(String[] argv) {

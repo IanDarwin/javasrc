@@ -6,7 +6,6 @@ import java.net.*;
 /**
  * Listen -- make a ServerSocket and wait for connections.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class Listen {
 	/** The TCP port for the service. */

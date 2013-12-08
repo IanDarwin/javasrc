@@ -4,7 +4,6 @@ import java.util.prefs.Preferences;
 
 /**
  * Simple demonstration of using Preferences.
- * @version $Id$
  */
 public class PrefsDemo {
 

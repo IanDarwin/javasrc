@@ -29,7 +29,6 @@ import javax.swing.JOptionPane;
 
 /**
  * OneAck - popup some dialogs, to thank some people in the Java style.
- * @version $Id$
  */
 class OneAck extends Frame {
 	private static final long serialVersionUID = -8156044777264483555L;

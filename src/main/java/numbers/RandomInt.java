@@ -6,7 +6,6 @@ import java.util.*;
  * a series of random integers from 1 to 10, inclusive.
  *
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class RandomInt {
 	public static void main(String[] a) {

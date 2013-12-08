@@ -3,7 +3,6 @@ package numbers;
 
 /* Print a table of fahrenheit and celsius temperatures, a bit more neatly.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TempConverter2 extends TempConverter {
 

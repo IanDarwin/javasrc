@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 
 /** Main GUI component for the NetWatch program.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version	$Id$
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
 public class NetFrame extends JFrame {

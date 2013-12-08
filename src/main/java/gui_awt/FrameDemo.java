@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Make a Frame with two Panels.
- * @version $Id$
  */
 public class FrameDemo extends Frame {
 	/** "main program" method - construct and show */

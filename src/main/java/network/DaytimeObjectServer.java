@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * DaytimeObjectServer - server for the non-standard Time (object) service.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class DaytimeObjectServer {
 	/** The TCP port for the object time service. */

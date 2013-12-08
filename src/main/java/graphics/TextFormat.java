@@ -20,7 +20,6 @@ import javax.swing.JFrame;
 /** A display of text, formatted by us instead of by AWT/Swing.
  * Recomputes widths so it resizes correctly.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class TextFormat extends Component {
 

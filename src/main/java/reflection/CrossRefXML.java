@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /** This class subclasss CrossRef to output the information in XML.
- * @version $Id$
  */
 public class CrossRefXML extends CrossRef {
 

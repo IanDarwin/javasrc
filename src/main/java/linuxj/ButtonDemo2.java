@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** This is another ButtonDemo Application
- * @version $Id$
  */
 public class ButtonDemo2 extends JFrame {
 	JButton b1, b2;

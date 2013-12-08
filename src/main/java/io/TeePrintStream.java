@@ -24,7 +24,6 @@ import java.io.PrintStream;
  * see the example at http://www.javaspecialists.eu/archive/Issue003.html
  * (written a year after the initial import of my version).
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TeePrintStream extends PrintStream {
 	protected PrintStream parent;

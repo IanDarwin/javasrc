@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
  * Fmt - format text (like Berkeley UNIX fmt, 
  * with a few troff commands for good measure).
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Fmt2 extends Fmt {
 	enum Mode { FORMATTED, UNFORMATTED };

@@ -8,7 +8,6 @@ import java.util.Set;
 /**
  * An XML element has a name (which in this version will include the ns prefix if any), 
  * and zero or more attributes.
- * @version $Id$
  */
 public class Element {
 	

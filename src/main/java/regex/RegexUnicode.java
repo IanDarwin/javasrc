@@ -6,7 +6,6 @@ import java.util.regex.*;
  * Explore the interactions of Regex and Unicode.
  * See the amazing charts at http://www.unicode.org/charts/.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class RegexUnicode {
 	static class Data {

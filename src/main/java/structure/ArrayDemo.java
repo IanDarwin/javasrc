@@ -2,7 +2,6 @@ package structure;
 
 /** Try to collect all the Array Chapter examples from 471 into one file
  * @author Ian Darwin
- * @version $Id$
  */
 public class ArrayDemo  {
 	@SuppressWarnings("unused")

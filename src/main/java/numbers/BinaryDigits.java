@@ -3,7 +3,6 @@ package numbers;
 /**
  * Template for standalone, line-mode main program.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class BinaryDigits {
 	public static void main(String[] argv) {

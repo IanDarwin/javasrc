@@ -17,7 +17,6 @@ import com.darwinsys.util.FileProperties;
 
 /** SendMime -- send a multi-part MIME email message.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class SendMime {
 

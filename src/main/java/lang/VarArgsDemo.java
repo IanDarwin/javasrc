@@ -6,7 +6,6 @@ import java.util.Date;
 /**
  * VarArgsDemo - show 1.5 variable arguments
  * @author ian
- * @version $Id$
  */
 public class VarArgsDemo {
 

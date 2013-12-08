@@ -6,7 +6,6 @@ import javax.swing.JApplet;
 import javax.swing.JLabel;
 
 /** Create a TTFontDemo label in an Applet.
- * @version $Id$
  */
 public class TTFontApplet extends JApplet {
 

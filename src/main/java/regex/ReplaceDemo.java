@@ -6,7 +6,6 @@ import java.util.regex.*;
  * Quick demo of RE substitution: correct U.S. 'favor'
  * to Canadian/British 'favour', but not in "favorite"
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ReplaceDemo {
 	public static void main(String[] argv) {

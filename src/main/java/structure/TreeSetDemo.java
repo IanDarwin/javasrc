@@ -5,7 +5,6 @@ import java.util.TreeSet;
 /**
  * TreeSet Demo.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TreeSetDemo {
 	public static void main(String[] argv) {

@@ -11,7 +11,6 @@ import java.util.StringTokenizer;
 /**
  * Web Redirector - yet another useful? subclass of WebServer0, this one to redirect 
  * any and all incoming requests to a new URL and/or PORT (like 8080).
- * @version $Id$
  */
 public class WebRedirector extends WebServer0 {
 	public static final String GOTO = "http://localhost:8080/";

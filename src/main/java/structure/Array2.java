@@ -4,7 +4,6 @@ import java.util.Date;
 
 /** Re-allocate an array, bigger...
  * @author Ian Darwin
- * @version $Id$
  */
 public class Array2  {
 	public static void main(String[] argv) {

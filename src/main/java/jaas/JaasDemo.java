@@ -28,7 +28,6 @@ import javax.swing.JOptionPane;
  * the user will be able to read but not write files on the local disk store.
  * <p>
  * <b>NOT WORKING</b>
- * @version $Id$
  */
 public class JaasDemo {
 

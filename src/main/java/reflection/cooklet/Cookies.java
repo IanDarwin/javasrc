@@ -4,7 +4,6 @@ package reflection.cooklet;
  * This is the part of the Cookies application that loads
  * the user-defined subclass.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Cookies {
 	public static void main(String[] argv) {

@@ -44,7 +44,6 @@ package threads;
 /** 
  * Threaded demo application, version 2, using Runnable.
  * @author	Ian Darwin
- * @version	$Id$
  */
 public class ThreadsDemo2 implements Runnable {
 	String mesg;

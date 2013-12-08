@@ -4,7 +4,6 @@ import java.io.IOException;
 
 /** Demonstration of reading the MS-Windows Netscape History
  * under UNIX using DBM.java.
- * @version $Id$
  */
 public class ReadHistNS {
 	public static void main(String[] unused) throws IOException {

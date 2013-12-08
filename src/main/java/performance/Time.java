@@ -5,7 +5,6 @@ import java.lang.reflect.*;
 /**
  * Time the main method of another class, for performance tuning.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Time {
 	public static void main(String[] argv) throws Exception {

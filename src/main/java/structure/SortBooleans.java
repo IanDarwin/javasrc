@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 /** Demonstrate use of Arrays.sort on Booleans(!).
  * Try it, you'll get a ClassCastException, as there is no ordering of Booleans
- * @version $Id$
  */
 public class SortBooleans {
 	public static void main(String[] unused) {

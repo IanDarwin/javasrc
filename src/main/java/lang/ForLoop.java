@@ -3,7 +3,6 @@ package lang;
 /**
  * Check out "for" loop.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ForLoop {
 	public static void main(String[] argv) {

@@ -8,7 +8,6 @@ import java.util.zip.*;
  * MakeList makes the properties list for the Lookup program.
  *
  * @author	YOUR NAME HERE
- * @version	0.1
  */
 public class HINTS /*rename to MakeList*/ {
 	/** The output file name. */

@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * Demonstrate the Tar archive lister.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TarList {
 	public static void main(String[] argv) throws IOException, TarException {

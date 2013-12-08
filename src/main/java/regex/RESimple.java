@@ -5,7 +5,6 @@ import java.util.regex.*;
 /**
  * Simple example of using RE class.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class RESimple {
 	public static void main(String[] argv) {

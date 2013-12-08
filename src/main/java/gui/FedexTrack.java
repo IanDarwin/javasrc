@@ -23,7 +23,6 @@ import java.util.GregorianCalendar;
  * and is subject to change without notice! USE AT OWN RISK.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 
 public class FedexTrack extends Applet {

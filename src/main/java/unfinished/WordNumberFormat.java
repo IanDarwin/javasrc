@@ -10,7 +10,6 @@ import java.text.ParsePosition;
  * "one hundred thousand 12" to long.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class WordNumberFormat extends Format {
 

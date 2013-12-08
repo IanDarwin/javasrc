@@ -12,7 +12,6 @@ import javax.swing.JTree;
 
 /** Simple JFC JTree Simple application, showing default tree contents.
  * Note that the JTree will display a silly demo with not Model provided.
- * @version $Id$
  */
 public class JTreeSimple extends JFrame {
 	JButton addButton, quitButton;

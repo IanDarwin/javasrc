@@ -5,7 +5,6 @@ package reflection.cooklet;
  * Note that the class is abstract so you must subclass it,
  * but the methods are non-abstract so you don't have to provide
  * dummy versions if you don't need a particular functionality.
- * @version $Id$
  */
 public abstract class Cooklet {
 

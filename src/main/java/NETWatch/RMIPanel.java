@@ -8,7 +8,6 @@ import java.util.Properties;
 /** Displays one machines status, for RMI..
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
- * @version	$Id$
  */
 public class RMIPanel extends NetPanel implements Runnable {
 	

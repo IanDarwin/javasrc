@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import com.darwinsys.sql.ConnectionUtil;
 
 /** A database MetaData query
- * @version $Id$
  */
 public class DatabaseMetaDemo {
 

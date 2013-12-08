@@ -15,7 +15,6 @@ package signals;
  * <P>This way, we aren't trying to do anything too fancy like create a thread
  * from within the signal handler; it has only to call start.
  *
- * @version	$Id$
  *
  */
 public class LibSignal {

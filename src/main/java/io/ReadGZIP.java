@@ -6,7 +6,6 @@ import java.util.zip.*;
 /**
  * Read some data from a gzip file.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ReadGZIP {
 	public static void main(String[] argv) throws IOException {

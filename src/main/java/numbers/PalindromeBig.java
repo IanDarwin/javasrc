@@ -7,7 +7,6 @@ import java.math.BigInteger;
  * e.g., 42->66 (42+24); 1951->5995 (1951+1591=3542; 3542+2453=5995).
  * <P>TODO: Do we need to handle negative numbers?
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$.
  */
 public class PalindromeBig {
 

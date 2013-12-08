@@ -32,7 +32,6 @@ import javax.swing.JFrame;
  * <p>
  * Server multiplexes messages back to all clients.</p>
  * @author Ian Darwin
- * @version $Id$
  */
 public class ChatClient extends JFrame {
 

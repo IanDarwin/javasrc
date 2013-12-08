@@ -30,7 +30,6 @@ import javax.swing.table.AbstractTableModel;
  * while users have access to the system, or the database will
  * get worse instead of better!
  *
- * @version $Id$
  */
 public class JDAdmin extends JFrame {
 

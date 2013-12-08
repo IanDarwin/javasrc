@@ -18,7 +18,6 @@ import javax.comm.UnsupportedCommOperationException;
 /**
  * JMModel -- Communications I/O for JModem. No GUI stuff here.
  * @author	 Ian F. Darwin, http://www.darwinsys.com/
- * @version	 $Id$
  */
 public class JMModel {
 	/** The View */

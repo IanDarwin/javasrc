@@ -8,7 +8,6 @@ package lang;
  * another class, the messages will come out in the "expected" order.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class StaticIniDemo {
 

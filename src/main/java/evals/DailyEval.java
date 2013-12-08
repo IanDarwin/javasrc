@@ -30,7 +30,6 @@ class BorderPanel extends Panel {
 /**
  * Daily Evaluation Applet for Learning Tree Int'l.
  * @Author Ian Darwin, http://www.darwinsys.com/
- * @version 0.0
  */
 public class DailyEval extends Applet {
 	private Button Button1 = null;

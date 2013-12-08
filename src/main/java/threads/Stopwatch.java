@@ -46,7 +46,6 @@ package threads;
 /**
  * Count the seconds up from zero, until terminated.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Stopwatch {
 	public static void main(String[] argv) {

@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 /** Iterator used to walk through a List.
- * @version $Id$
  */
 public class IteratorDemo {
 

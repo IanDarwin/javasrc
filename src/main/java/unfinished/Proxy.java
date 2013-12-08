@@ -7,7 +7,6 @@ import java.io.*;
  * A very very simple proxy server.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class Proxy {
 	/** port number we bind to on machine where proxy runs */

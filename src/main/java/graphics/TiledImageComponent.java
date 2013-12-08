@@ -14,7 +14,6 @@ import com.darwinsys.util.Debug;
 /**
  * Demo of tiling an Image across a component; draw the image repeatedly
  * in the paint() method.
- * @version $Id$
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class TiledImageComponent extends JComponent {

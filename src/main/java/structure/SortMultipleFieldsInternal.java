@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 /** "eternal sort" on multiple fields: descending by count, ascending by name
- * @version $Id$
  */
 public class SortMultipleFieldsInternal {
 

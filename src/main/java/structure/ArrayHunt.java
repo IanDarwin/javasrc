@@ -5,7 +5,6 @@ import java.util.Random;
 
 /** Array Hunt "game" (pathetic: computer plays itself).
  * @author Ian Darwin
- * @version $Id$
  */
 public class ArrayHunt  {
 	/** the maximum (and actual) number of random ints to allocate */

@@ -10,7 +10,6 @@ import java.io.StreamTokenizer;
  * ScanStreamTok - show scanning a file with StringTokenizer.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class ScanStreamTok {
 	protected  StreamTokenizer tf;

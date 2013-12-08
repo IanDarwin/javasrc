@@ -8,7 +8,6 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 
 /** List the "java:comp" of an EJB server.
- * @version $Id$
  */
 public class ListJavaComp {
 

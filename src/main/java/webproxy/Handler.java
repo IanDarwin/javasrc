@@ -23,7 +23,6 @@ import com.darwinsys.util.Debug;
  * <p>
  * TODO split into general handler stuff and "FileServlet",
  *	then handle w/ either user HttpServlet subclasses or FileServlet.
- * @version $Id$
  */
 public class Handler {
 

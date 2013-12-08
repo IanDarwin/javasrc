@@ -2,7 +2,6 @@ package dir_file;
 
 /** Simple directory lister.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Ls {
 	public static void main(String argh_my_aching_fingers[]) {

@@ -6,7 +6,6 @@ import java.text.*;
 /**
  * How quickly can you press return?
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Timer0 {
 	public static void main(String[] argv) throws IOException {

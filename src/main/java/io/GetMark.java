@@ -68,7 +68,6 @@ import java.io.*;
  * from a Properties or Preferences object and/or from the command line.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class GetMark {
 	/** the default starting mark. */

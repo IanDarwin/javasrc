@@ -3,7 +3,6 @@ package numbers;
 /**
  * Demonstrate our own version round().
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Round {
 	/** We round a number up if its fraction exceeds this threshold. */

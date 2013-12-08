@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * Read a file containing an offset, and a String at that offset.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ReadRandom {
 	final static String FILENAME = "random.dat";

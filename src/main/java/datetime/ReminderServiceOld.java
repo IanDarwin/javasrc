@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
  * Much of this logic has been uperceded by java.util.Timer, which is used
  * in the non-Old version of this program.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class ReminderServiceOld {
 	static class Item {

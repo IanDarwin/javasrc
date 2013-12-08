@@ -15,7 +15,6 @@ import javax.swing.UIManager;
 /**
  * A Look-and-feel switcher.
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class LNFSwitcher {
 	/** The frame. */

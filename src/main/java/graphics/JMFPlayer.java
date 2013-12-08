@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 @SuppressWarnings("serial")
 public class JMFPlayer extends JPanel implements ControllerListener {

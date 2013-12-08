@@ -6,7 +6,6 @@ import java.util.*;
 /** Sched -- command-line scheduler printer.
 *
 * @author Ian F. Darwin, http://www.darwinsys.com/
-* @version $Id$
 */
 
 public class Sched {

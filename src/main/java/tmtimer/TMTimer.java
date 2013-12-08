@@ -14,7 +14,6 @@ import com.darwinsys.swingui.UtilGUI;
  * TODO:
  *  fiddle gui builder to obviate fixGUI().
  * @author  Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class TMTimer extends JFrame implements Runnable {
 

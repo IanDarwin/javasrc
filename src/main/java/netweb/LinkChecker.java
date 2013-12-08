@@ -48,7 +48,6 @@ import com.darwinsys.util.Debug;
  * so much ad-hoc code for parsing the almost-regular kludge known as HTML?)
  *
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
- * @version $Id$
  */
 public class LinkChecker extends JFrame {
 

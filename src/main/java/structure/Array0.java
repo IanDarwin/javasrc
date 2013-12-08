@@ -2,7 +2,6 @@ package structure;
 
 /** Simple array example
  * @author Ian Darwin
- * @version $Id$
  */
 public class Array0  {
 	// Use this initializer form when the data are fixed:

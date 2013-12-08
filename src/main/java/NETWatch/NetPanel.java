@@ -29,7 +29,6 @@ import javax.swing.JTextArea;
  * </UL>
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
- * @version	$Id$
  */
 public abstract class NetPanel extends JPanel implements Runnable {
 	/** The name of this host */

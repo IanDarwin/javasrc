@@ -20,7 +20,6 @@ import java.util.Comparator;
  * The part in "{ ... }" is left as an exercise for the reader. :-(
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
- * @version	$Id$
  */
 public class CrossRef extends APIFormatter {
 

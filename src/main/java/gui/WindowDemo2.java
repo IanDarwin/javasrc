@@ -8,7 +8,6 @@ import javax.swing.WindowConstants;
 
 /* Show an example of closing a JFrame.
  * @author Ian Darwin
- * @version $Id$
  */
 public class WindowDemo2 extends JFrame {
 

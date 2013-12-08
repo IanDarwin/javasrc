@@ -1,6 +1,5 @@
 /*
  * A simple demonstration of the code needed to setup a client connection in C.
- * @version $Id$
  */
 
 #include <sys/types.h>

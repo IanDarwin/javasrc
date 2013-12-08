@@ -10,7 +10,6 @@ package chat;
  *  <-- any text to be displayed.
  *
  * @author Ian Darwin
- * @version $Id$
  */
 public class ChatProtocol {
 

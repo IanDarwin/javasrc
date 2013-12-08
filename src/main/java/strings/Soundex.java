@@ -43,7 +43,6 @@ import com.darwinsys.util.Debug;
  * Rich Pinder (<rpinder@hsc.usc.edu>) supplied ideas and spotted
  * mistakes.
  * @author Ian Darwin, http://www.darwinsys.com/ (Java Version)
- * @version $Id$
  */
 public class Soundex {
 

@@ -15,7 +15,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 /** Simple JFC JTree demo
- * @version $Id$
  */
 public class JTreeDemo extends JFrame {
 	JButton addButton, quitButton;

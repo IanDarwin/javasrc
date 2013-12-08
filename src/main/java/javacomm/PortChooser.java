@@ -27,7 +27,6 @@ import javax.swing.JPanel;
  * program.
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version	$Id$
  */
 public class PortChooser extends JDialog implements ItemListener {
 	private static final long serialVersionUID = -7091059841411129363L;

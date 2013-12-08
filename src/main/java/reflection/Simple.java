@@ -6,7 +6,6 @@ import java.util.Date;
 /**
  * Show a couple of things you can do with a Class object.
  * @author Ian F. Darwin, ian darwinsys.com
- * @version $Id$
  */
 public class Simple {
 	public static void main(String[] argv) throws Exception {

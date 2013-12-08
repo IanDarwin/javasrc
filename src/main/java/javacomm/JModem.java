@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
  * WARNING this file was built with the NetBeans Developer IDE
  * and parts of it should not be modified with a text editor.
  * @author    Ian F. Darwin, http://www.darwinsys.com/
- * @version   $Id$
  */
 public class JModem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 8656166709852255134L;

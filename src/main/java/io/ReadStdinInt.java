@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * Read an int from Standard Input
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @version 	$Id$
  */
 public class ReadStdinInt {
 	public static void main(String[] ap) {

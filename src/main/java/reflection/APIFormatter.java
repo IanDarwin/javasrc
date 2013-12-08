@@ -21,7 +21,6 @@ import java.util.zip.ZipFile;
  * <br/>TODO<br/>
  * Use GETOPT to control doingStandardClasses, verbosity level, etc.
  * @author	Ian Darwin, Ian@DarwinSys.com
- * @version	$Id$
  */
 public abstract class APIFormatter {
 

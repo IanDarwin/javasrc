@@ -3,7 +3,6 @@ package numbers;
 /**
  * Demonstrate a few of the Math functions for Trigonometry.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Trig {
 	public static void main(String[] argv) {

@@ -2,7 +2,6 @@ package lang;
 
 /** This shows why a "return" in a "finally" is bad.
  * @author ian darwin
- * @version $Id$
  */
 public class ReturnInFinallyIsBad {
 	private static String getDestinationType() {

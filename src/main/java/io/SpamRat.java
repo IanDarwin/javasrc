@@ -23,7 +23,6 @@ import java.net.*;
  *  3) Construct and show a MailComposeBean (in a JFrame) with the
  *  template filled in as much as possible.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class SpamRat {
 

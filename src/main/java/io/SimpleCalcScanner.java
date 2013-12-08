@@ -10,7 +10,6 @@ import java.util.Stack;
 
 /**
  * SimpleCalc -- simple calculator using 1.5 java.util.Scanner
- * @version	$Id$
  */
 public class SimpleCalcScanner {
 	/** The Scanner */

@@ -9,7 +9,6 @@ import java.net.Socket;
 /** NetLog - NetLog client API.
  * @see		NetLogSimple -- demonstration example usage.
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @version Copyright (C) 1995, 1996 Ian Darwin
  */
 public class NetLog {
 	protected final static int NETLOG_PORT = NetLogServer.PORT;

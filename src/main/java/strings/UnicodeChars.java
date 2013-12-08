@@ -3,7 +3,6 @@ package strings;
 /**
  * Conversion between Unicode characters and Strings.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class UnicodeChars {
 	public static void main(String[] argv) {

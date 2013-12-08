@@ -23,7 +23,6 @@ interface Switchable {
 
 /** CardLayDemo -- Prototype of a GUI Login Dialog, using CardLayout.
  * @author Ian F. Darwin
- * @version 1.0, July, 1997
  */
 public class CardLayDemo extends Applet implements Switchable {
 	private ImagePanel passwdP; 

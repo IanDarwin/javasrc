@@ -6,7 +6,6 @@ import java.awt.event.WindowEvent;
 
 /* Show an example of closing an AWT Frame.
  * @author Ian Darwin
- * @version $Id$
  */
 public class WindowDemo extends Frame {
 

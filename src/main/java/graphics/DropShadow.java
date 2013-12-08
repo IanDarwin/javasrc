@@ -9,7 +9,6 @@ import java.awt.*;
  * @author	Copyright 1995, 1997 Ian F. Darwin,
  * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>,
  * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
- * @version	$Id$
  */
 public class DropShadow extends Applet {
 	/** The label that is to appear in the window */

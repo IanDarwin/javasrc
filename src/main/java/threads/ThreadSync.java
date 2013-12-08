@@ -45,7 +45,6 @@ package threads;
  * Threaded demo application, as a Threads subclass.
  *
  * @author	Ian Darwin
- * @version	1.0
  */
 public class ThreadSync extends Thread {
 	String mesg;

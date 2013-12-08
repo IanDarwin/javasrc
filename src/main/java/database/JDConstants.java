@@ -5,7 +5,6 @@ package database;
 
 /** The main "properties"-like class for configuring JabaDot.
  * DUMMY VERSION - no longer functional, here so other stuff compiles.
- * @version $Id$
  */
 public class JDConstants  {
 

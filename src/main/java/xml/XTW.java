@@ -14,7 +14,6 @@ import com.darwinsys.util.Debug;
 /** XML Tree Walker
  * UPDATED FOR JAXP.
  * @author Ian Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class XTW {
 

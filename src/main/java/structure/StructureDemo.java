@@ -5,7 +5,6 @@ import java.util.Date;
 
 /** Dummy source of Objects, for structure demos.
  * @author Ian Darwin
- * @version $Id$
  */
 public class StructureDemo {
 

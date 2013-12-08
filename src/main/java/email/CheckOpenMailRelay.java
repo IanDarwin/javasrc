@@ -7,7 +7,6 @@ import javax.mail.MessagingException;
 
 /** TestOpenMailRelay -- send self-returning SPAM to check for relay sites.
  * @author Ian F. Darwin
- * @version $Id$
  */
 public class CheckOpenMailRelay {
 

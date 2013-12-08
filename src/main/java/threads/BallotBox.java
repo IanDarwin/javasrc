@@ -7,7 +7,6 @@ import com.darwinsys.util.ArrayIterator;
 
 /**
  * BallotBox - keep track of voting. Only used in ReadersWritersDemo.
- * @version $Id$
  */
 class BallotBox {
 	BallotPosition[] data;

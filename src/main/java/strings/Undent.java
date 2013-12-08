@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 
 /** Undent - remove leading spaces
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class Undent {
 	/** the maximum number of spaces to remove. */

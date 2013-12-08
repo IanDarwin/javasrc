@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 /** Demonstrate use of Arrays.sort()
- * @version $Id$
  */
 public class SortCollection {
 	public static void main(String[] unused) {

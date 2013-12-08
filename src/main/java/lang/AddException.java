@@ -8,7 +8,6 @@ import java.io.*;
  *
  * @author	Ian Darwin
  *
- * @version	1.0
  */
 public class AddException {
 	/**

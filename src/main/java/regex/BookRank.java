@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
  *	and rewritten several times since.
  * @author Patrick Killelea <p@patrick.net>: original Perl version,
  *	from the 2nd edition of his book "Web Performance Tuning".
- * @version $Id$
  */
 public class BookRank {
 	public final static String DATA_FILE = "book.sales";

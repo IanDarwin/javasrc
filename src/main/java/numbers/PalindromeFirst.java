@@ -3,7 +3,6 @@ package numbers;
 /**
  * Find the first integer number that cannot be Palindromified.
  * @author Ian F. Darwin, http://www.darwinsys.com/
- * @version $Id$
  */
 public class PalindromeFirst {
 	public static void main(String[] argv) {
