@@ -1,20 +1,15 @@
 package strings;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /** StringAlign Test program.  */
-public class StringAlignTest extends TestCase {
+public class StringAlignTest  {
 
 	String[] mesg = {"JavaFun", "JavaFun!" };
 
-	/** The object being tested */
-	protected StringAlign sa;
-
-	/** JUnit test classes require(?) this constructor */
-	public StringAlignTest(String name) {
-		super(name);
-	}
-
+	@Test
 	public void testLeft() {
 		for (int i=0; i<mesg.length; i++) {
 			assertEquals(mesg[i].substring(0, 5),
@@ -26,6 +21,7 @@ public class StringAlignTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testCentre() {
 		for (int i=0; i<mesg.length; i++) {
 			assertEquals(mesg[i].substring(0, 5),
@@ -35,6 +31,7 @@ public class StringAlignTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testRight() {
 		for (int i=0; i<mesg.length; i++) {
 			System.out.println("Input String \"" + mesg[i] + "\"");
@@ -46,17 +43,32 @@ public class StringAlignTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testNullString() {
 		assertEquals("     ", new StringAlign(5, StringAlign.JUST_RIGHT).format(""));
 	}
 
 	// Consider phasing out this method.
-	void dump(int x, int len, String mesg) {
+	private void dump(int x, int len, String mesg) {
 		System.out.println(mesg);
 	}
 	
+	@Test
 	public void testIntRight() {
 		assertEquals("   42",
 				new StringAlign(5, StringAlign.JUST_RIGHT).format(42));
+	}
+	
+	final String ONCE = "Once upon a";
+	Object o = new Object() {
+		public String toString() {
+			return "Once upon a";
+		}
+	};
+	
+	@Test
+	public void testObjCentred() {
+		assertEquals("  " + ONCE + "  ",
+				new StringAlign(15, StringAlign.JUST_CENTER).format(o));
 	}
 }
