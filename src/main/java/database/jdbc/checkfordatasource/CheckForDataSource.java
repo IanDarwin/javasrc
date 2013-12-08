@@ -25,6 +25,9 @@ public class CheckForDataSource {
 		System.out.println("Looking up " + dsn);
 		Object o = ctx.lookup(dsn);
 		DataSource d = (DataSource)o;
+		if (d == null) {
+			throw new IllegalArgumentException("Datasource " + dsn + " not found");
+		}
 
 		System.out.println("Getting connection ");
 		Connection con = d.getConnection();
