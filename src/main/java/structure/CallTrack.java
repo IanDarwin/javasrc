@@ -20,10 +20,13 @@ public class CallTrack {
 	protected void add(Person p) {
 		String lastName = p.getLastName();
 		int i;
+		// Find in "i" the position in the list where to insert this person
 		for (i=0; i<usrList.size(); i++)
 			if (lastName.compareTo(((Person)(usrList.get(i))).getLastName()) <= 0)
 				break;
 		usrList.add(i, p);
+
+		// Now insert them in the scrolling list, in the same position.
 		visList.add(p.getName(), i);
 		visList.select(i);      // ensure current
 	}
