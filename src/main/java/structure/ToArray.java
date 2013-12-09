@@ -6,11 +6,10 @@ import java.util.List;
 /** List to array */
 public class ToArray {
 	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		list.add("Blobbo");
 		list.add("Cracked");
 		list.add("Dumbo");
-		// list.add(new Date());	// Can't mix and match in error - won't compile.
 
 		// Convert a collection to Object[], which can store objects
 		// of any type.
