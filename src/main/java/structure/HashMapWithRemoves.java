@@ -1,6 +1,7 @@
 package structure;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -28,7 +29,7 @@ public class HashMapWithRemoves {
 		// BEGIN SafeRemoval
 		// Version 2: get ALL the keys and values 
 		// with concurrent modification
-		Iterator it = h.keySet( ).iterator( );
+		Iterator it = map.keySet( ).iterator( );
 		while (it.hasNext( )) {
 			String key = (String) it.next( );
 			if (key.equals("Sun")) {
@@ -36,7 +37,7 @@ public class HashMapWithRemoves {
 				continue;
 			}
 			System.out.println("Company " + key + "; " +
-				"Address " + h.get(key));
+				"Address " + map.get(key));
 		}
 		// END
 	}
