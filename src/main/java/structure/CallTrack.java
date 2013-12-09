@@ -22,8 +22,8 @@ public class CallTrack {
 		int i;
 		// Find in "i" the position in the list where to insert this person
 		for (i=0; i<usrList.size(); i++)
-			if (lastName.compareTo(((Person)(usrList.get(i))).getLastName()) <= 0)
-				break;
+			if (lastName.compareTo((usrList.get(i)).getLastName()) <= 0)
+				break; // If we don't break, will insert at end of list.
 		usrList.add(i, p);
 
 		// Now insert them in the scrolling list, in the same position.
