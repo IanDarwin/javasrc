@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class CharMode {
 	public static void main(String[] argv) throws IOException {
-		// BEGIN
+		// BEGIN main
 		BufferedReader is = new BufferedReader(
 			new InputStreamReader(System.in));
 
@@ -16,6 +16,6 @@ public class CharMode {
 		while ((c=is.read()) != -1) {
 			System.out.print((char)c);
 		}
-		// END
+		// END main
 	}
 }

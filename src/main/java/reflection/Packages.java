@@ -6,10 +6,10 @@ package reflection;
  */
 public class Packages {
 	public static void main(String[] argv) {
-		// BEGIN
+		// BEGIN main
 		java.lang.Package[] all = java.lang.Package.getPackages();
 		for (int i=0; i<all.length; i++)
 			System.out.println(all[i]);
-		// END
+		// END main
 	}
 }

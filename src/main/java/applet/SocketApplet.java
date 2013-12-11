@@ -29,7 +29,6 @@ public class SocketApplet extends Applet {
 	/** Where the Applet came from */
 	URL whence;
 
-	// BEGIN
 	/** Initialize the GUI nicely. */
 	public void init() {
 
@@ -106,6 +105,5 @@ public class SocketApplet extends Applet {
 			}
 		});
 	}
-	// END
 }
 

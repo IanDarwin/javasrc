@@ -34,12 +34,12 @@ public class Indent {
         try {
             String inputLine;
 
-			// BEGIN
+			// BEGIN main
             while ((inputLine = is.readLine()) != null) {
 				for (int i=0; i<nSpaces; i++) System.out.print(' ');
                 System.out.println(inputLine);
             }
-			// END
+			// END main
             is.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);

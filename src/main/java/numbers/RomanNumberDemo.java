@@ -3,7 +3,7 @@ package numbers;
 public class RomanNumberDemo {
 	/** Simple test case */
 	public static void main(String[] argv) {
-		// BEGIN
+		// BEGIN main
 		RomanNumberFormat nf = new RomanNumberFormat();
 		System.out.println("Test of " + nf);
 		try {
@@ -19,7 +19,7 @@ public class RomanNumberDemo {
 		System.out.println("2001->" + nf.format(2001));	// Y2K anyone?
 		System.out.println("3999->" + nf.format(3999));
 		System.out.println("4000->" + nf.format(4000));	// expect Exception
-		// END
+		// END main
 		// parsing not implemented.
 		System.out.println("XIV->" + nf.parseObject("XIV", null));
 	}

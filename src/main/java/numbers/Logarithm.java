@@ -6,13 +6,13 @@ package numbers;
  */
 public class Logarithm {
 	public static void main(String[] argv) {
-		// BEGIN
+		// BEGIN main
 		double someValue;
 		// compute someValue...
-		// END
+		// END main
 		someValue = 0;
-		// BEGIN
+		// BEGIN main
 		double log_e = Math.log(someValue);
-		// END
+		// END main
 	}
 }

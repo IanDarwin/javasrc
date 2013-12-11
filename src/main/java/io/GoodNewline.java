@@ -7,7 +7,7 @@ import java.io.*;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class GoodNewline {
-	// BEGIN
+	// BEGIN main
 	String myName;
 	public static void main(String[] argv) {
 		GoodNewline jack = new GoodNewline("Jack Adolphus Schmidt, III");
@@ -19,7 +19,7 @@ public class GoodNewline {
 		out.println(myName);		// print name  on next line
 	}
 
-	// END
+	// END main
 	/* Constructor */
 	public GoodNewline(String s) {
 		myName = s;
