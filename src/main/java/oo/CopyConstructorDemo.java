@@ -59,6 +59,4 @@ public class CopyConstructorDemo {
 			return false;
 		return true;
 	}
-// BEGIN main
 }
-// END main
