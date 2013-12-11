@@ -39,6 +39,6 @@ public class HashMapWithRemoves {
 			System.out.println("Company " + key + "; " +
 				"Address " + map.get(key));
 		}
-		// END
+		// END SafeRemoval
 	}
 }
