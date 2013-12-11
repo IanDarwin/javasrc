@@ -7,11 +7,9 @@ import java.util.*;
  */
 public class Reminder {
 	public static void main(String[] argv) throws InterruptedException {
-		// BEGIN
 		while (true) {
 			System.out.println(new Date() + "\007");
 			Thread.sleep(5*60*1000);
 		}
-		// END
 	}
 }

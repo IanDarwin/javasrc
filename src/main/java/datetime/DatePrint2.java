@@ -7,7 +7,6 @@ import java.util.*;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class DatePrint2 {
-	// BEGIN
 	static String months[] = {
 		"January", "February", "March",
 		"April",   "May",      "June",
@@ -21,6 +20,5 @@ public class DatePrint2 {
 			c.get(Calendar.DAY_OF_MONTH) + ", " +
 			c.get(Calendar.YEAR) + " " +
 			eras[c.get(Calendar.ERA)]);
-	// END
 	}
 }

@@ -9,7 +9,6 @@ import java.text.*;
  */
 public class Timer0 {
 	public static void main(String[] argv) throws IOException {
-		// BEGIN
 		long t0, t1;
 		System.out.println("Press return when ready");
 		t0=System.currentTimeMillis();
@@ -21,6 +20,5 @@ public class Timer0 {
 		double deltaT = t1-t0;
 		System.out.println("You took " + 
 			DecimalFormat.getInstance().format(deltaT/1000.) + " seconds.");
-		// END
 	}
 }

@@ -8,8 +8,6 @@ import java.util.*;
  */
 public class Date1 {
 	public static void main(String[] argv) {
-		// BEGIN
 		System.out.println(Calendar.getInstance());
-		// END
 	}
 }

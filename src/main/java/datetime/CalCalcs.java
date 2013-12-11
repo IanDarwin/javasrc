@@ -7,7 +7,6 @@ import java.util.*;
  */
 public class CalCalcs {
 	public static void main(String[] argv) {
-		// BEGIN
 		Calendar c = Calendar.getInstance();
 		System.out.println("I got a " + c.getClass());
 		c.set(1951, 03, 24, 12, 30, 0);
@@ -15,6 +14,5 @@ public class CalCalcs {
 		System.out.println("I actually set the year to " +c.get(Calendar.YEAR));
 		System.out.println("In milliseconds, that's " + c.getTime().getTime());
 		System.out.println("Or, in seconds, " + c.getTime().getTime()/1000);
-		// END
 	}
 }
