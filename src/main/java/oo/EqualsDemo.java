@@ -41,4 +41,4 @@ public class EqualsDemo {
 		return true;
 	}
 }
-// END
+// END main

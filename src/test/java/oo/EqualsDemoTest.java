@@ -38,4 +38,4 @@ public class EqualsDemoTest {
 		assertTrue(!d1.equals(null));
 	}
 }
-// END
+// END main

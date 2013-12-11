@@ -19,6 +19,6 @@ public class ToArray {
 
 		String[] sl = (String[]) list.toArray(new String[0]);
 		System.out.println("Array of String has length " + sl.length);
-		// END
+		// END ToArray
 	}
 }

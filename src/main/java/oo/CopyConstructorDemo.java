@@ -30,7 +30,7 @@ public class CopyConstructorDemo {
 		this.name = other.name;
 	}
 	// hashCode() and equals() not shown
-	// END
+	// END main
 
 	@Override
 	public int hashCode() {
@@ -59,5 +59,6 @@ public class CopyConstructorDemo {
 			return false;
 		return true;
 	}
+// BEGIN main
 }
-
+// END main
