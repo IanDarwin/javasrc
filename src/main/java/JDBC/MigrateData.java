@@ -14,6 +14,8 @@ import java.sql.SQLException;
 public class MigrateData {
 
 
+	public static final String SELECT_STUDENTS_STATEMENT = "SELECT firstname,lastname FROM student ORDER BY lastname";
+
 	public static void main(String[] av) throws Throwable {
 		final String IN_DRIVER = "sun.jdbc.odbc.JdbcOdbcDriver";
 		final String OUT_DRIVER = "org.postgresql.Driver";
@@ -55,9 +57,9 @@ public class MigrateData {
 	public static void migrate(Connection inConn, Connection outConn) throws SQLException {
 		// Prepare Statements
 		try (PreparedStatement inPreparedStatement = inConn.prepareStatement(
-				"Select firstname,lastname from student order by lastname")) {
+				SELECT_STUDENTS_STATEMENT)) {
 			try (PreparedStatement outPreparedStatement = outConn.prepareStatement(
-					"insert into newStudent (firstname,lastname) values(?,?)")) {
+					"insert into student (firstname,lastname) values(?,?)")) {
 
 				// Do the input query
 				try (ResultSet rs = inPreparedStatement.executeQuery()) {
@@ -67,12 +69,12 @@ public class MigrateData {
 					
 					// Iterate over results, inserting into new DB
 					while (rs.next()) {
+						System.out.println("MigrateData.migrate(): row " + rs.getRow());
 						outPreparedStatement.setString(1, rs.getString(1));
 						outPreparedStatement.setString(2, rs.getString(2));
-						int rowCount = inPreparedStatement.executeUpdate();
-						if (rowCount != 1) {
-							System.err.printf("ERROR failed to insert %s %s, count %d%n",
-									rs.getString(1), rs.getString(2), rowCount);
+						outPreparedStatement.execute();
+						if (1 != outPreparedStatement.getUpdateCount()) {
+							throw new RuntimeException("Update count != 1!");
 						}
 					}
 					
