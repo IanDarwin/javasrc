@@ -1,7 +1,6 @@
 package structure;
 
-import com.darwinsys.util.Debug;
-
+// BEGIN main
 public class Product {
 	String title;
 	String artist;
@@ -10,27 +9,25 @@ public class Product {
 	public Product(String artist, String title, Media media) {
 		this.title = title;
 		this.artist = artist;
-		switch (media) {
-		case BOOK:
-			Debug.println("media", title + " is a book");
-			break;
-		case MUSIC_CD:
-			Debug.println("media", title + " is a CD");
-			break;
-		case MUSIC_VINYL:
-			Debug.println("media", title + " is a relic");
-			break;
-		case MOVIE_VHS:
-			Debug.println("media", title + " is on tape");
-			break;
-		case MOVIE_DVD:
-			Debug.println("media", title + " is on DVD");
-			break;
-		default:
-			Debug.println("media", "Warning: " + title +
-				": Unknown media " + media);
-			break;
-		}
 		this.media = media;
 	}
+	
+	@Override
+	public String toString() {
+		switch (media) {
+		case BOOK:
+			return title + " is a book";
+		case MUSIC_CD:
+			return title + " is a CD";
+		case MUSIC_VINYL:
+			return title + " is a relic of the age of vinyl";
+		case MOVIE_VHS:
+			return title + " is on old video tape";
+		case MOVIE_DVD:
+			return title + " is on DVD";
+		default:
+			return title + ": Unknown media " + media;
+		}		
+	}
 }
+// END main
