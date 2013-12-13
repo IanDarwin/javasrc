@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 // BEGIN main
 /** Part of a main program using Shape objects */
-public class Main {
+public class ShapeDriver {
 
 	Collection<Shape> allShapes;	// created in a Constructor, not shown
 
