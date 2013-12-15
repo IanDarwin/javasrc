@@ -2,7 +2,10 @@ package textproc;
 
 import java.io.*;
 
-/** Text to PS */
+/**
+ * Text to Adobe PostScript
+ */
+// BEGIN main
 public class PSFormatter {
 	/** The current input source */
 	protected BufferedReader br;
@@ -67,13 +70,13 @@ public class PSFormatter {
 
 		// finish last page, if not already done.
 		if (lineNum != 0)
-			println("showpage");
+			System.out.println("showpage");
 	}
 
 	/** Handle start of page details. */
 	protected void startPage() {
 		if (pageNum++ > 0)
-			println("showpage");
+			System.out.println("showpage");
 		lineNum = 0;
 		moveTo(leftMargin, topMargin);
 	}
@@ -95,7 +98,7 @@ public class PSFormatter {
 		}
 		moveTo(leftMargin + (tabPos * INCH),
 			topMargin-(lineNum++ * leading));
-		println('(' + toPSString(l)+ ") show");
+		System.out.println('(' + toPSString(l)+ ") show");
 
 		// If we just hit the bottom, start a new page
 		if (curY <= botMargin)
@@ -116,18 +119,15 @@ public class PSFormatter {
 		return sb.toString();
 	}
 
-	protected void println(String s) {
-		System.out.println(s);
-	}
-
 	protected void moveTo(int x, int y) {
 		curX = x;
 		curY = y;
-		println(x + " " + y + " " + "moveto");
+		System.out.println(x + " " + y + " " + "moveto");
 	}
 
 	void prologue() {
-		println("%!PS-Adobe");
-		println("/Courier findfont " + points + " scalefont setfont ");
+		System.out.println("%!PS-Adobe");
+		System.out.println("/Courier findfont " + points + " scalefont setfont ");
 	}
 }
+// END main
