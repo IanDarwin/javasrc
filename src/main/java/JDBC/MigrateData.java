@@ -13,7 +13,6 @@ import java.sql.SQLException;
  */
 public class MigrateData {
 
-
 	public static final String SELECT_STUDENTS_STATEMENT = "SELECT firstname,lastname FROM student ORDER BY lastname";
 
 	public static void main(String[] av) throws Throwable {

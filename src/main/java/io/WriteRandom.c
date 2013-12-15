@@ -1,6 +1,6 @@
+// BEGIN main
 /* C Program to create the random-access file for the RandomAccessFile example
  * Ian F. Darwin, http://www.darwinsys.com/
- * $Id$
  */
 
 #include <stdio.h>
@@ -50,3 +50,4 @@ main(int argc, char **argv) {
 
 	return 0;
 }
+// END main
