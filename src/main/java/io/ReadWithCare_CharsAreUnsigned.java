@@ -7,7 +7,6 @@ import java.io.InputStream;
 public class ReadWithCare_CharsAreUnsigned {
 	
 	private void test(InputStream is) {
-		System.out.println("Meh.onCreate()");
 		char c;
 		try {
 			while ((c = (char) is.read()) != -1) {
@@ -19,10 +18,9 @@ public class ReadWithCare_CharsAreUnsigned {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("Meh.main()");
-		ReadWithCare_CharsAreUnsigned meh = 
+		System.out.println("Foo.main()");
+		ReadWithCare_CharsAreUnsigned me = 
 			new ReadWithCare_CharsAreUnsigned();
-		meh.test(
-			new ByteArrayInputStream("Joy to the world!".getBytes()));
+		me.test(new ByteArrayInputStream("Joy to the world!".getBytes()));
 	}
 }

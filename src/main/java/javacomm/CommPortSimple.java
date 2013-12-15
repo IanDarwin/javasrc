@@ -10,9 +10,9 @@ import javax.comm.CommPort;
 import javax.comm.CommPortIdentifier;
 import javax.comm.SerialPort;
 
+// BEGIN main
 /**
  * Open a serial port using Java Communications.
- *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CommPortSimple {
@@ -87,8 +87,7 @@ public class CommPortSimple {
 		os = new PrintStream(thePort.getOutputStream(), true);
 	}
 
-	/** Hold a conversation. 
-	 */
+	/** Hold a conversation - in this case a *very* simple one.  */
 	protected void holdConversation() throws IOException {
 
 		System.out.println("Ready to read and write port.");
@@ -106,3 +105,4 @@ public class CommPortSimple {
 			os.close();
 	}
 }
+// END main

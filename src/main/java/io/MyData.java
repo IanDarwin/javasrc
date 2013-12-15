@@ -1,9 +1,8 @@
 package io;
 
-//package io;
-
 import java.io.Serializable;
 
+// BEGIN main
 /** Simple data class used in Serialization demos. */
 public class MyData implements Serializable {
 
@@ -12,7 +11,7 @@ public class MyData implements Serializable {
 	String passwordCypher;
 	transient String passwordClear;
 
-	/** This constructor is required for use by JDO */
+	/** This constructor is required by most APIs  */
 	public MyData() {
 		// Nothing to do
 	}
@@ -51,3 +50,4 @@ public class MyData implements Serializable {
 		return "fjslkjlqj2TOP+SECRETkjlskl";
 	}
 }
+// END main

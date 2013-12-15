@@ -4,8 +4,9 @@ import java.util.Formatter;
 
 /** Demonstrate some usage patterns and format-code examples 
  * of the Formatter class and PrintStream/PrintWriter 
- * printf() methods introduced back in Java 5.
+ * printf() methods introduced way back in Java 5.
  */
+// BEGIN main
 public class FormatterDemo {
 	public static void main(String[] args) {
 
@@ -37,3 +38,4 @@ public class FormatterDemo {
 		System.out.printf("PI is approximately %4.2f%n", Math.PI);
 	}
 }
+// END main
