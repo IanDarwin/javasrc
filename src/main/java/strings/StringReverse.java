@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  */
 public class StringReverse {
 	public static void main(String[] argv) {
-		// BEGIN
+		// BEGIN main
 		String s = "Father Charles Goes Down And Ends Battle";
 
 		// Put it in the stack frontwards
@@ -25,6 +25,6 @@ public class StringReverse {
 			System.out.print(' ');
 		}
 		System.out.println('"');
-		// END
+		// END main
 	}
 }

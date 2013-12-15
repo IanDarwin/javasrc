@@ -25,6 +25,12 @@ Java Cookbook was published:
 *)	I am using Eclipse for most of my development. And Maven, not Ant, for
 	building. Thus the Ant scripts are now out of date and unsupported; if you get 
 	them working please send me a pull request against the git repo.
+
+*)	An unspecified number of files here are used in the Java Cookbook;
+	those that have been converted to the newest publishing software at
+	O'Reilly will have "// BEGIN" and "// END" comments to mark sections for
+	mechanical inclusion into the book. These are just comments and can be
+	completely ignored by people looking at the source code normally.
 	
 
 Ian Darwin

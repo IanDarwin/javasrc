@@ -1,13 +1,14 @@
 package plotter;
 
-/** Main program, driver for Plotter class.
+/**
+ * Main program, driver for Plotter class.
  * This is to simulate a larger graphics application such as GnuPlot.
  */
+// BEGIN main
 public class PlotDriver {
 
 	/** Construct a Plotter driver, and try it out. */
-	public static void main(String[] argv)
-	{
+	public static void main(String[] argv) {
 		Plotter r ;
 		if (argv.length != 1) {
 			System.err.println("Usage: PlotDriver driverclass");
@@ -44,3 +45,4 @@ public class PlotDriver {
 		r.drawBox(10, 10);
 	}
 }
+// END main

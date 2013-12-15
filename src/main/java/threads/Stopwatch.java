@@ -49,7 +49,7 @@ package threads;
  */
 public class Stopwatch {
 	public static void main(String[] argv) {
-		// BEGIN
+		// BEGIN main
 		long t0 = System.currentTimeMillis();
 		while (true) {
 			long t1 = System.currentTimeMillis();
@@ -61,6 +61,6 @@ public class Stopwatch {
 				// nothing to say
 			}
 		}
-		// END
+		// END main
 	}
 }

@@ -24,17 +24,17 @@ import java.io.*;
  * 		// Look up the object to be invoked.
  * 		// Use a Lookup Name of "ex31object"
  * 
- * 		// END
+ * 		// END main
  * 		Object o = Naming.lookup("ex31object");
- * 		// BEGIN
+ * 		// BEGIN main
  * 
  * 		// TODO #2
  * 		// Downcast the looked up object using the IIOP portability
  * 
- * 		// END
+ * 		// END main
  * 		Ex31Object obj = (Ex31Object)PortableRemoteObject.narrow(
  * 			o, Ex31Object.class);
- * 		// BEGIN
+ * 		// BEGIN main
  * 	}
  * </pre><p>
  * When run through GetMark in "exclude" mode, the above will produce:
@@ -84,10 +84,10 @@ public class GetMark {
 	protected boolean printing = START;
 	/** True if you want line numbers */
 	protected final boolean number = false;
-	// END
+	// END main
 	/* This part should be excluded! */
 	int foo = 42;
-	// BEGIN
+	// BEGIN main
 
     /** Get Marked parts of one file, given an open LineNumberReader.
 	 * This is the main operation of this class, and can be used
@@ -96,7 +96,7 @@ public class GetMark {
     public void process(String fileName,
 		LineNumberReader is,
 		PrintStream out) {
-		// BEGIN
+		// BEGIN main
 		int nLines = 0;
 		try {
 			String inputLine;
@@ -127,7 +127,7 @@ public class GetMark {
 			if (nLines == 0)
 				System.err.println("ERROR: No marks in " + fileName +
 					"; no output generated!");
-		// END
+		// END main
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }

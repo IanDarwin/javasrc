@@ -6,7 +6,6 @@ import java.util.*;
 /** Show some date uses */
 public class DateDemo {
     public static void main(String[] args) {
-		// BEGIN
 		Date dNow = new Date();
 
 		/* Simple, Java 1.0 date printing */
@@ -16,6 +15,5 @@ public class DateDemo {
 		SimpleDateFormat formatter
 			= new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 		System.out.println("It is " + formatter.format(dNow));
-		// END
 	}
 }

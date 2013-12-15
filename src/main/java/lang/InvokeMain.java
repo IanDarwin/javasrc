@@ -1,15 +1,15 @@
 package lang;
 
-// BEGIN
+// BEGIN main
 import java.lang.reflect.Method;
-// END
+// END main
 
 /**
  * Show loading a class and finding and calling its Main method.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class InvokeMain {
-	// BEGIN
+	// BEGIN main
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		System.out.println("In lang.InvokeMain.main()");
@@ -44,5 +44,5 @@ public class InvokeMain {
 			//e.printStackTrace();
 		}
 	}
-	// END
+	// END main
 }

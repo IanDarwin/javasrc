@@ -7,7 +7,6 @@ import java.util.*;
 public class DateParse2 {
 	public static void main(String[] args) {
 
-		// BEGIN
 		SimpleDateFormat formatter =
 			new SimpleDateFormat("yyyy-MM-dd");
 		String[] input = { 
@@ -35,6 +34,5 @@ public class DateParse2 {
 			System.out.println(
 				action + " on " + d + " in " + location);
 		}
-		// END
 	}
 }
