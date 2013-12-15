@@ -11,4 +11,4 @@ public class ReadCharsOneAtATime {
         }
     }
 }
-// BEGIN main
+// END main
