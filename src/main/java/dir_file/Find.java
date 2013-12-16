@@ -5,9 +5,9 @@ import java.io.File;
 import com.darwinsys.lang.GetOpt;
 import com.darwinsys.util.Debug;
 
+// BEGIN main
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.
- * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class Find {
 	/** Main program */
@@ -65,3 +65,4 @@ public class Find {
 		System.out.println("f " + f.getPath());
 	}
 }
+// END main

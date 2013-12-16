@@ -5,21 +5,19 @@ import java.io.FilenameFilter;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import com.darwinsys.util.Debug;
 
+// BEGIN main
 /** Class to encapsulate the filtration for Find.
  * For now just setTTTFilter() methods. Really needs to be a real
  * data structure to allow complex things like
- *		-n "*.html" -a \( -size < 0 -o mtime < 5 \).
+ *	-n "*.html" -a \( -size < 0 -o mtime < 5 \).
  */
 public class FindFilter implements FilenameFilter {
 	boolean sizeSet;
 	int size;
 	String name;
 	Pattern nameRE;
-
-	public FindFilter() {
-	}
+	boolean debug = false;
 
 	void setSizeFilter(String sizeFilter) {
 		size = Integer.parseInt(sizeFilter);
@@ -40,7 +38,8 @@ public class FindFilter implements FilenameFilter {
 			}
 		}
 		sb.append('$');
-		Debug.println("name", "RE=\"" + sb + "\".");
+		if (debug)
+			System.out.println("RE=\"" + sb + "\".");
 		try {
 			nameRE = Pattern.compile(sb.toString());
 		} catch (PatternSyntaxException ex) {
@@ -70,3 +69,4 @@ public class FindFilter implements FilenameFilter {
 		return name;
 	}
 }
+// END main
