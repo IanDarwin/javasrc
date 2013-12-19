@@ -15,7 +15,7 @@ public class LegacyDates {
 		LocalDateTime newDate = LocalDateTime.ofInstant(legacyDate.toInstant(), ZoneId.of("EST"));
 		System.out.println(newDate);
 		
-		// newDate.t
+		// And via Calendar
 		
 		Calendar c = Calendar.getInstance();
 		System.out.println(c);
