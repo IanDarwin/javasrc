@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
+// BEGIN main
 public class TabPaneDemo {
 	protected JTabbedPane tabPane;
 	public TabPaneDemo() {
@@ -19,3 +20,4 @@ public class TabPaneDemo {
 		f.setVisible(true);
 	}
 }
+// END main

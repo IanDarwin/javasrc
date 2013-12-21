@@ -6,6 +6,7 @@ import java.util.regex.*;
  * Show line ending matching using RE class.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class NLMatch {
 	public static void main(String[] argv) {
 
@@ -35,3 +36,4 @@ public class NLMatch {
 		}
 	}
 }
+// END main

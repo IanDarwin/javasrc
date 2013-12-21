@@ -6,6 +6,7 @@ import java.net.*;
  * EchoClientOneLine - create client socket, send one line,
  * read it back. See also EchoClient.java, slightly fancier.
  */
+// BEGIN main
 public class EchoClientOneLine {
 	/** What we send across the net */
 	String mesg = "Hello across the net";
@@ -35,3 +36,4 @@ public class EchoClientOneLine {
 		}
 	}
 }
+// END main

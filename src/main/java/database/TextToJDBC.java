@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 
 /** Convert the database from text form to JDBC form.
  */
+// BEGIN main
 public class TextToJDBC {
 
 	protected final static String TEXT_NAME = "users.txt";
@@ -94,3 +95,4 @@ public class TextToJDBC {
 		return;			// All done with this program.
 	}
 }
+// END main

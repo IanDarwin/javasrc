@@ -9,6 +9,7 @@ import com.darwinsys.util.Debug;
  * Simple UDP client - contact the standard ascii time service
  * @author Ian Darwin, http://www.darwinsys.com/.
  */
+// BEGIN main
 public class DaytimeUDP {
 	/** The UDP port number */
 	public final static int DAYTIME_PORT = 13;
@@ -46,3 +47,4 @@ public class DaytimeUDP {
 			new String(buffer, 0, packet.getLength()));
 	}
 }
+// END main

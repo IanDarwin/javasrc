@@ -1,5 +1,6 @@
 package performance;
 
+// BEGIN main
 public class StringPrintB {
 	public static void main(String[] argv) {
 		Object o = "Hello World";
@@ -11,3 +12,4 @@ public class StringPrintB {
 		}
 	}
 }
+// END main

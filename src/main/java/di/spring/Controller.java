@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
+// BEGIN main
 public class Controller {
 
 	public static void main(String[] args) {
@@ -12,3 +13,4 @@ public class Controller {
 		v.displayMessage();
 	}
 }
+// END main

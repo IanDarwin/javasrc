@@ -5,6 +5,7 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+// BEGIN main
 public class ContentPane extends JFrame {
 	public ContentPane() {
 		Container cp = getContentPane();
@@ -12,3 +13,4 @@ public class ContentPane extends JFrame {
 		cp.add(new JLabel("A Really Simple Demo", JLabel.CENTER));
 	}
 }
+// END main

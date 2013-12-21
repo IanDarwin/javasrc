@@ -1,6 +1,7 @@
 package structure;
 
 /** Simple demo to print all the types of an enum. */
+// BEGIN main
 public class EnumList {
 	enum State { 
 		ON, OFF, UNKNOWN 
@@ -11,3 +12,4 @@ public class EnumList {
 		}
 	}
 }
+// END main

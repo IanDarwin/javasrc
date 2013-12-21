@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Stack;
 
 /** A trivial reverse-polish stack-based calculator for big numbers */
+// BEGIN main
 public class BigNumCalc {
 
 	/** an array of Objects, simulating user input */
@@ -65,3 +66,4 @@ public class BigNumCalc {
 		return stack.pop();
 	}
 }
+// END main

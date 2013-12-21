@@ -12,6 +12,7 @@ import java.util.*;
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class ChatServer {
 	/** What I call myself in system messages */
 	protected final static String CHATMASTER_ID = "ChatMaster";
@@ -226,3 +227,4 @@ public class ChatServer {
 		}
 	}
 }
+// END main

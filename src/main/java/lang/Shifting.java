@@ -1,7 +1,7 @@
 package lang;
 
 /**
- // BEGIN main
+ // BEGIN main // FIXME duplicate ??
  * Show some effects of shifting on ints and longs
  // END main
  * @author Ian F. Darwin, http://www.darwinsys.com/

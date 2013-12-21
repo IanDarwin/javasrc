@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+// BEGIN main
 public class JFrameFlowLayout extends JFrame {
 	public JFrameFlowLayout() {
 		Container cp = getContentPane();
@@ -25,3 +26,4 @@ public class JFrameFlowLayout extends JFrame {
 		new JFrameFlowLayout().setVisible(true);
 	}
 }
+// END main

@@ -47,6 +47,7 @@ package threads;
  * @author	Ian Darwin
  *
  */
+// BEGIN main
 public class ThreadsDemo3 {
 	String mesg;
 	Thread t;
@@ -89,3 +90,4 @@ public class ThreadsDemo3 {
 		System.out.println(s);
 	}
 }
+// END main

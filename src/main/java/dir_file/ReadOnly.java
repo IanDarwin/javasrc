@@ -2,6 +2,7 @@ package dir_file;
 
 import java.io.*;
 
+// BEGIN main
 public class ReadOnly {
 	public static void main(String[] a) throws IOException {
 
@@ -32,3 +33,4 @@ public class ReadOnly {
 		}
 	}
 }
+// END main

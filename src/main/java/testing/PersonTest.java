@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 /** A simple test case for Person */
+// BEGIN main
 public class PersonTest {
 
 	@Test
@@ -13,3 +14,4 @@ public class PersonTest {
 		assertEquals("Name concatenation", "Ian Darwin", f);
 	}
 }
+// END main

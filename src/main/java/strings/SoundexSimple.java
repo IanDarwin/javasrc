@@ -1,6 +1,7 @@
 package strings;
 
 /** Simple demonstration of Soundex.  */
+// BEGIN main
 public class SoundexSimple {
 
 	/** main */
@@ -15,3 +16,4 @@ public class SoundexSimple {
 			System.out.println(Soundex.soundex(names[i]) + ' ' + names[i]);
 	}
 }
+// END main

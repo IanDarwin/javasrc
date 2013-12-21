@@ -9,6 +9,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
+// BEGIN main
 public class CalcScriptEngine extends AbstractScriptEngine {
 
 	private ScriptEngineFactory factory;
@@ -46,3 +47,4 @@ public class CalcScriptEngine extends AbstractScriptEngine {
 		return factory;
 	}
 }
+// END main

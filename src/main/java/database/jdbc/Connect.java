@@ -11,6 +11,7 @@ import java.sql.SQLWarning;
  * configured as a System DSN (or user DSN for your user) in the
  * ODBC control panel.
  */
+// BEGIN main
 public class Connect {
 
 	public static void main(String[] av) {
@@ -49,3 +50,4 @@ public class Connect {
 	    }
 	}
 }
+// END main

@@ -4,6 +4,7 @@ package database.jdbc;
 /** 
  * Load some drivers.
  */
+// BEGIN main
 public class LoadDriver {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] av) {
@@ -20,3 +21,4 @@ public class LoadDriver {
 		}
 	}
 }
+// END main

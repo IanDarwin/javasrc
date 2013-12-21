@@ -6,6 +6,7 @@ import java.net.URL;
 /** Simple program to try out the "new Sound" stuff in JDK1.2 --
  * allows Applications, not just Applets, to play Sound.
  */
+// BEGIN main
 public class SoundPlay {
 
 	static String defSounds[] = {
@@ -32,3 +33,4 @@ public class SoundPlay {
 		// System.exit(0);
 	}
 }
+// END main

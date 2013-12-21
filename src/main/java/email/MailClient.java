@@ -21,6 +21,7 @@ import com.darwinsys.util.FileProperties;
 /** Standalone MailClient GUI application.
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class MailClient extends JComponent implements MailConstants {
 	/** The quit button */
 	JButton quitButton;
@@ -135,3 +136,4 @@ public class MailClient extends JComponent implements MailConstants {
 		f.setVisible(true);
 	}
 }
+// END main

@@ -6,6 +6,7 @@ import javax.swing.*;
 
 /** A frame for (possibly) multiple MailComposeBean windows.
  */
+// BEGIN main
 public class MailComposeFrame extends JPanel {
 	JDesktopPane dtPane;
 	JButton newButton;
@@ -53,3 +54,4 @@ public class MailComposeFrame extends JPanel {
 		add(newButton, BorderLayout.SOUTH);
 	}
 }
+// END main

@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
  *		java -Duser.language=es MenuIntl
  */
 @SuppressWarnings("serial")
+// BEGIN main
 public class MenuIntl extends JFrame {
 
 	/** "main program" method - construct and show */
@@ -116,3 +117,4 @@ public class MenuIntl extends JFrame {
 	}
 
 }
+// END main

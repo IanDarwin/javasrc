@@ -11,6 +11,7 @@ import com.darwinsys.swingui.I18N;
  * I18N'd JOptionPane
  * @author Ian Darwin
  */
+// BEGIN main
 public class JOptionDemo extends JFrame {
 
 	ResourceBundle rb;
@@ -54,3 +55,4 @@ public class JOptionDemo extends JFrame {
 		x.setVisible(true);
 	}
 }
+// END main

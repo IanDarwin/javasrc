@@ -1,6 +1,6 @@
 package lang;
 
-// BEGIN main
+// BEGIN main // FIXME duplicate main?
 import java.lang.reflect.Method;
 // END main
 

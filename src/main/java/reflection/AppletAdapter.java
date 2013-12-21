@@ -22,6 +22,7 @@ import java.util.Map;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/, for Learning Tree Course 478
  */
+// BEGIN main
 public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 	/** The status window at the bottom */
 	Label status = null;
@@ -132,3 +133,4 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		return streamMap.keySet().iterator();
 	}
 }
+// END main

@@ -15,6 +15,7 @@ import com.darwinsys.util.Debug;
  * UPDATED FOR JAXP.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class XTW {
 
 	public static void main(String[] av) {
@@ -100,3 +101,4 @@ public class XTW {
 		}
 	}
 }
+// END main

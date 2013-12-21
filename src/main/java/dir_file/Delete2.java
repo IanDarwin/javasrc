@@ -6,6 +6,7 @@ import java.io.File;
  * Delete a file from within Java, with error handling.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class Delete2 {
 
 	public static void main(String[] argv) {
@@ -35,3 +36,4 @@ public class Delete2 {
 		}
 	}
 }
+// END main

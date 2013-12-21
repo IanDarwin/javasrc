@@ -7,6 +7,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+// BEGIN main
 public class ScriptEnginesDemo {
 
 	public static void main(String[] args) throws ScriptException {
@@ -30,3 +31,4 @@ public class ScriptEnginesDemo {
 		engine.eval("print(\"Hello from " + lang + "\");");
 	}
 }
+// END main

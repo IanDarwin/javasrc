@@ -6,6 +6,7 @@ package numbers;
  *
  * @author Ian F. Darwin, inspired by David Flanagan.
  */
+// BEGIN main
 public class Complex {
 	/** The real part */
 	private double r;
@@ -102,3 +103,4 @@ public class Complex {
 		return (int)( r) |  (int)i;
 	}
 }
+// END main

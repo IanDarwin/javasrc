@@ -1,6 +1,7 @@
 package starting;
 
 /** This program exhibits some bugs, so we can use a debugger */
+// BEGIN main
 public class Buggy {
 	static String name;
 
@@ -13,3 +14,4 @@ public class Buggy {
 		System.out.println(name); // #3
 	}
 }
+// END main

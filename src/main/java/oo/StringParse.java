@@ -5,6 +5,7 @@ import com.darwinsys.lang.MutableInteger;
 /** Show use of MutableInteger to "pass back" a value in addition
  * to a function's return value.
  */
+// BEGIN main
 public class StringParse {
 	/** This is the function that has a return value of true but
 	 * also "passes back" the offset into the String where a
@@ -29,3 +30,4 @@ public class StringParse {
 		}
 	}
 }
+// END main

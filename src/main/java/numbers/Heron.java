@@ -6,6 +6,7 @@ package numbers;
  * Derived from listing in Rick Grehan's Java Pro article (October 1999).
  * Simplified and reformatted by Ian Darwin.
  */
+// BEGIN main
 public class Heron {
 	public static void main(String[] args) {
 		// Sides for triangle in float
@@ -35,3 +36,4 @@ public class Heron {
 		System.out.println("Double precision: " + aread);
 	}
 }
+// END main

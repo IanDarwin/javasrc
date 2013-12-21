@@ -8,6 +8,7 @@ import java.rmi.server.*;
  *	- main program for client to run.
  *	- "server" program for remote to use Client of
  */
+// BEGIN main
 public class ClientProgram extends UnicastRemoteObject implements Client
 {
 	protected final static String host = "localhost";
@@ -47,3 +48,4 @@ public class ClientProgram extends UnicastRemoteObject implements Client
 		System.out.println(message);
 	}
 }
+// END main

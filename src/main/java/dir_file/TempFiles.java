@@ -6,6 +6,7 @@ import java.io.*;
  * Work with temporary files in Java.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class TempFiles {
 	public static void main(String[] argv) throws IOException {
 
@@ -35,3 +36,4 @@ public class TempFiles {
 		// This version is dummy. Use your imagination.
 	}
 }
+// END main

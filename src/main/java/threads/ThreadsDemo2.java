@@ -45,6 +45,7 @@ package threads;
  * Threaded demo application, version 2, using Runnable.
  * @author	Ian Darwin
  */
+// BEGIN main
 public class ThreadsDemo2 implements Runnable {
 	String mesg;
 	Thread t;
@@ -88,3 +89,4 @@ public class ThreadsDemo2 implements Runnable {
 		System.out.println(s);
 	}
 }
+// END main

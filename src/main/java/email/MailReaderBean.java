@@ -22,6 +22,7 @@ import javax.swing.event.TreeSelectionListener;
  * This is the generic version in javasrc/email, split off from
  * JabaDex because of the latter's domain-specific "implements module" stuff.
  */
+// BEGIN main
 public class MailReaderBean extends JSplitPane {
 
 	private JTextArea bodyText;
@@ -182,3 +183,4 @@ public class MailReaderBean extends JSplitPane {
 		});
 	}
 }
+// END main

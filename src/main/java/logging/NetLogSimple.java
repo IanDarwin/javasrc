@@ -7,6 +7,7 @@ import java.io.IOException;
  * intended for use inside another program, possibly
  * a servlet or EJB.
  */
+// BEGIN main
 public class NetLogSimple {
 
 	public static void main(String[] args) throws IOException {
@@ -33,3 +34,4 @@ public class NetLogSimple {
 		System.out.println("NetLogSimple: Done...");
 	}
 }
+// END main

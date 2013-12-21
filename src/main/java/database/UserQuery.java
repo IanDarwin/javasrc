@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 /** Look up one use from the relational database using JDBC.
  */
+// BEGIN main
 public class UserQuery {
 
 	public static void main(String[] fn)
@@ -48,3 +49,4 @@ public class UserQuery {
 		System.exit(0);		// All done with this program.
 	}
 }
+// END main

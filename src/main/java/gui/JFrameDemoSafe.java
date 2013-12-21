@@ -8,6 +8,7 @@ import javax.swing.JFrame;
  * <br/>
  * See http://java.sun.com/developer/JDCTechTips/2003/tt1208.html.
  */
+// BEGIN main
 public class JFrameDemoSafe {
 	// We need a main program to instantiate and show.
 	public static void main(String[] args) {
@@ -23,3 +24,4 @@ public class JFrameDemoSafe {
 		});
 	}
 }
+// END main

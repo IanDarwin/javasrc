@@ -12,6 +12,7 @@ import com.darwinsys.swingui.I18N;
  * This is a first attempt. The next version should use a GridBagLayout.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class BusCard extends JFrame {
 
 	JLabel nameTF;
@@ -114,3 +115,4 @@ public class BusCard extends JFrame {
 		pack();
 	}
 }
+// END main

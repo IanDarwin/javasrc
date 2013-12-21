@@ -16,6 +16,7 @@ import com.darwinsys.util.Debug;
 /** Simple Graphing program.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class Grapher extends JPanel {
 
 	private static final long serialVersionUID = -1813143391310613248L;
@@ -132,3 +133,4 @@ public class Grapher extends JPanel {
 		f.setVisible(true);
 	}
 }
+// END main

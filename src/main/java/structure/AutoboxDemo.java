@@ -1,5 +1,6 @@
 package structure;
 
+// BEGIN main
 public class AutoboxDemo {
 	
 	/** Shows autoboxing (in the call to foo(i), i is wrapped automatically)
@@ -16,3 +17,4 @@ public class AutoboxDemo {
 		return Integer.valueOf(123);
 	}
 }
+// END main

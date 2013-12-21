@@ -8,6 +8,7 @@ import javax.xml.transform.stream.StreamSource;
 
 /** Illustrate simplest use of JAXP to transform using XSL.
  */
+// BEGIN main
 public class JAXPTransform {
 	
 	/**
@@ -31,3 +32,4 @@ public class JAXPTransform {
 				new StreamResult(new File(args[2])));
 	}
 }
+// END main

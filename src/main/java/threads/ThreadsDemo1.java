@@ -46,6 +46,7 @@ package threads;
  *
  * @author	Ian Darwin
  */
+// BEGIN main
 public class ThreadsDemo1 extends Thread {
 	String mesg;
 	int count;
@@ -89,3 +90,4 @@ public class ThreadsDemo1 extends Thread {
 		new ThreadsDemo1("Hello from Y", 15).start();
 	}
 }
+// END main

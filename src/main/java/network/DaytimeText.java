@@ -7,6 +7,7 @@ import java.net.*;
  * DaytimeText - connect to the standard Daytime (ascii) service.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class DaytimeText {
 	public static final short TIME_PORT = 13;
 
@@ -28,3 +29,4 @@ public class DaytimeText {
 		}
 	}
 }
+// END main

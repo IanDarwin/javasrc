@@ -6,6 +6,7 @@ import javax.sql.rowset.CachedRowSet;
  * The RowSet family of interfaces is in JDK1.5, but the Implementation
  * classes are (as of Beta 1) still in the unsupported "com.sun" package.
  */
+// BEGIN main
 public class CachedRowSetDemo {
 	public static final String ROWSET_IMPL_CLASS = "com.sun.rowset.CachedRowSetImpl";
 	public static void main(String[] args) throws Exception {
@@ -45,3 +46,4 @@ public class CachedRowSetDemo {
 		rs.close();
 	}
 }
+// END main

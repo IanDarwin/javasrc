@@ -12,6 +12,7 @@ import java.lang.reflect.Modifier;
  * The "Reflection" API is used to look up the information.
  *
  */
+// BEGIN main
 public class MyJavaP {
 
 	/** Simple main program, construct self, process each class name
@@ -74,3 +75,4 @@ public class MyJavaP {
 		}
 	}
 }
+// END main

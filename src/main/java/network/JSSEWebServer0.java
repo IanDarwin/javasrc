@@ -6,6 +6,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 /**
  * JSSEWebServer - subclass trivial WebServer0 to make it use SSL.
  */
+// BEGIN main
 public class JSSEWebServer0 extends WebServer0 {
 
 	public static final int HTTPS = 8443;
@@ -29,3 +30,4 @@ public class JSSEWebServer0 extends WebServer0 {
 	}
 
 }
+// END main

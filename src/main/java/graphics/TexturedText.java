@@ -18,6 +18,7 @@ import javax.swing.JComponent;
 /** Text with a Texture
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class TexturedText extends JComponent {
 
 	private static final long serialVersionUID = 8898234939386827451L;
@@ -88,3 +89,4 @@ public class TexturedText extends JComponent {
 	 	return new Dimension(320, 150);
 	}
 }
+// END main

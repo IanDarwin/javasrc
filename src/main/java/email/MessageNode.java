@@ -8,6 +8,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.darwinsys.lang.StringFormat;
 
 /** A Mutable Tree Node that is also a Message. */
+// BEGIN main
 public class MessageNode extends DefaultMutableTreeNode {
 	Message m;
 
@@ -38,3 +39,4 @@ public class MessageNode extends DefaultMutableTreeNode {
 		}
 	}
 }
+// END main

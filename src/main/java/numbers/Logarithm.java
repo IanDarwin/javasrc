@@ -6,7 +6,7 @@ package numbers;
  */
 public class Logarithm {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// BEGIN main // FIXME duplicate main ?
 		double someValue;
 		// compute someValue...
 		// END main

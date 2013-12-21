@@ -9,6 +9,7 @@ import java.util.Enumeration;
 /**
  * Show some uses of the new-in-1.4 NetworkInterface class.
  */
+// BEGIN main
 public class NetworkInterfaceDemo {
 	public static void main(String[] a) throws IOException {
 		Enumeration list = NetworkInterface.getNetworkInterfaces();
@@ -35,3 +36,4 @@ public class NetworkInterfaceDemo {
 		}
 	}
 }
+// END main

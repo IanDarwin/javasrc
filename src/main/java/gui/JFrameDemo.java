@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 /** Just a Frame
  */
+// BEGIN main
 public class JFrameDemo extends JFrame {
 
 	private static final long serialVersionUID = -3089466980388235513L;
@@ -41,3 +42,4 @@ public class JFrameDemo extends JFrame {
 		new JFrameDemo().setVisible(true);
 	}
 }
+// END main

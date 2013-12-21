@@ -7,6 +7,7 @@ import java.util.List;
 
 /** Iterator used to walk through a List.
  */
+// BEGIN main
 public class IteratorDemo {
 
 	public static void main(String[] argv) {
@@ -32,3 +33,4 @@ public class IteratorDemo {
 		}
 	}
 }
+// END main

@@ -15,6 +15,7 @@ import java.net.*;
  * @author	Chris R. Brown, original C version
  * @author	Java version by Ian Darwin, http://www.darwinsys.com/.
  */
+// BEGIN main
 public class RemCat {
 	/** The UDP port number */
 	public final static int TFTP_PORT = 69;
@@ -145,3 +146,4 @@ public class RemCat {
 				inp.getLength());
 	}
 }
+// END main

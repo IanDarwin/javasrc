@@ -44,6 +44,7 @@ import com.darwinsys.util.Debug;
  * mistakes.
  * @author Ian Darwin, http://www.darwinsys.com/ (Java Version)
  */
+// BEGIN main
 public class Soundex {
 
 	/* Implements the mapping
@@ -98,3 +99,4 @@ public class Soundex {
 	}
 }
 
+// END main

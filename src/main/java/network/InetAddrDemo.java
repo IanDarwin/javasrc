@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// BEGIN main
 public class InetAddrDemo {
 	public static void main(String[] args) throws IOException {
 		String ipNumber = "123.45.67.89";
@@ -35,3 +36,4 @@ public class InetAddrDemo {
 		System.out.println(anotherSocket); // Show that we got here...
 	}
 }
+// END main

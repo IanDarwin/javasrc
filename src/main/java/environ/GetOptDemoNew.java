@@ -9,6 +9,7 @@ import java.util.*;
  * which means: sort numerically (-n), writing to file "outfile" (-o
  * outfile), sort from infile1 and infile2.
  */
+// BEGIN main
 public class GetOptDemoNew {
 	public static void main(String[] argv) {
 		boolean numeric_option = false;
@@ -55,3 +56,4 @@ public class GetOptDemoNew {
 		System.out.println();
 	}
 }
+// END main

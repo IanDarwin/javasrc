@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
  * @author Patrick Killelea <p@patrick.net>: original Perl version,
  *	from the 2nd edition of his book "Web Performance Tuning".
  */
+// BEGIN main
 public class BookRank {
 	public final static String DATA_FILE = "book.sales";
 	public final static String GRAPH_FILE = "book.png";
@@ -129,3 +130,4 @@ public class BookRank {
 		return sb.toString();
 	}
 }
+// END main

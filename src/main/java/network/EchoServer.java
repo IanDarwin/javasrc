@@ -9,6 +9,7 @@ import java.net.*;
  * @author  Ian Darwin
  * Copyright (c) 1995, 1996, 1997, 2000 Ian F. Darwin
  */
+// BEGIN main
 public class EchoServer {
 	/** Our server-side rendezvous socket */
 	protected ServerSocket sock;
@@ -87,3 +88,4 @@ public class EchoServer {
 		/*NOTREACHED*/
 	}
 }
+// END main

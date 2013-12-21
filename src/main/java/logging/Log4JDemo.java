@@ -2,6 +2,7 @@ package logging;
 
 import org.apache.log4j.Logger;
 
+// BEGIN main
 public class Log4JDemo {
 	public static void main(String[] args) {
 
@@ -14,3 +15,4 @@ public class Log4JDemo {
 
 	}
 }
+// END main

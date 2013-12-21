@@ -3,6 +3,7 @@ package starting;
 import java.util.Date;
 
 /** Demonstrate deprecation warning */
+// BEGIN main
 public class Deprec {
 
 	public static void main(String[] av) {
@@ -13,3 +14,4 @@ public class Deprec {
 		System.out.println("Date is " + d);
 	}
 }
+// END main

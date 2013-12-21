@@ -13,6 +13,7 @@ import java.util.Calendar;
  * @see java.applet.Applet
  * @see javax.swing.JApplet
  */
+// BEGIN main
 public class JavadocDemo extends Applet {
 
 	/** init() is an Applet method called by the browser to initialize.
@@ -61,3 +62,4 @@ public class JavadocDemo extends Applet {
 		}
 	}
 }
+// END main

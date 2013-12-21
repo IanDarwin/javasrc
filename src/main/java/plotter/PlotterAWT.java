@@ -18,6 +18,7 @@ import javax.swing.JFrame;
  * You can also steal this as a basis for your own plotter driver.
  * @author	Ian Darwin
  */
+// BEGIN main
 public class PlotterAWT extends Plotter {
 	JFrame f;
 	PCanvas p;
@@ -116,3 +117,4 @@ public class PlotterAWT extends Plotter {
 		}
 	}
 }
+// END main

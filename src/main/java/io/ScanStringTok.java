@@ -8,6 +8,7 @@ import java.util.*;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class ScanStringTok {
 	protected  LineNumberReader is;
 
@@ -59,3 +60,4 @@ public class ScanStringTok {
 		}
 	}
 }
+// END main
