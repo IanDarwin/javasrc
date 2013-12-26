@@ -38,36 +38,36 @@ public class MenuShortcuts extends JFrame implements ActionListener {
 		// The File JMenu...
 		fm = new JMenu("File");
 		fm.setMnemonic('F');
-			fm.add(mi = new JMenuItem("Open", 'O'));
-			mi.addActionListener(this);
-			fm.add(mi = new JMenuItem("Close", 'W'));
-			mi.addActionListener(this);
-			fm.addSeparator();
+		fm.add(mi = new JMenuItem("Open", 'O'));
+		mi.addActionListener(this);
+		fm.add(mi = new JMenuItem("Close", 'W'));
+		mi.addActionListener(this);
+		fm.addSeparator();
 
-			fm.add(mi = new JMenuItem("Print", 'P'));
-			mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, 
-					Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+		fm.add(mi = new JMenuItem("Print", 'P'));
+		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, 
+				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 
-			mi.addActionListener(this);
-			fm.addSeparator();
-			fm.add(mi = new JMenuItem("Exit", 'Q'));
-			exitItem = mi;			// save for action handler
-			mi.addActionListener(this);
+		mi.addActionListener(this);
+		fm.addSeparator();
+		fm.add(mi = new JMenuItem("Exit", 'Q'));
+		exitItem = mi;			// save for action handler
+		mi.addActionListener(this);
 		mb.add(fm);
 
 		// The Options JMenu...
 		om = new JMenu("Options");
-			om.add(new JMenuItem("Alpha"));
-			om.add(new JMenuItem("Gamma"));
-			om.add(new JMenuItem("Delta"));
+		om.add(new JMenuItem("Alpha"));
+		om.add(new JMenuItem("Gamma"));
+		om.add(new JMenuItem("Delta"));
 		mb.add(om);
 
 		// The Help JMenu...
 		hm = new JMenu("Help");
-			hm.add(mi = new JMenuItem("About"));
-			mi.addActionListener(this);
-			hm.add(mi = new JMenuItem("Topics"));
-			mi.addActionListener(this);
+		hm.add(mi = new JMenuItem("About"));
+		mi.addActionListener(this);
+		hm.add(mi = new JMenuItem("Topics"));
+		mi.addActionListener(this);
 		mb.add(hm);
 		// mb.setHelpMenu(hm);	// needed for portability (Motif, etc.).
 
@@ -78,15 +78,13 @@ public class MenuShortcuts extends JFrame implements ActionListener {
 
 	/** Handle action events. */
 	public void actionPerformed(ActionEvent evt) {
-		// System.out.println("Event " + evt);
+		Object eventSource = evt.getSource();
 		String cmd;
 		if ((cmd = evt.getActionCommand()) == null)
-			System.out.println("You chose a menu shortcut");
+			System.out.println("You chose a menu shortcut, from " + eventSource);
 		else
-			System.out.println("You chose " + cmd);
-		Object cmp = evt.getSource();
-		// System.out.println("Source " + cmp);
-		if (cmp == exitItem)
+			System.out.println("You chose " + cmd + " from " + eventSource);
+		if (eventSource == exitItem)
 			System.exit(0);
 	}
 
