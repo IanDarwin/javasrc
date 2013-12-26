@@ -1,4 +1,4 @@
-package gui;
+package gui_awt;
 
 import java.awt.CheckboxMenuItem;
 import java.awt.Container;
@@ -14,7 +14,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Demonstrate Menus and the MenuBar class/MenuContainer interface
+ * Demonstrate AWT Menus and the MenuBar class/MenuContainer interface
  *
  * This version uses 1.1 action handling and MenuShortcut. The action
  * handling is incomplete; realistically, each MenuItem would have its
@@ -23,8 +23,7 @@ import java.awt.event.ItemListener;
  *
  * @author Ian Darwin
  */
-public class MenuDemo
-		extends Frame
+public class MenuDemo extends Frame
 				implements ActionListener, ItemListener {
 	MenuBar mb;
 	/** File, Options, Help */
