@@ -16,6 +16,7 @@ import java.util.zip.ZipFile;
  * @author	Ian Darwin, Ian@DarwinSys.com
  * $Id$
  */
+// BEGIN main
 public class UnZip {
 	/** Constants for mode listing or mode extracting. */
 	public static enum Mode {
@@ -137,3 +138,4 @@ public class UnZip {
 		}
 	}
 }
+// END main

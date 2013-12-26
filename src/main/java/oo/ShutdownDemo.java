@@ -3,6 +3,7 @@ package oo;
 /** Demonstrate how finalize() methods and shutdownHooks interact
  *  with calls to System.exit().
  */
+// BEGIN main
 public class ShutdownDemo {
 	public static void main(String[] args) throws Exception {
 
@@ -34,3 +35,4 @@ public class ShutdownDemo {
 		System.exit(0);
 	}
 }
+// END main

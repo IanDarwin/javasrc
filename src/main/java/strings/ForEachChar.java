@@ -1,5 +1,6 @@
 package strings;
 
+// BEGIN main
 public class ForEachChar {
 	public static void main(String[] args) {
 		String s = "Hello world";
@@ -9,3 +10,4 @@ public class ForEachChar {
 		}
 	}
 }
+// END main

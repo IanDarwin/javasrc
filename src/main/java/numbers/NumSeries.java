@@ -3,6 +3,7 @@ package numbers;
 import java.util.BitSet;
 
 /** Operations on series of numbers */
+// BEGIN main
 public class NumSeries {
 	public static void main(String[] args) {
 
@@ -36,3 +37,4 @@ public class NumSeries {
 		"September", "October", "November", "December"
 	};
 }
+// END main

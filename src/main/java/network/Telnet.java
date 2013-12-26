@@ -8,6 +8,7 @@ import java.io.*;
  * This does not hold a candle to a real Telnet client, but
  * shows some ideas on how to implement such a thing.
  */
+// BEGIN main
 public class Telnet {
 	String host;
 	int portNum;
@@ -67,3 +68,4 @@ public class Telnet {
 		}
 	}
 }
+// END main

@@ -7,6 +7,7 @@ import java.text.ParsePosition;
 /** Bare-minimum String formatter (string aligner).
  * XXX When 1.5 is common, change from ints to enum for alignment.
  */
+// BEGIN main
 public class StringAlign extends Format {
 	/* Constant for left justification. */
 	public static final int JUST_LEFT = 'l';
@@ -98,3 +99,4 @@ public class StringAlign extends Format {
 	}
 
 }
+// END main

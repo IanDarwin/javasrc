@@ -25,4 +25,3 @@ public class MatrixUse {
 		// END main
 	}
 }
-

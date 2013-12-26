@@ -12,6 +12,7 @@ import javax.swing.JButton;
  * HelloApplet is a simple applet that toggles a message
  * when you click on a Draw button.
  */
+// BEGIN main
 public class HelloApplet extends JApplet {
 
 	/** The flag which controls drawing the message. */
@@ -53,3 +54,4 @@ public class HelloApplet extends JApplet {
 		}
 	}
 }
+// END main

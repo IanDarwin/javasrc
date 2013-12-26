@@ -3,6 +3,7 @@ package beans;
 import org.apache.bsf.BSFManager;
 
 /** Sample of using Bean Scripting Framework with JPython */
+// BEGIN main
 public class BSFSample {
 	public static void main(String[] args) {
 		BSFManager manager = new BSFManager();
@@ -24,3 +25,4 @@ public class BSFSample {
 		return;
 	}
 }
+// END main

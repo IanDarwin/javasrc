@@ -13,6 +13,7 @@ import java.util.Stack;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class SimpleCalcStreamTok {
 	/** The StreamTokenizer Input */
 	protected  StreamTokenizer tf;
@@ -115,3 +116,4 @@ public class SimpleCalcStreamTok {
 		s.removeAllElements();
 	}
 }
+// END main

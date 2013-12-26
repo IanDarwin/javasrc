@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Calendar;
 
 /** This class shows using Reflection to get a field from another class. */
+// BEGIN main
 public class FindField {
 
 	public static void main(String[] unused) 
@@ -34,3 +35,4 @@ class YearHolder {
 	/** Just a field that is used to show getting a field's value. */
 	public int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 }
+// END main

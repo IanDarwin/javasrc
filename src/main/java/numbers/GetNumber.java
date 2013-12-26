@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
  *
  * @author Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class GetNumber extends Frame {
 
 	/** The input textField */
@@ -66,3 +67,4 @@ public class GetNumber extends Frame {
 		new GetNumber().setVisible(true);
 	}
 }
+// END main

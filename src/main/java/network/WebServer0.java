@@ -22,6 +22,7 @@ import java.net.Socket;
  * @author	Ian Darwin, http://www.darwinsys.com/
  * @see		webserver/* for more fully-fleshed-out version(s).
  */
+// BEGIN main
 public class WebServer0 {
 	public static final int HTTP = 80;
 	ServerSocket s;
@@ -99,3 +100,4 @@ public class WebServer0 {
 		return;
 	}
 }
+// END main

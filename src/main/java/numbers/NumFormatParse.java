@@ -7,7 +7,7 @@ import java.text.ParseException;
  * Parse a number using a NumberFormat.
  */
 public class NumFormatParse {
-	// BEGIN main
+	// BEGIN main // FIXME duplicate ?
 	/** A number to parse */
 	public static final String input = "4096.251";
 	// END main

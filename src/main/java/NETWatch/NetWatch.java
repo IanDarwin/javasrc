@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
+// BEGIN main
 public class NetWatch {
 	public static void main(String[] argv) {
 
@@ -70,3 +71,4 @@ public class NetWatch {
 		});
 	}
 }
+// END main

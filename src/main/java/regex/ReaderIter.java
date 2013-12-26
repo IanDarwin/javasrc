@@ -6,6 +6,7 @@ import java.io.*;
 /**
  * Print all the strings that match a given pattern from a file.
  */
+// BEGIN main
 public class ReaderIter {
 	public static void main(String[] args) throws IOException {
 		// The RE pattern
@@ -33,3 +34,4 @@ public class ReaderIter {
 		}
 	}
 }
+// END main

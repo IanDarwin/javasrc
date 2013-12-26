@@ -2,6 +2,7 @@ package structure;
 
 /** Toy Stack. 
  */
+// BEGIN main
 public class ToyStack {
 
 	/** The maximum stack depth */
@@ -24,3 +25,4 @@ public class ToyStack {
 		return stack[depth-1];
 	}
 }
+// END main

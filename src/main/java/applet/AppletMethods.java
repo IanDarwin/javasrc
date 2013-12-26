@@ -8,6 +8,7 @@ import java.net.URL;
 
 /** AppletMethods -- show stop/start and AudioClip methods */
 
+// BEGIN main
 public class AppletMethods extends Applet {
 
 	private static final long serialVersionUID = -4376117045074079151L;
@@ -57,3 +58,4 @@ public class AppletMethods extends Applet {
 		return getParameter(p)==null?def:getParameter(p);
 	}
 }
+// END main

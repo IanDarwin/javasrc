@@ -14,6 +14,7 @@ import com.darwinsys.util.Debug;
  * Version for SAX 2.0
  * @author Ian Darwin
  */
+// BEGIN main
 public class SAXLister {
 	public static void main(String[] args) throws Exception {
 		new SAXLister(args);
@@ -54,3 +55,4 @@ public class SAXLister {
 		}
 	}
 }
+// END main

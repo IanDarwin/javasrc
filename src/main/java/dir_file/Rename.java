@@ -6,6 +6,7 @@ import java.io.*;
  * Rename a file in Java
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class Rename {
 	public static void main(String[] argv) throws IOException {
 
@@ -17,3 +18,4 @@ public class Rename {
 		f.renameTo(new File("junk.dat"));
 	}
 }
+// END main

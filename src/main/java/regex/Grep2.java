@@ -9,6 +9,7 @@ import com.darwinsys.lang.GetOpt;
 /** A command-line grep-like program. Accepts some command-line options,
  * and takes a pattern and a list of text files.
  */
+// BEGIN main
 public class Grep2 {
 	/** The pattern we're looking for */
 	protected Pattern pattern;
@@ -169,3 +170,4 @@ public class Grep2 {
 		} catch (IOException e) { System.err.println(e); }
 	}
 }
+// END main

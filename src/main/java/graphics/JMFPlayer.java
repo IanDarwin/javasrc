@@ -19,6 +19,7 @@ import javax.swing.JPanel;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 @SuppressWarnings("serial")
+// BEGIN main
 public class JMFPlayer extends JPanel implements ControllerListener {
 
     /** The player object */
@@ -103,3 +104,4 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
+// END main

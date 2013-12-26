@@ -3,6 +3,7 @@ package structure;
 /** A lax Stack implementation.
  */
 @SuppressWarnings("unchecked")
+// BEGIN main
 public class MyStack<T> {
 	
 	private int ix = 0;
@@ -48,3 +49,4 @@ public class MyStack<T> {
 		return ix;
 	}
 }
+// END main

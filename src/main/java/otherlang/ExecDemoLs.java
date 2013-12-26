@@ -8,6 +8,7 @@ import java.io.*;
  * ExecDemo shows how to execute an external program (in this case
  * the UNIX directory lister /bin/ls) and read its output.
  */
+// BEGIN main
 public class ExecDemoLs {
 	/** The program to run */
 	public static final String PROGRAM = "ls"; // "dir" for Windows
@@ -54,3 +55,4 @@ public class ExecDemoLs {
 		return;
 	}
 }
+// END main

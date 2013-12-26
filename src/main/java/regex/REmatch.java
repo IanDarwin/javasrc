@@ -6,6 +6,7 @@ import java.util.regex.*;
  * REmatch -- demonstrate RE Match -> group()
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class REmatch {
 	public static void main(String[] argv) {
 
@@ -22,3 +23,4 @@ public class REmatch {
 		}
 	}
 }
+// END main

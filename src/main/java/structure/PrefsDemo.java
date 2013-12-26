@@ -5,6 +5,7 @@ import java.util.prefs.Preferences;
 /**
  * Simple demonstration of using Preferences.
  */
+// BEGIN main
 public class PrefsDemo {
 
 	public static void main(String[] args) throws Exception {
@@ -32,3 +33,4 @@ public class PrefsDemo {
 		prefs.exportSubtree(System.out);
 	}
 }
+// END main

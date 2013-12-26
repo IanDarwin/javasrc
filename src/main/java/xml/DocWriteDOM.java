@@ -13,6 +13,7 @@ import javax.xml.transform.stream.*;
  * Updated for JAXP, using identity Transformer
  * @author Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class DocWriteDOM {
 
 	public static void main(String[] av) throws Exception {
@@ -58,3 +59,4 @@ public class DocWriteDOM {
 		}
 	}
 }
+// END main

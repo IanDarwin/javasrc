@@ -5,6 +5,7 @@ package oo;
  * that only one instance of the class will exist in a given application.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class Singleton {
 
 	private static Singleton instance;
@@ -34,3 +35,4 @@ public class Singleton {
 		return "demo";
 	}
 }
+// END main

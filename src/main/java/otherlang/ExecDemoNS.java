@@ -16,6 +16,7 @@ import com.darwinsys.util.Debug;
 /**
  * ExecDemoNS shows how to execute a program from within Java.
  */
+// BEGIN main
 public class ExecDemoNS extends JFrame {
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
@@ -113,3 +114,4 @@ public class ExecDemoNS extends JFrame {
 	}
 
 }
+// END main

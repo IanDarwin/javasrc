@@ -8,6 +8,7 @@ import java.util.regex.*;
  * by the RE-matching engine.
  * 
  */
+// BEGIN main
 public class CanonEqDemo {
 	public static void main(String[] args) {
 		String pattStr = "\u00e9gal"; // egal
@@ -28,3 +29,4 @@ public class CanonEqDemo {
 		}
 	}
 }
+// END main

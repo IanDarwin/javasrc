@@ -3,6 +3,7 @@ package strings;
 import java.util.StringTokenizer;
 
 /** Show using a StringTokenizer including getting the delimiters back */
+// BEGIN main
 public class StrTokDemo4 {
 	public final static int MAXFIELDS = 5;
 	public final static String DELIM = "|";
@@ -44,3 +45,4 @@ public class StrTokDemo4 {
 		printResults("A|||D|E", process("A|||D|E"));
 	}
 }
+// END main

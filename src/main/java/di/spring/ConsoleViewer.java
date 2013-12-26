@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 @Component("myView")
+// BEGIN main
 public class ConsoleViewer implements View {
 
 	Model messageProvider;
@@ -20,3 +21,4 @@ public class ConsoleViewer implements View {
 	}
 
 }
+// END main

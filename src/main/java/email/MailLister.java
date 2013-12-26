@@ -13,6 +13,7 @@ import com.darwinsys.util.FileProperties;
 /**
 * List all available folders.
 */
+// BEGIN main
 public class MailLister {
 	static StringFormat fromFmt = 
 		new StringFormat(20, StringFormat.JUST_LEFT);
@@ -123,3 +124,4 @@ public class MailLister {
 		}
 	}
 }
+// END main

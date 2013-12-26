@@ -8,6 +8,7 @@ import java.util.List;
  * of the ArrayList to find the object (or end of list) before which
  * to insert the new user. 
  */
+// BEGIN main
 public class CallTrack {
 
 	/** The list of Person objects. */
@@ -32,3 +33,4 @@ public class CallTrack {
 	}
 
 }
+// END main

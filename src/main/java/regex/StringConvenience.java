@@ -4,6 +4,7 @@ package regex;
  * StringConvenience -- demonstrate java.lang.String convenience routine
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class StringConvenience {
 	public static void main(String[] argv) {
 
@@ -16,3 +17,4 @@ public class StringConvenience {
 		}
 	}
 }
+// END main

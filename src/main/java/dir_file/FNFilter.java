@@ -6,6 +6,7 @@ import java.io.*;
  * FNFilter - Ls directory lister modified to use FilenameFilter
  * @author Ian Darwin
  */
+// BEGIN main
 public class FNFilter {
 	public static void main(String argh_my_aching_fingers[]) {
 		// Generate the selective list, with a one-use File object.
@@ -27,3 +28,4 @@ public class FNFilter {
 		}
 	}
 }
+// END main

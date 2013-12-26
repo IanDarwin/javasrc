@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 /**
  * Fmt - format text (like Berkeley UNIX fmt).
  */
+// BEGIN main
 public class Fmt {
 	/** The maximum column width */
 	public static final int COLWIDTH=72;
@@ -83,3 +84,4 @@ public class Fmt {
 		}
 	}
 }
+// END main

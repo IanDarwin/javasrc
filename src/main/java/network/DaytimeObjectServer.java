@@ -8,6 +8,7 @@ import java.util.*;
  * DaytimeObjectServer - server for the non-standard Time (object) service.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class DaytimeObjectServer {
 	/** The TCP port for the object time service. */
 	public static final short TIME_PORT = 1951;
@@ -34,3 +35,4 @@ public class DaytimeObjectServer {
 		}
 	}
 }
+// END main

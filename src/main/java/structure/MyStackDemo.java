@@ -1,5 +1,6 @@
 package structure;
 
+// BEGIN main
 public class MyStackDemo {
 	public static void main(String[] args) {
 		MyStack<String> ms1 = new MyStack<String>();
@@ -33,3 +34,4 @@ public class MyStackDemo {
 		}
 	}
 }
+// END main

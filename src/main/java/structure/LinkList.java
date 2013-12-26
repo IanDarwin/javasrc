@@ -15,6 +15,7 @@ import java.util.ListIterator;
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin
  */
+// BEGIN main
 public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
@@ -177,3 +178,4 @@ public class LinkList<T> implements List<T> {
 		return null;
 	}
 }
+// END main

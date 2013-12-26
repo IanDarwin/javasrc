@@ -5,6 +5,7 @@ import java.io.*;
  * Read an int from Standard Input
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class ReadStdinInt {
 	public static void main(String[] ap) {
 		String line = null;
@@ -22,3 +23,4 @@ public class ReadStdinInt {
 		System.out.println("I read this number: " + val);
 	}
 }
+// END main

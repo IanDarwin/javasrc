@@ -45,6 +45,7 @@ package threads;
 
 /** Show stopping a Thread using a flag.
  */
+// BEGIN main
 public class StopBoolean extends Thread {
 
 	// MUST be volatile... If not, aggressive optimizing compiler
@@ -74,3 +75,4 @@ public class StopBoolean extends Thread {
 		t1.shutDown();
 	}
 }
+// END main

@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 /** detab- replace blanks by tabs and blanks.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class DeTab {
 	Tabs ts;
 	
@@ -59,3 +60,4 @@ public class DeTab {
 	}
 }
 
+// END main

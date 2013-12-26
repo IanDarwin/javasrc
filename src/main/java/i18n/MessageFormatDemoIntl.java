@@ -3,6 +3,7 @@ package i18n;
 import java.text.*;
 import java.util.*;
 
+// BEGIN main
 public class MessageFormatDemoIntl {
 
 	static Object[] data = {
@@ -19,3 +20,4 @@ public class MessageFormatDemoIntl {
 		System.out.println(result);
 	}
 }
+// END main

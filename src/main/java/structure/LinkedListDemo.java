@@ -8,6 +8,7 @@ import java.util.ListIterator;
  * using same example as my older LinkList class.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class LinkedListDemo {
 	public static void main(String[] argv) {
 		System.out.println("Here is a demo of Java 1.2's LinkedList class");
@@ -32,3 +33,4 @@ public class LinkedListDemo {
 		}
 	}
 }
+// END main

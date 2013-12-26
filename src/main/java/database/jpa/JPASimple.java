@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import database.Person;
 
+// BEGIN main
 public class JPASimple {
 	
 	@SuppressWarnings("unchecked")
@@ -71,3 +72,4 @@ public class JPASimple {
 		}
 	}
 }
+// END main

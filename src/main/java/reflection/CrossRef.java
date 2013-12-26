@@ -21,6 +21,7 @@ import java.util.Comparator;
  *
  * @author	Ian Darwin, Ian@DarwinSys.com
  */
+// BEGIN main
 public class CrossRef extends APIFormatter {
 
 	/** Simple main program, construct self, process each .ZIP file
@@ -93,3 +94,4 @@ public class CrossRef extends APIFormatter {
 		System.out.println(s);
 	}
 }
+// END main

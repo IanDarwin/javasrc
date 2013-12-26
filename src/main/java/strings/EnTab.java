@@ -16,6 +16,7 @@ import com.darwinsys.util.Debug;
  * 
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class EnTab {
 	/** The Tabs (tab logic handler) */
 	protected Tabs tabs;
@@ -136,3 +137,4 @@ public class EnTab {
 		return sb.toString();
 	}
 }
+// END main

@@ -6,6 +6,7 @@ import java.util.Random;
 /** Array Hunt "game" (pathetic: computer plays itself).
  * @author Ian Darwin
  */
+// BEGIN main
 public class ArrayHunt  {
 	/** the maximum (and actual) number of random ints to allocate */
 	protected final static int MAX    = 4000;
@@ -62,3 +63,4 @@ public class ArrayHunt  {
 		}
 	}
 }
+// END main

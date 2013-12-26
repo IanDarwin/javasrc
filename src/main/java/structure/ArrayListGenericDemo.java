@@ -2,6 +2,7 @@ package structure;
 
 import java.util.*;
 
+// BEGIN main
 public class ArrayListGenericDemo {
 	public static void main(String[] args) {
 		ArrayList<String> data = new ArrayList<String>();
@@ -15,3 +16,4 @@ public class ArrayListGenericDemo {
 		}
 	}
 }
+// END main

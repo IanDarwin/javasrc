@@ -24,6 +24,7 @@ import com.darwinsys.util.Debug;
  * TODO split into general handler stuff and "FileServlet",
  *	then handle w/ either user HttpServlet subclasses or FileServlet.
  */
+// BEGIN main
 public class Handler {
 
 	/** inputStream, from Viewer */
@@ -197,3 +198,4 @@ public class Handler {
 		os.close();
 	}
 }
+// END main

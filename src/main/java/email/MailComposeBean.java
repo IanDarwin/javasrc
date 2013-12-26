@@ -38,6 +38,7 @@ import com.darwinsys.util.FileProperties;
  *
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class MailComposeBean extends JPanel {
 
 	/** The parent frame to be hidden/disposed; may be JFrame, JInternalFrame
@@ -258,3 +259,4 @@ public class MailComposeBean extends JPanel {
 		jf.pack();
 	}
 }
+// END main

@@ -9,6 +9,7 @@ import java.util.Properties;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
+// BEGIN main
 public class RMIPanel extends NetPanel implements Runnable {
 	
 	public RMIPanel(String host, Properties p) {
@@ -62,3 +63,4 @@ public class RMIPanel extends NetPanel implements Runnable {
 		}
 	}
 }
+// END main

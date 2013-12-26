@@ -48,6 +48,7 @@ import java.net.Socket;
 
 /** Stop a thread by closing a socket.
  */
+// BEGIN main
 public class StopClose extends Thread {
 	protected Socket io;
 
@@ -90,3 +91,4 @@ public class StopClose extends Thread {
 		t.shutDown();
 	}
 }
+// END main

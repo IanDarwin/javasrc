@@ -12,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 /** sender -- send an email message.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class Sender {
 
 	/** The message recipient. */
@@ -85,3 +86,4 @@ public class Sender {
 		sm.doSend();
 	}
 }
+// END main

@@ -5,6 +5,7 @@ import com.darwinsys.lang.GetOpt;
 /** Trivial demonstration of GetOpt, the old way. If -h present, print help.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class GetOptSimple {
 	public static void main(String[] args) {
 		GetOpt go = new GetOpt("h");
@@ -31,3 +32,4 @@ public class GetOptSimple {
 		System.exit(returnValue);
 	}
 }
+// END main

@@ -9,6 +9,7 @@ import java.io.*;
  * on the serversocket when calling its accept() method.
  * @author Ian F. Darwin.
  */
+// BEGIN main
 public class EchoServerThreaded2 {
 
 	public static final int ECHOPORT = 7;
@@ -88,3 +89,4 @@ public class EchoServerThreaded2 {
 		}
 	}
 }
+// END main

@@ -4,6 +4,7 @@ package numbers;
  * Floating-point comparisons.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class FloatCmp {
 	final static double EPSILON = 0.0000001;
 	public static void main(String[] argv) {
@@ -51,3 +52,4 @@ public class FloatCmp {
 		// XXX Why not just this: return equals(a, b, EPSILON);
 	}
 }
+// END main

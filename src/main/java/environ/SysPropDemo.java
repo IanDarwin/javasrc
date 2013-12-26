@@ -5,6 +5,7 @@ import java.io.IOException;
 /**
  * List one or more item(s) from System Properties
  */
+// BEGIN main // FIXME use the smaller snippet??
 public class SysPropDemo {
 	public static void main(String[] argv) throws IOException {
 		if (argv.length == 0)
@@ -18,3 +19,4 @@ public class SysPropDemo {
 		}
 	}
 }
+// END main

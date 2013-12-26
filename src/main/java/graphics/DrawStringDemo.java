@@ -3,6 +3,7 @@ package graphics;
 import java.awt.*;
 import javax.swing.*;
 
+// BEGIN main
 public class DrawStringDemo extends JComponent {
 
 	private static final long serialVersionUID = -7199469682507443122L;
@@ -19,3 +20,4 @@ public class DrawStringDemo extends JComponent {
 	}
 }
 
+// END main

@@ -53,6 +53,7 @@ import java.io.*;
  * that may load a servlet class more than once.  The "right" way is to 
  * synchronize on an object stored in the Servlet Application Context.
  */
+// BEGIN main
 public class BuzzInServlet extends HttpServlet {
 
 	/** The attribute name used throughout. */
@@ -154,3 +155,4 @@ public class BuzzInServlet extends HttpServlet {
 		out.println("</body></html>");
 	}
 }
+// END main

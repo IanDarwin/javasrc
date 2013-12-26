@@ -6,6 +6,7 @@ import java.util.regex.*;
  * Simple example of using RE class.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class RESimple {
 	public static void main(String[] argv) {
 		String pattern = "^Q[^u]\\d+\\.";
@@ -19,3 +20,4 @@ public class RESimple {
 			(found ? " matches '" : " doesn't match '") + input + "'");
 	}
 }
+// END main

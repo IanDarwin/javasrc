@@ -1,5 +1,6 @@
 package di.spring;
 
+// BEGIN main
 public class ControllerTightlyCoupled {
 
 	public static void main(String[] args) {
@@ -10,3 +11,4 @@ public class ControllerTightlyCoupled {
 
 	}
 }
+// END main

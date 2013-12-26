@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /* Client with error handling */
+// BEGIN main
 public class ConnectFriendly {
 	public static void main(String[] argv) {
 		String server_name = argv.length == 1 ? argv[0] : "localhost";
@@ -34,3 +35,4 @@ public class ConnectFriendly {
 		}
 	}
 }
+// END main

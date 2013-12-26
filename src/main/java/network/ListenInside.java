@@ -8,6 +8,7 @@ import java.net.*;
  * a particular interface, in this case, one named by INSIDE_HOST.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class ListenInside {
 	/** The TCP port for the service. */
 	public static final short PORT = 9999;
@@ -41,3 +42,4 @@ public class ListenInside {
 		s.close();
 	}
 }
+// END main

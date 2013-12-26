@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 /** Comparator for comparing strings ignoring first character.
  */
+// BEGIN main
 public class SubstringComparator implements Comparator {
 	public int compare(Object o1, Object o2) {
 		String s1 = o1.toString().substring(1);
@@ -13,3 +14,4 @@ public class SubstringComparator implements Comparator {
 		// return o1.toString().substring(1).equals(o2.toString().substring(1));
 	}
 }
+// END main

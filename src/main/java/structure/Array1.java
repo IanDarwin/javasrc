@@ -7,6 +7,7 @@ import java.util.Calendar;
  *
  * @author Ian Darwin
  */
+// BEGIN main
 public class Array1  {
 	@SuppressWarnings("unused")
 	public static void main(String[] argv) {
@@ -40,3 +41,4 @@ public class Array1  {
 
 	}
 }
+// END main

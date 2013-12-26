@@ -13,6 +13,7 @@ import javax.swing.JFrame;
  * @author ian
  * @verion $Id$
  */
+// BEGIN main
 public class ThreadBasedCatcher extends JFrame{
 
 	public static void main(String[] args) {
@@ -44,3 +45,4 @@ public class ThreadBasedCatcher extends JFrame{
 		pack();
 	}
 }
+// END main

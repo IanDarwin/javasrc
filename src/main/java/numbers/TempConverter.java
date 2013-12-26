@@ -4,6 +4,7 @@ package numbers;
 /* Print a table of Fahrenheit and Celsius temperatures 
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class TempConverter {
 
 	public static void main(String[] args) {
@@ -30,3 +31,4 @@ public class TempConverter {
 	protected void end() {
 	}
 }
+// END main

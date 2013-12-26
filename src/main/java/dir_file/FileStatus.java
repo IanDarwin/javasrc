@@ -8,6 +8,7 @@ import java.util.Date;
  * Report on a file's status in Java
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class FileStatus {
 	public static void main(String[] argv) throws IOException {
 
@@ -66,3 +67,4 @@ public class FileStatus {
 		System.out.println();	// blank line between entries
 	}
 }
+// END main

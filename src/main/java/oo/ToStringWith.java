@@ -1,6 +1,7 @@
 package oo;
 
 /* Demonstrate toString() with an override */
+// BEGIN main
 public class ToStringWith {
 	int x, y;
 
@@ -18,3 +19,4 @@ public class ToStringWith {
 		System.out.println(new ToStringWith(42, 86));
 	}
 }
+// END main

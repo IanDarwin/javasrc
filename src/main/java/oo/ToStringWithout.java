@@ -1,6 +1,7 @@
 package oo;
 
 /* Demonstrate toString() without an override */
+// BEGIN main
 public class ToStringWithout {
 	int x, y;
 
@@ -14,3 +15,4 @@ public class ToStringWithout {
 		System.out.println(new ToStringWithout(42, 86));
 	}
 }
+// END main

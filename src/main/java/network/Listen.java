@@ -7,6 +7,7 @@ import java.net.*;
  * Listen -- make a ServerSocket and wait for connections.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class Listen {
 	/** The TCP port for the service. */
 	public static final short PORT = 9999;
@@ -34,3 +35,4 @@ public class Listen {
 		s.close();
 	}
 }
+// END main

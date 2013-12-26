@@ -3,6 +3,7 @@ package logging;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// BEGIN main
 public class Log14Demo2 {
 	public static void main(String[] args) {
 
@@ -26,3 +27,4 @@ public class Log14Demo2 {
 		}
 	}
 }
+// END main

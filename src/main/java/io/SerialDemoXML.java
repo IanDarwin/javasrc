@@ -10,6 +10,7 @@ import java.io.IOException;
  * Note that only properties with public get AND set methods get serialized.
  * Subclass "SerialDemoAbstratBase" to get most of infrastructure
  */
+// BEGIN main
 public class SerialDemoXML extends SerialDemoAbstractBase {
 
 	public static final String FILENAME = "serial.xml";
@@ -35,3 +36,4 @@ public class SerialDemoXML extends SerialDemoAbstractBase {
 		inp.close();
 	}
 }
+// END main

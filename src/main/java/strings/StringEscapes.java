@@ -4,6 +4,7 @@ package strings;
  * StringEscapes.java - show string escapes.
  * Note that they may not print correctly on all platforms.
  */
+// BEGIN main
 public class StringEscapes {
 	public static void main(String[] argv) {
 		System.out.println("Java Strings in action:");
@@ -15,3 +16,4 @@ public class StringEscapes {
 		System.out.println("A backslash character: \\");
 	}
 }
+// END main

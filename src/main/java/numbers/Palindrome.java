@@ -5,6 +5,7 @@ package numbers;
  * e.g., 42->66 (42+24); 1951->5995 (1951+1591=3542; 3542+2453=5995).
  * @author Ian Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class Palindrome {
 
 	public static boolean verbose = true;
@@ -78,3 +79,4 @@ public class Palindrome {
 		return ret;
 	}
 }
+// END main

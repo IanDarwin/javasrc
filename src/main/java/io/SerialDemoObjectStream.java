@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /** Demonstrate use of standard Object Serialization. */
+// BEGIN main
 public class SerialDemoObjectStream extends SerialDemoAbstractBase {
 	protected static final String FILENAME = "serial.dat";
 
@@ -34,3 +35,4 @@ public class SerialDemoObjectStream extends SerialDemoAbstractBase {
 	}
 }
 
+// END main

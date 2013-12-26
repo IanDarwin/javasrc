@@ -5,6 +5,7 @@ import java.util.Date;
 /** Re-allocate an array, bigger...
  * @author Ian Darwin
  */
+// BEGIN main
 public class Array2  {
 	public static void main(String[] argv) {
 		int nDates = 0;
@@ -31,3 +32,4 @@ public class Array2  {
 		System.out.println("Array size = " + dates.length);
 	}
 }
+// END main

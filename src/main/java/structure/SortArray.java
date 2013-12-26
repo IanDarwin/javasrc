@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /** Demonstrate use of Arrays.sort()
  */
+// BEGIN main
 public class SortArray {
 	public static void main(String[] unused) {
 		String[] strings = {
@@ -17,3 +18,4 @@ public class SortArray {
 			System.out.println(strings[i]);
 	}
 }
+// END main
