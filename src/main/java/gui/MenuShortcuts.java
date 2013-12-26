@@ -1,7 +1,7 @@
 package gui;
 
 import java.awt.Container;
-import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -45,8 +45,8 @@ public class MenuShortcuts extends JFrame implements ActionListener {
 			fm.addSeparator();
 
 			fm.add(mi = new JMenuItem("Print", 'P'));
-			mi.setAccelerator(KeyStroke.getKeyStroke(
-				KeyEvent.VK_R, Event.ALT_MASK));
+			mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, 
+					Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 
 			mi.addActionListener(this);
 			fm.addSeparator();
