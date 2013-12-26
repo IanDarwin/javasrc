@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class RunOnEdt {
@@ -10,7 +11,7 @@ public class RunOnEdt {
 				try {
 					// UIManager.setLookAndFeel(
 					//		UIManager.getSystemLookAndFeelClassName());
-					javax.swing.JOptionPane.showMessageDialog(null, "Hello Java");
+					JOptionPane.showMessageDialog(null, "Hello Java");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
