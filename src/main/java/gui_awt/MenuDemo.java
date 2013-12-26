@@ -4,6 +4,7 @@ import java.awt.CheckboxMenuItem;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.Label;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
@@ -24,7 +25,7 @@ import java.awt.event.ItemListener;
  * @author Ian Darwin
  */
 public class MenuDemo extends Frame
-				implements ActionListener, ItemListener {
+implements ActionListener, ItemListener {
 	MenuBar mb;
 	/** File, Options, Help */
 	Menu fm, om, hm;
@@ -48,43 +49,43 @@ public class MenuDemo extends Frame
 		MenuItem mi;
 		// The File Menu...
 		fm = new Menu("File");
-			fm.add(mi = new MenuItem("Open", new MenuShortcut('O')));
-			mi.addActionListener(this);
-			fm.add(mi = new MenuItem("Close", new MenuShortcut('W')));
-			mi.addActionListener(this);
-			fm.addSeparator();
-			fm.add(mi = new MenuItem("Print", new MenuShortcut('P')));
-			mi.addActionListener(this);
-			fm.addSeparator();
-			fm.add(mi = new MenuItem("Exit", new MenuShortcut('Q')));
-			exitItem = mi;			// save for action handler
-			mi.addActionListener(this);
+		fm.add(mi = new MenuItem("Open", new MenuShortcut('O')));
+		mi.addActionListener(this);
+		fm.add(mi = new MenuItem("Close", new MenuShortcut('W')));
+		mi.addActionListener(this);
+		fm.addSeparator();
+		fm.add(mi = new MenuItem("Print", new MenuShortcut('P')));
+		mi.addActionListener(this);
+		fm.addSeparator();
+		fm.add(mi = new MenuItem("Exit", new MenuShortcut('Q')));
+		exitItem = mi;			// save for action handler
+		mi.addActionListener(this);
 		mb.add(fm);
 
 		// The Options Menu...
 		om = new Menu("Options");
-			cb = new CheckboxMenuItem("AutoSave");
-			cb.setState(true);
-			cb.addItemListener(this);
-			om.add(cb);
-			opSubm = new Menu("SubOptions");
-			opSubm.add(new MenuItem("Alpha"));
-			opSubm.add(new MenuItem("Gamma"));
-			opSubm.add(new MenuItem("Delta"));
-			om.add(opSubm);
+		cb = new CheckboxMenuItem("AutoSave");
+		cb.setState(true);
+		cb.addItemListener(this);
+		om.add(cb);
+		opSubm = new Menu("SubOptions");
+		opSubm.add(new MenuItem("Alpha"));
+		opSubm.add(new MenuItem("Gamma"));
+		opSubm.add(new MenuItem("Delta"));
+		om.add(opSubm);
 		mb.add(om);
 
 		// The Help Menu...
 		hm = new Menu("Help");
-			hm.add(mi = new MenuItem("About"));
-			mi.addActionListener(this);
-			hm.add(mi = new MenuItem("Topics"));
-			mi.addActionListener(this);
+		hm.add(mi = new MenuItem("About"));
+		mi.addActionListener(this);
+		hm.add(mi = new MenuItem("Topics"));
+		mi.addActionListener(this);
 		mb.add(hm);
 		mb.setHelpMenu(hm);		// needed for portability (Motif, etc.).
 
 		// the main window
-		cp.add(new MyLabel("Menu Demo Window", 200, 150));
+		cp.add(new Label("Menu Demo Window"));
 		pack();
 	}
 
