@@ -16,9 +16,11 @@ import javax.print.PrintServiceLookup;
 import javax.print.attribute.DocAttributeSet;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.MediaSizeName;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import com.darwinsys.swingui.UtilGUI;
 
@@ -35,19 +37,29 @@ public class PrintServiceDemo extends JFrame {
 
 	/** main program: instantiate and show. 
 	 * @throws IOException */
-	public static void main(String[] av) throws IOException {
-		new PrintServiceDemo("Print Demo").setVisible(true);
+	public static void main(String[] av) throws Exception {
+		SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                		new PrintServiceDemo("Print Demo").setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 	}
 
 	/** Constructor */
 	PrintServiceDemo(String title) {
 		super(title);
+		System.out.println("PrintServiceDemo.PrintServiceDemo()");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 		JButton b;
 		add(b = new JButton("Print"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("PrintServiceDemo.PrintServiceDemo...actionPerformed()");
 				try {
 					print(INPUT_FILE_NAME);
 				} catch (Exception e1) {
@@ -65,13 +77,12 @@ public class PrintServiceDemo extends JFrame {
 	 * @throws PrintException 
 	 */
 	public void print(String fileName) throws IOException, PrintException {
-	
-		System.out.println("Printing " + fileName);
-		DocFlavor flavor = DocFlavor.BYTE_ARRAY.POSTSCRIPT;
+		System.out.println("PrintServiceDemo.print(): Printing " + fileName);
+		DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-		//aset.add(MediaSizeName.NA_LETTER);
-		PrintService[] pservices = PrintServiceLookup.lookupPrintServices(
-				flavor, aset);
+		aset.add(MediaSizeName.NA_LETTER);
+		PrintService[] pservices = 
+				PrintServiceLookup.lookupPrintServices(flavor, aset);
 		int i;
 		switch(pservices.length) {
 		case 0:
