@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Demonstrate use of Button */
+// BEGIN main
 public class ButtonDemo2c extends Applet {
 	Button	b;
 
@@ -24,3 +25,4 @@ public class ButtonDemo2c extends Applet {
 		});
 	}
 }
+// END main

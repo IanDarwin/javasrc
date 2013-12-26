@@ -24,12 +24,12 @@ import javax.swing.JLabel;
  *
  * Originally appeared in the Linux Journal, 1999.
  */
-public class JColorChooserDemo extends JFrame
-{
-	/** A canvas to display the color in. */
+// BEGIN main
+public class JColorChooserDemo extends JFrame {
+    /** A canvas to display the color in. */
     protected JLabel demo;
 
-	/** Constructor - set up the entire GUI for this program */
+    /** Constructor - set up the entire GUI for this program */
     public JColorChooserDemo() {
         super("Swing Color Demo");
 		Container cp = getContentPane();
@@ -55,11 +55,10 @@ public class JColorChooserDemo extends JFrame
 		demo.setToolTipText("This is the last color you chose");
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+    }
 
-	/** good old main */
-    public static void main(String[] argv)
-    {
+    /** good old main */
+    public static void main(String[] argv) {
         new JColorChooserDemo().setVisible(true);
     }
 }

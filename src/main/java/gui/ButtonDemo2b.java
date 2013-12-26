@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 /** Demonstrate use of two buttons, using a single ActionListener 
  * made of a named inner class
  */
+// BEGIN main
 public class ButtonDemo2b extends Applet {
 	Button b1, b2;
 	ActionListener handler = new ButtonHandler();
@@ -29,3 +30,4 @@ public class ButtonDemo2b extends Applet {
 		}
 	}
 }
+// END main
