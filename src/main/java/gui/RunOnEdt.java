@@ -2,7 +2,6 @@ package gui;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 // BEGIN main
 public class RunOnEdt {
