@@ -1,0 +1,22 @@
+#!/bin/sh
+
+M2_REPO=$HOME/.m2/repository
+WELD_JAR=${M2_REPO}/org/jboss/weld/se/weld-se/1.1.10.Final/weld-se-1.1.10.Final.jar
+
+USAGE="$0 [-l lang]"
+usage() {		# give usage message, and exit
+	echo "Usage: ${USAGE}" 2>&1
+	exit 1
+}
+
+LANG=""
+while getopts "l:" opt 
+do 
+	case "$opt" in 
+		l)	LANG=${OPTARG};;
+		*)	usage;;
+	esac
+done
+shift `expr $OPTIND - 1`		 # leave just filenames
+
+java -Duser.language=${LANG} -classpath target/classes:${WELD_JAR} com.darwinsys.javasecdi.CDIMain
