@@ -8,7 +8,6 @@ public class ControllerTightlyCoupled {
 		View v = new ConsoleViewer();
 		v.setModel(m);
 		v.displayMessage();
-
 	}
 }
 // END main
