@@ -2,6 +2,8 @@ package di.javasecdi;
 
 import javax.inject.Inject;
 
+import di.View;
+
 // BEGIN main
 public class ConsoleViewer implements View {
     @Inject @MyModel

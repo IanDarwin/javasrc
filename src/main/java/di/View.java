@@ -1,4 +1,4 @@
-package di.javasecdi;
+package di;
 
 public interface View {
 
