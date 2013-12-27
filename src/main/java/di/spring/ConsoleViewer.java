@@ -4,6 +4,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
+import di.View;
+
 @Component("myView")
 // BEGIN main
 public class ConsoleViewer implements View {
