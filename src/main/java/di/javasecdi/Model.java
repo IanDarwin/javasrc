@@ -1,4 +1,4 @@
-package com.darwinsys.javasecdi;
+package di.javasecdi;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
+// BEGIN main
 public class Model {
     
     public @Produces @MyModel String getModelData(InjectionPoint ip) throws IOException {
@@ -14,3 +15,4 @@ public class Model {
            ip.getMember().getName());
     }
 }
+// END main

@@ -1,7 +1,7 @@
-package com.darwinsys.javasecdi;
+package di.javasecdi;
 
 public interface View {
 
-	void renderMessage();
+	void displayMessage();
 
 }
