@@ -2,6 +2,7 @@
  * A simple demonstration of the code needed to setup a client connection in C.
  */
 
+// BEGIN main
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -48,3 +49,4 @@ main(int argc, char *argv[])
 
 	(void) close(sock);
 }
+// END main

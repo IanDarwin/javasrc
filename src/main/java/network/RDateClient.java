@@ -9,6 +9,7 @@ import java.util.*;
  * N.B. This is an 'rdate' client by another name.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class RDateClient {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
@@ -53,3 +54,4 @@ public class RDateClient {
 		}
 	}
 }
+// END main
