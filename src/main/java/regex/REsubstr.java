@@ -20,5 +20,6 @@ public class REsubstr {
 		} else {
 			System.out.println("NO MATCH");
 		}
+		// END main
 	}
 }

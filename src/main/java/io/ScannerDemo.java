@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ScannerDemo {
 
 	public static void main(String[] args) {
+		// BEGIN main
 		String sampleDate = "25 Dec 1988";
 
 		try (Scanner sDate = new Scanner(sampleDate)) {
@@ -13,5 +14,6 @@ public class ScannerDemo {
 			int year = sDate.nextInt();
 			System.out.printf("%d-%s-%02d%n", year, month, dayOfMonth);
 		}
+		// END main
 	}
 }
