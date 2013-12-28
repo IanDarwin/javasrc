@@ -39,5 +39,4 @@ public class ResultsDecoratorSQLTest {
 		testData.absolute(1);
 		assertEquals("get data", "Ian", testData.getString("first_name"));
 	}
-	
 }
