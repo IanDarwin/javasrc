@@ -1,4 +1,4 @@
-package JNDI;
+package jndi;
 
 import java.rmi.*;
 import java.io.*;
