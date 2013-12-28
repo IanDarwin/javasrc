@@ -18,10 +18,11 @@ import com.darwinsys.util.FileProperties;
 /** SendMime -- send a multi-part MIME email message.
  * @author Ian F. Darwin
  */
+// BEGIN main
 public class SendMime {
 
 	/** The message recipient. */
-	protected String message_recip = "spam-magnet@darwinsys.com";
+	protected String message_recip = "spam-magnet@somedomainnamehere.com";
 	/* What's it all about, Alfie? */
 	protected String message_subject = "Re: your mail";
 	/** The message CC recipient. */
@@ -31,14 +32,14 @@ public class SendMime {
 		"I am unable to attend to your message, as I am busy sunning " +
 		"myself on the beach in Maui, where it is warm and peaceful. " +
 		"Perhaps when I return I'll get around to reading your mail. " +
-		"Or perhaps not.";
+		"Or not.";
 	/* The text/html data. */
 	protected String html_data = 
-		"<HTML><HEAD><TITLE>My Goodness</TITLE></HEAD>" +
-		"<BODY><P>You <EM>do</EM> look a little " +
-		"<font color=green>GREEN</FONT>" +
+		"<html><head><title>My Goodness</title></head>" +
+		"<body><p>You <em>do</em> look a little " +
+		"<font color=green>GREEN</font>" +
 		"around the edges..." +
-		"</BODY></HTML>";
+		"</body></html>";
 
 	/** The JavaMail session object */
 	protected Session session;
@@ -103,6 +104,7 @@ public class SendMime {
 			ex.printStackTrace(System.err);
 		}
 	}
+	// END main
 
 	/** Simple test case driver */
 	public static void main(String[] av) throws Exception {
