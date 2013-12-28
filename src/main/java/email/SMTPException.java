@@ -1,16 +1,19 @@
 package email;
 
-/** This is like an IOException, but it includes a Sendmail-style error
+/** This unchecked Exception includes an SMTP protocol error
  * number in addition to the error message String.
  */
-public class SMTPException extends java.io.IOException {
-	int ret;
+public class SMTPException extends RuntimeException {
 
-	SMTPException(int ret, String s) {
+	private static final long serialVersionUID = -8631535349066609403L;
+	int errno;
+
+	SMTPException(int errno, String s) {
 		super(s);
-		this.ret = ret;
+		this.errno =  errno;
 	}
+	
 	int getCode() {
-		return ret;
+		return errno;
 	}
 }
