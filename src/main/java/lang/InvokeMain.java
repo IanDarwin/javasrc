@@ -1,8 +1,6 @@
 package lang;
 
-// BEGIN main // FIXME duplicate main?
 import java.lang.reflect.Method;
-// END main
 
 /**
  * Show loading a class and finding and calling its Main method.
@@ -20,12 +18,12 @@ public class InvokeMain {
 		
 		try {
 			// First, find the class.
-			Class c = Class.forName("lang.InvokeMain");
+			Class<InvokeMain> c = Class.forName("lang.InvokeMain");
 			System.out.println(c);
 
 			// Create the array of Argument Types
 			Class[] argTypes = {
-				args.getClass(),	// array is Object!
+				args.getClass(),	// args is String!
 			};
 
 			// Now find the method
@@ -36,7 +34,7 @@ public class InvokeMain {
 			String[] newArgs = { "quit" };
 			Object[] passedArgs = { newArgs };
 
-			// Now invoke the method.
+			// Now invoke the method. Null for "this ref" because it's static
 			m.invoke(null, passedArgs);
 
 		} catch (Exception e) {
