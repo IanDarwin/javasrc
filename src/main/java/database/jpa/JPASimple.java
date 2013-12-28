@@ -1,6 +1,5 @@
 package database.jpa;
 
-import java.io.File;
 import java.util.List;
 
 import javax.persistence.EntityManager;
