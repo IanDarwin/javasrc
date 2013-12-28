@@ -10,13 +10,13 @@ import java.io.*;
  * part of a solution.
  * <p>
  * The marks that it looks for are simple, and can be left in the
- * master source (they never print). The mark // BEGIN (as looked for
- * with line.trim().equals("// BEGIN) in Java) begins printing, and the
- * opposite mark // END stops printing.
+ * master source (they never print). The mark //+ (as looked for
+ * with line.trim().equals("//+) in Java) begins printing, and the
+ * opposite mark //- stops printing.
  * <p>
  * So, for a course exercise, you would develop the working
- * solution and comment it neatly, and add a // END mark after the TODO
- * comments but before the working solution, and a // BEGIN mark after it.
+ * solution and comment it neatly, and add a //- mark after the TODO
+ * comments but before the working solution, and a //+ mark after it.
  * For example:
  * </p><pre>
  * 	public methodA() {
@@ -24,17 +24,17 @@ import java.io.*;
  * 		// Look up the object to be invoked.
  * 		// Use a Lookup Name of "ex31object"
  * 
- * 		// END main
+ * 		//- main
  * 		Object o = Naming.lookup("ex31object");
- * 		// BEGIN main
+ * 		//+ main
  * 
  * 		// TODO #2
  * 		// Downcast the looked up object using the IIOP portability
  * 
- * 		// END main
+ * 		//- main
  * 		Ex31Object obj = (Ex31Object)PortableRemoteObject.narrow(
  * 			o, Ex31Object.class);
- * 		// BEGIN main
+ * 		//+ main
  * 	}
  * </pre><p>
  * When run through GetMark in "exclude" mode, the above will produce:
@@ -69,11 +69,12 @@ import java.io.*;
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class GetMark {
 	/** the default starting mark. */
-	public final String startMark = "// BEGIN";
+	public final String START_MARK = "//+";
 	/** the default ending mark. */
-	public final String endMark = "// END";
+	public final String END_MARK = "//-";
 	/** Set this to TRUE for running in "exclude" mode (e.g., for
 	 * building exercises from solutions) and to FALSE for running
 	 * in "extract" mode (e.g., writing a book and ommittin the
@@ -84,31 +85,26 @@ public class GetMark {
 	protected boolean printing = START;
 	/** True if you want line numbers */
 	protected final boolean number = false;
-	// END main
-	/* This part should be excluded! */
-	int foo = 42;
-	// BEGIN main
 
-    /** Get Marked parts of one file, given an open LineNumberReader.
+	/** Get Marked parts of one file, given an open LineNumberReader.
 	 * This is the main operation of this class, and can be used
 	 * inside other programs or from the main() wrapper.
 	 */
-    public void process(String fileName,
+	public void process(String fileName,
 		LineNumberReader is,
 		PrintStream out) {
-		// BEGIN main
 		int nLines = 0;
 		try {
 			String inputLine;
 
 			while ((inputLine = is.readLine()) != null) {
-				if (inputLine.trim().equals(startMark)) {
+				if (inputLine.trim().equals(START_MARK)) {
 					if (printing)
 						// These go to stderr, so you can redirect the output
 						System.err.println("ERROR: START INSIDE START, " +
 							fileName + ':' + is.getLineNumber());
 					printing = true;
-				} else if (inputLine.trim().equals(endMark)) {
+				} else if (inputLine.trim().equals(END_MARK)) {
 					if (!printing)
 						System.err.println("ERROR: STOP WHILE STOPPED, " +
 							fileName + ':' + is.getLineNumber());
@@ -121,17 +117,17 @@ public class GetMark {
 					out.println(inputLine);
 					++nLines;
 				}
-            }
-            is.close();
+			}
+			is.close();
 			out.flush(); // Must not close - caller may still need it.
 			if (nLines == 0)
 				System.err.println("ERROR: No marks in " + fileName +
 					"; no output generated!");
-		// END main
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }
     }
+// END main
 
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you, when GetMark is being
@@ -139,12 +135,12 @@ public class GetMark {
 	 * XXX TODO options parsing, allow include/exclude, number, etc.
 	 * to be set from the command line.
 	 */
-    public static void main(String[] av) {
-        GetMark o = new GetMark();
+	public static void main(String[] av) {
+		GetMark o = new GetMark();
 		PrintStream pw = new PrintStream(System.out);
-        if (av.length == 0) {
-            o.process("standard input", new LineNumberReader(
-				new InputStreamReader(System.in)), pw);
+	if (av.length == 0) {
+		o.process("standard input", new LineNumberReader(
+			new InputStreamReader(System.in)), pw);
 		} else {
 			for (int i=0; i<av.length; i++)
 				try {
