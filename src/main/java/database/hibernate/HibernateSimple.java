@@ -49,7 +49,9 @@ public class HibernateSimple {
 			}
 			System.out.println();
 		} finally {
-			session.close();
+			if (session != null) {
+				session.close();				
+			}
 		}
 	}
 }
