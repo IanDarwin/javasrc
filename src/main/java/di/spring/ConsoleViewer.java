@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 import di.View;
 
-@Component("myView")
 // BEGIN main
+@Component("myView")
 public class ConsoleViewer implements View {
 
 	Model messageProvider;

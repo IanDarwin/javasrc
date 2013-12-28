@@ -1,6 +1,8 @@
-package di.spring;
+package di;
 
-import di.View;
+import di.spring.ConsoleViewer;
+import di.spring.Model;
+import di.spring.SimpleModel;
 
 // BEGIN main
 public class ControllerTightlyCoupled {
