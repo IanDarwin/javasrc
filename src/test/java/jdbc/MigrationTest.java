@@ -1,6 +1,6 @@
 package jdbc;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import org.junit.Before;
 import org.junit.Test;
 
-import JDBC.MigrateData;
+import database.jdbc.MigrateData;
 
 public class MigrationTest {
 	
