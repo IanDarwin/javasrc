@@ -9,7 +9,8 @@
   <packaging>jar</packaging>
 
   <name>javasrc</name>
-  <url>http://maven.apache.org</url>
+  <url>http://javacook.darwinsys.com</url>
+  <description>Code Examples for the O'Reilly Java Cookbook</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
