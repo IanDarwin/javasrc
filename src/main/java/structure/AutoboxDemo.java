@@ -7,14 +7,14 @@ public class AutoboxDemo {
 	 * and auto-unboxing (the return value is automatically unwrapped).
 	 */
 	public static void main(String[] args) {
-		int i = 42;
-		int result = foo(i);
+		int i = 42;			// <1>
+		int result = foo(i);		// <2>
 		System.out.println(result);
 	}
 
 	public static Integer foo(Integer i) {
 		System.out.println("Object = " + i);
-		return Integer.valueOf(123);
+		return Integer.valueOf(123);	// <3>
 	}
 }
 // END main
