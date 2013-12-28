@@ -7,17 +7,17 @@ import java.text.NumberFormat;
  * Format a number our way and the default way.
  */
 public class NumFormatDemo {
-	// BEGIN main // FIXME duplicate ?
+	// BEGIN part1
 	/** A number to format */
 	public static final double intlNumber = 1024.25;
 	/** Another number to format */
 	public static final double ourNumber = 100.2345678;
-	// END main
+	// END part1
 
 	/** The main (and only) method in this class. */
 	public static void main(String[] av) { 
 
-		// BEGIN main
+		// BEGIN part2
 		NumberFormat defForm = NumberFormat.getInstance();
 		NumberFormat ourForm = new DecimalFormat("##0.##");
 		// toPattern() will reveal the combination of #0., etc
@@ -30,6 +30,6 @@ public class NumFormatDemo {
 			ourForm.format(ourNumber));
 		System.out.println(ourNumber + " formats as " +
 			defForm.format(ourNumber) + " using the default format");
-		// END main
+		// END part2
 	}
 }
