@@ -1,19 +1,14 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+package email;
 
-class SMTPException extends IOException {
-	int ret;
-
-	SMTPException(int ret, String s) {
-		super(s);
-		this.ret = ret;
-	}
-
-	int getCode() {
-		return ret;
-	}
-}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.ConnectException;
+import java.net.NoRouteToHostException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.StringTokenizer;
 
 /**
  * SMTP talker class, usable standalone (as a SendMail(8) backend :-))
@@ -26,19 +21,18 @@ class SMTPException extends IOException {
  * @author	Ian Darwin
  * @version	0.5, February 25, 1997
  */
+@Deprecated
 public class SmtpTalk implements SysExits {
 	BufferedReader is;
-	/** The file used to write. Do NOT change to a PrintWriter as we
-	 *  have no wish to send mail (commands or text!) in the form
-	 *  of 16-bit UniCode characters...
-	 */
+	/** The file used to write. Won't work so well with UniCode characters... */
 	PrintStream os;
 	private boolean debug = true;
 	private String host;
 
-	/** A simple main program showing the class in action.
+	/** 
+	 * A simple main program showing the class in action.
 	 *
-	 * TODO generalize to accept From arg, read msg on stdin
+	 * Could generalize to accept From arg, read msg on stdin
 	 */
 	public static void main(String argv[]) {
 		if (argv.length != 2) {
@@ -60,10 +54,9 @@ public class SmtpTalk implements SysExits {
 
 	/** Constructor taking a server hostname as argument.
 	 */
-	SmtpTalk(String server) throws SMTPException {
+	SmtpTalk(String server) {
 		host = server;
-		try {
-			Socket s = new Socket(host, 25);
+		try (Socket s = new Socket(host, 25)) {
 			is = new BufferedReader(
 				new InputStreamReader(s.getInputStream()));
 			os = new PrintStream(s.getOutputStream());
@@ -108,10 +101,11 @@ public class SmtpTalk implements SysExits {
 	 * @param	ret	Numeric value to pass back
 	 * @param	msg	Error message to be printed on stdout.
 	 */
-	protected void die(int ret, String msg) throws SMTPException {
+	protected void die(int ret, String msg) {
 		throw new SMTPException(ret, msg);
 	}
 
+	// BEGIN converse
 	/** send one Mail message to one or more recipients via smtp 
 	 * to server "host".
 	 */
@@ -147,4 +141,5 @@ public class SmtpTalk implements SysExits {
 		send_cmd("QUIT");
 		if (!expect_reply("221")) die(EX_PROTOCOL,"Other end not closing down");
 	}
+	// END converse
 }
