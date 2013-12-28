@@ -18,11 +18,11 @@ public class InvokeMain {
 		
 		try {
 			// First, find the class.
-			Class<InvokeMain> c = Class.forName("lang.InvokeMain");
+			Class<?> c = Class.forName("lang.InvokeMain");
 			System.out.println(c);
 
 			// Create the array of Argument Types
-			Class[] argTypes = {
+			Class<?>[] argTypes = {
 				args.getClass(),	// args is String!
 			};
 
