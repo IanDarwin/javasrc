@@ -6,16 +6,13 @@ import java.text.ParseException;
 /*
  * Parse a number using a NumberFormat.
  */
+// BEGIN main 
 public class NumFormatParse {
-	// BEGIN main // FIXME duplicate ?
 	/** A number to parse */
 	public static final String input = "4096.251";
-	// END main
 
-	/** The main (and only) method in this class. */
 	public static void main(String[] av) { 
 
-		// BEGIN main
 		NumberFormat defForm = NumberFormat.getInstance();
 
 		try {
@@ -26,6 +23,6 @@ public class NumFormatParse {
 		} catch (ParseException pe) {
 			System.err.println(input + "not parseable!");
 		}
-		// END main
 	}
+// END main
 }
