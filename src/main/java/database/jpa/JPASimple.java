@@ -19,8 +19,6 @@ public class JPASimple {
 
 		System.out.println("JPASimple.main()");
 
-		setup();	// create directory for hsqldb
-		
 		EntityManagerFactory entityMgrFactory = null;
 		EntityManager entityManager = null;
 		try {
@@ -55,20 +53,6 @@ public class JPASimple {
 				entityManager.close();
 			if (entityMgrFactory != null)
 				entityMgrFactory.close();
-		}
-	}
-
-	/** Create the temp directory used by HSQL
-	 * for its clutter of temporary files.
-	 */
-	public static void setup() {
-		final File hsqlDbDir = new File("tmp");
-		if (hsqlDbDir.exists()) {
-			for (File f : hsqlDbDir.listFiles()) {
-				f.delete();
-			}
-		} else {
-			hsqlDbDir.mkdirs();
 		}
 	}
 }

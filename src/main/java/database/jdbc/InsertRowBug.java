@@ -7,27 +7,27 @@ public class InsertRowBug {
 
         String url;
         // url = "jdbc:odbc:SQL Anywhere 5.0 Sample";
-        // url = "jdbc:oracle:thin:@server:1521:db570";
-        url = "jdbc:odbc:RainForestDSN";
+        // url = "jdbc:oracle:thin:@server:1521:Sample";
+        url = "jdbc:odbc:Sample";
 
         String driver;
         //driver = "oracle.jdbc.driver.OracleDriver";
         driver = "sun.jdbc.odbc.JdbcOdbcDriver";
 
-		String user, pass;
-		user = "student";
-		pass = "student";
+	String user, pass;
+	user = "student";
+	pass = "student";
 
         Connection con;
         Statement stmt;
-		ResultSet uprs;
+	ResultSet uprs;
 
         try {
-        		 Class.forName(driver);
+        	 Class.forName(driver);
 
         } catch(java.lang.ClassNotFoundException e) {
             System.err.println(e);
-			return;
+		return;
         }
 
         try {
