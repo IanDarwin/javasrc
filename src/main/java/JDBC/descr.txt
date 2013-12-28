@@ -1,1 +1,0 @@
-Java DataBase Connectivity (JDBC, java.sql) examples
