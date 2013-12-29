@@ -9,7 +9,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-/** Displays one machines status.
+/** 
+ * Displays one machine's status.
  * Part of the NetWatch program: watch the network
  * on a bunch of machines (i.e., in a classroom or lab).
  * <P>Each non-abstract subclass just needs to implement run(),
@@ -30,6 +31,7 @@ import javax.swing.JTextArea;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
+// BEGIN main
 public abstract class NetPanel extends JPanel implements Runnable {
 	/** The name of this host */
 	protected String hostName;
@@ -136,3 +138,4 @@ public abstract class NetPanel extends JPanel implements Runnable {
 		state = newState;
 	}
 }
+// END main
