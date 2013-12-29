@@ -70,6 +70,7 @@
 			<exclude>lang/NoLocalStatics.java</exclude>
 			<exclude>lang/NullStaticMethod.java</exclude>
 			<exclude>lang/OverLoadReturn.java</exclude>
+			<exclude>lang/AnnotationOverrideDemo.java</exclude>
 			<exclude>lang/PrivProt.java</exclude>
 			<exclude>lang/ProtectedClass.java</exclude>
 			<exclude>lang/ReturnType.java</exclude>
@@ -94,7 +95,7 @@
   </build>
 
   <dependencies>
-    <!-- My personal API -->
+    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
     <dependency>
 	<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
