@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+// BEGIN main
 @Entity
 public class Person {
 
@@ -33,17 +34,17 @@ public class Person {
 	}
 	
 	@Basic
-	public String getLastName() {
-		return lastName;
-	}
-	
-	@Basic
 	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	@Basic
+	public String getLastName() {
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -67,3 +68,4 @@ public class Person {
 		return sb.toString();
 	}
 }
+// END main
