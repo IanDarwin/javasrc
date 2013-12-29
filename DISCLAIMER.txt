@@ -1,0 +1,6 @@
+Not all of the programs in this package have been adequately tested
+(in fact, a few have tests with @Ignore, so beware of those!!).
+As with any free open-source software, the user is entirely responsible
+for ensuring that the software functions correctly and meets their needs.
+
+You assume all risk of using this software!
