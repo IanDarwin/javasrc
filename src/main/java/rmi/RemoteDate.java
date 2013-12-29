@@ -2,6 +2,7 @@ package rmi;
 
 import java.util.Date;
 
+// BEGIN main
 /** A statement of what the client & server must agree upon. */
 public interface RemoteDate extends java.rmi.Remote {
 
@@ -11,3 +12,4 @@ public interface RemoteDate extends java.rmi.Remote {
 	/** The name used in the RMI registry service. */
 	public final static String LOOKUPNAME = "RemoteDate";
 }
+// END main

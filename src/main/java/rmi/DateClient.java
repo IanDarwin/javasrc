@@ -3,6 +3,7 @@ package rmi;
 import java.rmi.Naming;
 import java.util.Date;
 
+// BEGIN main
 /* A very simple client for the RemoteDate service. */
 public class DateClient {
 
@@ -20,3 +21,4 @@ public class DateClient {
 		}
 	}
 }
+// END main

@@ -2,6 +2,7 @@ package rmi;
 
 import java.rmi.Naming;
 
+// BEGIN main
 public class DateServer {
 	public static void main(String[] args) {
 
@@ -25,3 +26,4 @@ public class DateServer {
 		}
 	}
 }
+// END main

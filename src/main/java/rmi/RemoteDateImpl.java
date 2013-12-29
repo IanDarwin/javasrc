@@ -4,8 +4,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 
-public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate
-{
+// BEGIN main
+public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate {
+
 	/** Construct the object that implements the remote server.
 	 * Called from main, after it has the SecurityManager in place.
 	 */
@@ -20,3 +21,4 @@ public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate
 		return new Date();
 	}
 }
+// END main

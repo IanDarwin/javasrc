@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.rmi.Naming;
 import java.util.Date;
 
+// BEGIN main
 public class DateApplet extends Applet {
 	
 	private static final long serialVersionUID = 287892791;
@@ -40,3 +41,4 @@ public class DateApplet extends Applet {
 		});
 	}
 }
+// END main
