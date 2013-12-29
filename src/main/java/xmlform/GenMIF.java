@@ -28,6 +28,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// BEGIN main
 public class GenMIF implements XmlFormWalker {
 	/** The normal output writer */
 	protected PrintStream msg;
@@ -185,7 +186,7 @@ public class GenMIF implements XmlFormWalker {
 		endTag();
 	}
 
-	/** EXAMPLEs are longer than CODEs, and are not limited by // BEGIN // END
+	/** EXAMPLEs are longer than CODEs, and are not limited by //+ //-
 	 * marks, which are therefore not required.
 	 * XXX TODO wrap a TABLE around the output.
 	 */
@@ -374,3 +375,4 @@ public class GenMIF implements XmlFormWalker {
 		}
 	}
 }
+// END main

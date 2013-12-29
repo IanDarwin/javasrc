@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.Person;
 
+// BEGIN main
 public class JsonReadWriteJackson {
 
 	public static void main(String[] args) throws IOException {
@@ -19,6 +20,6 @@ public class JsonReadWriteJackson {
 		Person p = new Person("Roger", "Rabbit");				// <3>
 		System.out.print("Person object " + p +" as JSON = ");
 		mapper.writeValue(System.out, p);
-		
 	}
 }
+// END main

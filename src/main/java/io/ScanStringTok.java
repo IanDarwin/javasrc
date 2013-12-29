@@ -10,7 +10,7 @@ import java.util.*;
  */
 // BEGIN main
 public class ScanStringTok {
-	protected  LineNumberReader is;
+	protected LineNumberReader is;
 
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
