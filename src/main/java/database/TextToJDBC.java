@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.StringTokenizer;
 
+import domain.User;
+
 /** Convert the database from text form to JDBC form.
  */
 // BEGIN main

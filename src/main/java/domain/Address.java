@@ -1,4 +1,4 @@
-package database;
+package domain;
 
 // BEGIN main
 import javax.persistence.*;

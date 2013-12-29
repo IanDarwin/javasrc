@@ -10,6 +10,8 @@ import java.sql.Statement;
 
 import javax.naming.NamingException;
 
+import domain.User;
+
 /** A UserDB using JDBC and a relational DBMS..
  * We use the inherited getUser ("Find the User object for a given nickname")
  * since we keep everything in memory in this version.
@@ -109,18 +111,18 @@ public class UserDBJDBC extends UserDB {
 		// Copy fields from user to DB
 		// XXX WAY INCOMPLETE NOW
 		int i = 1;
-		addUserStmt.setString(i++, nu.name);
-		addUserStmt.setString(i++, nu.password);
-		addUserStmt.setString(i++, nu.firstName); 
-		addUserStmt.setString(i++, nu.lastName);
-		addUserStmt.setString(i++, nu.email);
-		addUserStmt.setString(i++, nu.city);
-		addUserStmt.setString(i++, nu.prov);
-		addUserStmt.setString(i++, nu.country);
+		addUserStmt.setString(i++, nu.getName());
+		addUserStmt.setString(i++, nu.getPassword());
+		addUserStmt.setString(i++, nu.getFirstName()); 
+		addUserStmt.setString(i++, nu.getLastName());
+		addUserStmt.setString(i++, nu.getEmail());
+		addUserStmt.setString(i++, nu.getCity());
+		addUserStmt.setString(i++, nu.getProvince());
+		addUserStmt.setString(i++, nu.getCountry());
 		java.sql.Date now = new java.sql.Date(System.currentTimeMillis());
 		addUserStmt.setDate(i++, now);
 		addUserStmt.setDate(i++, now);
-		addUserStmt.setString(i++, nu.skin);
+		addUserStmt.setString(i++, nu.getSkin());
 		addUserStmt.setBoolean(i++, false);
 		addUserStmt.setBoolean(i++, false);
 		--i;

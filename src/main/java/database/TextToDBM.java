@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import dbm.DBM;
+import domain.User;
 
 /** Convert the database from text form to DBM form.
  */

@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import database.Person;
+import domain.Person;
 
 // BEGIN main
 public class JPASimple {

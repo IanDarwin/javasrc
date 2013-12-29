@@ -1,4 +1,4 @@
-package database;
+package domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -52,11 +52,11 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return getName();
+		return getFullName();
 	}
 	
 	@Transient /* synthetic: cannot be used in JPA queries. */
-	public String getName() {
+	public String getFullName() {
 		StringBuilder sb = new StringBuilder();
 		if (firstName != null)
 			sb.append(firstName).append(' ');

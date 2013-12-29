@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.StringTokenizer;
 
+import domain.User;
+
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
  * Since this is exected to be used heavily, and to avoid the overhead
@@ -86,13 +88,13 @@ public class UserDBText extends UserDB {
 			privs = 'E';
 		
 		return new StringBuffer()
-			.append(u.name).append(':')
-			.append(u.password).append(':')
-			.append(u.fullName).append(':')
-			.append(u.email).append(':')
-			.append(u.city).append(':')
-			.append(u.prov).append(':')
-			.append(u.country).append(':')
+			.append(u.getName()).append(':')
+			.append(u.getPassword()).append(':')
+			.append(u.getFullName()).append(':')
+			.append(u.getEmail()).append(':')
+			.append(u.getCity()).append(':')
+			.append(u.getProvince()).append(':')
+			.append(u.getCountry()).append(':')
 			.append(privs)
 			.toString();
 	}

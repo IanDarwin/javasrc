@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import domain.User;
+
 /** A base for several "database" accessors for User objects.
  * We use a Singleton access method for efficiency and to enforce
  * single access on the database, which means we can keep an in-memory

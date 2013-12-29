@@ -1,12 +1,13 @@
-package database;
+package domain;
 
 // package jabadot;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /** Represents one logged in user 
  */
-public class User implements java.io.Serializable {
+public class User extends Person implements Serializable {
 
 	private static final long serialVersionUID = 5394392565088707959L;
 	
@@ -14,9 +15,6 @@ public class User implements java.io.Serializable {
 	/** The login name */
 	protected String name;
 	protected String password;
-	protected String firstName;
-	protected String lastName;
-	protected String fullName;	// derived
 	protected String email;			// 5
 	protected String address;
 	protected String address2;
@@ -50,7 +48,7 @@ public class User implements java.io.Serializable {
 
 	/** Construct a user with just the name */
 	public User(String n) {
-		this();			// set credt
+		this();			// set creationDate
 		name = n;
 	}
 
@@ -62,11 +60,11 @@ public class User implements java.io.Serializable {
 		String cty, String pr, String cntry,
 		String jd, String os, String gui, String lang,
 		String skin) {
-		this();			// set credt
+		this();			// set creationDate
 		name = nick;
 		password = pw;
-		firstName = fname;
-		lastName = lName;
+		setFirstName(fname);
+		setLastName(lName);
 		email = emaddr;
 		address = addr1;
 		address2 = addr2;
@@ -88,8 +86,8 @@ public class User implements java.io.Serializable {
 		this();			// set credt
 		name = nick;
 		password = pw;
-		firstName = fname;
-		lastName = lName;
+		setFirstName(fname);
+		setLastName(lName);
 		email = emaddr;
 		this.prov = prov;
 		this.country = cntry;
@@ -151,21 +149,6 @@ public class User implements java.io.Serializable {
 		this.email = email;
 	}
 
-	/** Get fullName */
-	public String getFullName() {
-		return firstName + ' ' + lastName;
-	}
-
-	/** Set firstName */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/** Set lastName */
-	public void setlastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	/** Get city */
 	public String getCity() {
 		return city;
@@ -177,7 +160,7 @@ public class User implements java.io.Serializable {
 	}
 
 	/** Get prov */
-	public String getProv() {
+	public String getProvince() {
 		return prov;
 	}
 
@@ -230,10 +213,6 @@ public class User implements java.io.Serializable {
 	public Date getCreationDate() {
 		return (Date) creationDate.clone();
 	}
-	/** Set the Creation Date (read only field) */
-	public void setCreationDate(Date date) {
-		creationDate = (Date) date.clone();
-	}
 
 	/** Get the LastLog Date (read only field) */
 	public Date getLastLoginDate() {
@@ -248,7 +227,7 @@ public class User implements java.io.Serializable {
 	/** Return a String representation. */
 	public String toString() {
 		return new StringBuffer("User[").append(name).append(',').
-			append(firstName).append(' ').append(lastName).
+			append(getFullName()).
 			append(']').toString();
 	}
 
@@ -260,5 +239,109 @@ public class User implements java.io.Serializable {
 		    email == null || email.length()==0)
 			return false;
 		return true;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getJobDescr() {
+		return jobDescr;
+	}
+
+	public void setJobDescr(String jobDescr) {
+		this.jobDescr = jobDescr;
+	}
+
+	public String getOs() {
+		return os;
+	}
+
+	public void setOs(String os) {
+		this.os = os;
+	}
+
+	public String getUnixGUI() {
+		return unixGUI;
+	}
+
+	public void setUnixGUI(String unixGUI) {
+		this.unixGUI = unixGUI;
+	}
+
+	public String getProglang() {
+		return proglang;
+	}
+
+	public void setProglang(String proglang) {
+		this.proglang = proglang;
+	}
+
+	public String getSkin() {
+		return skin;
+	}
+
+	public void setSkin(String skin) {
+		this.skin = skin;
+	}
+
+	public boolean isEditPrivs() {
+		return editPrivs;
+	}
+
+	public void setEditPrivs(boolean editPrivs) {
+		this.editPrivs = editPrivs;
+	}
+
+	public boolean isAdminPrivs() {
+		return adminPrivs;
+	}
+
+	public void setAdminPrivs(boolean adminPrivs) {
+		this.adminPrivs = adminPrivs;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getProv() {
+		return prov;
+	}
+
+	public static int getpAdmin() {
+		return P_ADMIN;
+	}
+
+	public static int getpEdit() {
+		return P_EDIT;
 	}
 }

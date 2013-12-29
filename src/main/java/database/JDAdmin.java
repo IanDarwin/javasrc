@@ -20,6 +20,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
+import domain.User;
+
 /** A GUI-based User Database Administrator program
  * This does NOT use the UserDB interface as it needs
  * to be able to do ANYTHING to the database,
@@ -240,7 +242,7 @@ public class JDAdmin extends JFrame {
 			case UserDB.FULLNAME-1: return u.getFullName();
 			case UserDB.EMAIL-1: 	return u.getEmail();
 			case UserDB.CITY-1: 	return u.getCity();
-			case UserDB.PROVINCE-1:	return u.getProv();
+			case UserDB.PROVINCE-1:	return u.getProvince();
 			case UserDB.COUNTRY-1:	return u.getCountry();
 			case UserDB.PRIVS-1:	return Integer.valueOf(u.getPrivs());
 			default: return null;

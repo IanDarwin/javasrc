@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import dbm.DBM;
+import domain.User;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
