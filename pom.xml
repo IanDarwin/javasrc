@@ -27,7 +27,7 @@
           <source>1.7</source>
           <target>1.7</target>
 		<excludes>
-			<!-- Why does this not compile? Why does it not get exclude-ed?? -->
+			<!-- Why does this not get exclude-ed?? Maven tries to compile (break it and see) -->
 			<exclude>hibernate/BaseDAOHibernateImpl.java</exclude>
 			<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
 			<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
@@ -60,19 +60,16 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>4.0.1.Final</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>4.0.1.Final</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>4.2.0.Final</version>
-      <scope>provided</scope>
       <exclusions>
               <exclusion>
                  <groupId>org.slf4j</groupId>
