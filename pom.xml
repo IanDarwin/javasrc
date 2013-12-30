@@ -128,6 +128,28 @@
 	<version>3.2.4.RELEASE</version>
     </dependency>
 
+    <!-- JPA needing a driver, let's use Hibernate -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>4.0.1.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>4.0.1.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>4.2.0.Final</version>
+      <exclusions>
+              <exclusion>
+                 <groupId>org.slf4j</groupId>
+                 <artifactId>slf4j-api</artifactId>
+              </exclusion>
+           </exclusions>
+    </dependency>
     <dependency>
         <groupId>org.jdom</groupId>
         <artifactId>jdom</artifactId>
