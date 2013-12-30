@@ -2,9 +2,12 @@ package jaxwsclient;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.xml.ws.Endpoint;
 import javax.xml.ws.soap.SOAPFaultException;
 
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -13,11 +16,24 @@ import org.junit.Test;
  * Assumes client artifacts have been created, using e.g., on Unix:
  * $ mkdir jaxwsclient
  * $ wsimport -d jaxwsclient -keep 'http://localhost:9090/calc?wsdl'
- * (changed the package names after running this).
  */
 public class CalcIntegTest {
 
-	Calc client;
+	static Endpoint endpoint;
+	
+	jaxwsclient.Calc client;
+	
+	@BeforeClass
+	public static void startServer() {
+		jaxwsservice.Calc impl = new jaxwsservice.Calc();
+		// Start the service running
+		endpoint = Endpoint.publish("http://localhost:9090/calc", impl);
+	}
+	
+	@AfterClass
+	public static void stopServer() {
+		endpoint.stop();
+	}
 
 	@Before
 	public void initialize() {
