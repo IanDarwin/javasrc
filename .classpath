@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="servlet/TermsServletPDF.java|servlet/pdfcouponservlet/PDFCouponServlet.java|websvcdemo/CallSoap.java" kind="src" path="src"/>
+	<classpathentry excluding="servlet/TermsServletPDF.java|servlet/pdfcouponservlet/PDFCouponServlet.java|websvcdemo/CallSoap.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="lib" path="lib/activation.jar"/>
