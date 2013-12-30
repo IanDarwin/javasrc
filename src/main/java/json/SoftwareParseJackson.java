@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// BEGIN main
 public class SoftwareParseJackson {
 
 	public static void main(String[] args) throws Exception {
@@ -19,3 +20,4 @@ public class SoftwareParseJackson {
 	}
 
 }
+// END main
