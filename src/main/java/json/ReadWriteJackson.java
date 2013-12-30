@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.Person;
 
 // BEGIN main
-public class JsonReadWriteJackson {
+public class ReadWriteJackson {
 
 	public static void main(String[] args) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();		// <1>
