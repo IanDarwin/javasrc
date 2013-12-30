@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.darwinsys</groupId>
+  <artifactId>javasrcee</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>javasrcee</name>
+  <url>http://javacook.darwinsys.com</url>
+  <description>Ian Darwin's collected Java EE Code Examples</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
+    <dependency>
+	<groupId>com.darwinsys</groupId>
+        <artifactId>darwinsys-api</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+
+    <!-- Java EE current (7) full -->
+    <dependency>
+        <groupId>javax</groupId>  
+        <artifactId>javaee-api</artifactId>  
+        <version>7.0</version>
+    </dependency> 
+
+    <!-- Test early and often -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.9</version>
+    </dependency>
+
+  </dependencies>
+</project>
