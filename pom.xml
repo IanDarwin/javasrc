@@ -26,6 +26,15 @@
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
+		<excludes>
+			<!-- Why does this not compile? Why does it not get exclude-ed?? -->
+			<exclude>hibernate/BaseDAOHibernateImpl.java</exclude>
+			<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
+			<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
+			<exclude>servlet/TermsServletPDF.java</exclude>
+			<!-- needs old Apache Axis toolkit for SOAP Web Service, we can use JAX-WS -->
+			<exclude>websvcdemo/CallSoap.java</exclude>
+		</excludes>
         </configuration>
       </plugin>
     </plugins>
@@ -45,6 +54,32 @@
         <artifactId>javaee-api</artifactId>  
         <version>7.0</version>
     </dependency> 
+
+    <!-- JPA needing a driver, let's use Hibernate -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>4.0.1.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>4.0.1.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>4.2.0.Final</version>
+      <scope>provided</scope>
+      <exclusions>
+              <exclusion>
+                 <groupId>org.slf4j</groupId>
+                 <artifactId>slf4j-api</artifactId>
+              </exclusion>
+           </exclusions>
+    </dependency>
 
     <!-- Test early and often -->
     <dependency>
