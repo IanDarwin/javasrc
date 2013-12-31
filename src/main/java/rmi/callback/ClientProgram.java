@@ -1,10 +1,10 @@
-package com.darwinsys.client;
+package rmi.callback;
 
-import com.darwinsys.callback.*;
-
-import java.io.*;
-import java.rmi.*;
-import java.rmi.server.*;
+import java.io.IOException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 /** This class tries to be all things to all people:
  *	- main program for client to run.
