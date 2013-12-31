@@ -13,6 +13,7 @@ public class GetResourceDemo {
 
 	/** The demo itself */
 	public void demo() {
+		// BEGIN main
 		// Find the ClassLoader that loaded us.
 		// Regard it as the One True ClassLoader for this app.
 		ClassLoader loader = this.getClass().getClassLoader();
@@ -37,5 +38,6 @@ public class GetResourceDemo {
 
 		// List it to confirm that we loaded it.
 		p.list(System.out);
+		// END main
 	}
 }
