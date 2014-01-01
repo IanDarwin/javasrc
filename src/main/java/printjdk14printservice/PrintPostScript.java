@@ -1,7 +1,8 @@
 package printjdk14printservice;
 
-import java.io.IOException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.print.Doc;
 import javax.print.DocFlavor;
@@ -20,28 +21,36 @@ import javax.print.attribute.standard.OrientationRequested;
 /** Demonstrate finding a PrintService and printing to it */
 public class PrintPostScript {
 	
+	private static final String INPUT_FILE_NAME = "/demo.txt";
+
 	public static void main(String[] args) throws IOException, PrintException {
 		new PrintPostScript().print();
 	}
 	
 	public void print() throws IOException, PrintException {
 		
-		DocFlavor flavor = DocFlavor.BYTE_ARRAY.POSTSCRIPT;
+		DocFlavor inputFlavor = DocFlavor.INPUT_STREAM.TEXT_PLAIN_UTF_8;
+		
+		// Lookup a print factory to convert from desired input to output.
 		StreamPrintServiceFactory[] psfactories =
 			StreamPrintServiceFactory.lookupStreamPrintServiceFactories(
-				DocFlavor.SERVICE_FORMATTED.PRINTABLE,
-				flavor.getMimeType());
-
+				inputFlavor, DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType());
+		if (psfactories.length == 0) {
+			System.err.println("Ack! No StreamPrintFactory found for this job!");
+		}
 		StreamPrintService printService = 
 			psfactories[0].getPrintService(new FileOutputStream("demo.ps"));
 		PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
 		attrs.add(OrientationRequested.LANDSCAPE);
 		attrs.add(MediaSizeName.NA_LETTER);
 		attrs.add(new Copies(1));
-		attrs.add(new JobName("PrintPostScript", null));
+		attrs.add(new JobName(INPUT_FILE_NAME, null));
 
-		// DOES NOT WORK - you must pass SimpleDoc something that will turn into PostScript!
-		Doc doc = new SimpleDoc(this, flavor, null);
+		InputStream is = getClass().getResourceAsStream(INPUT_FILE_NAME);
+		if (is == null) {
+			throw new NullPointerException("Input Stream is null: file not found?");
+		}
+		Doc doc = new SimpleDoc(is, inputFlavor, null);
 		
 		DocPrintJob printJob = printService.createPrintJob();
 		printJob.print(doc, attrs);
