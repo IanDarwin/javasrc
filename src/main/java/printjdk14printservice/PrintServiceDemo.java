@@ -109,7 +109,7 @@ public class PrintServiceDemo extends JFrame {
 			throw new NullPointerException("Input Stream is null: file not found?");
 		}
 		Doc doc = new SimpleDoc(is, flavor, null);
-
+		
 		pj.print(doc, aset);
 	}
 }
