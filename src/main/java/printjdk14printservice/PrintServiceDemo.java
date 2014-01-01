@@ -24,6 +24,7 @@ import javax.swing.SwingUtilities;
 
 import com.darwinsys.swingui.UtilGUI;
 
+// BEGIN main
 /**
  * Show the PrintService, a more high-level API than PrintJob, from a GUI;
  * the GUI consists only of a "Print" button, and the filename is hardcoded,
@@ -39,17 +40,17 @@ public class PrintServiceDemo extends JFrame {
 	 * @throws IOException */
 	public static void main(String[] av) throws Exception {
 		SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                		new PrintServiceDemo("Print Demo").setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+			public void run() {
+				try {
+					new PrintServiceDemo("Print Demo").setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	/** Constructor */
+	/** Constructor for GUI display with pushbutton to print */
 	PrintServiceDemo(String title) {
 		super(title);
 		System.out.println("PrintServiceDemo.PrintServiceDemo()");
@@ -63,8 +64,9 @@ public class PrintServiceDemo extends JFrame {
 				try {
 					print(INPUT_FILE_NAME);
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(PrintServiceDemo.this, "Error: " + e1, "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(
+						PrintServiceDemo.this, "Error: " + e1, "Error",
+						JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -82,7 +84,7 @@ public class PrintServiceDemo extends JFrame {
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 		aset.add(MediaSizeName.NA_LETTER);
 		PrintService[] pservices = 
-				PrintServiceLookup.lookupPrintServices(flavor, aset);
+			PrintServiceLookup.lookupPrintServices(flavor, aset);
 		int i;
 		switch(pservices.length) {
 		case 0:
@@ -90,21 +92,23 @@ public class PrintServiceDemo extends JFrame {
 					"Error: No PrintService Found", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		case 1:
-			i = 1;
+			i = 0;	// Only one printer, use it.
 			break;
 		default:
-			i = JOptionPane.showOptionDialog(this, "Pick a printer", "Choice", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null, pservices, pservices[0]);
+			i = JOptionPane.showOptionDialog(this, 
+				"Pick a printer", "Choice", 
+				JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, 
+				null, pservices, pservices[0]);
 			break;
 		}
 		DocPrintJob pj = pservices[i].createPrintJob();
 		Doc doc = new MyDemoDoc(INPUT_FILE_NAME, flavor);
 
 		pj.print(doc, aset);
-
 	}
 	
 	/**
-	 * Simple holder for filename and document flavor.
+	 * Simple "Doc" implementation: just holder for filename and document flavor.
 	 */
 	final class MyDemoDoc implements Doc {
 		
@@ -137,3 +141,4 @@ public class PrintServiceDemo extends JFrame {
 		}
 	}
 }
+// END main
