@@ -15,7 +15,7 @@ import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.MediaSize;
+import javax.print.attribute.standard.MediaSizeName;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,7 +25,7 @@ import com.darwinsys.swingui.UtilGUI;
 
 // BEGIN main
 /**
- * Show the PrintService, a more high-level API than PrintJob, from a GUI;
+ * Show the latest incarnation of printing, PrintService, from a GUI;
  * the GUI consists only of a "Print" button, and the filename is hardcoded,
  * but it's meant to be a minimal demo...
  */
@@ -33,7 +33,7 @@ public class PrintServiceDemo extends JFrame {
 
 	private static final long serialVersionUID = 923572304627926023L;
 	
-	private static final String INPUT_FILE_NAME = "duke.gif";
+	private static final String INPUT_FILE_NAME = "/demo.txt";
 
 	/** main program: instantiate and show. 
 	 * @throws IOException */
@@ -66,6 +66,7 @@ public class PrintServiceDemo extends JFrame {
 					JOptionPane.showMessageDialog(
 						PrintServiceDemo.this, "Error: " + e1, "Error",
 						JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -79,9 +80,10 @@ public class PrintServiceDemo extends JFrame {
 	 */
 	public void print(String fileName) throws IOException, PrintException {
 		System.out.println("PrintServiceDemo.print(): Printing " + fileName);
-		DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
+		DocFlavor flavor = DocFlavor.INPUT_STREAM.TEXT_PLAIN_UTF_8;
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-		aset.add(MediaSize.NA.LETTER);
+		//aset.add(MediaSize.NA.LETTER);
+		aset.add(MediaSizeName.NA_LETTER);
 		PrintService[] pservices = 
 			PrintServiceLookup.lookupPrintServices(flavor, aset);
 		int i;
@@ -103,6 +105,9 @@ public class PrintServiceDemo extends JFrame {
 		}
 		DocPrintJob pj = pservices[i].createPrintJob();
 		InputStream is = getClass().getResourceAsStream(INPUT_FILE_NAME);
+		if (is == null) {
+			throw new NullPointerException("Input Stream is null: file not found?");
+		}
 		Doc doc = new SimpleDoc(is, flavor, null);
 
 		pj.print(doc, aset);

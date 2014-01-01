@@ -1,0 +1,6 @@
+This is a plain text file, part of Ian Darwin's "javasrc"
+(available free from http://github.com/IanDarwin/javasrc/)
+and part of the O'Reilly Java Cookbook, Third Edition,
+http://shop.oreilly.com/product/0636920026518.do
+
+It is used in a few examples that need such a thing.
