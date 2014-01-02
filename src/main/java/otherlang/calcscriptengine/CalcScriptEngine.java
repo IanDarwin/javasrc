@@ -1,6 +1,8 @@
 package otherlang.calcscriptengine;
 
 import java.io.Reader;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 import javax.script.AbstractScriptEngine;
 import javax.script.Bindings;
@@ -22,9 +24,19 @@ public class CalcScriptEngine extends AbstractScriptEngine {
 	@Override
 	public Object eval(String script, ScriptContext context)
 			throws ScriptException {
-		System.out.println("CalcScriptEngine.eval():");
-		System.out.println(script);
-		return 42;
+		System.out.println("CalcScriptEngine.eval(): Running: " + script);
+		Stack<Integer> stack = new Stack<>();
+		StringTokenizer st = new StringTokenizer(script);
+		while (st.hasMoreElements()) {
+			String tok = st.nextToken();
+			if (tok.equals("+")) {
+				return stack.pop() + stack.pop();
+			}
+			// else ... check for other operators
+			// If nothing else, must be a name. get and stack its value
+			stack.push((Integer) context.getAttribute(tok));
+		}
+		return 0;
 	}
 
 	@Override

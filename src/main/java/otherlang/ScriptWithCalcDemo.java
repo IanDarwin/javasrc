@@ -15,7 +15,9 @@ public class ScriptWithCalcDemo {
 			System.err.println("Could not find engine");
 			return;
 		}
-		Object retVal = engine.eval("print('Hello World');");
+		engine.put("i", 99);
+		engine.put("j", 1);
+		Object retVal = engine.eval("i j +");
 		System.out.println("Script returned " + retVal);
 	}
 }
