@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Method;
 
+// BEGIN main
 /**
  * Get a given method, and invoke it.
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -49,3 +50,4 @@ public class GetAndInvokeMethod {
 		}
 	}
 }
+// END main
