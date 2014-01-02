@@ -6,12 +6,10 @@ import java.io.StringReader;
 import junit.framework.TestCase;
 
 /**
- * @author ian
+ * Test the trsly-nmd IndentContLineReader
  */
 public class IndentContLineReaderTest extends TestCase {
-	public static void main(String[] args) {
-		//junit.textui.TestRunner.run(IndentContLineReaderTest.suite());
-	}
+
 	protected final static String sampleTxt = 
 		"From: ian today now\n" +
 		"Received: by foo.bar.com\n" +
@@ -31,6 +29,7 @@ public class IndentContLineReaderTest extends TestCase {
 		"How about text ending without a newline?";
 
 	public void testReading() throws IOException {
+		// BEGIN main
 		IndentContLineReader is = new IndentContLineReader(
 			new StringReader(sampleTxt));
 		String aLine;
@@ -48,5 +47,16 @@ public class IndentContLineReaderTest extends TestCase {
 			System.out.println(is.getLineNumber() + ": " + aLine);
 		}
 		is.close();
+		// END main
+	}
+	
+	public void testTwoLiner() throws IOException {
+		String input = "Received: by foo.bar.com\n" +
+				" at 12:34:56 January 1, 2000\n";
+		String expected = "Received: by foo.bar.com at 12:34:56 January 1, 2000";
+		try (IndentContLineReader is = new IndentContLineReader(
+	        new StringReader(input))) {
+		    assertEquals("2 liner", expected, is.readLine());
+		}
 	}
 }
