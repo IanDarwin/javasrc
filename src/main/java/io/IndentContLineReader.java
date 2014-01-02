@@ -15,7 +15,9 @@ import java.io.*;
  * }
  * </pre>
  */
+// BEGIN main
 public class IndentContLineReader extends ContLineReader {
+
 	/** Line number of first line in current (possibly continued) line */
 	public int getLineNumber() {
 		return firstLineNumber;
@@ -74,6 +76,7 @@ public class IndentContLineReader extends ContLineReader {
 
 		return sb.toString();		// return what's left
 	}
+// END main
 
 	/** Construct an IndentContLineReader with the default buffer size. */
 	public IndentContLineReader(Reader in)  {
@@ -84,5 +87,4 @@ public class IndentContLineReader extends ContLineReader {
 	public IndentContLineReader(Reader in, int sz)  {
 		super(in, sz);
 	}
-
 }
