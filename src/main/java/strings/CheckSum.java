@@ -49,4 +49,3 @@ public class CheckSum {
     }
 // END main
 }
-// END main

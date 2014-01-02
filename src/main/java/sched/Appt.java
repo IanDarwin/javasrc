@@ -138,7 +138,7 @@ public class Appt implements Comparable<Appt> {
 
     // BEGIN main
 // public class Appt implements Comparable {
-    // much code and variables omitted - see online version
+    // Much code and variables omitted - see online version
     //-----------------------------------------------------------------
     //    METHODS - COMPARISON
     //-----------------------------------------------------------------
@@ -187,7 +187,7 @@ public class Appt implements Comparable<Appt> {
             return false;
         return text.equals(a2.text);
     }
-    // BEGIN main
+    // END main
 
     /** Return a String representation of this Appt.
      * Output is intended for debugging, not presentation!
