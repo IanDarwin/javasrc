@@ -2,13 +2,12 @@ package io;
 
 import java.io.*;
 
+// BEGIN main
 /**
  * Subclass of LineNumberReader, parent of others, to allow reading of
  * continued lines using the readLine() method. The other Reader methods
  * (readInt()) etc.) must not be used. Must subclass to provide the actual
  * implementation of readLine().
- * 
- * @author Ian Darwin, http://www.darwinsys.com/
  */
 public abstract class ContLineReader extends LineNumberReader {
 	/** Line number of first line in current (possibly continued) line */
@@ -69,3 +68,4 @@ public abstract class ContLineReader extends LineNumberReader {
 		return false;
 	}
 }
+// END main
