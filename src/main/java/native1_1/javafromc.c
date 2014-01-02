@@ -1,3 +1,4 @@
+// BEGIN main
 /*
  * This is a C program that calls Java code.
  * This could be used as a model for building Java into an
@@ -7,8 +8,6 @@
 #include <stdio.h>
 #include <jni.h>
 
-#ident	"$Id$"
-	
 int
 main(int argc, char *argv[])
 {
@@ -51,12 +50,14 @@ main(int argc, char *argv[])
 		fprintf(stderr, "get of String class failed!!\n");
 		exit(1);
 	}
+
 	/* make an array of Strings, subtracting 1 for progname & 1 for the
 	 * java class name */
 	if ((args = (*myEnv)->NewObjectArray(myEnv, argc-2, stringClass, NULL))==NULL) {
 		fprintf(stderr, "Create array failed!\n");
 		exit(1);
 	}
+
 	/* fill the array */
 	for (i=2; i<argc; i++)
 		(*myEnv)->SetObjectArrayElement(myEnv,
@@ -75,3 +76,4 @@ main(int argc, char *argv[])
 	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
 	return 0;
 }
+// END main
