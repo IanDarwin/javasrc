@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import com.darwinsys.sql.ConnectionUtil;
 
-/** A database MetaData query
- */
+// BEGIN main
+/** A database MetaData query */
 public class DatabaseMetaDemo {
 
 	public static void main(String[] args) {
@@ -68,3 +68,4 @@ public class DatabaseMetaDemo {
 		}
 	}
 }
+// END main
