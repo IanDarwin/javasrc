@@ -18,6 +18,7 @@ import javax.print.attribute.standard.JobName;
 import javax.print.attribute.standard.MediaSizeName;
 import javax.print.attribute.standard.OrientationRequested;
 
+// BEGIN main
 /** Demonstrate finding a PrintService and printing to it */
 public class PrintPostScript {
 	
@@ -56,3 +57,4 @@ public class PrintPostScript {
 		printJob.print(doc, attrs);
 	}
 }
+// END main
