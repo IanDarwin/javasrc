@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+import urllib
+
+url = 'http://darwinsys.com/badfile'
+
+file = urllib.urlopen(url);
