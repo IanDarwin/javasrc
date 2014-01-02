@@ -12,16 +12,17 @@ import java.util.StringTokenizer;
 
 import domain.User;
 
-/** Convert the database from text form to JDBC form.
- */
 // BEGIN main
+/** Load the database from text file into JDBC relational database.
+ * Text format is: name:password:fullname:city:prov:country:privs
+ */
 public class TextToJDBC {
 
 	protected final static String TEXT_NAME = "users.txt";
-	protected final static String DB_URL = "jdbc:idb:jabadb.prp";
+	protected final static String DB_URL = "jdbc:idb:userdb.prp";
+	protected boolean dropAndReCreate = false;
 
-	public static void main(String[] fn)
-	throws ClassNotFoundException, SQLException, IOException {
+	public static void main(String[] fn) throws Exception {
 
 		BufferedReader is = new BufferedReader(new FileReader(TEXT_NAME));
 
@@ -30,13 +31,14 @@ public class TextToJDBC {
 
 		System.out.println("Getting Connection");
 		Connection conn = DriverManager.getConnection(
-			DB_URL, "ian", "");	// user, password
+			DB_URL, "admin", "");	// user, password
 
 		System.out.println("Creating Statement");
 		Statement stmt = conn.createStatement();
 
-		System.out.println("Creating table and index");
-		stmt.executeUpdate("DROP TABLE users");
+		System.out.println("Re-creating table and index");
+		if (dropAndReCreate)
+			stmt.executeUpdate("DROP TABLE IF EXISTS users");
 		stmt.executeUpdate("CREATE TABLE users (\n" +
 			"name     char(12) PRIMARY KEY,\n" +
 			"password char(20),\n" +
@@ -56,7 +58,6 @@ public class TextToJDBC {
 
 		String line;
 		while ((line = is.readLine()) != null) {
-			//name:password:fullname:City:Prov:Country:privs
 
 			if (line.startsWith("#")) {		// comment
 				continue;

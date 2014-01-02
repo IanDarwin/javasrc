@@ -1,23 +1,51 @@
 package reflection;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+// BEGIN findAnnotatedClasses
 /** Discover "plugins" or other add-in classes via Reflection using Annotations */
 public class PluginsViaAnnotations {
 
-	public static void findAnnotatedClasses(String packageName, Class<?> classAnnotation) {
-		// Get the list of classes in the given package(s) (see RECIPEXX);
-		// Check if the class is annotated;
-		// If so, save the name and Class descriptor for later use.
+	/**
+	 *  Find all classes in the given package which have the given
+	 * class-level annotation class.
+	 * @param packageName
+	 * @param annotationClass
+	 * @return
+	 */
+	public static List<Class<?>> findAnnotatedClasses(String packageName, Class<? extends Annotation> annotationClass) throws Exception {
+		List<Class<?>> ret = new ArrayList<>();
+		String[] classes = ClassesInPackage.getPackageContent(packageName);
+		for (String clazz : classes) {
+			Class<?> c = Class.forName(clazz);
+			if (c.isAnnotationPresent(annotationClass))
+				ret.add(c);
+			}
+		return ret;
 	}
+	// END findAnnotatedClasses
 	
-	public static void findAnnotatedClassesWithMethods(String pkg, Class<?> classAnnotation, Class<?> methodAnnotation) {
-		//  Get the list of classes in the given package(s) (see RECIPEXX);
-		// If you are using a class-level annotation, check if the class is annotated;
-		// If this class is still of interest, get a list of its methods;
-		// For each method, see if it contains a given method-specific annotation;
-		// If so, add the class and method to a list of invocable methods.
+	// BEGIN findClassesWithAnnotatedMethods
+	/**
+	 * Find all classes in the given package which have the given
+	 * method-level annotation class on at least one method.
+	 */
+	public static List<Class<?>> findClassesWithAnnotatedMethods(String packageName, 
+			Class<? extends Annotation> methodAnnotationClass) throws Exception {
+		List<Class<?>> ret = new ArrayList<>();
+		String[] classes = ClassesInPackage.getPackageContent(packageName);
+		for (String clazz : classes) {
+			Class<?> c = Class.forName(clazz);
+			for (Method m : c.getMethods()) {
+				if (m.isAnnotationPresent(methodAnnotationClass)) {
+					ret.add(c);
+				}
+			}
+		}
+		return ret;
 	}
-	
-	public static void main(String[] args) {
-		throw new RuntimeException("Not written yet");
-	}
+	// END findClassesWithAnnotatedMethods
 }
