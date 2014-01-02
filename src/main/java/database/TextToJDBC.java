@@ -20,7 +20,7 @@ public class TextToJDBC {
 
 	protected final static String TEXT_NAME = "users.txt";
 	protected final static String DB_URL = "jdbc:idb:userdb.prp";
-	protected boolean dropAndReCreate = false;
+	protected static boolean dropAndReCreate = false;
 
 	public static void main(String[] fn) throws Exception {
 
