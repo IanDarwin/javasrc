@@ -15,7 +15,6 @@ import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.JobName;
 import javax.print.attribute.standard.MediaSizeName;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -85,7 +84,7 @@ public class PrintServiceDemo extends JFrame {
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 		//aset.add(MediaSize.NA.LETTER);
 		aset.add(MediaSizeName.NA_LETTER);
-		aset.add(new JobName(INPUT_FILE_NAME, null));
+		//aset.add(new JobName(INPUT_FILE_NAME, null));
 		PrintService[] pservices = 
 			PrintServiceLookup.lookupPrintServices(flavor, aset);
 		int i;

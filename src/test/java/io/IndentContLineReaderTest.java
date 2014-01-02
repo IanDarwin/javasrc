@@ -1,14 +1,16 @@
 package io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.io.StringReader;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test the trsly-nmd IndentContLineReader
  */
-public class IndentContLineReaderTest extends TestCase {
+public class IndentContLineReaderTest {
 
 	protected final static String sampleTxt = 
 		"From: ian today now\n" +
@@ -28,7 +30,19 @@ public class IndentContLineReaderTest extends TestCase {
 		"\n" +
 		"How about text ending without a newline?";
 
-	public void testReading() throws IOException {
+	@Test
+	public void testTwoLiner() throws IOException {
+		String input = "Received: by foo.bar.com\n" +
+				" at 12:34:56 January 1, 2000\n";
+		String expected = "Received: by foo.bar.com at 12:34:56 January 1, 2000";
+		try (IndentContLineReader is = new IndentContLineReader(
+	        new StringReader(input))) {
+		    assertEquals("2 liner", expected, is.readLine());
+		}
+	}
+	
+	/** This is really a demo method, not a test, sorry. */
+	public void showReadingAMailMessageWithHeaders() throws IOException {
 		// BEGIN main
 		IndentContLineReader is = new IndentContLineReader(
 			new StringReader(sampleTxt));
@@ -48,15 +62,5 @@ public class IndentContLineReaderTest extends TestCase {
 		}
 		is.close();
 		// END main
-	}
-	
-	public void testTwoLiner() throws IOException {
-		String input = "Received: by foo.bar.com\n" +
-				" at 12:34:56 January 1, 2000\n";
-		String expected = "Received: by foo.bar.com at 12:34:56 January 1, 2000";
-		try (IndentContLineReader is = new IndentContLineReader(
-	        new StringReader(input))) {
-		    assertEquals("2 liner", expected, is.readLine());
-		}
 	}
 }
