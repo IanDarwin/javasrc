@@ -19,11 +19,10 @@ import javax.swing.SwingUtilities;
 
 import com.darwinsys.io.TextAreaOutputStream;
 
-/** GUI for TestOpenMailRelay, lets you run it multiple times in one JVM
- * to avoid startup delay.
- *
+// BEGIN main
+/** 
+ * GUI for TestOpenMailRelay, lets you run it multiple times in one JVM
  * Starts each invocation in its own Thread for faster return to ready state.
- *
  * Uses TextAreaWriter to capture program into a window.
  */
 public final class CheckOpenMailRelayGui extends JFrame {
@@ -31,7 +30,13 @@ public final class CheckOpenMailRelayGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String unused[]) throws IOException {
-		new CheckOpenMailRelayGui().setVisible(true);
+		final CheckOpenMailRelayGui gui = new CheckOpenMailRelayGui();
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setVisible(true);			// Can't do this on any non-EDT thread	
+			}
+		});
 	}
 
 	/** The one-line textfield for the user to type Host name/IP */
@@ -96,6 +101,7 @@ public final class CheckOpenMailRelayGui extends JFrame {
 		sb.setEnabled(false);
 
 		results = new JTextArea(20, 60);
+
 		// Add the text area to the main part of the window (CENTER).
 		// Wrap it in a JScrollPane to make it scroll automatically.
 		cp.add(BorderLayout.CENTER, new JScrollPane(results));
@@ -105,7 +111,6 @@ public final class CheckOpenMailRelayGui extends JFrame {
 		pack();			// end of GUI portion
 
 		out = new PrintStream(new TextAreaOutputStream(results));
-		
-		
 	}
 }
+// END main
