@@ -42,8 +42,7 @@ public final class CheckOpenMailRelayGui extends JFrame {
 									ErrorUtil.showExceptions(gui, ex);
 								}
 							});
-						} catch (InvocationTargetException
-								| InterruptedException e) {
+						} catch (InvocationTargetException | InterruptedException e) {
 							// excessive checked exception usage - nothing we can do here!
 							System.err.println("Sob! We failed: " + e);
 						}
