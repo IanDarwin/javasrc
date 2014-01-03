@@ -28,9 +28,20 @@ import com.darwinsys.io.TextAreaOutputStream;
 public final class CheckOpenMailRelayGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static CheckOpenMailRelayGui gui;
 
 	public static void main(String unused[]) throws IOException {
-		final CheckOpenMailRelayGui gui = new CheckOpenMailRelayGui();
+		Thread.setDefaultUncaughtExceptionHandler(
+			new Thread.uncaughtExceptionHandler() {
+			public void uncaughtException(Thread t, Throwable ex) {
+			SwingUtilities.invokeAndWait(new Runnable() {
+				public void run() {
+				ErrorUtil.showException(gui, ex);
+				}
+			});
+			}
+		});
+		gui = new CheckOpenMailRelayGui();
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
