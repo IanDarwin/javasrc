@@ -1,5 +1,6 @@
 package jaxwsservice;
 
+// BEGIN main
 import javax.jws.WebService;
 
 @WebService(targetNamespace="http://toy.service/")
@@ -9,6 +10,8 @@ public class Calc {
 		System.out.println("CalcImpl.add()");
 		return a + b;
 	}
+	// The other three methods are pretty simple too
+	// END main
 	
 	public int subtract(int a, int b) {
 		System.out.println("CalcImpl.subtract()");

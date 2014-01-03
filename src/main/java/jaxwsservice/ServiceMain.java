@@ -10,10 +10,14 @@ import javax.xml.ws.Endpoint;
 public class ServiceMain {
 	
 	public static void main(String[] args) {
+		// BEGIN main
 		// Create the "service stub"
 		Calc impl = new Calc();
 		// Start the service running
-		Endpoint.publish("http://localhost:9090/calc", impl);
+		Endpoint ep =
+			Endpoint.publish("http://localhost:9090/calc", impl);
+		System.out.println("Endpoint running: " + ep);
+		// END main
 
 	}
 }
