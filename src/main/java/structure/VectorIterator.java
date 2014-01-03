@@ -1,14 +1,14 @@
 package structure;
 
-import java.util.Enumeration;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
+
 /** Iterator used to walk through a Vector.
  */
 public class VectorIterator {
 	public static void main(String[] argv) {
-		Vector v = new Vector();
-		Enumeration e; 
+		Vector<Date> v = new Vector<>();
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the Vector...
