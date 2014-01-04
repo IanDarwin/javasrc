@@ -235,6 +235,19 @@
   <artifactId>jackson-databind</artifactId>
   <version>2.3.1</version>
 </dependency>
+<dependency>
+    <groupId>org.renjin</groupId>
+    <artifactId>renjin-script-engine</artifactId>
+    <version>0.7.0-RC6</version>
+  </dependency>
 
   </dependencies>
+  
+  <repositories>
+  <repository>
+    <id>bedatadriven</id>
+    <name>bedatadriven public repo</name>
+    <url>http://nexus.bedatadriven.com/content/groups/public/</url>
+  </repository>
+</repositories>
 </project>

@@ -1,12 +1,8 @@
 package otherlang;
 
-import com.darwinsys.util.Debug;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ProcessBuilderDemo shows how to execute an external 
@@ -14,22 +10,20 @@ import java.io.IOException;
  */
 public class ProcessBuilderDemo {
 
-	public static void main(String argv[]) 
-	throws InterruptedException, IOException {
-		
-		List<String> command = new ArrayList<String>();
+	public static void main(String argv[]) throws Exception {
+		// BEGIN main
+		List<String> command = new ArrayList<>();			// <1>
 		command.add("notepad");
 		command.add("foo.txt");
-		ProcessBuilder builder = new ProcessBuilder(command);
-		Map<String, String> environ = builder.environment();
-		environ.put("PATH", "/windows;/windows/system32;/winnt");
-		builder.directory(
-			new File(System.getProperty("user.home")));
-
-		final Process godot = builder.start();
-		
-		Debug.println("exec", "Waiting for Godot");
-		godot.waitFor();
+		ProcessBuilder builder = new ProcessBuilder(command);	// <2>
+		builder.environment().put("PATH", 
+				"/windows;/windows/system32;/winnt");			// <3>
+		final Process godot = builder.directory(
+			new File(System.getProperty("user.home"))).			// <4>
+			start();
+		System.err.println("Waiting for Godot");				// <5>
+		godot.waitFor();										// <6>
+		// END main
 
 		System.out.println("Program terminated!");
 		return;
