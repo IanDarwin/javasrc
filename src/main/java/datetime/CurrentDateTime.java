@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+// BEGIN main
 public class CurrentDateTime {
 	public static void main(String[] args) {
 		LocalDate dNow = LocalDate.now();
@@ -14,3 +15,4 @@ public class CurrentDateTime {
 		System.out.println(now);
 	}
 }
+// END main

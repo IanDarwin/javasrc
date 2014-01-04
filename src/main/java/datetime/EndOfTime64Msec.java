@@ -8,7 +8,9 @@ import java.util.Date;
  */
 public class EndOfTime64Msec {
 	public static void main(String[] args) {
+		// BEGIN ofTime
 		Date endOfTime = new Date(Long.MAX_VALUE);
-		System.out.println(endOfTime);
+		System.out.println("Java8 time overflows on " + endOfTime);
+		// END ofTime
 	}
 }

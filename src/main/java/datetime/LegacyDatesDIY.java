@@ -1,9 +1,14 @@
 package datetime;
 
+import java.text.Format;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.TimeZone;
 
+// BEGIN main
 public class LegacyDatesDIY {
 	public static void main(String[] args) {
 
@@ -25,5 +30,16 @@ public class LegacyDatesDIY {
 				legacyDate.getHours(), legacyDate.getMinutes(),
 				legacyDate.getSeconds());
 		System.out.println(convertedDate2);
+		
+		// Timezone
+		TimeZone timeZone = TimeZone.getTimeZone("EST");
+		ZoneId zoneId = timeZone.toZoneId();
+		System.out.println("EST - > " + zoneId);
+		
+		// Convert new DateTimeFormatter to old java.util.Format, but it
+		// will only format things that implement TemporalAccessor, e.g., new API
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy MM dd");
+		Format legacyFormat = dateTimeFormatter.toFormat();
+		System.out.println("Formatted: " +legacyFormat.format(convertedDate2));
 	}
 }
