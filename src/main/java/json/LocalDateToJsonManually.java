@@ -2,6 +2,7 @@ package json;
 
 import java.time.LocalDate;
 
+// BEGIN main
 public class LocalDateToJsonManually {
 
 	private static final String OPEN = "{";
@@ -11,6 +12,7 @@ public class LocalDateToJsonManually {
 		LocalDate dNow = LocalDate.now();
 		System.out.println(toJson(dNow));
 	}
+	
 	public static String toJson(LocalDate dNow) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(OPEN).append("\n");
@@ -25,3 +27,4 @@ public class LocalDateToJsonManually {
 		return String.format("\"%s\": \"%s\",\n", key, value);
 	}
 }
+// END main
