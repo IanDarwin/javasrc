@@ -1,6 +1,7 @@
 package testing;
 
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
