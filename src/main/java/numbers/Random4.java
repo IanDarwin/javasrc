@@ -4,7 +4,8 @@ import java.util.*;
 import java.io.*;
 
 /** Print "n" calls to nextDouble() and nextGaussian() in raw form
- * using java.util.Random.next*(); results can be plotted.
+ * using java.util.Random.next*(); results can be plotted (for example,
+ * using the "R" script randomnesshistograms.r).
  */
 public class Random4 {
 	public static void main(String[] argv) throws IOException {
