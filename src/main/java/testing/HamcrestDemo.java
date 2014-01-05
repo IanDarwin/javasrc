@@ -1,7 +1,8 @@
 package testing;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 
 // BEGIN main
 public class HamcrestDemo {
@@ -10,7 +11,7 @@ public class HamcrestDemo {
 	public void testNameConcat() {
 		Person p = new Person("Ian", "Darwin");
 		String f = p.getFullName();
-		assertThat("Name concatenation", f, equals("Ian Darwin"));
+		assertThat(f, equalTo("Ian Darwin"));
 	}
 }
 // END main
