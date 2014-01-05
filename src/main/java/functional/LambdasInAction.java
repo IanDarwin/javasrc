@@ -12,7 +12,7 @@ public class LambdasInAction {
 		JButton b = new JButton();
 		JTextArea c = null;
 		ActionListener l = (ActionEvent e) -> { b.disable(); c.setText(e.toString()); b.enable(); };
-		System.out.println(l + " (a " + l.getClass().getName() + ")");
+		System.out.println("'l' is a " + l.getClass().getName() + ")");
 		b.addActionListener(l);
 		//Callable c = (PurchaseVerifier pv, List<Purchases> pl) -> pv.verify(pl);
 	}
