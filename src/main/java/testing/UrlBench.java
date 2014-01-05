@@ -11,6 +11,7 @@ import java.net.URL;
  * > buttons in a form, and force a submit? I need to hammer a script to see how
  * > it handles, and 'click-submit-back-click-submit-back' ad infinitum doesn't 
  * > cut it.
+ * Actually, Apache JMeter will do this without writing any code...
  */
 
 public class UrlBench {

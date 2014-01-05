@@ -3,8 +3,7 @@ package testing;
 /**
  * Demonstrate the new-in-1.4 "assert" facility.
  * <p>
- * In JDK1.4, assertions are not recognized by default; you must compile
- * with "javac -source 1.4 ...". And they are not enabled by default;
+ * Java assertions are not enabled by default;
  * you must run with "java -enableassertions|-ea ...".
  * @since 1.4
  */
