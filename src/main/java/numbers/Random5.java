@@ -13,7 +13,7 @@ import com.darwinsys.io.FileIO;
  * the "R" script randomnesshistograms.r via javax.script and "renjin"
  * (err, except that renjin doesn't fully implement R graphics yet).
  */
-public class Random4 {
+public class Random5 {
 	private static final String R_SCRIPT_FILE = "/randomnesshistograms.r";
 	private static final int N = 10000;
 
