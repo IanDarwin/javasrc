@@ -8,16 +8,16 @@ import java.io.*;
  * using the "R" script randomnesshistograms.r).
  */
 public class Random4 {
+	private static final int N = 10000;
 	public static void main(String[] argv) throws IOException {
-		// java.util.Random methods are non-static, do need to construct Math
 		Random r = new Random();
-		PrintWriter file1 = new PrintWriter(new FileWriter("file1"));
-		PrintWriter file2 = new PrintWriter(new FileWriter("file2"));
-		for (int i=0; i<10000; i++) {
-			file1.println(r.nextDouble());
-			file2.println(r.nextGaussian());
+		try (PrintWriter file1 = new PrintWriter(new FileWriter("file1"))) {
+			try (PrintWriter file2 = new PrintWriter(new FileWriter("file2"))) {
+				for (int i=0; i<N; i++) {
+					file1.println(r.nextDouble());
+					file2.println(r.nextGaussian());
+				}
+			}
 		}
-		file1.close();
-		file2.close();
 	}
 }
