@@ -7,22 +7,20 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
-import com.darwinsys.util.Debug;
 
 /**
  * Simple lister - extract person and email tags from a user file. 
- * Version for SAX 2.0
  * @author Ian Darwin
  */
 // BEGIN main
 public class SAXLister {
+	final boolean DEBUG = false;
 	public static void main(String[] args) throws Exception {
 		new SAXLister(args);
 	}
 	
 	public SAXLister(String[] args) throws SAXException, IOException {
 		XMLReader parser = XMLReaderFactory.createXMLReader();
-		// should get Handler class from args or from properties rather than hardcoding class name
 		parser.setContentHandler(new PeopleHandler());
 		parser.parse(args.length == 1 ? args[0] : "xml/people.xml");
 	}
@@ -34,8 +32,10 @@ public class SAXLister {
 		boolean email = false;
 		public void startElement(String nsURI, String localName,
 				String rawName, Attributes attributes) throws SAXException {
-			Debug.println("docEvents", "startElement: " + localName + ","
+			if (DEBUG) {
+				System.out.println("startElement: " + localName + ","
 					+ rawName);
+			}
 			// Consult rawName since we aren't using xmlns prefixes here.
 			if (rawName.equalsIgnoreCase("name"))
 				person = true;
