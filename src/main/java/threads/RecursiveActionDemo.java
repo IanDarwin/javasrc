@@ -3,16 +3,12 @@ package threads;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+// BEGIN main
 /** A trivial demonstration of the "Fork-Join" framework:
  * square a bunch of numbers using RecursiveAction.
  * We use RecursiveAction here b/c we don't need each
  * compute() call to return its result; the work is
  * accumulated in the "dest" array.
- * 
- * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
- * This class absolutely requires Java SE 7+, so just add an exclusion rule
- * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
- * 
  * @author Ian Darwin
  */
 public class RecursiveActionDemo extends RecursiveAction {
@@ -34,8 +30,9 @@ public class RecursiveActionDemo extends RecursiveAction {
 		ForkJoinPool pool = new ForkJoinPool();
 		pool.invoke(fb);
 		System.out.print('[');
-		for (int i : sorted) 
+		for (int i : sorted) {
 			System.out.print(i + ",");
+		}
 		System.out.println(']');
 	}
 	
@@ -60,3 +57,4 @@ public class RecursiveActionDemo extends RecursiveAction {
 		}
 	}
 }
+// END main
