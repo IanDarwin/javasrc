@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
+// BEGIN main
 /**
  * Demonstrate the Fork-Join Framework to average a large array.
  * Running this on a multi-core machine as e.g., 
@@ -12,19 +13,8 @@ import java.util.concurrent.RecursiveTask;
  * indicating that we are making use of multiple cores.
  * That said, it is a somewhat contrived demo.
  *
- * In using the Fork Join Framework, you have to subclass ForkJoinTask
- * and provide a compute() method that does small items of work AND
- * divides larger items into smaller ones and recurses.
- * There are two main base classes, RecursiveAction and RecursiveTask.
- * Use RecursiveAction where compute() doesn't need to return a value
- * (as for the common case where each call updates part of an array).
  * Use RecursiveTask<T> where, as in this example, each call returns
  * a value that represents the computation for its subset of the overall task.
- *
- * P L E A S E   R E A D   B E F O R E   C O M P L A I N I N G
- * This class absolutely requires Java SE 7+, so just add an exclusion rule
- * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
-
  * @author Ian Darwin
  */
 public class RecursiveTaskDemo extends RecursiveTask<Long> {
@@ -81,3 +71,4 @@ public class RecursiveTaskDemo extends RecursiveTask<Long> {
 		}
 	}
 }
+// END main
