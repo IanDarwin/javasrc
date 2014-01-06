@@ -62,3 +62,4 @@ public class JColorChooserDemo extends JFrame {
         new JColorChooserDemo().setVisible(true);
     }
 }
+// END main

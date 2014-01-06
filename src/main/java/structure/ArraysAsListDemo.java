@@ -10,6 +10,7 @@ public class ArraysAsListDemo {
 		for (String fn : firstNames) {
 			System.out.println(fn);
 		}
+		List<String> lastNames = Arrays.asList(new String[]{"Smith", "Jones", "MacKenzie"});
+		System.out.println(lastNames);
 	}
-
 }
