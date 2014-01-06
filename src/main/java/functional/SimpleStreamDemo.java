@@ -20,6 +20,7 @@ public class SimpleStreamsDemo {
 		new Hero("Grelber", 21), 
 		new Hero("Roderick", 12),
 		new Hero("Francisco", 35), 
+		new Hero("Superman", 65),
 		new Hero("Jumbletron", 22),
 		new Hero("Mavericks", 1), 
 		new Hero("Palladin", 50),
