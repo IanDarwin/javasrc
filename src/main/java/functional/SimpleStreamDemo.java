@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SimpleStreamsDemo {
+public class SimpleStreamDemo {
 
 	static class Hero {
 		String name;
