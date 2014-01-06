@@ -74,7 +74,7 @@ public class XParse {
 					System.out.println("Parsed/Validated OK");
 				}
 			}
-		// Just catch statements below here...
+		// Just +catch+ statements below here...
 		// END main
 		} catch (SAXParseException ex) {
 			System.err.println("+================================+");
