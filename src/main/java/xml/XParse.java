@@ -76,7 +76,7 @@ public class XParse {
 			}
 		// Just catch statements below here...
 		// END main
-		} catch (SAXParseException | SAXException ex) {
+		} catch (SAXParseException ex) {
 			System.err.println("+================================+");
 			System.err.println("|       *SAX Parse Error*        |");
 			System.err.println("+================================+");
