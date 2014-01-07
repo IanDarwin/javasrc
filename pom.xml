@@ -95,11 +95,11 @@
   </build>
 
   <dependencies>
-    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
+    <!-- Ian's own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
     <dependency>
-	<groupId>com.darwinsys</groupId>
+	    <groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </dependency>
 
     <!-- Test early and often -->
