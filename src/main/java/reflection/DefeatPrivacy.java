@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Field;
 
+// BEGIN main
 class X {
 	private int p = 42;
 	int q = 3;
@@ -30,5 +31,5 @@ public class DefeatPrivacy {
 			System.out.println(f + "==" + f.get(x));
 		}
 	}
-
 }
+// END main
