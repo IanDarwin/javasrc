@@ -1,8 +1,8 @@
 package structure;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
+
 /**
  * Demonstrate the Set interface
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -10,14 +10,13 @@ import java.util.Set;
 public class SetDemo {
 	public static void main(String[] argv) {
 		// BEGIN main
-		Set<String> h = new HashSet<String>();
-		h.add("One");
-		h.add("Two");
-		h.add("One"); // DUPLICATE
-		h.add("Three");
-		Iterator it = h.iterator();
-		while (it.hasNext()) {
-			System.out.println(it.next());
+		Set<String> hashSet = new HashSet<String>();
+		hashSet.add("One");
+		hashSet.add("Two");
+		hashSet.add("One"); // DUPLICATE
+		hashSet.add("Three");
+		for (String s : hashSet) {
+			System.out.println(s);
 		}
 		// END main
 	}
