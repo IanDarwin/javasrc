@@ -23,7 +23,7 @@ public class AudioPlay {
 		else for (String a : av) {
 			System.out.println("Playing  " + a);
 			try {
-				URL snd = SoundPlay.class.getResource(a);
+				URL snd = AudioPlay.class.getResource(a);
 				if (snd == null) {
 					System.err.println("Cannot getResource "  + a);
 					continue;
