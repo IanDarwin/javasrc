@@ -6,11 +6,11 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-/** Simple program to try out the "new Sound" stuff in JDK1.2 --
- * allows Applications, not just Applets, to play Sound.
+/** 
+ * Simple program to play sound files
  */
 // BEGIN main
-public class SoundPlay {
+public class AudioPlay {
 
 	static String defSounds[] = {
 		"/audio/test.wav",
@@ -21,7 +21,7 @@ public class SoundPlay {
 		if (av.length == 0)
 			main(defSounds);
 		else for (String a : av) {
-			System.out.println("Starting " + a);
+			System.out.println("Playing  " + a);
 			try {
 				URL snd = SoundPlay.class.getResource(a);
 				if (snd == null) {
