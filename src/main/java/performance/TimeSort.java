@@ -1,5 +1,7 @@
 package performance;
 
+import java.util.Arrays;
+
 /**
  * Time a bunch of sorting.
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -13,7 +15,7 @@ public class TimeSort {
 		for  (int i=0; i<N; i++)
 			data[i] = r.nextInt();
 		long t1 = System.currentTimeMillis();
-		java.util.Arrays.sort(data);
+		Arrays.sort(data);
 		long t2 = System.currentTimeMillis();
 		long randTime = t1 - t0;
 		long sortTime = t2 - t1;

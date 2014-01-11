@@ -1,6 +1,7 @@
 package dir_file;
 
 import java.io.*;
+import java.util.Arrays;
 
 /**
  * FNFilter - Ls directory lister modified to use FilenameFilter
@@ -11,7 +12,7 @@ public class FNFilter {
 	public static void main(String argh_my_aching_fingers[]) {
 		// Generate the selective list, with a one-use File object.
 		String[] dir = new java.io.File(".").list(new OnlyJava());
-		java.util.Arrays.sort(dir);		// Sort it (Data Structuring chapter))
+		Arrays.sort(dir);		// Sort it (Data Structuring chapter))
 		for (int i=0; i<dir.length; i++)
 			System.out.println(dir[i]);	// Print the list
 	}
