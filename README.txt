@@ -10,28 +10,27 @@ Java Cookbook was published:
     for Java 8 as you read this; Java 7 is now the minimum. You can probably
     get by with a huge excludes list, but you're on your own if you do that.
 
-*)	The files are now in a public git repository; see
-	https://github.com/IanDarwin/javasrc
-	From there you can clone it (to get updates) or download a Zip (but you
-	don't get updates).
+	In fact, you'll soon need an Excludes list if you want to run with Java 7.
+	Sorry, but the Java world keeps moving so the target has to keep moving.
 
-*)	The Java files  are now in Java packages whose name corresponds 
+*)	The Java files are now in Java packages whose name corresponds 
 	to the directory they are in (this is how most tools including
-	Ant and Eclipse expect to find things).
+	Ant and Eclipse expect to find things). They are further in the
+	subdirectory "src/main/java" which is where most *modern* tools
+	including Maven, Gradle, and others, expect them to be.
 	
 *)	The index-bychapter file is substantially out of date since the
 	packagification "flag day".
 
-*)	I am using Eclipse for most of my development. And Maven, not Ant, for
-	building. Thus the Ant scripts are now out of date and unsupported; if you get 
-	them working please send me a pull request against the git repo.
+*)	I am using Eclipse for most of my development. And Maven for
+	building. Thus any Ant scripts you find are out of date and unsupported;
+	if you get them working please send me a pull request against the git repo.
 
 *)	An unspecified number of files here are used in the Java Cookbook;
 	those that have been converted to the newest publishing software at
 	O'Reilly will have "// BEGIN" and "// END" comments to mark sections for
 	mechanical inclusion into the book. These are just comments and can be
 	completely ignored by people looking at the source code normally.
-	
 
 Ian Darwin
 Java Cookbook author
