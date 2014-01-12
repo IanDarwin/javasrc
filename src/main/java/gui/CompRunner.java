@@ -5,14 +5,13 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /** 
- * CompTest -- Component Runner.
+ * CompRunner -- Component Runner.
  * A generic main program, for testing a Component-based GUI class that 
  * has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
- * XXX Class name is a misnomer; should be CompRunner, not CompTest.
- * @author	Ian F. Darwin, ian@darwinsys.com
+ * @author	Ian F. Darwin, http://darwinsys.com/
  */
-public class CompTest {
+public class CompRunner {
 
 	/** The component being displayed. */
 	static Component comp = null;
@@ -20,7 +19,7 @@ public class CompTest {
 	/** "main program" method - construct and show */
 	public static void main(String[] args) {
 		if (args.length == 0) {
-			System.err.println("Usage: CompTest ComponentSubclass");
+			System.err.println("Usage: CompRunner ComponentSubclass");
 			System.exit(1);
 		}
 		String className = args[0];
@@ -51,7 +50,7 @@ public class CompTest {
         EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				// create a Frame, and "Component comp" to it.
-				final JFrame f = new JFrame("CompTest: " + args[0]);
+				final JFrame f = new JFrame("CompRunner: " + args[0]);
 				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 				Container cp = f.getContentPane();
