@@ -1,68 +1,73 @@
+package gui;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
 /** 
- * CompTest -- Component Tester.
+ * CompTest -- Component Runner.
  * A generic main program, for testing a Component-based GUI class that 
  * has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
+ * XXX Class name is a misnomer; should be CompRunner, not CompTest.
  * @author	Ian F. Darwin, ian@darwinsys.com
- * @version $Id: CompTest.java,v 1.8 2001/12/25 21:00:08 ian Exp $
  */
 public class CompTest {
 
+	/** The component being displayed. */
+	static Component comp = null;
+
 	/** "main program" method - construct and show */
-	public static void main(String[] av) {
-		if (av.length == 0) {
+	public static void main(String[] args) {
+		if (args.length == 0) {
 			System.err.println("Usage: CompTest ComponentSubclass");
 			System.exit(1);
 		}
-		String name = av[0];
+		String className = args[0];
 
-		// create an instance of class named in "name", save in "Component c".
-		Component c = null;
+		// create an instance of class named in "className", save in "Component comp".
+		Class clazz = null;
 		try {
-			Class cf = Class.forName(name);
-			Object o = cf.newInstance();
+			clazz = Class.forName(className);
+		} catch (Exception e) {
+			System.err.println("ERROR: " + className + " not valid; probably not on CLASSPATH");
+			System.exit(1);
+		}
+		try {
+			Object o = clazz.newInstance();
 			if (!(o instanceof Component)) {
-				System.err.println("ERROR: Class " + name +
+				System.err.println("ERROR: Class " + className +
 					" is not a subclass of Component");
 				System.exit(1);
 			}
-			c = (Component)o;
+			comp = (Component)o;
 		} catch (Exception e) {
-			System.err.println("Component under test got exception in construction or initialization");
+			System.err.println(className + " got exception in construction or initialization");
 			System.err.println(e.toString());
 			System.exit(1);
 		}
 
-		// create a Frame, and "Component c" to it.
-		final JFrame f = new JFrame("CompTest: " + av[0]);
-		Container cp = f.getContentPane();
+		// Java GUI events are not threadsafe, so start the GUI on the Event Thread
+        EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				// create a Frame, and "Component comp" to it.
+				final JFrame f = new JFrame("CompTest: " + args[0]);
+				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		cp.add(BorderLayout.CENTER, c);		// Add the component under test
+				Container cp = f.getContentPane();
+				cp.add(BorderLayout.CENTER, comp);		// Add the component under test
 
-		JButton quitButton;
-		cp.add(BorderLayout.SOUTH, quitButton = new JButton("Exit")); 
-		quitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				f.setVisible(false);
-				f.dispose();
-				System.exit(0);
+				// Set things reasonably sized.
+				Dimension d = comp.getPreferredSize();
+				if (d.width == 0 || d.height == 0) {
+					// component doesn't have working getPreferredSize() yet, pick a size.
+					f.setSize(300, 200);
+				} else {
+					f.pack();
+				}
+				f.setLocation(200, 200);
+				f.setVisible(true);
 			}
 		});
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// Set things reasonably sized.
-		Dimension d = c.getPreferredSize();
-		if (d.width == 0 || d.height == 0) {
-			// component doesn't have getPreferredSize() yet, hard code a size.
-			f.setSize(300, 200);
-		} else {
-			f.pack();
-		}
-		f.setLocation(200, 200);
-		f.setVisible(true);
 	}
 }
