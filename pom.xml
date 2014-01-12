@@ -95,7 +95,7 @@
   </build>
 
   <dependencies>
-    <!-- Ian's own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
+    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
     <dependency>
 	    <groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
@@ -189,6 +189,13 @@
     <groupId>javax.media</groupId>
     <artifactId>jmf</artifactId>
     <version>2.1.1e</version>
+</dependency>
+
+<!-- VLC Player for Java, jlcj -->
+<dependency>
+	<groupId>uk.co.caprica</groupId>
+	<artifactId>vlcj</artifactId>
+	<version>2.4.1</version>
 </dependency>
 
 <dependency>
