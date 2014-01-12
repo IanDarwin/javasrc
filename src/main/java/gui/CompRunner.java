@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+// BEGIN main
 /** 
  * CompRunner -- Component Runner.
  * A generic main program, for testing a Component-based GUI class that 
@@ -70,3 +71,4 @@ public class CompRunner {
 		});
 	}
 }
+// END main
