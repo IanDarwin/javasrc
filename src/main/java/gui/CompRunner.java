@@ -18,7 +18,7 @@ public class CompRunner {
 	static Component comp = null;
 
 	/** "main program" method - construct and show */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		if (args.length == 0) {
 			System.err.println("Usage: CompRunner ComponentSubclass");
 			System.exit(1);
