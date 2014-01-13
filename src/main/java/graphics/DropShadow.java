@@ -28,8 +28,7 @@ public class DropShadow extends JComponent {
 	}
 
 	public DropShadow(String theLabel) {
-		if (theLabel == null)
-				theLabel = "DropShadow";
+		this.theLabel = theLabel == null ? "DropShadow" : theLabel;
 		// Now handle font stuff.
 		fontName = "Sans";
 		fontSize = 24;
