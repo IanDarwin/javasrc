@@ -1,8 +1,11 @@
 package javadoc;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Calendar;
+
+import javax.swing.JPanel;
 
 /**
  * JavadocDemo - a simple example to show JavaDoc comments.
