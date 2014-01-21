@@ -1,9 +1,7 @@
 package javadoc;
 
-import java.applet.Applet;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import javax.swing.*;
 import java.util.Calendar;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Calendar;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 // BEGIN main
-public class JavadocDemo extends Component {
+public class JavadocDemo extends JPanel {
 
 	/**
 	 * Construct the GUI
@@ -20,8 +18,7 @@ public class JavadocDemo extends Component {
 	public void JavadocDemo() {
 		// We create and add a pushbutton here, 
 		// but it doesn't do anything yet.
-		Button b;
-		b = new Button("Hello");
+		Button b = new Button("Hello");
 		add(b);						// connect Button into component
 		// Totally capricious example of what you should not do
 		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == 0) {
@@ -31,7 +28,7 @@ public class JavadocDemo extends Component {
 
 	/** paint() is an AWT Component method, called when the 
 	 *  component needs to be painted. This one just draws colored
-	 * boxes in the Applet's window.
+	 * boxes in the window.
 	 *
 	 * @param g A java.awt.Graphics that we use for all our
 	 * drawing methods.
