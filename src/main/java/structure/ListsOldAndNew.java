@@ -2,6 +2,10 @@ package structure;
 
 import java.util.*;
 
+/**
+ * Demo of list processing pre- and post-Java 5.
+ * Indentation is deliberately short, to fit the book formatting.
+ */
 public class ListsOldAndNew {
 
 	public void oldWay() {
@@ -12,9 +16,8 @@ public class ListsOldAndNew {
 
     // myList.add(new Date()); This would compile but cause failures later
 
-    Iterator it = myList.iterator();
-    while (it.hasNext()) {
-            String s = (String)it.next();
+    for (int i = 0; i < myList.size(); i++) {
+            String s = (String)myList.get(i);
             System.out.println(s);
     }
 	// END oldWay
@@ -22,15 +25,13 @@ public class ListsOldAndNew {
 
 	public void newWay() {
 	// BEGIN newWay
-    List myList = new ArrayList();
+    List<String> myList = new ArrayList<String>(); // Java 7: new ArrayList<>();
     myList.add("hello");
     myList.add("goodbye");
 
-    // myList.add(new Date()); This would compile but cause failures later
+    // myList.add(new Date()); This would not compile!
 
-    Iterator it = myList.iterator();
-    while (it.hasNext()) {
-            String s = (String)it.next();
+    for (String s : myList) {	// Look Ma, no downcast!
             System.out.println(s);
     }
 	// END newWay
