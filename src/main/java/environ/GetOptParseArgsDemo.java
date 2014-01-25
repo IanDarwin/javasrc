@@ -1,6 +1,7 @@
 package environ;
 
 import com.darwinsys.lang.GetOpt;
+import com.darwinsys.lang.GetOptDesc;
 
 public class GetOptParseArgsDemo {
 public static void main(String[] args) {
@@ -9,7 +10,7 @@ GetOptDesc[] options = {
     new GetOptDesc('n', "numeric", false),
     new GetOptDesc('o', "output-file", true),
 };
-Map optionsFound = new GetOpt(options).parseArguments(argv);
+Map optionsFound = new GetOpt(options).parseArguments(args);
 if (optionsFound.get("n") != null) {
     System.out.println("sortType = NUMERIC;");
 }
