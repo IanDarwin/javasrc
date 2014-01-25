@@ -148,7 +148,8 @@ public class Appt implements Comparable<Appt> {
      * (Repetition has to do with recurring events, e.g., "Meeting every Tuesday at 9").
      * This methods is consistent with equals().
      * @return -1 if this<a2, +1 if this>a2, else 0.
-     */ 
+     */
+    @Override
     public int compareTo(Appt a2) {
         if (year < a2.year)
             return -1;
@@ -178,6 +179,7 @@ public class Appt implements Comparable<Appt> {
      * text, date & time participate, not repetition.
      * @returns true if the objects are equal, false if not.
      */
+    @Override
     public boolean equals(Object o2) {
         Appt a2 = (Appt) o2;
         if (year != a2.year ||
@@ -193,6 +195,7 @@ public class Appt implements Comparable<Appt> {
     /** Return a String representation of this Appt.
      * Output is intended for debugging, not presentation!
      */
+    @Override
     public String toString() {
         return new StringBuffer().append(year).append(' ').
             append(month).append(' ').append(day).append(' ').
