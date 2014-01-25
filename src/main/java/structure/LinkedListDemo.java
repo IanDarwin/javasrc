@@ -11,7 +11,7 @@ import java.util.ListIterator;
 // BEGIN main
 public class LinkedListDemo {
 	public static void main(String[] argv) {
-		System.out.println("Here is a demo of Java 1.2's LinkedList class");
+		System.out.println("Here is a demo of Java's LinkedList class");
 		LinkedList<String> l = new LinkedList<String>();
 		l.add(new Object().toString());
 		l.add("Hello");
