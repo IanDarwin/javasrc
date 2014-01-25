@@ -22,10 +22,10 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-		<version>2.3.2</version>
+		<version>3.1</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
 		<excludes>
 			<!-- Won't compile with UTF-8! -->
 			<exclude>lang/EuroLanguage.java</exclude>
@@ -138,6 +138,12 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>4.0.1.Final</version>
+      <exclusions>
+              <exclusion>
+                 <groupId>xml-apis</groupId>
+                 <artifactId>xml-apis</artifactId>
+              </exclusion>
+           </exclusions>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
