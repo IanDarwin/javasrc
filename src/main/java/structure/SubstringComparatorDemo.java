@@ -21,8 +21,8 @@ public class SubstringComparatorDemo {
 	
 	static void dump(String[] args, String title) {
 		System.out.println(title);
-		for (int i=0; i<args.length; i++)
-			System.out.println(args[i]);
+		for (String s : args)
+			System.out.println(s);
 	}
 }
 // END main
