@@ -7,26 +7,23 @@ package structure;
 public class MyStack<T> {
 	
 	private int ix = 0;
-	public static final int MAX = 10;
+	public static final int INITIAL = 10;
 	private T[] data;
 	
 	public MyStack() {
-		data = (T[])new Object[MAX];
+		data = (T[])new Object[INITIAL];
 	}
 
 	public MyStack(int howBig) {
 		if (howBig <= 0) {
-			throw new IllegalArgumentException(howBig + " must be positive");
+			throw new IllegalArgumentException(
+			howBig + " must be positive, but was " + howBig);
 		}
 		data = (T[])new Object[howBig];
 	}
 
-	public MyStack(T[] data) {
-		super();
-		this.data = data;
-	}
-
 	public void push(T obj) {
+		// Could check capacity and expand, as in Array2.java
 		data[ix++] = obj;
 	}
 
@@ -38,11 +35,12 @@ public class MyStack<T> {
 		return ix < data.length;
 	}
 
+	/** Return the given object; removing from array to avoid memory leak */
 	public T pop() {
-		if (hasNext()) {
-			return data[--ix];
-		}
-		throw new ArrayIndexOutOfBoundsException(-1);
+		--ix;
+		T tmp = data[ix];
+		data[ix] = null;
+		return t;
 	}
 
 	public int getStackDepth() {
