@@ -7,14 +7,15 @@ import java.util.Date;
  */
 // BEGIN main
 public class Array2  {
+	public final static int INITIAL = 10, 	// <1>
+		GROW_FACTOR = 2;					// <2>
+
 	public static void main(String[] argv) {
 		int nDates = 0;
-		public final static int INITIAL = 10, 	// <1>
-			GROW_FACTOR = 2;					// <2>
 		Date[] dates = new Date[INITIAL];
-		Date c;
 		StructureDemo source = new StructureDemo(21);
-		while ((c=(Date)source.getDate()) != null) {
+		Date c;
+		while ((c=(Date)(source.getDate())) != null) {
 
 			// if (nDates >= dates.length) {
 			// 	System.err.println("Too Many Dates! Simplify your life!!");
