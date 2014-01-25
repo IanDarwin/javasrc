@@ -94,7 +94,7 @@ public class LinkList<T> implements List<T> {
 	}
 
     public boolean isEmpty() {
-		return size() == 0;
+		return first == last;
 	}
 
     public T get(int where) {

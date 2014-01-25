@@ -22,13 +22,16 @@ public class MyStackTest {
 		new MyStack<Object>(0);
 	}
 	
+	/** This test will have to be changed if the Stack gets
+	 * modified to have internal expansion a la ArrayList
+	 */
 	@Test
 	public void testPush() {
 		int i = 0; 
 		do {
 			ss.push("Hello #" + i++);
 		} while (ss.hasRoom());
-		assertEquals(i, MyStack.MAX);
+		assertEquals(i, MyStack.INITIAL);
 	}
 
 	@Test

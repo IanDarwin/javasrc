@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Linked list class, written out in full using Java.
  * XXX WARNING: The LinkList class is hopelessly incomplete and
- * should never be used for anything.
+ * should not be used to save data, until somebody finishes it!
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest {
