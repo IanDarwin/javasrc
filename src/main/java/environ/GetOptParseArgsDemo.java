@@ -11,7 +11,7 @@ GetOptDesc[] options = {
     new GetOptDesc('n', "numeric", false),
     new GetOptDesc('o', "output-file", true),
 };
-Map optionsFound = new GetOpt(options).parseArguments(args);
+Map<String, String> optionsFound = new GetOpt(options).parseArguments(args);
 if (optionsFound.get("n") != null) {
     System.out.println("sortType = NUMERIC;");
 }
