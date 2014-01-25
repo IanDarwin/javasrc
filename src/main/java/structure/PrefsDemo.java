@@ -30,6 +30,7 @@ public class PrefsDemo {
 		child.putInt("meaning", 42);
 		child.putDouble("pi", Math.PI);
 
+		// And dump the subtree from our first node on down, in XML.
 		prefs.exportSubtree(System.out);
 	}
 }
