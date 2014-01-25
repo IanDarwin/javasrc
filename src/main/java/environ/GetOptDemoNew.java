@@ -22,9 +22,7 @@ public class GetOptDemoNew {
 		};
 		GetOpt parser = new GetOpt(options);
 		Map<String,String> optionsFound = parser.parseArguments(argv);
-		Iterator<String> it = optionsFound.keySet().iterator();
-		while (it.hasNext()) {
-			String key = (String)it.next();
+		for (String key : optionsFound.keySet()) {
 			char c = key.charAt(0);
 			switch (c) {
 				case 'n':
