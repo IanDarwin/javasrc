@@ -40,7 +40,7 @@ public class MyStack<T> {
 		--ix;
 		T tmp = data[ix];
 		data[ix] = null;
-		return t;
+		return tmp;
 	}
 
 	public int getStackDepth() {
