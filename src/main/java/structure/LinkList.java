@@ -175,7 +175,7 @@ public class LinkList<T> implements List<T> {
 			}
 			public T next() {
 				if (t == last)
-					throw new ArrayIndexOutOfBoundsException();
+					throw new IndexOutOfBoundsException();
 				return (T) (t = t.next);
 			}
 			public void remove() {
