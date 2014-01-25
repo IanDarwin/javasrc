@@ -9,8 +9,9 @@ import java.util.Date;
 public class Array2  {
 	public static void main(String[] argv) {
 		int nDates = 0;
-		final int MAX = 10;
-		Date[] dates = new Date[MAX];
+		public final static int INITIAL = 10, 	// <1>
+			GROW_FACTOR = 2;					// <2>
+		Date[] dates = new Date[INITIAL];
 		Date c;
 		StructureDemo source = new StructureDemo(21);
 		while ((c=(Date)source.getDate()) != null) {
@@ -22,14 +23,14 @@ public class Array2  {
 
 			// better: reallocate, making data structure dynamic
 			if (nDates >= dates.length) {
-				Date[] tmp = new Date[dates.length + 10];
+				Date[] tmp = new Date[dates.length * GROW_FACTOR];
 				System.arraycopy(dates, 0, tmp, 0, dates.length);
 				dates = tmp;    // copies the array reference
 				// old array will be garbage collected soon...
 			}
 			dates[nDates++] = c;
 		}
-		System.out.println("Array size = " + dates.length);
+		System.out.println("Final array size = " + dates.length);
 	}
 }
 // END main
