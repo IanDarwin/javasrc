@@ -123,44 +123,11 @@ public class LinkList<T> implements List<T> {
 		}
 		return false;
 	}
-    public Object[] toArray() {
-		return null;
-	}
-    public T[] toArray(Object[] data) {
-		return null;
-	}
-    public boolean remove(Object o) {
-		return false;
-	}
-    public T remove(int i) {
-		return null;
-	}
-    public boolean containsAll(Collection c) {
-		return false;
-	}
     public boolean addAll(Collection<? extends T> c) {
     		for (Object o : c) {
     			add((T) o);
     		}
 		return false;
-	}
-    public boolean addAll(int i, Collection c) {
-		return false;
-	}
-
-    public boolean removeAll(Collection c) {
-		return false;
-	}
-    public boolean retainAll(Collection c) {
-		return false;
-	}
-
-    public int indexOf(Object o) {
-		return 0;
-	}
-
-    public int lastIndexOf(Object o) {
-		return 0;
 	}
 
     public ListIterator<T> listIterator() {
@@ -183,6 +150,48 @@ public class LinkList<T> implements List<T> {
 			}
 		};
 	}
+	// END main
+
+	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
+
+    public Object[] toArray() {
+		return null;
+	}
+
+    public T[] toArray(Object[] data) {
+		return null;
+	}
+
+    public boolean remove(Object o) {
+		return false;
+	}
+
+    public T remove(int i) {
+		return null;
+	}
+
+    public boolean containsAll(Collection c) {
+		return false;
+	}
+    public boolean addAll(int i, Collection c) {
+		return false;
+	}
+
+    public boolean removeAll(Collection c) {
+		return false;
+	}
+
+    public boolean retainAll(Collection c) {
+		return false;
+	}
+
+    public int indexOf(Object o) {
+		return 0;
+	}
+
+    public int lastIndexOf(Object o) {
+		return 0;
+	}
 
     public ListIterator<T> listIterator(int where) {
 		return null;
@@ -192,4 +201,3 @@ public class LinkList<T> implements List<T> {
 		return null;
 	}
 }
-// END main
