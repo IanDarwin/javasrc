@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CameraSearchUsingCameraAcceptor {
+public class CameraSearchCameraAcceptor {
 	
 	List<Camera> privateListOfCameras = CameraUtils.getList();
 	
@@ -24,7 +24,7 @@ public class CameraSearchUsingCameraAcceptor {
 	}
 	
 	public static void main(String[] args) {
-		CameraSearchUsingCameraAcceptor searchApp = new CameraSearchUsingCameraAcceptor();
+		CameraSearchCameraAcceptor searchApp = new CameraSearchCameraAcceptor();
 		// Writing it using the anonymous inner class
 		List<Camera> results = searchApp.search(new CameraAcceptor() {
 	        public boolean choose(Camera c) {
