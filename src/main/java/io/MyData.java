@@ -42,7 +42,7 @@ public class MyData implements Serializable {
 	}
 
 	public String toString() {
-		return "MyData[" + userName + ",XXXXX]";
+		return "MyData[" + userName + ",------]";
 	}
 
 	/** In real life this would use Java Cryptography */
