@@ -12,7 +12,7 @@ public class ReadHistNS {
 		for (ba = d.firstkey(); ba != null; ba = d.nextkey(ba)) {
 			System.out.println("Key=\"" + new String(ba) + '"');
 			byte[] val = d.fetch(ba);
-			for (int i=0; i<16&&i<val.length; i++) {
+			for (int i = 0; i < 16 && i < val.length; i++) {
 				System.out.print((short)val[i]);
 				System.out.print(' ');
 			}
