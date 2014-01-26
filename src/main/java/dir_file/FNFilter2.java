@@ -4,7 +4,6 @@ import java.io.*;
 
 /**
  * FNFilter - directory lister using FilenameFilter
- *
  * @author Ian Darwin
  */
 
@@ -18,8 +17,9 @@ public class FNFilter2 implements FilenameFilter {
 	public void process(String dir) {
 		String objects[] = (new File(dir)).list(this);
 
-		for (int i=0; i<objects.length; i++)
-			System.out.println(objects[i]);
+		for (String f : objects) {
+			System.out.println(f);
+		}
 	}
 
 	public boolean accept(File dir, String s) {

@@ -10,8 +10,9 @@ import java.io.File;
 public class Delete2 {
 
 	public static void main(String[] argv) {
-		for (int i=0; i<argv.length; i++)
-			delete(argv[i]);
+		for (String a : argv) {
+			delete(a);
+		}
 	}
 
 	public static void delete(String fileName) {

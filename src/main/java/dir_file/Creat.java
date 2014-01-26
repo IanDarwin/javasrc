@@ -18,10 +18,10 @@ public class Creat {
 			System.exit(1);
 		}
 
-		for (int i = 0; i< argv.length; i++) {
+		for (String a : argv) {
 			// Constructing a File object doesn't affect the disk, but
 			// the createNewFile() method does.
-			new File(argv[i]).createNewFile();
+			new File(a).createNewFile();
 		}
 	}
 }

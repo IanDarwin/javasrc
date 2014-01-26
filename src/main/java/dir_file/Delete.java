@@ -13,7 +13,7 @@ public class Delete {
 
 		// Construct a File object for the backup created by editing
 		// this source file. The file probably already exists.
-		// My editor creates backups by putting ~ at the end of the name.
+		// Some text editors create backups by putting ~ at end of filename.
 		File bkup = new File("Delete.java~");
 		// Now, delete it:
 		bkup.delete();
