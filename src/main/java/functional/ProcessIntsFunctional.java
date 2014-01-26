@@ -6,7 +6,7 @@ import java.util.function.Function;
  * A very silly demo of using a Functional Interface
  * @author Ian Darwin
  */
-public class ProcessIntsUsingFunctional {
+public class ProcessIntsFunctional {
 	static int[] integers = { 0, 1, 2, 3, 4, 5 };
 	
 	/** Function to be called with an int and a Function;

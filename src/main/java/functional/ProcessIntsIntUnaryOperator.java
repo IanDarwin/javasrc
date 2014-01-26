@@ -1,13 +1,12 @@
 package functional;
 
-import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
 
 /**
  * A very silly demo of using a Functional Interface
  * @author Ian Darwin
  */
-public class ProcessIntsUsingIntUnaryOperator {
+public class ProcessIntsIntUnaryOperator {
 	static int[] integers = { 0, 1, 2, 3, 4, 5 };
 	
 	/** Function to be called with an int and a Function;
