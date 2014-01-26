@@ -2,7 +2,7 @@ package dir_file;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Report on a file's status in Java
@@ -50,7 +50,7 @@ public class FileStatus {
 			System.out.println("File is writable.");
 		}
 		// Report on the modification time.
-		Date d = new LocalDateTime(f.lastModified());
+		Date d = new Date(f.lastModified());
 		System.out.println("Last modified " + d);
 
 		// See if file, directory, or other. If file, print size.
