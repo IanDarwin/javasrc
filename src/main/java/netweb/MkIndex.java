@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -13,19 +12,22 @@ import com.darwinsys.io.FileIO;
 
 /** MkIndex -- make a static index.html for a Java Source directory
  * <p>
- * Started life as an awk script that used "ls" to get
- * the list of files, grep out .class and javadoc output files, |sort.
- * Now it's all in Java (including the ls-ing and the sorting).
+ * Works through one or more directories, finding all the java files,
+ * and making links.
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
- * @Version $Id$
  */
 public class MkIndex {
 
 	private boolean verbose = false;
 
+	/** Optional input file - about */
+	public static final String ABOUT_FILE_NAME = "About.html";
+	/** Optional input file - copyright / license info */
+	public static final String COPYRIGHT_FILE_NAME = "Copyright.html";
 	/** The output file that we create */
 	public static final String OUTPUTFILE = "index-byname.html";
+
 	/** The string for TITLE and H1 */
 	public static final String TITLE =
 		"Ian Darwin's Java Cookbook: Source Code: By Name";
@@ -58,9 +60,7 @@ public class MkIndex {
 
 	/** Write the HTML headers */
 	void begin() throws IOException {
-		println("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'");
-		println("	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'");
-		println(">");
+		out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 		println();
 		println("<html>");
 
@@ -73,24 +73,20 @@ public class MkIndex {
 		println();
 		println("<body bgcolor=\"" + BGCOLOR + "\">");
 		println("<h1>" + TITLE + "</h1>");
-		if (new File("about.html").exists()) {
-			FileIO.copyFile("about.html", out, false);
+		if (new File(ABOUT_FILE_NAME).exists()) {
+			FileIO.copyFile(ABOUT_FILE_NAME, out, false);
 		} else {
-			println("<p>The following files are online.");
-			println("Some of these files are still experimental!</p>");
-			println("<p>Most of these files are Java source code.");
-			println("If you load an HTML file from here, the applets will not run!");
-			println("The HTML files must be saved to disk and the applets compiled,");
-			println("before you can run them!</p>");
+			println("<p>The following files are online.</p>");
 		}
-		println("<p>All files are Copyright (c): All rights reserved.");
-		println("See the accompanying <a href=\"legal-notice.txt\">Legal Notice</a> for conditions of use.");
-		println("May be used by readers of my Java Cookbook for educational purposes, and for commercial use if certain conditions are met.");
-		println("</p>");
+		if (new File(COPYRIGHT_FILE_NAME).exists()) {
+			FileIO.copyFile(COPYRIGHT_FILE_NAME, out, false);
+		} else {
+			println("<p>All files Copyright (c): All rights reserved.");
+		}
 		println("<hr />");
 	}
 
-	/** Array of letters that exist. Should
+	/** Array of letters that one or more files begin with. Should
 	 * fold case here so don't get f and F as distinct entries!
 	 * This only works for ASCII characters (8-bit chars).
 	 */
@@ -135,7 +131,14 @@ public class MkIndex {
 		} else {
 			// file to be processed.
 			list.put(name, file.getPath());
-			exists[name.charAt(0)] = true;
+			addToNavigator(name);
+		}
+	}
+
+	private void addToNavigator(String name) {
+		final char ch = name.toUpperCase().charAt(0);
+		if (Character.isLetterOrDigit(ch)) {
+			exists[ch] = true;
 		}
 	}
 
@@ -149,17 +152,13 @@ public class MkIndex {
 
 	void writeList() throws IOException {
 
-		// ... the beginning of the HTML Unordered List...
-		println("<ul>");
-
 		System.out.println("Sorting the list...");
 		
 		System.out.println("Start PASS TWO -- from List to " +
 			OUTPUTFILE + "...");
-		Iterator it = list.keySet().iterator();
-		while (it.hasNext()) {
-			String fn = (String)it.next();
-			
+		// ... the beginning of the HTML Unordered List...
+		println("<ul>");
+		for (String fn : list.keySet()) {			
 			String path = list.get(fn);
 			// Need to make a link into this directory.
 			// IF there is a descr.txt file, use it for the text
@@ -170,7 +169,7 @@ public class MkIndex {
 				String descr = null;
 				if (new File(fn + "descr.txt").exists()) {
 					descr = FileIO.readLine(fn + "descr.txt");
-				};
+				}
 				if (new File(fn + "index.html").exists())
 					mkDirLink(fn+"index.html", descr!=null?descr:fn);
 				else if (new File(fn + "index.htm").exists())

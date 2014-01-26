@@ -20,11 +20,12 @@ public class EqualsDemo {
 	}
 
 	/** Demonstration "equals" method */
+	@Override
 	public boolean equals(Object o) {
 		if (o == this)		// <1> optimization
 			return true;
 
-		if (o == null)		// <2> ditto
+		if (o == null)		// <2> No object ever equals null
 			return false;
 		
 		// Of the correct class?

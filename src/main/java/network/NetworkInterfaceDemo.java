@@ -27,7 +27,7 @@ public class NetworkInterfaceDemo {
 
 		}
 		// Try to get the Interface for a given local (this machine's) address
-		InetAddress destAddr = InetAddress.getByName("daroad");
+		InetAddress destAddr = InetAddress.getByName("laptop");
 		try {
 			NetworkInterface dest = NetworkInterface.getByInetAddress(destAddr);
 			System.out.println("Address for " + destAddr + " is " + dest);

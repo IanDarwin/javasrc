@@ -120,7 +120,7 @@ public class ProdCons2 {
 		}
 
 		void process(Object obj) {
-			// Thread.sleep(xxx) // Simulate time passing
+			// Thread.sleep(1234) // Simulate time passing
 			System.out.println("Consuming object " + obj);
 		}
 	}

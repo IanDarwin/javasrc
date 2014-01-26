@@ -19,8 +19,8 @@ import java.util.ListIterator;
 public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
-	class TNode {
-		TNode next;
+	private static class TNode<T> {
+		TNode<T> next;
 		T data;
 		TNode(T o) {
 			data = o;
@@ -28,14 +28,15 @@ public class LinkList<T> implements List<T> {
 		}
 	}
 
+	private boolean DIAGNOSTIC = true;
+	
 	/** The root or first TNode in the list. */
-	protected TNode first;
+	protected TNode<T> first;
 	/** The last TNode in the list */
-	protected TNode last;
+	protected TNode<T> last;
 
 	/** Construct a LinkList: initialize the first and last nodes */
 	public LinkList() {
-		super();
 		clear();
 	}
 
@@ -45,14 +46,13 @@ public class LinkList<T> implements List<T> {
 	public LinkList(Collection<T> c) {
 		this();
 		addAll(c);
-		throw new IllegalArgumentException("Can't construct(Collection) yet");
 	}
 
 	/** Set the List (back) to its initial state.
 	 * Any references held will be discarded.
 	 */
     public void clear() {
-		first = new TNode(null);
+		first = new TNode<T>(null);
 		last = first;
 	}
 
@@ -61,22 +61,29 @@ public class LinkList<T> implements List<T> {
 	 * Update "last" to refer to the new node. 
 	 */
 	public boolean add(T o) {
-		last.next = new TNode(o);
+		last.next = new TNode<T>(o);
 		last = last.next;
 		return true;
 	}
 
     public void add(int where, T o) {
-		TNode t = first;
-		for (int i=0; i<where; i++)
+		TNode<T> t = first;
+		for (int i=0; i<=where; i++) {
 			t = t.next;
-		TNode t2 = t;
-		t.next = new TNode(o);
+			if (t == null) {
+				throw new IndexOutOfBoundsException("'add(n,T) went off end of list");
+			}
+			if (DIAGNOSTIC) {
+				System.out.printf("add(int,T): i = %d, t = %s%n", i, t);
+			}
+		}
+		TNode<T> t2 = t;
+		t.next = new TNode<T>(o);
 		t.next = t2;
 	}
 
     public int size() {
-		TNode t = first;
+		TNode<T> t = first;
 		int i;
 		for (i=0; ; i++) {
 			if (t == null)
@@ -87,13 +94,18 @@ public class LinkList<T> implements List<T> {
 	}
 
     public boolean isEmpty() {
-		return size() == 0;
+		return first == last;
 	}
 
     public T get(int where) {
-		TNode t = first;
-		for (int i=0; i<=where; i++) {
-			t = t.next;
+		TNode<T> t = first;
+		int i=0; 
+		// If we get to the end of list before 'where', error out
+		while (i<=where) {
+			i++;
+			if ((t = t.next) == null) {
+				throw new IndexOutOfBoundsException();
+			}
 		}
 		return t.data;
 	}
@@ -103,31 +115,62 @@ public class LinkList<T> implements List<T> {
 	}
     
     public boolean contains(Object o) {
-    	TNode t = first;
-		for (int i=0; i<=size(); i++) {
-			t = t.next;
+    		TNode<T> t = first;
+		while ((t = t.next) != null) {
 			if (t.data.equals(o)) {
 				return true;
 			}
 		}
 		return false;
 	}
+    public boolean addAll(Collection<? extends T> c) {
+    		for (Object o : c) {
+    			add((T) o);
+    		}
+		return false;
+	}
+
+    public ListIterator<T> listIterator() {
+		throw new UnsupportedOperationException("listIterator");
+	}
+
+    public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			TNode<T> t = first.next;
+			public boolean hasNext() {
+				return t != last;
+			}
+			public T next() {
+				if (t == last)
+					throw new IndexOutOfBoundsException();
+				return (T) (t = t.next);
+			}
+			public void remove() {
+				throw new UnsupportedOperationException("remove");
+			}
+		};
+	}
+	// END main
+
+	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
+
     public Object[] toArray() {
 		return null;
 	}
-    public Object[] toArray(Object[] data) {
+
+    public T[] toArray(Object[] data) {
 		return null;
 	}
+
     public boolean remove(Object o) {
 		return false;
 	}
+
     public T remove(int i) {
 		return null;
 	}
+
     public boolean containsAll(Collection c) {
-		return false;
-	}
-    public boolean addAll(Collection c) {
 		return false;
 	}
     public boolean addAll(int i, Collection c) {
@@ -137,6 +180,7 @@ public class LinkList<T> implements List<T> {
     public boolean removeAll(Collection c) {
 		return false;
 	}
+
     public boolean retainAll(Collection c) {
 		return false;
 	}
@@ -149,33 +193,11 @@ public class LinkList<T> implements List<T> {
 		return 0;
 	}
 
-    public ListIterator listIterator() {
-		throw new UnsupportedOperationException("listIterator");
-	}
-
-    public Iterator iterator() {
-		return new Iterator() {
-			TNode t = first.next;
-			public boolean hasNext() {
-				return t != last;
-			}
-			public Object next() {
-				if (t == last)
-					throw new ArrayIndexOutOfBoundsException();
-				return t = t.next;
-			}
-			public void remove() {
-				throw new UnsupportedOperationException("remove");
-			}
-		};
-	}
-
-    public ListIterator listIterator(int where) {
+    public ListIterator<T> listIterator(int where) {
 		return null;
 	}
 
-    public List subList(int sub1, int sub2) {
+    public List<T> subList(int sub1, int sub2) {
 		return null;
 	}
 }
-// END main

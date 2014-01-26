@@ -12,10 +12,12 @@ public class SysPropDemo {
 			// BEGIN sysprops
 			System.getProperties().list(System.out);
 			// END sysprops
-		else for (int i=0; i<argv.length; i++) {
-			String s = argv[i];
-		 	System.out.println(s + " = " + 
-				System.getProperties().getProperty(s));
+		else {
+			for (int i = 0; i < argv.length; i++) {
+				String s = argv[i];
+				System.out.println(s + " = " + 
+					System.getProperty(s));
+			}
 		}
 	}
 }

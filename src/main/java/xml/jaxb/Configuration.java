@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+// BEGIN main
 /**
  * Demo of XML via JAXB; meant to represent some of the (many!)
  * fields in a typical GUI for user<-->application configuration.
@@ -12,8 +13,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "configuration", propOrder={"screenName", "webProxy", "verbose", "colorName"})
 @XmlRootElement(name = "config")
-public class Configuration
-{
+public class Configuration {
+
 	private String webProxy;
 	private boolean verbose;
 	private String colorName;
@@ -26,6 +27,8 @@ public class Configuration
 		this.colorName = colorName;
 	}
 
+	// Remaining accessors, hashCode/equals(), are uninteresting.
+	// END main
 	public boolean isVerbose() {
 		return verbose;
 	}

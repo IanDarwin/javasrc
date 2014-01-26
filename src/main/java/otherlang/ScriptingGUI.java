@@ -78,7 +78,7 @@ public class ScriptingGUI extends JFrame implements Serializable {
 				try {
 					EngineChoice choice = (EngineChoice)engineChoiceBox.getSelectedItem();
 					ScriptEngineFactory engineFactory = choice.factory;
-					ScriptEngine engine = (engineFactory).getScriptEngine();	
+					ScriptEngine engine = engineFactory.getScriptEngine();	
 					String script = area.getText();
 					System.out.println(engineFactory.getLanguageName());
 					engine.eval(script);

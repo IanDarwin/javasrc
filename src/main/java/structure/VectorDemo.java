@@ -1,5 +1,6 @@
 package structure;
 
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Vector;
  */
 public class VectorDemo {
 	public static void main(String[] argv) {
-		Vector v = new Vector();
+		Vector<Date> v = new Vector<>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);

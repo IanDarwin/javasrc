@@ -26,10 +26,11 @@ public class PrefsDemo {
 
 		// Toss in a couple more values for the curious who want to look
 		// at how Preferences values are actually stored.
-		Preferences child = prefs.node("/a/b");
+		Preferences child = prefs.node("a/b");
 		child.putInt("meaning", 42);
 		child.putDouble("pi", Math.PI);
 
+		// And dump the subtree from our first node on down, in XML.
 		prefs.exportSubtree(System.out);
 	}
 }

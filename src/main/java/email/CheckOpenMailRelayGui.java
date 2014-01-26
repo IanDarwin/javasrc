@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import com.darwinsys.io.TextAreaOutputStream;
+import com.darwinsys.swingui.ErrorUtil;
 
 // BEGIN main
 /** 
@@ -28,9 +30,25 @@ import com.darwinsys.io.TextAreaOutputStream;
 public final class CheckOpenMailRelayGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static CheckOpenMailRelayGui gui;
 
-	public static void main(String unused[]) throws IOException {
-		final CheckOpenMailRelayGui gui = new CheckOpenMailRelayGui();
+	public static void main(String unused[]) throws Exception {
+		Thread.setDefaultUncaughtExceptionHandler(
+				new Thread.UncaughtExceptionHandler() {
+					public void uncaughtException(Thread t, final Throwable ex) {
+						try {
+							SwingUtilities.invokeAndWait(new Runnable() {
+								public void run() {
+									ErrorUtil.showExceptions(gui, ex);
+								}
+							});
+						} catch (InvocationTargetException | InterruptedException e) {
+							// excessive checked exception usage - nothing we can do here!
+							System.err.println("Sob! We failed: " + e);
+						}
+					}
+				});
+		gui = new CheckOpenMailRelayGui();
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

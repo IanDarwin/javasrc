@@ -14,8 +14,9 @@ public class ForeachDemo {
 		}
 		
 		List<String> list = Arrays.asList(data);
-		for (String s : list)
+		for (String s : list) {
 			System.out.println(s);
+		}
 // END main
 	}
 }

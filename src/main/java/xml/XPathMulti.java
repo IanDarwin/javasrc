@@ -12,8 +12,7 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 
 /**
- * Simple demo of XPath, which is supported in JAXP (in 
- * JavaSE package javax.xml.xpath) since JDK 1.5.
+ * Another demo of XPath using JAXP, getting multiple elements rather than the first.
  */
 public class XPathMulti {
 

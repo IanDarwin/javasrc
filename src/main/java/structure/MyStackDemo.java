@@ -13,7 +13,7 @@ public class MyStackDemo {
 		}
 
 		// Old way of using Collections: not type safe.
-		// DO NOT GENERIFY THIS
+		// DO NOT GENERICIZE THIS
 		MyStack ms2 = new MyStack();
 		ms2.push("billg");               // EXPECT WARNING
 		ms2.push("scottm");              // EXPECT WARNING

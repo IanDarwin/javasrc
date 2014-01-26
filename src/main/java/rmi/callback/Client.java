@@ -1,3 +1,4 @@
+// BEGIN main
 package rmi.callback;
 
 import java.rmi.*;
@@ -6,3 +7,4 @@ import java.rmi.*;
 public interface Client extends Remote {
 	public void alert(String mesg) throws RemoteException;
 }
+// END main

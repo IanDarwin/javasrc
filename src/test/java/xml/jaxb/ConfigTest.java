@@ -1,6 +1,7 @@
 package xml.jaxb;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -15,12 +16,13 @@ import org.junit.Test;
 /** A test program to show saving and reloading data with JAXB;
  * cast as a JUnit test to ensure that the data reloaded correctly.
  */
-public class Main {
+public class ConfigTest {
 
 	@Test
-	public void main() throws Exception {
+	public void test() throws Exception {
+		System.out.println("JAXB Testing");
 
-		// We create a Config object, and test the empty config.
+		// Create a Config object, and test the empty config.
 		Configuration c = new Configuration();
 		assertEquals(c,c);
 		
@@ -28,20 +30,33 @@ public class Main {
 		c.setScreenName("idarwin");
 		c.setColorName("inky green");
 		c.setVerbose(true);
-		
+
 		// We test a non-empty config
 		assertEquals(c,c);
-
 		
-		// We set up JAXB
+		Configuration c1 = new Configuration();
+		c1.setScreenName(c.getScreenName());
+		c1.setColorName(c.getColorName());
+		c1.setVerbose(!c.isVerbose());	// negate field for test
+
+		// Test non-equality
+		assertThat(c, not(equalTo(c1)));
+
+		// BEGIN main
+		// We set up JAXB: the context arg is the package name!
 		JAXBContext jc = JAXBContext.newInstance("xml.jaxb");
 		Marshaller saver = jc.createMarshaller();
 		final File f = new File("config.save");
 		
-		// We save their preferences
+		// We save their preferences 
+		// Configuration c = ... - set above
 		Writer saveFile = new FileWriter(f);
 		saver.marshal(c, saveFile);
 		saveFile.close();
+
+		// Confirm that the XML file got written
+		assertTrue(f.exists());
+		System.out.println("JAXB output saved in " + f.getAbsolutePath());
 		
 		// Sometime later, we read it back in.
 		Unmarshaller loader = jc.createUnmarshaller();
@@ -50,5 +65,6 @@ public class Main {
 		// Outside of the simulation, we test that what we
 		// read back is the same as what we started with.
 		assertEquals("saved and loaded back the object", c, c2);
+		// END main
 	}
 }
