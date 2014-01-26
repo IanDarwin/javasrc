@@ -8,6 +8,7 @@ public class CameraSearchUsingPredicate {
 	
 	List<Camera> privateListOfCameras = CameraUtils.getList();
 	
+	// BEGIN search
 	public List<Camera> search(Predicate<Camera> tester) {
 	    List<Camera> results = new ArrayList<>();
 	    for (Camera c : privateListOfCameras) {
@@ -17,6 +18,7 @@ public class CameraSearchUsingPredicate {
 	    }
 	    return results;
 	}
+	// END search
 	
 	public static void main(String[] args) {
 		CameraSearchUsingPredicate searchApp = new CameraSearchUsingPredicate();
