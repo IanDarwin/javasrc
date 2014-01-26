@@ -15,12 +15,12 @@ public class ReadStdinInt {
 				new InputStreamReader(System.in));
 			line = is.readLine();
 			val = Integer.parseInt(line);
+			System.out.println("I read this number: " + val);
 		} catch (NumberFormatException ex) {
 			System.err.println("Not a valid number: " + line);
 		} catch (IOException e) {
 			System.err.println("Unexpected IO ERROR: " + e);
 		}
-		System.out.println("I read this number: " + val);
 	}
 }
 // END main
