@@ -1,6 +1,6 @@
 package lang;
 
-
+// BEGIN main
 interface Bar {
 	default String filter(String s) {
 		return "Filtered " + s;
@@ -25,3 +25,4 @@ public class MixinsDemo implements Foo, Bar{
 		return filter(convolve(s)); // methods mixed in!
 	}
 }
+// END main
