@@ -11,10 +11,10 @@ public class ReadStdin {
 		int b = 0;
 		try {
 			b = System.in.read();
+			System.out.println("Read this data: " + (char)b);
 		} catch (Exception e) {
 			System.out.println("Caught " + e);
 		}
-		System.out.println("Read this data: " + (char)b);
 		// END main
 	}
 }
