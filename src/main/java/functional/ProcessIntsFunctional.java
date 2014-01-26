@@ -6,6 +6,7 @@ import java.util.function.Function;
  * A very silly demo of using a Functional Interface
  * @author Ian Darwin
  */
+// BEGIN main
 public class ProcessIntsFunctional {
 	static int[] integers = { 0, 1, 2, 3, 4, 5 };
 	
@@ -26,3 +27,4 @@ public class ProcessIntsFunctional {
 		System.out.println(total);
 	}
 }
+// END main
