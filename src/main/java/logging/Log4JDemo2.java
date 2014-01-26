@@ -15,7 +15,6 @@ public class Log4JDemo2 {
 			}
 			myLogger.info("I created an object: " + o);
 		} catch (Exception ex) {
-			// XXX
 			myLogger.error("Caught Exception: " + ex);
 		}
 	}

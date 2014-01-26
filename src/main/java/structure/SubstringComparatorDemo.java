@@ -5,7 +5,7 @@ import java.util.Arrays;
 /** Demonstrate use of SubstringComparator.
  */
 // BEGIN main
-public class SubstrCompDemo {
+public class SubstringComparatorDemo {
 	public static void main(String[] unused) {
 		String[] strings = {
 			"painful", 
@@ -17,12 +17,12 @@ public class SubstrCompDemo {
 		dump(strings, "Using Default Sort");
 		Arrays.sort(strings, new SubstringComparator());
 		dump(strings, "Using SubstringComparator");
-
 	}
+	
 	static void dump(String[] args, String title) {
 		System.out.println(title);
-		for (int i=0; i<args.length; i++)
-			System.out.println(args[i]);
+		for (String s : args)
+			System.out.println(s);
 	}
 }
 // END main
