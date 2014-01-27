@@ -13,8 +13,7 @@ public class SysPropDemo {
 			System.getProperties().list(System.out);
 			// END sysprops
 		else {
-			for (int i = 0; i < argv.length; i++) {
-				String s = argv[i];
+			for (String s : argv) {
 				System.out.println(s + " = " + 
 					System.getProperty(s));
 			}

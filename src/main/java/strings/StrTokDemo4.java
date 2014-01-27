@@ -35,8 +35,8 @@ public class StrTokDemo4 {
 
 	public static void printResults(String input, String[] outputs) {
 		System.out.println("Input: " + input);
-		for (int i=0; i<outputs.length; i++)
-			System.out.println("Output " + i + " was: " + outputs[i]);
+		for (String s : outputs)
+			System.out.println("Output " + i + " was: " + s);
 	}
 
 	public static void main(String[] a) {

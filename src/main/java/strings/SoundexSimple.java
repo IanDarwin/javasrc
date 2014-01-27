@@ -12,8 +12,9 @@ public class SoundexSimple {
 			"Darwent, William",
 			"Derwin, Daemon"
 		};
-		for (int i = 0; i< names.length; i++)
-			System.out.println(Soundex.soundex(names[i]) + ' ' + names[i]);
+		for (String name : names) {
+			System.out.println(Soundex.soundex(name) + ' ' + name);
+		}
 	}
 }
 // END main

@@ -24,8 +24,9 @@ public class Fmt {
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new Fmt(System.in).format();
-		else for (int i=0; i<av.length; i++)
-			new Fmt(av[i]).format();
+		else for (String name : av) {
+			new Fmt(name).format();
+		}
 	}
 	
 	public Fmt(BufferedReader inFile, PrintWriter outFile) {

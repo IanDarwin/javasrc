@@ -41,9 +41,9 @@ public class EnTab {
 				new BufferedReader(new InputStreamReader(System.in)),
 				System.out);
 		else
-			for (int i = 0; i < argv.length; i++) { // do each file
+			for (String fileName : argv) { // do each file
 				et.entab(
-					new BufferedReader(new FileReader(argv[i])),
+					new BufferedReader(new FileReader(fileName)),
 					System.out);
 			}
 	}
