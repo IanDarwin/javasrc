@@ -54,8 +54,8 @@ public class Find {
 			// System.out.println("d " + f.getPath());
 			String objects[] = f.list(filter);
 
-			for (int i=0; i<objects.length; i++)
-				doName(s + File.separator + objects[i]);
+			for (String o : objects)
+				doName(s + File.separator + o);
 		} else
 			System.err.println("Unknown type: " + s);
 	}
