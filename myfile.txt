@@ -1,0 +1,5 @@
+This is a simple text file for LineCount.java
+
+Line 3
+Line 4
+Line 5
