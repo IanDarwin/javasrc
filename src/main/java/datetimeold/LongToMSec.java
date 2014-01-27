@@ -1,4 +1,4 @@
-package datetime;
+package datetimeold;
 
 /** Convert longs (time_t in UNIX terminology) to seconds.
  */
