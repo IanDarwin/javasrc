@@ -27,13 +27,18 @@ public class FindFilter implements FilenameFilter {
 	/** Convert the given shell wildcard pattern into internal form (an RE) */
 	void setNameFilter(String nameFilter) {
 		name = nameFilter;
-		StringBuffer sb = new StringBuffer('^');
+		StringBuilder sb = new StringBuilder('^');
 		for (int i = 0; i < nameFilter.length(); i++) {
 			char c = nameFilter.charAt(i);
 			switch(c) {
 				case '.':	sb.append("\\."); break;
 				case '*':	sb.append(".*"); break;
 				case '?':	sb.append('.'); break;
+				// Some chars are special to RE and have to be escaped
+				case '[':	sb.append("\\["); break;
+				case ']':	sb.append("\\]"); break;
+				case '(':	sb.append("\\("); break;
+				case ')':	sb.append("\\)"); break;
 				default:	sb.append(c); break;
 			}
 		}
