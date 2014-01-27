@@ -32,7 +32,7 @@
 
 			<!-- Defunct APIs -->
 
-			<exclude>datetime/IBMCalDemo.java</exclude>
+			<exclude>datetimeold/IBMCalDemo.java</exclude>
 			<exclude>graphics/QTMoviePlayer.java</exclude>
 
 			<!-- Used private API which is no longer available -->
