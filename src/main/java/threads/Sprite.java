@@ -12,9 +12,9 @@ public class Sprite extends Component implements Runnable {
 	protected int x, y;
 	protected Component parent;
 	protected Image img;
-	protected boolean done = false;
+	protected volatile boolean done = false;
 	/** The time in mSec to pause between each move. */
-	protected int sleepTime = 250;
+	protected volatile int sleepTime = 250;
 	/** The direction for this particular sprite. */
 	protected int direction;
 	/** The direction for going across the page */
@@ -28,7 +28,6 @@ public class Sprite extends Component implements Runnable {
 	 * Construct and start a Thread to drive this Sprite.
 	 */
 	public Sprite(Component parent, Image img, int dir) {
-		super();
 		this.parent = parent;
 		this.img = img;
 		switch(dir) {

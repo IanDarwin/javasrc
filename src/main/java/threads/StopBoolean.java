@@ -48,8 +48,7 @@ package threads;
 // BEGIN main
 public class StopBoolean extends Thread {
 
-	// MUST be volatile... If not, aggressive optimizing compiler
-	// wil break this code!
+	// MUST be volatile to ensure changes visible to other threads.
 	protected volatile boolean done = false;
 
 	public void run() {
