@@ -8,19 +8,17 @@ import com.darwinsys.util.ArrayIterator;
 /**
  * BallotBox - keep track of voting. Only used in ReadersWritersDemo.
  */
-class BallotBox implements Iterable {
+class BallotBox implements Iterable<BallotPosition> {
 	final BallotPosition[] data;
 	
-	@SuppressWarnings("unchecked")
+	@Override
 	public Iterator<BallotPosition> iterator() {
-		return new ArrayIterator(data);
+		return new ArrayIterator<BallotPosition>(data);
 	}
 	
-	/** Construct a BallotBox given a List<String> 
-	 * containing e.g., the names of the candidates
-	 * or positions being voted upon. We copy the
-	 * references to avoid having the list changed in
-	 * another thread or even this thread between calls here.
+	/** Construct a BallotBox - a list of BallotPositions - 
+	 * given a List<String> containing the names of the candidates
+	 * or positions being voted upon.
 	 */
 	BallotBox(List<String> list) {
 		data = new BallotPosition[list.size()];

@@ -1,8 +1,8 @@
 package threads;
 
-
-
-
+/**
+ * Represents one thing that can be voted on, e.g., a candidate or a position
+ */
 class BallotPosition {
 	String question;
 	int votes;

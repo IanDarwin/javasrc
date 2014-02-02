@@ -1,7 +1,6 @@
 package threads;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -19,7 +18,7 @@ public class ReadersWriterDemo {
 	}
 
 	/** Set this to true to end the program */
-	private boolean done = false;
+	private volatile boolean done = false;
 
 	/** The data being protected. */
 	private BallotBox theData;
@@ -48,23 +47,17 @@ public class ReadersWriterDemo {
 			new Thread() {
 				public void run() {
 					while (!done) {
-						Iterator<BallotPosition> results = null;
 						lock.readLock().lock();
 						try {
-							results = theData.iterator();
+							theData.forEach(p -> 
+								System.out.printf("%s: votes %d%n", 
+									p.getName(),
+									p.getVotes()));
 						} finally {
 							// Unlock in finally to be sure it gets done.
 							lock.readLock().unlock();
 						}
-						// Now that lock has been freed, take time to print
-						// (note this is not totally threadsafe as the
-						// individual BallotPositions can still be updated
-						// while this thread is reading from them; since
-						// the ballot counts are ints this will work, but
-						// with more complex objects you might need to 
-						// make a deep copy of the objects where I
-						// just call iterator() above...).
-						print(results);
+						
 						try {
 							Thread.sleep(((long)(Math.random()* 1000)));
 						} catch (InterruptedException ex) {
@@ -74,6 +67,7 @@ public class ReadersWriterDemo {
 				}
 			}.start();
 		}
+		
 		// Start one writer thread to simulate occasional voting
 		new Thread() {
 			public void run() {
@@ -105,19 +99,6 @@ public class ReadersWriterDemo {
 		} finally {
 			done = true;
 		}
-	}
-
-	/** print the current totals */
-	private void print(Iterator<BallotPosition> iter) {
-		boolean first = true;
-		while (iter.hasNext()) {
-			BallotPosition pair = iter.next();
-			if (!first)
-				System.out.print(", ");
-			System.out.print(pair.getName() + "(" + pair.getVotes() + ")");
-			first = false;
-		}
-		System.out.println();
 	}
 }
 // END main
