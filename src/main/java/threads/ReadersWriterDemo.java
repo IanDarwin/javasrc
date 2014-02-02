@@ -54,7 +54,7 @@ public class ReadersWriterDemo {
 									p.getName(),
 									p.getVotes()));
 						} finally {
-							// Unlock in finally to be sure it gets done.
+							// Unlock in "finally" to be sure it gets done.
 							lock.readLock().unlock();
 						}
 						
