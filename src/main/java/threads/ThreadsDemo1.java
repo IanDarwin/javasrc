@@ -48,24 +48,20 @@ package threads;
  */
 // BEGIN main
 public class ThreadsDemo1 extends Thread {
-	String mesg;
-	int count;
+	private String mesg;
+	private int count;
 
 	/** Run does the work: print a message, "count" number of times */ 
 	public void run() {
 		while (count-- > 0) {
-			println(mesg);
+			System.out.println(mesg);
 			try {
-				Thread.sleep(100);	// 100 msec
+				Thread.sleep(100);	// in mSec
 			} catch (InterruptedException e) {
 				return;
 			}
 		}
-		println(mesg + " all done.");
-	}
-
-	void println(String s) {
-		System.out.println(s);
+		System.out.println(mesg + " all done.");
 	}
 
 	/**
@@ -73,9 +69,8 @@ public class ThreadsDemo1 extends Thread {
 	 * @param m Message to display
 	 * @param n How many times to display it
 	 */
-	public ThreadsDemo1(String m, int n) {
+	public ThreadsDemo1(final String mesg, int n) {
 		count = n;
-		mesg  = m;
 		setName(m + " runner Thread");
 	}
 
