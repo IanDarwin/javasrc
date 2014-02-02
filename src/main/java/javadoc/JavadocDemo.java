@@ -24,7 +24,7 @@ public class JavadocDemo extends JPanel {
 		Button b = new Button("Hello");
 		add(b);						// connect Button into component
 		// Totally capricious example of what you should not do
-		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == 0) {
+		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
 			throw new IllegalArgumentException("Never On A Sunday");
 		}
 	}
@@ -37,7 +37,7 @@ public class JavadocDemo extends JPanel {
 	 * drawing methods.
 	 */
 	public void paint(Graphics g) {
-		int w = getSize().width, h=getSize().height;
+		int w = getSize().width, h = getSize().height;
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 0, w/2, h);
 		g.setColor(Color.GREEN);
