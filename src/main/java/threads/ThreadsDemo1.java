@@ -70,8 +70,9 @@ public class ThreadsDemo1 extends Thread {
 	 * @param n How many times to display it
 	 */
 	public ThreadsDemo1(final String mesg, int n) {
+		this.mesg = mesg;
 		count = n;
-		setName(m + " runner Thread");
+		setName(mesg + " runner Thread");
 	}
 
 	/**

@@ -6,7 +6,6 @@ package threads;
  */
 // BEGIN main
 public class ThreadsDemo3 {
-	private String mesg;
 	private Thread t;
 	private int count;
 
@@ -28,17 +27,17 @@ public class ThreadsDemo3 {
 		t = new Thread(new Runnable() {
 			public void run() {
 				while (count-- > 0) {
-					System.ou.println(mesg);
+					System.out.println(mesg);
 					try {
 						Thread.sleep(100);	// 100 msec
 					} catch (InterruptedException e) {
 						return;
 					}
 				}
-				System.ou.println(mesg + " thread all done.");
+				System.out.println(mesg + " thread all done.");
 			}
 		});
-		t.setName(m + " runner Thread");
+		t.setName(mesg + " runner Thread");
 		t.start();
 	}
 }

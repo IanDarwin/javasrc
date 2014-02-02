@@ -35,9 +35,9 @@ public class ThreadsDemo4 {
 					}
 				}
 				System.out.println(mesg + " thread all done.");
-			}
+			
 		});
-		t.setName(m + " runner Thread");
+		t.setName(mesg + " runner Thread");
 		t.start();
 	}
 }
