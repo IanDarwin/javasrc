@@ -66,5 +66,8 @@ public class ConfigTest {
 		// read back is the same as what we started with.
 		assertEquals("saved and loaded back the object", c, c2);
 		// END main
+
+		// Bit o' cleanup
+		f.delete();
 	}
 }
