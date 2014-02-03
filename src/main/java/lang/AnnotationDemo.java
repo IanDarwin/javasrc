@@ -8,6 +8,7 @@ import java.lang.annotation.Target;
 
 import javax.annotation.Resource;
 
+// BEGIN main
 /**
  * A sample annotation for types (classes, interfaces);
  * it will be available at run time.
@@ -40,3 +41,4 @@ class FancyClassJustToShowAnnotation {
 		}
 	}
 }
+// END main
