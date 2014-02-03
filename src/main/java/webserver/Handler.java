@@ -37,6 +37,8 @@ public class Handler {
 	protected Httpd parent;
 	/** The default filename in a directory. */
 	protected final static String DEF_NAME = "/index.html";
+	/** Used to make line endings standards-compliant */
+	public static final String CRLF = "\r\n";
 
 	/** The Hashtable used to cache all URLs we've read.
 	 * Static, shared by all instances of Handler (one Handler per request;
@@ -171,10 +173,10 @@ public class Handler {
 	}
 
 	void doDirList(String rqName, File dir, boolean justAHead, PrintStream out) {
-		out.println("HTTP/1.0 200 directory found");
-		out.println("Content-type: text/html");
-		out.println("Date: " + new Date().toString());
-		out.println("");
+		out.print("HTTP/1.0 200 directory found" + CRLF);
+		out.print("Content-type: text/html" + CRLF);
+		out.print("Date: " + new Date().toString() + CRLF);
+		out.print(CRLF);
 		if (justAHead)
 			return;
 		out.println("<html>");
@@ -205,10 +207,10 @@ public class Handler {
 	 */
 	void sendFile(String fname, boolean justHead,
 		byte[] content, PrintStream out) throws IOException {
-		out.println("HTTP/1.0 200 Here's your file");
-		out.println("Content-type: " + guessMime(fname));
-		out.println("Content-length: " + content.length);
-		out.println();
+		out.print("HTTP/1.0 200 Here's your file" + CRLF);
+		out.print("Content-type: " + guessMime(fname) + CRLF);
+		out.print("Content-length: " + content.length + CRLF);
+		out.print(CRLF);
 		if (justHead)
 			return;
 		out.write(content);
@@ -242,9 +244,9 @@ public class Handler {
 		catch (MissingResourceException e) { response=errMsg; }
 
 		// Generate and send the response
-		os.println("HTTP/1.0 " + errNum + " " + response);
-		os.println("Content-type: text/html");
-		os.println();
+		os.print("HTTP/1.0 " + errNum + " " + response + CRLF);
+		os.print("Content-type: text/html" + CRLF);
+		os.print(CRLF);
 		os.println("<html>");
 		os.println("<head><title>Error " + errNum + "--" + response +
 			"</title></head>");
