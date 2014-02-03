@@ -13,7 +13,7 @@ public class ExecDemoLs {
 	/** The program to run */
 	public static final String PROGRAM = "ls"; // "dir" for Windows
 	/** Set to true to end the loop */
-	static boolean done = false;
+	static volatile boolean done = false;
 
 	public static void main(String argv[]) throws IOException {
 

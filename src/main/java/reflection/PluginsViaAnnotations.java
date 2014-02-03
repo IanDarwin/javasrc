@@ -10,20 +10,19 @@ import java.util.List;
 public class PluginsViaAnnotations {
 
 	/**
-	 *  Find all classes in the given package which have the given
+	 * Find all classes in the given package which have the given
 	 * class-level annotation class.
-	 * @param packageName
-	 * @param annotationClass
-	 * @return
 	 */
-	public static List<Class<?>> findAnnotatedClasses(String packageName, Class<? extends Annotation> annotationClass) throws Exception {
+	public static List<Class<?>> findAnnotatedClasses(String packageName,
+		Class<? extends Annotation> annotationClass) throws Exception {
+
 		List<Class<?>> ret = new ArrayList<>();
 		String[] classes = ClassesInPackage.getPackageContent(packageName);
 		for (String clazz : classes) {
 			Class<?> c = Class.forName(clazz);
 			if (c.isAnnotationPresent(annotationClass))
 				ret.add(c);
-			}
+		}
 		return ret;
 	}
 	// END findAnnotatedClasses

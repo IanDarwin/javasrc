@@ -18,6 +18,8 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class ExecDemoNS extends JFrame {
+	private static final String NETSCAPE = "netscape";
+
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
 
@@ -26,7 +28,7 @@ public class ExecDemoNS extends JFrame {
 
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {
-		String program = av.length == 0 ? "netscape" : av[0];
+		String program = av.length == 0 ? NETSCAPE : av[0];
 		new ExecDemoNS(program).setVisible(true);
 	}
 
@@ -39,7 +41,7 @@ public class ExecDemoNS extends JFrame {
 		String osname = System.getProperty("os.name");
 		if (osname == null)
 			throw new IllegalArgumentException("no os.name");
-		if (prog.equals("netscape"))
+		if (prog.equals(NETSCAPE))
 			program = // Windows or UNIX only for now, sorry Mac fans
 				(osname.toLowerCase().indexOf("windows")!=-1) ?
 				"c:/program files/netscape/communicator/program/netscape.exe" :

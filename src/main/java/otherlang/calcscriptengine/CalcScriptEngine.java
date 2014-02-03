@@ -33,13 +33,15 @@ public class CalcScriptEngine extends AbstractScriptEngine {
 				return stack.pop() + stack.pop();
 			}
 			if (tok.equals("-")) {
-				return stack.pop() - stack.pop();
+				final Integer tos = stack.pop();
+				return stack.pop() - tos;
 			}
 			if (tok.equals("*")) {
 				return stack.pop() * stack.pop();
 			}
 			if (tok.equals("/")) {
-				return stack.pop() / stack.pop();
+				final Integer tos = stack.pop();
+				return stack.pop() / tos;
 			}
 			// else ... check for other operators
 			// If nothing else, must be a name. get and stack its value
