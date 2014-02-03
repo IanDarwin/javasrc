@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 // BEGIN main
 class X {
+	@SuppressWarnings("unused") // Used surreptitiously below.
 	private int p = 42;
 	int q = 3;
 }
@@ -29,6 +30,7 @@ public class DefeatPrivacy {
 		for (Field f : flds) {
 			f.setAccessible(true);	// bye-bye "private"
 			System.out.println(f + "==" + f.get(x));
+			f.setAccessible(false);	// reset to "correct" state
 		}
 	}
 }
