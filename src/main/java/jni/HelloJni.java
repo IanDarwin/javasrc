@@ -1,4 +1,4 @@
-package native1_1;
+package jni;
 
 /**
  * A trivial class to show Java Native Interface 1.1 usage from Java.

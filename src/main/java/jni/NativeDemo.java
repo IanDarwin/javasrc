@@ -1,4 +1,4 @@
-package native1_1;
+package jni;
 
 public class NativeDemo {
 	public static void main(String[] args) {
