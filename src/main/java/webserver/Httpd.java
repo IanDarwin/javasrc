@@ -58,10 +58,11 @@ public class Httpd {
 
 	/** Construct a server object for a given port number */
 	Httpd() throws Exception {
-		super();
 		wsp=new FileProperties("httpd.properties");
 		rootDir = wsp.getProperty("rootDir", ".");
-		mimeTypes = new FileProperties(wsp.getProperty("mimeProperties", "mime.properties"));
+		mimeTypes = 
+			new FileProperties(
+				wsp.getProperty("mimeProperties", "mime.properties"));
 	}
 
 	public void startServer(int portNum) throws Exception {
