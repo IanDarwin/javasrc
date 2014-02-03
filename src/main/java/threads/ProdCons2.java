@@ -66,13 +66,14 @@ public class ProdCons2 {
 				// We're simulating this actually reading from a client, and it
 				// might have to wait for hours if the client is having coffee.
 				synchronized(list) {
-						while (list.size() == MAX) // queue "full"
+					while (list.size() == MAX) { // queue "full"
 						try {
 							System.out.println("Producer WAITING");
 							list.wait();	 // Limit the size
 						} catch (InterruptedException ex) {
 							System.out.println("Producer INTERRUPTED");
 						}
+					}
 					list.addFirst(justProduced);
 					list.notifyAll();	// must own the lock
 					System.out.println("Produced 1; List size now " + list.size());
