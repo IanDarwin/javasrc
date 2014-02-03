@@ -10,3 +10,5 @@ javac -d . TimeNoArgs.java StringPrint*.java
 java -cp . performance.TimeNoArgs \
 	performance.StringPrintA performance.StringPrintAA performance.StringPrintB \
 	performance.StringPrintA performance.StringPrintAA performance.StringPrintB   > /dev/null
+
+rm -r ./performance # clean up
