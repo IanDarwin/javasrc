@@ -8,10 +8,11 @@ import com.darwinsys.lang.ExecAndPrint;
 public class ExecDemoFiles {
 	public static void main(String av[]) throws Exception {
 		
+		// BEGIN main
 		// Get and save the Runtime object.
 		Runtime rt = Runtime.getRuntime();
 
-		// Create three temporary files
+		// Create three temporary files (the slow way!)
 		rt.exec("mktemp file1");
 		rt.exec("mktemp file2");
 		rt.exec("mktemp file3");
@@ -22,5 +23,6 @@ public class ExecDemoFiles {
 		ExecAndPrint.run(args);
 
 		rt.exec("rm file1 file2 file3");
+		// END main
 	}
 }
