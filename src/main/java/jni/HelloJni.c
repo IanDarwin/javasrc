@@ -1,10 +1,10 @@
 #include <jni.h>
-#include "HelloWorld.h"
+#include "HelloJni.h"
 #include <stdio.h>
 /*
- * This is the 1.1 implementation of displayHelloWorld.
+ * This is the 1.1 implementation of displayHelloJni.
  */
-JNIEXPORT void JNICALL Java_HelloWorld_displayHelloWorld(JNIEnv *env, jobject this)
+JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this)
 {
   jfieldID fldid;
   jint n, nn;
