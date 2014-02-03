@@ -6,6 +6,7 @@
 # Time programs are usually smart enough to report on another file
 # like standard error, for this reason
 
-jr TimeNoArgs \
-	StringPrintA StringPrintAA StringPrintB \
-	StringPrintA StringPrintAA StringPrintB   > /dev/null
+javac -d . TimeNoArgs.java StringPrint*.java
+java -cp . performance.TimeNoArgs \
+	performance.StringPrintA performance.StringPrintAA performance.StringPrintB \
+	performance.StringPrintA performance.StringPrintAA performance.StringPrintB   > /dev/null
