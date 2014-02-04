@@ -28,8 +28,7 @@ public class FindFilter implements FilenameFilter {
 	void setNameFilter(String nameFilter) {
 		name = nameFilter;
 		StringBuilder sb = new StringBuilder('^');
-		for (int i = 0; i < nameFilter.length(); i++) {
-			char c = nameFilter.charAt(i);
+		for (char c : nameFilter.toCharArray()) {
 			switch(c) {
 				case '.':	sb.append("\\."); break;
 				case '*':	sb.append(".*"); break;

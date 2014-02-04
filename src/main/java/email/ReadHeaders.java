@@ -14,8 +14,8 @@ public class ReadHeaders {
 	}
 
 	/** Main program showing how to use it */
-    public static void main(String[] av) {
-        switch(av.length) {
+    public static void main(String[] args) {
+        switch(args.length) {
             case 0: 
 				ReadHeaders r = new ReadHeaders(
 					new BufferedReader(
@@ -23,14 +23,15 @@ public class ReadHeaders {
 				printit(r);
 				break;
             default:
-				for (int i=0; i<av.length; i++)
+				for (String arg : args) {
                     try {
 						ReadHeaders rr = new ReadHeaders(
-							new BufferedReader(new FileReader(av[i])));
+							new BufferedReader(new FileReader(arg)));
 						printit(rr);
                     } catch (FileNotFoundException e) {
                         System.err.println(e);
                     }
+				}
 				break;
         }
     }

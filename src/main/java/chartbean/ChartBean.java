@@ -16,14 +16,13 @@ import java.awt.Graphics;
  */
 public class ChartBean extends Component {
 
-	/**  */
 	private static final long serialVersionUID = -9107709755814764991L;
 
 	/** The title to print on the chart */
 	protected String title;
 
 	/** the data to draw */
-	protected ChartData data[];
+	protected ChartData[] data;
 
 	/** degrees in a circle */
 	public static final int CIRCLE = 360;

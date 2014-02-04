@@ -44,14 +44,14 @@ public class Digitizer extends JComponent {
 		iv.loadImage();
 	}
 
-	public static void main(String[] arg) {
+	public static void main(String[] args) {
 		System.out.println("Digitizer 0.0");
-		if (arg.length != 1) {
+		if (args.length != 1) {
 			System.err.println("Usage: Digitizer file [...]");
 		} else {
-			for (int i=0; i<arg.length; i++) {
+			for (String arg : args) {
 				JFrame jf = new JFrame("Digitizer");
-				Digitizer d = new Digitizer(arg[i]);
+				Digitizer d = new Digitizer(arg);
 				jf.getContentPane().add(d);
 				d.loadImage();
 				jf.pack();

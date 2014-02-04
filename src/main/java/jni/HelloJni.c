@@ -1,11 +1,11 @@
+/* BEGIN main */
 #include <jni.h>
 #include "HelloJni.h"
 #include <stdio.h>
 /*
- * This is the 1.1 implementation of displayHelloJni.
+ * This is the Java Native implementation of displayHelloJni.
  */
-JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this)
-{
+JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this) {
   jfieldID fldid;
   jint n, nn;
 
@@ -30,3 +30,4 @@ JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this)
   printf("\"myNumber\" value now %d\n", nn); /* make sure */
   return;
 }
+/* BEGIN main */

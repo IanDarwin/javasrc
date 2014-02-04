@@ -54,13 +54,15 @@ public class Easter {
 			int thisYear = new GregorianCalendar().get(Calendar.YEAR);
 			Calendar c = Easter.findHolyDay(thisYear);
 			System.out.println( c.getTime());
-		} else for (int i=0; i<argv.length; i++) {
-			int year = 0;
-			try {
-				year = Integer.parseInt(argv[i]);
-				System.out.println(Easter.findHolyDay(year).getTime());
-			} catch (IllegalArgumentException e) {
-				System.err.println("Year " + argv[i] + " invalid (" + e.getMessage() + ").");
+		} else {
+			for (String arg : argv) {
+				int year = 0;
+				try {
+					year = Integer.parseInt(arg);
+					System.out.println(Easter.findHolyDay(year).getTime());
+				} catch (IllegalArgumentException e) {
+					System.err.println("Year " + arg + " invalid (" + e.getMessage() + ").");
+				}
 			}
 		}
 	}

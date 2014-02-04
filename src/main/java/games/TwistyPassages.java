@@ -45,8 +45,8 @@ public class TwistyPassages {
 	}
 
 	private static boolean isVerb(String inputLine) {
-		for (int i = 0; i < directions.length; i++) {
-			if (directions[i].startsWith(inputLine)) {
+		for (String dir : directions) {
+			if (dir.startsWith(inputLine)) {
 				return true;
 			}
 		}

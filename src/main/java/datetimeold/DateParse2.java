@@ -13,8 +13,7 @@ public class DateParse2 {
 			"BD: 1913-10-01 Vancouver, B.C.",
 			"MD: 1948-03-01 Ottawa, ON",
 			"DD: 1983-06-06 Toronto, ON" };
-		for (int i=0; i<input.length; i++) {
-			String aLine = input[i];
+		for (String aLine : input) {
 			String action;
 			switch(aLine.charAt(0)) {
 				case 'B': action = "Born"; break;

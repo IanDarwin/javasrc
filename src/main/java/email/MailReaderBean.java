@@ -71,9 +71,9 @@ public class MailReaderBean extends JSplitPane {
 		}
 
 		if (top.f.getType() == Folder.HOLDS_FOLDERS) {
-			Folder[] f = top.f.list();
-			for (int i = 0; i < f.length; i++)
-				listFolder(top, new FolderNode(f[i]), recursive);
+			Folder[] fs = top.f.list();
+			for (Folder f : fs)
+				listFolder(top, new FolderNode(f), recursive);
 		} else
 				listFolder(top, top, false);
 
@@ -107,8 +107,8 @@ public class MailReaderBean extends JSplitPane {
 
 						bodyText.append("To: ");
 						Object[] tos = m.getAllRecipients();
-						for (int i=0; i<tos.length; i++) {
-							bodyText.append(tos[i].toString());
+						for (Object to : tos) {
+							bodyText.append(to.toString());
 							bodyText.append(" ");
 						}
 						bodyText.append("\n");
@@ -116,8 +116,8 @@ public class MailReaderBean extends JSplitPane {
 						bodyText.append("Subject: " + m.getSubject() + "\n");
 						bodyText.append("From: ");
 						Object[] froms = m.getFrom();
-						for (int i=0; i<froms.length; i++) {
-							bodyText.append(froms[i].toString());
+						for (Object from : froms) {
+							bodyText.append(from.toString());
 							bodyText.append(" ");
 						}
 						bodyText.append("\n");

@@ -247,8 +247,7 @@ public class Acks extends JFrame {
 		PrintWriter pf = new PrintWriter(new FileWriter(fname));
 		pf.println("# Created by Acks @ " + new Date());
 		pf.println("courseTitle=" + getTitle());
-		for (int i=0; i<v.size(); i++) {
-			OneAck o = v.get(i);
+		for (OneAck o : v) {
 			String name = o.getPropsName();
 			Rectangle r = o.getBounds();
 			pf.println(name + ".title=" + o.getTitle());

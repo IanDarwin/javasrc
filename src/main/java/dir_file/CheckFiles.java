@@ -49,14 +49,16 @@ public class CheckFiles {
 
 	/** Get list of names from the directory */
 	protected void getListFromDirectory() {
-		String[] l = new java.io.File(".").list();
-		for (int i=0; i<l.length; i++)
-			listFromDir.add(l[i]);
+		String[] list = new java.io.File(".").list();
+		for (String file : list) {
+			listFromDir.add(file);
+		}
 	}
 
 	protected void reportMissingFiles() {
-		for (int i=0; i<listFromFile.size(); i++)
-			if (!listFromDir.contains(listFromFile.get(i)))
-				System.err.println("File " + listFromFile.get(i) + " missing.");
+		for (String name : listFromFile) {
+			if (!listFromDir.contains(name))
+				System.err.println("File " + name + " missing.");
+		}
 	}
 }
