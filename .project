@@ -2,9 +2,6 @@
 <projectDescription>
 	<name>javasrc</name>
 	<comment></comment>
-	<projects>
-		<project>JavaCookJars</project>
-	</projects>
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
