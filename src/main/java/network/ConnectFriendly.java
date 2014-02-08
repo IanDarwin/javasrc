@@ -14,9 +14,10 @@ public class ConnectFriendly {
 		try {
 			Socket sock = new Socket(server_name, tcp_port);
 
-			/* Finally, we can read and write on the socket. */
+			/* If we get here, we can read and write on the socket. */
 			System.out.println(" *** Connected to " + server_name  + " ***");
-			/* ... */
+
+			/* Do some I/O here... */
 
 			sock.close();
 
