@@ -8,10 +8,10 @@ import java.net.Socket;
 // BEGIN main
 public class InetAddrDemo {
 	public static void main(String[] args) throws IOException {
-		String ipNumber = "123.45.67.89";
 		String hostName = "www.darwinsys.com";
+		String ipNumber = "8.8.8.8"; // currently a well-known Google DNS server
 
-		// Look up a host by name
+		// Show getting the InetAddress (looking up a host) by host name
 		System.out.println(hostName + "'s address is " +
 			InetAddress.getByName(hostName).getHostAddress());
 
@@ -21,19 +21,14 @@ public class InetAddrDemo {
 
 		// Look up my localhost addresss
 		final InetAddress localHost = InetAddress.getLocalHost();
-		System.out.println("My localhost address is " +
-				localHost);
-		// Try to bind to it; this will fail if "getLocalhost()" found anything
-        // on any other interface than this host's well-known hostname-based addr
-		new ServerSocket(9999, 0, localHost);
-		
-		Socket theSocket = new Socket("server", 80);
-		int myPortNumber = 12345;
+		System.out.println("My localhost address is " + localHost);
 
-		// Connect to different portnum on same host as an open Socket
+		// Show getting the InetAddress from an open Socket
+		String someServerName = "www.google.com";
+		// assuming there's a web server on the named server:
+		Socket theSocket = new Socket(someServerName, 80);	
 		InetAddress remote = theSocket.getInetAddress();
-		Socket anotherSocket = new Socket(remote, myPortNumber);
-		System.out.println(anotherSocket); // Show that we got here...
+		System.out.printf("The InetAddress for %s is %s%n", someServerName, remote);
 	}
 }
 // END main

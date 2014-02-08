@@ -25,7 +25,9 @@ public class FontLister {
 
 		System.out.println("Number of Fonts " + title + " = " + list.length);
 
-		for (int i = 0; i<list.length; i++)
-			System.out.println("Font " + i + " = " + list[i]);
+		int i = 0;
+		for (String fontName : list) {
+			System.out.println("Font " + ++i + " = " + fontName);
+		}
 	}
 }

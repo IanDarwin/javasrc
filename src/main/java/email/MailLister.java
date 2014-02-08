@@ -115,10 +115,11 @@ public class MailLister {
 		}
 		if ((folder.getType() & Folder.HOLDS_FOLDERS) != 0) {
 			System.out.println(tab + "Is Directory");
+		}
 		if (recurse) {
-			Folder[] f = folder.list();
-			for (int i=0; i < f.length; i++)
-				listFolder(f[i], tab + "", recurse);
+			Folder[] fs = folder.list();
+			for (Folder f : fs) {
+				listFolder(f, tab + "", recurse);
 			}
 		}
 	}

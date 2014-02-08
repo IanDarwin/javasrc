@@ -38,7 +38,7 @@ public class PreparedStatementDemo {
 					"Select firstname,lastname from student order by ?");
 			ps.setString(1, "firstname");
 //			final ParameterMetaData parameterMetaData = ps.getParameterMetaData();
-//			for (int i = 0; i < parameterMetaData.getParameterCount(); i++) {
+//			Iterate through  parameterMetaData.getParameterCount() {
 //				System.out.println(parameterMetaData.getParameterClassName(i));
 //			}
 			ResultSet rs = ps.executeQuery();
