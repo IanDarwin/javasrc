@@ -17,14 +17,14 @@ import java.net.Socket;
  * to you on the Web port by accident (or otherwise).
  *
  * Can't claim to be fully standards-conforming, but has been
- * tested with Netscape Communicator and with the Lynx text browser.
+ * tested with various browsers.
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
- * @see		webserver/* for more fully-fleshed-out version(s).
  */
 // BEGIN main
 public class WebServer0 {
 	public static final int HTTP = 80;
+	public static final String CRLF = "\r\l"l
 	ServerSocket s;
 
 	/**
@@ -74,9 +74,9 @@ public class WebServer0 {
 			System.out.println("Request: " + request);
 			
 			os = new PrintWriter(s.getOutputStream(), true);
-			os.println("HTTP/1.0 200 Here is your data");
-			os.println("Content-type: text/html");
-			os.println("Server-name: DarwinSys NULL Java WebServer 0");
+			os.print("HTTP/1.0 200 Here is your data" + CRLF);
+			os.print("Content-type: text/html" + CRLF);
+			os.print("Server-name: DarwinSys NULL Java WebServer 0" + CRLF);
 			String reply1 = "<html><head>" +
 				"<title>Wrong System Reached</title></head>\n" +
 				"<h1>Welcome, ";
@@ -88,10 +88,10 @@ public class WebServer0 {
 				"the WebServer0 source (at the Authors Web Site)</A>.</p>\n" +
 				"<hr/><em>Java-based WebServer0</em><hr/>\n" +
 				"</html>\n";
-			os.println("Content-length: " + 
-				(reply1.length() + from.length() + reply2.length()));
-			os.println("");
-			os.println(reply1 + from + reply2);
+			os.print("Content-length: " + 
+				(reply1.length() + from.length() + reply2.length()) + CRLF);
+			os.print(CRLF);
+			os.print(reply1 + from + reply2 + CRLF);
 			os.flush();
 			s.close();
 		} catch (IOException e) {
