@@ -8,7 +8,7 @@ package lang;
  */
 public class BooleanAndOr {
 	public static void main(String[] a) {
-		String s = null;
+		String s = getString();
 
 		// These use the conventional logical "and" (&&) and "or" (||).
 		try {
@@ -31,5 +31,10 @@ public class BooleanAndOr {
 			System.out.print("Bitwise section threw ");
 			e.printStackTrace();
 		}
+	}
+
+	private static String getString() {
+		// Any value is fine here.
+		return null;
 	}
 }

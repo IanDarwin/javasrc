@@ -18,6 +18,8 @@ import static org.junit.Assert.assertNull;
  */
 public class MyMapTest {
 
+	private static boolean verbose = false;
+
 	private static final int NUM_ENTRIES = 7;
 	
 	private Map<String,String> map;
@@ -68,7 +70,7 @@ public class MyMapTest {
 		while (k.hasNext()) {
 			String key = (String) k.next();
 			final String value = (String) map.get(key);
-			if (false)
+			if (verbose)
 				System.out.println("Key " + key + "; Value " + value);
 		}		
 	}

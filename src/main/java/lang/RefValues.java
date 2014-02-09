@@ -8,9 +8,12 @@ import java.util.*;
 public class RefValues {
 
 	public static void main(String[] argv) {
-		RefValues ref = new RefValues();
+		@SuppressWarnings("unused")
+		RefValues s = new RefValues();
+		// Nothing needed - all that's interesting happens in the constructor
 	}
 
+	@SuppressWarnings("unused")
 	public RefValues() {
 		long longValue = 420;
 		GregorianCalendar d1 = new GregorianCalendar(1971,04,24);

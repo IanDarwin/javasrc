@@ -10,10 +10,10 @@ public class Log4JDemo2 {
 
 		try {
 			Object o = new Object();
+			theLogger.info("I created an object: " + o);
 			if (o != null) {	// bogus, just to show logging
 				throw new IllegalArgumentException("Just testing");
 			}
-			theLogger.info("I created an object: " + o);
 		} catch (Exception ex) {
 			theLogger.error("Caught Exception: " + ex, ex);
 		}
