@@ -89,11 +89,11 @@ public class JaasDemo {
 			System.setSecurityManager(new SecurityManager());
 
 			// Should be able to read
-			new FileReader(".");
+			new FileReader(".").close();
 			System.out.println("Successfully opened reader");
 
 			// Should not be able to write:
-			new FileWriter("./jnk.txt");
+			new FileWriter("./jnk.txt").close(); // Expect constructor to throw
 			JOptionPane.showMessageDialog(theFrame,
 				"Egad; I was allowed to write a file!", "Whoops!",
 				JOptionPane.ERROR_MESSAGE);
