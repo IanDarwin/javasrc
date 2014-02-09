@@ -3,8 +3,6 @@ package network;
 import java.io.*;
 import java.net.*;
 
-import com.darwinsys.util.Debug;
-
 /**
  * Simple UDP client - contact the standard ascii time service
  * @author Ian Darwin, http://www.darwinsys.com/.
@@ -38,13 +36,15 @@ public class DaytimeUDP {
 		/* Send empty max-length (-1 for null byte) packet to server */
 		packet.setLength(PACKET_SIZE-1);
 		sock.send(packet);
-		Debug.println("net", "Sent request");
+		System.out.println("Sent request");
 
 		// Receive a packet and print it.
 		sock.receive(packet);
-		Debug.println("net", "Got packet of size " + packet.getLength());
+		System.out.println("Got packet of size " + packet.getLength());
 		System.out.print("Date on " + host + " is " + 
 			new String(buffer, 0, packet.getLength()));
+		
+		sock.close();
 	}
 }
 // END main
