@@ -22,73 +22,72 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-		<version>3.1</version>
+        <version>3.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-		<excludes>
-			<!-- Won't compile with UTF-8! -->
-			<exclude>lang/EuroLanguage.java</exclude>
+          <excludes>
+            <!-- Won't compile with UTF-8! -->
+            <exclude>lang/EuroLanguage.java</exclude>
 
-			<!-- Defunct APIs -->
+            <!-- Defunct APIs -->
 
-			<exclude>datetimeold/IBMCalDemo.java</exclude>
-			<exclude>graphics/QTMoviePlayer.java</exclude>
+            <exclude>datetimeold/IBMCalDemo.java</exclude>
+            <exclude>graphics/QTMoviePlayer.java</exclude>
 
-			<!-- Used private API which is no longer available -->
-			<exclude>netweb/WebServerSimpleSE.java</exclude>
+            <!-- Used private API which is no longer available -->
+            <exclude>netweb/WebServerSimpleSE.java</exclude>
 
-			<exclude>plotter/Penman.java</exclude>
+            <exclude>plotter/Penman.java</exclude>
 
-			<!-- Have yet to find a POM that works -->
-			<exclude>gui_swt/*.java</exclude>
-			<exclude>gui/ArrayListTableSimple.java</exclude>
-			<exclude>xml/XSLTransform.java</exclude>
-			<exclude>otherlang/StringDistance.java</exclude>
-			<exclude>javacomm/*.java</exclude>
+            <!-- Have yet to find a POM that works -->
+            <exclude>gui/ArrayListTableSimple.java</exclude>
+            <exclude>xml/XSLTransform.java</exclude>
+            <exclude>otherlang/StringDistance.java</exclude>
+            <exclude>javacomm/*.java</exclude>
 
-			<!-- Unknown issues -->
-			<exclude>lang/UsePackage.java</exclude>
-			<exclude>rmi/callback/ClientProgram.java</exclude>
+            <!-- Unknown issues -->
+            <exclude>lang/UsePackage.java</exclude>
+            <exclude>rmi/callback/ClientProgram.java</exclude>
 
-			<!-- Remainder all have 'Expect compile error' -->
-			<!-- XXX replace this list with filter grep -->
-			<exclude>jdb/Problem.java</exclude>
-			<exclude>lang/AddException.java</exclude>
-			<exclude>lang/ByteAdd2.java</exclude>
-			<exclude>lang/CastingDemo.java</exclude>
-			<exclude>lang/ChangeArrayLength.java</exclude>
-			<exclude>lang/CommentBug.java</exclude>
-			<exclude>lang/CompileError.java</exclude>
-			<exclude>lang/ConsRecurs.java</exclude>
-			<exclude>lang/Constructors.java</exclude>
-			<exclude>lang/ImportConflict.java</exclude>
-			<exclude>lang/ImportNonPublic.java</exclude>
-			<exclude>lang/InitializersDemo.java</exclude>
-			<exclude>lang/InnerMethods.java</exclude>
-			<exclude>lang/InterfaceNoConstructor.java</exclude>
-			<exclude>lang/NoLocalStatics.java</exclude>
-			<exclude>lang/NullStaticMethod.java</exclude>
-			<exclude>lang/OverLoadReturn.java</exclude>
-			<exclude>lang/AnnotationOverrideDemo.java</exclude>
-			<exclude>lang/PrivProt.java</exclude>
-			<exclude>lang/ProtectedClass.java</exclude>
-			<exclude>lang/ReturnType.java</exclude>
-			<exclude>lang/ShowInitializers.java</exclude>
-			<exclude>lang/Switch.java</exclude>
-			<exclude>lang/TryStealingInnerClass.java</exclude>
-			<exclude>netweb/JScript.java</exclude>
-			<exclude>numbers/CastNeeded.java</exclude>
-			<exclude>numbers/SmallIntMult.java</exclude>
-			<exclude>oo/AllClasses.java</exclude>
-			<exclude>oo/Clone0.java</exclude>
-			<exclude>oo/SingletonCheat1.java</exclude>
-			<exclude>oo/SingletonCheat2.java</exclude>
-			<exclude>reflection/ClassLoaderDemo0.java</exclude>
-			<exclude>strings/WolfInStringsClothing.java</exclude>
-			<exclude>threads/StopStop.java</exclude>
-			<exclude>threads/ThreadDeathCatch.java</exclude>
-		</excludes>
+            <!-- Remainder all have 'Expect compile error' -->
+            <!-- XXX replace this list with filter grep -->
+            <exclude>jdb/Problem.java</exclude>
+            <exclude>lang/AddException.java</exclude>
+            <exclude>lang/ByteAdd2.java</exclude>
+            <exclude>lang/CastingDemo.java</exclude>
+            <exclude>lang/ChangeArrayLength.java</exclude>
+            <exclude>lang/CommentBug.java</exclude>
+            <exclude>lang/CompileError.java</exclude>
+            <exclude>lang/ConsRecurs.java</exclude>
+            <exclude>lang/Constructors.java</exclude>
+            <exclude>lang/ImportConflict.java</exclude>
+            <exclude>lang/ImportNonPublic.java</exclude>
+            <exclude>lang/InitializersDemo.java</exclude>
+            <exclude>lang/InnerMethods.java</exclude>
+            <exclude>lang/InterfaceNoConstructor.java</exclude>
+            <exclude>lang/NoLocalStatics.java</exclude>
+            <exclude>lang/NullStaticMethod.java</exclude>
+            <exclude>lang/OverLoadReturn.java</exclude>
+            <exclude>lang/AnnotationOverrideDemo.java</exclude>
+            <exclude>lang/PrivProt.java</exclude>
+            <exclude>lang/ProtectedClass.java</exclude>
+            <exclude>lang/ReturnType.java</exclude>
+            <exclude>lang/ShowInitializers.java</exclude>
+            <exclude>lang/Switch.java</exclude>
+            <exclude>lang/TryStealingInnerClass.java</exclude>
+            <exclude>netweb/JScript.java</exclude>
+            <exclude>numbers/CastNeeded.java</exclude>
+            <exclude>numbers/SmallIntMult.java</exclude>
+            <exclude>oo/AllClasses.java</exclude>
+            <exclude>oo/Clone0.java</exclude>
+            <exclude>oo/SingletonCheat1.java</exclude>
+            <exclude>oo/SingletonCheat2.java</exclude>
+            <exclude>reflection/ClassLoaderDemo0.java</exclude>
+            <exclude>strings/WolfInStringsClothing.java</exclude>
+            <exclude>threads/StopStop.java</exclude>
+            <exclude>threads/ThreadDeathCatch.java</exclude>
+        </excludes>
         </configuration>
       </plugin>
     </plugins>
@@ -97,7 +96,7 @@
   <dependencies>
     <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
     <dependency>
-	    <groupId>com.darwinsys</groupId>
+      <groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
         <version>1.0.3</version>
     </dependency>
@@ -109,11 +108,17 @@
       <version>4.8.1</version>
     </dependency>
     <dependency>
-	  <groupId>org.hamcrest</groupId>
-	  <artifactId>hamcrest-all</artifactId>
-	  <version>1.3</version>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-all</artifactId>
+    <version>1.3</version>
     </dependency>
 
+    <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.5</version>
+    </dependency>
+            
     <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
@@ -128,9 +133,9 @@
 
     <!-- Spring - used in a few examples -->
     <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-context</artifactId>
-	<version>3.2.4.RELEASE</version>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+  <version>3.2.4.RELEASE</version>
     </dependency>
 
     <!-- JPA needing a driver, let's use Hibernate -->
@@ -199,9 +204,9 @@
 
 <!-- VLC Player for Java, jlcj -->
 <dependency>
-	<groupId>uk.co.caprica</groupId>
-	<artifactId>vlcj</artifactId>
-	<version>2.4.1</version>
+  <groupId>uk.co.caprica</groupId>
+  <artifactId>vlcj</artifactId>
+  <version>2.4.1</version>
 </dependency>
 
 <dependency>
@@ -217,9 +222,9 @@
 </dependency>
 
 <dependency>
-	<groupId>org.rxtx</groupId>
-	<artifactId>rxtx</artifactId>
-	<version>2.1.7</version>
+  <groupId>org.rxtx</groupId>
+  <artifactId>rxtx</artifactId>
+  <version>2.1.7</version>
 </dependency>
 
 <dependency>
@@ -232,9 +237,9 @@
 
 <!--  org.json -->
 <dependency>
-	<groupId>org.json</groupId>
-	<artifactId>json</artifactId>
-	<version>20131018</version>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20131018</version>
 </dependency>
             
 <!-- Jackson -->
@@ -253,7 +258,7 @@
   <artifactId>jackson-databind</artifactId>
   <version>2.3.1</version>
 </dependency>
-<dependency>
+  <dependency>
     <groupId>org.renjin</groupId>
     <artifactId>renjin-script-engine</artifactId>
     <version>0.7.0-RC6</version>
