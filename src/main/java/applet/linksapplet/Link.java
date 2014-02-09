@@ -1,4 +1,4 @@
-package linksapplet;
+package applet.linksapplet;
 
 import java.awt.*;
 import java.awt.event.*;
