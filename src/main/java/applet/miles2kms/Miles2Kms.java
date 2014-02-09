@@ -1,4 +1,4 @@
-package miles2kms;
+package applet.miles2kms;
 
 import java.applet.Applet;
 import java.awt.BorderLayout;
