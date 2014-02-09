@@ -15,6 +15,7 @@ import java.util.ListIterator;
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin
  */
+@Deprecated
 // BEGIN main
 public class LinkList<T> implements List<T> {
 
