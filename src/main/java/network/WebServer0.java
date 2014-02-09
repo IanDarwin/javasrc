@@ -24,7 +24,7 @@ import java.net.Socket;
 // BEGIN main
 public class WebServer0 {
 	public static final int HTTP = 80;
-	public static final String CRLF = "\r\l"l
+	public static final String CRLF = "\r\n";
 	ServerSocket s;
 
 	/**
