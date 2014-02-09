@@ -1,0 +1,84 @@
+acks		Old program to show Acknowledgements graphically
+anttasks	Sample Ant task
+applet		Old Applet examples
+beans		Old JavaBean stuff
+chartbean	Simplistic sample graphing program
+chat		Chat program
+classloader	Classloader chapter examples
+com			Example for package usage
+cookiecutter Old program to show Netscape cookie file
+coverage	Code Test Coverage - only an Ant script to run Cobertura
+database	Database chapter examples
+datetime	java.time (Modern Java 8 Date/Time examples)
+datetimeold	java.util (Legacy Java 1.0/1.1 Date/Time examples)
+dbm			DBM is a hashed database
+desktop		Desktop integration in Java
+di			Dependency Injection
+diary		Toy
+dir_file	Directory/File examples
+domain		A simple domain model (Person has-a Address, etc)
+email		Email code
+environ		Dealing with the Environment examples
+evals		Student Evalution example - half-baked
+functional	Functional Programming (Java 8)
+games		Don't ask
+gc			Dealing with Garbage Collection
+graphics	Java 2D graphics
+gui			Graphical User Interface (Swing)
+gui_awt		Graphical User Interace with legacy AWT
+gui_swt		Graphical User Interace with Eclipse SWT
+i18n		Internationalization
+images		Images included elsewhere
+io			java.io
+jaas		Java Authenticaion and Authorization Service
+javacomm	Legacy Serial/Parallel Port stuff
+javadoc		Javadoc examples
+javafx		JavaFX - new GUI/graphics package
+jdb			Example for JDB (JDK debugger)
+jmx			Java Management Extensions
+jndi		Java Naming and Directory Interface
+jni			Native Code (Java Native Interface)
+json		Data interchange - JavaScript Object Notation
+lang		java.lang
+linuxj		Old Linux Journal article on Swing
+logging		Logging!
+netscape	Old browser stuff
+netwatch	RMI example: monitor student exercise progress in classroom
+netweb		Network activity, mostly web-related
+network		Network activity, general
+nio			java.io
+numbers		Numeric calculations, conversions, etc.
+oo			Object Orientation examples
+otherlang	Dealing with other languages
+packaging	Using Java's package structuring mechanism
+patterns	Design Pattern examples
+performance	Tuning
+plotter		Old demo program
+pool		DIY Pooling for performance
+printjdk11printjob Printing the JDK 1.1 way
+printjdk12printerjob Printing the JDK 1.2 way
+printjdk14printservice Printing the JDK 1.4 way
+public_html	Files for simple web server example
+reflection	java.lang.Class, java.lang.reflect.*
+regex		java.util.regex
+rmi			Remote Methods Invocation
+sched		A toy scheduler
+secure		Security - only has a SQL Injection Attack example
+signals		Old attempt at catching operating-system signals
+spdf		Old attempt at building a PDF library. Works for some stuff.
+sql			java.sql
+starting	Getting Started chapter examples
+strings		Strings chapter examples
+structure	Data Structuring chapter examples
+tar			Read a Unix tar-format file
+testing		Testing chapter examples
+textproc	Text processing simple examples
+threads		Threads chapter examples
+tmtimer		GUI program to time speechas at e.g., a ToastMasters(tm) club
+tools		Miscellaneous software tools
+unfinished	What the name says.
+webproxy	Attempt at a web proxy in Java
+webserviceclient JAX-WS client
+xcolor		Lots of predefined colors for AWT/Swing apps to use
+xml			XML chapter examples
+xmlform		XML format converter
