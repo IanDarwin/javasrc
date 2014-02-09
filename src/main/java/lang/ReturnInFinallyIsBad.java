@@ -4,13 +4,14 @@ package lang;
  * @author ian darwin
  */
 public class ReturnInFinallyIsBad {
+	@SuppressWarnings("finally")
 	private static String getDestinationType() {
 		String ret = "Foo";
 		try {
 			ret = "Bar";
 			throw new RuntimeException("This is a drill");
 		} finally {
-			// This warns about:
+			// Without @SuppressWarnings("finally"), this warns about:
 			// finally block does not complete normally
 			// because this return bypasses handling of the
 			// RuntimeException (or any other thrown Throwable)
