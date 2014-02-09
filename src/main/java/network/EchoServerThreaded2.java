@@ -17,14 +17,12 @@ public class EchoServerThreaded2 {
 	public static final int NUM_THREADS = 4;
 
 	/** Main method, to start the servers. */
-	public static void main(String[] av)
-	{
+	public static void main(String[] av) {
 		new EchoServerThreaded2(ECHOPORT, NUM_THREADS);
 	}
 
 	/** Constructor */
-	public EchoServerThreaded2(int port, int numThreads)
-	{
+	public EchoServerThreaded2(int port, int numThreads) {
 		ServerSocket servSock;
 
 		try {
@@ -32,7 +30,7 @@ public class EchoServerThreaded2 {
 
 		} catch(IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
-			throw new RuntimeException("Could not create ServerSocket " + e);
+			throw new RuntimeException("Could not create ServerSocket ", e);
 		}
 
 		// Create a series of threads and start them.
@@ -48,14 +46,12 @@ public class EchoServerThreaded2 {
 
 		/** Construct a Handler. */
 		Handler(ServerSocket s, int i) {
-			super();
 			servSock = s;
 			threadNumber = i;
 			setName("Thread " + threadNumber);
 		}
 
-		public void run()
-		{
+		public void run() {
 			/* Wait for a connection. Synchronized on the ServerSocket
 			 * while calling its accept() method.
 			 */
