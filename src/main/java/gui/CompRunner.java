@@ -22,6 +22,7 @@ public class CompRunner {
 	static Component comp = null;
 
 	/** "main program" method - construct and show */
+	@SuppressWarnings("unchecked")
 	public static void main(final String[] args) {
 		if (args.length == 0) {
 			System.err.println("Usage: CompRunner ComponentSubclass");
@@ -30,9 +31,9 @@ public class CompRunner {
 		String className = args[0];
 
 		// create an instance of class named in "className", save in "Component comp".
-		Class clazz = null;
+		Class<Component> clazz = null;
 		try {
-			clazz = Class.forName(className);
+			clazz = (Class<Component>) Class.forName(className);
 		} catch (Exception e) {
 			System.err.println("ERROR: " + className + " not valid; probably not on CLASSPATH");
 			System.exit(1);

@@ -24,6 +24,8 @@ import java.util.Map;
  */
 // BEGIN main
 public class AppletAdapter extends Panel implements AppletStub, AppletContext {
+
+	private static final long serialVersionUID = 1L;
 	/** The status window at the bottom */
 	Label status = null;
 
@@ -79,13 +81,15 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		return null;
 	}
 
-	/** Finds all the applets in the document */
-	public Enumeration getApplets()  {
-		class AppletLister implements Enumeration {
+	/** Finds all the applets in the document
+	 * XXX NOT REALLY IMPLEMENTED
+	 */
+	public Enumeration<Applet> getApplets()  {
+		class AppletLister implements Enumeration<Applet> {
 			public boolean hasMoreElements() {
 				return false;
 			}
-			public Object nextElement() {
+			public Applet nextElement() {
 				return null;
 			}
 		}
@@ -118,7 +122,7 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 	}
 
 	/* StreamKey stuff - new in JDK1.4 */
-	Map streamMap = new HashMap();
+	Map<String,InputStream> streamMap = new HashMap<>();
 
 	/** Associate the stream with the key. */
 	public void setStream(String key, InputStream stream) throws IOException {
@@ -129,7 +133,7 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		return (InputStream)streamMap.get(key);
 	}
 
-	public Iterator getStreamKeys() {
+	public Iterator<String> getStreamKeys() {
 		return streamMap.keySet().iterator();
 	}
 }

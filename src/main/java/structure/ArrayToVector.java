@@ -2,7 +2,6 @@ package structure;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
@@ -25,10 +24,7 @@ public class ArrayToVector {
 		// Or, more simply:
 		v = new Vector<String>(Arrays.asList(a1d));
 
-		// Just to prove that it worked.
-		Enumeration e = v.elements();
-		while (e.hasMoreElements()) {
-			System.out.println(e.nextElement());
-		}
+		// Prove that it worked.
+		v.forEach(s -> System.out.println(s));
 	}
 }

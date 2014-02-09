@@ -8,9 +8,11 @@ import java.util.*;
  */
 public class ListsOldAndNew {
 
+	@SuppressWarnings("unchecked")
 	public void oldWay() {
+	@SuppressWarnings("rawtypes")
 	// BEGIN oldWay
-    List myList = new ArrayList();
+	List myList = new ArrayList();
     myList.add("hello");
     myList.add("goodbye");
 

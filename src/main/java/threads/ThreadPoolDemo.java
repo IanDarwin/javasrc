@@ -12,14 +12,14 @@ public class ThreadPoolDemo {
 
 	public static void main(String[] args) throws Throwable {
 		final ExecutorService pool = Executors.newFixedThreadPool(5);
-		List<Future> futures = new ArrayList<Future>(5);
+		List<Future<Integer>> futures = new ArrayList<>(5);
 		for (int i = 0; i < 5; i++) {
 			Future<Integer> f = pool.submit(new DemoRunnable(i));
 			futures.add(f);
 		}
 		Thread.sleep(3 * 1000);
 		done = true;
-		for (Future f : futures) {
+		for (Future<Integer> f : futures) {
 			System.out.println("Result " + f.get());
 		}
 		pool.shutdown();
