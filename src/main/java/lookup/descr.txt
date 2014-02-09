@@ -1,1 +1,0 @@
-lookup -- faster class name lookup

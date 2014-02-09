@@ -1,4 +1,4 @@
-package lookup;
+package io.lookup;
 
 /*
 0) FIX THE BUG: Classes that conflict get only one entry!

@@ -1,4 +1,4 @@
-package lookup;
+package io.lookup;
 
 import java.io.*;
 import java.util.*;

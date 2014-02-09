@@ -1,4 +1,4 @@
-package lookup;
+package io.lookup;
 
 import java.applet.Applet;
 import java.awt.Button;
