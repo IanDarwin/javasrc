@@ -1,4 +1,4 @@
-package newswire;
+package applet.newswire;
 
 import java.awt.*;
 import java.applet.*;
