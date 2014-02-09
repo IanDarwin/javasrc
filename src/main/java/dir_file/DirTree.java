@@ -13,8 +13,9 @@ public class DirTree {
 		DirTree dt = new DirTree();
 		if (argv.length == 0)
 			dt.doDir(".");
-		else for (int i = 0; i<argv.length; i++)
-			dt.doDir(argv[i]);
+		else for (String arg : argv) {
+			dt.doDir(arg);
+		}
 	}
 
 	/** doDir - handle one filesystem object by name */

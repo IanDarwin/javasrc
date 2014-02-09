@@ -88,8 +88,9 @@ public class Cal extends JPanel {
 
 		JPanel topPanel = new JPanel();
 		topPanel.add(monthChoice = new JComboBox());
-		for (int i=0; i<months.length; i++)
-			monthChoice.addItem(months[i]);
+		for (String m : months) {
+			monthChoice.addItem(m);
+		}
 		monthChoice.setSelectedItem(months[mm]);
 		monthChoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {

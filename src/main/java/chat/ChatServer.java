@@ -201,8 +201,7 @@ public class ChatServer {
 		/** Send one message to all users */
 		public void broadcast(String sender, String mesg) {
 			System.out.println("Broadcasting " + sender + SEP + mesg);
-			for (int i=0; i<clients.size(); i++) {
-				ChatHandler sib = (ChatHandler)clients.get(i);
+			for (ChatHandler sib : clients) {
 				if (DEBUG)
 					System.out.println("Sending to " + sib);
 				sib.send(sender, mesg);
@@ -212,8 +211,7 @@ public class ChatServer {
 
 		protected ChatHandler lookup(String nick) {
 			synchronized(clients) {
-				for (int i=0; i<clients.size(); i++) {
-					ChatHandler cl = (ChatHandler)clients.get(i);
+				for (ChatHandler cl : clients) {
 					if (cl.login.equals(nick))
 						return cl;
 				}

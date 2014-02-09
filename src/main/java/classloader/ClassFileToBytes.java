@@ -14,12 +14,13 @@ public class ClassFileToBytes {
             case 0: c.process(new DataInputStream(System.in));
 				break;
             default:
-				for (int i=0; i<av.length; i++)
+				for (String a : av) {
                     try {
-                        c.process(new DataInputStream(new FileInputStream(av[i])));
+                        c.process(new DataInputStream(new FileInputStream(a)));
                     } catch (FileNotFoundException e) {
                         System.err.println(e);
                     }
+				}
         }
     }
 

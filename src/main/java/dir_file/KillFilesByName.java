@@ -20,12 +20,12 @@ public class KillFilesByName {
 		String patt = argv[1];
 
 		String[] info = dir.list();
-		for (int i=0; i<info.length; i++) {
-			File n = new File(argv[0] + File.separator + info[i]);
+		for (String fn : info) {
+			File n = new File(argv[0] + File.separator + fn);
 			if (!n.isFile()) {	// skip ., .., other directories, etc.
 				continue;
 			}
-			if (info[i].indexOf(patt) == -1) {	// name doesn't match
+			if (fn.indexOf(patt) == -1) {	// name doesn't match
 				continue;
 			}
 			System.out.println("removing " + n.getPath());

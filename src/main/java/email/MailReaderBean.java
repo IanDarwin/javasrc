@@ -1,8 +1,6 @@
 package email;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
+// BEGIN main
 import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -20,9 +18,8 @@ import javax.swing.event.TreeSelectionListener;
 /**
  * Display a mailbox or mailboxes.
  * This is the generic version in javasrc/email, split off from
- * JabaDex because of the latter's domain-specific "implements module" stuff.
+ * the largely-defunct JabaDex for self-contained use.
  */
-// BEGIN main
 public class MailReaderBean extends JSplitPane {
 
 	private JTextArea bodyText;
@@ -71,9 +68,9 @@ public class MailReaderBean extends JSplitPane {
 		}
 
 		if (top.f.getType() == Folder.HOLDS_FOLDERS) {
-			Folder[] f = top.f.list();
-			for (int i = 0; i < f.length; i++)
-				listFolder(top, new FolderNode(f[i]), recursive);
+			Folder[] fs = top.f.list();
+			for (Folder f : fs)
+				listFolder(top, new FolderNode(f), recursive);
 		} else
 				listFolder(top, top, false);
 
@@ -107,8 +104,8 @@ public class MailReaderBean extends JSplitPane {
 
 						bodyText.append("To: ");
 						Object[] tos = m.getAllRecipients();
-						for (int i=0; i<tos.length; i++) {
-							bodyText.append(tos[i].toString());
+						for (Object to : tos) {
+							bodyText.append(to.toString());
 							bodyText.append(" ");
 						}
 						bodyText.append("\n");
@@ -116,8 +113,8 @@ public class MailReaderBean extends JSplitPane {
 						bodyText.append("Subject: " + m.getSubject() + "\n");
 						bodyText.append("From: ");
 						Object[] froms = m.getFrom();
-						for (int i=0; i<froms.length; i++) {
-							bodyText.append(froms[i].toString());
+						for (Object from : froms) {
+							bodyText.append(from.toString());
 							bodyText.append(" ");
 						}
 						bodyText.append("\n");
@@ -143,29 +140,31 @@ public class MailReaderBean extends JSplitPane {
 		// System.out.println(folder.f.getName() + folder.f.getFullName());
 		if ((folder.f.getType() & Folder.HOLDS_MESSAGES) != 0) {
 			Message[] msgs = folder.f.getMessages();
-			for (int i=0; i<msgs.length; i++) {
-				MessageNode m = new MessageNode(msgs[i]);
+			for (Message ms : msgs) {
+				MessageNode m = new MessageNode(ms);
 				Address from = m.m.getFrom()[0];
 				String fromAddress;
 				if (from instanceof InternetAddress)
 					fromAddress = ((InternetAddress)from).getAddress();
 				else
 					fromAddress = from.toString();
-				top.add(new MessageNode(msgs[i]));
+				top.add(new MessageNode(ms));
 			}
 		}
 		if ((folder.f.getType() & Folder.HOLDS_FOLDERS) != 0) {
 			if (recurse) {
-				Folder[] f = folder.f.list();
-				for (int i=0; i < f.length; i++)
-					listFolder(new FolderNode(f[i]), top, recurse);
+				Folder[] fs = folder.f.list();
+				for (Folder f : fs) {
+					listFolder(new FolderNode(f), top, recurse);
 				}
+			}
 		}
 	}
 
-	/* Test unit - main program */
+	/* Demo unit - main program */
 	public static void main(String[] args) throws Exception {
 		final JFrame jf = new JFrame("MailReaderBean");
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		String mbox = "/var/mail/ian";
 		if (args.length > 0)
 			mbox = args[0];
@@ -174,13 +173,6 @@ public class MailReaderBean extends JSplitPane {
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);
-		jf.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-			jf.setVisible(false);
-			jf.dispose();
-			System.exit(0);
-			}
-		});
 	}
 }
 // END main

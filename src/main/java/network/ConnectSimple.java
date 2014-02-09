@@ -8,7 +8,7 @@ public class ConnectSimple {
 
 	public static void main(String[] argv) throws Exception {
 
-		try (Socket sock = new Socket("localhost", 8080) {
+		try (Socket sock = new Socket("localhost", 8080)) {
 
 			/* If we get here, we can read and write on the socket "sock" */
 			System.out.println(" *** Connected OK ***");

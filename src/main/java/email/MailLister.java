@@ -79,9 +79,9 @@ public class MailLister {
 		rf.open(Folder.READ_WRITE);
 
 		if (rf.getType() == Folder.HOLDS_FOLDERS) {
-			Folder[] f = rf.list();
-			for (int i = 0; i < f.length; i++)
-				listFolder(f[i], "", recursive);
+			Folder[] fs = rf.list();
+			for (Folder f : fs)
+				listFolder(f, "", recursive);
 		} else
 				listFolder(rf, "", false);
 	}
@@ -99,8 +99,7 @@ public class MailLister {
 			else
 				System.out.println(tab + "No New Messages");
 			Message[] msgs = folder.getMessages();
-			for (int i=0; i<msgs.length; i++) {
-				Message m = msgs[i];
+			for (Message m : msgs) {
 				Address from = m.getFrom()[0];
 				String fromAddress;
 				if (from instanceof InternetAddress)
@@ -116,10 +115,11 @@ public class MailLister {
 		}
 		if ((folder.getType() & Folder.HOLDS_FOLDERS) != 0) {
 			System.out.println(tab + "Is Directory");
+		}
 		if (recurse) {
-			Folder[] f = folder.list();
-			for (int i=0; i < f.length; i++)
-				listFolder(f[i], tab + "", recurse);
+			Folder[] fs = folder.list();
+			for (Folder f : fs) {
+				listFolder(f, tab + "", recurse);
 			}
 		}
 	}

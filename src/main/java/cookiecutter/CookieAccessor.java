@@ -102,8 +102,7 @@ public class CookieAccessor {
 		is.println(COMMENT + " Rewritten by the CookieCutter program");
 		is.println();
 
-		for (int i=0; i<data.size(); i++) {
-			Cookie c = (Cookie) data.get(i);
+		for (Cookie c : data) {
 			is.println(c.getDomain() + "\t" +
 				(c.isClient()?"TRUE":"FALSE") + "\t" +
 				c.getPath() + "\t" +

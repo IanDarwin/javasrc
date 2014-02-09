@@ -18,8 +18,8 @@ public class DropReceivedLines {
 				d.process(new BufferedReader(
 						new InputStreamReader(System.in)), 
 						new PrintWriter(System.out));
-			else for (int i=0; i<av.length; i++)
-				d.process(av[i]);
+			else for (String a : av)
+				d.process(a);
 		} catch (FileNotFoundException e) {
 			System.err.println("Can't read file: " + e);
 		} catch (IOException e) {

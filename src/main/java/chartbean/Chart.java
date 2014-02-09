@@ -22,7 +22,7 @@ public class Chart extends Component {
 	protected String title;
 
 	/** the data to draw */
-	protected ChartData data[];
+	protected ChartData[] data;
 
 	/** The data to draw a Demo */
 	protected ChartData demoData[] = {
