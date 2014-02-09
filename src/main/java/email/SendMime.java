@@ -37,7 +37,7 @@ public class SendMime {
 	protected String html_data = 
 		"<html><head><title>My Goodness</title></head>" +
 		"<body><p>You <em>do</em> look a little " +
-		"<font color=green>GREEN</font>" +
+		"<font color=green>GREEN</font> " +
 		"around the edges..." +
 		"</body></html>";
 

@@ -23,10 +23,10 @@ public class Sender {
 	protected String message_cc = "nobody@erewhon.com";
 	/** The message body */
 	protected String message_body =
-		"I am unable to attend to your message, as I am busy sunning" +
-		"myself on the beach in Maui, where it is warm and peaceful." +
-		"Perhaps when I return I'll get around to reading your mail." +
-		"Or perhaps not.";
+		"I am unable to attend to your message, as I am busy sunning " +
+		"myself on the beach in Maui, where it is warm and peaceful ." +
+		"Perhaps when I return I'll get around to reading your mail. " +
+		"Or not.";
 
 	/** The JavaMail session object */
 	protected Session session;
