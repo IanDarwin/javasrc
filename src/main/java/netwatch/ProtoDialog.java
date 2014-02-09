@@ -1,4 +1,4 @@
-package NETWatch;
+package netwatch;
 
 import java.awt.*;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package NETWatch;
+package netwatch;
 
 import java.awt.Container;
 import java.awt.GridLayout;

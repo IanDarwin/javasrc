@@ -1,4 +1,4 @@
-package ShowDocument;
+package netweb.showdocument;
 
 import java.applet.Applet;
 import java.awt.Button;
