@@ -16,9 +16,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -106,32 +106,35 @@ public class Acks extends JFrame {
 	/** The list of windows that have been added */
 	List<OneAck> winList = new Vector<OneAck>();
 
-	/** Main method, just instantiate and show.  */
-	public static void main(String[] argv) {
+	/** 
+	 * Main method, just instantiate and show.  
+	 */
+	public static void main(String[] argv) throws Exception {
+		Acks a = null;
 		switch(argv.length) {
 			case 0:
-				new Acks(DATAFILENAME).setVisible(true);
+				InputStream is = Acks.class.getResourceAsStream(DATAFILENAME);
+				a = new Acks(is);
 				break;
 			case 1:
-				new Acks(argv[0]).setVisible(true);
+				a = new Acks(new FileInputStream(argv[0]));
 				break;
 			default:
 				throw new IllegalArgumentException("Usage: Acks [datafile]");
 		}
+		a.setVisible(true);
 	}
 
 	/** Construct an Acks object, by making a ton of OneAcks from list */
-	Acks(String fname) {
+	Acks(InputStream iFile) {
 		super();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		acksFileName = fname;
 		Properties p = new Properties();
 
 		try {
 			// Create input file to load from.
-			FileInputStream ifile = new FileInputStream(fname);
-
-			p.load(ifile);
+			
+			p.load(iFile);
 		} catch (FileNotFoundException notFound) {
 			System.err.println(notFound);
 			throw new RuntimeException("Read error", notFound);
@@ -203,14 +206,8 @@ public class Acks extends JFrame {
 		setLocation(newX, newY);
 
 
-		// Now get a list of all the properties in the file
-		Enumeration e = p.propertyNames();
-
-		// And for each one that is a title, process the corresponding values.
-		while (e.hasMoreElements()) {
-			// get next property name from the enumeration...
-			String key = (String)e.nextElement();
-
+		p.forEach((k,v) -> {
+			String key = (String)k;
 			if (key.endsWith(".title")) {
 				String baseTitle  = key.substring(0, key.length()-".text".length()-1);
 				// System.out.println("baseTitle=" + baseTitle);
@@ -230,7 +227,7 @@ public class Acks extends JFrame {
 				one.setVisible(true);
 				winList.add(one);
 			}
-		}
+		});
 	}
 
 	/* "Save" all the items with locations etc in NEW FORMAT.
