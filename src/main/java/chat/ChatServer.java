@@ -49,20 +49,22 @@ public class ChatServer {
 	public void runServer() {
 		try {
 			while (true) {
-				Socket us = servSock.accept();
-				String hostName = us.getInetAddress().getHostName();
+				Socket userSocket = servSock.accept();
+				String hostName = userSocket.getInetAddress().getHostName();
 				System.out.println("Accepted from " + hostName);
-				ChatHandler cl = new ChatHandler(us, hostName);
+				ChatHandler cl = new ChatHandler(userSocket, hostName);
+				String welcomeMessage;
 				synchronized (clients) {
 					clients.add(cl);
-					cl.start();
-					if (clients.size() == 1)
-						cl.send(CHATMASTER_ID, "Welcome! you're the first one here");
-					else {
-						cl.send(CHATMASTER_ID, "Welcome! you're the latest of " +
-							clients.size() + " users.");
+					if (clients.size() == 1) {
+						welcomeMessage = "Welcome! you're the first one here";
+					} else {
+						welcomeMessage = "Welcome! you're the latest of " +
+								clients.size() + " users.";
 					}
 				}
+				cl.start();
+				cl.send(CHATMASTER_ID, welcomeMessage);
 			}
 		} catch(IOException e) {
 			log("IO Exception in runServer: " + e);
@@ -158,20 +160,21 @@ public class ChatServer {
 			} finally {
 				// the sock ended (darn it), so we're done, bye now
 				System.out.println(login + SEP + "All Done");
+				String message = "This should never appear.";
 				synchronized(clients) {
 					clients.remove(this);
 					if (clients.size() == 0) {
 						System.out.println(CHATMASTER_ID + SEP +
 							"I'm so lonely I could cry...");
 					} else if (clients.size() == 1) {
-						ChatHandler last = (ChatHandler)clients.get(0);
-						last.send(CHATMASTER_ID,
-							"Hey, you're talking to yourself again");
+						message = 
+							"Hey, you're talking to yourself again";
 					} else {
-						broadcast(CHATMASTER_ID,
-							"There are now " + clients.size() + " users");
+						message =
+							"There are now " + clients.size() + " users";
 					}
 				}
+				broadcast(CHATMASTER_ID, message);
 			}
 		}
 
