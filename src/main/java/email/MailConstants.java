@@ -1,7 +1,7 @@
 package email;
 
-/** Simply a list of names for the Mail System to use.
- */
+// BEGIN main
+/** Simple list of Properties keys for the Mail System. */
 public class MailConstants {
 	public static final String PROPS_FILE_NAME = "MailClient.properties";
 
@@ -20,3 +20,4 @@ public class MailConstants {
 	public static final String RECV_HOST  = "Mail.receive.host";
 	public static final String RECV_DEBUG = "Mail.receive.debug";
 }
+// END main
