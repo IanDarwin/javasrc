@@ -54,16 +54,20 @@ public class MailLister {
 			System.exit(0);
 		}
 
-
 		boolean recursive = false;
 
-		// Start with a Session object, as usual
+		// Start with a JavaMail Session object
 		Session session = Session.getDefaultInstance(
 			System.getProperties(), null);
 		session.setDebug(false);
 
 		// Get a Store object for the given protocol
 		Store store = session.getStore(protocol);
+		if (password.equals("*")) {
+			final char[] passBytes = 
+				System.console().readPassword("Password:", (Object[])null);
+			password = new String(passBytes);
+		}
 		store.connect(host, user, password);
 
 		// Get Folder object for root, and list it
@@ -80,10 +84,12 @@ public class MailLister {
 
 		if (rf.getType() == Folder.HOLDS_FOLDERS) {
 			Folder[] fs = rf.list();
-			for (Folder f : fs)
+			for (Folder f : fs) {
 				listFolder(f, "", recursive);
-		} else
-				listFolder(rf, "", false);
+			}
+		} else {
+			listFolder(rf, "", false);
+		}
 	}
 
 	static void listFolder(Folder folder, String tab, boolean recurse)

@@ -22,12 +22,14 @@ import javax.swing.event.TreeSelectionListener;
  */
 public class MailReaderBean extends JSplitPane {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JTextArea bodyText;
 
 	/* Construct a mail reader bean with all defaults.
 	 */
 	public MailReaderBean() throws Exception {
-		this("smtp", "mailhost", "user", "nopasswd", "/");
+		this("imap", "mailhost", "user", "*", "/");
 	}
 
 	/* Construct a mail reader bean with all values. */
@@ -165,11 +167,11 @@ public class MailReaderBean extends JSplitPane {
 	public static void main(String[] args) throws Exception {
 		final JFrame jf = new JFrame("MailReaderBean");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		String mbox = "/var/mail/ian";
+		String mbox = "INBOX";
 		if (args.length > 0)
 			mbox = args[0];
-		MailReaderBean mb = new MailReaderBean("mbox", "localhost",
-			"", "", mbox);
+		MailReaderBean mb = new MailReaderBean("imap", "localhost",
+			System.getProperty("user.name"), "*", mbox);
 		jf.getContentPane().add(mb);
 		jf.setSize(640,480);
 		jf.setVisible(true);

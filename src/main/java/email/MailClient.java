@@ -29,6 +29,8 @@ import com.darwinsys.util.FileProperties;
  */
 // BEGIN main
 public class MailClient extends JComponent {
+
+	private static final long serialVersionUID = 1L;
 	/** The quit button */
 	JButton quitButton;
 	/** The read mode */
@@ -134,9 +136,6 @@ public class MailClient extends JComponent {
 			}
 		});
 
-		// Set bounds. Best at 800,600, but works at 640x480
-		// f.setLocation(140, 80);
-		// f.setSize    (500,400);
 		f.pack();
 
 		f.setVisible(true);
