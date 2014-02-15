@@ -6,24 +6,26 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/** CheckSum - print the checksum of a file
+/**
+ * CheckSum - print a checksum of a file
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class CheckSum {
-    public static void main(String[] av) {
+    public static void main(String[] args) {
         int sum = 0;
-        if (av.length == 0) {
+        if (args.length == 0) {
             sum = CheckSum.process(new BufferedReader(
             new InputStreamReader(System.in)));
-        } else for (int i=0; i<av.length; i++)
+        } else for (String args : args) {
             try {
-                sum += CheckSum.process(new BufferedReader(new FileReader(av[i])));
+                sum += CheckSum.process(
+					new BufferedReader(new FileReader(arg)));
             } catch (FileNotFoundException e) {
-                System.err.println(e);
+                throw new RuntimeException("File not found: " + arg, e);
             }
+		}
         System.out.println(sum);
     }
-
 
     // BEGIN main
     /** CheckSum one text file, given an open BufferedReader.
@@ -43,7 +45,7 @@ public class CheckSum {
                 }
             }
         } catch (IOException e) {
-            System.out.println("IOException: " + e);
+            throw new RuntimeException("IOException: " + e);
         }
         return sum;
     }
