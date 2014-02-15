@@ -2,6 +2,7 @@ package regex;
 
 import java.util.regex.*;
 
+// BEGIN main
 /**
  * Quick demo of RE substitution: correct U.S. 'favor'
  * to Canadian/British 'favour', but not in "favorite"
@@ -35,3 +36,4 @@ public class ReplaceDemo {
 		System.out.println(sb.toString());
 	}
 }
+// END main
