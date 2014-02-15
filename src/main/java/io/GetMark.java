@@ -1,6 +1,11 @@
 package io;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.io.PrintStream;
 
 /** GetMark -- get marked lines.
  * <p>
@@ -77,7 +82,7 @@ public class GetMark {
 	public final String END_MARK = "//-";
 	/** Set this to TRUE for running in "exclude" mode (e.g., for
 	 * building exercises from solutions) and to FALSE for running
-	 * in "extract" mode (e.g., writing a book and ommittin the
+	 * in "extract" mode (e.g., writing a book and omitting the
 	 * imports and "public class" stuff).
 	 */
 	public final static boolean START = true;
