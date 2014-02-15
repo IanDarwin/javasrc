@@ -4,22 +4,23 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
 
-/** Bare-minimum String formatter (string aligner).
- * XXX When 1.5 is common, change from ints to enum for alignment.
+/**
+ * Bare-minimum String formatter (string aligner).
  */
 // BEGIN main
 public class StringAlign extends Format {
-	/* Constant for left justification. */
-	public static final int JUST_LEFT = 'l';
-	/* Constant for centering. */
-	public static final int JUST_CENTRE = 'c';
-	/* Centering Constant, for those who spell "centre" the American way. */
-	public static final int JUST_CENTER = JUST_CENTRE;
-	/** Constant for right-justified Strings. */
-	public static final int JUST_RIGHT = 'r';
+	
+	public enum Justify {
+		/* Constant for left justification. */
+		LEFT,
+		/* Constant for centering. */
+		CENTER,
+		/** Constant for right-justified Strings. */
+		RIGHT,
+	}
 
 	/** Current justification */
-	private int just;
+	private Justify just;
 	/** Current max length */
 	private int maxChars;
 
@@ -29,11 +30,11 @@ public class StringAlign extends Format {
      * @param nChars - the length of the output
      * @param just - one of JUST_LEFT, JUST_CENTRE or JUST_RIGHT
      */
-	public StringAlign(int maxChars, int just) {
+	public StringAlign(int maxChars, Justify just) {
 		switch(just) {
-		case JUST_LEFT:
-		case JUST_CENTRE:
-		case JUST_RIGHT:
+		case LEFT:
+		case CENTER:
+		case RIGHT:
 			this.just = just;
 			break;
 		default:
@@ -65,17 +66,17 @@ public class StringAlign extends Format {
 
 		// Get the spaces in the right place.
 		switch (just) {
-			case JUST_RIGHT:
+			case RIGHT:
 				pad(where, maxChars - wanted.length());
 				where.append(wanted);
 				break;
-			case JUST_CENTRE:
+			case CENTER:
 				int toAdd = maxChars - wanted.length();
 				pad(where, toAdd/2);
 				where.append(wanted);
 				pad(where, toAdd - toAdd/2);
 				break;
-			case JUST_LEFT:
+			case LEFT:
 				where.append(wanted);
 				pad(where, maxChars - wanted.length());
 				break;
