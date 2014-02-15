@@ -5,7 +5,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
-import java.util.Iterator;
 import java.util.List;
 
 /** This gives information about the runtime environment.
@@ -27,9 +26,7 @@ public class Monitoring {
 	    
 	    // Generations details
 		List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
-		Iterator<MemoryPoolMXBean> it = memoryPoolMXBeans.iterator();  
-		while(it.hasNext()){  
-			MemoryPoolMXBean mbean = (MemoryPoolMXBean) it.next();
+		for (MemoryPoolMXBean mbean : memoryPoolMXBeans) {
 			println(out, "Memory Group", mbean.getName());
 			MemoryUsage memUsage = mbean.getUsage();  
 			println(out, "Used", memUsage.getUsed());  

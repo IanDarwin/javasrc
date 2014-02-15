@@ -41,9 +41,8 @@ public class StrTokDemo4c {
 
 	public static void printResults(String input, List<String> outputs) {
 		System.out.println("Input: " + input);
-		Iterator<String> it = outputs.iterator();
-		for (int i=0; it.hasNext(); i++)
-			System.out.println("Output " + i + " was: " + it.next());
+		for (int i=0; i < outputs.size(); i++)
+			System.out.println("Output " + i + " was: " + outputs.get(i));
 	}
 
 	public static void main(String[] a) {

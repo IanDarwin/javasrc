@@ -2,7 +2,6 @@ package gui;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /** A simple FileFilter class that works by filename extension,
@@ -25,9 +24,8 @@ class JFileFilter extends javax.swing.filechooser.FileFilter {
 			return true;
 
 		} else if (f.isFile()) {
-			Iterator<String> it = exts.iterator();
-			while (it.hasNext()) {
-				if (f.getName().endsWith(it.next()))
+			for (String ext : exts) {
+				if (f.getName().endsWith(ext))
 					return true;
 			}
 		}

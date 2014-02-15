@@ -68,10 +68,9 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		Iterator<String> it = new TreeMap(p).keySet().iterator();
+		for (String key : new TreeMap(p).keySet()) {
 
-		// Copy them into the ArrayList
-		while (it.hasNext()) {
+			// Copy them into the ArrayList
 			String key = it.next();
 			String val = p.getProperty(key);
 			data.add(new ArrayListTableDatum(key, val));

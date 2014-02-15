@@ -1,10 +1,8 @@
 package database;
 
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import domain.User;
@@ -82,9 +80,7 @@ public abstract class UserDB {
 
 	/** Get the User object for a given nickname */
 	public User getUser(String nick) {
-		Iterator it = users.iterator();
-		while (it.hasNext()) {
-			User u = (User)it.next();
+		for (User u : users) {
 			if (u.getName().equals(nick))
 				return u;
 		}

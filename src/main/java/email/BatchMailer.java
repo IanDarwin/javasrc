@@ -61,9 +61,7 @@ public class BatchMailer {
 	}
 
 	public void sendMails() {
-		Iterator it = custList.iterator();
-		while (it.hasNext()) {
-			String customer = (String)it.next();
+		for (String customer : custList) {
 			try {
 				// This should be a bit more flexible :-(
 				Mailer.send("mailhost", 

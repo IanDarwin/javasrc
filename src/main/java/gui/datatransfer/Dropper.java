@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -79,11 +78,9 @@ class MyFileTransferHandler extends TransferHandler {
 				if (flavor.equals(DataFlavor.javaFileListFlavor)) {
 					System.out.println("importData: FileListFlavor");
 
-					List l = 
+					List<File> listOfFiles = 
 						(List) t.getTransferData(DataFlavor.javaFileListFlavor);
-					Iterator iter = l.iterator();
-					while (iter.hasNext()) {
-						File file = (File) iter.next();
+					for (File file : listOfFiles) {
 						System.out.println("GOT FILE: " + file.getCanonicalPath());
 						// Now do something with the file...
 					}

@@ -3,10 +3,10 @@ package netweb;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.List;
 
 public class GetURLs {
+
 	/** The tag reader */
 	ReadTag reader;
 
@@ -37,9 +37,8 @@ public class GetURLs {
 		GetURLs gu = new GetURLs(theURL);
 		gu.reader.setWantedTags(GetURLs.wantTags);
 		List urls = gu.reader.readTags();
-		Iterator urlIterator = urls.iterator();
-		while (urlIterator.hasNext()) {
-			System.out.println(urlIterator.next());
+		for (Object url : urls) {
+			System.out.println(url);
 		}
 	}
 }

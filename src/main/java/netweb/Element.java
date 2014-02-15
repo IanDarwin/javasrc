@@ -1,7 +1,6 @@
 package netweb;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -63,8 +62,7 @@ public class Element {
 		StringBuffer sb = new StringBuffer();
 		sb.append('<').append(type);
 		Set keyset = attributes.keySet();
-		for (Iterator iter = keyset.iterator(); iter.hasNext();) {
-			String name = (String) iter.next();
+		for (String name : keyset) {
 			String value = (String) attributes.get(name);
 			sb.append(' ').append(name).append('=').append(value);
 		}

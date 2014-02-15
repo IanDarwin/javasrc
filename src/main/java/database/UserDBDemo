@@ -16,10 +16,9 @@ public class UserDBTest {
 		System.out.println(iadmin);
 
 		System.out.println("Testing Getting All...");
-		List al = UserDB.getInstance().getUserList();
-		Iterator it = al.iterator();
-		while (it.hasNext()) {
-			System.out.println(it.next());
+		List<User> al = UserDB.getInstance().getUserList();
+		for (User u : al) {
+			System.out.println(u);
 		}
 
 		System.out.println("Testing privs");

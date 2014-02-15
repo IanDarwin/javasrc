@@ -12,7 +12,6 @@ import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -56,9 +55,7 @@ public class TextFormat extends Component {
 		g2d.setColor(Color.black);
 		g2d.setFont(font);
 
-		Iterator<TextLayout> it = layouts.iterator();
-		while (it.hasNext()) {
-			TextLayout layout = it.next();
+		for (TextLayout layout : layouts) {
 			pen.y += (layout.getAscent());
 			g2d.setFont(font);
 			layout.draw(g2d, pen.x, pen.y);

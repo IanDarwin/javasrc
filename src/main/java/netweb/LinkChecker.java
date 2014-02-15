@@ -193,12 +193,10 @@ public class LinkChecker extends JFrame {
 
 		try {
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
-			List urlTags = urlGetter.reader.readTags();
-			Iterator urlIterator = urlTags.iterator();
-			while (urlIterator.hasNext()) {
+			List<String> urlTags = urlGetter.reader.readTags();
+			for (String tag : urlTags) {
 				if (done)
 					return;
-				String tag = (String)urlIterator.next();
 				Debug.println("TAG", tag);
 						
 				String href = extractHREF(tag);

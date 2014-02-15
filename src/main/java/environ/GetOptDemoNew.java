@@ -46,9 +46,8 @@ public class GetOptDemoNew {
 		System.out.print("Numeric: " + numeric_option + ' ');
 		System.out.print("Output: " + outputFileName + "; ");
 		System.out.print("Input files: ");
-		Iterator files = parser.getFilenameList().iterator();
-		while (files.hasNext()) {
-			System.out.print(files.next());
+		for (String fileName : parser.getFilenameList()) {
+			System.out.print(fileName);
 			System.out.print(' ');
 		}
 		System.out.println();

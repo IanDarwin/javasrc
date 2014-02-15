@@ -1,7 +1,6 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -76,11 +75,9 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		Iterator<?> it = p.keySet().iterator();
+		for (String key : p.keySet()) {
 
-		// Copy them into the ArrayList as ArrayListTableDatum entries.
-		while (it.hasNext()) {
-			String key = (String)it.next();
+			// Copy them into the ArrayList as ArrayListTableDatum entries.
 			String val = p.getProperty(key);
 			data.add(new ArrayListTableDatum(key, val));
 		}
