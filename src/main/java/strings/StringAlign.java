@@ -9,7 +9,9 @@ import java.text.ParsePosition;
  */
 // BEGIN main
 public class StringAlign extends Format {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public enum Justify {
 		/* Constant for left justification. */
 		LEFT,
@@ -27,8 +29,8 @@ public class StringAlign extends Format {
     /** Construct a StringAlign formatter; length and alignment are
      * passed to the Constructor instead of each format() call as the
      * expected common use is in repetitive formatting e.g., page numbers.
-     * @param nChars - the length of the output
-     * @param just - one of JUST_LEFT, JUST_CENTRE or JUST_RIGHT
+     * @param maxChars - the maximum length of the output
+     * @param just - one of the enum values LEFT, CENTER or RIGHT
      */
 	public StringAlign(int maxChars, Justify just) {
 		switch(just) {
@@ -47,21 +49,15 @@ public class StringAlign extends Format {
 	}
 
 	/** Format a String.
-     * @param input _ the string to be aligned.
+     * @param input - the string to be aligned.
      * @parm where - the StringBuffer to append it to.
      * @param ignore - a FieldPosition (may be null, not used but
      * specified by the general contract of Format).
      */
 	public StringBuffer format(
-		Object obj, StringBuffer where, FieldPosition ignore)  {
+		Object input, StringBuffer where, FieldPosition ignore)  {
 
-		String s;
-		
-		if (obj instanceof String) {
-			s = (String)obj;
-		} else {
-			s = obj.toString();
-		}
+		String s = input.toString();
 		String wanted = s.substring(0, Math.min(s.length(), maxChars));
 
 		// Get the spaces in the right place.
@@ -98,6 +94,5 @@ public class StringAlign extends Format {
 	public Object parseObject (String source, ParsePosition pos)  {
 		return source;
 	}
-
 }
 // END main
