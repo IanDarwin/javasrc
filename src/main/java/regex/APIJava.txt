@@ -1,3 +1,4 @@
+// BEGIN main
 /** The main public API of the java.util.regex package.
  * Prepared by javap and Ian Darwin.
  */
@@ -9,7 +10,7 @@ public final class Pattern {
     public static final int 
 		UNIX_LINES, CASE_INSENSITIVE, COMMENTS, MULTILINE,
 		DOTALL, UNICODE_CASE, CANON_EQ;
-	// Factory methods (no public constructors)
+	// No public constructors; use these Factory methods
     public static Pattern compile(String patt);
     public static Pattern compile(String patt, int flags);
 	// Method to get a Matcher for this Pattern
@@ -57,3 +58,4 @@ public final class String {
     public String[] split(String regex);
     public String[] split(String regex, int max);
 }
+// END main
