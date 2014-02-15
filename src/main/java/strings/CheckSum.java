@@ -16,7 +16,7 @@ public class CheckSum {
         if (args.length == 0) {
             sum = CheckSum.process(new BufferedReader(
             new InputStreamReader(System.in)));
-        } else for (String args : args) {
+        } else for (String arg : args) {
             try {
                 sum += CheckSum.process(
 					new BufferedReader(new FileReader(arg)));
