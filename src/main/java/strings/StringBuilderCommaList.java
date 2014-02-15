@@ -2,7 +2,7 @@ package strings;
 
 import java.util.StringTokenizer;
 
-public class StringBufferCommaList {
+public class StringBuilderCommaList {
 	public static final String SAMPLE_STRING = "Alpha Bravo Charlie";
 	public static void main(String[] args) {
 
