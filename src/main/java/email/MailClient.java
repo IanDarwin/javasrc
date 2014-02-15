@@ -1,5 +1,11 @@
 package email;
 
+import static email.MailConstants.PROPS_FILE_NAME;
+import static email.MailConstants.RECV_HOST;
+import static email.MailConstants.RECV_PASS;
+import static email.MailConstants.RECV_PROTO;
+import static email.MailConstants.RECV_USER;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +28,9 @@ import com.darwinsys.util.FileProperties;
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
 // BEGIN main
-public class MailClient extends JComponent implements MailConstants {
+public class MailClient extends JComponent {
+
+	private static final long serialVersionUID = 1L;
 	/** The quit button */
 	JButton quitButton;
 	/** The read mode */
@@ -128,9 +136,6 @@ public class MailClient extends JComponent implements MailConstants {
 			}
 		});
 
-		// Set bounds. Best at 800,600, but works at 640x480
-		// f.setLocation(140, 80);
-		// f.setSize    (500,400);
 		f.pack();
 
 		f.setVisible(true);

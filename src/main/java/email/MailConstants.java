@@ -1,10 +1,8 @@
 package email;
 
-/** Simply a list of names for the Mail System to use.
- * If you "implement" this interface, you don't have to prefix
- * all the names with MailProps in your code.
- */
-public interface MailConstants {
+// BEGIN main
+/** Simple list of Properties keys for the Mail System. */
+public class MailConstants {
 	public static final String PROPS_FILE_NAME = "MailClient.properties";
 
 	public static final String SEND_PROTO = "Mail.send.protocol";
@@ -22,3 +20,4 @@ public interface MailConstants {
 	public static final String RECV_HOST  = "Mail.receive.host";
 	public static final String RECV_DEBUG = "Mail.receive.debug";
 }
+// END main
