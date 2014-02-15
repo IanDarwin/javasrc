@@ -15,7 +15,7 @@ public class CreditCardValidate {
 		};
 		for (int i = 0; i < cardNumbers.length; i++) {
 			String c = cardNumbers[i];
-			System.out.println(c + "=>" + isValidCard(c));
+			System.out.println(c + "=>" + (isValidCard(c) ? "valid" : "invalid"));
 		}
 	}
 
