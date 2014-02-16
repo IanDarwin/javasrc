@@ -26,13 +26,14 @@ public class SimpleCalcScanner {
 	protected Stack<Double> s = new Stack<Double>();
 
 	/* Driver - main program */
-	public static void main(String[] av) throws IOException {
-		if (av.length == 0)
+	public static void main(String[] args) throws IOException {
+		if (args.length == 0)
 			new SimpleCalcScanner(
 				new InputStreamReader(System.in)).doCalc();
 		else 
-			for (int i=0; i<av.length; i++)
-				new SimpleCalcScanner(av[i]).doCalc();
+			for (String arg : args) {
+				new SimpleCalcScanner(arg).doCalc();
+			}
 	}
 
 	/** Construct a SimpleCalcScanner by name */

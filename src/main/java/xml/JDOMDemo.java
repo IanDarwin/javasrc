@@ -29,9 +29,8 @@ public class JDOMDemo {
 	
 				process(fileName);
 			} else {
-				for (int i = 0; i < args.length; i++) {
-					System.out.println("JDOMDemo.main(): using " + (fileName = args[i]));
-
+				for (String fileName : args) {
+					System.out.println("JDOMDemo.main(): using " + fileName);
 					process(fileName);
 				}
 			}
