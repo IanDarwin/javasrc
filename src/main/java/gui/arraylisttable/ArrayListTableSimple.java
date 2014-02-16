@@ -1,7 +1,14 @@
 package gui.arraylisttable;
 
-import javax.swing.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TreeMap;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.darwinsys.swingui.ArrayListTableModel;
 import com.darwinsys.swingui.ArrayListTablePanel;
@@ -68,10 +75,10 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		for (String key : new TreeMap(p).keySet()) {
-
+		final Set keySet = new TreeMap(p).keySet();
+		for (Object k : keySet) {
+			String key = (String)k;
 			// Copy them into the ArrayList
-			String key = it.next();
 			String val = p.getProperty(key);
 			data.add(new ArrayListTableDatum(key, val));
 		}

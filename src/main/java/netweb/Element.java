@@ -37,7 +37,7 @@ public class Element {
 		attributes.put(key, value);
 	}
 	
-	public Set keySet() {
+	public Set<String> keySet() {
 		return attributes.keySet();
 	}
 	
@@ -61,7 +61,7 @@ public class Element {
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append('<').append(type);
-		Set keyset = attributes.keySet();
+		Set<String> keyset = attributes.keySet();
 		for (String name : keyset) {
 			String value = (String) attributes.get(name);
 			sb.append(' ').append(name).append('=').append(value);
