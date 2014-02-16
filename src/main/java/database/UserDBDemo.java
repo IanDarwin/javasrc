@@ -1,14 +1,14 @@
 package database;
 
-// package jabadot;
+import java.util.List;
 
-import java.util.*;
+import domain.User;
 
 /**
- * Standalone test program for UserDB.
+ * Standalone demo program for UserDB.
  * @author Ian F. Darwin, ian@darwinsys.com
  */
-public class UserDBTest {
+public class UserDBDemo {
 	public static void main(String argv[]) throws java.io.IOException {
 
 		System.out.println("Testing Getting One...");
@@ -17,9 +17,7 @@ public class UserDBTest {
 
 		System.out.println("Testing Getting All...");
 		List<User> al = UserDB.getInstance().getUserList();
-		for (User u : al) {
-			System.out.println(u);
-		}
+		al.forEach(u -> System.out.println(u));
 
 		System.out.println("Testing privs");
 		iadmin.setPassword("guten abend");

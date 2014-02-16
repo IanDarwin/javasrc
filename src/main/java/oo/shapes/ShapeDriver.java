@@ -1,7 +1,6 @@
 package oo.shapes;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 // BEGIN main
 /** Part of a main program using Shape objects */
