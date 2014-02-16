@@ -61,7 +61,7 @@ public class BatchMailer {
 	}
 
 	public void sendMails() {
-		for (String customer : custList) {
+		custList.forEach(customer -> {
 			try {
 				// This should be a bit more flexible :-(
 				Mailer.send("mailhost", 
@@ -70,6 +70,6 @@ public class BatchMailer {
 			} catch (MessagingException e) {
 				System.out.println(customer + " failed: " + e.toString());
 			}
-		}
+		});
 	}
 }
