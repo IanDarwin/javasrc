@@ -54,7 +54,7 @@ public class BigNumCalc {
 				case '/':
 					tmp = stack.pop();
 					stack.push((stack.pop()).divide(tmp,
-						BigDecimal.ROUND_UP));
+						BigDecimal.ROUND_HALF_UP));
 					break;
 				default:
 					throw new IllegalStateException("Unknown OPERATOR popped");
