@@ -74,7 +74,7 @@ public abstract class UserDB {
 	}
 
 	/** Get the list of users. */
-	public List getUserList() {
+	public List<User> getUserList() {
 		return users;
 	}
 
