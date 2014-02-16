@@ -23,14 +23,11 @@ public class JDOMDemo {
 		String fileName = null;
 		try {
 			if (args.length == 0) {
-
 				fileName = "build.xml";
-				System.out.println("JDOMDemo.main(): using " + fileName);
-	
 				process(fileName);
 			} else {
-				for (String fileName : args) {
-					System.out.println("JDOMDemo.main(): using " + fileName);
+				for (String arg : args) {
+					fileName = arg;
 					process(fileName);
 				}
 			}
@@ -50,7 +47,7 @@ public class JDOMDemo {
 	 * @throws IOException 
 	 */
 	private static void process(String fileName) throws JDOMException, IOException {
-		System.out.println("JDOMDemo.myWriteOut()");
+		System.out.println("JDOMDemo.process(): starting file " + fileName);
 		
 		SAXBuilder saxBuilder = new SAXBuilder();
 		
