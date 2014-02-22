@@ -1,11 +1,10 @@
+// BEGIN main
 package io;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-//import io.MyData;
 
 /** Demonstrate use of Serialization. Typical Subclass main will be:
  *	public static void main(String[] s) throws Exception {
@@ -30,3 +29,4 @@ public abstract class SerialDemoAbstractBase {
 	/** Reads the file and displays it. */
 	public abstract void dump() throws IOException, ClassNotFoundException;
 }
+// END main
