@@ -31,7 +31,7 @@ public abstract class ContLineReader extends LineNumberReader {
 	public abstract String readLine() throws IOException;
 
 	/** Read one real line. Provided as a convenience for the
-	 * subclasses, so they don't embarass themselves trying to
+	 * subclasses, so they don't embarrass themselves trying to
 	 * call "super.readLine()" which isn't very practical...
 	 */
 	public String readPhysicalLine() throws IOException {

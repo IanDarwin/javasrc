@@ -27,9 +27,16 @@ import java.io.PrintStream;
  */
 // BEGIN main
 public class TeePrintStream extends PrintStream {
+	/** The original/direct print stream */
 	protected PrintStream parent;
+
+	/** The filename we are tee-ing too, if known;
+	 * intended for use in future error reporting.
+	 */
 	protected String fileName;
 
+	/** The name for when the input filename is not known */
+	private static final String UNKNOWN_NAME = "(opened Stream)";
 
 	/** Construct a TeePrintStream given an existing PrintStream,
 	 * an opened OutputStream, and a boolean to control auto-flush.
@@ -38,7 +45,7 @@ public class TeePrintStream extends PrintStream {
 	public TeePrintStream(PrintStream orig, OutputStream os, boolean flush)
 	throws IOException {
 		super(os, true);
-		fileName = "(opened Stream)";
+		fileName = UNKNOWN_NAME;
 		parent = orig;
 	}
 
@@ -62,6 +69,7 @@ public class TeePrintStream extends PrintStream {
 	public TeePrintStream(PrintStream orig, String fn, boolean flush)
 	throws IOException {
 		this(orig, new FileOutputStream(fn), flush);
+		fileName = fn;
 	}
 
 	/** Return true if either stream has an error. */
