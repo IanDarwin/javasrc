@@ -1,6 +1,6 @@
 = JavaCook Source Files (javasrc)
 
-* You MUST HAVE Java 8 to successfully compile this whole package.*
+*You MUST HAVE Java 8 to successfully compile this whole package.*
 
 . This is now being built for Java 7 & 8. Sorry if you are on some relic
 platform that doesn't have Java 7 or some environment in which Java 7 is
