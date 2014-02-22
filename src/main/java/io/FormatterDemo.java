@@ -21,18 +21,18 @@ public class FormatterDemo {
 
 		// Most general (cumbersome) way of proceding.
 		Formatter fmtr = new Formatter();
-		Object result = fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
+		Object result = fmtr.format("%1$04d - the year of %2$f", 1956, Math.PI);
 		System.out.println(result);
 
 		// Shorter way using static String.format(), and
 		// default parameter numbering.
-		Object stringResult = String.format("%04d - the year of %f", 1951, Math.PI);
+		Object stringResult = String.format("%04d - the year of %f", 1956, Math.PI);
 		System.out.println(stringResult);
 
 		// A shorter way using PrintStream/PrintWriter.format, more in line with
 		// other languages. But this way you must provide the newline delimiter 
 		// using %n (do NOT use \n as that is platform-dependant!).
-		System.out.printf("%04d - the year of %f%n", 1951, Math.PI);
+		System.out.printf("%04d - the year of %f%n", 1956, Math.PI);
 
 		// Format doubles with more control
 		System.out.printf("PI is approximately %4.2f%n", Math.PI);
