@@ -107,7 +107,7 @@ public class PSFormatter {
 
 	/** Overly-simplistic conversion to PS, e.g., breaks on "foo\)bar" */
 	protected String toPSString(String o) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (int i=0; i<o.length(); i++) {
 			char c = o.charAt(i);
 			switch(c) {
