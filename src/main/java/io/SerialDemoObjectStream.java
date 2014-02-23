@@ -34,5 +34,4 @@ public class SerialDemoObjectStream extends SerialDemoAbstractBase {
 		is.close();
 	}
 }
-
 // END main
