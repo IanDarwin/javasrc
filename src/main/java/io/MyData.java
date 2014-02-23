@@ -44,10 +44,10 @@ public class MyData implements Serializable {
 	public String toString() {
 		return "MyData[" + userName + ",------]";
 	}
+// END main
 
 	/** In real life this would use Java Cryptography */
 	protected String encrypt(String s) {
 		return "fjslkjlqj2TOP+SECRETkjlskl";
 	}
 }
-// END main
