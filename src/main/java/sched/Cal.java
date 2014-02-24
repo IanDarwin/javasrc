@@ -9,6 +9,8 @@ import com.darwinsys.swingui.UtilGUI;
 import java.util.*;
 
 public class Cal extends JPanel implements DateSelectedListener {
+
+	private static final long serialVersionUID = 1L;
 	/** The top panel, for "go to date" */
 	protected JPanel gotoPanel;
 	/** The main view, showing day view, month view or year view */
@@ -30,11 +32,11 @@ public class Cal extends JPanel implements DateSelectedListener {
 	/** A button to jump to Today from anyplace */
 	protected JButton todayButton;
 	/** The month choice */
-	private JComboBox monthChoice;
+	private JComboBox<String> monthChoice;
 	/** The day choice */
-	private JComboBox dayChoice;
+	private JComboBox<String> dayChoice;
 	/** The year choice */
-	private JComboBox yearChoice;
+	private JComboBox<String> yearChoice;
 	protected int mm = thisMonth, yy = thisYear, dd = thisDay;
 	final String[] months = {
 		"January", "February", "March", "April",
@@ -61,7 +63,7 @@ public class Cal extends JPanel implements DateSelectedListener {
 			}
 		});
 
-		gotoPanel.add(monthChoice = new JComboBox());
+		gotoPanel.add(monthChoice = new JComboBox<>());
 		for (int i=0; i<months.length; i++)
 			monthChoice.addItem(months[i]);
 		monthChoice.setSelectedItem(months[thisMonth]);
@@ -78,7 +80,7 @@ public class Cal extends JPanel implements DateSelectedListener {
 		monthChoice.getAccessibleContext().setAccessibleName("Months");
 		monthChoice.getAccessibleContext().setAccessibleDescription("Choose a month of the year");
 
-		gotoPanel.add(dayChoice = new JComboBox());
+		gotoPanel.add(dayChoice = new JComboBox<>());
 		for (int i=1; i<31; i++)
 			dayChoice.addItem(""+i);
 		dayChoice.setSelectedIndex(thisDay-1);
@@ -95,7 +97,7 @@ public class Cal extends JPanel implements DateSelectedListener {
 		dayChoice.getAccessibleContext().setAccessibleName("Days");
 		dayChoice.getAccessibleContext().setAccessibleDescription("Choose day of month");
 
-		gotoPanel.add(yearChoice = new JComboBox());
+		gotoPanel.add(yearChoice = new JComboBox<String>());
 		yearChoice.setEditable(true);
 		for (int i=yy-5; i<yy+5; i++)
 			yearChoice.addItem(Integer.toString(i));
