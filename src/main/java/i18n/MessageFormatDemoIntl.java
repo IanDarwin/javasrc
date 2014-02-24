@@ -6,17 +6,13 @@ import java.util.*;
 // BEGIN main
 public class MessageFormatDemoIntl {
 
-	static Object[] data = {
-			new Date(),
-			"myfile.txt",
-			null
-	};
+	Date date = new Date(),
+	String fileName = "myfile.txt",
 
 	public static void main(String[] args) {
 		ResourceBundle rb = ResourceBundle.getBundle("Widgets");
-		data[2] = rb.getString("filedialogs.cantopen.string");
-		String result = MessageFormat.format(
-			rb.getString("filedialogs.cantopen.format"), data);
+		String format = rb.getString("filedialogs.cantopen.format");
+		String result = MessageFormat.format(format, date, fileName);
 		System.out.println(result);
 	}
 }
