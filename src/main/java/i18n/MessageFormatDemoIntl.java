@@ -6,8 +6,8 @@ import java.util.*;
 // BEGIN main
 public class MessageFormatDemoIntl {
 
-	Date date = new Date(),
-	String fileName = "myfile.txt",
+	private static Date date = new Date();
+	private static String fileName = "myfile.txt";
 
 	public static void main(String[] args) {
 		ResourceBundle rb = ResourceBundle.getBundle("Widgets");
