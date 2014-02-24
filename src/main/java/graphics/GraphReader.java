@@ -14,7 +14,8 @@ import java.util.StringTokenizer;
  */
 public class GraphReader {
 
-	/** Read data points from the named file. Each line has an x and a y coordinate.
+	/** Read data points from the named file. Each line has 
+	 * an x and a y coordinate, resulting in a single Point2D.
 	 * @throws IllegalArgumentException on bad or insufficient data
 	 * @throws IOException if the file doesn't exist or is unreadable.
 	 */
@@ -22,7 +23,8 @@ public class GraphReader {
 		return read(new FileReader(fileName), fileName);
 	}
 	
-	/** Read data points from an opened Reader. Each line has an x and a y coordinate.
+	/** Read data points from an opened Reader. Each line has 
+	 * an x and a y coordinate, yielding a single Point2D.
 	 * @throws IllegalArgumentException on bad or insufficient data
 	 * @throws IOException if the file doesn't exist or is unreadable.
 	 */

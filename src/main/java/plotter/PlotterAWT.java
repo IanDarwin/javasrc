@@ -20,13 +20,14 @@ import javax.swing.JFrame;
  */
 // BEGIN main
 public class PlotterAWT extends Plotter {
-	JFrame f;
-	PCanvas p;
-	Graphics g;
-	Font font;
-	FontMetrics fontMetrics;
+
+	private JFrame f;
+	private PCanvas p;
+	private Graphics g;
+	private Font font;
+	private FontMetrics fontMetrics;
+
 	PlotterAWT() {
-		super();
 		f = new JFrame("Plotter");
 		Container cp = f.getContentPane();
 		p = new PCanvas(MAXX, MAXY);
