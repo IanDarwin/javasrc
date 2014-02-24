@@ -5,7 +5,8 @@ import javax.swing.*;
 
 public class ProtoDialog extends JDialog {
 
-	JComboBox protoBox, portBox;
+	private static final long serialVersionUID = 1L;
+	JComboBox<String> protoBox, portBox;
 
 	public ProtoDialog(Frame f, String t) {
 		super(f, t, true);
@@ -13,14 +14,14 @@ public class ProtoDialog extends JDialog {
 		Container cp = getContentPane();
 		cp.setLayout(new GridLayout(2,2));
 		cp.add(new JLabel("Protocol:", JLabel.RIGHT));
-		cp.add(protoBox = new JComboBox());
+		cp.add(protoBox = new JComboBox<>());
 		protoBox.addItem("Ping");
 		protoBox.addItem("RMI");
 		protoBox.addItem("CORBA");
 		protoBox.addItem("WWW");
 		protoBox.setEditable(true);
 		cp.add(new JLabel("Port:", JLabel.RIGHT));
-		cp.add(portBox = new JComboBox());
+		cp.add(portBox = new JComboBox<>());
 		portBox.addItem("0");
 		portBox.addItem("1099");
 		portBox.addItem("28735");

@@ -29,9 +29,9 @@ public class HashMapWithRemoves {
 		// BEGIN SafeRemoval
 		// Version 2: get ALL the keys and values 
 		// with concurrent modification
-		Iterator it = map.keySet( ).iterator( );
+		Iterator<String> it = map.keySet( ).iterator( );
 		while (it.hasNext( )) {
-			String key = (String) it.next( );
+			String key = it.next( );
 			if (key.equals("Sun")) {
 				it.remove();
 				continue;

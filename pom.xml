@@ -41,6 +41,7 @@
             <exclude>plotter/Penman.java</exclude>
 
             <!-- Have yet to find a POM that works -->
+            <exclude>gui_swt/*.java</exclude>
             <exclude>gui/ArrayListTableSimple.java</exclude>
             <exclude>xml/XSLTransform.java</exclude>
             <exclude>otherlang/StringDistance.java</exclude>

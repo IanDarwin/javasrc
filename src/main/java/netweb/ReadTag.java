@@ -72,7 +72,7 @@ public class ReadTag {
 		}		
 	}
 	
-	public List readTags() throws IOException {
+	public List<Element> readTags() throws IOException {
 		List<Element> tags = new ArrayList<Element>();
 		Element aTag;
 		while ((aTag = nextTag()) != null) {

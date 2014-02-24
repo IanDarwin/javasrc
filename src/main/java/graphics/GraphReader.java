@@ -40,8 +40,8 @@ public class GraphReader {
 			StringTokenizer st = new StringTokenizer(txt);
 			try {
 				Point2D p = new Point2D.Double();
-				p.setLocation(Float.parseFloat(st.nextToken()),
-					Float.parseFloat(st.nextToken()));
+				p.setLocation(Double.parseDouble(st.nextToken()),
+						Double.parseDouble(st.nextToken()));
 				data.add(p);
 			} catch(NumberFormatException nfe) {
 				throw new IllegalArgumentException("Invalid number " + nfe + 
