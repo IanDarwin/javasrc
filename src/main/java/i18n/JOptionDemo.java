@@ -14,7 +14,9 @@ import com.darwinsys.swingui.I18N;
 // BEGIN main
 public class JOptionDemo extends JFrame {
 
-	ResourceBundle rb;
+	private static final long serialVersionUID = 1L;
+	
+	private ResourceBundle rb;
 
 	// Constructor
 	JOptionDemo(String s) {
