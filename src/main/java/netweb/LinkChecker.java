@@ -29,7 +29,6 @@ import javax.swing.JTextField;
 
 import com.darwinsys.io.FileIO;
 import com.darwinsys.swingui.UtilGUI;
-import com.darwinsys.util.Debug;
 
 /** A simple HTML Link Checker. 
  * Need a Properties file to set depth, URLs to check. etc.
@@ -146,6 +145,7 @@ public class LinkChecker extends JFrame {
 	/** Start checking, given a URL by name.
 	 * Calls checkLink to check each link.
 	 */
+	@SuppressWarnings("deprecation")
 	public void checkOut(String rootURLString) {
 		URL rootURL = null;
 		GetURLs urlGetter = null;
@@ -192,13 +192,12 @@ public class LinkChecker extends JFrame {
 
 		try {
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
-			List<String> urlTags = urlGetter.reader.readTags();
-			for (String tag : urlTags) {
+			List<Element> urlTags = urlGetter.reader.readTags();
+			for (Element tag : urlTags) {
 				if (done)
 					return;
-				Debug.println("TAG", tag);
 						
-				String href = extractHREF(tag);
+				String href = extractHREF(tag.toString());
 
 				for (int j=0; j<indent; j++)
 					textWindow.append("\t");
@@ -293,7 +292,6 @@ public class LinkChecker extends JFrame {
  
 	/** Extract the URL from <sometag attrs HREF="http://foo/bar" attrs ...> 
 	 * We presume that the HREF is correctly quoted!!!!!
-	 * TODO: Handle Applets.
 	 */
 	public String extractHREF(String tag) throws MalformedURLException {
 		String caseTag = tag.toLowerCase(), attrib;
@@ -306,7 +304,7 @@ public class LinkChecker extends JFrame {
 			attrib = "code";
 		} else
 			attrib = "src";			// image, frame
-		// XXX refactor to use 1.5 enum here
+		// XXX refactor to use an enum here
 		if (attrib.equals("href") && caseTag.indexOf("name") != -1) {
 			return null;		// silently ignore <a name=...>
 		}
