@@ -116,5 +116,13 @@ public class MenuIntl extends JFrame {
 			return new JMenuItem(miLabel, key.charAt(0));
 	}
 
+	private String lookupWithDefault(ResourceBundle rb, String key, String dflt)
+	{
+	    try {
+	        return rb.getString(key);
+	    } catch (MissingResourceException e) {
+	        return dflt;
+	    }
+	}
 }
 // END main
