@@ -30,4 +30,4 @@ JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this) 
   printf("\"myNumber\" value now %d\n", nn); /* make sure */
   return;
 }
-/* BEGIN main */
+/* END main */
