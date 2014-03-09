@@ -16,4 +16,4 @@ public class ReferencesDemo3 {
 		System.out.println("My process method is " + sample);
 	}
 }
-//END main
+// END main

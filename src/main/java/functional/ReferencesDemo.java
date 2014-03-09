@@ -20,4 +20,4 @@ public class ReferencesDemo {
 		new ReferencesDemo().doIt();
 	}
 }
-//END main
+// END main
