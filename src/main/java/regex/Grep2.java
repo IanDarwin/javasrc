@@ -9,7 +9,7 @@ import com.darwinsys.lang.GetOpt;
 /** A command-line grep-like program. Accepts some command-line options,
  * and takes a pattern and a list of text files.
  */
-// BEGIN main
+// XXX DELETEME - replace by JGrep
 public class Grep2 {
 	/** The pattern we're looking for */
 	protected Pattern pattern;
