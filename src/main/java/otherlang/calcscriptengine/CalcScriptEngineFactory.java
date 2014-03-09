@@ -29,7 +29,7 @@ public class CalcScriptEngineFactory implements ScriptEngineFactory {
 
 	@Override
 	public List<String> getExtensions() {
-		ArrayList<String> ret = new ArrayList<String>(1);
+		ArrayList<String> ret = new ArrayList<>(1);
 		ret.add("calc");
 		return ret;
 	}

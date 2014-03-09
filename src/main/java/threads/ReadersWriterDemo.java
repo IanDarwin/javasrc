@@ -30,7 +30,7 @@ public class ReadersWriterDemo {
 	 * Constructor: set up some quasi-random initial data
 	 */
 	public ReadersWriterDemo() {
-		List<String> questionsList = new ArrayList<String>();
+		List<String> questionsList = new ArrayList<>();
 		questionsList.add("Agree");
 		questionsList.add("Disagree");
 		questionsList.add("No opinion");

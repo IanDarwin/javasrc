@@ -12,7 +12,7 @@ public class ArrayLst {
 		System.out.println(new ArrayLst().run());
 	}
 	public int run() {
-		ArrayList<MutableInteger> list = new ArrayList<MutableInteger>();
+		ArrayList<MutableInteger> list = new ArrayList<>();
 		for (int i=0; i<MAX; i++) {
 			list.add(new MutableInteger(i));
 		}

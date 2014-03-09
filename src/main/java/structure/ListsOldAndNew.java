@@ -27,7 +27,7 @@ public class ListsOldAndNew {
 
 	public void newWay() {
 	// BEGIN newWay
-    List<String> myList = new ArrayList<String>(); // Java 7: new ArrayList<>();
+    List<String> myList = new ArrayList<>(); // Java 6: new ArrayList<String>();
     myList.add("hello");
     myList.add("goodbye");
 

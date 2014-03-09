@@ -49,7 +49,7 @@ import java.util.LinkedList;
 // BEGIN main
 public class ProdCons1 {
 
-	protected LinkedList<Object> list = new LinkedList<Object>();
+	protected LinkedList<Object> list = new LinkedList<>();
 
 	protected void produce() {
 		int len = 0;

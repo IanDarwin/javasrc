@@ -2,7 +2,7 @@ package structure;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * StrSortCase demonstrates sorting of strings using Collections.sort
@@ -20,10 +20,10 @@ public class StrSortCase {
 		"Zulu"
 	};
 
-	List<String> v = new Vector<String>();
+	List<String> v;
 
 	void load() {
-		v = new Vector<String>();
+		v = new ArrayList<String>();
 		for (int i=0; i<rawStrings.length; i++)
 			v.add(rawStrings[i]);
 	}

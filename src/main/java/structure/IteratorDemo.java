@@ -12,7 +12,7 @@ public class IteratorDemo {
 
 	public static void main(String[] argv) {
 
-		List<Date> l = new ArrayList<Date>();
+		List<Date> l = new ArrayList<>();
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the list...

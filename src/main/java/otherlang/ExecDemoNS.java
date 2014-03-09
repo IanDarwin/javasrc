@@ -24,7 +24,7 @@ public class ExecDemoNS extends JFrame {
 	protected final static String HELPFILE = "./help/index.html";
 
 	/** A stack of process objects; each entry tracks one external running process */
-	Stack<Process> pStack = new Stack<Process>();
+	Stack<Process> pStack = new Stack<>();
 
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {

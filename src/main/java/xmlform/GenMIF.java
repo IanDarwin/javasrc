@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.Vector;
 
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
@@ -49,7 +49,7 @@ public class GenMIF implements XmlFormWalker {
 		// Reassign System.out to go there as well, so when we
 		// run other main classes, their output gets grabbed.
 		System.setOut(smsg);
-		indents = new Vector<String>();
+		indents = new ArrayList<>();
 		indents.add("");
 	}
 
@@ -66,7 +66,7 @@ public class GenMIF implements XmlFormWalker {
 		msg.print(indents.get(indent>0?indent-1:0));
 	}
 
-	protected Stack<String> tagStack = new Stack<String>();
+	protected Stack<String> tagStack = new Stack<>();
 	protected void startTag(String tag) {
 		++indent;
 		indent(); msg.println('<' + tag);

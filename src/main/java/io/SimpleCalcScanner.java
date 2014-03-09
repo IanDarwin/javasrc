@@ -23,7 +23,7 @@ public class SimpleCalcScanner {
 	protected String variable;
 
 	/** The operand stack; no operators are pushed, so it can be a stack of Doubl */
-	protected Stack<Double> s = new Stack<Double>();
+	protected Stack<Double> s = new Stack<>();
 
 	/* Driver - main program */
 	public static void main(String[] args) throws IOException {

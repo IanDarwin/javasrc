@@ -12,7 +12,7 @@ import java.util.ListIterator;
 public class LinkedListDemo {
 	public static void main(String[] argv) {
 		System.out.println("Here is a demo of Java's LinkedList class");
-		LinkedList<String> l = new LinkedList<String>();
+		LinkedList<String> l = new LinkedList<>();
 		l.add(new Object().toString());
 		l.add("Hello");
 		l.add("end of the list");
