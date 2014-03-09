@@ -13,19 +13,19 @@ public class Referencesdemo4 {
 	public static void main(String[] args) {
 		String[] names;
 		
-		// Sort using a reference to an instance method
+		// Sort using "an Instance Method of an Arbitrary Object of a Particular Type"
 		names = unsortedNames.clone();
-		Arrays.sort(names, String::compareToIgnoreCase);
+		Arrays.sort(names, String::compareToIgnoreCase);                    // <1>
 		dump(names);
 
 		// Equivalent Lambda:
 		names = unsortedNames.clone();
-		Arrays.sort(names, (str1, str2) -> str1.compareToIgnoreCase(str2));
+		Arrays.sort(names, (str1, str2) -> str1.compareToIgnoreCase(str2)); // <2>
 		dump(names);
 		
 		// Equivalent old way:
 		names = unsortedNames.clone();
-		Arrays.sort(names, new Comparator<String>() {
+		Arrays.sort(names, new Comparator<String>() {                       // <3>
 			@Override
 			public int compare(String str1, String str2) {
 				return str1.compareToIgnoreCase(str2);
@@ -35,7 +35,7 @@ public class Referencesdemo4 {
 		
 		// Simpest way, using existing comparator
 		names = unsortedNames.clone();
-		Arrays.sort(names, String.CASE_INSENSITIVE_ORDER);
+		Arrays.sort(names, String.CASE_INSENSITIVE_ORDER);                  // <4>
 		dump(names);
 	}
 	// END main
