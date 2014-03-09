@@ -1,41 +1,46 @@
 package strings;
 
-import junit.framework.TestCase;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 /** Soundex Test program. Knuth's original examples, and mine. */
-public class SoundexTest extends TestCase {
+@RunWith(Parameterized.class)
+public class SoundexTest {
 
-	/** JUnit test classes require this constructor */
-	public SoundexTest(String name) {
-		super(name);
+	private String name, expected;
+	
+	public SoundexTest(String expected, String name) {
+		super();
+		this.expected = expected;
+		this.name = name;
 	}
 
-	public void testKnuth0() {
-		assertEquals("E460", Soundex.soundex("Euler, Ellery"));
-	}
-	public void testKnuth1() {
-		assertEquals("G200", Soundex.soundex("Gauss, Ghosh"));
-	}
-	public void testKnuth2() {
-		assertEquals("H416", Soundex.soundex("Hilbert, Heilbronn"));
-	}
-	public void testKnuth3() {
-		assertEquals("K530", Soundex.soundex("Knuth, Kant"));
-	}
-	public void testKnuth4() {
-		assertEquals("L300", Soundex.soundex("Lloyd, Ladd"));
-	}
-	public void testKnuth5() {
-		assertEquals("L222",
-			Soundex.soundex("Lukasiewicz, Lissajous"));
-	}
-	public void testDarwin1() {
-		assertEquals("D650", Soundex.soundex("Darwin"));
-	}
-	public void testDarwin2() {
-		assertEquals("D653", Soundex.soundex("Darwent"));
-	}
-	public void testDarwin3() {
-		assertEquals("D650", Soundex.soundex("Derwin"));
+	@Parameters
+    public static List<Object[]> getParams() {
+        return Arrays.asList(data);
+    }
+    private static Object[][] data = {
+		{ "E460", "Euler, Ellery" },
+		{ "G200", "Gauss, Ghosh" },
+		{ "H416", "Hilbert, Heilbronn" },
+		{ "K530", "Knuth, Kant" },
+		{ "L300", "Lloyd, Ladd" },
+		{ "L200", "Lukasiewicz, Lissajous" },
+		{ "D650", "Darwin" },
+		{ "D653", "Darwent" },
+		{ "D650", "Derwin" },
+		{ "D260", "Decker" },
+	};
+	
+	@Test
+	public void test() {
+		assertEquals(expected, Soundex.soundex(name));
 	}
 }

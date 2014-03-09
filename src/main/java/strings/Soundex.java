@@ -1,7 +1,5 @@
 package strings;
 
-import com.darwinsys.util.Debug;
-
 /**
  * Soundex - the Soundex Algorithm, as described by Knuth
  * <p>
@@ -46,6 +44,8 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class Soundex {
+	
+	static boolean debug = false;
 
 	/* Implements the mapping
 	 * from: AEHIOUWYBFPVCGJKQSXZDTLMNR
@@ -67,7 +67,7 @@ public class Soundex {
 		String t = s.toUpperCase();
 
 		StringBuffer res = new StringBuffer();
-		char c, prev = '?';
+		char c, prev = '?', prevOutput = '?';
 
 		// Main loop: find up to 4 chars that map.
 		for (int i=0; i<t.length() && res.length() < 4 &&
@@ -81,13 +81,17 @@ public class Soundex {
 				prev = c;
 
 				// First char is installed unchanged, for sorting.
-				if (i==0)
+				if (i==0) {
 					res.append(c);
-				else {
+				} else {
 					char m = MAP[c-'A'];
-					Debug.println("inner", c + " --> " + m);
-					if (m != '0')
+					if (debug) {
+						System.out.println(c + " --> " + m);
+					}
+					if (m != '0' && m != prevOutput) {
 						res.append(m);
+						prevOutput = m;
+					}
 				}
 			}
 		}
