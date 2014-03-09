@@ -3,7 +3,7 @@ package functional;
 // BEGIN main
 public class ReferencesDemo2 {
 	void cloz() {
-		System.out.println("Ersatz close() method called");
+		System.out.println("Stand-in close() method called");
 	}
 
 	public static void main(String[] args) throws Exception {
