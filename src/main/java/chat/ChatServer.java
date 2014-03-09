@@ -213,11 +213,11 @@ public class ChatServer {
 		}
 
 		protected ChatHandler lookup(String nick) {
-			synchronized(clients) {
-				clients.forEach(cl ->
+			synchronized (clients) {
+				for (ChatHandler cl : clients) {
 					if (cl.login.equals(nick))
 						return cl;
-				);
+				}
 			}
 			return null;
 		}
