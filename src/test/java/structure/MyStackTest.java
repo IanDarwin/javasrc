@@ -2,20 +2,20 @@ package structure;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Date;
 
 import org.junit.Test;
 
 /**
  * JUnit test for MyStack.
- * @author ian
+ * XXX Consider splitting off interface-method tests into a new
+ * SimpleStackClass, parameterizing it to test both implementations.
+ * @author Ian Darwin
  */
 public class MyStackTest {
-	MyStack<String> ss = new MyStack<String>();
-	MyStack<Date> sd = new MyStack<Date>();
+	SimpleStack<String> ss = new MyStack<String>();
 
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidZeroLength() {
@@ -30,34 +30,45 @@ public class MyStackTest {
 		int i = 0; 
 		do {
 			ss.push("Hello #" + i++);
-		} while (ss.hasRoom());
-		assertEquals(i, MyStack.INITIAL);
+		} while (((MyStack<String>) ss).hasRoom());
+		assertEquals(i, MyStack.DEFAULT_INITIAL);
 	}
 
 	@Test
 	public void testPop() {
 		ss.push("Yowza");
-		assertEquals(1, ss.getStackDepth());
+		assertEquals(1, ((MyStack<String>) ss).getStackDepth());
 		assertSame("Yowza", ss.pop());
 	}
 
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void testOverflow() {
+	public void testPushOverflow() {
 		MyStack<Integer> s = new MyStack<Integer>(1);
 		s.push(0);
 		s.push(0);
 	}
 
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void testUnderflow() {
+	public void testPopUnderflow() {
 		ss.pop();
+	}
+	
+	@Test
+	public void testPeek() {
+		ss.push("howdy mundo");
+		assertEquals("howdy mundo", ss.peek());
+	}
+	
+	@Test
+	public void testPeekEmpty() {
+		assertNull(ss.peek());
 	}
 	
 	@Test
 	public void testHasNext() {
 		ss.push(null);
-		assertEquals(1, ss.getStackDepth());
-		assertTrue(ss.hasNext());
+		assertEquals(1, ((MyStack<String>) ss).getStackDepth());
+		assertTrue(((MyStack<String>) ss).hasNext());
 	}
 	
 	@Test

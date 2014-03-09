@@ -4,14 +4,14 @@ package structure;
  */
 @SuppressWarnings("unchecked")
 // BEGIN main
-public class MyStack<T> {
+public class MyStack<T> implements SimpleStack<T> {
 	
-	private int ix = 0;
-	public static final int INITIAL = 10;
-	private T[] data;
+	private int depth = 0;
+	public static final int DEFAULT_INITIAL = 10;
+	private T[] stack;
 	
 	public MyStack() {
-		data = (T[])new Object[INITIAL];
+		this(DEFAULT_INITIAL);
 	}
 
 	public MyStack(int howBig) {
@@ -19,32 +19,49 @@ public class MyStack<T> {
 			throw new IllegalArgumentException(
 			howBig + " must be positive, but was " + howBig);
 		}
-		data = (T[])new Object[howBig];
+		stack = (T[])new Object[howBig];
+	}
+	
+	@Override
+	public boolean empty() {
+		return depth == 0;
 	}
 
+	/** push - add an element onto the stack */
+	@Override
 	public void push(T obj) {
-		// Could check capacity and expand, as in Array2.java
-		data[ix++] = obj;
+		// Could check capacity and expand
+		stack[depth++] = obj;
 	}
 
+	/* pop - return and remove the top element */
+	@Override
+	public T pop() {
+		--depth;
+		T tmp = stack[depth];
+		stack[depth] = null;
+		return tmp;
+	}
+	
+	/** peek - return the top element but don't remove it */
+	@Override
+	public T peek() {
+		if (depth == 0) {
+			return null;
+		}
+		return stack[depth-1];
+	}
+	
 	public boolean hasNext() {
-		return ix > 0;
+		return depth > 0;
 	}
 
 	public boolean hasRoom() {
-		return ix < data.length;
-	}
-
-	/** Return the given object; removing from array to avoid memory leak */
-	public T pop() {
-		--ix;
-		T tmp = data[ix];
-		data[ix] = null;
-		return tmp;
+		return depth < stack.length;
 	}
 
 	public int getStackDepth() {
-		return ix;
+		return depth;
 	}
 }
 // END main

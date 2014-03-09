@@ -1,9 +1,9 @@
 package structure;
 
-/** Toy Stack. 
- */
 // BEGIN main
-public class ToyStack {
+/** Toy Stack, converted to SimpleStack interface. 
+ */
+public class ToyStack2 implements SimpleStack<Integer> {
 
 	/** The maximum stack depth */
 	protected int MAX_DEPTH = 10;
@@ -12,16 +12,23 @@ public class ToyStack {
 	/* The actual stack */
 	protected int[] stack = new int[MAX_DEPTH];
 
-	/** push - add an element onto the stack */
-	protected void push(int n) {
+	@Override
+	public boolean empty() {
+		return depth == 0;
+	}
+	
+	@Override
+	public void push(Integer n) {
 		stack[depth++] = n;
 	}
-	/** pop - return and remove the top element */
-	protected int pop() {
+	
+	@Override
+	public Integer pop() {
 		return stack[--depth];
 	}
-	/** peek - return the top element but don't remove it */
-	protected int peek() {
+	
+	@Override
+	public Integer peek() {
 		return stack[depth-1];
 	}
 }

@@ -9,9 +9,9 @@ public class CameraSearchParallelStream {
 	// BEGIN search
 	public static void main(String[] args) {
 		for (Object camera : privateListOfCameras.parallelStream(). // <1>
-				filter(c -> c.isIlc() && c.getPrice() < 500).                     // <2>
-				toArray()) {                                                                   // <3>
-			System.out.println(camera);                                             // <4>
+				filter(c -> c.isIlc() && c.getPrice() < 500).       // <2>
+				toArray()) {                                        // <3>
+			System.out.println(camera);                             // <4>
 		}
 	}
 	// END search
