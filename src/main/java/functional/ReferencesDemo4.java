@@ -4,7 +4,7 @@ package functional;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Referencesdemo4 {
+public class ReferencesDemo4 {
 
 	static final String[] unsortedNames = { 
 		"Gosling", "de Raadt", "Torvalds", "Ritchie", "Hopper"
