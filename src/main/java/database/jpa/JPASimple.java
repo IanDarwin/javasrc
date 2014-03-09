@@ -45,7 +45,7 @@ public class JPASimple {
 			System.out.println("There are " + list.size() + " persons:");
 			list.forEach(p ->
 				System.out.println(
-					p.getFirstName() + ' ' + p.getLastName());
+					p.getFirstName() + ' ' + p.getLastName())
 			);
 		} finally {	
 			if (entityManager != null)

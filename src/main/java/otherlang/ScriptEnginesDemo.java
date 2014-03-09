@@ -1,9 +1,6 @@
 package otherlang;
 
-import java.util.List;
-
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
@@ -14,8 +11,8 @@ public class ScriptEnginesDemo {
 		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 		
 		// Print list of supported languages
-		scriptEngineManager.getEngineFactories().forEach(fact ->
-			System.out.println(fact.getLanguageName()));
+		scriptEngineManager.getEngineFactories().forEach(factory ->
+			System.out.println(factory.getLanguageName()));
 		
 		// Run a script in the JavaScript language
 		String lang = "ECMAScript";

@@ -43,9 +43,9 @@ public class HibernateSimple {
 
 			List<Person> list = query.list();
 			System.out.println("There are " + list.size() + " persons:");
-			list.forEach(p =>
+			list.forEach(p ->
 				System.out.println(
-						p.getFirstName() + ' ' + p.getLastName());
+						p.getFirstName() + ' ' + p.getLastName())
 			);
 			System.out.println();
 		} finally {
