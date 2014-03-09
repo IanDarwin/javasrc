@@ -38,9 +38,15 @@ public class HashMapDemo {
 
 		// Version 2: get ALL the keys and values 
 		// (maybe to print a report, or to save to disk)
-		map.keySet().forEach(key ->
-			System.out.println("Key " + key + "; Value " +
-					map.get(key)));
+		for( String key : map.keySet()) {
+			System.out.println("Key " + key + 
+				"; Value " + map.get(key));
+		}
+		
+		// Version 3: Same but using a Map.Entry lambda
+		map.entrySet().forEach(mE -> 
+			System.out.println("Key + " + mE.getKey()+ 
+				"; Value " +mE.getValue()));
 	}
 }
 // END main
