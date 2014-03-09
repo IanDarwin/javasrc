@@ -52,7 +52,7 @@ public class ProdCons2 {
 	/** Throughout the code, this is the object we synchronize on so this
 	 * is also the object we wait() and notifyAll() on.
 	 */
-	protected LinkedList<Object> list = new LinkedList<Object>();
+	protected LinkedList<Object> list = new LinkedList<>();
 	protected int MAX = 10;
 	protected boolean done = false; // Also protected by lock on list.
 

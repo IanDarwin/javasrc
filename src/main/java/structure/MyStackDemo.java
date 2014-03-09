@@ -3,7 +3,7 @@ package structure;
 // BEGIN main
 public class MyStackDemo {
 	public static void main(String[] args) {
-		MyStack<String> ms1 = new MyStack<String>();
+		MyStack<String> ms1 = new MyStack<>();
 		ms1.push("billg");
 		ms1.push("scottm");
 

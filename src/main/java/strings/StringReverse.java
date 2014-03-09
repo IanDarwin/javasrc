@@ -12,7 +12,7 @@ public class StringReverse {
 		String s = "Father Charles Goes Down And Ends Battle";
 
 		// Put it in the stack frontwards
-		Stack<String> myStack = new Stack<String>();
+		Stack<String> myStack = new Stack<>();
 		StringTokenizer st = new StringTokenizer(s);
 		while (st.hasMoreTokens()) {
 			myStack.push(st.nextToken());

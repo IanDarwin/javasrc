@@ -9,7 +9,7 @@ import java.util.Date;
 // BEGIN main
 public class ArrayListDemo {
 	public static void main(String[] argv) {
-		ArrayList<Date> al = new ArrayList<Date>();
+		ArrayList<Date> al = new ArrayList<>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);

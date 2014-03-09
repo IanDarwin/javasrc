@@ -27,7 +27,7 @@ public class ClassesInPackage {
 	 */
 	public static String[] getPackageContent(String packageName) throws IOException {
 		final String packageAsDirName = packageName.replace(".", "/");
-		final List<String> list = new ArrayList<String>();
+		final List<String> list = new ArrayList<>();
 		final Enumeration<URL> urls = 
 				Thread.currentThread().getContextClassLoader().getResources(packageAsDirName);
 		while (urls.hasMoreElements()) {

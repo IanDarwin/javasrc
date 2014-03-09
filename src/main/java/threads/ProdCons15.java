@@ -72,7 +72,7 @@ public class ProdCons15 {
 	}
 
 	ProdCons15(int nP, int nC) {
-		BlockingQueue<Object> myQueue = new LinkedBlockingQueue<Object>();
+		BlockingQueue<Object> myQueue = new LinkedBlockingQueue<>();
 		for (int i=0; i<nP; i++)
 			new Thread(new Producer(myQueue)).start();
 		for (int i=0; i<nC; i++)

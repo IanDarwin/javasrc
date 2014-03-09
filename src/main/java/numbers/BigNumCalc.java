@@ -22,7 +22,7 @@ public class BigNumCalc {
 	/**
 	 * Stack of numbers being used in the calculator.
 	 */
-	Stack<BigDecimal> stack = new Stack<BigDecimal>();
+	Stack<BigDecimal> stack = new Stack<>();
 
 	/**
 	 * Calculate a set of operands; the input is an Object array containing
