@@ -1,0 +1,1 @@
+java -cp $js/target/classes:$HOME/lib/darwinsys-api.jar  netweb.MkIndex src/main/java
