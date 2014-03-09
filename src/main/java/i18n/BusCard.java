@@ -15,20 +15,19 @@ import com.darwinsys.swingui.I18N;
 // BEGIN main
 public class BusCard extends JFrame {
 
-	JLabel nameTF;
-	JComboBox jobChoice;
-	JButton B1, B2, B3, B4;
+	private static final long serialVersionUID = 1L;
+	private JLabel nameTF;
+	private JComboBox<String> jobChoice;
+	private JButton B1, B2, B3, B4;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
-
 		// create a BusCard object, tell it to show up
 		new BusCard().setVisible(true);
 	}
 
 	/** Construct the object including its GUI */
 	public BusCard() {
-		super();
 
 		Container cp = getContentPane();
 
@@ -77,10 +76,10 @@ public class BusCard extends JFrame {
 		nameTF.setText(I18N.getString(b, "card"+".myname", "MYNAME"));
 		p1.add(nameTF);
 
-		jobChoice = new JComboBox();
+		jobChoice = new JComboBox<>();
 		jobChoice.setFont(new Font("helvetica", Font.BOLD, 14));
 
-		// Get Job Titles ofrom the Properties file loaded into "b"!
+		// Get Job Titles from the Properties file loaded into "b"!
 		String next;
 		int i=1;
 		do {

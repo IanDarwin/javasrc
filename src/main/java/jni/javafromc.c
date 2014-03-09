@@ -9,8 +9,7 @@
 #include <jni.h>
 
 int
-main(int argc, char *argv[])
-{
+main(int argc, char *argv[]) {
 	int i;
 	JavaVM *jvm;		/* The Java VM we will use */
 	JNIEnv *myEnv;		/* pointer to native environment */
