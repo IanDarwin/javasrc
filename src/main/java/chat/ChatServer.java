@@ -21,7 +21,7 @@ public class ChatServer {
 	/** The Server Socket */
 	protected ServerSocket servSock;
 	/** The list of my current clients */
-	protected ArrayList<ChatHandler> clients;
+	protected List<ChatHandler> clients;
 	/** Debugging state */
 	private static boolean DEBUG = false;
 
@@ -39,7 +39,7 @@ public class ChatServer {
 	 * @throws IOException
 	 */
 	ChatServer() throws IOException {
-		clients = new ArrayList<ChatHandler>();
+		clients = new ArrayList<>();
 
 		servSock = new ServerSocket(ChatProtocol.PORTNUM);
 		System.out.println("DarwinSys Chat Server Listening on port " +
@@ -204,20 +204,20 @@ public class ChatServer {
 		/** Send one message to all users */
 		public void broadcast(String sender, String mesg) {
 			System.out.println("Broadcasting " + sender + SEP + mesg);
-			for (ChatHandler sib : clients) {
+			clients.forEach(sib -> {
 				if (DEBUG)
 					System.out.println("Sending to " + sib);
 				sib.send(sender, mesg);
-			}
+			});
 			if (DEBUG) System.out.println("Done broadcast");
 		}
 
 		protected ChatHandler lookup(String nick) {
 			synchronized(clients) {
-				for (ChatHandler cl : clients) {
+				clients.forEach(cl ->
 					if (cl.login.equals(nick))
 						return cl;
-				}
+				);
 			}
 			return null;
 		}

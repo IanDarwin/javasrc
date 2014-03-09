@@ -125,9 +125,7 @@ public class LinkList<T> implements List<T> {
 		return false;
 	}
     public boolean addAll(Collection<? extends T> c) {
-    		for (Object o : c) {
-    			add((T) o);
-    		}
+    	c.forEach(o -> add((T) o));
 		return false;
 	}
 

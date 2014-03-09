@@ -69,8 +69,8 @@ public class ClassesInPackage {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		String[] list = getPackageContent("com.darwinsys.io");
-		for (String name : list) {
+		String[] names = getPackageContent("com.darwinsys.io");
+		for (String name : names) {
 			System.out.println(name);
 		}
 		System.out.println("Done");

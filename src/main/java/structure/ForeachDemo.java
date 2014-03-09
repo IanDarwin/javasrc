@@ -13,6 +13,7 @@ public class ForeachDemo {
 			System.out.println(s);
 		}
 		
+		// Show the Java 5 foreach loop - do not modernize to Java 8
 		List<String> list = Arrays.asList(data);
 		for (String s : list) {
 			System.out.println(s);

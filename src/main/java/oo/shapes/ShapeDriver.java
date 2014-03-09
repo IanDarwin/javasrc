@@ -11,9 +11,8 @@ public class ShapeDriver {
 	/** Iterate over all the Shapes, getting their areas */
 	public double totalAreas() {
 		double total = 0.0;
-		for (Shape s : allShapes) {
-			total += s.computeArea();
-		}
+		allShapes.forEach(s ->
+			total += s.computeArea());
 		return total;
 	}
 }

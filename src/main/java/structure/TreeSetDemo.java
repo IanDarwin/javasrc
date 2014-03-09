@@ -31,9 +31,7 @@ public class TreeSetDemo {
 
 		// Print the whole list in sorted order
 		System.out.println("Sorted list:");
-		for (String name : theSet) {
-			System.out.println(name);
-		}
+		theSet.forEach(name -> System.out.println(name));
 		// END main
 	}
 }

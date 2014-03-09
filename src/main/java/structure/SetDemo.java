@@ -15,9 +15,7 @@ public class SetDemo {
 		hashSet.add("Two");
 		hashSet.add("One"); // DUPLICATE
 		hashSet.add("Three");
-		for (String s : hashSet) {
-			System.out.println(s);
-		}
+		hashSet.forEach(s -> System.out.println(s));
 		// END main
 	}
 }

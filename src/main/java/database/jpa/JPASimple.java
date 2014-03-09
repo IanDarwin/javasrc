@@ -43,10 +43,10 @@ public class JPASimple {
 
 			List<Person> list = query.getResultList();
 			System.out.println("There are " + list.size() + " persons:");
-			for (Person p : list) {
+			list.forEach(p ->
 				System.out.println(
 					p.getFirstName() + ' ' + p.getLastName());
-			}
+			);
 		} finally {	
 			if (entityManager != null)
 				entityManager.close();

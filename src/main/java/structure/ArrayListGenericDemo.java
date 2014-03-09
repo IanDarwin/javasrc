@@ -11,9 +11,7 @@ public class ArrayListGenericDemo {
 
 		// data.add(new Date()); This won't compile!
 
-		for (String s : data) {
-			System.out.println(s);
-		}
+		data.forEach(s -> System.out.println(s));
 	}
 }
 // END main

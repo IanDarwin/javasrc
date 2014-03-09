@@ -11,11 +11,10 @@ public class CameraSearchPredicate {
 	// BEGIN search
 	public List<Camera> search(Predicate<Camera> tester) {
 	    List<Camera> results = new ArrayList<>();
-	    for (Camera c : privateListOfCameras) {
+	    privateListOfCameras.forEach(c ->
 	        if (tester.test(c)) {
 	            results.add(c);
-	        }
-	    }
+		);
 	    return results;
 	}
 	// END search
