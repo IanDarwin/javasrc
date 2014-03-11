@@ -79,6 +79,7 @@ public class PrintDemoGfx {
 		});
 
 		f.pack();
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 	}
 }
