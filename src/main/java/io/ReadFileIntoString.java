@@ -1,7 +1,8 @@
+package io;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 
 /**
  * Read a file into a String in ONE LINE - Java 8+ only!!
@@ -11,6 +12,6 @@ import java.nio.file.Paths;
 public class ReadFileIntoString {
 	public static void main(String[] args) throws IOException {
 		String content = new String(Files.readAllBytes(Paths.get(args[0])));
-		System.out.println("Read string of length %d from file %s%n", content.length, args[0]);
+		System.out.printf("Read string of length %d from file %s%n", content.length(), args[0]);
 	}
 }
