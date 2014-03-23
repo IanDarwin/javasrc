@@ -1,30 +1,16 @@
 package strings;
 
+/**
+ * Credit Card Validation
+ */
 public class CreditCardValidate {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		String[] cardNumbers = {
-				"4111111111111111",
-				"1076 2112 8317 2708",
-				"3011 8231 2176 8115",
-				"4417 1234 5678 9112",
-			    "4417 1234 5678 9113",
-		};
-		for (int i = 0; i < cardNumbers.length; i++) {
-			String c = cardNumbers[i];
-			System.out.println(c + "=>" + (isValidCard(c) ? "valid" : "invalid"));
-		}
-	}
 
 	/** Returns a credit card string with spaces, dashes, etc., stripped out.
 	 * Consider it a token of user-friendly in an age of really really stupid web sites.
 	 * @param input The user-entered credit card string
 	 * @return The cleaned up credit card string.
 	 */
-	private static String clean(final String input) {
+	public static String clean(final String input) {
 		final StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);
@@ -48,7 +34,7 @@ public class CreditCardValidate {
 	 * @param input The string form of the credit card number.
 	 * @return True iff the value is a valid credit card number.
 	 */
-	private static boolean isValidCard(String input) {
+	public static boolean isValidCard(String input) {
 		input = clean(input);
 		final int len = input.length();
 		int sum = 0;
