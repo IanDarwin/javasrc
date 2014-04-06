@@ -1,0 +1,21 @@
+# Simple Gradle Build for the Java-based DataVis project
+apply plugin: 'java'
+# Set up mappings for Eclipse project too
+apply plugin: 'eclipse'
+
+# The version of Java to use
+sourceCompatibility = 1.7
+# The version of my project
+version = '1.0.3'
+# Configure JAR file packaging
+jar {
+    manifest {
+        attributes 'Main-class': 'com.somedomainnamehere.data.DataVis',
+		'Implementation-Version': version
+    }
+}
+
+# optional feature: like -Dtesting=true but only when running tests ("test task")
+test {
+    systemProperties 'testing': 'true'
+}
