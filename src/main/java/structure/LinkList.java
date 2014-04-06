@@ -72,7 +72,8 @@ public class LinkList<T> implements List<T> {
 		for (int i=0; i<=where; i++) {
 			t = t.next;
 			if (t == null) {
-				throw new IndexOutOfBoundsException("'add(n,T) went off end of list");
+				throw new IndexOutOfBoundsException(
+					"'add(n,T) went off end of list");
 			}
 			if (DIAGNOSTIC) {
 				System.out.printf("add(int,T): i = %d, t = %s%n", i, t);
