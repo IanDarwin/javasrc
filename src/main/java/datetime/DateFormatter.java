@@ -16,7 +16,8 @@ public class DateFormatter {
 		System.out.println(LocalDate.parse("2014/04/01", df));
 		
 		// Format a Date and Time without timezone information
-		DateTimeFormatter nTZ = DateTimeFormatter.ofPattern("d MMMM, yyyy h:mm a");
+		DateTimeFormatter nTZ =
+			DateTimeFormatter.ofPattern("d MMMM, yyyy h:mm a");
 		System.out.println(ZonedDateTime.now().format(nTZ));
 	}
 }

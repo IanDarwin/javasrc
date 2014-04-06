@@ -14,7 +14,8 @@ public class DateDiff {
 		Period diff = Period.between(endofCentury, now);
 		
 		System.out.printf("The 21st century (up to %s) is %s old%n", now, diff);
-		System.out.printf("The 21st century is %d years, %d months and %d days old",
+		System.out.printf(
+				"The 21st century is %d years, %d months and %d days old",
 				diff.getYears(), diff.getMonths(), diff.getDays());
 	}
 }
