@@ -1,4 +1,4 @@
-package printjdk14printservice;
+iackage printjdk14printservice;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -59,7 +59,8 @@ public class PrintServiceDemo extends JFrame {
 		add(b = new JButton("Print"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("PrintServiceDemo.PrintServiceDemo...actionPerformed()");
+				System.out.println(
+					"PrintServiceDemo.PrintServiceDemo...actionPerformed()");
 				try {
 					print(INPUT_FILE_NAME);
 				} catch (Exception e1) {
@@ -92,7 +93,8 @@ public class PrintServiceDemo extends JFrame {
 		case 0:
 			System.err.println(0);
 			JOptionPane.showMessageDialog(PrintServiceDemo.this,
-					"Error: No PrintService Found", "Error", JOptionPane.ERROR_MESSAGE);
+				"Error: No PrintService Found", "Error", 
+				JOptionPane.ERROR_MESSAGE);
 			return;
 		case 1:
 			i = 0;	// Only one printer, use it.
