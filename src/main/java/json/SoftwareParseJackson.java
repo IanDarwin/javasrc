@@ -11,7 +11,8 @@ public class SoftwareParseJackson {
 	public static void main(String[] args) throws Exception {
 		ObjectMapper mapper = new ObjectMapper(); // <1>
 
-		InputStream jsonInput = SoftwareParseJackson.class.getResourceAsStream(FILE_NAME);
+		InputStream jsonInput =
+			SoftwareParseJackson.class.getResourceAsStream(FILE_NAME);
 		if (jsonInput == null) {
 			throw new NullPointerException("can't find" + FILE_NAME);
 		}
