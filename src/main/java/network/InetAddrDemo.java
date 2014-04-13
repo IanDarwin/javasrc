@@ -27,7 +27,8 @@ public class InetAddrDemo {
 		// assuming there's a web server on the named server:
 		Socket theSocket = new Socket(someServerName, 80);	
 		InetAddress remote = theSocket.getInetAddress();
-		System.out.printf("The InetAddress for %s is %s%n", someServerName, remote);
+		System.out.printf("The InetAddress for %s is %s%n",
+			someServerName, remote);
 	}
 }
 // END main
