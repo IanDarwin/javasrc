@@ -138,8 +138,10 @@ public class MailReaderBean extends JSplitPane {
 		tree.addTreeSelectionListener(tsl);
 	}
 
-	static void listFolder(FolderNode top, FolderNode folder, boolean recurse) throws Exception {
-		// System.out.println(folder.f.getName() + folder.f.getFullName());
+	/** Process one folder. */
+	static void listFolder(FolderNode top, FolderNode folder, boolean recurse)
+		throws Exception {
+
 		if ((folder.f.getType() & Folder.HOLDS_MESSAGES) != 0) {
 			Message[] msgs = folder.f.getMessages();
 			for (Message ms : msgs) {
