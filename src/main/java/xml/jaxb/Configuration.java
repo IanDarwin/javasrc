@@ -8,10 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 // BEGIN main
 /**
  * Demo of XML via JAXB; meant to represent some of the (many!)
- * fields in a typical GUI for user<-->application configuration.
+ * fields in a typical GUI for user<-->application configuration
+ * (it is not configuring JAXB; it is used to configure a larger app).
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "configuration", propOrder={"screenName", "webProxy", "verbose", "colorName"})
+@XmlType(name = "configuration", 
+	propOrder={"screenName", "webProxy", "verbose", "colorName"})
 @XmlRootElement(name = "config")
 public class Configuration {
 
