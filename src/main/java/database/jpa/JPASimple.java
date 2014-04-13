@@ -39,7 +39,8 @@ public class JPASimple {
 			transaction = entityManager.getTransaction();
 			transaction.begin();
 
-			Query query = entityManager.createQuery("select p from Person p order by p.lastName");
+			Query query = entityManager.createQuery(
+				"select p from Person p order by p.lastName");
 
 			List<Person> list = query.getResultList();
 			System.out.println("There are " + list.size() + " persons:");
