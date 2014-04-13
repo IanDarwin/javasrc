@@ -13,7 +13,8 @@ public class ReferencesDemo4 {
 	public static void main(String[] args) {
 		String[] names;
 		
-		// Sort using "an Instance Method of an Arbitrary Object of a Particular Type"
+		// Sort using 
+		// "an Instance Method of an Arbitrary Object of a Particular Type"
 		names = unsortedNames.clone();
 		Arrays.sort(names, String::compareToIgnoreCase);                    // <1>
 		dump(names);
