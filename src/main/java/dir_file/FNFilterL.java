@@ -20,10 +20,12 @@ public class FNFilterL {
 		// Generate the selective list, with a Lambda Expression
 		String[] dirs = new java.io.File(dirName).list(
 			(dir, s) -> {
-				return s.endsWith(".java") || s.endsWith(".class") || s.endsWith(".jar");
+				return s.endsWith(".java") ||
+					s.endsWith(".class") ||
+					s.endsWith(".jar");
 			}
 		);
-		Arrays.sort(dirs);		// Sort it (Data Structuring chapter))
+		Arrays.sort(dirs);		// Sort it (see Data Structuring chapter))
 		for (String d : dirs) {
 			System.out.println(d);	// Print the list
 		}
