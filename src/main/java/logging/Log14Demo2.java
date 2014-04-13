@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 public class Log14Demo2 {
 	public static void main(String[] args) {
 
-		System.setProperty("java.util.logging.config.file", "logging/logging.properties");
+		System.setProperty("java.util.logging.config.file", 
+			"logging/logging.properties");
 
 		Logger logger = Logger.getLogger("com.darwinsys");
 
