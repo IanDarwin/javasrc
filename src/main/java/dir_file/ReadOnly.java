@@ -29,7 +29,8 @@ public class ReadOnly {
 			return;
 		} else {
 			System.out.println("Logical, captain!");
-			System.out.println("canWrite() correctly returns false after setReadOnly");
+			System.out.println(
+				"canWrite() correctly returns false after setReadOnly");
 		}
 	}
 }
