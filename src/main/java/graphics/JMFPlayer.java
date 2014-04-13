@@ -96,12 +96,13 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 		JFrame f = new JFrame("JMF Player Demo");
 		Container frameCP = f.getContentPane();
 		final String musicURL = argv.length == 0 ?
-					"file:/home/ian/Music/Classical/Rachmaninoff Prelude C_ min.mp3" : argv[0];
+				"file:/home/ian/Music/Classical/Rachmaninoff Prelude C_ min.mp3" :
+				argv[0];
 		JMFPlayer p = new JMFPlayer(f, musicURL);
 		frameCP.add(BorderLayout.CENTER, p);
 		f.setSize(200, 200);
-		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
 	}
 }
 // END main
