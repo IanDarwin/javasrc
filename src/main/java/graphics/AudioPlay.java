@@ -28,7 +28,8 @@ public class AudioPlay {
 					System.err.println("Cannot getResource "  + a);
 					continue;
 				}
-				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(snd);
+				AudioInputStream audioInputStream =
+					AudioSystem.getAudioInputStream(snd);
 				final Clip clip = AudioSystem.getClip();
 				clip.open(audioInputStream);
 				clip.start();
