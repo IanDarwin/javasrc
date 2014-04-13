@@ -1,0 +1,42 @@
+<hibernate-configuration>
+        <session-factory>
+                <!-- Using HSQLDB -->
+                <property name="connection.url">jdbc:hsqldb:tmp/hibdemo.db
+					</property>
+                <property name="connection.username">sa</property>
+                <property name="connection.password"></property>
+                <property name="connection.driver_class">org.hsqldb.jdbcDriver
+					</property>
+                <property name="dialect">org.hibernate.dialect.HSQLDialect
+					</property>
+                
+                <property name="hibernate.connection.isolation">2</property>
+                <property name="hibernate.jdbc.batch_size">0</property>
+
+                <!-- Make hibernate manage session contexts -->
+                <property name="hibernate.current_session_context_class">
+                    org.hibernate.context.ThreadLocalSessionContext</property>
+
+                <!-- Nice setting for dev; do not use in production! :-) -->
+                <property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+                <property name="show_sql">true</property>
+                
+                <!-- Hibernate wants to be told about each class,
+				     like a strict JPA implementation -->
+                <mapping class="domain.Address"/>
+                <mapping class="domain.Country"/>
+                <mapping class="domain.Person"/>
+                <mapping class="domain.Preference"/>
+                
+                <mapping class="domain.model.Recording"/>
+                <mapping class="domain.model.MusicRecording"/>
+                <mapping class="domain.model.Track"/>
+                <mapping class="domain.model.VideoRecording"/>
+                <mapping class="domain.model.Actor"/>
+                
+                <mapping class="domain.sales.Customer"/>
+                <mapping class="domain.sales.SalesPerson"/>
+
+        </session-factory>
+</hibernate-configuration>
