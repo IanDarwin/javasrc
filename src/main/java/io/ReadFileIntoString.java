@@ -14,6 +14,6 @@ public class ReadFileIntoString {
 		String input = 
 			new String(Files.readAllBytes(Paths.get(args[0])));
 		System.out.printf("Read string of length %d from file %s%n",
-			content.length(), args[0]);
+			input.length(), args[0]);
 	}
 }
