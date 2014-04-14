@@ -23,7 +23,8 @@ public class ProdCons15 {
 				while (true) {
 					Object justProduced = getRequestFromNetwork();
 					queue.put(justProduced);
-					System.out.println("Produced 1 object; List size now " + queue.size());
+					System.out.println(
+						"Produced 1 object; List size now " + queue.size());
 					if (done) {
 						return;
 					}

@@ -35,15 +35,16 @@ main(int argc, char *argv[]) {
 	}
 
 	/* find the static void main(String[]) method of that class */
-	myMethod = (*myEnv)->GetStaticMethodID(myEnv, myClass, "main", "([Ljava/lang/String;)V");
-	/* MyMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I"); */
+	myMethod = (*myEnv)->GetStaticMethodID(
+		myEnv, myClass, "main", "([Ljava/lang/String;)V");
+	/* myMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I"); */
 	if (myMethod == NULL) {
 		fprintf(stderr, "GetStaticMethodID failed\n");
 		exit(1);
 	}
 
 	/* Since we're calling main, must pass along the command line arguments,
-	 * in the form of Java String array?
+	 * in the form of Java String array
 	 */
 	if ((stringClass = (*myEnv)->FindClass(myEnv, "java/lang/String")) == NULL){
 		fprintf(stderr, "get of String class failed!!\n");

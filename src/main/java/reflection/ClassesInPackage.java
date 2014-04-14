@@ -25,18 +25,23 @@ public class ClassesInPackage {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String[] getPackageContent(String packageName) throws IOException {
+	public static String[] getPackageContent(String packageName)
+		throws IOException {
+
 		final String packageAsDirName = packageName.replace(".", "/");
 		final List<String> list = new ArrayList<>();
 		final Enumeration<URL> urls = 
-				Thread.currentThread().getContextClassLoader().getResources(packageAsDirName);
+				Thread.currentThread().
+				getContextClassLoader().
+				getResources(packageAsDirName);
 		while (urls.hasMoreElements()) {
 			URL url = urls.nextElement();
 			// System.out.println("URL = " + url);
 			String file = url.getFile();
 			switch (url.getProtocol()) {
 			case "file":
-				// This is the easy case! "file" is the full path to the classpath directory
+				// This is the easy case: "file" is 
+				// the full path to the classpath directory
 				File dir = new File(file);
 				for (File f : dir.listFiles()) {
 					list.add(packageAsDirName + "/" + f.getName());
@@ -45,7 +50,8 @@ public class ClassesInPackage {
 			case "jar":
 				// This is the harder case; "file" is of the form
 				// "jar:/home/ian/bleah/darwinsys.jar!com/darwinsys/io"
-				// for some jar file that contains at least one class from the given package.
+				// for some jar file that contains at least one class from 
+				// the given package.
 				int colon = file.indexOf(':');
 				int bang = file.indexOf('!');
 				String jarFileName = file.substring(colon + 1, bang);

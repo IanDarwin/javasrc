@@ -64,9 +64,11 @@ public class RecursiveTaskDemo extends RecursiveTask<Long> {
 			return total;
 		} else {			        // Divide and Conquer    
 			int split = length / 2;
-			RecursiveTaskDemo t1 = new RecursiveTaskDemo(data, start,         split);
+			RecursiveTaskDemo t1 =
+				new RecursiveTaskDemo(data, start,         split);
 			t1.fork();
-			RecursiveTaskDemo t2 = new RecursiveTaskDemo(data, start + split, length - split);
+			RecursiveTaskDemo t2 =
+				new RecursiveTaskDemo(data, start + split, length - split);
 			return t2.compute() + t1.join();
 		}
 	}

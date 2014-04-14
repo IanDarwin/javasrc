@@ -105,7 +105,8 @@ public class ExecDemoNS extends JFrame {
 		Debug.println("trace", "Waiting for process " + pStack.size());
 		try {
 			pStack.peek().waitFor();
-				// wait for process to complete (does not work as expected for Windows programs)
+			// wait for process to complete 
+			// (may not work as expected for some old Windows programs)
 			Debug.println("trace", "Process " + pStack.size() + " is done");
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this,
