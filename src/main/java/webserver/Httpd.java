@@ -62,7 +62,8 @@ public class Httpd {
 		rootDir = wsp.getProperty("rootDir", ".");
 		mimeTypes = 
 			new FileProperties(
-				wsp.getProperty("mimeProperties", "mime.properties"));
+				wsp.getProperty("mimeProperties",
+					"mime.properties"));
 	}
 
 	public void startServer(int portNum) throws Exception {
