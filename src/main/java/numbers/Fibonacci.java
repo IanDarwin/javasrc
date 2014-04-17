@@ -1,24 +1,17 @@
-package numbers;
-
+/**
+ * Fibonacci numbers
+ */
 public class Fibonacci {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i + " --> " + fibonacci(i));
-		}
+		System.out.println(fib(5));
 	}
 
-	public static int fibonacci(int n) {
-		if (n == 0) return 0;
-		if (n == 1) return 1;
-		int[] f = new int[n + 1];
-		f[0] = 0; f[1] = 1;
-		for (int i = 2; i <= n; i++) {
-		   f[i] = f[i - 1] + f[i - 2];
-		}
-		return f[n];
+	public static int fib(int n) {
+		System.out.println( n );
+		if (n == 0) 
+			return 0;
+		if (n == 1)
+			return 1;
+		return n + fib(n - 1);
 	}
 }
