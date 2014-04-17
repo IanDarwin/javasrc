@@ -1,16 +1,16 @@
 package numbers;
 
 /**
- * Fibonacci numbers
+ * Fibonacci numbers - print just the 'n'th Fibonacci number.
  */
 public class Fibonacci {
 
 	private final static boolean debug = false;
 
 	public static void main(String[] args) {
-		int n = args.length > 0 ? Integer.parseInt(args[0]) : 5;
+		int n = args.length > 0 ? Integer.parseInt(args[0]) : 0;
 		try {
-			System.out.println(fibonacci(n));
+			System.out.println(n + "->" + fibonacci(n));
 		} catch (StackOverflowError e) {
 			System.err.println(
 				"Stack overflow; bump mem or reduce number: " + n);
@@ -24,6 +24,6 @@ public class Fibonacci {
 			return 0;
 		if (n == 1)
 			return 1;
-		return n + fibonacci(n - 1);
+		return fibonacci(n - 1) + fibonacci(n - 2);
 	}
 }
