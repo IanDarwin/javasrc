@@ -19,10 +19,12 @@ import javax.swing.SwingUtilities;
 public class MacOsUiHints {
 
 	public static void main(String[] args) throws Exception {
-		// OS X Tester: check that the File Edit View menu appears atop the desktop not the window
+		// OS X Tester: 
+		// check that the File Edit View menu appears atop the desktop not the window
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		// OS X Tester: check that this string appears in the Application Menu.
-		System.setProperty("com.apple.mrj.application.apple.menu.about.name", "MacOsUiHints");
+		System.setProperty("com.apple.mrj.application.apple.menu.about.name",
+			"MacOsUiHints");
 		final MacOsUiHints gui = new MacOsUiHints( );
 		SwingUtilities.invokeAndWait(new Runnable() {
 			@Override

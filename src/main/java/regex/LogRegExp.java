@@ -11,7 +11,8 @@ public class LogRegExp  {
 	public static void main(String argv[]) {
 
 		String logEntryPattern = 
-		"^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
+			"^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+-]\\d{4})\\] " +
+			"\"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
 
 		System.out.println("RE Pattern:");
 		System.out.println(logEntryPattern);

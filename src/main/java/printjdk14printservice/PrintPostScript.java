@@ -49,7 +49,8 @@ public class PrintPostScript {
 
 		InputStream is = getClass().getResourceAsStream(INPUT_FILE_NAME);
 		if (is == null) {
-			throw new NullPointerException("Input Stream is null: file not found?");
+			throw new NullPointerException(
+				"Input Stream is null: file not found?");
 		}
 		Doc doc = new SimpleDoc(is, inputFlavor, null);
 		

@@ -1,1 +1,3 @@
-java -cp $js/target/classes:$HOME/lib/darwinsys-api.jar  netweb.MkIndex src/main/java
+java \
+-cp ./target/classes:../darwinsys-api/target/darwinsys-api-1.0.4-SNAPSHOT.jar \
+netweb.MkIndex src/main/java

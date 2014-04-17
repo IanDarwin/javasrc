@@ -19,7 +19,8 @@ public class JAXPTransform {
 		
 		// Require three input args
 		if (args.length != 3) {
-			System.out.println("Usage: java JAXPTransform inputFile.xml inputFile.xsl outputFile");
+			System.out.println(
+			"Usage: java JAXPTransform inputFile.xml inputFile.xsl outputFile");
 			System.exit(1);
 		}
 		

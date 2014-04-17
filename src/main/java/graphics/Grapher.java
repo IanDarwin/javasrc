@@ -124,7 +124,8 @@ public class Grapher extends JPanel {
 		else {
 			String fileName = args[0];
 			if ("-".equals(fileName)) {
-				data = GraphReader.read(new InputStreamReader(System.in), "System.in");
+				data = GraphReader.read(new InputStreamReader(System.in),
+					"System.in");
 			} else {
 				data = GraphReader.read(fileName);
 			}

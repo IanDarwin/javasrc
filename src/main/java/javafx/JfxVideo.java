@@ -26,7 +26,8 @@ public class JfxVideo extends Application {
 		
 		String url = args.size() > 0 ?
 			args.get(args.size() - 1) :
-				"http://www.mediacollege.com/video-gallery/testclips/20051210-w50s.flv";
+				"http://www.mediacollege.com/" +
+				"video-gallery/testclips/20051210-w50s.flv";
 		Media media = new Media(url);
 				
 		MediaPlayer player = new MediaPlayer(media);

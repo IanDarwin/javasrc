@@ -21,7 +21,8 @@ public class DateConversions {
 		
 		LocalDateTime now = LocalDateTime.now();
 		ZonedDateTime there = now.atZone(ZoneId.of("Canada/Pacific"));
-		System.out.printf("When it's %s here, it's %s in Vancouver%n", now, there);
+		System.out.printf("When it's %s here, it's %s in Vancouver%n", 
+			now, there);
 		// END main
 	}
 }

@@ -24,8 +24,12 @@ public class FNFilter {
 	 */
 	private static class OnlyJava implements FilenameFilter {
 		public boolean accept(File dir, String s) {
-			if (s.endsWith(".java") || s.endsWith(".class") || s.endsWith(".jar"))
+			if (s.endsWith(".java") ||
+				s.endsWith(".class") ||
+				s.endsWith(".jar")) {
+
 				return true;
+			}
 			// others: projects, ... ?
 			return false;
 		}

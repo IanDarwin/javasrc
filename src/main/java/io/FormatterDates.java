@@ -16,7 +16,8 @@ public class FormatterDates {
 		// Format fields directly from a Date object: multiple fields from "1$"
 		// (hard-coded formatting for Date not advisable; see I18N chapter)
 		Date today = Calendar.getInstance().getTime();
-		System.out.printf("Today is %1$tB %1$td, %1$tY%n", today);	// e.g., July 4, 2014
+		// Might print e.g., July 4, 2015:
+		System.out.printf("Today is %1$tB %1$td, %1$tY%n", today);
 	}
 }
 // END main

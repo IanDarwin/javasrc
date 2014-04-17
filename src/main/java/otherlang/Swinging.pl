@@ -16,7 +16,8 @@ $show->show("Just another Perl hacker");            # call method on that object
 eval {
   # Call a method that will call back to Perl;
   # catch exceptions, if any.
-  print "matcher: ", $show->match("Japh", shift || "Java"), " (displayed from Perl)\n";
+  print "matcher: ", $show->match("Japh", shift || "Java"), 
+	" (displayed from Perl)\n";
 };
 if ($@) {
   print STDERR "Caught:", caught($@), "\n";

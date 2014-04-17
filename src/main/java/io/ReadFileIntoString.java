@@ -11,7 +11,9 @@ import java.nio.file.Paths;
  */
 public class ReadFileIntoString {
 	public static void main(String[] args) throws IOException {
-		String content = new String(Files.readAllBytes(Paths.get(args[0])));
-		System.out.printf("Read string of length %d from file %s%n", content.length(), args[0]);
+		String input = 
+			new String(Files.readAllBytes(Paths.get(args[0])));
+		System.out.printf("Read string of length %d from file %s%n",
+			input.length(), args[0]);
 	}
 }

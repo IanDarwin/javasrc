@@ -76,7 +76,8 @@ public class ChatServer {
 	}
 
 	/** 
-	 * The remainder of this file is an inner class that is instantiated to handle each conversation.
+	 * The remainder of this file is an inner class that is
+	 * instantiated once to handle each conversation.
 	 */
 	protected class ChatHandler extends Thread {
 		/** The client socket */
@@ -106,8 +107,8 @@ public class ChatServer {
 			String line;
 			try {
 				/*
-				 * We should stay in this loop as long as the Client remains connected,
-				 * so when this loop ends, we disconnect the client.
+				 * We should stay in this loop as long as the Client remains
+				 * connected, so when this loop ends, we disconnect the client.
 				 */
 				while ((line = is.readLine()) != null) {
 					char c = line.charAt(0);

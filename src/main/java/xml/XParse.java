@@ -39,14 +39,17 @@ public class XParse {
 				if (av[i].equals("-v"))
 					validate = true;
 				else if (av[i].equals("-a")) {
-					// create a SchemaFactory capable of understanding W3C schemas - from the Javadoc page
-					SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+					// "create a SchemaFactory capable of understanding W3C schemas"
+					//   -- from the Javadoc page
+					SchemaFactory schemaFactory = 
+					SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
 					// load the W3c XML schema, represented by a Schema instance
 					String schemaLocation = av[++i];
 					File schemaFile = new File(schemaLocation);
 					if (!schemaFile.exists()) {
-						throw new IOException("Schema location = " + schemaLocation + " does not exist");
+						throw new IOException(
+						"Schema location = " + schemaLocation + " does not exist");
 					}
 					schema = schemaFactory.newSchema(schemaFile);
 					
@@ -54,14 +57,16 @@ public class XParse {
 					File xmlFile = new File(av[i]);
 					System.err.println("Parsing " + xmlFile.getAbsolutePath() + "...");
 					
-					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilderFactory dbFactory = 
+						DocumentBuilderFactory.newInstance();
 					if (validate) {
 						if (schema != null) {
 							dbFactory.setSchema(schema);
 						} else {
 							dbFactory.setValidating(true);
 							dbFactory.setNamespaceAware(true);
-							dbFactory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
+							dbFactory.setAttribute(
+							"http://java.sun.com/xml/jaxp/properties/schemaLanguage",
 									XMLConstants.W3C_XML_SCHEMA_NS_URI);
 						}			
 					}

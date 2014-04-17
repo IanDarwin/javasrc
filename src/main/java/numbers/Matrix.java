@@ -19,7 +19,8 @@ public class Matrix {
 		int m2rows = m2.length;
 		int m2cols = m2[0].length;
 		if (m1cols != m2rows)
-			throw new IllegalArgumentException("matrices don't match: " + m1cols + " != " + m2rows);
+			throw new IllegalArgumentException(
+				"matrices don't match: " + m1cols + " != " + m2rows);
 		int[][] result = new int[m1rows][m2cols];
 
 		// multiply

@@ -145,7 +145,8 @@ public class Appt implements Comparable<Appt> {
     /** compareTo method, from Comparable interface.
      * Compare this Appointment against another, for purposes of sorting.
      * <P>Only text, and date and time participate, not repetition!
-     * (Repetition has to do with recurring events, e.g., "Meeting every Tuesday at 9").
+     * (Repetition has to do with recurring events, e.g., 
+	 *  "Meeting every Tuesday at 9").
      * This methods is consistent with equals().
      * @return -1 if this<a2, +1 if this>a2, else 0.
      */

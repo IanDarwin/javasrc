@@ -1,7 +1,7 @@
 package oo;
 
 /** Demo of a data class that will be used as a JavaBean or as a data
- * class in a Servlet container; making it Serializable allows
+ * class in a Servlet container; marking it as Serializable allows
  * it to be saved ("serialized") to disk or over a network connection.
  */
 // BEGIN main

@@ -27,7 +27,8 @@ public class TreeSetDemo {
 		
 		// Print how many elements are greater than "k"
 		// Should be 2 - "van Gogh" and "Vanguard"
-		System.out.println(theSet.tailSet("k").toArray().length + " elements higher than \"k\"");
+		System.out.println(theSet.tailSet("k").toArray().length + 
+			" elements higher than \"k\"");
 
 		// Print the whole list in sorted order
 		System.out.println("Sorted list:");

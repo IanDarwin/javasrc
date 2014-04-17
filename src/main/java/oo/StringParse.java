@@ -11,7 +11,9 @@ public class StringParse {
 	 * also "passes back" the offset into the String where a
 	 * value was found. Contrived example!
 	 */
-	public static boolean parse(String in, char lookFor, MutableInteger whereFound) {
+	public static boolean parse(String in, char lookFor, 
+		MutableInteger whereFound) {
+
 		int i = in.indexOf(lookFor);
 		if (i == -1)
 			return false;	// not found
@@ -24,7 +26,8 @@ public class StringParse {
 		String text = "Hello, World";
 		char c = 'W';
 		if (parse(text, c, mi)) {
-			System.out.println("Character " + c + " found at offset " + mi + " in " + text);
+			System.out.println("Character " + c + " found at offset " + 
+				mi + " in " + text);
 		} else {
 			System.out.println("Not found");
 		}
