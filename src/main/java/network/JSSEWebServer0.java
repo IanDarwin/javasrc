@@ -3,10 +3,14 @@ package network;
 import java.net.ServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
+// BEGIN main
 /**
  * JSSEWebServer - subclass trivial WebServer0 to make it use SSL.
+ * N.B. You MUST have set up a server certificate (see the
+ * accompanying book text), or you will get the dreaded
+ * javax.net.ssl.SSLHandshakeException: no cipher suites in common
+ * (because without it JSSE can't use any of its built-in ciphers!).
  */
-// BEGIN main
 public class JSSEWebServer0 extends WebServer0 {
 
 	public static final int HTTPS = 8443;
