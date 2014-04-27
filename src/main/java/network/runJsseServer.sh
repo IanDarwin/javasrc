@@ -15,8 +15,10 @@ fi
 # For demo purposes you can put the self-signed certificate password here:
 KEYSTOREPASS=secrit
 
+# Now run it. The classpath setting assumes you built 
+# with Maven or Eclipse, or compiled in '.' with javac.
 java \
 	-Djavax.net.ssl.keyStore=${KEYSTOREFILE} \
 	-Djavax.net.ssl.keyStorePassword=${KEYSTOREPASS} \
-	-classpath $js/target/classes:. \
+	-classpath ../../../../target/classes:../../../../build:. \
 		network.JSSEWebServer0
