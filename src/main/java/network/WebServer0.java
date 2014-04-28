@@ -26,6 +26,8 @@ public class WebServer0 {
 	public static final int HTTP = 80;
 	public static final String CRLF = "\r\n";
 	ServerSocket s;
+	static final String VIEW_SOURCE_URL =
+	  "https://github.com/IanDarwin/javasrc/tree/master/src/main/java/network";
 
 	/**
 	 * Main method, just creates a server and call its runServer().
@@ -84,8 +86,8 @@ public class WebServer0 {
 				"<p>You have reached a desktop machine " +
 				"that does not run a real Web service.\n" +
 				"<p>Please pick another system!</p>\n" +
-				"<p>Or view <A HREF=\"http://www.darwinsys.com/java/server.html\">" +
-				"the WebServer0 source (at the Authors Web Site)</A>.</p>\n" +
+				"<p>Or view <a href=\"" + VIEW_SOURCE_URL + "\">" +
+				"the WebServer0 source on github</a>.</p>\n" +
 				"<hr/><em>Java-based WebServer0</em><hr/>\n" +
 				"</html>\n";
 			os.print("Content-length: " + 
