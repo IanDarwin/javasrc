@@ -1,0 +1,11 @@
+== Networking Demos
+
+This directory has a pile of useful/interesting stuff, including:
+
+* WebServer0, a very basic web server
+* JsseWebServer0, a subclass that just adds SSL/TLS encryption
+  (note that you MUST provide the keystore; see runJsseServer.sh!!).
+* Several other network protocol clients and servers.
+
+You can read about some of these in the third edtion of the
+Java Cookbook (see http://javacook.darwinsys.com/).
