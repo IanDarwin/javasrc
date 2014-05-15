@@ -2,6 +2,8 @@
 
 # Histogram the data for Java Cookbook recipe "Better Random Numbers"
 
+# Be sure you have run "Random4" in this directory before running this script
+
 # Original by Ian Darwin, re-created by Benjamin Darwin
 
 # BEGIN main
