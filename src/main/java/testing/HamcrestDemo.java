@@ -16,7 +16,7 @@ public class HamcrestDemo {
 		String f = p.getFullName();
 		assertThat(f, containsString("Ian"));
 		assertThat(f, equalTo("Ian Darwin"));
-		assertThat(f, not(containsString("/"))); // contrived, just to show syntax
+		assertThat(f, not(containsString("/"))); // contrived, to show syntax
 	}
 }
 // END main
