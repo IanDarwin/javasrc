@@ -10,8 +10,7 @@ import javax.swing.JFrame;
 /**
  * ThreadBasedCatcher - Demonstrate catching uncaught exceptions 
  * thrown in an unrelated Thread.
- * @author ian
- * @verion $Id$
+ * @author Ian Darwin
  */
 // BEGIN main
 public class ThreadBasedCatcher extends JFrame{
