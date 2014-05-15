@@ -19,7 +19,7 @@ public class ArrayListDemo {
 		al.add(source.getDate());
 		al.add(source.getDate());
 
-		// Print them out using a for loop.
+		// Print them out using old-style for loop to index number.
 		System.out.println("Retrieving by index:");
 		for (int i = 0; i<al.size(); i++) {
 			System.out.println("Element " + i + " = " + al.get(i));
