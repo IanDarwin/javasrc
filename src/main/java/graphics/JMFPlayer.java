@@ -84,7 +84,7 @@ public class JMFPlayer extends JPanel implements ControllerListener {
 			if ((controlComponent =
 				thePlayer.getControlPanelComponent()) != null)
 					cp.add(BorderLayout.SOUTH, controlComponent);
-			// re-size the main window
+			// resize the main window
 			if (parentFrame != null) {
 				parentFrame.pack();
 				parentFrame.setTitle(mediaName);

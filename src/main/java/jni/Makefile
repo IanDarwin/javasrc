@@ -6,8 +6,6 @@
 # let me know how much! :-)
 # Ian Darwin, http://www.darwinsys.com
 
-# $Id$
-
 # Configuration Section
 
 CFLAGS_FOR_SO = -G # Solaris

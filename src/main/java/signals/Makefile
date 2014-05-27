@@ -1,8 +1,6 @@
 # Makefile for Ian Darwin's JNI-based LibSignal
 # Ian Darwin, http://www.darwinsys.com/, http://www.darwinsys.com
 
-# $Id$
-
 # Configuration Section
 
 CSRCS		= libsignal.c

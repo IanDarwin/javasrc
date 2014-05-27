@@ -24,7 +24,7 @@ public class Sender {
 	/** The message body */
 	protected String message_body =
 		"I am unable to attend to your message, as I am busy sunning " +
-		"myself on the beach in Maui, where it is warm and peaceful ." +
+		"myself on the beach in Maui, where it is warm and peaceful." +
 		"Perhaps when I return I'll get around to reading your mail. " +
 		"Or not.";
 

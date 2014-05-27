@@ -29,7 +29,7 @@ public class AllClasses {
 class AnotherClass {					// <3>
 	// methods and fields here...
 	AnotherClass() {
-		// Inner class from above can not be used here, of course
+		// Inner class from above cannot be used here, of course
 		// Data d = new Data();	// EXPECT COMPILE ERROR
 	}
 }

@@ -31,7 +31,7 @@ public class FormatterDemo {
 
 		// A shorter way using PrintStream/PrintWriter.format, more in line with
 		// other languages. But this way you must provide the newline delimiter 
-		// using %n (do NOT use \n as that is platform-dependant!).
+		// using %n (do NOT use \n as that is platform-dependent!).
 		System.out.printf("%04d - the year of %f%n", 1956, Math.PI);
 
 		// Format doubles with more control

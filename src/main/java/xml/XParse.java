@@ -55,7 +55,8 @@ public class XParse {
 					
 				} else {
 					File xmlFile = new File(av[i]);
-					System.err.println("Parsing " + xmlFile.getAbsolutePath() + "...");
+					System.err.println(
+						"Parsing " + xmlFile.getAbsolutePath() + "...");
 					
 					DocumentBuilderFactory dbFactory = 
 						DocumentBuilderFactory.newInstance();

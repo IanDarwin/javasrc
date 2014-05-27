@@ -14,7 +14,6 @@ import java.util.zip.ZipFile;
  * UnZip -- print or unzip a JAR or PKZIP file using java.util.zip.
  * Command-line version: extracts files.
  * @author	Ian Darwin, Ian@DarwinSys.com
- * $Id$
  */
 // BEGIN main
 public class UnZip {
@@ -92,7 +91,7 @@ public class UnZip {
 				zipName = zipName.substring(1);
 			}
 			// if a directory, just return. We mkdir for every file,
-			// since some widely-used Zip creators don't put out
+			// since some widely used Zip creators don't put out
 			// any directory entries, or put them in the wrong place.
 			if (zipName.endsWith("/")) {
 				return;

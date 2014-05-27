@@ -10,7 +10,7 @@ public class WolfInStringsClothing
 	public void setCharAt(int index, char newChar) {
 		// The implementation of this method
 		// would be left as an exercise for the reader.
-		// Hint: compile this code exactly as-is before bothering!
+		// Hint: compile this code exactly as is before bothering!
 	}
 }
 // END main

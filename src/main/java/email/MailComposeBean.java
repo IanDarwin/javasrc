@@ -98,7 +98,7 @@ public class MailComposeBean extends JPanel {
 
 
 		// Top is a JPanel for name, address, etc.
-		// Centre is the TextArea.
+		// Center is the TextArea.
 		// Bottom is a panel with Send and Cancel buttons.
 		JPanel tp = new JPanel();
 		tp.setLayout(new GridLayout(3,2));
@@ -119,7 +119,7 @@ public class MailComposeBean extends JPanel {
 		tp.add(new JLabel("Cc: ", JLabel.RIGHT));
 		tp.add(tfs[CC] = ccTF = new JTextField(35));
 
-		// Centre is the TextArea
+		// Center is the TextArea
 		cp.add(BorderLayout.CENTER, msgText = new JTextArea(70, 10));
 		msgText.setBorder(BorderFactory.createTitledBorder("Message Text"));
 

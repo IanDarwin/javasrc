@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 // BEGIN main
 /**
  * Interactive test for "macosui" package.
- * Class can not extend JFrame; must set properties before first
+ * Class cannot extend JFrame; must set properties before first
  * call to any Swing constructor.
  */
 public class MacOsUiHints {

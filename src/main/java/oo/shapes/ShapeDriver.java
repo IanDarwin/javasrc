@@ -10,7 +10,7 @@ public class ShapeDriver {
 	Collection<Shape> allShapes;	// created in a Constructor, not shown
 
 	/** Iterate over all the Shapes, getting their areas;
-	 * this can not use the Java 8 Collection.forEach because the
+	 * this cannot use the Java 8 Collection.forEach because the
 	 * variable total would have to be final, which would defeat the purpose :-) 
 	 */
 	public double totalAreas() {

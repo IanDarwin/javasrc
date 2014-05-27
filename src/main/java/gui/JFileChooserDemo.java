@@ -20,7 +20,7 @@ public class JFileChooserDemo extends JPanel {
 		final JFrame frame = f;
 		final JFileChooser chooser = new JFileChooser();
 
-		// If want the user to select only directories, use this.
+		// If you want the user to select only directories, use this.
 		// Default is to allow selection of files only.
 		// Note if you set the selection mode to DIRECTORIES_ONLY,
 		// it no longer displays any files, even with the file view.
