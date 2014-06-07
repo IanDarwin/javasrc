@@ -105,7 +105,7 @@ public class PSFormatter {
 			startPage();
 	}
 
-	/** Overly-simplistic conversion to PS, e.g., breaks on "foo\)bar" */
+	/** Overly simplistic conversion to PS, e.g., breaks on "foo\)bar" */
 	protected String toPSString(String o) {
 		StringBuilder sb = new StringBuilder();
 		for (int i=0; i<o.length(); i++) {

@@ -22,7 +22,7 @@ public class SimpleCalcScanner {
 	/** The variable name (not used in this version) */
 	protected String variable;
 
-	/** The operand stack; no operators are pushed, so it can be a stack of Doubl */
+	/** The operand stack; no operators are pushed, so it can be a stack of Double */
 	protected Stack<Double> s = new Stack<>();
 
 	/* Driver - main program */

@@ -9,7 +9,8 @@ import di.View;
 public class Controller {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext( "di.spring");
+		ApplicationContext ctx = 
+			new AnnotationConfigApplicationContext( "di.spring");
 		View v = ctx.getBean("myView", View.class);
 		v.displayMessage();
 	}

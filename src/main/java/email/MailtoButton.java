@@ -102,7 +102,7 @@ public class MailtoButton extends Applet {
 		add(b);
 	}
 	
-	/** Give Parameter info the the AppletViewer, just for those
+	/** Give Parameter info to the AppletViewer, just for those
 	 * writing HTML without hardcopy documentation :-)
 	 */
 	public String[][] getParameterInfo() {

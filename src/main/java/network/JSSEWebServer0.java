@@ -17,7 +17,8 @@ public class JSSEWebServer0 extends WebServer0 {
 	
 	public static void main(String[] args) throws Exception {
 		if (System.getProperty("javax.net.ssl.keyStore") == null) {
-			System.err.println("You need to pass in a keystore via -D; see the documentation!");
+			System.err.println(
+				"You must pass in a keystore via -D; see the documentation!");
 			System.exit(1);
 		}
 		System.out.println("DarwinSys JSSE Server 0.0 starting...");

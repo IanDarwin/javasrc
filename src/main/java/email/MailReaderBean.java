@@ -17,8 +17,7 @@ import javax.swing.event.TreeSelectionListener;
 
 /**
  * Display a mailbox or mailboxes.
- * This is the generic version in javasrc/email, split off from
- * the largely-defunct JabaDex for self-contained use.
+ * This is a generic GUI component for displaying email.
  */
 public class MailReaderBean extends JSplitPane {
 
