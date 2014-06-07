@@ -39,6 +39,8 @@ public class StrTokDemo4 {
 			System.out.println("Output " + s + " was: " + s);
 	}
 
+	// Should be a JUnit test but is referred to in the book text,
+	// so I can't move it to "tests" until the next edit.
 	public static void main(String[] a) {
 		printResults("A|B|C|D", process("A|B|C|D"));
 		printResults("A||C|D", process("A||C|D"));
