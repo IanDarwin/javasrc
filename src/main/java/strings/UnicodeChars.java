@@ -18,7 +18,9 @@ public class UnicodeChars {
 		b.append('\u03A9');	// GREEK Capital Omega
 
 		for (int i=0; i<b.length(); i++) {
-			System.out.println("Character #" + i + " is " + b.charAt(i));
+			System.out.printf(
+				"Character #%d (%04x) is %c%n",
+				i, (int)b.charAt(i), b.charAt(i));
 		}
 		System.out.println("Accumulated characters are " + b);
 		// END main
