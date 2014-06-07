@@ -7,6 +7,7 @@ package strings;
 public class UnicodeChars {
 	public static void main(String[] argv) {
 		// BEGIN main
+		// UnicodeChars.java
 		StringBuffer b = new StringBuffer();
 		for (char c = 'a'; c<'d'; c++) {
 			b.append(c);
