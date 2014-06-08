@@ -22,18 +22,29 @@ public class NumSeries {
             System.out.println("i = " + i);
         }
 
-        // For a discontiguous set of integers, try a BitSet
+        
+        // A discontiguous set of integers, using a BitSet
 
         // Create a BitSet and turn on a couple of bits.
         BitSet b = new BitSet();
         b.set(0);    // January
         b.set(3);    // April
+        b.set(8);    // September
 
         // Presumably this would be somewhere else in the code.
         for (int i = 0; i<months.length; i++) {
             if (b.get(i))
-                System.out.println("Month " + months[i] + " requested");
+                System.out.println("Month " + months[i]);
         }
+
+		// Same example but shorter:
+        // a discontiguous set of integers, using an array
+		int[] numbers = {0, 3, 8};
+
+        // Presumably this would be somewhere else in the code.
+		for (int n : numbers) {
+			System.out.println("Month: " + months[n]);
+
     }
     /** The names of the months. See Dates/Times chapter for a better way */
     protected static String months[] = {
