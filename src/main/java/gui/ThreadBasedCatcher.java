@@ -7,14 +7,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import com.darwinsys.swingui.ErrorUtil;
+
 /**
  * ThreadBasedCatcher - Demonstrate catching uncaught exceptions 
  * thrown in an unrelated Thread.
  * @author Ian Darwin
  */
-// BEGIN main
 public class ThreadBasedCatcher extends JFrame{
+	private final boolean gui = true;
 
+	// BEGIN main
+	// gui/ThreadBasedCatcher.java
 	public static void main(String[] args) {
 		new Thread(new Runnable() {
 			public void run() {
@@ -35,6 +39,12 @@ public class ThreadBasedCatcher extends JFrame{
 		Thread.setDefaultUncaughtExceptionHandler(
 				new Thread.UncaughtExceptionHandler(){
 					public void uncaughtException(Thread t, Throwable ex){
+						// END main
+						if (gui) {
+							ErrorUtil.showExceptions(
+								ThreadBasedCatcher.this, ex);
+						}
+						// BEGIN main
 						System.out.println(
 							"You crashed thread " + t.getName());
 						System.out.println(
