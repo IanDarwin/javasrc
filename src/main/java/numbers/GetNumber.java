@@ -49,7 +49,7 @@ public class GetNumber extends Frame {
 				System.out.println("It's a double: " + dValue);
 				return Double.valueOf(dValue);
 			} catch (NumberFormatException e) {
-				System.out.println("Invalid a double: " + s);
+				System.out.println("Invalid double: " + s);
 				return NAN;
 			}
 		} else // did not contain . d e or f, so try as int.
