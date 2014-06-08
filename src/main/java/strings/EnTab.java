@@ -23,8 +23,6 @@ public class EnTab {
 
 	/**
 	 * Delegate tab spacing information to tabs.
-	 * 
-	 * @return
 	 */
 	public int getTabSpacing() {
 		return tabs.getTabSpacing();
