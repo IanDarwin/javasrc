@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <machine/endian.h>
 
-const off_t OFFSET = 1234;
+const off_t OFFSET = 1234;	// off_t is a C "typedef", usually == long integer
 const char* FILENAME = "random.dat";
 const int MODE = 0644;
 const char* MESSAGE = "Ye have sought, and ye have found!\r\n";
