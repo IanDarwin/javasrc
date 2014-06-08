@@ -1,21 +1,18 @@
 package database.jdbc;
 
-import javax.sql.rowset.CachedRowSet;
+import javax.sql.RowSet;
+import javax.sql.rowset.RowSetFactory;
+import javax.sql.rowset.RowSetProvider;
 
 /** Demonstrate simple use of the CachedRowSet.
- * The RowSet family of interfaces is in JDK1.5, but the Implementation
- * classes are (as of Beta 1) still in the unsupported "com.sun" package.
  */
 // BEGIN main
 public class CachedRowSetDemo {
-	public static final String ROWSET_IMPL_CLASS = "com.sun.rowset.CachedRowSetImpl";
 	public static void main(String[] args) throws Exception {
-		CachedRowSet rs;
+		RowSet rs;
 
-		// Create the class with class.forName to avoid importing
-		// from the unsupported com.sun packages.
-		Class<?> c = Class.forName(ROWSET_IMPL_CLASS);
-		rs = (CachedRowSet)c.newInstance();
+		RowSetFactory rsFactory = RowSetProvider.newFactory();
+	    rs = rsFactory.createJdbcRowSet();
 
 		rs.setUrl("jdbc:postgresql:tmclub");
 		rs.setUsername("ian");
@@ -38,7 +35,7 @@ public class CachedRowSetDemo {
 
 				// This additional call tells the CachedRowSet to connect
 				// to its database and send the updated data back.
-				rs.acceptChanges();
+				rs.updateRow();
 			}
 		}
 	
