@@ -12,7 +12,7 @@ public class CachedRowSetDemo {
 		RowSet rs;
 
 		RowSetFactory rsFactory = RowSetProvider.newFactory();
-	    rs = rsFactory.createJdbcRowSet();
+	    rs = rsFactory.createCachedRowSet();
 
 		rs.setUrl("jdbc:postgresql:tmclub");
 		rs.setUsername("ian");
