@@ -1,6 +1,6 @@
 package domain;
 
-import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +33,6 @@ public class Person {
 		this.id = id;
 	}
 	
-	@Basic
 	public String getFirstName() {
 		return firstName;
 	}
@@ -42,7 +41,7 @@ public class Person {
 		this.firstName = firstName;
 	}
 
-	@Basic
+	@Column(name="surname")
 	public String getLastName() {
 		return lastName;
 	}
