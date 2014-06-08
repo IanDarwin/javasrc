@@ -44,7 +44,7 @@ public class NumSeries {
         // Presumably this would be somewhere else in the code.
 		for (int n : numbers) {
 			System.out.println("Month: " + months[n]);
-
+		}
     }
     /** The names of the months. See Dates/Times chapter for a better way */
     protected static String months[] = {
