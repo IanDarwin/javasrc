@@ -90,9 +90,10 @@ public class Complex {
 	/* Compare this Complex number with another
 	 */
 	public boolean equals(Object o) {
-		if (!(o instanceof Complex))
+		if (o.getClass() != Complex.class) {
 			throw new IllegalArgumentException(
 					"Complex.equals argument must be a Complex");
+		}
 		Complex other = (Complex)o;
 		return r == other.r && i == other.i;
 	}
@@ -100,7 +101,7 @@ public class Complex {
 	/* Generate a hashCode; not sure how well distributed these are.
 	 */
 	public int hashCode() {
-		return (int)( r) |  (int)i;
+		return (int)(r) |  (int)i;
 	}
 }
 // END main
