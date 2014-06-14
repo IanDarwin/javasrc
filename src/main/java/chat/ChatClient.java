@@ -135,7 +135,7 @@ public class ChatClient extends JFrame {
 			pw = new PrintWriter(sock.getOutputStream(), true);
 			showStatus("Got socket");
 
-			// FAKE LOGIN FOR NOW - no password neede
+			// FAKE LOGIN FOR NOW - no password needed
 			pw.println(ChatProtocol.CMD_LOGIN + userName);
 
 			loggedIn = true;
