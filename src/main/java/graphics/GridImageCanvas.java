@@ -1,12 +1,25 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.LayoutManager;
+import java.awt.MediaTracker;
+import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
 /**
  * GridImageCanvas - a rectangular grid of images
+ * XXX ToDo: scale images if size doesn't fit the window.
  */
 public class GridImageCanvas extends JPanel {
 
@@ -14,9 +27,9 @@ public class GridImageCanvas extends JPanel {
 	/** The LayoutManager. We provide it, not the user */
 	protected LayoutManager lm = null;
 	/** The list of Images */
-	protected Vector<Image> vi = new Vector<Image>();
+	protected List<Image> vi = new Vector<Image>();
 	/** The name of each Image */
-	protected Vector<String> vs = new Vector<String>();
+	protected List<String> vs = new Vector<String>();
 	/** The Panel, to manage the grid */
 	protected Panel grid;
 	/** The label, for showStatus */
@@ -37,17 +50,11 @@ public class GridImageCanvas extends JPanel {
 		System.out.println("GridImageCanvas demo starting...");
 		if (argv.length == 0)
 			throw new IllegalArgumentException("Usage: GridImageCanvas image...");
-		final Frame f = new Frame("GridImageCanvas");
+		final JFrame f = new JFrame("GridImageCanvas");
 		f.setLayout(new FlowLayout());
-        f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				f.setVisible(false);
-				f.dispose();
-				System.exit(0);
-			}
-		});
-		GridImageCanvas gic;
-		f.add(gic = new GridImageCanvas());
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GridImageCanvas gic = new GridImageCanvas();
+		f.add(gic);
 		for (int i=0; i<argv.length; i++) {
 			Image im = Toolkit.getDefaultToolkit().getImage(argv[i]);
 			gic.addImage(im, argv[i]);
@@ -58,9 +65,10 @@ public class GridImageCanvas extends JPanel {
 	}
 
 	public void addImage(Image i, String s) {
-		vi.addElement(i);
-		vs.addElement(s);
+		vi.add(i);
+		vs.add(s);
 	}
+
 	/** We do all the Layout setup here, then call Panel.doLayout() */
 	public void doLayout() {
 		// doLayout called more than once?
@@ -85,8 +93,7 @@ public class GridImageCanvas extends JPanel {
 		// System.out.println("N="+l+";sqrt="+d+";gridLayout("+w+","+w+");");
 		grid.setLayout(lm = new GridLayout(w, w));
 		for (int i=0; i<l; i++) {
-			ImageCanvas ic = new ImageCanvas((Image)vi.elementAt(i),
-					(String)vs.elementAt(i));
+			ImageCanvas ic = new ImageCanvas((Image)vi.get(i), (String)vs.get(i));
 			grid.add(ic);
 		}
 		super.doLayout();
