@@ -14,7 +14,7 @@ import org.junit.Test;
 public class EnumIntlTest_es {
 	
 	@BeforeClass
-	public void setupLocale() {
+	public static void setupLocale() {
 		// This must happen BEFORE the first
 		// reference to the EnumIntl class
 		Locale.setDefault(new Locale("es"));

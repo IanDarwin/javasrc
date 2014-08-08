@@ -7,8 +7,9 @@ public enum EnumIntl {
 	EAST,
 	SOUTH,
 	WEST;
+	
 	static {
-		final String PROPS = "/i18n.EnumIntl";
+		final String PROPS = "EnumIntl";
 		try {
 			ResourceBundle b = ResourceBundle.getBundle(PROPS);
 			for (EnumIntl e : values()) {
