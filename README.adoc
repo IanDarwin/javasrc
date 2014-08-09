@@ -1,14 +1,24 @@
 = JavaCook Source Files (javasrc)
 
-*You MUST HAVE Java 8 to successfully compile this whole package.*
+* You MUST HAVE Java 8 to successfully compile this whole package.
 
-. This is now being built for Java 7 & 8. Sorry if you are on some relic
-platform that doesn't have Java 7 or some environment in which Java 7 is
-not yet "approved", but the world has moved on; Java 6 is a relic, is
-deprecated, and has been EOL'd by Oracle. I am updating the Cookbook
-for Java 8 as you read this; Java 7 is now the minimum. You can probably
-get by with a huge excludes list, but you're on your own if you do that.
-Sorry, but the world keeps moving so the target has to keep moving.
+* Building with Eclipse tested with Eclipse 4.3; MUST HAVE "m2e" (free in the Eclipse Marketplace)
+	Compiles and most tests pass; those with Hamcrest fail for me due to an obscure conflict:
+	java.lang.SecurityException: class "org.hamcrest.Matchers"'s signer information does not 
+		match signer information of other classes in the same package
+
+* Building with Maven 3.x works and all tests pass.
+
+* Building with other platforms? Good luck, but let me know if it works.
+
+. This is now built for Java 8. Sorry if you are on some relic
+platform that doesn't have Java 8 or some environment in which Java 8 is not
+yet "approved", but the world has moved on; Java 6 is a relic, is
+deprecated, and has been EOL'd by Oracle. "He's dead, Jim." Java 7 is on
+life support; Java 8 is current.  I have updated the Java Cookbook for Java
+8 and these files are the examples for that book.  You might be able to
+compile for Java 7 with a large excludes list, but you're on your own if you
+do that. "Always in motion the Java is."
 
 . This project has been reorganized so that the source is in the
 subdirectory _src/main/java_, where most *modern* tools
