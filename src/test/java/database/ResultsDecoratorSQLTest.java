@@ -7,12 +7,12 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 import javax.sql.rowset.WebRowSet;
+import javax.sql.rowset.RowSetFactory;
+import javax.sql.rowset.RowSetProvider;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import com.sun.rowset.WebRowSetImpl;
 
 /**
  * ResultsDecoratorSQLTest
@@ -25,7 +25,8 @@ public class ResultsDecoratorSQLTest {
 	@Before
 	public void setUp() throws Exception {
 
-		testData= new WebRowSetImpl();
+		RowSetFactory rsFactory = RowSetProvider.newFactory();
+	    testData = rsFactory.createWebRowSet();
 		final InputStream dataStream = getClass().getResourceAsStream(TEST_FILE);
 		if (dataStream == null) {
 			throw new RuntimeException("Could not load " + TEST_FILE);
