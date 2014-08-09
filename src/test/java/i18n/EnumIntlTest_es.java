@@ -4,20 +4,30 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/** Because of static/classloader issues, this
- * MUST RUN IN ITS OWN JVM, not in a test suite!
+/**
+ * Tests an internationalized enum with
+ * a non-default language.
  * @author Ian
  */
 public class EnumIntlTest_es {
+	
+	static Locale savedLocale;
 	
 	@BeforeClass
 	public static void setupLocale() {
 		// This must happen BEFORE the first
 		// reference to the EnumIntl class
-		Locale.setDefault(new Locale("es"));
+		savedLocale = Locale.getDefault();
+		Locale.setDefault(Locale.forLanguageTag("es"));
+	}
+	
+	@AfterClass
+	public static void resetLocale() {
+		Locale.setDefault(savedLocale);
 	}
 	
 	@Test
