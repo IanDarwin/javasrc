@@ -41,6 +41,9 @@ import java.util.Map;
  */
 @Deprecated
 public abstract class TypesafeEnum implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	/** The name of this class, set in constructor. */
 	protected String className;
 	/** The value of this instance */
@@ -80,7 +83,7 @@ public abstract class TypesafeEnum implements Serializable {
 	 * @throws IllegalArgumentException if the input is not one of the valid values.
 	 */
 	public static TypesafeEnum getValueOf(String klass, String val) {
-		List l = getList(klass);
+		List<TypesafeEnum> l = getList(klass);
 		for (int i = 0; i < l.size(); i++) {
 			TypesafeEnum e = (TypesafeEnum)l.get(i);
 			if (e.value.equals(val))	{

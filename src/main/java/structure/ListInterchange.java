@@ -3,6 +3,7 @@ package structure;
 import java.util.List;
 
 public class ListInterchange {
+	@SuppressWarnings({"rawtypes","unchecked"})
 	public static void interchange(List list, int i, int j) {
 		if (i == j) {
 			throw new IllegalArgumentException("i and j must differ");

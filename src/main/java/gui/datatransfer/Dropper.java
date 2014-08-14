@@ -19,6 +19,8 @@ import javax.swing.TransferHandler;
  */
 public class Dropper extends JFrame {
 
+	private static final long serialVersionUID = 4609632168673792774L;
+
 	/**
 	 * Construct trivial GUI and connect a TransferHandler to it.
 	 */
@@ -40,6 +42,11 @@ public class Dropper extends JFrame {
 
 /** Non-public class to handle filename drops */
 class MyFileTransferHandler extends TransferHandler {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see javax.swing.TransferHandler#canImport(javax.swing.JComponent,
@@ -78,8 +85,9 @@ class MyFileTransferHandler extends TransferHandler {
 				if (flavor.equals(DataFlavor.javaFileListFlavor)) {
 					System.out.println("importData: FileListFlavor");
 
+					@SuppressWarnings("unchecked")
 					List<File> listOfFiles = 
-						(List) t.getTransferData(DataFlavor.javaFileListFlavor);
+						(List<File>) t.getTransferData(DataFlavor.javaFileListFlavor);
 					for (File file : listOfFiles) {
 						System.out.println("GOT FILE: " + file.getCanonicalPath());
 						// Now do something with the file...

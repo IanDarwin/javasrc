@@ -55,7 +55,7 @@ public class JDOMDemo {
 		
 		DOMOutputter domOutputter = new DOMOutputter();
 		
-		org.w3c.dom.Document domElement = domOutputter.output(jdomDocument);
+		domOutputter.output(jdomDocument);
 	}
 
 	/**
@@ -80,9 +80,8 @@ public class JDOMDemo {
 	public static void demo(Element element) {
 		System.out.println("Element " + element);
 
-		List attributes = element.getAttributes();
-		List children = element.getContent();
-		Iterator iterator = children.iterator();
+		List<?> children = element.getContent();
+		Iterator<?> iterator = children.iterator();
 		while (iterator.hasNext()) {
 			Object o = iterator.next();
 			if (o instanceof Element) {

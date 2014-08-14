@@ -36,7 +36,8 @@ public class GetURLs {
 			"http://localhost/" : argv[0];
 		GetURLs gu = new GetURLs(theURL);
 		gu.reader.setWantedTags(GetURLs.wantTags);
-		List urls = gu.reader.readTags();
+		List<Element> urls = gu.reader.readTags();
+		// These are XML elements that contain URLs, not URL objects
 		for (Object url : urls) {
 			System.out.println(url);
 		}

@@ -9,7 +9,7 @@ public class JOptionStringAndComboBox {
 	public static void main(String[] args) {
 		
 		String[] strings = { "OK" };
-		JComboBox combo = new JComboBox();
+		JComboBox<String> combo = new JComboBox<>();
 		Object[] data = { "Choose One", combo };
 		combo.addItem("One");
 		combo.addItem("Two");

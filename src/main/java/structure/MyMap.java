@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 /** A simple Map implementation, implemented in terms of a
@@ -91,7 +92,9 @@ public class MyMap<K,V> implements Map<K,V> {
 	}
 
 	/** Put all the pairs from oldMap into this map */
-	public void putAll(Map oldMap) {
+	@Override
+	public void putAll(@SuppressWarnings("rawtypes") Map oldMap) {
+		@SuppressWarnings("unchecked")
 		Iterator<K> keysIter = oldMap.keySet().iterator();
 		while (keysIter.hasNext()) {
 			Object k = keysIter.next();
@@ -125,6 +128,7 @@ public class MyMap<K,V> implements Map<K,V> {
 
 	/** The Map.Entry objects contained in the Set returned by entrySet().
 	 */
+	@SuppressWarnings("rawtypes")
 	private class MyMapEntry implements Map.Entry<K,V>, Comparable {
 		private K key;
 		private V value;
@@ -137,6 +141,7 @@ public class MyMap<K,V> implements Map<K,V> {
 		public V setValue(V nv) {
 			throw new UnsupportedOperationException("setValue");
 		}
+		@SuppressWarnings("unchecked")
 		public int compareTo(Object o2) {
 			// if (!(o2 instanceof MyMapEntry))
 			// 	throw new IllegalArgumentException(
@@ -165,8 +170,8 @@ public class MyMap<K,V> implements Map<K,V> {
 	 * NOT guaranteed fully to implement the contract of entrySet
 	 * declared in java.util.Map.
 	 */
-    @SuppressWarnings("unchecked")
-	public java.util.Set entrySet() {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public Set entrySet() {
 		if (keys.size() != values.size())
 			throw new IllegalStateException(
 				"InternalError: keys and values out of sync");

@@ -2,6 +2,8 @@ package structure;
 
 // BEGIN main
 public class MyStackDemo {
+	
+	@SuppressWarnings({"rawtypes","unchecked"})
 	public static void main(String[] args) {
 		MyStack<String> ms1 = new MyStack<>();
 		ms1.push("billg");
