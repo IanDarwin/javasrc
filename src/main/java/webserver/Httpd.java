@@ -13,7 +13,6 @@ import com.darwinsys.util.FileProperties;
  * NO SECURITY. ALMOST NO CONFIGURATION. NO CGI. NO SERVLETS.
  *<p>
  * This version is threaded. I/O is done in Handler.
- * @version $Id$
  */
 public class Httpd {
 	/** The default port number */
