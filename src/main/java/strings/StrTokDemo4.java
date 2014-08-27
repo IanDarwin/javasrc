@@ -2,7 +2,9 @@ package strings;
 
 import java.util.StringTokenizer;
 
-/** Show using a StringTokenizer including getting the delimiters back */
+/** Show using a StringTokenizer including getting the delimiters back.
+ * StringTokenizer is "discouraged" in new code, but not yet deprecated.
+ */
 // BEGIN main
 public class StrTokDemo4 {
 	public final static int MAXFIELDS = 5;
