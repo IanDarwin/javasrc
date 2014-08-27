@@ -4,8 +4,7 @@ import java.util.StringTokenizer;
 
 /** 
  * Given the problem of "I have a String with a fixed number of
- * Integers in it, how do I extract them?". Here's my best
- * readable solution.
+ * Integers in it, how do I extract them?". Here's one solution.
  * Note that StringTokenizer is "discouraged" in new code, but not yet deprecated.
  * See StringSplitInts for a better example!
  */
