@@ -1,0 +1,2 @@
+This directory must exist for maven-eclipse, but git clone will ignore empty
+directories, so this dummy file ensures that the directory exists.

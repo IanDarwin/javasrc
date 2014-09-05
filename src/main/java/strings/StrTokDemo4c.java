@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /** Show using a StringTokenizer including getting the delimiters back
+ * StringTokenizer is "discouraged" in new code, but not yet deprecated.
  * This final version returns a List instead of converting to an array.
  */
 public class StrTokDemo4c {

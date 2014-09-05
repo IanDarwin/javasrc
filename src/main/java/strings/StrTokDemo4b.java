@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-/** Show using a StringTokenizer including getting the delimiters back */
+/** Show using a StringTokenizer including getting the delimiters back.
+ * StringTokenizer is "discouraged" in new code, but not yet deprecated.
+ */
 public class StrTokDemo4b {
 	/** The delimiter used between fields on input. */
 	public final static String DELIM = "|";
