@@ -1,13 +1,27 @@
 package lang;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /** This actually proves that array equals() methods do NOT work
  */
 public class ArrayEqualsWorks {
 
-	@Test
+	public static void main(String[] args) {
+		ArrayEqualsWorks p = new ArrayEqualsWorks();
+		p.testObjectArrayEquals();
+		p.testIntArrayEquals();
+		p.testByteArrayEquals();
+		p.testCharArrayEquals();
+		System.out.println("Q.E.D.");
+	}
+
+	/** Crude clone of JUnit stuff to void including test stuff into "lang" package */
+	void assertFalse(String mesg, boolean expr) {
+		if (expr) {
+			throw new RuntimeException(mesg);
+		}
+	}
+
+	// @Test
 	public void testCharArrayEquals() {
 		String type = "charset=12345";
 		char[] array1 = type.toCharArray();
@@ -15,25 +29,24 @@ public class ArrayEqualsWorks {
 		assertFalse("array equals() does not work", array1.equals(array2));
 	}
 
-	@Test
+	// @Test
 	public void testByteArrayEquals() {
 		byte[] array1 = { 1, 2, 3 };
 		byte[] array2 = { 1, 2, 3 };
 		assertFalse("array equals() does not work", array1.equals(array2));
 	}
 	
-	@Test
+	// @Test
 	public void testIntArrayEquals() {
 		int[] array1 = { 1, 2, 3 };
 		int[] array2 = { 1, 2, 3 };
 		assertFalse("array equals() does not work", array1.equals(array2));
 	}
 	
-	@Test
+	// @Test
 	public void testObjectArrayEquals() {
 		Object[] array1 = { 1, 2, 3 };
 		Object[] array2 = { 1, 2, 3 };
 		assertFalse("array equals() does not work", array1.equals(array2));
 	}
-
 }
