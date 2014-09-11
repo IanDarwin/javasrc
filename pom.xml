@@ -33,6 +33,11 @@
             -->
             <exclude>javafx/*.java</exclude>
 
+			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
+			 *** testing demos for now (does not affect all the stuff in src/test/java!).
+			 -->
+			<exclude>testing/HamcrestDemo.java</exclude>
+
             <!-- Won't compile with UTF-8! -->
             <exclude>lang/EuroLanguage.java</exclude>
 
