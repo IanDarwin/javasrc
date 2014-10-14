@@ -7,12 +7,9 @@ public class CreditCardDisguise {
 
 	public static String disguise(String cardNum) {
 		int n = cardNum.length();
-		if (n < 12) {
-			throw new IllegalArgumentException("Too short (minimum 12): " + cardNum);
+		if (n < 12 || n > 20) {
+			throw new IllegalArgumentException("Card Number length must be in (12,20}: " + cardNum);
 		}
-		StringBuilder sb = new StringBuilder();
-		sb.append(xxxs.substring(0, n - 4));
-		sb.append(cardNum.substring(n - 4));
-		return sb.toString();
+		return xxxs.substring(0, n - 4) + cardNum.substring(n - 4);
 	}
 }
