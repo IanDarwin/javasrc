@@ -1,5 +1,5 @@
-<!-- Try to get non-well-formed-XML to be output by XSL-T --
 <?xml version="1.0"?>
+<!-- Try to get non-well-formed-XML to be output by XSL-T -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:template match="parent_committee">
