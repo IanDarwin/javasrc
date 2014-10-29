@@ -31,3 +31,4 @@
 
     </properties>
 </persistence-unit>
+</persistence>
