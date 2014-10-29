@@ -9,7 +9,7 @@ import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 
-import testing.MyDate;
+import misc.MyDate;
 
 public class BeanUtilsDemo {
 

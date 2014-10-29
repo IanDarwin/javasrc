@@ -1,4 +1,4 @@
-package testing;
+package misc;
 
 public class MyDate {
 	public Integer year, month, day;
