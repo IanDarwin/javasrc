@@ -26,7 +26,7 @@ public class TestInitializers {
 	}
 	
 	@AfterClass
-	public void closeDown() {
+	public static void closeDown() {
 		factory.close();
 	}
 
