@@ -3,8 +3,6 @@
 #
 # description: Run Ian's server
 
-export JAVA_HOME=/usr/java/jdk/
-
 start() {
       echo -n  "Starting Ian's Server: "
       java WebServer0
