@@ -11,6 +11,8 @@ import javax.swing.*;
 public class JiltBefore
 		extends JFrame
 				implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	JMenuBar mb;
 	/** File, Options, Help */
 	JMenu fm, om, hm;

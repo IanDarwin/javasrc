@@ -21,7 +21,7 @@ public class UnZip {
 	public static enum Mode {
 		LIST, 
 		EXTRACT;
-	};
+	}
 	/** Whether we are extracting or just printing TOC */
 	protected Mode mode = Mode.LIST;
 
@@ -29,7 +29,7 @@ public class UnZip {
 	protected ZipFile zippy;
 
 	/** The buffer for reading/writing the ZipFile data */
-	protected byte[] b = new byte[8092];;
+	protected byte[] b = new byte[8092];
 
 	/** Simple main program, construct an UnZipper, process each
 	 * .ZIP file from argv[] through that object.
@@ -65,7 +65,8 @@ public class UnZip {
 		dirsMade = new TreeSet<String>();
 		try {
 			zippy = new ZipFile(fileName);
-			Enumeration all = zippy.entries();
+			@SuppressWarnings("unchecked")
+			Enumeration<ZipEntry> all = (Enumeration<ZipEntry>) zippy.entries();
 			while (all.hasMoreElements()) {
 				getFile((ZipEntry)all.nextElement());
 			}

@@ -36,6 +36,8 @@ public class FormatterDemo {
 
 		// Format doubles with more control
 		System.out.printf("PI is approximately %4.2f%n", Math.PI);
+	
+		fmtr.close();
 	}
 }
 // END main

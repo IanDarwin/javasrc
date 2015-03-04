@@ -31,5 +31,6 @@ public class CheckForDataSource {
 		System.out.println("Getting connection ");
 		Connection con = d.getConnection();
 		System.out.println("Got it!");
+		con.close();
 	}
 }

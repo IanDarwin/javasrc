@@ -14,11 +14,13 @@ import javax.swing.JPanel;
 // BEGIN main
 public class JavadocDemo extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Construct the GUI
 	 * @throws java.lang.IllegalArgumentException if constructed on a Sunday.
 	 */
-	public void JavadocDemo() {
+	public JavadocDemo() {
 		// We create and add a pushbutton here, 
 		// but it doesn't do anything yet.
 		Button b = new Button("Hello");

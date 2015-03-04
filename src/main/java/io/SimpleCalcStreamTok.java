@@ -22,7 +22,7 @@ public class SimpleCalcStreamTok {
 	/** The variable name (not used in this version) */
 	protected String variable;
 	/** The operand stack */
-	protected Stack s;
+	protected Stack<Double> s = new Stack<>();
 
 	/* Driver - main program */
 	public static void main(String[] av) throws IOException {
@@ -46,8 +46,6 @@ public class SimpleCalcStreamTok {
 		tf.slashSlashComments(true);	// treat "//" as comments
 		tf.ordinaryChar('-');		// used for subtraction
 		tf.ordinaryChar('/');	// used for division
-
-		s = new Stack();
 	}
 
 	/** Construct from a Reader and a PrintWriter
