@@ -12,9 +12,13 @@ public class JULLogFormatter extends Formatter {
 	
 	private static boolean printStackTraces = true;	// TODO make this *dynamically* switchable
 
+	public JULLogFormatter(){
+		System.out.println("JULLogFormatter.JULLogFormatter()");
+	}
+	
 	@Override
 	public String format(LogRecord record) {
-		// System.out.println("LogFormatter.format()");
+		System.out.println("LogFormatter.format()");
 		StringBuilder sb = new StringBuilder();
 		sb.append(record.getLevel());
 		sb.append(' ');
