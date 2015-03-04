@@ -16,6 +16,8 @@ import java.net.*;
  * @author  Ian F. Darwin, http://www.darwinsys.com/
  */
 public class Link extends Applet implements ItemListener {
+
+	private static final long serialVersionUID = 1L;
 	Choice theChoice;
 	Map<String,String> theMap;
 

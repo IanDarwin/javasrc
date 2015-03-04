@@ -13,7 +13,7 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 
-enum Type { MILES, KMS };
+enum Type { MILES, KMS }
 
 /**
  * A simple applet panel - miles <==> kilometers

@@ -43,5 +43,6 @@ public class TextToDBM {
 			db.store(nick, u);
 		}
 		db.close();
+		is.close();
 	}
 }

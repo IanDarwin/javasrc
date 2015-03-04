@@ -95,7 +95,7 @@ public class WalkingText extends Applet implements Runnable {
 				Thread.sleep(napTime);
 			} catch (Exception e) {
 				throw new IllegalStateException("sleep() interrupted");
-			};
+			}
 		}
 	}
 

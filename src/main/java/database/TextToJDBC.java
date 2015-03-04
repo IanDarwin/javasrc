@@ -92,6 +92,7 @@ public class TextToJDBC {
         }
         ps.close();      // All done with that statement
         conn.close();    // All done with that DB connection
+        is.close();
         return;          // All done with this program.
     }
 }
