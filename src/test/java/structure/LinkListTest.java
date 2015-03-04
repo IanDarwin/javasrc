@@ -13,7 +13,7 @@ import org.junit.Test;
 
 /**
  * Linked list class, written out in full using Java.
- * XXX WARNING: The LinkList class is hopelessly incomplete and
+ * WARNING: The LinkList class is hopelessly incomplete and
  * should not be used to save data, until somebody finishes it!
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
@@ -51,7 +51,7 @@ public class LinkListTest {
 	
 	@Test
 	public void testAddAll() {
-		Collection c = Arrays.asList("One", "Two", "Three");
+		Collection<String> c = Arrays.asList("One", "Two", "Three");
 		list.addAll(c);
 		assertEquals(6, list.size());
 		assertEquals("Three", list.get(5));

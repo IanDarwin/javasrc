@@ -21,23 +21,23 @@ public class TestDayAppt extends TestCase {
 	}
 	
 	public void testFactoryFailures() {
-        
+
 		try {
-			Appt a1 = Appt.fromString(null);
+			Appt.fromString(null);
 			fail("did not throw expected NullPointerException");
 		} catch (NullPointerException e) {
 			// OK
 		}
-		
+
 		try {
-			Appt a1 = Appt.fromString("random garbage");
+			Appt.fromString("random garbage");
 			fail("did not throw expected IllegalArumentException");
 		} catch (IllegalArgumentException e) {
 			// OK
 		}
-		
+
 		try {
-			Appt a1 = Appt.fromString("1951 foo 24 6 0 birthday");
+			Appt.fromString("1951 foo 24 6 0 birthday");
 			fail("did not throw expected IllegalArumentException");
 		} catch (IllegalArgumentException e) {
 			// OK

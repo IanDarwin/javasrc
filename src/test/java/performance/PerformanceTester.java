@@ -20,12 +20,8 @@ public class PerformanceTester {
 	 * processed per millisecond.
 	 */
 	public static void main(String[] args) {
-		long starttime = 0;
-		long endtime = 0;
-		int sum = 0;
-
-		starttime = System.currentTimeMillis();
-
+		long starttime = System.currentTimeMillis();
+		
 		PerformanceTester[] ptarr = new PerformanceTester[NOBJECTS];
 
 		for (int i=0; i<NOBJECTS; i++) {
@@ -37,10 +33,9 @@ public class PerformanceTester {
 		}
 
 		for (int i=0; i<NOBJECTS; i++) {
-			sum += ptarr[i].getAmount();
 		}
 
-		endtime = System.currentTimeMillis();
+		long endtime = System.currentTimeMillis();
 
 		System.out.println("Elapsed time in milliseconds for " +
 			NOBJECTS + " objects = " + (endtime - starttime));
