@@ -136,5 +136,5 @@ public interface SysExits {
 	public static final int EX_CONFIG	= 78;
 
 	/* maximum listed value */
-	public static final int EX__MAX	= 78;;
+	public static final int EX__MAX	= 78;
 }

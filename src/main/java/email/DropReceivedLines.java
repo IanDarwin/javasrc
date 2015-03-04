@@ -1,8 +1,13 @@
 package email;
 
-import java.io.*;
-
-import com.darwinsys.util.Debug;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 /**
  * Read a file and print, using LineReader and System.out
@@ -52,11 +57,11 @@ public class DropReceivedLines {
 
 			// If line begins with "Received:", ditch it, and its continuations
             while ((lin = is.readLine()) != null) {
-				Debug.println("read", "Read line " + lin);
+				System.out.println("Read line " + lin);
 				if (lin.startsWith("Received:")) {
 					do {
 						lin = is.readLine();
-						Debug.println("read", "\tContin read line " + lin);
+						System.out.println("\tContin read line " + lin);
 					} while (lin.length() > 0 &&
 						Character.isWhitespace(lin.charAt(0)));
 				}

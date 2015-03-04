@@ -5,6 +5,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /** A Mutable Tree Node that is also a Folder. */
 public class FolderNode extends DefaultMutableTreeNode {
+	private static final long serialVersionUID = 1L;
+	
 	Folder f;
 	FolderNode(Folder f) {
 		this.f = f;

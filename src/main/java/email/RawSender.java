@@ -48,6 +48,7 @@ public class RawSender implements SysExits {
 	RawSender(String server) throws SMTPException {
 		host = server;
 		try {
+			@SuppressWarnings("resource")
 			Socket s = new Socket(host, 25);
 			is = new BufferedReader(
 				new InputStreamReader(s.getInputStream()));

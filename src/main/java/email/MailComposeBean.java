@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Session;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,7 +38,8 @@ import com.darwinsys.util.FileProperties;
  */
 // BEGIN main
 public class MailComposeBean extends JPanel {
-
+	private static final long serialVersionUID = 1L;
+	
 	/** The parent frame to be hidden/disposed; may be JFrame, JInternalFrame
 	 * or JPanel, as necessary */
 	private Container parent;
@@ -51,14 +50,7 @@ public class MailComposeBean extends JPanel {
 	// The To, Subject, and CC lines are treated a bit specially,
 	// any user-defined headers are just put in the tfs array.
 	private JTextField tfs[], toTF, ccTF, subjectTF;
-	// tfsMax MUST == how many are current, for focus handling to work
-	private int tfsMax = 3;
-	private final int TO = 0, SUBJ = 1, CC = 2, BCC = 3, MAXTF = 8;
-
-	/** The JavaMail session object */
-	private Session session = null;
-	/** The JavaMail message object */
-	private Message mesg = null;
+	private final int TO = 0, SUBJ = 1, CC = 2, /* BCC = 3, */ MAXTF = 8;
 
 	private int mywidth;
 	private int myheight;
