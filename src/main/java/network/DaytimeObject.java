@@ -20,8 +20,7 @@ public class DaytimeObject {
 		else
 			hostName = argv[0];
 
-		try {
-			Socket sock = new Socket(hostName, TIME_PORT);
+		try (Socket sock = new Socket(hostName, TIME_PORT);) {
 			ObjectInputStream is = new ObjectInputStream(new 
 				BufferedInputStream(sock.getInputStream()));
 

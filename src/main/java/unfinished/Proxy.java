@@ -40,8 +40,7 @@ public class Proxy {
 
 	/** RunServer accepts connections and passes each one to handler. */
 	public void runServer() {
-		try {
-			ServerSocket s = new ServerSocket(localPort);
+		try (ServerSocket s = new ServerSocket(localPort);) {
 			while (true) {
 				Socket us = s.accept();
 				// String from = s.getInetAddress().toString();

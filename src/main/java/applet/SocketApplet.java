@@ -84,9 +84,8 @@ public class SocketApplet extends Applet {
 				showStatus("Connecting to host " + whence.getHost() +
 					" as " + nameTF.getText());
 
-				try {
-					Socket s = new Socket(getCodeBase().getHost(), 
-						SocketServer.PORT);
+				try (Socket s = new Socket(getCodeBase().getHost(), 
+						SocketServer.PORT);)  {
 					PrintWriter pf = new PrintWriter(s.getOutputStream(), true);
 					// send login name
 					pf.println(nameTF.getText());

@@ -32,6 +32,7 @@ public class ReaderIter {
 				System.out.println(line.substring(start, end));
 			}
 		}
+		r.close();
 	}
 }
 // END main
