@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 /** This is a ButtonDemo Application.
  */
 public class ButtonDemo1 extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	JButton b1;
 
 	/** Construct a ButtonDemo1 */

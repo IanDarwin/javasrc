@@ -8,6 +8,8 @@ import java.awt.event.*;
  * that shows UI switching.
  */
 public class ButtonDemo3 extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	protected JTextArea tf;
 
 	/** Construct a ButtonDemo3 */

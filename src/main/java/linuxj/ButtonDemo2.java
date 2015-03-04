@@ -7,6 +7,8 @@ import java.awt.event.*;
 /** This is another ButtonDemo Application
  */
 public class ButtonDemo2 extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	JButton b1, b2;
 
 	/** Construct a ButtonDemo2 */

@@ -61,14 +61,10 @@ public abstract class APIFormatter {
 
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String fileName) throws IOException {
-			List<ZipEntry> entries = new ArrayList<ZipEntry>();
-			ZipFile zipFile = null;
+		List<ZipEntry> entries = new ArrayList<ZipEntry>();
 
-			try {
-				zipFile = new ZipFile(new File(fileName));
-			} catch (ZipException zz) {
-				throw new FileNotFoundException(zz.toString() + fileName);
-			}
+		try (ZipFile zipFile = new ZipFile(new File(fileName))) {
+			// Empty?
 
 			Enumeration<? extends ZipEntry> all = (Enumeration<? extends ZipEntry>) zipFile.entries();
 
@@ -78,6 +74,10 @@ public abstract class APIFormatter {
 				entries.add(zipEntry);
 			}
 
+		} catch (ZipException zz) {
+			throw new FileNotFoundException(zz.toString() + fileName);
+		}
+		
 			// Sort the entries (by class name)
 			Collections.sort(entries, new Comparator<ZipEntry>() {
 				public int compare(ZipEntry o1, ZipEntry o2) {
