@@ -2,12 +2,12 @@ package io;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.junit.Test;
-
-import com.darwinsys.io.FileIO;
 
 public class TeePrintStreamTest {
 	final String FILE_NAME = "err.log";
@@ -18,8 +18,10 @@ public class TeePrintStreamTest {
 			System.setErr(ts);
 			String MESSAGE = "An imitation error message";
 			System.err.println(MESSAGE); // DO NOT REMOVE - is part of test!
-			String message = FileIO.readAsString(FILE_NAME);
-			assertEquals("read back string", MESSAGE, message);
+			try (BufferedReader is = new BufferedReader(new FileReader(new File(FILE_NAME)))) {
+				String message = is.readLine();
+				assertEquals("read back string", MESSAGE, message);
+			}
 		} finally {
 			new File(FILE_NAME).delete();
 		}
