@@ -79,9 +79,11 @@ public class User extends Person implements Serializable {
 		proglang = lang;
 	}
 
-	/** Construct a user with common text fields. */
+	/** Construct a user with common text fields.
+	 * Obviously should be a builder here. 
+	 */
 	public User(String nick, String pw, String fname, String lName,
-		String emaddr, String prov, String cntry,
+		String emaddr, String city, String prov, String cntry,
 		Date credt, Date lastlog, String skin, boolean e, boolean a) {
 		this();			// set credt
 		name = nick;
@@ -90,6 +92,7 @@ public class User extends Person implements Serializable {
 		setLastName(lName);
 		email = emaddr;
 		this.prov = prov;
+		this.city = city;
 		this.country = cntry;
 		this.skin = skin;
 		creationDate = (Date) credt.clone();

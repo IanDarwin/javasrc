@@ -156,6 +156,7 @@ public class JDAdmin extends JFrame {
 			// System.out.println("Adding " + nick);
 			User u = new User(nick, rs.getString(UserDB.PASSWORD),
 				rs.getString(UserDB.FULLNAME),
+				rs.getString(UserDB.FULLNAME),
 				rs.getString(UserDB.EMAIL), 
 				rs.getString(UserDB.CITY),
 				rs.getString(UserDB.PROVINCE),
