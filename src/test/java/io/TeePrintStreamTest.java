@@ -17,6 +17,7 @@ public class TeePrintStreamTest {
 		try (TeePrintStream ts = new TeePrintStream(System.err, FILE_NAME, true)) {
 			System.setErr(ts);
 			String MESSAGE = "An imitation error message";
+			System.err.println(MESSAGE); // DO NOT REMOVE - is part of test!
 			String message = FileIO.readAsString(FILE_NAME);
 			assertEquals("read back string", MESSAGE, message);
 		} finally {
