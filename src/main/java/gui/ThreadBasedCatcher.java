@@ -39,16 +39,16 @@ public class ThreadBasedCatcher extends JFrame{
 		Thread.setDefaultUncaughtExceptionHandler(
 				new Thread.UncaughtExceptionHandler(){
 					public void uncaughtException(Thread t, Throwable ex){
-						// END main
+						System.out.println(
+								"You crashed thread " + t.getName());
+						System.out.println(
+								"Exception was: " + ex.toString());
+						// BEGIN main
 						if (gui) {
 							ErrorUtil.showExceptions(
 								ThreadBasedCatcher.this, ex);
 						}
-						// BEGIN main
-						System.out.println(
-							"You crashed thread " + t.getName());
-						System.out.println(
-							"Exception was: " + ex.toString());
+						// END main
 					}
 				});
 		pack();
