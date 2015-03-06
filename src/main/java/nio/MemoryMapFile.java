@@ -12,12 +12,14 @@ public class MemoryMapFile {
 	 */
 	public static void main(String[] args) throws IOException {
 		String file = "nio/MemoryMapFile.java";
-		FileChannel fc = new FileInputStream(file).getChannel();
-		long size = fc.size();
-		MappedByteBuffer bytes = fc.map(
-			FileChannel.MapMode.READ_ONLY, 0, size);
-		byte[] data = new byte[(int) size];
-		bytes.get(data, 0, (int) size);
-		System.out.println(new String(data));
+		try (FileInputStream fi = new FileInputStream(file);
+				FileChannel fc = fi.getChannel()) {
+			long size = fc.size();
+			MappedByteBuffer bytes = fc.map(
+					FileChannel.MapMode.READ_ONLY, 0, size);
+			byte[] data = new byte[(int) size];
+			bytes.get(data, 0, (int) size);
+			System.out.println(new String(data));
+		}
 	}
 }
