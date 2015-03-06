@@ -202,9 +202,8 @@ public class GenMIF implements XmlFormWalker {
 		makeUpParagraph("ExampleLabel", null);
 		makeUpParagraph("ExampleTitle", fname);
 
-		try {
-			fname = System.getProperty("codedir", ".") + '/' + fname;	
-			LineNumberReader is = new LineNumberReader(new FileReader(fname));
+		String lfname = System.getProperty("codedir", ".") + '/' + fname;	
+		try (LineNumberReader is = new LineNumberReader(new FileReader(lfname))) {
 			String line;
 			while ((line = is.readLine()) != null) {
 				indent(); pgfTag("Code");

@@ -83,6 +83,7 @@ public class GrepSun {
 
 	// Close the channel and the stream
 	fc.close();
+	fis.close();
     }
 
     public static void main(String[] args) {

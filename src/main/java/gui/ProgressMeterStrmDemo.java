@@ -17,26 +17,27 @@ import javax.swing.ProgressMonitorInputStream;
  */
 public class ProgressMeterStrmDemo extends JFrame implements Runnable {
 
+	private static final long serialVersionUID = 1L;
+
 	public void readTheFile() throws IOException {
 		// OK, we're going to read a file. Do it...
-		BufferedReader ds = new BufferedReader(
-			new InputStreamReader(
-				new ProgressMonitorInputStream(this,
-					"Loading...", new FileInputStream("index.htm"))));
+		try (BufferedReader ds = new BufferedReader(
+				new InputStreamReader(
+						new ProgressMonitorInputStream(this,
+								"Loading...", new FileInputStream("index.htm")))); ){
 
-		// Now read it...
-		String line;
-		while ((line = ds.readLine()) != null) {
-			if (System.getProperties().getProperty("debug.lines")!=null)
-				System.err.println("Read this line: " + line);
-			try {
-				Thread.sleep(200);		// slow it down a bit.
-			} catch(InterruptedException e) {
-				return;
+			// Now read it...
+			String line;
+			while ((line = ds.readLine()) != null) {
+				if (System.getProperties().getProperty("debug.lines")!=null)
+					System.err.println("Read this line: " + line);
+				try {
+					Thread.sleep(200);		// slow it down a bit.
+				} catch(InterruptedException e) {
+					return;
+				}
 			}
 		}
-		// Close file, since it was opened.
-		ds.close();
 	}
 
 	/** We use a separate "thread" (see Threads chapter) to do the reading,
