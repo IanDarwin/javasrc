@@ -9,6 +9,8 @@ public class InnerClass2 {
 
 	void doWork() {
 		Date d = new Date() {
+			private static final long serialVersionUID = 1L;
+
 			public String toString() {
 				return "Today is " + super.toString();
 			}

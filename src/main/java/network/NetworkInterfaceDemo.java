@@ -12,16 +12,16 @@ import java.util.Enumeration;
 // BEGIN main
 public class NetworkInterfaceDemo {
 	public static void main(String[] a) throws IOException {
-		Enumeration list = NetworkInterface.getNetworkInterfaces();
+		Enumeration<NetworkInterface> list = NetworkInterface.getNetworkInterfaces();
 		while (list.hasMoreElements()) {
 			// Get one NetworkInterface
-			NetworkInterface iface = (NetworkInterface) list.nextElement();
+			NetworkInterface iface = list.nextElement();
 			// Print its name
 			System.out.println(iface.getDisplayName());
-			Enumeration addrs = iface.getInetAddresses();
+			Enumeration<InetAddress> addrs = iface.getInetAddresses();
 			// And its address(es)
 			while (addrs.hasMoreElements()) {
-				InetAddress addr = (InetAddress) addrs.nextElement();
+				InetAddress addr = addrs.nextElement();
 				System.out.println(addr);
 			}
 

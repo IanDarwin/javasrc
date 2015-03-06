@@ -36,8 +36,7 @@ public class RDateClient {
 		else
 			hostName = argv[0];
 
-		try {
-			Socket sock = new Socket(hostName, TIME_PORT);
+		try (Socket sock = new Socket(hostName,TIME_PORT);) {
 			DataInputStream is = new DataInputStream(new 
 				BufferedInputStream(sock.getInputStream()));
 			// Read 4 bytes from the network, unsigned.

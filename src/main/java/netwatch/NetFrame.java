@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
  */
 // BEGIN main
 public class NetFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	Properties props;
 	Container cp;
 	JDialog propsDialog;

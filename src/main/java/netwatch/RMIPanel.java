@@ -11,7 +11,9 @@ import java.util.Properties;
  */
 // BEGIN main
 public class RMIPanel extends NetPanel implements Runnable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public RMIPanel(String host, Properties p) {
 		super(host, p);
 	}

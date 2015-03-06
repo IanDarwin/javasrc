@@ -19,8 +19,10 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author Ian Darwin
  */
-public class FileTree extends JPanel 
-{ 
+public class FileTree extends JPanel { 
+
+	private static final long serialVersionUID = 1L;
+
 	/** Construct a FileTree */
     public FileTree(File dir) {
 		setLayout(new BorderLayout());

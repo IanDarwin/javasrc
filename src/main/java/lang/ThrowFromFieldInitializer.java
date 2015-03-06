@@ -20,7 +20,7 @@ public class ThrowFromFieldInitializer implements AutoCloseable {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new ThrowFromFieldInitializer();
+		new ThrowFromFieldInitializer().close();
 	}
 	
 	public void close() throws IOException {

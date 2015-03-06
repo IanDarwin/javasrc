@@ -109,7 +109,6 @@ public class RemCat {
 		/* Loop reading data packets from the server until a short
 		 * packet arrives; this indicates the end of the file.
 		 */
-		int len = 0;
 		do {
 			sock.receive(inp);
 			if (debug)
