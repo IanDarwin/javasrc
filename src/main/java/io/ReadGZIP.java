@@ -23,8 +23,10 @@ public class ReadGZIP {
 		// Now read lines of text: the BufferedReader puts them in lines,
 		// the InputStreamReader does Unicode conversion, and the
 		// GZipInputStream "gunzip"s the data from the FileInputStream.
-		while ((line = is.readLine()) != null)
+		while ((line = is.readLine()) != null) {
 			System.out.println("Read: " + line);
+		}
+		is.close();
 	}
 }
 // END main

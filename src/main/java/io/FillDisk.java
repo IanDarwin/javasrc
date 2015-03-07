@@ -17,6 +17,7 @@ public class FillDisk {
 				os.write(data);
 			} catch (IOException e) {
 				System.out.println(e);
+				os.close();
 				f.delete();
 				os = null;
 			}

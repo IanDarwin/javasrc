@@ -33,6 +33,8 @@ import javax.swing.JTextArea;
  */
 // BEGIN main
 public abstract class NetPanel extends JPanel implements Runnable {
+
+	private static final long serialVersionUID = 1L;
 	/** The name of this host */
 	protected String hostName;
 	/** The text area to display a list of stuff */

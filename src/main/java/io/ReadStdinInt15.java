@@ -11,5 +11,6 @@ public class ReadStdinInt15 {
 		Scanner sc = new Scanner(System.in);      // Requires Java 5
 		val = sc.nextInt();
 		System.out.println("I read this number: " + val);
+		sc.close();
 	}
 }

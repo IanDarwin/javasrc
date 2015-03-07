@@ -8,6 +8,8 @@ import javax.swing.*;
  */
 // BEGIN main
 public class MailComposeFrame extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 	JDesktopPane dtPane;
 	JButton newButton;
 	protected int nx, ny;

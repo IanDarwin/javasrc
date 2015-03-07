@@ -6,19 +6,18 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import domain.Person;
 
 // BEGIN main
 public class HibernateSimple {
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public static void main(String[] args) {
 
 		System.out.println("HibernateSimple.main()");
 
-		Configuration cf = new AnnotationConfiguration();
+		Configuration cf = new Configuration();
 		cf.configure();
 		SessionFactory sf = null;
 		Session session = null;

@@ -5,6 +5,9 @@ public class MultiSuperInterfaces {
 		extends java.io.Serializable, java.rmi.Remote, java.lang.Runnable {
 	}
 	public class Marked implements Marker {
+
+		private static final long serialVersionUID = 1L;
+
 		public void run() {
 			// needed for Runnable
 		}

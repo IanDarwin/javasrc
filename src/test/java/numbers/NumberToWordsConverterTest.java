@@ -1,8 +1,6 @@
 package numbers;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -55,8 +53,7 @@ public class NumberToWordsConverterTest {
 
 	@Test
 	public void testConvert() {
-		assertThat(NumberToWordsConverter.convert(input)
-				, is(equalTo(expected)));
+		assertEquals(expected, NumberToWordsConverter.convert(input));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

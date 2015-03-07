@@ -29,6 +29,7 @@ public class InetAddrDemo {
 		InetAddress remote = theSocket.getInetAddress();
 		System.out.printf("The InetAddress for %s is %s%n",
 			someServerName, remote);
+		theSocket.close();
 	}
 }
 // END main

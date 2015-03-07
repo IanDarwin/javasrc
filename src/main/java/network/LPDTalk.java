@@ -53,10 +53,6 @@ public class LPDTalk {
 		s.close();
 	}
 	
-	private int response() throws IOException {
-		return in.read();
-	}
-	
 	/** Send a line, with EOL and flush */
 	private void println(String mesg) {
 		out.print(mesg);
@@ -76,18 +72,5 @@ public class LPDTalk {
 //			}
 			System.out.println();
 		}
-	}
-
-	/** Send a dummy job, assuming the printer can handle Postscript files; if not, this may
-	 * print as plain text.
-	 */
-	private void printHelloPS()  throws IOException {
-		println(QUEUE + queue);
-		println("%!Adobe-PS");
-		println("100 500 moveto");
-		println("/Helvetica-Narrow findfont 20 scalefont setfont");
-		println("(Hello world) show");
-		println("showpage");
-		println("");
 	}
 }

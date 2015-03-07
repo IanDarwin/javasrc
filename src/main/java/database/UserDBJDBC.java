@@ -77,7 +77,7 @@ public class UserDBJDBC extends UserDB {
 			// Construct a user object from the fields
 			// System.out.println("Constructing User object");
 			User u = new User(nick, pass, first, last, email,
-				prov, ctry, credt, lastlog,
+				city, prov, ctry, credt, lastlog,
 				skin, editPrivs, adminPrivs);
 			// System.out.println("Adding User object " + u + " to " + users);
 			// Add it to the in-memory copy.

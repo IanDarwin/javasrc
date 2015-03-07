@@ -17,6 +17,8 @@ import java.util.List;
  * adjusting width with fontMetrics, etc.  Works adequately for now.
  */
 public class NewsWire extends Applet {
+
+	private static final long serialVersionUID = 1L;
 	/** The hashtable maps from curText to URL */
 	protected Map<String, URL> hash =
 		new Hashtable<String, URL>();

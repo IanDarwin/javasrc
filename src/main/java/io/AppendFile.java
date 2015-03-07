@@ -1,7 +1,9 @@
 package io;
 
-import java.io.*;
-import java.nio.channels.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 
 /**
  * One way to append to a file in Java.
@@ -41,7 +43,6 @@ public class AppendFile {
 			new RandomAccessFile(FILENAME, "rw");
 		long readOffset = new File(FILENAME).length();
 		seeker.seek(readOffset);	// move to the offset
-		FileChannel fc = seeker.getChannel();
 		seeker.write("More Data\n".getBytes());// and write the String
 		seeker.close();
 	}

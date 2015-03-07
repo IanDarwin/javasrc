@@ -20,8 +20,7 @@ public class EchoClientOneLine {
 
 	/** Hold one conversation across the net */
 	protected void converse(String hostName) {
-		try {
-			Socket sock = new Socket(hostName, 7); // echo server.
+		try (Socket sock = new Socket(hostName, 7);) { // echo server.
 			BufferedReader is = new BufferedReader(new 
 				InputStreamReader(sock.getInputStream()));
 			PrintWriter os = new PrintWriter(sock.getOutputStream(), true);

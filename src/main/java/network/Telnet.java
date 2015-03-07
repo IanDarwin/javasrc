@@ -24,8 +24,7 @@ public class Telnet {
 			portNum = Integer.parseInt(av[1]);
 		else portNum = 23;
 		System.out.println("Host " + host + "; port " + portNum);
-		try {
-			Socket s = new Socket(host, portNum);
+		try (Socket s = new Socket(host, portNum);) {
 
 			// Connect the remote to our stdout
 			new Pipe(s.getInputStream(), System.out).start();

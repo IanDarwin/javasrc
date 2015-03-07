@@ -41,9 +41,9 @@ public class Cal extends JPanel {
 	/** One of the buttons. We just keep its reference for getBackground().*/
 	private JButton b0;
 	/** The month choice */
-	private JComboBox monthChoice;
+	private JComboBox<String> monthChoice;
 	/** The year choice */
-	private JComboBox yearChoice;
+	private JComboBox<Integer> yearChoice;
 
 	/** Construct a Cal, starting with today.
 	 */
@@ -87,7 +87,7 @@ public class Cal extends JPanel {
 		setLayout(new BorderLayout());
 
 		JPanel topPanel = new JPanel();
-		topPanel.add(monthChoice = new JComboBox());
+		topPanel.add(monthChoice = new JComboBox<>());
 		for (String m : months) {
 			monthChoice.addItem(m);
 		}
@@ -104,10 +104,10 @@ public class Cal extends JPanel {
 		monthChoice.getAccessibleContext().setAccessibleName("Months");
 		monthChoice.getAccessibleContext().setAccessibleDescription("Choose a month of the year");
 
-		topPanel.add(yearChoice = new JComboBox());
+		topPanel.add(yearChoice = new JComboBox<>());
 		yearChoice.setEditable(true);
 		for (int i=yy-5; i<yy+5; i++)
-			yearChoice.addItem(Integer.toString(i));
+			yearChoice.addItem(i);
 		yearChoice.setSelectedItem(Integer.toString(yy));
 		yearChoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {

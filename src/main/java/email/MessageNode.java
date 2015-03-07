@@ -10,6 +10,8 @@ import com.darwinsys.lang.StringFormat;
 /** A Mutable Tree Node that is also a Message. */
 // BEGIN main
 public class MessageNode extends DefaultMutableTreeNode {
+	private static final long serialVersionUID = 1L;
+
 	Message m;
 
 	StringFormat fromFmt = new StringFormat(20, StringFormat.JUST_LEFT);

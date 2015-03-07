@@ -26,7 +26,8 @@ public class GrepNIO {
 	static void process(Pattern pattern, String fileName) throws IOException {
 
 		// Get a FileChannel from the given file.
-		FileChannel fc = new FileInputStream(fileName).getChannel();
+		FileInputStream fis = new FileInputStream(fileName);
+		FileChannel fc = fis.getChannel();
 
 		// Map the file's content
 		ByteBuffer buf = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
@@ -39,6 +40,7 @@ public class GrepNIO {
 		while (m.find()) {
 			System.out.println(m.group(0));
 		}
+		fis.close();
 	}
 }
 // END main

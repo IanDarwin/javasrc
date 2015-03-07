@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class OpenFileByName {
-	@SuppressWarnings("unused") 
 	public static void main(String[] args) throws IOException {
 		BufferedReader is = new BufferedReader(new FileReader("myFile.txt"));
 		BufferedOutputStream bytesOut = new BufferedOutputStream(
@@ -16,5 +15,6 @@ public class OpenFileByName {
 		// Code here to read from is, write to bytesOut
 
 		bytesOut.close();
+		is.close();
 	}
 }

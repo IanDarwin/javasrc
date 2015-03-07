@@ -18,7 +18,7 @@ class C1 extends C0 {
  */
 public class InheritAnnotations {
 	public static void main(String[] args) {
-		for (Class<C0> c : new Class[]{ C0.class, C1.class} ) {
+		for (Class<?> c : new Class<?>[]{ C0.class, C1.class} ) {
 			System.out.printf("Class %s: Annotation is %s present%n",
 					c.getName(),
 					c.isAnnotationPresent(MyAnnotation.class) ? "" : "not");

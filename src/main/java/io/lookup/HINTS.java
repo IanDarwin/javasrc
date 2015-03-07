@@ -43,9 +43,11 @@ public class HINTS /*rename to MakeList*/ {
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String fileName) {
 		try {
+			@SuppressWarnings("unused")
 			ZipFile zippy = null;// XXX Make a ZipFile for 
 					// the file named in "fileName"
 		
+			@SuppressWarnings({ "unused", "rawtypes" })
 			Enumeration all = null;// XXX Get the list from "zippy"
 			while (true/* XXX More elements in the list*/) {
 				// XXX get the next element from the enumeration
@@ -61,6 +63,7 @@ public class HINTS /*rename to MakeList*/ {
 
 	/** Format the fields and methods of one class, given its name.
 	 */
+	@SuppressWarnings("unused")
 	protected void doClass(String zipName) {
 
 		// Step 1: get this much working.

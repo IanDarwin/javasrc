@@ -18,8 +18,7 @@ public class DaytimeText {
 		else
 			hostName = argv[0];
 
-		try {
-			Socket sock = new Socket(hostName, TIME_PORT);
+		try (Socket sock = new Socket(hostName,TIME_PORT);) {
 			BufferedReader is = new BufferedReader(new 
 				InputStreamReader(sock.getInputStream()));
 			String remoteTime = is.readLine();

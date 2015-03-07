@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
  */
 public class InvokeMain {
 	// BEGIN main
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		System.out.println("In lang.InvokeMain.main()");
 

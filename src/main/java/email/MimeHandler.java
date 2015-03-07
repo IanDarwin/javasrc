@@ -45,8 +45,6 @@ public class MimeHandler {
 
 	class MyDataContentHandlerFactory implements DataContentHandlerFactory {
 		public DataContentHandler createDataContentHandler(String mimeType){
-			DataContentHandler dch = null;
-
 			if ("text/plain".equals(mimeType)) {
 				return new PlainHandler();
 			} else if ("text/html".equals(mimeType)) {

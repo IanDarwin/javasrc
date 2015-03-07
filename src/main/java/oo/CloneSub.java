@@ -8,7 +8,7 @@ class Two extends One /*implements Cloneable*/ {
 	int y;
 	public void foo() {
 		try {
-			Object o = this.clone();
+			/*Object o =*/ this.clone();
 		} catch (CloneNotSupportedException ex) {
 			System.err.println(ex);
 		}

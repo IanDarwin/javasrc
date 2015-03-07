@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class ClassDoc extends Applet {
 
+	private static final long serialVersionUID = 1L;
 	/** The default place to find API doc. */
 	protected final static String DEFAULT_PREFIX =
 		"file:///C|/jdk1.2/docs/api/";

@@ -38,11 +38,11 @@ public class ManualTransactionCommit {
 			stmt = conn.createStatement();
 
 			System.out.println("Creating table");
-			int rows = stmt.executeUpdate(
+			stmt.executeUpdate(
 					"create table test (id int, name varchar)");
 
 			System.out.println("Executing Insert");
-			rows = stmt.executeUpdate(
+			stmt.executeUpdate(
 					"insert into test values(42, 'ian');");
 
 			System.out.println("Sleeping...");

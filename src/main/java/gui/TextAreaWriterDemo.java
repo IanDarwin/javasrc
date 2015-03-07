@@ -28,6 +28,7 @@ public class TextAreaWriterDemo {
 		out.print("... and a double: ");
 		out.println(Math.PI);
 		out.flush();
+		out.close();
 	}
 }
 

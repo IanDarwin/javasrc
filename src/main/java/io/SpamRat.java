@@ -1,10 +1,15 @@
 package io;
 
-import com.darwinsys.util.Debug;
-
-import java.io.*;
-import java.util.*;
-import java.net.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.EmptyStackException;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 /**
  * SpamRat: The Fury.
@@ -90,9 +95,9 @@ public class SpamRat {
 		}
 	}
 
-	Stack theStack;
-	protected Stack findReceived(LineNumberReader is) {
-		theStack = new Stack();
+	Stack<String> theStack;
+	protected Stack<String> findReceived(LineNumberReader is) {
+		theStack = new Stack<>();
         try {
             String line;
 
@@ -100,7 +105,6 @@ public class SpamRat {
 				line.length() > 0) {
 				// If line begins with "Received:", add it to the stack.
 				if (line.startsWith("Received:")) {
-					Debug.println("match", "Adding " + line);
 					theStack.push(line);
 				}
             }
@@ -113,7 +117,6 @@ public class SpamRat {
 			System.err.println("No Received headers found");
 			return null;
 		}
-		Debug.println("end", "Popping " + theStack.peek());
 		return theStack;
     }
 

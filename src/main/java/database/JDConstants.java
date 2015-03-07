@@ -8,12 +8,8 @@ package database;
  */
 public class JDConstants  {
 
-	private static final long serialVersionUID = -8582492192789892843L;
-
 	/** This must be a full path, since ya gotta start someplace. */
 	static String JABADOT_DIR;
-
-
 
 	/** Get a property, but substitute $DIR with JABADOT_DIR */
 	public static String getProperty(String key) {

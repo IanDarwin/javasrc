@@ -9,7 +9,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class AliasBean extends JPanel {
-	protected List<Alias> aliasesList = new Vector<Alias>();;
+	private static final long serialVersionUID = 1L;
+
+	protected List<Alias> aliasesList = new Vector<Alias>();
 	protected JList<Alias> aliJList;
 	private JTextField nameTF, addrTF;
 

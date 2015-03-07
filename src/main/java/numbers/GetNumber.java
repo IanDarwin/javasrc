@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 // BEGIN main
 public class GetNumber extends Frame {
 
+	private static final long serialVersionUID = 1L;
 	/** The input textField */
 	private TextField textField;
 	/** The results area */

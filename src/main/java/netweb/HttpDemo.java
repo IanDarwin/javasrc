@@ -157,6 +157,7 @@ public class HttpDemo extends JFrame {
 				outputArea.append("\n");
 			}
 			is.close();
+			sock.close();
 		}
 	}
 }

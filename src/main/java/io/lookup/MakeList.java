@@ -59,9 +59,10 @@ public class MakeList {
 	/** For each Zip file, for each entry, xref it */
 	public void processOneZip(String fileName) {
 		try {
+			@SuppressWarnings("resource")
 			ZipFile zippy = 
 				new ZipFile(new File(fileName));
-			Enumeration all = zippy.entries();
+			Enumeration<?> all = zippy.entries();
 			while (all.hasMoreElements()) {
 				doClass(((ZipEntry)(all.nextElement())).getName());
 			}
