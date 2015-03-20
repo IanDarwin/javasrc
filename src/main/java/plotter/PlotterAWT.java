@@ -53,6 +53,11 @@ public class PlotterAWT extends Plotter {
 		curx = absx;
 		cury = absy;
 	}
+	
+	public void lineTo(int x, int y) {
+		penDown();
+		moveTo(x, y);
+	}
 
 	public void setdir(float deg){}
 	void penUp(){ penUp = true; }
