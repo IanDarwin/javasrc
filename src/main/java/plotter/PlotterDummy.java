@@ -29,8 +29,8 @@ public class PlotterDummy extends Plotter {
 	}
 
 	void setPenState(boolean up) {
-		penIsUp = up;
-		System.out.println("Pen Up is ["+penIsUp+"]");
+		penUp = up;
+		System.out.println("Pen Up is ["+penUp+"]");
 	}
 	void penUp() {
 		setPenState(true);

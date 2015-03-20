@@ -48,15 +48,15 @@ public class PlotterAWT extends Plotter {
 	}
 
 	public void moveTo(int absx, int absy){
-		if (!penIsUp)
+		if (!penUp)
 			g.drawLine(curx, cury, absx, absy);
 		curx = absx;
 		cury = absy;
 	}
 
 	public void setdir(float deg){}
-	void penUp(){ penIsUp = true; }
-	void penDown(){ penIsUp = false; }
+	void penUp(){ penUp = true; }
+	void penDown(){ penUp = false; }
 	void penColor(int c){
 		switch(c) {
 		case 0: g.setColor(Color.white); break;

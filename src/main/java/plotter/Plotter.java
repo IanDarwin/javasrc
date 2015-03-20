@@ -20,12 +20,12 @@ public abstract class Plotter {
 	/** Current Y co-ordinate (same reference frame as AWT!) */
 	protected int cury;
 	/** The current state: up or down */
-	protected boolean penIsUp;
+	protected boolean penUp;
 	/** The current color */
 	protected int penColor;
 
 	Plotter() {
-		penIsUp = true;
+		penUp = true;
 		curx = 0; cury = 0;
 	}
 	abstract void rmoveTo(int incrx, int incry);
