@@ -65,7 +65,7 @@ public class AbstractFactoryDemo {
 	static {
 		try {
 			InputStream stream = 
-				Factory.class.getResourceAsStream(FACTORY_CONFIG_RESOURCE_NAME);
+				FactoryDemo.class.getResourceAsStream(FACTORY_CONFIG_RESOURCE_NAME);
 			if (stream == null) {
 				throw new ExceptionInInitializerError("Can't load properties file from classpath: " + FACTORY_CONFIG_RESOURCE_NAME);
 			}

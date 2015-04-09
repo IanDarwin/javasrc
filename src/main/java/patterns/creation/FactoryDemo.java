@@ -11,13 +11,13 @@ import java.util.Properties;
  * e.g.:
  * renderer=patterns.creation.MyRenderer
  */
-public class Factory {
+public class FactoryDemo {
 
 	private static final String FACTORY_CONFIG_RESOURCE_NAME = 
 				"/patterns/creation/factory.config";
 
 	public static void main(String[] args) throws Exception {
-		MessageRenderer p =Factory.getBean("renderer", MessageRenderer.class);
+		MessageRenderer p =FactoryDemo.getBean("renderer", MessageRenderer.class);
 		System.out.println("Renderer is of " + p.getClass());
 	}
 
@@ -26,7 +26,7 @@ public class Factory {
 	static {
 		try {
 			InputStream stream = 
-			Factory.class.getResourceAsStream(FACTORY_CONFIG_RESOURCE_NAME);
+			FactoryDemo.class.getResourceAsStream(FACTORY_CONFIG_RESOURCE_NAME);
 			if (stream == null) {
 				throw new ExceptionInInitializerError("Can't load properties file from classpath: " + FACTORY_CONFIG_RESOURCE_NAME);
 			}
