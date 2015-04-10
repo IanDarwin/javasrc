@@ -25,12 +25,12 @@ public class AbstractFactoryDemo {
 
 	public static void main(String[] args) throws Exception {
 		type = FactoryType.valueOf(props.getProperty("dao_type"));
-		final ConnectionFactory connectionFactory = getConnectionFactory();
-		final Object connection = connectionFactory.getConnection();
-		System.out.println("ConnectionFactory " + connectionFactory + " gave us " + connection);
+		final DaoFactory daoFactory = getDaoFactory();
+		final Object musicDao = daoFactory.getMusicDao();
+		System.out.println("Factory " + daoFactory + " gave us " + musicDao);
 	}
 
-	public static ConnectionFactory getConnectionFactory() {
+	public static DaoFactory getDaoFactory() {
 		switch(type) {
 			case JDBC: return new JdbcConnectionFactory();
 			case JPA: return new JpaConnectionFactory();	// actually returns EntityManager
@@ -41,23 +41,25 @@ public class AbstractFactoryDemo {
 	}
 
 	// Dummy definitions to make this compile and sort of work
-	interface ConnectionFactory {
-		Object getConnection();
+	interface DaoFactory {
+		Object getMusicDao();
+		// Object getVideoDao();
+		// Object getBookDao();
 	}
 
-	static class JdbcConnectionFactory implements ConnectionFactory {
-		public Object getConnection() {
-			return "My Dummy JDBC Connection";
+	static class JdbcConnectionFactory implements DaoFactory {
+		public Object getMusicDao() {
+			return "My Dummy JDBC Music Dao";
 		}
 	}
-	static class HibernateConnectionFactory implements ConnectionFactory {
-		public Object getConnection() {
-			return "My Fake Hibernate Session";
+	static class HibernateConnectionFactory implements DaoFactory {
+		public Object getMusicDao() {
+			return "My Fake Hibernate Music Dao";
 		}
 	}
-	static class JpaConnectionFactory implements ConnectionFactory {
-		public Object getConnection() {
-			return "Trust me! This is a JPA EntityManager";
+	static class JpaConnectionFactory implements DaoFactory {
+		public Object getMusicDao() {
+			return "Trust me! This is a JPA Music Dao";
 		}
 	}
 	
