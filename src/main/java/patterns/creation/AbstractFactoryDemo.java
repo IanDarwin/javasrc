@@ -6,32 +6,52 @@ import java.util.Properties;
 
 /**
  * A really really simple example of a configurable AbstractFactory
+ * This Abstract Factory gives out DAO's whose type is
+ * determined from the properties file, and which would
+ * (in a fuller example) in turn give out, say,
+ * JPAMusicDao, JPAVideoDao, JPABookDao, etc., when the
+ * configuration was set to JPA.
+ * <br/>
  * Reads from a Properties file on classpath of the form
  * dao_category= one of the FactoryType
  * e.g.:
- * renderer=patterns.creation.MyRenderer
+ * dao_category=JPA
  */
 public class AbstractFactoryDemo {
 
+	// This "file name" is used to load the props from classpath
+	// Since it's in this same directory, the path is the
+	// full package name follwed by the filename.
 	private static final String FACTORY_CONFIG_RESOURCE_NAME = 
 				"/patterns/creation/factory.config";
 
-	enum FactoryType { 
+	/** Enumerate all the supported DAO technologies */
+	enum FactoryTechnology { 
 		JDBC,
 		JPA,
 		HIBERNATE
 	}
-	static FactoryType type;
+	static FactoryTechnology tech;
 
 	public static void main(String[] args) throws Exception {
-		type = FactoryType.valueOf(props.getProperty("dao_type"));
+		// Get the string name of the FactoryTechnology to use
+		final String property = props.getProperty("dao_type");
+		// Get the enum that goes with it
+		tech = FactoryTechnology.valueOf(property);
+		// Get the DaoFactory of the configured type
 		final DaoFactory daoFactory = getDaoFactory();
+		// Pick one (the only one implemented so far) DAO
 		final Object musicDao = daoFactory.getMusicDao();
+		// Print it out for verification.
 		System.out.println("Factory " + daoFactory + " gave us " + musicDao);
 	}
 
+	/**
+	 * The Abstract Factory Method: gives the concrete factory.
+	 * @return The configured DaoFactory.
+	 */
 	public static DaoFactory getDaoFactory() {
-		switch(type) {
+		switch(tech) {
 			case JDBC: return new JdbcConnectionFactory();
 			case JPA: return new JpaConnectionFactory();	// actually returns EntityManager
 			case HIBERNATE: return new HibernateConnectionFactory(); // returns HibernateSession
@@ -40,13 +60,19 @@ public class AbstractFactoryDemo {
 		}
 	}
 
-	// Dummy definitions to make this compile and sort of work
+	/** Dummy definition of the DaoFactory, just enough
+	 *  to make this compile and sort of work.
+	 *  The return value is Object, in reality it would
+	 *  be something like MusicDao, but I wanted to keep
+	 *  this example short.
+	 */
 	interface DaoFactory {
 		Object getMusicDao();
 		// Object getVideoDao();
 		// Object getBookDao();
 	}
 
+	// The various concrete Factory classes.
 	static class JdbcConnectionFactory implements DaoFactory {
 		public Object getMusicDao() {
 			return "My Dummy JDBC Music Dao";
@@ -66,6 +92,7 @@ public class AbstractFactoryDemo {
 	// Stuff for loading properties
 	static Properties props = new Properties();
 
+	// Static initializer to load the properties file.
 	static {
 		try {
 			InputStream stream = 
