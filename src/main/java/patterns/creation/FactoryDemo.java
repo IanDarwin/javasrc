@@ -5,8 +5,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * A really really simple example of a configurable Factory
- * Reads from a Properties file on classpath of the form
+ * A really really simple example of a configurable Factory.
+ * This factory does Inversion of Control but NOT
+ * Dependency Injection; for the full treatment,
+ * use JavaEE-CDI or use Spring. This simple version
+ * reads from a Properties file on classpath of the form
  * beanName=fullClassName
  * e.g.:
  * renderer=patterns.creation.MyRenderer
