@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * A really really simple example of a configurable Factory
+ * A really really simple example of a configurable AbstractFactory
  * Reads from a Properties file on classpath of the form
- * beanName=fullClassName
+ * dao_category= one of the FactoryType
  * e.g.:
  * renderer=patterns.creation.MyRenderer
  */
@@ -24,8 +24,10 @@ public class AbstractFactoryDemo {
 	static FactoryType type;
 
 	public static void main(String[] args) throws Exception {
-		type = FactoryType.valueOf(props.getProperty("productgroup"));
-		System.out.println(getConnectionFactory().getConnection());
+		type = FactoryType.valueOf(props.getProperty("dao_type"));
+		final ConnectionFactory connectionFactory = getConnectionFactory();
+		final Object connection = connectionFactory.getConnection();
+		System.out.println("ConnectionFactory " + connectionFactory + " gave us " + connection);
 	}
 
 	public static ConnectionFactory getConnectionFactory() {
@@ -74,20 +76,4 @@ public class AbstractFactoryDemo {
 			throw new ExceptionInInitializerError(e);
 		}
 	}
-
-	/** Construct and return a bean whose declared class is clasz
-	 * and whose implementing class is the value of "bean" in a props file.
-	 * @param name - The name the Bean should have in the props/config
-	 * @param clazz - the declared (often an interface) class
-	 * @return The instantiated bean.
-	 * @throws Exception
-	 */
-	public static <T> T getBean(String name, Class<T> clazz) throws Exception {
-		final String clazzName = props.getProperty(name);
-		@SuppressWarnings("unchecked")
-		final Class<T> c = (Class<T>) Class.forName(clazzName);
-		final T o = c.newInstance();
-		return o;
-	}
-
 }
