@@ -17,8 +17,9 @@ public class FactoryDemo {
 				"/patterns/creation/factory.config";
 
 	public static void main(String[] args) throws Exception {
-		MessageRenderer p =FactoryDemo.getBean("renderer", MessageRenderer.class);
-		System.out.println("Renderer is of " + p.getClass());
+		MessageRenderer r =FactoryDemo.getBean("renderer", MessageRenderer.class);
+		System.out.println("Renderer is of type " + r.getClass().getSimpleName());
+		r.renderMessage("Hello from the main program");
 	}
 
 	static Properties props = new Properties();
