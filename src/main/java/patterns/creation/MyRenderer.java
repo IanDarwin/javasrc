@@ -1,8 +1,7 @@
 package patterns.creation;
 
 public class MyRenderer implements MessageRenderer {
-	String message = "Hello";
-	public void renderMessage() {
+	public void renderMessage(String message) {
 		System.out.println(message);
 	}
 

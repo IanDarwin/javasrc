@@ -1,9 +1,10 @@
 package patterns.creation;
 
+import javax.swing.JOptionPane;
+
 public class MyOtherRenderer implements MessageRenderer {
-	String message = "Hello";
-	public void renderMessage() {
-		System.out.println(message);
+	public void renderMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
 	}
 
 }
