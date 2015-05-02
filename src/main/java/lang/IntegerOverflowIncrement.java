@@ -1,6 +1,6 @@
 package lang;
 
-public class IntegerOverflow {
+public class IntegerOverflowIncrement {
 
 	/**
 	 * @param args
