@@ -3,7 +3,7 @@ package netweb;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ULRDemo {
+public class URLDemo {
 	public static void main(String[] args) throws MalformedURLException {
 
 		URL u = new URL("http://www.darwinsys.com/java/../openbsd/../index.jsp");
