@@ -15,12 +15,15 @@ public class ResultSetUpdate {
             con = ConnectionUtil.getConnection(args[0]);
 			stmt = con.createStatement(
 			ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			rs = stmt.executeQuery("SELECT * FROM Users where nick=\"ian\"");
+			rs = stmt.executeQuery("SELECT * FROM Users where name='ian';");
 
 			// Get the resultset ready, update the passwd field, commit
-			rs.first();
-			rs.updateString("password", "unguessable");
-			rs.updateRow();
+			if (rs.next()) {
+				rs.updateString("password", "unguessable");
+				rs.updateRow();
+			} else {
+				System.out.println("Error: user not found");
+			}
 
 			rs.close();
 			stmt.close();
