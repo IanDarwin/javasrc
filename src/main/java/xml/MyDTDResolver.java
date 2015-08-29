@@ -14,7 +14,7 @@ public class MyDTDResolver implements EntityResolver {
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
 	};
 
-	public static final String DTDDIR = "/home/ian/dtds";
+	public static final String DTDDIR = System.getProperty("user.home") + "/dtds";
 
 	public InputSource resolveEntity (String publicId, String systemId) {
 		for (int i=0; i<dtds.length; i++) {
@@ -36,6 +36,7 @@ public class MyDTDResolver implements EntityResolver {
 			}
 		}
 		// Not matched any of the ones in the array.
+		System.out.println("Warning: Did not resolve " + systemId);
 		return null;
 	}
 }
