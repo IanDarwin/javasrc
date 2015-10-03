@@ -40,6 +40,9 @@
             -->
             <exclude>javafx/*.java</exclude>
 
+			<!-- Jumping the gun a bit, Mac JDK says "is not api", as above. -->
+            <exclude>unsafe/*.java</exclude>
+
 			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
 			 *** testing demos for now (does not affect all the stuff in src/test/java!).
 			 -->
