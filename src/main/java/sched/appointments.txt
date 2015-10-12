@@ -1,5 +1,3 @@
-1951 4 24 6 0 birthday
-1956 9 3 13 10 birthday
 1999 8 9 12 10 finish this program and go home
 1999 1 23 12 10 go home
 1999 1 23 12 11 go home
