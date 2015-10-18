@@ -17,7 +17,7 @@ import javax.swing.JFrame;
  * main program to every GUI component that I ever wrote...
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-public class ComponentTester {
+public class ComponentRunner {
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
