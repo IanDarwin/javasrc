@@ -70,7 +70,7 @@ public class CalcScriptEngineFactory implements ScriptEngineFactory {
 
 	@Override
 	public String getMethodCallSyntax(String obj, String m, String... args) {
-		// TODO Auto-generated method stub
+		// TODO Hope this isn't needed.
 		return null;
 	}
 

@@ -12,7 +12,7 @@ public class JSObject {
 	 * @return
 	 */
 	public static JSObject getWindow(Applet script) {
-		// TODO Auto-generated method stub
+		// TODO Write a real method here
 		return null;
 	}
 
@@ -22,7 +22,7 @@ public class JSObject {
 	 * @return
 	 */
 	public JSObject call(String string, Object[] args) {
-		// TODO Auto-generated method stub
+		// TODO Write a real method here
 		return null;
 	}
 
@@ -31,7 +31,7 @@ public class JSObject {
 	 * @return
 	 */
 	public JSObject getMember(String string) {
-		// TODO Auto-generated method stub
+		// TODO Write a real method here
 		return null;
 	}
 
