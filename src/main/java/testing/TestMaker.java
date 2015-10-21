@@ -54,11 +54,11 @@ public class TestMaker {
 
 		out.println("package regress;");
 		out.println();
-		out.println("import junit.framework.TestCase;");
+		out.println("import org.junit.Test;");
 		out.println();
 		out.println("/** Auto-generated TestCase for " + fullClassName);
 		out.println(" */");
-		out.println("public class " + testClassName + " extends TestCase {");
+		out.println("public class " + testClassName + " {");
 		out.println("\tpublic " + fullClassName + " target;");
 		out.println("\tpublic " + testClassName + "() {");
 		out.println("\t\t// TODO: initialize target...");
@@ -90,6 +90,7 @@ public class TestMaker {
 			emittedMap.put(name, n);
 		}
 
+		out.println("\t@Test");
 		out.println("\tpublic void test" + name + n.incr() + "() throws Exception {");
 		out.println("\t\t// TODO Auto-generated method stub");
 		

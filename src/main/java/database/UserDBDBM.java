@@ -55,15 +55,13 @@ public class UserDBDBM extends UserDB {
 	 * @see database.UserDB#setPassword(java.lang.String, java.lang.String)
 	 */
 	public void setPassword(String nick, String newPass) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		// TODO Write a real method here.
 	}
 
 	/* (non-Javadoc)
 	 * @see database.UserDB#deleteUser(java.lang.String)
 	 */
 	public void deleteUser(String nick) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		// TODO Write a real method here.
 	}
 }

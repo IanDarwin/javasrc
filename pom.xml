@@ -14,9 +14,15 @@
   <description>Code Examples for the O'Reilly Java Cookbook</description>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+		<javase.version>1.8</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<javaee.version>7.0</javaee.version>
   </properties>
 
   <build>
@@ -33,6 +39,9 @@
                 '/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/ext/jfxrt.jar')
             -->
             <exclude>javafx/*.java</exclude>
+
+			<!-- Jumping the gun a bit, Mac JDK says "is not api", as above. -->
+            <exclude>unsafe/*.java</exclude>
 
 			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
 			 *** testing demos for now (does not affect all the stuff in src/test/java!).
@@ -110,7 +119,7 @@
     <dependency>
       <groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.5</version>
     </dependency>
 
     <!-- Test early and often -->
@@ -278,6 +287,20 @@
     <artifactId>renjin-script-engine</artifactId>
     <version>0.7.0-RC6</version>
   </dependency>
+
+		<dependency>
+			<groupId>javax</groupId>    
+			<artifactId>javaee-web-api</artifactId>    
+			<version>${javaee.version}</version>  
+			<scope>provided</scope>
+		</dependency> 
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.5</version>
+			<scope>provided</scope>
+		</dependency>
 
   </dependencies>
   

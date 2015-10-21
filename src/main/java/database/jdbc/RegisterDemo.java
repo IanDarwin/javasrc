@@ -26,7 +26,7 @@ public class RegisterDemo implements Driver {
 
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
-		// TODO Auto-generated method stub
+		// TODO Write a real method here
 		return null;
 	}
 
@@ -38,7 +38,7 @@ public class RegisterDemo implements Driver {
 	@Override
 	public DriverPropertyInfo[] getPropertyInfo(String url, Properties info)
 			throws SQLException {
-		// TODO Auto-generated method stub
+		// TODO Write a real method here
 		return null;
 	}
 
