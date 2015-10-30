@@ -9,6 +9,18 @@ import junit.framework.TestCase;
  */
 public class IntegerTest extends TestCase {
 
+	static { // JUnit 3.x didn't have an explicit class-wide setup method
+		System.out.println("IntegerTest: In demo Class setup method");
+    }
+
+	public void setUp() {
+		System.out.println("IntegerTest: In demo Instance setup method");
+	}
+	
+	public void testAdd() {
+		assertEquals(4, 2 + 2);
+	}
+
 	public void testDecode() throws Exception {
 		int ret;
 		ret = Integer.decode("-42").intValue();
@@ -17,9 +29,9 @@ public class IntegerTest extends TestCase {
 		assertEquals(-66, ret);
 		try {
 			Integer.decode("one two three");
-			fail("Did not throw expected NumberFormatException");
+			fail("IntegerTest: Did not throw expected NumberFormatException");
 		} catch (NumberFormatException e) {
-			System.out.println("Caught expected exception");
+			System.out.println("IntegerTest: Caught expected exception");
 		}
 	}
 }
