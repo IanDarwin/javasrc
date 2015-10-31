@@ -46,7 +46,7 @@
 			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
 			 *** testing demos for now (does not affect all the stuff in src/test/java!).
 			 -->
-			<exclude>testing/*.java</exclude>
+			<exclude>testing/Ham*.java</exclude>
 
             <!-- Won't compile with UTF-8! -->
             <exclude>lang/EuroLanguage.java</exclude>
@@ -127,7 +127,6 @@
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
 		<version>4.11</version>
-		<scope>test</scope>
     </dependency>
 	<dependency>
 		<groupId>org.hamcrest</groupId>
