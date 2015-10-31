@@ -48,7 +48,7 @@ public class MkIndex {
 		} else {
 			mi.process(new File("."));
 		}
-		mi.writeNav();	// Write navigator
+		mi.writeNavigator();	// Write navigator
 		mi.writeList();	// Write huge list of files
 		mi.end();		// print trailer.
 		mi.close();		// close files
@@ -93,7 +93,7 @@ public class MkIndex {
 	boolean[] exists = new boolean[255];
 
 	/** List for temporary storage, and sorting */
-	SortedMap<String,String> list = new TreeMap<String,String>();
+	SortedMap<String,String> list = new TreeMap<String,String>(String.CASE_INSENSITIVE_ORDER);
 
 	/** Return true if a filename should be ignored. */
 	boolean ignorable(String name) {
@@ -142,7 +142,7 @@ public class MkIndex {
 		}
 	}
 
-	void writeNav() throws IOException {
+	void writeNavigator() throws IOException {
 
 		System.out.println("Writing the Alphabet Navigator...");
 		for (char c = 'A'; c<='Z'; c++)
