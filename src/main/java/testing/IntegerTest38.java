@@ -7,7 +7,7 @@ import junit.framework.TestCase;
  * class (this is not to say that Sun doesn't test before they ship it - they do!!).
  * DO NOT MODERNIZE TO JUNIT 4 - this is meant to show the legacy way!
  */
-public class IntegerTest extends TestCase {
+public class IntegerTest38 extends TestCase {
 
 	static { // JUnit 3.x didn't have an explicit class-wide setup method
 		System.out.println("IntegerTest: In demo Class setup method");
