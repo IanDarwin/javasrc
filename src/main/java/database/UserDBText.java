@@ -12,13 +12,12 @@ import domain.User;
 
 /** A trivial "database" for User objects, stored in a flat file.
  * <P>
- * Since this is exected to be used heavily, and to avoid the overhead
+ * Since this is expected to be used heavily, and to avoid the overhead
  * of re-reading the file, the "Singleton" Design Pattern is used
  * to ensure that there is only ever one instance of this class.
  */
 public class UserDBText extends UserDB {
-	protected final static String DEF_NAME = 
-		"/home/ian/src/jabadot/jabadb.txt";
+	protected final static String DEF_NAME = "jabadb.txt";
 
 	protected String fileName;
 
