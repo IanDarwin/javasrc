@@ -11,7 +11,7 @@ public class GetPrivateClass {
 	}
 	
 	private static class X {
-		int secret;
+		private int secret = 24;
 	}
 
 }
