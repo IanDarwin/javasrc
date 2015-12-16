@@ -14,7 +14,7 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 
 /**
- * Browser1 - Get the contents of a URL, write to stdout
+ * Browser1 - Get the contents of a URL, show in a window, with links.
  */
 public class Browser1 {
 	public static void main(String[] av) throws IOException {
