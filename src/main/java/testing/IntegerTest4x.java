@@ -1,26 +1,32 @@
 package testing;
 
-import junit.framework.TestCase;
+import org.junit.*;
+
+import static org.junit.Assert.*;
 
 
-/** Demonstrate how you might use JUNit 3.8 to test the java.lang.Integer 
+/** 
+ * Demonstrate how you might use JUnit 4.x to test the java.lang.Integer 
  * class (this is not to say that Sun doesn't test before they ship it - they do!!).
- * DO NOT MODERNIZE TO JUNIT 4 - this is meant to show the legacy way!
  */
-public class IntegerTest4x extends TestCase {
+public class IntegerTest4x {
 
-	static { // JUnit 3.x didn't have an explicit class-wide setup method
+	@BeforeClass
+	public static void setupClass() {
 		System.out.println("IntegerTest: In demo Class setup method");
     }
 
+	@Before
 	public void setUp() {
 		System.out.println("IntegerTest: In demo Instance setup method");
 	}
 	
+	@Test
 	public void testAdd() {
 		assertEquals(4, 2 + 2);
 	}
 
+	@Test
 	public void testDecode() throws Exception {
 		int ret;
 		ret = Integer.decode("-42").intValue();

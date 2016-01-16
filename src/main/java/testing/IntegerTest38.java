@@ -2,8 +2,8 @@ package testing;
 
 import junit.framework.TestCase;
 
-
-/** Demonstrate how you might use JUNit 3.8 to test the java.lang.Integer 
+/** 
+ * Demonstrate how you might use JUNit 3.8 to test the java.lang.Integer 
  * class (this is not to say that Sun doesn't test before they ship it - they do!!).
  * DO NOT MODERNIZE TO JUNIT 4 - this is meant to show the legacy way!
  */
