@@ -74,9 +74,7 @@ public class Sender {
 			Transport.send(mesg);
 
 		} catch (MessagingException ex) {
-			while ((ex = (MessagingException)ex.getNextException()) != null) {
-				ex.printStackTrace();
-			}
+			throw new RuntimeException("Mail sending failed: " + e, e);
 		}
 	}
 
