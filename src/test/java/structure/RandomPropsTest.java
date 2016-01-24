@@ -25,7 +25,7 @@ public class RandomPropsTest extends TestCase {
 			String ret = RandomProps.getRandomString(p);
 			assertNotNull(ret);
 			assertTrue(values.contains(ret));
-			System.out.printf("Random Value %d = %s%n", i, ret);
+			// System.out.printf("Random Value %d = %s%n", i, ret);
 		}
 	}
 }
