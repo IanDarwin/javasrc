@@ -73,7 +73,7 @@ public class Sender {
 			// Finally, send the message!
 			Transport.send(mesg);
 
-		} catch (MessagingException ex) {
+		} catch (MessagingException e) {
 			throw new RuntimeException("Mail sending failed: " + e, e);
 		}
 	}
