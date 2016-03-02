@@ -135,7 +135,7 @@
 		<scope>test</scope>
 	</dependency>
 
-
+	<!-- Logging -->
     <dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
@@ -239,9 +239,9 @@
 </dependency>
 
 <dependency>
-    <groupId>xalan</groupId>
-    <artifactId>xalan</artifactId>
-    <version>2.3.1</version>
+    <groupId>xml-resolver</groupId>
+    <artifactId>xml-resolver</artifactId>
+    <version>1.2</version>
 </dependency>
 
 <dependency>
@@ -302,6 +302,22 @@
 		</dependency>
 
   </dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
   
   <repositories>
   <repository>
