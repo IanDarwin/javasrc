@@ -1,8 +1,8 @@
-<!DOCTYPE web-app PUBLIC
-	"-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
-	"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
 
     <display-name>Buzz-In Application</display-name>
     <description>
@@ -25,7 +25,7 @@
         <url-pattern>/hosts/BuzzInServlet</url-pattern>
     </servlet-mapping>
 
-  <!-- Define the ShowHosts-only area, by defining
+  <!-- Define the Show Hosts-only area, by defining
    *** a "Security Constraint" on this Application,
    *** mapping it to the subdirectory (URL) that we want to restrict.
    -->
