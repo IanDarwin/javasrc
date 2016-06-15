@@ -71,6 +71,11 @@ public class MyObservable extends Observable implements Serializable {
 		this.changed = false;
 	}
 
+	// NOT AN OVERRIDE - added for testing
+	public void setChanged(boolean changed) {
+		this.changed = changed;
+	}
+
 	@Override
 	public synchronized boolean hasChanged() {
 		return changed;
