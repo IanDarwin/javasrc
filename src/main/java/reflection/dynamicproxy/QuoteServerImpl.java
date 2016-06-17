@@ -5,11 +5,11 @@ import java.util.List;
 
 
 /** Our private implementation of the interface */
-public class QuoteImpl implements Quote {
+public class QuoteServerImpl implements QuoteServer {
 
 	final List<String> sayings = new ArrayList<String>();
 
-	QuoteImpl() {
+	QuoteServerImpl() {
 		sayings.add("A stitch in time... is better late than never");
 		sayings.add("JavaScript is to Java as George Burns is to George Washington.");
 		sayings.add("The more old you get, the more you forget");
