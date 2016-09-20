@@ -54,7 +54,7 @@ public class Handler {
 	
 	protected enum RequestType {
 		RQ_INVALID, RQ_GET, RQ_HEAD, RQ_POST
-	}; 
+	} 
 
 	String requestURL;
 	
