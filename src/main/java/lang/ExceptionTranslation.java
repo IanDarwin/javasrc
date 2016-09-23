@@ -2,6 +2,10 @@ package lang;
 
 import java.io.*;
 
+/**
+ * Translate a checked exception into unchecked.
+ * All the cool kids like Spring Framework do this.
+ */
 public class ExceptionTranslation {
 
 	public String readTheFile(String f) {
@@ -15,6 +19,10 @@ public class ExceptionTranslation {
 			}
 	}
 
+	/**
+	 * MyDataException: Something wrong in data layer. 
+	 * Extends RuntimeException so as to be unchecked
+	 */
 	public class MyDataException extends RuntimeException {
 		public MyDataException(String s, Throwable t) {
 			super(s, t);
