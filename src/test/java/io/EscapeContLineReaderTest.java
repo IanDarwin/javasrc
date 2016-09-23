@@ -1,46 +1,47 @@
 package io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.io.StringReader;
 
-import junit.framework.TestCase;
+import org.junit.*;
 
-public class EscapeContLineReaderTest extends TestCase {
+public class EscapeContLineReaderTest  {
 	final static String testData = 
 		"Some lines of text to test the LineReader class.\n" +
 		"This second line is continued with backslash.\\\n" +
 		"This is a backslash continuation.\\\n" +
 		"This is the end\n" +
-		"This line should be the third output line.\n" +
-		"EXPECT THE NEXT LINE TO THROW AN IOException\n" +
-		"This tests for line ending in \\";
+		"This line should be the third output line.\n";
 	
 	final static String[] expect = {
 		"Some lines of text to test the LineReader class.", 
 		"This second line is continued with backslash. This is a backslash continuation. This is the end",
-		"This line should be the third output line.", 
-		"EXPECT THE NEXT LINE TO THROW AN IOException",
-		"This tests for line ending in \\"
+		"This line should be the third output line.", 	
 	};
 
-	public void test1() {
+	@Test
+	public void test1() throws IOException {
 		EscapeContLineReader is = new EscapeContLineReader(
 			new StringReader(testData));
 		String aLine;
 		int i = 0;
-		try {
+
 			while ((aLine = is.readLine()) != null) {
 				System.out.println(is.getLineNumber() + ": " + aLine);
 				assertEquals(expect[i++], aLine);
 			}
 			is.close();
-			fail("Did not throw expected IOException on last line of testData");
-		} catch (IOException e) {
-			if (i == expect.length - 1) {
-				System.out.println("Caught expected exception on last line");
-			} else {
-				fail("Caught IOException on wrong line of file");
-			}
-		}
+	}
+	
+	@Test(expected=IOException.class)
+	public void testBad() throws Exception {
+		String testData = "This tests for line ending in \\";
+		EscapeContLineReader is = new EscapeContLineReader(
+				new StringReader(testData));
+		is.readLine();
+		is.readLine();	// expect it to throw
+		is.close();
 	}
 }
