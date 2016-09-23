@@ -25,6 +25,6 @@ public class SimpleCalcTest extends TestCase {
 
 		SimpleCalcStreamTok sc = new SimpleCalcStreamTok(is, ps);
 		sc.doCalc();
-		assertEquals(EXPECT, fluffy.getBuffer().toString());
+		assertEquals(EXPECT, fluffy.getBuffer().toString().replaceAll("\\\r", ""));
 	}
 }
