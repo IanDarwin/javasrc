@@ -1,7 +1,8 @@
 package xml.jaxb;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -40,7 +41,7 @@ public class ConfigTest {
 		c1.setVerbose(!c.isVerbose());	// negate field for test
 
 		// Test non-equality
-		assertThat(c, not(equalTo(c1)));
+		assertNotEquals(c, c1);
 
 		// BEGIN main
 		// We set up JAXB: the context arg is the package name!
