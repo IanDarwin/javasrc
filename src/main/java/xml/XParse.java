@@ -1,6 +1,7 @@
 package xml;
 
 import java.io.File;
+import org.apache.xml.resolver.tools.CatalogResolver;
 import java.io.IOException;
 
 import javax.xml.XMLConstants;
@@ -9,17 +10,19 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import org.xml.sax.EntityResolver;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-/** Parse an XML file using DOM, via JAXP. Tries to handle both DTD-based and Schema-based validation.
+/** Parse an XML file using DOM, via JAXP. 
+ * Tries to handle both DTD-based and Schema-based validation.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
 public class XParse {
 
 	/**
 	 * Parse one or more XML documents with optional validation.
-	 * <b>Note:</b> It is an unpleasant limitation of javax.xml.validation that parsing DTD-based documents can
+	 * <b>Note:</b> It is a limitation of javax.xml.validation that parsing DTD-based documents can
 	 * extract the DTD name/location and use it, whereas Schema(etc)-based validation requires the user to do
 	 * this manually before invoking the parser.
 	 * @param av Command args, may include -v for validation, and -a schema.xsd, before the filename(s);
@@ -36,9 +39,9 @@ public class XParse {
 		Schema schema = null;
 		try {
 			for (int i=0; i<av.length; i++) {
-				if (av[i].equals("-v"))
+				if (av[i].equals("-v")) {
 					validate = true;
-				else if (av[i].equals("-a")) {
+				} else if (av[i].equals("-a")) {
 					// "create a SchemaFactory capable of understanding W3C schemas"
 					//   -- from the Javadoc page
 					SchemaFactory schemaFactory = 
@@ -72,9 +75,12 @@ public class XParse {
 						}			
 					}
 					DocumentBuilder parser = dbFactory.newDocumentBuilder();
-					// If not using schema, Get local copies of DTDs...
+					// If not using a specific schema, get local copies of DTDs/Schemas...
 					if (schema == null) {
-						parser.setEntityResolver(new MyDTDResolver());
+						EntityResolver res;
+						res = new CatalogResolver();
+						// res = new MyDTDResolver()
+						parser.setEntityResolver(res);
 					}
 					parser.parse(xmlFile);
 					System.out.println("Parsed/Validated OK");

@@ -146,12 +146,14 @@
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
 		<version>1.7.5</version>
+		<scope>compile</scope>
     </dependency>
             
     <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
         <version>1.2.9</version>
+		<scope>compile</scope>
     </dependency>
 
     <dependency>
@@ -162,9 +164,10 @@
 
     <!-- Spring - used in a few examples -->
     <dependency>
-  <groupId>org.springframework</groupId>
-  <artifactId>spring-context</artifactId>
-  <version>3.2.4.RELEASE</version>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.2.4.RELEASE</version>
+		<scope>compile</scope>
     </dependency>
 
     <!-- JPA needing a driver, let's use Hibernate -->
