@@ -23,7 +23,7 @@ public class UndentTest extends TestCase {
 			" Line 4\n" +
 			"\n";
 		System.out.println("Start basic test");
-		assertEquals(expect, innerTest(8, data));
+		assertEquals(expect, innerTest(8, data).replaceAll("\\\r", ""));
 	}
 
 	private String innerTest(int n, String data) throws IOException {
@@ -52,6 +52,6 @@ public class UndentTest extends TestCase {
 			"\n" +
 			"\n";
 		System.out.println("Start short lines test");
-		assertEquals(expect, innerTest(8, data));
+		assertEquals(expect, innerTest(8, data).replaceAll("\\\r", ""));
 	}
 }
