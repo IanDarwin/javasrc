@@ -71,7 +71,7 @@ public class MkIndex {
 		println("	<title>" + TITLE + "</title>");
 		println("</head>");
 		println();
-		println("<body bgcolor=\"" + BGCOLOR + "\">");
+		println("<body style=\"background:" + BGCOLOR + ";\">");
 		println("<h1>" + TITLE + "</h1>");
 		if (new File(ABOUT_FILE_NAME).exists()) {
 			FileIO.copyFile(ABOUT_FILE_NAME, out, false);
@@ -189,7 +189,7 @@ public class MkIndex {
 		print("<li>");
 		char c = name.charAt(0);
 		if (!done[c]) {
-			print("<a name=\"" + c + "\"/>");
+			print("<a id=\"" + c + "\"/>");
 			done[c] = true;
 		}
 		println("<a href=\"" + path + "\">" + name + "</a>");
