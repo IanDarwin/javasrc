@@ -34,7 +34,7 @@ public class RandomProps {
 		if (max == 0)
 			return EMPTY_PROPERTIES_MESSAGE;
 		int n = r.nextInt(max);
-		final Iterator it = p.values().iterator();
+		final Iterator<?> it = p.values().iterator();
 		String o = null;
 		int i = 0;
 		do {

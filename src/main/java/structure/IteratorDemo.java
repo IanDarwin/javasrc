@@ -22,7 +22,7 @@ public class IteratorDemo {
 
 		int i = 0;
 
-		Iterator it = l.iterator();
+		Iterator<Date> it = l.iterator();
 
 		// Process the data structure using an iterator.
 		// This part of the code does not know or care

@@ -3,7 +3,7 @@ package structure;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 
 /**
  * Demonstrate the HashMap class, and an Iterator.
@@ -29,10 +29,9 @@ public class MapEntrySetDemo {
 		map.put("Sun", "Mountain View, CA");
 
 		// List the entries using entrySet()
-        Set entries = map.entrySet();
-        Iterator it = entries.iterator();
+        Iterator<?> it = map.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry entry = (Map.Entry)it.next();
+            Map.Entry<?,?> entry = (Entry<?, ?>) it.next();
             System.out.println(entry.getKey() + "-->" + entry.getValue());
         }
 	}

@@ -62,12 +62,11 @@ public class MkIndex {
 	void begin() throws IOException {
 		out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 		println();
-		println("<html>");
 
 		println("<head>");
-		println("	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>");
-		println("	<meta name='Generator' content='Java MkIndex'/>");
-		println("	<link rel='stylesheet' type='text/css' href='/stylesheet.css' title='style'/>");
+		println("	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></meta>");
+		println("	<meta name='Generator' content='Java MkIndex'></meta>");
+		println("	<link rel='stylesheet' type='text/css' href='/stylesheet.css' title='style'></link>");
 		println("	<title>" + TITLE + "</title>");
 		println("</head>");
 		println();
@@ -83,7 +82,7 @@ public class MkIndex {
 		} else {
 			println("<p>All files Copyright (c): All rights reserved.");
 		}
-		println("<hr />");
+		println("<hr></hr>");
 	}
 
 	/** Array of letters that one or more files begin with. Should
@@ -189,10 +188,11 @@ public class MkIndex {
 		print("<li>");
 		char c = name.charAt(0);
 		if (!done[c]) {
-			print("<a id=\"" + c + "\"/>");
+			print("<a id=\"" + c + "\"></a>");
 			done[c] = true;
 		}
-		println("<a href=\"" + path + "\">" + name + "</a>");
+		print("<a href=\"" + path + "\">" + name + "</a>");
+		println("</li>");
 	}
 
 	void mkDirLink(String index, String dir) {
