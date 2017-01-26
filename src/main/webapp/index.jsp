@@ -4,9 +4,8 @@ These are far from the latest-and-greatest. Some may neven no longer work. Use a
 </p>
 <ul>
 <li><a href='CalendarPage.jsp'>CalendarPage.jsp</a></li>
-<li><a href='FiveInts.java'>FiveInts.java</a></li>
-<li><a href='FiveInts.jsp'>FiveInts.jsp</a></li>
-<li><a href='FiveIntsServlet.java'>FiveIntsServlet.java</a></li>
+<li><a href='FiveInts.jsp'>Five Random Integers, JSP version</a></li>
+<li><a href='FiveIntsServlet'>Five Random Integers, Servlet version</a></li>
 <li><a href='FontSizes.jsp'>FontSizes.jsp</a></li>
 <li><a href='counter.jsp'>counter.jsp</a></li>
 <li><a href='forceerror.jsp'>forceerror.jsp</a></li>
