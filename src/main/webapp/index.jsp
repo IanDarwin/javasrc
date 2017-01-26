@@ -15,7 +15,6 @@ These are far from the latest-and-greatest. Some may neven no longer work. Use a
 <li><a href='hello-xml.jsp'>hello-xml.jsp</a></li>
 <li><a href='hello.jsp'>hello.jsp</a></li>
 <li><a href='hellominimal.jsp'>hellominimal.jsp</a></li>
-<li><a href='index.jsp'>index.jsp</a></li>
 <li><a href='inventory.jsp'>inventory.jsp</a></li>
 <li><a href='jspIncludeASP.jsp'>jspIncludeASP.jsp</a></li>
 <li><a href='listusers.jsp'>listusers.jsp</a></li>
