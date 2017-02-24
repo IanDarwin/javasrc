@@ -24,6 +24,8 @@ public class AudioPlay extends Application {
 		} else {
 			for (String arg : args) {
 				playClip(
+					// Wrap in a URL; constructor does validation for us
+					arg.indexOf(':') > -1 ? new URL(arg) :
 					new URL(String.format("file:///%s/%s", 
 						System.getProperty("user.dir"), arg)));
 			}
