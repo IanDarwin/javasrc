@@ -1,0 +1,30 @@
+<h1>Mac JDK8 JavaFX</h1>
+<p>
+Because there are some Java 8 JDKs/JREs that don't include JavaFX, it is marked as non-portable in MacOS.
+You don't want to use any such JDK/JRE, so fix it.
+This is easy to fix.
+</p>
+<ul>
+<li>Right-click or Control-click on the Project, select <kbd>Build Path -&gt; Configure Build Path</kbd>.
+<li>Select the <kbd>Libraries</kbd> tab. Select and "drill down into" the JDK you are using.
+<li>Select <kbd>Access Rules</kbd>. Click <kbd>Edit</kbd>
+<br/>
+<img src="images/macbuildpath1.png"
+</li>
+<li>In the resulting dialog, click <kbd>Add</kbd>
+<li>Set the <kbd>Resolution</kbd> chooser from <kbd>Forbidden</kbd> to <kbd>Accessible</kbd>
+And enter the string <kbd>javafx/**</kbd> in the <kbd>Rule Pattern</kbd> field.
+<br/>
+<img src="images/macbuildpath2.png"
+</li>
+<li>Click <kbd>OK</kbd> several times until you get back to the project.
+</ul>
+<p>
+Now we have to tell Eclipse to compile the JavaFX files. The easiest way is to delete the line
+referring to them in the POM file, and tell Eclipse to use Maven to update the project.
+If you don't use Maven, you could do this manually, in the build path, but then when you
+do start using Maven your changes will get overwritten.
+</p>
+<p>
+The JavaFX files should now compile.
+</p>
