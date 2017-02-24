@@ -1,0 +1,12 @@
+Order:
+	Finish revising Handler to use
+	HttpServletRequest and HttpServletResponse
+General:
+	Common Logfile Format
+Handler.java:
+	BUGLET: index.html if found is not cached
+	BUG: Can't get to files in subdirectories!!
+	TODO: when adding images to directory listing,
+		discriminate between files and directories.
+
+

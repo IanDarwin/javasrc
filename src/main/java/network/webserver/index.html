@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+	<meta name="generator" content="The vi editor from UNIX"/>
+	<meta name="Author" content="Ian Darwin"/>
+	<title>A Baby Webserver in Java</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheet.css" title="Style"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head>
+
+<body background="webcrawler.gif" bgcolor="#C0D0E0" alt="Ya gotta crawl...">
+<h1>A Baby Webserver in Java</h1>
+<p>Written by Ian Darwin, http://www.darwinsys.com/, as a simple demonstration.
+It's small and simple, threaded, and does caching.
+Lots of room to grow!
+</p>
+<p>NO SECURITY (other than checking for ../ in filenames). USE AT OWN RISK.
+</p>
+<p>NO CGI. Ever. NO SERVLETS. Yet.
+</p>
+<p>Not performance tuned!
+</p>
+<p>HARDLY ANY CONFIGURATION to speak of. 
+No reconfiguration - just kill&amp;restart it.
+If you want <a href="http://tomcat.apache.org/">Tomcat</a>,
+you know where to find it :-)
+</p>
+<p>NO claim (yet) that it's compliant with the HTTP RFC standard.
+</p>
+<p>NO DOCUMENTATION YET (therefore, you are not reading this page yet :-)).
+</p>
+<p>Just source code:
+</p>
+<ul>
+	<li><a href="legal-notice.txt">Please read these conditions of use.</a></li>
+	<li><a href="Httpd.java">Httpd, the main class</a></li>
+	<li><a href="Handler.java">Handler, threaded, created for each request</a></li>
+	<li><a href="httpd.properties">The main config file, such as it is</a></li>
+	<li><a href="mime.properties">The Mime Type config file.</a></li>
+	<li><a href="errors.properties">The (Internationalizable?) error message file.</a></li>
+	<li>The <a href="http://jakarta.apache.org/ant/">ant</a> build script
+		<a href="build.xml">build.xml</a>.</li>
+	<li>The Startup Script <a href="run.bat">for DOS</a> and
+		<a href="run.sh">for UNIX.</a></li>
+</ul>
+<hr />
+<p>If you liked this program, find lots more in my
+<a href="http://javacook.darwinsys.com/">Java Cookbook</a>.
+</p>
+<hr />
+<p>$Id$</p>
+</body>
+</html>

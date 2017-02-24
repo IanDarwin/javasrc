@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!-- This web-app doesn't really need a web.xml, but here it is anyway -->
+
+<web-app>
+    <display-name>Ian Darwin's Toy Web Server</display-name>
+    <description>
+      This is Ian Darwin's Toy Web Server
+    </description>
+
+</web-app>
