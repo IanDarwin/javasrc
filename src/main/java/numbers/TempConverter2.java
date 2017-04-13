@@ -14,19 +14,14 @@ public class TempConverter2 extends TempConverter {
 		t.end();
 	}
 
-	// This is not an @Override method, so it is never called!
 	protected void print(float f, float c) {
 		System.out.printf("%6.2f %6.2f%n", f, c);
-		// This is to prove that it's never called!
-		throw new IllegalStateException("Called non-override method");
 	}
 
-	@Override
 	protected void start() {
 		System.out.println("Fahr    Centigrade");
 	}
 
-	@Override
 	protected void end() {
 		System.out.println("-------------------");
 	}
