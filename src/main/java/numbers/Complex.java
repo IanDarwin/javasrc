@@ -23,7 +23,7 @@ public class Complex {
 	 * println() and elsewhere.
 	 */
 	public String toString() {
-		StringBuffer sb = new StringBuffer().append(r);
+		StringBuilder sb = new StringBuilder().append(r);
 		if (i>0)
 			sb.append('+');	// else append(i) appends - sign
 		return sb.append(i).append('i').toString();

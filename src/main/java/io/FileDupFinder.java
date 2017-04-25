@@ -93,7 +93,7 @@ public class FileDupFinder implements FileHandler {
 	/** Convert an array of bytes to a hex string. */
 	public static final String toHex(byte bytes[]) {
 		assert bytes != null : "invalid input to toHex()";
-		StringBuffer sb = new StringBuffer(bytes.length * 2);
+		StringBuilder sb = new StringBuilder(bytes.length * 2);
 		for (int i = 0; i < bytes.length; i++) {
 			// System.out.println("input: " + bytes[i] + " ");
 			sb.append((char)byteToHex[(bytes[i] >> 4) & 0x0f]);

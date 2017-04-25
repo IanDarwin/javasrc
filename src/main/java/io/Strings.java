@@ -39,7 +39,7 @@ public class Strings {
 			// This line alone cuts the runtime by about 66% on large files.
 			BufferedInputStream is = new BufferedInputStream(inStream);
 
-			StringBuffer sb = new StringBuffer();
+			StringBuilder sb = new StringBuilder();
 
 			// Read a byte, cast it to char, check if part of printable string.
             while ((i = is.read()) != -1) {
@@ -82,7 +82,7 @@ public class Strings {
     }
 
 	/** Output a match. Made a separate method for use by subclassers. */
-	protected void report(String fName, StringBuffer theString) {
+	protected void report(String fName, StringBuilder theString) {
 		System.out.println(fName + ": " + theString);
 	}
 }

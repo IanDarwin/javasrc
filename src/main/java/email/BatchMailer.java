@@ -34,7 +34,7 @@ public class BatchMailer {
 		messageBody = null;
 		BufferedReader is = new BufferedReader(new FileReader(fileName));
 		String line;
-		StringBuffer bs = new StringBuffer();
+		StringBuilder bs = new StringBuilder();
 		while ((line = is.readLine()) != null) {
 			bs.append(line).append("\n");
 		}

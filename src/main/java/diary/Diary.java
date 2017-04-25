@@ -176,7 +176,7 @@ public class Diary extends JFrame {
 			return;
 		}
 		StringTokenizer st = new StringTokenizer(selectedText);
-		StringBuffer s = new StringBuffer();
+		StringBuilder s = new StringBuilder();
 		while (st.hasMoreTokens()) {
 			String sval = st.nextToken();
 			if (col+sval.length() > COLS-7) {

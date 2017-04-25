@@ -86,7 +86,7 @@ public class UserDBText extends UserDB {
 		else if (editPrivs) 
 			privs = 'E';
 		
-		return new StringBuffer()
+		return new StringBuilder()
 			.append(u.getName()).append(':')
 			.append(u.getPassword()).append(':')
 			.append(u.getFullName()).append(':')

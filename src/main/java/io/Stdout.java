@@ -17,7 +17,7 @@ public class Stdout {
 		System.out.println("The answer is " + i + '.');
 		System.out.println("The answer is " + i + ".");
 		System.out.println(i + '=' + " the answer.");
-		System.out.println(new StringBuffer("The answer is ").append(i).append('.'));
+		System.out.println(new StringBuilder("The answer is ").append(i).append('.'));
 		// END main
 	}
 }

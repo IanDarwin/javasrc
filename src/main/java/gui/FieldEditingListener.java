@@ -16,7 +16,7 @@ public class FieldEditingListener implements TextListener {
 		int caret = -1;
 
 		String s = tf.getText();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		System.out.println("Text->" + s);
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);

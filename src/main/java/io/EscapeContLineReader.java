@@ -23,14 +23,14 @@ public class EscapeContLineReader extends ContLineReader {
 	 * marks the end of each line but the last in a sequence.
 	 */
 	public String readLine() throws IOException {
-		// Read the first line, save its contents in the StringBuffer
+		// Read the first line, save its contents in the StringBuilder
 		// and its line number in firstLineNumber.
 		String s = readPhysicalLine();
 		if (s == null)
 			hitEOF = true;
 		if (hitEOF)
 			return null;
-		StringBuffer sb = new StringBuffer(s);
+		StringBuilder sb = new StringBuilder(s);
 		firstLineNumber = super.getLineNumber();
 
 		// Now read as many continued lines as there are.

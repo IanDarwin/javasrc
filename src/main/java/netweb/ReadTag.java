@@ -97,7 +97,7 @@ public class ReadTag {
 	/** Read the next tag.  */
 	protected Element nextTag() throws IOException {
 		int i;
-		StringBuffer bodyText = new StringBuffer();
+		StringBuilder bodyText = new StringBuilder();
 		while ((i = inrdr.read()) != -1) {
 			char thisChar = (char)i;
 			if (thisChar == XML_TAG_START) {
@@ -118,7 +118,7 @@ public class ReadTag {
 	 * @author Ian Darwin
 	 */
 	protected Element readTag() throws IOException {
-		StringBuffer tagType = new StringBuffer(XML_TAG_START);
+		StringBuilder tagType = new StringBuilder(XML_TAG_START);
 		int i = XML_TAG_START;
 	  
 		while ((i = inrdr.read()) != -1 && i != XML_TAG_END && 				
@@ -143,7 +143,7 @@ public class ReadTag {
 		final int S_INNAME = -1, S_EQUALS = '=', /*Q_NONE = 'N',*/ Q_SQUOTE = '\'', Q_DQUOTE = '"';
 		final int S_INITIAL = S_INNAME;
 		int i, state = S_INNAME;
-		StringBuffer attrName = new StringBuffer(), attrValue = new StringBuffer();
+		StringBuilder attrName = new StringBuilder(), attrValue = new StringBuilder();
 		while ((i = inrdr.read()) != -1 && i != XML_TAG_END) {
 
 			if (state == Q_SQUOTE && i != Q_SQUOTE) {
@@ -170,7 +170,7 @@ public class ReadTag {
 				}
 				state = S_INITIAL;
 			} else {
-				StringBuffer whereToPutChars = state==S_INNAME ? attrName : attrValue;
+				StringBuilder whereToPutChars = state==S_INNAME ? attrName : attrValue;
 				whereToPutChars.append((char)i);
 			}
 		}
@@ -185,7 +185,7 @@ public class ReadTag {
 	 * @param attrName
 	 * @param attrValue
 	 */
-	private void setOneAttribute(Element tag, StringBuffer attrName, StringBuffer attrValue) {
+	private void setOneAttribute(Element tag, StringBuilder attrName, StringBuilder attrValue) {
 		if (attrName.length() == 0 || !Character.isLetter(attrName.charAt(0))) {
 			// System.err.println("warning: invalid attribute name: " + attrName);
 			return;

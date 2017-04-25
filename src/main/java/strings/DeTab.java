@@ -43,7 +43,7 @@ public class DeTab {
 	public String detabLine(String line) {
 		char c;
 		int col;
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		col = 0;
 		for (int i = 0; i < line.length(); i++) {
 			// Either ordinary character or tab.

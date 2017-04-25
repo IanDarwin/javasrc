@@ -59,7 +59,7 @@ public class Element {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append('<').append(type);
 		Set<String> keyset = attributes.keySet();
 		for (String name : keyset) {

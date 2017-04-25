@@ -32,7 +32,7 @@ public class Page extends PDFDict {
 		master.addXref();
 		startObj();
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append("BT\n");
 		sb.append("/F1 12 Tf\n");
 

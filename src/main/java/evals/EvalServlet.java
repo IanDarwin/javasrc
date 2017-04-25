@@ -5,7 +5,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class EvalServlet extends HttpServlet {
-	public static String EVALS_FILE = "/home/ian/evals.txt";
+
+	private static final long serialVersionUID = 1L;
+
+	public static final String EVALS_FILE = System.getProperty("user.home") + "/evals.txt";
 
 	PrintWriter log;
 
@@ -16,7 +19,7 @@ public class EvalServlet extends HttpServlet {
 			log = new PrintWriter(new FileWriter(EVALS_FILE, append));
 			log("Log opened, file = " + log);
 		} catch (IOException e) {
-			log("Failed to open writer");
+			throw new ExceptionInInitializerError("Log failed to open!");
 		}
 	}
 
@@ -35,7 +38,7 @@ public class EvalServlet extends HttpServlet {
 		if (log == null) {
 			out.println("<H3>Error</H3>");
 			out.println("Sorry, unable to log (I/O error)");
-			out.println("<P>Please notify your instructor at once!");
+			out.println("<P>Please notify your instructor!");
 			return;
 		}
 
@@ -48,7 +51,7 @@ public class EvalServlet extends HttpServlet {
 		int courseGrade = -1;
 		String course = request.getParameter("course");
 		if (course == null || course.length() == 0) {
-			out.println("<P>Please provide a course grade");
+			out.println("<p>Please provide a course grade");
 			errors = true;
 		}
 		else courseGrade = Integer.parseInt(course);
@@ -56,7 +59,7 @@ public class EvalServlet extends HttpServlet {
 		int instrGrade = 0;
 		String instr= request.getParameter("instr");
 		if (instr == null || instr.length() == 0) {
-			out.println("<P>Please provide an instructor grade");
+			out.println("<p>Please provide an instructor grade");
 			errors = true;
 		}
 		else instrGrade = Integer.parseInt(instr);
@@ -112,21 +115,18 @@ public class EvalServlet extends HttpServlet {
 				best, improve);
 			out.println("<H3>Done!</H3><P>Your comments have been recorded.");
 		} else {
-			out.print("<BR>");
-			// Kludge - seem to have to use POST here to
-			// let the browser "see" the query string...
-			out.print("<FORM METHOD=POST ACTION=");
+			out.print("<br/>");
+			// Post the form...
+			out.print("<form method='post' action='");
 			out.print(
-				// Under JRun, host changed to "localhost"!!
 				// HttpUtils.getRequestURL(request).
-				new StringBuffer(
+				new StringBuilder(
 					"http://instructor:8080/servlet/EvalServlet").
 					append("?reviewed=true&").
-					append("?reviewed=true&").
 					append(request.getQueryString()));
-			out.println(">");
-			out.print("<INPUT TYPE=submit VALUE=\"Press here to confirm\">");
-			out.println("</FORM>");
+			out.println("'>");
+			out.print("<input type='submit' value='Press here to confirm'>");
+			out.println("</form>");
 		}
 	}
 
