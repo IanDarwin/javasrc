@@ -23,7 +23,7 @@
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>7.0</javaee.version>
-		<darwinsys-api.version>1.2.0-SNAPSHOT</darwinsys-api.version>
+		<darwinsys-api.version>1.1.3</darwinsys-api.version>
   </properties>
 
   <build>
@@ -38,11 +38,12 @@
             <!-- javafx not included in some Apple JDK versions?
                 Access restriction: The type 'Stage' is not API (restriction on required library 
                 '/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/ext/jfxrt.jar')
-            -->
             <exclude>javafx/*.java</exclude>
-
-			<!-- Jumping the gun a bit, Mac JDK says "is not api", as above. -->
+            -->
+			<!-- Jumping the gun a bit, Mac JDK says 
+			"Unsafe" "is not api", as above. 
             <exclude>unsafe/*.java</exclude>
+			-->
 
 			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
 			 *** testing demos for now (does not affect all the stuff in src/test/java!).
@@ -63,7 +64,6 @@
 
             <!-- Have yet to find a POM that works -->
             <exclude>gui_swt/*.java</exclude>
-            <exclude>gui/ArrayListTableSimple.java</exclude>
             <exclude>xml/XSLTransform.java</exclude>
             <exclude>otherlang/StringDistance.java</exclude>
             <exclude>javacomm/*.java</exclude>
