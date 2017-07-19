@@ -4,7 +4,7 @@ package lang.loops;
  * with "javap -c" or equivalent; you will be enlightened
  * as to the true nature of while loops compared to for loops.
   */
-class Loops {	// EXPECT WARNING ABOUT NAME
+class LoopWhile {
 
 	 public static void main(String[] args) {
 	 		int i = 0;
