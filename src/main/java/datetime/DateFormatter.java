@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Tutorial/Example of LocalDate and DateTimeFormatter formatting
+ */
 // BEGIN main
 public class DateFormatter {
 	public static void main(String[] args) {
