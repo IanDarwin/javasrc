@@ -35,11 +35,9 @@
           <source>1.8</source>
           <target>1.8</target>
           <excludes>
-            <!-- javafx not included in some Apple JDK versions?
-                Access restriction: The type 'Stage' is not API (restriction on required library 
-                '/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/ext/jfxrt.jar')
-            <exclude>javafx/*.java</exclude>
+            <!-- javafx not included in some minor JDK distributions.
             -->
+            <exclude>javafx/*.java</exclude>
 			<!-- Jumping the gun a bit, Mac JDK says 
 			"Unsafe" "is not api", as above. 
             <exclude>unsafe/*.java</exclude>
