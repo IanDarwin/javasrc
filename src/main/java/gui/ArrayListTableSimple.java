@@ -75,11 +75,11 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		for (String key : p.keySet()) {
+		for (Object key : p.keySet()) {
 
 			// Copy them into the ArrayList as ArrayListTableDatum entries.
-			String val = p.getProperty(key);
-			data.add(new ArrayListTableDatum(key, val));
+			String val = p.getProperty((String)key);
+			data.add(new ArrayListTableDatum((String)key, val));
 		}
 
 		// Make the Model and View
