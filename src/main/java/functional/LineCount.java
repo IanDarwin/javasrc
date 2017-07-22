@@ -9,7 +9,7 @@ public class LineCount {
 
 	public static void main(String[] args) throws IOException {
 
-		String fileName = "myfile.txt";
+		String fileName = "lines.txt";
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		long numberLines = br.lines().count();
 		//Stream<String> lines = br.lines();
