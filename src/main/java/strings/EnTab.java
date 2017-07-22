@@ -92,7 +92,7 @@ public class EnTab {
 	 */
 	public String entabLine(String line) {
 		int N = line.length(), outCol = 0;
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		char ch;
 		int consumedSpaces = 0;
 		

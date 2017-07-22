@@ -8,7 +8,7 @@ public class UnicodeChars {
 	public static void main(String[] argv) {
 		// BEGIN main
 		// UnicodeChars.java
-		StringBuffer b = new StringBuffer();
+		StringBuilder b = new StringBuilder();
 		for (char c = 'a'; c<'d'; c++) {
 			b.append(c);
 		}

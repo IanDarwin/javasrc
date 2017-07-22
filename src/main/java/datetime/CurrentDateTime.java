@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+/**
+ * Tutorial/Example of LocalDate
+ */
 // BEGIN main
 public class CurrentDateTime {
 	public static void main(String[] args) {

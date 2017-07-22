@@ -49,7 +49,7 @@ class OneAck extends Frame {
 
 		// "The 50-line text formatter" in 15 lines.
 		StringTokenizer st = new StringTokenizer(msg);
-		StringBuffer s = new StringBuffer();
+		StringBuilder s = new StringBuilder();
 		for (int col=0; st.hasMoreTokens(); ) {
 			String sval = st.nextToken();
 			if (col+sval.length() > COLS) {
@@ -72,7 +72,7 @@ class OneAck extends Frame {
 
 	/** Present this OneAck as a String */
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append("OneAck[");
 		sb.append(getTitle());
 		sb.append('/');

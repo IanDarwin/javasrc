@@ -13,7 +13,7 @@ public class Replace {
 		if (start == -1) {
 			return inString;
 		}
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(inString.substring(0, start));
 		sb.append(newStr);
 		sb.append(inString.substring(start+oldStr.length()));

@@ -14,7 +14,7 @@ public class Text extends PDFObject {
 		throw new IllegalStateException("print() called on a Text obj");
 	}
 
-	public void print(StringBuffer sb) {
+	public void print(StringBuilder sb) {
 		sb.append("0 -18 Td (");
 		sb.append(text);	// TODO must substitute escaped characters
 		sb.append(") Tj\n");

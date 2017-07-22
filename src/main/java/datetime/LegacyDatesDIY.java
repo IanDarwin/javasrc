@@ -8,6 +8,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * Tutorial/Example of converting between LocalDate and legacy Date,
+ * but done via do-it-yourself (not recommended!)
+ */
 // BEGIN main
 public class LegacyDatesDIY {
 	public static void main(String[] args) {

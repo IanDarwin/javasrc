@@ -229,7 +229,7 @@ public class User extends Person implements Serializable {
 
 	/** Return a String representation. */
 	public String toString() {
-		return new StringBuffer("User[").append(name).append(',').
+		return new StringBuilder("User[").append(name).append(',').
 			append(getFullName()).
 			append(']').toString();
 	}

@@ -26,7 +26,7 @@ public class FortranLineReader extends ContLineReader {
 	protected String statementNum;
 
 	/** Read one (possibly continued) line, save its text (columns 6-71)
-	 * in the StringBuffer, its statement number in statementNum,
+	 * in the StringBuilder, its statement number in statementNum,
 	 * and its line number in firstLineNumber.
 	 */
 	public String readLine() throws IOException {
@@ -42,7 +42,7 @@ public class FortranLineReader extends ContLineReader {
 		}
 
 		statementNum = s.substring(0,5);
-		StringBuffer sb = new StringBuffer(s.substring(6));
+		StringBuilder sb = new StringBuilder(s.substring(6));
 		firstLineNumber = super.getLineNumber();
 
 		// Now read as many continued lines as there are.

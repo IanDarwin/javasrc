@@ -11,7 +11,7 @@ public class CreditCardValidate {
 	 * @return The cleaned up credit card string.
 	 */
 	public static String clean(final String input) {
-		final StringBuffer sb = new StringBuffer();
+		final StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);
 			if (Character.isDigit(c)) {

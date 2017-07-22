@@ -101,7 +101,7 @@ public class Cookie implements Comparable<Cookie> {
 	}
 
 	public String toString() {
-		return new StringBuffer(url).append("/").append(path).toString();
+		return url + "/" + path;
 	}
 
 	public int compareTo(Cookie c2) {

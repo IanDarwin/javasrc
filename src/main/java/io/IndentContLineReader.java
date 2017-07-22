@@ -33,7 +33,7 @@ public class IndentContLineReader extends ContLineReader {
 
 		// If we saved a previous line, start with it. Else,
 		// read the first line of possible continuation. 
-		// If non-null, put it into the StringBuffer and its line 
+		// If non-null, put it into the StringBuilder and its line 
 		// number in firstLineNumber.
 		if (prevLine != null) {
 			s = prevLine;
@@ -52,8 +52,8 @@ public class IndentContLineReader extends ContLineReader {
 		if (!doContinue || s == null)
 			return s;
 
-		// Otherwise, start building a stringbuffer
-		StringBuffer sb = new StringBuffer(s);
+		// Otherwise, start building a StringBuilder
+		StringBuilder sb = new StringBuilder(s);
 
 		// Read as many continued lines as there are, if any.
 		while (true) {

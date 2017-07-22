@@ -33,7 +33,7 @@ public class TarList {
 		}
 	}
 
-	protected StringBuffer sb;
+	protected StringBuilder sb;
 	/** Shift used in formatting permissions */
 	protected static int[] shft = { 6, 3, 0 };
 	/** Format strings used in permissions */
@@ -50,7 +50,7 @@ public class TarList {
 
 	/** Format a TarEntry the same way that UNIX tar does */
 	public String toListFormat(TarEntry e) {
-		sb = new StringBuffer();
+		sb = new StringBuilder();
 		switch(e.type) {
 			case TarEntry.LF_OLDNORMAL:
 			case TarEntry.LF_NORMAL:

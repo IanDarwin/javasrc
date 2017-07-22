@@ -50,10 +50,11 @@ public class StringAlign extends Format {
 
 	/** Format a String.
      * @param input - the string to be aligned.
-     * @parm where - the StringBuffer to append it to.
+     * @parm where - the StringBuilder to append it to.
      * @param ignore - a FieldPosition (may be null, not used but
      * specified by the general contract of Format).
      */
+	@Override
 	public StringBuffer format(
 		Object input, StringBuffer where, FieldPosition ignore)  {
 

@@ -27,9 +27,9 @@ public class GridImageCanvas extends JPanel {
 	/** The LayoutManager. We provide it, not the user */
 	protected LayoutManager lm = null;
 	/** The list of Images */
-	protected List<Image> vi = new Vector<Image>();
+	protected List<Image> vi = new ArrayList<Image>();
 	/** The name of each Image */
-	protected List<String> vs = new Vector<String>();
+	protected List<String> vs = new ArrayList<String>();
 	/** The Panel, to manage the grid */
 	protected Panel grid;
 	/** The label, for showStatus */

@@ -63,7 +63,7 @@ public class NetLogServer {
 	}
 
 	public synchronized void log(int tid, String s) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(tid);
 		sb.append(": ");
 

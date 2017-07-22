@@ -20,7 +20,7 @@ import javax.swing.table.AbstractTableModel;
 /** CookieCutter - program to show, and let you winnow, your Cookie collection.
  */
 public class CookieCutter {
-	/** Main data structure: a Vector of Cookie objects. */
+	/** Main data structure: a List of Cookie objects. */
 	protected List<Cookie> cookies;
 	protected JFrame f;
 	protected MyTableModel tModel;

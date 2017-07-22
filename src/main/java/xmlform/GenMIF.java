@@ -56,7 +56,7 @@ public class GenMIF implements XmlFormWalker {
 	protected int indent = 0;
 	protected void indent() {
 		if (indent > indents.size()) {
-			StringBuffer sb = new StringBuffer();
+			StringBuilder sb = new StringBuilder();
 			for (int i=0; i<indent; i++) {
 				sb.append(' ');
 				sb.append(' ');
@@ -326,7 +326,7 @@ public class GenMIF implements XmlFormWalker {
 	/** Do the minumum needed to make "line" a valid MIF string. */
 	protected void mifString(String line) {
 		// Make new, big enough for translations
-		StringBuffer b = new StringBuffer(line.length() * 2);
+		StringBuilder b = new StringBuilder(line.length() * 2);
 		b.append('<');
 		b.append("String");	// maybe parameterize?
 		b.append(' ');

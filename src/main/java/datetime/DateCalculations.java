@@ -4,6 +4,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 
+/**
+ * Tutorial/Example of LocalDateTime add subtract day-of-month calculations
+ */
 public class DateCalculations {
 
 	public static void main(String[] args) {

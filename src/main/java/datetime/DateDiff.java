@@ -4,6 +4,9 @@ package datetime;
 import java.time.LocalDate;
 import java.time.Period;
 
+/**
+ * Tutorial/Example of LocalDate date difference subtraction
+ */
 public class DateDiff {
 
 	public static void main(String[] args) {

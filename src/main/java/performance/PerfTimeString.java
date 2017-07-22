@@ -11,13 +11,13 @@ public class PerfTimeString extends PerfTimeRegex {
 		}
 		int index = 0, oldIndex = index;
 
-    	StringBuffer sb = new StringBuffer();
-        while ((index = string.indexOf("'", oldIndex)) != -1) {  
-        	sb.append(string.substring(oldIndex, index));
-    		sb.append("''");
-    		oldIndex = index+1;
-        }	
-        sb.append(string.substring(oldIndex));
+		StringBuilder sb = new StringBuilder();
+		while ((index = string.indexOf("'", oldIndex)) != -1) {  
+			sb.append(string.substring(oldIndex, index));
+			sb.append("''");
+			oldIndex = index+1;
+		}	
+		sb.append(string.substring(oldIndex));
 		return sb.toString();
 	}
 

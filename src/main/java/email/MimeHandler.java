@@ -30,7 +30,7 @@ public class MimeHandler {
 			throws java.io.IOException {
 			BufferedReader is =
 				new BufferedReader(new InputStreamReader(ds.getInputStream()));
-			StringBuffer sb = new StringBuffer();
+			StringBuilder sb = new StringBuilder();
 			int ch;
 			while ((ch = is.read()) != -1)
 				sb.append((char)ch);

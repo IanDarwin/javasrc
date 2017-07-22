@@ -198,7 +198,7 @@ public class Appt implements Comparable<Appt> {
      */
     @Override
     public String toString() {
-        return new StringBuffer().append(year).append(' ').
+        return new StringBuilder().append(year).append(' ').
             append(month).append(' ').append(day).append(' ').
             append(hour).append(' ').append(minute).append(' ').
             append(text).toString();
@@ -216,7 +216,7 @@ public class Appt implements Comparable<Appt> {
         int d = Integer.parseInt(st.nextToken());
         int h = Integer.parseInt(st.nextToken());
         int i = Integer.parseInt(st.nextToken());
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (st.hasMoreElements()) {
             sb.append(st.nextToken());
             if (st./*still*/hasMoreElements())

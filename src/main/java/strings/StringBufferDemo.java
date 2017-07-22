@@ -1,7 +1,9 @@
 package strings;
 
 /**
- * StringBufferDemo: construct the same String three different ways.
+ * StringBufferDemo: construct the same String three different ways,
+ * deliberately using the old StringBuffer class NOT STRINGBUILDER -
+ * for that, see StringBuilderDemo.
  */
 public class StringBufferDemo {
 	public static void main(String[] argv) {
