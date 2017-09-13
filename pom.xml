@@ -22,15 +22,14 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-	<version>2.3.2</version>
+		<version>2.3.2</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
 		<excludes>
-			<!-- Why does this not get exclude-ed?? Maven tries to compile (break it and see) -->
-			<exclude>hibernate/BaseDAOHibernateImpl.java</exclude>
 			<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
 			<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
+			<!-- Add a comment WHY this is being excluded -->
 			<exclude>servlet/TermsServletPDF.java</exclude>
 			<!-- needs old Apache Axis toolkit for SOAP Web Service, we can use JAX-WS -->
 			<exclude>websvcdemo/CallSoap.java</exclude>
@@ -45,7 +44,7 @@
     <dependency>
 	<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.5</version>
     </dependency>
 
     <!-- Java EE current (7) full -->
