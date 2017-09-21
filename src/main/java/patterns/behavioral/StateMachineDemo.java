@@ -53,17 +53,31 @@ public class StateMachineDemo {
 		}
 	};
 
-	public void play(String line) {
-		Command c = Command.valueOf(line.toUpperCase());
-		switch(c) {
-		case LOOK: state.lookAround(); break;
-		case ENTER: state.goInside(); break;
-		case EXIT: state.goOutside(); break;
-		case QUIT: state.quitGame(); break;
+	public void oneMove(String line) {
+		try {
+			Command c = Command.valueOf(line.toUpperCase());
+			switch(c) {
+			case LOOK: state.lookAround(); break;
+			case ENTER: state.goInside(); break;
+			case EXIT: state.goOutside(); break;
+			case QUIT: state.quitGame(); break;
+			}
+		} catch (IllegalArgumentException e) {
+			display("I don't quite follow you.");
+			doHelp();
 		}
 	}
 
-	public void display(String mesg) {
+	private static void doHelp() {
+		display("I know but a few actions:");
+		for (Command c : Command.values()) {
+			System.out.print(c.name());
+			System.out.print(' ');
+		}
+		System.out.println();
+	}
+
+	public static void display(String mesg) {
 		System.out.println(mesg);
 	}
 
@@ -74,11 +88,13 @@ public class StateMachineDemo {
 		String line;
 
 		while ((line = is.readLine()) != null) {
-			play(line);
+			oneMove(line);
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
+		display("Welcome to the game");
+		doHelp();
 		new StateMachineDemo().play();
 	}
 
