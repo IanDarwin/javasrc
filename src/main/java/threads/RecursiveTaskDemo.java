@@ -15,6 +15,8 @@ import java.util.concurrent.RecursiveTask;
  *
  * Use RecursiveTask<T> where, as in this example, each call returns
  * a value that represents the computation for its subset of the overall task.
+ * @see RecursiveActionDemo when each computation does not return a value,
+ * e.g., when each is just working on some section of a large array.
  * @author Ian Darwin
  */
 public class RecursiveTaskDemo extends RecursiveTask<Long> {
