@@ -20,9 +20,11 @@ public class TypeMapDemo {
 	public static void main(String[] args)
 	throws IOException, ClassNotFoundException, SQLException {
 
+		String dbConnection = "default";
+
 		Properties p = new Properties();
 		p.load(new FileInputStream("db.properties"));
-		Class<?> c = Class.forName(p.getProperty("db.driver"));
+		Class<?> c = Class.forName(p.getProperty(dbConnection + "." + "db.driver"));
 		System.out.println("Loaded driverClass " + c.getName());
 
 		Connection con = DriverManager.getConnection(

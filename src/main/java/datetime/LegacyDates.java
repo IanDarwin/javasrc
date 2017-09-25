@@ -5,6 +5,9 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Tutorial/Example of converting between LocalDate and legacy java.util.Date
+ */
 // BEGIN main
 public class LegacyDates {
 	public static void main(String[] args) {

@@ -7,7 +7,7 @@ public class MessageFormatDemo {
 
 	static Object[] data = {
 			new java.util.Date(),
-			"myfile.txt",
+			"lines.txt",
 			"could not be opened"
 	};
 

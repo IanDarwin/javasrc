@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Tutorial/Example of LocalDate and LocalDateTime parsing
+ */
 // BEGIN part1
-/** Show some date parses */
 public class DateParse {
 	public static void main(String[] args) {
 

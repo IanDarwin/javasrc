@@ -7,7 +7,7 @@ import java.util.*;
 public class MessageFormatDemoIntl {
 
 	private static Date date = new Date();
-	private static String fileName = "myfile.txt";
+	private static String fileName = "lines.txt";
 
 	public static void main(String[] args) {
 		ResourceBundle rb = ResourceBundle.getBundle("Widgets");

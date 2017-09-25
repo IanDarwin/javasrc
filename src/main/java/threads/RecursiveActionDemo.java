@@ -9,6 +9,7 @@ import java.util.concurrent.RecursiveAction;
  * We use RecursiveAction here b/c we don't need each
  * compute() call to return its result; the work is
  * accumulated in the "dest" array.
+ * @see RecursiveTaskDemo when each computation has to return a value.
  * @author Ian Darwin
  */
 public class RecursiveActionDemo extends RecursiveAction {
@@ -48,7 +49,7 @@ public class RecursiveActionDemo extends RecursiveAction {
 
 	@Override
 	protected void compute() {
-		System.out.println("ForkJoinDemo.compute()");
+		System.out.println("RecursiveActionDemo.compute()");
 		if (length <= THRESHOLD) { // Compute Directly
 			for (int i = start; i < start + length; i++) {
 				dest[i] = source[i] * source[i];
