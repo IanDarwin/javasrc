@@ -140,6 +140,7 @@ public class LinkList<T> implements List<T> {
 			public boolean hasNext() {
 				return t != last;
 			}
+			@SuppressWarnings("unchecked")
 			public T next() {
 				if (t == last)
 					throw new IndexOutOfBoundsException();
@@ -158,7 +159,8 @@ public class LinkList<T> implements List<T> {
 		return null;
 	}
 
-    public T[] toArray(Object[] data) {
+    @SuppressWarnings("unchecked")
+	public T[] toArray(Object[] data) {
 		return null;
 	}
 
@@ -170,18 +172,18 @@ public class LinkList<T> implements List<T> {
 		return null;
 	}
 
-    public boolean containsAll(Collection c) {
+    public boolean containsAll(Collection<?> c) {
 		return false;
 	}
-    public boolean addAll(int i, Collection c) {
-		return false;
-	}
-
-    public boolean removeAll(Collection c) {
+    public boolean addAll(int i, Collection<? extends T> c) {
 		return false;
 	}
 
-    public boolean retainAll(Collection c) {
+    public boolean removeAll(Collection<?> c) {
+		return false;
+	}
+
+    public boolean retainAll(Collection<?> c) {
 		return false;
 	}
 
