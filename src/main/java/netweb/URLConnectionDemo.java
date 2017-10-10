@@ -13,15 +13,29 @@ import java.net.URLConnection;
 public class URLConnectionDemo {
 	
     public static void main(String[] args) throws Exception {
-    	String host = "192.168.2.42";
-    	String path = "/andcook/seam/resource/rest/recipe/list";
-    	String postBody = null;
-    	String ret = converse(host, 80, path, postBody);
-    	System.out.println(ret);
+		if (args.length == 0) {
+			String host = "192.168.2.42";
+			String path = "/andcook/seam/resource/rest/recipe/list";
+			String postBody = null;
+			String ret = converse(host, 80, path, postBody);
+			System.out.println(ret);
+		} else {
+			for (String url : args) {
+				System.out.println(converse(url));
+			}
+		}
     }
     
     public static String converse(String host, int port, String path, String postBody) throws IOException {
 		URL url = new URL("http", host, port, path);
+		return converse(url, postBody);
+	}
+
+	public static String converse(String url) throws IOException {
+		return converse(new URL(url), null);
+	}
+
+	public static String converse(URL url, String postBody) throws IOException {
         URLConnection conn = url.openConnection();
         boolean post = postBody != null;
         if (post)
