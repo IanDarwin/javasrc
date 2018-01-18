@@ -1,132 +1,127 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.darwinsys</groupId>
-  <artifactId>javasrc</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <inceptionYear>1995</inceptionYear>
+	<groupId>com.darwinsys</groupId>
+	<artifactId>javasrc</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<inceptionYear>1995</inceptionYear>
 
-  <name>javasrc</name>
-  <url>http://javacook.darwinsys.com</url>
-  <description>Code Examples for the O'Reilly Java Cookbook</description>
+	<name>javasrc</name>
+	<url>http://javacook.darwinsys.com</url>
+	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
-  <properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
-		<javase.version>1.8</javase.version>
+		<javase.version>8</javase.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>7.0</javaee.version>
 		<darwinsys-api.version>1.1.3</darwinsys-api.version>
-  </properties>
+	</properties>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <excludes>
-            <!-- javafx not included in some minor JDK distributions.
-            -->
-            <exclude>javafx/*.java</exclude>
-			<!-- Jumping the gun a bit, Mac JDK says 
-			"Unsafe" "is not api", as above. 
-            <exclude>unsafe/*.java</exclude>
-			-->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<excludes>
+						<!-- javafx not included in some minor JDK distributions.
+						-->
+						<exclude>javafx/*.java</exclude>
+						<!-- 1.9: "Unsafe" "is not api", as above. -->
+						<exclude>unsafe/*.java</exclude>
 
-			<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
-			 *** testing demos for now (does not affect all the stuff in src/test/java!).
-			 -->
-			<exclude>testing/Ham*.java</exclude>
+						<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
+						 *** testing demos for now (does not affect all the stuff in src/test/java!).
+						 -->
+						<exclude>testing/Ham*.java</exclude>
 
-            <!-- Won't compile with UTF-8! -->
-            <exclude>lang/EuroLanguage.java</exclude>
+						<!-- Won't compile with UTF-8! -->
+						<exclude>lang/EuroLanguage.java</exclude>
 
-            <!-- Defunct APIs -->
-            <exclude>datetimeold/IBMCalDemo.java</exclude>
-            <exclude>graphics/QTMoviePlayer.java</exclude>
+						<!-- Defunct APIs -->
+						<exclude>datetimeold/IBMCalDemo.java</exclude>
+						<exclude>graphics/QTMoviePlayer.java</exclude>
 
-            <!-- Used private API which is no longer available -->
-            <exclude>netweb/WebServerSimpleSE.java</exclude>
+						<!-- Used private API which is no longer available -->
+						<exclude>netweb/WebServerSimpleSE.java</exclude>
 
-            <exclude>plotter/Penman.java</exclude>
+						<exclude>plotter/Penman.java</exclude>
 
-            <!-- Have yet to find a POM that works -->
-            <exclude>gui_swt/*.java</exclude>
-            <exclude>xml/XSLTransform.java</exclude>
-            <exclude>otherlang/StringDistance.java</exclude>
-            <exclude>javacomm/*.java</exclude>
+						<!-- Have yet to find a POM that works -->
+						<exclude>gui_swt/*.java</exclude>
+						<exclude>xml/XSLTransform.java</exclude>
+						<exclude>otherlang/StringDistance.java</exclude>
+						<exclude>javacomm/*.java</exclude>
 
-            <!-- Unknown issues -->
-            <exclude>lang/UsePackage.java</exclude>
-            <exclude>rmi/callback/ClientProgram.java</exclude>
+						<!-- Unknown issues -->
+						<exclude>lang/UsePackage.java</exclude>
+						<exclude>rmi/callback/ClientProgram.java</exclude>
 
-            <!-- Remainder all have 'Expect compile error' -->
-            <!-- XXX replace this list with filter grep -->
-            <exclude>jdb/Problem.java</exclude>
-            <exclude>lang/AddException.java</exclude>
-            <exclude>lang/ByteAdd2.java</exclude>
-            <exclude>lang/CastingDemo.java</exclude>
-            <exclude>lang/ChangeArrayLength.java</exclude>
-            <exclude>lang/CommentBug.java</exclude>
-            <exclude>lang/CompileError.java</exclude>
-            <exclude>lang/ConsRecurs.java</exclude>
-            <exclude>lang/Constructors.java</exclude>
-            <exclude>lang/ImportConflict.java</exclude>
-            <exclude>lang/ImportNonPublic.java</exclude>
-            <exclude>lang/InitializersDemo.java</exclude>
-            <exclude>lang/InnerMethods.java</exclude>
-            <exclude>lang/InterfaceNoConstructor.java</exclude>
-            <exclude>lang/NoLocalStatics.java</exclude>
-            <exclude>lang/NullStaticMethod.java</exclude>
-            <exclude>lang/OverLoadReturn.java</exclude>
-            <exclude>lang/AnnotationOverrideDemo.java</exclude>
-            <exclude>lang/PrivProt.java</exclude>
-            <exclude>lang/ProtectedClass.java</exclude>
-            <exclude>lang/ReturnType.java</exclude>
-            <exclude>lang/ShowInitializers.java</exclude>
-            <exclude>lang/Switch.java</exclude>
-            <exclude>lang/TryStealingInnerClass.java</exclude>
-            <exclude>netweb/JScript.java</exclude>
-            <exclude>numbers/CastNeeded.java</exclude>
-            <exclude>numbers/SmallIntMult.java</exclude>
-            <exclude>oo/AllClasses.java</exclude>
-            <exclude>oo/Clone0.java</exclude>
-            <exclude>oo/SingletonCheat1.java</exclude>
-            <exclude>oo/SingletonCheat2.java</exclude>
-            <exclude>reflection/ClassLoaderDemo0.java</exclude>
-            <exclude>strings/WolfInStringsClothing.java</exclude>
-            <exclude>threads/StopStop.java</exclude>
-            <exclude>threads/ThreadDeathCatch.java</exclude>
-        </excludes>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+						<!-- Remainder all have 'Expect compile error' -->
+						<!-- XXX replace this list with filter grep -->
+						<exclude>jdb/Problem.java</exclude>
+						<exclude>lang/AddException.java</exclude>
+						<exclude>lang/ByteAdd2.java</exclude>
+						<exclude>lang/CastingDemo.java</exclude>
+						<exclude>lang/ChangeArrayLength.java</exclude>
+						<exclude>lang/CommentBug.java</exclude>
+						<exclude>lang/CompileError.java</exclude>
+						<exclude>lang/ConsRecurs.java</exclude>
+						<exclude>lang/Constructors.java</exclude>
+						<exclude>lang/ImportConflict.java</exclude>
+						<exclude>lang/ImportNonPublic.java</exclude>
+						<exclude>lang/InitializersDemo.java</exclude>
+						<exclude>lang/InnerMethods.java</exclude>
+						<exclude>lang/InterfaceNoConstructor.java</exclude>
+						<exclude>lang/NoLocalStatics.java</exclude>
+						<exclude>lang/NullStaticMethod.java</exclude>
+						<exclude>lang/OverLoadReturn.java</exclude>
+						<exclude>lang/AnnotationOverrideDemo.java</exclude>
+						<exclude>lang/PrivProt.java</exclude>
+						<exclude>lang/ProtectedClass.java</exclude>
+						<exclude>lang/ReturnType.java</exclude>
+						<exclude>lang/ShowInitializers.java</exclude>
+						<exclude>lang/Switch.java</exclude>
+						<exclude>lang/TryStealingInnerClass.java</exclude>
+						<exclude>netweb/JScript.java</exclude>
+						<exclude>numbers/CastNeeded.java</exclude>
+						<exclude>numbers/SmallIntMult.java</exclude>
+						<exclude>oo/AllClasses.java</exclude>
+						<exclude>oo/Clone0.java</exclude>
+						<exclude>oo/SingletonCheat1.java</exclude>
+						<exclude>oo/SingletonCheat2.java</exclude>
+						<exclude>reflection/ClassLoaderDemo0.java</exclude>
+						<exclude>strings/WolfInStringsClothing.java</exclude>
+						<exclude>threads/StopStop.java</exclude>
+						<exclude>threads/ThreadDeathCatch.java</exclude>
+				</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-  <dependencies>
-    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
-    <dependency>
-      <groupId>com.darwinsys</groupId>
-        <artifactId>darwinsys-api</artifactId>
-        <version>${darwinsys-api.version}</version>
-    </dependency>
+	<dependencies>
+		<!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+				<artifactId>darwinsys-api</artifactId>
+				<version>${darwinsys-api.version}</version>
+		</dependency>
 
-    <!-- Test early and often -->
-    <dependency>
+		<!-- Test early and often -->
+		<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
 		<version>4.11</version>
-    </dependency>
+		</dependency>
 	<dependency>
 		<groupId>org.mockito</groupId>
 		<artifactId>mockito-all</artifactId>
@@ -141,164 +136,164 @@
 	</dependency>
 
 	<!-- Logging -->
-    <dependency>
+		<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
 		<version>1.7.5</version>
 		<scope>compile</scope>
-    </dependency>
-            
-    <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.9</version>
+		</dependency>
+						
+		<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.9</version>
 		<scope>compile</scope>
-    </dependency>
+		</dependency>
 
-    <dependency>
-        <groupId>commons-beanutils</groupId>
-        <artifactId>commons-beanutils-core</artifactId>
-        <version>1.8.3</version>
-    </dependency>
+		<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils-core</artifactId>
+				<version>1.8.3</version>
+		</dependency>
 
-    <!-- Spring - used in a few examples -->
-    <dependency>
+		<!-- Spring - used in a few examples -->
+		<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
 		<version>3.2.4.RELEASE</version>
 		<scope>compile</scope>
-    </dependency>
+		</dependency>
 
-    <!-- JPA needing a driver, let's use Hibernate -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>4.0.1.Final</version>
-      <exclusions>
-              <exclusion>
-                 <groupId>xml-apis</groupId>
-                 <artifactId>xml-apis</artifactId>
-              </exclusion>
-       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>4.0.1.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>4.2.0.Final</version>
-      <exclusions>
-              <exclusion>
-                 <groupId>org.slf4j</groupId>
-                 <artifactId>slf4j-api</artifactId>
-              </exclusion>
-           </exclusions>
-    </dependency>
-    <dependency>
-        <groupId>org.jdom</groupId>
-        <artifactId>jdom</artifactId>
-        <version>1.1</version>
-    </dependency>
+		<!-- JPA needing a driver, let's use Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.0.1.Final</version>
+			<exclusions>
+							<exclusion>
+								 <groupId>xml-apis</groupId>
+								 <artifactId>xml-apis</artifactId>
+							</exclusion>
+			 </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<exclusions>
+							<exclusion>
+								 <groupId>org.slf4j</groupId>
+								 <artifactId>slf4j-api</artifactId>
+							</exclusion>
+					 </exclusions>
+		</dependency>
+		<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>1.1</version>
+		</dependency>
 
-    <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>2.2.8</version>
-    </dependency>
+		<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>2.2.8</version>
+		</dependency>
 
 <dependency>
-    <groupId>org.eclipse</groupId>
-    <artifactId>swt</artifactId>
-    <version>3.2.1-v3235e</version>
+		<groupId>org.eclipse</groupId>
+		<artifactId>swt</artifactId>
+		<version>3.2.1-v3235e</version>
 </dependency>
 
 <dependency>
-    <groupId>jgoodies</groupId>
-    <artifactId>forms</artifactId>
-    <version>1.0.5</version>
+		<groupId>jgoodies</groupId>
+		<artifactId>forms</artifactId>
+		<version>1.0.5</version>
 </dependency>
 
 <dependency>
-    <groupId>org.apache.ant</groupId>
-    <artifactId>ant</artifactId>
-    <version>1.7.0</version>
+		<groupId>org.apache.ant</groupId>
+		<artifactId>ant</artifactId>
+		<version>1.7.0</version>
 </dependency>
 
 <dependency>
-    <groupId>javax.media</groupId>
-    <artifactId>jmf</artifactId>
-    <version>2.1.1e</version>
+		<groupId>javax.media</groupId>
+		<artifactId>jmf</artifactId>
+		<version>2.1.1e</version>
 </dependency>
 
 <!-- VLC Player for Java, jlcj -->
 <dependency>
-  <groupId>uk.co.caprica</groupId>
-  <artifactId>vlcj</artifactId>
-  <version>2.4.1</version>
+	<groupId>uk.co.caprica</groupId>
+	<artifactId>vlcj</artifactId>
+	<version>2.4.1</version>
 </dependency>
 
 <dependency>
-    <groupId>bsf</groupId>
-    <artifactId>bsf</artifactId>
-    <version>2.4.0</version>
+		<groupId>bsf</groupId>
+		<artifactId>bsf</artifactId>
+		<version>2.4.0</version>
 </dependency>
 
 <dependency>
-    <groupId>xml-resolver</groupId>
-    <artifactId>xml-resolver</artifactId>
-    <version>1.2</version>
+		<groupId>xml-resolver</groupId>
+		<artifactId>xml-resolver</artifactId>
+		<version>1.2</version>
 </dependency>
 
 <dependency>
-  <groupId>org.rxtx</groupId>
-  <artifactId>rxtx</artifactId>
-  <version>2.1.7</version>
+	<groupId>org.rxtx</groupId>
+	<artifactId>rxtx</artifactId>
+	<version>2.1.7</version>
 </dependency>
 
 <dependency>
-      <groupId>org.jboss.weld.se</groupId>
-      <artifactId>weld-se</artifactId>
-      <version>1.1.10.Final</version>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>1.1.10.Final</version>
 </dependency>
 
-<!--  JSON packages -->
+<!--	JSON packages -->
 
-<!--  org.json -->
+<!--	org.json -->
 <dependency>
-  <groupId>org.json</groupId>
-  <artifactId>json</artifactId>
-  <version>20131018</version>
+	<groupId>org.json</groupId>
+	<artifactId>json</artifactId>
+	<version>20131018</version>
 </dependency>
-            
+						
 <!-- Jackson -->
 <dependency>
-  <groupId>com.fasterxml.jackson.core</groupId>
-  <artifactId>jackson-core</artifactId>
-  <version>2.3.1</version>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-core</artifactId>
+	<version>2.3.1</version>
 </dependency>
 <dependency>
-  <groupId>com.fasterxml.jackson.core</groupId>
-  <artifactId>jackson-annotations</artifactId>
-  <version>2.3.0</version>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-annotations</artifactId>
+	<version>2.3.0</version>
 </dependency>
 <dependency>
-  <groupId>com.fasterxml.jackson.core</groupId>
-  <artifactId>jackson-databind</artifactId>
-  <version>2.3.1</version>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-databind</artifactId>
+	<version>2.3.1</version>
 </dependency>
-  <dependency>
-    <groupId>org.renjin</groupId>
-    <artifactId>renjin-script-engine</artifactId>
-    <version>0.7.0-RC6</version>
-  </dependency>
+	<dependency>
+		<groupId>org.renjin</groupId>
+		<artifactId>renjin-script-engine</artifactId>
+		<version>0.7.0-RC6</version>
+	</dependency>
 
 		<dependency>
-			<groupId>javax</groupId>    
-			<artifactId>javaee-web-api</artifactId>    
-			<version>${javaee.version}</version>  
+			<groupId>javax</groupId>		
+			<artifactId>javaee-web-api</artifactId>		
+			<version>${javaee.version}</version>	
 			<scope>provided</scope>
 		</dependency> 
 
@@ -309,7 +304,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-  </dependencies>
+	</dependencies>
 
 	<reporting>
 		<plugins>
@@ -326,12 +321,12 @@
 			</plugin>
 		</plugins>
 	</reporting>
-  
-  <repositories>
-  <repository>
-    <id>bedatadriven</id>
-    <name>bedatadriven public repo</name>
-    <url>http://nexus.bedatadriven.com/content/groups/public/</url>
-  </repository>
+	
+	<repositories>
+	<repository>
+		<id>bedatadriven</id>
+		<name>bedatadriven public repo</name>
+		<url>http://nexus.bedatadriven.com/content/groups/public/</url>
+	</repository>
 </repositories>
 </project>
