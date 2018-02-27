@@ -45,7 +45,7 @@
     <dependency>
 	<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
-        <version>1.0.2</version>
+        <version>1.2.0-SNAPSHOT</version>
     </dependency>
 
     <!-- Java EE current (7) full -->
