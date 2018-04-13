@@ -275,6 +275,8 @@ public class LinkChecker extends JFrame {
 				if (huf.getResponseCode() == -1)
 					return "Server error: bad HTTP response";
 				return s;
+			} else if (linkURL.getProtocol().equals("ftp")) {
+				return "(skipping FTP link)";
 			} else if (linkURL.getProtocol().equals("file")) {
 				InputStream is = luf.getInputStream();
 				is.close();
