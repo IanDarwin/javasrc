@@ -21,7 +21,6 @@ public class GetURLs {
 	/* The tags we want to look at */
 	final static String[] wantTags = {
 		"<a ", "<A ",
-		"<applet ", "<APPLET ",
 		"<img ", "<IMG ",
 		"<frame ", "<FRAME ",
 	};
@@ -30,15 +29,22 @@ public class GetURLs {
 		if (reader != null) 
 			reader.close();
 	}
+	
+	/**
+	 * When called as a main program, extract and print the urls
+	 * @param argv Command line args
+	 * @throws MalformedURLException If not a valid URL
+	 * @throws IOException If error reading.
+	 */
 	public static void main(String[] argv) throws 
 			MalformedURLException, IOException {
 		String theURL = argv.length == 0 ?
-			"http://localhost/" : argv[0];
+			"http://localhost:8080/" : argv[0];
 		GetURLs gu = new GetURLs(theURL);
+		// Tell the reader we only want link tags
 		gu.reader.setWantedTags(GetURLs.wantTags);
 		List<Element> urls = gu.reader.readTags();
-		// These are XML elements that contain URLs, not URL objects
-		for (Object url : urls) {
+		for (Element url : urls) {
 			System.out.println(url);
 		}
 	}
