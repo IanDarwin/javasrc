@@ -67,8 +67,11 @@ public class LinkChecker extends JFrame {
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
-		if (args.length >= 1)
+		// If user gave a URL, start checking it right away
+		if (args.length >= 1) {
 			lc.textFldURL.setText(args[0]);
+			lc.starter.actionPerformed(null);
+		}
 		lc.setVisible(true);
 	}
 	
@@ -76,7 +79,23 @@ public class LinkChecker extends JFrame {
 		checkButton.setEnabled(startable);
 		killButton.setEnabled(!startable);
 	}
-  
+
+	// Make a single action listener for both the text field (when
+	// you hit return) and the explicit "Check URL" button.
+	ActionListener starter = (e) -> {
+		done = false;
+		Thread t = new Thread() {
+			public void run() {
+				textWindow.setText("Checking...");
+				setGUIStartable(false);
+				checkOut(textFldURL.getText());
+				textWindow.append("-- All done --");
+				setGUIStartable(true);
+			}
+		};
+		t.start();
+	};
+
 	/** Construct a LinkChecker */
 	public LinkChecker() {
 		super("LinkChecker");
@@ -89,24 +108,6 @@ public class LinkChecker extends JFrame {
 		p.add(textFldURL = new JTextField(30));
 		p.add(checkButton = new JButton("Check URL"));
 
-		// Make a single action listener for both the text field (when
-		// you hit return) and the explicit "Check URL" button.
-		ActionListener starter = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				done = false;
-				setGUIStartable(true);
-				Thread t = new Thread() {
-					public void run() {
-						textWindow.setText("Checking...");
-						setGUIStartable(false);
-						checkOut(textFldURL.getText());
-						textWindow.append("-- All done --");
-						setGUIStartable(true);
-					}
-				};
-				t.start();
-			}
-		};
 		textFldURL.addActionListener(starter);
 		checkButton.addActionListener(starter);
 		p.add(killButton = new JButton("Stop"));
