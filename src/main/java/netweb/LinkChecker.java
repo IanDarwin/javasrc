@@ -171,26 +171,18 @@ public class LinkChecker extends JFrame {
 			}
 			// Either way, now try to open it.
 			urlGetter = new GetURLs(rootURL);
-		} catch (FileNotFoundException e) {
-			textWindow.append("Can't open file " + rootURLString + "\n");
-			return;
-		} catch (IOException e) {
-			textWindow.append("reading " + rootURLString + " failed " + e + "\n");
-			return;
-		}
 
-		// If we're still here, the root URL given is OK.
-		// Next we make up a "directory" URL from it.
-		String rootURLdirString;
-		if (rootURLString.endsWith("/") ||
-			rootURLString.endsWith("\\"))
-				rootURLdirString = rootURLString;
-		else {
-			rootURLdirString = rootURLString.substring(0, 
-				rootURLString.lastIndexOf('/'));
-		}
+			// If we're still here, the root URL given is OK.
+			// Next we make up a "directory" URL from it.
+			String rootURLdirString;
+			if (rootURLString.endsWith("/") ||
+				rootURLString.endsWith("\\"))
+					rootURLdirString = rootURLString;
+			else {
+				rootURLdirString = rootURLString.substring(0, 
+					rootURLString.lastIndexOf('/'));
+			}
 
-		try {
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
 			List<Element> urlTags = urlGetter.reader.readTags();
 			for (Element tag : urlTags) {
@@ -258,8 +250,11 @@ public class LinkChecker extends JFrame {
 				}
 			}
 			urlGetter.close();
+		} catch (FileNotFoundException e) {
+			textWindow.append("Can't open file " + rootURLString + "\n");
+			return;
 		} catch (IOException e) {
-			System.err.println("Error: (" + e +")");
+			textWindow.append("reading " + rootURLString + " failed " + e + "\n");
 		}
 	}
 
