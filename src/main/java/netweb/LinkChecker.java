@@ -35,8 +35,8 @@ import com.darwinsys.swingui.UtilGUI;
  * Need a Properties file to set depth, URLs to check. etc.
  * BUG: Does not handle redirects yet!
  * Responses not adequate; need to check at least for 404-type errors!
- * When all that is (said and) done, display in a Tree instead of a TextArea.
- * Then use Color coding to indicate errors.
+ * Display in a Tree instead of a TextArea.
+ * use Color coding to indicate errors.
  * <p>
  * Further, it needs to use Swing and Threads properly (see
  * Java Swing, section on "MultiThreading Issues with Swing".
@@ -48,7 +48,7 @@ public class LinkChecker extends JFrame {
 	private static final long serialVersionUID = 1444502541573633997L;
 
 	/** The "global" activation flag: set true to halt. */
-	protected boolean done = false;
+	protected volatile boolean done = false;
 
 	/** The textfield for the starting URL.
 	 * Should have a Properties file and a JComboBox instead.
@@ -75,7 +75,7 @@ public class LinkChecker extends JFrame {
 		checkButton.setEnabled(startable);
 		killButton.setEnabled(!startable);
 	}
-	
+
 	Executor threadPool = Executors.newSingleThreadExecutor();
 
 	// Make a single action listener for both the text field (when
@@ -83,12 +83,14 @@ public class LinkChecker extends JFrame {
 	ActionListener starter = (e) -> {
 		done = false;
 		threadPool.execute(() -> {
-				setGUIStartable(false);
-				final String urlString = textFldURL.getText();
-				textWindow.setText("Checking " + urlString + "...");
-				checkOut(urlString);
-				textWindow.append("\n-- All done --");
-				setGUIStartable(true);
+			System.out.println("LinkChecker.starter.execute()");
+			setGUIStartable(false);
+			cache.clear();
+			final String urlString = textFldURL.getText();
+			textWindow.setText("Checking " + urlString + "...");
+			checkOut(urlString);
+			textWindow.append("\n-- All done --");
+			setGUIStartable(true);
 		});
 	};
 
@@ -107,7 +109,7 @@ public class LinkChecker extends JFrame {
 		textFldURL.addActionListener(starter);
 		checkButton.addActionListener(starter);
 		p.add(killButton = new JButton("Stop"));
-		killButton.setEnabled(false);	// until startChecking is called.
+		killButton.setEnabled(false);	// until we start Checking
 		killButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				done = true;
@@ -150,8 +152,10 @@ public class LinkChecker extends JFrame {
 		URL rootURL = null;
 		GetURLs urlGetter = null;
 
-		if (done)
+		if (done) {
+			System.out.println("(done true)");
 			return;
+		}
 		if (rootURLString == null) {
 			textWindow.append("checkOut(null) isn't very useful");
 			return;
@@ -288,40 +292,4 @@ public class LinkChecker extends JFrame {
 			return "DEAD";
 		}
     }
- 
-	/** Extract the URL from <sometag attrs HREF="http://foo/bar" attrs ...> 
-	 * We presume that the HREF is correctly quoted!!!!!
-	 */
-	public String extractHREF(String tag) throws MalformedURLException {
-		String caseTag = tag.toLowerCase(), attrib;
-		int p1, p2, p3, p4;
-
-		if (caseTag.startsWith("<a") && 
-			Character.isWhitespace(caseTag.charAt(2))) {
-			attrib = "href";		// A
-		} else if (caseTag.startsWith("<applet ")){
-			attrib = "code";
-		} else
-			attrib = "src";			// image, frame
-		// XXX refactor to use an enum here
-		if (attrib.equals("href") && caseTag.indexOf("name") != -1) {
-			return null;		// silently ignore <a name=...>
-		}
-		p1 = caseTag.indexOf(attrib);
-		if (p1 < 0) {
-			throw new MalformedURLException("Can't find " + attrib + " in " + tag);
-		}
-		p2 = tag.indexOf ("=", p1);
-
-		// This fails to handle unquoted href, which some dinosaurs insist
-		// on using, saying the parser can sort it out. Phhhhhhhht!!!!
-		// XXX should handle single-quoted hrefs here
-		p3 = tag.indexOf("\"", p2);
-		p4 = tag.indexOf("\"", p3+1);
-		if (p3 < 0 || p4 < 0) {
-			throw new MalformedURLException("Invalid " + attrib + " in " + tag);
-		}
-		String href = tag.substring(p3+1, p4);
-		return href;
-	}
 }
