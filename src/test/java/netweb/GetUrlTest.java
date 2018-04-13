@@ -1,6 +1,9 @@
 package netweb;
 
+import static org.junit.Assert.assertEquals;
+
 import java.net.URL;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,8 +20,8 @@ public class GetUrlTest {
 	@Test
 	public void test() throws Exception {
 		String url = URL.toExternalForm();
-		String[] argv = { url };
-		GetURLs.main(argv);
+		final List<Element> list = GetURLs.run(url);
+		assertEquals(3, list.size());
 	}
 
 }

@@ -20,9 +20,9 @@ public class GetURLs {
 
 	/* The tags we want to look at */
 	final static String[] wantTags = {
-		"<a ", "<A ",
-		"<img ", "<IMG ",
-		"<frame ", "<FRAME ",
+		"a",
+		"img",
+		"frame",
 	};
 
 	public void close() throws IOException {
@@ -36,16 +36,20 @@ public class GetURLs {
 	 * @throws MalformedURLException If not a valid URL
 	 * @throws IOException If error reading.
 	 */
-	public static void main(String[] argv) throws 
-			MalformedURLException, IOException {
+	public static void main(String[] argv) throws IOException {
 		String theURL = argv.length == 0 ?
 			"http://localhost:8080/" : argv[0];
+		List<Element> urls = run(theURL);
+		for (Element url : urls) {
+			System.out.println(url);
+		}
+	}
+
+	public static List<Element> run(String theURL) throws IOException {
 		GetURLs gu = new GetURLs(theURL);
 		// Tell the reader we only want link tags
 		gu.reader.setWantedTags(GetURLs.wantTags);
 		List<Element> urls = gu.reader.readTags();
-		for (Element url : urls) {
-			System.out.println(url);
-		}
+		return urls;
 	}
 }
