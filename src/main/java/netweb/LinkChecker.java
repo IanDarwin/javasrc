@@ -14,9 +14,8 @@ import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,19 +31,14 @@ import com.darwinsys.swingui.UtilGUI;
 
 /** A simple HTML Link Checker. 
  * Need a Properties file to set depth, URLs to check. etc.
+ * BUG: Does not handle redirects yet!
  * Responses not adequate; need to check at least for 404-type errors!
  * When all that is (said and) done, display in a Tree instead of a TextArea.
  * Then use Color coding to indicate errors.
  * <p>
  * Further, it needs to use Swing and Threads properly (see
  * Java Swing, section on "MultiThreading Issues with Swing".
- * As it stands, the GUI thread is locked up until the complete
- * checking is completed, which could take a long time.
  * <p>
- * TODO: parse using an XML parser, though this would fail for most web
- * sites today (and how much longer do you think we must maintain
- * so much ad-hoc code for parsing the almost-regular kludge known as HTML?)
- *
  * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
  */
 public class LinkChecker extends JFrame {
@@ -63,7 +57,7 @@ public class LinkChecker extends JFrame {
 	protected JButton killButton;
 	protected JTextArea textWindow;
 	protected int indent = 0;
-	protected Map<String,Boolean> hash = new HashMap<String,Boolean>();
+	protected List<String> cache = new ArrayList<String>();
   
 	public static void main(String[] args) {
 		LinkChecker lc = new LinkChecker();
@@ -86,10 +80,11 @@ public class LinkChecker extends JFrame {
 		done = false;
 		Thread t = new Thread() {
 			public void run() {
-				textWindow.setText("Checking...");
 				setGUIStartable(false);
-				checkOut(textFldURL.getText());
-				textWindow.append("-- All done --");
+				final String urlString = textFldURL.getText();
+				textWindow.setText("Checking " + urlString + "...");
+				checkOut(urlString);
+				textWindow.append("\n-- All done --");
 				setGUIStartable(true);
 			}
 		};
@@ -150,6 +145,7 @@ public class LinkChecker extends JFrame {
 	 */
 	@SuppressWarnings("deprecation")
 	public void checkOut(String rootURLString) {
+		System.out.println("LinkChecker.checkOut()");
 		URL rootURL = null;
 		GetURLs urlGetter = null;
 
@@ -159,17 +155,17 @@ public class LinkChecker extends JFrame {
 			textWindow.append("checkOut(null) isn't very useful");
 			return;
 		}
-		if (hash.get(rootURLString) != null) {
+		if (cache.contains(rootURLString)) {
 			return;	// already visited
 		}
-		hash.put(rootURLString, Boolean.TRUE);
+		cache.add(rootURLString);
 
 		// Open the root URL for reading. May be a filename or a real URL.
 		try {
 			try {
 				rootURL = new URL(rootURLString);
 			} catch (MalformedURLException e) {
-				// Neat Trick: if not a valid URL, try again as a file.
+				// If not a valid URL, try again as a file.
 				rootURL = new File(rootURLString).toURL();
 			}
 			// Either way, now try to open it.
@@ -178,7 +174,7 @@ public class LinkChecker extends JFrame {
 			textWindow.append("Can't open file " + rootURLString + "\n");
 			return;
 		} catch (IOException e) {
-			textWindow.append("openStream " + rootURLString + " " + e + "\n");
+			textWindow.append("reading " + rootURLString + " failed " + e + "\n");
 			return;
 		}
 
@@ -197,10 +193,11 @@ public class LinkChecker extends JFrame {
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
 			List<Element> urlTags = urlGetter.reader.readTags();
 			for (Element tag : urlTags) {
+				System.out.println("LinkChecker.checkOut(): " + tag);
 				if (done)
 					return;
 						
-				String href = extractHREF(tag.toString());
+				String href = tag.getAttribute("href");
 
 				for (int j=0; j<indent; j++)
 					textWindow.append("\t");
@@ -271,7 +268,8 @@ public class LinkChecker extends JFrame {
 		try { 
 			// Open it; if the open fails we'll likely throw an exception
 			URLConnection luf = linkURL.openConnection();
-			if (linkURL.getProtocol().equals("http")) {
+			final String protocol = linkURL.getProtocol();
+			if (protocol.equals("http") || protocol.equals("https")) {
 				HttpURLConnection huf = (HttpURLConnection)luf;
 				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
 				if (huf.getResponseCode() == -1)
