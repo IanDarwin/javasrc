@@ -143,7 +143,9 @@ public class LinkChecker extends JFrame {
 	}
 
   
-	/** Start checking, given a URL by name.
+	/** 
+	 * MAIN WORK METHOD
+	 * Start checking, given a URL by name.
 	 * Calls checkLink to check each link.
 	 */
 	@SuppressWarnings("deprecation")
