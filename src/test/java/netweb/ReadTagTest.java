@@ -19,7 +19,7 @@ public class ReadTagTest extends TestCase {
 		ReadTag red = new ReadTag(is);
 		List<Element> readTags = red.readTags();
 		assertNotNull("list from readTags", readTags);
-		assertTrue("any tags from readTags", 7 == readTags.size());
+		assertTrue("HTML tags from readTags", 7 == readTags.size());
 		for (Element e : readTags) {
 			System.out.println(e);
 		}
