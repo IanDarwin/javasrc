@@ -16,6 +16,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -73,22 +75,21 @@ public class LinkChecker extends JFrame {
 		checkButton.setEnabled(startable);
 		killButton.setEnabled(!startable);
 	}
+	
+	Executor threadPool = Executors.newSingleThreadExecutor();
 
 	// Make a single action listener for both the text field (when
 	// you hit return) and the explicit "Check URL" button.
 	ActionListener starter = (e) -> {
 		done = false;
-		Thread t = new Thread() {
-			public void run() {
+		threadPool.execute(() -> {
 				setGUIStartable(false);
 				final String urlString = textFldURL.getText();
 				textWindow.setText("Checking " + urlString + "...");
 				checkOut(urlString);
 				textWindow.append("\n-- All done --");
 				setGUIStartable(true);
-			}
-		};
-		t.start();
+		});
 	};
 
 	/** Construct a LinkChecker */
