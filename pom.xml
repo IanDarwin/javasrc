@@ -120,12 +120,12 @@
 		<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
-		<version>4.11</version>
+		<version>4.12</version>
 		</dependency>
 	<dependency>
 		<groupId>org.mockito</groupId>
 		<artifactId>mockito-all</artifactId>
-		<version>1.10.19</version>
+		<version>2.0.2-beta</version>
 		<scope>test</scope>
 	</dependency>
 	<dependency>
@@ -139,14 +139,14 @@
 		<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
-		<version>1.7.5</version>
+		<version>1.8.0-beta2</version>
 		<scope>compile</scope>
 		</dependency>
 						
 		<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
-				<version>1.2.9</version>
+				<version>1.2.17</version>
 		<scope>compile</scope>
 		</dependency>
 
@@ -160,53 +160,53 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>5.0.5.RELEASE</version>
 		</dependency>
 
 		<!-- JPA needing a driver, let's use Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.0.1.Final</version>
+			<version>5.3.0.Beta1</version>
 			<exclusions>
-							<exclusion>
-								 <groupId>xml-apis</groupId>
-								 <artifactId>xml-apis</artifactId>
-							</exclusion>
+				<exclusion>
+					 <groupId>xml-apis</groupId>
+					 <artifactId>xml-apis</artifactId>
+				</exclusion>
 			 </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.0.1.Final</version>
+			<version>5.3.0.Beta1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.Final</version>
+			<version>6.0.9.Final</version>
 			<exclusions>
-							<exclusion>
-								 <groupId>org.slf4j</groupId>
-								 <artifactId>slf4j-api</artifactId>
-							</exclusion>
-					 </exclusions>
+				<exclusion>
+					 <groupId>org.slf4j</groupId>
+					 <artifactId>slf4j-api</artifactId>
+				</exclusion>
+		 	</exclusions>
 		</dependency>
 		<dependency>
 				<groupId>org.jdom</groupId>
 				<artifactId>jdom</artifactId>
-				<version>1.1</version>
+				<version>2.0.2</version>
 		</dependency>
 
 		<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
-				<version>2.2.8</version>
+				<version>2.4.0</version>
 		</dependency>
 
 <dependency>
 		<groupId>org.eclipse</groupId>
 		<artifactId>swt</artifactId>
-		<version>3.2.1-v3235e</version>
+		<version>3.3.0-v3346</version>
 </dependency>
 
 <dependency>
@@ -218,7 +218,7 @@
 <dependency>
 		<groupId>org.apache.ant</groupId>
 		<artifactId>ant</artifactId>
-		<version>1.7.0</version>
+		<version>1.10.3</version>
 </dependency>
 
 <dependency>
@@ -231,19 +231,19 @@
 <dependency>
 	<groupId>uk.co.caprica</groupId>
 	<artifactId>vlcj</artifactId>
-	<version>2.4.1</version>
+	<version>3.10.1</version>
 </dependency>
 
 <dependency>
-		<groupId>bsf</groupId>
-		<artifactId>bsf</artifactId>
-		<version>2.4.0</version>
+	<groupId>bsf</groupId>
+	<artifactId>bsf</artifactId>
+	<version>2.4.0</version>
 </dependency>
 
 <dependency>
-		<groupId>xml-resolver</groupId>
-		<artifactId>xml-resolver</artifactId>
-		<version>1.2</version>
+	<groupId>xml-resolver</groupId>
+	<artifactId>xml-resolver</artifactId>
+	<version>1.2</version>
 </dependency>
 
 <dependency>
@@ -253,55 +253,57 @@
 </dependency>
 
 <dependency>
-			<groupId>org.jboss.weld.se</groupId>
-			<artifactId>weld-se</artifactId>
-			<version>1.1.10.Final</version>
+	<groupId>org.jboss.weld.se</groupId>
+	<artifactId>weld-se</artifactId>
+	<version>3.0.0.Alpha1</version>
 </dependency>
 
-<!--	JSON packages -->
+<!-- JSON packages -->
 
-<!--	org.json -->
+<!-- org.json -->
 <dependency>
 	<groupId>org.json</groupId>
 	<artifactId>json</artifactId>
-	<version>20131018</version>
+	<version>20180130</version>
 </dependency>
 						
 <!-- Jackson -->
 <dependency>
 	<groupId>com.fasterxml.jackson.core</groupId>
 	<artifactId>jackson-core</artifactId>
-	<version>2.3.1</version>
+	<version>2.9.5</version>
 </dependency>
 <dependency>
 	<groupId>com.fasterxml.jackson.core</groupId>
 	<artifactId>jackson-annotations</artifactId>
-	<version>2.3.0</version>
+	<version>2.9.5</version>
 </dependency>
 <dependency>
 	<groupId>com.fasterxml.jackson.core</groupId>
 	<artifactId>jackson-databind</artifactId>
-	<version>2.3.1</version>
+	<version>2.9.5</version>
 </dependency>
-	<dependency>
-		<groupId>org.renjin</groupId>
-		<artifactId>renjin-script-engine</artifactId>
-		<version>0.7.0-RC6</version>
-	</dependency>
+<!--
+<dependency>
+	<groupId>org.renjin</groupId>
+	<artifactId>renjin-script-engine</artifactId>
+	<version>0.9.2626</version>
+</dependency>
+-->
 
-		<dependency>
-			<groupId>javax</groupId>		
-			<artifactId>javaee-web-api</artifactId>		
-			<version>${javaee.version}</version>	
-			<scope>provided</scope>
-		</dependency> 
+<dependency>
+	<groupId>javax</groupId>		
+	<artifactId>javaee-web-api</artifactId>		
+	<version>${javaee.version}</version>	
+	<scope>provided</scope>
+</dependency>
 
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.5</version>
-			<scope>provided</scope>
-		</dependency>
+<dependency>
+	<groupId>javax.mail</groupId>
+	<artifactId>mail</artifactId>
+	<version>1.5.0-b01</version>
+	<scope>provided</scope>
+</dependency>
 
 	</dependencies>
 
@@ -321,6 +323,7 @@
 		</plugins>
 	</reporting>
 	
+<!--
 	<repositories>
 	<repository>
 		<id>bedatadriven</id>
@@ -328,4 +331,5 @@
 		<url>http://nexus.bedatadriven.com/content/groups/public/</url>
 	</repository>
 </repositories>
+-->
 </project>
