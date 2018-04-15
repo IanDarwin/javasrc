@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.SocketException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class LinkChecker extends JFrame {
 	protected JButton saveButton;
 	protected JButton killButton;
 	protected JTextArea textWindow;
-	protected int indent = 0;
+	protected int indent = 0;	// accessed single-threadedly
 	protected List<String> cache = new ArrayList<String>();
   
 	public static void main(String[] args) {
@@ -83,7 +82,7 @@ public class LinkChecker extends JFrame {
 	ActionListener starter = (e) -> {
 		done = false;
 		threadPool.execute(() -> {
-			System.out.println("LinkChecker.starter.execute()");
+			//System.out.println("LinkChecker.starter.execute()");
 			setGUIStartable(false);
 			cache.clear();
 			final String urlString = textFldURL.getText();
@@ -170,7 +169,7 @@ public class LinkChecker extends JFrame {
 			try {
 				rootURL = new URL(rootURLString);
 			} catch (MalformedURLException e) {
-				// If not a valid URL, try again as a file.
+				System.out.println(rootURLString + ": not a valid URL, trying again as a file.");
 				rootURL = new File(rootURLString).toURL();
 			}
 			// Either way, now try to open it.
@@ -193,18 +192,20 @@ public class LinkChecker extends JFrame {
 				System.out.println("LinkChecker.checkOut(): " + tag);
 				if (done)
 					return;
-						
+
 				String href = tag.getAttribute("href");
+				// Can't really validate these!
+				if (href == null) {
+					// textWindow.append(" null? !!\n");
+					continue;
+				}
 
 				for (int j=0; j<indent; j++)
 					textWindow.append("\t");
-				textWindow.append(href + " -- ");
 
-				// Can't really validate these!
-				if (href == null) {
-					textWindow.append(" null? !!\n");
-					continue;
-				}
+				textWindow.append(href);
+				textWindow.append(" ");
+
 				if (href.startsWith("mailto:")) {
 					textWindow.append(href + " -- not checking\n");
 					continue;
@@ -227,7 +228,7 @@ public class LinkChecker extends JFrame {
 				// "try the url" first and then see if off-site, or
 				// vice versa, for the case when checking a site you're
 				// working on on your notebook on a train in the Rockies
-				// with no web access available.
+				// checking a local web site with no web access available.
 
 				// Now see if the URL is off-site.
 				if (!hrefURL.getHost().equals(rootURL.getHost())) {
@@ -271,10 +272,10 @@ public class LinkChecker extends JFrame {
 			final String protocol = linkURL.getProtocol();
 			if (protocol.equals("http") || protocol.equals("https")) {
 				HttpURLConnection huf = (HttpURLConnection)luf;
-				String s = huf.getResponseCode() + " " + huf.getResponseMessage();
-				if (huf.getResponseCode() == -1)
-					return "Server error: bad HTTP response";
-				return s;
+				final int responseCode = huf.getResponseCode();
+				return (responseCode == -1) ?
+					"Server error: bad HTTP response " + responseCode :
+					responseCode + " " + huf.getResponseMessage();
 			} else if (linkURL.getProtocol().equals("ftp")) {
 				return "(skipping FTP link)";
 			} else if (linkURL.getProtocol().equals("file")) {
@@ -285,11 +286,8 @@ public class LinkChecker extends JFrame {
 			} else
 				return "(non-HTTP)";
 		}
-		catch (SocketException e) {
-			return "DEAD: " + e.toString();
-		}
 		catch (IOException e) {
-			return "DEAD";
+			return "DEAD + e.toString()";
 		}
     }
 }
