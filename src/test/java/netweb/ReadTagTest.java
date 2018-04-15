@@ -11,7 +11,7 @@ import junit.framework.TestCase;
  */
 public class ReadTagTest extends TestCase {
 	
-	String htmlText = "<html><head><foo><bar></head><body><p>Paragraph" + 
+	String htmlText = "<html><head><foo><bar></bar></foo></head><body><p>Paragraph" + 
 		"<a href='http://grelber/' name=\"grelber\">Grelber Info</a>";
 	
 	public void testReadAll() throws Exception {
@@ -32,6 +32,7 @@ public class ReadTagTest extends TestCase {
 		List<Element> readTags = red.readTags();
 		assertNotNull("list from readTags", readTags);
 		assertTrue("any tags from readTags", 2 == readTags.size());
+		assertEquals("get href", "http://grelber/", readTags.get(1).getAttribute("href"));
 		for (Element e : readTags) {
 			System.out.println(e);
 		}
@@ -66,7 +67,7 @@ public class ReadTagTest extends TestCase {
 		List<Element> list = red.readTags();
 		assertNotNull("list from readTags", list);
 		assertTrue("any tags from readTags", 1 == list.size());
-		Element el = (Element)list.get(0);
+		Element el = list.get(0);
 		assertEquals("list type", "a", el.getType());
 		System.out.println("HREF='" + el.getAttribute("href") + "'");
 		assertEquals("name attribute", "grelber", el.getAttribute("name"));
