@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * A simple demo of using a State machine implemented as Java classes.
  * A text-mode game, and, not intended to be a full RPG game, sorry. 
  */
-public class StateDemo {
+public class GameStateDemo {
 
 	/** 
 	 * Game on!
@@ -16,7 +16,7 @@ public class StateDemo {
 	public static void main(String[] args) throws IOException {
 		display("Welcome to the game");
 		doHelp();
-		StateDemo game = new StateDemo();
+		GameStateDemo game = new GameStateDemo();
 		game.state.lookAround();
 		game.play();
 	}
