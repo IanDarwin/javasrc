@@ -1,74 +1,95 @@
 package patterns.behavioral;
 
+interface State {
+	abstract void stop();
+	abstract void start();
+	abstract void pause();
+	abstract void rewind();
+	default void enterState() {
+		// Only some states will need this
+	}
+}
+
 /**
  * Model a simple media player
  * Doesn't actually play media yet
  * (use existing Java classes for that)
  */
+public class PlayerStateDemo implements State {
 
-public class PlayerStateDemo {
+	public void enterState() {
+		currentState.enterState();
+	}
+	public void stop() {
+		currentState.stop();
+	}
 
-	abstract class State {
-		abstract void stop();
-		abstract void start();
-		abstract void pause();
-		abstract void rewind();
-		void enterState() {
-			// Only some states will need this
-		}
+	public void start() {
+		currentState.start();
+	}
+
+	@Override
+	public void pause() {
+		currentState.pause();
+	}
+
+	@Override
+	public void rewind() {
+		currentState.rewind();
 	}
 
 	State stoppedState = new State() {
 		@Override
-		void enterState() {
+		public void enterState() {
 			stop();
 			// setIcon(Icon.stopped);
 		}
 		@Override
-		void stop() {
+		public void stop() {
 			// Do nothing
 		}
 
 		@Override
-		void start() {
+		public void start() {
 			
 		}
 
 		@Override
-		void pause() {
+		public void pause() {
 			// Do nothing
 		}
 
 		@Override
-		void rewind() {
+		public void rewind() {
 			resetToStart();
 		}
 	};
+
 	State playingState = new State() {
 
-		void enterState() {
+		public void enterState() {
 			start();
 			// setIcon(Icon.PLAYING);
 		}
 		
 		@Override
-		void stop() {
+		public void stop() {
 			currentState = stoppedState;
 			currentState.enterState();
 		}
 
 		@Override
-		void start() {
+		public void start() {
 			// Do nothing
 		}
 
 		@Override
-		void pause() {
+		public void pause() {
 			stop();
 		}
 
 		@Override
-		void rewind() {
+		public void rewind() {
 			stop();
 			resetToStart();
 			start();
@@ -78,37 +99,38 @@ public class PlayerStateDemo {
 	State pausedState = new State() {
 
 		@Override
-		void stop() {
+		public void stop() {
 			currentState = stoppedState;
 			currentState.enterState();
 		}
 
 		@Override
-		void start() {
+		public void start() {
 			currentState = playingState;
 			currentState.enterState();
 		}
 
 		@Override
-		void pause() {
+		public void pause() {
 			// Do nothing
 		}
 
 		@Override
-		void rewind() {
+		public void rewind() {
 			resetToStart();
 		}
 	};
+
 	State rewindState = new State() {
 
 		@Override
-		void stop() {
+		public void stop() {
 			currentState = stoppedState;
 			currentState.enterState();
 		}
 
 		@Override
-		void start() {
+		public void start() {
 			// On mechanical transports we have to stop before going into play mode
 			stop();
 			currentState = playingState;
@@ -116,17 +138,17 @@ public class PlayerStateDemo {
 		}
 
 		@Override
-		void pause() {
+		public void pause() {
 			currentState = pausedState;
 			currentState.enterState();
 		}
 
 		@Override
-		void rewind() {
+		public void rewind() {
 			// Do nothing
 		}
 		
-		void enterState() {
+		public void enterState() {
 			rewind();
 		}
 	};
