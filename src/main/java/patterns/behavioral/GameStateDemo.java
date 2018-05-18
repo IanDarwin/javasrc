@@ -52,7 +52,8 @@ public class GameStateDemo {
 
 	public State inRoomState = new State() {
 		public void lookAround() {
-			display("The room is full of gold");
+			// This would map to the description of a particular room
+			display("The room is full of gold!");
 		}
 		public void goInside() {
 			display("You are already in the room");
