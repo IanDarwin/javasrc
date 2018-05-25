@@ -17,6 +17,9 @@ interface State {
  */
 public class PlayerStateDemo implements State {
 
+	//////////////////////////////////////////////
+	// Delegate operations to current State object
+	//////////////////////////////////////////////
 	public void enterState() {
 		currentState.enterState();
 	}
@@ -37,6 +40,10 @@ public class PlayerStateDemo implements State {
 	public void rewind() {
 		currentState.rewind();
 	}
+	
+	////////////////////////////////
+	// Define the State classes here
+	////////////////////////////////
 
 	State stoppedState = new State() {
 		@Override
@@ -154,6 +161,15 @@ public class PlayerStateDemo implements State {
 	};
 
 	State currentState = stoppedState;
+	
+	// Non-fully-encapsulation version of getState().
+	// public State getState() { return currentState; }
+
+	// "mild encapsulation"? version. Only reveal state name.
+	// Might make non-public if it is only for diagnostic use.
+	public String getState() {
+		return currentState.getClass().getName();
+	}
 
 	// This section shows the legacy, non-patterns way of implementing
 	// one of the four methods.
@@ -177,4 +193,14 @@ public class PlayerStateDemo implements State {
 	void startPlay() {}
 	void resumePlay() {}
 	void resetToStart() {}
+	
+	// Demo program
+	public static void main(String[] args) {
+		PlayerStateDemo context = new PlayerStateDemo();
+		System.out.println("Initial state: " + context.getState());
+		context.start();
+		System.out.println("Current state: " + context.getState());
+		context.stop();
+		System.out.println("Final state: " + context.getState());
+	}
 }
