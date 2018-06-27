@@ -10,11 +10,11 @@ import java.util.regex.Pattern;
  */
 public class EmailValidator {
 
-	private final static String PATTERN =
+	private final static String PATTERN_STRING =
 		"[\\w._-]+@([a-zA-Z][\\w-]*\\.)+\\w{2,4}$";
-	private final static Pattern patt = Pattern.compile(PATTERN);
+	private final static Pattern EMAIL_PATTERN = Pattern.compile(PATTERN_STRING);
 
 	public static boolean valid(String email) {
-		return patt.matcher(email).matches();
+		return EMAIL_PATTERN.matcher(email).matches();
 	}
 }
