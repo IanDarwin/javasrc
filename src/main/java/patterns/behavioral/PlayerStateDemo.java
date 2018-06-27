@@ -198,9 +198,14 @@ public class PlayerStateDemo implements State {
 	public static void main(String[] args) {
 		PlayerStateDemo context = new PlayerStateDemo();
 		System.out.println("Initial state: " + context.getState());
+		// User presses the Start button
 		context.start();
 		System.out.println("Current state: " + context.getState());
+		// User presses the Stop button
 		context.stop();
-		System.out.println("Final state: " + context.getState());
+		System.out.println("Current state: " + context.getState());
+		// You get the idea
+		context.rewind();
+		System.out.println("Current state: " + context.getState());
 	}
 }
