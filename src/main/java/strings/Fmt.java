@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
+import java.util.stream.Stream;
 
 /**
  * Fmt - format text (like Berkeley UNIX fmt).
@@ -20,7 +21,7 @@ public class Fmt {
 	/** Where the output goes */
 	PrintWriter out;
 
-	/** If files present, format each, else format the standard input. */
+	/** If files present, format each one, else format the standard input. */
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new Fmt(System.in).format();
@@ -52,12 +53,16 @@ public class Fmt {
 	public Fmt(InputStream file) throws IOException {
 		this(new BufferedReader(new InputStreamReader(file)));
 	}
-
+	
 	/** Format the File contained in a constructed Fmt object */
 	public void format() throws IOException {
-		String line;
+		format(in.lines(), out);
+	}
+	
+	/** Format a Stream of lines, e.g., bufReader.lines() */
+	public static void format(Stream<String> s, PrintWriter out) {
 		StringBuilder outBuf = new StringBuilder();
-		while ((line = in.readLine()) != null) {
+		s.forEachOrdered((line -> {
 			if (line.length() == 0) {	// null line
 				out.println(outBuf);	// end current line
 				out.println();	// output blank line
@@ -77,12 +82,14 @@ public class Fmt {
 					outBuf.append(word).append(' ');
 				}
 			}
-		}
+		}));
 		if (outBuf.length() > 0) {
 			out.println(outBuf);
 		} else {
 			out.println();
 		}
 	}
+
+
 }
 // END main
