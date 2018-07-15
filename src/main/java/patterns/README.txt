@@ -1,3 +1,7 @@
 The Patterns demos have all moved to a separate repo, as some readers of
 the Java Magazine articles didn't like having to grab all of javasrc
 just to see the demos.
+
+Go to: https://github.com/IanDarwin/patterns-demos
+
+I apologize for the inconvenience.
