@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -26,16 +27,23 @@ public class FmtTest {
 			"\r\n" :
 			"\n";
 
-	private void setupFiles(String data) throws Exception {
-		BufferedReader ibs = new BufferedReader(new StringReader(data));
+	private BufferedReader setupInputFile(String data) {
+		return new BufferedReader(new StringReader(data));
+		
+	}
+	private void setupOutputFile() throws Exception {
 		outBytes = new CharArrayWriter();
 		out = new PrintWriter(outBytes);
-		fmt = new Fmt(ibs, out);
+	}
+	
+	private void construct(String data) {
+		fmt = new Fmt(setupInputFile(data), out);
 	}
 	
 	@Test
 	public void testEmpty() throws Exception {
-		setupFiles("");
+		setupOutputFile();
+		construct("");
 		fmt.format();
 		String[] string = outToStrings(outBytes.toString());
 		assertEquals(1, string.length);
@@ -43,7 +51,7 @@ public class FmtTest {
 	
 	@Test
 	public void testSmall() throws Exception {
-		setupFiles("Once\nupon\na\ntime\n...");
+		setupOutputFile(); construct("Once\nupon\na\ntime\n...");
 		fmt.format();
 		String[] expected = { "Once upon a time ... " };
 		compareStringArrays(expected, 
@@ -52,7 +60,7 @@ public class FmtTest {
 
 	@Test
 	public void testBlanks() throws Exception {
-		setupFiles("Once\n\ntwice");
+		setupOutputFile(); construct("Once\n\ntwice");
 		fmt.format();
 		String[] expected = { "Once ", "", "twice " };
 		String[] actual = outToStrings(outBytes.toString());
@@ -74,11 +82,22 @@ public class FmtTest {
 	
 	@Test
 	public void testLonger() throws Exception {
-		setupFiles(longInput);
+		setupOutputFile(); construct(longInput);
 		fmt.format();
 		String[] outStrings = outToStrings(outBytes.toString());
 		compareStringArrays(longExpected, outStrings);
 	}
+	
+	/** Test the static Stream method */
+	@Test
+	public void testStream() throws Exception {
+		String[] input = { "Hello,", "World" };
+		setupOutputFile();
+		Fmt.format(Stream.of(input), out);
+		compareStringArrays(new String[]{"Hello, World "}, outToStrings(outBytes.toString()));
+	}
+	
+	// ---------- Private Utilities below here --------------
 
 	private void compareStringArrays(String[] expected, String[] actual) {
 		assertEquals(expected.length, actual.length);

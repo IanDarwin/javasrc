@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 
 /**
  * Fmt - format text (like Berkeley UNIX fmt).
+ * N.B. This file (and its test) will move from javasrc to darwinsys-api,
+ * and be simplified.
  */
 // BEGIN main
 public class Fmt {
