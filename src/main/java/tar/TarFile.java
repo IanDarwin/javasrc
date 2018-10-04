@@ -15,7 +15,7 @@ public class TarFile {
 	/** True after we've done the expensive read. */
 	protected boolean read = false;
 	/** The list of entries found in the archive */
-	protected Vector list;
+	protected List<TarEntry> list;
 
 	/** Size of header block. */
 	public static final int	RECORDSIZE = 512;
@@ -31,7 +31,7 @@ public class TarFile {
 	/** Construct (open) a Tar file by name */
 	public TarFile(String name) {
 		fileName = name;
-		list = new Vector();
+		list = new ArrayList<>();
 	}
 
 	/** Construct (open) a Tar file by File */
@@ -60,7 +60,7 @@ public class TarFile {
 					break;
 				}
 				// System.out.println(hdr.toString());
-				list.addElement(hdr);
+				list.add(hdr);
 				// Get the size of the entry
 				int nbytes = hdr.getSize(), diff;
 				// Round it up to blocksize.
@@ -88,17 +88,17 @@ public class TarFile {
 	}
 
 	/* Returns an enumeration of the Tar file entries. */
-	public Enumeration entries() throws IOException, TarException {
+	public List<TarEntry> entries() throws IOException, TarException {
 		if (!read) {
 			readFile();
 		}
-		return list.elements();
+		return list;
 	}
 
 	/** Returns the Tar entry for the specified name, or null if not found. */
 	public TarEntry getEntry(String name) {
 		for (int i=0; i<list.size(); i++) {
-			TarEntry e = (TarEntry)list.elementAt(i);
+			TarEntry e = (TarEntry)list.get(i);
 			if (name.equals(e.getName()))
 				return e;
 		}

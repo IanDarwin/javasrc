@@ -42,7 +42,7 @@ public abstract class PDFDict extends PDFObject {
 
 	protected void printDict() {
 		master.println("<<");
-		Enumeration enumeration = dict.keys();
+		Enumeration<String> enumeration = dict.keys();
 		while (enumeration.hasMoreElements()) {
 			master.print("\t/");
 			String key = (String)enumeration.nextElement();

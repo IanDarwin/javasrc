@@ -1,15 +1,18 @@
 package dir_file;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 import com.darwinsys.lang.GetOpt;
-import com.darwinsys.util.Debug;
 
 // BEGIN main
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.
  */
 public class Find {
+	
+	private static Logger logger = Logger.getLogger(Find.class.getSimpleName());
+	
 	/** Main program */
 	public static void main(String[] args) {
 		Find finder = new Find();
@@ -42,7 +45,7 @@ public class Find {
 
 	/** doName - handle one filesystem object by name */
 	private void doName(String s) {
-		Debug.println("flow", "doName(" + s + ")");
+		logger.info("doName(" + s + ")");
 		File f = new File(s);
 		if (!f.exists()) {
 			System.out.println(s + " does not exist");

@@ -24,6 +24,6 @@ public class FieldEdit extends Applet {
 		add(new Label("Hex:"));
 		add(textField = new TextField(10));
 		textField.addTextListener(new FieldEditingListener(textField));
-	};
+	}
 
 }

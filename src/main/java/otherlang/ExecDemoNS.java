@@ -6,19 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.Stack;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import com.darwinsys.util.Debug;
 
 /**
  * ExecDemoNS shows how to execute a program from within Java.
  */
 // BEGIN main
 public class ExecDemoNS extends JFrame {
-	private static final String NETSCAPE = "netscape";
+	private static final String NETSCAPE = "firefox";
+	
+	Logger logger = Logger.getLogger(ExecDemoNS.class.getSimpleName());
 
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
@@ -88,7 +89,7 @@ public class ExecDemoNS extends JFrame {
 
 					pStack.push(Runtime.getRuntime().exec(program + " " + helpURL));
 
-					Debug.println("trace", "In main after exec " + pStack.size());
+					logger.info("In main after exec " + pStack.size());
 
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(ExecDemoNS.this,
@@ -102,12 +103,12 @@ public class ExecDemoNS extends JFrame {
 
 	public void doWait() {
 		if (pStack.size() == 0) return;
-		Debug.println("trace", "Waiting for process " + pStack.size());
+		logger.info("Waiting for process " + pStack.size());
 		try {
 			pStack.peek().waitFor();
 			// wait for process to complete 
 			// (may not work as expected for some old Windows programs)
-			Debug.println("trace", "Process " + pStack.size() + " is done");
+			logger.info("Process " + pStack.size() + " is done");
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this,
 				"Error" + ex, "Error",

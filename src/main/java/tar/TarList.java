@@ -26,9 +26,7 @@ public class TarList {
 
 	/** Generate and print the listing */
 	public void list() throws IOException, TarException {
-		Enumeration list = tf.entries();
-		while (list.hasMoreElements()) {
-			TarEntry e = (TarEntry)list.nextElement();
+		for (TarEntry e : tf.entries()) {
 			System.out.println(toListFormat(e));
 		}
 	}

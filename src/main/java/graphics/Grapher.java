@@ -7,11 +7,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import com.darwinsys.util.Debug;
 
 /** Simple Graphing program.
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -20,6 +19,8 @@ import com.darwinsys.util.Debug;
 public class Grapher extends JPanel {
 
 	private static final long serialVersionUID = -1813143391310613248L;
+	
+	private static Logger logger = Logger.getLogger(Grapher.class.getSimpleName());
 
 	/** Multiplier for range to allow room for a border */
 	public final static double BORDERFACTOR = 1.1f;
@@ -73,8 +74,8 @@ public class Grapher extends JPanel {
 		// Compute ranges
 		xrange = (maxx - minx) * BORDERFACTOR;
 		yrange = (maxy - miny) * BORDERFACTOR;
-		Debug.println("range", "minx,x,r = " + minx +' '+ maxx +' '+ xrange);
-		Debug.println("range", "miny,y,r = " + miny +' '+ maxy +' '+ yrange);
+		logger.info("minx,x,r = " + minx +' '+ maxx +' '+ xrange);
+		logger.info("miny,y,r = " + miny +' '+ maxy +' '+ yrange);
 	}
 
 	/** Called when the window needs painting.
@@ -98,7 +99,7 @@ public class Grapher extends JPanel {
 			Point2D d = (Point2D)data.get(i);
 			double x = (d.getX() - minx) * xfact;
 			double y = (d.getY() - miny) * yfact;
-			Debug.println("point", "AT " + i + " " + d + "; " +
+			logger.info("AT " + i + " " + d + "; " +
 				"x = " + x + "; y = " + y);
 			// Draw a 5-pixel rectangle centered, so -2 both x and y.
 			// AWT numbers Y from 0 down, so invert:

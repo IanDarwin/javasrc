@@ -71,7 +71,7 @@ public class PopupDemo extends Frame {
 				m.show(this, me.getX(), me.getY());
 			else
 				super.processMouseEvent(me);
-		};
+		}
 		
 		/** Compute our minimum size */
 		public Dimension getMinimumSize() {

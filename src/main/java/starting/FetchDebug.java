@@ -1,12 +1,13 @@
 package starting;
 
-import com.darwinsys.util.Debug;
+import java.util.logging.Logger;
 
 public class FetchDebug {
+	private static Logger logger = Logger.getLogger(FetchDebug.class.getSimpleName());
 	public static void main(String[] args) {
 		String name = "poem", value;
 		Fetch f = new Fetch();
-		Debug.println("fetch", "Fetching " + name);
+		logger.info("Fetching " + name);
 		value = f.fetch(name);
 		System.out.println(value);
 	}

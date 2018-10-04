@@ -16,8 +16,6 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-import com.darwinsys.util.Debug;
-
 /** Called from Httpd in a Thread to handle one connection.
  * We are created with just a Socket, and read the
  * HTTP request, extract a name, read it (saving it
@@ -93,7 +91,7 @@ public class Handler {
 
 			// Read headers, up to the null line before the body,
 			// so the body can be read directly if it's a POST.
-			HashMap map = new HashMap();
+			Map<String,String> map = new HashMap<>();
 			String hdrLine;
 			while ((hdrLine = is.readLine()) != null &&
 					hdrLine.length() != 0) {
@@ -101,7 +99,7 @@ public class Handler {
 					if ((ix=hdrLine.indexOf(':')) != -1) {
 						String hdrName = hdrLine.substring(0, ix);
 						String hdrValue = hdrLine.substring(ix+1).trim();
-						Debug.println("hdr", hdrName+","+hdrValue);
+						// Debug.println("hdr", hdrName+","+hdrValue); // Use a Logger
 						map.put(hdrName, hdrValue);
 					} else {
 						System.err.println("INVALID HEADER: " + hdrLine);
@@ -196,7 +194,7 @@ public class Handler {
 		InputStream in = new FileInputStream(f);
 		byte c_content[] = new byte[(int)f.length()];
 		// Single large read, should be fast.
-		int n = in.read(c_content);
+		in.read(c_content);
 		h.put(rqName, c_content);
 		sendFile(rqName, headerOnly, c_content, out);
 		in.close();

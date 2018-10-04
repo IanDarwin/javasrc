@@ -4,7 +4,7 @@ public class EnumDemo {
 
 	enum Color {
 		RED, AMBER, GREEN;
-	};
+	}
 
 	public static void main(String[] args) {
 		Color color = Color.RED;
