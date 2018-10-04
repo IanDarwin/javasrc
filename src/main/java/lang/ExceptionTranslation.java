@@ -24,6 +24,8 @@ public class ExceptionTranslation {
 	 * Extends RuntimeException so as to be unchecked
 	 */
 	public class MyDataException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+
 		public MyDataException(String s, Throwable t) {
 			super(s, t);
 		}
