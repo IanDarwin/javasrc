@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-
-import com.darwinsys.util.Debug;
+import java.util.logging.Logger;
 
 /**
  * EnTab: replace blanks by tabs and blanks. Transmuted from K&R Software Tools
@@ -18,6 +17,9 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class EnTab {
+
+	private static Logger logger = Logger.getLogger(EnTab.class.getSimpleName());
+
 	/** The Tabs (tab logic handler) */
 	protected Tabs tabs;
 
@@ -101,11 +103,11 @@ public class EnTab {
 			// If we get a space, consume it, don't output it.
 			// If this takes us to a tab stop, output a tab character.
 			if (ch == ' ') {
-				Debug.println("space", "Got space at " + inCol);
+				logger.info("Got space at " + inCol);
 				if (!tabs.isTabStop(inCol)) {
 					consumedSpaces++;
 				} else {
-					Debug.println("tab", "Got a Tab Stop " + inCol);
+					logger.info("Got a Tab Stop " + inCol);
 					sb.append('\t');
 					outCol += consumedSpaces;
 					consumedSpaces = 0;
@@ -117,7 +119,7 @@ public class EnTab {
 			// to put the "leftover" spaces back out, since we consumed
 			// them above.
 			while (inCol-1 > outCol) {
-				Debug.println("pad", "Padding space at " + inCol);
+				logger.info("Padding space at " + inCol);
 				sb.append(' ');
 				outCol++;
 			}
@@ -129,7 +131,7 @@ public class EnTab {
 		}
 		// If line ended with trailing (or only!) spaces, preserve them.
 		for (int i = 0; i < consumedSpaces; i++) {
-			Debug.println("trail", "Padding space at end # " + i);
+			logger.info("Padding space at end # " + i);
 			sb.append(' ');
 		}
 		return sb.toString();

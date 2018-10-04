@@ -3,6 +3,9 @@ package network.webserver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.DispatcherType;
@@ -28,8 +31,8 @@ public class MyRequest implements HttpServletRequest {
 	public javax.servlet.http.Cookie[] getCookies() { return null; }
 	public long getDateHeader(String name) { return 0; }
 	public String getHeader(String name) { return null; }
-	public java.util.Enumeration getHeaderNames() { return null; }
-	public java.util.Enumeration getHeaders(String name) { return null; }
+	public Enumeration<String> getHeaderNames() { return null; }
+	public Enumeration<String> getHeaders(String name) { return null; }
 	public int getIntHeader(String name) {
 		return Integer.parseInt(getHeader(name));
 	}
@@ -61,10 +64,10 @@ public class MyRequest implements HttpServletRequest {
 	public String getContentType() { return "text/html"; }
 	public javax.servlet.ServletInputStream getInputStream() { return null; }
 	public java.util.Locale getLocale() { return null; }
-	public java.util.Enumeration getLocales() { return null; }
+	public Enumeration<Locale> getLocales() { return null; }
 	public String getParameter(String s1) { return null; }
-	public java.util.Enumeration getParameterNames() { return null; }
-	public java.util.Map getParameterMap() { return null; }
+	public Enumeration<String> getParameterNames() { return null; }
+	public Map<String,String[]> getParameterMap() { return null; }
 	public String[] getParameterValues(String s1) { return null; }
 	public String getProtocol() { return "http"; }
 	public java.io.BufferedReader getReader() { return null; }
@@ -82,7 +85,7 @@ public class MyRequest implements HttpServletRequest {
 	public void setAttribute(String s1, Object s2) { }
 	public void removeAttribute(String s1) { }
 	public Object getAttribute(String s1) { return null; }
-	public java.util.Enumeration getAttributeNames() { return null; }
+	public Enumeration<String> getAttributeNames() { return null; }
 	public String getLocalAddr() {
 		return null;
 	}
@@ -97,78 +100,63 @@ public class MyRequest implements HttpServletRequest {
 	}
 	@Override
 	public long getContentLengthLong() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
 	public ServletContext getServletContext() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public AsyncContext startAsync() throws IllegalStateException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public boolean isAsyncStarted() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
 	public boolean isAsyncSupported() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
 	public AsyncContext getAsyncContext() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public DispatcherType getDispatcherType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public String changeSessionId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public boolean authenticate(HttpServletResponse response) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
 	public void login(String username, String password) throws ServletException {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void logout() throws ServletException {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public Collection<Part> getParts() throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public Part getPart(String name) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

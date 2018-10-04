@@ -1,6 +1,7 @@
 package xml;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -9,7 +10,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.darwinsys.util.Debug;
 
 /** XML Tree Walker
  * UPDATED FOR JAXP.
@@ -17,6 +17,8 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class XTW {
+	
+	private static Logger logger = Logger.getLogger(XTW.class.getSimpleName());
 
 	public static void main(String[] av) {
 		if (av.length == 0) {
@@ -66,7 +68,7 @@ public class XTW {
 			return;
 		}
 		NodeList nodes = p.getChildNodes();
-		Debug.println("xml-tree", "Element has " + 
+		logger.info("Element has " + 
 			nodes.getLength() + " children");
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Node n = nodes.item(i);

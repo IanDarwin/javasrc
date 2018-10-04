@@ -27,7 +27,7 @@ public class ThreadGroupDemo {
 				System.err.println("********************************");
 				// System.exit(0);
 			}
-		};
+		}
 
 		// Construct a Runnable to create and start the GUI.
 		// This creates some new threads, like the AWT event queue thread.

@@ -1,8 +1,7 @@
 package otherlang;
 
-import com.darwinsys.util.Debug;
-
 import java.io.*;
+import java.util.logging.Logger;
 
 /**
  * ExecDemo shows how to execute an external program (in this case
@@ -10,6 +9,9 @@ import java.io.*;
  */
 // BEGIN main
 public class ExecDemoLs {
+	
+	private static Logger logger = Logger.getLogger(ExecDemoLs.class.getSimpleName());
+
 	/** The program to run */
 	public static final String PROGRAM = "ls"; // "dir" for Windows
 	/** Set to true to end the loop */
@@ -23,7 +25,7 @@ public class ExecDemoLs {
 		
 		p = Runtime.getRuntime().exec(PROGRAM);
 
-		Debug.println("exec", "In Main after exec");
+		logger.info("In Main after exec");
 
 		// Optional: start a thread to wait for the process to terminate.
 		// Don't just wait in main line, but here set a "done" flag and
@@ -50,7 +52,7 @@ public class ExecDemoLs {
 		while (!done && ((line = is.readLine()) != null))
 			System.out.println(line);
 		
-		Debug.println("exec", "In Main after EOF");
+		logger.info("In Main after EOF");
 
 		return;
 	}

@@ -1,7 +1,7 @@
 package structure;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Demonstrate the Hashtable class, and an Enumeration.
@@ -14,7 +14,7 @@ public class HashtableDemo {
 		// Construct and load the hash. This simulates loading a
 		// database or reading from a file, or wherever the data is.
 
-		Hashtable<String,String> h = new Hashtable<String,String>();
+		Map<String,String> h = new Hashtable<String,String>();
 
 		// The hash maps from company name to address.
 		// In real life this might map to an Address object...
@@ -37,11 +37,8 @@ public class HashtableDemo {
 
 		// Version 2: get ALL the keys and pairs 
 		// (maybe to print a report, or to save to disk)
-		Enumeration k = h.keys();
-		while (k.hasMoreElements()) {
-			String key = (String) k.nextElement();
-			System.out.println("Key " + key + "; Value " +
-				(String) h.get(key));
+		for (String key : h.keySet()) {
+			System.out.println("Key " + key + "; Value " + h.get(key));
 		}
 	}
 }

@@ -13,8 +13,7 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
-
-import com.darwinsys.util.Debug;
+import java.util.logging.Logger;
 
 /** Called from Httpd in a Thread to handle one connection.
  * We are created with just a Socket, and read the
@@ -26,6 +25,8 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class Handler {
+	
+	private static Logger logger = Logger.getLogger(Handler.class.getSimpleName());
 
 	/** inputStream, from Viewer */
 	protected BufferedReader is;
@@ -114,7 +115,7 @@ public class Handler {
 					if ((ix=hdrLine.indexOf(':')) != -1) {
 						String hdrName = hdrLine.substring(0, ix);
 						String hdrValue = hdrLine.substring(ix+1).trim();
-						Debug.println("hdr", hdrName+","+hdrValue);
+						logger.info(hdrName+","+hdrValue);
 						headersMap.put(hdrName, hdrValue);
 					} else {
 						System.err.println("INVALID HEADER: " + hdrLine);

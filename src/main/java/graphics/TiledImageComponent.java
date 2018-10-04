@@ -5,11 +5,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.TextField;
+import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-
-import com.darwinsys.util.Debug;
 
 /**
  * Demo of tiling an Image across a component; draw the image repeatedly
@@ -18,8 +17,10 @@ import com.darwinsys.util.Debug;
  */
 // BEGIN main
 public class TiledImageComponent extends JComponent {
-
 	private static final long serialVersionUID = -8771306833824134974L;
+	
+	private static Logger logger = Logger.getLogger(TiledImageComponent.class.getSimpleName());
+	
 	protected TextField nameTF, passTF, domainTF;
 	protected Image im;
 	public static final String DEFAULT_IMAGE_NAME =
@@ -54,7 +55,7 @@ public class TiledImageComponent extends JComponent {
 
 		for (int i = 0; i<=w; i+=iw) {
 			for (int j = 0; j<=h; j+=ih) {
-				Debug.println("draw", "drawImage(im,"+i+","+j+")");
+				logger.info("drawImage(im,"+i+","+j+")");
 				g.drawImage(im, i, j, this);
 			}
 		}

@@ -1,5 +1,6 @@
 package performance;
 
+import java.util.List;
 import java.util.Vector;
 
 import com.darwinsys.lang.MutableInteger;
@@ -11,13 +12,13 @@ public class ArrayVec {
 		System.out.println(new ArrayVec().run());
 	}
 	public int run() {
-		Vector list = new Vector();
+		List<MutableInteger> list = new Vector<>();
 		for (int i=0; i<MAX; i++) {
-			list.addElement(new MutableInteger(i));
+			list.add(new MutableInteger(i));
 		}
 		int sum = 0;
 		for (int i=0; i<MAX; i++) {
-			sum += ((MutableInteger)list.elementAt(i)).getValue();
+			sum += ((MutableInteger)list.get(i)).getValue();
 		}
 		return sum;
 	}

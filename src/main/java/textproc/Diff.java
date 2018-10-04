@@ -38,7 +38,7 @@ class fileInfo {
 	void alloc() {
 		other  = new int[symbol.length + 2];
 	}
-};
+}
 
 /**
  * diff         Text file difference utility.
@@ -601,7 +601,7 @@ public class Diff {
 	public void println(String s) {
 		System.out.println(s);
 	}
-};				// end of main class!
+}				// end of main class!
 
 /**
  * Class "node". The symbol table routines in this class all

@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class Fmt2 extends Fmt {
-	enum Mode { FORMATTED, UNFORMATTED };
+	enum Mode { FORMATTED, UNFORMATTED }
 	Mode mode;
 	/** The current output column. */
 	protected int col = 0;
