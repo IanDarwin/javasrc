@@ -19,4 +19,4 @@ do
 done
 shift `expr $OPTIND - 1`		 # leave just filenames
 
-java -Duser.language=${LANG} -classpath target/classes:${WELD_JAR} com.darwinsys.javasecdi.CDIMain
+java -Duser.language=${LANG} -classpath target/classes:${WELD_JAR} di.javasecdi.CDIMain
