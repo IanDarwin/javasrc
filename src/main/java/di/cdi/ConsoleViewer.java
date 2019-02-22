@@ -1,4 +1,4 @@
-package di.javasecdi;
+package di.cdi;
 
 import javax.inject.Inject;
 

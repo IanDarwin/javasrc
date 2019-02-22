@@ -1,4 +1,4 @@
-package di.javasecdi;
+package di.cdi;
 
 import java.io.IOException;
 import java.util.ResourceBundle;

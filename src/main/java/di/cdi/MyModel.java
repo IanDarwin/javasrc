@@ -1,4 +1,4 @@
-package di.javasecdi;
+package di.cdi;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
