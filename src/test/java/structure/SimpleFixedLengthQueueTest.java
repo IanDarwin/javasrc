@@ -6,13 +6,13 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 
-public class FixedLengthQueueTest {
+public class SimpleFixedLengthQueueTest {
 	
-	FixedLengthQueue<LocalDate> target;
+	SimpleFixedLengthQueue<LocalDate> target;
 
 	@Before
 	public void setup() {
-		target = new FixedLengthQueue<>(5);
+		target = new SimpleFixedLengthQueue<>(5);
 	}
 
 	@Test

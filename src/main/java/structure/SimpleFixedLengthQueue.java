@@ -1,12 +1,12 @@
 package structure;
 
-public class FixedLengthQueue<T> extends Queue<T> {
+public class SimpleFixedLengthQueue<T> extends Queue<T> {
 	private static final long serialVersionUID = 1L;
 	final T[] data;
 	int ix = 0, start = 0;
 
 	@SuppressWarnings("unchecked")
-	public FixedLengthQueue(int size) {
+	public SimpleFixedLengthQueue(int size) {
 		data = (T[]) new Object[size];
 	}
 	
