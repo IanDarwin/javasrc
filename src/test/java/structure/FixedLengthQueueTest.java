@@ -19,8 +19,8 @@ public class FixedLengthQueueTest {
 	public void testPushPull() {
 		LocalDate o = LocalDate.now();
 		target.add(o);
-		assertSame(o, target.peek());
-		assertSame(o, target.poll());
-		assertTrue(target.isEmpty());
+		assertSame("peek", o, target.peek());
+		assertSame("poll", o, target.poll());
+		assertTrue("all gone", target.isEmpty());
 	}
 }

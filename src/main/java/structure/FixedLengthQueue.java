@@ -38,7 +38,7 @@ public class FixedLengthQueue<T> extends Queue<T> {
 		return (T)data[ix];
 	}
 	public T poll() {
-		return (T)data[--ix];
+		return (T)data[ix--];
 	}
 	public T remove() {
 		return poll();
