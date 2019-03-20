@@ -8,10 +8,11 @@ All you have to do is:
 . Fork the repository (button in the upper right);
 . Download your forked copy or, if your change is simple, make it on the web interface.
 . Run the tests. Add a test if the code you're changing doesn't have one yet. Make sure tests pass.
-. Click the "Pull Requests" link at the top, and click Create New Pull Request.
+. Click the `Pull Requests` link at the top, and click `New Pull Request`.
 
 Submitting a contribution here constitutes acceptance of licensing your code under the existing open source license.
 You also warrant that you have the legal right to contribute your change.
 
 Thanks for helping!
+
 Ian Darwin
