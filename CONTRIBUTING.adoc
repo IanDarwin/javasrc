@@ -2,13 +2,13 @@
 
 First, thanks for wanting to contribute!
 
-You have to be logged in to github;
+You have to be logged in to github.
 
 If your change is trivial (one line fix, typo, etc):
 
 . Click `Issues` at top of page.
 . Click green `New Issue` button.
-. Descripe the fix.
+. Describe the fix.
 
 If you change is longer, or requires a test because it changes executable code, please do this:
 
