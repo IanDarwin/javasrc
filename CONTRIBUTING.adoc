@@ -17,6 +17,8 @@ If you change is longer, or requires a test because it changes executable code, 
 . Run the tests. Add a test if the code you're changing doesn't have one yet. Make sure tests pass.
 . Click the `Pull Requests` link at the top, and click the green `New Pull Request` button.
 
+If you are prevented from using GitHub for any reason, use https://darwinsys.com/contact.jsp[my contact form].
+
 Submitting a contribution here constitutes acceptance of licensing your code under the existing open source license.
 You also warrant that you have the legal right to contribute your change.
 
