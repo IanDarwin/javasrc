@@ -2,13 +2,20 @@
 
 First, thanks for wanting to contribute!
 
-All you have to do is:
+You have to be logged in to github;
 
-. Login to github;
+If your change is trivial (one line fix, typo, etc):
+
+. Click `Issues` at top of page.
+. Click green `New Issue` button.
+. Descripe the fix.
+
+If you change is longer, or requires a test because it changes executable code, please do this:
+
 . Fork the repository (button in the upper right);
-. Download your forked copy or, if your change is simple, make it on the web interface.
+. Download your forked copy or, if your change is simple, make it on the web interface. Commit your changes.
 . Run the tests. Add a test if the code you're changing doesn't have one yet. Make sure tests pass.
-. Click the `Pull Requests` link at the top, and click `New Pull Request`.
+. Click the `Pull Requests` link at the top, and click the green `New Pull Request` button.
 
 Submitting a contribution here constitutes acceptance of licensing your code under the existing open source license.
 You also warrant that you have the legal right to contribute your change.
