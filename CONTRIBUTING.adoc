@@ -4,7 +4,7 @@ First, thanks for wanting to contribute!
 
 All you have to do is:
 
-. Login to githup;
+. Login to github;
 . Fork the repository (button in the upper right);
 . Download your forked copy or, if your change is simple, make it on the web interface.
 . Run the tests. Add a test if the code you're changing doesn't have one yet. Make sure tests pass.
