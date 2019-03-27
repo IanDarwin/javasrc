@@ -2,13 +2,13 @@ package spdf;
 
 import java.io.*;
 
-/** A simple text test of SPDF package
+/** A simple text demo of SPDF package
  */
 public class Demo {
 	public static void main(String[] argv) throws IOException {
 		PrintWriter pout;
 		if (argv.length == 0) {
-			pout = new PrintWriter(System.out);
+			pout = new PrintWriter(new FileWriter("demo.pdf"));
 		} else {
 			if (new File(argv[0]).exists()) {
 				throw new IOException(
