@@ -77,9 +77,4 @@ public class TMTimerUtil {
 		}
 	}
 
-	public static void main(String[] args) {
-		Properties p = new Properties();
-		TMTimerUtil.loadProperties(p, "TMTimer");
-		TMTimerUtil.parseProps(p);
-	}
 }
