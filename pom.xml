@@ -283,13 +283,11 @@
 	<artifactId>jackson-databind</artifactId>
 	<version>2.9.5</version>
 </dependency>
-<!--
 <dependency>
-	<groupId>org.renjin</groupId>
-	<artifactId>renjin-script-engine</artifactId>
-	<version>0.9.2626</version>
+  <groupId>org.glassfish.jaxb</groupId>
+  <artifactId>jaxb-runtime</artifactId>
+  <version>2.4.0-b180830.0438</version>
 </dependency>
--->
 
 <dependency>
 	<groupId>javax</groupId>		
