@@ -3,7 +3,10 @@ package json;
 import java.time.LocalDate;
 
 // BEGIN main
-/** Convert an object to JSON, not using any JSON API. */
+/** 
+ * Convert an object to JSON, not using any JSON API.
+ * BAD IDEA - should use an API!
+ */
 public class LocalDateToJsonManually {
 
 	private static final String OPEN = "{";

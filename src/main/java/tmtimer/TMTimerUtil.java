@@ -15,7 +15,7 @@ public class TMTimerUtil {
 	 * 30,45,60=0:30 0:45 1:00
 	 * 5m,6m,7m=5:00 6:00 7:00
 	 * </PRE>
-	 * return an Iterator (HashMap?) whose keys are the labels
+	 * @return A Map whose keys are the labels
 	 * and whose values are an array of ints with the seconds.
 	 */
 	 public static Map<String,int[]> parseProps(Properties p) {
@@ -77,9 +77,4 @@ public class TMTimerUtil {
 		}
 	}
 
-	public static void main(String[] args) {
-		Properties p = new Properties();
-		TMTimerUtil.loadProperties(p, "TMTimer");
-		TMTimerUtil.parseProps(p);
-	}
 }
