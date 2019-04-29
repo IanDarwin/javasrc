@@ -28,14 +28,14 @@ public class RomanNumberFormatTest {
 	@Test
 	public void testThereThereAndBackAgain() {
 		Long num1 = (Long) nf.parseObject("LCX", null);
-		assertEquals(new Long(160), num1);
+		assertEquals(Long.valueOf(160), num1);
 		Long num2 = (Long) nf.parseObject("XX", null);
-		assertEquals(new Long(20), num2);
+		assertEquals(Long.valueOf(20), num2);
 		long newVal = num1.intValue() * num2.intValue();
 		System.out.println(newVal);
 		String newString = nf.format(newVal);
 		System.out.println(newString);
 		Long num3 = (Long)nf.parseObject(newString, null);
-		assertEquals(new Long(newVal), num3);
+		assertEquals(Long.valueOf(newVal), num3);
 	}
 }

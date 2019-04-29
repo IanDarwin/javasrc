@@ -23,6 +23,7 @@ public class FinalizeDemo {
 		// free up resources...
 	}
 
+	@SuppressWarnings("deprecation")
 	protected void finalize() throws Throwable {
 		try {
 			cleanup();

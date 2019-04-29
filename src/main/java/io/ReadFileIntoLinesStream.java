@@ -7,6 +7,7 @@ import java.io.*;
  * using BufferedReader.lines().
  */
 public class ReadFileIntoLinesStream {
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		String fileName = args[0];
 		new BufferedReader(new FileReader(fileName)).lines().forEach(System.out::println);

@@ -102,7 +102,7 @@ public class SimpleCalcStreamTok {
 		}
 	}
 	void push(double val) {
-		s.push(new Double(val));
+		s.push(Double.valueOf(val));
 	}
 	double pop() {
 		return ((Double)s.pop()).doubleValue();

@@ -113,7 +113,7 @@ public class PDF {
 
 	/** Add an entry into the offset table */
 	protected void addXref() {
-		xrefs.add(new Long(offset));
+		xrefs.add(Long.valueOf(offset));
 	}
 
 	/** Write the entire output */

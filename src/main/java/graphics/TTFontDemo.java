@@ -15,12 +15,8 @@ import javax.swing.JLabel;
  * NOT have to install into the JRE before you can use it.
  * (of course they can install it if they have privileges and want to).
  * <p>
- * Must remain Swing-based despite problems on older systems, since
+ * Must remain Swing-based (not AWT), since
  * only Swing components can use TTF fonts in this implementation.
- * <p>
- * Did NOT work for me in Applet nor JApplet due to
- * security problems (requires to create a temp file). Could be made
- * to work by providing a policy file.
  * @author	Ian Darwin
  * @since 1.3
  */
@@ -40,7 +36,7 @@ public class TTFontDemo extends JLabel {
 		// First, see if we can load the font file.
 		InputStream is = this.getClass().getResourceAsStream(fontFileName);
 		if (is == null) {
-			throw new IOException("Cannot open " + fontFileName);
+			throw new IOException("Cannot open font file " + fontFileName);
 		}
 
 		// createFont makes a 1-point font, bit hard to read :-)

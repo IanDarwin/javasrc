@@ -8,10 +8,10 @@ import java.util.Arrays;
 public class SortBooleans {
 	public static void main(String[] unused) {
 		Boolean[] data = {
-			new Boolean(true),
-			new Boolean(false),
-			new Boolean(false),
-			new Boolean(true),
+			Boolean.TRUE,
+			Boolean.FALSE,
+			Boolean.FALSE,
+			Boolean.TRUE,
 		};
 		Arrays.sort(data);		// EXPECT RUNTIME ERROR
 		for (int i=0; i<data.length; i++)

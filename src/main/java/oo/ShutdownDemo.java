@@ -9,6 +9,7 @@ public class ShutdownDemo {
 
 		// Create an Object with a finalize() method - Bad idea!
 		Object f = new Object() {
+			@SuppressWarnings("deprecation")
 			public void finalize() throws Throwable {
 				System.out.println( "Running finalize()");
 				super.finalize();

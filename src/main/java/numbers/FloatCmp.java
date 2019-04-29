@@ -33,7 +33,7 @@ public class FloatCmp {
 		else
 			System.out.println("Comparing two NaNs correctly reports false.");
 
-		if (new Double(nan1).equals(new Double(nan2)))
+		if (Double.valueOf(nan1).equals(Double.valueOf(nan2)))
 			System.out.println("Double(NaN).equals(NaN) correctly returns true.");
 		else
 			System.out.println("Double(NaN).equals(NaN) incorrectly returns false.");

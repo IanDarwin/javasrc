@@ -18,6 +18,7 @@ public class IRC {
 	}
 
 	// finalizer (vaguely like C++ destructor, but not guaranteed to be run)
+	@SuppressWarnings("deprecation")
 	protected void finalize() throws Throwable {
 		System.out.println("finalizing " + this + " down to " + --nodeCount);
 		super.finalize();

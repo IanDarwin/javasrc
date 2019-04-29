@@ -9,6 +9,7 @@ import java.io.*;
 public class ReadLines {
 	static int i = 0;
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		new BufferedReader(new FileReader(args[0])).lines().forEach(s -> {
 			System.out.println("Line: " + ++i + s);

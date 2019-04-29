@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 /**
- * How you can throw an exception from a field initizializer; note the throws
+ * How you can throw an exception from a field initializer; note the throws
  * clause must appear on the constructor.
  * @author Dr. Heinz Kabutz, http://www.javaspecialists.eu/
  */
@@ -27,6 +27,7 @@ public class ThrowFromFieldInitializer implements AutoCloseable {
 		in.close();
 	}
 
+	@SuppressWarnings("deprecation")
 	protected void finalize() throws Throwable {
 		close();
 		super.finalize();

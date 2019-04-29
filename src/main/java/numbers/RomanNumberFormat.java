@@ -48,6 +48,7 @@ public class RomanNumberFormat extends Format {
 	/** Format a given double as a Roman Numeral; just truncate to a
 	 * long, and call format(long).
 	 */
+	// Not an override
 	public String format(double n) {
 		return format((long)n);
 	}
@@ -55,6 +56,7 @@ public class RomanNumberFormat extends Format {
 	/** Format a given long as a Roman Numeral. Just call the
 	 * three-argument form.
 	 */
+	// Not an override
 	public String format(long n) {
 		if (n <= 0 || n >= 4000)
 			throw new NumberFormatException(n + " must be > 0 && < 4000");
@@ -119,6 +121,7 @@ public class RomanNumberFormat extends Format {
 	}
 
 	/** Parse a generic object, returning an Object */
+	@Override
 	public Object parseObject(String what, ParsePosition where) {
 		int n = 0;
 		for (char ch : what.toUpperCase().toCharArray()) {
@@ -129,7 +132,7 @@ public class RomanNumberFormat extends Format {
 				}
 			}
 		}		
-		return new Long(n);
+		return Long.valueOf(n);
 	}
 
 	/* Implement a toy stack */

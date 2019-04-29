@@ -89,7 +89,7 @@ public class SimpleCalcScanner {
 	}
 
 	void push(double val) {
-		s.push(new Double(val));
+		s.push(Double.valueOf(val));
 	}
 
 	double pop() {

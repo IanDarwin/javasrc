@@ -38,8 +38,6 @@ public class GetNumber extends Frame {
 		pack();
 	}
 
-	private static Number NAN = new Double(Double.NaN);
-
 	/* Process one String, returning it as a Number subclass
 	 * Does not require the GUI.
 	 */
@@ -51,7 +49,7 @@ public class GetNumber extends Frame {
 				return Double.valueOf(dValue);
 			} catch (NumberFormatException e) {
 				System.out.println("Invalid double: " + s);
-				return NAN;
+				return Double.NaN;
 			}
 		} else // did not contain . d e or f, so try as int.
 			try {
@@ -60,7 +58,7 @@ public class GetNumber extends Frame {
 				return Integer.valueOf(iValue);
 			} catch (NumberFormatException e2) {
 				System.out.println("Not a number: " + s);
-				return NAN;
+				return Double.NaN;
 			}
 	}
 

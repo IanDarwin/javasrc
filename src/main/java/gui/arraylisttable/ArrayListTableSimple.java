@@ -75,7 +75,7 @@ public class ArrayListTableSimple extends JFrame {
 		Properties p = System.getProperties();
 
 		// Get an Iterator for the sorted set of keys in p
-		final Set keySet = new TreeMap(p).keySet();
+		final Set<String> keySet = new TreeMap<String, String>().keySet();
 		for (Object k : keySet) {
 			String key = (String)k;
 			// Copy them into the ArrayList
