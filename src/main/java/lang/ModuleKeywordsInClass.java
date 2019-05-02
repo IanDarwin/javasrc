@@ -9,7 +9,7 @@ public class ModuleKeywordsInClass {
 		new ModuleKeywordsInClass().open();
 	}
 	void open() {
-		var module = 42;
+		int module = 42;
 		System.out.println("Open method called: module# = " + module);
 	}
 }
