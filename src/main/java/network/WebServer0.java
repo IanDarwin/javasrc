@@ -32,9 +32,13 @@ public class WebServer0 {
 	/**
 	 * Main method, just creates a server and call its runServer().
 	 */
-	public static void main(String[] argv) throws Exception {
+	public static void main(String[] args) throws Exception {
 		System.out.println("DarwinSys JavaWeb Server 0.0 starting...");
 		WebServer0 w = new WebServer0();
+		int port = HTTP;
+		if (args.length == 1) {
+			port = Integer.parseInt(args[0]);
+			}
 		w.runServer(HTTP);		// never returns!!
 	}
 
