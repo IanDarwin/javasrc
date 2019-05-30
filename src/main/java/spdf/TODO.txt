@@ -1,4 +1,0 @@
-Generalize much, much more
-	Better handling of object numbers
-	Handle multiple pages.
-Font - AWT font or PDFObject?

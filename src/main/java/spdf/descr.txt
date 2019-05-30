@@ -1,1 +1,0 @@
-SPDF -- simple PDF API (incomplete)
