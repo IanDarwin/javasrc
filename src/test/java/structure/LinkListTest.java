@@ -13,11 +13,12 @@ import org.junit.Test;
 
 /**
  * Linked list class, written out in full using Java.
- * WARNING: The LinkList class is hopelessly incomplete and
+ * WARNING: The LinkList class is not necessarily complete and
  * should not be used to save data, until somebody finishes it!
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest {
+	private static final String STRING_HELLO = "Hello";
 	private static final String END_OF_LIST = "End of list";
 	List<String> list;
 	
@@ -25,7 +26,7 @@ public class LinkListTest {
 	public void setUp() {
 		list = new LinkList<String>();
 		list.add(new Object().toString());
-		list.add("Hello");
+		list.add(STRING_HELLO);
 		list.add(END_OF_LIST);
 	}
 	
@@ -36,7 +37,7 @@ public class LinkListTest {
 
 	@Test
 	public void testGetSecond() {
-		assertTrue("get element", list.contains("Hello"));
+		assertEquals("get element", STRING_HELLO, list.get(1));
 	}
 
 	@Test
@@ -46,7 +47,7 @@ public class LinkListTest {
 	
 	@Test
 	public void testContains() {
-		assertTrue(list.contains("Hello"));
+		assertTrue(list.contains(STRING_HELLO));
 	}
 	
 	@Test
@@ -61,7 +62,7 @@ public class LinkListTest {
 	public void testAddWithIndex() {
 		list.add(2, "Meh");
 		assertEquals("list size post-insert", 4, list.size());
-		//assertEquals(list.get(2), "Meh");
+		assertEquals(list.get(2), "Meh");
 		//assertEquals(list.get(3), END_OF_LIST);
 	}
 }

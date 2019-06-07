@@ -7,11 +7,11 @@ import java.util.ListIterator;
 
 /**
  * Linked list class, written in Java.
- * This is <b>not</b> intended to be a usable List, and it is certainly
- * not going to be optimal in terms of performance; it is just
+ * This is <b>not</b> intended to be a usable List, and it is probably
+ * not going to be optimal in terms of performance; it is in part
  * here to remind you how much work the existing List implementations do.
  * <br/>
- * TODO: scrap this and start again, subclassing AbstractSequentialList
+ * For a production-ready version, consider subclassing AbstractSequentialList.
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin
  */
@@ -52,7 +52,7 @@ public class LinkList<T> implements List<T> {
 	/** Set the List (back) to its initial state.
 	 * Any references held will be discarded.
 	 */
-    public void clear() {
+	public void clear() {
 		first = new TNode<T>(null);
 		last = first;
 	}
@@ -67,7 +67,7 @@ public class LinkList<T> implements List<T> {
 		return true;
 	}
 
-    public void add(int where, T o) {
+	public void add(int where, T o) {
 		TNode<T> t = first;
 		for (int i=0; i<=where; i++) {
 			t = t.next;
@@ -84,7 +84,7 @@ public class LinkList<T> implements List<T> {
 		t.next = t2;
 	}
 
-    public int size() {
+	public int size() {
 		TNode<T> t = first;
 		int i;
 		for (i=0; ; i++) {
@@ -95,11 +95,11 @@ public class LinkList<T> implements List<T> {
 		return i - 1;	// subtract one for mandatory head node.
 	}
 
-    public boolean isEmpty() {
+	public boolean isEmpty() {
 		return first == last;
 	}
 
-    public T get(int where) {
+	public T get(int where) {
 		TNode<T> t = first;
 		int i=0; 
 		// If we get to the end of list before 'where', error out
@@ -112,12 +112,12 @@ public class LinkList<T> implements List<T> {
 		return t.data;
 	}
 
-    public T set(int i, T o) {
+	public T set(int i, T o) {
 		return null;
 	}
-    
-    public boolean contains(Object o) {
-    		TNode<T> t = first;
+	
+	public boolean contains(Object o) {
+			TNode<T> t = first;
 		while ((t = t.next) != null) {
 			if (t.data.equals(o)) {
 				return true;
@@ -125,16 +125,16 @@ public class LinkList<T> implements List<T> {
 		}
 		return false;
 	}
-    public boolean addAll(Collection<? extends T> c) {
-    	c.forEach(o -> add((T) o));
+	public boolean addAll(Collection<? extends T> c) {
+		c.forEach(o -> add((T) o));
 		return false;
 	}
 
-    public ListIterator<T> listIterator() {
+	public ListIterator<T> listIterator() {
 		throw new UnsupportedOperationException("listIterator");
 	}
 
-    public Iterator<T> iterator() {
+	public Iterator<T> iterator() {
 		return new Iterator<T>() {
 			TNode<T> t = first.next;
 			public boolean hasNext() {
@@ -155,51 +155,51 @@ public class LinkList<T> implements List<T> {
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
 
-    public Object[] toArray() {
+	public Object[] toArray() {
 		return null;
 	}
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public T[] toArray(Object[] data) {
 		return null;
 	}
 
-    public boolean remove(Object o) {
+	public boolean remove(Object o) {
 		return false;
 	}
 
-    public T remove(int i) {
+	public T remove(int i) {
 		return null;
 	}
 
-    public boolean containsAll(Collection<?> c) {
+	public boolean containsAll(Collection<?> c) {
 		return false;
 	}
-    public boolean addAll(int i, Collection<? extends T> c) {
-		return false;
-	}
-
-    public boolean removeAll(Collection<?> c) {
+	public boolean addAll(int i, Collection<? extends T> c) {
 		return false;
 	}
 
-    public boolean retainAll(Collection<?> c) {
+	public boolean removeAll(Collection<?> c) {
 		return false;
 	}
 
-    public int indexOf(Object o) {
+	public boolean retainAll(Collection<?> c) {
+		return false;
+	}
+
+	public int indexOf(Object o) {
 		return 0;
 	}
 
-    public int lastIndexOf(Object o) {
+	public int lastIndexOf(Object o) {
 		return 0;
 	}
 
-    public ListIterator<T> listIterator(int where) {
+	public ListIterator<T> listIterator(int where) {
 		return null;
 	}
 
-    public List<T> subList(int sub1, int sub2) {
+	public List<T> subList(int sub1, int sub2) {
 		return null;
 	}
 }
