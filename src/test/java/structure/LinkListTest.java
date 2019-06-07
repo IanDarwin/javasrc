@@ -57,12 +57,20 @@ public class LinkListTest {
 		assertEquals(6, list.size());
 		assertEquals("Three", list.get(5));
 	}
-	
+
 	@Test @Ignore("exhibits non-halting behavior")
 	public void testAddWithIndex() {
 		list.add(2, "Meh");
 		assertEquals("list size post-insert", 4, list.size());
 		assertEquals(list.get(2), "Meh");
 		//assertEquals(list.get(3), END_OF_LIST);
+	}
+
+	@Test
+	public void testToArrayProvided() {
+		String[] data = new String[list.size()];
+		list.toArray(data);
+		assertEquals(STRING_HELLO, data[1]);
+		assertEquals(END_OF_LIST, data[data.length - 1]);
 	}
 }

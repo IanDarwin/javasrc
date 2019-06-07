@@ -161,7 +161,10 @@ public class LinkList<T> implements List<T> {
 
 	@SuppressWarnings("unchecked")
 	public T[] toArray(Object[] data) {
-		return null;
+		for (int i = 0; i < data.length; i++) {
+			data[i] = get(i);
+		}
+		return (T[]) data;
 	}
 
 	public boolean remove(Object o) {
