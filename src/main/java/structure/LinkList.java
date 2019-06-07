@@ -27,6 +27,11 @@ public class LinkList<T> implements List<T> {
 			data = o;
 			next = null;
 		}
+		@Override
+		public String toString() {
+			return String.format("TNode: data='%s', next='%d'", data, 
+					next == null ? 0 : next.hashCode());
+		}
 	}
 
 	private boolean DIAGNOSTIC = true;
@@ -81,7 +86,10 @@ public class LinkList<T> implements List<T> {
 		}
 		TNode<T> t2 = t;
 		t.next = new TNode<T>(o);
-		t.next = t2;
+		t.next.next = t2;
+		if (DIAGNOSTIC) {
+			System.out.printf("add(int,T): t=%s\n", t);
+		}
 	}
 
 	public int size() {
@@ -130,10 +138,6 @@ public class LinkList<T> implements List<T> {
 		return false;
 	}
 
-	public ListIterator<T> listIterator() {
-		throw new UnsupportedOperationException("listIterator");
-	}
-
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
 			TNode<T> t = first.next;
@@ -151,58 +155,66 @@ public class LinkList<T> implements List<T> {
 			}
 		};
 	}
-	// END main
-
-	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
-
-	public Object[] toArray() {
-		return null;
-	}
 
 	@SuppressWarnings("unchecked")
 	public T[] toArray(Object[] data) {
-		for (int i = 0; i < data.length; i++) {
-			data[i] = get(i);
+		// First is an empty anchor, start at its next
+		TNode<T> p = first.next;
+		for (int i = 0; p != null && i < data.length; i++) {
+			data[i] = p.data;
+			p = p.next;
 		}
 		return (T[]) data;
 	}
 
+	public Object[] toArray() {
+		Object[] data = new Object[size()];
+		return toArray(data);
+	}
+	// END main
+
+	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
+
 	public boolean remove(Object o) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	public T remove(int i) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	public boolean containsAll(Collection<?> c) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 	public boolean addAll(int i, Collection<? extends T> c) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	public boolean removeAll(Collection<?> c) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	public boolean retainAll(Collection<?> c) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	public int indexOf(Object o) {
-		return 0;
+		throw new UnsupportedOperationException();
 	}
 
 	public int lastIndexOf(Object o) {
-		return 0;
+		throw new UnsupportedOperationException();
+	}
+
+	public ListIterator<T> listIterator() {
+		throw new UnsupportedOperationException("listIterator");
 	}
 
 	public ListIterator<T> listIterator(int where) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	public List<T> subList(int sub1, int sub2) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 }
