@@ -1,4 +1,4 @@
-package database.jdbc;
+package jdbc;
 
 import java.io.Console;
 import java.io.PrintWriter;

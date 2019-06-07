@@ -1,4 +1,4 @@
-package database.jdbc;
+package jdbc;
 
 import java.sql.*;
 import java.util.Random;

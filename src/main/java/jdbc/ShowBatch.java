@@ -1,4 +1,4 @@
-package database.jdbc;
+package jdbc;
 
 import java.sql.BatchUpdateException;
 import java.sql.Connection;

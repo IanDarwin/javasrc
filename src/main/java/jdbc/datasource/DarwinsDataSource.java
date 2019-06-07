@@ -1,4 +1,4 @@
-package database.jdbc.datasource;
+package jdbc.datasource;
 
 import java.io.PrintWriter;
 import java.io.Serializable;

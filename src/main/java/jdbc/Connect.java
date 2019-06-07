@@ -1,4 +1,4 @@
-package database.jdbc;
+package jdbc;
 
 import java.io.PrintWriter;
 import java.sql.Connection;

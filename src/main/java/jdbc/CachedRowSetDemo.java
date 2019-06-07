@@ -1,4 +1,4 @@
-package database.jdbc;
+package jdbc;
 
 import javax.sql.RowSet;
 import javax.sql.rowset.RowSetFactory;
