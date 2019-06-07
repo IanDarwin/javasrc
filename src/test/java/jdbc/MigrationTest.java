@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import org.junit.Before;
 import org.junit.Test;
 
-import database.jdbc.MigrateData;
+import jdbc.MigrateData;
 
 public class MigrationTest {
 	
