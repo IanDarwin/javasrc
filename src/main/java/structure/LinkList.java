@@ -36,7 +36,9 @@ public class LinkList<T> implements List<T> {
 
 	private boolean DIAGNOSTIC = true;
 	
-	/** The root or first TNode in the list. */
+	/** The root or first TNode in the list; is a dummy pointer,
+	 * so its data will always be null. Simpler this way.
+	 */
 	protected TNode<T> first;
 	/** The last TNode in the list */
 	protected TNode<T> last;
@@ -57,6 +59,7 @@ public class LinkList<T> implements List<T> {
 	/** Set the List (back) to its initial state.
 	 * Any references held will be discarded.
 	 */
+	@Override
 	public void clear() {
 		first = new TNode<T>(null);
 		last = first;
@@ -66,12 +69,14 @@ public class LinkList<T> implements List<T> {
 	 * reference in the previous end, to refer to the new node.
 	 * Update "last" to refer to the new node. 
 	 */
+	@Override
 	public boolean add(T o) {
 		last.next = new TNode<T>(o);
 		last = last.next;
 		return true;
 	}
 
+	@Override
 	public void add(int where, T o) {
 		TNode<T> t = first;
 		for (int i=0; i<=where; i++) {
@@ -81,18 +86,31 @@ public class LinkList<T> implements List<T> {
 					"'add(n,T) went off end of list");
 			}
 			if (DIAGNOSTIC) {
-				System.out.printf("add(int,T): i = %d, t = %s%n", i, t);
+				System.out.printf("in add(int,T): i = %d, t = %s%n", i, t);
 			}
 		}
-		TNode<T> t2 = t;
-		t.next = new TNode<T>(o);
-		t.next.next = t2;
+		final TNode<T> nn = new TNode<>(o);
+		TNode<T> t2 = t.next;
+		t.next = nn;
+		nn.next = t2;
 		if (DIAGNOSTIC) {
 			System.out.printf("add(int,T): t=%s\n", t);
 			dump();
 		}
 	}
+	
+	@Override
+	public boolean addAll(Collection<? extends T> c) {
+		c.forEach(o -> add((T) o));
+		return false;
+	}
 
+	@Override
+	public boolean addAll(int i, Collection<? extends T> c) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public int size() {
 		TNode<T> t = first;
 		int i;
@@ -104,10 +122,12 @@ public class LinkList<T> implements List<T> {
 		return i - 1;	// subtract one for mandatory head node.
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return first == last;
 	}
 
+	@Override
 	public T get(int where) {
 		TNode<T> t = first;
 		int i=0; 
@@ -121,10 +141,7 @@ public class LinkList<T> implements List<T> {
 		return t.data;
 	}
 
-	public T set(int i, T o) {
-		return null;
-	}
-	
+	@Override
 	public boolean contains(Object o) {
 			TNode<T> t = first;
 		while ((t = t.next) != null) {
@@ -132,10 +149,6 @@ public class LinkList<T> implements List<T> {
 				return true;
 			}
 		}
-		return false;
-	}
-	public boolean addAll(Collection<? extends T> c) {
-		c.forEach(o -> add((T) o));
 		return false;
 	}
 
@@ -190,46 +203,58 @@ public class LinkList<T> implements List<T> {
 	}
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
+	
+	@Override
+	public T set(int i, T o) {
+		return null;
+	}
 
+	@Override
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public T remove(int i) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean containsAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
-	public boolean addAll(int i, Collection<? extends T> c) {
-		throw new UnsupportedOperationException();
-	}
 
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public int indexOf(Object o) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public int lastIndexOf(Object o) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public ListIterator<T> listIterator() {
 		throw new UnsupportedOperationException("listIterator");
 	}
 
+	@Override
 	public ListIterator<T> listIterator(int where) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public List<T> subList(int sub1, int sub2) {
 		throw new UnsupportedOperationException();
 	}

@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -63,12 +62,12 @@ public class LinkListTest {
 		assertEquals("Three", list.get(5));
 	}
 
-	@Test @Ignore("exhibits non-halting behavior")
+	@Test //@Ignore("exposes non-halting behavior")
 	public void testAddWithIndex() {
 		list.add(2, "Meh");
 		assertEquals("list size post-insert", 4, list.size());
-		// assertEquals(list.get(2), "Meh");
-		//assertEquals(list.get(3), END_OF_LIST);
+		//assertEquals("Meh", list.get(2));
+		//assertEquals(END_OF_LIST, list.get(3));
 	}
 
 	@Test
