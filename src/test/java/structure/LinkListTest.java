@@ -44,7 +44,12 @@ public class LinkListTest {
 	public void testSize() {
 		assertEquals("list size", 3, list.size());
 	}
-	
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testPutTooFar() {
+		list.add(3, "You won't see this");
+	}
+
 	@Test
 	public void testContains() {
 		assertTrue(list.contains(STRING_HELLO));
