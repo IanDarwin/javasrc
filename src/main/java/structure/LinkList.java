@@ -89,6 +89,7 @@ public class LinkList<T> implements List<T> {
 		t.next.next = t2;
 		if (DIAGNOSTIC) {
 			System.out.printf("add(int,T): t=%s\n", t);
+			dump();
 		}
 	}
 
@@ -172,6 +173,21 @@ public class LinkList<T> implements List<T> {
 		return toArray(data);
 	}
 	// END main
+
+	private void dump() {
+		if (!DIAGNOSTIC) {
+			return;
+		}
+		TNode<T> p = first;
+		do {
+			if (p == p.next) {
+				System.err.println("SELF-POINTER AT " + p);
+				return;
+			}
+			System.err.printf("cur=%d data=%s next=%d\n", p.hashCode(), p.data, p.next.hashCode());
+			p = p.next;
+		} while (p.next != null);
+	}
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
 
