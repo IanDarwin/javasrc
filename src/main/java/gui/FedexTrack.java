@@ -26,35 +26,29 @@ import java.util.GregorianCalendar;
  */
 
 public class FedexTrack extends Applet {
-	GregorianCalendar gc = new GregorianCalendar(); // today
-	DecimalFormat nf = new DecimalFormat("00");
-	String shipDate;
-	/** The choice item for destination country */
-	Choice destChooser;
 
-	ActionListener handler = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
+	protected Choice destChooser;
+	protected Button goButton;
+	protected TextField numField;
+
+	ActionListener handler = e -> {
 			URL destURL = null;
 			try {
-				destURL = new URL("http://www.fedex.com/cgi-bin/track_it?" +
-				"&kurrent_airbill=" + numField.getText() + "|" +
-					destChooser.getSelectedItem() + "|" + shipDate +
-					// following boilerplate seems needed
-					"&language=english&cntry_code=us&state=0");
+				String urlStr = String.format(
+					"https://www.fedex.com/apps/fedextrack/?action=track" +
+					"&trackingnumber=%s&cntry_code=us&locale=en_US", 
+					numField.getText());
+				destURL = new URL(urlStr);
 			} catch (MalformedURLException err) {
-				System.err.println("Error!\n" + err);
-				showStatus("Error, look in Java Console for details!");
+				throw new RuntimeException("Invalid input?", err);
 			}
 			// debug...
 			System.out.println("URL = " + destURL);
 
 			// "And then a miracle occurs..."
 			FedexTrack.this.getAppletContext().showDocument(destURL);
-		}
 	};
 
-	protected Button goButton;
-	protected TextField numField;
 
 	public void init() {
 		setBackground(Color.pink);
@@ -72,11 +66,5 @@ public class FedexTrack extends Applet {
 		add(new Label());	// filler, for grid
 		add(goButton = new Button("Go for it!"));
 		goButton.addActionListener(handler);
-
-		gc.roll(Calendar.DAY_OF_MONTH, false);			// yesterday
-		shipDate = 	// mmddyy format
-			nf.format(gc.get(Calendar.MONTH)+1) +		/* zero-based */
-			nf.format(gc.get(Calendar.DAY_OF_MONTH)) +
-			nf.format(gc.get(Calendar.YEAR)%100);
 	}
 }
