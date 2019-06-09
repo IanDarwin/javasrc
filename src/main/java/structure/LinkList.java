@@ -22,10 +22,10 @@ public class LinkList<T> implements List<T> {
 	/* A TNode stores one node or item in a Linked List */
 	private static class TNode<T> {
 		TNode<T> next;
-		T data;
-		TNode(T o) {
+		final T data;
+		TNode(T o, TNode<T> next) {
 			data = o;
-			next = null;
+			this.next = next;
 		}
 		@Override
 		public String toString() {
@@ -34,13 +34,16 @@ public class LinkList<T> implements List<T> {
 		}
 	}
 
-	private boolean DIAGNOSTIC = true;
+	private boolean DIAGNOSTIC = false;
 	
 	/** The root or first TNode in the list; is a dummy pointer,
 	 * so its data will always be null. Simpler this way.
 	 */
 	protected TNode<T> first;
-	/** The last TNode in the list */
+	/** 
+	 * For optimizing 'add': A second ref to the last TNode in the list; 
+	 * initially == first; always valid, always has its next == 0.
+	 */
 	protected TNode<T> last;
 
 	/** Construct a LinkList: initialize the first and last nodes */
@@ -61,7 +64,7 @@ public class LinkList<T> implements List<T> {
 	 */
 	@Override
 	public void clear() {
-		first = new TNode<T>(null);
+		first = new TNode<T>(null, null);
 		last = first;
 	}
 
@@ -71,7 +74,7 @@ public class LinkList<T> implements List<T> {
 	 */
 	@Override
 	public boolean add(T o) {
-		last.next = new TNode<T>(o);
+		last.next = new TNode<T>(o, null);
 		last = last.next;
 		return true;
 	}
@@ -89,13 +92,14 @@ public class LinkList<T> implements List<T> {
 				System.out.printf("in add(int,T): i = %d, t = %s%n", i, t);
 			}
 		}
-		final TNode<T> nn = new TNode<>(o);
-		TNode<T> t2 = t.next;
-		t.next = nn;
-		nn.next = t2;
 		if (DIAGNOSTIC) {
-			System.out.printf("add(int,T): t=%s\n", t);
-			dump();
+			System.out.printf("in add(int,T): to insert before %s\n", t);
+		}
+		final TNode<T> nn = new TNode<>(o, t.next);
+		t.next = nn;
+		if (DIAGNOSTIC) {
+			System.out.printf("add(%d,%s)\n", where, o);
+			dump("add(int,T)");
 		}
 	}
 	
@@ -132,11 +136,11 @@ public class LinkList<T> implements List<T> {
 		TNode<T> t = first;
 		int i=0; 
 		// If we get to the end of list before 'where', error out
-		while (i<=where) {
-			i++;
-			if ((t = t.next) == null) {
+		while (i++<=where) {
+			if (t.next == null) {
 				throw new IndexOutOfBoundsException();
 			}
+			t = t.next;
 		}
 		return t.data;
 	}
@@ -154,15 +158,23 @@ public class LinkList<T> implements List<T> {
 
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
-			TNode<T> t = first.next;
+			TNode<T> t = first;
+			/**
+			 * Two cases in which next == null:
+			 * 1) The list is empty, we are at first
+			 * 2) The list is not empty, we are at last.
+			 */
 			public boolean hasNext() {
-				return t != last;
+				return t.next != null;
 			}
-			@SuppressWarnings("unchecked")
+
 			public T next() {
-				if (t == last)
-					throw new IndexOutOfBoundsException();
-				return (T) (t = t.next);
+				if (t == first) {
+					t = t.next;
+				}
+				TNode<T> result = t;
+				t = t.next;
+				return result.data;
 			}
 			public void remove() {
 				throw new UnsupportedOperationException("remove");
@@ -187,18 +199,21 @@ public class LinkList<T> implements List<T> {
 	}
 	// END main
 
-	private void dump() {
+	private void dump(String s) {
 		if (!DIAGNOSTIC) {
 			return;
 		}
+		System.err.println("Dump(" + s + ")");
 		TNode<T> p = first;
 		do {
+			p = p.next;
 			if (p == p.next) {
 				System.err.println("SELF-POINTER AT " + p);
 				return;
 			}
-			System.err.printf("cur=%d data=%s next=%d\n", p.hashCode(), p.data, p.next.hashCode());
-			p = p.next;
+			System.err.printf("cur=%d data=%s next=%d\n",
+				p.hashCode(), p.data, 
+				p.next != null ? p.next.hashCode() : 0);
 		} while (p.next != null);
 	}
 
@@ -221,11 +236,6 @@ public class LinkList<T> implements List<T> {
 
 	@Override
 	public boolean containsAll(Collection<?> c) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -258,4 +268,12 @@ public class LinkList<T> implements List<T> {
 	public List<T> subList(int sub1, int sub2) {
 		throw new UnsupportedOperationException();
 	}
+
+	// FOLLOWING OPTIONAL METHODS WILL PROBABLY NOT GET IMPLEMENTED
+
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		throw new UnsupportedOperationException();
+	}
+
 }
