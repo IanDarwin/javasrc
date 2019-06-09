@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Linked list class, written in Java.
@@ -111,7 +112,9 @@ public class LinkList<T> implements List<T> {
 
 	@Override
 	public boolean addAll(int i, Collection<? extends T> c) {
-		throw new UnsupportedOperationException();
+		AtomicInteger j = new AtomicInteger(i);
+		c.forEach(o -> { add(j.getAndIncrement(), o); });
+		return true;
 	}
 
 	@Override
@@ -158,6 +161,8 @@ public class LinkList<T> implements List<T> {
 
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
+			final int size = size();
+			int n = 0;
 			TNode<T> t = first;
 			/**
 			 * Two cases in which next == null:
@@ -165,7 +170,7 @@ public class LinkList<T> implements List<T> {
 			 * 2) The list is not empty, we are at last.
 			 */
 			public boolean hasNext() {
-				return t.next != null;
+				return n < size;
 			}
 
 			public T next() {
@@ -174,6 +179,7 @@ public class LinkList<T> implements List<T> {
 				}
 				TNode<T> result = t;
 				t = t.next;
+				++n;
 				return result.data;
 			}
 			public void remove() {

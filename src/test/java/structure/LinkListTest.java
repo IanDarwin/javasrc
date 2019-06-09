@@ -18,14 +18,14 @@ import org.junit.Test;
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
 public class LinkListTest {
-	private static final String FIRST_STRING = "I am the first",
-		STRING_HELLO = "Hello",
-		LAST_STRING = "End of list";
+	private static final String FIRST_STRING = "First of Three",
+		MIDDLE_STRING = "Second of Three",
+		LAST_STRING = "Third of Three";
 	// Array is parallel to 'list' except when list modified,
 	// then it's set to null to avoid confusion later in such tests.
 	private static String[] testData = {
 			FIRST_STRING,
-			STRING_HELLO,
+			MIDDLE_STRING,
 			LAST_STRING,
 	};
 	List<String> list;
@@ -34,7 +34,7 @@ public class LinkListTest {
 	public void setUp() {
 		list = new LinkList<String>();
 		list.add(FIRST_STRING);
-		list.add(STRING_HELLO);
+		list.add(MIDDLE_STRING);
 		list.add(LAST_STRING);
 	}
 	
@@ -66,17 +66,28 @@ public class LinkListTest {
 
 	@Test
 	public void testContains() {
-		assertTrue(list.contains(STRING_HELLO));
+		assertTrue(list.contains(MIDDLE_STRING));
 	}
 	
 	@Test
 	public void testIterable() {
 		Iterator<String> iter = list.iterator();
 		assertEquals(FIRST_STRING, iter.next());
-		assertEquals(STRING_HELLO, iter.next());
+		assertEquals(MIDDLE_STRING, iter.next());
 		assertEquals(LAST_STRING, iter.next());
 	}
 	
+	private String string = null;
+	private void setString(String string) {
+		this.string = string;
+	}
+
+	@Test
+	public void testIterableAgain() {
+		list.forEach(o -> setString(o));
+		assertEquals(LAST_STRING, string);
+	}
+
 	@Test
 	public void testAddAll() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
@@ -85,20 +96,31 @@ public class LinkListTest {
 		assertEquals("Three", list.get(5));
 	}
 
-	@Test //@Ignore("exposes non-halting behavior")
+	@Test
+	public void testAddAllIndexed() {
+		Collection<String> c = Arrays.asList("One", "Two", "Three");
+		list.addAll(1, c);
+		assertEquals(6, list.size());
+		// list.forEach(System.out::println);
+		assertEquals("One", list.get(2));
+		assertEquals(LAST_STRING, list.get(5));
+	}
+
+	@Test
 	public void testAddWithIndex() {
-		list.add(1, "Meh");
+		final String MY_STRING = "Meh";
+		list.add(1, MY_STRING);
 		testData = null;
 		assertEquals("list size post-insert", 4, list.size());
 		assertEquals("Meh", list.get(2));
-		//assertEquals(END_OF_LIST, list.get(4));
+		assertEquals(LAST_STRING, list.get(3));
 	}
 
 	@Test
 	public void testToArrayProvided() {
 		String[] data = new String[list.size()];
 		list.toArray(data);
-		assertEquals(STRING_HELLO, data[1]);
+		assertEquals(MIDDLE_STRING, data[1]);
 		assertEquals(LAST_STRING, data[data.length - 1]);
 	}
 }
