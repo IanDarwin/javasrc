@@ -115,6 +115,13 @@ public class LinkListTest {
 		assertEquals("Meh", list.get(2));
 		assertEquals(LAST_STRING, list.get(3));
 	}
+	
+	@Test
+	public void testSet() {
+		assertEquals(MIDDLE_STRING, list.get(1));
+		list.set(1, "Woo Woo");
+		assertEquals("Woo Woo", list.get(1));
+	}
 
 	@Test
 	public void testToArrayProvided() {

@@ -22,8 +22,8 @@ public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
 	private static class TNode<T> {
-		TNode<T> next;
-		final T data;
+		private TNode<T> next;
+		private T data;
 		TNode(T o, TNode<T> next) {
 			data = o;
 			this.next = next;
@@ -178,7 +178,9 @@ public class LinkList<T> implements List<T> {
 	
 	@Override
 	public T set(int i, T o) {
-		return null;
+		TNode<T> tmp = find(i);
+		tmp.data = o;
+		return o;
 	}
 
 	@Override
@@ -228,6 +230,19 @@ public class LinkList<T> implements List<T> {
 				p.hashCode(), p.data, 
 				p.next != null ? p.next.hashCode() : 0);
 		} while (p.next != null);
+	}
+	
+	public TNode<T> find(int where) {
+		TNode<T> t = first;
+		int i=0; 
+		// If we get to the end of list before 'where', error out
+		while (i++<=where) {
+			if (t.next == null) {
+				return null;
+			}
+			t = t.next;
+		}
+		return t;
 	}
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
