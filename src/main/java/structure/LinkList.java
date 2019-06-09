@@ -116,22 +116,16 @@ public class LinkList<T> implements List<T> {
 		c.forEach(o -> { add(j.getAndIncrement(), o); });
 		return true;
 	}
-
+	
 	@Override
-	public int size() {
+	public boolean contains(Object o) {
 		TNode<T> t = first;
-		int i;
-		for (i=0; ; i++) {
-			if (t == null)
-				break;
-			t = t.next;
+		while ((t = t.next) != null) {
+			if (t.data.equals(o)) {
+				return true;
+			}
 		}
-		return i - 1;	// subtract one for mandatory head node.
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return first == last;
+		return false;
 	}
 
 	@Override
@@ -147,16 +141,10 @@ public class LinkList<T> implements List<T> {
 		}
 		return t.data;
 	}
-
+	
 	@Override
-	public boolean contains(Object o) {
-			TNode<T> t = first;
-		while ((t = t.next) != null) {
-			if (t.data.equals(o)) {
-				return true;
-			}
-		}
-		return false;
+	public boolean isEmpty() {
+		return first == last;
 	}
 
 	public Iterator<T> iterator() {
@@ -187,6 +175,23 @@ public class LinkList<T> implements List<T> {
 			}
 		};
 	}
+	
+	@Override
+	public T set(int i, T o) {
+		return null;
+	}
+
+	@Override
+	public int size() {
+		TNode<T> t = first;
+		int i;
+		for (i=0; ; i++) {
+			if (t == null)
+				break;
+			t = t.next;
+		}
+		return i - 1;	// subtract one for mandatory head node.
+	}
 
 	@SuppressWarnings("unchecked")
 	public T[] toArray(Object[] data) {
@@ -204,6 +209,8 @@ public class LinkList<T> implements List<T> {
 		return toArray(data);
 	}
 	// END main
+	
+	// NON-API private methods
 
 	private void dump(String s) {
 		if (!DIAGNOSTIC) {
@@ -225,11 +232,6 @@ public class LinkList<T> implements List<T> {
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
 	
-	@Override
-	public T set(int i, T o) {
-		return null;
-	}
-
 	@Override
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException();
