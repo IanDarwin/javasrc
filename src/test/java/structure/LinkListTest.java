@@ -24,7 +24,7 @@ public class LinkListTest {
 		LAST_STRING = "Third of Three";
 	// Array is parallel to 'list' except when list modified,
 	// then it's set to null to avoid confusion later in such tests.
-	private static String[] testData = {
+	private final static String[] testData = {
 			FIRST_STRING,
 			MIDDLE_STRING,
 			LAST_STRING,
@@ -61,7 +61,6 @@ public class LinkListTest {
 	public void testAddWithIndex() {
 		final String MY_STRING = "Meh";
 		list.add(1, MY_STRING);
-		testData = null;
 		assertEquals("list size post-insert", 4, list.size());
 		assertEquals("Meh", list.get(2));
 		assertEquals(LAST_STRING, list.get(3));
