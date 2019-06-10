@@ -8,11 +8,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Linked list class, written in Java.
- * This is <b>not</b> intended to be a usable List, and it is probably
- * not going to be optimal in terms of performance; it is in part
+ * This is not intended to be a usable List, and it is probably
+ * not going to be optimal in terms of performance; many operations
+ * are linear walks of the list, hence O(n), painful but not intolerable
+ * for small or medium-sized lists. This implementation is in part
  * here to remind you how much work the existing List implementations do.
  * <br/>
  * For a production-ready version, consider subclassing AbstractSequentialList.
+ * Or, better, just use java.util.LinkedList
  * @deprecated	Supplanted by LinkedList
  * @author	Ian Darwin
  */
@@ -42,8 +45,8 @@ public class LinkList<T> implements List<T> {
 	 */
 	protected TNode<T> first;
 	/** 
-	 * For optimizing 'add': A second ref to the last TNode in the list; 
-	 * initially == first; always valid, always has its next == 0.
+	 * For certain optimizations: A second ref to the last TNode in the list; 
+	 * initially == first; always valid (never null), always has next == null.
 	 */
 	protected TNode<T> last;
 
@@ -175,7 +178,20 @@ public class LinkList<T> implements List<T> {
 			}
 		};
 	}
-	
+
+	@Override
+	public boolean remove(Object o) {
+		TNode<T> p = first, prev = null;
+		while (p != null) {
+			if (p.data == o) {
+				prev.next = p.next;
+				return true;
+			}
+			prev = p; p = p.next;
+		}
+		return false;
+	}
+
 	@Override
 	public T set(int i, T o) {
 		TNode<T> tmp = find(i);
@@ -246,11 +262,6 @@ public class LinkList<T> implements List<T> {
 	}
 
 	// THE FOLLOWING METHODS ARE NOT YET IMPLEMENTED!
-	
-	@Override
-	public boolean remove(Object o) {
-		throw new UnsupportedOperationException();
-	}
 
 	@Override
 	public T remove(int i) {
@@ -284,7 +295,7 @@ public class LinkList<T> implements List<T> {
 
 	@Override
 	public ListIterator<T> listIterator(int where) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("listIterator");
 	}
 
 	@Override

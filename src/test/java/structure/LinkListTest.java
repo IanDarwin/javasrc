@@ -1,6 +1,7 @@
 package structure;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -38,56 +39,6 @@ public class LinkListTest {
 		list.add(LAST_STRING);
 	}
 	
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testGetTooFar() {
-		list.get(list.size()); // last should be size() - 1, so should fail
-	}
-
-	@Test
-	public void testGetSecond() {
-		assertEquals("get element", testData[1], list.get(1));
-	}
-	
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testGetOnEmptyList() {
-		list.clear();
-		list.get(0);
-	}
-
-	@Test
-	public void testSize() {
-		assertEquals("list size", 3, list.size());
-	}
-
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testPutTooFar() {
-		list.add(3, "You won't see this");
-	}
-
-	@Test
-	public void testContains() {
-		assertTrue(list.contains(MIDDLE_STRING));
-	}
-	
-	@Test
-	public void testIterable() {
-		Iterator<String> iter = list.iterator();
-		assertEquals(FIRST_STRING, iter.next());
-		assertEquals(MIDDLE_STRING, iter.next());
-		assertEquals(LAST_STRING, iter.next());
-	}
-	
-	private String string = null;
-	private void setString(String string) {
-		this.string = string;
-	}
-
-	@Test
-	public void testIterableAgain() {
-		list.forEach(o -> setString(o));
-		assertEquals(LAST_STRING, string);
-	}
-
 	@Test
 	public void testAddAll() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
@@ -115,12 +66,85 @@ public class LinkListTest {
 		assertEquals("Meh", list.get(2));
 		assertEquals(LAST_STRING, list.get(3));
 	}
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testAddTooFar() {
+		list.add(3, "You won't see this");
+	}
+
+	@Test
+	public void testContains() {
+		assertTrue(list.contains(MIDDLE_STRING));
+	}
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testGetTooFar() {
+		list.get(list.size()); // last should be size() - 1, so should fail
+	}
+
+	@Test
+	public void testGetSecond() {
+		assertEquals("get element", testData[1], list.get(1));
+	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testGetOnEmptyList() {
+		list.clear();
+		list.get(0);
+	}
+
+	@Test
+	public void testIterable() {
+		Iterator<String> iter = list.iterator();
+		assertEquals(FIRST_STRING, iter.next());
+		assertEquals(MIDDLE_STRING, iter.next());
+		assertEquals(LAST_STRING, iter.next());
+	}
+	
+	private String string = null;
+	private void setString(String string) {
+		this.string = string;
+	}
+
+	@Test
+	public void testIterableAgain() {
+		list.forEach(o -> setString(o));
+		assertEquals(LAST_STRING, string);
+	}
+	
+	@Test
+	public void testRemoveFirst() {
+		assertTrue(list.remove(FIRST_STRING));
+		assertTrue(list.size() == 2);
+		assertSame(MIDDLE_STRING, list.get(0));
+	}
+	
+	@Test
+	public void testRemoveMIDDLE() {
+		assertTrue(list.remove(MIDDLE_STRING));
+		assertTrue(list.size() == 2);
+		assertSame(FIRST_STRING, list.get(0));
+		assertSame(LAST_STRING, list.get(1));
+	}
+	
+	@Test
+	public void testRemoveLast() {
+		assertTrue(list.remove(LAST_STRING));
+		assertTrue(list.size() == 2);
+		assertSame(FIRST_STRING, list.get(0));
+		assertSame(MIDDLE_STRING, list.get(1));
+	}
 	
 	@Test
 	public void testSet() {
 		assertEquals(MIDDLE_STRING, list.get(1));
 		list.set(1, "Woo Woo");
 		assertEquals("Woo Woo", list.get(1));
+	}
+
+	@Test
+	public void testSize() {
+		assertEquals("list size", 3, list.size());
 	}
 
 	@Test
