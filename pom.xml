@@ -283,11 +283,23 @@
 	<artifactId>jackson-databind</artifactId>
 	<version>[2.9.8,)</version>
 </dependency>
-<dependency>
-  <groupId>org.glassfish.jaxb</groupId>
-  <artifactId>jaxb-runtime</artifactId>
-  <version>2.4.0-b180830.0438</version>
-</dependency>
+
+		<!-- JAXB deleted from Java SE 11 -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.4.0-b180830.0359</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.istack</groupId>
+			<artifactId>istack-commons-runtime</artifactId>
+			<version>3.0.8</version>
+		</dependency>
 
 <dependency>
 	<groupId>javax</groupId>		
