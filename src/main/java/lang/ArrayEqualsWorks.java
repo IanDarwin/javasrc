@@ -20,6 +20,13 @@ public class ArrayEqualsWorks {
 			throw new RuntimeException(mesg);
 		}
 	}
+	
+	/** Crude clone of JUnit */
+	void assertTrue(String mesg, boolean expr) {
+		if (!expr) {
+			throw new RuntimeException(mesg);
+		}
+	}
 
 	// @Test
 	public void testCharArrayEquals() {
@@ -48,5 +55,11 @@ public class ArrayEqualsWorks {
 		Object[] array1 = { 1, 2, 3 };
 		Object[] array2 = { 1, 2, 3 };
 		assertFalse("array equals() does not work", array1.equals(array2));
+	}
+	
+	// @Test
+	public void testObjectArrayEqualsAtLeastItselfWorks() {
+		Object[] array1 = { 1, 2, 3 };
+		assertTrue("array equals itself", array1.equals(array1));
 	}
 }
