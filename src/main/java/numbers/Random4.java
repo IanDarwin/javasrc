@@ -11,8 +11,8 @@ public class Random4 {
 	private static final int N = 10000;
 	public static void main(String[] argv) throws IOException {
 		Random r = new Random();
-		try (PrintWriter file1 = new PrintWriter(new FileWriter("file1"))) {
-			try (PrintWriter file2 = new PrintWriter(new FileWriter("file2"))) {
+		try (PrintWriter file1 = new PrintWriter(new FileWriter("normal.txt"))) {
+			try (PrintWriter file2 = new PrintWriter(new FileWriter("gaussian.txt"))) {
 				for (int i=0; i<N; i++) {
 					file1.println(r.nextDouble());
 					file2.println(r.nextGaussian());

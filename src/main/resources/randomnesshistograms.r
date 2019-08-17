@@ -4,12 +4,12 @@
 
 # Be sure you have run "Random4" in this directory before running this script
 
-# Original by Ian Darwin, re-created by Benjamin Darwin
+# This version by Benjamin Darwin
 
 # BEGIN main
-png("out.png")
-us <- read.table("file1")[[1]]
-ns <- read.table("file2")[[1]]
+png("randomness.png")
+us <- read.table("normal.txt")[[1]]
+ns <- read.table("gaussian.txt")[[1]]
 
 layout(t(c(1,2)), respect=TRUE)
 
