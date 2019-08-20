@@ -3,3 +3,7 @@
 /test-classes
 /target
 *.bak
+# for Random4 and R example
+gaussian.txt
+normal.txt
+randomness.png
