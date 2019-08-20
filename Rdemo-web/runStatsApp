@@ -1,0 +1,4 @@
+R --no-save <<!
+library(shiny)
+runApp("StatsApp", port=1234)
+!
