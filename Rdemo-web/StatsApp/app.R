@@ -1,8 +1,8 @@
 library(shiny)
 
 # Define UI for app that draws a histogram ----
-min_year <- floor(time(sunspots)[which.min(sunspots)]);
-max_year <- floor(time(sunspots)[which.max(sunspots)]);
+min_year <- floor(time(sunspots)[1]);
+max_year <- floor(time(sunspots)[length(time(sunspots))])
 
 ui <- fluidPage(
 
@@ -18,15 +18,15 @@ ui <- fluidPage(
 		# Input: Slider for the starting year
 		sliderInput(inputId = "startYear",
 				  label = "Starting Year:",
-				  min = 1750,
-				  max = 2000,
+				  min = min_year,
+				  max = max_year,
 				  value = min_year),
 
 		# Input: Slider for the ending year
 		sliderInput(inputId = "endYear",
 				  label = "Starting Year:",
-				  min = 1750,
-				  max = 2000,
+				  min = min_year,
+				  max = max_year,
 				  value = max_year)
 
 	),
@@ -36,11 +36,11 @@ ui <- fluidPage(
 
 	  # Output one plot -----
 	  plotOutput(outputId = "distPlot")
-
 	)
   )
 )
-# Define server logic required to draw a histogram ----
+
+# Define server logic required to draw the plot:
 server <- function(input, output) {
 
   # plot of sunspot data with user-selectable range
@@ -52,9 +52,9 @@ server <- function(input, output) {
 	x	<- window(sunspots,start=input$startYear,end=input$endYear)
 
 	plot(x, col = "#75AADB",
-		xlab = "Sunspot Activity", ylab = 'Year',
-		main = "Year vs Sunspot activity")
-
+		xlab = 'Year', ylab = "Sunspot Activity",
+		main = sprintf("Year vs Sunspot activity %d to %d", input$startYear, input$endYear)
+		)
 	})
 }
 
