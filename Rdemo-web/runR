@@ -1,0 +1,5 @@
+#!/usr/local/bin/R --no-save
+
+x = 2 + 2
+
+print x
