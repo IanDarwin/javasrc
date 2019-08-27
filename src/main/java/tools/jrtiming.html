@@ -6,7 +6,7 @@ where JVM startup time will dominate:
 ian:504$ time ~/scripts/jr JrTest
 + jikes +E -d . JrTest.java
 + java JrTest
-Class JrTest.clinit<>
+Class JrTest.clinit&lt;>
 SUCCESS! Program t compiled and run.
     0.53s real     0.25s user     0.15s system
 </pre>
@@ -18,7 +18,7 @@ compileArgv len 1
 filename == JrTest
 runArgv len 0
 Compile OK, trying to run
-Class JrTest.clinit<>
+Class JrTest.clinit&lt;>
 SUCCESS! Program t compiled and run.
     1.53s real     0.98s user     0.17s system
 ian:507$
@@ -33,7 +33,7 @@ Buildfile: jrtest.xml
 compile:
 
 run:
-     [java] Class JrTest.clinit<>
+     [java] Class JrTest.clinit&lt;>
      [java] SUCCESS! Program t compiled and run.
 
 BUILD SUCCESSFUL
@@ -44,7 +44,7 @@ Buildfile: jrtest.xml
 compile:
 
 run:
-     [java] Class JrTest.clinit<>
+     [java] Class JrTest.clinit&lt;>
      [java] SUCCESS! Program t compiled and run.
 
 BUILD SUCCESSFUL
@@ -57,7 +57,7 @@ Total time: 2 seconds
 ian:505$ time ~/scripts/jr -s JrTest
 + javac -d . JrTest.java
 + java JrTest
-Class JrTest.clinit<>
+Class JrTest.clinit&lt;>
 SUCCESS! Program t compiled and run.
     5.15s real     0.95s user     0.32s system
 </pre>

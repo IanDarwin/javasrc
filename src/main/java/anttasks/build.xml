@@ -11,7 +11,7 @@
 		<!-- Normally run in the anttasks dir, refer to project build
 		     directory as ../build
 		 -->
-		<pathelement location="../build"/>
+		<pathelement location="../target/classes"/>
 		<fileset dir="${user.home}/lib">
 			<include name="*.jar"/>
 		</fileset>

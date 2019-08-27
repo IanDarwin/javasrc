@@ -205,9 +205,6 @@ public class MailComposeBean extends JPanel {
 			while ((me = (MessagingException)me.getNextException()) != null) {
 				me.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(null,
-				"Mail Sending Error:\n" + me.toString(),
-				"Error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 				"Mail Sending Error:\n" + e.toString(),

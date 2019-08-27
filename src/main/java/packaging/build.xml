@@ -21,6 +21,7 @@
 	<!-- Create a Jar that includes the main-class attribute; this file
 	 *** is runnable on any J2SE platform, and (it it is a GUI application)
 	 *** can be invoked by double-clicking on Mac OS X.
+	 *** You can do this in maven using assembly:single plugin task.
 	 -->
 	<target name="jar-main" depends="build">
 		<jar
