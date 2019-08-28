@@ -9,7 +9,7 @@ import com.darwinsys.lang.GetOpt;
 public class mainopts {
 	public static void main(String[] argv) {
 		String argChars = "o:hv";
-		GetOpt go = new GetOpt("ho:v");
+		GetOpt go = new GetOpt(argChars);
 		boolean verbose = false;
 
 		char c;
