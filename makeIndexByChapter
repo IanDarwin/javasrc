@@ -1,8 +1,12 @@
 #!/usr/bin/awk -f
 
 BEGIN {
-	print "== Index By Chapter"
-	print "This is the index of files included in the Java Cookbook 4th Edition."
+	print "== Ian Darwin's Java Cookbook: Source Code: Index By Chapter";
+	print "This is the index of files included in the https://javacook.darwinsys.com[Java Cookbook] 4th Edition."
+	print ""
+	while ((getline < "Copyright.adoc") > 0) {
+		print
+	}
 	print ""
 }
 
