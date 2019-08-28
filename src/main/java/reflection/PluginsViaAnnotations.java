@@ -17,11 +17,23 @@ public class PluginsViaAnnotations {
 		Class<? extends Annotation> annotationClass) throws Exception {
 
 		List<Class<?>> ret = new ArrayList<>();
-		String[] classes = ClassesInPackage.getPackageContent(packageName);
-		for (String clazz : classes) {
-			Class<?> c = Class.forName(clazz);
-			if (c.isAnnotationPresent(annotationClass))
-				ret.add(c);
+		String[] clazzNames = ClassesInPackage.getPackageContent(packageName);
+		for (String clazzName : clazzNames) {
+			if (!clazzName.endsWith(".class")) {
+				continue;
+			}
+			clazzName = clazzName.replace('/', '.').replace(".class", "");
+			Class<?> c = null;
+			try {
+				c = Class.forName(clazzName);
+			} catch (ClassNotFoundException ex) {
+				System.err.println("Weird: class " + clazzName + " reported in package but gave CNFE: " + ex);
+				continue;
+			}
+			if (c.isAnnotationPresent(annotationClass) &&
+					!ret.contains(c))
+					ret.add(c);
+			
 		}
 		return ret;
 	}
@@ -35,11 +47,24 @@ public class PluginsViaAnnotations {
 	public static List<Class<?>> findClassesWithAnnotatedMethods(String packageName, 
 			Class<? extends Annotation> methodAnnotationClass) throws Exception {
 		List<Class<?>> ret = new ArrayList<>();
-		String[] classes = ClassesInPackage.getPackageContent(packageName);
-		for (String clazz : classes) {
-			Class<?> c = Class.forName(clazz);
-			for (Method m : c.getMethods()) {
-				if (m.isAnnotationPresent(methodAnnotationClass)) {
+		String[] clazzNames = ClassesInPackage.getPackageContent(packageName);
+		for (String clazzName : clazzNames) {
+			if (!clazzName.endsWith(".class")) {
+				continue;
+			}
+			clazzName = clazzName.replace('/', '.').replace(".class", "");
+			Class<?> c = null;
+			try {
+				c = Class.forName(clazzName);
+				// System.out.println("Loaded " + c);
+			} catch (ClassNotFoundException ex) {
+				System.err.println("Weird: class " + clazzName + " reported in package but gave CNFE: " + ex);
+				continue;
+			}
+			for (Method m : c.getDeclaredMethods()) {
+				// System.out.printf("Class %s Method: %s\n", c.getSimpleName(), m.getName());
+				if (m.isAnnotationPresent(methodAnnotationClass) &&
+						!ret.contains(c)) {
 					ret.add(c);
 				}
 			}

@@ -1,7 +1,10 @@
 package testing;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import domain.Person;
 
 /** A simple test case for Person */
 // BEGIN main

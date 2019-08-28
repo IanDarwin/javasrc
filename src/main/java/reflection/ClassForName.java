@@ -1,6 +1,6 @@
 package reflection;
 
-import java.awt.Frame;
+import java.util.Random;
 
 /** Demonstrate "class.forName" to create an instance of an object. */
 public class ClassForName {
@@ -9,18 +9,17 @@ public class ClassForName {
 		Object o = null;
 		try {
 			// Load the class, return a Class for it
-			c = Class.forName("java.awt.Frame");
+			c = Class.forName("java.util.Random");
 			// Construct an object, as if new Type()
-			o = c.newInstance();
+			o = c.getConstructor(new Class<?>[0]).newInstance();
 		} catch (Exception e) {
 			System.err.println("That didn't work. " +
 				" Try something else" + e);
 		}
-		if (o != null && o instanceof Frame) {
-			Frame f = (Frame)o;
-			f.setTitle("Testing");
-			f.setVisible(true);
+		if (o != null && o instanceof Random) {
+			Random r = (Random)o;
+			System.out.println("R produced this random # " + r.nextDouble());
 		} else throw new 
-			IllegalArgumentException("Huh? What gives?");
+			IllegalArgumentException("Huh? What gives? Not the right type: " + o);
 	}
 }

@@ -1,5 +1,7 @@
 package reflection;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,17 +9,17 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import junit.framework.TestCase;
+import org.junit.*;
 
-public class APIFormatterTest extends TestCase {
+public class APIFormatterTest {
 	String fileName;
 
 	/**
 	 * To test it for real, create zip file with one class
 	 * from the same package, loaded from classpath.
 	 */
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		File file = File.createTempFile("test", ".zip");
 		file.deleteOnExit();
 		fileName = file.getAbsolutePath();
@@ -26,9 +28,10 @@ public class APIFormatterTest extends TestCase {
 		zf.write("Hello".getBytes());
 		zf.putNextEntry(new ZipEntry("reflection/GetAndInvokeMethod.class"));
 		InputStream is =
+			// Of course, one hopes you can get a class from your ClassPath with getResourceAsStream
 			GetAndInvokeMethod.class.getResourceAsStream("GetAndInvokeMethod.class");
 		int b = 0;
-		while((b = is.read()) != -1) {
+		while ((b = is.read()) != -1) {
 			zf.write((byte)b);
 		}
 		is.close();
@@ -38,6 +41,8 @@ public class APIFormatterTest extends TestCase {
 
 	Class<?> x = null;
 	int nClasses = 0;
+	
+	@Test
 	public final void testProcessOneZip() throws Exception {
 		APIFormatter target = new APIFormatter() {
 			@Override

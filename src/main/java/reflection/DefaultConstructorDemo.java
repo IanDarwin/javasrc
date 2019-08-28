@@ -10,9 +10,11 @@ public class DefaultConstructorDemo {
 	public static class PublicClassWithDefaultConstr {
 		// all-default
 	}
+
 	public static class PublicClassWithDefaultVisDefaultConstr {
 		PublicClassWithDefaultVisDefaultConstr() { }
 	}
+
 	/* not public */ static class DefaultClassVizDefaultConstr {
 		// all-default
 	}
