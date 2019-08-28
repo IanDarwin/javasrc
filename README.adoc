@@ -1,11 +1,13 @@
 = JavaCook Source Files (javasrc)
 
-* An unspecified number of files here are used in the Java Cookbook.
+An unspecified number of files here are used in the Java Cookbook.
 Those that have been converted to the newest publishing software at
 O'Reilly will have "// BEGIN" and "// END" comments to mark sections for
 mechanical inclusion into the book. These are just comments and can be
 completely ignored by people looking at the source code normally.
 Not all files with these comments necessarily appear in the book.
+
+== Building
 
 * You MUST HAVE Java 9+ to successfully compile this whole package.  Sorry
 if you are on some relic platform that doesn't have Java 9 or later.  I am
