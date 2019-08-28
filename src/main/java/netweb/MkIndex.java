@@ -30,7 +30,7 @@ public class MkIndex {
 
 	/** The string for TITLE and H1 */
 	public static final String TITLE =
-		"Ian Darwin's Java Cookbook: Source Code: By Name";
+		"Ian Darwin's Java Cookbook: Source Code: Index By Name";
 	/** The main output stream */
 	PrintWriter out;
 	/** The background color for the page */
@@ -75,7 +75,7 @@ public class MkIndex {
 		if (new File(ABOUT_FILE_NAME).exists()) {
 			FileIO.copyFile(ABOUT_FILE_NAME, out, false);
 		} else {
-			println("<p>The following files are online.</p>");
+			println("<p>The following are the files from the 4th Edition of the Java Cookbook.</p>");
 		}
 		if (new File(COPYRIGHT_FILE_NAME).exists()) {
 			FileIO.copyFile(COPYRIGHT_FILE_NAME, out, false);
