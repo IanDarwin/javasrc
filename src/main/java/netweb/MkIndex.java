@@ -34,7 +34,7 @@ public class MkIndex {
 	/** The main output stream */
 	PrintWriter out;
 	/** The background color for the page */
-	public static final String BGCOLOR="#33ee33";
+	public static final String BGCOLOR="white";
 
 	/** Make an index */
 	public static void main(String[] args) throws IOException {
