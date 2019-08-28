@@ -1,0 +1,20 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+	print "== Index By Chapter"
+	print "This is the index of files included in the Java Cookbook 4th Edition."
+	print ""
+}
+
+/^== / {
+	sub(/^== /, "", $0)
+	print ".", $0
+}
+/^include::src/ {
+	sub(/^include::/, "* link:", $0)
+	print $0
+}
+/^\/\/ .*\.java/ {
+	# XXX
+	# print "ShortRef:", $0
+}
