@@ -182,8 +182,13 @@ public class LinkChecker extends JFrame {
 				rootURLString.endsWith("\\"))
 					rootURLdirString = rootURLString;
 			else {
-				rootURLdirString = rootURLString.substring(0, 
-					rootURLString.lastIndexOf('/'));
+				int split = rootURLString.lastIndexOf('/');
+				if (split == -1) {
+					rootURLdirString = ".";
+				} else {
+					rootURLdirString = 
+						rootURLString.substring(0, split);
+				}
 			}
 
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
@@ -287,7 +292,7 @@ public class LinkChecker extends JFrame {
 				return "(non-HTTP)";
 		}
 		catch (IOException e) {
-			return "DEAD + e.toString()";
+			return "DEAD " + e.toString();
 		}
     }
 }
