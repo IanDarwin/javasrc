@@ -59,7 +59,6 @@
 
 						<!-- Unknown issues -->
 						<exclude>lang/UsePackage.java</exclude>
-						<exclude>rmi/callback/ClientProgram.java</exclude>
 
 						<!-- Remainder all have 'Expect compile error' -->
 						<!-- XXX replace this list with filter grep -->
