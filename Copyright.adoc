@@ -1,0 +1,4 @@
+All files are Copyright (c): All rights reserved.
+See the accompanying link:License.txt[Legal Notice] for conditions of use.
+May be used by readers of my Java Cookbook for educational purposes, 
+and for any other use if the license conditions are met.
