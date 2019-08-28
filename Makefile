@@ -6,3 +6,6 @@ index-byname.html:
 	java \
 	-cp ./target/classes:../darwinsys-api/target/darwinsys-api-1.5.0-SNAPSHOT.jar \
 	netweb.MkIndex src/main/java
+
+clean:
+	rm -f normal.txt gaussian.txt
