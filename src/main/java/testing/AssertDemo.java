@@ -1,7 +1,7 @@
 package testing;
 
 /**
- * Demonstrate the new-in-1.4 "assert" facility.
+ * Demonstrate the Java 1.4 "assert" facility.
  * <p>
  * Java assertions are not enabled by default;
  * you must run with "java -enableassertions|-ea ...".
