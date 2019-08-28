@@ -46,10 +46,6 @@
 						<!-- Won't compile with UTF-8! -->
 						<exclude>lang/EuroLanguage.java</exclude>
 
-						<!-- Defunct APIs -->
-						<exclude>datetimeold/IBMCalDemo.java</exclude>
-						<exclude>graphics/QTMoviePlayer.java</exclude>
-
 						<!-- Used private API which is no longer available -->
 						<exclude>netweb/WebServerSimpleSE.java</exclude>
 
