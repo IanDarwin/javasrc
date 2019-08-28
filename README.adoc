@@ -1,40 +1,26 @@
 = JavaCook Source Files (javasrc)
 
-* You MUST HAVE Java 8 to successfully compile this whole package.
+* You MUST HAVE Java 9+ to successfully compile this whole package.
 
 * Building with Eclipse tested with Eclipse 4.3; MUST HAVE "m2e" (free in the Eclipse Marketplace)
-	Compiles and most tests pass; those with Hamcrest fail for me due to an obscure conflict:
-	java.lang.SecurityException: class "org.hamcrest.Matchers"'s signer information does not 
-		match signer information of other classes in the same package
+	Compiles and tests pass.
 
 * Building with Maven 3.x works and all tests pass.
 
 * Building with other platforms? Good luck, but let me know if it works.
 
-. This is now built for Java 8. Sorry if you are on some relic
-platform that doesn't have Java 8 or some environment in which Java 8 is not
-yet "approved", but the world has moved on; Java 6 is a relic, is
-deprecated, and has been EOL'd by Oracle. "He's dead, Jim." Java 7 is on
-life support; Java 8 is current.  I have updated the Java Cookbook for Java
-8 and these files are the examples for that book.  You might be able to
-compile for Java 7 with a large excludes list, but you're on your own if you
-do that. "Always in motion the Java is."
+. This is now built for Java 9. Sorry if you are on some relic
+platform that doesn't have Java 9 or later.  I am updating the Java Cookbook
+for Java 12 and these files are the examples for that book.
 
-. This project has been reorganized so that the source is in the
-subdirectory _src/main/java_, where most *modern* tools
-including Maven, Gradle, and others, expect them to be.
+. If you really need Java 8, try removing the module-info file. But you're on your own.
 
 . The Java files are in Java packages whose name corresponds 
-to the directory they are in (this is how most tools including
-Ant and Eclipse expect to find things). 
-
-. The index-bychapter file is substantially out of date since the
-packagification "flag day". index-byname.html is reasonably up-to-date.
+to the directory they are in (this is how most tools expect to find things). 
 
 . I am using Eclipse for most of my development, and Maven for building, and Jenkins
-for automated building. Any Ant scripts you find are out of date and unsupported!
-If you happen to get them working and want them to stick around, please send me a pull
-request against the git repo.
+for automated building. Most Ant scripts have been removed; the few that remain
+need to be converted to Maven exec:java configurations.
 
 . An unspecified number of files here are used in the Java Cookbook.
 Those that have been converted to the newest publishing software at
