@@ -2,13 +2,14 @@ package structure;
 
 import java.util.List;
 
+import domain.Person;
 import junit.framework.TestCase;
 
 /**
  * Make sure that CallTrack fragment actually works as shown.
  */
 public class CallTrackTestGUI extends TestCase {
-	Person[] testData = {
+	Person[] testData = {					// Order when sorted
 		new Person("Ian", "Darwin"),		// 1
 		new Person("Davy", "Jones"),		// 3
 		new Person("Donald", "Duck"),		// 2
