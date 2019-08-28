@@ -14,7 +14,6 @@ BEGIN {
 	sub(/^include::/, "* link:", $0)
 	print $0
 }
-/^\/\/ .*\.java/ {
-	# XXX
-	# print "ShortRef:", $0
+/^\/\/ [A-Za-z0-9\/]+\.java/ {
+	print "* link:src/main/java/" $2 "[]"
 }
