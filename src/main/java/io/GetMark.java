@@ -9,6 +9,10 @@ import java.io.PrintStream;
 
 /** GetMark -- get marked lines.
  * <p>
+ * This is not the version used in making the Java Cookbook,
+ * which is Ian's "authortools" repot, but rather is the one
+ * used as a basis for MakeHandsOns, used in course development.
+ * <p>
  * GetMark is a general tool for including/excluding parts of a file.
  * It can be used, for example, to extract parts of a file for use
  * in documentation, or to delete parts of a file such as the working
