@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-// tag::main
+// tag::main[]
 /** Some JUnit test cases for EqualsDemo.
  * Writing a full set is left as "an exercise for the reader".
  */
@@ -38,4 +38,4 @@ public class EqualsDemoTest {
 		assertTrue(!d1.equals(null));
 	}
 }
-// end::main
+// end::main[]

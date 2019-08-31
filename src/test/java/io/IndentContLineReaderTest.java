@@ -43,7 +43,7 @@ public class IndentContLineReaderTest {
 	
 	/** This is really a demo method, not a test, sorry. */
 	public void showReadingAMailMessageWithHeaders() throws IOException {
-		// tag::main
+		// tag::main[]
 		IndentContLineReader is = new IndentContLineReader(
 			new StringReader(sampleTxt));
 		String aLine;
@@ -61,6 +61,6 @@ public class IndentContLineReaderTest {
 			System.out.println(is.getLineNumber() + ": " + aLine);
 		}
 		is.close();
-		// end::main
+		// end::main[]
 	}
 }
