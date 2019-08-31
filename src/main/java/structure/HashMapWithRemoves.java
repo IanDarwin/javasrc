@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+// tag::main[]
 /**
  * Demonstrate the HashMap class, and an Iterator, with concurrent remove
  */
@@ -42,3 +43,4 @@ public class HashMapWithRemoves {
 		// end::SafeRemoval[]
 	}
 }
+// end::main[]
