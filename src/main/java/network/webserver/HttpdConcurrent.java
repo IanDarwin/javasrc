@@ -3,7 +3,7 @@ package network.webserver;
 import java.net.Socket;
 import java.util.concurrent.*;
 
-// BEGIN main
+// tag::main[]
 /**
  * HttpConcurrent - Httpd Subclass using java.lang.concurrent
  */
@@ -37,4 +37,4 @@ public class HttpdConcurrent extends Httpd {
 		}
 	}
 }
-// END main
+// end::main[]

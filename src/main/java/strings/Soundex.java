@@ -42,7 +42,7 @@ package strings;
  * mistakes.
  * @author Ian Darwin, http://www.darwinsys.com/ (Java Version)
  */
-// BEGIN main
+// tag::main[]
 public class Soundex {
 	
 	static boolean debug = false;
@@ -103,4 +103,4 @@ public class Soundex {
 	}
 }
 
-// END main
+// end::main[]

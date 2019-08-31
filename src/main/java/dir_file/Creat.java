@@ -8,7 +8,7 @@ import java.io.IOException;
  * The final "e" is omitted in homage to the underlying UNIX system call.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Creat {
 	public static void main(String[] argv) throws IOException {
 
@@ -25,4 +25,4 @@ public class Creat {
 		}
 	}
 }
-// END main
+// end::main[]

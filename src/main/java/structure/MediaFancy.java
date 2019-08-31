@@ -1,6 +1,6 @@
 package structure;
 
-// BEGIN main
+// tag::main[]
 /** An example of an enum with method overriding */
 public enum MediaFancy {
 	/** The enum constant for a book, with a method override */
@@ -24,4 +24,4 @@ public enum MediaFancy {
 		}
 	}
 }
-// END main
+// end::main[]

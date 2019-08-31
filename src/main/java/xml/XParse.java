@@ -29,7 +29,7 @@ public class XParse {
 	 * all documents parsed in this run must use the same Schema.
 	 * @throws SAXException
 	 */
-	// BEGIN main
+	// tag::main[]
 	public static void main(String[] av) throws SAXException {
 		if (av.length == 0) {
 			System.err.println("Usage: XParse file");
@@ -87,7 +87,7 @@ public class XParse {
 				}
 			}
 		// Just +catch+ statements below here...
-		// END main
+		// end::main[]
 		} catch (SAXParseException ex) {
 			System.err.println("+================================+");
 			System.err.println("|       *SAX Parse Error*        |");

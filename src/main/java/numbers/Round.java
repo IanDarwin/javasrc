@@ -5,7 +5,7 @@ package numbers;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  * @author Alex Stangl - simplified the algorithm
  */
-// BEGIN main
+// tag::main[]
 public class Round {
 	/** We round a number up if its fraction exceeds this threshold. */
 	public static final double THRESHOLD = 0.54;
@@ -26,4 +26,4 @@ public class Round {
 		}
 	}
 }
-// END main
+// end::main[]

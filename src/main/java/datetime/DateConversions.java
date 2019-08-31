@@ -11,7 +11,7 @@ import java.time.ZonedDateTime;
 public class DateConversions {
 	public static void main(String[] args) {
 		
-		// BEGIN main
+		// tag::main[]
 		// Convert a number of Seconds since the Epoch, to a local date/time
 		Instant epochSec = Instant.ofEpochSecond(1000000000L);
 		ZoneId zId = ZoneId.systemDefault();
@@ -26,6 +26,6 @@ public class DateConversions {
 		ZonedDateTime there = now.atZone(ZoneId.of("Canada/Pacific"));
 		System.out.printf("When it's %s here, it's %s in Vancouver%n", 
 			now, there);
-		// END main
+		// end::main[]
 	}
 }

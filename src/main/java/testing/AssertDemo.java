@@ -7,7 +7,7 @@ package testing;
  * you must run with "java -enableassertions|-ea ...".
  * @since 1.4
  */
-// BEGIN main
+// tag::main[]
 public class AssertDemo {
 	public static void main(String[] args) {
 		int i = 4;
@@ -18,4 +18,4 @@ public class AssertDemo {
 		System.out.println("Hello after an assertion");
 	}
 }
-// END main
+// end::main[]

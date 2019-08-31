@@ -6,7 +6,7 @@ import com.darwinsys.lang.GetOptDesc;
 
 public class GetOptParseArgsDemo {
 public static void main(String[] args) {
-// BEGIN main
+// tag::main[]
 GetOptDesc[] options = {
     new GetOptDesc('n', "numeric", false),
     new GetOptDesc('o', "output-file", true),
@@ -21,6 +21,6 @@ if ((outputFile = optionsFound.get("o")) != null) {
 } else {
 	System.out.println("Output to System.out");
 }
-// END main
+// end::main[]
 }
 }

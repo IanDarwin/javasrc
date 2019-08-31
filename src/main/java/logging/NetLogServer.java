@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
  * Threaded NetLog Server, pre-allocation schema.
  * @author Ian F. Darwin.
  */
-// BEGIN main
+// tag::main[]
 public class NetLogServer {
 
 	public static final int PORT = 65432;
@@ -121,4 +121,4 @@ public class NetLogServer {
 		}
 	}
 }
-// END main
+// end::main[]

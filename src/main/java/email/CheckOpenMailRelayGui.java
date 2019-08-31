@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
 import com.darwinsys.io.TextAreaOutputStream;
 import com.darwinsys.swingui.ErrorUtil;
 
-// BEGIN main
+// tag::main[]
 /** 
  * GUI for TestOpenMailRelay, lets you run it multiple times in one JVM
  * Starts each invocation in its own Thread for faster return to ready state.
@@ -133,4 +133,4 @@ public final class CheckOpenMailRelayGui extends JFrame {
         out = new PrintStream(new TextAreaOutputStream(results));
     }
 }
-// END main
+// end::main[]

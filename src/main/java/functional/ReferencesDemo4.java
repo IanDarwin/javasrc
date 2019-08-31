@@ -1,6 +1,6 @@
 package functional;
 
-// BEGIN main
+// tag::main[]
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -39,7 +39,7 @@ public class ReferencesDemo4 {
 		Arrays.sort(names, String.CASE_INSENSITIVE_ORDER);                  // <4>
 		dump(names);
 	}
-	// END main
+	// end::main[]
 
 	/** Simple dumper just to show the order of the names in the array */
 	private static void dump(String[] names) {

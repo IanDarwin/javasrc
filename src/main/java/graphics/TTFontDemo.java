@@ -20,7 +20,7 @@ import javax.swing.JLabel;
  * @author	Ian Darwin
  * @since 1.3
  */
-// BEGIN main
+// tag::main[]
 public class TTFontDemo extends JLabel {
 
 	private static final long serialVersionUID = -2774152065764538894L;
@@ -66,4 +66,4 @@ public class TTFontDemo extends JLabel {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
-// END main
+// end::main[]

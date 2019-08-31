@@ -4,7 +4,7 @@ package threads;
  * Threaded demo application, using inner class as Runnable.
  * @author	Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class ThreadsDemo3 {
 	private Thread t;
 	private int count;
@@ -41,4 +41,4 @@ public class ThreadsDemo3 {
 		t.start();
 	}
 }
-// END main
+// end::main[]

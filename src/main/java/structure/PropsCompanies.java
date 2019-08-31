@@ -6,7 +6,7 @@ import java.util.Properties;
  * Demonstrate Properties reading/writing.
  * @see HashTableDemo, for the older Hashtable.
  */
-// BEGIN main
+// tag::main[]
 public class PropsCompanies {
 
 	public static void main(String[] argv) throws java.io.IOException {
@@ -29,4 +29,4 @@ public class PropsCompanies {
 		props.list(System.out);
 	}
 }
-// END main
+// end::main[]

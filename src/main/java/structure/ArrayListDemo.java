@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * ArrayList Demo.
  */
-// BEGIN main
+// tag::main[]
 public class ArrayListDemo {
 	public static void main(String[] argv) {
 		ArrayList<Date> al = new ArrayList<>();
@@ -26,4 +26,4 @@ public class ArrayListDemo {
 		}
 	}
 }
-// END main
+// end::main[]

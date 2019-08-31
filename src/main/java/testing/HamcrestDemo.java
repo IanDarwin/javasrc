@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-// BEGIN main
+// tag::main[]
 public class HamcrestDemo {
 
 	@Test
@@ -19,4 +19,4 @@ public class HamcrestDemo {
 		assertThat(f, not(containsString("/"))); // contrived, to show syntax
 	}
 }
-// END main
+// end::main[]

@@ -36,7 +36,7 @@ import com.darwinsys.util.FileProperties;
  *
  * @author Ian F. Darwin
  */
-// BEGIN main
+// tag::main[]
 public class MailComposeBean extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -248,4 +248,4 @@ public class MailComposeBean extends JPanel {
 		jf.pack();
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package jni;
 
-// BEGIN main
+// tag::main[]
 /**
  * A trivial class to show Java Native Interface 1.1 usage from Java.
   */
@@ -26,4 +26,4 @@ public class HelloJni {
     System.loadLibrary("hello");
   }
 }
-// END main
+// end::main[]

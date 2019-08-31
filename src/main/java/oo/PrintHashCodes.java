@@ -1,7 +1,7 @@
 package oo;
 
 /** Display hashCodes from some objects */
-// BEGIN main
+// tag::main[]
 public class PrintHashCodes {
 
 	/** Some objects to hashCode() on */
@@ -20,4 +20,4 @@ public class PrintHashCodes {
 		System.out.println("All done.");
 	}
 }
-// END main
+// end::main[]

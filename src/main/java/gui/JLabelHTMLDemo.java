@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /** Show a JLabel containing HTML.
  */
-// BEGIN main
+// tag::main[]
 public class JLabelHTMLDemo extends JFrame {
 
 	/** Construct the object including its GUI */
@@ -41,4 +41,4 @@ public class JLabelHTMLDemo extends JFrame {
 		new JLabelHTMLDemo().setVisible(true);
 	}
 }
-// END main
+// end::main[]

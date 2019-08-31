@@ -1,6 +1,6 @@
 package lang;
 
-// BEGIN main
+// tag::main[]
 /**
  * AnnotationOverrideDemo - Simple demonstation of Metadata being used to
  * verify that a method does in fact override (not overload) a method
@@ -23,4 +23,4 @@ class Bottom {
         // Do something here...
     }
 }
-// END main
+// end::main[]

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  * JavadocDemo - a simple example to show JavaDoc comments.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class JavadocDemo extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -48,4 +48,4 @@ public class JavadocDemo extends JPanel {
 		g.drawString("Welcome to Java", 50, 50);
 	}
 }
-// END main
+// end::main[]

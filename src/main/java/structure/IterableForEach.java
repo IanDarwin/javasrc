@@ -3,7 +3,7 @@ package structure;
 import java.util.Arrays;
 import java.util.Collection;
 
-// BEGIN main
+// tag::main[]
 public class IterableForEach {
 
     public static void main(String[] args) {
@@ -12,4 +12,4 @@ public class IterableForEach {
         c.forEach(s -> System.out.println(s));        // <3>
     }
 }
-// END main
+// end::main[]

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import com.darwinsys.lang.GetOpt;
 
-// BEGIN main
+// tag::main[]
 /**
  * Find - find files by name, size, or other criteria. Non-GUI version.
  */
@@ -68,4 +68,4 @@ public class Find {
 		System.out.println("f " + f.getPath());
 	}
 }
-// END main
+// end::main[]

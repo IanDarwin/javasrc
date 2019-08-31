@@ -7,7 +7,7 @@ import org.junit.Test;
 import domain.Person;
 
 /** A simple test case for Person */
-// BEGIN main
+// tag::main[]
 public class PersonTest {
 
 	@Test
@@ -17,4 +17,4 @@ public class PersonTest {
 		assertEquals("Name concatenation", "Ian Darwin", f);
 	}
 }
-// END main
+// end::main[]

@@ -18,7 +18,7 @@ import com.darwinsys.io.FileIO;
 import com.darwinsys.swingui.LabelText;
 
 /** Longer sample of using Bean Scripting Framework with JPython */
-// BEGIN main
+// tag::main[]
 public class BSFAction {
 	protected String FILENAME = "buttonhandler.py";
 	protected BSFManager manager;
@@ -98,4 +98,4 @@ public class BSFAction {
 		jf.setVisible(true);
 	}
 }
-// END main
+// end::main[]

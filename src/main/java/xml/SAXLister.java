@@ -12,7 +12,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * Simple lister - extract person and email tags from a user file. 
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class SAXLister {
 	final boolean DEBUG = false;
 	public static void main(String[] args) throws Exception {
@@ -55,4 +55,4 @@ public class SAXLister {
 		}
 	}
 }
-// END main
+// end::main[]

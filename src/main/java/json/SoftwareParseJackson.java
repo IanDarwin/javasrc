@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-// BEGIN main
+// tag::main[]
 public class SoftwareParseJackson {
 	final static String FILE_NAME = "/json/softwareinfo.json";
 
@@ -21,4 +21,4 @@ public class SoftwareParseJackson {
 	}
 
 }
-// END main
+// end::main[]

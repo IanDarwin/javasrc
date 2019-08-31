@@ -7,7 +7,7 @@ public class ForeachDemo {
 	
 	public static void main(String args[]) {
 		
-// BEGIN main
+// tag::main[]
 		String[] data = { "Toronto", "Stockholm" };
 		for (String s : data) {
 			System.out.println(s);
@@ -18,6 +18,6 @@ public class ForeachDemo {
 		for (String s : list) {
 			System.out.println(s);
 		}
-// END main
+// end::main[]
 	}
 }

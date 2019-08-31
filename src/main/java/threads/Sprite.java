@@ -4,7 +4,7 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 
-// BEGIN main
+// tag::main[]
 /** A Sprite is one Image that moves around the screen on its own */
 public class Sprite extends Component implements Runnable {
 	protected static int spriteNumber = 0;
@@ -116,4 +116,4 @@ public class Sprite extends Component implements Runnable {
 		g.drawImage(img, 0, 0, this);
     }
 }
-// END main
+// end::main[]

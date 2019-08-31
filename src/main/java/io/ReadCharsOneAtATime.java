@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 /** This works, but is likely to be very slow. */
-// BEGIN main
+// tag::main[]
 public class ReadCharsOneAtATime {
 
     void doFile(Reader is) throws IOException {
@@ -14,4 +14,4 @@ public class ReadCharsOneAtATime {
         }
     }
 }
-// END main
+// end::main[]

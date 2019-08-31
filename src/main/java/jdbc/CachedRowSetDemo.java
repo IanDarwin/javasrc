@@ -6,7 +6,7 @@ import javax.sql.rowset.RowSetProvider;
 
 /** Demonstrate simple use of the CachedRowSet.
  */
-// BEGIN main
+// tag::main[]
 public class CachedRowSetDemo {
 	public static void main(String[] args) throws Exception {
 		RowSet rs;
@@ -43,4 +43,4 @@ public class CachedRowSetDemo {
 		rs.close();
 	}
 }
-// END main
+// end::main[]

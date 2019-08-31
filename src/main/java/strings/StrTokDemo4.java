@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 /** Show using a StringTokenizer including getting the delimiters back.
  * StringTokenizer is "discouraged" in new code, but not yet deprecated.
  */
-// BEGIN main
+// tag::main[]
 public class StrTokDemo4 {
 	public final static int MAXFIELDS = 5;
 	public final static String DELIM = "|";
@@ -49,4 +49,4 @@ public class StrTokDemo4 {
 		printResults("A|||D|E", process("A|||D|E"));
 	}
 }
-// END main
+// end::main[]

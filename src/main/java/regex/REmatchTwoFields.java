@@ -9,7 +9,7 @@ import java.util.regex.*;
  * Output:
  * John Quincy Adams
  */
-// BEGIN main
+// tag::main[]
 public class REmatchTwoFields {
 	public static void main(String[] args) {
 		String inputLine = "Adams, John Quincy";
@@ -21,4 +21,4 @@ public class REmatchTwoFields {
 		System.out.println(m.group(2) + ' ' + m.group(1));
 	}
 }
-// END main
+// end::main[]

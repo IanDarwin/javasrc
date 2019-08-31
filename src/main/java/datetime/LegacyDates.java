@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Tutorial/Example of converting between LocalDate and legacy java.util.Date
  */
-// BEGIN main
+// tag::main[]
 public class LegacyDates {
 	public static void main(String[] args) {
 
@@ -30,4 +30,4 @@ public class LegacyDates {
 		System.out.println(newCal);
 	}
 }
-// END main
+// end::main[]

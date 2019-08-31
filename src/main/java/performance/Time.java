@@ -6,7 +6,7 @@ import java.lang.reflect.*;
  * Time the main method of another class, for performance tuning.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Time {
 	public static void main(String[] argv) throws Exception {
 		// Instantiate target class, from argv[0]
@@ -46,4 +46,4 @@ public class Time {
 			 "runTime="  + Double.toString(runTime/1000D));
 	}
 }
-// END main
+// end::main[]

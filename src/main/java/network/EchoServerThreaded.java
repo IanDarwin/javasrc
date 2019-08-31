@@ -7,7 +7,7 @@ import java.io.*;
  * Threaded Echo Server, sequential allocation scheme.
  * @author Ian F. Darwin.
  */
-// BEGIN main
+// tag::main[]
 public class EchoServerThreaded {
 
 	public static final int ECHOPORT = 7;
@@ -69,4 +69,4 @@ public class EchoServerThreaded {
 		}
 	}
 }
-// END main
+// end::main[]

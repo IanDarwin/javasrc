@@ -5,7 +5,7 @@ import java.util.regex.*;
 /**
  * Parse an Apache log file with Regular Expressions
  */
-// BEGIN main
+// tag::main[]
 public class LogRegExp  {
 
 	public static void main(String argv[]) {
@@ -40,4 +40,4 @@ public class LogRegExp  {
 		System.out.println("User-Agent: " + matcher.group(9));
 	}
 }
-// END main
+// end::main[]

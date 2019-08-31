@@ -18,7 +18,7 @@ import org.w3c.dom.NodeList;
 /** Read and write an XML document, preserving comments, using DOM
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class DocReadWriteDom {
 
 	public static void main(String[] av) throws Exception {
@@ -47,4 +47,4 @@ public class DocReadWriteDom {
 			return doc;
 	}
 }
-// END main
+// end::main[]

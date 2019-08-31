@@ -5,7 +5,7 @@ import java.text.NumberFormat;
 /*
  * Format a number our way and the default way.
  */
-// BEGIN main
+// tag::main[]
 public class NumFormat2 {
 	/** A number to format */
 	public static final double data[] = {
@@ -28,4 +28,4 @@ public class NumFormat2 {
 				form.format(data[i]));
 	}
 }
-// END main
+// end::main[]

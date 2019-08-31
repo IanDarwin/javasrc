@@ -1,7 +1,7 @@
 package oo;
 
 /** Demonstration of cloning. */
-// BEGIN main
+// tag::main[]
 public class Clone1 implements Cloneable {
 
 	/** Clone this object. Call super.clone() to do the work */
@@ -22,4 +22,4 @@ public class Clone1 implements Cloneable {
 		return "Clone1[" + x + "," + y + "]";
 	}
 }
-// END main
+// end::main[]

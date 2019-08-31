@@ -16,7 +16,7 @@ public class FNFilterL {
 			System.exit(1);
 		}
 
-		// BEGIN main
+		// tag::main[]
 		// Generate the selective list, with a Lambda Expression
 		String[] dirs = new java.io.File(dirName).list(
 			(dir, s) -> {
@@ -29,6 +29,6 @@ public class FNFilterL {
 		for (String d : dirs) {
 			System.out.println(d);	// Print the list
 		}
-		// END main
+		// end::main[]
 	}
 }

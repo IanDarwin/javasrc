@@ -5,7 +5,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class RenjinScripting {
-	// BEGIN main
+	// tag::main[]
 	/**
 	 * Demonstrate interacting with the "R" implementation called "Renjin"
 	 */
@@ -16,5 +16,5 @@ public class RenjinScripting {
 	    Object ret = engine.eval("b <- 2; a*b");
 	    System.out.println(ret);
 	}
-	// END main
+	// end::main[]
 }

@@ -12,7 +12,7 @@ import java.util.Date;
  * N.B. This is an 'rdate' client by another name.
  * @author Ian F. Darwin
  */
-// BEGIN main
+// tag::main[]
 public class RDateClient {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
@@ -59,4 +59,4 @@ public class RDateClient {
 		}
 	}
 }
-// END main
+// end::main[]

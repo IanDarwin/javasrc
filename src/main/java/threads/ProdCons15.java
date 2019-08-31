@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 /** Producer-Consumer in Java, for J2SE 1.5+ using concurrent.
  */
-// BEGIN main
+// tag::main[]
 public class ProdCons15 {
 
 	protected volatile boolean done = false;
@@ -95,4 +95,4 @@ public class ProdCons15 {
 		pc.done = true;
 	}
 }
-// END main
+// end::main[]

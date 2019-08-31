@@ -9,7 +9,7 @@ import javax.swing.WindowConstants;
 /* Show an example of closing a JFrame.
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class WindowDemo2 extends JFrame {
 
 	public static void main(String[] argv) {
@@ -36,4 +36,4 @@ public class WindowDemo2 extends JFrame {
 		}
 	}
 }
-// END main
+// end::main[]

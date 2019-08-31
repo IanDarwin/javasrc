@@ -1,4 +1,4 @@
-// BEGIN main
+// tag::main[]
 package structure;
 
 import com.darwinsys.util.ArrayIterator;
@@ -21,4 +21,4 @@ public class ArrayIteratorDemo {
 		arrayIterator.forEach(s->System.out.println(s));
 	}
 }
-// END main
+// end::main[]

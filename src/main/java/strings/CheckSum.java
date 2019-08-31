@@ -27,7 +27,7 @@ public class CheckSum {
         System.out.println(sum);
     }
 
-    // BEGIN main
+    // tag::main[]
     /** CheckSum one text file, given an open BufferedReader.
      * Checksumm does not include line endings, so will give the
      * same value for given text on any platform. Do not use
@@ -49,5 +49,5 @@ public class CheckSum {
         }
         return sum;
     }
-// END main
+// end::main[]
 }

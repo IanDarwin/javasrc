@@ -6,7 +6,7 @@ import javax.swing.*;
 /** 
  * DropShadow -- show overlapped painting.
  */
-// BEGIN main
+// tag::main[]
 public class DropShadow extends JComponent {
 	/** The text to draw */
 	protected String theLabel;
@@ -48,4 +48,4 @@ public class DropShadow extends JComponent {
 		g.drawString(theLabel, 30, 50);
 	}
 }
-// END main
+// end::main[]

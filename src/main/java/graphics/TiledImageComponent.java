@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  * in the paint() method.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class TiledImageComponent extends JComponent {
 	private static final long serialVersionUID = -8771306833824134974L;
 	
@@ -70,4 +70,4 @@ public class TiledImageComponent extends JComponent {
 	}
 }
 
-// END main
+// end::main[]

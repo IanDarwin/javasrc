@@ -1,6 +1,6 @@
 package starting;
 
-// BEGIN main
+// tag::main[]
 import java.util.Date;
 
 /** Demonstrate deprecation warning */
@@ -15,4 +15,4 @@ public class Deprec {
 		System.out.println("Date is " + d);
 	}
 }
-// END main
+// end::main[]

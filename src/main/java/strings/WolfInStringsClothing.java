@@ -3,7 +3,7 @@ package strings;
 /**
  * If this class could be compiled, Java security would be a myth.
  */
-// BEGIN main
+// tag::main[]
 public class WolfInStringsClothing 
 	extends java.lang.String {//EXPECT COMPILE ERROR
 
@@ -13,4 +13,4 @@ public class WolfInStringsClothing
 		// Hint: compile this code exactly as is before bothering!
 	}
 }
-// END main
+// end::main[]

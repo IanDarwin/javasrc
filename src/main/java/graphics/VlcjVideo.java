@@ -11,7 +11,7 @@ import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 
 import com.sun.jna.NativeLibrary;
 
-// BEGIN main
+// tag::main[]
 public class VlcjVideo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -52,4 +52,4 @@ public class VlcjVideo extends JFrame {
 		}
 	}
 }
-// END main
+// end::main[]

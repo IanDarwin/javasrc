@@ -10,7 +10,7 @@ import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 
-// BEGIN main
+// tag::main[]
 /**
  * Simple demo of XPath, supported in JAXP (in JavaSE package javax.xml.xpath)
  */
@@ -38,4 +38,4 @@ public class XPathDemo {
 			secNum, secNum.getClass().getName());                      // <7>
     }
 }
-// END main
+// end::main[]

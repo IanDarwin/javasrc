@@ -25,7 +25,7 @@ import java.io.PrintStream;
  * (written a year after the initial import of my version).
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class TeePrintStream extends PrintStream {
 	/** The original/direct print stream */
 	protected PrintStream parent;
@@ -101,4 +101,4 @@ public class TeePrintStream extends PrintStream {
 		super.flush();
 	}
 }
-// END main
+// end::main[]

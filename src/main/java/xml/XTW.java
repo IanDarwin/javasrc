@@ -15,7 +15,7 @@ import org.w3c.dom.NodeList;
  * UPDATED FOR JAXP.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class XTW {
 	
 	private static Logger logger = Logger.getLogger(XTW.class.getSimpleName());
@@ -103,4 +103,4 @@ public class XTW {
 		}
 	}
 }
-// END main
+// end::main[]

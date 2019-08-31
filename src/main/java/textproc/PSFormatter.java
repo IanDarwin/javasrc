@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Text to Adobe PostScript
  */
-// BEGIN main
+// tag::main[]
 public class PSFormatter {
 	/** The current input source */
 	protected BufferedReader br;
@@ -130,4 +130,4 @@ public class PSFormatter {
 		System.out.println("/Courier findfont " + points + " scalefont setfont ");
 	}
 }
-// END main
+// end::main[]

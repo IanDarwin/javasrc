@@ -26,7 +26,7 @@ public class HashMapWithRemoves {
 		map.put("O'Reilly", "Sebastopol, CA");
 		map.put("Sun", "Mountain View, CA");
 
-		// BEGIN SafeRemoval
+		// tag::SafeRemoval[]
 		// Version 2: get ALL the keys and values 
 		// with concurrent modification
 		Iterator<String> it = map.keySet( ).iterator( );
@@ -39,6 +39,6 @@ public class HashMapWithRemoves {
 			System.out.println("Company " + key + "; " +
 				"Address " + map.get(key));
 		}
-		// END SafeRemoval
+		// end::SafeRemoval[]
 	}
 }

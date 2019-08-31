@@ -4,7 +4,7 @@ package numbers;
 /* Print a table of fahrenheit and celsius temperatures, a bit more neatly.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class TempConverter2 extends TempConverter {
 
 	public static void main(String[] args) {
@@ -26,4 +26,4 @@ public class TempConverter2 extends TempConverter {
 		System.out.println("-------------------");
 	}
 }
-// END main
+// end::main[]

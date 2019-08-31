@@ -18,7 +18,7 @@ import domain.User;
  * <p>
  * ToDo: Consider whether this should be an Entity EJB.
  */
-// BEGIN main
+// tag::main[]
 public class UserDBJDBC extends UserDB {
 
 	protected PreparedStatement setPasswordStatement;
@@ -185,4 +185,4 @@ public class UserDBJDBC extends UserDB {
 		u.setLastLoginDate(date);
 	}
 }
-// END main
+// end::main[]

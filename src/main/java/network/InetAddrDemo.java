@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-// BEGIN main
+// tag::main[]
 public class InetAddrDemo {
 	public static void main(String[] args) throws IOException {
 		String hostName = "www.darwinsys.com";
@@ -32,4 +32,4 @@ public class InetAddrDemo {
 		theSocket.close();
 	}
 }
-// END main
+// end::main[]

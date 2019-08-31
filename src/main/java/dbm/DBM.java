@@ -16,7 +16,7 @@ import java.io.ObjectOutputStream;
  *
  * @author This Java/C hookup by Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class DBM {
 	/** Since you can only have one DBM database in use at a time due
 	 * to implementation restrictions, we enforce this rule with a
@@ -150,4 +150,4 @@ public class DBM {
 		DBM.inuse = inuse;
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package lang;
 
-// BEGIN main
+// tag::main[]
 /**
  * Demonstrate an Inner Child class
  * @author Ian F. Darwin, http://www.darwinsys.com/
@@ -17,4 +17,4 @@ public class InnerChild {
 		System.out.println(x.new InnerInnerChild());
 	}
 }
-// END main
+// end::main[]

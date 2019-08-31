@@ -18,7 +18,7 @@ import java.nio.file.WatchService;
  * This class absolutely requires Java SE 7+, so just add an exclusion rule
  * (Build Path -> Exclude) if you are living with a legacy version of Java SE.
  */
-// BEGIN main
+// tag::main[]
 public class FileWatchServiceDemo {
 
 	final static String tempDirPath = "/tmp";
@@ -69,4 +69,4 @@ public class FileWatchServiceDemo {
 		}
 	}
 }
-// END main
+// end::main[]

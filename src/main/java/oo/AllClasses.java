@@ -4,7 +4,7 @@ import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
 
-// BEGIN main
+// tag::main[]
 public class AllClasses {
 	public class Data {	// <1>
 		int x;
@@ -33,4 +33,4 @@ class AnotherClass {					// <3>
 		// Data d = new Data();	// EXPECT COMPILE ERROR
 	}
 }
-// END main
+// end::main[]

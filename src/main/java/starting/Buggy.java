@@ -1,6 +1,6 @@
 package starting;
 
-// BEGIN main
+// tag::main[]
 /** This program exhibits some bugs, so we can use a debugger */
 public class Buggy {
 	static String name;
@@ -13,4 +13,4 @@ public class Buggy {
 		System.out.println(name); // #3
 	}
 }
-// END main
+// end::main[]

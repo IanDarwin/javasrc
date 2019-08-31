@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-// BEGIN main
+// tag::main[]
 /** Demonstrate simple use of Button */
 public class ButtonDemo extends JFrame implements ActionListener {
 	JButton	b1;
@@ -27,4 +27,4 @@ public class ButtonDemo extends JFrame implements ActionListener {
 		new ButtonDemo().setVisible(true);
 	}
 }
-// END main
+// end::main[]

@@ -2,7 +2,7 @@ package starting;
 
 /** Test for presence of Swing on classpath at runtime.
  */
-// BEGIN main
+// tag::main[]
 public class CheckForSwing {
 	public static void main(String[] args) {
 		try {
@@ -19,4 +19,4 @@ public class CheckForSwing {
 		// No need to print anything here - the GUI should work...
 	}
 }
-// END main
+// end::main[]

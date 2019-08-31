@@ -2,7 +2,7 @@ package reflection;
 
 import java.lang.reflect.Field;
 
-// BEGIN main
+// tag::main[]
 class X {
 	@SuppressWarnings("unused") // Used surreptitiously below.
 	private int p = 42;
@@ -34,4 +34,4 @@ public class DefeatPrivacy {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ import java.util.Properties;
 
 import com.darwinsys.util.FileProperties;
 
-// BEGIN main
+// tag::main[]
 /**
  * A very very simple Web server.
  * <p>
@@ -92,4 +92,4 @@ public class Httpd {
 		return rootDir;
 	}
 }
-// END main
+// end::main[]

@@ -10,7 +10,7 @@ public class ExecDemoWait {
 
 	public static void main(String argv[]) throws IOException {
 
-		// BEGIN main
+		// tag::main[]
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();
 		Process p; 		// Process tracks one external native process
@@ -41,6 +41,6 @@ public class ExecDemoWait {
 			return;
 		}
 		System.err.println("Process done, exit status was " + p.exitValue());
-		// END main
+		// end::main[]
 	}
 }

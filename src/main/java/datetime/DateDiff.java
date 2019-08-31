@@ -1,6 +1,6 @@
 package datetime;
 
-// BEGIN main
+// tag::main[]
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -26,4 +26,4 @@ public class DateDiff {
 				diff.getYears(), diff.getMonths(), diff.getDays());
 	}
 }
-// END main
+// end::main[]

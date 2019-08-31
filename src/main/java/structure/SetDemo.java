@@ -9,13 +9,13 @@ import java.util.Set;
  */
 public class SetDemo {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		Set<String> hashSet = new HashSet<>();
 		hashSet.add("One");
 		hashSet.add("Two");
 		hashSet.add("One"); // DUPLICATE
 		hashSet.add("Three");
 		hashSet.forEach(s -> System.out.println(s));
-		// END main
+		// end::main[]
 	}
 }

@@ -1,7 +1,7 @@
 package structure;
 
 /** Simple demo to print all the types of an enum. */
-// BEGIN main
+// tag::main[]
 public class EnumList {
 	enum State { 
 		ON, OFF, UNKNOWN 
@@ -12,4 +12,4 @@ public class EnumList {
 		}
 	}
 }
-// END main
+// end::main[]

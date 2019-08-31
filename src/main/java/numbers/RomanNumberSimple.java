@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class RomanNumberSimple {
 	public static void main(String[] args) {
-		// BEGIN main
+		// tag::main[]
 		RomanNumberFormat nf = new RomanNumberFormat();
 		int year = LocalDate.now().getYear();
 		System.out.println(year + " -> " + nf.format(year));
-		// END main
+		// end::main[]
 	}
 }

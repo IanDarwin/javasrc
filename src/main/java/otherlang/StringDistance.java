@@ -13,7 +13,7 @@ import org.perl.inline.java.*;
  * <br/>
  * Does not run on its own -- for usage, see StringDistance.pl!
  */
-// BEGIN main
+// tag::main[]
 public class StringDistance extends InlineJavaPerlCaller {
   JFrame frame;           // visual container
   JTextField tf[], dist;  // text input fields, result output field
@@ -108,4 +108,4 @@ public class StringDistance extends InlineJavaPerlCaller {
   }
 
 }
-// END main
+// end::main[]

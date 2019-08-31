@@ -3,7 +3,7 @@ package logging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// BEGIN main
+// tag::main[]
 public class Slf4jDemo {
 	
 	final static Logger theLogger = 
@@ -16,4 +16,4 @@ public class Slf4jDemo {
 
 	}
 }
-// END main
+// end::main[]

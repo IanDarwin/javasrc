@@ -8,7 +8,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-// BEGIN main
+// tag::main[]
 /** Simple Audio Playing with JavaFX */
 public class AudioPlay extends Application {
 
@@ -39,4 +39,4 @@ public class AudioPlay extends Application {
 		mediaPlayer.play();
 	}
 }
-// END main
+// end::main[]

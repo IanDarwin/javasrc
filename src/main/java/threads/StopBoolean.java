@@ -44,7 +44,7 @@ package threads;
 
 /** Show stopping a Thread using a flag.
  */
-// BEGIN main
+// tag::main[]
 public class StopBoolean extends Thread {
 
 	// MUST be volatile to ensure changes visible to other threads.
@@ -73,4 +73,4 @@ public class StopBoolean extends Thread {
 		t1.shutDown();
 	}
 }
-// END main
+// end::main[]

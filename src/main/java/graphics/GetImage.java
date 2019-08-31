@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  * </applet>
  * For Application, just run it (has own main).
  */
-// BEGIN main
+// tag::main[]
 public class GetImage extends JApplet {
 
 	private static final long serialVersionUID = 4288395022095915666L;
@@ -52,4 +52,4 @@ public class GetImage extends JApplet {
 		myApplet.start();
 	}
 }
-// END main
+// end::main[]

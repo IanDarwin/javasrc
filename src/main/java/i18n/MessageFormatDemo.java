@@ -2,7 +2,7 @@ package i18n;
 
 import java.text.*;
 
-// BEGIN main
+// tag::main[]
 public class MessageFormatDemo {
 
 	static Object[] data = {
@@ -17,4 +17,4 @@ public class MessageFormatDemo {
 		System.out.println(result);
 	}
 }
-// END main
+// end::main[]

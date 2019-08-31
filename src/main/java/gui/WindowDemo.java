@@ -7,7 +7,7 @@ import java.awt.event.WindowEvent;
 /* Show an example of closing an AWT Frame.
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class WindowDemo extends Frame {
 
 	public static void main(String[] argv) {
@@ -33,4 +33,4 @@ public class WindowDemo extends Frame {
 		}
 	}
 }
-// END main
+// end::main[]

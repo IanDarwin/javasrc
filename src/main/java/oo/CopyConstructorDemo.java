@@ -1,6 +1,6 @@
 package oo;
 
-// BEGIN main
+// tag::main[]
 public class CopyConstructorDemo {
 	public static void main(String[] args) {
 		CopyConstructorDemo object1 = new CopyConstructorDemo(123, "Hello");
@@ -30,7 +30,7 @@ public class CopyConstructorDemo {
 		this.name = other.name;
 	}
 	// hashCode() and equals() not shown
-	// END main
+	// end::main[]
 
 	@Override
 	public int hashCode() {

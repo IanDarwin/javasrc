@@ -6,7 +6,7 @@ package numbers;
  * support for long, float, and double.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Matrix {
 
 	/* Matrix-multiply two arrays together.
@@ -50,4 +50,4 @@ public class Matrix {
 		System.out.println("};");
 	}
 }
-// END main
+// end::main[]

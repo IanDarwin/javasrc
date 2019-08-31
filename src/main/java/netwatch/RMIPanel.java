@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
-// BEGIN main
+// tag::main[]
 public class RMIPanel extends NetPanel implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -65,4 +65,4 @@ public class RMIPanel extends NetPanel implements Runnable {
 		}
 	}
 }
-// END main
+// end::main[]

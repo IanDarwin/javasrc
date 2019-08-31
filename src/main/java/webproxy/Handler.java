@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  * TODO split into general handler stuff and "FileServlet",
  *	then handle w/ either user HttpServlet subclasses or FileServlet.
  */
-// BEGIN main
+// tag::main[]
 public class Handler {
 	
 	private static Logger logger = Logger.getLogger(Handler.class.getSimpleName());
@@ -141,7 +141,7 @@ public class Handler {
 			os.flush();
 			clntSock.close();
 			
-			System.out.println("END OF REQUEST");
+			System.out.println("end::OF[] REQUEST");
 		} catch (FileNotFoundException e) {
 			errorResponse(404, "Server can't find " + requestURL);
 		} catch (IOException e) {
@@ -199,4 +199,4 @@ public class Handler {
 		os.close();
 	}
 }
-// END main
+// end::main[]

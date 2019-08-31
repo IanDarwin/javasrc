@@ -7,7 +7,7 @@ import java.text.ParsePosition;
 /**
  * Bare-minimum String formatter (string aligner).
  */
-// BEGIN main
+// tag::main[]
 public class StringAlign extends Format {
 
 	private static final long serialVersionUID = 1L;
@@ -96,4 +96,4 @@ public class StringAlign extends Format {
 		return source;
 	}
 }
-// END main
+// end::main[]

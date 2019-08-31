@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 
-// BEGIN main
+// tag::main[]
 /** Class to encapsulate the filtration for Find.
  * For now just setTTTFilter() methods. Really needs to be a real
  * data structure to allow complex things like
@@ -73,4 +73,4 @@ public class FindFilter implements FilenameFilter {
 		return name;
 	}
 }
-// END main
+// end::main[]

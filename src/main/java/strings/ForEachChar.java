@@ -1,6 +1,6 @@
 package strings;
 
-// BEGIN main
+// tag::main[]
 public class ForEachChar {
 	public static void main(String[] args) {
 		String s = "Hello world";
@@ -10,4 +10,4 @@ public class ForEachChar {
 		}
 	}
 }
-// END main
+// end::main[]

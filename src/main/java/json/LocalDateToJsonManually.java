@@ -2,7 +2,7 @@ package json;
 
 import java.time.LocalDate;
 
-// BEGIN main
+// tag::main[]
 /** 
  * Convert an object to JSON, not using any JSON API.
  * BAD IDEA - should use an API!
@@ -31,4 +31,4 @@ public class LocalDateToJsonManually {
 		return String.format("\"%s\": \"%s\",\n", key, value);
 	}
 }
-// END main
+// end::main[]

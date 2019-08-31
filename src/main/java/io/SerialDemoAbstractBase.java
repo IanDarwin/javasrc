@@ -1,4 +1,4 @@
-// BEGIN main
+// tag::main[]
 package io;
 
 import java.io.IOException;
@@ -28,4 +28,4 @@ public abstract class SerialDemoAbstractBase {
 	/** Reads the file and displays it. */
 	public abstract void dump() throws IOException, ClassNotFoundException;
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package network;
 
-// BEGIN main
+// tag::main[]
 import java.net.Socket;
 
 /* Client with NO error handling */
@@ -18,4 +18,4 @@ public class ConnectSimple {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package oo;
 
-// BEGIN main
+// tag::main[]
 /** A ChessMoveException is thrown  when the user makes an illegal move. */
 public class ChessMoveException extends Exception {
 
@@ -18,4 +18,4 @@ public class ChessMoveException extends Exception {
 		super(msg, cause);
 	}
 }
-// END main
+// end::main[]

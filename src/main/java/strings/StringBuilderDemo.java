@@ -3,7 +3,7 @@ package strings;
 /**
  * StringBuilderDemo: construct the same String three different ways.
  */
-// BEGIN main
+// tag::main[]
 public class StringBuilderDemo {
 
 	public static void main(String[] argv) {
@@ -33,4 +33,4 @@ public class StringBuilderDemo {
 			.append("World"));
 	}
 }
-// END main
+// end::main[]

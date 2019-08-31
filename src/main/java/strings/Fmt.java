@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * N.B. This file (and its test) will move from javasrc to darwinsys-api,
  * and be simplified.
  */
-// BEGIN main
+// tag::main[]
 public class Fmt {
 	/** The maximum column width */
 	public static final int COLWIDTH=72;
@@ -94,4 +94,4 @@ public class Fmt {
 
 
 }
-// END main
+// end::main[]

@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class Redirect {
 	public static void main(String[] argv) throws IOException {
-		// BEGIN main
+		// tag::main[]
 		String LOGFILENAME = "error.log";
 		System.setErr(new PrintStream(new FileOutputStream(LOGFILENAME)));
 		System.out.println("Please look for errors in " + LOGFILENAME);
@@ -16,6 +16,6 @@ public class Redirect {
 		//   writing to stderr...
 		int[] a = new int[5];
 		a[10] = 0;	// here comes an ArrayIndexOutOfBoundsException
-		// END main
+		// end::main[]
 	}
 }

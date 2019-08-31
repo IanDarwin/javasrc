@@ -7,7 +7,7 @@ import java.net.*;
  * Simple UDP client - contact the standard ascii time service
  * @author Ian Darwin, http://www.darwinsys.com/.
  */
-// BEGIN main
+// tag::main[]
 public class DaytimeUDP {
 	/** The UDP port number */
 	public final static int DAYTIME_PORT = 13;
@@ -47,4 +47,4 @@ public class DaytimeUDP {
 		sock.close();
 	}
 }
-// END main
+// end::main[]

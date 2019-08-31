@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Demonstrate use of SubstringComparator.
  */
-// BEGIN main
+// tag::main[]
 public class SubstringComparatorDemo {
 	public static void main(String[] unused) {
 		String[] strings = {
@@ -25,4 +25,4 @@ public class SubstringComparatorDemo {
 			System.out.println(s);
 	}
 }
-// END main
+// end::main[]

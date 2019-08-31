@@ -4,7 +4,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-// BEGIN main
+// tag::main[]
 public class ScriptEnginesDemo {
 
 	public static void main(String[] args) throws ScriptException {
@@ -25,4 +25,4 @@ public class ScriptEnginesDemo {
 		engine.eval("print(\"Hello from " + lang + "\");");
 	}
 }
-// END main
+// end::main[]

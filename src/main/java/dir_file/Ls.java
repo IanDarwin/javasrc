@@ -5,7 +5,7 @@ import java.util.Arrays;
 /** Simple directory lister.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Ls {
 	public static void main(String args[]) {
 		String[] dirs = new java.io.File(".").list(); // Get list of names
@@ -15,4 +15,4 @@ public class Ls {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -4,7 +4,7 @@ import java.text.*;
 import java.util.*;
 
 /** Change the default locale */
-// BEGIN main
+// tag::main[]
 public class SetLocale {
 	public static void main(String[] args) {
 
@@ -29,4 +29,4 @@ public class SetLocale {
 		System.out.println(nf.format(123.4567));
 	}
 }
-// END main
+// end::main[]

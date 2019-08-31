@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class PathsFilesDemo {
 	public static void main(String[] args) throws Exception {
-		// BEGIN main
+		// tag::main[]
 		Path p = Paths.get("my_junk_file");                    // <1>
 		boolean deleted = Files.deleteIfExists(p);             // <2>
 		InputStream is =                                       // <3>
@@ -18,6 +18,6 @@ public class PathsFilesDemo {
 		System.out.println(realPath);
 		realPath.forEach(pc-> System.out.println(pc));         // <7>
 		Files.delete(p);                                       // <8>
-		// END main
+		// end::main[]
 	}
 }

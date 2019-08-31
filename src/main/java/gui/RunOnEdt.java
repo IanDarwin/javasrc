@@ -3,7 +3,7 @@ package gui;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-// BEGIN main
+// tag::main[]
 public class RunOnEdt {
 	public static void main(String[] args) throws Exception {
 		System.out.println("RunOnEdt.main()");
@@ -18,4 +18,4 @@ public class RunOnEdt {
 		});
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package structure;
 
-// BEGIN main
+// tag::main[]
 /** Toy Stack, converted to SimpleStack interface. 
  */
 public class ToyStack2 implements SimpleStack<Integer> {
@@ -32,4 +32,4 @@ public class ToyStack2 implements SimpleStack<Integer> {
 		return stack[depth-1];
 	}
 }
-// END main
+// end::main[]

@@ -2,7 +2,7 @@ package logging;
 
 import java.util.logging.Logger;
 
-// BEGIN main
+// tag::main[]
 /** Demonstrate how Java 8 Lambdas avoid extraneous object creation
  * @author Ian Darwin
  */
@@ -27,4 +27,4 @@ public class JulLambdaDemo {
 		}
 	}
 }
-// END main
+// end::main[]

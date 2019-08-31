@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author	Ian Darwin
  */
 @Deprecated
-// BEGIN main
+// tag::main[]
 public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
@@ -226,7 +226,7 @@ public class LinkList<T> implements List<T> {
 		Object[] data = new Object[size()];
 		return toArray(data);
 	}
-	// END main
+	// end::main[]
 	
 	// NON-API private methods
 

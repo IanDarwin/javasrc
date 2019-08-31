@@ -6,7 +6,7 @@ import java.text.*;
  * Format a plural correctly, using a ChoiceFormat.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class FormatPluralsChoice extends FormatPlurals {
 
 	// ChoiceFormat to just give pluralized word
@@ -33,4 +33,4 @@ public class FormatPluralsChoice extends FormatPlurals {
 		}
 	}
 }
-// END main
+// end::main[]

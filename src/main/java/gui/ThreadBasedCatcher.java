@@ -17,7 +17,7 @@ import com.darwinsys.swingui.ErrorUtil;
 public class ThreadBasedCatcher extends JFrame{
 	private final boolean gui = true;
 
-	// BEGIN main
+	// tag::main[]
 	// gui/ThreadBasedCatcher.java
 	public static void main(String[] args) {
 		new Thread(new Runnable() {
@@ -43,15 +43,15 @@ public class ThreadBasedCatcher extends JFrame{
 								"You crashed thread " + t.getName());
 						System.out.println(
 								"Exception was: " + ex.toString());
-						// BEGIN main
+						// tag::main[]
 						if (gui) {
 							ErrorUtil.showExceptions(
 								ThreadBasedCatcher.this, ex);
 						}
-						// END main
+						// end::main[]
 					}
 				});
 		pack();
 	}
 }
-// END main
+// end::main[]

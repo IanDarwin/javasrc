@@ -2,7 +2,7 @@ package di.spring;
 
 import org.springframework.stereotype.Component;
 
-// BEGIN main
+// tag::main[]
 @Component("myModel")
 public class SimpleModel implements Model {
 
@@ -11,4 +11,4 @@ public class SimpleModel implements Model {
 		return "This is some simple model data";
 	}
 }
-// END main
+// end::main[]

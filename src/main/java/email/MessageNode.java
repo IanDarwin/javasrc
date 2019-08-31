@@ -8,7 +8,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.darwinsys.lang.StringFormat;
 
 /** A Mutable Tree Node that is also a Message. */
-// BEGIN main
+// tag::main[]
 public class MessageNode extends DefaultMutableTreeNode {
 	private static final long serialVersionUID = 1L;
 
@@ -41,4 +41,4 @@ public class MessageNode extends DefaultMutableTreeNode {
 		}
 	}
 }
-// END main
+// end::main[]

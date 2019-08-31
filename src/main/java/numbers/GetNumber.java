@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  *
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class GetNumber extends Frame {
 
 	private static final long serialVersionUID = 1L;
@@ -66,4 +66,4 @@ public class GetNumber extends Frame {
 		new GetNumber().setVisible(true);
 	}
 }
-// END main
+// end::main[]

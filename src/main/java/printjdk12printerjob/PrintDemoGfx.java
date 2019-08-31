@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 /** PrintDemoGfx -- Construct and print a GfxDemoCanvas. 
  * Java 2 VERSION, using a PrinterJob.
  */
-// BEGIN main
+// tag::main[]
 public class PrintDemoGfx {
 	final boolean quiet;
 
@@ -83,4 +83,4 @@ public class PrintDemoGfx {
 		f.setVisible(true);
 	}
 }
-// END main
+// end::main[]

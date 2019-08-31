@@ -21,7 +21,7 @@ import java.net.Socket;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class WebServer0 {
 	public static final int HTTP = 80;
 	public static final String CRLF = "\r\n";
@@ -106,4 +106,4 @@ public class WebServer0 {
 		return;
 	}
 }
-// END main
+// end::main[]

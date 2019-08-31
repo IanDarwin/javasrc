@@ -6,7 +6,7 @@ package oo.interfaces;
  * that can safely be powered off at nighttime to save energy - lots of
  * it, when applied to a large office!
  */
-// BEGIN main
+// tag::main[]
 public class BuildingManagement {
 
 	Asset things[] = new Asset[24];
@@ -43,4 +43,4 @@ public class BuildingManagement {
 		b1.goodNight();
 	}
 }
-// END main
+// end::main[]

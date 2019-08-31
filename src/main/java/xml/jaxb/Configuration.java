@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-// BEGIN main
+// tag::main[]
 /**
  * Demo of XML via JAXB; meant to represent some of the (many!)
  * fields in a typical GUI for user<-->application configuration
@@ -30,7 +30,7 @@ public class Configuration {
 	}
 
 	// Remaining accessors, hashCode/equals(), are uninteresting.
-	// END main
+	// end::main[]
 	public boolean isVerbose() {
 		return verbose;
 	}

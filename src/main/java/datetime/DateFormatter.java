@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Tutorial/Example of LocalDate and DateTimeFormatter formatting
  */
-// BEGIN main
+// tag::main[]
 public class DateFormatter {
 	public static void main(String[] args) {
 		
@@ -24,4 +24,4 @@ public class DateFormatter {
 		System.out.println(ZonedDateTime.now().format(nTZ));
 	}
 }
-// END main
+// end::main[]

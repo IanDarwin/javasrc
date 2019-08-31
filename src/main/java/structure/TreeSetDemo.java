@@ -8,7 +8,7 @@ import java.util.TreeSet;
  */
 public class TreeSetDemo {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		// A TreeSet keeps objects in sorted order. Use a Comparator
 		// published by String for case-insensitive sorting order.
 		TreeSet<String> theSet = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
@@ -33,6 +33,6 @@ public class TreeSetDemo {
 		// Print the whole list in sorted order
 		System.out.println("Sorted list:");
 		theSet.forEach(name -> System.out.println(name));
-		// END main
+		// end::main[]
 	}
 }

@@ -4,7 +4,7 @@ import di.spring.ConsoleViewer;
 import di.spring.Model;
 import di.spring.SimpleModel;
 
-// BEGIN main
+// tag::main[]
 public class ControllerTightlyCoupled {
 
 	public static void main(String[] args) {
@@ -14,4 +14,4 @@ public class ControllerTightlyCoupled {
 		v.displayMessage();
 	}
 }
-// END main
+// end::main[]

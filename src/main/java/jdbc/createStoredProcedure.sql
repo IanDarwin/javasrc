@@ -7,7 +7,7 @@ DECLARE
 BEGIN
 	FOR fred in select sku,title FROM products where stockCount = 0 LOOP
 		RETURN NEXT fred;
-	END LOOP;
+	end::LOOP[];
 	return;
 END
 $$ LANGUAGE plpgsql;

@@ -5,7 +5,7 @@ import java.util.regex.*;
 
 /** Grep0 - Match lines from stdin against the pattern on the command line.
  */
-// BEGIN main
+// tag::main[]
 public class Grep0 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader is =
@@ -25,4 +25,4 @@ public class Grep0 {
 		}
 	}
 }
-// END main
+// end::main[]

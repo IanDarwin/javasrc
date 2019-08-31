@@ -3,7 +3,7 @@ package numbers;
 import java.util.*;
 
 /** Print the current year in Roman Numerals */
-// BEGIN main
+// tag::main[]
 public class RomanYear {
 
 	public static void main(String[] argv) {
@@ -29,4 +29,4 @@ public class RomanYear {
 		System.out.println();
 	}
 }
-// END main
+// end::main[]

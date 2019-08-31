@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import domain.Person;
 
-// BEGIN main
+// tag::main[]
 public class Slf4jDemo2 {
 
 	final static Logger theLogger = LoggerFactory.getLogger(Slf4jDemo2.class);
@@ -25,4 +25,4 @@ public class Slf4jDemo2 {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -7,11 +7,11 @@ package lang;
 public abstract class AbstractStatic {
 
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		System.out.println("Hello. The answer is yes.");
 		// The following is redundant, since we got in here!
 		AbstractStatic.foo();
-		// END main
+		// end::main[]
 	}
 
 	public static void foo() {

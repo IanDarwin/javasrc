@@ -2,7 +2,7 @@ package io;
 
 import java.io.Serializable;
 
-// BEGIN main
+// tag::main[]
 /** Simple data class used in Serialization demos. */
 public class MyData implements Serializable {
 
@@ -44,7 +44,7 @@ public class MyData implements Serializable {
 	public String toString() {
 		return "MyData[" + userName + ",------]";
 	}
-// END main
+// end::main[]
 
 	/** In real life this would use Java Cryptography */
 	protected String encrypt(String s) {

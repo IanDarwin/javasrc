@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-// BEGIN main
+// tag::main[]
 public class SoftwareParseOrgJson {
     final static String FILE_NAME = "/json/softwareinfo.json";
 
@@ -29,4 +29,4 @@ public class SoftwareParseOrgJson {
     }
 
 }
-// END main
+// end::main[]

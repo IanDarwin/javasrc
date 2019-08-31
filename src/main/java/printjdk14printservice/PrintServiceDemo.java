@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
 
 import com.darwinsys.swingui.UtilGUI;
 
-// BEGIN main
+// tag::main[]
 /**
  * Show the latest incarnation of printing, PrintService, from a GUI;
  * the GUI consists only of a "Print" button, and the filename is hardcoded,
@@ -116,4 +116,4 @@ public class PrintServiceDemo extends JFrame {
 		pj.print(doc, aset);
 	}
 }
-// END main
+// end::main[]

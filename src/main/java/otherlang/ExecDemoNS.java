@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 /**
  * ExecDemoNS shows how to execute a program from within Java.
  */
-// BEGIN main
+// tag::main[]
 public class ExecDemoNS extends JFrame {
 	private static final String NETSCAPE = "firefox";
 	
@@ -118,4 +118,4 @@ public class ExecDemoNS extends JFrame {
 	}
 
 }
-// END main
+// end::main[]

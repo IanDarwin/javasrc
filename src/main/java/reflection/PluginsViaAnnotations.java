@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-// BEGIN findAnnotatedClasses
+// tag::findAnnotatedClasses[]
 /** Discover "plugins" or other add-in classes via Reflection using Annotations */
 public class PluginsViaAnnotations {
 
@@ -37,9 +37,9 @@ public class PluginsViaAnnotations {
 		}
 		return ret;
 	}
-	// END findAnnotatedClasses
+	// end::findAnnotatedClasses[]
 	
-	// BEGIN findClassesWithAnnotatedMethods
+	// tag::findClassesWithAnnotatedMethods[]
 	/**
 	 * Find all classes in the given package which have the given
 	 * method-level annotation class on at least one method.
@@ -71,5 +71,5 @@ public class PluginsViaAnnotations {
 		}
 		return ret;
 	}
-	// END findClassesWithAnnotatedMethods
+	// end::findClassesWithAnnotatedMethods[]
 }

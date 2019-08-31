@@ -2,7 +2,7 @@ package io;
 
 import java.io.*;
 
-// BEGIN main
+// tag::main[]
 /**
  * Subclass of LineNumberReader, parent of others, to allow reading of
  * continued lines using the readLine() method. The other Reader methods
@@ -68,4 +68,4 @@ public abstract class ContLineReader extends LineNumberReader {
 		return false;
 	}
 }
-// END main
+// end::main[]

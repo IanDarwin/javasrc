@@ -7,7 +7,7 @@ import java.util.logging.Logger;
  * ExecDemo shows how to execute an external program (in this case
  * the UNIX directory lister /bin/ls) and read its output.
  */
-// BEGIN main
+// tag::main[]
 public class ExecDemoLs {
 	
 	private static Logger logger = Logger.getLogger(ExecDemoLs.class.getSimpleName());
@@ -57,4 +57,4 @@ public class ExecDemoLs {
 		return;
 	}
 }
-// END main
+// end::main[]

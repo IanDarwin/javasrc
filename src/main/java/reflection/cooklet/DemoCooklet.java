@@ -1,6 +1,6 @@
 package reflection.cooklet;
 
-// BEGIN main
+// tag::main[]
 public class DemoCooklet extends Cooklet {
 	public void work() {
 		System.out.println("I am busy baking cookies.");
@@ -9,4 +9,4 @@ public class DemoCooklet extends Cooklet {
 		System.out.println("I am shutting down my ovens now.");
 	}
 }
-// END main
+// end::main[]

@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  * You can also steal this as a basis for your own plotter driver.
  * @author	Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class PlotterAWT extends Plotter {
 
 	private JFrame f;
@@ -123,4 +123,4 @@ public class PlotterAWT extends Plotter {
 		}
 	}
 }
-// END main
+// end::main[]

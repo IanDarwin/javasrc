@@ -15,7 +15,7 @@ import java.util.zip.ZipFile;
  * Command-line version: extracts files.
  * @author	Ian Darwin, Ian@DarwinSys.com
  */
-// BEGIN main
+// tag::main[]
 public class UnZip {
 	/** Constants for mode listing or mode extracting. */
 	public static enum Mode {
@@ -138,4 +138,4 @@ public class UnZip {
 		}
 	}
 }
-// END main
+// end::main[]

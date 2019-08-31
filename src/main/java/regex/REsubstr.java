@@ -8,7 +8,7 @@ import java.util.regex.*;
  */
 public class REsubstr {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		String patt = "Q[^u]\\d+\\.";
 		Pattern r = Pattern.compile(patt);
 		String line = "Order QT300. Now!";
@@ -20,6 +20,6 @@ public class REsubstr {
 		} else {
 			System.out.println("NO MATCH");
 		}
-		// END main
+		// end::main[]
 	}
 }

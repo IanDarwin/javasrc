@@ -45,7 +45,7 @@ package threads;
 /** Demonstration of using a Thread to automatically save
  * the user's work periodically.
  */
-// BEGIN main
+// tag::main[]
 public class AutoSave extends Thread {
 	/** The FileSave interface is implemented by the main class. */
 	protected FileSaver model;
@@ -92,4 +92,4 @@ interface FileSaver {
 	 */
 	public void saveFile(String fn);
 }
-// END main
+// end::main[]

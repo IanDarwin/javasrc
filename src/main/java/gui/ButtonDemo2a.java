@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /** Demonstrate use of two buttons, using a single ActionListener,
  * being the class itself.
  */
-// BEGIN main
+// tag::main[]
 public class ButtonDemo2a extends Applet implements ActionListener {
 	Button b1, b2;
 
@@ -27,4 +27,4 @@ public class ButtonDemo2a extends Applet implements ActionListener {
 			showStatus("Thanks for pushing my second button!");
 	}
 }
-// END main
+// end::main[]

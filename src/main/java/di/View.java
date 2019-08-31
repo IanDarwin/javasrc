@@ -1,9 +1,9 @@
 package di;
 
-// BEGIN main
+// tag::main[]
 public interface View {
 
 	void displayMessage();
 
 }
-// END main
+// end::main[]

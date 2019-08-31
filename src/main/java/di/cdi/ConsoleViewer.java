@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import di.View;
 
-// BEGIN main
+// tag::main[]
 public class ConsoleViewer implements View {
     @Inject @MyModel
     private String message;
@@ -14,4 +14,4 @@ public class ConsoleViewer implements View {
         System.out.println(message);
     }
 }
-// END main
+// end::main[]

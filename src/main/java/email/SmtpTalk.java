@@ -105,7 +105,7 @@ public class SmtpTalk implements SysExits {
 		throw new SMTPException(ret, msg);
 	}
 
-	// BEGIN converse
+	// tag::converse[]
 	/** send one Mail message to one or more recipients via smtp 
 	 * to server "host".
 	 */
@@ -141,5 +141,5 @@ public class SmtpTalk implements SysExits {
 		send_cmd("QUIT");
 		if (!expect_reply("221")) die(EX_PROTOCOL,"Other end not closing down");
 	}
-	// END converse
+	// end::converse[]
 }

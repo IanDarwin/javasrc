@@ -5,7 +5,7 @@ import java.util.Date;
 /** Re-allocate an array, bigger...
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class Array2  {
     public final static int INITIAL = 10,   // <1>
         GROW_FACTOR = 2;                    // <2>
@@ -34,4 +34,4 @@ public class Array2  {
         System.out.println("Final array size = " + dates.length);
     }
 }
-// END main
+// end::main[]

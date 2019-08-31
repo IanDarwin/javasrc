@@ -3,7 +3,7 @@ package performance;
 import com.darwinsys.lang.MutableInteger;
 
 /** Time a bunch of creates and gets through an Array */
-// BEGIN main
+// tag::main[]
 public class Array {
 	public static final int MAX = 250000;
 	public static void main(String[] args) {
@@ -21,4 +21,4 @@ public class Array {
 		return sum;
 	}
 }
-// END main
+// end::main[]

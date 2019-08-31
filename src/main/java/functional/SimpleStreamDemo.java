@@ -15,7 +15,7 @@ public class SimpleStreamDemo {
 			this.age = age;
 		}
 	}
-	// BEGIN main
+	// tag::main[]
 	static Hero[] heroes = { 
 		new Hero("Grelber", 21), 
 		new Hero("Roderick", 12),
@@ -40,5 +40,5 @@ public class SimpleStreamDemo {
 				.collect(Collectors.toList());
 		System.out.println("Heroes by name: " + sorted);
 	}
-	// END main
+	// end::main[]
 }

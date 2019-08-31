@@ -1,14 +1,14 @@
 package functional;
 
 @FunctionalInterface
-// BEGIN define
+// tag::define[]
 interface MyFunctionalInterface {
     int compute(int x);
 }
-// END define
+// end::define[]
 
 public class ProcessIntsUsingFunctional {
-	// BEGIN use
+	// tag::use[]
 	static int[] integers = {1, 2, 3};
 
 	public static void main(String[] args) {
@@ -21,6 +21,6 @@ public class ProcessIntsUsingFunctional {
 	private static int process(int i, MyFunctionalInterface o) {
 		return o.compute(i);
 	}
-	// END use
+	// end::use[]
 }
 

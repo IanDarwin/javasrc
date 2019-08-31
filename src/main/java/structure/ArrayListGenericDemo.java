@@ -2,7 +2,7 @@ package structure;
 
 import java.util.*;
 
-// BEGIN main
+// tag::main[]
 public class ArrayListGenericDemo {
 	public static void main(String[] args) {
 		ArrayList<String> data = new ArrayList<>();
@@ -14,4 +14,4 @@ public class ArrayListGenericDemo {
 		data.forEach(s -> System.out.println(s));
 	}
 }
-// END main
+// end::main[]

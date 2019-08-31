@@ -12,7 +12,7 @@ import java.text.ParsePosition;
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class RomanNumberFormat extends Format {
 
 	private static final long serialVersionUID = -2303809319102357783L;
@@ -148,4 +148,4 @@ public class RomanNumberFormat extends Format {
 		return stack[--depth];
 	}
 }
-// END main
+// end::main[]

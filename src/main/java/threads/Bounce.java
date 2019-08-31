@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Vector;
 
 /** This is the Bounce class; create and start Sprites, using Threads. */
-// BEGIN main
+// tag::main[]
 public class Bounce extends Applet implements ActionListener {
 
 	private static final long serialVersionUID = -5359162621719520213L;
@@ -64,4 +64,4 @@ public class Bounce extends Applet implements ActionListener {
     }
 }
 
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package datetime;
 
-// BEGIN main
+// tag::main[]
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -18,4 +18,4 @@ public class DateAdd {
 		System.out.printf("Seven hundred days from %s is %s%n", now, then);
 	}
 }
-// END main
+// end::main[]

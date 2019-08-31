@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /** A simple demo of a JFileChooser in action. */
-// BEGIN main
+// tag::main[]
 public class JFileChooserDemo extends JPanel {
 
 	private static final long serialVersionUID = 2615629432967419176L;
@@ -63,4 +63,4 @@ public class JFileChooserDemo extends JPanel {
 		f.setVisible(true);
 	}
 }
-// END main
+// end::main[]

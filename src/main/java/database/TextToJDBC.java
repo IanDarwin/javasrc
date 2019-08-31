@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 import domain.User;
 
-// BEGIN main
+// tag::main[]
 /** Load the database from text file into JDBC relational database.
  * Text format is: name:password:fullname:city:prov:country:privs
  */
@@ -96,4 +96,4 @@ public class TextToJDBC {
         return;          // All done with this program.
     }
 }
-// END main
+// end::main[]

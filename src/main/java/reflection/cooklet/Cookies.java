@@ -5,7 +5,7 @@ package reflection.cooklet;
  * the user-defined subclass.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Cookies {
 	public static void main(String[] argv) {
 		System.out.println("Cookies Application Version 0.0");
@@ -23,4 +23,4 @@ public class Cookies {
 		cooklet.terminate();
 	}
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ import java.util.*;
 /** Use some locales
  * choices or -Duser.lang= or -Duser.region=.
  */
-// BEGIN main
+// tag::main[]
 public class UseLocales {
 	public static void main(String[] args) {
 
@@ -29,4 +29,4 @@ public class UseLocales {
 			ukDateFormatter.format(now));
 	}
 }
-// END main
+// end::main[]

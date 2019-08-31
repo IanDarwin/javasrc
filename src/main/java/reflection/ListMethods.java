@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
  * List the Constructors and methods
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class ListMethods {
 	public static void main(String[] argv) throws ClassNotFoundException {
 		if (argv.length == 0) {
@@ -26,4 +26,4 @@ public class ListMethods {
 			System.out.println(o[i].toString());
 	}
 }
-// END main
+// end::main[]

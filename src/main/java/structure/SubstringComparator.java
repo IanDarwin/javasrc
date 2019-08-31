@@ -2,7 +2,7 @@ package structure;
 
 import java.util.Comparator;
 
-// BEGIN main
+// tag::main[]
 /** Comparator for comparing strings ignoring first character.
  */
 public class SubstringComparator implements Comparator<String> {
@@ -15,4 +15,4 @@ public class SubstringComparator implements Comparator<String> {
 		// return s1.substring(1).compareTo(s2.substring(1));
 	}
 }
-// END main
+// end::main[]

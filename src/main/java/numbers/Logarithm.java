@@ -6,7 +6,7 @@ package numbers;
  */
 public class Logarithm {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		double someValue;
 
 		// compute someValue...
@@ -14,6 +14,6 @@ public class Logarithm {
 
 		double log_e = Math.log(someValue);
 		System.out.println("Log(e) of " + someValue + " is " + log_e);
-		// END main
+		// end::main[]
 	}
 }

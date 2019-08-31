@@ -31,7 +31,7 @@ import javax.swing.JTextArea;
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
-// BEGIN main
+// tag::main[]
 public abstract class NetPanel extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -140,4 +140,4 @@ public abstract class NetPanel extends JPanel implements Runnable {
 		state = newState;
 	}
 }
-// END main
+// end::main[]

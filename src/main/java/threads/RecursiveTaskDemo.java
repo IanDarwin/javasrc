@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
-// BEGIN main
+// tag::main[]
 /**
  * Demonstrate the Fork-Join Framework to average a large array.
  * Running this on a multi-core machine as e.g., 
@@ -75,4 +75,4 @@ public class RecursiveTaskDemo extends RecursiveTask<Long> {
 		}
 	}
 }
-// END main
+// end::main[]

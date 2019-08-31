@@ -2,7 +2,7 @@ package numbers;
 
 /** Casting Demo. */
 public class CastNeeded {
-    // BEGIN main
+    // tag::main[]
     public static void main(String[] argv) {
         int i;
         double j = 2.75;
@@ -14,5 +14,5 @@ public class CastNeeded {
         b = (byte)i;      // with cast, i gets 2
         System.out.println("b =" + b);
     }
-    // END main
+    // end::main[]
 }

@@ -8,7 +8,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-// BEGIN main
+// tag::main[]
 /** 
  * CompRunner -- Component Runner.
  * A generic main program, for testing a Component-based GUI class that 
@@ -76,4 +76,4 @@ public class CompRunner {
 		});
 	}
 }
-// END main
+// end::main[]

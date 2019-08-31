@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 /** Main GUI component for the NetWatch program.
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class NetFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -92,4 +92,4 @@ public class NetFrame extends JFrame {
 			cp.setLayout(new GridLayout(0,2));
 	}
 }
-// END main
+// end::main[]

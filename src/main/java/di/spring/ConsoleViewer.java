@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import di.View;
 
-// BEGIN main
+// tag::main[]
 @Component("myView")
 public class ConsoleViewer implements View {
 
@@ -23,4 +23,4 @@ public class ConsoleViewer implements View {
 	}
 
 }
-// END main
+// end::main[]

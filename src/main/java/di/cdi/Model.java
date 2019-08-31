@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
-// BEGIN main
+// tag::main[]
 public class Model {
     
     public @Produces @MyModel String getModelData(InjectionPoint ip)
@@ -18,4 +18,4 @@ public class Model {
 			ip.getMember().getName());
     }
 }
-// END main
+// end::main[]

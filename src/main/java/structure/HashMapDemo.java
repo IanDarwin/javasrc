@@ -7,7 +7,7 @@ import java.util.Map;
  * Demonstrate the HashMap class, and an Iterator.
  * @see HashTableDemo, for the older Hashtable.
  */
-// BEGIN main
+// tag::main[]
 public class HashMapDemo {
 
 	public static void main(String[] argv) {
@@ -49,4 +49,4 @@ public class HashMapDemo {
 				"; Value " +mE.getValue()));
 	}
 }
-// END main
+// end::main[]

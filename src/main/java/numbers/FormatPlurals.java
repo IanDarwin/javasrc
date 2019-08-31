@@ -4,7 +4,7 @@ package numbers;
  * Format a plural correctly, by hand.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class FormatPlurals {
 	public static void main(String[] argv) {
 		report(0);
@@ -17,4 +17,4 @@ public class FormatPlurals {
 		System.out.println("We used " + n + " item" + (n==1?"":"s"));
 	}
 }
-// END main
+// end::main[]

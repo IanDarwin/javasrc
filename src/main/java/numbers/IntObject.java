@@ -3,7 +3,7 @@ package numbers;
 /**
  * IntObject -- convert between int and Integer (needed pre-1.5)
  */
-// BEGIN main
+// tag::main[]
 public class IntObject {
 	public static void main(String[] args) {
 		// int to Integer
@@ -15,4 +15,4 @@ public class IntObject {
 		System.out.println(i2);
 	}
 }
-// END main
+// end::main[]

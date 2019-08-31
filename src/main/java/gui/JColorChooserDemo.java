@@ -24,7 +24,7 @@ import javax.swing.JLabel;
  *
  * Originally appeared in the Linux Journal, 1999.
  */
-// BEGIN main
+// tag::main[]
 public class JColorChooserDemo extends JFrame {
     /** A canvas to display the color in. */
     protected JLabel demo;
@@ -62,4 +62,4 @@ public class JColorChooserDemo extends JFrame {
         new JColorChooserDemo().setVisible(true);
     }
 }
-// END main
+// end::main[]

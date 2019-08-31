@@ -3,7 +3,7 @@ package network;
 import java.net.ServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
-// BEGIN main
+// tag::main[]
 /**
  * JSSEWebServer - subclass trivial WebServer0 to make it use SSL.
  * N.B. You MUST have set up a server certificate (see the
@@ -39,4 +39,4 @@ public class JSSEWebServer0 extends WebServer0 {
 	}
 
 }
-// END main
+// end::main[]

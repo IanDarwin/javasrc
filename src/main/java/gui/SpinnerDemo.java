@@ -12,7 +12,7 @@ import javax.swing.SpinnerListModel;
  * Demonstrate the Swing "Spinner" control.
  * @author ian
  */
-// BEGIN main
+// tag::main[]
 public class SpinnerDemo {
 
 	public static void main(String[] args) {
@@ -34,4 +34,4 @@ public class SpinnerDemo {
 	}
 }
 
-// END main
+// end::main[]

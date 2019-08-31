@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class RandomInt {
 	public static void main(String[] a) {
 		Random r = new Random();
@@ -16,4 +16,4 @@ public class RandomInt {
 			System.out.println(1+r.nextInt(10));
 	}
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-// BEGIN main
+// tag::main[]
 /** Demonstrate a JButton with Lambda Action Listeners */
 public class ButtonDemo2L extends JFrame {
 
@@ -37,4 +37,4 @@ public class ButtonDemo2L extends JFrame {
 		new ButtonDemo2L().setVisible(true);
 	}
 }
-// END main
+// end::main[]

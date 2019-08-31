@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class InvokeMain {
-	// BEGIN main
+	// tag::main[]
 	public static void main(String[] args) {
 		System.out.println("In lang.InvokeMain.main()");
 
@@ -41,5 +41,5 @@ public class InvokeMain {
 			//e.printStackTrace();
 		}
 	}
-	// END main
+	// end::main[]
 }

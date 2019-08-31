@@ -5,7 +5,7 @@ package io;
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class BadNewline {
-	// BEGIN main
+	// tag::main[]
 	String myName;
 	public static void main(String[] argv) {
 		BadNewline jack = new BadNewline("Jack Adolphus Schmidt, III");
@@ -19,7 +19,7 @@ public class BadNewline {
 	}
 
 	// The obvious Constructor is not shown for brevity; it's in the code
-	// END main
+	// end::main[]
 	/* Constructor */
 	public BadNewline(String s) {
 		myName = s;

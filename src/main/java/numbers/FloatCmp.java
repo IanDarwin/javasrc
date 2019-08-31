@@ -4,7 +4,7 @@ package numbers;
  * Floating-point comparisons.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class FloatCmp {
 	
 	final static double EPSILON = 0.0000001;
@@ -51,4 +51,4 @@ public class FloatCmp {
 		return equals(a, b, EPSILON);
 	}
 }
-// END main
+// end::main[]

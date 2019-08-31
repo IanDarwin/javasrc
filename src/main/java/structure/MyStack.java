@@ -3,7 +3,7 @@ package structure;
 /** A lax Stack implementation.
  */
 @SuppressWarnings("unchecked")
-// BEGIN main
+// tag::main[]
 public class MyStack<T> implements SimpleStack<T> {
 	
 	private int depth = 0;
@@ -64,4 +64,4 @@ public class MyStack<T> implements SimpleStack<T> {
 		return depth;
 	}
 }
-// END main
+// end::main[]

@@ -3,7 +3,7 @@ package numbers;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
-// BEGIN main
+// tag::main[]
 public class CompactFormatDemo {
 
 	static final Number[] nums = {
@@ -28,4 +28,4 @@ public class CompactFormatDemo {
 	}
 
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ import java.util.Date;
 /** Demonstrate some usage patterns and format-code examples 
  * of the Formatter class.
  */
-// BEGIN main
+// tag::main[]
 public class FormatterDates {
 	public static void main(String[] args) {
 
@@ -20,4 +20,4 @@ public class FormatterDates {
 		System.out.printf("Today is %1$tB %1$td, %1$tY%n", today);
 	}
 }
-// END main
+// end::main[]

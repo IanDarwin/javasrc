@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-// BEGIN main
+// tag::main[]
 @Entity
 public class Person {
 
@@ -67,4 +67,4 @@ public class Person {
 		return sb.toString();
 	}
 }
-// END main
+// end::main[]

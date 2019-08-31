@@ -1,7 +1,7 @@
 package structure;
 
 /** Show Two-Dimensional Array of Objects */
-// BEGIN main
+// tag::main[]
 public class ArrayTwoDObjects {
 
 	/** Return list of subscript names (unrealistic; just for demo). */
@@ -42,4 +42,4 @@ public class ArrayTwoDObjects {
 		System.out.println("Array[1][1] = " + array[1][1]);
 	}
 }
-// END main
+// end::main[]

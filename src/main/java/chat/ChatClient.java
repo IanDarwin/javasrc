@@ -33,7 +33,7 @@ import javax.swing.JFrame;
  * Server multiplexes messages back to all clients.</p>
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class ChatClient extends JFrame {
 
 	private static final long serialVersionUID = -3686334002367908392L;
@@ -187,4 +187,4 @@ public class ChatClient extends JFrame {
 		room101.setVisible(true);
 	}
 }
-// END main
+// end::main[]

@@ -9,7 +9,7 @@ import java.util.ListIterator;
  * class (LinkListTest.java)
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class LinkedListDemo {
 	public static void main(String[] argv) {
 		System.out.println("Here is a demo of Java's LinkedList class");
@@ -34,4 +34,4 @@ public class LinkedListDemo {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -9,7 +9,7 @@ import javax.sound.sampled.Clip;
 /** 
  * Simple program to play sound files
  */
-// BEGIN main
+// tag::main[]
 public class AudioPlay {
 
 	static String defSounds[] = {
@@ -39,4 +39,4 @@ public class AudioPlay {
 	 	}
 	}
 }
-// END main
+// end::main[]

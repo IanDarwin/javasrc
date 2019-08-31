@@ -1,6 +1,6 @@
 package functional;
 
-// BEGIN main
+// tag::main[]
 public class ReferencesDemo3 {
 
 	interface FunInterface {
@@ -16,4 +16,4 @@ public class ReferencesDemo3 {
 		System.out.println("My process method is " + sample);
 	}
 }
-// END main
+// end::main[]

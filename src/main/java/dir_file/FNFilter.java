@@ -7,7 +7,7 @@ import java.util.Arrays;
  * FNFilter - Ls directory lister modified to use FilenameFilter
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class FNFilter {
 	public static void main(String argh_my_aching_fingers[]) {
 
@@ -35,4 +35,4 @@ public class FNFilter {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -136,7 +136,7 @@ public class Appt implements Comparable<Appt> {
         return false;
     }
 
-    // BEGIN main
+    // tag::main[]
 // public class Appt implements Comparable {
     // Much code and variables omitted - see online version
     //-----------------------------------------------------------------
@@ -191,7 +191,7 @@ public class Appt implements Comparable<Appt> {
             return false;
         return text.equals(a2.text);
     }
-    // END main
+    // end::main[]
 
     /** Return a String representation of this Appt.
      * Output is intended for debugging, not presentation!

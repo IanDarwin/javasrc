@@ -1,6 +1,6 @@
 package oo;
 
-// BEGIN main
+// tag::main[]
 public class EqualsDemo {
     private int int1;
     private SomeClass obj1;
@@ -42,4 +42,4 @@ public class EqualsDemo {
         return true;
     }
 }
-// END main
+// end::main[]

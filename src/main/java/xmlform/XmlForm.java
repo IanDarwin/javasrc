@@ -7,7 +7,7 @@ import javax.xml.parsers.*;
 /** Convert a simple XML file to text.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class XmlForm {
 	protected Reader is;
 	protected String fileName;
@@ -60,4 +60,4 @@ public class XmlForm {
 		msg.close();
 	}
 }
-// END main
+// end::main[]

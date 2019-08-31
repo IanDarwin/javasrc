@@ -4,7 +4,7 @@ package threads;
  * Threaded demo application, using lambda block Runnable.
  * @author	Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class ThreadsDemo4 {
 	private String mesg;
 	private Thread t;
@@ -41,4 +41,4 @@ public class ThreadsDemo4 {
 		t.start();
 	}
 }
-// END main
+// end::main[]

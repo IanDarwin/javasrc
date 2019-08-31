@@ -1,7 +1,7 @@
 package strings;
 
 /* Align a page number on a 70-character line. */
-// BEGIN main
+// tag::main[]
 public class StringAlignSimple {
 
 	public static void main(String[] args) {
@@ -15,4 +15,4 @@ public class StringAlignSimple {
 		System.out.println(formatter.format(Integer.toString(4)));
 	}
 }
-// END main
+// end::main[]

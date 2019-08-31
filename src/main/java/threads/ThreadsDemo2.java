@@ -5,7 +5,7 @@ package threads;
  * Threaded demo application, version 2, using Runnable.
  * @author	Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class ThreadsDemo2 implements Runnable {
 	private String mesg;
 	private Thread t;
@@ -45,4 +45,4 @@ public class ThreadsDemo2 implements Runnable {
 		System.out.println(mesg + " thread all done.");
 	}
 }
-// END main
+// end::main[]

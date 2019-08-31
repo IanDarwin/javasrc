@@ -6,9 +6,9 @@ package strings;
  */
 public class StringRevChar {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		String sh = "FCGDAEB";
 		System.out.println(sh + " -> " + new StringBuilder(sh).reverse());
-		// END main
+		// end::main[]
 	}
 }

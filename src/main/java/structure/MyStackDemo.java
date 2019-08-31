@@ -1,6 +1,6 @@
 package structure;
 
-// BEGIN main
+// tag::main[]
 public class MyStackDemo {
 	
 	@SuppressWarnings({"rawtypes","unchecked"})
@@ -36,4 +36,4 @@ public class MyStackDemo {
 		}
 	}
 }
-// END main
+// end::main[]

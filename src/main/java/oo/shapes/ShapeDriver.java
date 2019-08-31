@@ -3,7 +3,7 @@ package oo.shapes;
 import java.util.ArrayList;
 import java.util.Collection;
 
-// BEGIN main
+// tag::main[]
 /** Part of a main program using Shape objects */
 public class ShapeDriver {
 
@@ -20,7 +20,7 @@ public class ShapeDriver {
 		}
 		return total;
 	}
-	// END main
+	// end::main[]
 	ShapeDriver() {
 		allShapes = new ArrayList<>();
 		allShapes.add(new Circle());

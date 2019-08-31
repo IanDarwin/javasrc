@@ -1,6 +1,6 @@
 package structure;
 
-// BEGIN main
+// tag::main[]
 public interface SimpleStack<T> {
 
 	/** empty - return true if the stack is empty */
@@ -15,4 +15,4 @@ public interface SimpleStack<T> {
 	/** peek - return the top element but don't remove it */
 	abstract T peek();
 }
-// END main
+// end::main[]

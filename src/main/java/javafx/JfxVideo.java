@@ -12,7 +12,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-// BEGIN main
+// tag::main[]
 public class JfxVideo extends Application {
 
 	public static void main(String[] args) {
@@ -45,4 +45,4 @@ public class JfxVideo extends Application {
 		primaryStage.show();
 	}
 }
-// END main
+// end::main[]

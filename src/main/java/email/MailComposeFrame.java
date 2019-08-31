@@ -6,7 +6,7 @@ import javax.swing.*;
 
 /** A frame for (possibly) multiple MailComposeBean windows.
  */
-// BEGIN main
+// tag::main[]
 public class MailComposeFrame extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -56,4 +56,4 @@ public class MailComposeFrame extends JPanel {
 		add(newButton, BorderLayout.SOUTH);
 	}
 }
-// END main
+// end::main[]

@@ -20,9 +20,9 @@ public class PropsDemo {
 	String ianColor = ian.getProperty("pencil_color");
 
 	// Don't know what it will return.
-	// BEGIN pencil.color
+	// tag::pencil[].color
 	String sysColor = System.getProperty("pencil_color");
-	// END pencil.color
+	// end::pencil[].color
 
 	// Now list the Properties, using System.out
 	ian.list(System.out);

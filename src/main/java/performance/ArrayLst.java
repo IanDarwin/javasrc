@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.darwinsys.lang.MutableInteger;
 
 /** Time a bunch of creates and gets through an Array */
-// BEGIN main
+// tag::main[]
 public class ArrayLst {
 	public static final int MAX = 250000;
 	public static void main(String[] args) {
@@ -23,4 +23,4 @@ public class ArrayLst {
 		return sum;
 	}
 }
-// END main
+// end::main[]

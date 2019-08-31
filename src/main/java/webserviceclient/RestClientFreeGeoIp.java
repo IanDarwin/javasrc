@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-// BEGIN main
+// tag::main[]
 public class RestClientFreeGeoIp {
 	public static void main(String[] args) throws Exception {
 		URLConnection conn = new URL(
@@ -21,4 +21,4 @@ public class RestClientFreeGeoIp {
 		}
 	}
 }
-// END main
+// end::main[]

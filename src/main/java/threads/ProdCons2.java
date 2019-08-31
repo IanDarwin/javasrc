@@ -45,7 +45,7 @@ import java.util.LinkedList;
 
 /** Producer-consumer in Java, Take II.
  */
-// BEGIN main
+// tag::main[]
 public class ProdCons2 {
 
 	/** Throughout the code, this is the object we synchronize on so this
@@ -150,4 +150,4 @@ public class ProdCons2 {
 		}
 	}
 }
-// END main
+// end::main[]

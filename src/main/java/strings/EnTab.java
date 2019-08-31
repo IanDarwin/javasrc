@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * 
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class EnTab {
 
 	private static Logger logger = Logger.getLogger(EnTab.class.getSimpleName());
@@ -137,4 +137,4 @@ public class EnTab {
 		return sb.toString();
 	}
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ package io;
  */
 public class Stdout {
 	public static void main(String[] argv) {
-		// BEGIN main
+		// tag::main[]
 		Object anObject = new Object();
 		String myAnswer = "no";
 		int i = 42;
@@ -18,6 +18,6 @@ public class Stdout {
 		System.out.println("The answer is " + i + ".");
 		System.out.println(i + '=' + " the answer.");
 		System.out.println(new StringBuilder("The answer is ").append(i).append('.'));
-		// END main
+		// end::main[]
 	}
 }

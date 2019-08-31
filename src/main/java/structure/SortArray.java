@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Demonstrate use of Arrays.sort()
  */
-// BEGIN main
+// tag::main[]
 public class SortArray {
 	public static void main(String[] unused) {
 		String[] strings = {
@@ -19,4 +19,4 @@ public class SortArray {
 		}
 	}
 }
-// END main
+// end::main[]

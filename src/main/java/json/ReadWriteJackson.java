@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import domain.Person;
 
-// BEGIN main
+// tag::main[]
 public class ReadWriteJackson {
 
     public static void main(String[] args) throws IOException {
@@ -22,4 +22,4 @@ public class ReadWriteJackson {
         mapper.writeValue(System.out, p);
     }
 }
-// END main
+// end::main[]

@@ -5,7 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-// BEGIN main
+// tag::main[]
 public class PaintDemo extends Component {
 
 	private static final long serialVersionUID = -5595189404659801913L;
@@ -29,4 +29,4 @@ public class PaintDemo extends Component {
 	}
 }
 
-// END main
+// end::main[]

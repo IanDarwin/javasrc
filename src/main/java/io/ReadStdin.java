@@ -7,7 +7,7 @@ package io;
 public class ReadStdin {
 	/** Simple test case */
 	public static void main(String[] ap) {
-		// BEGIN main
+		// tag::main[]
 		int b = 0;
 		try {
 			b = System.in.read();
@@ -15,6 +15,6 @@ public class ReadStdin {
 		} catch (Exception e) {
 			System.out.println("Caught " + e);
 		}
-		// END main
+		// end::main[]
 	}
 }

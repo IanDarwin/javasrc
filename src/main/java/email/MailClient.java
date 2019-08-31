@@ -27,7 +27,7 @@ import com.darwinsys.util.FileProperties;
 /** Standalone MailClient GUI application.
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class MailClient extends JComponent {
 
 	private static final long serialVersionUID = 1L;
@@ -141,4 +141,4 @@ public class MailClient extends JComponent {
 		f.setVisible(true);
 	}
 }
-// END main
+// end::main[]

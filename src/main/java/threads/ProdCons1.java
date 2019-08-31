@@ -45,7 +45,7 @@ import java.util.LinkedList;
 
 /** Producer-Consumer in Java. Version 1.
  */
-// BEGIN main
+// tag::main[]
 public class ProdCons1 {
 
 	protected LinkedList<Object> list = new LinkedList<>();
@@ -92,4 +92,4 @@ public class ProdCons1 {
 		}
 	}
 }
-// END main
+// end::main[]

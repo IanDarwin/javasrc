@@ -10,7 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
-// BEGIN main
+// tag::main[]
 /**
  * Interactive test for "macosui" package.
  * Class cannot extend JFrame; must set properties before first
@@ -68,4 +68,4 @@ public class MacOsUiHints {
 
 	}
 }
-// END main
+// end::main[]

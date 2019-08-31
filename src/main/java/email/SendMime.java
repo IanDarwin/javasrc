@@ -18,7 +18,7 @@ import com.darwinsys.util.FileProperties;
 /** SendMime -- send a multi-part MIME email message.
  * @author Ian F. Darwin
  */
-// BEGIN main
+// tag::main[]
 public class SendMime {
 
 	/** The message recipient. */
@@ -104,7 +104,7 @@ public class SendMime {
 			ex.printStackTrace(System.err);
 		}
 	}
-	// END main
+	// end::main[]
 
 	/** Simple test case driver */
 	public static void main(String[] av) throws Exception {

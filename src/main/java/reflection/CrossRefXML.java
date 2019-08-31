@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 /** This class subclasss CrossRef to output the information in XML.
  */
-// BEGIN main
+// tag::main[]
 public class CrossRefXML extends CrossRef {
 
 	public static void main(String[] argv) throws IOException {
@@ -37,4 +37,4 @@ public class CrossRefXML extends CrossRef {
 		println("</class>");
 	}
 }
-// END main
+// end::main[]

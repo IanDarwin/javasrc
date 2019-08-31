@@ -11,7 +11,7 @@ import java.util.Stack;
 /**
  * SimpleCalc -- simple calculator using 1.5 java.util.Scanner
  */
-// BEGIN main
+// tag::main[]
 public class SimpleCalcScanner {
 	/** The Scanner */
 	protected  Scanner scan;
@@ -104,4 +104,4 @@ public class SimpleCalcScanner {
 		s.removeAllElements();
 	}
 }
-// END main
+// end::main[]

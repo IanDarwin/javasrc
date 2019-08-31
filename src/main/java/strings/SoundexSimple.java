@@ -1,7 +1,7 @@
 package strings;
 
 /** Simple demonstration of Soundex.  */
-// BEGIN main
+// tag::main[]
 public class SoundexSimple {
 
 	/** main */
@@ -17,4 +17,4 @@ public class SoundexSimple {
 		}
 	}
 }
-// END main
+// end::main[]

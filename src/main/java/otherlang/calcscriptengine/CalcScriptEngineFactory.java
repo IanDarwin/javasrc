@@ -6,7 +6,7 @@ import java.util.List;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
-// BEGIN main
+// tag::main[]
 public class CalcScriptEngineFactory implements ScriptEngineFactory {
 
 	private static final String THY_NAME = "SimpleCalc";
@@ -90,4 +90,4 @@ public class CalcScriptEngineFactory implements ScriptEngineFactory {
 	}
 
 }
-// END main
+// end::main[]

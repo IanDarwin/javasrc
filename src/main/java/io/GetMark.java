@@ -78,7 +78,7 @@ import java.io.PrintStream;
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class GetMark {
 	/** the default starting mark. */
 	public final String START_MARK = "//+";
@@ -136,7 +136,7 @@ public class GetMark {
             System.out.println("IOException: " + e);
         }
     }
-// END main
+// end::main[]
 
 	/** This simple main program looks after filenames and
 	 * opening files and such like for you, when GetMark is being

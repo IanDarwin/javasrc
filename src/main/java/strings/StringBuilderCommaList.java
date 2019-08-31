@@ -6,7 +6,7 @@ public class StringBuilderCommaList {
 	public static final String SAMPLE_STRING = "Alpha Bravo Charlie";
 	public static void main(String[] args) {
 
-		// BEGIN main
+		// tag::main[]
 		// Method using regexp split 
 		StringBuilder sb1 = new StringBuilder();
 		for (String word : SAMPLE_STRING.split(" ")) {
@@ -27,6 +27,6 @@ public class StringBuilderCommaList {
 			}
 		}
 		System.out.println(sb2);
-		// END main
+		// end::main[]
 	}
 }

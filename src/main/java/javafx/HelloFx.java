@@ -1,6 +1,6 @@
 package javafx;
 
-// BEGIN main
+// tag::main[]
 import javafx.application.Application;           // <1>
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,4 +33,4 @@ public class HelloFx extends Application {       // <2>
         launch(args);
     }
 }
-// END main
+// end::main[]

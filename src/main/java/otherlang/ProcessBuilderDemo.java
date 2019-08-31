@@ -11,7 +11,7 @@ import java.util.List;
 public class ProcessBuilderDemo {
 
     public static void main(String argv[]) throws Exception {
-        // BEGIN main
+        // tag::main[]
         List<String> command = new ArrayList<>();            // <1>
         command.add("notepad");
         command.add("foo.txt");
@@ -23,7 +23,7 @@ public class ProcessBuilderDemo {
             start();
         System.err.println("Waiting for Godot");             // <5>
         godot.waitFor();                                     // <6>
-        // END main
+        // end::main[]
 
         System.out.println("Program terminated!");
         return;

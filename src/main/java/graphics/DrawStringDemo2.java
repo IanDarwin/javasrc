@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  * In real life you'd just use a JLabel; this is to show the
  * mechanics of doing such a thing.
  */
-// BEGIN main
+// tag::main[]
 public class DrawStringDemo2 extends JComponent {
 
 	private static final long serialVersionUID = -6593901790809089107L;
@@ -53,4 +53,4 @@ public class DrawStringDemo2 extends JComponent {
 	}
 }
 
-// END main
+// end::main[]

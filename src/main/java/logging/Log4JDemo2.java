@@ -2,7 +2,7 @@ package logging;
 
 import org.apache.log4j.Logger;
 
-// BEGIN main
+// tag::main[]
 public class Log4JDemo2 {
 	public static void main(String[] args) {
 
@@ -19,4 +19,4 @@ public class Log4JDemo2 {
 		}
 	}
 }
-// END main
+// end::main[]

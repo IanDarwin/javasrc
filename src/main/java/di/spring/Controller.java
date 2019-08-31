@@ -6,7 +6,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 import di.View;
 
-// BEGIN main
+// tag::main[]
 public class Controller {
 
 	public static void main(String[] args) {
@@ -17,4 +17,4 @@ public class Controller {
 		((AbstractApplicationContext) ctx).close();
 	}
 }
-// END main
+// end::main[]

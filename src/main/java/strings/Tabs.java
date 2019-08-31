@@ -6,7 +6,7 @@ package strings;
  * N.B. Can only handle equally-spaced tab stops as written.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class Tabs {
 	/** tabs every so often */
 	public final static int DEFTABSPACE =   8;
@@ -44,4 +44,4 @@ public class Tabs {
 		return (col+1) % tabSpace == 0;
 	}
 }
-// END main
+// end::main[]

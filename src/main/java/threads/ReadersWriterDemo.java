@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Simulate multiple readers reading from a ReadWriteLock
  * that one writer is writing to.
  */
-// BEGIN main
+// tag::main[]
 public class ReadersWriterDemo {
 	private static final int NUM_READER_THREADS = 3;
 
@@ -101,4 +101,4 @@ public class ReadersWriterDemo {
 		}
 	}
 }
-// END main
+// end::main[]

@@ -6,7 +6,7 @@ import java.io.Console;
  * Read a password from the user.
  * REQUIRES JAVA 6 or later.
  */
-// BEGIN main
+// tag::main[]
 public class ReadPassword {
 	public static void main(String[] args) {
 		Console cons;
@@ -27,4 +27,4 @@ public class ReadPassword {
 		}
 	}
 }
-// END main
+// end::main[]

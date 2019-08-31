@@ -12,7 +12,7 @@ import com.darwinsys.swingui.I18N;
  * This is a first attempt. The next version should use a GridBagLayout.
  * @author Ian F. Darwin
  */
-// BEGIN main
+// tag::main[]
 public class BusCard extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -114,4 +114,4 @@ public class BusCard extends JFrame {
 		pack();
 	}
 }
-// END main
+// end::main[]

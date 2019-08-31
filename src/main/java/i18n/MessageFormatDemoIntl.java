@@ -3,7 +3,7 @@ package i18n;
 import java.text.*;
 import java.util.*;
 
-// BEGIN main
+// tag::main[]
 public class MessageFormatDemoIntl {
 
 	private static Date date = new Date();
@@ -16,4 +16,4 @@ public class MessageFormatDemoIntl {
 		System.out.println(result);
 	}
 }
-// END main
+// end::main[]

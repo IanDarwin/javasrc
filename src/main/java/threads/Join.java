@@ -45,7 +45,7 @@ package threads;
 /**
  * Demonstrate using Thread.join to rendezvous.
  */
-// BEGIN main
+// tag::main[]
 public class Join {
 	public static void main(String[] args) {
 		Thread t = new Thread() {
@@ -71,4 +71,4 @@ public class Join {
 		System.out.println("Main Finished.");
 	}
 }
-// END main
+// end::main[]

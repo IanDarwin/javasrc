@@ -6,7 +6,7 @@ import java.util.List;
 /** List to array */
 public class ToArray {
 	public static void main(String[] args) {
-		// BEGIN main
+		// tag::main[]
 		List<String> list = new ArrayList<>();
 		list.add("Blobbo");
 		list.add("Cracked");
@@ -19,6 +19,6 @@ public class ToArray {
 
 		String[] sl = (String[]) list.toArray(new String[0]);
 		System.out.println("Array of String has length " + sl.length);
-		// END main
+		// end::main[]
 	}
 }

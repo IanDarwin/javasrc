@@ -1,6 +1,6 @@
 package strings;
 
-// BEGIN main
+// tag::main[]
 public class SubStringDemo {
 	public static void main(String[] av) {
 		String a = "Java is great.";
@@ -13,4 +13,4 @@ public class SubStringDemo {
 		System.out.println(d);
 	}
 }
-// END main
+// end::main[]

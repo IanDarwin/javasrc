@@ -1,6 +1,6 @@
 package email;
 
-// BEGIN main
+// tag::main[]
 import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -178,4 +178,4 @@ public class MailReaderBean extends JSplitPane {
 		jf.setVisible(true);
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package chat;
 
-// BEGIN main
+// tag::main[]
 /** Constants and Class Methods for Java Chat Clients and Server.
  *
  * The protocol:
@@ -49,4 +49,4 @@ public class ChatProtocol {
 		return true;
 	}
 }
-// END main
+// end::main[]

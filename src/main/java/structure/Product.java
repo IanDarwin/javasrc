@@ -1,6 +1,6 @@
 package structure;
 
-// BEGIN main
+// tag::main[]
 public class Product {
 	String title;
 	String artist;
@@ -30,4 +30,4 @@ public class Product {
 		}		
 	}
 }
-// END main
+// end::main[]

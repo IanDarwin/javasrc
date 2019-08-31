@@ -3,7 +3,7 @@ package chat;
 import java.io.*;
 import java.net.*;
 
-// BEGIN main
+// tag::main[]
 /** Simple console-mode (command-line) chat client.
  * @author Ian Darwin, http://www.darwinsys.com/
  */
@@ -76,4 +76,4 @@ public class ConsoleChatClient {
 	}
 
 }
-// END main
+// end::main[]

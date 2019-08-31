@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
-// BEGIN main
+// tag::main[]
 public class GenMIF implements XmlFormWalker {
 	/** The normal output writer */
 	protected PrintStream msg;
@@ -374,4 +374,4 @@ public class GenMIF implements XmlFormWalker {
 		}
 	}
 }
-// END main
+// end::main[]

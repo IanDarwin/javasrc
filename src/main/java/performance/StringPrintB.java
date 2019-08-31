@@ -1,6 +1,6 @@
 package performance;
 
-// BEGIN main
+// tag::main[]
 public class StringPrintB {
 	public static void main(String[] argv) {
 		Object o = "Hello World";
@@ -12,4 +12,4 @@ public class StringPrintB {
 		}
 	}
 }
-// END main
+// end::main[]

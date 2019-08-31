@@ -11,7 +11,7 @@ import com.darwinsys.swingui.I18N;
  * I18N'd JOptionPane
  * @author Ian Darwin
  */
-// BEGIN main
+// tag::main[]
 public class JOptionDemo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -57,4 +57,4 @@ public class JOptionDemo extends JFrame {
 		x.setVisible(true);
 	}
 }
-// END main
+// end::main[]

@@ -1,6 +1,6 @@
 package functional;
 
-// BEGIN main
+// tag::main[]
 /** "Walk, don't run" */
 public class ReferencesDemo {
 
@@ -20,4 +20,4 @@ public class ReferencesDemo {
 		new ReferencesDemo().doIt();
 	}
 }
-// END main
+// end::main[]

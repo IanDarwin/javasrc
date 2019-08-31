@@ -1,6 +1,6 @@
 package domain;
 
-// BEGIN main
+// tag::main[]
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +17,7 @@ public class Address {
         return id;
     }
     // Other accessors and methods omitted for brevity
-    // END main
+    // end::main[]
     
     public void setId(int id) {
     		this.id = id;

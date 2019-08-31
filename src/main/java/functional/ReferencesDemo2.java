@@ -1,6 +1,6 @@
 package functional;
 
-// BEGIN main
+// tag::main[]
 public class ReferencesDemo2 {
 	void cloz() {
 		System.out.println("Stand-in close() method called");
@@ -17,4 +17,4 @@ public class ReferencesDemo2 {
 		}
 	}
 }
-// END main
+// end::main[]

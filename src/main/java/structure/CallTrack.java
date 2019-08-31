@@ -10,7 +10,7 @@ import domain.Person;
  * of the ArrayList to find the object (or end of list) before which
  * to insert the new user. 
  */
-// BEGIN main
+// tag::main[]
 public class CallTrack {
 
 	/** The list of Person objects. */
@@ -35,4 +35,4 @@ public class CallTrack {
 	}
 
 }
-// END main
+// end::main[]

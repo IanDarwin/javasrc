@@ -5,7 +5,7 @@ import java.net.URL;
 import java.net.URISyntaxException;
 import java.net.MalformedURLException;
 
-// BEGIN main
+// tag::main[]
 public class URIDemo {
 	public static void main(String[] args)
 	throws URISyntaxException, MalformedURLException {
@@ -26,4 +26,4 @@ public class URIDemo {
 		System.out.println(uri);
 	}
 }
-// END main
+// end::main[]

@@ -11,17 +11,17 @@ public class VarArgsDemo {
 
 	public static void main(String[] args) {
 		mySumCalls();
-		// BEGIN processCalls
+		// tag::processCalls[]
 		process(System.out, "Hello", "Goodbye");
 		process(System.out, (int)42, (int)1066, (int)1776);
 		process(System.out, "Foo", new Date(), new Object());
-		// END processCalls
-		// BEGIN passThroughCalls
+		// end::processCalls[]
+		// tag::passThroughCalls[]
 		passThrough(System.out, "%s %s %s%n", "Foo", new Date(), new Object());
-		// END passThroughCalls
+		// end::passThroughCalls[]
 	}
 
-	// BEGIN mySumDefn
+	// tag::mySumDefn[]
 	static int mySum(int... args) {
 		int total = 0;
 		for (int a : args) {
@@ -29,16 +29,16 @@ public class VarArgsDemo {
 		}
 		return total;
 	}
-	// END mySumDefn
+	// end::mySumDefn[]
 
 	public static void mySumCalls() {
-		// BEGIN mySumCalls
+		// tag::mySumCalls[]
 		System.out.println(mySum(5, 7, 9));
 		System.out.println(mySum(5));
 		System.out.println(mySum());
 		int[] nums = {5, 7, 9};
 		System.out.println(mySum(nums));
-		// END mySumCalls
+		// end::mySumCalls[]
 	}
 
 	/** Show passing the entire varargs list on to another method

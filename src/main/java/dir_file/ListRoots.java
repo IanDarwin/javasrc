@@ -2,7 +2,7 @@ package dir_file;
 
 import java.io.*;
 
-// BEGIN main
+// tag::main[]
 public class ListRoots {
 	public static void main(String argh_my_aching_fingers[]) {
 		File[] drives = File.listRoots(); // Get list of names
@@ -11,4 +11,4 @@ public class ListRoots {
 		}
 	}
 }
-// END main
+// end::main[]

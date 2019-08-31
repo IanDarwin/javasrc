@@ -2,7 +2,7 @@ package json;
 
 import org.json.JSONObject;
 
-// BEGIN main
+// tag::main[]
 public class WriteOrgJson {
 	public static void main(String[] args) {
 		JSONObject jsonObject = new JSONObject();
@@ -13,4 +13,4 @@ public class WriteOrgJson {
 		System.out.println(printable);
 	}
 }
-// END main
+// end::main[]

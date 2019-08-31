@@ -4,7 +4,7 @@ package jdbc;
 /** 
  * Load some drivers.
  */
-// BEGIN main
+// tag::main[]
 public class LoadDriver {
 	public static void main(String[] av) {
 		try {
@@ -20,4 +20,4 @@ public class LoadDriver {
 		}
 	}
 }
-// END main
+// end::main[]

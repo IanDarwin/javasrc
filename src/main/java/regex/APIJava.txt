@@ -1,4 +1,4 @@
-// BEGIN main
+// tag::main[]
 /** The main public API of the java.util.regex package.
  * Prepared by javap and Ian Darwin.
  */
@@ -58,4 +58,4 @@ public final class String {
     public String[] split(String regex);
     public String[] split(String regex, int max);
 }
-// END main
+// end::main[]

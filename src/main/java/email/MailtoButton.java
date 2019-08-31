@@ -15,7 +15,7 @@ import java.net.URL;
  * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>,
  * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
  */
-// BEGIN main
+// tag::main[]
 public class MailtoButton extends Applet {
 
 	private static final long serialVersionUID = -3186706180199804315L;
@@ -125,4 +125,4 @@ public class MailtoButton extends Applet {
 		return info;
 	}
 }
-// END main
+// end::main[]

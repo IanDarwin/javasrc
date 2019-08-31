@@ -2,7 +2,7 @@ package plotter;
 
 import java.awt.Point;
 
-// BEGIN main
+// tag::main[]
 /**
  * Plotter abstract class. Must be subclassed 
  * for X, DOS, Penman, HP plotter, etc.
@@ -67,4 +67,4 @@ public abstract class Plotter {
 		return new Point(curx, cury);
 	}
 }
-// END main
+// end::main[]

@@ -9,7 +9,7 @@ import java.util.regex.*;
 /** A grep-like program using NIO but NOT LINE BASED.
  * Pattern and file name(s) must be on command line.
  */
-// BEGIN main
+// tag::main[]
 public class GrepNIO {
 	public static void main(String[] args) throws IOException {
 
@@ -43,4 +43,4 @@ public class GrepNIO {
 		fis.close();
 	}
 }
-// END main
+// end::main[]

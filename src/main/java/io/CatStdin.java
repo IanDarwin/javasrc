@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Read and print, using BufferedReader from System.in, onto System.out
  */
-// BEGIN main
+// tag::main[]
 public class CatStdin {
 
     public static void main(String[] av) {
@@ -23,4 +23,4 @@ public class CatStdin {
         }
     }
 }
-// END main
+// end::main[]

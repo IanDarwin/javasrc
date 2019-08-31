@@ -6,7 +6,7 @@ import java.util.Formatter;
  * of the Formatter class and PrintStream/PrintWriter 
  * printf() methods introduced way back in Java 5.
  */
-// BEGIN main
+// tag::main[]
 public class FormatterDemo {
 	public static void main(String[] args) {
 
@@ -40,4 +40,4 @@ public class FormatterDemo {
 		fmtr.close();
 	}
 }
-// END main
+// end::main[]
