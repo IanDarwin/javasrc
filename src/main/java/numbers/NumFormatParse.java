@@ -6,7 +6,7 @@ import java.text.ParseException;
 /*
  * Parse a number using a NumberFormat.
  */
-// tag::main[] 
+// tag::main[]
 public class NumFormatParse {
 	/** A number to parse */
 	public static final String input = "4096.251";
