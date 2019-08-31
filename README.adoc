@@ -3,7 +3,7 @@
 Many but by no means all of these files are used in my 
 https://javacook.darwinsys.com/[Java Cookbook].
 I use a script to pre-format these for inclusion in the O'Reilly publishing toolchain;
-these will have "// BEGIN" and "// END" comments to mark sections for
+these will have "// tag::foo[]" and "// end::foo[]" comments to mark sections for
 mechanical inclusion into the book. These are just comments to Java tooling and can be
 completely ignored by people looking at the source code normally.
 Not all files with these comments necessarily appear in the book.
