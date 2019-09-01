@@ -15,6 +15,6 @@ public class LineCount {
 		//Stream<String> lines = br.lines();
 		//long numberLines = lines.count();
 		br.close();
-		System.out.println(fileName + " containss " + numberLines + " lines.");
+		System.out.println(fileName + " contains " + numberLines + " lines.");
 	}
 }
