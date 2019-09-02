@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
  *
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-// tag::main[]
 public class GetNumber extends Frame {
 
 	private static final long serialVersionUID = 1L;
@@ -38,8 +37,9 @@ public class GetNumber extends Frame {
 		pack();
 	}
 
-	/* Process one String, returning it as a Number subclass
-	 * Does not require the GUI.
+	// tag::main[]
+	/*
+	 * Process one String, returning it as a Number subclass
 	 */
 	public static Number process(String s) {
 		if (s.matches("[+-]*\\d*\\.\\d+[dDeEfF]*")) {
@@ -61,9 +61,9 @@ public class GetNumber extends Frame {
 				return Double.NaN;
 			}
 	}
+	// end::main[]
 
 	public static void main(String[] ap) {
 		new GetNumber().setVisible(true);
 	}
 }
-// end::main[]
