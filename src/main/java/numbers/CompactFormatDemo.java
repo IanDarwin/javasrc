@@ -3,6 +3,10 @@ package numbers;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
+/**
+ * Demo of the CompactNumberFormat class.
+ * REQUIRES JAVA 12+
+ */
 // tag::main[]
 public class CompactFormatDemo {
 
