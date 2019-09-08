@@ -9,8 +9,8 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 /**
- * "Your kids are traveling as Unaccompanied Minors on a trans-Atlantic flight
- * that takes 5 hours 10 minutes from departure. Your in-laws
+ * "Your kids are traveling as Unaccompanied Minors on a trans-Atlantic flight from YYZ
+ * that takes 5 hours 10 minutes from the actual time of departure. Your in-laws
  * need one hour to get to LHR and find parking. What time should
  * you phone them to leave for the airport?"
  * @author Ian Darwin, based on a related calculation by Chris Mawata.
@@ -33,14 +33,19 @@ public class FlightArrivalTimeCalc {
 		calulateArrivalTime(when);
 	}
 
-	public static void calulateArrivalTime(LocalDateTime takeOffTime) {
+	public static ZonedDateTime calulateArrivalTime(LocalDateTime takeOffTime) {
 		ZoneId torontoZone = ZoneId.of("America/Toronto"),
 				londonZone = ZoneId.of("Europe/London");
 		ZonedDateTime takeOffTimeZoned = ZonedDateTime.of(takeOffTime, torontoZone);
 		System.out.println("Flight departure time " + takeOffTimeZoned);
+		System.out.println("Flight expected length: " + flightTime);
 		ZonedDateTime arrivalTimeZoned = takeOffTimeZoned.plus(flightTime).toInstant().atZone(londonZone);
+
+		// The real calculation:
 		ZonedDateTime phoneTimeHere = takeOffTimeZoned.plus(flightTime).minus(driveTime);
-		System.out.println("Flight arrives there at " + arrivalTimeZoned);
-		System.out.println("You should phone at " + phoneTimeHere);
+
+		System.out.println("Flight arrives there at " + arrivalTimeZoned + " London time.");
+		System.out.println("You should phone at " + phoneTimeHere + " Toronto time");
+		return arrivalTimeZoned;
 	}
 }
