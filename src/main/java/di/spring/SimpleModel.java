@@ -1,9 +1,11 @@
 package di.spring;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
+
+import di.Model;
 
 // tag::main[]
-@Component("myModel")
+@Named("myModel")
 public class SimpleModel implements Model {
 
 	@Override

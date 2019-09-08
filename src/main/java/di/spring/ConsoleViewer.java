@@ -3,6 +3,7 @@ package di.spring;
 import javax.annotation.Resource;
 import javax.inject.Named;
 
+import di.Model;
 import di.View;
 
 // tag::main[]

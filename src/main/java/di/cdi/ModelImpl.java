@@ -7,9 +7,9 @@ import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
 // tag::main[]
-public class Model {
+public class ModelImpl {
     
-    public @Produces @MyModel String getModelData(InjectionPoint ip)
+    public @Produces @MyModel String getMessage(InjectionPoint ip)
 		throws IOException {
 
         ResourceBundle props = ResourceBundle.getBundle("messages");

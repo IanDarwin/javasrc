@@ -3,6 +3,7 @@ package di.spring;
 import javax.annotation.Resource;
 import javax.swing.JOptionPane;
 
+import di.Model;
 import di.View;
 
 public class SwingViewer implements View {

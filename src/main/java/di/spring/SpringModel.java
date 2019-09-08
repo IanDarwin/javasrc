@@ -2,6 +2,8 @@ package di.spring;
 
 import javax.annotation.Resource;
 
+import di.Model;
+
 public class SpringModel implements Model {
 
 	private String message = "Hello from Spring";

@@ -1,7 +1,6 @@
 package di;
 
 import di.spring.ConsoleViewer;
-import di.spring.Model;
 import di.spring.SimpleModel;
 
 // tag::main[]

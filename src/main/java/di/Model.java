@@ -1,4 +1,4 @@
-package di.spring;
+package di;
 
 public interface Model {
 	String getMessage();
