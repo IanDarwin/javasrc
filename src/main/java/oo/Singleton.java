@@ -8,19 +8,16 @@ package oo;
 // tag::main[]
 public class Singleton {
 
-	private static Singleton instance;
+	/** 
+	 * Static Initializer is run before class is available to code, avoiding
+	 * broken anti-pattern of lazy initialization in instance method.
+	 * For more complicated construction, could use static block initializer.
+	 */
+	private static Singleton instance = new Singleton();
 
 	/** A private Constructor prevents any other class from instantiating. */
 	private Singleton() {
 		// nothing to do this time
-	}
-	
-	/** The Static initializer constructs the instance at class loading time;
-	 * this is to simulate a more involved construction process (it it
-	 * were really simple, you'd just use an initializer)
-	 */
-	static {
-		instance = new Singleton();
 	}
 
 	/** Static 'instance' method */

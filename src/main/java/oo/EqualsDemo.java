@@ -41,5 +41,17 @@ public class EqualsDemo {
             return false;
         return true;
     }
-}
+    
+    // ...
 // end::main[]
+    
+    // Never override equals() without also doing so for hashCode()
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + int1;
+		result = prime * result + ((obj1 == null) ? 0 : obj1.hashCode());
+		return result;
+	}
+}
