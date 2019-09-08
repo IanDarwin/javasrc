@@ -1,3 +1,4 @@
+
 package structure;
 
 import java.util.*;
@@ -11,19 +12,19 @@ public class IterableDemo {
 	/** Demo implements Iterable, meaning it must provide an Iterator,
 	 * and, that it can be used in a foreach loop.
 	 */
-	static class Demo implements Iterable<String> {
+	static class Demo<T> implements Iterable<T> {
 
 		// Simple demo: use array instead of inventing new data structure
 		String[] data = { "One", "Two", "Three"};
 
 		/** This is the Iterator that makes it all happen */
-		class DemoIterator implements Iterator<String> {
+		class DemoIterator implements Iterator<T> {
 			int i = 0;
 			public boolean hasNext() {
 				return i < 3;
 			}
-			public String next() {
-				return data[i++];
+			public T next() {
+				return (T)data[i++];
 			}
 			public void remove() {
 				throw new UnsupportedOperationException("remove");
@@ -31,13 +32,13 @@ public class IterableDemo {
 		}
 		
 		/** Method by which the Demo class makes its iterator available */
-		public Iterator<String> iterator() {
+		public Iterator<T> iterator() {
 			return new DemoIterator();
 		}
 	}
 		
 	public static void main(String[] args) {
-		Demo demo = new Demo();
+		Demo<String> demo = new Demo<>();
 		for (String s : demo) {
 			System.out.println(s);
 		}
