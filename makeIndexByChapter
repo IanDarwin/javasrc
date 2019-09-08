@@ -15,7 +15,9 @@ BEGIN {
 	print ".", $0
 }
 /^include::src/ {
+	sub(/\[tag.*$/, "", $0)
 	sub(/^include::/, "* link:", $0)
+	sub(/$/, "[]", $0)
 	print $0
 }
 /^\/\/ [A-Za-z0-9\/]+\.java/ {
