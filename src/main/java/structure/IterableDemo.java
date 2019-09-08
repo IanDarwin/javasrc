@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * Simple demo of how Iterable works.
  */
+// tag::main[]
 public class IterableDemo {
 
 	/** Demo implements Iterable, meaning it must provide an Iterator,
@@ -12,6 +13,7 @@ public class IterableDemo {
 	 */
 	static class Demo implements Iterable<String> {
 
+		// Simple demo: use array instead of inventing new data structure
 		String[] data = { "One", "Two", "Three"};
 
 		/** This is the Iterator that makes it all happen */
@@ -41,4 +43,5 @@ public class IterableDemo {
 		}
 	}
 }
+// end::main[]
 
