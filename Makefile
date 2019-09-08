@@ -1,5 +1,7 @@
 indices: index-bychapter.html index-byname.html
 
+# deps are unreliable, use make -B
+
 index-bychapter.html:
 	makeIndexByChapter $$jcb/ch*.*doc | asciidoctor - > index-bychapter.html
 index-byname.html:
