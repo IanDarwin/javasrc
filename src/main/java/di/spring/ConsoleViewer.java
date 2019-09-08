@@ -1,13 +1,12 @@
 package di.spring;
 
 import javax.annotation.Resource;
-
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import di.View;
 
 // tag::main[]
-@Component("myView")
+@Named("myView")
 public class ConsoleViewer implements View {
 
 	Model messageProvider;
