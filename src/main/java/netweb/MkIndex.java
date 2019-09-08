@@ -13,7 +13,7 @@ import com.darwinsys.io.FileIO;
 /** MkIndex -- make a static index.html for a Java Source directory
  * <p>
  * Works through one or more directories, finding all the java files,
- * and making links.
+ * and making links for an "index-byname" type file.
  *
  * @author	Ian F. Darwin, http://www.darwinsys.com/
  */
@@ -121,7 +121,8 @@ public class MkIndex {
 		}
 
 		if (file.isDirectory()) {
-			System.out.println("Indexing directory " + name);
+			if (verbose)
+				System.out.println("Indexing directory " + name);
 			File[] files = file.listFiles();
 			for (int i=0; i<files.length; i++) {
 				String fn = files[i].getName();
@@ -155,7 +156,7 @@ public class MkIndex {
 		
 		System.out.println("Start PASS TWO -- from List to " +
 			OUTPUTFILE + "...");
-		// ... the beginning of the HTML Unordered List...
+		// ... the beginning of the HTML List...
 		println("<ul>");
 		for (String fn : list.keySet()) {			
 			String path = list.get(fn);
