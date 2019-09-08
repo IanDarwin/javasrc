@@ -17,18 +17,16 @@ import java.time.temporal.ChronoUnit;
  */
 public class FlightArrivalTimeCalc {
 
-	static Duration flightTime = 
-			Duration.ofHours(5).plus(10, ChronoUnit.MINUTES);
 	static Duration driveTime = Duration.ofHours(1);
 
 	public static void main(String[] args) {
 		LocalDateTime when = null;
 		if (args.length == 0) {
-			when = LocalDateTime.now();
+			when = LocalDateTime.now();                                              // <1>
 		} else {
 			String time = args[0];
-			LocalTime lTime = LocalTime.parse(time);
-			when = LocalDateTime.of(LocalDate.now(), lTime);
+			LocalTime localTime = LocalTime.parse(time);
+			when = LocalDateTime.of(LocalDate.now(), localTime);                     // <1>
 		}
 		calulateArrivalTime(when);
 	}
@@ -36,14 +34,14 @@ public class FlightArrivalTimeCalc {
 	public static ZonedDateTime calulateArrivalTime(LocalDateTime takeOffTime) {
 		ZoneId torontoZone = ZoneId.of("America/Toronto"),
 				londonZone = ZoneId.of("Europe/London");
-		ZonedDateTime takeOffTimeZoned = ZonedDateTime.of(takeOffTime, torontoZone);
+		ZonedDateTime takeOffTimeZoned = ZonedDateTime.of(takeOffTime, torontoZone); // <2>
+		Duration flightTime = Duration.ofHours(5).plus(10, ChronoUnit.MINUTES);      // <3>
+		final ZonedDateTime arrivalTimeUnZoned = takeOffTimeZoned.plus(flightTime);  // <4>
+		ZonedDateTime arrivalTimeZoned = arrivalTimeUnZoned.toInstant().atZone(londonZone); // <5>
+		ZonedDateTime phoneTimeHere = arrivalTimeUnZoned.minus(driveTime);           // <6>
+
 		System.out.println("Flight departure time " + takeOffTimeZoned);
 		System.out.println("Flight expected length: " + flightTime);
-		ZonedDateTime arrivalTimeZoned = takeOffTimeZoned.plus(flightTime).toInstant().atZone(londonZone);
-
-		// The real calculation:
-		ZonedDateTime phoneTimeHere = takeOffTimeZoned.plus(flightTime).minus(driveTime);
-
 		System.out.println("Flight arrives there at " + arrivalTimeZoned + " London time.");
 		System.out.println("You should phone at " + phoneTimeHere + " Toronto time");
 		return arrivalTimeZoned;
