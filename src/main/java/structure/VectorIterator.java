@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -9,7 +9,7 @@ import java.util.Vector;
  */
 public class VectorIterator {
 	public static void main(String[] argv) {
-		List<Date> v = new Vector<>();
+		List<LocalDateTime> v = new Vector<>();
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the Vector...
@@ -19,7 +19,7 @@ public class VectorIterator {
 
 		// Process the data structure using an iterator.
 		int i = 0;
-		Iterator<Date> it = v.iterator();
+		Iterator<LocalDateTime> it = v.iterator();
 
 		// Remaining part of the code does not know or care
 		// if the data is an an array, a List, or whatever.

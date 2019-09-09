@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /** Re-allocate an array, bigger...
  * @author Ian Darwin
@@ -12,9 +12,9 @@ public class Array2  {
 
     public static void main(String[] argv) {
         int nDates = 0;
-        Date[] dates = new Date[INITIAL];
+        LocalDateTime[] dates = new LocalDateTime[INITIAL];
         StructureDemo source = new StructureDemo(21);
-        Date c;
+        LocalDateTime c;
         while ((c=(Date)(source.getDate())) != null) {
 
             // if (nDates >= dates.length) {
@@ -24,7 +24,7 @@ public class Array2  {
 
             // better: reallocate, making data structure dynamic
             if (nDates >= dates.length) {
-                Date[] tmp = new Date[dates.length * GROW_FACTOR];
+                LocalDateTime[] tmp = new LocalDateTime[dates.length * GROW_FACTOR];
                 System.arraycopy(dates, 0, tmp, 0, dates.length);
                 dates = tmp;    // copies the array reference
                 // old array will be garbage collected soon...

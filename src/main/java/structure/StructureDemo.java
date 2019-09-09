@@ -1,7 +1,7 @@
 package structure;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
 
 /** Dummy source of Objects, for structure demos.
  * @author Ian Darwin
@@ -19,11 +19,11 @@ public class StructureDemo {
 	int n;
 
 
-	/* Dummy method to return a sequence of Calendar references,
+	/* Dummy method to return a sequence of Date references,
 	 */
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		if (n++ > MAX)
 			return null;
-		return Calendar.getInstance().getTime();
+		return LocalDateTime.now();
 	}
 }

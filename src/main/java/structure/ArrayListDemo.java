@@ -2,6 +2,7 @@ package structure;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * ArrayList Demo.
@@ -9,7 +10,7 @@ import java.util.Date;
 // tag::main[]
 public class ArrayListDemo {
 	public static void main(String[] argv) {
-		ArrayList<Date> al = new ArrayList<>();
+		List<Date> al = new ArrayList<>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);

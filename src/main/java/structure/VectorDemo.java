@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.Date;
+import java.util.LocalDateTime;
 import java.util.Vector;
 
 /**
@@ -8,7 +8,7 @@ import java.util.Vector;
  */
 public class VectorDemo {
 	public static void main(String[] argv) {
-		Vector<Date> v = new Vector<>();
+		Vector<LocalDateTime> v = new Vector<>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);

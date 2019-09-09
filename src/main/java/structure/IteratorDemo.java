@@ -1,7 +1,7 @@
 package structure;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class IteratorDemo {
 
 	public static void main(String[] argv) {
 
-		List<Date> l = new ArrayList<>();
+		List<LocalDateTime> l = new ArrayList<>();
 		StructureDemo source = new StructureDemo(15);
 
 		// Add lots of elements to the list...
@@ -22,7 +22,7 @@ public class IteratorDemo {
 
 		int i = 0;
 
-		Iterator<Date> it = l.iterator();
+		Iterator<LocalDateTime> it = l.iterator();
 
 		// Process the data structure using an iterator.
 		// This part of the code does not know or care
