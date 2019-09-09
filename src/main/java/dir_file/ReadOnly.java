@@ -7,8 +7,7 @@ public class ReadOnly {
 	public static void main(String[] a) throws IOException {
 
 		File f = new File("f");
-		f.deleteOnExit();
-		
+
 		if (!f.createNewFile()) {
 			System.out.println("Can't create new file.");
 			return;
@@ -23,7 +22,6 @@ public class ReadOnly {
 			System.out.println("Grrr! Can't set file read-only.");
 			return;
 		}
-		Runtime.getRuntime().exec("ls -l " + f.getAbsolutePath());
 
 		if (f.canWrite()) {
 			System.out.println("Most immutable, captain!");
@@ -34,6 +32,8 @@ public class ReadOnly {
 			System.out.println(
 				"canWrite() correctly returns false after setReadOnly");
 		}
+
+		f.delete(); // So you can run the program again
 	}
 }
 // end::main[]
