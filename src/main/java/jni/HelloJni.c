@@ -1,4 +1,4 @@
-/* tag::main[] */
+// tag::main[]
 #include <jni.h>
 #include "HelloJni.h"
 #include <stdio.h>
@@ -30,4 +30,4 @@ JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this) 
   printf("\"myNumber\" value now %d\n", nn); /* make sure */
   return;
 }
-/* end::main[] */
+// end::main[]

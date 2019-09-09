@@ -32,13 +32,13 @@ public class VarArgsDemo {
 	// end::mySumDefn[]
 
 	public static void mySumCalls() {
-		// tag::mySumCalls[]
+		// tag::mySumUsages[]
 		System.out.println(mySum(5, 7, 9));
 		System.out.println(mySum(5));
 		System.out.println(mySum());
 		int[] nums = {5, 7, 9};
 		System.out.println(mySum(nums));
-		// end::mySumCalls[]
+		// end::Usages[]
 	}
 
 	/** Show passing the entire varargs list on to another method

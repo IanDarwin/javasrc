@@ -15,6 +15,7 @@ import java.time.temporal.ChronoUnit;
  * you phone them to leave for the airport?"
  * @author Ian Darwin, based on a related calculation by Chris Mawata.
  */
+// tag::main[]
 public class FlightArrivalTimeCalc {
 
 	static Duration driveTime = Duration.ofHours(1);
@@ -47,3 +48,4 @@ public class FlightArrivalTimeCalc {
 		return arrivalTimeZoned;
 	}
 }
+// end::main[]

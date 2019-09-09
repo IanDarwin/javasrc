@@ -1,10 +1,12 @@
 # Makefile for the 1.1 Java Native Methods examples for
 # Java Cookbook, originally for Learning Tree International Course 471/478.
 # Tested on Solaris both with "gcc" and with SunSoft "cc".
-# Tested on OpenBSD with native port "devel/jdk/1.2" and cc.
+# Tested on OpenBSD with native port "devel/jdk" and cc.
 # On other platforms it will certainly need some tweaking; please
-# let me know how much! :-)
+# feel free to let me know how much! :-)
 # Ian Darwin, http://www.darwinsys.com
+
+# // tag::main[]
 
 # Configuration Section
 
@@ -62,3 +64,4 @@ clean:
 	rm -f core *.class *.o *.so HelloJni.h
 clobber: clean
 	rm -f javafromc
+# // end::main[]

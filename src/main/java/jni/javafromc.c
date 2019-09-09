@@ -1,4 +1,4 @@
-/* tag::main[] */
+// tag::main[]
 /*
  * This is a C program that calls Java code.
  * This could be used as a model for building Java into an
@@ -76,4 +76,4 @@ main(int argc, char *argv[]) {
 	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
 	return 0;
 }
-/* end::main[] */
+// end::main[]
