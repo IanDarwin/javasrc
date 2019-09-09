@@ -50,9 +50,7 @@ public class EnTab {
 
 	/**
 	 * Constructor: just save the tab values.
-	 * 
-	 * @param n
-	 *            The number of spaces each tab is to replace.
+	 * @param n The number of spaces each tab is to replace.
 	 */
 	public EnTab(int n) {
 		tabs = new Tabs(n);
@@ -64,18 +62,17 @@ public class EnTab {
 
 	/**
 	 * entab: process one file, replacing blanks with tabs.
-	 * 
 	 * @param is A BufferedReader opened to the file to be read.
 	 * @param out a PrintWriter to send the output to.
 	 */
 	public void entab(BufferedReader is, PrintWriter out) throws IOException {
-		String line;
-
+		
 		// main loop: process entire file one line at a time.
-		while ((line = is.readLine()) != null) {
+		is.lines().forEach(line -> {
 			out.println(entabLine(line));
-		}
+		});
 	}
+
 	/**
 	 * entab: process one file, replacing blanks with tabs.
 	 * 
@@ -88,9 +85,7 @@ public class EnTab {
 
 	/**
 	 * entabLine: process one line, replacing blanks with tabs.
-	 * 
-	 * @param line -
-	 *            the string to be processed
+	 * @param line the string to be processed
 	 */
 	public String entabLine(String line) {
 		int N = line.length(), outCol = 0;
@@ -98,7 +93,7 @@ public class EnTab {
 		char ch;
 		int consumedSpaces = 0;
 		
-		for (int inCol = 0; inCol < N; inCol++) {
+		for (int inCol = 0; inCol < N; inCol++) { // Cannot use foreach here
 			ch = line.charAt(inCol);
 			// If we get a space, consume it, don't output it.
 			// If this takes us to a tab stop, output a tab character.
