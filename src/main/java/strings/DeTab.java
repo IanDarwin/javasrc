@@ -30,10 +30,9 @@ public class DeTab {
 	 * @param out - the updated file
 	 */
 	public void detab(BufferedReader is, PrintWriter out) throws IOException {
-		String line;
-		while ((line = is.readLine()) != null) {
+		is.lines().forEach(line -> {
 			out.println(detabLine(line));
-		}
+		});
 	}
 	
 	/** detab one line (replace tabs with spaces)
