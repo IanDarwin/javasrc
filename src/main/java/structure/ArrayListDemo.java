@@ -1,7 +1,7 @@
 package structure;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
 // tag::main[]
 public class ArrayListDemo {
 	public static void main(String[] argv) {
-		List<Date> al = new ArrayList<>();
+		List<LocalDateTime> al = new ArrayList<>();
 
 		// Create a source of Objects
 		StructureDemo source = new StructureDemo(15);

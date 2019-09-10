@@ -1,7 +1,6 @@
 package structure;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 /** Dummy source of Objects, for structure demos.
  * @author Ian Darwin

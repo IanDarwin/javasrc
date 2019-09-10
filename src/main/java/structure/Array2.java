@@ -15,7 +15,7 @@ public class Array2  {
         LocalDateTime[] dates = new LocalDateTime[INITIAL];
         StructureDemo source = new StructureDemo(21);
         LocalDateTime c;
-        while ((c=(Date)(source.getDate())) != null) {
+        while ((c=source.getDate()) != null) {
 
             // if (nDates >= dates.length) {
             //     System.err.println("Too Many Dates! Simplify your life!!");
