@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * Buttons enable/disable it.
  * @author Eckstein et al, in the O'Reilly book "Java Swing"
  */
-public class GlassExample {
+public class GlassPaneExample {
 
 	public static void main(String[] args) {
 		JFrame f = new JFrame("GlassPane");
