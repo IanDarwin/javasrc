@@ -1,24 +1,26 @@
 package datetimeold;
 
-import java.applet.Applet;
 import java.awt.Graphics;
-import java.text.DateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-/** An Applet to display the current time */
-public class ClockApplet extends Applet implements Runnable {
+import javax.swing.JPanel;
+
+/** An JPanel to display the current time */
+public class ClockPanel extends JPanel {
 
 	private static final long serialVersionUID = 1321097174379241717L;
 	/** A Thread to run the timer */
 	protected Thread timerThread;
-	/** The date object */
-	Date date = new Date();
-	/** The date format */
-	protected final DateFormat format = DateFormat.getTimeInstance();
 
-	/* Applet Lifestyle Methods */
-	public void start() {
-		timerThread = new Thread(this, "Clock");
+	public ClockPanel() {
+		timerThread = new Thread(() -> {
+			while (timerThread != null) {
+				repaint();	// request a redraw
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e){ /* do nothing*/ }
+			}
+		});
 		timerThread.start();
 	}
 
@@ -40,7 +42,6 @@ public class ClockApplet extends Applet implements Runnable {
 
 	/** Display the time. */
 	public void paint(Graphics g) {
-		date.setTime(System.currentTimeMillis());
-		g.drawString(format.format(date), 2, 10);
+		g.drawString(LocalDateTime.now().toString(), 2, 10);
 	}
 }
