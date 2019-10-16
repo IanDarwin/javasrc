@@ -1,8 +1,12 @@
 package tar;
 
-import java.io.*;
-import java.text.*;	// only for formatting
-import java.util.*;
+import java.io.IOException;
+// only for formatting
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Demonstrate the Tar archive lister.
@@ -41,10 +45,9 @@ public class TarList {
 	};
 	/** NumberFormat used in formatting List form string */
 	NumberFormat sizeForm = new DecimalFormat("00000000");
-	/** Date used in printing mtime */
-	Date date = new Date();
-	SimpleDateFormat dateForm =
-		new SimpleDateFormat ("yyyy-MM-dd HH:mm");
+	/** Date formatter used in printing mtime */
+	DateTimeFormatter dateTimeFormatter = 
+		DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	/** Format a TarEntry the same way that UNIX tar does */
 	public String toListFormat(TarEntry e) {
@@ -103,11 +106,10 @@ public class TarList {
 		}
 		sb.append(' ');
 
-		// mtime
-		// copy file's mtime into Data object (after scaling
-		// from "sec since 1970" to "msec since 1970"), and format it.
-		date.setTime(1000*e.getTime());
-		sb.append(dateForm.format(date)).append(' ');
+		// format file's mtime.
+		ZoneOffset offset = ZoneOffset.UTC ;
+		LocalDateTime date = LocalDateTime.ofEpochSecond(e.getTime(), 0, offset);
+		sb.append(dateTimeFormatter.format(date)).append(' ');
 
 		sb.append(e.getName());
 		if (e.isLink())
