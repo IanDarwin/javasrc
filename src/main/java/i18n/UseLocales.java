@@ -1,7 +1,9 @@
 package i18n;
 
-import java.text.*;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 
 /** Use some locales
  * choices or -Duser.lang= or -Duser.region=.
@@ -13,20 +15,20 @@ public class UseLocales {
 		Locale frLocale = Locale.FRANCE;	// predefined
 		Locale ukLocale = new Locale("en", "UK");	// English, UK version
 
-		DateFormat defaultDateFormatter = DateFormat.getDateInstance(
-			DateFormat.MEDIUM);
-		DateFormat frDateFormatter = DateFormat.getDateInstance(
-			DateFormat.MEDIUM, frLocale);
-		DateFormat ukDateFormatter = DateFormat.getDateInstance(
-			DateFormat.MEDIUM, ukLocale);
+		DateTimeFormatter defaultDateFormatter = 
+			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+		DateTimeFormatter frDateFormatter = 
+			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).localizedBy(frLocale);
+		DateTimeFormatter ukDateFormatter = 
+			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).localizedBy(ukLocale);
 
-		Date now = new Date();
+		LocalDateTime now = LocalDateTime.now();
 		System.out.println("Default: " + ' ' +
-			defaultDateFormatter.format(now));
+			now.format(defaultDateFormatter));
 		System.out.println(frLocale.getDisplayName() + ' ' +
-			frDateFormatter.format(now));
+			now.format(frDateFormatter));
 		System.out.println(ukLocale.getDisplayName() + ' ' +
-			ukDateFormatter.format(now));
+			now.format(ukDateFormatter));
 	}
 }
 // end::main[]
