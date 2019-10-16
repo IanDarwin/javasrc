@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.javacookbook</groupId>
+	<artifactId>rest-demo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<inceptionYear>2015</inceptionYear>
+
+	<name>REST Demo</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>1.9</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<javaee.version>8.0</javaee.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- Java EE API -->
+		<dependency>
+			<groupId>javax</groupId>    
+			<artifactId>javaee-web-api</artifactId>    
+			<version>${javaee.version}</version>  
+			<scope>provided</scope>
+		</dependency> 
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Java EE AppServer: WildFly (JBoss) -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+			</plugin>
+
+			<!-- Java EE AppServer: GlassFish (see https://maven-glassfish-plugin.java.net/usage.html) -->
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+
+			<!-- Java EE AppServer: Apache TomEE (see http://tomee.apache.org/tomee-maven-plugin.html) -->
+			<plugin>
+				<groupId>org.apache.openejb.maven</groupId>
+				<artifactId>tomee-maven-plugin</artifactId>
+				<version>1.7.1</version>
+				<configuration>
+					<tomeeVersion>1.7.1</tomeeVersion>
+					<tomeeClassifier>plus</tomeeClassifier>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
