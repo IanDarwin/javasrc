@@ -279,7 +279,7 @@
 	<version>[2.9.8,)</version>
 </dependency>
 
-		<!-- JAXB deleted from Java SE 11 -->
+		<!-- JAXB deleted from Java SE -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
