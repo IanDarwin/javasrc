@@ -279,6 +279,13 @@
 	<version>[2.9.8,)</version>
 </dependency>
 
+		<!-- JSON-B -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+
 		<!-- JAXB deleted from Java SE 11 -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
