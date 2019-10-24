@@ -7,6 +7,7 @@ import java.awt.Image;
 // tag::main[]
 /** A Sprite is one Image that moves around the screen on its own */
 public class Sprite extends Component implements Runnable {
+	private static final long serialVersionUID = 1L;
 	protected static int spriteNumber = 0;
 	protected Thread t;
 	protected int x, y;

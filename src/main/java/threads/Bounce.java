@@ -5,6 +5,7 @@ import java.awt.Button;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -22,16 +23,16 @@ public class Bounce extends Panel implements ActionListener {
 	/** A Vector of Sprite objects. */
 	protected List<Sprite> v;
 
-    public Bounce() {
+    public Bounce(String[] args) {
 		Button b = new Button("Start");
 		b.addActionListener(this);
 		setLayout(new BorderLayout());
 		add(b, BorderLayout.NORTH);
 		add(p = new Panel(), BorderLayout.CENTER);
 		p.setLayout(null);
-		String imgName = getParameter("imagefile");
+		String imgName = args[0];
 		if (imgName == null) imgName = "duke.gif";
-		img = getImage(getCodeBase(), imgName);
+		img = Toolkit.getDefaultToolkit().getImage(imgName);
 		MediaTracker mt = new MediaTracker(this);
 		mt.addImage(img, 0);
 		try {

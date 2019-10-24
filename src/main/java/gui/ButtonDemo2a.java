@@ -4,6 +4,7 @@ import java.awt.Button;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /** Demonstrate use of two buttons, using a single ActionListener,
  * being the class itself.
@@ -25,6 +26,11 @@ public class ButtonDemo2a extends Panel implements ActionListener {
 			showStatus("Thanks for pushing my first button!");
 		else
 			showStatus("Thanks for pushing my second button!");
+	}
+
+	/** Cheesy showStatus replacement for Applet migration */
+	public void showStatus(String s) {
+		JOptionPane.showMessageDialog(null, s);
 	}
 }
 // end::main[]

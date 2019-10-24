@@ -4,6 +4,7 @@ import java.awt.Button;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /** Demonstrate use of Button */
 public class ButtonDemo2c extends Panel {
@@ -20,5 +21,10 @@ public class ButtonDemo2c extends Panel {
 		b.addActionListener(e -> {
 				showStatus("Thanks for pushing my second button!");
 		});
+	}
+
+	/** Cheesy showStatus replacement for Applet migration */
+	public void showStatus(String s) {
+		JOptionPane.showMessageDialog(null, s);
 	}
 }
