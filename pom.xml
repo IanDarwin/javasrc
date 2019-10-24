@@ -286,6 +286,13 @@
 			<version>1.0.5</version>
 		</dependency>
 
+		<!-- JSON Pointer -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
 		<!-- JAXB deleted from Java SE 11 -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
