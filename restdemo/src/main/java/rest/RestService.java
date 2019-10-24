@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Simple REST Service
  */
+// tag::main[]
 @Path("")
 @ApplicationScoped
 public class RestService {
@@ -47,3 +48,4 @@ public class RestService {
 		return List.of("Robin", "Jedunkat", "Lyn", "Glen");
 	}
 }
+// end::main[]
