@@ -13,7 +13,6 @@ import javax.swing.JFrame;
  * AppletViewer - a simple Applet Viewer program.
  * @author	Ian Darwin, http://www.darwinsys.com/
  */
-// tag::main[]
 public class AppletViewer {
 	/** The main Frame of this program */
 	JFrame f;
@@ -115,4 +114,3 @@ public class AppletViewer {
 		aa.getAppletContext().showStatus(s);
 	}
 }
-// end::main[]

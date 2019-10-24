@@ -1,16 +1,15 @@
 package gui_awt;
 
-import java.applet.Applet;
 import java.awt.Button;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Demonstrate use of Button */
-// tag::main[]
-public class ButtonDemo2c extends Applet {
+public class ButtonDemo2c extends Panel {
 	Button	b;
 
-	public void init() {
+	public ButtonDemo2c() {
 		add(b = new Button("A button"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -18,11 +17,8 @@ public class ButtonDemo2c extends Applet {
 			}
 		});
 		add(b = new Button("Another button"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		b.addActionListener(e -> {
 				showStatus("Thanks for pushing my second button!");
-			}
 		});
 	}
 }
-// end::main[]

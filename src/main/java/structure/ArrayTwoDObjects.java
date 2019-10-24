@@ -16,19 +16,9 @@ public class ArrayTwoDObjects {
 		return info;
 	}
 
-	/** Return list of allowable parameters (Applet method). */
-	public static String[][] getParameterInfo() {
-		String param_info[][] = {
-			{"fontsize",    "9-18",    "Size of font"},
-			{"URL",    "-",    "Where to download"},
-		};
-		return param_info;
-	}
-
-	/** Run both initialization methods and print part of the results */
+	/** Run the initialization method and print part of the results */
 	public static void main(String[] args) {
 		print("from getArrayInfo", getArrayInfo());
-		print("from getParameterInfo", getParameterInfo());
 	}
 
 	/** Print selected elements from the 2D array */

@@ -22,7 +22,6 @@ import java.util.Map;
  *
  * @author	Ian Darwin, http://www.darwinsys.com/, for Learning Tree Course 478
  */
-// tag::main[]
 public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 
 	private static final long serialVersionUID = 1L;
@@ -137,4 +136,3 @@ public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 		return streamMap.keySet().iterator();
 	}
 }
-// end::main[]

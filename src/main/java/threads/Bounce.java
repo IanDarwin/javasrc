@@ -1,6 +1,5 @@
 package threads;
 
-import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Image;
@@ -13,7 +12,7 @@ import java.util.Vector;
 
 /** This is the Bounce class; create and start Sprites, using Threads. */
 // tag::main[]
-public class Bounce extends Applet implements ActionListener {
+public class Bounce extends Panel implements ActionListener {
 
 	private static final long serialVersionUID = -5359162621719520213L;
 	/** The main Panel */
@@ -23,7 +22,7 @@ public class Bounce extends Applet implements ActionListener {
 	/** A Vector of Sprite objects. */
 	protected List<Sprite> v;
 
-    public void init() {
+    public Bounce() {
 		Button b = new Button("Start");
 		b.addActionListener(this);
 		setLayout(new BorderLayout());
@@ -63,5 +62,4 @@ public class Bounce extends Applet implements ActionListener {
 		v.clear();
     }
 }
-
 // end::main[]

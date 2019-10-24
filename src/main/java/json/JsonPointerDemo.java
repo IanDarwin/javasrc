@@ -34,7 +34,7 @@ public class JsonPointerDemo {
 		JsonPointer jsonPointer;
 		JsonString jsonString;
 		
-		jsonPointer = Json.createPointer("/firstName");	// <2>
+		jsonPointer = Json.createPointer("/firstName");				// <2>
 		jsonString = (JsonString)jsonPointer.getValue(jsonStr);
 		String firstName = jsonString.getString();
 		System.out.println("/firstName => " + firstName);
@@ -53,4 +53,4 @@ public class JsonPointerDemo {
 		System.out.println("/roles/1 => " + jsonString);
 	}
 }
-//tag::main[]
+//end::main[]

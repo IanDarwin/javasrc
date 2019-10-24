@@ -11,8 +11,7 @@ class X {
 
 /**
  * Demonstrate that it is, in fact, all too easy to access private members
- * of an object using Reflection, using the default SecurityManager (so this
- * will probably not work in an Applet, for example...).
+ * of an object using Reflection, using the default SecurityManager
  */
 public class DefeatPrivacy {
 

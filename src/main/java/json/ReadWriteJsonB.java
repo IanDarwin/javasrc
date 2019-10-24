@@ -24,3 +24,4 @@ public class ReadWriteJsonB {
 		System.out.println(result);
     }
 }
+// end::main[]

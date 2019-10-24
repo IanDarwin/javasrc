@@ -1,7 +1,7 @@
 package gui;
 
-import java.applet.Applet;
 import java.awt.Button;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
  * being the class itself.
  */
 // tag::main[]
-public class ButtonDemo2a extends Applet implements ActionListener {
+public class ButtonDemo2a extends Panel implements ActionListener {
 	Button b1, b2;
 
-	public void init() {
+	public ButtonDemo2a() {
 		add(b1 = new Button("A button"));
 		b1.addActionListener(this);
 
