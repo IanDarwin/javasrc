@@ -7,9 +7,7 @@ import java.net.URL;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-/** This program, which can be an Applet or an Application,
- * shows a form of Toolkit.getImage().
- * <p>
+/** This program shows a form of Toolkit.getImage().
  * For Application, just run it (has own main).
  */
 // tag::main[]
@@ -25,7 +23,7 @@ public class GetImage extends JPanel {
 	public void loadImage() {
 
 		// Portable version: getClass().getResource() 
-		URL url = getClass().getResource("Duke.gif");
+		URL url = getClass().getResource("duke.gif");
 		image = getToolkit().getImage(url);
 		// Or just:
 		// image = getToolkit().getImage(getClass().getResource("Duke.gif"));

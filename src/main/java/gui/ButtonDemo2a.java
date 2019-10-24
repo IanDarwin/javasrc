@@ -28,7 +28,7 @@ public class ButtonDemo2a extends Panel implements ActionListener {
 			showStatus("Thanks for pushing my second button!");
 	}
 
-	/** Cheesy showStatus replacement for Applet migration */
+	/** Cheesy showStatus replacement for migration */
 	public void showStatus(String s) {
 		JOptionPane.showMessageDialog(null, s);
 	}
