@@ -38,7 +38,7 @@ public class VarArgsDemo {
 		System.out.println(mySum());
 		int[] nums = {5, 7, 9};
 		System.out.println(mySum(nums));
-		// end::Usages[]
+		// end::mySumUsages[]
 	}
 
 	/** Show passing the entire varargs list on to another method

@@ -3,38 +3,54 @@ package json;
 import java.io.StringReader;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonNumber;
 import javax.json.JsonPointer;
 import javax.json.JsonReader;
 import javax.json.JsonString;
 import javax.json.JsonStructure;
 
+/**
+ * Show some parts of the JSON Pointer API, part of Java's JSON Processing.
+ * @author Ian Darwin
+ */
+//tag::main[]
 public class JsonPointerDemo {
 
 	public static void main(String[] args) {
 		String jsonPerson =
-			"{\"firstName\":\"Robin\",\"lsstName\":\"Williams\"," + 
-					"\"age\": 63," + 
-					"\"id\":0," +
-					"\"roles\":[\"Mork\", \"Mrs. Doubtfire\", \"Patch Adams\"]}\n";
+			"{\"firstName\":\"Robin\",\"lastName\":\"Williams\"," + 
+				"\"age\": 63," + 
+				"\"id\":0," +
+				"\"roles\":[\"Mork\", \"Mrs. Doubtfire\", \"Patch Adams\"]}";
 
+		System.out.println("Input: " + jsonPerson);
+		
 		JsonReader rdr =
 				Json.createReader(new StringReader(jsonPerson));	 // <1>
 		JsonStructure jsonStr = rdr.read();
 		rdr.close();
 
-		JsonPointer jsonPointer = Json.createPointer("/firstName");	// <2>
-		JsonString jsonString = (JsonString)jsonPointer.getValue(jsonStr);
+		JsonPointer jsonPointer;
+		JsonString jsonString;
+		
+		jsonPointer = Json.createPointer("/firstName");	// <2>
+		jsonString = (JsonString)jsonPointer.getValue(jsonStr);
 		String firstName = jsonString.getString();
-		System.out.println("Name = " + firstName);
+		System.out.println("/firstName => " + firstName);
 		
 		JsonNumber num =											// <3>
 				(JsonNumber) Json.createPointer("/age").getValue(jsonStr);
-		System.out.println("Age = " + num + "; a " + num.getClass().getName());
+		System.out.println("/age => " + num + "; a " + num.getClass().getName());
 		
-		jsonPointer = Json.createPointer("/roles/1");				// <4>
+		jsonPointer = Json.createPointer("/roles");					// <4>
+		JsonArray roles = (JsonArray) jsonPointer.getValue(jsonStr);		
+		System.out.println("/roles => " + roles);
+		System.out.println("JsonArray roles.get(1) => " + roles.get(1));
+		
+		jsonPointer = Json.createPointer("/roles/1");				// <5>
 		jsonString = (JsonString)jsonPointer.getValue(jsonStr);
-		System.out.println("Role = " + jsonString);
+		System.out.println("/roles/1 => " + jsonString);
 	}
-
 }
+//tag::main[]
