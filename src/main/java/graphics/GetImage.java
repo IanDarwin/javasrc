@@ -4,32 +4,27 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;
 
-import javax.swing.JApplet;
+import javax.swing.JPanel;
 import javax.swing.JFrame;
 
 /** This program, which can be an Applet or an Application,
- * shows a form of Toolkit.getImage() which works the same
- * in either Applet or Application.
+ * shows a form of Toolkit.getImage().
  * <p>
- * For Applet, invoke as:
- * <applet code="GetImage" width="100" height="100">
- * </applet>
  * For Application, just run it (has own main).
  */
 // tag::main[]
-public class GetImage extends JApplet {
+public class GetImage extends JPanel {
 
 	private static final long serialVersionUID = 4288395022095915666L;
 	private Image image;
 
-	public void init() {
+	public void GetImage() {
 		loadImage();
 	}
 
 	public void loadImage() {
 
-		// Portable version: getClass().getResource() works in either
-		// applet or application, 1.1 or 1.3, returns URL for file name.
+		// Portable version: getClass().getResource() 
 		URL url = getClass().getResource("Duke.gif");
 		image = getToolkit().getImage(url);
 		// Or just:
@@ -44,12 +39,10 @@ public class GetImage extends JApplet {
 	public static void main(String[] args) {
 		JFrame f = new JFrame("GetImage");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GetImage myApplet = new GetImage();
-		f.setContentPane(myApplet);
-		myApplet.init();
+		GetImage myPanel = new GetImage();
+		f.setContentPane(myPanel);
 		f.setSize(100, 100);
 		f.setVisible(true);
-		myApplet.start();
 	}
 }
 // end::main[]
