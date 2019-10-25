@@ -104,11 +104,11 @@
 	</build>
 
 	<dependencies>
-		<!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
+		<!-- My own Java API potpourri -->
 		<dependency>
 			<groupId>com.darwinsys</groupId>
-				<artifactId>darwinsys-api</artifactId>
-				<version>${darwinsys-api.version}</version>
+			<artifactId>darwinsys-api</artifactId>
+			<version>${darwinsys-api.version}</version>
 		</dependency>
 
 		<!-- Test early and often -->
@@ -137,7 +137,6 @@
 			<version>1.8.0-beta2</version>
 			<scope>compile</scope>
 		</dependency>
-						
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -198,86 +197,87 @@
 				<version>2.4.0</version>
 		</dependency>
 
-<dependency>
-		<groupId>org.eclipse</groupId>
-		<artifactId>swt</artifactId>
-		<version>3.3.0-v3346</version>
-</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>swt</artifactId>
+			<version>3.3.0-v3346</version>
+		</dependency>
 
-<dependency>
-		<groupId>jgoodies</groupId>
-		<artifactId>forms</artifactId>
-		<version>1.0.5</version>
-</dependency>
+		<dependency>
+			<groupId>jgoodies</groupId>
+			<artifactId>forms</artifactId>
+			<version>1.0.5</version>
+		</dependency>
 
-<dependency>
-		<groupId>org.apache.ant</groupId>
-		<artifactId>ant</artifactId>
-		<version>1.10.3</version>
-</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.10.3</version>
+		</dependency>
 
-<dependency>
-		<groupId>javax.media</groupId>
-		<artifactId>jmf</artifactId>
-		<version>2.1.1e</version>
-</dependency>
+		<dependency>
+			<groupId>javax.media</groupId>
+			<artifactId>jmf</artifactId>
+			<version>2.1.1e</version>
+		</dependency>
 
-<!-- VLC Player for Java, jlcj -->
-<dependency>
-	<groupId>uk.co.caprica</groupId>
-	<artifactId>vlcj</artifactId>
-	<version>3.10.1</version>
-</dependency>
+		<!-- VLC Player for Java, jlcj -->
+		<dependency>
+			<groupId>uk.co.caprica</groupId>
+			<artifactId>vlcj</artifactId>
+			<version>3.10.1</version>
+		</dependency>
 
-<dependency>
-	<groupId>bsf</groupId>
-	<artifactId>bsf</artifactId>
-	<version>2.4.0</version>
-</dependency>
+		<!-- Scripting -->
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.python</groupId>
+			<artifactId>jython</artifactId>
+			<version>2.7.1b3</version>
+		</dependency>
 
-<dependency>
-	<groupId>xml-resolver</groupId>
-	<artifactId>xml-resolver</artifactId>
-	<version>1.2</version>
-</dependency>
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx</artifactId>
+			<version>2.1.7</version>
+		</dependency>
 
-<dependency>
-	<groupId>org.rxtx</groupId>
-	<artifactId>rxtx</artifactId>
-	<version>2.1.7</version>
-</dependency>
+		<!-- Client-side CDI -->
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>3.0.0.Alpha1</version>
+		</dependency>
 
-<dependency>
-	<groupId>org.jboss.weld.se</groupId>
-	<artifactId>weld-se</artifactId>
-	<version>3.0.0.Alpha1</version>
-</dependency>
+		<!-- JSON packages -->
 
-<!-- JSON packages -->
-
-<!-- org.json -->
-<dependency>
-	<groupId>org.json</groupId>
-	<artifactId>json</artifactId>
-	<version>20180130</version>
-</dependency>
-						
-<!-- Jackson -->
-<dependency>
-	<groupId>com.fasterxml.jackson.core</groupId>
-	<artifactId>jackson-core</artifactId>
-	<version>[2.9.8,)</version>
-</dependency>
-<dependency>
-	<groupId>com.fasterxml.jackson.core</groupId>
-	<artifactId>jackson-annotations</artifactId>
-	<version>[2.9.8,)</version>
-</dependency>
-<dependency>
-	<groupId>com.fasterxml.jackson.core</groupId>
-	<artifactId>jackson-databind</artifactId>
-	<version>[2.9.8,)</version>
-</dependency>
+		<!-- org.json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
+								
+		<!-- Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
 
 		<!-- JSON-B -->
 		<dependency>
@@ -293,7 +293,15 @@
 			<version>1.1.6</version>
 		</dependency>
 
-		<!-- JAXB deleted from Java SE -->
+		<!-- XML Stuff -->
+
+		<dependency>
+			<groupId>xml-resolver</groupId>
+			<artifactId>xml-resolver</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- JAXB... deleted from Java SE -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
@@ -310,13 +318,13 @@
 			<version>3.0.8</version>
 		</dependency>
 
+		<!-- Java EE / Jakarta EE -->
 		<dependency>
 			<groupId>javax</groupId>		
 			<artifactId>javaee-web-api</artifactId>		
 			<version>${javaee.version}</version>	
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
