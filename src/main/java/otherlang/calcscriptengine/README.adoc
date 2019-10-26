@@ -1,3 +1,5 @@
+= calcscriptengine: trivial sample DIY scripting engine
+
 This is a demo of a do-it-yourself scripting engine, believed to
 be JSR-223 compliant, for the rare case of needing to implement
 an interface to a new or rare scripting language.
