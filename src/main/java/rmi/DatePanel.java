@@ -1,22 +1,21 @@
 package rmi;
 
-import java.applet.Applet;
-import java.awt.Button;
-import java.awt.Label;
+import java.awt.*;
+import javax.Swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.Naming;
 import java.util.Date;
 
 // BEGIN main
-public class DateApplet extends Applet {
+public class DatePanel extends JPanel {
 	
 	private static final long serialVersionUID = 287892791;
 	RemoteDate netConn = null;
-	Button b;
-	Label statusLabel;
+	JButton b;
+	JLabel statusLabel;
 
-	public void init() {
+	public DatePanel() {
 		try {
 			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
 		} catch (Exception e) {
@@ -24,21 +23,20 @@ public class DateApplet extends Applet {
 			e.printStackTrace();
 		}
 		add(b = new Button("Get Date"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
+		b.addActionListener(e -> {
 				if (netConn == null) {
 					showStatus("Connection failed, bye");
 					return;
 				}
 				try {
 					Date today = netConn.getRemoteDate();
-					showStatus(today.toString()); // XX use a DateFormat...
+					statusLabel.setText(today.toString()); // XX use a DateFormat...
 				} catch (Exception ex) {
 					System.err.println("RemoteDate exception: " + ex.getMessage());
-					showStatus("RemoteDate failed, see Java Console");
+					statusLabel.setText("RemoteDate failed, see Java Console");
 				}
-			}
 		});
+		add(statusLabel = new JLabel("");
 	}
 }
 // END main
