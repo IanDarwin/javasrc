@@ -6,6 +6,7 @@ import java.lang.reflect.*;
 /**
  * Use the well-named Unsafe class to get the Unix "load average" if possible.
  */
+// tag::main[]
 public class LoadAverage {
 	public static void main(String[] args) throws Exception { 
 		Field f = Unsafe.class.getDeclaredField("theUnsafe");
@@ -20,3 +21,4 @@ public class LoadAverage {
 		System.out.println();
 	}
 }
+// end::main[]
