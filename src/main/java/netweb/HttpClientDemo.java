@@ -6,6 +6,9 @@ import java.net.http.HttpClient.*;
 import java.net.http.HttpResponse.*;
 import java.net.*;
 
+/**
+ * Simple demo of Java 11+ HttpClient
+ */
 public class HttpClientDemo {
 
 	private static String urlString = 
