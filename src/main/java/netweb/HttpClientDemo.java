@@ -7,14 +7,13 @@ import java.net.http.HttpResponse.*;
 import java.net.*;
 
 /**
- * Simple demo of Java 11+ HttpClient
+ * Simple demo of Java 11+ HttpClient (not the older Apache one)
  */
 public class HttpClientDemo {
 
-	private static String urlString = 
-		"https://suggestqueries.google.com/complete/search?output=toolbar&hl=en&client=firefox&q=";
-        // client=firefox makes the output come back in JSON
-	private static String keyword = "darwin";
+	public static String urlString = 
+		"https://suggestqueries.google.com/complete/search?client=firefox&q=";
+	public static String keyword = "darwin";
 
 	public static void main(String[] args)
 		throws IOException, InterruptedException {
@@ -57,7 +56,7 @@ public class HttpClientDemo {
 			.thenApply(HttpResponse::body)
 			.thenAccept(System.out::println)
 			.join();
-		// tag::sendAsynch[]
+		// end::sendAsynch[]
 
 	}
 }
