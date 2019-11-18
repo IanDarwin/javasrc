@@ -32,8 +32,10 @@
 				<version>3.7.0</version>
 				<configuration>
 					<excludes>
-						<!-- javafx not included in some minor JDK distributions.
-						-->
+						<!-- Requires Java 12 -->
+						<exclude>numbers/CompactFormatDemo.java</exclude>
+
+						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
 						<!-- 1.9: "Unsafe" "is not api", as above. -->
 						<exclude>unsafe/*.java</exclude>
