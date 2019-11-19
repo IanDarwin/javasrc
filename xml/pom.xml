@@ -1,0 +1,207 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.darwinsys</groupId>
+	<artifactId>javasrc</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<inceptionYear>1995</inceptionYear>
+
+	<name>javasrc</name>
+	<url>http://javacook.darwinsys.com</url>
+	<description>Code Examples for the O'Reilly Java Cookbook</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>11</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<javaee.version>7.0</javaee.version>
+		<darwinsys-api.version>1.1.3</darwinsys-api.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<excludes>
+						<!-- Requires Java 12 -->
+						<exclude>numbers/CompactFormatDemo.java</exclude>
+
+						<!-- javafx not included in some JDK distributions. -->
+						<exclude>javafx/*.java</exclude>
+						<!-- 1.9: "Unsafe" "is not api", as above. -->
+						<exclude>unsafe/*.java</exclude>
+
+						<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
+						 *** testing demos for now (does not affect all the stuff in src/test/java!).
+						 -->
+						<exclude>testing/Ham*.java</exclude>
+
+						<!-- Won't compile with UTF-8! -->
+						<exclude>lang/EuroLanguage.java</exclude>
+
+						<!-- Used private API which is no longer available -->
+						<exclude>netweb/WebServerSimpleSE.java</exclude>
+
+						<exclude>plotter/Penman.java</exclude>
+
+						<!-- Have yet to find a POM that works -->
+						<exclude>gui_swt/*.java</exclude>
+						<exclude>xml/XSLTransform.java</exclude>
+						<exclude>otherlang/StringDistance.java</exclude>
+						<exclude>javacomm/*.java</exclude>
+
+						<!-- Unknown issues -->
+						<exclude>lang/UsePackage.java</exclude>
+
+						<!-- Remainder all have 'Expect compile error' -->
+						<!-- XXX replace this list with filter grep -->
+						<exclude>jdb/Problem.java</exclude>
+						<exclude>lang/AddException.java</exclude>
+						<exclude>lang/ByteAdd2.java</exclude>
+						<exclude>lang/CastingDemo.java</exclude>
+						<exclude>lang/ChangeArrayLength.java</exclude>
+						<exclude>lang/CommentBug.java</exclude>
+						<exclude>lang/CompileError.java</exclude>
+						<exclude>lang/ConsRecurs.java</exclude>
+						<exclude>lang/Constructors.java</exclude>
+						<exclude>lang/ImportConflict.java</exclude>
+						<exclude>lang/ImportNonPublic.java</exclude>
+						<exclude>lang/InitializersDemo.java</exclude>
+						<exclude>lang/InnerMethods.java</exclude>
+						<exclude>lang/InterfaceNoConstructor.java</exclude>
+						<exclude>lang/NoLocalStatics.java</exclude>
+						<exclude>lang/NullStaticMethod.java</exclude>
+						<exclude>lang/OverLoadReturn.java</exclude>
+						<exclude>lang/AnnotationOverrideDemo.java</exclude>
+						<exclude>lang/PrivProt.java</exclude>
+						<exclude>lang/ProtectedClass.java</exclude>
+						<exclude>lang/ReturnType.java</exclude>
+						<exclude>lang/ShowInitializers.java</exclude>
+						<exclude>lang/Switch.java</exclude>
+						<exclude>lang/TryStealingInnerClass.java</exclude>
+						<exclude>netweb/JScript.java</exclude>
+						<exclude>numbers/CastNeeded.java</exclude>
+						<exclude>numbers/SmallIntMult.java</exclude>
+						<exclude>oo/AllClasses.java</exclude>
+						<exclude>oo/Clone0.java</exclude>
+						<exclude>oo/SingletonCheat1.java</exclude>
+						<exclude>oo/SingletonCheat2.java</exclude>
+						<exclude>reflection/ClassLoaderDemo0.java</exclude>
+						<exclude>strings/WolfInStringsClothing.java</exclude>
+						<exclude>threads/StopStop.java</exclude>
+						<exclude>threads/ThreadDeathCatch.java</exclude>
+				</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- My own Java API potpourri -->
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+			<artifactId>darwinsys-api</artifactId>
+			<version>${darwinsys-api.version}</version>
+		</dependency>
+
+		<!-- Test early and often -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		<dependency>
+		<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>2.0.2-beta</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.8.0-beta2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		<scope>compile</scope>
+		</dependency>
+
+		<!-- XML Stuff -->
+
+		<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>2.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-resolver</groupId>
+			<artifactId>xml-resolver</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- JAXB... deleted from Java SE -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.4.0-b180830.0359</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.istack</groupId>
+			<artifactId>istack-commons-runtime</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+
+	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	
+<!--
+	<repositories>
+	<repository>
+		<id>bedatadriven</id>
+		<name>bedatadriven public repo</name>
+		<url>http://nexus.bedatadriven.com/content/groups/public/</url>
+	</repository>
+</repositories>
+-->
+</project>
