@@ -20,8 +20,8 @@ public class PythonFromJava {
 		
 		ScriptEngine engine = scriptEngineManager.getEngineByName("python");
 		if (engine == null) {
-			throw new IllegalStateException("
-			Could not find 'python' engine; add jython-xxx.jar to CLASSPATH");	
+			throw new IllegalStateException(
+			"Could not find 'python' engine; add jython-xxx.jar to CLASSPATH");	
 		}
 		InputStream is =
 			PythonFromJava.class.getResourceAsStream("/" + PY_SCRIPTNAME);
