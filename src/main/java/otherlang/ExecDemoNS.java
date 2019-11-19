@@ -46,7 +46,7 @@ public class ExecDemoNS extends JFrame {
 			program = // Windows or UNIX only for now, sorry Mac fans
 				(osname.toLowerCase().indexOf("windows")!=-1) ?
 				"c:/program files/netscape/communicator/program/netscape.exe" :
-				"/usr/local/netscape/netscape";
+				"/usr/local/bin/" + prog;
 		else
 			program = prog;
 
@@ -54,23 +54,11 @@ public class ExecDemoNS extends JFrame {
 		cp.setLayout(new FlowLayout());
 		JButton b;
 		cp.add(b=new JButton("Exec"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				runProg();
-			}
-		});
+		b.addActionListener(e -> runProg());
 		cp.add(b=new JButton("Wait"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				doWait();
-			}
-		});
+		b.addActionListener(e -> doWait());
 		cp.add(b=new JButton("Exit"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				System.exit(0);
-			}
-		});
+		b.addActionListener(e -> System.exit(0));
 		pack();
 	}
 
