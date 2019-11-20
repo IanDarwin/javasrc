@@ -25,7 +25,8 @@ public class Random5 {
 			us[i] = r.nextDouble();
 			ns[i] =r.nextGaussian();
 		}
-		try (InputStream is = Random5.class.getResourceAsStream(R_SCRIPT_FILE)) {
+		try (InputStream is = 
+			Random5.class.getResourceAsStream(R_SCRIPT_FILE)) {
 			if (is == null) {
 				throw new IllegalStateException("Can't open R file ");
 			}

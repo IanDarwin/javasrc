@@ -13,8 +13,8 @@ public class RenjinScripting {
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("Renjin");
 		engine.put("a", 42);
-	    Object ret = engine.eval("b <- 2; a*b");
-	    System.out.println(ret);
+		Object ret = engine.eval("b <- 2; a*b");
+		System.out.println(ret);
 	}
 	// end::main[]
 }
