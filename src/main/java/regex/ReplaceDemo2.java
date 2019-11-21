@@ -5,8 +5,8 @@ import java.util.regex.*;
 /**
  * Another demo of RE substitution: 
  * change "Ian Darwin" to "Darwin, Ian"
- * @author Ian F. Darwin, http://www.darwinsys.com/
  */
+// tag::main[]
 public class ReplaceDemo2 {
 	public static void main(String[] argv) {
 
@@ -27,3 +27,4 @@ public class ReplaceDemo2 {
 		// System.out.println(input.replaceFirst("(\\w+)\\s+(\\w+)", "$2, $1"));
 	}
 }
+// end::main[]
