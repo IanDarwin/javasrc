@@ -242,12 +242,6 @@
 			<version>2.7.1b3</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.rxtx</groupId>
-			<artifactId>rxtx</artifactId>
-			<version>2.1.7</version>
-		</dependency>
-
 		<!-- Client-side CDI -->
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
@@ -309,6 +303,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- R - renjin implementation -->
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>renjin-script-engine</artifactId>
+			<version>3.5-beta76</version>
+		</dependency>
+
 	</dependencies>
 
 	<reporting>
@@ -326,14 +327,14 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
-<!--
+
+	<!-- Repo needed for renjin, refusing to put its jars in maven central -->
 	<repositories>
-	<repository>
-		<id>bedatadriven</id>
-		<name>bedatadriven public repo</name>
-		<url>http://nexus.bedatadriven.com/content/groups/public/</url>
-	</repository>
-</repositories>
--->
+		<repository>
+			<id>bedatadriven</id>
+			<name>bedatadriven public repo</name>
+			<url>https://nexus.bedatadriven.com/content/groups/public/</url>
+		</repository>
+	</repositories>
+
 </project>

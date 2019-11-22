@@ -1,5 +1,7 @@
 = JavaCook Source Files (javasrc)
 
+This is my assorted collection of (you guessed it) Java source.
+
 Many but by no means all of these files are used in my 
 https://javacook.darwinsys.com/[Java Cookbook].
 I use a script (copyCodeSamples) to pre-format these for inclusion in the O'Reilly publishing toolchain;
@@ -29,6 +31,7 @@ will eventually be converted to Maven exec:java configurations.
 * Building with other platforms? Good luck, but let me know if it works.
 
 . If you really need Java 8, try removing the module-info file. But you're on your own.
+And you'll need some exclusions for files that use newer language features.
 
 Ian Darwin
 
