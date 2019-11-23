@@ -1,0 +1,11 @@
+= Apache Spark Demo
+
+This only shows a tiny bit of Spark's capability!
+
+To run this demo, do something like the following:
+
+# set this variable to whereever you installed Spark:
+export SPARK_HOME=~/spark-3.0.0-bin-hadoop3.2
+
+# Build the demo and run it.
+mvn package && ./run
