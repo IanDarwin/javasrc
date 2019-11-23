@@ -1,0 +1,4 @@
+= GraalVM Examples
+
+The examples in this directory require use of GraalVM; they will not work
+in a standard JVM or JDK!!
