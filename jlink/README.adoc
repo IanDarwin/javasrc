@@ -1,0 +1,8 @@
+= javasrc jlink demo
+
+This shows using jlink to build a mini-java distribution with
+only the files needed to run one application.
+
+Because the operation is so simple, Maven was not used.
+A single shell script +run+ does everything.
+MS-DOS users should use +run.bat+ instead.
