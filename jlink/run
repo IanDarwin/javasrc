@@ -1,10 +1,11 @@
 # Compile the application code
 javac -d . src/*.java
 # Jar it up
-jar cvf app.jar module-info.class  demo
+jar cvf demo.jar module-info.class  demo
 # Run jdeps to get a list of needed modules
-jdeps --module-path . app.jar
-# Run jlink to build a mini-java distribution with our app imbedded
+jdeps --module-path . demo.jar
+# Run jlink to build a mini-java distribution with demo app imbedded
+rm -rf mini-java
 jlink --module-path . --no-header-files --no-man-pages --compress=2 --strip-debug --add-modules java.base,demo --output mini-java
 # Try running it
 mini-java/bin/java demo.Hello
