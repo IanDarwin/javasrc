@@ -1,5 +1,5 @@
 # Compile the application code
-javac -d . *.java
+javac -d . src/*.java
 # Jar it up
 jar cvf app.jar module-info.class  demo
 # Run jdeps to get a list of needed modules
