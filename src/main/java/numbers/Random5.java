@@ -14,6 +14,7 @@ import com.darwinsys.io.FileIO;
  * (err, except that renjin doesn't fully implement R graphics yet).
  */
 public class Random5 {
+	// tag::main[]
 	private static final String R_SCRIPT_FILE = "/randomnesshistograms.r";
 	private static final int N = 10000;
 
@@ -37,4 +38,5 @@ public class Random5 {
 			engine.eval(FileIO.readerToString(new InputStreamReader(is)));
 		}
 	}
+	// end::main[]
 }
