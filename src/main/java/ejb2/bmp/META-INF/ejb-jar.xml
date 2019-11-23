@@ -11,8 +11,8 @@
 		<remote>Bean</remote>
 		<ejb-class>Bean</ejb-class>
 		<persistence-type>Bean</persistence-type>
-		<transaction-type>Container</transaction-type>
-		<primary-key-class>Integer</primary-key-class>
+		<prim-key-class>Integer</prim-key-class>
+		<reentrant>false</reentrant>
 		</entity>
 	</enterprise-beans>
 </ejb-jar>

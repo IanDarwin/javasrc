@@ -8,24 +8,24 @@ import java.rmi.Naming;
 import java.time.LocalDateTime;
 
 // tag::main[]
-public class DateApplet extends JPanel {
+public class DatePanel extends JPanel {
+	
 	private static final long serialVersionUID = 287892791;
-
+	private JLabel statusLabel;
 	RemoteDate netConn = null;
-	JButton b;
-	JLabel statusLabel;
 
-	public DateApplet() {
+	public DatePanel() {
 		try {
 			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
 		} catch (Exception e) {
 			System.err.println("RemoteDate exception: " + e.getMessage());
 			throw new ExceptionInInitializerError("Can't lookup " + RemoteDate.LOOKUPNAME + "; " + e);
 		}
+		JButton b;
 		add(b = new JButton("Get Date"));
 		b.addActionListener(e -> {
 				if (netConn == null) {
-					showStatus("Connection failed, bye");
+					showStatus("RMI Connection failed, goodbye");
 					return;
 				}
 				try {
@@ -38,8 +38,8 @@ public class DateApplet extends JPanel {
 		});
 	}
 
-	void showStatus(String s) {
-		JOptionPane.showMessageDialog(null, s);
+	void showStatus(String mesg) {
+		statusLabel.setText(mesg);
 	}
 }
 // end::main[]

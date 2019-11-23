@@ -11,12 +11,12 @@
 		<remote>Hello</remote>
 		<ejb-class>HelloEJB</ejb-class>
 		<session-type>Stateless</session-type>
+		<transaction-type>Container</transaction-type>
 		<env-entry>
 			<env-entry-name>message</env-entry-name>
 			<env-entry-type>java.lang.String</env-entry-type>
 			<env-entry-value>Welcome, </env-entry-value>
 		</env-entry>
-		<transaction-type>Container</transaction-type>
 		</session>
 	</enterprise-beans>
 </ejb-jar>

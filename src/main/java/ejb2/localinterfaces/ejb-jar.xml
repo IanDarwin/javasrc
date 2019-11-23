@@ -10,12 +10,11 @@
 		<local-home>ejb2.localinterfaces.MemberLocalHome</local-home>
 		<local>ejb2.localinterfaces.MemberLocal</local>
 		<ejb-class>ejb2.localinterfaces.MemberBean</ejb-class>
-		<prim-key-class>java.lang.Integer</prim-key-class>
 		<persistence-type>Container</persistence-type>
-		<abstract-schema-name>MemberData</abstract-schema-name>
-		<cmp-version>2.x</cmp-version>
+		<prim-key-class>java.lang.Integer</prim-key-class>
 		<reentrant>false</reentrant>
-		<transaction-type>Container</transaction-type>
+		<cmp-version>2.x</cmp-version>
+		<abstract-schema-name>MemberData</abstract-schema-name>
 		</entity>
 	</enterprise-beans>
 </ejb-jar>
