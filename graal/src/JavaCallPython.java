@@ -5,6 +5,7 @@ import org.graalvm.polyglot.*;
 /**
  * GraalVM polyglot: calling Python from Java/
  */
+// tag::main[]
 public class JavaCallPython {
 
 	public static void main(String[] args) throws java.io.IOException {
@@ -15,3 +16,4 @@ public class JavaCallPython {
 		}
 	}
 }
+// end::main[]
