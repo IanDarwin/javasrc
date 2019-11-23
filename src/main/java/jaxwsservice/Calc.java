@@ -1,6 +1,6 @@
 package jaxwsservice;
 
-// BEGIN main
+// tag::main[]
 import javax.jws.WebService;
 
 @WebService(targetNamespace="http://toy.service/")
@@ -11,7 +11,7 @@ public class Calc {
 		return a + b;
 	}
 	// The other three methods are pretty simple too
-	// END main
+	// end::main[]
 	
 	public int subtract(int a, int b) {
 		System.out.println("CalcImpl.subtract()");

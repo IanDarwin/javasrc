@@ -2,9 +2,9 @@ package rmi;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-// BEGIN main
+// tag::main[]
 public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate {
 
 	/** Construct the object that implements the remote server.
@@ -17,8 +17,8 @@ public class RemoteDateImpl extends UnicastRemoteObject implements RemoteDate {
 	/** The remote method that "does all the work". This won't get
 	 * called until the client starts up.
 	 */
-	public Date getRemoteDate() throws RemoteException {
-		return new Date();
+	public LocalDateTime getRemoteDate() throws RemoteException {
+		return LocalDateTime.now();
 	}
 }
-// END main
+// end::main[]

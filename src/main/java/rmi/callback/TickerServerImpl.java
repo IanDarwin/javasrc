@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-// BEGIN main
+// tag::main[]
 /** This is the main class of the server */
 public class TickerServerImpl
 	extends UnicastRemoteObject
@@ -66,4 +66,4 @@ public class TickerServerImpl
 		}
 	}
 }
-// END main
+// end::main[]

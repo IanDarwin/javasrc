@@ -1,6 +1,6 @@
 package jaxwsclient;
 
-// BEGIN main
+// tag::main[]
 // no imports!
 
 /** Two-line client for Calc Service, complete code. */
@@ -10,4 +10,4 @@ public class TinyClientMain {
 		System.out.println(client.add(2, 2));
 	}
 }
-// END main
+// end::main[]

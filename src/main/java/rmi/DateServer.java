@@ -2,7 +2,7 @@ package rmi;
 
 import java.rmi.Naming;
 
-// BEGIN main
+// tag::main[]
 public class DateServer {
 	public static void main(String[] args) {
 		System.out.println("DateServer starting...");
@@ -29,4 +29,4 @@ public class DateServer {
 		}
 	}
 }
-// END main
+// end::main[]

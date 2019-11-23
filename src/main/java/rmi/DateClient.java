@@ -1,9 +1,9 @@
 package rmi;
 
 import java.rmi.Naming;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-// BEGIN main
+// tag::main[]
 /* A very simple client for the RemoteDate service. */
 public class DateClient {
 
@@ -12,13 +12,14 @@ public class DateClient {
 
 	public static void main(String[] args) {
 		try {
+			System.out.println("DateClient starting lookup...");
 			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
-			Date today = netConn.getRemoteDate();
-			System.out.println(today.toString()); // Could use a DateFormat...
+			LocalDateTime today = netConn.getRemoteDate();
+			System.out.println("DateClient received date: " + today.toString()); // Could use a DateFormat...
 		} catch (Exception e) {
-			System.err.println("RemoteDate exception: " + e.getMessage());
+			System.err.println("DateClient: RemoteDate exception: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 }
-// END main
+// end::main[]

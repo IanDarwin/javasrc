@@ -7,7 +7,7 @@ import rmi.agent.servers.RunServerImpl;
 
 public class ServerMain {
 	public static void main(String[] args) {
-		// System.setSecurityManager(new RMISecurityManager());
+		// System.setSecurityManager(new SecurityManager());
 		try {
 			System.out.println("Server: Constructing RunServerImpl");
 			RunServerImpl im = new RunServerImpl();

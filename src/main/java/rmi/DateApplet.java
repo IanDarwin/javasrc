@@ -1,44 +1,45 @@
 package rmi;
 
-import java.applet.Applet;
-import java.awt.Button;
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import java.rmi.Naming;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-// BEGIN main
-public class DateApplet extends Applet {
-	
+// tag::main[]
+public class DateApplet extends JPanel {
 	private static final long serialVersionUID = 287892791;
-	RemoteDate netConn = null;
-	Button b;
-	Label statusLabel;
 
-	public void init() {
+	RemoteDate netConn = null;
+	JButton b;
+	JLabel statusLabel;
+
+	public DateApplet() {
 		try {
 			netConn = (RemoteDate)Naming.lookup(RemoteDate.LOOKUPNAME);
 		} catch (Exception e) {
 			System.err.println("RemoteDate exception: " + e.getMessage());
-			e.printStackTrace();
+			throw new ExceptionInInitializerError("Can't lookup " + RemoteDate.LOOKUPNAME + "; " + e);
 		}
-		add(b = new Button("Get Date"));
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
+		add(b = new JButton("Get Date"));
+		b.addActionListener(e -> {
 				if (netConn == null) {
 					showStatus("Connection failed, bye");
 					return;
 				}
 				try {
-					Date today = netConn.getRemoteDate();
+					LocalDateTime today = netConn.getRemoteDate();
 					showStatus(today.toString()); // XX use a DateFormat...
 				} catch (Exception ex) {
 					System.err.println("RemoteDate exception: " + ex.getMessage());
 					showStatus("RemoteDate failed, see Java Console");
 				}
-			}
 		});
 	}
+
+	void showStatus(String s) {
+		JOptionPane.showMessageDialog(null, s);
+	}
 }
-// END main
+// end::main[]
