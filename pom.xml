@@ -5,8 +5,8 @@
 
 	<groupId>com.darwinsys</groupId>
 	<artifactId>javasrc</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>1.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<inceptionYear>1995</inceptionYear>
 
 	<name>javasrc</name>
@@ -25,95 +25,15 @@
 		<darwinsys-api.version>1.1.3</darwinsys-api.version>
 	</properties>
 
-	<!--
-	 *** DO NOT enable this until everything is under a subdir with a pom
 	<modules>
+		<module>main</module>
+	<!-- <module>graal</module> Only works with graal vm-->
+	<!-- <module>jlink</module> has custom build script -->
 		<module>restdemo</module>
+		<module>spark</module>
 		<module>unsafe</module>
 		<module>xml</module>
 	</modules>
-	***
-	-->
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<excludes>
-						<!-- Requires Java 12 -->
-						<exclude>numbers/CompactFormatDemo.java</exclude>
-
-						<!-- javafx not included in some JDK distributions. -->
-						<exclude>javafx/*.java</exclude>
-						<!-- 1.9: "Unsafe" "is not api", as above. -->
-						<exclude>unsafe/*.java</exclude>
-
-						<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
-						 *** testing demos for now (does not affect all the stuff in src/test/java!).
-						 -->
-						<exclude>testing/Ham*.java</exclude>
-
-						<!-- Won't compile with UTF-8! -->
-						<exclude>lang/EuroLanguage.java</exclude>
-
-						<!-- Used private API which is no longer available -->
-						<exclude>netweb/WebServerSimpleSE.java</exclude>
-
-						<exclude>plotter/Penman.java</exclude>
-
-						<!-- Have yet to find a POM that works -->
-						<exclude>gui_swt/*.java</exclude>
-						<exclude>xml/XSLTransform.java</exclude>
-						<exclude>otherlang/StringDistance.java</exclude>
-						<exclude>javacomm/*.java</exclude>
-
-						<!-- Unknown issues -->
-						<exclude>lang/UsePackage.java</exclude>
-
-						<!-- Remainder all have 'Expect compile error' -->
-						<!-- XXX replace this list with filter grep -->
-						<exclude>jdb/Problem.java</exclude>
-						<exclude>lang/AddException.java</exclude>
-						<exclude>lang/ByteAdd2.java</exclude>
-						<exclude>lang/CastingDemo.java</exclude>
-						<exclude>lang/ChangeArrayLength.java</exclude>
-						<exclude>lang/CommentBug.java</exclude>
-						<exclude>lang/CompileError.java</exclude>
-						<exclude>lang/ConsRecurs.java</exclude>
-						<exclude>lang/Constructors.java</exclude>
-						<exclude>lang/ImportConflict.java</exclude>
-						<exclude>lang/ImportNonPublic.java</exclude>
-						<exclude>lang/InitializersDemo.java</exclude>
-						<exclude>lang/InnerMethods.java</exclude>
-						<exclude>lang/InterfaceNoConstructor.java</exclude>
-						<exclude>lang/NoLocalStatics.java</exclude>
-						<exclude>lang/NullStaticMethod.java</exclude>
-						<exclude>lang/OverLoadReturn.java</exclude>
-						<exclude>lang/AnnotationOverrideDemo.java</exclude>
-						<exclude>lang/PrivProt.java</exclude>
-						<exclude>lang/ProtectedClass.java</exclude>
-						<exclude>lang/ReturnType.java</exclude>
-						<exclude>lang/ShowInitializers.java</exclude>
-						<exclude>lang/Switch.java</exclude>
-						<exclude>lang/TryStealingInnerClass.java</exclude>
-						<exclude>netweb/JScript.java</exclude>
-						<exclude>numbers/CastNeeded.java</exclude>
-						<exclude>numbers/SmallIntMult.java</exclude>
-						<exclude>oo/AllClasses.java</exclude>
-						<exclude>oo/Clone0.java</exclude>
-						<exclude>oo/SingletonCheat1.java</exclude>
-						<exclude>oo/SingletonCheat2.java</exclude>
-						<exclude>reflection/ClassLoaderDemo0.java</exclude>
-						<exclude>strings/WolfInStringsClothing.java</exclude>
-						<exclude>threads/StopStop.java</exclude>
-						<exclude>threads/ThreadDeathCatch.java</exclude>
-				</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 	<dependencies>
 		<!-- My own Java API potpourri -->
@@ -154,160 +74,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		<scope>compile</scope>
-		</dependency>
-
-		<!-- Commons-beanutils -->
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils-core</artifactId>
-			<version>1.8.3</version>
-		</dependency>
-
-		<!-- Spring - used in a few examples -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>5.0.5.RELEASE</version>
-		</dependency>
-
-		<!-- JPA needing a driver, let's use Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.3.0.Beta1</version>
-			<exclusions>
-				<exclusion>
-					 <groupId>xml-apis</groupId>
-					 <artifactId>xml-apis</artifactId>
-				</exclusion>
-			 </exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.3.0.Beta1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.9.Final</version>
-		</dependency>
-
-		<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>2.4.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>swt</artifactId>
-			<version>3.3.0-v3346</version>
-		</dependency>
-
-		<dependency>
-			<groupId>jgoodies</groupId>
-			<artifactId>forms</artifactId>
-			<version>1.0.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>ant</artifactId>
-			<version>1.10.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.media</groupId>
-			<artifactId>jmf</artifactId>
-			<version>2.1.1e</version>
-		</dependency>
-
-		<!-- VLC Player for Java, jlcj -->
-		<dependency>
-			<groupId>uk.co.caprica</groupId>
-			<artifactId>vlcj</artifactId>
-			<version>3.10.1</version>
-		</dependency>
-
-		<!-- Scripting -->
-		<dependency>
-			<groupId>bsf</groupId>
-			<artifactId>bsf</artifactId>
-			<version>2.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.python</groupId>
-			<artifactId>jython-standalone</artifactId>
-			<version>2.7.1b3</version>
-		</dependency>
-
-		<!-- Client-side CDI -->
-		<dependency>
-			<groupId>org.jboss.weld.se</groupId>
-			<artifactId>weld-se</artifactId>
-			<version>3.0.0.Alpha1</version>
-		</dependency>
-
-		<!-- JSON packages -->
-
-		<!-- org.json -->
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180130</version>
-		</dependency>
-								
-		<!-- Jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-
-		<!-- JSON-B -->
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>yasson</artifactId>
-			<version>1.0.5</version>
-		</dependency>
-
-		<!-- JSON Pointer -->
-		<dependency>
-			<groupId>jakarta.json</groupId>
-			<artifactId>jakarta.json-api</artifactId>
-			<version>1.1.6</version>
-		</dependency>
-
-		<!-- Java EE / Jakarta EE -->
-		<dependency>
-			<groupId>javax</groupId>		
-			<artifactId>javaee-web-api</artifactId>		
-			<version>${javaee.version}</version>	
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.5.0-b01</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- R - renjin implementation -->
-		<dependency>
-			<groupId>org.renjin</groupId>
-			<artifactId>renjin-script-engine</artifactId>
-			<version>3.5-beta76</version>
 		</dependency>
 
 	</dependencies>

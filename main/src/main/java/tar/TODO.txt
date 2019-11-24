@@ -1,0 +1,9 @@
+Error handling throughout. In particular, the reading code needs to checksum!
+
+Write getInputStream(). Here's how: seek on the file, malloc a buffer
+big enough to hold the file, read it into memory, return a
+ByteArrayInputStream.
+
+Handle LF_LINK linked files: getEntry(name).getOffset().
+
+Think about writing Tar files?

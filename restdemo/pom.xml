@@ -2,16 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.javacookbook</groupId>
-	<artifactId>rest-demo</artifactId>
+	<parent>
+		<groupId>com.darwinsys</groupId>
+		<artifactId>javasrc</artifactId>
+		<version>1.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.darwinsys</groupId>
+	<artifactId>javasrc-rest-demo</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<inceptionYear>2015</inceptionYear>
 
-	<name>REST Demo</name>
+	<name>javasrc - REST Demo</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

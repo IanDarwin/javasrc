@@ -1,0 +1,15 @@
+Compiled from "Media.java"
+public class Media extends java.lang.Enum{
+    public static final Media book;
+    public static final Media music_cd;
+    public static final Media music_vinyl;
+    public static final Media movie_vhs;
+    public static final Media movie_dvd;
+    public static final Media[] values();
+    public static Media valueOf(java.lang.String);
+    public Media(java.lang.String, int);
+    public int compareTo(java.lang.Enum);
+    public int compareTo(java.lang.Object);
+    static {};
+}
+

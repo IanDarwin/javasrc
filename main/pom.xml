@@ -10,12 +10,12 @@
 	</parent>
 
 	<groupId>com.darwinsys</groupId>
-	<artifactId>javasrc-xml</artifactId>
+	<artifactId>javasrc-main</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<inceptionYear>1995</inceptionYear>
 
-	<name>javasrc - xml</name>
+	<name>javasrc - main module</name>
 	<url>http://javacook.darwinsys.com</url>
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
@@ -152,35 +152,151 @@
 		<scope>compile</scope>
 		</dependency>
 
-		<!-- XML Stuff -->
-
+		<!-- Commons-beanutils -->
 		<dependency>
-				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
-				<version>2.0.2</version>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils-core</artifactId>
+			<version>1.8.3</version>
 		</dependency>
 
+		<!-- Spring - used in a few examples -->
 		<dependency>
-			<groupId>xml-resolver</groupId>
-			<artifactId>xml-resolver</artifactId>
-			<version>1.2</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.0.5.RELEASE</version>
 		</dependency>
 
-		<!-- JAXB... deleted from Java SE -->
+		<!-- JPA needing a driver, let's use Hibernate -->
 		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.4.0-b180830.0359</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.0.Beta1</version>
+			<exclusions>
+				<exclusion>
+					 <groupId>xml-apis</groupId>
+					 <artifactId>xml-apis</artifactId>
+				</exclusion>
+			 </exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.3.2</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.3.0.Beta1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.istack</groupId>
-			<artifactId>istack-commons-runtime</artifactId>
-			<version>3.0.8</version>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.9.Final</version>
+		</dependency>
+
+		<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>swt</artifactId>
+			<version>3.3.0-v3346</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jgoodies</groupId>
+			<artifactId>forms</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.10.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.media</groupId>
+			<artifactId>jmf</artifactId>
+			<version>2.1.1e</version>
+		</dependency>
+
+		<!-- VLC Player for Java, jlcj -->
+		<dependency>
+			<groupId>uk.co.caprica</groupId>
+			<artifactId>vlcj</artifactId>
+			<version>3.10.1</version>
+		</dependency>
+
+		<!-- Scripting -->
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.python</groupId>
+			<artifactId>jython-standalone</artifactId>
+			<version>2.7.1b3</version>
+		</dependency>
+
+		<!-- Client-side CDI -->
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>3.0.0.Alpha1</version>
+		</dependency>
+
+		<!-- JSON packages -->
+
+		<!-- org.json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
+								
+		<!-- Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+
+		<!-- JSON-B -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+
+		<!-- JSON Pointer -->
+		<dependency>
+			<groupId>jakarta.json</groupId>
+			<artifactId>jakarta.json-api</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+
+		<!-- Java EE / Jakarta EE -->
+		<dependency>
+			<groupId>javax</groupId>		
+			<artifactId>javaee-web-api</artifactId>		
+			<version>${javaee.version}</version>	
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.5.0-b01</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
@@ -200,14 +316,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
-<!--
-	<repositories>
-	<repository>
-		<id>bedatadriven</id>
-		<name>bedatadriven public repo</name>
-		<url>http://nexus.bedatadriven.com/content/groups/public/</url>
-	</repository>
-</repositories>
--->
+
 </project>
