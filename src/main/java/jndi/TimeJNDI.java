@@ -20,7 +20,7 @@ public class TimeJNDI {
 			// Name of properties file to load
 			String name = av.length == 1 ? av[0] : "jndi";
 
-			start(); end(); report("Calibration run");
+			start(); end("Calibration run");
 
 			Properties p = new Properties();
 			String propsName = name + ".properties";
@@ -33,19 +33,16 @@ public class TimeJNDI {
 
 			start();
 			Context ctx = new InitialContext(p);
-			end();
-			report("InitialContext setup");
+			end("InitialContext setup");
 
 			MyObject o = new MyObject();
 			start();
 			ctx.rebind("randomstuff", o);
-			end();
-			report("Rebind");
+			end("Rebind");
 
 			start();
 			Object q = ctx.lookup("randomstuff");
-			end();
-			report("Lookup of " + q);
+			end("Lookup of " + q);
 		}
 		static class MyObject implements Remote, Serializable {
 			final static long serialVersionUID = 0x12345678;
@@ -54,10 +51,8 @@ public class TimeJNDI {
 		static void start() {
 			startTime = System.currentTimeMillis();
 		}
-		static void end() {
+		static void end(String mesg) {
 			endTime = System.currentTimeMillis();
-		}
-		static void report(String mesg) {
 			System.out.printf("%s took %6.3f seconds%n",
 				mesg, (endTime - startTime) / 1000D);
 		}
