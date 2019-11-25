@@ -24,8 +24,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
 		<version>2.3.2</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>11</source>
+          <target>11</target>
 		<excludes>
 			<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
 			<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
@@ -42,9 +42,14 @@
   <dependencies>
     <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
     <dependency>
-	<groupId>com.darwinsys</groupId>
+		<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-api</artifactId>
         <version>1.5.2-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+		<groupId>com.darwinsys</groupId>
+        <artifactId>darwinsys-ee</artifactId>
+        <version>0.3.4-SNAPSHOT</version>
     </dependency>
 
     <!-- Java EE current (7) full -->
@@ -53,6 +58,13 @@
         <artifactId>javaee-api</artifactId>  
         <version>7.0</version>
     </dependency> 
+
+	<!-- Client side of RMI -->
+	<dependency>
+		<groupId>org.jboss.spec.javax.rmi</groupId>
+		<artifactId>jboss-rmi-api_1.0_spec</artifactId>
+		<version>1.0.6.Final</version>
+	</dependency>
 
     <!-- JPA needing a driver, let's use Hibernate -->
     <dependency>
