@@ -66,6 +66,13 @@
 		<version>1.0.6.Final</version>
 	</dependency>
 
+	<!-- JAX-WS JDK 11+ needs this -->
+	<dependency>
+		<groupId>com.sun.xml.ws</groupId>
+		<artifactId>rt</artifactId>
+		<version>2.3.1</version>
+	</dependency>
+
     <!-- JPA needing a driver, let's use Hibernate -->
     <dependency>
       <groupId>org.hibernate</groupId>
