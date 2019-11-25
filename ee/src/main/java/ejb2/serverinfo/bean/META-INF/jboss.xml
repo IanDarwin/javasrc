@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<jboss>
+	<enterprise-beans>
+		<session>
+			<ejb-name>ServInfo1</ejb-name>
+			<jndi-name>ServInfo1</jndi-name>
+		</session>
+		<session>
+			<ejb-name>ServInfo2</ejb-name>
+			<jndi-name>ServInfo2</jndi-name>
+		</session>
+	</enterprise-beans>
+</jboss>
+

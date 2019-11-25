@@ -1,0 +1,18 @@
+#!/bin/ksh 
+
+JBOSSHOME=~/jboss
+
+CLASSPATH=.:../bean/serverinfo.jar
+
+for thing in ${JBOSSHOME}/client/*
+do
+    if [ -f $thing ]; then
+        CLASSPATH="$CLASSPATH:$thing"
+    elif [ -d $thing ]; then
+        CLASSPATH="$CLASSPATH:$thing"
+    fi
+done
+
+set -x
+
+java -classpath $CLASSPATH Client

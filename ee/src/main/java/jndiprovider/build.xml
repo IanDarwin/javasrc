@@ -1,0 +1,28 @@
+<project name="Simple JNDI map for /etc/services" default="build" basedir=".">
+
+  <!-- Ant buildfile 
+    $Id$
+    -->
+
+  <!-- set global properties for this build -->
+  <property name="src" value="."/>
+  <property name="build" value="."/>
+
+	<property file="../build.properties"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="build" depends="init">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"
+		classpath="${darwinsys.jar}"
+		deprecation="true"
+		/>
+  </target>
+
+</project>

@@ -1,0 +1,4 @@
+
+echo Running chat client
+
+java JMSChat

@@ -1,0 +1,19 @@
+<HTML>
+<HEAD><TITLE>Acme Widgets Ordering</TITLE></HEAD>
+<BODY BGCOLOR="white">
+<H1>Acme Widgets Ordering</H1>
+<P>Thank you for your order! This page will help you submit your order
+electronically.</P>
+<P></P>
+<FORM METHOD=POST ACTION="/servlets/OrderServlet">
+<H4>Card Type</H4>
+<P>Visa <INPUT TYPE="RADIO" NAME="cardType" VALUE="VISA">
+Mastercard <INPUT TYPE="RADIO" NAME="cardType" VALUE="MC">
+American Express <INPUT TYPE="RADIO" NAME="cardType" VALUE="AMEX"></P>
+<H4>Credit Card Number</H4><INPUT NAME=cardNumber>
+<H4>Credit Card Expiry</H4>
+Month<INPUT NAME=expMonth SIZE=2> 
+Year <INPUT NAME=expYear SIZE=4>
+<P><BR></P><INPUT TYPE="SUBMIT" NAME="Submit" VALUE="Send the order to Acme">
+</FORM>
+</BODY></HTML>

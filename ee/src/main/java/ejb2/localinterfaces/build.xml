@@ -1,0 +1,34 @@
+<project name="Member Bean with Local Interfaces" default="deploy">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="build"/>
+	<property file="../../build.properties"/>
+
+	<property name="deploy.jar" value="members.jar"/>
+
+	<target name="init">
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}" classpath="${j2ee.jar}"/>
+		<mkdir dir="${build}/META-INF"/>
+		<copy file="ejb-jar.xml" todir="${build}/META-INF"/>
+	</target>
+
+	<target name="jar" depends="build">
+		<jar jarfile="${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,ejb2/localinterfaces/**">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy file="${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+
+	<target name="undeploy">
+		<delete file="${deploy.dir}/${deploy.jar}"/>
+	</target>
+</project>

@@ -1,0 +1,27 @@
+<project name="Server Info Enterprise Bean" default="build" basedir=".">
+
+  <!-- $Id$ -->
+
+  <!-- set global properties for this build -->
+  <property name="src" value="."/>
+  <property name="build" value="."/>
+
+  <property file="../../build.properties"/>
+
+  <property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- specify what to compile. This builds everything -->
+  <target name="build" depends="init">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"
+		  classpath="${j2ee.jar}:../bean/serverinfo.jar"/>
+  </target>
+
+</project>

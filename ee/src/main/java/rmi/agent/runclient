@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -x
+
+# Run the Client
+java ClientProgram

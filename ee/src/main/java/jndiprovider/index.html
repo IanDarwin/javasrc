@@ -1,0 +1,16 @@
+This is an attempt to build a JNDI Provider that will let you
+look things up in the "Services" map (/etc/services file),
+so that if you need to connect to, say, an Echo server,
+instead of hard-coding the port 7, you
+can look up "echo" and get back the 7. This is how things have
+been done since time immemorial on UNIX; the routine there is
+called getservbyname().
+<ul>
+<li><a href="Services.java">Services.java</a>,
+	the main class of the JNDI provider</li>
+<li><a href="FlatNameParser.java">FlatNameParser.java</a></li>
+<li><a href="ServicesCtxFactory.java">ServicesCtxFactory.java</a></li>
+<li><a href="ServicesTest.class">ServicesTest.java</a>, a test program</li>
+<li><a href="jndi.properties">jndi.properties</a>, config file for ServicesTest</li>
+<li><a href="build.xml">build.xml</a>, build script for Ant</li>
+</ul>

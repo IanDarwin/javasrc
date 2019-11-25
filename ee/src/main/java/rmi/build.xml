@@ -1,0 +1,22 @@
+<project name="XXX" default="build" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+	<property file="../build.properties"/>
+
+	<target name="init">
+		<tstamp/> <!-- Set time stamp variables in case we need 'em-->
+		<mkdir dir="${build}"/> <!-- Ensure build directory exists -->
+	</target>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+			deprecation="true"
+		/>
+	</target>
+
+	<target name="clean">
+	</target>
+</project>

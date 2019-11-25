@@ -1,0 +1,42 @@
+<project name="Music Recording Enterprise Beans" default="deploy" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="../../../build"/>
+
+	<property file="../../../build.properties"/>
+
+	<property name="deploy.jar" value="music.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+			classpath=".:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
+		<copy todir="${build}/META-INF">
+			<fileset dir="META-INF"/>
+		</copy>
+	</target>
+
+	<target name="jar" depends="build">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,ejb2/**">
+		</jar>
+	</target>
+	
+	<target name="clean">
+			<delete file="${build}/${deploy.jar}"/>
+		</target>
+
+	<target name="deploy" depends="jar">
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+	
+	<target name="undeploy">
+		<delete file="${deploy.dir}/${deploy.jar}"/>
+	</target>
+</project>

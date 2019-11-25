@@ -1,0 +1,27 @@
+<!DOCTYPE jbosscmp-jdbc PUBLIC 
+	"-//JBoss//DTD JBOSSCMP-JDBC 3.2//EN" 
+	"http://www.jboss.org/j2ee/dtd/jbosscmp-jdbc_3_2.dtd">
+<jbosscmp-jdbc>
+<enterprise-beans>
+<!-- The content of element type "entity" must match "(ejb-name,(datasource,datasource-mapping)?,create-table?,remove-table?,post-table-create?,read-only?,read-time-out?,row-locking?,pk-constraint?,read-ahead?,list-cache-max?,clean-read-ahead-on-load?,fetch-size?,table-name?,cmp-field*,load-groups?,eager-load-group?,lazy-load-groups?,query*,unknown-pk?,entity-command?,optimistic-locking?,audit?)". -->
+<entity>
+<ejb-name>MusicRecording</ejb-name>
+<cmp-field>
+<field-name>id</field-name>
+<column-name>id</column-name>
+<auto-increment/>
+</cmp-field> 
+<cmp-field><field-name>artist</field-name></cmp-field>
+<cmp-field><field-name>title</field-name></cmp-field>
+<cmp-field><field-name>category</field-name></cmp-field>
+<cmp-field><field-name>price</field-name></cmp-field>
+</entity>
+<entity>
+<ejb-name>Publisher</ejb-name>
+<cmp-field><field-name>id</field-name></cmp-field>
+<cmp-field><field-name>name</field-name></cmp-field>
+<cmp-field><field-name>city</field-name></cmp-field>
+<cmp-field><field-name>phone</field-name></cmp-field>
+</entity>
+</enterprise-beans>
+</jbosscmp-jdbc>

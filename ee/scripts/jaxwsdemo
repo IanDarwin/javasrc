@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# build and run the JAX-WS demo
+
+build=target/classes
+
+set -x
+
+mvn compile
+
+# Run the service, backgrounded.
+java -classpath ${build} jaxwsservice.ServiceMain 2>/dev/null &
+
+# Give it time to start up
+sleep 5
+
+# Run the Java client.
+java -classpath ${build}:lib/junit-4.4.jar jaxwsclient.ClientMain
+
+# Run the Perl client
+src/jaxwsclient/client.pl
+
+# Stop the server if still running
+kill -TERM $!

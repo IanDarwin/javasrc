@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<jboss>
+	<enterprise-beans>
+		<session>
+			<ejb-name>SaleSession</ejb-name>
+			<jndi-name>SaleSession</jndi-name>
+			<local-jndi-name>SaleSessionLocal</local-jndi-name>
+		</session>
+		<entity>
+			<ejb-name>MusicRecording</ejb-name>
+			<jndi-name>MusicRecording</jndi-name>
+			<local-jndi-name>MusicRecordingLocal</local-jndi-name>
+		</entity>
+		<entity>
+			<ejb-name>Publisher</ejb-name>
+			<jndi-name>Publisher</jndi-name>
+			<local-jndi-name>PublisherLocal</local-jndi-name>
+		</entity>
+	</enterprise-beans>
+</jboss>
+

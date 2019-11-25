@@ -1,0 +1,28 @@
+<project name="EJB Examples" default="build" basedir=".">
+
+	<!-- Ant buildfile for EJB Examples
+		$Id$
+		-->
+
+	<!-- set global properties for this build -->
+
+	<!-- compile everything, one dir at a time -->
+	<target name="build" description="compile all">
+		<echo message="==> hello"/>
+		<ant dir="hello"/>
+		<echo message="==> serverinfo"/>
+		<ant dir="serverinfo/bean"/>
+		<ant dir="serverinfo/client"/>
+		<echo message="==> interfaces"/>
+		<ant dir="interfaces"/>
+		<echo message="==> cart"/>
+		<ant dir="cart"/>
+		<echo message="(not ready yet) -- billing"/>
+		<echo message="(not ready yet) -- bmp"/>
+		<echo message="(not ready yet) -- musicrecording"/>
+		<echo message="(not ready yet) -- order"/>
+		<echo message="(not ready yet) -- orders_ejb"/>
+		<echo message="(not ready yet) -- payment"/>
+	</target>
+
+</project>

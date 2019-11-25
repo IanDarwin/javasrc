@@ -1,0 +1,58 @@
+<project name="Hello Enterprise Bean" default="deploy" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="build"/>
+	<property file="../build.properties"/>
+
+	<property name="deploy.jar" value="hello.jar"/>
+	<property name="src.jar" value="hello-src.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<path id="project.class.path">
+		<pathelement location="${build}"/>
+		<pathelement location="${j2ee.jar}"/>
+		<pathelement location="${client.jar}"/>
+	</path>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+			debug="true" deprecation="true">
+			<classpath refid="project.class.path"/>
+		</javac>
+		<mkdir dir="${build}/META-INF"/>
+		<copy file="metadata/ejb-jar.xml" todir="${build}/META-INF"/>
+	</target>
+
+	<target name="jar" depends="build">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,*.class,*.properties">
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+		<sleep seconds="5"/>
+	</target>
+
+	<target name="run" depends="deploy">
+		<java classname="HelloClient">
+			<classpath refid="project.class.path"/>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete file="${src.jar}"/>
+	</target>
+
+	<target name="src.jar" depends="clean">
+		<jar jarfile="${src.jar}" basedir=".." includes="hello/**">
+		</jar>
+	</target>
+</project>

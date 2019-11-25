@@ -1,0 +1,34 @@
+<project name="Music Recording EJB Client" default="run">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="../../../build"/>
+
+	<property file="../../../build.properties"/>
+
+	<property name="deploy.jar" value="${build}/music.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}"
+			classpath="${build}:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
+		<copy file="jndi.properties" toDir="${build}"/>
+	</target>
+
+	<target name="run" depends="build">
+		<java className="ejb2.musicrecording.client.Client"
+			classpath="${build}:${client.jar}:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
+	</target> 
+
+	<!-- Must be run manually -->
+	<target name="populate" depends="build">
+		<java className="ejb2.musicrecording.client.Populate"
+			classpath="${build}:${client.jar}:${j2ee.jar}:${deploy.jar}:${darwinsys.jar}"/>
+	</target> 
+
+</project>

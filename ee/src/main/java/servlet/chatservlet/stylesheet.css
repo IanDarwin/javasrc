@@ -1,0 +1,32 @@
+/* Style Sheet for Darwin Open Systems web site.
+ * This is the web: go ahead and borrow this page, but change it for 
+ * your own web, and pass it on with the same terms of re-use.
+ * $Id$
+ */
+
+/* Attributes named after an HTML element apply to all occurrences of type. */
+
+/* Page attributes */
+body	{ background-color: #99FF99; color: #000;
+	link-color: #F00; vlink-color: #C00; alink-color: #F00
+}
+
+/* Paragraph formats: use generic, non-vendor specific names (no Arial) */
+h1	{ color: blue; font-family: Helvetica, sans-serif }
+h2	{ color: blue; font-family: Helvetica, sans-serif }
+h3	{ color: blue; font-family: Helvetica, sans-serif }
+h4	{ color: blue; font-family: Helvetica, sans-serif }
+h5	{ color: blue; font-family: Helvetica, sans-serif }
+h6	{ color: blue; font-family: Helvetica, sans-serif }
+
+th	{ background-color: #00FF00, font:family: Helvetica, sans-serif }
+
+/* Attributes named with a "#" can apply to any element but only if ID= used. */
+
+/* Heading colors */
+#TextAbout   { color: #0000FF; font-family: Helvetica, sans-serif } /* blue */
+
+/* Link colors */
+#LinkLocal   { color: #00FF00 } /* green */
+#LinkRemote  { color: #ff0000 } /* red  */
+

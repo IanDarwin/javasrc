@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!-- Ian's handy summary of the WEB-APP DTD... )
+ The content of element type "web-app" must match "(icon?,
+ display-name?, description?, distributable?, context-param*,
+ filter*, filter-mapping*, listener*, servlet*, servlet-mapping*,
+ session-config?, mime-mapping*, welcome-file-list?, error-page*,
+ taglib*, resource-env-ref*, resource-ref*, security-constraint*,
+ login-config?, security-role*, env-entry*, ejb-ref*, ejb-local-ref*)".
+ -->
+
+<web-app>
+
+	<description>A simple Servlet-based chat listener.</description>
+
+	<!-- Register ChatListener. It implements multiple Listener intrfaces! -->
+	<listener>
+		<listener-class>darwinsys.chat.ChatListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>ChatServlet</servlet-name>
+		<servlet-class>darwinsys.chat.ChatServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChatServlet</servlet-name>
+		<url-pattern>/ChatServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>

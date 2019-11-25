@@ -1,0 +1,33 @@
+<project name="BMP Demo Enterprise Bean" default="build" basedir=".">
+
+	<!-- $Id$ -->
+
+	<property name="src" value="."/>
+	<property name="build" value="."/>
+
+	<property file="../../build.properties"/>
+
+	<property name="deploy.dir" value="/home/ian/jboss/jboss/deploy"/>
+	<property name="deploy.jar" value="bmp.jar"/>
+
+	<target name="init">
+		<tstamp/> <!-- Create the time stamp -->
+		<mkdir dir="${build}"/> <!-- Create build directory for compile -->
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${build}/${deploy.jar}" basedir="${build}"
+			includes="META-INF/*,com/**">
+		</jar>
+	</target>
+
+	<target name="build" depends="jar"/>
+
+	<target name="deploy" depends="jar">
+		<copy file="${build}/${deploy.jar}" todir="${deploy.dir}"/>
+	</target>
+</project>

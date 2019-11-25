@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC 
+	"-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+	"http://java.sun.com/j2ee/dtds/ejb-jar_2_0.dtd"
+>
+
+<!-- Deployment Descriptor for EJB2 MusicRecording -->
+<ejb-jar>
+
+<!-- Enterprise-Bean lists the beans, gives them names, and some
+ ** basic attributes.
+ -->
+<enterprise-beans>
+<!--
+<!ELEMENT entity (description?, display-name?, small-icon?,
+        large-icon?, ejb-name, home?, remote?, local-home?,
+        local?, ejb-class, persistence-type, prim-key-class,
+        reentrant, cmp-version?, abstract-schema-name?,
+        cmp-field*, primkey-field?, env-entry*, ejb-ref*,
+        ejb-local-ref*, security-role-ref*, security-identity?,
+        resource-ref*, resource-env-ref*, query*)>
+
+ -->
+<entity>
+	<display-name>Music Recording Entity EJB</display-name>
+	<ejb-name>MusicRecording</ejb-name>
+	<home>ejb2.musicrecording.beans.MusicRemoteHome</home>
+	<remote>ejb2.musicrecording.beans.MusicRemote</remote>
+	<local-home>ejb2.musicrecording.beans.MusicLocalHome</local-home>
+	<local>ejb2.musicrecording.beans.MusicLocal</local>
+	<ejb-class>ejb2.musicrecording.beans.MusicBean</ejb-class>
+	<persistence-type>Container</persistence-type>
+	<prim-key-class>java.lang.Integer</prim-key-class>
+	<reentrant>false</reentrant>
+	<cmp-version>2.x</cmp-version>
+	<abstract-schema-name>MusicRecording</abstract-schema-name>
+	<cmp-field><field-name>id</field-name></cmp-field>
+	<cmp-field><field-name>artist</field-name></cmp-field>
+	<cmp-field><field-name>title</field-name></cmp-field>
+	<cmp-field><field-name>category</field-name></cmp-field>
+	<cmp-field><field-name>price</field-name></cmp-field>
+	<primkey-field>id</primkey-field>
+	<query>
+		<query-method>
+			<method-name>findByCategory</method-name>
+			<method-params><method-param>int</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording r WHERE r.category=?1 ]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findByPriceLessThan</method-name>
+			<method-params><method-param>double</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording AS r WHERE r.price < ?1 ]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findAllGreaterThan</method-name>
+			<method-params><method-param>double</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(r) FROM MusicRecording AS r WHERE r.price < ?1 ]]>
+		</ejb-ql>
+	</query>
+</entity>
+<entity>
+	<ejb-name>Publisher</ejb-name>
+	<home>ejb2.musicrecording.beans.PublisherRemoteHome</home>
+	<remote>ejb2.musicrecording.beans.PublisherRemote</remote>
+	<local-home>ejb2.musicrecording.beans.PublisherLocalHome</local-home>
+	<local>ejb2.musicrecording.beans.PublisherLocal</local>
+	<ejb-class>ejb2.musicrecording.beans.PublisherBean</ejb-class>
+	<persistence-type>Container</persistence-type>
+	<prim-key-class>java.lang.Integer</prim-key-class>
+	<reentrant>false</reentrant>
+	<cmp-version>2.x</cmp-version>
+	<abstract-schema-name>Publisher</abstract-schema-name>
+	<cmp-field><field-name>id</field-name></cmp-field>
+	<cmp-field><field-name>name</field-name></cmp-field>
+	<cmp-field><field-name>city</field-name></cmp-field>
+	<cmp-field><field-name>phone</field-name></cmp-field>
+	<primkey-field>id</primkey-field>
+	<query>
+		<query-method>
+			<method-name>findAllPublishers</method-name>
+			<method-params/>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(p) FROM Publisher AS p]]>
+		</ejb-ql>
+	</query>
+	<query>
+		<query-method>
+			<method-name>findByName</method-name>
+			<method-params><method-param>java.lang.String</method-param></method-params>
+		</query-method>
+		<ejb-ql>
+			<![CDATA[SELECT OBJECT(p) FROM Publisher AS p WHERE p.name=?1 ]]>
+		</ejb-ql>
+	</query>
+</entity>
+</enterprise-beans>
+
+<!-- Relationships - CMR links (requires CMP 2) -->
+<relationships>
+    <ejb-relation>
+      <ejb-relation-name>MusicRecording-Publisher</ejb-relation-name>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>
+			MusicRecording-has-Publisher
+        </ejb-relationship-role-name>
+        <multiplicity>One</multiplicity>
+        <relationship-role-source>
+          <ejb-name>MusicRecording</ejb-name>
+        </relationship-role-source>
+        <cmr-field>
+          <cmr-field-name>publisher</cmr-field-name>
+          <cmr-field-type>java.util.Collection</cmr-field-type>
+        </cmr-field>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>
+          publisher-has-musicRecordings
+        </ejb-relationship-role-name>
+        <multiplicity>Many</multiplicity>
+        <relationship-role-source>
+          <ejb-name>Publisher</ejb-name>
+        </relationship-role-source>
+        <cmr-field>
+          <cmr-field-name>recordings</cmr-field-name>
+          <cmr-field-type>java.util.Collection</cmr-field-type>
+        </cmr-field>
+      </ejb-relationship-role>
+    </ejb-relation>
+</relationships>
+
+<!-- 
+ ** Assembly-Descriptor includes CMT specification of what methods need xactions.
+ ** For now set all methods to Required, so anything gets committed.
+ ** XXX TODO list methods that don't change data, lower them from Required.
+ -->
+<assembly-descriptor>
+    <container-transaction>
+      <method>
+        <ejb-name>MusicRecording</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>Publisher</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
