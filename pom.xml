@@ -27,6 +27,7 @@
 
 	<modules>
 		<module>main</module>
+		<module>ee</module>
 	<!-- <module>graal</module> Only works with graal vm-->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>restdemo</module>
