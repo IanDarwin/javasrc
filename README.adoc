@@ -21,6 +21,15 @@ Not to mention MODULEPATH, and the time it takes to build the whole thing.
 Right now there is a lot of stuff in the "main" module, but this will probably
 get broken out into a few additional modules.
 
+Unfortunately for those who already have the Eclipse project checked out,
+this means that, after you do a git pull, you will have to:
+
+* delete the eclipse project javasrc (do NOT check 'delete contents on disk');
+* file->new java project->browse to workspace/javasrc/main. Set project
+name to javasrc-main. Click OK/Finish.
+* May optionally create other projects such as xml, jlink, spark, unsafe, ...
+Do this same way as previous step: file->new Java project etc.
+
 == Building
 
 * You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
