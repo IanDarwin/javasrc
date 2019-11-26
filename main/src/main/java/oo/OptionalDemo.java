@@ -3,7 +3,6 @@ package oo;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.NoSuchElementException;
 
 public class OptionalDemo {
 
