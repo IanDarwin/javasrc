@@ -17,6 +17,7 @@
 	<inceptionYear>2015</inceptionYear>
 
 	<name>javasrc - REST Demo</name>
+	<url>http://javacook.darwinsys.com</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
