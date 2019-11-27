@@ -2,33 +2,35 @@
 
 This is my assorted collection of (you guessed it) Java source.
 
-Many but by no means all of these files are used in my 
+Many but by no means all of these files are featured in my
 https://javacook.darwinsys.com/[Java Cookbook].
 I use a script (copyCodeSamples) to pre-format these for inclusion in the O'Reilly publishing toolchain;
 these will have "// tag::foo[]" and "// end::foo[]" comments to mark sections for
-mechanical inclusion into the book. These are just comments to Java tooling and can be
-completely ignored by people looking at the source code normally.
+mechanical inclusion into the book. These are just comments to Java tooling
+and can be completely ignored by people looking at the source code normally.
 Not all files with these comments necessarily appear in the book.
 
 == Recent major change
 
 For the upcoming Java Cookbook revision (late 2019/early 2020), and since it needed it anyway,
-I've started breaking this repo into a series of Maven modules (aka subdirectories), each with its own
+I've been breaking this repo into a series of 
+Maven modules (aka subdirectories), each with its own
 POM file, Maven structure, etc.
 
 A main reason was that the CLASSPATH was becoming unmanageable.
 Not to mention MODULEPATH, and the time it takes to build the whole thing.
-Right now there is a lot of stuff in the "main" module, but this will probably
+Right now there is a lot of stuff in the "main" module, but this will
 get broken out into a few additional modules.
 
 Unfortunately for those who already have the Eclipse project checked out,
 this means that, after you do a git pull, you will have to:
 
-* delete the eclipse project javasrc (do NOT check 'delete contents on disk');
+* delete the eclipse project javasrc (do NOT check 'delete contents on disk'!);
 * file->new java project->browse to workspace/javasrc/main. Set project
 name to javasrc-main. Click OK/Finish.
 * May optionally create other projects such as xml, jlink, spark, unsafe, ...
 Do this same way as previous step: file->new Java project etc.
+Recommmended names are javasrc-xml, javasrc-unsafe, etc.
 
 == Building
 
