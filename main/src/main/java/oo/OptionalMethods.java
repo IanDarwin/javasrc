@@ -1,8 +1,7 @@
 package oo;
 
-import java.time.LocalDate;
-import java.util.Optional;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class OptionalMethods {
 
