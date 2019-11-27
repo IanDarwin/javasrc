@@ -28,7 +28,7 @@
 			jarfile="${jarfile}"
 			manifest="manifest.stub"
 			basedir="${build}"
-			includes="HelloWorld.class" 
+			includes="packaging.HelloWorldForPackaging.class" 
 			update="no"/>
 	</target>
 
