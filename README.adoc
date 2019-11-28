@@ -38,18 +38,18 @@ Right now there is a lot of stuff in the "main" module, but this will
 get broken out into a few additional modules.
 
 Now that it's done this way, you can choose to just build one module
-or another, withoug having Maven download 3/4 of the Internet for
+or another, without having Maven download 3/4 of the Internet for
 dependencies. Just `cd` into one of the module directories and
 invoke `mvn` there.
 
 Unfortunately for those who already have the Eclipse project checked out,
 this means that, after you do a git pull, you will have to:
 
-* delete the eclipse project javasrc (do NOT check 'delete contents on disk'!);
-* file->new java project->browse to workspace/javasrc/main. Set project
+* Delete the eclipse project javasrc (do NOT check 'delete contents on disk'!);
+* File->new java project->browse to workspace/javasrc/main. Set project
 name to javasrc-main. Click OK/Finish.
-* May optionally create other projects such as xml, jlink, spark, unsafe, ...
-Do this same way as previous step: file->new Java project etc.
+* You may want to create other projects such as xml, jlink, spark, unsafe, ...
+Do this same way as previous step: File->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
 
 The older 'javasrcee' repository was originally formed by splitting
