@@ -17,7 +17,7 @@ as follows:
 
 * main - everything that isn't in one of the others
 * ee - Jakarta EE (Java EE, J2EE) stuff
-* graal - Only works with graal vm-->
+* graal - Only works with graal vm
 * jlink - Not ready yet?
 * json - JSON parsing and formatting with various APIs
 * restdemo - REST
