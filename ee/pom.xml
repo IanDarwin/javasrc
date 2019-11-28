@@ -14,7 +14,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>javasrc-ee</name>
+  <name>javasrc - ee</name>
   <url>http://javacook.darwinsys.com</url>
   <description>Ian Darwin's collected Java EE Code Examples</description>
 
