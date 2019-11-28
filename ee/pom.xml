@@ -46,12 +46,7 @@
   </build>
 
   <dependencies>
-    <!-- My own Java API potpourri, either installed locally, or on Central thanks to Sonatatype.org -->
-    <dependency>
-		<groupId>com.darwinsys</groupId>
-        <artifactId>darwinsys-api</artifactId>
-        <version>1.5.2-SNAPSHOT</version>
-    </dependency>
+
     <dependency>
 		<groupId>com.darwinsys</groupId>
         <artifactId>darwinsys-ee</artifactId>
