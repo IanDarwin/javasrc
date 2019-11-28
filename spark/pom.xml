@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -13,11 +15,11 @@
 	<packaging>jar</packaging>
 	<inceptionYear>2019</inceptionYear>
 
-	<name>javasrc Apache Spark demo</name>
+	<name>javasrc - Apache Spark demo</name>
 	<description>
 		javasrc Apache Spark demo
 	</description>
-	<url>http://darwinsys.com/</url>
+	<url>http://javacook.darwinsys.com</url>
 	<licenses>
 		<license>
 		<name>BSD 2-Clause "New" or "Revised" license</name>

@@ -28,7 +28,6 @@
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>7.0</javaee.version>
-		<darwinsys-api.version>1.1.3</darwinsys-api.version>
 	</properties>
 
 	<build>
@@ -112,31 +111,6 @@
 	</build>
 
 	<dependencies>
-		<!-- My own Java API potpourri -->
-		<dependency>
-			<groupId>com.darwinsys</groupId>
-			<artifactId>darwinsys-api</artifactId>
-			<version>${darwinsys-api.version}</version>
-		</dependency>
-
-		<!-- Test early and often -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.4.0</version>
-		</dependency>
-		<dependency>
-		<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>2.0.2-beta</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
 
 		<!-- Logging -->
 		<dependency>
@@ -243,46 +217,6 @@
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se</artifactId>
 			<version>3.0.0.Alpha1</version>
-		</dependency>
-
-		<!-- JSON packages -->
-
-		<!-- org.json -->
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180130</version>
-		</dependency>
-								
-		<!-- Jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>[2.9.8,)</version>
-		</dependency>
-
-		<!-- JSON-B -->
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>yasson</artifactId>
-			<version>1.0.5</version>
-		</dependency>
-
-		<!-- JSON Pointer -->
-		<dependency>
-			<groupId>jakarta.json</groupId>
-			<artifactId>jakarta.json-api</artifactId>
-			<version>1.1.6</version>
 		</dependency>
 
 		<!-- Java EE / Jakarta EE -->
