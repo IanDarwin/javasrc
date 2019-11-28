@@ -10,7 +10,22 @@ mechanical inclusion into the book. These are just comments to Java tooling
 and can be completely ignored by people looking at the source code normally.
 Not all files with these comments necessarily appear in the book.
 
-== Recent major change
+== Modules
+
+The repo is now divided into Maven modules (aka subdirectories :-)),
+as follows:
+
+* main - everything that isn't in one of the others
+* ee - Jakarta EE (Java EE, J2EE) stuff
+* graal - Only works with graal vm-->
+* jlink - Not ready yet?
+* json - JSON parsing and formatting with various APIs
+* restdemo - REST
+* spark - Apache SPARK
+* unsafe - com.sun.Unsafe
+* xml - XML parsing and formatting with various APIs
+
+== Recent major change: Modules
 
 For the upcoming Java Cookbook revision (late 2019/early 2020), and since it needed it anyway,
 I've been breaking this repo into a series of 
