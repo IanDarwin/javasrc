@@ -52,6 +52,10 @@ name to javasrc-main. Click OK/Finish.
 Do this same way as previous step: file->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
 
+The older 'javasrcee' repository was originally formed by splitting
+it off from this repository, several years ago. Now, with this modularization,
+it has been merged back in, as the `ee` module.
+
 == Building
 
 * You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
@@ -72,7 +76,7 @@ will eventually be converted to Maven exec:java configurations.
 
 * Building with other platforms? Good luck, but let me know if it works.
 
-. If you really need Java 8, try removing the module-info files. But you're on your own.
+* If you really need Java 8, try removing the module-info files. But you're on your own.
 And you'll need some exclusions for files that use newer language features.
 
 Ian Darwin
