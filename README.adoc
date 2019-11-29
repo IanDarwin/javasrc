@@ -60,7 +60,7 @@ it has been merged back in, as the `ee` module.
 
 * You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
 if you are on some relic platform that doesn't have Java 9 or later.
-Even OpenBSD has Java 11 (Thanks Kurt!).
+Even https://openbsd.org[OpenBSD] has Java 11 (Thanks Kurt!).
 Also sorry if your organization is stuck on Java 8 due to application server issues.
 I am updating the Java Cookbook for Java 13+ and these files are the examples for
 that book.
