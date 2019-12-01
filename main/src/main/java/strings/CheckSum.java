@@ -39,9 +39,8 @@ public class CheckSum {
             String inputLine;
 
             while ((inputLine = is.readLine()) != null) {
-                int i;
-                for (i=0; i<inputLine.length(); i++) {
-                    sum += inputLine.charAt(i);
+                for (char c : inputLine.toCharArray()) {
+                    sum += c;
                 }
             }
         } catch (IOException e) {
