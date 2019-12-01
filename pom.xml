@@ -33,6 +33,7 @@
 		<module>json</module>
 		<module>restdemo</module>
 		<module>spark</module>
+		<module>testing</module>
 		<module>unsafe</module>
 		<module>xml</module>
 	</modules>

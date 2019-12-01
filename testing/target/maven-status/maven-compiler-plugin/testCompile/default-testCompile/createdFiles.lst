@@ -1,0 +1,5 @@
+com/darwinsys/testing/CheckAccessorsTest.class
+com/darwinsys/testing/TestUtilsTest.class
+com/darwinsys/testing/CheckAccessorsTest$GoodClass.class
+com/darwinsys/testing/TestUtilsTest$MyMock.class
+com/darwinsys/testing/CheckAccessorsTest$BadClass.class
