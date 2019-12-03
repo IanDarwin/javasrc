@@ -6,9 +6,15 @@ package strings;
 // tag::main[]
 public class StrCharAt {
     public static void main(String[] av) {
-        String a = "A quick bronze fox lept a lazy bovine";
-		for (int i=0; i < a.length(); i++) // Don't use foreach
-			System.out.println("Char " + i + " is " + a.charAt(i));
+        String a = "A quick bronze fox";
+		for (int i=0; i < a.length(); i++) { // Don't use foreach
+			String message = String.format(
+				"charAt is '%c', codePointAt is %3d, casted it's '%c'",
+					 a.charAt(i),
+					 a.codePointAt(i),
+					 (char)a.codePointAt(i));
+			System.out.println(message);
+		}
 	}
 }
 // end::main[]
