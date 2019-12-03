@@ -7,6 +7,9 @@ public class StringBuilderCommaList {
 	public static void main(String[] args) {
 
 		// tag::main[]
+		// Method using String.split and 1.8 String join
+		System.out.println(String.join(", ", SAMPLE_STRING.split(" ")));
+
 		// Method using regexp split 
 		StringBuilder sb1 = new StringBuilder();
 		for (String word : SAMPLE_STRING.split(" ")) {
