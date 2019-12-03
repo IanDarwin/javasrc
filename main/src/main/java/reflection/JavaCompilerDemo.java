@@ -5,6 +5,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+// tag::main[]
 import javax.tools.JavaCompiler;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.ToolProvider;
@@ -38,6 +39,7 @@ public class JavaCompilerDemo {
 		}
 	}
 }
+// end::main[]
 
 class MySource extends SimpleJavaFileObject {
 	final String source;
