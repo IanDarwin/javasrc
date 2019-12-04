@@ -1,4 +1,4 @@
-package com.darwinsys.testing;
+package testing;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -61,7 +61,7 @@ public class RandomDataGenerator {
 		// Court of last resort:
 		try {
 			System.out.println("Creating " + t);
-			return t.newInstance();
+			return t.getConstructor().newInstance();
 		} catch (Exception e) {
 			System.out.println("TestSettersGetters.getRandomValue() needs case for " + t);			
 			return null;	// you lose

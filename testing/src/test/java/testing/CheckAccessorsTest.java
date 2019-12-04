@@ -1,4 +1,4 @@
-package com.darwinsys.testing;
+package testing;
 
 import org.junit.Test;
 

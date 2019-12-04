@@ -7,6 +7,8 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import domain.Person;
+
 // tag::main[]
 public class HamcrestDemo {
 

@@ -1,4 +1,4 @@
-package com.darwinsys.testing;
+package testing;
 
 import java.util.ArrayList;
 import java.util.List;

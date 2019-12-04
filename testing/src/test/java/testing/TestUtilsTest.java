@@ -1,6 +1,5 @@
-package com.darwinsys.testing;
+package testing;
 
-import static com.darwinsys.testing.TestUtils.assertNoDefaultProperties;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -90,18 +89,18 @@ public class TestUtilsTest {
 	@Test(expected=AssertionError.class)
 	public void testAssertNoDefaultPropertiesOnMock() throws Exception {
 		MyMock m = new MyMock();
-		assertNoDefaultProperties(m);
+		TestUtils.assertNoDefaultProperties(m);
 	}
 	@Test
 	public void testAssertNoDefaultPropertiesOnOthers() throws Exception {
 		Object o = new Object();
-		assertNoDefaultProperties(o);
+		TestUtils.assertNoDefaultProperties(o);
 
 		MyMock m = new MyMock();
 		m.date = new Date();
 		m.i = 1000;
 		m.j = "mockme";
-		assertNoDefaultProperties(m);
+		TestUtils.assertNoDefaultProperties(m);
 	}
 
 	@Test @Ignore("unknown test failure")
