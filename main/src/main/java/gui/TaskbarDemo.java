@@ -1,5 +1,8 @@
+package gui;
+
 import java.awt.*;
 
+// tag::main[]
 /**
  * Explorations with the Java 9+ AWT "Taskbar" interface.
  */
@@ -19,3 +22,4 @@ public class TaskbarDemo {
 		Thread.sleep(5 * 1000);
 	}
 }
+// end::main[]
