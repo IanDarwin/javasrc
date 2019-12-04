@@ -29,7 +29,7 @@ public class CheckSum {
 
     // tag::main[]
     /** CheckSum one text file, given an open BufferedReader.
-     * Checksumm does not include line endings, so will give the
+     * Checksum does not include line endings, so will give the
      * same value for given text on any platform. Do not use
      * on binary files!
      */
