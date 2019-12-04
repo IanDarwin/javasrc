@@ -38,10 +38,11 @@
 				<configuration>
 					<excludes>
 
-						<exclude>plotter/Penman.java</exclude>
+						<exclude>evals/*.java</exclude>
 
 						<exclude>gui_swt/*.java</exclude>
 						<exclude>javacomm/*.java</exclude>
+						<exclude>plotter/Penman.java</exclude><!-- uses javacomm -->
 						<exclude>javafx/*.java</exclude>
 
 					</excludes>
