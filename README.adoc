@@ -71,6 +71,12 @@ The older 'javasrcee' repository was originally formed by splitting
 it off from this repository, several years ago. Now, with this modularization,
 it has been merged back in, as the `ee` module.
 
+== Notes on Individual Modules
+
+testing::
+	Works under "mvn test". Compiles as an Eclipse project, but can't run due to
+	a Junit 5 loading conflict (pull requests welcome on this one, thanks).
+
 == Building
 
 * You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
