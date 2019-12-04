@@ -26,7 +26,7 @@ public class SearchBoxDemo extends JFrame {
 			"quinacrine",
 	};
 	
-	private JList vlist = new JList(words);
+	private JList<String> vlist = new JList<>(words);
 	
 	/**
 	 * @param args

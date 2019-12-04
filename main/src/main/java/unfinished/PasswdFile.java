@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class PasswdFile extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	public PasswdFile() {
 		setTitle("Password File");
 
@@ -25,7 +27,7 @@ public class PasswdFile extends JFrame {
 		JPanel descPanel = new JPanel();
 		descPanel.setBorder(BorderFactory.createEtchedBorder());
 		descPanel.add(new JLabel("Description"));
-		JComboBox profiles = new JComboBox();
+		JComboBox<String> profiles = new JComboBox<>();
 		profiles.setEditable(true);
 		descPanel.add(profiles);
 		bc.add(descPanel);

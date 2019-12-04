@@ -14,7 +14,8 @@ import javax.swing.event.ListSelectionListener;
 /** Demonstrate Swing "JList" ScrollingList.
  */
 public class JListDemo extends JFrame {
-	JList list = null;
+	private static final long serialVersionUID = 1L;
+	JList<String> list = null;
 
 	JListDemo(String s) {
 		super(s);
@@ -26,7 +27,7 @@ public class JListDemo extends JFrame {
 		data.add("Goodbye");
 		data.add("Adieu");
 		data.add("Adios");
-		list = new JList(data.toArray());
+		list = new JList<String>((String[]) data.toArray());
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent evt) {
 				if (evt.getValueIsAdjusting())

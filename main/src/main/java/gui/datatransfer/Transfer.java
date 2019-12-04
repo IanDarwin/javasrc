@@ -11,13 +11,15 @@ import javax.swing.event.*;
  * @author Jonathan Fuerth, http://www.SQLPower.ca
  */
 public class Transfer extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	public static void main(String[] args) {
 		new Transfer().setVisible(true);
 	}
 
 	private JTextField tf;
 	private JLabel l;
-	private JComboBox propertyComboBox;
+	private JComboBox<String> propertyComboBox;
 
 	public Transfer() {
 
@@ -25,7 +27,7 @@ public class Transfer extends JFrame {
 		Container cp = new Box(BoxLayout.X_AXIS);
 		setContentPane(cp);
 		JPanel firstPanel = new JPanel();
-		propertyComboBox = new JComboBox();
+		propertyComboBox = new JComboBox<>();
 		propertyComboBox.addItem("text");
 		propertyComboBox.addItem("font");
 		propertyComboBox.addItem("background");
@@ -74,7 +76,8 @@ public class Transfer extends JFrame {
 		// Selecting in the ComboBox makes that the property that is xfered.
 		propertyComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ce) {
-				JComboBox bx = (JComboBox)ce.getSource();
+				@SuppressWarnings("unchecked")
+				JComboBox<String> bx = (JComboBox<String>)ce.getSource();
 				String prop = (String)bx.getSelectedItem();
 				setMyTransferHandlers(prop);
 			}

@@ -21,13 +21,13 @@ import javax.swing.JFrame;
 public class MVCLoop {
 	public static void main(String[] a) {
 		Button b;
-		final JComboBox ch;
+		final JComboBox<String> ch;
 		JFrame f = new JFrame("Testing");
 		Container cp = f.getContentPane();
 		cp.setLayout(new FlowLayout());
 
 		b = new Button("Set");
-		ch = new JComboBox();
+		ch = new JComboBox<>();
 
 		cp.add(b);
 		b.addActionListener(new ActionListener() {

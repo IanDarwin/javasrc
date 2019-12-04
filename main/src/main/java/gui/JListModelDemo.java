@@ -14,10 +14,11 @@ import javax.swing.event.ListDataListener;
  * @author Tweaked by Jonathan Fuerth of SQLPower.ca
  */
 public class JListModelDemo extends JListDemo {
+	private static final long serialVersionUID = 1L;
 
 	JListModelDemo(String s) {
 		super(s);
-		ListModel lm = new StaticListModel();
+		ListModel<String> lm = new StaticListModel();
 		list.setModel(lm);
 		list.setCellRenderer(new MyCellRenderer());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,7 +30,8 @@ public class JListModelDemo extends JListDemo {
 		l.setVisible(true);
 	}
 
-	class MyCellRenderer extends JLabel implements ListCellRenderer {
+	class MyCellRenderer extends JLabel implements ListCellRenderer<String> {
+		private static final long serialVersionUID = 1L;
 
 		/* Get the Renderer for a given List Cell.
 		 * This is the only method defined by ListCellRenderer.
@@ -38,22 +40,14 @@ public class JListModelDemo extends JListDemo {
 		 * Reconfigure the Component each time we're called
 		 * to accord for whether it's selected or not.
 		 */
-		public Component getListCellRendererComponent
-			(
-			 JList list,
-			 Object value,            // value to display
+		public Component getListCellRendererComponent(
+			 JList<? extends String> list,
+			 String value,            // value to display
 			 int index,               // cell index
 			 boolean isSelected,      // is the cell selected
 			 boolean cellHasFocus)    // the list and the cell have the focus
 		{
-			Component c = null;
-			if (value == null) {
-				c = new JLabel("(null)");
-			} else if (value instanceof Component) {
-				c = (Component) value;
-			} else {
-				c = new JLabel(value.toString());
-			}
+			Component c = new JLabel(value == null ? "(null)" : value);
 			
 			if ( isSelected ) {
 				c.setBackground(list.getSelectionBackground());
@@ -71,7 +65,7 @@ public class JListModelDemo extends JListDemo {
 		}
 	}
 
-	class StaticListModel implements ListModel {
+	class StaticListModel implements ListModel<String> {
 		private final Object[] data = {
 			"Hello",
 			new Object(),
@@ -80,8 +74,8 @@ public class JListModelDemo extends JListDemo {
 			this,
 		};
 
-		public Object getElementAt(int index) {
-			return data[index];
+		public String getElementAt(int index) {
+			return (String)data[index];
 		}
 
 		public int getSize() {

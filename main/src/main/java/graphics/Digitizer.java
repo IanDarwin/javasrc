@@ -14,6 +14,7 @@ import javax.swing.JList;
  * Digitizer - load an Image and let you click on it.
  */
 public class Digitizer extends JComponent {
+	private static final long serialVersionUID = 1L;
 	Container cp;
 	ImageView iv;
 
@@ -28,7 +29,7 @@ public class Digitizer extends JComponent {
 		iv = new ImageView("foo");
 		cp.add(iv);
 
-		JList list = new JList();
+		JList<?> list = new JList<>();
 		cp.add(list);
 
 		Grapher gr = new Grapher();

@@ -56,7 +56,7 @@ public class ScriptingGUI extends JFrame implements Serializable {
 		// Get list of supported languages
 		List<ScriptEngineFactory> engineFactories = 
 			scriptEngineManager.getEngineFactories();
-		final JComboBox engineChoiceBox = new JComboBox();
+		final JComboBox<EngineChoice> engineChoiceBox = new JComboBox<>();
 		for (ScriptEngineFactory f : engineFactories) {
 			EngineChoice ec = new EngineChoice(f.getLanguageName(), f);
 			engineChoiceBox.addItem(ec);
