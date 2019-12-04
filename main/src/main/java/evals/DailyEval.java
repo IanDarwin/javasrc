@@ -1,6 +1,5 @@
 package evals;
 
-import java.applet.Applet;
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -17,21 +16,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-class BorderPanel extends Panel {
-	/** Paint -- just draw a tiny border */
-	public void paint(Graphics g) {
-		g.setColor(Color.red);
-		Dimension d = getSize();
-		g.draw3DRect(0, 0, d.width-1, d.height-1, true);
-	}
-}
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
- * Daily Evaluation Applet for Learning Tree Int'l.
+ * Daily Evaluation for students in class
  * @Author Ian Darwin, http://www.darwinsys.com/
  */
-public class DailyEval extends Applet {
+public class DailyEval {
+	public static void main(String[] args) {
+		new DailyEval();
+	}
+
 	private Button Button1 = null;
 	private CheckboxGroup instrCBG;
 	private CheckboxGroup crsCBG;
@@ -59,21 +55,14 @@ public class DailyEval extends Applet {
 	private Font bigFont, midFont, smlFont;
 
 	/**
-	 * Gets the applet information.
-	 * @return java.lang.String
+	 * Constructor
 	 */
-	public String getAppletInfo() {
-		return "DailyEval -- Copyright Ian F. Darwin";
-	}
-
-	/**
-	 * The Applet init method.
-	 */
-	public void init() {
-		super.init();
-		setName("DailyEval");
-		setLayout(new GridLayout(0,1));
-		setBackground(Color.yellow);
+	public DailyEval() {
+		super();
+		JFrame jf = new JFrame();
+		jf.setName("DailyEval");
+		jf.setLayout(new GridLayout(0,1));
+		jf.setBackground(Color.yellow);
 
 		bigFont = new Font("helvetica", 1, 24);
 		midFont = new Font("helvetica", 1, 18);
@@ -87,7 +76,7 @@ public class DailyEval extends Applet {
 		yournameTF.setName("yournameTF");
 		yournameTF.setBackground(Color.white);
 		p.add(yournameTF);
-		add(p);
+		jf.add(p);
 
 		// Checkboxen for the Instructor Grade panel
 		Checkbox1 = new Checkbox();
@@ -125,7 +114,7 @@ public class DailyEval extends Applet {
 
 		Label2 = new Label("Course");
 		Label2.setFont(midFont);
-		add(Label2);
+		jf.add(Label2);
 
 		// Panel for the Course Grade
 		p = new Panel();
@@ -142,11 +131,11 @@ public class DailyEval extends Applet {
 		p.add(Checkbox5);
 		Checkbox5.setCheckboxGroup(crsCBG);
 		crsCBG.setSelectedCheckbox(Checkbox1);
-		add(p);
+		jf.add(p);
 
 		Label21 = new Label("Instructor");
 		Label21.setFont(midFont);
-		add(Label21);
+		jf.add(Label21);
 
 		// Panel for the Instructor grade
 		p = new Panel();
@@ -163,11 +152,11 @@ public class DailyEval extends Applet {
 		p.add(Checkbox51);
 		Checkbox51.setCheckboxGroup(instrCBG);
 		instrCBG.setSelectedCheckbox(Checkbox11);
-		add(p);
+		jf.add(p);
 
 		Label21 = new Label("Pace");
 		Label21.setFont(midFont);
-		add(Label21);
+		jf.add(Label21);
 
 		// Panel for the Pace grade
 		p = new Panel();
@@ -180,44 +169,46 @@ public class DailyEval extends Applet {
 		cb.setName("F");
 		p.add(cb = new Checkbox("Too slow", paceCBG, false));
 		cb.setName("S");
-		add(p);
+		jf.add(p);
 
 		// Panel for collection of large textfields/areas
 		improveLabel = new Label("What improvements would you suggest?");
 		improveLabel.setFont(midFont);
-		add(improveLabel);
+		jf.add(improveLabel);
 		improveTF = new TextField();
 		improveTF.setName("improveTF");
 		improveTF.setBackground(Color.white);
-		add(improveTF);
+		jf.add(improveTF);
 
 		bestpartLabel = new Label("What was the best part of today's class?");
 		bestpartLabel.setFont(midFont);
 		bestpartTF = new TextField();
 		bestpartTF.setName("bestpartTF");
 		bestpartTF.setBackground(Color.white);
-		add(bestpartLabel);
-		add(bestpartTF);
+		jf.add(bestpartLabel);
+		jf.add(bestpartTF);
 
 		commentsLabel = new Label(
 			"What suggestions would you like to make?");
 		commentsLabel.setFont(midFont);
-		add(commentsLabel);
+		jf.add(commentsLabel);
 		commentsTA = new TextArea(4, 70);
 		commentsTA.setName("commentsTA");
 		commentsTA.setBackground(Color.white);
-		add(commentsTA);
+		jf.add(commentsTA);
 
 		p = new Panel();
 		Button1 = new Button("Send Evaluation");
 		Button1.setName("Button1");
 		p.add(Button1);
-		add(p);
+		jf.add(p);
 		Button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sendit();
 			}
 		});
+		jf.pack();
+		jf.setVisible(true);
 	}
 
 	/** This handles all the action on the button */
@@ -235,10 +226,17 @@ public class DailyEval extends Applet {
 		System.out.println("SUGGESTIONS: " + commentsTA.getText());
 		URL url = null;
 		try {
-			url = new URL(getCodeBase(), "DailyEvalThanks.html");
+			url = new URL("http://localhost:8080/dailyevals/DailyEvalThanks.html");
 		} catch(MalformedURLException rsi) {
 			showStatus("You lose: "+rsi);
+			return;
 		}
-		getAppletContext().showDocument(url);
+		showDocument(url);
+	}
+	void showStatus(String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+	void showDocument(URL url) {
+		showStatus("Would now open " + url);
 	}
 }

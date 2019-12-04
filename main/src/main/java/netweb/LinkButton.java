@@ -1,6 +1,5 @@
 package netweb;
 
-import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,21 +11,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /** Synthetic button, not using Native toolkit. This is slightly fancier
  * than the XButton* classes, but still does not do everything you
  * might want in a button. It does both support actionListeners AND
  * have a TARGET URL that it jumps to (after notifying the actionListeners).
  *
- * @author	Copyright 1995, 1997 Ian F. Darwin,
+ * @author	Copyright 1995, 1997, 2019 Ian F. Darwin,
  * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>,
  * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
  */
-public class LinkButton extends Applet implements MouseListener {
+public class LinkButton extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = -3074898744148442497L;
 	/** The label that is to appear in the button */
@@ -59,36 +63,27 @@ public class LinkButton extends Applet implements MouseListener {
 	 * kinds of exceptions but the API predefines that we don't, so we
 	 * limit ourselves to the ubiquitous IllegalArgumentException.
 	 */
-	public void init() {
-		String s;
-
+	public LinkButton(String label, String target, String imageName,
+			String fontName, int fontSize) {
 		System.out.println("In LinkButton::init");
 		try {
-			if ((target = getParameter("target")) == null)
-				throw new IllegalArgumentException("TARGET parameter REQUIRED");
 			targetURL = new URL(target);
-			if ((imName = getParameter("image")) != null)
+			if (imName != null)
 				setImage(getImage(new URL(imName)));
 		} catch (MalformedURLException rsi) {
 			throw new IllegalArgumentException("MalformedURLException " +
 				rsi.getMessage());
 		}
-		label = getParameter("label");
 
 		// last-minute checking: must be an Image or text
 		if (imName == null && label == null)
 				throw new IllegalArgumentException("LABEL or IMAGE is REQUIRED");
 		// Now handle font stuff.
-		fontName = getParameter("fontname");
-		if ((s = getParameter("fontsize")) != null)
-			fontSize = Integer.parseInt(s);
+
 		if (fontName != null || fontSize != 0) {
 			System.out.println("Name " + fontName + ", size " + fontSize);
 			textFont = new Font(fontName, Font.BOLD, fontSize);
 		}
-		
-		// Applets don't do this; application components may:
-		// setSize(getPreferredSize());
 
 		// N.B. Must say we want to handle *mouse* events!
 		addMouseListener(this);
@@ -96,7 +91,12 @@ public class LinkButton extends Applet implements MouseListener {
 		// set up the list of action handlers
 		l = new ArrayList<ActionListener>();
 	}
-	
+
+	private Image getImage(URL url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public void start() {
 		System.out.println("In LinkButton::start");
 	}
@@ -226,7 +226,7 @@ public class LinkButton extends Applet implements MouseListener {
 		}
 		if (targetURL != null) {
 			showStatus("Going to " + target);
-			getAppletContext().showDocument(targetURL);
+			showDocument(targetURL);
 		}
 	}
 
@@ -266,5 +266,21 @@ public class LinkButton extends Applet implements MouseListener {
 
 	/** mouseClicked is defined by MouseListener, but not used here */
 	public void mouseClicked(MouseEvent e) {
+	}
+	
+	// APPLET SUPPORT - to be in darwinsys-api/swingui/AppletSupport soon
+	
+	void showDocument(URL targetURL) {
+		JTextArea ta = new JTextArea();
+		try {
+			ta.setText(targetURL.getContent().toString());
+		} catch (IOException e) {
+			ta.setText("Failed to load " + targetURL + " due to " + e);
+		}
+		JFrame jf = new JFrame(targetURL.toString());
+	}
+	
+	void showStatus(String message) {
+		System.out.println(message);
 	}
 }
