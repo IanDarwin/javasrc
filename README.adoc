@@ -1,21 +1,30 @@
 = JavaCook Source Files (javasrc)
 
 This is my assorted collection of (you guessed it) Java source.
+It remains focused on building with
+https://maven.apache.org/[Maven]
+and
+https://eclipse.org/[Eclipse].
 
-Many but by no means all of these files are featured in my
+About a third of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
-I use a script (copyCodeSamples) to pre-format these for inclusion in the O'Reilly publishing toolchain;
-these will have "// tag::foo[]" and "// end::foo[]" comments to mark sections for
+I use a script (+copyCodeSamples+) to pre-format these for inclusion in the O'Reilly publishing toolchain;
+these will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
 mechanical inclusion into the book. These are just comments to Java tooling
 and can be completely ignored by people looking at the source code normally.
-Not all files with these comments necessarily appear in the book.
+Not all files with these comments necessarily appear in the book;
+files are included from the manuscript using 
+https://asciidoctor.org[asciidoctor]'s `include` mechanism and,
+when a code sample gets dropped from the book, I have no motivation
+to edit the tags out of the code, in case I use it elsewhere.
 
-== Modules
+== Structured as Maven Modules
 
-The repo is now divided into Maven modules (aka subdirectories :-)),
+This repo consists of about a dozen Maven modules (aka subdirectories :-)),
 as follows:
 
 * main - everything that isn't in one of the others
+* desktop - GUI/Graphics, JavaFX, comm devices, etc.
 * ee - Jakarta EE (Java EE, J2EE) stuff
 * graal - Only works with graal vm
 * jlink - Not ready yet?
@@ -23,14 +32,15 @@ as follows:
 * restdemo - REST
 * spark - Apache SPARK
 * unsafe - com.sun.Unsafe
+* testing - code that expands on testing (other modules have normal unit tests)
 * xml - XML parsing and formatting with various APIs
 
-== Recent major change: Modules
-
-For the upcoming Java Cookbook revision (late 2019/early 2020), and since it needed it anyway,
-I've been breaking this repo into a series of 
-Maven modules (aka subdirectories), each with its own
-POM file, Maven structure, etc.
+Prior to the Java Cookbook revision (late 2019/early 2020), 
+this repo was one single module with no sub-modules. This became difficult
+to manage and to use, since, to compile anything, a user would have to wait for Maven
+to download all the dependencies and their dependencies and theirs... 
+That revision seemed like a good time to split the whole shebang into smaller pieces.
+Each module has its own POM file, Maven structure, etc.
 
 A main reason was that the CLASSPATH was becoming unmanageable.
 Not to mention MODULEPATH, and the time it takes to build the whole thing.
@@ -38,16 +48,21 @@ Right now there is a lot of stuff in the "main" module, but this will
 get broken out into a few additional modules.
 
 Now that it's done this way, you can choose to just build one module
-or another, without having Maven download 3/4 of the Internet for
+or another, _without having Maven download 3/4 of the Internet_ for
 dependencies. Just `cd` into one of the module directories and
-invoke `mvn` there.
+invoke `mvn` there. Or you can do them all by invoking `mvn` in
+the top-level directory. Useful mvn targets include `compile` and `test`.
+Do not use `mvn package` as the jar files won't be useful on their own.
 
-Unfortunately for those who already have the Eclipse project checked out,
-this means that, after you do a git pull, you will have to:
+Unfortunately for those who already had the original all-in-one _javasrc_
+checked out and an Eclipse project created in that directory,
+you should do the following:
 
-* Delete the eclipse project javasrc (do NOT check 'delete contents on disk'!);
-* File->new java project->browse to workspace/javasrc/main. Set project
-name to javasrc-main. Click OK/Finish.
+* In Eclipse, delete javasrc project (do NOT check 'delete contents on disk'!);
+* Delete the old target folder: {++rm -r++ or ++del/s++} __javasrc/target__;
+* Do a "git pull" to rearrange the project and get the extra pom files;
+* Back in Eclipse, ++File->New Java Project->browse to (but not into) workspace/javasrc/main++.
+Set project name to ++javasrc-main++. Click ++OK/Finish++.
 * You may want to create other projects such as xml, jlink, spark, unsafe, ...
 Do this same way as previous step: File->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
