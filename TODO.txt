@@ -1,10 +1,4 @@
-pom and libs: add mockito
-
 re-unite darwinsys JGrep and javasrc Grep2
 
-Split "main" mvn module into 2 or 3 others, as seems fit.
-
 Make sure everything compiles again.
-
-Make poms for the couple of modules that don't have them yet
 
