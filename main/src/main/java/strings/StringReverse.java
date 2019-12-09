@@ -22,7 +22,7 @@ public class StringReverse {
 		System.out.print('"' + s + '"' + " backwards by word is:\n\t\"");
 		while (!myStack.empty()) {
 			System.out.print(myStack.pop());
-			System.out.print(' ');
+			System.out.print(' ');	// inter-word spacing
 		}
 		System.out.println('"');
 		// end::main[]
