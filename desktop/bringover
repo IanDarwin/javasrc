@@ -1,5 +1,0 @@
-p=$1
-git mv ../main/$j/$p ./$j/
-if [ -d ../main/$t/$p ]; then
-	git mv ../main/$t/$p ./$t/
-fi
