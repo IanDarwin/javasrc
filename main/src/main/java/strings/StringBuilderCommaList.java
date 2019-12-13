@@ -7,10 +7,12 @@ public class StringBuilderCommaList {
 	public static void main(String[] args) {
 
 		// tag::main[]
-		// Method using String.split and 1.8 String join
+		System.out.println(
+			"Split using String.split; joined using 1.8 String join");
 		System.out.println(String.join(", ", SAMPLE_STRING.split(" ")));
 
-		// Method using regexp split 
+		System.out.println(
+			"Split using String.split; joined using StringBuilder");
 		StringBuilder sb1 = new StringBuilder();
 		for (String word : SAMPLE_STRING.split(" ")) {
 			if (sb1.length() > 0) {
@@ -20,7 +22,8 @@ public class StringBuilderCommaList {
 		}
 		System.out.println(sb1);
 
-		// Method using a StringTokenizer
+		System.out.println(
+			"Split using StringTokenizer; joined using StringBuilder");
 		StringTokenizer st = new StringTokenizer(SAMPLE_STRING);
 		StringBuilder sb2 = new StringBuilder();
 		while (st.hasMoreElements()) {
