@@ -7,7 +7,7 @@ package strings;
 public class StrCharAt {
     public static void main(String[] av) {
         String a = "A quick bronze fox";
-		for (int i=0; i < a.length(); i++) { // Don't use foreach
+		for (int i=0; i < a.length(); i++) { // no forEach, need the index
 			String message = String.format(
 				"charAt is '%c', codePointAt is %3d, casted it's '%c'",
 					 a.charAt(i),
