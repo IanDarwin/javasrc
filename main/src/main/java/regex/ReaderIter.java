@@ -1,7 +1,11 @@
 package regex;
 
 import java.util.regex.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.List;
 
 /**
  * Print all the strings that match a given pattern from a file.
@@ -11,12 +15,9 @@ public class ReaderIter {
 	public static void main(String[] args) throws IOException {
 		// The RE pattern
 		Pattern patt = Pattern.compile("[A-Za-z][a-z]+");
-		// A FileReader (see the I/O chapter)
-		BufferedReader r = new BufferedReader(new FileReader(args[0]));
-
+		// See the I/O chapter
 		// For each line of input, try matching in it.
-		String line;
-		while ((line = r.readLine()) != null) {
+		Files.lines(Path.of(args[0])).forEach(line -> {
 			// For each match in the line, extract and print it.
 			Matcher m = patt.matcher(line);
 			while (m.find()) {
@@ -31,8 +32,7 @@ public class ReaderIter {
 				// Use CharacterIterator.substring(offset, end);
 				System.out.println(line.substring(start, end));
 			}
-		}
-		r.close();
+		});
 	}
 }
 // end::main[]
