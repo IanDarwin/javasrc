@@ -8,7 +8,7 @@ public class ForEachChar {
 		// Does not compile, Strings are not iterable
 		// for (char ch : mesg) {
 		//		System.out.println(ch);
-		// 
+		// }
 
 		System.out.println("Using toCharArray:");
 		for (char ch : mesg.toCharArray()) {
