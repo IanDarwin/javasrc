@@ -1,6 +1,8 @@
 <project name="Java Cookbook, Packaging Chapter" default="run" basedir=".">
 
-	<!-- $Id$ -->
+	<!-- We no longer recommend ant; suggest you use Maven or gradle,
+	     because Ant build files like this are too verbose and low-level.
+	 -->
 
 	<property name="src" value="."/>
 	<property name="build" value="build"/>
@@ -19,9 +21,9 @@
 	</target>
 
 	<!-- Create a Jar that includes the main-class attribute; this file
-	 *** is runnable on any J2SE platform, and (it it is a GUI application)
-	 *** can be invoked by double-clicking on Mac OS X.
-	 *** You can do this in maven using assembly:single plugin task.
+	 *** is runnable on any J2SE platform, and (if it is a GUI application)
+	 *** can be invoked by double-clicking on Mac OS X or MS Windows.
+	 *** You can do this more easily in maven using assembly:single plugin task.
 	 -->
 	<target name="jar-main" depends="build">
 		<jar

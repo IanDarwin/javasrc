@@ -36,13 +36,15 @@
 				<version>3.7.0</version>
 				<configuration>
 					<excludes>
+						<!-- Require Java 14 -->
+						<exclude>structure/PersonRecordDemo.java</exclude>
+						<exclude>strings/StringTextBlock.java</exclude>
+
 						<!-- Requires Java 12 -->
 						<exclude>numbers/CompactFormatDemo.java</exclude>
 
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
-						<!-- 1.9: "Unsafe" "is not api", as above. -->
-						<exclude>unsafe/*.java</exclude>
 
 						<!-- Having issue with Hamcrest on Eclipse vs on Maven, don't compile the
 						 *** testing demos for now (does not affect all the stuff in src/test/java!).

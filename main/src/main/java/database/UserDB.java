@@ -49,10 +49,8 @@ public abstract class UserDB {
 			singleton = (UserDB)Class.forName(dbClass).newInstance();
 			//singleton = new UserDBJDBC();
 		} catch (Exception ex) {
-			System.err.println(
-			"Unexpected exception: Unable to initialize UserDB singleton");
-			ex.printStackTrace(System.err);
-			throw new IllegalArgumentException(ex.toString());
+			String mesg = "Unable to initialize UserDB singleton";
+			throw new ExceptionInInitializerError(mesg);
 		}
 	}
 
@@ -67,9 +65,6 @@ public abstract class UserDB {
 	 * the Singleton.
 	 */
 	public static UserDB getInstance() {
-		if (singleton == null)
-			throw new IllegalStateException(
-				"UserDB initialization failed (singleton was null)");
 		return singleton;
 	}
 
