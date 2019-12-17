@@ -18,7 +18,7 @@ public class LogRegExp {
 		System.out.println(logEntryPattern);
 
 		System.out.println("Input line is:");
-		String logEntryLine = LogParseInfo.logEntryLine;
+		String logEntryLine = LogParseInfo.LOG_ENTRY_LINE;
 		System.out.println(logEntryLine);
 
 		Pattern p = Pattern.compile(logEntryPattern);

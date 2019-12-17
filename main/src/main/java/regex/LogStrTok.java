@@ -8,7 +8,7 @@ import java.util.*;
 public class LogStrTok implements LogParseInfo {
 	public static void main(String argv[]) {
 
-		StringTokenizer matcher = new StringTokenizer(logEntryLine);
+		StringTokenizer matcher = new StringTokenizer(LOG_ENTRY_LINE);
 
 		System.out.println("tokens = " + matcher.countTokens());
 		// StringTokenizer CAN NOT count if you are changing the delimiter!
