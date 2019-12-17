@@ -14,6 +14,11 @@ public class NumSeries {
     	// Or, use a for loop starting at 1.
         for (int i = 1; i <= months.length; i++)
             System.out.println("Month # " + i);
+        
+        // Or a foreach loop
+        for (String month : months) {
+        	System.out.println(month);
+        }
     
         // When you want a set of array indices, use range(start, endExclusive)
         IntStream.range(0, months.length).forEach(i -> System.out.println("Month " + months[i]));
@@ -45,7 +50,7 @@ public class NumSeries {
         // a discontiguous set of integers, using an array
 		int[] numbers = {0, 3, 8};
 
-        // Presumably somewhere else in the code...
+        // Presumably somewhere else in the code... Also a foreach loop
 		for (int n : numbers) {
 			System.out.println("Month: " + months[n]);
 		}
