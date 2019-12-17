@@ -32,7 +32,7 @@ public class Heron {
 		cd = 1.01233995;
 
 		sd = (ad+bd+cd)/2.0d;
-		aread =        Math.sqrt(sd * (sd - ad) * (sd - bd) * (sd - cd));
+		aread = Math.sqrt(sd * (sd - ad) * (sd - bd) * (sd - cd));
 		System.out.println("Double precision: " + aread);
 	}
 }
