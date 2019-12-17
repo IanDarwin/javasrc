@@ -1,19 +1,24 @@
 package numbers;
 
 import java.util.BitSet;
+import java.util.stream.IntStream;
 
 /** Operations on series of numbers */
 // tag::main[]
 public class NumSeries {
     public static void main(String[] args) {
 
-        // When you want an ordinal list of numbers, use a for loop
-        // starting at 1.
+        // For an ordinal list of numbers n to m, use rangeClosed(start, endInclusive)
+    	IntStream.rangeClosed(1, 12).forEach(i -> System.out.println("Month # " + i));
+    	
+    	// Or, use a for loop starting at 1.
         for (int i = 1; i <= months.length; i++)
             System.out.println("Month # " + i);
     
-        // When you want a set of array indices, use a for loop
-        // starting at 0.
+        // When you want a set of array indices, use range(start, endExclusive)
+        IntStream.range(0, months.length).forEach(i -> System.out.println("Month " + months[i]));
+        
+        // Or, use a for loop starting at 0.
         for (int i = 0; i < months.length; i++)
             System.out.println("Month " + months[i]);
 
@@ -21,7 +26,6 @@ public class NumSeries {
         for (int i = 11; i <= 27; i += 3) {
             System.out.println("i = " + i);
         }
-
         
         // A discontiguous set of integers, using a BitSet
 
@@ -41,16 +45,18 @@ public class NumSeries {
         // a discontiguous set of integers, using an array
 		int[] numbers = {0, 3, 8};
 
-        // Presumably this would be somewhere else in the code.
+        // Presumably somewhere else in the code...
 		for (int n : numbers) {
 			System.out.println("Month: " + months[n]);
 		}
     }
-    /** The names of the months. See Dates/Times chapter for a better way */
+    // tag::inner[]
+    /** Names of months. See Dates/Times chapter for a better way to get these */
     protected static String months[] = {
         "January", "February", "March", "April",
         "May", "June", "July", "August",
         "September", "October", "November", "December"
     };
+    // end::inner[]
 }
 // end::main[]
