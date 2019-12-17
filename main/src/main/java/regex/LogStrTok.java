@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Parse an Apache log file with StringTokenizer
  */
-public class LogStrTok implements LogExample {
+public class LogStrTok implements LogParseInfo {
 	public static void main(String argv[]) {
 
 		StringTokenizer matcher = new StringTokenizer(logEntryLine);

@@ -6,25 +6,25 @@ import java.util.regex.*;
  * Parse an Apache log file with Regular Expressions
  */
 // tag::main[]
-public class LogRegExp  {
+public class LogRegExp {
 
-	public static void main(String argv[]) {
-
-		String logEntryPattern = 
+	final static String logEntryPattern = 
 			"^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+-]\\d{4})\\] " +
 			"\"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"";
+
+	public static void main(String argv[]) {
 
 		System.out.println("RE Pattern:");
 		System.out.println(logEntryPattern);
 
 		System.out.println("Input line is:");
-		String logEntryLine = LogExample.logEntryLine;
+		String logEntryLine = LogParseInfo.logEntryLine;
 		System.out.println(logEntryLine);
 
 		Pattern p = Pattern.compile(logEntryPattern);
 		Matcher matcher = p.matcher(logEntryLine);
 		if (!matcher.matches() || 
-			LogExample.NUM_FIELDS != matcher.groupCount()) {
+			LogParseInfo.MIN_FIELDS > matcher.groupCount()) {
 			System.err.println("Bad log entry (or problem with regex):");
 			System.err.println(logEntryLine);
 			return;

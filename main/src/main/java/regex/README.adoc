@@ -1,0 +1,10 @@
+== Java RegExp Examples
+
+These programs were originally based on the Java Cookbook,
+Chapter 4, Regular Expressions.
+They have been updated for Java 11.
+Some of the early demos were presented as part of my
+Javopolis 2002 presentation (November 2002, Antwerp).
+As of 2008, Javopolis had been re-named to
+http://www.devoxx.com[Devoxx] for some reason.
+They've been used in other demos since.

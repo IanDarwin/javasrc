@@ -1,6 +1,6 @@
 // tag::main[]
-/** The main public API of the java.util.regex package.
- * Prepared by javap and Ian Darwin.
+/**
+ * The main public API of the java.util.regex package.
  */
 
 package java.util.regex;
