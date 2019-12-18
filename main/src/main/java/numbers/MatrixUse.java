@@ -1,9 +1,7 @@
 package numbers;
 
 /**
- * Multiply two matrices.
- * Only defined for int: clone the code (or wait for Templates)
- * for long, float, and double.
+ * Multiply two int matrices.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class MatrixUse {

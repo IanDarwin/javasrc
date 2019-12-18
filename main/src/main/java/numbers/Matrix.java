@@ -2,8 +2,7 @@ package numbers;
 
 /**
  * Multiply two matrices.
- * Only defined for int: TODO: rewrite using 1.5 Generics to add
- * support for long, float, and double.
+ * Only defined for int at present.
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 // tag::main[]
@@ -11,7 +10,8 @@ public class Matrix {
 
 	/* Matrix-multiply two arrays together.
 	 * The arrays MUST be rectangular.
-	 * @author Tom Christiansen & Nathan Torkington, Perl Cookbook version.
+	 * @author Adapted from Tom Christiansen & Nathan Torkington's
+	 * implementation in their Perl Cookbook.
 	 */
 	public static int[][] multiply(int[][] m1, int[][] m2) {
 		int m1rows = m1.length;
