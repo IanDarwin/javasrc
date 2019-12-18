@@ -10,7 +10,7 @@ public class ToyStack2 implements SimpleStack<Integer> {
 	/** The current stack depth */
 	protected int depth = 0;
 	/* The actual stack */
-	protected int[] stack = new int[MAX_DEPTH];
+	protected Integer[] stack = new Integer[MAX_DEPTH];
 
 	@Override
 	public boolean empty() {
