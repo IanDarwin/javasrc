@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
 
-/** Use some locales
+/** Use some locales; based on user's OS "settings"
  * choices or -Duser.lang= or -Duser.region=.
  */
 // tag::main[]
