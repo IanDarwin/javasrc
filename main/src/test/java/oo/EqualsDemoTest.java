@@ -1,5 +1,6 @@
 package oo;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -35,7 +36,7 @@ public class EqualsDemoTest {
 
 	@Test
 	public void testCaution() {
-		assertTrue(!d1.equals(null));
+		assertFalse(d1.equals(null));
 	}
 }
 // end::main[]
