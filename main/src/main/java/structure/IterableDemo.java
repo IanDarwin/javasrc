@@ -12,13 +12,13 @@ public class IterableDemo {
 	/** Demo implements Iterable, meaning it must provide an Iterator,
 	 * and, that it can be used in a foreach loop.
 	 */
-	static class Demo<T> implements Iterable<T> {
+	static class Demo implements Iterable<String> {
 
 		// Simple demo: use array instead of inventing new data structure
 		String[] data = { "One", "Two", "Three"};
 
 		/** This is the Iterator that makes it all happen */
-		class DemoIterator implements Iterator<T> {
+		class DemoIterator implements Iterator<String> {
 			int i = 0;
 
 			/**
@@ -26,13 +26,12 @@ public class IterableDemo {
 			 * @return true if next() will succeed, false otherwise
 			 */
 			public boolean hasNext() {
-				return i < 3;
+				return i < data.length;
 			}
 
 			/** @return the next element from the data */
-			@SuppressWarnings("unchecked")
-			public T next() {
-				return (T)data[i++];
+			public String next() {
+				return data[i++];
 			}
 
 			/** Remove the object that next() just returned.
@@ -45,13 +44,13 @@ public class IterableDemo {
 		}
 
 		/** Method by which the Demo class makes its iterator available */
-		public Iterator<T> iterator() {
+		public Iterator<String> iterator() {
 			return new DemoIterator();
 		}
 	}
 		
 	public static void main(String[] args) {
-		Demo<String> demo = new Demo<>();
+		Demo demo = new Demo();
 		for (String s : demo) {
 			System.out.println(s);
 		}
