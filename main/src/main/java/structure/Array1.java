@@ -24,8 +24,6 @@ public class Array1  {
 		final int MAX = 10;
 		Calendar[] days = new Calendar[MAX];
 		for (int i=0; i<MAX; i++) {
-			// Note that this actually stores GregorianCalendar
-			// etc. instances into a Calendar Array
 			days[i] = Calendar.getInstance();
 		}
 	 

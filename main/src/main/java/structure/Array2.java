@@ -18,8 +18,7 @@ public class Array2  {
         while ((c=source.getDate()) != null) {
 
             // if (nDates >= dates.length) {
-            //     System.err.println("Too Many Dates! Simplify your life!!");
-            //     System.exit(1);  // wimp out
+            //     throw new RuntimeException("Too Many Dates! Simplify your life!!");
             // }
 
             // better: reallocate, making data structure dynamic
