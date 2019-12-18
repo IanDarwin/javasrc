@@ -1,8 +1,8 @@
 package functional;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * A Unix replacement for:
@@ -13,14 +13,10 @@ public class UnixPipesFiltersReplacement {
 
 	public static void main(String[] args) throws IOException {
 		// tag::main[]
-		BufferedReader br = null;
-		long numberLines =
-			(br = new BufferedReader(new FileReader("lines.txt")))
-			.lines()
+		long numberLines = Files.lines(Path.of(("lines.txt")))
 			.sorted()
 			.distinct()
 			.count();
-		br.close();
 		System.out.println("lines.txt" + " contains " + numberLines + " unique lines.");
 		// end::main[]
 	}
