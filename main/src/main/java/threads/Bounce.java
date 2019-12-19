@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 
 /** This is the Bounce class; create and start Sprites, using Threads. */
 // tag::main[]
-public class Bounce extends JPanel implements ActionListener {
+public class Bounce extends JPanel {
 
 	private static final long serialVersionUID = -5359162621719520213L;
 	/** The main Panel */
@@ -35,7 +35,13 @@ public class Bounce extends JPanel implements ActionListener {
 
     public Bounce(String imgName) {
 		Button b = new Button("Start");
-		b.addActionListener(this);
+		b.addActionListener(e -> {
+			System.out.println("Creating another one!");
+			Sprite s = new Sprite(this, img);
+			s.start();
+			p.add(s);
+			v.add(s);
+	    });
 		setLayout(new BorderLayout());
 		add(b, BorderLayout.NORTH);
 		add(p = new JPanel(), BorderLayout.CENTER);
@@ -59,14 +65,6 @@ public class Bounce extends JPanel implements ActionListener {
 				"Couldn't load image " + imgName);
 		}
 		v = new Vector<Sprite>(); // multithreaded, use Vector
-    }
-
-    public void actionPerformed(ActionEvent e) {
-		System.out.println("Creat-ing another one!");
-		Sprite s = new Sprite(this, img);
-		s.start();
-		p.add(s);
-		v.add(s);
     }
 
     public void stop() {
