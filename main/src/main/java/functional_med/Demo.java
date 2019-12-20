@@ -23,12 +23,12 @@ public class Demo {
 	/** Process the list one way */
 	public static void version1() {
 		List<Reading> lowBgReadings = search1(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15));
-		lowBgReadings.forEach(r -> System.out.println(r));
+		lowBgReadings.forEach(System.out::println);
 	}
 
 	/** Process the list another way */
 	public static void version2() {
-		search2(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15)).forEach(r -> System.out.println(r));
+		search2(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15)).forEach(System.out::println);
 	}
 
 	/** Process the list yet another way */
@@ -36,17 +36,17 @@ public class Demo {
 		listOfReadings.stream().filter(
 				r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15))
 				.sorted()	
-				.forEach(o->System.out.println(o));
+				.forEach(System.out::println);
 	}
-	
-	/** Process the list yet another way - working version (comment out call to version3!) */
+
+	/** Process the list yet another way */
 	public static void version3b() {
 		listOfReadings.stream().filter(
 				r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15))
 				.sorted((r1, r2) -> r1.when.compareTo(r2.when))
 				.forEach(o->System.out.println(o));
 	}
-	
+
 	public static List<Reading> search1(ReadingAcceptor tester) {
         List<Reading> results = new ArrayList<>();
         listOfReadings.forEach(c -> {
