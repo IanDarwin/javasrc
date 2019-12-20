@@ -22,13 +22,13 @@ public class Demo {
 	
 	/** Process the list one way */
 	public static void version1() {
-		List<Reading> lowBgReadings = search1(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15));
+		List<Reading> lowBgReadings = search(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15));
 		lowBgReadings.forEach(System.out::println);
 	}
 
 	/** Process the list another way */
 	public static void version2() {
-		search2(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15)).forEach(System.out::println);
+		search(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15)).forEach(System.out::println);
 	}
 
 	/** Process the list yet another way */
@@ -47,16 +47,7 @@ public class Demo {
 				.forEach(o->System.out.println(o));
 	}
 
-	public static List<Reading> search1(ReadingAcceptor tester) {
-        List<Reading> results = new ArrayList<>();
-        listOfReadings.forEach(c -> {
-            if (tester.test(c))
-                results.add(c);
-        });
-        return results;
-    }
-	
-	public static List<Reading> search2(Predicate<Reading> tester) {
+	public static List<Reading> search(Predicate<Reading> tester) {
         List<Reading> results = new ArrayList<>();
         listOfReadings.forEach(c -> {
             if (tester.test(c))
