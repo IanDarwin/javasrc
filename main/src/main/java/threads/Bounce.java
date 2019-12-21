@@ -1,7 +1,6 @@
 package threads;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
@@ -9,6 +8,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -33,7 +33,8 @@ public class Bounce extends JPanel {
 	}
 
     public Bounce(String imgName) {
-		Button b = new Button("Start");
+		setLayout(new BorderLayout());
+		JButton b = new JButton("Start");
 		b.addActionListener(e -> {
 			System.out.println("Creating another one!");
 			Sprite s = new Sprite(this, img);
@@ -41,7 +42,6 @@ public class Bounce extends JPanel {
 			p.add(s);
 			v.add(s);
 	    });
-		setLayout(new BorderLayout());
 		add(b, BorderLayout.NORTH);
 		add(p = new JPanel(), BorderLayout.CENTER);
 		p.setLayout(null);
