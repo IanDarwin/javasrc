@@ -9,20 +9,17 @@ import java.util.stream.*;
 public class WordFreq {
 	public static void main(String[] args) throws IOException {
 
- 		// 1) Collect words with a mutable reduction into Map<String,Long>.
+		// 1) Collect words with a mutable reduction into Map<String,Long>.
 		Map<String,Long> map = Files.lines(Path.of(args[0]))
-			.map(String::toLowerCase)
-			.flatMap(s->Stream.of(s.split(" +")))
-			.collect(HashMap::new, 
-				(m,s)->m.put(s, m.getOrDefault(s,0)+1),
-				HashMap::putAll);
+			.flatMap(s -> Stream.of(s.split(" +")))
+			.collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
 
 		// 2) Print results sorted numerically descending, limit 20
-		map .keySet()
+		map.entrySet()
 			.stream()
-			.sorted((s1,s2) -> (map.get(s2).compareTo(map.get(s1))))
-			.map(s->String.format("%4d %s", map.get(s),s))
+			.sorted(Map.Entry.<String,Long>comparingByValue() .reversed())
 			.limit(20)
-			.forEach(System.out::println);
+			.map(entry -> String.format("%4d %s", entry.getValue(), entry.getKey()))
+			:forEach(System.out::println);
 	}
 }
