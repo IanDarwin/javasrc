@@ -7,7 +7,7 @@ import java.util.stream.*;
  * Implement word frequency count, in two (long) statements
  */
 public class WordFreq {
-		public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
  		// 1) Collect words with a mutable reduction into Map<String,Integer>.
 		Map<String,Integer> map = Files.lines(Path.of(args[0]))
@@ -24,5 +24,5 @@ public class WordFreq {
 			.map(s->String.format("%4d %s", map.get(s),s))
 			.limit(20)
 			.forEach(System.out::println);
-		}
+	}
 }
