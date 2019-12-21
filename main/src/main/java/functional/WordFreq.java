@@ -1,3 +1,5 @@
+package functional;
+
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
@@ -15,8 +17,7 @@ public class WordFreq {
 			.collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
 
 		// 2) Print results sorted numerically descending, limit 20
-		map.entrySet()
-			.stream()
+		map.entrySet().stream()
 			.sorted(Map.Entry.<String,Long>comparingByValue() .reversed())
 			.limit(20)
 			.map(entry -> String.format("%4d %s", entry.getValue(), entry.getKey()))
