@@ -5,6 +5,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.*;
 
+// tag::main[]
 /**
  * Implement word frequency count, in two (long) statements
  */
@@ -24,3 +25,4 @@ public class WordFreq {
 			.forEach(System.out::println);
 	}
 }
+// end::main[]
