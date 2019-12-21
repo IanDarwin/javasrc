@@ -9,8 +9,8 @@ import java.util.stream.*;
 public class WordFreq {
 	public static void main(String[] args) throws IOException {
 
- 		// 1) Collect words with a mutable reduction into Map<String,Integer>.
-		Map<String,Integer> map = Files.lines(Path.of(args[0]))
+ 		// 1) Collect words with a mutable reduction into Map<String,Long>.
+		Map<String,Long> map = Files.lines(Path.of(args[0]))
 			.map(String::toLowerCase)
 			.flatMap(s->Stream.of(s.split(" +")))
 			.collect(HashMap::new, 
