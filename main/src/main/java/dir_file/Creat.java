@@ -6,21 +6,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 // tag::main[]
-/** Create one or more files by name.
- ** The final "e" is omitted in homage to the underlying UNIX system call. */
+/** Create file(s) by name. Final "e" omitted in homage to UNIX system call. */
 public class Creat {
 	public static void main(String[] argv) throws IOException {
 
 		// Ensure that a filename (or something) was given in argv[0]
 		if (argv.length == 0) {
-			System.err.println("Usage: Creat filename");
-			System.exit(1);
+			throw new IllegalArgumentException("Missing args. Usage: Creat filename");
 		}
 
 		for (String arg : argv) {
 			// Constructing a Path object doesn't affect the disk, but
-			// the createNewFile() method does.
-			final Path created = Files.createFile(Path.of(arg));
+			// the Files.createFile() method does.
+			final Path p = Path.of(arg);
+			final Path created = Files.createFile(p);
+			System.out.println(created);
 		}
 	}
 }

@@ -1,39 +1,54 @@
 package dir_file;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * Delete a file from within Java, with error handling.
+ * Setup: On *Nix:
+ touch a; mkdir b; mkdir c; touch c/d
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 // tag::main[]
 public class Delete2 {
 
+	static boolean hard = false; // True for delete, false for deleteIfExists
+
 	public static void main(String[] argv) {
-		for (String a : argv) {
-			delete(a);
+		for (String arg : argv) {
+			if ("-h".equals(arg)) {
+				hard = true;
+				continue;
+			}
+			delete(arg);
 		}
 	}
 
 	public static void delete(String fileName) {
-		try {
-			// Construct a File object for the file to be deleted.
-			File target = new File(fileName);
+		// Construct a File object for the file to be deleted.
+		final Path target = Path.of(fileName);
 
-			if (!target.exists()) {
-				System.err.println("File " + fileName + 
-					" not present to begin with!");
-				return;
-			}
-
-			// Now, delete it:
-			if (target.delete())
+		// Now, delete it:
+		if (hard) {
+			try {
+				System.out.print("Using Files.delete(): ");
+				Files.delete(target);
 				System.err.println("** Deleted " + fileName + " **");
-			else
-				System.err.println("Failed to delete " + fileName);
-		} catch (SecurityException e) {	
-			System.err.println("Unable to delete " + fileName +
-				"(" + e.getMessage() + ")");
+			} catch (IOException e) {
+				System.out.println("Deleting " + fileName + " threw " + e);
+			}
+		} else {
+			try {
+				System.out.print("Using deleteIfExists(): ");
+				if (Files.deleteIfExists(target)) {
+					System.out.println("** Deleted " + fileName + " **");
+				} else {
+					System.out.println("Deleting " + fileName + " returned false.");
+				}
+			} catch (IOException e) {	
+				System.out.println("Deleting " + fileName + " threw " + e);
+			}
 		}
 	}
 }

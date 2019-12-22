@@ -1,9 +1,9 @@
 package dir_file;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Logger;
-
-import com.darwinsys.lang.GetOpt;
 
 // tag::main[]
 /**
@@ -11,27 +11,44 @@ import com.darwinsys.lang.GetOpt;
  */
 public class Find {
 	
-	private static Logger logger = Logger.getLogger(Find.class.getSimpleName());
+	public enum Conjunction { AND, OR };
 	
-	/** Main program */
-	public static void main(String[] args) {
+	private static Logger logger = Logger.getLogger(Find.class.getSimpleName());
+	static boolean started;
+	
+	/** Main program 
+	 * @throws IOException If the Files.walkTree does so
+	 */
+	public static void main(String[] args) throws IOException {
 		Find finder = new Find();
-		GetOpt argHandler = new GetOpt("n:s:");
-		int c;
-		while ((c = argHandler.getopt(args)) != GetOpt.DONE) {
-			switch(c) {
-			case 'n': finder.filter.setNameFilter(argHandler.optarg()); break;
-			case 's': finder.filter.setSizeFilter(argHandler.optarg()); break;
-			default:	
-				System.out.println("Got: " + c);
-				usage();
-			}
-		}
-		if (args.length == 0 || argHandler.getOptInd()-1 == args.length) {
-			finder.doName(".");
+		
+		if (args.length == 0) {
+			finder.startWalkingAt(".");
 		} else {
-			for (int i = argHandler.getOptInd()-1; i<args.length; i++)
-				finder.doName(args[i]);
+			for (int i = 0; i < args.length; i++) {
+				if (args[i].charAt(0) == '-') {
+					switch(args[i].substring(1)) {
+					case "name":
+						finder.filter.setNameFilter(args[++i]);
+						continue;
+					case "size":
+						finder.filter.setSizeFilter(args[++i]);
+						continue;
+//					Not implemented by back-end yet
+//					case "a":
+//						finder.filter.addConjunction(Conjunction.AND);
+//						continue;
+//					case "o":
+//						finder.filter.addConjunction(Conjunction.OR);
+//						continue;
+					default: throw new IllegalArgumentException("Unknown argument " + args[i]);
+					}
+				}
+				finder.startWalkingAt(args[i]);
+			}
+			if (!started) {
+				finder.startWalkingAt(".");
+			}
 		}
 	}
 
@@ -44,28 +61,40 @@ public class Find {
 	}
 
 	/** doName - handle one filesystem object by name */
-	private void doName(String s) {
+	private void startWalkingAt(String s) throws IOException {
 		logger.info("doName(" + s + ")");
-		File f = new File(s);
-		if (!f.exists()) {
+		started = true;
+		Path f = Path.of(s);
+		if (!Files.exists(f)) {
 			System.out.println(s + " does not exist");
 			return;
 		}
-		if (f.isFile())
-			doFile(f);
-		else if (f.isDirectory()) {
-			// System.out.println("d " + f.getPath());
-			String objects[] = f.list(filter);
-
-			for (String o : objects)
-				doName(s + File.separator + o);
-		} else
-			System.err.println("Unknown type: " + s);
+		Files.walk(f).forEach(fp -> {
+			try {
+				if (Files.isRegularFile(fp))
+					doFile(fp);
+				else if (Files.isDirectory(fp)) {
+					doDir(fp);
+				} else {
+					System.err.println("Unknown type: " + s);
+				}
+			} catch (IOException e) {
+				throw new RuntimeException("IO Exception: " + e);
+			}
+		});
 	}
 
-	/** doFile - process one regular file. */
-	private static void doFile(File f) {
-		System.out.println("f " + f.getPath());
+	/** doFile - process one regular file. 
+	 * @throws IOException */
+	private void doFile(Path f) throws IOException {
+		if (filter.accept(f)) {
+			System.out.println("f " + f);
+		}
+	}
+	
+	/** doDir - process a directory */
+	private void doDir(Path d) {
+		System.out.println("d " + d.normalize());
 	}
 }
 // end::main[]
