@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import functional_med.data.MockData;
-import functional_med.data.ReadingAcceptor;
 import functional_med.model.Reading;
 import functional_med.model.ReadingType;
 
-public class Demo {
+public class FPMedDemo {
 	static List<Reading> listOfReadings;
 	
 	public static void main(String[] args) {
