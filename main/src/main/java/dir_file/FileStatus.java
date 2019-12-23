@@ -70,7 +70,8 @@ public class FileStatus {
 
 		System.out.println();	// blank line between entries
 	}
-	
+	// end::main[]
+
 	public static void statusLegacy(String fileName) throws IOException {
 		System.out.println("---" + fileName + "---");
 
@@ -115,4 +116,3 @@ public class FileStatus {
 		System.out.println();	// blank line between entries
 	}
 }
-// end::main[]
