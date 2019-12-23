@@ -1,18 +1,18 @@
 package dir_file;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-/** Simple directory lister.
- * @author Ian Darwin, http://www.darwinsys.com/
- */
+/** Simple directory lister. */
 // tag::main[]
 public class Ls {
-	public static void main(String args[]) {
-		String[] dirs = new java.io.File(".").list(); // Get list of names
-		Arrays.sort(dirs);		// Sort it (see <<javacook-structure-SECT-8>>)
-		for (String dir : dirs) {
-			System.out.println(dir);    	// Print the list
-		}
+	public static void main(String args[]) throws IOException {
+		Files.list(Path.of("."))
+			.sorted()
+			.forEach(dir -> {
+				System.out.println(dir);
+			});
 	}
 }
 // end::main[]
