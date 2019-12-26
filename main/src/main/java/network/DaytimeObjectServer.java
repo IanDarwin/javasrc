@@ -2,10 +2,10 @@ package network;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;
+import java.time.*;
 
 /**
- * DaytimeObjectServer - server for the non-standard Time (object) service.
+ * DaytimeObjectServer - server for the non-standard Time (LocalDateTime object) service.
  * @author Ian F. Darwin
  */
 // tag::main[]
@@ -25,7 +25,7 @@ public class DaytimeObjectServer {
 					clientSock.getOutputStream());
 
 				// Construct and write the Object
-				os.writeObject(new Date());
+				os.writeObject(LocalDateTime.now());
 
 				os.close();
 			}
