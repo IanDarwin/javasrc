@@ -1,6 +1,7 @@
 package netweb;
 
 import java.io.*;
+import java.net.URLEncoder;
 import java.net.http.*;
 import java.net.http.HttpClient.*;
 import java.net.http.HttpResponse.*;
@@ -29,7 +30,8 @@ public class HttpClientDemo {
 
 		// Build the HttpRequest object to "GET" the urlString
 		HttpRequest req =
-			HttpRequest.newBuilder(URI.create(urlString + keyword))
+			HttpRequest.newBuilder(URI.create(urlString + 
+				URLEncoder.encode(keyword)))
 			.header("User-Agent", "Dept of Silly Walks")
 			.GET()
 			.build();
