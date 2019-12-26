@@ -12,17 +12,13 @@ public class DaytimeText {
 	public static final short TIME_PORT = 13;
 
 	public static void main(String[] argv) {
-		String hostName;
-		if (argv.length == 0)
-			hostName = "localhost";
-		else
-			hostName = argv[0];
+		String server_name = argv.length == 1 ? argv[0] : "localhost";
 
-		try (Socket sock = new Socket(hostName,TIME_PORT);) {
+		try (Socket sock = new Socket(server_name,TIME_PORT);
 			BufferedReader is = new BufferedReader(new 
-				InputStreamReader(sock.getInputStream()));
+				InputStreamReader(sock.getInputStream()));) {
 			String remoteTime = is.readLine();
-			System.out.println("Time on " + hostName + " is " + remoteTime);
+			System.out.println("Time on " + server_name + " is " + remoteTime);
 		} catch (IOException e) {
 			System.err.println(e);
 		}
