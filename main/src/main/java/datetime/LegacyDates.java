@@ -2,6 +2,7 @@ package datetime;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,6 +22,9 @@ public class LegacyDates {
 			ZoneId.systemDefault());
 		System.out.println(newDate);
 		
+		Date backAgain = Date.from(newDate.atZone(ZoneId.systemDefault()).toInstant());;
+		System.out.println("Converted back as " + backAgain);
+
 		// And via Calendar
 		Calendar c = Calendar.getInstance();
 		System.out.println(c);
