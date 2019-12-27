@@ -84,12 +84,12 @@ public class ProdCons2 {
 		}
 
 		Object getRequestFromNetwork() {	// Simulation of reading from client
-			// try {
-			// 	Thread.sleep(10); // simulate time passing during read
-			// } catch (InterruptedException ex) {
-			// 	System.out.println("Producer Read INTERRUPTED");
-			// }
-			return(new Object());
+			try {
+				Thread.sleep(10); // simulate time passing during read
+			} catch (InterruptedException ex) {
+				System.out.println("Producer Read INTERRUPTED");
+			}
+			return new Object();
 		}
 	}
 
