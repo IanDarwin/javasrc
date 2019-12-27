@@ -1,14 +1,20 @@
-package datetimeold;
+package threads;
 
-import java.io.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.JOptionPane;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Read a file of reminders, run each when due using java.util.Timer
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * Input format is like:
+ * 2021 12 25 10 30 Get some sleep.
+ * Uses legacy java.util.Date because that's what TimerService needs
  */
+// tag::main[]
 public class ReminderService {
 
 	/** The Timer object */
@@ -24,38 +30,34 @@ public class ReminderService {
 		}
 	}
 
-	public static void main(String[] argv) throws IOException {
-		new ReminderService().load();
+	public static void main(String[] argv) throws Exception {
+		new ReminderService().loadReminders();
 	}
 
-	protected void load() throws IOException {
+	private String dfPattern = "yyyy MM dd hh mm ss";
+	private SimpleDateFormat formatter = new SimpleDateFormat(dfPattern);
 
-		BufferedReader is = new BufferedReader(
-			new FileReader("ReminderService.txt"));
-		SimpleDateFormat formatter =
-			new SimpleDateFormat ("yyyy MM dd hh mm");
-		String aLine;
-		while ((aLine = is.readLine()) != null) {
+	protected void loadReminders() throws Exception {
+
+		Files.lines(Path.of("ReminderService.txt")).forEach(aLine -> {
+
 			ParsePosition pp = new ParsePosition(0);
 			Date date = formatter.parse(aLine, pp);
+			String task = aLine.substring(pp.getIndex());
 			if (date == null) {
-				message("Invalid date in " + aLine);
-				continue;
+				System.out.println("Invalid date in " + aLine);
+				return;
 			}
-			String mesg = aLine.substring(pp.getIndex());
-			timer.schedule(new Item(mesg), date);
-		}
-		is.close();
+			System.out.println("Date = " + date + "; task = " + task);
+			timer.schedule(new Item(task), date);
+		});
 	}
+	// end::main[]
 
 	/** Display a message on the console and in the GUI.
 	 * Used both by Item tasks and by mainline parser.
 	 */
 	void message(String message) {
 		System.out.println("\007" + message);
-		JOptionPane.showMessageDialog(null,
-			message, 
-			"Timer Alert",				// titlebar
-			JOptionPane.INFORMATION_MESSAGE);	// icon
 	}
 }
