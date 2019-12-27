@@ -4,9 +4,10 @@ import java.net.*;
 import java.io.*;
 
 /**
- * Threaded Echo Server, pre-allocation scheme.
- * Each Thread waits in its accept() call for a connection; this synchronizes
- * on the serversocket when calling its accept() method.
+ * Threaded Echo Server, pre-allocation scheme. Each Thread waits in its
+ * accept() call for a connection; this synchronizes on the serversocket when
+ * calling its accept() method.
+ * 
  * @author Ian F. Darwin.
  */
 // tag::main[]
@@ -28,13 +29,13 @@ public class EchoServerThreaded2 {
 		try {
 			servSock = new ServerSocket(port);
 
-		} catch(IOException e) {
+		} catch (IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
 			throw new RuntimeException("Could not create ServerSocket ", e);
 		}
 
 		// Create a series of threads and start them.
-		for (int i=0; i<numThreads; i++) {
+		for (int i = 0; i < numThreads; i++) {
 			new Handler(servSock, i).start();
 		}
 	}
@@ -52,31 +53,32 @@ public class EchoServerThreaded2 {
 		}
 
 		public void run() {
-			/* Wait for a connection. Synchronized on the ServerSocket
-			 * while calling its accept() method.
+			/*
+			 * Wait for a connection. Synchronized on the ServerSocket while calling its
+			 * accept() method.
 			 */
 			while (true) {
 				try {
-					System.out.println( getName() + " waiting");
+					System.out.println(getName() + " waiting");
 
 					Socket clientSocket;
 					// Wait here for the next connection.
-					synchronized(servSock) {
+					synchronized (servSock) {
 						clientSocket = servSock.accept();
 					}
-					System.out.println(getName() + " starting, IP=" +
-						clientSocket.getInetAddress());
-					BufferedReader is = new BufferedReader(
-						new InputStreamReader(clientSocket.getInputStream()));
-					PrintStream os = new PrintStream(
-						clientSocket.getOutputStream(), true);
-					String line;
-					while ((line = is.readLine()) != null) {
-						os.print(line + "\r\n");
-						os.flush();
+					System.out.println(getName() + " starting, IP=" + clientSocket.getInetAddress());
+					try (BufferedReader is = new BufferedReader(
+								new InputStreamReader(clientSocket.getInputStream()));
+							PrintStream os = new PrintStream(
+								clientSocket.getOutputStream(), true);) {
+						String line;
+						while ((line = is.readLine()) != null) {
+							os.print(line + "\r\n");
+							os.flush();
+						}
+						System.out.println(getName() + " ENDED ");
+						clientSocket.close();
 					}
-					System.out.println(getName() + " ENDED ");
-					clientSocket.close();
 				} catch (IOException ex) {
 					System.out.println(getName() + ": IO Error on socket " + ex);
 					return;

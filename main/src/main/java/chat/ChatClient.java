@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.concurrent.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,8 +20,8 @@ import javax.swing.JTextField;
 /** 
  * <p>
  * Simple Chat Room GUI.
- * Writing a Chat Room seems to be one of many obligatory rites (or wrongs)
- * of passage for Java experts these days.</p>
+ * Writing a Chat Room seemed to be one of many obligatory rites (or wrongs)
+ * of passage for Java experts in the early days.</p>
  * <p>
  * This one is a toy because it doesn't have much of a protocol, which
  * means we can't query the server as to who's logged in,
@@ -48,8 +49,6 @@ public class ChatClient extends JFrame {
 	protected int port;
 	/** The network socket */
 	protected Socket sock;
-	/** BufferedReader for reading from socket */
-	protected BufferedReader is;
 	/** PrintWriter for sending lines on socket */
 	protected PrintWriter pw;
 	/** TextField for input */
@@ -61,7 +60,9 @@ public class ChatClient extends JFrame {
 	/** The LogOUT button */
 	protected JButton logoutButton;
 	/** The TitleBar title */
-	final static String TITLE = "ChatClient: Ian Darwin's Toy Chat Room Client";
+	final static String TITLE = "ChatClient: Ian Darwin's Chat Room Client";
+
+	final Executor threadPool = Executors.newSingleThreadExecutor();
 
 	/** set up the GUI */
 	public ChatClient() {
@@ -119,6 +120,9 @@ public class ChatClient extends JFrame {
 
 	/** LOG ME IN TO THE CHAT */
 	public void login() {
+		/** BufferedReader for reading from socket */
+		BufferedReader is;
+		
 		showStatus("In login!");
 		if (loggedIn)
 			return;
@@ -142,7 +146,7 @@ public class ChatClient extends JFrame {
 
 		// Construct and start the reader: from server to textarea.
 		// Make a Thread to avoid lockups.
-		new Thread(new Runnable() {
+		Runnable readerThread = new Runnable() {
 			public void run() {
 				String line;
 				try {
@@ -153,7 +157,8 @@ public class ChatClient extends JFrame {
 					return;
 				}
 			}
-		}).start();
+		};
+		threadPool.execute(readerThread);
 	}
 
 	/** Log me out, Scotty, there's no intelligent life here! */
@@ -172,6 +177,7 @@ public class ChatClient extends JFrame {
 	public void showStatus(String message) {
 		System.out.println(message);
 	}
+
 	private void warn(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}

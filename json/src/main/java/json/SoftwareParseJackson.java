@@ -14,7 +14,7 @@ public class SoftwareParseJackson {
 		InputStream jsonInput =
 			SoftwareParseJackson.class.getResourceAsStream(FILE_NAME);
 		if (jsonInput == null) {
-			throw new NullPointerException("can't find" + FILE_NAME);
+			throw new NullPointerException("can't find " + FILE_NAME);
 		}
 		SoftwareInfo sware = mapper.readValue(jsonInput, SoftwareInfo.class);
 		System.out.println(sware);

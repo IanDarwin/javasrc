@@ -29,9 +29,7 @@ public class DaytimeObject {
 
 				// Valid, so cast to LocalDateTime, and print
 				LocalDateTime d = (LocalDateTime) o;
-				System.out.println("Server host is " + hostName);
-				System.out.println("Time there is " + d.toString());
-
+				System.out.println("Time on " + hostName + " is " + d);
 			} else {
 				throw new IllegalArgumentException(
 					String.format("Wanted LocalDateTime, got %s, a %s", o, o.getClass()));

@@ -19,7 +19,8 @@ public class Listen {
 			sock = new ServerSocket(PORT);
 			while ((clientSock = sock.accept()) != null) {
 
-				// Process it.
+				// Process it, usually on a separate thread
+				// to avoid blocking the accept() call.
 				process(clientSock);
 			}
 

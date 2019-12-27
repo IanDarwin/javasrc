@@ -4,8 +4,9 @@ import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.ZoneId;
 
 /**
  * DaytimeBinary - connect to the standard Time (binary) service.
@@ -16,7 +17,7 @@ import java.util.Date;
 public class RDateClient {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
-	/** Seconds between 1970, the time base for Date(long) and Time.
+	/** Seconds between 1970, the time base for dates and times
 	 * Factors in leap years (up to 2100), hours, minutes, and seconds.
 	 * Subtract 1 day for 1900, add in 1/2 day for 1969/1970.
 	 */
@@ -25,9 +26,6 @@ public class RDateClient {
 
 	/* Seconds since 1970 */
 	public static final long BASE_DIFF = (BASE_DAYS * 24 * 60 * 60);
-
-	/** Convert from seconds to milliseconds */
-	public static final int MSEC = 1000;
 
 	public static void main(String[] argv) {
 		String hostName;
@@ -51,7 +49,8 @@ public class RDateClient {
 			System.out.println("Remote time is " + remoteTime);
 			System.out.println("BASE_DIFF is " + BASE_DIFF);
 			System.out.println("Time diff == " + (remoteTime - BASE_DIFF));
-			Date d = new Date((remoteTime - BASE_DIFF) * MSEC);
+			Instant time = Instant.ofEpochSecond(remoteTime - BASE_DIFF);
+			LocalDateTime d = LocalDateTime.ofInstant(time, ZoneId.systemDefault());
 			System.out.println("Time on " + hostName + " is " + d.toString());
 			System.out.println("Local date/time = " + LocalDateTime.now());
 		} catch (IOException e) {
