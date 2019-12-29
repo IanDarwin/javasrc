@@ -4,17 +4,20 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * Simple demo of the Java5 ThreadPool; run multiple threads.
+ * Simple demo of the Java ThreadPools; run multiple threads.
  */
 public class ThreadPoolDemo {
 
+	private static final int HOWMANY = 5;
 	private static boolean done = false;
 
-	public static void main(String[] args) throws Throwable {
-		final ExecutorService pool = Executors.newFixedThreadPool(5);
-		List<Future<Integer>> futures = new ArrayList<>(5);
-		for (int i = 0; i < 5; i++) {
+	public static void main(String[] args) throws Exception {
+		// tag::main[]
+		final ExecutorService pool = Executors.newFixedThreadPool(HOWMANY);
+		List<Future<Integer>> futures = new ArrayList<>(HOWMANY);
+		for (int i = 0; i < HOWMANY; i++) {
 			Future<Integer> f = pool.submit(new DemoRunnable(i));
+			System.out.println("Got 'Future' of type " + f.getClass());
 			futures.add(f);
 		}
 		Thread.sleep(3 * 1000);
@@ -23,6 +26,7 @@ public class ThreadPoolDemo {
 			System.out.println("Result " + f.get());
 		}
 		pool.shutdown();
+		// end::main[]
 	}
 
 	static class DemoRunnable implements Callable<Integer> {
@@ -32,13 +36,8 @@ public class ThreadPoolDemo {
 		// @Override
 		public Integer call() {
 			while (!done) {
-				try {
-					Thread.sleep(500);
-					System.out.println("Running " + this);
-					++numRuns;
-				} catch (InterruptedException e) {
-					// nothing to do
-				}
+				System.out.println("Running " + Thread.currentThread());
+				++numRuns;
 			}
 			System.out.println("Stopping " + this);
 			return numRuns;

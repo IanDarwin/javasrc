@@ -9,6 +9,7 @@ import java.awt.Image;
 public class Sprite extends Component implements Runnable {
 	private static final long serialVersionUID = 1L;
 	protected static int spriteNumber = 0;
+	protected int number;
 	protected int x, y;
 	protected Component parent;
 	protected Image img;
@@ -26,6 +27,7 @@ public class Sprite extends Component implements Runnable {
 	public Sprite(Component parent, Image img, Direction dir) {
 		this.parent = parent;
 		this.img = img;
+		this.number = Sprite.spriteNumber++;
 		switch(dir) {
 			case VERTICAL: case HORIZONTAL: case DIAGONAL:
 				direction = dir;
@@ -44,7 +46,7 @@ public class Sprite extends Component implements Runnable {
 
 	/** Stop this Sprite. */
 	public void stop() {
-		System.out.println("Stopping " + Thread.currentThread().getName());
+		System.out.println("Stopping " + number);
 		done = true;
 	}
 
@@ -59,8 +61,7 @@ public class Sprite extends Component implements Runnable {
 	 * at some 45-degree angle.
 	 */
     public void run() {
-    	Thread.currentThread().setName("Sprite #" + ++spriteNumber);
-		int width = parent.getSize().width;
+    	int width = parent.getSize().width;
 		int height = parent.getSize().height;
 		// Set initial location
 		x = (int)(Math.random() * width);
@@ -86,7 +87,9 @@ public class Sprite extends Component implements Runnable {
 				case HORIZONTAL: 
 					y = 0;
 					break;
-				case DIAGONAL: break;
+				case DIAGONAL:
+					// Let it wrap around
+					break;
 			}
 			//System.out.println("from " + getLocation() + "->" + x + "," + y);
 			setLocation(x, y);

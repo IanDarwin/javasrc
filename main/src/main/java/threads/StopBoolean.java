@@ -42,7 +42,7 @@ package threads;
 
 // import - none
 
-/** Show stopping a Thread using a flag.
+/** Show stopping a Thread using a boolean flag.
  */
 // tag::main[]
 public class StopBoolean extends Thread {

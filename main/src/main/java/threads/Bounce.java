@@ -7,8 +7,9 @@ import java.awt.Toolkit;
 import java.net.URL;
 import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,9 +25,9 @@ public class Bounce extends JPanel {
 	/** The image, shared by all the Sprite objects */
 	protected Image img;
 	/** A Thread Pool */
-	protected Executor tp = Executors.newCachedThreadPool();
+	protected ExecutorService tp = Executors.newCachedThreadPool();
 	/** A Vector of Sprite objects. */
-	protected List<Sprite> v;
+	protected List<Sprite> v = new Vector<Sprite>(); // multithreaded, use Vector;
 
 	public static void main(String[] args) {
 		JFrame jf = new JFrame("Bounce Demo");
@@ -38,7 +39,7 @@ public class Bounce extends JPanel {
 
     public Bounce(String imgName) {
 		setLayout(new BorderLayout());
-		JButton b = new JButton("Start");
+		JButton b = new JButton("Add a Sprite");
 		b.addActionListener(e -> {
 			System.out.println("Creating another one!");
 			Sprite s = new Sprite(this, img);
@@ -67,14 +68,26 @@ public class Bounce extends JPanel {
 			throw new IllegalArgumentException(
 				"Couldn't load image " + imgName);
 		}
-		v = new Vector<Sprite>(); // multithreaded, use Vector
+		JButton stopper = new JButton("Shut down");
+		stopper.addActionListener(e -> {
+			stop();
+			tp.shutdown();
+		});
+		add(stopper, BorderLayout.SOUTH);
     }
 
     public void stop() {
-		for (int i=0; i<v.size(); i++) {
-			v.get(i).stop();
+		for (Sprite s : v) {
+			s.stop();
 		}
 		v.clear();
+		try {
+			tp.awaitTermination(5, TimeUnit.SECONDS);
+			System.out.println("ThreadPool is shut down, ending program");
+			System.exit(0);
+		} catch (InterruptedException e) {
+			// Empty
+		}
     }
 }
 // end::main[]
