@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /** Review examples of arrays: shows array allocation, processing,
  * storing objects in Arrays,, two-dimensional arrays, and lengths.
@@ -22,9 +22,9 @@ public class Array1  {
 		};
 		
 		final int MAX = 10;
-		Calendar[] days = new Calendar[MAX];
+		LocalDate[] days = new LocalDate[MAX];
 		for (int i=0; i<MAX; i++) {
-			days[i] = Calendar.getInstance();
+			days[i] = LocalDate.of(2022, 02, i + 1);
 		}
 	 
 		// Two-Dimensional Arrays
