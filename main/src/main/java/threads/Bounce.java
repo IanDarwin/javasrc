@@ -7,6 +7,8 @@ import java.awt.Toolkit;
 import java.net.URL;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +23,8 @@ public class Bounce extends JPanel {
 	protected JPanel p;
 	/** The image, shared by all the Sprite objects */
 	protected Image img;
+	/** A Thread Pool */
+	protected Executor tp = Executors.newCachedThreadPool();
 	/** A Vector of Sprite objects. */
 	protected List<Sprite> v;
 
@@ -38,7 +42,7 @@ public class Bounce extends JPanel {
 		b.addActionListener(e -> {
 			System.out.println("Creating another one!");
 			Sprite s = new Sprite(this, img);
-			s.start();
+			tp.execute(s);
 			p.add(s);
 			v.add(s);
 	    });

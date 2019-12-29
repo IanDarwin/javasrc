@@ -9,7 +9,6 @@ import java.awt.Image;
 public class Sprite extends Component implements Runnable {
 	private static final long serialVersionUID = 1L;
 	protected static int spriteNumber = 0;
-	protected Thread t;
 	protected int x, y;
 	protected Component parent;
 	protected Image img;
@@ -17,18 +16,14 @@ public class Sprite extends Component implements Runnable {
 	/** The time in mSec to pause between each move. */
 	protected volatile int sleepTime = 250;
 	/** The direction for this particular sprite. */
-	protected int direction;
-	/** The direction for going across the page */
-	public static final int HORIZONTAL = 1;
-	/** The direction for going up and down */
-	public static final int VERTICAL = 2;
-	/** The direction for moving diagonally */
-	public static final int DIAGONAL = 3;
-
+	protected Direction direction;
+	enum Direction {
+		VERTICAL, HORIZONTAL, DIAGONAL
+	}
 	/** Construct a Sprite with a Component parent, image and direction.
 	 * Construct and start a Thread to drive this Sprite.
 	 */
-	public Sprite(Component parent, Image img, int dir) {
+	public Sprite(Component parent, Image img, Direction dir) {
 		this.parent = parent;
 		this.img = img;
 		switch(dir) {
@@ -44,21 +39,12 @@ public class Sprite extends Component implements Runnable {
 
 	/** Construct a sprite with the default direction */
 	public Sprite(Component parent, Image img) {
-		this(parent, img, DIAGONAL);
+		this(parent, img, Direction.DIAGONAL);
 	}
 
-	/** Start this Sprite's thread. */
-	public void start() {
-		t = new Thread(this);
-		t.setName("Sprite #" + ++spriteNumber);
-		t.start();
-	}
-
-	/** Stop this Sprite's thread. */
+	/** Stop this Sprite. */
 	public void stop() {
-		if (t == null)
-			return;
-		System.out.println("Stopping " + t.getName());
+		System.out.println("Stopping " + Thread.currentThread().getName());
 		done = true;
 	}
 
@@ -73,6 +59,7 @@ public class Sprite extends Component implements Runnable {
 	 * at some 45-degree angle.
 	 */
     public void run() {
+    	Thread.currentThread().setName("Sprite #" + ++spriteNumber);
 		int width = parent.getSize().width;
 		int height = parent.getSize().height;
 		// Set initial location
