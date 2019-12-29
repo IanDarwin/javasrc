@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * <P>TODO: Do we need to handle negative numbers?
  * @author Ian Darwin, http://www.darwinsys.com/
  */
-public class PalindromeBig {
+public class PalindromeBigInteger {
 
 	public static boolean verbose = true;
 

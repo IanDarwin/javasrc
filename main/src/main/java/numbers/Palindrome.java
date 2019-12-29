@@ -11,23 +11,24 @@ public class Palindrome {
 	public static boolean verbose = true;
 
 	public static void main(String[] argv) {
-		for (int i=0; i<argv.length; i++)
+		for (String num : argv) {
 			try {
-				long l = Long.parseLong(argv[i]);
+				long l = Long.parseLong(num);
 				if (l < 0) {
-					System.err.println(argv[i] + " -> TOO SMALL");
+					System.err.println(num + " -> TOO SMALL");
 					continue;
 				}
-				System.out.println(argv[i] + "->" + findPalindrome(l));
+				System.out.println(num + "->" + findPalindrome(l));
 			} catch (NumberFormatException e) {
-				System.err.println(argv[i] + "-> INVALID");
+				System.err.println(num + "-> INVALID");
 			} catch (IllegalStateException e) {
-				System.err.println(argv[i] + "-> " + e);
+				System.err.println(num + "-> " + e);
 			} 
+		}
 	}
 
 	/** find a palindromic number given a starting point, by
-	 * calling ourself until we get a number that is palindromic.
+	 * recursing until we get a number that is palindromic.
 	 */
 	static long findPalindrome(long num) {
 		if (num < 0)
