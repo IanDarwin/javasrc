@@ -23,6 +23,13 @@ public class BuildingManagement {
 			});
 	}
 
+	// tag::functional[]
+	public void goodNightFunctional() {
+		things.stream().filter(obj -> obj instanceof PowerSwitchable)
+			.forEach(obj -> ((PowerSwitchable)obj).powerDown());
+	}
+	// end::functional[]
+
 	// goodMorning() would be similar, but call each one's powerUp().
 
 	/** Add a Asset to this building */
