@@ -1,13 +1,20 @@
 package sched;
 
-import java.util.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import junit.framework.TestCase;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.TreeSet;
+
+import org.junit.Test;
 
 /** Confirm that Appts compare, sort, print, and read back correctly.
  */
-public class TestDayAppt extends TestCase {
-	
+public class ApptTest {
+
+	@Test
 	public void testFactoryAndGetters() {
 		
 		// Exercise static factory method.
@@ -19,7 +26,8 @@ public class TestDayAppt extends TestCase {
 		assertEquals("fromString and getters",    0, a1.getMinute());
 		assertEquals("fromString and getters", "birthday", a1.getText());
 	}
-	
+
+	@Test
 	public void testFactoryFailures() {
 
 		try {
@@ -43,20 +51,57 @@ public class TestDayAppt extends TestCase {
 			// OK
 		}
 	}
-	
+
+	@Test
 	public void testConstructorAndComparisons() {
 		TreeSet<Appt> days =  new TreeSet<Appt>();
 		// Exercise compareTo() method by inserting duplicates
 		// into the TreeSet - ensure that only one copy is added.
-		days.add(new Appt("go home", 1999, 1, 23, 12, 10));
-		days.add(new Appt("go home", 1999, 1, 23, 12, 10));
+		days.add(new Appt(1999, 1, 23, 12, 10, "go home"));
+		days.add(new Appt(1999, 1, 23, 12, 10, "go home"));
 		assertEquals("compareto", 1, days.size());
 
-		Appt a = new Appt("testing 1 2 3", 1, 2, 3, 1, 2);
+		Appt a = new Appt(2001, 2, 3, 1, 2, "testing 1 2 3");
 
 		assertEquals("a is a", a, a);	
 		
 		assertEquals("fromString(toString()) idempotent", 
 			Appt.fromString(a.toString()), a);
+	}
+
+	
+	@Test
+	public void testEquals() {
+		Appt a1 = new Appt(2020,11,4,9,00, "Vote");
+		Appt a2 = new Appt(
+			LocalDate.of(2020, 11, 4),
+			LocalTime.of(9, 00),
+			"Vote");
+
+		assertEquals("equals constructed both ways", a1, a2);
+	}
+
+	@Test
+	public void testCompareTo() {
+		Appt a1 = new Appt(2020,11,4,9,00, "Vote");
+		Appt a2 = new Appt(2020,11,4,9,00, "Vote");
+		assertEquals(0, a1.compareTo(a2));
+		a1 = new Appt(2019, 06, 13, 9, 00, "Vote");
+		assertTrue(a1.compareTo(a2) < 0);
+		a1 = new Appt(2020, 11, 4, 8, 00, "Vote");
+		assertTrue(a1.compareTo(a2) < 0);
+		a1 = new Appt(2020, 11, 4, 9, 00, "Go Vote");
+		assertTrue(a1.compareTo(a2) < 0);
+	}
+	
+	@Test
+	public void testCompareInvolvingNullTime() {
+		Appt a1 = new Appt(LocalDate.of(2020,11,4), null, "Vote");
+		Appt a2 = new Appt(2020,11,4,9,00, "Vote");
+		assertTrue(a1.compareTo(a2) < 0);
+		
+		Appt b1 = new Appt(LocalDate.of(2020,11,4), null, "Vote");
+		Appt b2 = new Appt(LocalDate.of(2020,11,4), null, "Go Vote");
+		assertTrue(b1.compareTo(b2) > 0);
 	}
 }
