@@ -1,23 +1,15 @@
 package structure;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.TestCase;
-
-public class ListInterchangeTest extends TestCase {
+public class ListInterchangeTest {
 
 	String[] raw = { "zero", "one", "two", "three", "four" };
 
-	List<String> list = new ArrayList<String>();
-
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
-		for (String s : raw) {
-			list.add(s);
-		}
-	}
+	List<String> list = Arrays.asList(raw);
 
 	public void testAscending() {
 		ListInterchange.interchange(list, 2, 3);
