@@ -75,7 +75,9 @@ class ThrowAWT extends Frame {
 			public void actionPerformed(ActionEvent evt) {
 				// Deliberately throw a null pointer exception
 				Random r = null;
+				@SuppressWarnings("null")
 				int i = r.nextInt();
+				System.out.println(i);
 			}
 		});
 		setBounds(60, 60, 60, 60);	// x, y, width, height

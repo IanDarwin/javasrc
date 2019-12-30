@@ -42,7 +42,7 @@ public class DaytimeServer {
 				os = new DataOutputStream(ios.getOutputStream());
 				long time = System.currentTimeMillis();
 
-				time /= RDateClient.MSEC;	// Daytime Protocol is in seconds
+				time /= 1000;	// Daytime Protocol is in seconds
 
 				// Convert to Java time base.
 				time += RDateClient.BASE_DIFF;

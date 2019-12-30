@@ -7,6 +7,7 @@ package lang;
  * is known, do you need to evaluation the second??
  */
 public class BooleanAndOr {
+	@SuppressWarnings("null")
 	public static void main(String[] a) {
 		String s = getString();
 

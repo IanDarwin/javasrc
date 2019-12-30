@@ -1,7 +1,5 @@
 package jndi;
 
-import java.rmi.RMISecurityManager;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
@@ -14,7 +12,6 @@ public class ListJavaComp {
 	public static void main(String[] argv) throws NamingException {
 
 		try {
-		System.setSecurityManager(new RMISecurityManager());
 
 		// Properties from "jndi.properites" (in . or CLASSPATH)
 		Context ctx = new InitialContext();
@@ -22,7 +19,7 @@ public class ListJavaComp {
 		System.out.println("InitialContext name: " +
 			ctx.getNameInNamespace());
 		System.out.println("List of top-level bindings");
-		NamingEnumeration o = ctx.listBindings("");
+		NamingEnumeration<?> o = ctx.listBindings("");
 
 		while (o.hasMore()) {
 			System.out.println("Binding: " + o.next());
@@ -34,7 +31,7 @@ public class ListJavaComp {
 		// Note that the list() methods give you the CLASS NAMES
 		// of the things that are bound, whereas listBindings()
 		// gives you the actual objects.
-		NamingEnumeration n = ctx.listBindings(toList);
+		NamingEnumeration<?> n = ctx.listBindings(toList);
 
 		while (n.hasMore()) {
 			System.out.println("Binding: " + n.next());
