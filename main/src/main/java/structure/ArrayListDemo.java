@@ -1,6 +1,6 @@
 package structure;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,21 +10,24 @@ import java.util.List;
 // tag::main[]
 public class ArrayListDemo {
 	public static void main(String[] argv) {
-		List<LocalDateTime> al = new ArrayList<>();
-
-		// Create a source of Objects
-		StructureDemo source = new StructureDemo(15);
+		List<LocalDate> editions = new ArrayList<>();
 
 		// Add lots of elements to the ArrayList...
-		al.add(source.getDate());
-		al.add(source.getDate());
-		al.add(source.getDate());
+		editions.add(LocalDate.of(2001, 06, 01));
+		editions.add(LocalDate.of(2004, 06, 01));
+		editions.add(LocalDate.of(2014, 06, 20));
 
-		// Print them out using old-style for loop to index number.
+		// Use old-style 'for' loop to get index number.
 		System.out.println("Retrieving by index:");
-		for (int i = 0; i<al.size(); i++) {
-			System.out.println("Element " + i + " = " + al.get(i));
+		for (int i = 0; i<editions.size(); i++) {
+			System.out.printf("Edition %d was %s\n", i + 1, editions.get(i));
 		}
+		// Use normal 'for' loop for simpler access
+		System.out.println("Retrieving by Iterable:");
+		for (LocalDate dt : editions) {
+			System.out.println("Edition " + dt);
+		}
+		
 	}
 }
 // end::main[]
