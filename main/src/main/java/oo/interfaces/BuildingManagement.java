@@ -1,5 +1,7 @@
 package oo.interfaces;
 
+import java.util.*;
+
 /**
  * BuildingManagement - control an energy-saving building.
  * This class shows how we might control the objects in an office
@@ -9,24 +11,24 @@ package oo.interfaces;
 // tag::main[]
 public class BuildingManagement {
 
-	Asset things[] = new Asset[24];
-	int numItems = 0;
+	List<Asset> things = new ArrayList<>();
 
 	/** Scenario: goodNight() is called from a timer Thread at 2200, or when
 	 * we get the "shutdown" command from the security guard.
 	 */
 	public void goodNight() {
-		for (int i=0; i<things.length; i++)
-			if (things[i] instanceof PowerSwitchable)
-				((PowerSwitchable)things[i]).powerDown();
+		things.forEach(obj -> {
+			if (obj instanceof PowerSwitchable)
+				((PowerSwitchable)obj).powerDown();
+			});
 	}
 
-	// goodMorning() would be the same, but call each one's powerUp().
+	// goodMorning() would be similar, but call each one's powerUp().
 
 	/** Add a Asset to this building */
 	public void add(Asset thing) {
 		System.out.println("Adding " + thing);
-		things[numItems++] = thing;
+		things.add(thing);
 	}
 
 	/** The main program */
