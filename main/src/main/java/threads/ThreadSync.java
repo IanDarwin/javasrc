@@ -47,20 +47,20 @@ package threads;
  * @author	Ian Darwin
  */
 public class ThreadSync extends Thread {
-	String mesg;
+	String message;
 	int count;
 
 	/** Run does the work: print a message, "count" number of times */ 
 	public void run() {
 		while (count-- > 0) {
-			println(mesg);
+			println(message);
 			try {
 				Thread.sleep(100);	// 100 msec
 			} catch (InterruptedException e) {
 				return;
 			}
 		}
-		println(mesg + " all done.");
+		println(message + " all done.");
 	}
 
 	/* The output routine has been synchronized to interlock the Threads */
@@ -75,7 +75,7 @@ public class ThreadSync extends Thread {
 	 */
 	public ThreadSync(String m, int n) {
 		count = n;
-		mesg  = m;
+		message  = m;
 		setName(m + " runner Thread");
 	}
 

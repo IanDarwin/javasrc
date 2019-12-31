@@ -196,18 +196,18 @@ public class BreakEnd extends JFrame implements Runnable {
 		timesPanel.add(
 			nowLabel =  new JLabel("Time now is: 00:00:00", SwingConstants.CENTER));
 	
-		String mesg = null;
+		String message = null;
 		if (s.startsWith("+")) {	// "This will be HARDer..."
 			Calendar d = new GregorianCalendar();
 			int newMinutes = d.get(Calendar.MINUTE)+
 				Integer.parseInt(s.substring(1))+1;
 			d.set(Calendar.MINUTE, newMinutes);
-			mesg = "We start at " + toHHMM_String(d);
+			message = "We start at " + toHHMM_String(d);
 		} else {
-			mesg = "We start at " + s + " ";
+			message = "We start at " + s + " ";
 		}
 		timesPanel.add(BorderLayout.CENTER,
-			endsLabel = new JLabel(mesg, SwingConstants.CENTER));
+			endsLabel = new JLabel(message, SwingConstants.CENTER));
 		setFontSize(FONT_SIZE_DEFAULT);
 		JButton b;
 		cp.add(BorderLayout.SOUTH, b = new JButton("Done"));

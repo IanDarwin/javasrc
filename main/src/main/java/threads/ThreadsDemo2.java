@@ -7,7 +7,7 @@ package threads;
  */
 // tag::main[]
 public class ThreadsDemo2 implements Runnable {
-	private String mesg;
+	private String message;
 	private Thread t;
 	private int count;
 
@@ -15,8 +15,8 @@ public class ThreadsDemo2 implements Runnable {
 	 * Main program, test driver for ThreadsDemo2 class.
 	 */
 	public static void main(String[] argv) {
-		new ThreadsDemo2("Hello from X", 10);
-		new ThreadsDemo2("Hello from Y", 15);
+		new ThreadsDemo2("Hello from X", 10).start();
+		new ThreadsDemo2("Hello from Y", 15).start();
 	}
 
 	/**
@@ -26,23 +26,25 @@ public class ThreadsDemo2 implements Runnable {
 	 */
 	public ThreadsDemo2(String m, int n) {
 		count = n;
-		mesg  = m;
+		message  = m;
+	}
+	void start() {
 		t = new Thread(this);
-		t.setName(m + " runner Thread");
+		t.setName(message + " runner Thread");
 		t.start();
 	}
 
 	/** Run does the work. We override the run() method in Runnable. */ 
 	public void run() {
 		while (count-- > 0) {
-			System.out.println(mesg);
+			System.out.println(message);
 			try {
 				Thread.sleep(100);	// 100 msec
 			} catch (InterruptedException e) {
 				return;
 			}
 		}
-		System.out.println(mesg + " thread all done.");
+		System.out.println(message + " thread all done.");
 	}
 }
 // end::main[]
