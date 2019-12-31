@@ -12,7 +12,7 @@ public class Sprite extends Component implements Runnable {
 	protected int number;
 	protected int x, y;
 	protected Component parent;
-	protected Image img;
+	protected Image image;
 	protected volatile boolean done = false;
 	/** The time in mSec to pause between each move. */
 	protected volatile int sleepTime = 250;
@@ -24,24 +24,17 @@ public class Sprite extends Component implements Runnable {
 	/** Construct a Sprite with a Component parent, image and direction.
 	 * Construct and start a Thread to drive this Sprite.
 	 */
-	public Sprite(Component parent, Image img, Direction dir) {
+	public Sprite(Component parent, Image image, Direction direction) {
 		this.parent = parent;
-		this.img = img;
+		this.image = image;
+		this.direction = direction;
 		this.number = Sprite.spriteNumber++;
-		switch(dir) {
-			case VERTICAL: case HORIZONTAL: case DIAGONAL:
-				direction = dir;
-				break;
-			default:
-				throw new IllegalArgumentException(
-					"Direction " + dir + " invalid");
-		}
-		setSize(img.getWidth(this), img.getHeight(this));
+		setSize(image.getWidth(this), image.getHeight(this));
 	}
 
 	/** Construct a sprite with the default direction */
-	public Sprite(Component parent, Image img) {
-		this(parent, img, Direction.DIAGONAL);
+	public Sprite(Component parent, Image image) {
+		this(parent, image, Direction.DIAGONAL);
 	}
 
 	/** Stop this Sprite. */
@@ -104,7 +97,7 @@ public class Sprite extends Component implements Runnable {
 
 	/** paint -- just draw our image at its current location */
     public void paint(Graphics g) {
-		g.drawImage(img, 0, 0, this);
+		g.drawImage(image, 0, 0, this);
     }
 }
 // end::main[]
