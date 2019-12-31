@@ -7,7 +7,7 @@ import java.net.Socket;
 // tag::main[]
 public class InetAddrDemo {
 	public static void main(String[] args) throws IOException {
-		String hostName = "www.darwinsys.com";
+		String hostName = "darwinsys.com";
 		String ipNumber = "8.8.8.8"; // currently a well-known Google DNS server
 
 		// Show getting the InetAddress (looking up a host) by host name
@@ -23,13 +23,13 @@ public class InetAddrDemo {
 		System.out.println("My localhost address is " + localHost);
 
 		// Show getting the InetAddress from an open Socket
-		String someServerName = "www.google.com";
+		String someServerName = "google.com";
 		// assuming there's a web server on the named server:
-		Socket theSocket = new Socket(someServerName, 80);	
-		InetAddress remote = theSocket.getInetAddress();
-		System.out.printf("The InetAddress for %s is %s%n",
-			someServerName, remote);
-		theSocket.close();
+		try (Socket theSocket = new Socket(someServerName, 80)) {
+			InetAddress remote = theSocket.getInetAddress();
+			System.out.printf("The InetAddress for %s is %s%n",
+				someServerName, remote);
+		}
 	}
 }
 // end::main[]
