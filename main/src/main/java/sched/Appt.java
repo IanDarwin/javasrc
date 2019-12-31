@@ -203,6 +203,7 @@ public class Appt implements Comparable<Appt> {
         sb.append(text).toString();
         return sb.toString();
     }
+	// end::main[]
 
     /** Factory: build a String representation into an Appt.
      * Cast as a static factory for minor efficiency gains - reconsider.
