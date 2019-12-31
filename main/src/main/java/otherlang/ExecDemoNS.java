@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 // tag::main[]
 public class ExecDemoNS extends JFrame {
-	private static final String NETSCAPE = "firefox";
+	private static final String BROWSER = "firefox";
 	
 	Logger logger = Logger.getLogger(ExecDemoNS.class.getSimpleName());
 
@@ -27,7 +27,7 @@ public class ExecDemoNS extends JFrame {
 
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {
-		String program = av.length == 0 ? NETSCAPE : av[0];
+		String program = av.length == 0 ? BROWSER : av[0];
 		new ExecDemoNS(program).setVisible(true);
 	}
 
@@ -35,24 +35,15 @@ public class ExecDemoNS extends JFrame {
 	protected static String program;
 
 	/** Constructor - set up strings and things. */
-	public ExecDemoNS(String prog) {
-		super("ExecDemo: " + prog);
-		String osname = System.getProperty("os.name");
-		if (osname == null)
-			throw new IllegalArgumentException("no os.name");
-		if (prog.equals(NETSCAPE))
-			program = // Windows or UNIX only for now, sorry Mac fans
-				(osname.toLowerCase().indexOf("windows")!=-1) ?
-				"c:/program files/netscape/communicator/program/netscape.exe" :
-				"/usr/local/bin/" + prog;
-		else
-			program = prog;
+	public ExecDemoNS(String program) {
+		super("ExecDemo: " + program);
+		this.program = program;
 
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
 		JButton b;
 		cp.add(b=new JButton("Exec"));
-		b.addActionListener(e -> runProg());
+		b.addActionListener(e -> runProgram());
 		cp.add(b=new JButton("Wait"));
 		b.addActionListener(e -> doWait());
 		cp.add(b=new JButton("Exit"));
@@ -61,7 +52,7 @@ public class ExecDemoNS extends JFrame {
 	}
 
 	/** Start the help, in its own Thread. */
-	public void runProg() {
+	public void runProgram() {
 
 		new Thread() {
 			public void run() {
@@ -71,9 +62,18 @@ public class ExecDemoNS extends JFrame {
 					URL helpURL = this.getClass().getClassLoader().
 						getResource(HELPFILE);
 
-					// Start Netscape from the Java Application.
+					// Start the external browser from the Java Application.
 
-					pStack.push(Runtime.getRuntime().exec(program + " " + helpURL));
+					String osname = System.getProperty("os.name");
+					String run;
+					if ("Mac OS X".equals(osname)) {
+						run = "open -a " + program;
+						// "if" allows for other OSes needing special handling
+					} else {
+						run = program;
+					}
+
+					pStack.push(Runtime.getRuntime().exec(run + " " + helpURL));
 
 					logger.info("In main after exec " + pStack.size());
 
