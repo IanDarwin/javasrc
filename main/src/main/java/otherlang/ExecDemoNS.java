@@ -58,7 +58,7 @@ public class ExecDemoNS extends JFrame {
 			public void run() {
 
 				try {
-					// Get the URL for the Help File
+					// Get a "file:" URL for the Help File
 					URL helpURL = this.getClass().getClassLoader().
 						getResource(HELPFILE);
 
@@ -88,19 +88,22 @@ public class ExecDemoNS extends JFrame {
 	}
 
 	public void doWait() {
-		if (pStack.size() == 0) return;
+		if (pStack.size() == 0) {
+			logger.info("Nothing to wait for.");
+			return;
+		}
 		logger.info("Waiting for process " + pStack.size());
 		try {
-			pStack.peek().waitFor();
+			Process p = pStack.pop();
+			p.waitFor();
 			// wait for process to complete 
 			// (may not work as expected for some old Windows programs)
-			logger.info("Process " + pStack.size() + " is done");
+			logger.info("Process " + p + " is done.");
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this,
 				"Error" + ex, "Error",
 				JOptionPane.ERROR_MESSAGE);
 		}
-		pStack.pop();
 	}
 
 }
