@@ -20,14 +20,11 @@ public class ProdCons15 {
 
 		public void run() {
 			try {
-				while (true) {
+				while (!done) {
 					Object justProduced = getRequestFromNetwork();
 					queue.put(justProduced);
 					System.out.println(
 						"Produced 1 object; List size now " + queue.size());
-					if (done) {
-						return;
-					}
 				}
 			} catch (InterruptedException ex) {
 				System.out.println("Producer INTERRUPTED");

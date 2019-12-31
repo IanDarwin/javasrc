@@ -59,7 +59,7 @@ public class ProdCons2 {
 	class Producer extends Thread {
 
 		public void run() {
-			while (true) {
+			while (!done) {
 				Object justProduced = getRequestFromNetwork();
 				// Get request from the network - outside the synch section.
 				// We're simulating this actually reading from a client, and it
@@ -76,9 +76,6 @@ public class ProdCons2 {
 					list.addFirst(justProduced);
 					list.notifyAll();	// must own the lock
 					System.out.println("Produced 1; List size now " + list.size());
-					if (done)
-						break;
-					// yield();	// Useful for green threads & demo programs.
 				}
 			}
 		}
