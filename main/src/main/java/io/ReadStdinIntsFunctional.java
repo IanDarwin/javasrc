@@ -8,6 +8,7 @@ import java.util.stream.Stream;
  * Read one or more integers, one per line, from the standard input.
  * @author Daniel Hinojosa
  */
+// tag::main[]
 public class ReadStdinIntsFunctional {
 	private static Stream<Integer> parseIntSafe(String s) {
 		try {
@@ -25,3 +26,4 @@ public class ReadStdinIntsFunctional {
 		  .forEach(System.out::println);
 	}
 }
+// end::main[]
