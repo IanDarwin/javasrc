@@ -1,4 +1,4 @@
-This is a simple text file for LineCount.java
+This is a simple text file for text-file reading demos.
 
 Line 3
 Line 4
