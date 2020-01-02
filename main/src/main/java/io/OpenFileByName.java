@@ -44,7 +44,7 @@ public class OpenFileByName {
 	static void oldWayShorter() throws IOException {
 		try (BufferedReader is = new BufferedReader(new FileReader(INPUT_FILE_NAME));
 			BufferedOutputStream bytesOut = new BufferedOutputStream(
-				new FileOutputStream(OUTPUT_FILE_NAME.replace("\\.", "-1."));) {
+				new FileOutputStream(OUTPUT_FILE_NAME.replace("\\.", "-1.")));) {
 
 			// Read from is, write to bytesOut
 			String line;
