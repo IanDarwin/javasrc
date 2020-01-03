@@ -5,7 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class OpenFileByName {
 	final static String INPUT_FILE_NAME = "lines.txt";
@@ -31,7 +33,7 @@ public class OpenFileByName {
 		String line;
 		while ((line = is.readLine()) != null) {
 			line = doSomeProcessingOn(line);
-			bytesOut.write(line.getBytes("UTF-8"));
+			bytesOut.write(line.getBytes(StandardCharsets.UTF_8));
 			bytesOut.write('\n');
 		}
 
