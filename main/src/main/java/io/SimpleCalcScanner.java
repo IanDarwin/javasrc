@@ -14,10 +14,10 @@ import java.util.Stack;
 // tag::main[]
 public class SimpleCalcScanner {
 	/** The Scanner */
-	protected  Scanner scan;
+	protected Scanner scan;
 
 	/** The output */
-	protected PrintWriter out = new PrintWriter(System.out);
+	protected PrintWriter out = new PrintWriter(System.out, true);
 
 	/** The variable name (not used in this version) */
 	protected String variable;
@@ -64,25 +64,32 @@ public class SimpleCalcScanner {
 			if (scan.hasNextDouble()) {
 				push(scan.nextDouble());
 			} else {
-				String token = scan.next();
-				if (token.equals("+")) {
+				String token;
+				switch(token = scan.next()) {
+				case "+":
 					// Found + operator, perform it immediately.
 					push(pop() + pop());
-				} else if (token.equals("-")) {
+					break;
+				case "-":
 					// Found - operator, perform it (order matters).
 					tmp = pop();
 					push(pop() - tmp);
-				} else if (token.equals("*")) {
+					break;
+				case "*":
 					// Multiply is commutative
 					push(pop() * pop());
-				} else if (token.equals("/")) {
+					break;
+				case "/":
 					// Handle division carefully: order matters!
 					tmp = pop();
 					push(pop() / tmp);
-				} else if (token.equals("=")) {
+					break;
+				case "=":
 					out.println(peek());
-				} else {
+					break;
+				default:
 					out.println("What's this? " + token);
+					break;
 				}
 			}
 		}
