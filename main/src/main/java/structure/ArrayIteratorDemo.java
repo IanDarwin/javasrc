@@ -12,13 +12,14 @@ public class ArrayIteratorDemo {
 	public static void main(String[] args) {
 		ArrayIterator<String> arrayIterator = new ArrayIterator<>(names);
 
-		// Java 5, 6 way
+		System.out.println("Java 5, 6 way");
 		for (String s : arrayIterator) {
 			System.out.println(s);
 		}
 		
-		// Java 8 way
+		System.out.println("Java 5, 6 ways");
 		arrayIterator.forEach(s->System.out.println(s));
+		arrayIterator.forEach(System.out::println);
 	}
 }
 // end::main[]
