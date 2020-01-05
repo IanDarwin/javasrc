@@ -21,7 +21,7 @@ public class JavaCompilerDemo {
 	private final static String CLASS = "AnotherDemo";
 	private static boolean verbose;
 	public static void main(String[] args) throws Exception {
-		String source = "package " + PACKAGE + ";\n" +                   // <1>
+		String source = "package " + PACKAGE + ";\n" +                  // <1>
 			"public class " + CLASS + " {\n" +
 			"\tpublic static void main(String[] args) {\n" +
 			"\t\tString message = (args.length > 0 ? args[0] : \"Hi\")" + ";\n" +
