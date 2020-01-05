@@ -19,14 +19,16 @@ import javax.tools.ToolProvider;
 public class JavaCompilerDemo {
 	private final static String PACKAGE = "reflection";
 	private final static String CLASS = "AnotherDemo";
+	private static boolean verbose;
 	public static void main(String[] args) throws Exception {
 		String source = "package " + PACKAGE + ";\n" +                   // <1>
 			"public class " + CLASS + " {\n" +
 			"\tpublic static void main(String[] args) {\n" +
 			"\t\tString message = (args.length > 0 ? args[0] : \"Hi\")" + ";\n" +
-			"\t\tSystem.out.println(message + \" from generated class\");\n" +
+			"\t\tSystem.out.println(message + \" from AnotherDemo\");\n" +
 			"\t}\n}\n";
-		System.out.print("Source to be compiled:\n" + source);
+		if (verbose)
+			System.out.print("Source to be compiled:\n" + source);
 
 		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();   // <2>
 		if (compiler == null) {
