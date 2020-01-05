@@ -10,8 +10,7 @@ import javax.tools.JavaCompiler;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.ToolProvider;
 
-/** Excercise the Java Compiler API: Create a class, compile it,
- * load it, and run it.
+/** Demo the Java Compiler API: Create a class, compile, load, and run it.
  * N.B. Will not run under Eclipse due to classpath settings;
  * best run it standalone using "java JavaCompiler.java"
  * @author Ian Darwin
