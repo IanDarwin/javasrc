@@ -22,7 +22,8 @@ public class PythonFromJava {
 		
 		ScriptEngine engine = scriptEngineManager.getEngineByName("python");
 		if (engine == null) {
-			final String message = "Could not find 'python' engine; add jython-standalone-xxx.jar to CLASSPATH";
+			final String message = 
+				"Could not find 'python' engine; add jython-standalone-nnn.jar to CLASSPATH";
 			System.out.println(message);
 			System.out.println("Available script engines are: ");
 			scriptEngineManager.getEngineFactories().forEach(factory ->
