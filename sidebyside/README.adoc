@@ -1,0 +1,17 @@
+= SideBySide
+
+This directory (which isn't a Maven module) collects sample programs
+in a wide variety of programming languages. Most of them will require
+installation of the relevant compiler, interpreter, runtime, etc. in order
+to try out the examples.
+
+c
+clojure
+cobol
+csharp
+fortran
+java
+python
+ruby
+rust
+scala
