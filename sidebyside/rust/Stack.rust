@@ -1,0 +1,14 @@
+// Using standard library Vector (Vec)
+
+fn main() {
+    let mut stack = Vec::new();
+    stack.push("1");
+    stack.push("2");
+    stack.push("3");
+ 
+    assert_eq!(Some(&"3"), stack.last());
+    assert_eq!(Some("3"), stack.pop());
+    assert_eq!(Some("2"), stack.pop());
+    assert_eq!(Some("1"), stack.pop());
+    assert_eq!(None, stack.pop());
+}
