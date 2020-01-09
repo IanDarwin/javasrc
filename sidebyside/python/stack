@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+# Adapted from rosettacode.org/wiki/Stack#Python
+# Implemented using pre-defined deque
+
+from collections import deque
+ 
+class Stack:
+    def __init__(self):
+        self._items = deque()
+    def push(self, item):
+        self._items.append(item)
+    def pop(self):
+        return self._items.pop()
+    def empty(self):
+        return not bool(self._items)
+
+stack = Stack();
+stack.push(1);
+stack.push(2);
+print(stack.pop()); # prints 2
+print(stack.pop()); # prints 1
+print(stack.empty()); # prints True
