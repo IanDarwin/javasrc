@@ -9,9 +9,24 @@ c
 clojure
 cobol
 csharp
+dart
 fortran
+golang
+groovy
 java
+kotlin
+ocaml
 python
 ruby
 rust
 scala
+
+Note that this is but a pale /bin/echo of the repository at RosettaCode.org,
+so when you get bored here, go look there, for hundreds of problems solved
+in hundreds of languages.
+
+Many of the Stack examples here are borrowed or adapted from code on RosettaCode.
+Used by permission due to their open license https://www.gnu.org/licenses/fdl-1.3.html
+especially the section on aggregation. Files aggregated from there
+are identified by comments at the top of each such file.
+
