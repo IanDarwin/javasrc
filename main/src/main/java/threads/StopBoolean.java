@@ -1,5 +1,9 @@
 package threads;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 /*
  * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
@@ -45,32 +49,39 @@ package threads;
 /** Show stopping a Thread using a boolean flag.
  */
 // tag::main[]
-public class StopBoolean extends Thread {
+public class StopBoolean {
 
-	// MUST be volatile to ensure changes visible to other threads.
+	// Must be volatile to ensure changes visible to other threads.
 	protected volatile boolean done = false;
 
-	public void run() {
+	Runnable r = () -> {
 		while (!done) {
 			System.out.println("StopBoolean running");
 			try {
-				sleep(720);
+				Thread.sleep(720);
 			} catch (InterruptedException ex) {
 				// nothing to do 
 			}
 		}
 		System.out.println("StopBoolean finished.");
-	}
+	};
+
 	public void shutDown() {
+		System.out.println("Shutting down...");
 		done = true;
 	}
 
-	public static void main(String[] args) 
-	throws InterruptedException {
-		StopBoolean t1 = new StopBoolean();
-		t1.start();
+	public void doDemo() throws InterruptedException {
+		ExecutorService pool = Executors.newSingleThreadExecutor();
+		pool.submit(r);
 		Thread.sleep(1000*5);
-		t1.shutDown();
+		shutDown();
+		pool.shutdown();
+		pool.awaitTermination(2, TimeUnit.SECONDS);
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		new StopBoolean().doDemo();
 	}
 }
 // end::main[]

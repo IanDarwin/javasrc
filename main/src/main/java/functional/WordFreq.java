@@ -7,7 +7,7 @@ import java.util.stream.*;
 
 // tag::main[]
 /**
- * Implement word frequency count, in two (long) statements
+ * Implement word frequency count, in two statements
  */
 public class WordFreq {
 	public static void main(String[] args) throws IOException {

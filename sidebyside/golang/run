@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# While Java doesn't care where your source is,
+# Maven and gradle *expect* a particular source folder,
+# but go-lang *demands* one, and has to be told where it is
+# (can't find $PWD?)
+
+set -x
+
+export GOPATH=$PWD
+
+cd $GOPATH/src/$1
+
+go build
+
+./$1
