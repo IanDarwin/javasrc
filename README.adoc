@@ -71,6 +71,11 @@ The older 'javasrcee' repository was originally formed by splitting
 it off from this repository, several years ago. Now, with this modularization,
 it has been merged back in, as the `ee` module.
 
+== No module-info
+
+There are no module-info.java files here because this is not meant to
+be built and used as a library or even as a cohesive software base.
+
 == Notes on Individual Modules
 
 testing::
