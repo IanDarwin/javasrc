@@ -73,8 +73,10 @@ it has been merged back in, as the `ee` module.
 
 == No module-info
 
-There are no module-info.java files here because this is not meant to
+There are no module-info.java files in most of the subdirectories
+because this is not meant to
 be built and used as a library or even as a cohesive software base.
+A few that need them for imports &c have them.
 
 == Notes on Individual Modules
 
