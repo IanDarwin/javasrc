@@ -54,16 +54,21 @@ invoke `mvn` there. Or you can do them all by invoking `mvn` in
 the top-level directory. Useful mvn targets include `compile` and `test`.
 Do not use `mvn package` as the jar files won't be useful on their own.
 
+=== I broke it (but it's easy to fix)
+
 Unfortunately for those who already had the original all-in-one _javasrc_
 checked out and an Eclipse project created in that directory,
 you should do the following:
 
 * In Eclipse, delete javasrc project (do NOT check 'delete contents on disk'!);
-* Delete the old target folder: {++rm -r++ or ++del/s++} __javasrc/target__;
+* Delete the old target folder (*only*): {++rm -r++ or ++del/s++} __javasrc/target__;
 * Do a "git pull" to rearrange the project and get the extra pom files;
 * Back in Eclipse, ++File->New Java Project->browse to (but not into) workspace/javasrc/main++.
-Set project name to ++javasrc-main++. Click ++OK/Finish++.
-* You may want to create other projects such as xml, jlink, spark, unsafe, ...
+Set project name to ++javasrc-main++. 
+If asked to upgrade the JDK release, say OK.
+If asked to create a module-info, *click Do Not Create*.
+Click ++OK/Finish++.
+* You may want to create some or all of the other projects such as xml, jlink, spark, unsafe, ...
 Do this same way as previous step: File->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
 
