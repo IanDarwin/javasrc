@@ -14,14 +14,17 @@ public class TempConverter2 extends TempConverter {
 		t.end();
 	}
 
-	protected void print(float f, float c) {
+	@Override
+	protected void print(double f, double c) {
 		System.out.printf("%6.2f %6.2f%n", f, c);
 	}
 
+	@Override
 	protected void start() {
 		System.out.println("Fahr    Centigrade");
 	}
 
+	@Override
 	protected void end() {
 		System.out.println("-------------------");
 	}
