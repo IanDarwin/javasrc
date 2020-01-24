@@ -17,13 +17,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/mail.jar"/>
-	<classpathentry kind="lib" path="lib/activation.jar"/>
-	<classpathentry kind="lib" path="lib/darwinsys.jar"/>
-	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>
-	<classpathentry kind="lib" path="lib/jsr311-api-1.0.jar"/>
-	<classpathentry kind="lib" path="lib/javaee.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/darwinsys-api"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
