@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "CalcService", targetNamespace = "http://toy.service/", wsdlLocation = "http://localhost:9090/calc?wsdl")
+@WebServiceClient(name = "CalcService", targetNamespace = "http://toy.service/", wsdlLocation = "http://localhost:7094/calc?wsdl")
 public class CalcService
     extends Service
 {
@@ -30,9 +30,9 @@ public class CalcService
         try {
             URL baseUrl;
             baseUrl = jaxwsclient.CalcService.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:9090/calc?wsdl");
+            url = new URL(baseUrl, "http://localhost:7094/calc?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:9090/calc?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:7094/calc?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         CALCSERVICE_WSDL_LOCATION = url;
