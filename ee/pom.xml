@@ -46,17 +46,11 @@
 
   <dependencies>
 
-    <dependency>
-		<groupId>com.darwinsys</groupId>
-        <artifactId>darwinsys-ee</artifactId>
-        <version>0.3.4-SNAPSHOT</version>
-    </dependency>
-
     <!-- Java EE current (7) full -->
     <dependency>
         <groupId>javax</groupId>  
         <artifactId>javaee-api</artifactId>  
-        <version>7.0</version>
+        <version>8.0</version>
     </dependency> 
 
 	<!-- Client side of RMI -->
@@ -100,7 +94,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
