@@ -13,14 +13,16 @@ public class PosixFilePermissionsViewDemo {
 		Files.deleteIfExists(filePath);    // Clean up from previous runs
 
 		// Set up permissions and create file
-		Set<PosixFilePermission> nPerms = 
-			Set.of(PosixFilePermission.OWNER_READ, PosixFilePermission.GROUP_READ);
-		Files.createFile(filePath, PosixFilePermissions.asFileAttribute(nPerms));
+		Set<PosixFilePermission> nPerms = Set.of(PosixFilePermission.OWNER_READ,
+			PosixFilePermission.GROUP_READ);
+		Files.createFile(filePath, 
+			PosixFilePermissions.asFileAttribute(nPerms));
 
 		// Use FileAttributes to view permissions
 		// tag::main[]
 		PosixFileAttributes attrs = 
-			Files.getFileAttributeView(filePath, PosixFileAttributeView.class)
+			Files.getFileAttributeView(filePath, 
+				PosixFileAttributeView.class)
 			.readAttributes();
 		System.out.format("File %s Owned by %s has perms %s%n",
 			filePath,

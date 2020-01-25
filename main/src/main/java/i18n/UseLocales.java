@@ -16,11 +16,14 @@ public class UseLocales {
 		Locale ukLocale = new Locale("en", "UK");	// English, UK version
 
 		DateTimeFormatter defaultDateFormatter = 
-			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+			DateTimeFormatter.ofLocalizedDateTime(
+				FormatStyle.MEDIUM);
 		DateTimeFormatter frDateFormatter = 
-			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).localizedBy(frLocale);
+			DateTimeFormatter.ofLocalizedDateTime(
+				FormatStyle.MEDIUM).localizedBy(frLocale);
 		DateTimeFormatter ukDateFormatter = 
-			DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).localizedBy(ukLocale);
+			DateTimeFormatter.ofLocalizedDateTime(
+				FormatStyle.MEDIUM).localizedBy(ukLocale);
 
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println("Default: " + ' ' +

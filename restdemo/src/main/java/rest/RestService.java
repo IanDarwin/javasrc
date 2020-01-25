@@ -37,7 +37,7 @@ public class RestService {
 		if (userName == null || userName.trim().length() <= 3) {
 			return "Missing or too-short username";
 		}
-		return String.format("<h1>Welcome %s</h1><p>%s, We are glad to see you back!",
+		return String.format("<h1>Welcome %s</h1><p>%s, We're glad to see you back!",
 			userName, userName);
 	}
 	

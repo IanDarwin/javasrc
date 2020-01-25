@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 // tag::main[]
 public class ExecDemoLs {
 	
-	private static Logger logger = Logger.getLogger(ExecDemoLs.class.getSimpleName());
+	private static Logger logger =
+		Logger.getLogger(ExecDemoLs.class.getSimpleName());
 
 	/** The program to run */
 	public static final String PROGRAM = "ls"; // "dir" for Windows

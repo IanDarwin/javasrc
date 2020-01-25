@@ -41,7 +41,8 @@ public class Find {
 //					case "o":
 //						finder.filter.addConjunction(Conjunction.OR);
 //						continue;
-					default: throw new IllegalArgumentException("Unknown argument " + args[i]);
+					default: throw new IllegalArgumentException(
+						"Unknown argument " + args[i]);
 					}
 				}
 				finder.startWalkingAt(args[i]);

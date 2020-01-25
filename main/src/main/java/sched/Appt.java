@@ -196,7 +196,10 @@ public class Appt implements Comparable<Appt> {
         var sb = new StringBuilder();
         sb.append(date).append(' ');
         if (time != null) {
-            sb.append(time.getHour()).append(':').append(time.getMinute()).append(' ');
+            sb.append(time.getHour())
+			.append(':')
+			.append(time.getMinute())
+			.append(' ');
         } else {
         	sb.append("(All day)").append(' ');
         }

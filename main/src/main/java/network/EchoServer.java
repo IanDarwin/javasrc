@@ -49,12 +49,13 @@ public class EchoServer {
 			try {
 				System.out.println("Waiting for client...");
 				ios = sock.accept();
-				System.err.println("Accepted from " + ios.getInetAddress().getHostName());
+				System.err.println("Accepted from " +
+					ios.getInetAddress().getHostName());
 				try (BufferedReader is = new BufferedReader(
 							new InputStreamReader(ios.getInputStream(), "8859_1"));
 						PrintWriter os = new PrintWriter(
-								new OutputStreamWriter(ios.getOutputStream(), "8859_1"),
-								true);) {
+							new OutputStreamWriter(ios.getOutputStream(), "8859_1"),
+							true);) {
 					String echoLine;
 					while ((echoLine = is.readLine()) != null) {
 						System.err.println("Read " + echoLine);

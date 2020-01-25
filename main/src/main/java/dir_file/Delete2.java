@@ -44,7 +44,8 @@ public class Delete2 {
 				if (Files.deleteIfExists(target)) {
 					System.out.println("** Deleted " + fileName + " **");
 				} else {
-					System.out.println("Deleting " + fileName + " returned false.");
+					System.out.println(
+						"Deleting " + fileName + " returned false.");
 				}
 			} catch (IOException e) {	
 				System.out.println("Deleting " + fileName + " threw " + e);

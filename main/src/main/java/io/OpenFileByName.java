@@ -25,7 +25,8 @@ public class OpenFileByName {
 	}
 
 	static void oldWay() throws IOException {
-		BufferedReader is = new BufferedReader(new FileReader(INPUT_FILE_NAME));
+		BufferedReader is =
+			new BufferedReader(new FileReader(INPUT_FILE_NAME));
 		BufferedOutputStream bytesOut = new BufferedOutputStream(
 			new FileOutputStream(OUTPUT_FILE_NAME));
 
@@ -44,7 +45,8 @@ public class OpenFileByName {
 
 	// tag::try-with-resource[]
 	static void oldWayShorter() throws IOException {
-		try (BufferedReader is = new BufferedReader(new FileReader(INPUT_FILE_NAME));
+		try (BufferedReader is = 
+			new BufferedReader(new FileReader(INPUT_FILE_NAME));
 			BufferedOutputStream bytesOut = new BufferedOutputStream(
 				new FileOutputStream(OUTPUT_FILE_NAME.replace("\\.", "-1.")));) {
 

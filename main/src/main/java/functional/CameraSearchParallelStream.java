@@ -15,7 +15,8 @@ public class CameraSearchParallelStream {
 			System.out.println(camera);                             // <4>
 		}
 
-		System.out.println("Search Results from shorter, more functional approach");
+		System.out.println(
+			"Search Results from shorter, more functional approach");
 		privateListOfCameras.parallelStream().                      // <5>
                 filter(c -> c.isIlc() && c.getPrice() < 500).
 				forEach(System.out::println);

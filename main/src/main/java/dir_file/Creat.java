@@ -11,7 +11,7 @@ public class Creat {
 
 		// Ensure that a filename (or something) was given in argv[0]
 		if (argv.length == 0) {
-			throw new IllegalArgumentException("Missing args. Usage: Creat filename");
+			throw new IllegalArgumentException("Usage: Creat filename [...]");
 		}
 
 		for (String arg : argv) {

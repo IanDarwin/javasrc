@@ -27,7 +27,8 @@ public class PluginsViaAnnotations {
 			try {
 				c = Class.forName(clazzName);
 			} catch (ClassNotFoundException ex) {
-				System.err.println("Weird: class " + clazzName + " reported in package but gave CNFE: " + ex);
+				System.err.println("Weird: class " + clazzName + 
+					" reported in package but gave CNFE: " + ex);
 				continue;
 			}
 			if (c.isAnnotationPresent(annotationClass) &&
@@ -58,11 +59,13 @@ public class PluginsViaAnnotations {
 				c = Class.forName(clazzName);
 				// System.out.println("Loaded " + c);
 			} catch (ClassNotFoundException ex) {
-				System.err.println("Weird: class " + clazzName + " reported in package but gave CNFE: " + ex);
+				System.err.println("Weird: class " + clazzName +
+					" reported in package but gave CNFE: " + ex);
 				continue;
 			}
 			for (Method m : c.getDeclaredMethods()) {
-				// System.out.printf("Class %s Method: %s\n", c.getSimpleName(), m.getName());
+				// System.out.printf("Class %s Method: %s\n",
+				//     c.getSimpleName(), m.getName());
 				if (m.isAnnotationPresent(methodAnnotationClass) &&
 						!ret.contains(c)) {
 					ret.add(c);

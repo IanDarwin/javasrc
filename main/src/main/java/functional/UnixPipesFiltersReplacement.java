@@ -17,7 +17,7 @@ public class UnixPipesFiltersReplacement {
 			.sorted()
 			.distinct()
 			.count();
-		System.out.println("lines.txt" + " contains " + numberLines + " unique lines.");
+		System.out.printf("lines.txt contains " + numberLines + " unique lines.");
 		// end::main[]
 	}
 }
