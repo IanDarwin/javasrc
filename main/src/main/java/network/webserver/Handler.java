@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Arrays;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -173,7 +173,7 @@ public class Handler {
 	void doDirList(String rqName, File dir, boolean justAHead, PrintStream out) {
 		out.print("HTTP/1.0 200 directory found" + CRLF);
 		out.print("Content-type: text/html" + CRLF);
-		out.print("Date: " + new Date().toString() + CRLF);
+		out.print("Date: " + LocalDateTime.now() + CRLF);
 		out.print(CRLF);
 		if (justAHead)
 			return;
