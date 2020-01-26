@@ -1,15 +1,14 @@
 package logging;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 // tag::main[]
 public class Log4JDemo {
 	public static void main(String[] args) {
 
-		Logger myLogger = Logger.getLogger("com.darwinsys");
+		Logger myLogger = LogManager.getLogger();
 
-		// PropertyConfigurator.configure("log4j.properties");
-		
 		Object o = new Object();
 		myLogger.info("I created an object: " + o);
 

@@ -1,12 +1,13 @@
 package logging;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 // tag::main[]
 public class Log4JDemo2 {
 	public static void main(String[] args) {
 
-		Logger theLogger = Logger.getLogger("com.darwinsys");
+		Logger theLogger = LogManager.getLogger();
 
 		try {
 			Object o = new Object();
