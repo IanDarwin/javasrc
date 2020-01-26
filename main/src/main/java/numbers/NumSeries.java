@@ -8,8 +8,9 @@ import java.util.stream.IntStream;
 public class NumSeries {
     public static void main(String[] args) {
 
-        // For an ordinal list of numbers n to m, use rangeClosed(start, endInclusive)
-    	IntStream.rangeClosed(1, 12).forEach(i -> System.out.println("Month # " + i));
+        // For ordinal list of numbers n to m, use rangeClosed(start, endInclusive)
+    	IntStream.rangeClosed(1, 12).forEach(
+			i -> System.out.println("Month # " + i));
     	
     	// Or, use a for loop starting at 1.
         for (int i = 1; i <= months.length; i++)
@@ -21,7 +22,8 @@ public class NumSeries {
         }
     
         // When you want a set of array indices, use range(start, endExclusive)
-        IntStream.range(0, months.length).forEach(i -> System.out.println("Month " + months[i]));
+        IntStream.range(0, months.length).forEach(
+			i -> System.out.println("Month " + months[i]));
         
         // Or, use a for loop starting at 0.
         for (int i = 0; i < months.length; i++)

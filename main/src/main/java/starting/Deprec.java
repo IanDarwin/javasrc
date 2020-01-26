@@ -10,8 +10,8 @@ public class Deprec {
 
 		// Create a Date object for May 5, 1986
 		@SuppressWarnings("deprecation")
-		Date d = 
-			new Date(86, 04, 05);	// EXPECT DEPRECATION WARNING without @SuppressWarnings
+		// EXPECT DEPRECATION WARNING without @SuppressWarnings
+		Date d = new Date(86, 04, 05);
 		System.out.println("Date is " + d);
 	}
 }

@@ -2,7 +2,7 @@
 
 from SOAPpy import WSDL
 
-server = WSDL.Proxy('http://localhost:9090/calc?wsdl')
+server = WSDL.Proxy('http://localhost:7094/calc?wsdl')
 
 print "Calc exposes the following methods:"
 print wsdl.methods.keys()

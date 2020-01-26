@@ -21,7 +21,8 @@ public class LegacyDates {
 			ZoneId.systemDefault());
 		System.out.println(newDate);
 		
-		Date backAgain = Date.from(newDate.atZone(ZoneId.systemDefault()).toInstant());
+		Date backAgain =
+			Date.from(newDate.atZone(ZoneId.systemDefault()).toInstant());
 		System.out.println("Converted back as " + backAgain);
 
 		// And via Calendar

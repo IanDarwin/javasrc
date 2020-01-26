@@ -19,7 +19,8 @@ public class FilesInfos {
 		println("isSymbolicLink", Files.isSymbolicLink(Path.of("/var")));
 		println("isWritable", Files.isWritable(Path.of("/tmp")));
 		println("isDirectory", Files.isDirectory(Path.of("/")));
-		println("notexists", Files.notExists(Path.of("no_such_file_as_skjfsjljwerjwj")));
+		println("notexists",
+			Files.notExists(Path.of("no_such_file_as_skjfsjljwerjwj")));
 		println("probeContentType", Files.probeContentType(Path.of("lines.txt")));
 		println("readSymbolicLink", Files.readSymbolicLink(Path.of("/var")));
 		println("size", Files.size(Path.of("lines.txt")));

@@ -42,7 +42,8 @@ public class FindFilter {
 	public void addConjunction(Find.Conjunction conj) {
 		System.out.println("FindFilter.addConjunction()");
 		if (this.conj != null) {
-			throw new IllegalArgumentException("Only one conjucntion allowed in this version");
+			throw new IllegalArgumentException(
+				"Only one conjucntion allowed in this version");
 		}
 		this.conj = conj;
 	}

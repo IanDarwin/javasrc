@@ -54,8 +54,8 @@ public class EchoServerThreaded2 {
 
 		public void run() {
 			/*
-			 * Wait for a connection. Synchronized on the ServerSocket while calling its
-			 * accept() method.
+			 * Wait for a connection. Synchronized on the ServerSocket while 
+			 * calling its accept() method.
 			 */
 			while (true) {
 				try {
@@ -66,9 +66,10 @@ public class EchoServerThreaded2 {
 					synchronized (servSock) {
 						clientSocket = servSock.accept();
 					}
-					System.out.println(getName() + " starting, IP=" + clientSocket.getInetAddress());
+					System.out.println(
+						getName() + " starting, IP=" + clientSocket.getInetAddress());
 					try (BufferedReader is = new BufferedReader(
-								new InputStreamReader(clientSocket.getInputStream()));
+							new InputStreamReader(clientSocket.getInputStream()));
 							PrintStream os = new PrintStream(
 								clientSocket.getOutputStream(), true);) {
 						String line;

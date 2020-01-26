@@ -23,7 +23,7 @@ public class PythonFromJava {
 		ScriptEngine engine = scriptEngineManager.getEngineByName("python");
 		if (engine == null) {
 			final String message = 
-				"Could not find 'python' engine; add jython-standalone-nnn.jar to CLASSPATH";
+				"Could not find 'python' engine; add its jar to CLASSPATH";
 			System.out.println(message);
 			System.out.println("Available script engines are: ");
 			scriptEngineManager.getEngineFactories().forEach(factory ->
@@ -35,7 +35,8 @@ public class PythonFromJava {
 		bindings.put("meaning", 42);
 		
 		// Let's run a python script stored on disk (well, on classpath):
-		InputStream is = PythonFromJava.class.getResourceAsStream("/" + PY_SCRIPTNAME);
+		InputStream is =
+			PythonFromJava.class.getResourceAsStream("/" + PY_SCRIPTNAME);
 		if (is == null) {
 			throw new IOException("Could not find file " + PY_SCRIPTNAME);
 		}

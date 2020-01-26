@@ -15,7 +15,8 @@ public class WordFreq {
 		// 1) Collect words with a mutable reduction into Map<String,Long>.
 		Map<String,Long> map = Files.lines(Path.of(args[0]))
 			.flatMap(s -> Stream.of(s.split(" +")))
-			.collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
+			.collect(Collectors.groupingBy(
+				String::toLowerCase, Collectors.counting()));
 
 		// 2) Print results sorted numerically descending, limit 20
 		map.entrySet().stream()

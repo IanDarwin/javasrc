@@ -28,7 +28,7 @@ public class WebServer0 {
 	ServerSocket s;
 	/** A link to the source of this program, used in error message */
 	static final String VIEW_SOURCE_URL =
-	  "https://github.com/IanDarwin/javasrc/tree/master/master/src/main/java/network";
+	"https://github.com/IanDarwin/javasrc/tree/master/main/src/main/java/network";
 
 	/**
 	 * Main method, just creates a server and call its runServer().

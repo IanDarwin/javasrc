@@ -32,13 +32,16 @@ public class DaytimeObject {
 				System.out.println("Time on " + hostName + " is " + d);
 			} else {
 				throw new IllegalArgumentException(
-					String.format("Wanted LocalDateTime, got %s, a %s", o, o.getClass()));
+					String.format("Wanted LocalDateTime, got %s, a %s",
+						o, o.getClass()));
 			}
 		// end::main[]
 		} catch (ClassNotFoundException e) {
-			throw new IllegalArgumentException("ERROR: Can't load java.time.LocalDateTime!!");
+			throw new IllegalArgumentException(
+				"ERROR: Can't load java.time.LocalDateTime!!");
 		} catch (IOException e) {
-			throw new IllegalArgumentException("ERROR: Can't read LocalDateTime from server!");
+			throw new IllegalArgumentException(
+				"ERROR: Can't read LocalDateTime from server!");
 		}
 	}
 }

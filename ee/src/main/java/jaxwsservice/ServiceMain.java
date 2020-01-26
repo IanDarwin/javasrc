@@ -15,7 +15,7 @@ public class ServiceMain {
 		Calc impl = new Calc();
 		// Start the service running
 		Endpoint ep =
-			Endpoint.publish("http://localhost:9090/calc", impl);
+			Endpoint.publish("http://localhost:7094/calc", impl);
 		System.out.println("Endpoint running: " + ep);
 		// end::main[]
 
