@@ -12,3 +12,8 @@ java -classpath ".:${build}" logging.JULLogDemo
 
 echo "==> JULLogDemo2"
 java -classpath ".:${build}" logging.JULLogDemo2 
+
+echo "==> JULLambdaDemo"
+java -classpath ".:${build}" logging.JulLambdaDemo 
+
+
