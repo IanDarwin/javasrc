@@ -99,13 +99,13 @@ public class EnTab {
 			// If this takes us to a tab stop, output a tab character.
 			if (ch == ' ') {
 				logger.info("Got space at " + inCol);
-				if (!tabs.isTabStop(inCol)) {
-					consumedSpaces++;
-				} else {
+				if (tabs.isTabStop(inCol)) {
 					logger.info("Got a Tab Stop " + inCol);
 					sb.append('\t');
 					outCol += consumedSpaces;
 					consumedSpaces = 0;
+				} else {
+					consumedSpaces++;
 				}
 				continue;
 			}
