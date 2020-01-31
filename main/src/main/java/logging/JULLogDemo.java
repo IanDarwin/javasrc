@@ -3,7 +3,7 @@ package logging;
 import java.util.logging.Logger;
 
 // tag::main[]
-public class Log14Demo {
+public class JULLogDemo {
 	public static void main(String[] args) {
 
 		Logger myLogger = Logger.getLogger("com.darwinsys");
