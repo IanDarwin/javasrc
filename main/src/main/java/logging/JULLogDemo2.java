@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 // tag::main[]
-public class JULLogDemo2 {
+public class JulLogDemo2 {
 	public static void main(String[] args) {
 
 		System.setProperty("java.util.logging.config.file", 
