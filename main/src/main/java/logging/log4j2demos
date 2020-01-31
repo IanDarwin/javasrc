@@ -15,3 +15,6 @@ java -classpath ".:${build}:${log4j2_jar}" logging.Log4JDemo
 
 echo "==> Log4JDemo2"
 java -classpath ".:${build}:${log4j2_jar}" logging.Log4JDemo2
+
+echo "==> Log4JLambda"
+java -classpath ".:${build}:${log4j2_jar}" logging.Log4JLambda
