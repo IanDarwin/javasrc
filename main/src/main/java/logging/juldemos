@@ -1,4 +1,4 @@
-# Run the logging demos WITH a log4j2 properties file.
+# Run the JUL logging demos 
 #
 # "." is at the front of classpath to ensure you get the logging
 # properties when running the script in the source directory
@@ -6,15 +6,6 @@
 # Use elsewhere may require tweaking of some settings.
 
 build=../../../../target/classes
-log4j2_jar=\
-${HOME}/.m2/repository/org/apache/logging/log4j/log4j-api/2.13.0/log4j-api-2.13.0.jar:\
-${HOME}/.m2/repository/org/apache/logging/log4j/log4j-core/2.13.0/log4j-core-2.13.0.jar
-
-echo "==> Log4JDemo"
-java -classpath ".:${build}:${log4j2_jar}" logging.Log4JDemo
-
-echo "==> Log4JDemo2"
-java -classpath ".:${build}:${log4j2_jar}" logging.Log4JDemo2
 
 echo "==> JULLogDemo"
 java -classpath ".:${build}" logging.JULLogDemo
