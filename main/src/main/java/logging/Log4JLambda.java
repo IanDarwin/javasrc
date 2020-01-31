@@ -15,7 +15,7 @@ public class Log4JLambda {
 			"Value %d from Customer %s", customer.value, customer) );
 
 	}
-// end::main[]
+	// end::main[]
 
 	// Minimal implementations. Excluded from book as they are not relevant to example.
 
