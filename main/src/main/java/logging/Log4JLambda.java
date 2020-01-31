@@ -10,7 +10,7 @@ public class Log4JLambda {
 
 	public static void main(String[] args) {
 
-		Customer customer = getCustomer();
+		Person customer = getPerson();
 		myLogger.info( () -> String.format(
 			"Value %d from Customer %s", customer.value, customer) );
 
@@ -19,14 +19,14 @@ public class Log4JLambda {
 
 	// Minimal implementations. Excluded from book as they are not relevant to example.
 
-	static Customer getCustomer() {
-		Customer c = new Customer();
+	static Person getPerson() {
+		Person c = new Person();
 		c.name = "Robin";
 		c.value = 42;
 		return c;
 	}
 
-	static class Customer {
+	static class Person {
 		int value = 42;
 		String name;
 		public String toString() {
