@@ -11,7 +11,8 @@ public class Random3 {
 		// tag::main[]
 		Random r = new Random();
 		for (int i=0; i<10; i++)
-		System.out.println("A gaussian random double is " + r.nextGaussian());
+			System.out.println(
+				"A gaussian random double is " + r.nextGaussian() + ".");
 		// end::main[]
 	}
 }
