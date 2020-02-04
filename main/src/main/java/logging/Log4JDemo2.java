@@ -5,18 +5,19 @@ import org.apache.logging.log4j.LogManager;
 
 // tag::main[]
 public class Log4JDemo2 {
-	public static void main(String[] args) {
 
-		Logger theLogger = LogManager.getLogger();
+	private static Logger myLogger = LogManager.getLogger();
+
+	public static void main(String[] args) {
 
 		try {
 			Object o = new Object();
-			theLogger.info("I created an object: " + o);
+			myLogger.info("I created an object: " + o);
 			if (o != null) {	// bogus, just to show logging
 				throw new IllegalArgumentException("Just testing");
 			}
 		} catch (Exception ex) {
-			theLogger.error("Caught Exception: " + ex, ex);
+			myLogger.error("Caught Exception: " + ex, ex);
 		}
 	}
 }

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * and hence the system property is ignored. 
  * @author Ian Darwin
  */
-public class JULLogInitializer {
+public class JulLogInitializer {
 
 	private static final String LOGGING_CONFIG_FILE = "logging.properties";
 	
@@ -26,7 +26,7 @@ public class JULLogInitializer {
 		LogManager mgr = LogManager.getLogManager();
 		InputStream is = null;
 		try {
-			Class<?> c = JULLogInitializer.class;
+			Class<?> c = JulLogInitializer.class;
 			is = c.getClassLoader().getResourceAsStream(c.getPackage().getName() + "/" + LOGGING_CONFIG_FILE);
 			if (is == null) {
 				Logger.getAnonymousLogger().severe("Could not load " + LOGGING_CONFIG_FILE);

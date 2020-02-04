@@ -1,0 +1,19 @@
+# Run the JUL logging demos 
+#
+# "." is at the front of classpath to ensure you get the logging
+# properties when running the script in the source directory
+# under maven project structure in the Javasrc project.
+# Use elsewhere may require tweaking of some settings.
+
+build=../../../../target/classes
+
+echo "==> JULLogDemo"
+java -classpath ".:${build}" logging.JULLogDemo
+
+echo "==> JULLogDemo2"
+java -classpath ".:${build}" logging.JULLogDemo2 
+
+echo "==> JULLambdaDemo"
+java -classpath ".:${build}" logging.JulLambdaDemo 
+
+

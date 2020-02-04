@@ -8,12 +8,12 @@ import java.util.logging.LogRecord;
  * one line instead of 2 per simple record (more
  * if a Throwable is included, of course).
  */
-public class JULLogFormatter extends Formatter {
+public class JulLogFormatter extends Formatter {
 	
 	private static boolean printStackTraces = true;	// TODO make this *dynamically* switchable
 
-	public JULLogFormatter(){
-		System.out.println("JULLogFormatter.JULLogFormatter()");
+	public JulLogFormatter(){
+		System.out.println("JulLogFormatter.JulLogFormatter()");
 	}
 	
 	@Override
@@ -42,6 +42,6 @@ public class JULLogFormatter extends Formatter {
 	}
 
 	public static void setPrintStackTraces(boolean printStackTraces) {
-		JULLogFormatter.printStackTraces = printStackTraces;
+		JulLogFormatter.printStackTraces = printStackTraces;
 	}
 }

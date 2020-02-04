@@ -5,9 +5,10 @@ import org.apache.logging.log4j.LogManager;
 
 // tag::main[]
 public class Log4JDemo {
-	public static void main(String[] args) {
 
-		Logger myLogger = LogManager.getLogger();
+	private static Logger myLogger = LogManager.getLogger();
+
+	public static void main(String[] args) {
 
 		Object o = new Object();
 		myLogger.info("I created an object: " + o);

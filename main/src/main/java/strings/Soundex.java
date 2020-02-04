@@ -101,6 +101,10 @@ public class Soundex {
 			res.append('0');
 		return res.toString();
 	}
+	// end::main[]
+	public static void main(String[] args) {
+		for (String name : args) {
+			System.out.println(Soundex.soundex(name) + ' ' + name);
+		}
+	}
 }
-
-// end::main[]
