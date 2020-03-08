@@ -8,8 +8,8 @@ public class CommentedRegEx {
 		// tag::main[]
 		String regex = 
 				"\\w+   # starts with a word" +
-				"\\s+   # then some space" +
-				"\\d+   # and ends with a number";
+				"\\s+   // then some space" +
+				"\\d+   ; and ends with a number";
 		Pattern p = Pattern.compile(regex , Pattern.COMMENTS);
 		if (p.matcher("Ian 999").find()) {
 			System.out.println("OK");
