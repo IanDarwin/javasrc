@@ -14,7 +14,7 @@ BEGIN {
 	sub(/^== /, "", $0)
 	print ".", $0
 }
-/^include::src/ {
+/^include::/ {
 	sub(/\[tag.*$/, "", $0)
 	sub(/^include::/, "* link:", $0)
 	sub(/$/, "[]", $0)
