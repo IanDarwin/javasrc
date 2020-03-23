@@ -1,10 +1,9 @@
+<!-- Deployment Descriptor for EJB2 MusicRecording -->
 <ejb-jar xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
-		http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
-
-<!-- Deployment Descriptor for EJB2 MusicRecording -->
-<ejb-jar>
+		http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd"
+		version="2.1">
 
 <!-- Enterprise-Bean lists the beans, gives them names, and some
  ** basic attributes.
