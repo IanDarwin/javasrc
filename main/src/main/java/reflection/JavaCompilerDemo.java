@@ -51,7 +51,7 @@ public class JavaCompilerDemo {
 	}
 }
 // end::main[]
-
+/** Wrapper class to convert file to URL for compiler API */
 class MySource extends SimpleJavaFileObject {
 	final String source;
 	MySource(String fileName, String source) {
