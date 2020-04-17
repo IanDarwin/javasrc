@@ -77,7 +77,7 @@ public class LinkChecker extends JFrame {
 
 	Executor threadPool = Executors.newSingleThreadExecutor();
 
-	// Make a single action listener for both the text field (when
+	// Action listener used by both the text field (when
 	// you hit return) and the explicit "Check URL" button.
 	ActionListener starter = (e) -> {
 		done = false;
@@ -87,6 +87,7 @@ public class LinkChecker extends JFrame {
 			cache.clear();
 			final String urlString = textFldURL.getText();
 			textWindow.setText("Checking " + urlString + "...");
+			// May be long...
 			checkOut(urlString);
 			textWindow.append("\n-- All done --");
 			setGUIStartable(true);
@@ -147,7 +148,7 @@ public class LinkChecker extends JFrame {
 	 */
 	@SuppressWarnings("deprecation")
 	public void checkOut(String rootURLString) {
-		System.out.println("LinkChecker.checkOut()");
+		System.out.printf("LinkChecker.checkOut(%s)\n", rootURLString);
 		URL rootURL = null;
 		GetURLs urlGetter = null;
 
@@ -160,6 +161,7 @@ public class LinkChecker extends JFrame {
 			return;
 		}
 		if (cache.contains(rootURLString)) {
+			System.out.println("Cached: not revisiting");
 			return;	// already visited
 		}
 		cache.add(rootURLString);
@@ -169,19 +171,23 @@ public class LinkChecker extends JFrame {
 			try {
 				rootURL = new URL(rootURLString);
 			} catch (MalformedURLException e) {
-				System.out.println(rootURLString + ": not a valid URL, trying again as a file.");
+				System.out.println(rootURLString + ": not a valid URL, trying as a file.");
 				rootURL = new File(rootURLString).toURL();
 			}
+			System.out.println("rootURL = " + rootURL);
 			// Either way, now try to open it.
 			urlGetter = new GetURLs(rootURL);
+			System.out.println("urlGetter = " + urlGetter);
 
 			// If we're still here, the root URL given is OK.
 			// Next we make up a "directory" URL from it.
 			String rootURLdirString;
 			if (rootURLString.endsWith("/") ||
-				rootURLString.endsWith("\\"))
-					rootURLdirString = rootURLString;
-			else {
+				rootURLString.endsWith("\\")) {
+				System.out.println("endswith /");
+				rootURLdirString = rootURLString;
+			} else {
+				System.out.println("Doesnt end w/ /");
 				int split = rootURLString.lastIndexOf('/');
 				if (split == -1) {
 					rootURLdirString = ".";
@@ -190,9 +196,13 @@ public class LinkChecker extends JFrame {
 						rootURLString.substring(0, split);
 				}
 			}
+			System.out.println("rootURLdirString now " + rootURLdirString);
+
+			// Where we loop over the anchors in this page:
 
 			urlGetter.reader.setWantedTags(GetURLs.wantTags);
 			List<Element> urlTags = urlGetter.reader.readTags();
+			System.out.println("TAGS:" + urlTags);
 			for (Element tag : urlTags) {
 				System.out.println("LinkChecker.checkOut(): " + tag);
 				if (done)
