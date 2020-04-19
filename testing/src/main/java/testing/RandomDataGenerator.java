@@ -2,6 +2,7 @@ package testing;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.time.*;
 import java.util.Date;
 import java.util.Random;
 
@@ -56,6 +57,12 @@ public class RandomDataGenerator {
 		}
 		if (t == Font.class) {
 			return new Font("serif", Font.PLAIN, r.nextInt(144));
+		}
+		if (t == LocalDate.class) {
+			return LocalDate.ofInstant(Instant.ofEpochMilli(r.nextLong()));
+		}
+		if (t == LocalDateTime.class) {
+			return LocalDateTime.ofInstant(Instant.ofEpochMilli(r.nextLong()));
 		}
 		
 		// Court of last resort:

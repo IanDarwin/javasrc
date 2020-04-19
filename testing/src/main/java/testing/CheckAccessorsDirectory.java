@@ -46,7 +46,7 @@ public class CheckAccessorsDirectory {
 		final String dirName = System.getProperty(DIRECTORY_KEY);
 		if (dirName == null) {
 			throw new IllegalArgumentException(
-				"Must run with JVM arg -D" + DIRECTORY_KEY + "= starting directory");
+				"Must run with JVM arg -D" + DIRECTORY_KEY + "= starting_directory");
 		}
 		final List<Class<?>> foundClasses = ClassSourceUtils.classListFromSource(dirName);
 		final int numberOfClasses = foundClasses.size();
