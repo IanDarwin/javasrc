@@ -59,10 +59,12 @@ public class RandomDataGenerator {
 			return new Font("serif", Font.PLAIN, r.nextInt(144));
 		}
 		if (t == LocalDate.class) {
-			return LocalDate.ofInstant(Instant.ofEpochMilli(r.nextLong()));
+			return LocalDate.ofInstant(
+				Instant.ofEpochMilli(r.nextLong()),  ZoneId.systemDefault());
 		}
 		if (t == LocalDateTime.class) {
-			return LocalDateTime.ofInstant(Instant.ofEpochMilli(r.nextLong()));
+			return LocalDateTime.ofInstant(
+				Instant.ofEpochMilli(r.nextLong()),  ZoneId.systemDefault());
 		}
 		
 		// Court of last resort:

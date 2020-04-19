@@ -1,9 +1,9 @@
 package testing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,7 +21,6 @@ import com.darwinsys.io.ClassSourceUtils;
  * part of this testing.
  */
 @RunWith(value=Parameterized.class)
-@Ignore // Needs custom -D on command line, disable by default
 public class CheckAccessorsDirectory {
 
 	public static final String DIRECTORY_KEY = "accessorsClassDir";
@@ -44,9 +43,15 @@ public class CheckAccessorsDirectory {
     public static List<Class<?>[]> data() {
 		System.out.println("CheckAccessorsDirectory.data()");
 		final String dirName = System.getProperty(DIRECTORY_KEY);
+		// We can't @Ignore this class since it's meant to be used
+		// from the main program as a test, but without the @Ignore,
+		// JUnit will try to run it every time. Compromise?
 		if (dirName == null) {
-			throw new IllegalArgumentException(
-				"Must run with JVM arg -D" + DIRECTORY_KEY + "= starting_directory");
+			System.out.printf(
+				"%s: Must run with JVM arg -D%s=starting_directory",
+				CheckAccessorsDirectory.class.getName(),
+				DIRECTORY_KEY);
+			return Collections.emptyList();
 		}
 		final List<Class<?>> foundClasses = ClassSourceUtils.classListFromSource(dirName);
 		final int numberOfClasses = foundClasses.size();
