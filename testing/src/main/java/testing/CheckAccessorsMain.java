@@ -17,7 +17,7 @@ public class CheckAccessorsMain {
 		Result result = junit.run(CheckAccessorsDirectory.class);
 			System.out.printf(
 				"CheckAccessors Results:\n" +
-				"Failures %d. Ignored %d. %d tests run in %d mSec.",
+				"Failures %d. Ignored %d. %d tests run in %d mSec.\n",
 				result.getFailureCount(),
 				result.getIgnoreCount(),
 				result.getRunCount(),
