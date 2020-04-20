@@ -53,7 +53,12 @@ public class CheckAccessorsDirectory {
 				DIRECTORY_KEY);
 			return Collections.emptyList();
 		}
-		final List<Class<?>> foundClasses = ClassSourceUtils.classListFromSource(dirName);
+		List<Class<?>> foundClasses;
+		try {
+			foundClasses = ClassSourceUtils.classListFromSource(dirName);
+		} catch (Exception ex) {
+			throw new AssertionError("Failed to load classes: " + ex, ex);
+		}
 		final int numberOfClasses = foundClasses.size();
 		Class<?>[] classes = foundClasses.toArray(new Class<?>[numberOfClasses]);
 		System.out.printf(
