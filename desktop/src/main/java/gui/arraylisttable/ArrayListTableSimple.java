@@ -21,7 +21,7 @@ public class ArrayListTableSimple extends JFrame {
 	private static final long serialVersionUID = -7452964295956088160L;
 
 	/** inner class for TableModel */
-	class Model extends ArrayListTableModel {
+	class Model extends ArrayListTableModel<ArrayListTableDatum> {
 
 		private static final long serialVersionUID = 6213049956185726908L;
 
