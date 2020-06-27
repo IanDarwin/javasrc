@@ -88,7 +88,7 @@ public class JaasDemo {
 	}
 
 	void login() {
-		System.out.println("JaasDemo.runDemo()");
+		System.out.println("JaasDemo.login()");
 		try {
 			Class.forName("com.sun.security.auth.module.UnixLoginModule");
 			LoginContext loginContext =
@@ -111,6 +111,8 @@ public class JaasDemo {
 	}
 		
 	void runDemo() {
+		System.out.println("JaasDemo.runDemo()");
+
 		try {
 			// Now set the security manager to control I/O
 			// (can't set it sooner because then you won't have
@@ -143,7 +145,7 @@ public class JaasDemo {
 
 		public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 			System.out.println(
-				"LoginDialogWindow.handle(): got " + callbacks.length + " callbacks.");
+				"MyLoginPrompter.handle(): got " + callbacks.length + " callbacks.");
 			for (Callback c : callbacks) {
 				System.out.println(c);
 				if (c instanceof TextOutputCallback) {
