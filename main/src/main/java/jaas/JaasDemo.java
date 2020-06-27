@@ -145,24 +145,24 @@ public class JaasDemo {
 
 		public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 			System.out.println(
-				"MyLoginPrompter.handle(): got " + callbacks.length + " callbacks.");
+					"MyLoginPrompter.handle(): got " + callbacks.length + " callbacks.");
 			for (Callback c : callbacks) {
 				System.out.println(c);
 				if (c instanceof TextOutputCallback) {
-				      // display the message: maybe a prompt...
-				      System.out.println(((TextOutputCallback)c).getMessage());
-				    } else if (c instanceof NameCallback) {
-				    	NameCallback nc = (NameCallback)c;
-				    	String userName = JOptionPane.showInputDialog(nc.getPrompt());
-				    	nc.setName(userName);
-				    } else if (c instanceof PasswordCallback) {
-				    	PasswordCallback pc = (PasswordCallback)c;
-				    	String password = JOptionPane.showInputDialog(pc.getPrompt());
-				    	pc.setPassword(password.toCharArray());
-				    } else {
-				        throw new UnsupportedCallbackException(c,
-				         "Unrecognized Callback");
-				    }
+					// display the message: maybe a prompt...
+					System.out.println(((TextOutputCallback)c).getMessage());
+				} else if (c instanceof NameCallback) {
+					NameCallback nc = (NameCallback)c;
+					String userName = JOptionPane.showInputDialog(nc.getPrompt());
+					nc.setName(userName);
+				} else if (c instanceof PasswordCallback) {
+					PasswordCallback pc = (PasswordCallback)c;
+					String password = JOptionPane.showInputDialog(pc.getPrompt());
+					pc.setPassword(password.toCharArray());
+				} else {
+					throw new UnsupportedCallbackException(c,
+							"Unrecognized Callback");
+				}
 			}
 		}
 	}
