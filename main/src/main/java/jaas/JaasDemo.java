@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.PrivilegedAction;
 
 import javax.security.auth.Subject;
 import javax.security.auth.callback.Callback;
@@ -36,10 +37,10 @@ import javax.swing.JOptionPane;
 public class JaasDemo {
 
 	private static final String LOGINCONFIG_FILENAME = "loginconfig.txt";
-
-	/**
-	 * @param args
-	 */
+	
+	static Subject subject;
+	
+	private JFrame theFrame;
 	
 	public static void main(String[] args) throws Exception {
 
@@ -56,8 +57,6 @@ public class JaasDemo {
 		new JaasDemo();
 	}
 
-	private JFrame theFrame;
-
 	@SuppressWarnings("serial")
 	JaasDemo() {
 		System.out.println("JaasDemo.JaasDemo()");
@@ -72,7 +71,14 @@ public class JaasDemo {
 
 		Action runAction = new AbstractAction("Run") {
 			public void actionPerformed(ActionEvent e) {
-				runDemo();
+				Subject.doAs(subject, new PrivilegedAction<Void>() {
+
+					@Override
+					public Void run() {
+						runDemo();
+						return null;
+					}
+				});
 			}
 		};
 		theFrame.add(new JButton(runAction));
@@ -96,7 +102,7 @@ public class JaasDemo {
 			System.out.println("Trying to login...");
 			loginContext.login();
 			// If the call to login() doesn't throw an exception, we're in!
-			Subject subject = loginContext.getSubject();
+			subject = loginContext.getSubject();
 			JOptionPane.showMessageDialog(theFrame,
 					String.format(
 						"Congratulations %s, you are logged in!", subject),
@@ -118,6 +124,7 @@ public class JaasDemo {
 			// (can't set it sooner because then you won't have
 			// permission to create the login context...)
 			System.setSecurityManager(new SecurityManager());
+
 
 			// Should be able to read
 			new FileReader(LOGINCONFIG_FILENAME).close();
