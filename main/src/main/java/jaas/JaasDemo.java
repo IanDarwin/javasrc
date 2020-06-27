@@ -2,6 +2,7 @@ package jaas;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,19 +28,30 @@ import javax.swing.JOptionPane;
  * and a policy file; the intent in runDemo is that, after logging in OK,
  * the user will be able to read but not write files on the local disk store.
  * <p>
- * <b>NOT WORKING</b>
+ * N.B. If running under Eclipse, set the Working Directory to
+ * ${workspace_loc:javasrc-main}/src/main/java/jaas so it can find the config files.
+ * <p>
+ * <b>NOT WORKING</b> - login() works (without prompting) but runDemo() fails to read
  */
 public class JaasDemo {
+
+	private static final String LOGINCONFIG_FILENAME = "loginconfig.txt";
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-//		System.setProperty("java.security.auth.login.config",
-//				"loginconfig.txt");
-//
-//		System.setProperty("java.security.policy",
-//				"permissions.txt");
+	
+	public static void main(String[] args) throws Exception {
+
+		if (!new File(LOGINCONFIG_FILENAME).exists()) {
+			throw new IOException("Run in dir with loginconfig.txt");
+		}
+
+		System.setProperty("java.security.auth.login.config",
+				LOGINCONFIG_FILENAME);
+
+		System.setProperty("java.security.policy",
+				"permissions.txt");
 
 		new JaasDemo();
 	}
@@ -53,10 +65,17 @@ public class JaasDemo {
 		theFrame.setLayout(new FlowLayout());
 		Action loginAction = new AbstractAction("Login") {
 			public void actionPerformed(ActionEvent e) {
-				runDemo();
+				login();
 			}
 		};
 		theFrame.add(new JButton(loginAction));
+
+		Action runAction = new AbstractAction("Run") {
+			public void actionPerformed(ActionEvent e) {
+				runDemo();
+			}
+		};
+		theFrame.add(new JButton(runAction));
 
 		Action quitAction = new AbstractAction("Exit") {
 			public void actionPerformed(ActionEvent e) {
@@ -64,11 +83,11 @@ public class JaasDemo {
 			}
 		};
 		theFrame.add(new JButton(quitAction));
-		theFrame.setBounds(200, 300, 200, 100);
+		theFrame.setBounds(200, 300, 300, 100);
 		theFrame.setVisible(true);
 	}
 
-	void runDemo() {
+	void login() {
 		System.out.println("JaasDemo.runDemo()");
 		try {
 			Class.forName("com.sun.security.auth.module.UnixLoginModule");
@@ -82,14 +101,24 @@ public class JaasDemo {
 					String.format(
 						"Congratulations %s, you are logged in!", subject),
 					"Welcome", JOptionPane.INFORMATION_MESSAGE);
-
+		} catch (LoginException e) {
+			JOptionPane.showMessageDialog(theFrame,
+					"Login Failed!\n" + "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+		} catch (ClassNotFoundException e) {
+			JOptionPane.showMessageDialog(theFrame,
+					"Could not find login module " + e, "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+		
+	void runDemo() {
+		try {
 			// Now set the security manager to control I/O
 			// (can't set it sooner because then you won't have
 			// permission to create the login context...)
 			System.setSecurityManager(new SecurityManager());
 
 			// Should be able to read
-			new FileReader(".").close();
+			new FileReader(LOGINCONFIG_FILENAME).close();
 			System.out.println("Successfully opened reader");
 
 			// Should not be able to write:
@@ -98,9 +127,6 @@ public class JaasDemo {
 				"Egad; I was allowed to write a file!", "Whoops!",
 				JOptionPane.ERROR_MESSAGE);
 
-		} catch (LoginException e) {
-			JOptionPane.showMessageDialog(theFrame,
-					"Login Failed!\n" + "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(theFrame,
 					"Read Failed unexpectedly!\n" + "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
