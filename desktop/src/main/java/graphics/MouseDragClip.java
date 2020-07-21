@@ -17,6 +17,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 /** MouseDragClip -- implement simple mouse drag in a window.
+ * Also called "rubber band" drawing.
  * Speed up by using clipping regions.
  * <p>
  * This version "works" for very simple cases (only drag down
@@ -43,7 +44,7 @@ public class MouseDragClip extends Canvas
 	/** Size of previous selection, if completed, else -1 */
 	int oldWidth = -1, oldHeight = -1;
 
-	// "main" method
+	// main method
 	public static void main(String[] av) {
 		JFrame f = new JFrame("Mouse Dragger");
 		Container cp = f.getContentPane();
@@ -59,7 +60,7 @@ public class MouseDragClip extends Canvas
 
 		cp.setLayout(new BorderLayout());
 		cp.add(BorderLayout.NORTH,
-			new Label("Hello, and welcome to the world of Java"));
+			new Label("Java Rubberband Demo-click and drag to view"));
 		cp.add(BorderLayout.CENTER, j);
 		cp.add(BorderLayout.SOUTH, status = new Label());
 		status.setSize(f.getSize().width, status.getSize().height);

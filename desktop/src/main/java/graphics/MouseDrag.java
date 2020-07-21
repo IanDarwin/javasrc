@@ -19,6 +19,7 @@ import javax.swing.JFrame;
  * Draws a rectangle whose size varies while you drag its
  * lower-right corner. The given image file is used
  * as a background image for the window.
+ * Also called "rubber band" drawing.
  */
 public class MouseDrag extends Component
 		implements MouseListener, MouseMotionListener {
@@ -48,7 +49,7 @@ public class MouseDrag extends Component
 
 		cp.setLayout(new BorderLayout());
 		cp.add(BorderLayout.NORTH,
-			new Label("Hello, and welcome to the world of Java"));
+			new Label("Java Rubberband Demo-click and drag to view"));
 		cp.add(BorderLayout.CENTER, j);
 		cp.add(BorderLayout.SOUTH, j.status = new Label());
 		j.status.setSize(
@@ -58,7 +59,7 @@ public class MouseDrag extends Component
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	// "Constructor" - creates the object
+	// Constructor - creates the object
 	public MouseDrag(Image i) {
 		super();
 		curImage = i;
