@@ -2,7 +2,7 @@ package graphics;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Frame;
+import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.MemoryImageSource;
@@ -17,7 +17,8 @@ public class MemImage extends Component {
 	 * Also display a larger version of the same image in the Frame.
 	 */
 	public static void main(String[] av) {
-		Frame f = new Frame("MemImage.java");
+		JFrame f = new JFrame("MemImage.java");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.add(new MemImage());
 		f.setIconImage(new MemImage(16,16).getImage());
 		f.pack();
