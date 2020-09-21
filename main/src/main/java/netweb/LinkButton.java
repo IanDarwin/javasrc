@@ -268,8 +268,6 @@ public class LinkButton extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 	}
 	
-	// APPLET SUPPORT - to be in darwinsys-api/swingui/AppletSupport soon
-	
 	void showDocument(URL targetURL) {
 		JTextArea ta = new JTextArea();
 		try {
