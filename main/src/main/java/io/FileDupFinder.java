@@ -27,7 +27,7 @@ public class FileDupFinder implements FileHandler {
 	private File theFile;
 	
 	public void init() throws IOException {
-		out = new PrintWriter(new FileWriter("/home/ian/FileDupFinderLog.txt"));
+		out = new PrintWriter(new FileWriter("/Users/ian/FileDupFinderLog.txt"));
 		System.out.println("Starting...");
 	}
 	

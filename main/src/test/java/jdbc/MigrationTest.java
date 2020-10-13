@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import org.junit.Before;
 import org.junit.Test;
 
-import jdbc.MigrateData;
-
 public class MigrationTest {
 	
 	String[][] names = {
