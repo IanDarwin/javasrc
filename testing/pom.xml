@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13-rc-1</version>
+			<version>4.13.1</version>
 			<!-- Do not change this scope to test -->
 			<scope>compile</scope>
 		</dependency>
