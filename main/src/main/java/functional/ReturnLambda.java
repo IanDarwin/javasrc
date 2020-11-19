@@ -6,6 +6,8 @@ public class ReturnLambda {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("ReturnLambda.main()");
+		Runnable runnable = new ReturnLambda().getRunnable();
+		System.out.println(runnable);
+		runnable.run();
 	}
 }
