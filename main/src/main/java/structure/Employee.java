@@ -12,14 +12,24 @@ public class Employee {
 		// Null constructor. Should eliminate and make fields final
 	}
 
-	Employee(String name, int pnum) {
+	public Employee(String name, int pnum) {
 		this(name, pnum, 0);
 	}
 
-	Employee(String name, int pnum, int age) {
+	public Employee(String name, long pnum, int age) {
 		this.name = name;
 		this.personellNumber = pnum;
 		this.age = age;
+	}
+
+	public Employee toEmployee(String s) {
+		String[] data = s.split("|");
+		if (data.length != 3) {
+			System.out.println( "Warning: Invalid String :" + s);
+			return new Employee("Invalid", -1);
+		}
+		Employee e = new Employee(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]));
+		return e;
 	}
 
 	public String getName() {
