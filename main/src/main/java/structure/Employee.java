@@ -22,7 +22,7 @@ public class Employee {
 		this.age = age;
 	}
 
-	public Employee toEmployee(String s) {
+	public static Employee toEmployee(String s) {
 		String[] data = s.split("|");
 		if (data.length != 3) {
 			System.out.println( "Warning: Invalid String :" + s);
