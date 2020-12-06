@@ -23,6 +23,7 @@ public class TimeTranslate {
 
 	public static void main(String[] args) {
 		LocalDateTime when = null;
+		// XXX Check for -r and reverse args
 		if (args.length == 0) {
 			when = LocalDateTime.now();                                        
 		} else {
