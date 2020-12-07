@@ -24,11 +24,11 @@ public class ScheduleSlider {
 		String format = "%-10s  %-10s %s  %s  %s\n";
 		System.out.printf(format, "Day", "Breakfast", "Lunch", "Dinner", "Bed");
 		for (LocalDate day = start; day.compareTo(end) <= 0; day = day.plusDays(daysIncrement)) {
+			System.out.printf(format, day, breakfast, lunch, dinner, bed);
 			breakfast = breakfast.plusHours(hoursIncrement);
 			lunch = lunch.plusHours(hoursIncrement);
 			dinner = dinner.plusHours(hoursIncrement);
 			bed = bed.plusHours(hoursIncrement);
-			System.out.printf(format, day, breakfast, lunch, dinner, bed);
 		}
 	}
 }
