@@ -30,7 +30,8 @@ public class SimpleStreamDemo {
 
 		long adultYearsExperience = Arrays.stream(heroes)
 				.filter(b -> b.age >= 18)
-				.mapToInt(b -> b.age).sum();
+				.mapToInt(b -> b.age)
+				.sum();
 		System.out.println("We're in good hands! The adult superheros have " + 
 				adultYearsExperience + " years of experience");
 
