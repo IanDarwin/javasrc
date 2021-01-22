@@ -2,7 +2,7 @@ package functional;
 
 import java.util.concurrent.Callable;
 
-public class LambasWithOverloading {
+public class LambdasWithOverloading {
 
 	void process(Runnable r) {
 		dumpOut(r);
@@ -34,6 +34,6 @@ public class LambasWithOverloading {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new LambasWithOverloading().tryLambdas();
+		new LambdasWithOverloading().tryLambdas();
 	}
 }

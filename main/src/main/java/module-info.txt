@@ -1,0 +1,14 @@
+// This is an outline of what a module-info would look like
+// Since javasrc isn't used as a library, I've not completed it;
+// It's here to show the basic syntax of module-info files.
+
+open module javasrc-main {
+	requires java.swing;
+	requires java.annotation;
+	... many more ...
+	
+	exports datetime;
+	exports functional;
+	export lang;
+	... many more ...
+}
