@@ -2,6 +2,7 @@ package structure;
 
 import java.util.*;
 
+// Show List.of() method as well as new List.forEach with a method ref
 public class MethodRefs {
 
 	public static void main(String[] args) {
