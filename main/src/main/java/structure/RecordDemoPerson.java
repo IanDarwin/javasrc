@@ -1,4 +1,4 @@
-public class PersonRecordDemo {
+public class RecordDemoPerson {
 
 	public record Person(String name, String email) { }
 
