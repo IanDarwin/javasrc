@@ -1,3 +1,5 @@
+package structure;
+
 public class RecordDemoPerson {
 
 	public record Person(String name, String email) { }
