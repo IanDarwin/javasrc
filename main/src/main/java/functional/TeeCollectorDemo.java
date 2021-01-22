@@ -5,7 +5,9 @@ import java.util.*;
 
 import static java.util.stream.Collectors.*;
 
-/** Split a stream of names into two lists according to a filter. */
+/** Demo of "Tee Collector" (Collectors.teeing, actually)
+ * Split a stream of names into two lists according to filters.
+ */
 public class TeeCollectorDemo {
 
 	public static void main(String[] args) {
