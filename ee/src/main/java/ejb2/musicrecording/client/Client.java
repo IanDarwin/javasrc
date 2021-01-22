@@ -54,10 +54,6 @@ public class Client {
 			System.out.println("Finding Publisher Entity " + pubid);
 			PublisherRemote pub = ph.findByPrimaryKey(pubid);
 			System.out.println("Found publisher: " + pub);
-
-			if (false) {
-				existingEntity.remove();
-			}
 			
 		} catch (EJBException e) { // unchecked
 			e.printStackTrace();
@@ -68,8 +64,6 @@ public class Client {
 		} catch (FinderException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
-			e.printStackTrace();
-		} catch (RemoveException e) {
 			e.printStackTrace();
 		}
 	}

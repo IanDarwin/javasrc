@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * A Unix replacement for:
+ * A Java replacement for this Unixism:
  cat lines.txt | sort | uniq | wc -l
  * It even gives the same answer :-)
  */

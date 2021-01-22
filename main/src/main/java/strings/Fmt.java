@@ -23,7 +23,10 @@ public class Fmt {
 	/** Where the output goes */
 	PrintWriter out;
 
-	/** If files present, format each one, else format the standard input. */
+	/** If files present, format each one, else format the standard input.
+	 * @param av The command-line args
+	 * @throws java.io.IOException If there is an error
+	 */
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
 			new Fmt(System.in).format();
@@ -41,30 +44,44 @@ public class Fmt {
 		this(new BufferedReader(new InputStreamReader(System.in)), out);
 	}
 
-	/** Construct a Formatter given an open Reader */
+	/** Construct a Formatter given an open Reader
+	 * @param file The file to read
+	 * @throws java.io.IOException On error
+	 */
 	public Fmt(BufferedReader file) throws IOException {
 		this(file, new PrintWriter(System.out));
 	}
 	
-	/** Construct a Formatter given a filename */
+	/** Construct a Formatter given a filename
+	 * @param fname The file name
+	 * @throws java.io.IOException On error
+	 */
 	public Fmt(String fname) throws IOException {
 		this(new BufferedReader(new FileReader(fname)));
 	}
 
-	/** Construct a Formatter given an open Stream */
+	/** Construct a Formatter given an open Stream
+	 * @param file The file 
+	 * @throws java.io.IOException on error
+	 */
 	public Fmt(InputStream file) throws IOException {
 		this(new BufferedReader(new InputStreamReader(file)));
 	}
 	
-	/** Format the File contained in a constructed Fmt object */
+	/** Format the File contained in a constructed Fmt object
+	 * @throws java.io.IOException on error
+ 	 */
 	public void format() throws IOException {
 		format(in.lines(), out);
 	}
 	
-	/** Format a Stream of lines, e.g., bufReader.lines() */
-	public static void format(Stream<String> s, PrintWriter out) {
+	/** Format a Stream of lines, e.g., bufReader.lines() 
+	 * @param sl A Stream of lines
+	 * @param out The output PrintWriter
+	 */
+	public static void format(Stream<String> sl, PrintWriter out) {
 		StringBuilder outBuf = new StringBuilder();
-		s.forEachOrdered((line -> {
+		sl.forEachOrdered((line -> {
 			if (line.length() == 0) {	// null line
 				out.println(outBuf);	// end current line
 				out.println();	// output blank line
@@ -91,7 +108,5 @@ public class Fmt {
 			out.println();
 		}
 	}
-
-
 }
 // end::main[]

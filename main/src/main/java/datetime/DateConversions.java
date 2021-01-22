@@ -22,10 +22,9 @@ public class DateConversions {
 		long epochSecond = ZonedDateTime.now().toInstant().getEpochSecond();
 		System.out.println("Current epoch seconds = " + epochSecond);
 		
-		LocalDateTime now = LocalDateTime.now();
-		ZonedDateTime there = now.atZone(ZoneId.of("Canada/Pacific"));
-		System.out.printf("When it's %s here, it's %s in Vancouver%n", 
-			now, there);
+		ZonedDateTime here = ZonedDateTime.now();
+		ZonedDateTime there = here.withZoneSameInstant(ZoneId.of("Canada/Pacific"));
+		System.out.printf("When it's %s here, it's %s in Vancouver%n", here, there);
 		// end::main[]
 	}
 }

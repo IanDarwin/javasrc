@@ -29,10 +29,8 @@ public class MapEntrySetDemo {
 		map.put("Sun", "Mountain View, CA");
 
 		// List the entries using entrySet()
-        Iterator<?> it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<?,?> entry = (Entry<?, ?>) it.next();
-            System.out.println(entry.getKey() + "-->" + entry.getValue());
-        }
+		map.entrySet().forEach(mE -> {
+            System.out.println(mE.getKey() + "-->" + mE.getValue());
+        });
 	}
 }

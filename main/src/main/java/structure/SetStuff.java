@@ -12,12 +12,12 @@ public class SetStuff {
 		// Create two sets.
 		Set<String> s1 = new HashSet<String>();
 		s1.add("Ian Darwin");
-		s1.add("Bill Dooley");
+		s1.add("Tom Dooley");
 		s1.add("Jesse James");
 
 		Set<String> s2 = new HashSet<String>();
 		s2.add("Ian Darwin");
-		s2.add("Doolin' Dalton");
+		s2.add("Duelin' Dalton");
 
 		Set<String> union = new TreeSet<String>(s1);
 		union.addAll(s2);		// now contains the union

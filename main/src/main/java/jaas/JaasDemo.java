@@ -97,6 +97,9 @@ public class JaasDemo {
 		System.out.println("JaasDemo.login()");
 		try {
 			Class.forName("com.sun.security.auth.module.UnixLoginModule");
+			// The Unix (and NT?) login modules use the fact that you
+			// must be logged in before you can run anything, so they
+			// never prompt. But here's a demo of a login prompter anyway.
 			LoginContext loginContext =
 				new LoginContext("JaasDemo", new MyLoginPrompter());
 			System.out.println("Trying to login...");

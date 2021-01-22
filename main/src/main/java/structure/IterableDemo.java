@@ -1,4 +1,3 @@
-
 package structure;
 
 import java.util.*;
@@ -35,7 +34,7 @@ public class IterableDemo {
 			}
 
 			/** Remove the object that next() just returned.
-			 * An Iterator is not required to support this interface, and we don't.
+			 * An Iterator is not required to support this method, and we don't.
 			 * @throws UnsupportedOperationException unconditionally
 			 */
 			public void remove() {

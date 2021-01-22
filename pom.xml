@@ -22,7 +22,7 @@
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>7.0</javaee.version>
-		<darwinsys-api.version>1.5.11-SNAPSHOT</darwinsys-api.version>
+		<darwinsys-api.version>1.5.14</darwinsys-api.version>
 	</properties>
 
 	<modules>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version><!-- Keep in sync with Eclipse JUnit4 library -->
+			<version>4.13.1</version><!-- Keep in sync with Eclipse JUnit4 library -->
 			<scope>test</scope>
 		</dependency>
 

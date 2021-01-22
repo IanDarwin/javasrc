@@ -6,7 +6,7 @@
 
 # This version by Benjamin Darwin
 
-# BEGIN main
+# tag::main[]
 png("randomness.png")
 us <- read.table("normal.txt")[[1]]
 ns <- read.table("gaussian.txt")[[1]]
@@ -19,4 +19,4 @@ hist(us, main = "Using nextRandom()", nclass = 10,
 hist(ns, main = "Using nextGaussian()", nclass = 16,
        xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
 dev.off()
-# END main
+# end::main[]
