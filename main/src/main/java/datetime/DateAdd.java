@@ -13,7 +13,7 @@ public class DateAdd {
 		LocalDate now =  LocalDate.now();
 
 		Period p = Period.ofDays(700);
-		LocalDate then = now.plus(p);
+		LocalDate then = now.plusDays(700);
 
 		System.out.printf("Seven hundred days from %s is %s%n", now, then);
 	}
