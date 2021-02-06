@@ -16,13 +16,16 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- World may not be ready for 14 yet; there are excludes for 14-dependent stuff -->
 		<javase.version>11</javase.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
-		<javaee.version>7.0</javaee.version>
+		<javaee.version>8.0</javaee.version>
 		<darwinsys-api.version>1.5.14</darwinsys-api.version>
+		<!-- Only used in some modules, worth defining here anyway -->
+		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
 		<junit.version>[4.13.1,)</junit.version>
 	</properties>
 
