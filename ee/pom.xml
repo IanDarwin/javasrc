@@ -9,49 +9,56 @@
 		<version>1.1-SNAPSHOT</version>
 	</parent>
 
-  <artifactId>javasrc-ee</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+	<artifactId>javasrc-ee</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <name>javasrc - ee</name>
-  <url>http://javacook.darwinsys.com</url>
-  <description>Ian Darwin's collected Java EE Code Examples</description>
+	<name>javasrc - ee</name>
+	<url>http://javacook.darwinsys.com</url>
+	<description>Ian Darwin's collected Java EE Code Examples</description>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
-  </properties>
+	<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+	</properties>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-		<version>2.3.2</version>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-		<excludes>
-			<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
-			<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
-			<!-- Add a comment WHY this is being excluded -->
-			<exclude>servlet/TermsServletPDF.java</exclude>
-			<!-- needs old Apache Axis toolkit for SOAP Web Service, we can use JAX-WS -->
-			<exclude>websvcdemo/CallSoap.java</exclude>
-		</excludes>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.2</version>
+			<configuration>
+				<source>11</source>
+				<target>11</target>
+				<excludes>
+					<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
+					<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
+					<!-- Add a comment WHY this is being excluded -->
+					<exclude>servlet/TermsServletPDF.java</exclude>
+					<!-- needs old Apache Axis toolkit for SOAP Web Service, we can use JAX-WS -->
+					<exclude>websvcdemo/CallSoap.java</exclude>
+				</excludes>
+			</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-  <dependencies>
+	<dependencies>
 
-    <!-- Java EE current (7) full -->
-    <dependency>
-        <groupId>javax</groupId>  
-        <artifactId>javaee-api</artifactId>  
-        <version>8.0</version>
-    </dependency> 
+	<!-- Java EE current (7) full -->
+	<dependency>
+		<groupId>javax</groupId>	
+		<artifactId>javaee-api</artifactId>	
+		<version>8.0</version>
+	</dependency> 
+
+	<!-- My little add-ons to EE -->
+	<dependency>
+		<groupId>com.darwinsys</groupId>	
+		<artifactId>darwinsys-ee</artifactId>	
+		<version>${darwinsys-ee.version}</version>
+	</dependency> 
 
 	<!-- Client side of RMI -->
 	<dependency>
@@ -67,22 +74,22 @@
 		<version>2.3.1</version>
 	</dependency>
 
-    <!-- JPA needing a driver, let's use Hibernate -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>4.0.1.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>4.0.1.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>5.3.6.Final</version>
-    </dependency>
+	<!-- JPA needing a driver, let's use Hibernate -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>4.0.1.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>4.0.1.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>5.3.6.Final</version>
+	</dependency>
 
-  </dependencies>
+	</dependencies>
 </project>
