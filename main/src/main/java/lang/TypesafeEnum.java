@@ -13,10 +13,6 @@ import java.util.Map;
  * implemented entirely using pre-1.5 mechanisms and syntax.
  * When you move to Java 5, eschew this in favor of the built-in version..
  * See Java Cookbook, 2nd Edition, Chapter 8.
- * See http://www.javaworld.com/javaworld/javatips/jw-javatip122.html for
- * info on Serializable and readResolve(); objects used in HttpSessions
- * are required to be Serializable.
- * <p>
  * A sample use is shown here:<pre>
  * /**
  *  * An Enum for Upload/Download Direction
