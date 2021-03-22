@@ -31,7 +31,7 @@ public class EnumDemo {
 		}
 	}
 
-	private static boolean driverIsCrazy() {
+	private static boolean driverIsAggressive() {
 		return false;	// Not me, nope!
 	}
 
