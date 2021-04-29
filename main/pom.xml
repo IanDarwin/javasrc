@@ -18,11 +18,6 @@
 	<url>http://javacook.darwinsys.com</url>
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -30,17 +25,9 @@
 				<version>3.8.1</version>
 				<configuration>
 					<excludes>
-						<!-- Require Java 14+ -->
-						<exclude>functional/TeeCollectorDemo.java</exclude>
-						<exclude>lang/SealedClassDemo.java</exclude>
-						<exclude>lang/SwitchYieldsValue.java</exclude>
-						<exclude>strings/StringTextBlock.java</exclude>
-						<exclude>strings/TextBlockDemo.java</exclude>
-						<exclude>structure/PersonRecordDemo.java</exclude>
-						<exclude>structure/RecordDemoPerson.java</exclude>
 
-						<!-- Requires Java 12 -->
-						<exclude>numbers/CompactFormatDemo.java</exclude>
+						<!-- Preview -->
+						<exclude>lang/SealedClassDemo.java</exclude>
 
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
