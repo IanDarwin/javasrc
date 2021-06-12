@@ -19,7 +19,7 @@ public class DateCalculations {
 		        weeklyPayDay.getMonth() + " " +
 				weeklyPayDay.getDayOfMonth());
 		LocalDateTime monthlyPayDay = now.with(TemporalAdjusters.lastInMonth(DayOfWeek.FRIDAY));
-		System.out.println("Monthly employees are paid on " + monthlyPayDay);
+		System.out.println("Monthly employees are paid on " + monthlyPayDay.toLocalDate());
 	}
 
 }
