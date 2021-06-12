@@ -27,7 +27,7 @@
 					<excludes>
 
 						<!-- Preview -->
-						<exclude>lang/SealedClassDemo.java</exclude>
+						<exclude>sealedclasses/*.java</exclude>
 
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
@@ -54,8 +54,9 @@
 						<!-- Unknown issues -->
 						<exclude>lang/UsePackage.java</exclude>
 
-						<!-- Remainder all have 'Expect compile error' -->
-						<!-- XXX replace this list with filter grep -->
+						<!-- Classes that demonstrate certain variations that won't comile -->
+						<!-- All (should) have 'EXPECT COMPILE ERROR' -->
+						<!-- So we could XXX replace this list with filter grep -->
 						<exclude>jdb/Problem.java</exclude>
 						<exclude>lang/AddException.java</exclude>
 						<exclude>lang/ByteAdd2.java</exclude>
@@ -88,6 +89,7 @@
 						<exclude>oo/SingletonCheat1.java</exclude>
 						<exclude>oo/SingletonCheat2.java</exclude>
 						<exclude>reflection/ClassLoaderDemo0.java</exclude>
+						<exclude>sealedclasses/B2.java</exclude>
 						<exclude>strings/WolfInStringsClothing.java</exclude>
 						<exclude>threads/StopStop.java</exclude>
 						<exclude>threads/ThreadDeathCatch.java</exclude>
