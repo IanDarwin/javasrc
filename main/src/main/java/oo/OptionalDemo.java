@@ -21,8 +21,14 @@ public class OptionalDemo {
 		} else {
 			System.out.println("Value is not present.");
 		}
+
 		// Shorter way:
 		System.out.println("Value is " + opt.orElse("not present"));
+
+		// Shorter still way, when no "else" is needed
+		opt.ifPresent(System.out::println)
+		// or
+		opt.ifPresent(s->System.out.println(s));
 	}
 
 	// tag::items[]
