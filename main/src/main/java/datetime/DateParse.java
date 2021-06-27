@@ -12,8 +12,8 @@ public class DateParse {
 	public static void main(String[] args) {
 
 		String armisticeDateString = "1918-11-11";
-		LocalDate armisticDate = LocalDate.parse(armisticeDateString);
-		System.out.println("Date: " + armisticDate);
+		LocalDate armisticeDate = LocalDate.parse(armisticeDateString);
+		System.out.println("Date: " + armisticeDate);
 		
 		String armisticeDateTimeString = "1918-11-11T11:00";
 		LocalDateTime armisticeDateTime = LocalDateTime.parse(armisticeDateTimeString);
@@ -27,6 +27,6 @@ public class DateParse {
 		System.out.println(anotherDate + " parses as " + random);
 		// end::part2[]
 		
-		System.out.println(armisticDate + " formats as " + df.format(armisticDate));
+		System.out.println(armisticeDate + " formats as " + df.format(armisticeDate));
 	}
 }
