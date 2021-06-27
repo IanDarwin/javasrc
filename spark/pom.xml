@@ -33,17 +33,6 @@
 		</developer>
 	</developers>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<javase.version>11</javase.version>
-		<maven.compiler.source>${javase.version}</maven.compiler.source>
-		<maven.compiler.target>${javase.version}</maven.compiler.target>
-		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
-		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.spark</groupId>

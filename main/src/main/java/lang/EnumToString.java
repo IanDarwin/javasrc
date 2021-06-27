@@ -5,7 +5,7 @@ public class EnumToString {
 	enum NodeType { RED, BLACK }
 
 	String getType() {
-		// You shouldn't have to call toString() here, but you do:
+		// You have to call toString() or name() here to get a String
 		return NodeType.RED.toString(); 
 	}
 }

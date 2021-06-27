@@ -11,19 +11,19 @@ public class EnumDemo {
 		String line = getLine();
 		if (line != null) {
 			// valueOf is case-sensitive, so translate "user input" to upper case
-			// since enum values are (by 30 years of convention) in UPPER CASE.
+			// since enum values are (by half a century of convention) in UPPER CASE.
 			color = Color.valueOf(line.toUpperCase());
 		}
 		switch (color) {
 		case RED:
-			System.out.println("STOP");
+			System.out.println("Stop at white line");
 			break;
 		case GREEN:
-			System.out.println("GO");
+			System.out.println("Go through");
 			break;
 		case AMBER:
-			if (driverIsCrazy()) {
-				System.out.println("Speed up like mad!");
+			if (driverIsAggressive()) {
+				System.out.println("Honk! Speed up !!");
 			} else {
 				System.out.println("Clear the intersection");
 			}
@@ -31,7 +31,7 @@ public class EnumDemo {
 		}
 	}
 
-	private static boolean driverIsCrazy() {
+	private static boolean driverIsAggressive() {
 		return false;	// Not me, nope!
 	}
 

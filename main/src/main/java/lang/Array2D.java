@@ -9,5 +9,6 @@ public class Array2D {
 		System.out.println("data.length = " + data.length);
 		System.out.println("data[0].length = " + data[0].length);
 		System.out.println("data[1].length = " + data[1].length);
+		System.out.println("data[2] is null? " + (data[2] == null));
 	}
 }
