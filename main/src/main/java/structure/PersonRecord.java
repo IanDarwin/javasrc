@@ -1,6 +1,6 @@
 package structure;
 
-public class RecordDemoPerson {
+public class PersonRecord {
 
 	public record Person(String name, String email) { }
 
