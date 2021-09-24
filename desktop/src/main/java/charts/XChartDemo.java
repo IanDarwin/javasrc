@@ -14,6 +14,6 @@ public class XChartDemo {
 
 		XYChart chart = QuickChart.getChart("XChart Demo", "X", "Y", "-y(x)", x, y);
 
-		new SwingWrapper(chart).displayChart();
+		new SwingWrapper<XYChart>(chart).displayChart();
 	}
 }
