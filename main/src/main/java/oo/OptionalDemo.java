@@ -26,7 +26,7 @@ public class OptionalDemo {
 		System.out.println("Value is " + opt.orElse("not present"));
 
 		// Shorter still way, when no "else" is needed
-		opt.ifPresent(System.out::println)
+		opt.ifPresent(System.out::println);
 		// or
 		opt.ifPresent(s->System.out.println(s));
 	}
