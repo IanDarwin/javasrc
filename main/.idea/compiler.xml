@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="javasrc-main" target="11" />
+      <module name="javasrc-main" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
