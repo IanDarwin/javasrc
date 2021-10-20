@@ -1,14 +1,14 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+// import javax.persistence.Column;
+// import javax.persistence.Entity;
+// import javax.persistence.GeneratedValue;
+// import javax.persistence.GenerationType;
+// import javax.persistence.Id;
+// import javax.persistence.Transient;
 
 // tag::main[]
-@Entity
+// @Entity
 public class Person {
 
 	int id;
@@ -24,7 +24,7 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO, generator="my_poid_gen")
+	// @Id @GeneratedValue(strategy=GenerationType.AUTO, generator="my_poid_gen")
 	public int getId() {
 		return id;
 	}
@@ -41,7 +41,7 @@ public class Person {
 		this.firstName = firstName;
 	}
 
-	@Column(name="surname")
+	// @Column(name="surname")
 	public String getLastName() {
 		return lastName;
 	}
@@ -55,7 +55,7 @@ public class Person {
 		return getFullName();
 	}
 	
-	@Transient /* synthetic: cannot be used in JPA queries. */
+	// @Transient /* synthetic: cannot be used in JPA queries. */
 	public String getFullName() {
 		StringBuilder sb = new StringBuilder();
 		if (firstName != null)
