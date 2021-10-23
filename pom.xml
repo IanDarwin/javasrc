@@ -40,6 +40,7 @@
 		<!-- sidebyside is NOT a Maven module - contains non-Java stuff -->
 		<module>spark</module>
 		<module>testing</module>
+	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
 		<module>xml</module>
 	</modules>
