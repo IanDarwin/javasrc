@@ -20,35 +20,34 @@
 
 	<dependencies>
 
+		<!-- JUnit 5 with 4 compat.
+		 *** Some are scope=compile for the testing tests :-)
+		 -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.0</version>
-			<scope>compile</scope>
+			<version>5.7.1</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.0</version>
-			<scope>compile</scope>
+			<version>5.7.1</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- JUnit 4 compat -->
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-			<version>5.7.0</version>
+			<version>5.7.1</version>
+			<scope>compile</scope>
 		</dependency>
 		<!-- More JUnit4 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.spockframework</groupId>
-			<artifactId>spock-core</artifactId>
-			<version>2.0-M4-groovy-3.0</version>
+			<scope>compile</scope>
 		</dependency>
 
         <dependency>
@@ -72,10 +71,18 @@
 	 -->
 	<build>
 		<plugins>
+			<!-- Ensure that JUnit5 test runner is used -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
+				<version>3.0.0-M5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit-platform</artifactId>
+						<version>3.0.0-M5</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<plugin>
@@ -85,10 +92,8 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>addTestSources</goal>
-							<goal>generateTestStubs</goal>
+							<goal>compile</goal>
 							<goal>compileTests</goal>
-							<goal>removeTestStubs</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -116,4 +121,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
