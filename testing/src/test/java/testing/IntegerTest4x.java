@@ -26,18 +26,13 @@ public class IntegerTest4x {
 		assertEquals(4, 2 + 2);
 	}
 
-	@Test
+	@Test(expected=NumberFormatException.class)
 	public void testDecode() throws Exception {
 		int ret;
 		ret = Integer.decode("-42").intValue();
 		assertEquals(-42, ret);
 		ret = Integer.decode("-0x42").intValue();
 		assertEquals(-66, ret);
-		try {
-			Integer.decode("one two three");
-			fail("IntegerTest: Did not throw expected NumberFormatException");
-		} catch (NumberFormatException e) {
-			System.out.println("IntegerTest: Caught expected exception");
-		}
+		Integer.decode("one two three");
 	}
 }
