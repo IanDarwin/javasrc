@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.darwinsys</groupId>
+		<artifactId>javasrc</artifactId>
+		<version>1.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>javasrc-testing</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<inceptionYear>1995</inceptionYear>
+
+	<name>javasrc - testing module</name>
+	<url>http://javacook.darwinsys.com</url>
+	<description>Code Examples for the O'Reilly Java Cookbook</description>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.7.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- JUnit 4 compat -->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>5.7.1</version>
+		</dependency>
+
+		<!-- Mandatory dependencies for using Spock -->
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.spockframework</groupId>
+		  <artifactId>spock-junit4</artifactId>
+		  <scope>test</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+		<!-- Commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils-core</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
+	</dependencies>
+
+	<!-- Uber-jar: use 'mvn package assembly:single' to get 
+	 *** the runnable jar created in 'target'
+	 -->
+	<build>
+		<plugins>
+			<!-- Ensure that JUnit5 test runner is used -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit-platform</artifactId>
+						<version>3.0.0-M5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.12.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>compileTests</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true
+								</addDefaultImplementationEntries>
+							<mainClass>testing.CheckAccessorsMain</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Vendor-URL>http://darwinsys.com/freeware/</Vendor-URL>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.spockframework</groupId>
+        <artifactId>spock-bom</artifactId>
+        <version>2.0-groovy-3.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
