@@ -1,10 +1,9 @@
 package testing;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import domain.Person;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /** A simple test case for Person */
 // tag::main[]
@@ -14,7 +13,7 @@ public class PersonTest {
 	public void testNameConcat() {
 		Person p = new Person("Ian", "Darwin");
 		String f = p.getFullName();
-		assertEquals("Name concatenation", "Ian Darwin", f);
+		assertEquals(f, "Ian Darwin", "Name concatenation");
 	}
 }
 // end::main[]
