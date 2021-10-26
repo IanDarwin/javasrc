@@ -69,8 +69,7 @@ public class TestUtils {
 		}
 
 		Map<String, Prop> props = getProperties(c1);
-		List<String> propNames =
-			new ArrayList<String>(props.keySet());
+		List<String> propNames = new ArrayList<>(props.keySet());
 		for (String name : propNames) {
 			System.err.println("Trying property " + name);
 			final Prop prop = props.get(name);
