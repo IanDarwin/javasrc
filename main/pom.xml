@@ -24,6 +24,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
+					<!-- World may not be ready for latest Java yet; 
+						these are excludes for earlier-dependent stuff -->
 					<excludes>
 
 						<!-- Preview -->
@@ -128,29 +130,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>5.0.5.RELEASE</version>
-		</dependency>
-
-		<!-- JPA needing a driver, let's use Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.3.0.Beta1</version>
-			<exclusions>
-				<exclusion>
-					 <groupId>xml-apis</groupId>
-					 <artifactId>xml-apis</artifactId>
-				</exclusion>
-			 </exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.3.0.Beta1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.1.5.Final</version>
 		</dependency>
 
 		<dependency>

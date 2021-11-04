@@ -1,19 +1,21 @@
 package testing;
 
-import static org.junit.Assert.*;
-import org.junit.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestInitializers {
 
 	static MyFactory factory;
 	ClassUnderTest target;
 
-	@BeforeClass
+	@BeforeAll
 	public static void initMyStaticStuff() {
 		factory = new MyFactory();
 	}
 
-	@Before
+	@BeforeEach
 	public void setUpMore() {
 		target = factory.createObject();
 	}
@@ -25,7 +27,7 @@ public class TestInitializers {
 		assertTrue(f.contains("Ian"));
 	}
 	
-	@AfterClass
+	@AfterAll
 	public static void closeDown() {
 		factory.close();
 	}
