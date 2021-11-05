@@ -1,3 +1,5 @@
+package datetime;
+
 import java.time.*;
 
 public class Hastings {
