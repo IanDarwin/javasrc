@@ -13,7 +13,7 @@ public class DesktopDemo {
         }
 
         if (desktop.isSupported(Desktop.Action.BROWSE)) {
-            desktop.browse(new java.net.URI("https://www.darwinsys.com/"));
+            desktop.browse(new java.net.URI("https://darwinsys.com/"));
         } else {
         	System.err.println("no browser support");
         }
