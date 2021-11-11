@@ -2,4 +2,10 @@
 
 This module of https://github.com/Iandarwin/javasrc[Ian's Javasrc Repo]
 contains just the examples related to testing
-with JUnit and friends.
+with https://JUnit.org/[JUnit] and friends.
+
+You can download this from
+https://github.com/IanDarwin/javasrc[].
+You can then open either the testing project
+or the whole mess; it's mostly more convenient
+to open just the project you need at a time.
