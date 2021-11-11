@@ -8,27 +8,31 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestInitializers {
 
 	static MyFactory factory;
-	ClassUnderTest target;
+	private ClassUnderTest target;
 
 	@BeforeAll
-	public static void initMyStaticStuff() {
+	public static void beforeAll() {
+		System.out.println("TestInitializers.beforeAll");
 		factory = new MyFactory();
 	}
 
 	@BeforeEach
-	public void setUpMore() {
+	public void beforeEach() {
+		System.out.println("TestInitializers.beforeEach");
 		target = factory.createObject();
 	}
 
 	@Test
 	public void testName() {
+		System.out.println("TestInitializers.testName");
 		target.setName("Ian Darwin");
-		String f = target.getName();
+		var f = target.getName();
 		assertTrue(f.contains("Ian"));
 	}
 	
 	@AfterAll
-	public static void closeDown() {
+	public static void afterAll() {
+		System.out.println("TestInitializers.afterAll");
 		factory.close();
 	}
 
@@ -40,7 +44,7 @@ public class TestInitializers {
 		}
 
 		public void close() {
-			// Empty, but might need to free some resources here...
+			// Empty, but in real code  might need to free some resources here...
 		}
 	}
 

@@ -1,0 +1,5 @@
+= javasrc/testing
+
+This module of https://github.com/Iandarwin/javasrc[Ian's Javasrc Repo]
+contains just the examples related to testing
+with JUnit and friends.
