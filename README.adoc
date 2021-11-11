@@ -93,10 +93,8 @@ testing::
 
 * You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
 if you are on some relic platform that doesn't have Java 9 or later.
-Even https://openbsd.org[OpenBSD] has Java 11 (Thanks Kurt!).
+Even https://openbsd.org[OpenBSD] has Java 17 (Thanks Kurt!).
 Also sorry if your organization is stuck on Java 8 due to application server issues.
-I am updating the Java Cookbook for Java 13+ and these files are the examples for
-that book.
 
 * I am using Eclipse for most of my development, and Maven for building, and Jenkins
 for automated building. Most Ant scripts have been removed; the few that remain
