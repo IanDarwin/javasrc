@@ -1,0 +1,10 @@
+= javasrc/xml
+
+This contains various XML demos.
+
+The JDOM demos have been commented out and/or turned from .java to .txt files.
+This is because the JDOM project has known about a security glitch for over six
+months and not released a security-patched version in all that time,
+citing problems of only one developer having the credentials and he being
+too busy with $DAYJOB to get around to testing and deploying the fixed version.
+Sorry, guys.
