@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class HamcrestTest5 {
+public class HamcrestDemo5 {
 
 	String str = "Don't we all like JUnit and TDD now?";
 

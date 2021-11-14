@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import domain.Person;
 
 // tag::main[]
-public class HamcrestDemo {
+public class HamcrestDemo4 {
 
 	@Test
 	public void testNameConcat() {
