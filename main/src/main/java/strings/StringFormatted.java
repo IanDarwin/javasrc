@@ -1,0 +1,15 @@
+package strings;
+
+/** Java 15 introduces instance method String.formatted(), which 
+ * uses string as the format string and returns
+ * the formatted String to allow chaining.
+ */
+public class StringFormattedDemo {
+
+	public static void main(String[] args) {
+		String sNew = "%s %s".formatted("Hello", "World").toUpperCase();
+		String sOld = String.format("%s %s", "Hello", "World").toUpperCase();
+		System.out.println("sNew = " + sNew);
+		System.out.println("sOld = " + sOld);
+	}
+}
