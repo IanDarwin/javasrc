@@ -47,6 +47,24 @@
 		<module>xml</module>
 	</modules>
 
+	<build>
+		<plugins>
+			<!-- Ensure that JUnit5 test runner is used -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit-platform</artifactId>
+						<version>3.0.0-M5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<!-- My own Java API potpourri -->
 		<dependency>
