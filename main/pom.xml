@@ -104,6 +104,14 @@
 
 	<dependencies>
 
+		<!-- Testing add-ons only used here -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit5.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Logging (log4j is in parent pom) -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

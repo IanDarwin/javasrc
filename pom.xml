@@ -26,7 +26,8 @@
 		<darwinsys-api.version>1.5.14</darwinsys-api.version>
 		<!-- Only used in some modules, worth defining here anyway -->
 		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
-		<junit.version>5.8.1</junit.version>
+		<junit4.version>[4.13.1,)</junit4.version>
+		<junit5.version>5.8.1</junit5.version>
 		<mockito.version>3.12.4</mockito.version>
 	</properties>
 
@@ -58,27 +59,15 @@
 		 -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit5.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- JUnit 4 compat -->
+		<!-- Backwards compat: IF you have a mix of JUnit 4 and 5 tests, you should add this: -->
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit5.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -87,6 +76,7 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
         </dependency>
+
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
