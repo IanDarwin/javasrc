@@ -26,7 +26,7 @@
 		<darwinsys-api.version>1.5.14</darwinsys-api.version>
 		<!-- Only used in some modules, worth defining here anyway -->
 		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
-		<junit.version>[4.13.1,)</junit.version>
+		<junit.version>5.8.1</junit.version>
 		<mockito.version>3.12.4</mockito.version>
 	</properties>
 
@@ -54,20 +54,34 @@
 			<version>${darwinsys-api.version}</version>
 		</dependency>
 
-		<!-- Test early and often -->
+		<!-- Test early and often...  JUnit 5 with 4 compat.
+		 -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version><!-- Keep in sync with Eclipse JUnit4 library -->
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- JUnit 4 compat -->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.8.1</version>
-			<scope>test</scope>
-		</dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
