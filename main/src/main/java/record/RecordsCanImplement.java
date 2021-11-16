@@ -1,4 +1,4 @@
-package structure;
+package record;
 
 public record RecordsCanImplement(String name) implements Runnable {
 	public void run() {
