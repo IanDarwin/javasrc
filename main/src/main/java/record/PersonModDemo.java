@@ -1,4 +1,4 @@
-package structure;
+package record;
 
 public class PersonModDemo {
 

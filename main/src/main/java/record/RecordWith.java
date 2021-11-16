@@ -1,7 +1,10 @@
+package record;
+
 /**
  * Java Record types are immutable, but what if you need to change a field?
- * Functional programming sys: Just make a new instance!
- * This record has a convenience method to do just that.
+ * Functional programming says: Just make a new instance!
+ * This record has a convenience method to do just that,
+ * using the xxxWith() pattern.
  */
 public record RecordWith(int id, String name) {
 

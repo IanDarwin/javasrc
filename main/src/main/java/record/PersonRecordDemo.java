@@ -1,4 +1,4 @@
-package structure;
+package record;
 
 /** Trivial demo of a Record class.
  */

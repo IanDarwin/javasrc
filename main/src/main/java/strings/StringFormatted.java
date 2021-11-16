@@ -4,7 +4,7 @@ package strings;
  * uses string as the format string and returns
  * the formatted String to allow chaining.
  */
-public class StringFormattedDemo {
+public class StringFormatted {
 
 	public static void main(String[] args) {
 		String sNew = "%s %s".formatted("Hello", "World").toUpperCase();
