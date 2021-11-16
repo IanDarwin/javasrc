@@ -32,15 +32,16 @@ public class NumberToWordsConverterTest {
         131, 'one hundred thirty one'
         222, 'two hundred twenty two'
         999, 'nine hundred ninety nine'
-        // 1000, 'one thousand'
         """)
+		// More to test as the program grows...
+        // 1000, 'one thousand'
 	public void testConvert(int input, String expected) {
 		assertEquals(expected, NumberToWordsConverter.convert(input));
 	}
 
 	@Test()
 	public void testOutOfRange(){
-		assertThrows(ArrayIndexOutOfBoundsException.class,
+		assertThrows(IllegalArgumentException.class,
 				() -> NumberToWordsConverter.convert(NumberToWordsConverter.MAX + 1));
 	}
 }
