@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>com.darwinsys</groupId>
+		<artifactId>javasrc</artifactId>
+		<version>1.1-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.darwinsys</groupId>
 	<artifactId>lombok-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -11,7 +17,7 @@
 	<description>demo of Lombok annotation processor</description>
 
 	<properties>
-		<javase.version>16</javase.version>
+		<javase.version>11</javase.version>
 	</properties>
 
 	<dependencies>
