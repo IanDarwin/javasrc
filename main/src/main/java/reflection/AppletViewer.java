@@ -7,24 +7,25 @@ import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /*
- * AppletViewer - a simple Applet Viewer program.
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * AppletViewer - a simple Applet Viewer program, since most 
+ * web browsers will no longer process Applets.
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class AppletViewer {
 	/** The main Frame of this program */
-	JFrame f;
+	JFrame jFrame;
 	/** The AppletAdapter (gives AppletStub, AppletContext, showStatus) */
-	static AppletAdapter aa = null;
+	static AppletAdapter adapter = null;
 	/** The name of the Applet subclass */
 	String appName = null;
 	/** The Class for the actual applet type */
-	Class<?> ac = null;
+	Class<?> appletClass = null;
 	/** The Applet instance we are running, or null. Can not be a JApplet
 	 * until all the entire world is converted to JApplet. */
-	Applet ai = null;
+	Applet instance = null;
 	/** The width of the Applet */
 	final int WIDTH = 250;
 	/** The height of the Applet */
@@ -43,49 +44,55 @@ public class AppletViewer {
 
 		this.appName = appName;
 
-		f = new JFrame("AppletViewer");
-		f.addWindowListener(new WindowAdapter() {
+		jFrame = new JFrame("AppletViewer");
+		jFrame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				f.setVisible(false);
-				f.dispose();
+				jFrame.setVisible(false);
+				jFrame.dispose();
 				System.exit(0);
 			}
 		});
-		Container cp = f.getContentPane();
+		Container cp = jFrame.getContentPane();
 		cp.setLayout(new BorderLayout());
 
 		// Instantiate the AppletAdapter which gives us
-		// AppletStub and AppletContext.
-		if (aa == null)
-			aa = new AppletAdapter();
+		// AppletStub and AppletContext. Lazy evaluation
+		// allows mock for testing.
+		if (adapter == null) {
+			adapter = new AppletAdapter();
+		}
 
 		// The AppletAdapter also gives us showStatus.
 		// Therefore, must add() it very early on, since the Applet's
 		// Constructor or its init() may use showStatus()
-		cp.add(BorderLayout.SOUTH, aa);
+		cp.add(BorderLayout.SOUTH, adapter);
 
 		showStatus("Loading Applet " + appName);
 
-		loadApplet(appName , WIDTH, HEIGHT);	// sets ac and ai
-		if (ai == null)
+		loadApplet(appName , WIDTH, HEIGHT);	// sets appletClass and instance
+		if (instance == null) {
+			JOptionPane.showMessageDialog(jFrame,
+					"Sorry, Applet " + appName + " failed to load",
+					"Oops", JOptionPane.ERROR_MESSAGE);
 			return;
+		}
 
 		// Now right away, tell the Applet how to find showStatus et al.
-		ai.setStub(aa);
+		instance.setStub(adapter);
 
 		// Connect the Applet to the Frame.
-		cp.add(BorderLayout.CENTER, ai);
+		cp.add(BorderLayout.CENTER, instance);
 
-		Dimension d = ai.getSize();
-		d.height += aa.getSize().height;
-		f.setSize(d);
-		f.setVisible(true);		// make the Frame and all in it appear
+		Dimension d = instance.getSize();
+		d.height += adapter.getSize().height;
+		jFrame.setSize(d);
+		jFrame.setVisible(true);		// make the Frame and all in it appear
 
 		showStatus("Applet " + appName + " loaded");
 
 		// Here we pretend to be a browser!
-		ai.init();
-		ai.start();
+		instance.init();
+		instance.start();
 	}
 
 	/*
@@ -97,9 +104,9 @@ public class AppletViewer {
 		// height = 		ditto
 		try {
 			// get a Class object for the Applet subclass
-			ac = Class.forName(appletName);
+			appletClass = Class.forName(appletName);
 			// Construct an instance (as if using no-argument constructor)
-			ai = (Applet) ac.newInstance();
+			instance = (Applet) appletClass.newInstance();
 		} catch(ClassNotFoundException e) {
 			showStatus("Applet subclass " + appletName + " did not load");
 			return;
@@ -107,10 +114,10 @@ public class AppletViewer {
 			showStatus("Applet " + appletName + " did not instantiate");
 			return;
 		}
-		ai.setSize(w, h);
+		instance.setSize(w, h);
 	}
 
 	public void showStatus(String s) {
-		aa.getAppletContext().showStatus(s);
+		adapter.getAppletContext().showStatus(s);
 	}
 }
