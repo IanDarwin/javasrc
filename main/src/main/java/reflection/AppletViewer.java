@@ -99,14 +99,14 @@ public class AppletViewer {
 	 * Load the Applet into memory. Should do caching.
 	 */
 	void loadApplet(String appletName, int w, int h) {
-		// appletName = ... extract from the HTML CODE= somehow ...;
+		// XXX appletName = ... extract from the HTML CODE= ...;
 		// width = 		ditto
 		// height = 		ditto
 		try {
 			// get a Class object for the Applet subclass
 			appletClass = Class.forName(appletName);
 			// Construct an instance (as if using no-argument constructor)
-			instance = (Applet) appletClass.newInstance();
+			instance = (Applet) appletClass.getConstructor(new Class<?>[0]).newInstance();
 		} catch(ClassNotFoundException e) {
 			showStatus("Applet subclass " + appletName + " did not load");
 			return;
