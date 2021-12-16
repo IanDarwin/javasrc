@@ -13,6 +13,7 @@ import org.junit.Test;
 /**
  * Integration test for CalcService. Absolutely requires Java 1.5+ and
  * JAX-WS 2.0 (which is included with Java SE 1.6+). 
+ * Only tested up to Java 11.
  * Assumes client artifacts have been created, using e.g., on Unix:
  * $ mkdir jaxwsclient
  * $ wsimport -d jaxwsclient -keep 'http://localhost:7094/calc?wsdl'
