@@ -26,10 +26,18 @@ public class PerfectPangramTest {
 		assertTrue(tester.pangram("rodwalk"));
 	}
 
+	@Test
 	public void testPPBad() throws Exception {
 		assertFalse(tester.pangram("abecadarian"));	 // too long
 		assertFalse(tester.pangram("acrimony"));	 // still too long
 		assertFalse(tester.pangram("acronom"));	 // repeated letter
 		assertFalse(tester.pangram("akron"));	 // too short
+	}
+
+	@Test
+	public void testLonger() {
+		tester = new PerfectPangram(10);
+		assertTrue(tester.pangram("lumberjack"));
+		assertTrue(tester.pangram("wolframite"));
 	}
 }
