@@ -11,20 +11,23 @@ import java.nio.file.*;
  * A perfect pangram is a pangram that uses each letter exactly once.
  */
 public class PerfectPangram {
-	final static int DEFAULT_LENGTH = 7;
-	private static int len = DEFAULT_LENGTH;
+	private boolean perfect = true;
+	final char[] alphabet;
+	private final int len;
 
-	public PerfectPangram(int len) {
-		this.len = len;
-	}
-	public PerfectPangram() {
-		// empty
+	public PerfectPangram(String alphabet) {
+		this.alphabet = alphabet.toCharArray();
+		this.len = alphabet.length();
 	}
 
-	/** Default main: print picked perfect pangrams purloined from /usr/dict/words */
+	/** Default main: print picked (perfect?) pangrams purloined from /usr/dict/words */
 	public static void main(String[] args) throws IOException {
-		PerfectPangram program = new PerfectPangram(
-			args.length == 0 ? DEFAULT_LENGTH : Integer.parseInt(args[0]));
+		if (args.length == 0) {
+			// Maybe default to "a..z"?
+			System.out.println("Usage: pangram [-p] alphabet");
+			System.exit(1);
+		}
+		PerfectPangram program = new PerfectPangram(args[0]);
 		Files.lines(Path.of("/usr/share/dict/words"))
 			.map(String::toLowerCase)
 			.filter(program::pangram)
@@ -32,17 +35,33 @@ public class PerfectPangram {
 	}
 
 	public boolean pangram(String cand) {
-		if (cand.length() != len)
+		if (perfect && cand.length() != len)
 			return false;
 		var found = new boolean[26];
-		int count = 0;
+		int matchedCount = 0;
 		for (char c : cand.toCharArray()) {
-			if (found[c-'a'])
+			if (!inDict(c))
+				return false;
+			if (perfect && found[c-'a'])
 				// no dupes in perfect pangrams
 				return false;
 			found[c-'a'] = true;
-			count++;
+			matchedCount++;
 		}
-		return count == len;	// all used?
+		if (perfect)
+			return matchedCount == len;	// all used?
+		int used = 0;
+		for (int i = 0; i < found.length; i++)
+			if (found[i])
+				++used;
+		return matchedCount == len;
+	}
+
+	private boolean inDict(char c) {
+		for (char a : alphabet) {
+			if (a == c)
+				return true;
+		}
+		return false;
 	}
 }

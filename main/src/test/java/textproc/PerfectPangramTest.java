@@ -14,30 +14,30 @@ public class PerfectPangramTest {
 
 	@BeforeEach
 	public void setUp() {
-		tester = new PerfectPangram(7);
+		tester = new PerfectPangram("camnory");
 	}
 	
 	@Test
 	public void testPPGood() throws Exception {
 		assertTrue(tester.pangram("acronym"));
 		assertTrue(tester.pangram("camnory"));
-		assertTrue(tester.pangram("abcdefg"));
-		assertTrue(tester.pangram("harmony"));
-		assertTrue(tester.pangram("rodwalk"));
+		assertFalse(tester.pangram("abcdefg"));
+		assertFalse(tester.pangram("harmony"));
+		assertFalse(tester.pangram("rodwalk"));
 	}
 
 	@Test
 	public void testPPBad() throws Exception {
 		assertFalse(tester.pangram("abecadarian"));	 // too long
-		assertFalse(tester.pangram("acrimony"));	 // still too long
+		assertFalse(tester.pangram("acrimony"));	 // 'i' not in alphabet'
 		assertFalse(tester.pangram("acronom"));	 // repeated letter
 		assertFalse(tester.pangram("akron"));	 // too short
 	}
 
 	@Test
 	public void testLonger() {
-		tester = new PerfectPangram(10);
-		assertTrue(tester.pangram("lumberjack"));
-		assertTrue(tester.pangram("wolframite"));
+		tester = new PerfectPangram("abcejklmru");
+		assertTrue (tester.pangram("lumberjack"));
+		assertFalse(tester.pangram("wolframite"));
 	}
 }
