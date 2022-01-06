@@ -12,33 +12,32 @@ import java.net.*;
  * @author 		Ian Darwin, http://www.darwinsys.com/
  * @copyright 	1997, Ian Darwin, Ontario, Canada
  */
-public class PostQuery extends JComponent {
+public class PostQuery {
 
 	private static final long serialVersionUID = 3258128046665315634L;
-	protected Button goButton;
+	private static Button goButton;
+	private static String serverURL;
 
 	public static void main(String[] args) {
 		PostQuery program = new PostQuery(args.length == 1 ? args[0] : null);
 		JFrame jf = new JFrame("PostQuery");
-		jf.add(program);
-		jf.setSize(100, 80);
+		jf.add(goButton = new Button("Go for it!"));
+		goButton.addActionListener(PostQuery::actionPerformed);
+		jf.setSize(200, 100);
+		jf.setLocation(100, 100);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setVisible(true);
+		showStatus("Ready");
 	}
-
-	String url;
 
 	public PostQuery(String url) {
-		this.url = url;
-		add(goButton = new Button("Go for it!"));
-		goButton.addActionListener(this::actionPerformed);
+		this.serverURL = url != null ? url :
+				"http://server/cgi-bin/test-cgi.pl";
 	}
 
-	public void actionPerformed(ActionEvent evt) {
+	public static void actionPerformed(ActionEvent evt) {
 		try {
 			URL myNewURL;
-			String serverURL = url;
-			if (serverURL == null)
-				serverURL = "http://server/cgi-bin/test-cgi.pl";
 			showStatus("Building URL " + serverURL);
 			myNewURL = new URL(serverURL);
 
@@ -77,7 +76,7 @@ public class PostQuery extends JComponent {
 		}
 	}
 
-	public void showStatus(String s) {
+	public static void showStatus(String s) {
 		System.out.println("Status: " + s);
 	}
 	
