@@ -22,8 +22,8 @@ public class CommonsCliDemo {
 		CommandLine cmd = null;
 		try {
 			cmd = parser.parse(options, args);
-			if(cmd.hasOption("o")) {
-				String fileName = cmd.getArg("o");
+			if(cmd.hasOption('o')) {
+				String fileName = cmd.getOptionValue('o');
 				System.setOut(new PrintStream(new FileOutputStream(fileName)));
 			}
 		} catch(ParseException e) {
