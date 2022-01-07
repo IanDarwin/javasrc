@@ -116,7 +116,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.8.0-beta2</version>
+			<version>2.0.0-alpha5</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -125,6 +125,13 @@
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils-core</artifactId>
 			<version>1.8.3</version>
+		</dependency>
+
+		<!-- Commons-cli -->
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.5.0</version>
 		</dependency>
 
 		<!-- Commons Math -->
@@ -138,19 +145,19 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.0.5.RELEASE</version>
+			<version>5.3.14</version>
 		</dependency>
 
 		<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
-				<version>2.4.0</version>
+				<version>2.6.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant</artifactId>
-			<version>1.10.11</version>
+			<version>1.10.12</version>
 		</dependency>
 
 		<dependency>
@@ -163,7 +170,7 @@
 		<dependency>
 			<groupId>uk.co.caprica</groupId>
 			<artifactId>vlcj</artifactId>
-			<version>3.10.1</version>
+			<version>4.7.1</version>
 		</dependency>
 
 		<!-- Scripting -->
@@ -175,7 +182,7 @@
 		<dependency>
 			<groupId>org.python</groupId>
 			<artifactId>jython-standalone</artifactId>
-			<version>2.7.1b3</version>
+			<version>2.7.2</version>
 		</dependency>
 
 		<!-- Client-side CDI -->
