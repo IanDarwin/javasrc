@@ -44,11 +44,11 @@
 
 	<dependencies>
 
-	<!-- Java EE current (7) full -->
+	<!-- Java EE current full -->
 	<dependency>
 		<groupId>javax</groupId>	
 		<artifactId>javaee-api</artifactId>	
-		<version>8.0</version>
+		<version>8.0.1</version>
 	</dependency> 
 
 	<!-- My little add-ons to EE -->
@@ -67,26 +67,31 @@
 
 	<!-- JAX-WS JDK 11+ needs this -->
 	<dependency>
+		<groupId>javax.jws</groupId>
+		<artifactId>javax.jws-api</artifactId>
+		<version>1.1</version>
+	</dependency>
+	<dependency>
 		<groupId>com.sun.xml.ws</groupId>
 		<artifactId>rt</artifactId>
-		<version>2.3.1</version>
+		<version>3.0.2</version>
 	</dependency>
 
 	<!-- JPA needing a driver, let's use Hibernate -->
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.orm</groupId>
 		<artifactId>hibernate-core</artifactId>
-		<version>4.0.1.Final</version>
+		<version>6.0.0.Beta2</version>
 	</dependency>
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.orm</groupId>
 		<artifactId>hibernate-entitymanager</artifactId>
-		<version>4.0.1.Final</version>
+		<version>6.0.0.Alpha7</version>
 	</dependency>
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.validator</groupId>
 		<artifactId>hibernate-validator</artifactId>
-		<version>5.3.6.Final</version>
+		<version>7.0.1.Final</version>
 	</dependency>
 
 	</dependencies>
