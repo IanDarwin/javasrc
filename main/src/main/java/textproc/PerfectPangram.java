@@ -10,6 +10,7 @@ import java.util.Arrays;
  * a term oft used in puzzles like Spelling Bee to refer to a word
  * that uses all letters in the given alphabet.
  * A perfect pangram is a pangram that uses each letter exactly once.
+ * And yes, it lets you cheat at Spelling Bee, but where's the challenge in that?
  */
 public class PerfectPangram {
 	private final boolean DEBUG = false;
