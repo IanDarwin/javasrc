@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
+		<!-- Most props in parent pom; smth here needs 11 -->
 		<javase.version>11</javase.version>
 	</properties>
 
@@ -24,33 +25,11 @@
 
 	<dependencies>
 
-		<!-- JUnit 5 with 4 compat.
-		 *** Some are scope=compile for the testing tests :-)
-		 -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- JUnit 4 compat -->
-		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
-			<version>5.8.2</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- More JUnit4 -->
+		<!-- JUnit4 Needed here -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
+			<version>${junit4.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
