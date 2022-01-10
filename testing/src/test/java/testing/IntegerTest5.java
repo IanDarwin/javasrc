@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /** 
- * Demonstrate how you might use JUnit 4.x to test the java.lang.Integer 
+ * Demonstrate how you might use JUnit 5.x to test the java.lang.Integer 
  * class (this is not to say that Sun/Oracle doesn't test before they ship it - they do!!).
  */
 public class IntegerTest5 {
