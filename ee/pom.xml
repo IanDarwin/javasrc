@@ -30,6 +30,8 @@
 				<source>11</source>
 				<target>11</target>
 				<excludes>
+					<!-- javax.ws.soap not in modern JDKs -->
+					<exclude>jaxwsclient/CalcIntegTest.java</exclude>
 					<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
 					<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
 					<!-- Add a comment WHY this is being excluded -->
@@ -50,6 +52,14 @@
 		<artifactId>javaee-api</artifactId>	
 		<version>8.0.1</version>
 	</dependency> 
+
+	<!-- Somehow needs jaxws on top?? -->
+	<dependency>
+		<groupId>com.sun.xml.ws</groupId>
+		<artifactId>jaxws-ri</artifactId>
+		<version>2.3.5</version>
+		<type>pom</type>
+	</dependency>
 
 	<!-- My little add-ons to EE -->
 	<dependency>

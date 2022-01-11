@@ -35,6 +35,24 @@
 
 	<dependencies>
 
+		<!-- JAXB deleted from Java SE 9+, needs module or this: -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.4.0-b180830.0359</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.istack</groupId>
+			<artifactId>istack-commons-runtime</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+
+
 		<!--
 		JDOM is commented out until/unless they push a fix for CVE-2021-33813 to Maven Central.
 		<dependency>
