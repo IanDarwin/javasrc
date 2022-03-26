@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** CardLayDemo -- Prototype of a GUI Login Dialog, using CardLayout.
- * WIP - Converting from Applet to JFrame; images don't work ATM.
+ * WIP - Converting from old Java web tech to JFrame; images don't work ATM.
  * @author Ian F. Darwin
  */
 public class CardLayDemo extends JPanel {
@@ -101,7 +101,7 @@ public class CardLayDemo extends JPanel {
 		return null;
 	}
 
-	/** Initialize the CardLayDemo applet. */
+	/** Construct the CardLayDemo. */
 	public CardLayDemo() {
 		// Main panel (managed by CardLayout) is details
 		// for either Login, Passwd or Welcome! screen.
