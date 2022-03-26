@@ -24,7 +24,8 @@ public class HelpDemo {
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();
 		
-		// Start Netscape from Java Applications (not Applets though)
+		// Start default browser from a Java Application
+		// Better: use Desktop class to invoke
 		r.exec("c:/windows/command/start.exe HelpDemo.htm");
 
 		return;
