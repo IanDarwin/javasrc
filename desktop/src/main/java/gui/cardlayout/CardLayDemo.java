@@ -1,7 +1,6 @@
 package gui.cardlayout;
 
-import java.applet.Applet;
-import java.awt.Button;
+import javax.swing.*;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,33 +12,25 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/** Switchable interface lets us call back the Applet, instead of
- * having global variables (in other languages) or passing lots of
- * extra stuff into the ImgPanel constructor
- */
-interface Switchable {
-	void gotoNext(String target);
-}
-
 /** CardLayDemo -- Prototype of a GUI Login Dialog, using CardLayout.
+ * WIP - Converting from Applet to JFrame; images don't work ATM.
  * @author Ian F. Darwin
  */
-public class CardLayDemo extends Applet implements Switchable {
+public class CardLayDemo extends JPanel {
 	private ImagePanel passwdP; 
 	CardLayout cardlay;
-
 
 	/** An ImgPanel holds an Image and optional TextField; its action handler (which is
 	 * probably misplaced here, see MVC) jumps to next entry in CardLayout
 	 */
-	class ImagePanel extends Panel {
+	class ImagePanel extends JPanel {
 		/** The background Image */
 		Image im;
 		/* Size of the Images */
 		final int WIDTH = 216;
 		final int HEIGHT= 144;
 		/** The container */
-		Switchable applet;
+		CardLayDemo container;
 		/** The label for the next panel in the series (CardLayout
 		 * switches based on name string, not reference to a GUI component.
 		 */
@@ -47,13 +38,13 @@ public class CardLayDemo extends Applet implements Switchable {
 		/** Our entry field */
 		TextField fld = null;
 		/** Our pushbutton */
-		Button butt = null;
+		JButton butt = null;
 		
 		/** Construct an ImagePanel */
-		ImagePanel(Switchable theApplet, Image image, String theNextPanelName) {
+		ImagePanel(CardLayDemo container, Image image, String theNextPanelName) {
 			super();
 			
-			applet	= theApplet;
+			this.container	= container;
 			im		= image;
 			next	= theNextPanelName;
 			
@@ -78,36 +69,24 @@ public class CardLayDemo extends Applet implements Switchable {
 			add(fld);
 			
 			// Add the OK button at the right side
-			butt = new Button("OK");
+			butt = new JButton("OK");
 			gridbag.setConstraints(butt, cR);
 			add(butt);
 			
 			// Give it an ActionListener to move on to the next page
-			butt.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			butt.addActionListener(e -> {
 					if (fld.getText().length() > 0)
-						applet.gotoNext(next);
-				}
+						container.gotoNext(next);
 			});
 		}
-		
+
 		/** Set this panel's text field to hidden echo */
 		public void setNoEcho() {
 			if (fld != null)
 				fld.setEchoChar('*');
 		}
 		
-		/* override update() to not clear, which reduces flicker */
-		public void update(Graphics g) {
-			paint(g);
-		}
-		
-		/* Draw the background */
-		public void paint(Graphics g) {
-			g.drawImage(im, 0, 0, this);
-		}
-		
-		/* urge the Layout Mangler to make us the same size as our background */
+		/* Urge the Layout Mangler to make us the same size as our background */
 		public Dimension getPreferredSize() {
 			return new Dimension(WIDTH, HEIGHT);
 		}
@@ -117,8 +96,13 @@ public class CardLayDemo extends Applet implements Switchable {
 		}
 	}
 
+	/** DUMMY */
+	Image getImage(String imageName) {
+		return null;
+	}
+
 	/** Initialize the CardLayDemo applet. */
-	public void init() {
+	public CardLayDemo() {
 		// Main panel (managed by CardLayout) is details
 		// for either Login, Passwd or Welcome! screen.
 
@@ -127,22 +111,28 @@ public class CardLayDemo extends Applet implements Switchable {
 		/* create each Panel. */
 		add("login",
 			new ImagePanel(this, 
-				getImage(getCodeBase(), "loginLogin.gif"), "passwd"));
+				getImage("loginLogin.gif"), "passwd"));
 		add("passwd",
 			passwdP = new ImagePanel(this, 
-				getImage(getCodeBase(), "loginPasswd.gif"), "welcome"));
+				getImage("loginPasswd.gif"), "welcome"));
 		passwdP.setNoEcho();
 		add("welcome",
 			new ImagePanel(this, 
-				getImage(getCodeBase(), "loginWelcome.gif"), null));
-	}
+				getImage("loginWelcome.gif"), null));
 
-	public void start() { 
 		gotoNext("login");		// gotta start somewhere
 	}
 
 	/** Switch to the next panel */
 	public void gotoNext(String gotoLabel) {
 		cardlay.show(this, gotoLabel);
+	}
+
+	public static void main(String[] args) {
+		JFrame jf = new JFrame("Login Demo");
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setContentPane(new CardLayDemo());
+		jf.setSize(400, 300);
+		jf.setVisible(true);
 	}
 }
