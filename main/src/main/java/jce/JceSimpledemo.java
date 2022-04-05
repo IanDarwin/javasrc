@@ -14,7 +14,7 @@ public class JceSimpledemo {
 
 	public static void main(String[] args) {
 		try {
-			String clearText = "This is a secret";
+			String clearText = "This is a secret"; // multiple of 128 bits!
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 			byte[] keyBytes = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
 			SecretKey key = new SecretKeySpec(keyBytes,  "AES");
@@ -24,7 +24,10 @@ public class JceSimpledemo {
 				System.out.printf("%02x ", b);
 			}
 			System.out.println();
-		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException
+		} catch (InvalidKeyException 
+				| NoSuchAlgorithmException 
+				| NoSuchPaddingException 
+				| IllegalBlockSizeException
 				| BadPaddingException e) {
 			System.out.println("Encryption didn't work! " + e);;
 		}
