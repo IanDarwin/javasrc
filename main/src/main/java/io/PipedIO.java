@@ -8,6 +8,8 @@ import java.io.*;
 public class PipedIO {
 	public static void main(String[] args) throws Exception {
 
+		// These can be done in either order here as long
+		// as the second gets the first as its constr arg.
 		PipedOutputStream pout = new PipedOutputStream();
 		PipedInputStream pin = new PipedInputStream(pout);
 
