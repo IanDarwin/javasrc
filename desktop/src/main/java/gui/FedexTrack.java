@@ -1,66 +1,92 @@
 package gui;
 
-import java.applet.Applet;
-import java.awt.Button;
+import javax.swing.*;
+import java.awt.Desktop;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.TextField;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
+import java.io.*;
 
 /**
- * Simple Applet to track a Fedex shipment without having to wait
+ * Simple class to track a Fedex shipment without having to wait
  * for all of FedEx's bloated images to download.
  *
  * @Note: The URL used was garnered empirically, is not documented,
- * and is subject to change without notice! USE AT OWN RISK.
+ * and is subject to change without notice!
  *
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 
-public class FedexTrack extends Applet {
+public class FedexTrack extends JPanel {
 
 	protected Choice destChooser;
-	protected Button goButton;
-	protected TextField numField;
+	protected JButton goButton;
+	protected JTextField numField;
 
-	ActionListener handler = e -> {
-			URL destURL = null;
+	ActionListener handler = evt -> {
+			URI destURL = null;
 			try {
 				String urlStr = String.format(
 					"https://www.fedex.com/apps/fedextrack/?action=track" +
 					"&trackingnumber=%s&cntry_code=us&locale=en_US", 
 					numField.getText());
-				destURL = new URL(urlStr);
-			} catch (MalformedURLException err) {
+				destURL = new URI(urlStr);
+			} catch (URISyntaxException err) {
 				throw new RuntimeException("Invalid input?", err);
 			}
 			// debug...
 			System.out.println("URL = " + destURL);
 
 			// "And then a miracle occurs..."
-			FedexTrack.this.getAppletContext().showDocument(destURL);
+			try {
+				showDocument(destURL);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 	};
 
+	void showDocument(URI url) throws IOException {
+		Desktop desktop = null;
+        if (Desktop.isDesktopSupported()) {
+            desktop = Desktop.getDesktop();
+        } else {
+            System.err.println("no desktop support");
+            return;
+        }
 
-	public void init() {
+        if (desktop.isSupported(Desktop.Action.BROWSE)) {
+            desktop.browse(url);
+        } else {
+        	System.err.println("no browser support");
+        }
+
+	}
+
+	public FedexTrack() {
 		setBackground(Color.pink);
 		setLayout(new GridLayout(3,2));
-		add(new Label("Dest. Country:", Label.RIGHT));
+		add(new JLabel("Dest. Country:", JLabel.RIGHT));
 		add(destChooser = new Choice());
 		destChooser.add("ca");
 		destChooser.select(0);
 		destChooser.add("sv");
 		destChooser.add("uk");
 		destChooser.add("us");
-		add(new Label("Waybill #", Label.RIGHT));
-		add(numField = new TextField(12));
+		add(new JLabel("Waybill #", JLabel.RIGHT));
+		add(numField = new JTextField(12));
 		numField.addActionListener(handler);
-		add(new Label());	// filler, for grid
-		add(goButton = new Button("Go for it!"));
+		add(new JLabel());	// filler, for grid
+		add(goButton = new JButton("Go for it!"));
 		goButton.addActionListener(handler);
+	}
+
+	public static void main(String[] args) {
+		JFrame jf = new JFrame("Fedex Tracker");
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setContentPane(new FedexTrack());
+		jf.setSize(400, 350);
+		jf.setVisible(true);
 	}
 }
