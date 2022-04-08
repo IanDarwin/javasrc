@@ -4,7 +4,7 @@ package lang;
  * Show array initialized two ways, printed two ways,
  * second using StringBuilder.
  */
-public class ArrayStringBuilder {
+public class ArraySimple {
 	public static void main(String[] args) {
 		int[] data1 = new int[5];
 		data1[0] = 2001;
