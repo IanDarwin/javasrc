@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 import com.darwinsys.util.FileProperties;
 
 /**
- * HttpConcurrent - Httpd Subclass using java.lang.concurrent
+ * HttpConcurrent - Httpd Subclass using java.util.concurrent
  */
 public class WebProxy {
 	/** The default port number; the same as "squid" uses. */
