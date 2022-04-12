@@ -39,12 +39,10 @@ public class BookRank {
 		String title = p.getProperty("title", "NO TITLE IN PROPERTIES");
 		// The url must have the "isbn=" at the very end, or otherwise
 		// be amenable to being string-catted to, like the default.
-		String url = p.getProperty("url", "http://test.ing/test.cgi?isbn=");
+		// String url = p.getProperty("url", "http://test.ing/test.cgi?isbn=");
 		// The 10-digit ISBN for the book.
 		String isbn  = p.getProperty("isbn", "0000000000");
-		// The RE pattern (MUST have ONE capture group for the number)
-		String pattern = p.getProperty("pattern", "Rank: (\\d+)");
-
+		
 		int rank = getBookRank(isbn);
 
 		System.out.println("Rank is " + rank);

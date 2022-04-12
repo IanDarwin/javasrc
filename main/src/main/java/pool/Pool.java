@@ -54,10 +54,9 @@ public class Pool {
 		inUse.set(IX);
 
 		// Now bump "take" counter
-		Object tmp;
 		do {
 			IX++;
-			tmp = pool.get(IX);
+			pool.get(IX);
 		} while (IX < pool.size() && inUse.get(IX));
 
 		// Return the one we first got.

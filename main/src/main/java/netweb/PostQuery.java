@@ -25,10 +25,10 @@ public class PostQuery {
 	private static String serverURL;
 
 	public static void main(String[] args) {
-		PostQuery program = new PostQuery(args.length == 1 ? args[0] : null);
+		PostQuery postQuery = new PostQuery(args.length == 1 ? args[0] : null);
 		JFrame jf = new JFrame("PostQuery");
 		jf.add(goButton = new Button("Go for it!"));
-		goButton.addActionListener(PostQuery::actionPerformed);
+		goButton.addActionListener(postQuery::actionPerformed);
 		jf.setSize(200, 100);
 		jf.setLocation(100, 100);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +41,7 @@ public class PostQuery {
 				"http://server/cgi-bin/test-cgi.pl";
 	}
 
-	public static void actionPerformed(ActionEvent evt) {
+	public void actionPerformed(ActionEvent evt) {
 		try {
 			URL myNewURL;
 			showStatus("Building URL " + serverURL);

@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.darwinsys.util.Debug;
-
 /**
  * ExecDemo shows how to execute an external program (in this case
  * the UNIX directory lister /bin/ls) and read its output.
@@ -24,7 +22,7 @@ public class ExecDemoPartial {
 		
 		final Process p = Runtime.getRuntime().exec(PROGRAM);
 
-		Debug.println("exec", "In Main after exec");
+		System.out.println("In Main after exec");
 
 
 		Thread waiter = new Thread() {
@@ -49,7 +47,7 @@ public class ExecDemoPartial {
 		while (!done && ((line = is.readLine()) != null))
 			System.out.println(line);
 		
-		Debug.println("exec", "In Main after end of read loop");
+		System.out.println("In Main after end of read loop");
 
 		return;
 	}

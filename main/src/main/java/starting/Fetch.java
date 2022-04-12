@@ -8,6 +8,7 @@ public class Fetch {
 			System.err.println("Fetching " + name);
 		}
 		value = f.fetch(name);
+		System.out.println(value);
 	}
 	public String fetch(String name) {
 		// in real life this would look up "name" in some table or database

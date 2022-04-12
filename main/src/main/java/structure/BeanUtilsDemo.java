@@ -22,6 +22,7 @@ public class BeanUtilsDemo {
 	public static void main(String[] args) throws Exception {
 		
 		Calendar c = Calendar.getInstance();
+		@SuppressWarnings("unchecked")
 		Map<String,Object> m = BeanUtils.describe(c);
 		printMap(m);
 				
@@ -40,7 +41,10 @@ public class BeanUtilsDemo {
 		// BeanUtils.copyProperties()
 		
 		System.out.println("----------------------------------");
-		printMap(PropertyUtils.describe(myDate));
+		
+		@SuppressWarnings("unchecked")
+		Map<String, Object> descr = PropertyUtils.describe(myDate);
+		printMap(descr);
 
 		System.out.println(myDate);
 	}
