@@ -1,7 +1,8 @@
 package i18n;
 
-import java.text.*;
-import java.util.*;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ShowDate {
 	public static void main(String[] args) {

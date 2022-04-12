@@ -1,9 +1,11 @@
 package jdbc;
 
-import java.sql.*;
-import java.util.Random;
-
 import static com.darwinsys.sql.ConnectionUtil.getConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Random;
 
 /**
  * Measure time used by big transactions.

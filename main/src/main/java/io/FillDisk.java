@@ -1,6 +1,9 @@
 package io;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /** FillDisk writes until the disk is full.
  * Like any tool, can be used for evil (local DoS attack) or good (writing

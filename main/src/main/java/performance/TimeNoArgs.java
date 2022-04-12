@@ -1,6 +1,6 @@
 package performance;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Method;
 
 /**
  * Time the main method of other classes, for performance tuning.

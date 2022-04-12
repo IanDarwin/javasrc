@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Demo of list processing pre- and post-Java 5.

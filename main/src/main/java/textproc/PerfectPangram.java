@@ -1,8 +1,8 @@
 package textproc;
 
-import java.io.*;
-import java.nio.file.*;
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * Find perfect pangrams of the given length.

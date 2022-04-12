@@ -1,8 +1,10 @@
 package otherlang;
 
-import com.darwinsys.util.Debug;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import java.io.*;
+import com.darwinsys.util.Debug;
 
 /**
  * ExecDemo shows how to execute an external program (in this case

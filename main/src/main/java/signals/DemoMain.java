@@ -1,6 +1,8 @@
 package signals;
 
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * A trivial class to show usage of Ian Darwin's signal handler.

@@ -1,8 +1,8 @@
 package structure;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * StrSortCase demonstrates sorting of strings using Collections.sort

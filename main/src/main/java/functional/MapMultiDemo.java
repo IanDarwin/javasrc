@@ -1,7 +1,7 @@
 package functional;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Collectors.mapMulti is like flatmap but allows to create a different-sized list.

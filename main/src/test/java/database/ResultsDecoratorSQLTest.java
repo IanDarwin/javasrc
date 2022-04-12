@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import javax.sql.rowset.WebRowSet;
 import javax.sql.rowset.RowSetFactory;
 import javax.sql.rowset.RowSetProvider;
+import javax.sql.rowset.WebRowSet;
 
 import org.junit.Before;
 import org.junit.Ignore;

@@ -1,9 +1,8 @@
 package functional;
 
-import java.util.stream.*;
-import java.util.*;
-
-import static java.util.stream.Collectors.*;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /** Demo of "Tee Collector" (Collectors.teeing, actually)
  * Split a stream of names into two lists according to filters.

@@ -1,8 +1,9 @@
 package environ;
 
+import java.util.Map;
+
 import com.darwinsys.lang.GetOpt;
 import com.darwinsys.lang.GetOptDesc;
-import java.util.*;
 
 /** Demonstrate the modern way of using GetOpt. This allows a subset of
  * <pre>UNIX sort options: sort -n -o outfile infile1 infile2</pre>

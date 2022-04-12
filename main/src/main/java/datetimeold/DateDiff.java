@@ -1,6 +1,7 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /** DateDiff -- compute the difference between two dates.
  */

@@ -1,7 +1,7 @@
 package datetimeold;
 
-import java.io.*;
-import java.text.*;
+import java.io.IOException;
+import java.text.DecimalFormat;
 
 /**
  * How quickly can you press return?

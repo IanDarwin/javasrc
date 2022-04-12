@@ -1,6 +1,7 @@
 package io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 /**
  * Read a file containing an offset, and a String at that offset.

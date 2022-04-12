@@ -1,10 +1,10 @@
 package structure;
 
 import java.util.Vector;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Poorly-named example showing that Vector being synchronized is not the only protection you need

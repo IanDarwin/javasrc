@@ -1,6 +1,7 @@
 package numbers;
 
-import java.math.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * Limitations of BigDecimal when dealing with exact integral values.

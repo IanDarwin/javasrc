@@ -1,10 +1,10 @@
 package functional;
 
-import structure.Employee;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+import structure.Employee;
 
 /**
  * Parallelized stream example: compute average word length in a file

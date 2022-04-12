@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.*;
+import java.util.StringTokenizer;
 
 /**
  * Parse an Apache log file with StringTokenizer

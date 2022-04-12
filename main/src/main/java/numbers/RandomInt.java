@@ -1,6 +1,6 @@
 package numbers;
 
-import java.util.*;
+import java.util.Random;
 
 /** Generate random ints by asking Random() for
  * a series of random integers from 1 to 10, inclusive.

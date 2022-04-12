@@ -3,7 +3,8 @@ package webproxy;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
-import java.util.concurrent.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import com.darwinsys.util.FileProperties;
 

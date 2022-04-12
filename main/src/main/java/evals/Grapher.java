@@ -1,7 +1,10 @@
 package evals;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 public class Grapher extends JPanel {
 	JProgressBar counter, crsScore, insScore;

@@ -1,6 +1,6 @@
 package numbers;
 
-import java.text.*;
+import java.text.ChoiceFormat;
 
 /**
  * Format a plural correctly, using a ChoiceFormat.

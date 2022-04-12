@@ -1,7 +1,7 @@
 package jndi;
 
-import java.rmi.*;
-import java.io.*;
+import java.io.Serializable;
+import java.rmi.Remote;
 
 public class JNDIData implements Remote, Serializable {
 

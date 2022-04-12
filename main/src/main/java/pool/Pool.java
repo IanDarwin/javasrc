@@ -1,6 +1,8 @@
 package pool;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 
 /** A reusable object pool.
  * Clients must provide an implementation of PoolFactory to

@@ -1,6 +1,7 @@
 package datetime;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Hastings {
 	public static void main(String[] args) {

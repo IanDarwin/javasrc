@@ -1,9 +1,17 @@
 package email;
 
-import javax.activation.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 
-import java.awt.datatransfer.*;
-import java.io.*;
+import javax.activation.DataContentHandler;
+import javax.activation.DataContentHandlerFactory;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 
 /** Provide a truly minimalist demonstration of using JAF (aka
  * javax.activation, the Java Activation Framework) to read one

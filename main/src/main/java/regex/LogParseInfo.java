@@ -1,6 +1,8 @@
 package regex;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Common fields and info for Apache Log Parsing demo.

@@ -1,6 +1,7 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  * Show dates before 1970, in JDK1.0/1.1 when Date was broken
  * DO NOT USE ANYMORE -- use DateFormat instead!!.
