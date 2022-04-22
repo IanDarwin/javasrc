@@ -1,7 +1,8 @@
 package lang;
 
-import java.util.*;
 import java.awt.Button;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * ShowToString -- demo program to show default toString methods.

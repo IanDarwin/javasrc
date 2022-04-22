@@ -1,7 +1,16 @@
 package xcolor;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /** Standalone GUI application for XColor */
 public class XColorDemo extends Frame {

@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.Iterator;
 
 /**
  * Simple demo of how Iterable works.

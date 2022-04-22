@@ -1,6 +1,6 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
 
 /** Show use of Calendar get() method with various parameters. */
 public class DayWeek {

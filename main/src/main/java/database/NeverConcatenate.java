@@ -2,8 +2,7 @@ package database;
 
 // If you don't know why this is here, see https://xkcd.com/327/
 // Meanwhile, DO NOT DO THIS in production!
-
-import java.io.*;
+import java.io.Console;
 
 public class NeverConcatenate {
 

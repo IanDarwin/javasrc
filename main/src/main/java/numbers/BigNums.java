@@ -1,6 +1,6 @@
 package numbers;
 
-import java.math.*;
+import java.math.BigInteger;
 
 /**
  * Demonstrate large numbers.

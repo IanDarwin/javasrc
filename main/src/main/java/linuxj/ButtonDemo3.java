@@ -1,8 +1,18 @@
 package linuxj;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /** This is a longer ButtonDemo Application
  * that shows UI switching.

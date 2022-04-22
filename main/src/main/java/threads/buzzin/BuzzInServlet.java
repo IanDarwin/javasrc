@@ -1,5 +1,8 @@
 package threads.buzzin;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /*
  * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
@@ -39,10 +42,13 @@ package threads.buzzin;
  * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
  * inventing predecessor languages C and C++ is also gratefully acknowledged.
  */
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /** A quiz-show "buzzer" servlet: the first respondant wins the chance
  * to answer the skill-testing question. 

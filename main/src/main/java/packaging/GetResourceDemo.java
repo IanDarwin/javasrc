@@ -1,7 +1,8 @@
 package packaging;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /** Show using classLoader.getResource() to load a file.
  * This is required under Java Web Start.

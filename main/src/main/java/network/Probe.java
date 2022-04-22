@@ -1,6 +1,7 @@
 package network;
 
-import java.net.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 /**
  * Probe a network address for useful information.
  */

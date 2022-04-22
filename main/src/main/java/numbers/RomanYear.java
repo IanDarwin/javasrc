@@ -1,6 +1,6 @@
 package numbers;
 
-import java.util.*;
+import java.util.Calendar;
 
 /** Print the current year in Roman Numerals */
 // tag::main[]

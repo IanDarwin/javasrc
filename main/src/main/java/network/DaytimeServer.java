@@ -1,7 +1,9 @@
 package network;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * DaytimeServer - server for the standard binary time service.

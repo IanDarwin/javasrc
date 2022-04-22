@@ -1,7 +1,7 @@
 package functional;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Collectors.mapMulti is like flatmap but allows to create a different-sized list.
@@ -15,7 +15,6 @@ public class MapMultiDemo {
 	public static void main(String[] args) {
 		List<Double> usPrices = List.of(100d, 250d, 0d, 400d, 1200d, 6000d);
 		System.out.println(usPrices);
-		double averagePrice = 0;
 		List<Double> cdnPrices = usPrices.stream().
 			<Double>mapMulti((price,consumer) -> { 
 				if (price > 0) {

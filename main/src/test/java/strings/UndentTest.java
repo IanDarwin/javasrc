@@ -1,6 +1,10 @@
 package strings;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.StringReader;
 
 import junit.framework.TestCase;
 

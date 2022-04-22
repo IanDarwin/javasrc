@@ -1,8 +1,9 @@
 package xcolor;
 
+import static org.junit.Assert.assertEquals;
+
 import java.awt.Color;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 /** Test for XColor */

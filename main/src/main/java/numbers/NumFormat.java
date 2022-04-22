@@ -1,7 +1,7 @@
 package numbers;
 
-import java.text.*;
-import java.util.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /** JDK1.1 introduced a series of Formatting classes that
  * format various items in locale-appropriate ways

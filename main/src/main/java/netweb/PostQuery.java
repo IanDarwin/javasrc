@@ -1,11 +1,17 @@
 package netweb;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.io.*;
-import java.net.*;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+
+import javax.swing.JFrame;
 
 /**
  * Simple demonstration of posting to a query form cgi on a Web server.
@@ -19,10 +25,10 @@ public class PostQuery {
 	private static String serverURL;
 
 	public static void main(String[] args) {
-		PostQuery program = new PostQuery(args.length == 1 ? args[0] : null);
+		PostQuery postQuery = new PostQuery(args.length == 1 ? args[0] : null);
 		JFrame jf = new JFrame("PostQuery");
 		jf.add(goButton = new Button("Go for it!"));
-		goButton.addActionListener(PostQuery::actionPerformed);
+		goButton.addActionListener(postQuery::actionPerformed);
 		jf.setSize(200, 100);
 		jf.setLocation(100, 100);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +41,7 @@ public class PostQuery {
 				"http://server/cgi-bin/test-cgi.pl";
 	}
 
-	public static void actionPerformed(ActionEvent evt) {
+	public void actionPerformed(ActionEvent evt) {
 		try {
 			URL myNewURL;
 			showStatus("Building URL " + serverURL);

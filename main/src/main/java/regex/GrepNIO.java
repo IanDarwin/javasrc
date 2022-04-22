@@ -1,10 +1,13 @@
 package regex;
 
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.util.regex.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** A grep-like program using NIO but NOT LINE BASED.
  * Pattern and file name(s) must be on command line.

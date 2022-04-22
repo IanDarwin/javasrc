@@ -1,6 +1,8 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Read a file by name and process a line at a time, the Java 8+ way,

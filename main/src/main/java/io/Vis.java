@@ -1,6 +1,10 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Vis - make special characters visible.

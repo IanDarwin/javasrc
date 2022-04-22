@@ -1,8 +1,12 @@
 package network;
 
-import java.awt.*;
-import java.io.*;
-import java.net.*;
+import java.awt.Frame;
+import java.awt.TextArea;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 /**
  * EchoGui - create client socket, do I-O on it.

@@ -1,9 +1,11 @@
 package sched;
 
-// XXX need to move "selection" logic from CalMonth to Cal
-
-import javax.swing.*;
 import java.awt.GridLayout;
+
+// XXX need to move "selection" logic from CalMonth to Cal
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /** This CalDay is just a prototype!!
  */

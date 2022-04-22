@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * CanonEqDemo - show use of Pattern.CANON_EQ, by comparing varous ways of

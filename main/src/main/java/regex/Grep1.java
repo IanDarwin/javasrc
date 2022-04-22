@@ -1,7 +1,11 @@
 package regex;
 
-import java.util.regex.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** A command-line grep-like program. No options, but takes a pattern
  * and an arbitrary list of text files.

@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * Simple example of using RE class.

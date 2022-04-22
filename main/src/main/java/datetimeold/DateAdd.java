@@ -1,6 +1,6 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Date;
 
 /** DateAdd -- compute the difference between two dates
  * (today and 700 days ago).

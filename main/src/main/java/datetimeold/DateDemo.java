@@ -1,7 +1,7 @@
 package datetimeold;
 
-import java.text.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /** Show some date uses */
 public class DateDemo {

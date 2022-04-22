@@ -1,7 +1,8 @@
 package i18n;
 
-import java.text.*;
-import java.util.*;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
 
 /** Format some values using the default locale */
 public class UseDefaultLocale {

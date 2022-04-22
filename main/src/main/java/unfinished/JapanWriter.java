@@ -1,6 +1,8 @@
 package unfinished;
 
-import java.io.*;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 public class JapanWriter {
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		PrintWriter out = new PrintWriter(

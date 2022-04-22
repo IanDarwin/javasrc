@@ -1,10 +1,12 @@
 package structure;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class SimpleFixedLengthQueueTest {
 	
