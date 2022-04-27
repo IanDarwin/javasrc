@@ -1,6 +1,8 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Read and print, using BufferedReader from System.in, onto System.out

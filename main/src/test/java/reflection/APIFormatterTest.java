@@ -9,7 +9,8 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class APIFormatterTest {
 	String fileName;

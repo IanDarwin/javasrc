@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 public class PhoneNumberValidator {
 	/* This seems to handle most any valid North American 10-digit number */

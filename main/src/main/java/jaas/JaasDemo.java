@@ -96,7 +96,7 @@ public class JaasDemo {
 	void login() {
 		System.out.println("JaasDemo.login()");
 		try {
-			Class.forName("com.sun.security.auth.module.UnixLoginModule");
+			//Class.forName("com.sun.security.auth.module.UnixLoginModule");
 			// The Unix (and NT?) login modules use the fact that you
 			// must be logged in before you can run anything, so they
 			// never prompt. But here's a demo of a login prompter anyway.
@@ -113,7 +113,7 @@ public class JaasDemo {
 		} catch (LoginException e) {
 			JOptionPane.showMessageDialog(theFrame,
 					"Login Failed!\n" + "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			JOptionPane.showMessageDialog(theFrame,
 					"Could not find login module " + e, "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -127,7 +127,6 @@ public class JaasDemo {
 			// (can't set it sooner because then you won't have
 			// permission to create the login context...)
 			System.setSecurityManager(new SecurityManager());
-
 
 			// Should be able to read
 			new FileReader(LOGINCONFIG_FILENAME).close();

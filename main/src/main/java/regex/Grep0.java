@@ -1,7 +1,10 @@
 package regex;
 
-import java.io.*;
-import java.util.regex.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** Grep0 - Match lines from stdin against the pattern on the command line.
  */

@@ -1,6 +1,8 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 /**
  * Read an int in String format from Standard Input
  * (to read binary data, use DataInputStream::readInt()).

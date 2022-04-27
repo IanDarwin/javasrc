@@ -1,6 +1,6 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
 
 /**
  * Get date/time using a Calendar.

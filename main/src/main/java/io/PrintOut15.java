@@ -1,6 +1,7 @@
 package io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * As of Java 5 you can construct a PrintWriter with just a file name...

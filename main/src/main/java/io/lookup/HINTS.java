@@ -1,8 +1,9 @@
 package io.lookup;
 
-import java.io.*;
-import java.util.*;
-import java.util.zip.*;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.zip.ZipFile;
 
 /**
  * MakeList makes the properties list for the Lookup program.

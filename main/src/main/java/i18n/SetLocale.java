@@ -1,7 +1,9 @@
 package i18n;
 
-import java.text.*;
-import java.util.*;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /** Change the default locale */
 // tag::main[]

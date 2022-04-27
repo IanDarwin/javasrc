@@ -1,6 +1,6 @@
 package xcolor;
 
-import java.awt.*;
+import java.awt.Color;
 
 /** A Color subclass that provides all the RGB color names from 
  * The X Window System rgb.txt color database.

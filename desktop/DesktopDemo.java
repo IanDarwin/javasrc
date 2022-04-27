@@ -1,5 +1,7 @@
 package desktop;
+
 import java.awt.Desktop;
+import java.net.URI;
 
 public class DesktopDemo {
 
@@ -13,7 +15,7 @@ public class DesktopDemo {
         }
 
         if (desktop.isSupported(Desktop.Action.BROWSE)) {
-            desktop.browse(new java.net.URI("https://darwinsys.com/"));
+            desktop.browse(new URI("https://darwinsys.com/"));
         } else {
         	System.err.println("no browser support");
         }

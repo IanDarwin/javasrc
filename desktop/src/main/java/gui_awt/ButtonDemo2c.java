@@ -23,7 +23,7 @@ public class ButtonDemo2c extends Panel {
 		});
 	}
 
-	/** Cheesy showStatus replacement for Applet migration */
+	/** Cheesy showStatus migration aid. */
 	public void showStatus(String s) {
 		JOptionPane.showMessageDialog(null, s);
 	}

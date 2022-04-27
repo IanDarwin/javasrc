@@ -276,6 +276,8 @@ public class LinkButton extends JPanel implements MouseListener {
 			ta.setText("Failed to load " + targetURL + " due to " + e);
 		}
 		JFrame jf = new JFrame(targetURL.toString());
+		jf.add(ta);
+		jf.setVisible(true);
 	}
 	
 	void showStatus(String message) {

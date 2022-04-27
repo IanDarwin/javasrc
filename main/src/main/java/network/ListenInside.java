@@ -1,7 +1,9 @@
 package network;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * ListenInside -- make a server socket that listens only on

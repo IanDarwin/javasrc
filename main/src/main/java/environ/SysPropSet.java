@@ -1,6 +1,6 @@
 package environ;
 
-import java.util.*;
+import java.util.Properties;
 /**
  * Try adding one or more item(s) to class path.
  */

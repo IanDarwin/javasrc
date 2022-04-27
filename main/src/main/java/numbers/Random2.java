@@ -1,6 +1,6 @@
 package numbers;
 
-import java.util.*;
+import java.util.Random;
 
 /** Demonstrate the better way of getting random numbers,
  * using java.util.Random.next*().

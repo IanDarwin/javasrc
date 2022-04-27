@@ -1,7 +1,8 @@
 package network;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Listen -- make a ServerSocket and wait for connections.

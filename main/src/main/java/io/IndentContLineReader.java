@@ -1,6 +1,7 @@
 package io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
 
 /** Subclass of ContLineReader for lines continued by indentation of
  * following line (like RFC822 mail, Usenet News, etc.).

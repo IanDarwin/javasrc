@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.List;
 
 // Show List.of() method as well as new List.forEach with a method ref
 public class MethodRefs {

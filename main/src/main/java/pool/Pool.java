@@ -1,6 +1,8 @@
 package pool;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 
 /** A reusable object pool.
  * Clients must provide an implementation of PoolFactory to
@@ -52,10 +54,9 @@ public class Pool {
 		inUse.set(IX);
 
 		// Now bump "take" counter
-		Object tmp;
 		do {
 			IX++;
-			tmp = pool.get(IX);
+			pool.get(IX);
 		} while (IX < pool.size() && inUse.get(IX));
 
 		// Return the one we first got.

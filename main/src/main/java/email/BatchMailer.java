@@ -1,8 +1,11 @@
 package email;
 
-import java.io.*;
-import java.util.*;
-import javax.mail.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.mail.MessagingException;
 
 import com.darwinsys.mail.Mailer;
 

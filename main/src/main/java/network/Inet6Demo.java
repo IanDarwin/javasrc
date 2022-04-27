@@ -1,7 +1,10 @@
 package network;
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Inet6Address;
+import java.net.Socket;
 
 public class Inet6Demo {
 	/** A well-known port that often listens on IPV4 and IPV6 */

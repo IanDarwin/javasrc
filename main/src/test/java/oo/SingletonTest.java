@@ -1,6 +1,6 @@
 package oo;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 /** Some JUnit test cases for the Singleton demo.
  */

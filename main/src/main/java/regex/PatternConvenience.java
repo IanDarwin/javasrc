@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * PatternConvenience -- demonstrate java.util.regex.Pattern convenience routine

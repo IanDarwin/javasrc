@@ -1,6 +1,7 @@
 package lang;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /** Java's memory model allows the JVM to re-order operations (e.g., for
  * optimization purposes) so long as the thread performing those operations

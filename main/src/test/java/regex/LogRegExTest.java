@@ -1,11 +1,13 @@
 package regex;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class LogRegExTest {
 	Pattern p;

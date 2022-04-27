@@ -4,8 +4,9 @@ package textproc;
 // See full docu-comment at beginning of Diff class.
 
 // $Id$
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /** This is the info kept per-file.     */
 class fileInfo {		

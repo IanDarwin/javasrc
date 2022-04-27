@@ -1,6 +1,6 @@
 package oo;
 
-import java.util.*;
+import java.util.Calendar;
 
 /**
  * Simple demo of avoiding side-effects by using Object.clone()

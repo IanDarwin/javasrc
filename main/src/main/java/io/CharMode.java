@@ -1,6 +1,8 @@
 package io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Read a file in character mode - maximally inefficient.

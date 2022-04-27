@@ -1,6 +1,8 @@
 package io;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 
 /**
  * "Redirect" or reassign some standard descriptors.

@@ -1,6 +1,7 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /** Show use of Calendar objects */
 public class GregCalDemo {

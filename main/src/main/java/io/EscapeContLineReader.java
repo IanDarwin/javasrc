@@ -1,6 +1,7 @@
 package io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
 
 /** Subclass of LineNumberReader to allow reading of lines continued
  * with an escape character.

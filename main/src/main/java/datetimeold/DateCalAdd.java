@@ -1,7 +1,7 @@
 package datetimeold;
 
-import java.text.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /** DateCalAdd -- compute the difference between two dates.
  */

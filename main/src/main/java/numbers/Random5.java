@@ -1,7 +1,8 @@
 package numbers;
 
-import java.util.*;
-import java.io.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

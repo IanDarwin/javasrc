@@ -1,7 +1,8 @@
 package i18n;
 
-import java.text.*;
-import java.util.*;
+import java.text.MessageFormat;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 // tag::main[]
 public class MessageFormatDemoIntl {

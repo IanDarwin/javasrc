@@ -1,6 +1,6 @@
 package io;
 
-import java.io.*;
+import java.io.PrintWriter;
 
 /** Print to the standard output */
 public class PrintStandardOutput {

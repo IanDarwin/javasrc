@@ -1,6 +1,6 @@
 package reflection;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
 /**
  * You can modify the final fields of a class, but the results are not optimal.

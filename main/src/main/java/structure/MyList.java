@@ -16,7 +16,7 @@ public interface MyList {
 	int size();
 
 	/** Default implementation of forEach. */
-	default void forEach(Consumer c) {
+	default void forEach(Consumer<Object> c) {
 		for (int i = 0; i < size(); i++) {
 			Object o = get(i);
 			c.accept(o);

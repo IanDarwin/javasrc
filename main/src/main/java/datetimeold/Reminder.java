@@ -1,6 +1,6 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Date;
 /**
  * Beep every 5 minutes.
  * @author Ian F. Darwin, http://www.darwinsys.com/

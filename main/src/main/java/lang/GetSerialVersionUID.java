@@ -1,7 +1,7 @@
 package lang;
 
-import java.io.Serializable;
 import java.io.ObjectStreamClass;
+import java.io.Serializable;
 
 /**
  * This program shows how to use getSerialVersionUID for a class. Because it

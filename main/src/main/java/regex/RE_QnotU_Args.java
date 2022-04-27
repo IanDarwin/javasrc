@@ -1,6 +1,7 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Match the "Q[^u] pattern against strings from command line.

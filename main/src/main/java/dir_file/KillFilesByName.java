@@ -1,6 +1,6 @@
 package dir_file;
 
-import java.io.*;
+import java.io.File;
 /**
  * DANGEROUS Program to remove files matching a name in a directory
  * @author	Ian Darwin, http://www.darwinsys.com/

@@ -1,6 +1,7 @@
 package oo.interfaces;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * BuildingManagement - control an energy-saving building.
