@@ -10,19 +10,32 @@ import java.util.Arrays;
  * a term oft used in puzzles like Spelling Bee to refer to a word
  * that uses all letters in the given alphabet.
  * A perfect pangram is a pangram that uses each letter exactly once.
- * And yes, it lets you cheat at Spelling Bee, but where's the challenge in that?
+ * And yes, this program lets you cheat at Spelling Bee, but where's the challenge in that?
+ * So, use it to check your work *after* you finish playing.
+ * @author Ian Darwin https://darwinsys.com/java/
  */
 public class PerfectPangram {
 	private final boolean DEBUG = false;
 	public static final String DEF_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 	public static final boolean DEFAULT_SEEK_PERFECTION = false;
-	private boolean perfect = false;
+	private final boolean perfect;
 	final char[] alphabet;
 	private final int alphabetLen;
 
 	public PerfectPangram(String alphabet, boolean perfect) {
-		this.alphabet = alphabet.toCharArray();
-		this.alphabetLen = alphabet.length();
+		// In case input alphabet has repeated letters ("confetti")
+		boolean[] tmp = new boolean[26];
+		for (char c : alphabet.toLowerCase().toCharArray()) {
+			tmp[c - 'a'] = true;
+		}
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < 26; i++) {
+			if (tmp[i]) {
+				sb.append((char)(i + 'a'));
+			}
+		}
+		this.alphabet = sb.toString().toCharArray();
+		this.alphabetLen = this.alphabet.length;
 		this.perfect = perfect;
 	}
 
