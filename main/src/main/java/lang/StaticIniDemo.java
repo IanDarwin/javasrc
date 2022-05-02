@@ -2,31 +2,32 @@ package lang;
 
 /**
  * Show static initializers. These are run when the class is loaded.
- * If you run the main program here, you will see the static
- * initializer before the "About to load class", since the class
- * is loaded before main gets run. If you copy the guts of main into
- * another class, the messages will come out in the "expected" order.
+ *
+ * Uses Reflection instead of calling constructor just to show ordering.
  *
  * @author Ian F. Darwin, http://www.darwinsys.com/
  */
 public class StaticIniDemo {
 
-	/** A static initializer - called when class is loaded. */
-	static {
-		System.out.println("In static initializer");
-	}
+	public static class InnerDemo {
 
-	/** A constructor -- called when object is instantiated. */
-	public StaticIniDemo() {
-		System.out.println("In Constructor");
+		/** A static initializer - called when class is loaded. */
+		static {
+			System.out.println("InnerDemo: static initializer");
+		}
+
+		/** A constructor -- called when object is instantiated. */
+		public InnerDemo() {
+			System.out.println("InnerDemo: Constructor");
+		}
 	}
 
 	public static void main(String[] a) {
 		try {
-			System.err.println("About to load class");
-			Class<?> c = Class.forName("StaticIniDemo");
-			System.err.println("About to construct instance");
-			Object sd = c.newInstance();
+			System.err.println("Main: About to load class");
+			Class<?> c = Class.forName("lang.StaticIniDemo$InnerDemo");
+			System.err.println("Main: About to construct instance of " + c);
+			Object sd = c.getConstructor().newInstance();
 			System.err.println("Object is " + sd);
 		} catch (Exception e) {
 			e.printStackTrace();
