@@ -24,7 +24,7 @@ public class IntegerTest5 {
 	
 	@Test
 	public void testAdd() {
-		assertEquals(4, 2 + 2);
+		assertEquals(4, 2 + 2, "You can't add!");
 	}
 
 	@Test
