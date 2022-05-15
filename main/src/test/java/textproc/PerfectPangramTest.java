@@ -54,4 +54,10 @@ public class PerfectPangramTest {
 		assertTrue(tester.pangramSentence("The quick brown foxes jumped over the lazy dog"));
 		assertTrue(tester.pangramSentence("Few may back quirky judge who rips galvanized text"));
 	}
+
+	@Test
+	public void testRepeatedLettersInAlphabet() {
+		tester = new PerfectPangram("confetti");
+		assertTrue(tester.pangram("confetti"));
+	}
 }
