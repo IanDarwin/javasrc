@@ -1,5 +1,13 @@
-jikes LoopFor.java
-javap -c Loops > loopfor.txt
-jikes LoopWhile.java
-javap -c Loops > loopwhile.txt
+#!/bin/sh
+
+set -x
+
+javac -d . LoopFor.java
+javap -c lang.loops.LoopFor > loopfor.txt
+
+javac -d . LoopWhile.java
+javap -c lang.loops.LoopWhile > loopwhile.txt
+
 diff loop*.txt
+
+rm -r lang *.txt
