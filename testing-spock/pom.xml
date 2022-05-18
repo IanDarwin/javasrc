@@ -20,9 +20,6 @@
 
 	<dependencies>
 
-		<!-- JUnit 5 with 4 compat.
-		 *** Some are scope=compile for the testing tests :-)
-		 -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -40,14 +37,18 @@
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
 			<version>5.7.1</version>
-			<scope>compile</scope>
 		</dependency>
-		<!-- More JUnit4 -->
+
+		<!-- Mandatory dependencies for using Spock -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>compile</scope>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.spockframework</groupId>
+		  <artifactId>spock-junit4</artifactId>
+		  <scope>test</scope>
 		</dependency>
 
         <dependency>
@@ -122,4 +123,15 @@
 		</plugins>
 	</build>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.spockframework</groupId>
+        <artifactId>spock-bom</artifactId>
+        <version>2.0-groovy-3.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

@@ -1,9 +1,9 @@
 package domain;
 
-// tag::main[]
-import javax.persistence.*;
+// import javax.persistence.*;
 
-@Entity
+// tag::main[]
+// @Entity
 public class Address {
 
     private int id;
@@ -12,7 +12,7 @@ public class Address {
     private String city;
     private String country;
 
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    // @Id @GeneratedValue(strategy=GenerationType.AUTO)
     public int getId() {
         return id;
     }

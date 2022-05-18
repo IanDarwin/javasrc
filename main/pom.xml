@@ -24,6 +24,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
+					<!-- World may not be ready for latest Java yet; 
+						these are excludes for earlier-dependent stuff -->
 					<excludes>
 
 						<!-- Preview -->
@@ -130,29 +132,6 @@
 			<version>5.0.5.RELEASE</version>
 		</dependency>
 
-		<!-- JPA needing a driver, let's use Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.3.0.Beta1</version>
-			<exclusions>
-				<exclusion>
-					 <groupId>xml-apis</groupId>
-					 <artifactId>xml-apis</artifactId>
-				</exclusion>
-			 </exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.3.0.Beta1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.1.5.Final</version>
-		</dependency>
-
 		<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
@@ -160,21 +139,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>swt</artifactId>
-			<version>3.3.0-v3346</version>
-		</dependency>
-
-		<dependency>
-			<groupId>jgoodies</groupId>
-			<artifactId>forms</artifactId>
-			<version>1.0.5</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant</artifactId>
-			<version>1.10.9</version>
+			<version>1.10.11</version>
 		</dependency>
 
 		<dependency>
