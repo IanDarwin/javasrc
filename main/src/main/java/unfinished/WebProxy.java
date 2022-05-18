@@ -1,7 +1,14 @@
 package unfinished;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.URL;
 import java.util.StringTokenizer;
 
 /**
@@ -41,7 +48,6 @@ public class WebProxy {
 	protected void handle() {
 		Socket ios = null;
 		BufferedReader is = null;
-		PrintWriter os = null;
 		while (true) {
 			try {
 				System.out.println("Waiting for client...");
@@ -50,14 +56,14 @@ public class WebProxy {
 					ios.getInetAddress().getHostName());
 				is = new BufferedReader(
 					new InputStreamReader(ios.getInputStream(), "8859_1"));
-				OutputStream out = ios.getOutputStream();
+				// OutputStream out = ios.getOutputStream();
 				String request = is.readLine();
 				// loop, parsing headers and adding to URL
 				StringTokenizer st = new StringTokenizer(request);
-				String command = st.nextToken();
+				st.nextToken();
 				String URL = st.nextToken();
-				String proto = st.nextToken();
 				System.out.println("URL = " + URL);
+				st.nextToken();
 
 				URL url = new URL(URL);	// map String to java.net.URL
 				

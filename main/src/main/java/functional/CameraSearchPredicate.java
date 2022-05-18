@@ -21,7 +21,7 @@ public class CameraSearchPredicate {
 	
 	public static void main(String[] args) {
 		CameraSearchPredicate searchApp = new CameraSearchPredicate();
-		List<Camera> results = searchApp.search(c -> c.isIlc() && c.getPrice() < 500);
+		List<Camera> results = searchApp.search(c -> c.isIlc() && c.price() < 500);
 		System.out.println(results);
 	}
 }

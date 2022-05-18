@@ -33,8 +33,8 @@ public class XPathMulti {
 		NodeList list = (NodeList)xpath.evaluate(
 			expression, document, XPathConstants.NODESET);
 		for (int i = 0; i < list.getLength(); i++) {
-			Object secNum = list.item(i);
-			System.out.printf("Sect num = %s (a %s)", secNum, secNum.getClass());
+			Node secNum = list.item(i);
+			System.out.printf("Sect num = %s (a %s)\n", secNum.getTextContent(), secNum.getClass());
 		}
 	}
 }

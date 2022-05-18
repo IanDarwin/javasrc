@@ -1,6 +1,7 @@
 package otherlang;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 /*
  * create some temp files, ls them, and rm them

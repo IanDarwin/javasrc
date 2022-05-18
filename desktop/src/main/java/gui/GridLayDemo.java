@@ -4,6 +4,7 @@ import java.awt.Button;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /** Simple GridLayout demo program. */
@@ -29,4 +30,12 @@ public class GridLayDemo extends JPanel {
 	ActionListener al = ev -> {
 		System.out.println("You pressed " + ev.getActionCommand());
 	};
+
+	public static void main(String[] args) {
+		JFrame jf = new JFrame("GridLayDemo");
+		jf.add(new GridLayDemo());
+		jf.setBounds(100, 100, 200, 200);
+		jf.setVisible(true);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 }

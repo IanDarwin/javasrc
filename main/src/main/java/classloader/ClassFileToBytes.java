@@ -1,6 +1,9 @@
 package classloader;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Read a file and print in compileable byte[] format.

@@ -146,11 +146,7 @@ public class MailReaderBean extends JSplitPane {
 			for (Message ms : msgs) {
 				MessageNode m = new MessageNode(ms);
 				Address from = m.m.getFrom()[0];
-				String fromAddress;
-				if (from instanceof InternetAddress)
-					fromAddress = ((InternetAddress)from).getAddress();
-				else
-					fromAddress = from.toString();
+				ms.setFrom(from);
 				top.add(new MessageNode(ms));
 			}
 		}

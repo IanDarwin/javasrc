@@ -13,6 +13,19 @@ import javax.swing.JOptionPane;
 
 import com.darwinsys.swingui.FontChooser;
 
+	/*
+	XXX To load a font file dynamically:
+	InputStream inputStream = new FileInputStream("/home/ian/fonts/ttf/primer print bold.ttf");
+	Font f = Font.createFont(0, inputStream);
+	 */
+
+	/*
+	XXX Make UI better: put FontChooser into JPanel instead of dialog
+	*/
+
+/**
+ * Demo of my FontChooser class
+ */
 public class FontChooserDemo {
 	
 	static String sampleText = "Few grips galvanized text";

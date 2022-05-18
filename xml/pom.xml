@@ -7,6 +7,7 @@
 		<groupId>com.darwinsys</groupId>
 		<artifactId>javasrc</artifactId>
 		<version>1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>javasrc-xml</artifactId>
@@ -35,19 +36,7 @@
 
 	<dependencies>
 
-		<dependency>
-				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
-				<version>2.0.6</version>
-		</dependency>
-
-		<dependency>
-			<groupId>xml-resolver</groupId>
-			<artifactId>xml-resolver</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- JAXB... deleted from Java SE -->
+		<!-- JAXB deleted from Java SE 9+, needs module or this: -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
@@ -62,6 +51,29 @@
 			<groupId>com.sun.istack</groupId>
 			<artifactId>istack-commons-runtime</artifactId>
 			<version>3.0.8</version>
+		</dependency>
+
+
+		<!--
+		JDOM is commented out until/unless they push a fix for CVE-2021-33813 to Maven Central.
+		<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>2.0.6</version>
+		</dependency>
+		-->
+
+		<!-- https://mvnrepository.com/artifact/xalan/xalan -->
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-resolver</groupId>
+			<artifactId>xml-resolver</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 	</dependencies>

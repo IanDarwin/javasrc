@@ -1,7 +1,9 @@
 package numbers;
 
-import java.util.*;
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
 
 /** Print "n" calls to nextDouble() and nextGaussian() in raw form
  * using java.util.Random.next*(); results can be plotted (for example,

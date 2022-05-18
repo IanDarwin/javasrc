@@ -7,6 +7,7 @@
 		<groupId>com.darwinsys</groupId>
 		<artifactId>javasrc</artifactId>
 		<version>1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>javasrc-sparkdemo</artifactId>
@@ -37,7 +38,7 @@
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.12</artifactId>
-			<version>2.4.4</version>
+			<version>3.2.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

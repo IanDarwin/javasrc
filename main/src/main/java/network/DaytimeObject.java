@@ -1,8 +1,10 @@
 package network;
 
-import java.io.*;
-import java.net.*;
-import java.time.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
+import java.time.LocalDateTime;
 
 /**
  * DaytimeObject - connect to the non-standard Time (LocalDateTime object) service.

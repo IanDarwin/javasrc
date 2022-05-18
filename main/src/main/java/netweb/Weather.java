@@ -1,7 +1,15 @@
 package netweb;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ContentHandler;
+import java.net.ContentHandlerFactory;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import com.darwinsys.io.FileIO;
 

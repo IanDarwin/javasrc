@@ -1,6 +1,7 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  * Show dates before 1970.
  * @author Ian F. Darwin, http://www.darwinsys.com/

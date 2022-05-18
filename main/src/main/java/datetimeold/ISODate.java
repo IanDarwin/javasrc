@@ -1,8 +1,8 @@
 package datetimeold;
 
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /** Demonstrate a couple of ways to format an ISO 8601 date */
 public class ISODate {

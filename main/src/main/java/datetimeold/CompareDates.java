@@ -1,7 +1,9 @@
 package datetimeold;
 
-import java.util.*;
-import java.text.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CompareDates {
 	public static void main(String[] args) throws ParseException {

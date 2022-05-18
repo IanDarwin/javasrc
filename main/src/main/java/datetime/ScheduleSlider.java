@@ -1,6 +1,7 @@
 package datetime;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * Print a slipping schedule for adjusting to timezone changes, an hour per day,

@@ -1,7 +1,8 @@
 package datetimeold;
 
-import java.util.*;
-import java.text.*;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /** The "best" way to format a date/time is to use
  * the DateFormat.getInstance() method, which will

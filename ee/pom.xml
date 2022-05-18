@@ -3,10 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<properties>
+		<javase.version>11</javase.version>
+	</properties>
+
 	<parent>
 		<groupId>com.darwinsys</groupId>
 		<artifactId>javasrc</artifactId>
 		<version>1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>javasrc-ee</artifactId>
@@ -26,6 +31,8 @@
 				<source>11</source>
 				<target>11</target>
 				<excludes>
+					<!-- javax.ws.soap not in modern JDKs -->
+					<exclude>jaxwsclient/CalcIntegTest.java</exclude>
 					<!-- PDFLib Library is proprietary AND no Maven artifact, so give up -->
 					<exclude>servlet/pdfcouponservlet/PDFCouponServlet.java</exclude>
 					<!-- Add a comment WHY this is being excluded -->
@@ -40,12 +47,20 @@
 
 	<dependencies>
 
-	<!-- Java EE current (7) full -->
+	<!-- Java EE current full -->
 	<dependency>
 		<groupId>javax</groupId>	
 		<artifactId>javaee-api</artifactId>	
-		<version>8.0</version>
+		<version>8.0.1</version>
 	</dependency> 
+
+	<!-- Somehow needs jaxws on top?? -->
+	<dependency>
+		<groupId>com.sun.xml.ws</groupId>
+		<artifactId>jaxws-ri</artifactId>
+		<version>2.3.5</version>
+		<type>pom</type>
+	</dependency>
 
 	<!-- My little add-ons to EE -->
 	<dependency>
@@ -63,26 +78,31 @@
 
 	<!-- JAX-WS JDK 11+ needs this -->
 	<dependency>
+		<groupId>javax.jws</groupId>
+		<artifactId>javax.jws-api</artifactId>
+		<version>1.1</version>
+	</dependency>
+	<dependency>
 		<groupId>com.sun.xml.ws</groupId>
 		<artifactId>rt</artifactId>
-		<version>2.3.1</version>
+		<version>3.0.2</version>
 	</dependency>
 
 	<!-- JPA needing a driver, let's use Hibernate -->
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.orm</groupId>
 		<artifactId>hibernate-core</artifactId>
-		<version>4.0.1.Final</version>
+		<version>6.0.0.Beta2</version>
 	</dependency>
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.orm</groupId>
 		<artifactId>hibernate-entitymanager</artifactId>
-		<version>4.0.1.Final</version>
+		<version>6.0.0.Alpha7</version>
 	</dependency>
 	<dependency>
-		<groupId>org.hibernate</groupId>
+		<groupId>org.hibernate.validator</groupId>
 		<artifactId>hibernate-validator</artifactId>
-		<version>5.3.6.Final</version>
+		<version>7.0.1.Final</version>
 	</dependency>
 
 	</dependencies>

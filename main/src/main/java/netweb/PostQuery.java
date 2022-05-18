@@ -1,33 +1,49 @@
 package netweb;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import java.io.*;
-import java.net.*;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+
+import javax.swing.JFrame;
 
 /**
  * Simple demonstration of posting to a query form cgi on a Web server.
  * @author 		Ian Darwin, http://www.darwinsys.com/
  * @copyright 	1997, Ian Darwin, Ontario, Canada
- * @see			http://www.learningtree.com/us/courses/471.htm
  */
-public class PostQuery extends Applet implements ActionListener{
+public class PostQuery {
 
 	private static final long serialVersionUID = 3258128046665315634L;
-	protected Button goButton;
+	private static Button goButton;
+	private static String serverURL;
 
-	public PostQuery() {
-		add(goButton = new Button("Go for it!"));
-		goButton.addActionListener(this);
+	public static void main(String[] args) {
+		PostQuery postQuery = new PostQuery(args.length == 1 ? args[0] : null);
+		JFrame jf = new JFrame("PostQuery");
+		jf.add(goButton = new Button("Go for it!"));
+		goButton.addActionListener(postQuery::actionPerformed);
+		jf.setSize(200, 100);
+		jf.setLocation(100, 100);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setVisible(true);
+		showStatus("Ready");
+	}
+
+	public PostQuery(String url) {
+		this.serverURL = url != null ? url :
+				"http://server/cgi-bin/test-cgi.pl";
 	}
 
 	public void actionPerformed(ActionEvent evt) {
 		try {
 			URL myNewURL;
-			String serverURL = getParameter("serverURL");
-			if (serverURL == null)
-				serverURL = "http://server/cgi-bin/test-cgi.pl";
 			showStatus("Building URL " + serverURL);
 			myNewURL = new URL(serverURL);
 
@@ -58,13 +74,16 @@ public class PostQuery extends Applet implements ActionListener{
 			while ((newReq = is.readLine()) != null) {
 				System.out.println("Response = " + newReq);
 			}
-			showStatus("Look for results in the console window");
 			is.close();
 
 		} catch (Exception err) {
 			showStatus("Error, look in Java Console for details!");
 			System.err.println("Error!\n" + err);
 		}
+	}
+
+	public static void showStatus(String s) {
+		System.out.println("Status: " + s);
 	}
 	
 	private static boolean first = true;

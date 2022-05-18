@@ -3,12 +3,13 @@ package webproxy;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
-import java.util.concurrent.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import com.darwinsys.util.FileProperties;
 
 /**
- * HttpConcurrent - Httpd Subclass using java.lang.concurrent
+ * HttpConcurrent - Httpd Subclass using java.util.concurrent
  */
 public class WebProxy {
 	/** The default port number; the same as "squid" uses. */

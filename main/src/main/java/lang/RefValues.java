@@ -1,6 +1,7 @@
 package lang;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /** 
  * RefValues - program to show Reference values vs scalars.

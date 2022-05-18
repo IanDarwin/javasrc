@@ -1,6 +1,6 @@
 package io;
 
-import java.io.*;
+import java.io.PrintStream;
 
 /**
  * Multiple lines output from one method.

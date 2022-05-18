@@ -1,6 +1,6 @@
 package regex;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /** Split a String into a Java Array of Strings divided by an RE
  */

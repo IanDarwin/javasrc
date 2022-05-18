@@ -1,6 +1,6 @@
 package strings;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
 /**
  * If this class RUNS without exception, Java security is a myth.

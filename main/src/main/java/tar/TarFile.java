@@ -1,7 +1,11 @@
 package tar;
 
-import java.io.*;
-import java.util.*;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tape Archive Lister, patterned loosely after java.util.ZipFile.

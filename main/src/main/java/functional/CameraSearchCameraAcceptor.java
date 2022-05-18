@@ -27,11 +27,11 @@ public class CameraSearchCameraAcceptor {
 		// Writing it using the anonymous inner class
 		List<Camera> results = searchApp.search(new CameraAcceptor() {
 	        public boolean choose(Camera c) {
-	            return c.isIlc() && c.getPrice() < 500;
+	            return c.isIlc() && c.price() < 500;
 	        }
 	    });
 		// Writing it as a Lambda expression:
-		results = searchApp.search(c -> c.isIlc() && c.getPrice() < 500);
+		results = searchApp.search(c -> c.isIlc() && c.price() < 500);
 		System.out.println(results);
 	}
 }

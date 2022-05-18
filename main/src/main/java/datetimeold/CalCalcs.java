@@ -1,6 +1,6 @@
 package datetimeold;
 
-import java.util.*;
+import java.util.Calendar;
 /**
  * Show some calendar calculations.
  * @author Ian F. Darwin, http://www.darwinsys.com/

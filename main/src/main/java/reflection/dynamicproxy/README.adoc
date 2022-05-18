@@ -1,0 +1,15 @@
+= Reflection.dynamicproxy
+
+There are three "main program" demos here:
+
+. ManualProxy - creates the proxy "by hand"
+
+. DynamicProxyDemo - uses the JavaSE dynamic proxy mechanism
+
+. DynamicProxyFactory - similar but with explicit use of factory pattern
+
+Other stuff here:
+
+* QuoteServer - the interface exposed by the server (and its proxies);
+* QuoteServerImpl - what it says on the tin
+* InvocationHandler - the tie-in with the dynamic proxy mechanism

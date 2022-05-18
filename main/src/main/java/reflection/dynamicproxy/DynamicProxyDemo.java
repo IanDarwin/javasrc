@@ -14,7 +14,10 @@ import java.lang.reflect.Proxy;
 public class DynamicProxyDemo {
 
 
-	/** Here we show the whole thing in operation. */
+	/** Here we show the whole thing in operation;
+	 * It looks like we're just talking to the quote server,
+	 * but we're actually talking to it through the proxy.
+	 */
 	public static void main(String[] args) {
 
 		QuoteServer quoteServer = getQuoteServer();
@@ -26,7 +29,9 @@ public class DynamicProxyDemo {
 
 	public static QuoteServer getQuoteServer() {
 		QuoteServer objectBeingProxied = new QuoteServerImpl();
-		InvocationHandler handler = new MyInvocationHandler(objectBeingProxied);
+		InvocationHandler handler =
+				new MyInvocationHandler(objectBeingProxied);
+		// Use JavaSE Proxy class to create the proxy
 		return (QuoteServer) Proxy.newProxyInstance(
 			QuoteServer.class.getClassLoader(),
             new Class[] { QuoteServer.class }, handler);

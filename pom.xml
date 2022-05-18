@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<javase.version>11</javase.version>
+		<javase.version>17</javase.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
@@ -26,7 +26,9 @@
 		<darwinsys-api.version>1.5.14</darwinsys-api.version>
 		<!-- Only used in some modules, worth defining here anyway -->
 		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
-		<junit.version>[4.13.1,)</junit.version>
+		<junit4.version>[4.13.1,)</junit4.version>
+		<junit5.version>5.8.1</junit5.version>
+		<mockito.version>3.12.4</mockito.version>
 	</properties>
 
 	<modules>
@@ -36,6 +38,7 @@
 	<!-- <module>graal</module> Only works with graal vm-->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
+	<!-- <module>lombokdemo</module> doesn't build properly yet -->
 		<module>restdemo</module>
 		<!-- sidebyside is NOT a Maven module - contains non-Java stuff -->
 		<module>spark</module>
@@ -45,6 +48,24 @@
 		<module>xml</module>
 	</modules>
 
+	<build>
+		<plugins>
+			<!-- Ensure that JUnit5 test runner is used -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit-platform</artifactId>
+						<version>3.0.0-M5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<!-- My own Java API potpourri -->
 		<dependency>
@@ -53,36 +74,44 @@
 			<version>${darwinsys-api.version}</version>
 		</dependency>
 
-		<!-- Test early and often -->
+		<!-- Test early and often...  JUnit 5 with 4 compat.
+		 -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version><!-- Keep in sync with Eclipse JUnit4 library -->
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit5.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit5.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit5.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Backwards compat: IF you have a mix of JUnit 4 and 5 tests, you should add this: -->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit5.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.4.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>4.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>4.0.0</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+        </dependency>
+
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
-			<version>2.1</version>
+			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -90,12 +119,24 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.13.0</version>
+			<version>2.17.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.13.2</version>
+			<version>2.17.1</version>
+		</dependency>
+
+		<!-- JAXB deleted from Java SE 9+, needs module or this: -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.2</version>
 		</dependency>
 
 	</dependencies>

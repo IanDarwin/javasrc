@@ -1,6 +1,8 @@
 package tar;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 /** One entry in an archive file.
  * @author Ian Darwin

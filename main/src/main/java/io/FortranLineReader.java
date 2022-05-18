@@ -1,6 +1,7 @@
 package io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
 
 /** Subclass of LineNumberReader to read Fortran-style lines.
  * Fortran statements, as well as I can remember them, are like:

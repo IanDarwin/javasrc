@@ -6,15 +6,8 @@ import java.util.stream.Collectors;
 
 public class SimpleStreamDemo {
 
-	static class Hero {
-		String name;
-		int age;
-
-		public Hero(String name, int age) {
-			this.name = name;
-			this.age = age;
-		}
-	}
+	record Hero (String name, int age) {}
+	
 	// tag::main[]
 	static Hero[] heroes = { 
 		new Hero("Grelber", 21), 

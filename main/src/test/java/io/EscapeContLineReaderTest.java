@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.junit.*;
+import org.junit.Test;
 
 public class EscapeContLineReaderTest  {
 	final static String testData = 

@@ -1,6 +1,8 @@
 package email;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /** CustMailer -- to be a small Mailing List sender. */
 public class CustMailer extends JFrame {

@@ -1,11 +1,14 @@
 package netweb;
 
-import java.io.*;
+import java.io.IOException;
+import java.net.URI;
 import java.net.URLEncoder;
-import java.net.http.*;
-import java.net.http.HttpClient.*;
-import java.net.http.HttpResponse.*;
-import java.net.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpClient.Redirect;
+import java.net.http.HttpClient.Version;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 
 /**
  * Simple demo of Java 11+ HttpClient (not the older Apache one)

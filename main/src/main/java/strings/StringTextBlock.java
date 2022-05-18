@@ -1,3 +1,5 @@
+package strings;
+
 public class StringTextBlock {
 	static
 	String paraV1 = 

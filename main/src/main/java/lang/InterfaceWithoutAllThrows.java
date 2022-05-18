@@ -1,6 +1,6 @@
 package lang;
 
-import java.io.*;
+import java.io.IOException;
 
 /** This shows that a class implementing an interface need not
  * declare all the Throws that are declared in the interface.

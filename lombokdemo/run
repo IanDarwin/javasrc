@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -x
+
+java -cp ~/.m2/repository/org/projectlombok/lombok/1.18.0/lombok-1.18.0.jar:target/classes demo.LombokDemo

@@ -25,6 +25,8 @@ public class PropsDemo {
 		String sysColor = System.getProperty("pencil_color");
 		// end::pencil.color[]
 
+		System.out.println(ianColor + "; " + sysColor);
+		
 		// Now list the Properties to System.out
 		ian.list(System.out);
 	}

@@ -12,9 +12,10 @@ public class Cookies {
 		Cooklet cooklet = null;
 		String cookletClassName = argv[0];
 		try {
+			@SuppressWarnings("unchecked")
 			Class<Cooklet> cookletClass =
 				(Class<Cooklet>) Class.forName(cookletClassName);
-			cooklet = cookletClass.newInstance();
+			cooklet = cookletClass.getConstructor().newInstance();
 		} catch (Exception e) {
 			System.err.println("Error " + cookletClassName + e);
 		}

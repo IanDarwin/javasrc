@@ -25,7 +25,7 @@ public class HelpByExecBrowser {
 		// A Runtime object has methods for dealing with the OS
 		Runtime r = Runtime.getRuntime();
 		
-		// Start Netscape from Java Applications (not Applets though)
+		// Start Netscape from Java Applications
 		r.exec("c:/windows/command/start.exe HelpDemo.htm");
 
 		return;

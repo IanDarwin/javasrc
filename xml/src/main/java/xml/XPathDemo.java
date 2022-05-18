@@ -34,7 +34,7 @@ public class XPathDemo {
         String expression = "/section/sectionnumber";                  // <5>
         Number secNum = (Number) xpath.evaluate(                       // <6>
             expression, document, XPathConstants.NUMBER);
-        System.out.printf("Section number = %s (a %s)",
+        System.out.printf("Section number = %s (a %s)\n",
 			secNum, secNum.getClass().getName());                      // <7>
     }
 }
