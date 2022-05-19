@@ -9,3 +9,7 @@ https://github.com/IanDarwin/javasrc[].
 You can then open either the testing project
 or the whole mess; it's mostly more convenient
 to open just the project you need at a time.
+
+Long range, these examples will probably migrate to https://github.com/IanDarwin/cjp-examples/[the cjp-examples repository],
+so all the test examples are in one place.
+In fact, it might happen sooner rather than later.
