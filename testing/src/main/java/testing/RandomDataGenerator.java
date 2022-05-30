@@ -5,7 +5,12 @@ import java.awt.Font;
 import java.time.*;
 import java.util.Date;
 import java.util.Random;
+import java.util.stream.Stream;
 
+/**
+ * Generate random data for "fuzzing" testing.
+ * Can generate one-at-a-time or a Stream
+ */
 public class RandomDataGenerator {
 	
 	private final static Random r = new Random();
@@ -16,7 +21,7 @@ public class RandomDataGenerator {
 		if (t.isAnnotation() ||
 			t.isEnum() ||
 			t.isInterface()) {
-			// give up, boys, she's done.
+			// give up, "We're done here."
 			return null;
 		}
 		if (t == byte.class || t == Byte.class) {
@@ -73,7 +78,21 @@ public class RandomDataGenerator {
 			return t.getConstructor().newInstance();
 		} catch (Exception e) {
 			System.out.println("TestSettersGetters.getRandomValue() needs case for " + t);			
-			return null;	// you lose
+			return new java.lang.Object();	// you lose, here's a kewpie doll for consolation
 		}
+	}
+
+	public static Stream<?> stream(Class<?> t) {
+		return Stream.generate(() -> RandomDataGenerator.getRandomValue(t));
+	}
+
+	/** Simple demo main */
+	public static void main(String[] args) { 
+		System.out.println("Integer Stream:");
+		RandomDataGenerator.stream(Integer.class).limit(5).forEach(System.out::println);
+		System.out.println("LocalDate Stream:");
+		RandomDataGenerator.stream(LocalDate.class).limit(5).forEach(System.out::println);
+		System.out.println("String Stream:");
+		RandomDataGenerator.stream(String.class).limit(5).forEach(System.out::println);
 	}
 }
