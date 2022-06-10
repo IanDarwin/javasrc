@@ -4,6 +4,7 @@ import java.util.stream.Stream;
 
 /**
  * Generate a Stream, from your own data
+ * Stream.generate() makes an infinite stream, needing some kind of limiter.
  */
 public class StreamGenerate {
 	public static void main(String[] args) {
