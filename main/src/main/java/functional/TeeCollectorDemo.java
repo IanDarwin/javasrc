@@ -19,7 +19,7 @@ public class TeeCollectorDemo {
 			// second collector
 			Collectors.filtering(n -> n.contains("w"), Collectors.toList()),
 			// merge the results (must return one value)
-			(List<String> list1, List<String> list2) -> List.of(list1, list2)
+			(list1, list2) -> List.of(list1, list2)
 			));
 
 		System.out.println(result);
