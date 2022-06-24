@@ -94,11 +94,11 @@ public class PerfectPangram {
 		return matchedCount == alphabetLen;
 	}
 
-	public boolean pangramSentence(String cand) {
+	public final boolean pangramSentence(String cand) {
 		return pangram(cand.toLowerCase().replaceAll(" ", ""));
 	}
 
-	private boolean inDict(char c) {
+	private final boolean inDict(char c) {
 		for (char a : alphabet) {
 			if (a == c)
 				return true;
