@@ -9,7 +9,7 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import com.darwinsys.testing.RandomDataGenerator;
+import com.darwinsys.testdata.RandomDataGenerator;
 
 /** A JUnit helper to test the setter/getter pairs in
  * the given class(es).
