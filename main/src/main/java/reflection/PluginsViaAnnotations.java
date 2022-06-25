@@ -39,6 +39,10 @@ public class PluginsViaAnnotations {
 		return ret;
 	}
 	// end::findAnnotatedClasses[]
+
+	// Note that CPD will consider these dupes, but they are near-identical
+	// code blocks used in different presentations for quasi-didactic purposes.
+	// IRL one would use a strategy object to eliminate the apparent duplication.
 	
 	// tag::findClassesWithAnnotatedMethods[]
 	/**
