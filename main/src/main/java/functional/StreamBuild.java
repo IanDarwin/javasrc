@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 /**
  * Build a finite Stream, from fixed data
  */
-public class StreamGenerate {
+public class StreamBuild {
 
 	public static void main(String[] args) {
 
