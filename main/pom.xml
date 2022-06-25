@@ -100,8 +100,24 @@
 				</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.17.0</version>
+				<configuration>
+					<linkXref>false</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<format>txt</format>
+					<targetJdk>17</targetJdk>
+					<excludes>
+						<exclude>**/EuroLanguage.java</exclude>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+				</configuration>
+				</plugin>
+				</plugins>
+			</build>
 
 	<dependencies>
 
