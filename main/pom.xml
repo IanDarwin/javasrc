@@ -109,7 +109,7 @@
 					<sourceEncoding>utf-8</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 					<format>txt</format>
-					<targetJdk>17</targetJdk>
+					<targetJdk>${javase.version}</targetJdk>
 					<excludes>
 						<exclude>**/EuroLanguage.java</exclude>
 						<exclude>**/generated/*.java</exclude>
