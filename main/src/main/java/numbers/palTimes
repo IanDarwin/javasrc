@@ -1,0 +1,9 @@
+#!/bin/sh
+
+javac -d /tmp/ Palindrome*.java
+
+for p in Palindrome PalindromeViaBigInteger PalindromeViaStringBuilder
+do
+	echo === $p ===
+	time java -cp /tmp numbers.$p $(cat PalindromeTests)
+done
