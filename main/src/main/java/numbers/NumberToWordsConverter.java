@@ -3,7 +3,7 @@ package numbers;
 /**
  * Convert an integer number to words.
  * @author Original by Learning Tree Course 516 Team, http://learningtree.com/
- * @author Cleaned up and extended by Ian Darwin, http://darwinsys.com/
+ * @author Cleaned up and extended by Ian Darwin, https://darwinsys.com/
  */
 public class NumberToWordsConverter {
 	
