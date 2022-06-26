@@ -24,6 +24,13 @@ public class ChartBean extends Component {
 	/** the data to draw */
 	protected ChartData[] data;
 
+	/** The data to draw a Demo */
+	protected ChartData demoData[] = {
+		new ChartData(73, "Java"),
+		new ChartData(15, "Microsoft"),
+		new ChartData(10, "Macintosh"),
+	};
+
 	/** degrees in a circle */
 	public static final int CIRCLE = 360;
 
@@ -45,7 +52,7 @@ public class ChartBean extends Component {
 	 * required for Beans).
 	 */
 	public ChartBean() {
-	 	this(null);
+	 	this("DarwinSys ChartBean");
 	}
 
 	public void setLabel(String s) {
@@ -58,6 +65,9 @@ public class ChartBean extends Component {
 	public void setData(ChartData[] newStuff) {
 		data = newStuff.clone();
 		repaint();
+	}
+	public void doDemo() {
+		setData(demoData);
 	}
 
 	public void paint(Graphics g) {
