@@ -10,14 +10,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-/** Simple GUI driver for Chart, showing it used as a plain Component */
+/**
+ * Simple GUI driver for ChartBean, showing it used as a plain Component.
+ */
 public class ChartDemo extends Frame {
 
 	private static final long serialVersionUID = -5193600104234919336L;
 	boolean unsavedChanges = false;
 	Button drawButton;
 	Button quitButton;
-	Chart bean;
+	ChartBean bean;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
@@ -47,7 +49,7 @@ public class ChartDemo extends Frame {
 			}
 		});
 
-		add(bean = new Chart("System Usage in 1999"));
+		add(bean = new ChartBean("System Usage in 1999"));
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

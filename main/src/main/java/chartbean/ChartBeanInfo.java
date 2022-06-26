@@ -5,12 +5,12 @@ import java.beans.MethodDescriptor;
 import java.beans.SimpleBeanInfo;
 import java.lang.reflect.Method;
 
-/** BeanInfo for our Chart Demo */
+/** BeanInfo for our ChartBean Demo */
 public class ChartBeanInfo extends SimpleBeanInfo {
 
 	/** Give a descriptor for the Bean itself */
 	public BeanDescriptor getBeanDescriptor() {
-		return new BeanDescriptor(Chart.class);
+		return new BeanDescriptor(ChartBean.class);
 	}
 
 	/** Set the Icon for display in the BeanBox */
@@ -34,13 +34,13 @@ public class ChartBeanInfo extends SimpleBeanInfo {
 	public MethodDescriptor[] getMethodDescriptors() {
 		try {
 			// DODEMO()
-			Method m = Chart.class.getMethod("doDemo", new Class[] {});
+			Method m = ChartBean.class.getMethod("doDemo", new Class[] {});
 			MethodDescriptor md1 = new MethodDescriptor(m);
 			md1.setShortDescription("Run a simple demonstration");
 
 			// SETDATA(ChartData[]);
 			Class<?> argTypes[] = { Class.forName("ChartData[]") };
-			m = Chart.class.getMethod("setData", argTypes);
+			m = ChartBean.class.getMethod("setData", argTypes);
 			MethodDescriptor md2 = new MethodDescriptor(m);
 			md2.setShortDescription("Provide array of ChartData to plot");
 
