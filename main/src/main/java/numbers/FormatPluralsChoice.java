@@ -4,7 +4,7 @@ import java.text.ChoiceFormat;
 
 /**
  * Format a plural correctly, using a ChoiceFormat.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class FormatPluralsChoice extends FormatPlurals {

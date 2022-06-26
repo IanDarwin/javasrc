@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 /**
  * Demonstrate large numbers.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class BigNums {
 	public static void main(String[] argv) {

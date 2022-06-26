@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /** Strings -- extract printable strings from binary file
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 
 public class Strings {

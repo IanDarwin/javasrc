@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 /**
  * Program to draw grids.
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class Grids extends JFrame {
 

@@ -15,7 +15,7 @@ import javax.swing.KeyStroke;
 /**
  * Demonstrate JMenu shortcuts and accelerators.
  *
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class MenuShortcuts extends JFrame implements ActionListener {
 	/** The menubar */

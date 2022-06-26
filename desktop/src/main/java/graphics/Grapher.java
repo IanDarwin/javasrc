@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /** Simple Graphing program.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Grapher extends JPanel {

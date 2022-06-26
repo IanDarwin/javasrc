@@ -12,7 +12,7 @@ import netscape.javascript.*;
  * or JAVA_HOME/jre/lib/plugin.jar; you may have to look for it; try:
  * find $JAVA_HOME $FIREFOXHOME -name \*.jar | xargs grep JSObject
  * The use of JavaScript requires <applet ... mayscript="true">
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @author Roger Goudarzi -- provided background information.
  */
 public class JScript extends java.applet.Applet {

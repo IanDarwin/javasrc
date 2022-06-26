@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 /**
  * CheckSum - print a checksum of a file
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class CheckSum {
     public static void main(String[] args) {

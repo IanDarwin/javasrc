@@ -3,7 +3,7 @@ package numbers;
 /**
  * Convert among binary, int, octal, hex, etc.
  * 
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class IntegerBinOctHexEtc {
 	public static void main(String[] argv) {

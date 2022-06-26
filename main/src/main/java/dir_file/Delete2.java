@@ -8,7 +8,7 @@ import java.nio.file.Path;
  * Delete a file from within Java, with error handling.
  * Setup: On *Nix:
  touch a; mkdir b; mkdir c; touch c/d
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Delete2 {

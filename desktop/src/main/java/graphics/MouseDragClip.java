@@ -23,7 +23,7 @@ import javax.swing.JFrame;
  * This version "works" for very simple cases (only drag down
  * and to the right, never move up or back :-) ).
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class MouseDragClip extends Canvas
 		implements MouseListener, MouseMotionListener {

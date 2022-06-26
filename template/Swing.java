@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /** Template standalone Swing GUI application.
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  * @version #Id$
  */
 public class Swing extends JComponent {

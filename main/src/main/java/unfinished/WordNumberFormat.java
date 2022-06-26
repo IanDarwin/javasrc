@@ -11,7 +11,7 @@ import org.jboss.weld.exceptions.UnsupportedOperationException;
  * Word Number Class. Convert english words like
  * "one hundred thousand 12" to long.
  *
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class WordNumberFormat extends Format {
 

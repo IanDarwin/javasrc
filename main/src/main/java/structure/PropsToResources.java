@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * Convert Java Properties file to some other format
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class PropsToResources {
 

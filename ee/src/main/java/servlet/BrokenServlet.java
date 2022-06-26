@@ -1,7 +1,7 @@
 package servlet;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *

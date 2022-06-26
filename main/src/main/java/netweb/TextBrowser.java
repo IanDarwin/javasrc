@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * TextBrowser - URL/text mode getter.
  * Display the contents of a text-only URL
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class TextBrowser {
 

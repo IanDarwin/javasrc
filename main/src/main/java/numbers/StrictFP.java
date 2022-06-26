@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Show real values.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class StrictFP {
 	public static strictfp void main(String[] argv) {

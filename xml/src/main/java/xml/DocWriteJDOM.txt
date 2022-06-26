@@ -5,7 +5,7 @@ import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 
 /** Make up and write an XML document, using JDOM
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class DocWriteJDOM {
 

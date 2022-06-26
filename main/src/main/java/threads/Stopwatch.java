@@ -1,7 +1,7 @@
 package threads;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ package threads;
 
 /**
  * Count the seconds up from zero, until terminated.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Stopwatch {
 	public static void main(String[] argv) {

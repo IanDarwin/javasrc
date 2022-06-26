@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Format a plural correctly, by hand.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class FormatPlurals {

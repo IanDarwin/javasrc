@@ -4,7 +4,7 @@ package strings;
 /** Basic tab-character handling stuff.
  * <p>
  * N.B. Can only handle equally-spaced tab stops as written.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Tabs {

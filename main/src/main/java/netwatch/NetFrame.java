@@ -14,7 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 /** Main GUI component for the NetWatch program.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class NetFrame extends JFrame {

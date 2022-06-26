@@ -2,7 +2,7 @@ package template;
 
 /**
  * Template for standalone, line-mode main program.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @version ?Id$
  */
 public class Main {

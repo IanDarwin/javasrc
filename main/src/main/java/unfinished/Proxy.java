@@ -10,7 +10,7 @@ import java.net.Socket;
 /**
  * A very very simple proxy server.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class Proxy {
 	/** port number we bind to on machine where proxy runs */

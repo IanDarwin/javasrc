@@ -3,7 +3,7 @@ package lang;
 // tag::main[]
 /**
  * Demonstrate an Inner Child class
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class InnerChild {
 	public class InnerInnerChild extends InnerChild {

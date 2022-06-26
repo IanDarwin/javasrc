@@ -190,7 +190,7 @@ public class Handler {
 		os.println("<h1>" + errNum + " " + response + "</h1>");
 		os.println("<hr>");
 		os.println("<address>Java Web Proxy,");
-		String myAddr = "http://www.darwinsys.com/freeware/";
+		String myAddr = "https://darwinsys.com/freeware/";
 		os.println("<a href=\"" + myAddr + "\">" +
 			myAddr + "</a>");
 		os.println("</address>");

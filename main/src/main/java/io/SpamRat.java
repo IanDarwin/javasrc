@@ -27,7 +27,7 @@ import java.util.StringTokenizer;
  *	template file.
  *  3) Construct and show a MailComposeBean (in a JFrame) with the
  *  template filled in as much as possible.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class SpamRat {
 

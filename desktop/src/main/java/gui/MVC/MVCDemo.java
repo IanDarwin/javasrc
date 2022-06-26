@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 /** MVC Implementation
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class MVCDemo {
 

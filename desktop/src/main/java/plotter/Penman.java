@@ -19,7 +19,7 @@ import javax.comm.UnsupportedCommOperationException;
  * and installed separately from the JDK before you can even compile this 
  * program.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class Penman extends Plotter {
 	private final String OK_PROMPT = "\r\n!";

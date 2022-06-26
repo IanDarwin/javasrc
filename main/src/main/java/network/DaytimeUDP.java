@@ -7,7 +7,7 @@ import java.net.InetAddress;
 
 /**
  * Simple UDP client - contact the standard ascii time service
- * @author Ian Darwin, http://www.darwinsys.com/.
+ * @author Ian Darwin, https://darwinsys.com/.
  */
 // tag::main[]
 public class DaytimeUDP {

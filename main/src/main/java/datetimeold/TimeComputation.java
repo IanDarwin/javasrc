@@ -11,7 +11,7 @@ import com.darwinsys.lang.SysDep;
 /**
  * TimeComputation for processing sqrt and I/O operations.
  * Does NOT include time to open or close the file.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class TimeComputation {
 	public static void main(String[] argv) {

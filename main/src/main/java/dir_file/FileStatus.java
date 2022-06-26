@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Report on a file's status in Java
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class FileStatus {

@@ -4,7 +4,7 @@ import java.io.PrintStream;
 
 /**
  * Multiple lines output from one method.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class GoodNewline {
 	// tag::main[]

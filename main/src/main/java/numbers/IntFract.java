@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Multiply a decimal fraction, not using floating point
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class IntFract {
 	public static void main(String[] argv) {

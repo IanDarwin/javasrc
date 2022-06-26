@@ -8,7 +8,7 @@ import java.net.Socket;
 
 // tag::main[]
 /** Simple console-mode (command-line) chat client.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class ConsoleChatClient {
 	public static void main(String[] args) throws IOException {

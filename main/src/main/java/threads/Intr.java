@@ -1,7 +1,7 @@
 package threads;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *
@@ -45,7 +45,7 @@ package threads;
 
 /**
  * Interrupt a read, and then resume it.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class Intr implements Runnable {
 	/** The Thread we are timing. */

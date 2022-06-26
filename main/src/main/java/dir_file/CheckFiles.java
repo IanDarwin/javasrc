@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Get a list of files that should be present, and check
  * if any files are missing from the disk.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class CheckFiles {
 	public static void main(String[] argv) {

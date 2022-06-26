@@ -19,7 +19,7 @@
 	<packaging>war</packaging>
 
 	<name>javasrc - ee</name>
-	<url>http://javacook.darwinsys.com</url>
+	<url>https://javacook.darwinsys.com</url>
 	<description>Ian Darwin's collected Java EE Code Examples</description>
 
 	<build>

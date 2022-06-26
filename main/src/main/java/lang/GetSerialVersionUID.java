@@ -8,7 +8,7 @@ import java.io.Serializable;
  * uses Class.forName(), it will even operate upon a class that
  * isn't in a package and thus not findable to the normal "serialver" tool.
  *
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class GetSerialVersionUID implements Serializable {
 

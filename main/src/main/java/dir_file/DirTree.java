@@ -5,7 +5,7 @@ import java.io.File;
 /**
  * DirTree - directory lister, like UNIX ls or DOS/VMS dir
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class DirTree {
 	/** Main program */

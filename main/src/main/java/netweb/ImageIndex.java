@@ -23,7 +23,7 @@ import com.darwinsys.util.FileProperties;
  *		an entry in the "captions.txt" file, of the form
  *			x	Group shot in front of statue
  * <pre>
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  * @Version $Id$
  */
 public class ImageIndex {

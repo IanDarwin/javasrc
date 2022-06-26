@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Read an int from Standard Input, using 1.5 Scanner class
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class ReadStdinInt15 {
 	public static void main(String[] ap) {

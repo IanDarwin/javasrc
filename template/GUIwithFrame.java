@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /** Simple GUI demonstration: construct a Frame and populate it.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @version #Id$
  */
 public class GUIwithFrame {

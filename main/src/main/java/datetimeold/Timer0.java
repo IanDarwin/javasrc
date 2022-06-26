@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 
 /**
  * How quickly can you press return?
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class Timer0 {
 	public static void main(String[] argv) throws IOException {

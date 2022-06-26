@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.util.Properties;
 
 /** Displays one machines status, for RMI..
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
 // tag::main[]

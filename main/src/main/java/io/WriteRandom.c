@@ -1,6 +1,6 @@
 // tag::main[]
 /* C Program to create the random-access file for the RandomAccessFile example
- * Ian F. Darwin, http://www.darwinsys.com/
+ * Ian F. Darwin, https://darwinsys.com/
  */
 
 #include <stdio.h>

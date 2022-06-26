@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
  * JModem - simple communications program.
  * WARNING this file was built with the NetBeans Developer IDE
  * and parts of it should not be modified with a text editor.
- * @author    Ian F. Darwin, http://www.darwinsys.com/
+ * @author    Ian F. Darwin, https://darwinsys.com/
  */
 public class JModem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 8656166709852255134L;
@@ -292,7 +292,7 @@ public class JModem extends javax.swing.JFrame {
   }//GEN-LAST:event_saveLogFileMenuItemActionPerformed
 
   private void helpAboutMenuItemActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAboutMenuItemActionPerformed
-    note("JModem 0.0 (c) 2000 Ian F. Darwin\nhttp://www.darwinsys.com/");
+    note("JModem 0.0 (c) 2000 Ian F. Darwin\nhttps://darwinsys.com/");
   }//GEN-LAST:event_helpAboutMenuItemActionPerformed
 
   private void baudComboBoxActionPerformed (java.awt.event.ActionEvent evt) {

@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Daily Evaluation for students in class
- * @Author Ian Darwin, http://www.darwinsys.com/
+ * @Author Ian Darwin, https://darwinsys.com/
  */
 public class DailyEval {
 	public static void main(String[] args) {

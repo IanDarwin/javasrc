@@ -3,7 +3,7 @@ package numbers;
 /** Compute the Palindrome of a number by adding the number composed of
  * its digits in reverse order, until a Palindrome occurs.
  * e.g., 42->66 (42+24); 1951->5995 (1951+1591=3542; 3542+2453=5995).
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Palindrome {

@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
  * kept in memory. Dbm was originally optimized for UNIX for fast
  * access to individual key/value pairs.
  *
- * @author This Java/C hookup by Ian F. Darwin, http://www.darwinsys.com/
+ * @author This Java/C hookup by Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class DBM {

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /** Template standalone GUI application.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @version #Id$
  */
 public class GUIextendsFrame extends JFrame {

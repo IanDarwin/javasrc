@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  * Get date/time using a Calendar.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Date2 {
 	public static void main(String[] argv) {

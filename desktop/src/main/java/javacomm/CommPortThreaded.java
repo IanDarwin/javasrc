@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 /**
  * This program tries to do I/O in each direction using a separate Thread.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CommPortThreaded extends CommPortOpen {
 

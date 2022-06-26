@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 
 /**
  * Simple demonstration of posting to a query form cgi on a Web server.
- * @author 		Ian Darwin, http://www.darwinsys.com/
+ * @author 		Ian Darwin, https://darwinsys.com/
  * @copyright 	1997, Ian Darwin, Ontario, Canada
  */
 public class PostQuery {

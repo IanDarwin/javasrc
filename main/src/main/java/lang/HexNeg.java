@@ -2,7 +2,7 @@ package lang;
 
 /**
  * Are all hex integers negative?
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class HexNeg {
 	public static void main(String[] argv) {

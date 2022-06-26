@@ -8,4 +8,4 @@ This directory has a pile of useful/interesting stuff, including:
 * Several other network protocol clients and servers.
 
 You can read about some of these in the third edtion of the
-Java Cookbook (see http://javacook.darwinsys.com/).
+Java Cookbook (see https://javacook.darwinsys.com/).

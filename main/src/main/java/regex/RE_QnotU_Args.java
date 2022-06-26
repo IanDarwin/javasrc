@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * Match the "Q[^u] pattern against strings from command line.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class RE_QnotU_Args {
 	public static void main(String[] argv) {

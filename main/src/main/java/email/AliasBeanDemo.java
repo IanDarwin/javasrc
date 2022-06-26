@@ -31,7 +31,7 @@ public class AliasBeanDemo extends JFrame {
 		AliasBean ab = new AliasBean();
 		cp.add(BorderLayout.CENTER, ab);
 		ab.addAlias("ian-cvs", "ian@openbsd.org");
-		ab.addAlias("ian-dos", "http://www.darwinsys.com/");
+		ab.addAlias("ian-dos", "https://darwinsys.com/");
 
 		cp.add(BorderLayout.SOUTH, quitButton = new JButton("Exit"));
 		quitButton.addActionListener(new ActionListener() {

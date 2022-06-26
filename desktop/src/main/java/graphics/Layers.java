@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 /**
  * Layers - Try to use "alpha values (transparency) to draw in layers.
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class Layers extends JFrame {
 

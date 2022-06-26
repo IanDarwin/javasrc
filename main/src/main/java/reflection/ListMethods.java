@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  * List the Constructors and methods
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class ListMethods {

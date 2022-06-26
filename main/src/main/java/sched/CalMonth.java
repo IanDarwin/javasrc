@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 /** Bean to display a month calendar in a JPanel. 
  * Only works for the Western calendar. 
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CalMonth extends JPanel implements DateSelectedListener {
 	/** The CalEventMgr lets us send our selected date to other parts

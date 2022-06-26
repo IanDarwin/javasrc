@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 /**
  * Print to a serial port using Java Communications.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
   */
 public class ParallelPrint extends CommPortOpen {
 

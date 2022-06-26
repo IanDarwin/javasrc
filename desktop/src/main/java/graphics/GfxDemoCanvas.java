@@ -10,7 +10,7 @@ import javax.swing.JComponent;
 /**
  * Simple demo of drawing into a Component.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class GfxDemoCanvas extends JComponent {
 

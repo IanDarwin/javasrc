@@ -132,7 +132,7 @@ public class Diary extends JFrame {
 				JOptionPane.showMessageDialog(Diary.this, 
 				VERSION + "\n" +
 				"Copyright (c) 1997-2006 Ian F. Darwin\n" +
-				"Free download from http://javacook.darwinsys.com/",
+				"Free download from https://javacook.darwinsys.com/",
 				VERSION, JOptionPane.INFORMATION_MESSAGE);
 			}
 		});

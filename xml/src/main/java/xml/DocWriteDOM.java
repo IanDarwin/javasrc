@@ -11,7 +11,7 @@ import javax.xml.transform.stream.*;
 
 /** Make up and write an XML document, using DOM
  * Updated for JAXP, using identity Transformer
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class DocWriteDOM {

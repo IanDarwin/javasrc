@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 /**
  * Read from a Serial port, notifying when data arrives.
  * Simulation of part of an event-logging service.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class SerialReadByEvents extends CommPortOpen 
 	implements SerialPortEventListener {

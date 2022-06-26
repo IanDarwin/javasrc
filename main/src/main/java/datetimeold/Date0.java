@@ -2,7 +2,7 @@ package datetimeold;
 
 /**
  * Simple demo of Date class.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Date0 {
 	public static void main(String[] argv) {

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * GetNumber - program to determine if a number is float or int.
  *
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class GetNumber extends Frame {
 

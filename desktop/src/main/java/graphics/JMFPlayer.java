@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  * Demonstrate simple code to play a movie with Java Media Framework.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 @SuppressWarnings("serial")
 // tag::main[]

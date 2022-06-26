@@ -7,7 +7,7 @@ import javax.swing.event.*;
 
 /**
  * Demonstrate various aspects of Swing "data transfer".
- * @author Ian Darwin, http://www.darwinsys.com
+ * @author Ian Darwin, https://darwinsys.com
  * @author Jonathan Fuerth, http://www.SQLPower.ca
  */
 public class Transfer extends JFrame {

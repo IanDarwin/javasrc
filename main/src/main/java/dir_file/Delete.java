@@ -5,7 +5,7 @@ import java.io.IOException;
 
 /**
  * Delete a file from within Java
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Delete {

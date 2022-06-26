@@ -5,7 +5,7 @@ package oo;
  * guarantee of singletonness.
  * The Singleton design pattern is described in GoF; the idea is to ensure
  * that only one instance of the class will exist in a given application.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public enum EnumSingleton {

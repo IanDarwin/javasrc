@@ -16,7 +16,7 @@
 	<inceptionYear>1995</inceptionYear>
 
 	<name>javasrc - main module</name>
-	<url>http://javacook.darwinsys.com</url>
+	<url>https://javacook.darwinsys.com</url>
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
 	<build>

@@ -6,8 +6,8 @@
 <!DOCTYPE test [
 <!ELEMENT test (paragraph)+>
 <!ELEMENT paragraph (#PCDATA)>
-<!ENTITY myaddr "http://www.darwinsys.com/"> 
-<!ENTITY nameandaddr "Ian Darwin &lt;http://www.darwinsys.com/&gt;">
+<!ENTITY myaddr "https://darwinsys.com/"> 
+<!ENTITY nameandaddr "Ian Darwin &lt;https://darwinsys.com/&gt;">
 ]>
 <test>
 <paragraph>Send your email to &myaddr;.</paragraph> 

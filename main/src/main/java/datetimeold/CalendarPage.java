@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 /** Print a month page.
  * Only works for the Western calendar. 
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CalendarPage {
 

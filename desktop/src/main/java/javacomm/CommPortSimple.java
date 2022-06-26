@@ -13,7 +13,7 @@ import javax.comm.SerialPort;
 // tag::main[]
 /**
  * Open a serial port using Java Communications.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CommPortSimple {
 	private static final String HELLO = "Hello?";

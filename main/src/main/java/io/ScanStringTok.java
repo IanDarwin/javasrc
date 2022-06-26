@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 /**
  * ScanStringTok - show scanning a file with StringTokenizer.
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class ScanStringTok {

@@ -65,14 +65,14 @@ import java.io.PrintStream;
  * </pre><p>
  * For an example of using GetMark for extraction
  * (GetMark first appeared in my 
- * <a href="http://javacook.darwinsys.com/">Java Cookbook</a>),
+ * <a href="https://javacook.darwinsys.com/">Java Cookbook</a>),
  * see the comments in the code for GetMark itself.
  * <p>
  * In this version, the mode (include or extract) and the strings for
  * the marks are hard-coded; ideally they would come
  * from a Properties or Preferences object and/or from the command line.
  *
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class GetMark {

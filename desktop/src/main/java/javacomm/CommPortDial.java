@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Dial a phone using the Java Communications Package.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CommPortDial extends CommPortModem {
 

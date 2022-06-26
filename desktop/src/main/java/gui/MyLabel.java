@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 /**
  * Dummy Canvas class, to represent the real main part of an application *
  *
- * @author Ian Darwin, http://www.darwinsys.com
+ * @author Ian Darwin, https://darwinsys.com
  */
 
 class MyLabel extends JLabel {

@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 
 /**
  * Read a file containing an offset, and a String at that offset.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class ReadRandom {

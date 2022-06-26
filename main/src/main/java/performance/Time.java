@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 /**
  * Time the main method of another class, for performance tuning.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Time {

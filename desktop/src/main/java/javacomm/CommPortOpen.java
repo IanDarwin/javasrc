@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 /**
  * Open a serial port using Java Communications.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public abstract class CommPortOpen {
 	/** How long to wait for the open to finish up. */

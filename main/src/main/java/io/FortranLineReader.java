@@ -11,7 +11,7 @@ import java.io.Reader;
  *	X is a continuation character, which must be in column 6
  *	DDD is executable statement
  *	... is commentary.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class FortranLineReader extends ContLineReader {
 	public static final char COMMENT_CHAR = 'C';

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  * JavadocDemo - a simple example to show JavaDoc comments.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class JavadocDemo extends JPanel {

@@ -2,7 +2,7 @@ package numbers;
 
 
 /* Print a table of Fahrenheit and Celsius temperatures 
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class TempConverter {

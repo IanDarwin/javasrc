@@ -6,7 +6,7 @@ import com.darwinsys.lang.GetOpt;
  * <pre>UNIX sort options: sort -n -o outfile infile1 infile2</pre>
  * which means: sort numerically (-n), writing to file "outfile" (-o
  * outfile), sort from infile1 and infile2.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class GetOptDemo {
 	public static void main(String[] args) {

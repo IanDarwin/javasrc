@@ -23,7 +23,7 @@ import java.io.PrintStream;
  * Note: there is another way of doing this, using a FilterStream;
  * see the example at http://www.javaspecialists.eu/archive/Issue003.html
  * (written a year after the initial import of my version).
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class TeePrintStream extends PrintStream {

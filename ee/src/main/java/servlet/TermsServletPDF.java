@@ -42,8 +42,8 @@ public class TermsServletPDF extends HttpServlet {
 			}
 
 			p.set_info("Title", "Dictionary Project");
-			p.set_info("Author", "Ian F. Darwin, http://www.darwinsys.com/");
-			p.set_info("Creator", "www.darwinsys.com/dictionary");
+			p.set_info("Author", "Ian F. Darwin, https://darwinsys.com/");
+			p.set_info("Creator", "darwinsys.com/dictionary");
 
 			p.begin_page(595, 842);
 

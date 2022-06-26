@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  *
  * Redistribution and use in source and binary forms, with or without

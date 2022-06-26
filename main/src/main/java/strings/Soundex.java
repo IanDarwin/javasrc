@@ -40,7 +40,7 @@ package strings;
  * the description given by Knuth.  Ian Phillips (<ian@pipex.net>) and
  * Rich Pinder (<rpinder@hsc.usc.edu>) supplied ideas and spotted
  * mistakes.
- * @author Ian Darwin, http://www.darwinsys.com/ (Java Version)
+ * @author Ian Darwin, https://darwinsys.com/ (Java Version)
  */
 // tag::main[]
 public class Soundex {

@@ -40,7 +40,7 @@ import com.darwinsys.swingui.UtilGUI;
  * Further, it needs to use Swing and Threads properly (see
  * Java Swing, section on "MultiThreading Issues with Swing".
  * <p>
- * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
+ * @author Ian Darwin, https://darwinsys.com.
  */
 public class LinkChecker extends JFrame {
 

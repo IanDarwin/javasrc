@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 /**
  * Show line ending matching using RE class.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class NLMatch {

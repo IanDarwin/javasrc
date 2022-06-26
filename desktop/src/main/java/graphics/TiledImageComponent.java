@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 /**
  * Demo of tiling an Image across a component; draw the image repeatedly
  * in the paint() method.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class TiledImageComponent extends JComponent {

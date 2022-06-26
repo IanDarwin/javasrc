@@ -50,7 +50,7 @@ class fileInfo {
  *              advantage, and when credit to the source is given. Other uses
  *              require specific permission.
  *
- * Converted from C to Java by Ian F. Darwin, http://www.darwinsys.com/, January, 1997.
+ * Converted from C to Java by Ian F. Darwin, https://darwinsys.com/, January, 1997.
  * Copyright 1997, Ian F. Darwin.
  *
  * Conversion is NOT FULLY TESTED.

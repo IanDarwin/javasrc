@@ -1,5 +1,5 @@
 # Makefile for Ian Darwin's JNI-based LibSignal
-# Ian Darwin, http://www.darwinsys.com/, http://www.darwinsys.com
+# Ian Darwin, https://darwinsys.com/, https://darwinsys.com
 
 # Configuration Section
 

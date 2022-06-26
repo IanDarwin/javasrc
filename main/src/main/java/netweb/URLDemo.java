@@ -13,7 +13,7 @@ public class URLDemo {
 		}
 
 		System.out.println("This should work:");
-		URL u = new URL("http://www.darwinsys.com/java/../openbsd/../index.jsp");
+		URL u = new URL("https://darwinsys.com/java/../openbsd/../index.jsp");
 		System.out.println("URL: " + u);
 
 		System.out.println("This should fail:");

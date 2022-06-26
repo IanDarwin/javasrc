@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 // tag::main[]
 /**
  * Get a given method, and invoke it.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class GetAndInvokeMethod {
 

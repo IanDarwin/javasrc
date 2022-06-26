@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 /** Main program for the NetWatch program: watch the network status
  * on a bunch of machines (i.e., in a classroom or lab). Currently only
  * for RMI, but can be extended for TCP socket, CORBA ORB, etc.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
 // tag::main[]

@@ -3,7 +3,7 @@ package datetimeold;
 import java.util.Calendar;
 /**
  * Show some calendar calculations.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class CalCalcs {
 	public static void main(String[] argv) {

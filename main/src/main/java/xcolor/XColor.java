@@ -15,8 +15,8 @@ import java.awt.Color;
  *
  * @see		XColorTest
  * @author	Ian Darwin, 
- * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>, 
- * <A HREF="http://www.darwinsys.com">http://www.darwinsys.com</A>.
+ * <A HREF="mailto:https://darwinsys.com/">https://darwinsys.com/</A>, 
+ * <A HREF="https://darwinsys.com">https://darwinsys.com</A>.
  */
 
 public class XColor extends Color {

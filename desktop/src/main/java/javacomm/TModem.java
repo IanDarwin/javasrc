@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  * A.D. 2000 - dragged from the archives for use in Java Cookbook.
  *
  * @author C version by Andrew Scott Beals, sjobrg.andy%mit-oz@mit-mc.arpa.
- * @author Java version by Ian F. Darwin, http://www.darwinsys.com/
+ * @author Java version by Ian F. Darwin, https://darwinsys.com/
  * $Id$
  */
 public class TModem {

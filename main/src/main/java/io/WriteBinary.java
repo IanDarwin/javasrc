@@ -6,7 +6,7 @@ import java.io.IOException;
 
 /**
  * Write some data in binary.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class WriteBinary {

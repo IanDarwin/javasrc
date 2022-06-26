@@ -12,7 +12,7 @@ import java.util.List;
  * Since, unlike Zip files, there is no central directory, you have to
  * read the entire file either to be sure of having a particular file's
  * entry, or to know how many entries there are in the archive.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 
 public class TarFile {

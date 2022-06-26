@@ -8,7 +8,7 @@ import javax.swing.JFrame;
  * Subclasses CommPortOpen and adds send/expect handling for dealing
  * with Hayes-type modems.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public abstract class CommPortModem extends CommPortOpen {
 

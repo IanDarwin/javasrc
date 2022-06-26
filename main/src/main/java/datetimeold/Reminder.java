@@ -3,7 +3,7 @@ package datetimeold;
 import java.util.Date;
 /**
  * Beep every 5 minutes.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Reminder {
 	public static void main(String[] argv) throws InterruptedException {

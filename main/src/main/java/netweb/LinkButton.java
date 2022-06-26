@@ -27,8 +27,7 @@ import javax.swing.JTextArea;
  * have a TARGET URL that it jumps to (after notifying the actionListeners).
  *
  * @author	Copyright 1995, 1997, 2019 Ian F. Darwin,
- * <A HREF="mailto:http://www.darwinsys.com/">http://www.darwinsys.com/</A>,
- * <A HREF="http:www.darwinsys.com/">http://www.darwinsys.com</A>.
+ * <a href="https:darwinsys.com/">https://darwinsys.com</a>.
  */
 public class LinkButton extends JPanel implements MouseListener {
 

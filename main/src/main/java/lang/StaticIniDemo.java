@@ -5,7 +5,7 @@ package lang;
  *
  * Uses Reflection instead of calling constructor just to show ordering.
  *
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class StaticIniDemo {
 

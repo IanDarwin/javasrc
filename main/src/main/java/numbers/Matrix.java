@@ -3,7 +3,7 @@ package numbers;
 /**
  * Multiply two matrices.
  * Only defined for int at present.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Matrix {

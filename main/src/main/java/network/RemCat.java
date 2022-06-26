@@ -15,7 +15,7 @@ import java.net.InetAddress;
  * mode *in the protocol* are defined in terms of ASCII, not UniCode.</p>
  *
  * @author	Chris R. Brown, original C version
- * @author	Java version by Ian Darwin, http://www.darwinsys.com/.
+ * @author	Java version by Ian Darwin, https://darwinsys.com/.
  */
 // tag::main[]
 public class RemCat {

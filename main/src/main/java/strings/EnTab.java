@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * book into C. Transmuted again, years later, into Java. Totally rewritten to
  * be line-at-a-time instead of char-at-a-time.
  * 
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class EnTab {

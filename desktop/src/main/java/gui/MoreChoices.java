@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 /** Demo to show a way of having "More Choices/Less Choices"
  * in a pop-up window. The secret is to call pack() again
  * each time you add/subtract the bottom panel.
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class MoreChoices extends JFrame {
 	Container cp;

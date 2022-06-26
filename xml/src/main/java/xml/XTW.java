@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList;
 
 /** XML Tree Walker
  * UPDATED FOR JAXP.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class XTW {

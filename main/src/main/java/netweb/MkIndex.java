@@ -15,7 +15,7 @@ import com.darwinsys.io.FileIO;
  * Works through one or more directories, finding all the java files,
  * and making links for an "index-byname" type file.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class MkIndex {
 

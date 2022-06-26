@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Show the logarithm to base e of a number
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Logarithm {
 	public static void main(String[] argv) {

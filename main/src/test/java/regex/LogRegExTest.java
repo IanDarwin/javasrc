@@ -27,7 +27,7 @@ public class LogRegExTest {
 	@Test
 	public void testWildFly() {
 		String entry =
-		"31.13.103.20 - - [17/Dec/2019:00:05:46 -0500] www.darwinsys.com \"GET /file/ HTTP/1.1\" 200 4225";
+		"31.13.103.20 - - [17/Dec/2019:00:05:46 -0500] darwinsys.com \"GET /file/ HTTP/1.1\" 200 4225";
 		Matcher m = p.matcher(entry);
 		assertTrue(m.matches());
 		assertTrue(m.groupCount() > LogParseInfo.MIN_FIELDS);

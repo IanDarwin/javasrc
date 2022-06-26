@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 /**
  * Show dates before 1970, in JDK1.0/1.1 when Date was broken
  * DO NOT USE ANYMORE -- use DateFormat instead!!.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class DatePrint2 {
 	static String months[] = {

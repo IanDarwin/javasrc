@@ -2,7 +2,7 @@ package lang;
 
 /**
  * Can you call a static method of an abstract class?
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public abstract class AbstractStatic {
 

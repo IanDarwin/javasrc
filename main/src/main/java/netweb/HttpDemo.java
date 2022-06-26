@@ -27,7 +27,7 @@ import javax.swing.JTextField;
  * and outputs in separate panels, with a JSplitPane to adjust the relative
  * sizes of each.
  * 
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class HttpDemo extends JFrame {
 

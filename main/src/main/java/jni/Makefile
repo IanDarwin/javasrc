@@ -4,7 +4,7 @@
 # Tested on OpenBSD with native port "devel/jdk" and cc.
 # On other platforms it will certainly need some tweaking; please
 # feel free to let me know how much! :-)
-# Ian Darwin, http://www.darwinsys.com
+# Ian Darwin, https://darwinsys.com
 
 # // tag::main[]
 

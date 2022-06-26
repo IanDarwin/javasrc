@@ -2,7 +2,7 @@ package numbers;
 
 /**
  * Demonstrate a few of the Math functions for Trigonometry.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Trig {
 	public static void main(String[] argv) {

@@ -256,7 +256,7 @@ public class Handler {
 	protected void sendEnd() {
 		os.println("<hr>");
 		os.println("<address>Java Web Server,");
-		String myAddr = "http://www.darwinsys.com/freeware/";
+		String myAddr = "https://darwinsys.com/freeware/";
 		os.println("<a href=\"" + myAddr + "\">" +
 			myAddr + "</a>");
 		os.println("</address>");

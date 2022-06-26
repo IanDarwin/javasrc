@@ -1,7 +1,7 @@
 package threads;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *
@@ -51,7 +51,7 @@ import java.awt.MediaTracker;
 
 /**
  * Mover -- move an image, slowly.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class Mover extends Applet implements Runnable {
 	/** The done or not done flag */

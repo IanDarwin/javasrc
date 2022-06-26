@@ -6,7 +6,7 @@ import java.awt.*;
  * Fancier, Canvas-based Graphics Demo for Learning Tree Course 471/478
  * We use a subclass of Canvas to do the drawing; GfxDemo2 merely
  * creates a Frame and adds the Canvas to it!
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class GfxDemo2 extends Frame {
 	/* Construct a GfxDemo2 given its title, width and height.

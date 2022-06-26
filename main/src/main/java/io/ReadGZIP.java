@@ -8,7 +8,7 @@ import java.util.zip.GZIPInputStream;
 
 /**
  * Read some data from a gzip file.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class ReadGZIP {

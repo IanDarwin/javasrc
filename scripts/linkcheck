@@ -2,6 +2,6 @@
 
 import urllib
 
-url = 'http://darwinsys.com/badfile'
+url = 'https://darwinsys.com/badfile'
 
 file = urllib.urlopen(url);

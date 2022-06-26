@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.undo.UndoManager;
 
 /** Simple GUI demo of UndoManager and friends.
- * @author Ian Darwin http://www.darwinsys.com/
+ * @author Ian Darwin https://darwinsys.com/
  */
 public class UndoDemo extends JFrame {
 

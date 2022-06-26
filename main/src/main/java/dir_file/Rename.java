@@ -6,7 +6,7 @@ import java.nio.file.Path;
 
 /**
  * Rename a file in Java
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class Rename {

@@ -9,7 +9,7 @@ import java.io.StreamTokenizer;
 /**
  * ScanStreamTok - show scanning a file with StringTokenizer.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class ScanStreamTok {
 	protected  StreamTokenizer tf;

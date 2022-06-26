@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  * A generic main program, for "testing" (running) any Component-based GUI 
  * class that has a no-argument constructor. This seemed easier than adding a trivial
  * main program to every GUI component that I ever wrote...
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class ComponentRunner {
 

@@ -1,7 +1,7 @@
 package threads;
 
 /*
- * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * Copyright (c) Ian F. Darwin, https://darwinsys.com/, 1996-2002.
  * All rights reserved. Software written by Ian F. Darwin and others.
  * $Id$
  *
@@ -45,7 +45,7 @@ package threads;
 
 /**
  * Timer to interrupt a long-running call (like read, write, hence the name).
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class IOTimer extends Thread {
 	/** The Thread we are timing. */

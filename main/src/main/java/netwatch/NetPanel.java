@@ -28,7 +28,7 @@ import javax.swing.JTextArea;
  * <LI>NOREG == host is up but not running RMI
  * <LI>DOWN == host unreachable, not responding, ECONN, etc.
  * </UL>
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  * Copyright (c) 2000, Ian F. Darwin. See LEGAL.NOTICE for licensing.
  */
 // tag::main[]

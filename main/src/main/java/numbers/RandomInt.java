@@ -5,7 +5,7 @@ import java.util.Random;
 /** Generate random ints by asking Random() for
  * a series of random integers from 1 to 10, inclusive.
  *
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class RandomInt {

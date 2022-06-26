@@ -5,7 +5,7 @@ import org.w3c.dom.*;
 import javax.xml.parsers.*;
 
 /** Convert a simple XML file to text.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class XmlForm {

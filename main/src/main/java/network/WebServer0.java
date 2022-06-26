@@ -19,7 +19,7 @@ import java.net.Socket;
  * Can't claim to be fully standards-conforming, but has been
  * tested with various browsers.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class WebServer0 {

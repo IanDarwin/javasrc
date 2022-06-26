@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
  * In the Christian religion, Easter is possibly the most important holiday
  * of the year, so getting its date <I>just so</I> is worthwhile.
  *
- * @author: Ian F. Darwin, http://www.darwinsys.com/,
+ * @author: Ian F. Darwin, https://darwinsys.com/,
  * based on a detailed algorithm in Knuth, vol 1, pg 155.
  *
  * @Version: $Id$

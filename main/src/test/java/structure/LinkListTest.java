@@ -16,7 +16,7 @@ import org.junit.Test;
  * Linked list class, written out in full using Java.
  * WARNING: The LinkList class is not necessarily complete and
  * should not be used to save data, until somebody finishes it!
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class LinkListTest {
 	private static final String FIRST_STRING = "First of Three",

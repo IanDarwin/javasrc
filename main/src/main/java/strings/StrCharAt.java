@@ -1,7 +1,7 @@
 package strings;
 
 /** StrCharAt - show String.charAt()
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class StrCharAt {

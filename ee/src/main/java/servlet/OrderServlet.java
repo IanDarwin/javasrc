@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * OrderServlet implements order processing for Acme Widgets.
  * This dummy version just generates a thank-you notice.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/, November, 1997
+ * @author	Ian Darwin, https://darwinsys.com/, November, 1997
  */
 public class OrderServlet extends HttpServlet {
 

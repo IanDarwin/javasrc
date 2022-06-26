@@ -16,7 +16,7 @@ import org.xml.sax.SAXParseException;
 
 /** Parse an XML file using DOM, via JAXP. 
  * Tries to handle both DTD-based and Schema-based validation.
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 public class XParse {
 

@@ -7,7 +7,7 @@
 </head>
 <body bgcolor="white">
 <h1>Print a month page, for the Western calendar.</h1>
-<P>Author Ian F. Darwin, http://www.darwinsys.com/
+<P>Author Ian F. Darwin, https://darwinsys.com/
 
 <%	// First get the month and year from the form.
 	boolean yyok = false;	// -1 is a valid year, use boolean

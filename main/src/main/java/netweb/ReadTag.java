@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** A simple but reusable HTML/XML tag extractor; not to be confused with an XML parser.
- * @author Ian Darwin, Darwin Open Systems, www.darwinsys.com.
+ * @author Ian Darwin, https://darwinsys.com.
  */
 public class ReadTag {
 

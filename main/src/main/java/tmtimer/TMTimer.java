@@ -34,7 +34,7 @@ import com.darwinsys.swingui.UtilGUI;
  * speeches are time-limited. 
  * TODO: fiddle gui builder to obviate fixGUI().
  * 
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class TMTimer extends JFrame implements Runnable {
 

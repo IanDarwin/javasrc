@@ -2,7 +2,7 @@ package io;
 
 /**
  * All the examples for the Standard output recipe.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class Stdout {
 	public static void main(String[] argv) {

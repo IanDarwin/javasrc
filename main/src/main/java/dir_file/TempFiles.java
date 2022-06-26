@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 /**
  * Work with temporary files in Java.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class TempFiles {

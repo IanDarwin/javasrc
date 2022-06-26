@@ -7,7 +7,7 @@ import java.util.ListIterator;
  * Demo of java.util.LinkedList class
  * using same example as my older LinkList 
  * class (LinkListTest.java)
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class LinkedListDemo {

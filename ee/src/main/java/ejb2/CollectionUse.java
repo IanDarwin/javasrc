@@ -12,7 +12,7 @@ import javax.naming.NamingException;
  * This program can <b>not</b> be run; it just shows the code for one part
  * of the EJB-use puzzle.
  *
- * @author Ian Darwin, http://www.darwinsys.com/
+ * @author Ian Darwin, https://darwinsys.com/
  * @version $Id$
  */
 public class CollectionUse {

@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /** Graph of a book's sales rank on a given bookshop site.
- * @author Ian F. Darwin, http://www.darwinsys.com/, Java Cookbook author,
+ * @author Ian F. Darwin, https://darwinsys.com/, Java Cookbook author,
  *	originally translated fairly literally from Perl into Java,
  *	and rewritten several times since.
  * @author Patrick Killelea <p@patrick.net>: original Perl version,

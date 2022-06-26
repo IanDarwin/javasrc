@@ -20,7 +20,7 @@ import java.util.Map;
  *
  * This code is far from finished, as you will see.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/, for Learning Tree Course 478
+ * @author	Ian Darwin, https://darwinsys.com/, for Learning Tree Course 478
  */
 public class AppletAdapter extends Panel implements AppletStub, AppletContext {
 

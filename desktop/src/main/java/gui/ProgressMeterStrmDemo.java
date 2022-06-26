@@ -13,7 +13,7 @@ import javax.swing.ProgressMonitorInputStream;
 /**
  * Demonstrate ProgressMeterInputStream.
  *
- * @author	Ian Darwin, http://www.darwinsys.com/
+ * @author	Ian Darwin, https://darwinsys.com/
  */
 public class ProgressMeterStrmDemo extends JFrame implements Runnable {
 

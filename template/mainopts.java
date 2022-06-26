@@ -3,7 +3,7 @@ package template;
 import com.darwinsys.lang.GetOpt;
 
 /** Template main program using GetOpt.
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @version $Id$
  */
 public class mainopts {

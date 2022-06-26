@@ -4,7 +4,7 @@ import java.io.*;
 
 /** Filter - template line-mode filter.
  *
- * @author Ian F. Darwin, http://www.darwinsys.com/
+ * @author Ian F. Darwin, https://darwinsys.com/
  * @version $Id$
  */
 

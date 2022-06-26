@@ -15,7 +15,7 @@ import java.util.List;
  * by a team of world-class experts for Thread-safeness.
  * See the various books on Threaded Java for design issues.
  *
- * @author	Ian F. Darwin, http://www.darwinsys.com/
+ * @author	Ian F. Darwin, https://darwinsys.com/
  */
 // tag::main[]
 public class ChatServer {
