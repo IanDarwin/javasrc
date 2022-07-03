@@ -36,10 +36,10 @@ public class SendSoap {
         message.writeTo(requestStream);
         requestStream.close();
 
-        // Read the reply into a StringBuffer
+        // Read the reply into a StringBuilder
         BufferedReader reader = new BufferedReader(
             new InputStreamReader(endpointConnection.getInputStream()));
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         String line;
         while ((line = reader.readLine()) != null) {
             String lineEnding = System.getProperty("line.separator");
