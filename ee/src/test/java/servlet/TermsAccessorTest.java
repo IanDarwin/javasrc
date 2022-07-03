@@ -24,7 +24,7 @@ public class TermsAccessorTest {
 	public void init() throws IOException {
 		assertEquals("raw data", terms.length, defns.length);
 		
-		StringBuffer sb = new StringBuffer(MY_IDENT).append('\n');
+		StringBuilder sb = new StringBuilder(MY_IDENT).append('\n');
 		for (int i = 0; i < terms.length; i++) {
 			sb.append(terms[i]).append('\t').append(defns[i]).append('\n');
 		}
