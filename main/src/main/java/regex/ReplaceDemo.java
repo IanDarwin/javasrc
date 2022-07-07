@@ -26,7 +26,7 @@ public class ReplaceDemo {
 
 		// Show the appendReplacement method
 		m.reset();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		System.out.print("Append methods: ");
 		while (m.find()) {
 			// Copy to before first match,

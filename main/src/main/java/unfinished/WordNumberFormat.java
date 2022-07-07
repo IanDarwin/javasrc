@@ -51,10 +51,11 @@ public class WordNumberFormat extends Format {
 	}
 
 	/* Format the given Number as a Word Numeral, returning the
-	 * Stringbuffer (updated), and updating the FieldPosition.
+	 * StringBuffer (updated), and updating the FieldPosition.
 	 * This method is the REAL FORMATTING ENGINE.
 	 * Method signature is overkill, but required as a subclass of Format.
 	 */
+	@Override
 	public StringBuffer format(Object on, StringBuffer sb, FieldPosition fp) {
 		if (!(on instanceof Number))
 			throw new IllegalArgumentException(on + " must be a Number object");
