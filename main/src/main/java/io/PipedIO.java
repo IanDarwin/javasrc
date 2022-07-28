@@ -24,10 +24,12 @@ public class PipedIO {
 		}
 		bout.close(); // Ensure lines are sent into buffer.
 
-		BufferedReader bin = new BufferedReader(new InputStreamReader(pin));
-		String newStr;
-		while ((newStr = bin.readLine()) != null) {
-			System.out.println("Read back: " + newStr);
+		try (BufferedReader bin = 
+				new BufferedReader(new InputStreamReader(pin))) {
+			String newStr;
+			while ((newStr = bin.readLine()) != null) {
+				System.out.println("Read back: " + newStr);
+			}
 		}
 	}
 
