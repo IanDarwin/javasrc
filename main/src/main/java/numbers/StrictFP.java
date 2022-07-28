@@ -5,7 +5,7 @@ package numbers;
  * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class StrictFP {
-	public static strictfp void main(String[] argv) {
+	public static void main(String[] argv) {
 		double alpha = 8e+307;
 		System.out.println(mulNotStrict(alpha));
 		System.out.println(mulStrictFP(alpha));

@@ -15,6 +15,9 @@ import javax.swing.*;
  * @since 1.3
  */
 public class RobotWindow extends JFrame {
+
+	private static final long serialVersionUID = -6106045091113315207L;
+
 	public static void main(String[] args) {
 		RobotWindow gui = new RobotWindow();
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
