@@ -11,7 +11,7 @@ public class ClassForName {
 			// Load the class, return a Class for it
 			c = Class.forName("java.util.Random");
 			// Construct an object, as if new Type()
-			o = c.getConstructor(new Class<?>[0]).newInstance();
+			o = c.getConstructor().newInstance();
 		} catch (Exception e) {
 			System.err.println("That didn't work. " +
 				" Try something else" + e);

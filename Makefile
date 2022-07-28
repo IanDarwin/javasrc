@@ -11,5 +11,8 @@ index-byname.html:
 	-cp main/target/classes:$$HOME/lib/darwinsys-api.jar \
 	netweb.MkIndex */src/main/java
 
+dist:
+	git archive HEAD --output  javasrc.tgz --format tgz
+
 clean:
 	rm -f normal.txt gaussian.txt
