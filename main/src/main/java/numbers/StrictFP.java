@@ -5,17 +5,6 @@ package numbers;
  * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class StrictFP {
-	public static void main(String[] argv) {
-		double alpha = 8e+307;
-		System.out.println(mulNotStrict(alpha));
-		System.out.println(mulStrictFP(alpha));
-		System.out.println(2 * alpha);
-	}
-
-	static double mulNotStrict(double a) {
-		return a * 4 * 0.5;
-	}
-	static strictfp double mulStrictFP(double a) {
-		return a * 4 * 0.5;
-	}
+	// The strictfp keyword is no longer needed as of Java 17.
+	// This class will be removed shortly.
 }
