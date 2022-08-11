@@ -23,7 +23,7 @@ import java.net.Socket;
  */
 // tag::main[]
 public class WebServer0 {
-	public static final int HTTP = 80;
+	public static final int HTTP = 8080;
 	public static final String CRLF = "\r\n";
 	ServerSocket s;
 	/** A link to the source of this program, used in error message */
@@ -34,12 +34,12 @@ public class WebServer0 {
 	 * Main method, just creates a server and call its runServer().
 	 */
 	public static void main(String[] args) throws Exception {
-		System.out.println("DarwinSys JavaWeb Server 0.0 starting...");
 		WebServer0 w = new WebServer0();
 		int port = HTTP;
 		if (args.length == 1) {
 			port = Integer.parseInt(args[0]);
 			}
+		System.out.println("DarwinSys JavaWeb Server 0.0 starting on " + port);
 		w.runServer(port);		// never returns!!
 	}
 
@@ -83,22 +83,24 @@ public class WebServer0 {
 			os = new PrintWriter(s.getOutputStream(), true);
 			os.print("HTTP/1.0 200 Here is your data" + CRLF);
 			os.print("Content-type: text/html" + CRLF);
+			os.print("<meta name='viewport' content='width=device-width, initial-scale=1'/>" + CRLF);
 			os.print("Server-name: DarwinSys NULL Java WebServer 0" + CRLF);
-			String reply1 = "<html><head>" +
-				"<title>Wrong System Reached</title></head>\n" +
-				"<h1>Welcome, ";
-			String reply2 = ", but...</h1>\n" +
-				"<p>You have reached a desktop machine " +
-				"that does not run a real Web service.\n" +
-				"<p>Please pick another system!</p>\n" +
-				"<p>Or view <a href=\"" + VIEW_SOURCE_URL + "\">" +
-				"the WebServer0 source on github</a>.</p>\n" +
-				"<hr/><em>Java-based WebServer0</em><hr/>\n" +
-				"</html>\n";
-			os.print("Content-length: " + 
-				(reply1.length() + from.length() + reply2.length()) + CRLF);
+			final String replyTemplate = """
+				<html>
+				<head><title>Wrong System Reached</title></head>\n
+				<h1>Welcome, %s, but...</h1>\n
+				<p>You have reached a desktop machine 
+				that does not run a real Web service.\n
+				<p>Please pick another system!</p>\n
+				<p>Or view <a href=' + VIEW_SOURCE_URL + '>
+				the WebServer0 source on github</a>.</p>\n
+				<hr/><em>Java-based WebServer0</em><hr/>\n
+				</html>\n;
+				""";
+			String reply = String.format(replyTemplate, from);
+			os.print("Content-length: " + reply.length() + CRLF);
 			os.print(CRLF);
-			os.print(reply1 + from + reply2 + CRLF);
+			os.print(reply + CRLF);
 			os.flush();
 			s.close();
 		} catch (IOException e) {
