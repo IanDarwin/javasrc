@@ -1,8 +1,15 @@
 package testing;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.AWTException;
+import java.awt.Container;
+import java.awt.Frame;
+import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /** The AWT "Robot" class allows you to control the GUI by moving
  * the mouse, pressing the mouse, entering keys, etc.

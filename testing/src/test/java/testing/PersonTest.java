@@ -1,11 +1,11 @@
 package testing;
 
-import domain.Person;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import domain.Person;
 
 /** A simple test case for Person */
 // tag::main[]
