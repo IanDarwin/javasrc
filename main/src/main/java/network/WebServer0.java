@@ -91,14 +91,15 @@ public class WebServer0 {
 				  <meta name='viewport' content='width=device-width, initial-scale=1'/>
 				</head>
 				<body>
-				<h1>Welcome, %s, but...</h1>\n
+				<h1>Welcome, %s, but...</h1>
 				<p>You have reached a desktop machine 
-				that does not run a real Web service.\n
-				<p>Please pick another system!</p>\n
+				that does not run a real Web service.
+				<p>Please pick another system!</p>
 				<p>Or view <a href='%s'>
 				this WebServer0 source on github</a>
-				(scroll down to WebServer0.java).</p>\n
-				<hr/><em>Java-based WebServer0</em><hr/>\n
+				(scroll down to WebServer0.java).</p>
+				<hr/>
+				<em>Java-based WebServer0</em><hr/>
 				</body>
 				</html>
 				""";
