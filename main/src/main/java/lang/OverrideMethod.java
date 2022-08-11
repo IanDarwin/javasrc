@@ -10,6 +10,7 @@ public class OverrideMethod {
 	}
 	static class B extends A {
 		String info() { return "Class B"; }
+		// String greeting() { return "Bye Bye"; } // COMPILE ERROR
 	}
 	public static void main(String[] args) {
 		List.of(
