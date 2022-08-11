@@ -78,26 +78,31 @@ public class WebServer0 {
 			System.out.println("Accepted connection from " + from);
 			is = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			request = is.readLine();
-			System.out.println("Request: " + request);
+			System.out.printf("Request: %s from %s\n", request, from);
 			
 			os = new PrintWriter(s.getOutputStream(), true);
 			os.print("HTTP/1.0 200 Here is your data" + CRLF);
 			os.print("Content-type: text/html" + CRLF);
-			os.print("<meta name='viewport' content='width=device-width, initial-scale=1'/>" + CRLF);
 			os.print("Server-name: DarwinSys NULL Java WebServer 0" + CRLF);
 			final String replyTemplate = """
 				<html>
-				<head><title>Wrong System Reached</title></head>\n
+				<head>
+				  <title>Wrong System Reached</title>
+				  <meta name='viewport' content='width=device-width, initial-scale=1'/>
+				</head>
+				<body>
 				<h1>Welcome, %s, but...</h1>\n
 				<p>You have reached a desktop machine 
 				that does not run a real Web service.\n
 				<p>Please pick another system!</p>\n
-				<p>Or view <a href=' + VIEW_SOURCE_URL + '>
-				the WebServer0 source on github</a>.</p>\n
+				<p>Or view <a href='%s'>
+				this WebServer0 source on github</a>
+				(scroll down to WebServer0.java).</p>\n
 				<hr/><em>Java-based WebServer0</em><hr/>\n
-				</html>\n;
+				</body>
+				</html>
 				""";
-			String reply = String.format(replyTemplate, from);
+			String reply = String.format(replyTemplate, from, VIEW_SOURCE_URL);
 			os.print("Content-length: " + reply.length() + CRLF);
 			os.print(CRLF);
 			os.print(reply + CRLF);
