@@ -5,7 +5,7 @@ public class SingletonDemo {
 
 		// tag::enumBased[]
 		// Demonstrate the enum method:
-		EnumSingleton.INSTANCE.demoMethod();
+		SingletonEnum.INSTANCE.demoMethod();
 		// end::enumBased[]
 
 		// tag::codeBased[]
