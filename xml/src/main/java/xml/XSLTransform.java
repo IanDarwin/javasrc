@@ -1,9 +1,9 @@
 package xml;
 
-import org.apache.xalan.xslt.XSLTInputSource;
-import org.apache.xalan.xslt.XSLTProcessor;
-import org.apache.xalan.xslt.XSLTProcessorFactory;
-import org.apache.xalan.xslt.XSLTResultTarget;
+import org.docx4j.org.apache.xalan.xslt.XSLTInputSource;
+import org.docx4j.org.apache.xalan.xslt.XSLTProcessor;
+import org.docx4j.org.apache.xalan.xslt.XSLTProcessorFactory;
+import org.docx4j.org.apache.xalan.xslt.XSLTResultTarget;
 
 /**
  * Demonstrate transforming a file using XSLT, with Apache Xalan API.
