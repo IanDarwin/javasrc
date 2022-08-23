@@ -1,9 +1,10 @@
 case $# in
-	2)	;;
-	*)	echo "Usage: $0 xml-in xsl-in [>outfile]" >&2;;
+	2|3)	;;
+	*)	echo "Usage: $0 xml-in xsl-in [outfile]" >&2;;
 esac
 
 INFILE=$1
 XSLSHEET=$2
+OUTFILE=${3-transformed.txt}
 
-java org.apache.xalan.xslt.Process -in $INFILE -xsl $XSLSHEET
+java ~/git/javasrc/xml/src/main/java/xml/JAXPTransform.java  $INFILE $XSLSHEET $OUTFILE
