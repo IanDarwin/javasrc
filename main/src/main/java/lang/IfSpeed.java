@@ -13,10 +13,10 @@ public class IfSpeed {
 	  double speedLimit) {
 		if (vehicleSpeed > (2 * speedLimit)) {
 			return  "Your car will be impounded!";
-		} else if (vehicleSpeed > 1.5 * speedLimit) {
+		} else if (vehicleSpeed > 1.25 * speedLimit) {
 			return "This will be expensive!" ;
 		} else {
-			return "On we go!";
+			return "Away we go!";
 		}
 	}
 }
