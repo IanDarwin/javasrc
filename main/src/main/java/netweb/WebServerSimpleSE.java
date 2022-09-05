@@ -29,12 +29,12 @@ public class WebServerSimpleSE {
 				
 				// Clients are expected to read-fully the inputstream.
 				InputStream is = rr.getRequestBody();
-		        int j;
+				int j;
 				do {
-		        	j = is.read();
-		        } while (j != -1);
+					j = is.read();
+				} while (j != -1);
 				is.close();
-		           
+
 				final String template = "<html><p>Hello at %s!</p></html>";
 				String message = String.format(template, new Date());
 				
