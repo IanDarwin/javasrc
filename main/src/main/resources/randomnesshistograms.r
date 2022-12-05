@@ -4,7 +4,7 @@
 
 # Be sure you have run "Random4" in this directory before running this script
 
-# This version by Benjamin Darwin
+# Rewritten by Benjamin Darwin
 
 # tag::main[]
 png("randomness.png")
