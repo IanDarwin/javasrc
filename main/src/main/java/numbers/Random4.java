@@ -10,7 +10,7 @@ import java.util.Random;
  * using the "R" script randomnesshistograms.r).
  */
 public class Random4 {
-	private static int N = 10000;
+	private static int N = 100_000;
 	public static void main(String[] argv) throws IOException {
 		if (argv.length == 1) {
 			try {
