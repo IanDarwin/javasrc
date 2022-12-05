@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Random3 {
 	public static void main(String[] argv) {
-		// java.util.Random methods are non-static, do need to construct Math
+		// java.util.Random methods are non-static; we need an instance
 		// tag::main[]
 		Random r = new Random();
 		for (int i=0; i<10; i++)

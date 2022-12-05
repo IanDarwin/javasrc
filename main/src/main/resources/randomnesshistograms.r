@@ -13,7 +13,7 @@ ns <- read.table("gaussian.txt")[[1]]
 
 layout(t(c(1,2)), respect=TRUE)
 
-hist(us, main = "Using nextRandom()", nclass = 10,
+hist(us, main = "Using nextDouble()", nclass = 10,
        xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
 
 hist(ns, main = "Using nextGaussian()", nclass = 16,
