@@ -7,7 +7,7 @@
 # Rewritten by Benjamin Darwin
 
 # tag::main[]
-png("randomness.png")				// set output file
+png("randomness.png")				# set output file
 us <- read.table("normal.txt")[[1]]
 ns <- read.table("gaussian.txt")[[1]]
 
