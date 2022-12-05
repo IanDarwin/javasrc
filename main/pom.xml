@@ -201,6 +201,11 @@
 			<artifactId>jython-standalone</artifactId>
 			<version>2.7.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>renjin-script-engine</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 
 		<!-- Client-side CDI -->
 		<dependency>
@@ -224,6 +229,17 @@
 		</dependency>
 
 	</dependencies>
+
+	<!-- A minor POX on those who insist on running their own 
+	 *** repos instead of using Maven Central.
+	 -->
+	<repositories>
+		<repository>
+			<id>bedatadriven</id>
+			<name>bedatadriven public repo</name>
+			<url>https://nexus.bedatadriven.com/content/groups/public/</url>
+		</repository>
+	</repositories>
 
 	<reporting>
 		<plugins>
