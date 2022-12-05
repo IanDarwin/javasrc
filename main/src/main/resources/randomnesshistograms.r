@@ -4,10 +4,10 @@
 
 # Be sure you have run "Random4" in this directory before running this script
 
-# This version by Benjamin Darwin
+# Rewritten by Benjamin Darwin
 
 # tag::main[]
-png("randomness.png")
+png("randomness.png")				// set output file
 us <- read.table("normal.txt")[[1]]
 ns <- read.table("gaussian.txt")[[1]]
 
