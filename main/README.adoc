@@ -1,0 +1,14 @@
+= javasrc.main
+
+This is the largest section of Ian's JavaSrc project, holding all
+the files that don't fit into any of the more specific categories.
+
+== Random Histogram Plots
+
+If you're here for the Random Number stuff, you can try one of these:
+
+* Use Apache Maven to build, then run `java numbers.Random4` with a classpath, then run R with a redirection;
+* Use the Unix shell script scripts/run-random-histo, which combines all the previous steps;
+* Open this `main` folder as an IDE project in e.g., IntelliJ, and run Random5, which uses the JVM-based
+https://renjin.org[renjin] "R Engine" for a unified script.
+
