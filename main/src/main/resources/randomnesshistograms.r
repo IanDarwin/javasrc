@@ -12,7 +12,7 @@
 # By Ian Darwin; parts rewritten by Benjamin Darwin
 
 # tag::main[]
-png("randomness.png", width = 1024, height = 700)
+png("randomness.png", width = 1024, height = 650)
 
 if (!exists("us")) {
 	us <- read.table("normal.txt")[[1]]
@@ -22,9 +22,9 @@ if (!exists("us")) {
 layout(t(c(1,2)), respect=TRUE)
 
 hist(us, main = "Using nextDouble()", nclass = 10,
-       xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
+       xlab = NULL, col = "lightgray", las = 1, font.lab = 3, ylab='')
 
 hist(ns, main = "Using nextGaussian()", nclass = 16,
-       xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
+       xlab = NULL, col = "lightgray", las = 1, font.lab = 3, ylab='')
 dev.off()
 # end::main[]
