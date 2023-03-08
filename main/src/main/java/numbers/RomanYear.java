@@ -1,6 +1,6 @@
 package numbers;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /** Print the current year in Roman Numerals */
 // tag::main[]
@@ -9,8 +9,7 @@ public class RomanYear {
 	public static void main(String[] argv) {
 
 		RomanNumberFormat rf = new RomanNumberFormat();
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
+		int year = LocalDate.now().getYear();
 
 		// If no arguments, just print the year.
 		if (argv.length == 0) {

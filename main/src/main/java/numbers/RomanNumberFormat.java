@@ -58,8 +58,6 @@ public class RomanNumberFormat extends Format {
 	 */
 	// Not an override
 	public String format(long n) {
-		if (n <= 0 || n >= 4000)
-			throw new NumberFormatException(n + " must be > 0 && < 4000");
 		StringBuffer sb = new StringBuffer();
 		format(Integer.valueOf((int)n), sb,
 			new FieldPosition(NumberFormat.INTEGER_FIELD));
@@ -79,6 +77,9 @@ public class RomanNumberFormat extends Format {
 			throw new IllegalArgumentException(
 			fp + " must be FieldPosition(NumberFormat.INTEGER_FIELD");
 		int n = ((Number)on).intValue();	// TODO: check in range.
+		if (n <= 0 || n >= 4000) {
+			throw new NumberFormatException(n + " must be > 0 && < 4000");
+		}
 
 		// First, put the digits on a tiny stack. Must be 4 digits.
 		for (int i=0; i<4; i++) {
