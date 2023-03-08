@@ -10,8 +10,16 @@ import java.util.Random;
  * using the "R" script randomnesshistograms.r).
  */
 public class Random4 {
-	private static final int N = 10000;
+	private static int N = 100_000;
 	public static void main(String[] argv) throws IOException {
+		if (argv.length == 1) {
+			try {
+				N = Integer.parseInt(argv[0]);
+			} catch (NumberFormatException ex) {
+				System.out.printf("Number %s invalid, using %d\n", argv[0], N);
+			}
+		}
+		System.out.println("Printing " + N + " randoms to each text file");
 		Random r = new Random();
 		try (PrintWriter file1 = new PrintWriter(new FileWriter("normal.txt"))) {
 			try (PrintWriter file2 = new PrintWriter(new FileWriter("gaussian.txt"))) {

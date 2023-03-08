@@ -2,21 +2,29 @@
 
 # Histogram the data for Java Cookbook recipe "Better Random Numbers"
 
-# Be sure you have run "Random4" in this directory before running this script
+# If using standard R:
+# Be sure you have run "Random4" in this directory before running this script;
+# the Java code writes into the two text files.
+# If using 'renjin':
+# Be sure renjin is on your classpath (See pom.xml)
+# the Java code passes the two arrays via Renjin
 
-# This version by Benjamin Darwin
+# By Ian Darwin; parts rewritten by Benjamin Darwin
 
 # tag::main[]
-png("randomness.png")
-us <- read.table("normal.txt")[[1]]
-ns <- read.table("gaussian.txt")[[1]]
+png("randomness.png", width = 1024, height = 650)
+
+if (!exists("us")) {
+	us <- read.table("normal.txt")[[1]]
+	ns <- read.table("gaussian.txt")[[1]]
+}
 
 layout(t(c(1,2)), respect=TRUE)
 
-hist(us, main = "Using nextRandom()", nclass = 10,
-       xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
+hist(us, main = "Using nextDouble()", nclass = 10,
+       xlab = NULL, col = "lightgray", las = 1, font.lab = 3, ylab='')
 
 hist(ns, main = "Using nextGaussian()", nclass = 16,
-       xlab = NULL, col = "lightgray", las = 1, font.lab = 3)
+       xlab = NULL, col = "lightgray", las = 1, font.lab = 3, ylab='')
 dev.off()
 # end::main[]

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Unix shell script to generate histogram of java.util.Random randomness
+
+mvn compile
+
+java -cp target/classes:~/lib/darwinsys*.jar numbers.Random4
+
+R --no-save < /home/ian/git/javasrc/main/src/main/resources/randomnesshistograms.r 
+
+open randomness.png
