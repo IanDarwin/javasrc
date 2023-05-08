@@ -2,6 +2,7 @@ package functional_med;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -9,6 +10,10 @@ import functional_med.data.MockData;
 import functional_med.model.Reading;
 import functional_med.model.ReadingType;
 
+/**
+ *  Badly named Functional Programming for Medical Readings Demo;
+ *  processes a list of Reading objects.
+ */
 public class FPMedDemo {
 	static List<Reading> listOfReadings;
 	
@@ -42,17 +47,12 @@ public class FPMedDemo {
 	public static void version3b() {
 		listOfReadings.stream().filter(
 				r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15))
-				.sorted((r1, r2) -> r1.when.compareTo(r2.when))
+				.sorted(Comparator.comparing(r -> r.when))
 				.forEach(o->System.out.println(o));
 	}
 
 	public static List<Reading> search(Predicate<Reading> tester) {
-        List<Reading> results = new ArrayList<>();
-        listOfReadings.forEach(c -> {
-            if (tester.test(c))
-                results.add(c);
-        });
-        return results;
+        return listOfReadings.stream().filter(tester).toList();
     }
 	
 	static {
