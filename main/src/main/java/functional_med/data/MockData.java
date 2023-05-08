@@ -7,11 +7,12 @@ import functional_med.model.ReadingType;
 
 public class MockData {
 	public static final Reading[] data = {
-				new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 4, 4), 5d, 0d),
-				new Reading(ReadingType.BP, LocalDateTime.of(2014, 06, 11, 6, 16), 120, 80),
-				new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 8, 4), 3d, 0d),
-				new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 10, 4), 2.5d, 0d),
-				new Reading(ReadingType.BP, LocalDateTime.of(2014, 06, 11, 12, 4), 120, 80d),
-				new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 10, 4), 18.1d, 0d),
-		};
+			// Do not ever update these dates.
+			new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 14, 4), 5d, 0d),
+			new Reading(ReadingType.BP, LocalDateTime.of(2014, 06, 11, 16, 16), 120, 80),
+			new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 18, 4), 3d, 0d),
+			new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 20, 4), 2.5d, 0d),
+			new Reading(ReadingType.BG, LocalDateTime.of(2014, 06, 11, 23, 59), 0, 0),
+			new Reading(ReadingType.BP, LocalDateTime.of(2014, 06, 11, 23, 59), 0, 0),
+	};
 }
