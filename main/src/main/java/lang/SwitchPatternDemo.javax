@@ -1,0 +1,34 @@
+package lang;
+
+import java.time.LocalDate;
+
+// NB: Java 17 requires "--enable-preview --source 17" to run this!
+// File may be renamed as .javax to prevent IDE failures; just rename 
+// it to .java if you no longer need the preview settings.
+
+/**
+ * Show off the Java 17 enhancements for Switch Patterns.
+ * Adapted from
+ * https://blogs.oracle.com/javamagazine/post/the-hidden-gems-in-java-16-and-java-17-from-streammapmulti-to-hexformat
+ */
+public class SwitchPatternDemo {
+
+	static String format(Object o) {
+		return switch (o) {
+		case null -> "Oops, you passed a null value";
+		case Integer i -> String.format("int %d", i);
+		case Long l -> String.format("long %d", l);
+		case Double d -> String.format("double %f", d);
+		case String s -> String.format("String %s", s);
+		default -> o.toString();
+		};
+	}
+
+	public static void main(String[] args) {
+		Object[] data = { null, 123, 123L, 123., "123", LocalDate.now() };
+		for (Object d : data) {
+			System.out.println(format(d));
+		}
+	}
+}
+
