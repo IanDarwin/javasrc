@@ -1,15 +1,12 @@
 package datetime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class EasterTest {
 
-	@ParameterizedTest
+	@ParameterizedTest(name="{0} Easter should be {1}")
 	@CsvSource(textBlock = """
 		1900,'1900-04-15'
 		1951,'1951-03-25'
