@@ -22,19 +22,23 @@ public class CheckOpenMailRelay {
 			new CheckOpenMailRelayGui().setVisible(true);
 		} else {
 			for (int i=0; i<args.length; i++) {
-				process(args[i]);
+				try {
+					process(args[i]);
+				} catch (Exception e) {
+					throw new RuntimeException(e);
+				}
 			}
 		}
 	}
 
 	/** Try the given mail server, writing output to System.out */
-	public static void process(String suspect_relay) {
+	public static void process(String suspect_relay) throws Exception {
 		process(suspect_relay, System.out);
 	}
 
 	/** Try the given mail server, writing output to the given PrintStream */
-	public static void process(String suspect_relay, PrintStream out) {
-		out.println("processs: trying: " + suspect_relay);
+	public static void process(String suspect_relay, PrintStream out) throws Exception {
+		out.println("process: trying: " + suspect_relay);
 		try {
 			// Redirect all output from mail API to the given stream.
 			// XXX System.setOut(out);
