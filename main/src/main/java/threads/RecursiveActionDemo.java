@@ -1,5 +1,6 @@
 package threads;
 
+import java.io.Serial;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.RecursiveAction;
  */
 public class RecursiveActionDemo extends RecursiveAction {
 
+	@Serial
 	private static final long serialVersionUID = 3742774374013520116L;
 
 	static int[] raw = {
