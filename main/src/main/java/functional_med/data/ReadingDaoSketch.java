@@ -4,7 +4,7 @@ import java.util.List;
 
 import functional_med.model.Reading;
 
-public interface ReadingDaoFailure {
+public interface ReadingDaoSketch {
 	
 	public List<Reading> findByType(); 
 	public List<Reading> findByDate();
