@@ -26,21 +26,21 @@ public class FPMedDemo {
 	/** Process the list one way */
 	public static void version1() {
 		System.out.println("V1");
-		List<Reading> lowBgReadings = search(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15));
+		List<Reading> lowBgReadings = search(r -> r.type() == ReadingType.BG && (r.value1() < 2.8 || r.value1() > 15));
 		lowBgReadings.forEach(System.out::println);
 	}
 
 	/** Process the list another way */
 	public static void version2() {
 		System.out.println("V2");
-		search(r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15)).forEach(System.out::println);
+		search(r -> r.type() == ReadingType.BG && (r.value1() < 2.8 || r.value1() > 15)).forEach(System.out::println);
 	}
 
 	/** Process the list yet another way */
 	public static void version3() {
 		System.out.println("V3");
 		listOfReadings.stream().filter(
-				r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15))
+				r -> r.type() == ReadingType.BG && (r.value1() < 2.8 || r.value1() > 15))
 				.sorted()	
 				.forEach(System.out::println);
 	}
@@ -49,8 +49,8 @@ public class FPMedDemo {
 	public static void version3b() {
 		System.out.println("V1");
 		listOfReadings.stream().filter(
-				r -> r.type == ReadingType.BG && (r.value1 < 2.8 || r.value1 > 15))
-				.sorted(Comparator.comparing(r -> r.when))
+				r -> r.type() == ReadingType.BG && (r.value1() < 2.8 || r.value1() > 15))
+				.sorted(Comparator.comparing(r -> r.when()))
 				.forEach(o->System.out.println(o));
 	}
 
