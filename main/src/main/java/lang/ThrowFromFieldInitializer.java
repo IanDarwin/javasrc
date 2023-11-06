@@ -11,10 +11,11 @@ import java.io.ObjectInputStream;
  * @author Dr. Heinz Kabutz, http://www.javaspecialists.eu/
  */
 public class ThrowFromFieldInitializer implements AutoCloseable {
+
 	private final ObjectInputStream in = 
 			new ObjectInputStream(
 					new BufferedInputStream(
-							new FileInputStream("data.bin")));
+							new FileInputStream("no.such.file")));
 
 	public ThrowFromFieldInitializer() throws IOException {
 	}
@@ -26,11 +27,4 @@ public class ThrowFromFieldInitializer implements AutoCloseable {
 	public void close() throws IOException {
 		in.close();
 	}
-
-	@SuppressWarnings("deprecation")
-	protected void finalize() throws Throwable {
-		close();
-		super.finalize();
-	}
-	
 }
