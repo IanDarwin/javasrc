@@ -12,8 +12,7 @@ public class HamcrestDemo {
 		assertAll("Assert tests in a group",
 			() -> assertEquals(2,3), // Guaranteed to fail, first, see if others run.
 			() -> assertEquals(2,1+1),
-			() -> assertEquals("Hi", "Highlighter".substring(0,2)),
-			
+			() -> assertEquals("Hi", "Highlighter".substring(0,2))
 		);
 	}
 
