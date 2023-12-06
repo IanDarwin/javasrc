@@ -8,9 +8,9 @@ https://eclipse.org/[Eclipse]
 and
 https://jetbrains.com/idea[IntelliJ IDEA].
 
-The minimum Java release is currently 21. You can compile for Java 17 by checking out the java-17 tag.
-Or you can just add exclusions for files that use newer features.
-For older releases, I don't seem to have tags, so if somebody can bisect and tell me what works for 17,
+The minimum Java release is currently 21. You can compile for Java 17 by checking out the java-17 branch.
+Or you could just add exclusions for files that use newer features.
+For older releases, I don't seem to have branches or tags, so if somebody can bisect and tell me what works for 11,
 I shall be happy to add a tag.
 
 About a third of these files are featured in my O'Reilly
