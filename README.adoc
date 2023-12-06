@@ -36,11 +36,19 @@ as follows:
 * graal - Only works with graal vm
 * jlink - Not ready yet?
 * json - JSON parsing and formatting with various APIs
+* lombokdemo - Project Lombok - not working ATM
+* Rdemo-web - NOT a maven module - some R demos
 * restdemo - REST
 * spark - Apache SPARK
 * unsafe - com.sun.Unsafe
 * testing - code that expands on testing (other modules have normal unit tests)
+* testing-spock - testing with the Spock framework
+* unsafe - you shouldn't want to know
 * xml - XML parsing and formatting with various APIs
+* sidebyside - NOT a maven module - some non-Java versions of demos
+
+
+A few modules are disabled because I don't have time to fix them now.
 
 Prior to the Java Cookbook revision (late 2019/early 2020), 
 this repo was one single module with no sub-modules. This became difficult
