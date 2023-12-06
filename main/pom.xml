@@ -26,12 +26,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<!-- World may not be ready for latest Java yet; 
-						these are excludes for earlier-dependent stuff -->
 					<excludes>
-
-						<!-- Preview -->
-						<exclude>sealedclasses/*.java</exclude>
 
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
@@ -43,9 +38,6 @@
 
 						<!-- Won't compile with UTF-8! -->
 						<exclude>lang/EuroLanguage.java</exclude>
-
-						<!-- Used private API which is no longer available -->
-						<exclude>netweb/WebServerSimpleSE.java</exclude>
 
 						<exclude>plotter/Penman.java</exclude>
 
