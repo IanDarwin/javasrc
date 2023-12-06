@@ -3,8 +3,15 @@
 This is my assorted collection of (you guessed it) Java source.
 It remains focused on building with
 https://maven.apache.org/[Maven]
+and the IDEs
+https://eclipse.org/[Eclipse]
 and
-https://eclipse.org/[Eclipse].
+https://jetbrains.com/idea[IntelliJ IDEA].
+
+The minimum Java release is currently 21. You can compile for Java 17 by checking out the java-17 tag.
+Or you can just add exclusions for files that use newer features.
+For older releases, I don't seem to have tags, so if somebody can bisect and tell me what works for 17,
+I shall be happy to add a tag.
 
 About a third of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
@@ -91,14 +98,14 @@ testing::
 
 == Building
 
-* You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
-if you are on some relic platform that doesn't have Java 9 or later.
+* You MUST HAVE a current release of Java (see notes at beginning) to successfully compile this whole package.
+Sorry if you are on some relic platform that doesn't have current Java.
 Even https://openbsd.org[OpenBSD] has Java 17 (Thanks Kurt!).
-Also sorry if your organization is stuck on Java 8 due to application server issues.
+Also sorry if your organization is stuck on an ancient Java due to application server issues.
 
 * I am using Eclipse for most of my development, and Maven for building, and Jenkins
-for automated building. Most Ant scripts have been removed; the few that remain
-will eventually be converted to Maven exec:java configurations.
+for automated building. The Ant scripts have been removed (except for a few in the ee module; the few that remain
+will eventually be deleted, or converted to Maven exec:java configurations).
 
 * Building with Eclipse tested with Eclipse 4.x; MUST HAVE "m2e" (free in the Eclipse Marketplace)
 	Compiles and tests pass.
@@ -106,9 +113,6 @@ will eventually be converted to Maven exec:java configurations.
 * Building with Maven 3.x works and tests pass.
 
 * Building with other platforms? Good luck, but let me know if it works.
-
-* If you really need Java 8, try removing the module-info files. But you're on your own.
-And you'll need some exclusions for files that use newer language features.
 
 Ian Darwin
 
