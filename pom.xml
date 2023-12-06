@@ -34,7 +34,7 @@
 	<modules>
 		<module>main</module>
 		<module>desktop</module>
-		<module>ee</module>
+	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
