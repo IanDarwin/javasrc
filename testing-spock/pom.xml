@@ -10,7 +10,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>javasrc-testing</artifactId>
+	<artifactId>javasrc-testing-spock</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<inceptionYear>1995</inceptionYear>
