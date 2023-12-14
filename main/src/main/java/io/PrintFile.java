@@ -1,12 +1,13 @@
 package io;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.JobAttributes;
+import java.awt.PrintJob;
+import java.awt.PageAttributes;
 import java.awt.PrintJob;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,11 +18,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Properties;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  * PrintFile -- Print a file named on the command line
  */
-public class PrintFile extends Frame {
+public class PrintFile extends JFrame {
 
 	private static final long serialVersionUID = 1370956180129342147L;
 	/** The number of pages to print */
@@ -48,8 +51,8 @@ public class PrintFile extends Frame {
 	/** Construct a PrintFile object */
 	PrintFile() {
 		setLayout(new FlowLayout());
-		Button b;
-		add(b = new Button("Cancel"));
+		JButton b;
+		add(b = new JButton("Cancel"));
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (pjob != null)	// if quit while printing!
@@ -77,13 +80,21 @@ public class PrintFile extends Frame {
 		BufferedReader is = new BufferedReader(ifile);
 		Graphics g = null;	// refers to current page
 		System.out.println("Doing print");
+		var jobAttrs = new JobAttributes();
 		pjob = getToolkit().getPrintJob(this,
-			"Printing Test", (Properties)null);
+			"Printing Test", 
+			jobAttrs,
+			new PageAttributes()
+			);
 		if (pjob == null)          // User cancelled??
 			return;
 		Dimension pDim = pjob.getPageDimension();
 		int pRes = pjob.getPageResolution();
 		System.out.println("Page size " + pDim + "; Res " + pRes);
+		System.out.printf("Pages from %d to %d\n",
+			jobAttrs.getFromPage(),
+			jobAttrs.getToPage()
+			);
 		g = pjob.getGraphics();
 		g.setColor(Color.black);
 		g.setFont(new Font("SansSerif", Font.PLAIN, 12));
