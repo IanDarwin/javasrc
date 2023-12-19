@@ -42,6 +42,12 @@ public class PerfectPangramTest {
 	}
 
 	@Test
+	public void testPerfectWithFullAlphabet() {
+		tester = new PerfectPangram(true);
+		assertFalse(tester.pangram("aardvark"));	 // repeated letter
+	}
+
+	@Test
 	public void testWithLongerAlphabet() {
 		tester = new PerfectPangram("abcejklmru");
 		assertTrue (tester.pangram("lumberjack"));

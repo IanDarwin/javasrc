@@ -3,8 +3,15 @@
 This is my assorted collection of (you guessed it) Java source.
 It remains focused on building with
 https://maven.apache.org/[Maven]
+and the IDEs
+https://eclipse.org/[Eclipse]
 and
-https://eclipse.org/[Eclipse].
+https://jetbrains.com/idea[IntelliJ IDEA].
+
+The minimum Java release is currently 21. You can compile for Java 17 by checking out the java-17 branch.
+Or you could just add exclusions for files that use newer features.
+For older releases, I don't seem to have branches or tags, so if somebody can bisect and tell me what works for 11,
+I shall be happy to add a tag.
 
 About a third of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
@@ -29,11 +36,19 @@ as follows:
 * graal - Only works with graal vm
 * jlink - Not ready yet?
 * json - JSON parsing and formatting with various APIs
+* lombokdemo - Project Lombok - not working ATM
+* Rdemo-web - NOT a maven module - some R demos
 * restdemo - REST
 * spark - Apache SPARK
 * unsafe - com.sun.Unsafe
 * testing - code that expands on testing (other modules have normal unit tests)
+* testing-spock - testing with the Spock framework
+* unsafe - you shouldn't want to know
 * xml - XML parsing and formatting with various APIs
+* sidebyside - NOT a maven module - some non-Java versions of demos
+
+
+A few modules are disabled because I don't have time to fix them now.
 
 Prior to the Java Cookbook revision (late 2019/early 2020), 
 this repo was one single module with no sub-modules. This became difficult
@@ -51,7 +66,9 @@ Now that it's done this way, you can choose to just build one module
 or another, _without having Maven download 3/4 of the Internet_ for
 dependencies. Just `cd` into one of the module directories and
 invoke `mvn` there. Or you can do them all by invoking `mvn` in
-the top-level directory. Useful mvn targets include `compile` and `test`.
+the top-level directory. 
+
+Useful mvn targets include `compile` and `test`.
 Do not use `mvn package` as the jar files won't be useful on their own.
 
 === I broke it (but it's easy to fix)
@@ -91,14 +108,14 @@ testing::
 
 == Building
 
-* You MUST HAVE Java 11+ to successfully compile this whole package.  Sorry
-if you are on some relic platform that doesn't have Java 9 or later.
+* You MUST HAVE a current release of Java (see notes at beginning) to successfully compile this whole package.
+Sorry if you are on some relic platform that doesn't have current Java.
 Even https://openbsd.org[OpenBSD] has Java 17 (Thanks Kurt!).
-Also sorry if your organization is stuck on Java 8 due to application server issues.
+Also sorry if your organization is stuck on an ancient Java due to application server issues.
 
 * I am using Eclipse for most of my development, and Maven for building, and Jenkins
-for automated building. Most Ant scripts have been removed; the few that remain
-will eventually be converted to Maven exec:java configurations.
+for automated building. The Ant scripts have been removed (except for a few in the ee module; the few that remain
+will eventually be deleted, or converted to Maven exec:java configurations).
 
 * Building with Eclipse tested with Eclipse 4.x; MUST HAVE "m2e" (free in the Eclipse Marketplace)
 	Compiles and tests pass.
@@ -106,9 +123,6 @@ will eventually be converted to Maven exec:java configurations.
 * Building with Maven 3.x works and tests pass.
 
 * Building with other platforms? Good luck, but let me know if it works.
-
-* If you really need Java 8, try removing the module-info files. But you're on your own.
-And you'll need some exclusions for files that use newer language features.
 
 Ian Darwin
 

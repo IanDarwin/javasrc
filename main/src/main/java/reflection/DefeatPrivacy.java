@@ -3,7 +3,7 @@ package reflection;
 import java.lang.reflect.Field;
 
 // tag::main[]
-class X {
+class ClassWithPrivateField {
 	@SuppressWarnings("unused") // Used surreptitiously below.
 	private int p = 42;
 	int q = 3;
@@ -20,11 +20,11 @@ public class DefeatPrivacy {
 	}
 	
 	private void process() throws Exception {
-		X x = new X();
+		ClassWithPrivateField x = new ClassWithPrivateField();
 		System.out.println(x);
 		// System.out.println(x.p); // Won't compile
 		System.out.println(x.q);
-		Class<? extends X> class1 = x.getClass();
+		Class<? extends ClassWithPrivateField> class1 = x.getClass();
 		Field[] flds = class1.getDeclaredFields();
 		for (Field f : flds) {
 			f.setAccessible(true);	// bye-bye "private"

@@ -20,7 +20,7 @@ public class PersonTest {
 	}
 
 	@BeforeEach
-	private void setup() {
+	void setup() {
 		p = new Person("Ian", "Darwin");
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Tutorial/Example of converting between LocalDate and legacy java.util.Date
+ * Both LocalDate and LocalDateTime provide the ofInstant() method.
  */
 // tag::main[]
 public class LegacyDates {

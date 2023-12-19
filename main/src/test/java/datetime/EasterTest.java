@@ -1,15 +1,12 @@
 package datetime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class EasterTest {
 
-	@ParameterizedTest(name="Year {1} should return {2}")
+	@ParameterizedTest(name="Year {0} should declare Easter as {1}")
 	@CsvSource(textBlock = """
 		1900,'1900-04-15'
 		1951,'1951-03-25'
@@ -17,6 +14,7 @@ public class EasterTest {
 		2000,'2000-04-23'
 		2001,'2001-04-15'
 		2020,'2020-04-12'
+		2023,'2023-04-09'
 		""")
 	public void testConvert(int year, String expected) {
 		assertEquals(expected, Easter.findHolyDay(year).toString());

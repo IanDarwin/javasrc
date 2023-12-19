@@ -1,5 +1,6 @@
 package threads;
 
+import java.io.Serial;
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
@@ -21,7 +22,8 @@ import java.util.concurrent.RecursiveTask;
  */
 public class RecursiveTaskDemo extends RecursiveTask<Long> {
 
-	private static final long serialVersionUID = 3742774374013520116L;
+	@Serial
+	private static final long serialVersionUID = 74277437329822011L;
 
 	static final int N = 10000000;
 	final static int THRESHOLD = 500;
