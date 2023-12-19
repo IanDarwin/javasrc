@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class EasterTest {
 
-	@ParameterizedTest
+	@ParameterizedTest(name="Year {1} should return {2}")
 	@CsvSource(textBlock = """
 		1900,'1900-04-15'
 		1951,'1951-03-25'
