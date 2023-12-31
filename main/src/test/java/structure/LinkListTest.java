@@ -14,8 +14,8 @@ import org.junit.Test;
 
 /**
  * Linked list class, written out in full using Java.
- * WARNING: The LinkList class is not necessarily complete and
- * should not be used to save data, until somebody finishes it!
+ * WARNING: The LinkList class is not necessarily complete or perfect.
+ * You should probably use java.util.LinkedList instead!
  * @author	Ian Darwin, https://darwinsys.com/
  */
 public class LinkListTest {
@@ -34,15 +34,15 @@ public class LinkListTest {
 	@Before @SuppressWarnings("deprecation")
 	public void setUp() {
 		list = new LinkList<String>();
-		list.add(FIRST_STRING);
-		list.add(MIDDLE_STRING);
-		list.add(LAST_STRING);
+		assertTrue(list.add(FIRST_STRING));
+		assertTrue(list.add(MIDDLE_STRING));
+		assertTrue(list.add(LAST_STRING));
 	}
 	
 	@Test
 	public void testAddAll() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
-		list.addAll(c);
+		assertTrue(list.addAll(c));
 		assertEquals(6, list.size());
 		assertEquals("Three", list.get(5));
 	}
@@ -50,7 +50,7 @@ public class LinkListTest {
 	@Test
 	public void testAddAllIndexed() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
-		list.addAll(1, c);
+		assertTrue(list.addAll(1, c));
 		assertEquals(6, list.size());
 		// list.forEach(System.out::println);
 		assertEquals("One", list.get(2));
@@ -60,6 +60,7 @@ public class LinkListTest {
 	@Test
 	public void testAddWithIndex() {
 		final String MY_STRING = "Meh";
+		// This overload of add() curiously returns void
 		list.add(1, MY_STRING);
 		assertEquals("list size post-insert", 4, list.size());
 		assertEquals("Meh", list.get(2));
@@ -85,7 +86,7 @@ public class LinkListTest {
 	public void testGetSecond() {
 		assertEquals("get element", testData[1], list.get(1));
 	}
-	
+
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void testGetOnEmptyList() {
 		list.clear();

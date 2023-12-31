@@ -110,7 +110,7 @@ public class LinkList<T> implements List<T> {
 	@Override
 	public boolean addAll(Collection<? extends T> c) {
 		c.forEach(o -> add((T) o));
-		return false;
+		return true;
 	}
 
 	@Override
