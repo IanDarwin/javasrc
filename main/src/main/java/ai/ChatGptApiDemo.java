@@ -1,0 +1,88 @@
+package ai;
+
+import java.io.*;
+import java.nio.file.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.net.URISyntaxException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class ChatGptApiDemo {
+
+	final static String URL = "https://api.openai.com/v1/chat/completions";
+
+	public static void main(String[] args) throws Exception {
+		System.out.println(chatGPT("Please define recursion, non-self-referentially"));
+	}
+
+	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
+		// Store your API key in a one-line text file:
+       String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).get(0);
+       String model = "gpt-3.5-turbo";
+
+		URL obj = new URI(URL).toURL();
+		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+		connection.setRequestProperty("Content-Type", "application/json");
+
+		// Send the request
+		var request = new ChatGptRequest(model, "user", prompt);
+		connection.setDoOutput(true);
+		OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+		writer.write(request.toString());
+		writer.flush();
+		writer.close();
+
+		// Get a response from ChatGPT
+		int n = connection.getResponseCode();
+		if (n == 429) {
+			System.out.println("No ChatGPT wants to listen to your chuntering.");
+			String rah = null;
+			if ((rah = connection.getHeaderField("retry-after")) != null) {
+				System.out.println("Try again: " + rah);
+			}
+			try (var br = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+				while ((rah = br.readLine()) != null) {
+					System.out.println(rah);
+				}
+			}
+			return null;
+		}
+		System.out.println("Whew! Status was " + n);
+		var jsonInput = connection.getInputStream();
+		var mapper = new ObjectMapper();
+        ChatGptResponse resp = mapper.readValue(jsonInput, ChatGptResponse.class);
+		System.out.println(resp);
+		return resp.choices[0].text;
+   }
+
+	static record ChatGptRequest(String model, String role, String prompt) {
+		public String toString() {
+			return String.format(
+				"{\"model\": \"%s\", \"messages\": [{\"role\": \"%s\", \"content\": \"%s\"}]}",
+				model, role, prompt);
+		}
+	}
+
+	/** These could be record not a class, but can't get Jackson to instantiate records */
+	static class ChatGptResponse {
+        private ChatGptCompletion[] choices;
+		public String toString() {
+			var sb = new StringBuilder();
+			for (ChatGptCompletion comp : choices) {
+				sb.append(comp).append('\n');
+			}
+			return sb.toString();
+		}
+	}
+
+    static class ChatGptCompletion {
+		String text;
+		int index;
+		Object logprobs;
+		String finish_reason;
+    }
+}
