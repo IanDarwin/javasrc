@@ -17,7 +17,11 @@ import org.apache.bsf.BSFManager;
 import com.darwinsys.io.FileIO;
 import com.darwinsys.swingui.LabelText;
 
-/** Longer sample of using Bean Scripting Framework with JPython */
+/**
+ *  Longer sample of using Bean Scripting Framework with JPython
+ * N.B. You MUST hava org.python.core.PyJavaInstance on CLASSPATH or
+ * this program will go down in flames.
+ */
 // tag::main[]
 public class BSFAction {
 	protected String FILENAME = "buttonhandler.py";
@@ -53,7 +57,7 @@ public class BSFAction {
 				new FileReader(FILENAME));
 
 		} catch (Exception ex) {
-			System.err.println(ex.toString());
+			System.err.println(STR."Well, that didn't work. Why? \{ex}");
 			return;
 		}
 
