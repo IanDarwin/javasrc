@@ -1,0 +1,9 @@
+= incubation
+
+This is a separate Maven/IDE project because use of incubation requires a module-info,
+whereas most of the rest of JavaSrc doesn't need same and would find it a tad onerous to maintain.
+
+It obviously consists of code samples for APIs that are in incubation.
+It may be empty at any particular time, since APIs in incubation come and go.
+This README will not be updated; the code that graduates will simply move to main (usually)
+or to another more appropriate project.
