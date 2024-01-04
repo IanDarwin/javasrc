@@ -14,7 +14,7 @@ public class ChatGptApiDemo {
 	final static String URL = "https://api.openai.com/v1/chat/completions";
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(chatGPT("Please define recursion, non-self-referentially"));
+		System.out.println(chatGPT("What are the great themes in literature?"));
 	}
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
@@ -52,9 +52,19 @@ public class ChatGptApiDemo {
 			return null;
 		}
 		System.out.println("Whew! Status was " + n);
-		var jsonInput = connection.getInputStream();
+		var inputStream = connection.getInputStream();
+
+		if (inputStream != null) { // kluge for compiler
+			try (BufferedReader rdr = new BufferedReader(new InputStreamReader(inputStream))) {
+				String line;;
+				while ((line = rdr.readLine()) != null) {
+					System.out.println(line);
+				}
+			}
+			return null;
+		}
 		var mapper = new ObjectMapper();
-        ChatGptResponse resp = mapper.readValue(jsonInput, ChatGptResponse.class);
+        ChatGptResponse resp = mapper.readValue(inputStream, ChatGptResponse.class);
 		System.out.println(resp);
 		return resp.choices[0].text;
    }
