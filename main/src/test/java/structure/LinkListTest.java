@@ -33,7 +33,7 @@ public class LinkListTest {
 	
 	@Before @SuppressWarnings("deprecation")
 	public void setUp() {
-		list = new LinkList<String>();
+		list = new LinkList<>();
 		assertTrue(list.add(FIRST_STRING));
 		assertTrue(list.add(MIDDLE_STRING));
 		assertTrue(list.add(LAST_STRING));
@@ -90,7 +90,7 @@ public class LinkListTest {
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void testGetOnEmptyList() {
 		list.clear();
-		list.get(0);
+		list.getFirst();
 	}
 
 	@Test
@@ -115,14 +115,14 @@ public class LinkListTest {
 	@Test
 	public void testRemoveFirst() {
 		assertTrue(list.remove(FIRST_STRING));
-		assertTrue(list.size() == 2);
-		assertSame(MIDDLE_STRING, list.get(0));
+		assertEquals(2, list.size());
+		assertSame(MIDDLE_STRING, list.getFirst());
 	}
 	
 	@Test
 	public void testRemoveMIDDLE() {
 		assertTrue(list.remove(MIDDLE_STRING));
-		assertTrue(list.size() == 2);
+		assertEquals(2, list.size());
 		assertSame(FIRST_STRING, list.get(0));
 		assertSame(LAST_STRING, list.get(1));
 	}
@@ -130,7 +130,7 @@ public class LinkListTest {
 	@Test
 	public void testRemoveLast() {
 		assertTrue(list.remove(LAST_STRING));
-		assertTrue(list.size() == 2);
+		assertEquals(2, list.size());
 		assertSame(FIRST_STRING, list.get(0));
 		assertSame(MIDDLE_STRING, list.get(1));
 	}
