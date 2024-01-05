@@ -90,7 +90,7 @@ public class LinkListTest {
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void testGetOnEmptyList() {
 		list.clear();
-		list.getFirst();
+		list.get(0);
 	}
 
 	@Test
