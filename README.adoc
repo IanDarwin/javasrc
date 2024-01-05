@@ -8,12 +8,12 @@ https://eclipse.org/[Eclipse]
 and
 https://jetbrains.com/idea[IntelliJ IDEA].
 
-The minimum Java release is currently 21. You can compile for Java 17 by checking out the java-17 branch.
+*The minimum Java release is currently 21*. You can compile for Java 17 by checking out the java-17 branch.
 Or you could just add exclusions for files that use newer features.
 For older releases, I don't seem to have branches or tags, so if somebody can bisect and tell me what works for 11,
 I shall be happy to add a tag.
 
-Note that a few files use Java 21 "Preview" features, so if you're not compiling with the Maven POM file provided,
+A few files use Java 21 "Preview" features, so if you're not compiling with the Maven POM file provided,
 you'll need the arguments `--enable-preview --source-21` to get these to compile.
 
 About a third of these files are featured in my O'Reilly
