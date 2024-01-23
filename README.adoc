@@ -41,23 +41,27 @@ illustrated with one or more code examples. The contents of the current edition 
 * Afterword
 * Appendix: Java Then and Now
 
-== Tech
+== Technical Issues Compiling This Code
 
-*The minimum Java release is currently 21*. You can compile for Java 17 by checking out the java-17 branch.
-Or you could just add exclusions for files that use newer features.
-For older releases, I don't seem to have branches or tags, so if somebody can bisect and tell me what works for 11,
+If you want to compile everything, *the minimum Java release is currently 21*.
+You can compile for Java 17 by checking out the java-17 branch.
+Or you could just add exclusions for the few files that use newer features.
+For older releases, I don't have branches or tags, but if somebody wants to bisect (maybe start
+around commit `628efafe`) and tell me what works for 11,
 I shall be happy to add a tag.
 
-A few files use Java 21 "Preview" features, so if you're not compiling with the Maven POM file provided,
-and you're still using Java 21, you'll need the arguments `--enable-preview --source-21` to get these to compile.
+Some files use Java 21 "Preview" features, which work if you're compiling with the Maven POM file provided.
+If not, and you're still using Java 21 (i.e., not 22 or 23), you'll need the argument `--enable-preview`
+(and maybe `--source-21`) to get these to compile.
 
-As mentioned above, about a third of these files are featured in my O'Reilly
+As mentioned above, a goodly number of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
+To avoid copy-and-paste errors (or, worse, retyping!),
 I use a script (+copyCodeSamples+) to pre-format these for inclusion in the O'Reilly publishing toolchain;
-these will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
-mechanical inclusion into the book. These are just comments to Java tooling
+these source code files will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
+mechanical inclusion into the book. These are just comments as far as Java tooling is concerned,
 and can be completely ignored by people looking at the source code normally.
-Not all files with these comments necessarily appear in the book;
+N.B. Not all files with these comments necessarily appear in the book;
 files are included from the manuscript using 
 https://asciidoctor.org[asciidoctor]'s `include` mechanism and,
 when a code sample gets dropped from the book, I have no motivation
@@ -87,7 +91,7 @@ as follows:
 
 A few modules are disabled because I don't have time to fix them now.
 
-Prior to the Java Cookbook revision (late 2019/early 2020), 
+Prior to the revision (late 2019/early 2020) for the Fourth Edition of _Java Cookbook_, 
 this repo was one single module with no sub-modules. This became difficult
 to manage and to use, since, to compile anything, a user would have to wait for Maven
 to download all the dependencies and their dependencies and theirs... 
@@ -110,13 +114,19 @@ Do not use `mvn package` as the jar files won't be useful on their own.
 
 === I broke it (but it's easy to fix)
 
-Unfortunately for those who already had the original all-in-one _javasrc_
-checked out and an Eclipse project created in that directory,
-you should do the following:
+Unfortunately for those who already had the old all-in-one _javasrc_ project from before 2020
+checked out, and an Eclipse project created in that directory,
+If you *do not have any changes worth keeping*, then just delete
+the entire project and start over.
+If you do the `git clone` inside Eclipse, there's a "Create projects from import" checkbox
+that will make all the projects for you. If not, clone the repot and go to the step "Back in Eclipse" below.
 
-* In Eclipse, delete javasrc project (do NOT check 'delete contents on disk'!);
+If you *do have changes you want to keep*, then do the following:
+
+* In Eclipse, delete the `javasrc` project (do NOT check 'delete contents on disk'!);
 * Delete the old target folder (*only*): {++rm -r++ or ++del/s++} __javasrc/target__;
 * Do a "git pull" to rearrange the project and get the extra pom files;
+* Deal with any files that didn't get moved,e.g., because of conflicts;
 * Back in Eclipse, ++File->New Java Project->browse to (but not into) workspace/javasrc/main++.
 Set project name to ++javasrc-main++. 
 If asked to upgrade the JDK release, say OK.
