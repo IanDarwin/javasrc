@@ -8,15 +8,49 @@ https://eclipse.org/[Eclipse]
 and
 https://jetbrains.com/idea[IntelliJ IDEA].
 
+== Origin
+
+These files began as my personal collection of Java examples, back when Java was first unleashed on a 
+public (well, developers) accustomed to having to choose between portability and performance.
+I wrote a course for https://learningtree.com/[Learning Tree] and turned what I'd learned from
+working with Java into the first edition of the
+https://javacook.darwinsys.com/[Java Cookbook].
+Now in its fourth edition, this book consists of several hundred how-to "recipes"
+each discussing a particular problem that devs have to code, how to solve it, and 
+illustrated with one or more code examples. The contents of the current edition looks like this:
+
+1 Getting Started: Compiling and Running Java
+2 Interacting with the Environment
+3 String and Things
+4 Pattern Matching with Regular Expressions
+5 Numbers
+6 Dates and Times
+7 Structuring Data with Java
+8 Object-oriented Techniques
+9 Functional Programming
+10 Input and Output
+11 Data Science and R
+12 Networking: Clients 
+13 Networking: Server-Side Java
+14 Processing JSON Data
+15 Packages and Packaging
+16 Threaded Java
+17 Reflection, or "A Class Named Class"
+18 Using Java with Other Languages
+Afterword
+Appendix: Java Then and Now
+
+== Tech
+
 *The minimum Java release is currently 21*. You can compile for Java 17 by checking out the java-17 branch.
 Or you could just add exclusions for files that use newer features.
 For older releases, I don't seem to have branches or tags, so if somebody can bisect and tell me what works for 11,
 I shall be happy to add a tag.
 
 A few files use Java 21 "Preview" features, so if you're not compiling with the Maven POM file provided,
-you'll need the arguments `--enable-preview --source-21` to get these to compile.
+and you're still using Java 21, you'll need the arguments `--enable-preview --source-21` to get these to compile.
 
-About a third of these files are featured in my O'Reilly
+As mentioned above, about a third of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
 I use a script (+copyCodeSamples+) to pre-format these for inclusion in the O'Reilly publishing toolchain;
 these will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
