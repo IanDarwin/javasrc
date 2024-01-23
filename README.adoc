@@ -19,26 +19,27 @@ Now in its fourth edition, this book consists of several hundred how-to "recipes
 each discussing a particular problem that devs have to code, how to solve it, and 
 illustrated with one or more code examples. The contents of the current edition looks like this:
 
-1 Getting Started: Compiling and Running Java
-2 Interacting with the Environment
-3 String and Things
-4 Pattern Matching with Regular Expressions
-5 Numbers
-6 Dates and Times
-7 Structuring Data with Java
-8 Object-oriented Techniques
-9 Functional Programming
-10 Input and Output
-11 Data Science and R
-12 Networking: Clients 
-13 Networking: Server-Side Java
-14 Processing JSON Data
-15 Packages and Packaging
-16 Threaded Java
-17 Reflection, or "A Class Named Class"
-18 Using Java with Other Languages
-Afterword
-Appendix: Java Then and Now
+// Uses * not + because of what's at the end of this list.
+* 1 Getting Started: Compiling and Running Java
+* 2 Interacting with the Environment
+* 3 String and Things
+* 4 Pattern Matching with Regular Expressions
+* 5 Numbers
+* 6 Dates and Times
+* 7 Structuring Data with Java
+* 8 Object-oriented Techniques
+* 9 Functional Programming
+* 10 Input and Output
+* 11 Data Science and R
+* 12 Networking: Clients 
+* 13 Networking: Server-Side Java
+* 14 Processing JSON Data
+* 15 Packages and Packaging
+* 16 Threaded Java
+* 17 Reflection, or "A Class Named Class"
+* 18 Using Java with Other Languages
+* Afterword
+* Appendix: Java Then and Now
 
 == Tech
 
@@ -83,7 +84,6 @@ as follows:
 * unsafe - you shouldn't want to know
 * xml - XML parsing and formatting with various APIs
 * sidebyside - NOT a maven module - some non-Java versions of demos
-
 
 A few modules are disabled because I don't have time to fix them now.
 
@@ -151,8 +151,9 @@ Even https://openbsd.org[OpenBSD] has Java 21 (Thanks Kurt!).
 Also sorry if your organization is stuck on an ancient Java due to application server issues.
 
 * I am using Eclipse for most of my development, and Maven for building, and Jenkins
-for automated building. The Ant scripts have been removed (except for a few in the ee module; the few that remain
-will eventually be deleted, or converted to Maven exec:java configurations).
+for automated building. The Ant scripts have been removed (except for a few in the ee module
+under _ejb2_ and _rmi_; the few that remain
+will someday get deleted, or converted to Maven exec:java configurations).
 
 * Building with Maven 3.x works and tests pass.
 
