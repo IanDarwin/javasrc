@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.stream.IntStream;
 
 import javax.imageio.ImageIO;
 
@@ -32,13 +33,12 @@ public class ReadWriteImage {
 
 	public static void main(String[] args) throws Exception {
 		String dir = DIRECTORY;
-		for (int i = START; i <= END; i++) {
-			process(DIRECTORY, i);
-		}
+		IntStream.rangeClosed(START, END).forEach(i -> process(DIRECTORY, i));
 		System.exit(0);
 	}
 
-	static void process(String dir, int v) throws Exception {
+	static void process(String dir, int v) {
+		try {
 		BufferedImage image = null;
 		if (mode == Mode.IMAGE) {
 			image = ImageIO.read(new File(dir + "coffeecup.png"));
@@ -70,5 +70,8 @@ public class ReadWriteImage {
 		g.drawString(bigNumberLabel, x, y);
 		ImageIO.write(image, "png", 
 			new File(String.format("%sjava%d.png",dir, v)));
+		} catch (Exception ex) {
+			throw new RuntimeException(STR."WTF: Failure \{ex}");
+		}
 	}
 }
