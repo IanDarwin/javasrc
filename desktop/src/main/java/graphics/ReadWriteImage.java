@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import javax.imageio.ImageIO;
@@ -19,7 +20,7 @@ import javax.imageio.ImageIO;
  * @author Ian Darwin
  */
 public class ReadWriteImage {
-	/** The mode: IMAGE reads a file, CIRCLE creates a blank canvas with a gray circle */
+	/** The mode: IMAGE reads a file, CIRCLE creates a canvas with a gray circle */
 	enum Mode { IMAGE, CIRCLE }
 	/** The mode used in this run */
 	static Mode mode = Mode.IMAGE;
@@ -27,17 +28,20 @@ public class ReadWriteImage {
 	final static int START = 8;
 	/** Several beyond current Java release, room for expansion */
 	final static int END = 25;
+	/** Font size to draw in */
+	final static int FONT_SIZE = 84;
 	/** Radius, only used if mode == CIRCLE */
 	final static int RADIUS = 160;
 	final static String DIRECTORY = "images" + File.separatorChar;
 
 	public static void main(String[] args) throws Exception {
 		String dir = DIRECTORY;
-		IntStream.rangeClosed(START, END).forEach(i -> process(DIRECTORY, i));
+		IntStream.rangeClosed(START, END).forEach(i -> process(DIRECTORY, Integer.toString(i)));
+		List.of("21P").forEach(s -> process(DIRECTORY, s));
 		System.exit(0);
 	}
 
-	static void process(String dir, int v) {
+	static void process(String dir, String label) {
 		try {
 		BufferedImage image = null;
 		if (mode == Mode.IMAGE) {
@@ -58,18 +62,17 @@ public class ReadWriteImage {
 		}
 
 		// Draw the number
-		Font textFont = new Font("SansSerif", Font.BOLD, 96);
+		Font textFont = new Font("SansSerif", Font.BOLD, FONT_SIZE);
 		g.setFont(textFont);
-		g.setColor(Color.WHITE);
-		String bigNumberLabel = Integer.toString(v);
-		Rectangle2D lineMetrics = textFont.getStringBounds(bigNumberLabel, g.getFontRenderContext());
+		g.setColor(mode == Mode.CIRCLE ? Color.WHITE : Color.GRAY);
+		Rectangle2D lineMetrics = textFont.getStringBounds(label, g.getFontRenderContext());
 		// System.out.println(STR."Font measured size = \{lineMetrics}");
 		int x = (int)((image.getWidth() - lineMetrics.getWidth()) / 2);
 		int y = (int)((image.getHeight() - lineMetrics.getHeight()) / 2);
-		y += 90;	// ad-hoc fudge factor
-		g.drawString(bigNumberLabel, x, y);
+		y += mode == Mode.CIRCLE ? 80 : 60;
+		g.drawString(label, x, y);
 		ImageIO.write(image, "png", 
-			new File(String.format("%sjava%d.png",dir, v)));
+			new File(String.format("%sjava%s.png",dir, label)));
 		} catch (Exception ex) {
 			throw new RuntimeException(STR."WTF: Failure \{ex}");
 		}

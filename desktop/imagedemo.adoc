@@ -1,0 +1,4 @@
+= Simple Test of ReadWriteImage output
+
+.Java Version Sample
+image::images/java21.png[]
