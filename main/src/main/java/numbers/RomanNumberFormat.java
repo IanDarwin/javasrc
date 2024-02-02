@@ -4,6 +4,7 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
+import java.util.regex.Pattern;
 
 /**
  * Roman Number class. Not localized, since "Latin's a Dead Dead Language..."
@@ -121,7 +122,13 @@ public class RomanNumberFormat extends Format {
 		return sb;
 	}
 
-	/** Parse a generic object, returning an Object */
+	/** Parse a generic object, returning an Object.
+	 * Incorrect: does not handle subtractives like MCMLVII;
+	 * the MCM should give 1900 but gives 2100.
+	 * XXX Rewrite using a complex regular expression or other parser
+	 * Something like:
+	 * Pattern parsePatt = Pattern.compile("C*M*D*C*X*L*I*X*I*V*I*");
+	 * */
 	@Override
 	public Object parseObject(String what, ParsePosition where) {
 		int n = 0;
