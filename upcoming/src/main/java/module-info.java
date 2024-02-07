@@ -1,3 +1,3 @@
-module javasrc.incubation {
+module javasrc.upcoming {
     requires jdk.incubator.vector;
 }
