@@ -36,7 +36,6 @@
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
-	<!-- <module>incubation</module> You can try this if you like -->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
 	<!-- <module>lombokdemo</module> doesn't build properly yet -->
@@ -46,6 +45,7 @@
 		<module>testing</module>
 	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
+	<!-- <module>upcoming</module> Try if you like, but only with very latest JDKs -->
 		<module>xml</module>
 	</modules>
 
