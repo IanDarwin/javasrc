@@ -11,7 +11,7 @@ import java.nio.file.*;
  */
 // tag::main[]
 @MyAnnotation
-class ClassFileAPIDemo {
+class ClassFileAPIDemo implements Serializable {
 	int number = 0;
 	void main() throws IOException {
 		byte[] classFile = Files.readAllBytes(
