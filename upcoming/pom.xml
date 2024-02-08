@@ -10,15 +10,27 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>javasrc-incubation</artifactId>
+	<artifactId>javasrc-upcoming</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<inceptionYear>2023</inceptionYear>
 
-	<!-- This directory is for stuff that needs incubation modules -->
+	<!-- This directory is for stuff that needs preview/incubation modules -->
 	<name>javasrc - incubation module</name>
 	<url>https://javacook.darwinsys.com</url>
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>22</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+		<junit5.version>5.7.1</junit5.version>
+	</properties>
 
 	<build>
 		<plugins>

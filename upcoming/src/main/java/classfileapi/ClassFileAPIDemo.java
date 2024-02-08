@@ -1,5 +1,7 @@
 package classfileapi;
 
+import java.io.*;
+import java.lang.annotation.*;
 import java.lang.classfile.*;
 import java.nio.file.*;
 
@@ -8,21 +10,33 @@ import java.nio.file.*;
  * JEP 457 (https://openjdk.org/jeps/457).
  */
 // tag::main[]
-class ClassFileAPIDemo {
-	void main() {
-		byte[] classFile = Files.readAllBytes(Path.of("demo.class"));
-		ClassModel model = ClassFile.of().parse(bytes);
+@MyAnnotation
+class ClassFileAPIDemo implements Serializable {
+	int number = 0;
+	void main() throws IOException {
+		byte[] classFile = Files.readAllBytes(
+			Path.of("target/classes/classfileapi/ClassFileAPIDemo.class"));
+		ClassModel model = ClassFile.of().parse(classFile);
 		for (ClassElement element : model) {
 			switch (element) {
-				case AnnotationModel annote ->
-					 System.out.println(STR."Annotation \{annote.annotationName.stringValue()}");
 				case FieldModel field ->
-					System.out.println(STR."Field \{field.fieldName().stringValue()}");
+					System.out.println(
+					STR."Field \{field.fieldName().stringValue()}");
 				case MethodModel method ->
-					 System.out.println(STR."Method \{method.methodName().stringValue()}");
-				default -> { /* Ignore anything else */ }
+					System.out.println(
+					STR."Method \{method.methodName().stringValue()}");
+				default -> { 
+					/* Ignore anything else */
+					System.out.println(
+					STR."Other: \{element} (\{element.getClass().getName()})");
+				}
 			}
 		}
 	}
 }
 // end::main[]
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface MyAnnotation {
+	int value = 42;
+}
