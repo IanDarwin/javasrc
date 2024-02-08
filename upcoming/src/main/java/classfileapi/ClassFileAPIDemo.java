@@ -12,6 +12,7 @@ import java.nio.file.*;
 // tag::main[]
 @MyAnnotation
 class ClassFileAPIDemo {
+	int number = 0;
 	void main() throws IOException {
 		byte[] classFile = Files.readAllBytes(
 			Path.of("target/classes/classfileapi/ClassFileAPIDemo.class"));
