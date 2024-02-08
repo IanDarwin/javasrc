@@ -43,6 +43,9 @@
 						<arg>--enable-preview</arg>
 						<arg>--source</arg><arg>${javase.version}</arg>
 					</compilerArgs>
+					<excludes>
+						<exclude>classfileapi/CreateLoadAndRun.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 		</plugins>
