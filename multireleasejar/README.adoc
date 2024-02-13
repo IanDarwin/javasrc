@@ -1,0 +1,16 @@
+= multijardemo
+
+*N.B.* This is _not_ a Maven module. As such it does not
+follow the usual Maven/Gradle directory structure.
+
+It does demonstrate use of multi-release Jar files (mrj)
+to use a `public class` on older Javas and a `public record`
+on modern Java.
+
+You have to have a script called `withjava`, or otherwise
+arrange to `javac` the older versions with an older Java,
+and run with that older version, in the places where my
+`withjava` script is called from within the main `mkjar` script.
+
+This could be a it more automated by use of `maven` or `gradle`,
+but I wanted to show the individual steps.
