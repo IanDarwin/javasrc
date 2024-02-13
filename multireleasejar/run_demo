@@ -1,3 +1,6 @@
+#!/bin/sh
+
+# run the multi-release-jar demo
 D=/tmp/multirelease
 mkdir $D
 echo Running from directory with simple classpath
@@ -8,9 +11,8 @@ javac -d $D/META-INF/versions/16 versions/16/*.java
 java -cp $D/META-INF/versions/16:$D mrjdemo.Main
 cp MANIFEST.MF $D
 cd $D
-tree
 jar cvmf MANIFEST.MF /tmp/multirelease.jar mrjdemo META-INF
-echo "Running from jar with current java"
-java -cp /tmp/multirelease.jar mrjdemo.Main
 echo "Running from jar with legacy java"
 withjava 11 java -cp /tmp/multirelease.jar mrjdemo.Main
+echo "Running from jar with current java"
+java -cp /tmp/multirelease.jar mrjdemo.Main
