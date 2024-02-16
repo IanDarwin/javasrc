@@ -11,7 +11,7 @@ public class Switch {
 		switch(i) {
 			case 0: System.out.println(i);
 		}
-		switch(L) {		// EXPECT COMPILER ERROR
+		switch(L) {		// EXPECT COMPILE ERROR
 			case 0: System.out.println(L);
 		}
 	}

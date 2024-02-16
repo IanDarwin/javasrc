@@ -56,9 +56,15 @@
 
 						<!-- Classes that demonstrate certain variations that won't comile -->
 						<!-- All (should) have 'EXPECT COMPILE ERROR' -->
-						<!-- So we could XXX replace this list with filter grep -->
-						<exclude>jdb/Problem.java</exclude>
+
+						<!-- Did not get xi:include working ...
+							xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+							href="excludes.xml" parse="xml"
+							So, for now, manually pull in 'excludes.xml' when it changes. Sigh.
+						-->
+
 						<exclude>lang/AddException.java</exclude>
+						<exclude>lang/AnnotationOverrideDemo.java</exclude>
 						<exclude>lang/ByteAdd2.java</exclude>
 						<exclude>lang/CastingDemo.java</exclude>
 						<exclude>lang/ChangeArrayLength.java</exclude>
@@ -67,14 +73,12 @@
 						<exclude>lang/ConsRecurs.java</exclude>
 						<exclude>lang/Constructors.java</exclude>
 						<exclude>lang/ImportConflict.java</exclude>
-						<exclude>lang/ImportNonPublic.java</exclude>
 						<exclude>lang/InitializersDemo.java</exclude>
 						<exclude>lang/InnerMethods.java</exclude>
 						<exclude>lang/InterfaceNoConstructor.java</exclude>
 						<exclude>lang/NoLocalStatics.java</exclude>
-						<exclude>lang/NullStaticMethod.java</exclude>
 						<exclude>lang/OverLoadReturn.java</exclude>
-						<exclude>lang/AnnotationOverrideDemo.java</exclude>
+						<exclude>lang/OverrideMethod.java</exclude>
 						<exclude>lang/PrivProt.java</exclude>
 						<exclude>lang/ProtectedClass.java</exclude>
 						<exclude>lang/ReturnType.java</exclude>
@@ -91,8 +95,7 @@
 						<exclude>reflection/ClassLoaderDemo0.java</exclude>
 						<exclude>sealedclasses/B2.java</exclude>
 						<exclude>strings/WolfInStringsClothing.java</exclude>
-						<exclude>threads/StopStop.java</exclude>
-						<exclude>threads/ThreadDeathCatch.java</exclude>
+
 				</excludes>
 				</configuration>
 			</plugin>

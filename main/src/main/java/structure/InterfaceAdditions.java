@@ -1,6 +1,6 @@
 package structure;
 
-public class InterfaceChanges implements Demo {
+public class InterfaceAdditions implements Demo {
 	void main() { // Instance main in a named class
 		// Call public interface method in implementing class
 		System.out.println(getStatus());
