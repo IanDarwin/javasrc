@@ -1,9 +1,11 @@
-= upcoming
+= incubation
 
-This is a separate Maven/IDE project because use of incubation requires a module-info,
-whereas most of the rest of JavaSrc doesn't need same and we would find it onerous to maintain.
+This is a separate Maven/IDE project because use of incubation requires either a module-info,
+or the JVM option, to add the particular incubation module.
+Most of the rest of JavaSrc doesn't need these, so we keep incubation demos here.
 
-This module consists of code samples for APIs that are in preview / incubation.
-It may be empty at any particular time, since APIs in preview / incubation come and go.
+This module consists of code samples for APIs that are in incubation.
+It may be empty at any particular time, since APIs in preview / incubation come and go
+and, importantly, files will move silently (except in the commitlog) out of here as it "graduates".
 This README will not be updated; the code that graduates will simply move to main (usually)
 or to another more appropriate project.
