@@ -24,7 +24,7 @@ public class NumberToWordsConverter {
 	};
 
 	/**
-	 * Given an integer in the range -20 to 20 will return a String with
+	 * Given an integer in the range -MAX to MAX will return a String with
 	 * that number converted to words. For example, an input of 15 results in 
 	 * an output of "fifteen". An input of -4 returns "minus four".
 	 * If the integer is not in the range -MAX to MAX it throws an 
@@ -55,5 +55,11 @@ public class NumberToWordsConverter {
 					"");
 		}
 		return lowNums[num];
+	}
+
+	public static void main(String[] args) {
+		for (String s : args) {
+			System.out.println(convert(Integer.parseInt(s)));
+		}
 	}
 }
