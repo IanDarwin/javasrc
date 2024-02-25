@@ -1,11 +1,12 @@
 // tag::main[]
 #include <jni.h>
-#include "HelloJni.h"
+#include "jni_HelloJni.h"
 #include <stdio.h>
+#include <stdlib.h>
 /*
  * This is the Java Native implementation of displayHelloJni.
  */
-JNIEXPORT void JNICALL Java_HelloJni_displayHelloJni(JNIEnv *env, jobject this) {
+JNIEXPORT void JNICALL Java_jni_HelloJni_displayHelloJni(JNIEnv *env, jobject this) {
   jfieldID fldid;
   jint n, nn;
 

@@ -1,0 +1,5 @@
+HelloJni.class
+javafromc
+javafromc.o
+jni_HelloJni.h
+libhello.so
