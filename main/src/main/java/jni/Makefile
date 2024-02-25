@@ -49,6 +49,7 @@ testjavafromc:	javafromc.all hello.all
 	@echo
 	@echo "That was, in case you didn't notice, C->Java->C. And,"
 	@echo "incidentally, a replacement for JDK program \"java\" itself!"
+	@echo "(not a complete one, nor a very good one, but OK for simple cases)"
 	@echo
 
 
