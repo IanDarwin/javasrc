@@ -13,7 +13,7 @@
 CFLAGS_FOR_SO = -G # Solaris
 CFLAGS_FOR_SO = -shared
 CSRCS		= HelloJni.c
-# JAVA_HOME should be been set in the environment
+# JAVA_HOME should have been set in the environment
 #INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVAHOME)/include/solaris 
 #INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVAHOME)/include/openbsd
 INCLUDES	= -I$(JAVA_HOME)/include
