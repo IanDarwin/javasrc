@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <jni.h>
 
 int
@@ -13,17 +14,21 @@ main(int argc, char *argv[]) {
 	int i;
 	JavaVM *jvm;		/* The Java VM we will use */
 	JNIEnv *myEnv;		/* pointer to native environment */
-	JDK1_1InitArgs jvmArgs; /* JNI initialization arguments */
+	JavaVMInitArgs jvmArgs; /* JNI initialization arguments */
 	jclass myClass, stringClass;	/* pointer to the class type */
 	jmethodID myMethod;	/* pointer to the main() method */
 	jarray args;		/* becomes an array of Strings */
 	jthrowable tossed;	/* Exception object, if we get one. */
 	
-	JNI_GetDefaultJavaVMInitArgs(&jvmArgs);	/* set up the argument pointer */
+	// JNI_GetDefaultJavaVMInitArgs(&jvmArgs);	/* set up the argument pointer */
 	/* Could change values now, like: jvmArgs.classpath = ...; */
 	
 	/* initialize the JVM! */
-	if (JNI_CreateJavaVM(&jvm, &myEnv, &jvmArgs) < 0) {
+    jvmArgs.version = JNI_VERSION_1_2;
+	jvmArgs.nOptions = 0;
+    jvmArgs.ignoreUnrecognized = 1;
+	/* Cast determined empirically by running make. */
+	if (JNI_CreateJavaVM(&jvm, (void **)&myEnv, &jvmArgs) < 0) {
 		fprintf(stderr, "CreateJVM failed\n");
 		exit(1);
 	}
@@ -37,7 +42,6 @@ main(int argc, char *argv[]) {
 	/* find the static void main(String[]) method of that class */
 	myMethod = (*myEnv)->GetStaticMethodID(
 		myEnv, myClass, "main", "([Ljava/lang/String;)V");
-	/* myMethod = (*myEnv)->GetMethodID(myEnv, myClass, "test", "(I)I"); */
 	if (myMethod == NULL) {
 		fprintf(stderr, "GetStaticMethodID failed\n");
 		exit(1);
