@@ -20,14 +20,15 @@ main(int argc, char *argv[]) {
 	jarray args;		/* becomes an array of Strings */
 	jthrowable tossed;	/* Exception object, if we get one. */
 	
-	// JNI_GetDefaultJavaVMInitArgs(&jvmArgs);	/* set up the argument pointer */
-	/* Could change values now, like: jvmArgs.classpath = ...; */
-	
 	/* initialize the JVM! */
-    jvmArgs.version = JNI_VERSION_1_2;
-	jvmArgs.nOptions = 0;
+	JavaVMOption options[2];
+    options[0].optionString = "-Xmx512m";
+	options[1].optionString = "-XX:NonNMethodCodeHeapSize=128m";
+    jvmArgs.version = JNI_VERSION_1_6;
+    jvmArgs.nOptions = 1;
+    jvmArgs.options = options;
     jvmArgs.ignoreUnrecognized = 1;
-	/* Cast determined empirically by running make. */
+
 	if (JNI_CreateJavaVM(&jvm, (void **)&myEnv, &jvmArgs) < 0) {
 		fprintf(stderr, "CreateJVM failed\n");
 		exit(1);
@@ -68,7 +69,7 @@ main(int argc, char *argv[]) {
 			args, i-2, (*myEnv)->NewStringUTF(myEnv, argv[i]));
 
 	/* finally, call the method. */
-	(*myEnv)->CallStaticVoidMethodA(myEnv, myClass, myMethod, &args);
+	(*myEnv)->CallStaticVoidMethodA(myEnv, myClass, myMethod, (const jvalue *)&args);
 
 	/* And check for exceptions */
 	if ((tossed = (*myEnv)->ExceptionOccurred(myEnv)) != NULL) {
