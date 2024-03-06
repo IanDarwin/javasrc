@@ -31,12 +31,12 @@ public class ReadWriteImage {
 	/** Releases we still care about Preview/Incubation in these releases */
 	final static int START_PC = 20;
 	/** Font size to draw in */
-	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 20;
+	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 12;
 	/** Radius, only used if mode == CIRCLE */
 	final static int RADIUS = 160;
 	/** Width, height for Rounded Rectangle */
-	final static int WIDTH=60, HEIGHT=50;
-	final static String DIRECTORY = "versions" + File.separatorChar;
+	final static int WIDTH=40, HEIGHT=30;
+	final static String DIRECTORY = "v";
 
 	public static void main(String[] args) throws Exception {
 		String dir = DIRECTORY;
@@ -71,7 +71,7 @@ public class ReadWriteImage {
 			fontSize = FONT_SIZE_BIG;
 			break;
 		case Mode.IMAGE:
-			image = ImageIO.read(new File(dir + "coffeecup.png"));
+			image = ImageIO.read(new File(dir + "/" + "coffeecup.png"));
 			g = image.createGraphics();
 			g.setColor(Color.WHITE);
 			fontSize = FONT_SIZE_BIG;
@@ -96,7 +96,7 @@ public class ReadWriteImage {
 		System.out.println(STR."Drawing in \{g.getColor()} at \{x},\{y}");
 		g.drawString(label, x, y);
 		ImageIO.write(image, "png", 
-			new File(String.format("%sjava%s.png",dir, label)));
+			new File(STR."\{dir}/\{label}.png"));
 		} catch (Exception ex) {
 			throw new RuntimeException(STR."WTF: Failure \{ex}");
 		}
