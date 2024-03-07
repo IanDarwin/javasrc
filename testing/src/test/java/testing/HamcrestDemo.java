@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// tag::main[]
 public class HamcrestDemo {
 
 	@Test
@@ -15,5 +16,5 @@ public class HamcrestDemo {
 			() -> assertEquals("Hi", "Highlighter".substring(0,2))
 		);
 	}
-
 }
+// end::main[]

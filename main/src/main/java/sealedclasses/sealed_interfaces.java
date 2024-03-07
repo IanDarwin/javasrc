@@ -1,5 +1,6 @@
 // package sealedclasses;
 
+// tag::main[]
 void main() {
 	System.out.println("Nothing to see here, folks.");
 }
@@ -17,3 +18,4 @@ non-sealed interface A3 extends A1 {}
 sealed interface A4 extends A1 permits B2 {}
 
 non-sealed interface B2 extends A4 {}
+// end::main[]

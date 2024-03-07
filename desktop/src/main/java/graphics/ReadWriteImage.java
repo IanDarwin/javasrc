@@ -2,12 +2,12 @@ package graphics;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.util.List;
+import java.nio.file.*;
 import java.util.stream.IntStream;
 
 import javax.imageio.ImageIO;
@@ -31,18 +31,21 @@ public class ReadWriteImage {
 	/** Releases we still care about Preview/Incubation in these releases */
 	final static int START_PC = 20;
 	/** Font size to draw in */
-	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 12;
+	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 11;
 	/** Radius, only used if mode == CIRCLE */
 	final static int RADIUS = 160;
 	/** Width, height for Rounded Rectangle */
-	final static int WIDTH=40, HEIGHT=30;
+	final static int WIDTH=40, HEIGHT=25;
 	final static String DIRECTORY = "v";
+	static BufferedWriter pw;
 
 	public static void main(String[] args) throws Exception {
 		String dir = DIRECTORY;
+		pw = Files.newBufferedWriter(Path.of(STR."vdefs.adoc"));
 		IntStream.rangeClosed(START, END).forEach(i -> process(DIRECTORY, Integer.toString(i)));
 		IntStream.rangeClosed(START_PC, END).forEach(i -> process(DIRECTORY, i + "P"));
 		IntStream.rangeClosed(START_PC, END).forEach(i -> process(DIRECTORY, i + "C"));
+		pw.close();
 		System.exit(0);
 	}
 
@@ -97,6 +100,7 @@ public class ReadWriteImage {
 		g.drawString(label, x, y);
 		ImageIO.write(image, "png", 
 			new File(STR."\{dir}/\{label}.png"));
+		pw.write(STR.":\{label}: image:\{dir}/\{label}.png\n");
 		} catch (Exception ex) {
 			throw new RuntimeException(STR."WTF: Failure \{ex}");
 		}

@@ -62,3 +62,4 @@ public class GetAndInvokeMethod {
 		}
 	}
 }
+// end::main[]

@@ -2,6 +2,7 @@ package numbers;
 
 import java.util.Arrays;
 
+// tag::main[]
 import jdk.incubator.vector.DoubleVector;
 import jdk.incubator.vector.VectorSpecies;
 
@@ -54,3 +55,4 @@ public class VectorOps {
         }
     }
 }
+// end::main[]
