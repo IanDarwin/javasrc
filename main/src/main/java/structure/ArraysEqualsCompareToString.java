@@ -24,12 +24,16 @@ public class ArraysEqualsCompareToString {
         // tag::main[]
         System.out.println("Permute int value");
         int[] ia = { 1, 2, 3, 4, 5},
-                ib = { 1, 2, 3, 4, 5};
-        System.out.println(STR."ia = \{Arrays.toString(ia)}, ib = \{Arrays.toString(ib)}");
+            ib = { 1, 2, 3, 4, 5};
+        System.out.println(STR."""
+			ia = \{Arrays.toString(ia)}, 
+			ib = \{Arrays.toString(ib)}""");
         System.out.println(STR."By Arrays.equals(): \{Arrays.equals(ia, ib)}");
         System.out.println(STR."compare(ia,ib) returns \{Arrays.compare(ia, ib)}");
         ia[4] = 6;
-        System.out.println(STR."ia = \{Arrays.toString(ia)}, ib = \{Arrays.toString(ib)}");
+        System.out.println(STR."""
+			ia = \{Arrays.toString(ia)},
+			ib = \{Arrays.toString(ib)}""");
         System.out.println(STR."By Arrays.equals(): \{Arrays.equals(ia, ib)}");
         System.out.println(STR."compare(ia,ib) returns \{Arrays.compare(ia, ib)}");
         // end::main[]
