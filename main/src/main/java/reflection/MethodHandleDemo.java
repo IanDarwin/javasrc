@@ -11,7 +11,7 @@ public class MethodHandleDemo {
         // Create a Lookup object
         MethodHandles.Lookup lup = MethodHandles.lookup();
 
-        // First invoke LocalDate's static "of(year, month, day)" method
+        // First invoke LocalDate's static "of(year, month, day)" method:
 
         // Create a matcher for the arg list types we want to invoke
         // First the return type, then the argument types
@@ -22,7 +22,7 @@ public class MethodHandleDemo {
         LocalDate endDate = (LocalDate) mh.invokeExact(2014, 6, 10);
         System.out.println(STR."LocalDate from 'of' = \{endDate}");
 
-        // Now invoke the LocalDate's instance method toString() explicitly
+        // Second, invoke the LocalDate's instance method toString()
         // "toString()" returns a String, takes no args
         mt = MethodType.methodType(String.class);
         // Find the instance method in the LocalDate class
