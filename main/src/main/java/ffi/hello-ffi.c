@@ -16,7 +16,7 @@ int nSketches = sizeof(sketches)/sizeof(char*);
 
 int updatesketch(int n, char* newVal) {
 	if (n > nSketches) {
-		fprintf(stderr, "Try to update non-existen sketch!");
+		fprintf(stderr, "Try to update non-existent sketch!");
 		return -1;
 	}
 	sketches[n] = strdup(newVal);
