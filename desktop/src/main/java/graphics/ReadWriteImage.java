@@ -31,11 +31,11 @@ public class ReadWriteImage {
 	/** Releases we still care about Preview/Incubation in these releases */
 	final static int START_PC = 20;
 	/** Font size to draw in */
-	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 11;
+	final static int FONT_SIZE_BIG = 84, FONT_SIZE_NORMAL = 10;
 	/** Radius, only used if mode == CIRCLE */
 	final static int RADIUS = 160;
 	/** Width, height for Rounded Rectangle */
-	final static int WIDTH=40, HEIGHT=25;
+	final static int WIDTH=30, HEIGHT=20;
 	final static String DIRECTORY = "v";
 	static BufferedWriter pw;
 
