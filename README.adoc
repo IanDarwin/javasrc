@@ -182,3 +182,8 @@ Ian Darwin
 Java Cookbook author
 
 https://darwinsys.com/contact
+
+== Misc. ToDo
+
+CONSIDER Moving all "compilation error" methods in $js into "dontcompile/"
+
