@@ -3,6 +3,7 @@ package dir_file;
 import java.io.File;
 /**
  * DANGEROUS Program to remove files matching a name in a directory
+ * XXX Rewrite using Files.list()
  * @author	Ian Darwin, https://darwinsys.com/
  */
 public class KillFilesByName {

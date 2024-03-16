@@ -20,10 +20,8 @@ public class Find {
 	 * @throws IOException If the Files.walkTree does so
 	 */
 	public static void main(String[] args) throws IOException {
-		Find finder = new Find();
-		
 		if (args.length == 0) {
-			finder.startWalkingAt(".");
+			startWalkingAt(".");
 		} else {
 			for (int i = 0; i < args.length; i++) {
 				if (args[i].charAt(0) == '-') {
@@ -45,10 +43,10 @@ public class Find {
 						"Unknown argument " + args[i]);
 					}
 				}
-				finder.startWalkingAt(args[i]);
+				startWalkingAt(args[i]);
 			}
 			if (!started) {
-				finder.startWalkingAt(".");
+				startWalkingAt(".");
 			}
 		}
 	}
@@ -62,7 +60,7 @@ public class Find {
 	}
 
 	/** doName - handle one filesystem object by name */
-	private void startWalkingAt(String s) throws IOException {
+	private static void startWalkingAt(String s) throws IOException {
 		logger.info("doName(" + s + ")");
 		started = true;
 		Path f = Path.of(s);

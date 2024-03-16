@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class MethodHandleDemo {
     public static void main(String[] args) throws Throwable {
 
+// tag::main[]
         // Create a Lookup object
         MethodHandles.Lookup lup = MethodHandles.lookup();
 
@@ -30,6 +31,6 @@ public class MethodHandleDemo {
         // Invoke it in the context of the LocalDate object created earlier
         String asString = (String) mh.invokeExact(endDate);
         System.out.println(STR."LocalDate as String is \{asString}");
-
+// end::main[]
     }
 }

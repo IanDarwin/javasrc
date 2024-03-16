@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+// tag::main[]
 /**
  * Demo program calling two methods in C code, updatesketch() and
  * pythonsketch(). The C code hello-ffi.c has a list of strings that pythonsketch()
@@ -68,3 +69,4 @@ public class CallCFromJava {
         }
     }
 }
+// end::main[]

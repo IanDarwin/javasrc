@@ -17,6 +17,7 @@ public class ThreadLocalDemo extends Thread {
 		super.setName(name);
 	}
 
+// tag::main[]
 	/** This ThreadLocal holds the Client reference for each Thread.
 	 * Make ThreadLocal instance static, to show that it is not an instance variable
 	 * but is derived from Thread.currentThead() regardless of static/instance access
@@ -47,4 +48,5 @@ public class ThreadLocalDemo extends Thread {
 
 	/** Simple data class, in real life clients would have more fields! */
 	private static record Client(int clientNum) { }
+// end::main[]
 }
