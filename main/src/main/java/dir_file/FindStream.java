@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.stream.*;
 
+// tag::main[]
 void main() {
 	var dirName = "/home/ian/book";
 	try (Stream<Path> paths = Files.find(Path.of(dirName), 
@@ -17,3 +18,4 @@ void main() {
 		ex.printStackTrace();
 	}
 }
+// end::main[]
