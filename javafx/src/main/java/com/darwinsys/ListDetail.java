@@ -1,4 +1,4 @@
-package demo;
+package com.darwinsys.javafx;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
