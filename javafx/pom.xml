@@ -30,22 +30,4 @@
 		<junit5.version>5.7.1</junit5.version>
 	</properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<compilerArgs>
-						<arg>--enable-preview</arg>
-						<arg>--source</arg><arg>${javase.version}</arg>
-					</compilerArgs>
-					<excludes>
-						<exclude>classfileapi/CreateLoadAndRun.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
