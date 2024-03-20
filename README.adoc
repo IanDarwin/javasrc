@@ -3,10 +3,11 @@
 This is my assorted collection of (you guessed it) Java source.
 It remains focused on building with
 https://maven.apache.org/[Maven]
-and the IDEs
-https://eclipse.org/[Eclipse]
-and
-https://jetbrains.com/idea[IntelliJ IDEA].
+and the
+https://jetbrains.com/idea[IntelliJ IDEA] IDE.
+Some modules may still build with the
+https://eclipse.org/[Eclipse] IDE;
+for those that don't, pull requests welcome.
 
 == Note to self
 
