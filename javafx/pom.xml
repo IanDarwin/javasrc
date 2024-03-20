@@ -30,4 +30,30 @@
 		<junit5.version>5.7.1</junit5.version>
 	</properties>
 
-</project>
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+			<version>20</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>20</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.8</version>
+				<configuration>
+				<mainClass>demo.ListDetail</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	</project>
