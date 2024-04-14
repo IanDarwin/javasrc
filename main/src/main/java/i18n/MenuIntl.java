@@ -22,6 +22,8 @@ import javax.swing.JMenuItem;
 // tag::main[]
 public class MenuIntl extends JFrame {
 
+	private static final long serialVersionUID = 1;
+
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		// create an MenuIntl object, tell it to show up

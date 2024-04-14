@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 /** This CalYear is all prototype, and surely sucks performance-wise.
  */
 public class CalYear extends JPanel {
+	private static final long serialVersionUID = 1;
 	CalYear() {
 		// setLayout(new GridLayout(3, 4));
 		// for (int i=0; i<12; i++)

@@ -47,6 +47,7 @@ import java.awt.event.ActionListener;
 
 /** Extend Mover by adding the ability to start multi threads. */
 public class Mover2 extends Mover {
+	private static final long serialVersionUID = 1;
 	public void init() {
 		super.init();
 		Button bx = new Button("Another");

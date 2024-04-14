@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class OneButton extends JFrame {
 
+	private static final long serialVersionUID = 1;
+
 	public static void main(String[] args) {
 		new OneButton().setVisible(true);
 	}

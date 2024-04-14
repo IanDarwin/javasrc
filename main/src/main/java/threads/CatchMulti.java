@@ -68,6 +68,7 @@ public class CatchMulti {
 }
 
 class ThrowAWT extends Frame {
+	private static final long serialVersionUID = 1;
 	ThrowAWT() {
 		Button b;
 		add(b = new Button("Throw"));

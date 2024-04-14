@@ -54,6 +54,7 @@ import java.awt.event.ActionListener;
  * @author	Ian Darwin
  */
 public class ThreadsOne extends Applet implements Runnable {
+	private static final long serialVersionUID = 1;
 	Label lab;	
 	Button but;
 	Thread t;

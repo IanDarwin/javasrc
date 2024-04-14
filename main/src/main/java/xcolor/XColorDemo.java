@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent;
 
 /** Standalone GUI application for XColor */
 public class XColorDemo extends Frame {
+	private static final long serialVersionUID = 1;
 	/** The Label for showStatus */
 	protected Label status;
 	/** The button to List All colors */

@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 // tag::main[]
 public class ExecDemoNS extends JFrame {
+	private static final long serialVersionUID = 1;
 	private static final String BROWSER = "firefox";
 	
 	Logger logger = Logger.getLogger(ExecDemoNS.class.getSimpleName());

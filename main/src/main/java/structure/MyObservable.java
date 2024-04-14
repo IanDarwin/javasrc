@@ -12,6 +12,7 @@ import java.util.Observer;
  * Only extends Observable to allow use of existing Observer.update(Observable, data)
  */
 public class MyObservable extends Observable implements Serializable {
+	private static final long serialVersionUID = 1;
 	final boolean strictMode;
 	final List<Observer> observers = new ArrayList<Observer>();
 	private boolean changed;

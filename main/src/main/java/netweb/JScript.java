@@ -16,6 +16,7 @@ import netscape.javascript.*;
  * @author Roger Goudarzi -- provided background information.
  */
 public class JScript extends java.applet.Applet {
+	private static final long serialVersionUID = 1;
 	JSObject jsObject;
 
 	public void init() {

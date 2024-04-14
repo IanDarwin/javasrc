@@ -25,6 +25,8 @@ import com.darwinsys.swingui.I18N;
 @SuppressWarnings("serial")
 public class MenuIntl2 extends JFrame {
 
+	private static final long serialVersionUID = 1;
+
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {
 		// create an MenuIntl object, tell it to show up

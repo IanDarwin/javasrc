@@ -61,6 +61,8 @@ import javax.servlet.http.HttpSession;
 // tag::main[]
 public class BuzzInServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1;
+
 	/** The attribute name used throughout. */
 	protected final static String WINNER = "buzzin.winner";
 

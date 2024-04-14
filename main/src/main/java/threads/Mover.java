@@ -54,6 +54,7 @@ import java.awt.MediaTracker;
  * @author Ian Darwin, https://darwinsys.com/
  */
 public class Mover extends Applet implements Runnable {
+	private static final long serialVersionUID = 1;
 	/** The done or not done flag */
 	protected volatile boolean done = false;
 	/** The current Image, or null */

@@ -49,6 +49,7 @@ import java.awt.Graphics;
  * using a Thread.
  */
 public class Animator extends Applet implements Runnable {
+	private static final long serialVersionUID = 1;
 	/** Where to draw the moving image: x coordinate */
 	int x;
 	/** Where to draw the moving image: y coordinate */

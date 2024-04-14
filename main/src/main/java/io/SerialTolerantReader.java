@@ -20,7 +20,7 @@ import java.io.Serializable;
  */
 public class SerialTolerantReader {
 	static class Data implements Serializable {
-		public static final long serialVersionUID = 8390248329057298L;
+		private static final long serialVersionUID = 8390248329057298L;
 		String name;
 		String address;
 		String city;		// COMMENTME

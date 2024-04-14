@@ -55,6 +55,7 @@ import javax.swing.SwingUtilities;
  * Do it right, using the AWT event thread.
  */
 public class UpdateSlowGUI extends JFrame {
+	private static final long serialVersionUID = 1;
 	public static void main(String[] args) {
 		// Create the GUI; will implicitly create and start AWT GUI thread
 		new UpdateSlowGUI().setVisible(true); 

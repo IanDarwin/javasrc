@@ -5,7 +5,8 @@ package strings;
  */
 // tag::main[]
 public class WolfInStringsClothing 
-	extends java.lang.String {//EXPECT COMPILE ERROR
+	extends java.lang.String {		//EXPECT COMPILE ERROR
+	private static final long serialVersionUID = 1;
 
 	public void setCharAt(int index, char newChar) {
 		// The implementation of this method

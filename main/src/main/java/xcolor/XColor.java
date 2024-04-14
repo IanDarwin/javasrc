@@ -20,6 +20,7 @@ import java.awt.Color;
  */
 
 public class XColor extends Color {
+	private static final long serialVersionUID = 1;
 	/** The default name (in case you print me after a failed construction) */
 	protected String name = "black";
 
