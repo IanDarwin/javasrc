@@ -38,7 +38,7 @@ public class PostQuery {
 	}
 
 	public PostQuery(String url) {
-		this.serverURL = url != null ? url :
+		PostQuery.serverURL = url != null ? url :
 				"http://server/cgi-bin/test-cgi.pl";
 	}
 

@@ -52,6 +52,7 @@ public class DailyEval {
 	private TextField yournameTF = null;
 	private TextField bestpartTF = null;
 	private TextField improveTF = null;
+	@SuppressWarnings("unused")
 	private Font bigFont, midFont, smlFont;
 
 	/**

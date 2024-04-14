@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 
 public class ListAnnotations {
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] av) throws Exception {
 	
 		if (av.length == 0) {

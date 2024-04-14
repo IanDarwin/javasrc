@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 /**
  * Create one button, internationalizedly.
  */
-@SuppressWarnings("serial")
 public class OneButton extends JFrame {
 
 	private static final long serialVersionUID = 1;

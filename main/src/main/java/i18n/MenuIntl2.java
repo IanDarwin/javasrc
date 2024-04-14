@@ -22,7 +22,6 @@ import com.darwinsys.swingui.I18N;
  *		java MenuIntl2
  *		java -Duser.language=es MenuIntl2
  */
-@SuppressWarnings("serial")
 public class MenuIntl2 extends JFrame {
 
 	private static final long serialVersionUID = 1;

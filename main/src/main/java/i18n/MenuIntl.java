@@ -18,7 +18,6 @@ import javax.swing.JMenuItem;
  *		java MenuIntl
  *		java -Duser.language=es MenuIntl
  */
-@SuppressWarnings("serial")
 // tag::main[]
 public class MenuIntl extends JFrame {
 
