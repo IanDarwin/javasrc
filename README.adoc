@@ -8,11 +8,16 @@ https://jetbrains.com/idea[IntelliJ IDEA] IDE.
 Some modules may still build with the
 https://eclipse.org/[Eclipse] IDE;
 for those that don't, pull requests welcome.
-
-As of 2024-04-14, this does not work on Eclipse as their compiler
-fails to handle "classless main" even with the source attribute set to
-21 and using a Java 22 JDK with "Preview" checked. And it won't let
-you select a Source Level of 22. This is an Eclipse bug.
+As of 2024-04-14, this does not work on Eclipse,
+even with the "Java 22 updater"
+(https://marketplace.eclipse.org/content/java-22-support-eclipse-2024-03-431[]).
+Their compiler
+fails to realize that "classless main" doesn't need (and isn't allowed to have)
+a package statement.
+This is an Eclipse bug, and fails even with the source attribute set to
+22 and using a Java 22 JDK with "Preview" checked.
+Further, their library appears to be missing at least two methods in the FFI `Arena` class,
+causing `CallCFromJava` to fail to compile.
 
 == Note to self
 
@@ -68,7 +73,7 @@ If not, and you're still using Java 21 (i.e., not 22 or 23), you'll need the arg
 As mentioned above, a goodly number of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
 To avoid copy-and-paste errors (or, worse, retyping!),
-I use a script (+copyCodeSamples+) to pre-format these for inclusion in the O'Reilly publishing toolchain;
+I use a script (`copyCodeSamples`) to pre-format these for inclusion in the O'Reilly publishing toolchain;
 these source code files will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
 mechanical inclusion into the book. These are just comments as far as Java tooling is concerned,
 and can be completely ignored by people looking at the source code normally.
@@ -135,14 +140,14 @@ that will make all the projects for you. If not, clone the repot and go to the s
 If you *do have changes you want to keep*, then do the following:
 
 * In Eclipse, delete the `javasrc` project (do NOT check 'delete contents on disk'!);
-* Delete the old target folder (*only*): {++rm -r++ or ++del/s++} __javasrc/target__;
+* Delete the old target folder (*only*): {`rm -r` or `del/s`} __javasrc/target__;
 * Do a "git pull" to rearrange the project and get the extra pom files;
 * Deal with any files that didn't get moved,e.g., because of conflicts;
-* Back in Eclipse, ++File->New Java Project->browse to (but not into) workspace/javasrc/main++.
-Set project name to ++javasrc-main++. 
+* Back in Eclipse, `File->New Java Project->browse to (but not into) workspace/javasrc/main`.
+Set project name to `javasrc-main`. 
 If asked to upgrade the JDK release, say OK.
 If asked to create a module-info, *click Do Not Create*.
-Click ++OK/Finish++.
+Click `OK/Finish`.
 * You may want to create some or all of the other projects such as xml, jlink, spark, unsafe, ...
 Do this same way as previous step: File->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
