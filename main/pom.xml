@@ -212,7 +212,7 @@
 		<dependency>
 			<groupId>org.renjin</groupId>
 			<artifactId>renjin-script-engine</artifactId>
-			<version>RELEASE</version>
+			<version>0.9.2726</version>
 		</dependency>
 
 		<!-- Client-side CDI -->
@@ -257,6 +257,7 @@
 
 	<!-- A minor POX on those who insist on running their own 
 	 *** repos instead of using Maven Central.
+	 *** Needed for e.g. renjin
 	 -->
 	<repositories>
 		<repository>
