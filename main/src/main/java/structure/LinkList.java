@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
-	private static class TNode<T> {
+	protected static class TNode<T> {
 		private TNode<T> next;
 		private T data;
 		TNode(T o, TNode<T> next) {
@@ -38,7 +38,7 @@ public class LinkList<T> implements List<T> {
 		}
 	}
 
-	private boolean DIAGNOSTIC = false;
+	private final boolean DIAGNOSTIC = false;
 	
 	/** The root or first TNode in the list; is a dummy pointer,
 	 * so its data will always be null. Simpler this way.
@@ -173,7 +173,7 @@ public class LinkList<T> implements List<T> {
 				++n;
 				return result.data;
 			}
-			public void remove() {
+			public void zremove() {
 				throw new UnsupportedOperationException("remove");
 			}
 		};
