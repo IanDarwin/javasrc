@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.JobAttributes;
-import java.awt.PrintJob;
 import java.awt.PageAttributes;
 import java.awt.PrintJob;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Properties;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 

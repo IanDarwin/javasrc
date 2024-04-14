@@ -41,7 +41,7 @@ public class RawSender implements SysExits {
 
 			System.out.println("SMTP Talker ready");
 
-			st.converse("MAILER-DAEMON@daroad.darwinsys.com", 
+			st.converse("MAILER-DAEMON@localhost.darwinsys.com", 
 				argv[1], "Test message", "Hello there");
 		} catch (SMTPException ig) {
 			System.err.println(ig.getMessage());
@@ -51,10 +51,10 @@ public class RawSender implements SysExits {
 
 	/** Constructor taking a server hostname as argument.
 	 */
+	@SuppressWarnings("resource")
 	RawSender(String server) throws SMTPException {
 		host = server;
 		try {
-			@SuppressWarnings("resource")
 			Socket s = new Socket(host, 25);
 			is = new BufferedReader(
 				new InputStreamReader(s.getInputStream()));

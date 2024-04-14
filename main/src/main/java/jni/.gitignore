@@ -3,3 +3,4 @@ javafromc
 javafromc.o
 jni_HelloJni.h
 libhello.so
+libhello.dylib

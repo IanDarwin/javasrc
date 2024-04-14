@@ -123,10 +123,6 @@ public class JaasDemo {
 		System.out.println("JaasDemo.runDemo()");
 
 		try {
-			// Now set the security manager to control I/O
-			// (can't set it sooner because then you won't have
-			// permission to create the login context...)
-			System.setSecurityManager(new SecurityManager());
 
 			// Should be able to read
 			new FileReader(LOGINCONFIG_FILENAME).close();

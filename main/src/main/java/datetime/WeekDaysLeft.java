@@ -2,9 +2,9 @@ package datetime;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.*;
-
-import static java.time.temporal.ChronoUnit.DAYS;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Calculate the number of working days left in a term (such as a school term),

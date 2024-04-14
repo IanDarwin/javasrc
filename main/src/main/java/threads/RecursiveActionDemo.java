@@ -40,6 +40,7 @@ public class RecursiveActionDemo extends RecursiveAction {
 			System.out.print(i + ",");
 		}
 		System.out.println(']');
+		pool.close();
 	}
 	
 	public RecursiveActionDemo(int[] src, int start, int length, int[] dest) {
