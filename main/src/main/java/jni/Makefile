@@ -15,8 +15,8 @@ CFLAGS_FOR_SO = -shared
 CSRCS		= HelloJni.c
 # JAVA_HOME should have been set in the environment
 #INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/solaris 
-INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/openbsd
-#INCLUDES	= -I$(JAVA_HOME)/include
+#INCLUDES	= -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/openbsd
+INCLUDES	= -I$(JAVA_HOME)/include -I/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/include/darwin/
 LIBDIR=$(JAVA_HOME)/lib/server
 
 all:		testhello testjavafromc

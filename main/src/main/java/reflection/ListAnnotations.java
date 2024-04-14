@@ -1,8 +1,7 @@
 package reflection;
 
-import java.util.Date;
-import java.lang.annotation.*;
-import java.lang.reflect.*;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 public class ListAnnotations {
 

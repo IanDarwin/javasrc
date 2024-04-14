@@ -4,7 +4,6 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
-import java.util.regex.Pattern;
 
 /**
  * Roman Number class. Not localized, since "Latin's a Dead Dead Language..."

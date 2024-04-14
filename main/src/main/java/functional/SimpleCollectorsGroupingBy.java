@@ -1,9 +1,11 @@
 package functional;
 
-import java.time.*;
-import java.util.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.groupingBy;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** Convert a List<Transaction> to a Map from each Customer 
  * who has a Transactions, to a List of their Transactions.

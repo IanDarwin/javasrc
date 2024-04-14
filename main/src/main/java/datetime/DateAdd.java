@@ -2,7 +2,6 @@ package datetime;
 
 // tag::main[]
 import java.time.LocalDate;
-import java.time.Period;
 
 /** DateAdd -- compute the difference between two dates
  * (e.g., today and 700 days from now).
