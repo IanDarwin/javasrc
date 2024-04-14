@@ -10,8 +10,9 @@ https://eclipse.org/[Eclipse] IDE;
 for those that don't, pull requests welcome.
 
 As of 2024-04-14, this does not work on Eclipse as their compiler
-fails to handle "classless main" even with the source attribute set to 21
-and using a Java 22 JDK with "Preview" checked. This is an Eclipse bug.
+fails to handle "classless main" even with the source attribute set to
+21 and using a Java 22 JDK with "Preview" checked. And it won't let
+you select a Source Level of 22. This is an Eclipse bug.
 
 == Note to self
 
