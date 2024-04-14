@@ -9,6 +9,10 @@ Some modules may still build with the
 https://eclipse.org/[Eclipse] IDE;
 for those that don't, pull requests welcome.
 
+As of 2024-04-14, this does not work on Eclipse as their compiler
+fails to handle "classless main" even with the source attribute set to 21
+and using a Java 22 JDK with "Preview" checked. This is an Eclipse bug.
+
 == Note to self
 
 Don't delete files without checking if they're still used in the Java Cookbook repo.
