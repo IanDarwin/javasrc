@@ -87,7 +87,7 @@ public class LinkListTest {
 		assertEquals("get element", testData[1], list.get(1));
 	}
 
-	@Test(expected=IndexOutOfBoundsException.class)
+	@Test(expected=NoSuchElementException.class)
 	public void testGetOnEmptyList() {
 		list.clear();
 		list.getFirst();
