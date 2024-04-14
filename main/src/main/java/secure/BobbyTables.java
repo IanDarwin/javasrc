@@ -13,10 +13,10 @@ public class BobbyTables {
 
 	public static void main(String[] args) {
 
-		System.out.println("Executing: " + 
-			String.format(COMMAND, GOOD_INPUT));
-		System.out.println("Executing: " + 
-			String.format(COMMAND, MALICIOUS_INPUT));
+		System.out.println("Executing: " +
+			COMMAND.formatted(GOOD_INPUT));
+		System.out.println("Executing: " +
+			COMMAND.formatted(MALICIOUS_INPUT));
 		
 	}
 }

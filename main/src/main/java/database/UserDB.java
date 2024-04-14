@@ -46,7 +46,7 @@ public abstract class UserDB {
 		String dbClass = null;
 		try {
 			dbClass = "jabadot.UserDBJDBC";
-			singleton = (UserDB)Class.forName(dbClass).newInstance();
+			singleton = (UserDB)Class.forName(dbClass).getDeclaredConstructor().newInstance();
 			//singleton = new UserDBJDBC();
 		} catch (Exception ex) {
 			String mesg = "Unable to initialize UserDB singleton";

@@ -18,7 +18,7 @@ public class URIDemo {
 		System.out.println("Relativized to " + BASE + ": " + BASE.relativize(u));
 
 		// A URL is a type of URI
-		URL url = new URL(normalized.toString());
+		URL url = URI.create(normalized.toString()).toURL();
 		System.out.println("URL: " + url);
 
 		// Demo of non-URL but valid URI

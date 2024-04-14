@@ -27,7 +27,7 @@ public class ListFormatTest {
 	public void testParse() {
 		List<String> ret = ListFormat.parse(FORMATTED);
 		assertEquals(3, ret.size());
-		assertEquals(UNFORMATTED[0], ret.get(0));
+		assertEquals(UNFORMATTED[0], ret.getFirst());
 		assertEquals(UNFORMATTED[2], ret.get(2));
 	}
 	

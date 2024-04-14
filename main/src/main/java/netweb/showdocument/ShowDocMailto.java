@@ -4,6 +4,7 @@ import java.applet.Applet;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
 import java.net.URL;
 
 /** This shows how to launch the Compose Mail window
@@ -28,7 +29,7 @@ public class ShowDocMailto extends Applet {
 					"ShowDocMailto requires an ADDRESS Parameter in the HTML");
 
 				// Make up the URL object
-				URL myNewURL = new URL("mailto:" + address);
+				URL myNewURL = URI.create("mailto:" + address).toURL();
 
 				// debug...
 				showStatus("URL = " + myNewURL);

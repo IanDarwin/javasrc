@@ -10,7 +10,7 @@ public class MyBigApp {
 
 		// Create this user's ShowLet
 		Class<?> c = Class.forName(className);
-		Showlet s = (Showlet) c.newInstance();
+		Showlet s = (Showlet) c.getDeclaredConstructor().newInstance();
 
 		// Now we have a showlet, make it do its thing:
 		s.show();

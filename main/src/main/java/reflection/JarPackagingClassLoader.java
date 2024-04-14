@@ -92,7 +92,7 @@ public class JarPackagingClassLoader extends ClassLoader {
 							n += is.read(data, n, classSize - n);
 						} while (n < classSize);
 						if (n != classSize) {
-							String mesg = String.format("Only read %d bytes of %d", n, classSize);
+							String mesg = "Only read %d bytes of %d".formatted(n, classSize);
 							System.err.println(mesg);
 							throw new IOException(mesg);
 						}
@@ -178,7 +178,7 @@ public class JarPackagingClassLoader extends ClassLoader {
 			Class<?> c = loader.loadClass(classToLoad, true);
 			
 			System.out.printf("Finally ready to instantiate class %s%n", classToLoad);
-			Object demo = c.newInstance();
+			Object demo = c.getDeclaredConstructor().newInstance();
 			System.out.println("SUCCESS: Demo class instantiated: " + demo);
 			
 			loader.makeItSo();

@@ -44,7 +44,7 @@ public class OptionalDemo {
 		}
 
 		public String toString() {
-			return String.format("%s %s", name,
+			return "%s %s".formatted(name,
 				dueDate.isPresent() ?
 					"Item is due on " + dueDate.get() :
 					"Sorry, do not know when item is due");

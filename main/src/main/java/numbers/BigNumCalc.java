@@ -1,6 +1,7 @@
 package numbers;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Stack;
 
 /** A trivial reverse-polish stack-based calculator for big numbers */
@@ -35,10 +36,10 @@ public class BigNumCalc {
 		BigDecimal tmp;
 		for (int i = 0; i < input.length; i++) {
 			Object o = input[i];
-			if (o instanceof BigDecimal) {
-				stack.push((BigDecimal) o);
-			} else if (o instanceof String) {
-				switch (((String)o).charAt(0)) {
+			if (o instanceof BigDecimal decimal) {
+				stack.push(decimal);
+			} else if (o instanceof String string) {
+				switch (string.charAt(0)) {
 				// + and * are commutative, order doesn't matter
 				case '+':
 					stack.push((stack.pop()).add(stack.pop()));
@@ -53,8 +54,7 @@ public class BigNumCalc {
 					break;
 				case '/':
 					tmp = stack.pop();
-					stack.push((stack.pop()).divide(tmp,
-						BigDecimal.ROUND_HALF_UP));
+					stack.push((stack.pop()).divide(tmp, RoundingMode.HALF_UP));
 					break;
 				default:
 					throw new IllegalStateException("Unknown OPERATOR popped");

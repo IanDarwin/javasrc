@@ -13,7 +13,7 @@ public class UseLocales {
 	public static void main(String[] args) {
 
 		Locale frLocale = Locale.FRANCE;	// predefined
-		Locale ukLocale = new Locale("en", "UK");	// English, UK version
+		Locale ukLocale = Locale.of("en", "UK");	// English, UK version
 
 		DateTimeFormatter defaultDateFormatter = 
 			DateTimeFormatter.ofLocalizedDateTime(

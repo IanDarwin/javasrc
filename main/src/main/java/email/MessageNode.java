@@ -26,8 +26,8 @@ public class MessageNode extends DefaultMutableTreeNode {
 			Address from = m.getFrom()[0];
 
 			String fromAddress;
-			if (from instanceof InternetAddress)
-				fromAddress = ((InternetAddress)from).getAddress();
+			if (from instanceof InternetAddress address)
+				fromAddress = address.getAddress();
 			else
 				fromAddress = from.toString();
 

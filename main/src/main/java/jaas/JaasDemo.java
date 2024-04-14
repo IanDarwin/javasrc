@@ -107,8 +107,8 @@ public class JaasDemo {
 			// If the call to login() doesn't throw an exception, we're in!
 			subject = loginContext.getSubject();
 			JOptionPane.showMessageDialog(theFrame,
-					String.format(
-						"Congratulations %s, you are logged in!", subject),
+				
+					"Congratulations %s, you are logged in!".formatted(subject),
 					"Welcome", JOptionPane.INFORMATION_MESSAGE);
 		} catch (LoginException e) {
 			JOptionPane.showMessageDialog(theFrame,
@@ -157,15 +157,13 @@ public class JaasDemo {
 					"MyLoginPrompter.handle(): got " + callbacks.length + " callbacks.");
 			for (Callback c : callbacks) {
 				System.out.println(c);
-				if (c instanceof TextOutputCallback) {
+				if (c instanceof TextOutputCallback callback) {
 					// display the message: maybe a prompt...
-					System.out.println(((TextOutputCallback)c).getMessage());
-				} else if (c instanceof NameCallback) {
-					NameCallback nc = (NameCallback)c;
+					System.out.println(callback.getMessage());
+				} else if (c instanceof NameCallback nc) {
 					String userName = JOptionPane.showInputDialog(nc.getPrompt());
 					nc.setName(userName);
-				} else if (c instanceof PasswordCallback) {
-					PasswordCallback pc = (PasswordCallback)c;
+				} else if (c instanceof PasswordCallback pc) {
 					String password = JOptionPane.showInputDialog(pc.getPrompt());
 					pc.setPassword(password.toCharArray());
 				} else {

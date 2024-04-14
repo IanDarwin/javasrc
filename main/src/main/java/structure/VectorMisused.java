@@ -33,7 +33,7 @@ public class VectorMisused {
 		for (int i = 0; i < NTHREAD; i++) {
 			pool.submit(()->{
 				for (int j = 0; j < NLOOP; j++) {
-					MyClass m = v.get(0);
+					MyClass m = v.getFirst();
 					m.val++;
 					count.incrementAndGet();
 				}
@@ -42,7 +42,7 @@ public class VectorMisused {
 		pool.shutdown();
 		pool.awaitTermination(100, TimeUnit.SECONDS);
 		int expected = count.get();
-		int actual = v.get(0).val;
-		System.out.printf((expected==actual?"Surprised!":"BUSTED!") + " Expected %d but actual %d\n", count.get(), v.get(0).val);
+		int actual = v.getFirst().val;
+		System.out.printf((expected==actual?"Surprised!":"BUSTED!") + " Expected %d but actual %d\n", count.get(), v.getFirst().val);
 	}
 }

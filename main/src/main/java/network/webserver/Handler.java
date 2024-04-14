@@ -144,8 +144,8 @@ public class Handler {
 		File f;
 		byte[] content = null;
 		Object o = h.get(rqName);
-		if (o != null && o instanceof byte[]) {
-			content = (byte[])o;
+		if (o != null && o instanceof byte[] bytes) {
+			content = bytes;
 			System.out.println("Using cached file " + rqName);
 			sendFile(rqName, headerOnly, content, os);
 		} else if ((f = new File(parent.getRootDir() + rqName)).isDirectory()) {

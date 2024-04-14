@@ -19,8 +19,8 @@ public class BuildingManagement {
 	 */
 	public void goodNight() {
 		things.forEach(obj -> {
-			if (obj instanceof PowerSwitchable)
-				((PowerSwitchable)obj).powerDown();
+			if (obj instanceof PowerSwitchable switchable)
+				switchable.powerDown();
 			});
 	}
 

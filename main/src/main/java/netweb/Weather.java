@@ -5,11 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.ContentHandler;
-import java.net.ContentHandlerFactory;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.net.*;
 
 import com.darwinsys.io.FileIO;
 
@@ -52,7 +48,7 @@ public class Weather {
 
 		System.out.println("Setting up URLConnection");
 
-		URL u = new URL(SERVER);
+		URL u = URI.create(SERVER).toURL();
 
 		URLConnection.setContentHandlerFactory(new ContentHandlerFactory() {
 			public ContentHandler createContentHandler(String type) {
@@ -84,8 +80,8 @@ public class Weather {
 			System.out.println("Getting the Response");
 			
 			Object response = cx.getContent();
-			if (response instanceof InputStream)
-				response = FileIO.inputStreamToString((InputStream)response);
+			if (response instanceof InputStream stream)
+				response = FileIO.inputStreamToString(stream);
 			System.out.println(response);
 		} finally {
 			if (os != null)

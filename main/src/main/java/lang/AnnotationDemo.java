@@ -30,8 +30,7 @@ class FancyClassJustToShowAnnotation {
 		Class<?> c = FancyClassJustToShowAnnotation.class;
 		System.out.println("Class " + c.getName() + " has these annotations:");
 		for (Annotation a : c.getAnnotations()) {
-			if (a instanceof AnnotationDemo) {
-				AnnotationDemo ad = (AnnotationDemo)a;
+			if (a instanceof AnnotationDemo ad) {
 				System.out.println("\t" +a + 
 					" with fancy=" + ad.fancy() + 
 					" and order " + ad.order());

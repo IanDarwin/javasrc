@@ -215,13 +215,13 @@ public class MailComposeBean extends JPanel {
 	private void maybeKillParent() {
 		if (parent == null)
 			return;
-		if (parent instanceof Frame) {
-			((Frame)parent).setVisible(true);
-			((Frame)parent).dispose();
+		if (parent instanceof Frame frame) {
+			frame.setVisible(true);
+			frame.dispose();
 		}
-		if (parent instanceof JInternalFrame) {
-			((JInternalFrame)parent).setVisible(true);
-			((JInternalFrame)parent).dispose();
+		if (parent instanceof JInternalFrame frame) {
+			frame.setVisible(true);
+			frame.dispose();
 		}
 	}
 

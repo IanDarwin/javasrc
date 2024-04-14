@@ -56,7 +56,7 @@ public class ReadTagTest extends TestCase {
 		List<Element> list = red.readTags();
 		assertNotNull("list from readTags", list);
 		assertTrue("any tags from readTags", 1 == list.size());
-		Element el = (Element)list.get(0);
+		Element el = (Element)list.getFirst();
 		assertEquals("list type", "?xml", el.getType());
 	}
 	
@@ -67,7 +67,7 @@ public class ReadTagTest extends TestCase {
 		List<Element> list = red.readTags();
 		assertNotNull("list from readTags", list);
 		assertTrue("any tags from readTags", 1 == list.size());
-		Element el = list.get(0);
+		Element el = list.getFirst();
 		assertEquals("list type", "a", el.getType());
 		System.out.println("HREF='" + el.getAttribute("href") + "'");
 		assertEquals("name attribute", "grelber", el.getAttribute("name"));

@@ -31,7 +31,7 @@ public class WordFreq {
 			.sorted(Map.Entry.<String,Long>comparingByValue() 
 			.reversed())
 			.limit(20)
-			.map(entry -> String.format("%4d %s", entry.getValue(), entry.getKey()))
+			.map(entry -> "%4d %s".formatted(entry.getValue(), entry.getKey()))
 			.forEach(System.out::println);
 	}
 }

@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URISyntaxException;
 
 /**
  * Read a URL's data from a URLConnection
@@ -26,13 +28,13 @@ public class URLConnectionDemo {
 		}
     }
     
-    public static String converse(String host, int port, String path, String postBody) throws IOException {
-		URL url = new URL("http", host, port, path);
+    public static String converse(String host, int port, String path, String postBody) throws IOException, URISyntaxException {
+		URL url = new URI("http", null, host, port, path, null, null).toURL();
 		return converse(url, postBody);
 	}
 
 	public static String converse(String url) throws IOException {
-		return converse(new URL(url), null);
+		return converse(URI.create(url).toURL(), null);
 	}
 
 	public static String converse(URL url, String postBody) throws IOException {
