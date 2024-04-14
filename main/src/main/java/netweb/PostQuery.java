@@ -21,7 +21,6 @@ import javax.swing.JFrame;
  */
 public class PostQuery {
 
-	private static final long serialVersionUID = 3258128046665315634L;
 	private static Button goButton;
 	private static String serverURL;
 

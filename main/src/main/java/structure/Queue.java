@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 /** Treat a LinkList as a Queue */
 public class Queue<T> extends LinkedList<T> {
-	
 	public void q_add(T o) {
 		addLast(o);
 	}

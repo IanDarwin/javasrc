@@ -38,7 +38,7 @@ public class ExecDemoNS extends JFrame {
 	/** Constructor - set up strings and things. */
 	public ExecDemoNS(String program) {
 		super("ExecDemo: " + program);
-		this.program = program;
+		ExecDemoNS.program = program;
 
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());

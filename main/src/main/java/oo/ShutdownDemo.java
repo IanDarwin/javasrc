@@ -8,13 +8,8 @@ public class ShutdownDemo {
 	public static void main(String[] args) throws Exception {
 
 		// Create an Object with a finalize() method - Bad idea!
-		Object f = new Object() {
-			@SuppressWarnings("deprecation")
-			public void finalize() throws Throwable {
-				System.out.println( "Running finalize()");
-				super.finalize();
-			}
-		};
+		// (no longer even showing this code!)
+		Object f = new Object();
 
 		// Add a shutdownHook to the JVM
 		Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -23,12 +18,7 @@ public class ShutdownDemo {
 			}
 		});
 
-		// Unless the user puts -f (this-program-specific argument for "free") on 
-		// the command line, call System.exit while holding a reference to 
-		// Object f, which can therefore not be finalized().
-
 		if (args.length == 1 && args[0].equals("-f")) {
-			f = null;
 			System.gc();
 		}
 
