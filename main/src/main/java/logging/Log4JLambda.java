@@ -11,8 +11,8 @@ public class Log4JLambda {
 	public static void main(String[] args) {
 
 		Person customer = getPerson();
-		myLogger.info( () -> String.format(
-			"Value %d from Customer %s", customer.value, customer) );
+		myLogger.info( () -> 
+			"Value %d from Customer %s".formatted(customer.value, customer) );
 
 	}
 	// end::main[]

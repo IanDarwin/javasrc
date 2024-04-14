@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -45,7 +46,7 @@ public class PostQuery {
 		try {
 			URL myNewURL;
 			showStatus("Building URL " + serverURL);
-			myNewURL = new URL(serverURL);
+			myNewURL = URI.create(serverURL).toURL();
 
 			showStatus("Connecting to " + myNewURL);
 

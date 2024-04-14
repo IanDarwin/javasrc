@@ -3,10 +3,15 @@
 This is my assorted collection of (you guessed it) Java source.
 It remains focused on building with
 https://maven.apache.org/[Maven]
-and the IDEs
-https://eclipse.org/[Eclipse]
-and
-https://jetbrains.com/idea[IntelliJ IDEA].
+and the
+https://jetbrains.com/idea[IntelliJ IDEA] IDE.
+Some modules may still build with the
+https://eclipse.org/[Eclipse] IDE;
+for those that don't, pull requests welcome.
+
+== Note to self
+
+Don't delete files without checking if they're still used in the Java Cookbook repo.
 
 == Origin
 
@@ -20,6 +25,7 @@ each discussing a particular problem that devs have to code, how to solve it, an
 illustrated with one or more code examples. The contents of the current edition looks like this:
 
 // Uses * not + because of what's at the end of this list.
+// Updated for JCB 4E; will need changes for 5E.
 * 1 Getting Started: Compiling and Running Java
 * 2 Interacting with the Environment
 * 3 String and Things
@@ -177,3 +183,8 @@ Ian Darwin
 Java Cookbook author
 
 https://darwinsys.com/contact
+
+== Misc. ToDo
+
+CONSIDER Moving all "compilation error" methods in $js into "dontcompile/"
+

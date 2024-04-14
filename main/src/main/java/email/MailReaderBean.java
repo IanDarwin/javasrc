@@ -98,10 +98,10 @@ public class MailReaderBean extends JSplitPane {
 					// System.out.println("Select folder " + o.toString());
 					return;
 				}
-				if (o instanceof MessageNode) {
+				if (o instanceof MessageNode node) {
 					bodyText.setText("");
 					try {
-						Message m = ((MessageNode)o).m;
+						Message m = node.m;
 
 						bodyText.append("To: ");
 						Object[] tos = m.getAllRecipients();

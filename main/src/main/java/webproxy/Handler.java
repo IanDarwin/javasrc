@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -129,7 +130,7 @@ public class Handler {
 			}
 
 			// Make a URL from the request
-			URL url = new URL(requestURL);
+			URL url = URI.create(requestURL).toURL();
 			String protocol = url.getProtocol();
 			if (!"http".equals(protocol)) {
 				errorResponse(401, "protocol not supported: " + requestURL);

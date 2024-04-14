@@ -13,6 +13,6 @@ class SortableData {
 	}
 	@Override
 	public String toString() {
-		return String.format("%5d %s", count, name);
+		return "%5d %s".formatted(count, name);
 	}
 }

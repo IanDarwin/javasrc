@@ -13,6 +13,7 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 import javax.swing.JFrame;
@@ -225,7 +226,7 @@ public class DailyEval {
 		System.out.println("SUGGESTIONS: " + commentsTA.getText());
 		URL url = null;
 		try {
-			url = new URL("http://localhost:8080/dailyevals/DailyEvalThanks.html");
+			url = URI.create("http://localhost:8080/dailyevals/DailyEvalThanks.html").toURL();
 		} catch(MalformedURLException rsi) {
 			showStatus("You lose: "+rsi);
 			return;

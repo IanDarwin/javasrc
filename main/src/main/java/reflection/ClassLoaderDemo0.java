@@ -64,7 +64,7 @@ public class ClassLoaderDemo0 extends ClassLoader {
 			System.out.println("About to load class  Demo");
 			c = loader.loadClass("Demo", true);
 			System.out.println("About to instantiate class Demo");
-			demo = c.newInstance();
+			demo = c.getDeclaredConstructor().newInstance();
 			System.out.println("Got Demo class loaded: " + demo);
 
 			/* Now try to call a method */

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -29,7 +30,7 @@ public class TextBrowser {
 		URL webURL = null;
 		try {
 			System.err.println("*** Loading " + loc + "... ***");
-			webURL = new URL(loc);
+			webURL = URI.create(loc).toURL();
 			BufferedReader is = new BufferedReader(
 				new InputStreamReader(webURL.openStream()));
 			String line;

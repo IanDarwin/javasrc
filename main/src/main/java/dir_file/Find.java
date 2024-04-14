@@ -20,19 +20,17 @@ public class Find {
 	 * @throws IOException If the Files.walkTree does so
 	 */
 	public static void main(String[] args) throws IOException {
-		Find finder = new Find();
-		
 		if (args.length == 0) {
-			finder.startWalkingAt(".");
+			startWalkingAt(".");
 		} else {
 			for (int i = 0; i < args.length; i++) {
 				if (args[i].charAt(0) == '-') {
 					switch(args[i].substring(1)) {
 					case "name":
-						finder.filter.setNameFilter(args[++i]);
+						Find.filter.setNameFilter(args[++i]);
 						continue;
 					case "size":
-						finder.filter.setSizeFilter(args[++i]);
+						Find.filter.setSizeFilter(args[++i]);
 						continue;
 //					Not implemented by back-end yet
 //					case "a":
@@ -45,15 +43,15 @@ public class Find {
 						"Unknown argument " + args[i]);
 					}
 				}
-				finder.startWalkingAt(args[i]);
+				startWalkingAt(args[i]);
 			}
 			if (!started) {
-				finder.startWalkingAt(".");
+				startWalkingAt(".");
 			}
 		}
 	}
 
-	protected FindFilter filter = new FindFilter();
+	protected static FindFilter filter = new FindFilter();
 
 	public static void usage() {
 		System.err.println(
@@ -62,7 +60,7 @@ public class Find {
 	}
 
 	/** doName - handle one filesystem object by name */
-	private void startWalkingAt(String s) throws IOException {
+	private static void startWalkingAt(String s) throws IOException {
 		logger.info("doName(" + s + ")");
 		started = true;
 		Path f = Path.of(s);
@@ -87,14 +85,14 @@ public class Find {
 
 	/** doFile - process one regular file. 
 	 * @throws IOException */
-	private void doFile(Path f) throws IOException {
+	private static void doFile(Path f) throws IOException {
 		if (filter.accept(f)) {
 			System.out.println("f " + f);
 		}
 	}
 	
 	/** doDir - process a directory */
-	private void doDir(Path d) {
+	private static void doDir(Path d) {
 		System.out.println("d " + d.normalize());
 	}
 }

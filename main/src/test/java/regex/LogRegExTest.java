@@ -14,7 +14,7 @@ public class LogRegExTest {
 
 	@Before
 	public void testCompile() {
-		p = Pattern.compile(LogRegEx.LOG_ENTRY_PATTERN);
+		p = Pattern.compile(LogRegEx.LOG_ENTRY_PATTERN, Pattern.COMMENTS);
 		assertNotNull(p);	
 	}
 

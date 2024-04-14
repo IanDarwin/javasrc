@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ReferencesDemo4 {
 
+	// tag::main[]
 	static final List<String> unsortedNames = List.of(
 		"Gosling", "de Raadt", "Amdahl", "Turing", "Ritchie", "Hopper"
 	);
@@ -48,5 +49,4 @@ public class ReferencesDemo4 {
 		System.out.print(String.join(", ", names));
 		System.out.println();
 	}
-
 }

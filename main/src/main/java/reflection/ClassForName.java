@@ -16,8 +16,7 @@ public class ClassForName {
 			System.err.println("That didn't work. " +
 				" Try something else" + e);
 		}
-		if (o != null && o instanceof Random) {
-			Random r = (Random)o;
+		if (o != null && o instanceof Random r) {
 			System.out.println("R produced this random # " + r.nextDouble());
 		} else throw new 
 			IllegalArgumentException("Huh? What gives? Not the right type: " + o);

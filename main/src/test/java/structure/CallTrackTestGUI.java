@@ -23,7 +23,7 @@ public class CallTrackTestGUI extends TestCase {
 			ct.add(testData[i]);
 		}
 		List<Person> it = ct.usrList;
-		assertEquals(it.get(0), testData[3]);
+		assertEquals(it.getFirst(), testData[3]);
 		assertEquals(it.get(1), testData[0]);
 		assertEquals(it.get(2), testData[2]);
 		assertEquals(it.get(3), testData[1]);

@@ -36,14 +36,16 @@
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
+	<!-- <module>javafx</module> doesn't work on some platforms -->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
 	<!-- <module>lombokdemo</module> doesn't build properly yet -->
-		<!-- multijardemo is NOT a Maven module - uses a shell script insted -->
+	<!-- multijardemo is NOT a Maven module - uses a shell script insted -->
 		<module>restdemo</module>
 		<!-- sidebyside is NOT a Maven module - contains non-Java stuff -->
 		<module>spark</module>
 		<module>testing</module>
+	<!-- sampleproject is not a module but is a maven archetype -->
 	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
 	<!-- <module>upcoming</module> Try if you like, but only with very latest JDKs -->

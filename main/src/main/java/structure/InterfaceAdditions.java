@@ -1,5 +1,6 @@
 package structure;
 
+// tag::main[]
 public class InterfaceAdditions implements Demo {
 	void main() { // Instance main in a named class
 		// Call public interface method in implementing class
@@ -24,3 +25,4 @@ class InterfaceChangesII implements Demo {
 	// Forllowing is a valid override, but must be public
 	public String getStatus() { return "Unknown"; }
 }
+// end::main[]

@@ -17,7 +17,7 @@ public class SetLocale {
 		case 1:
 			throw new IllegalArgumentException();
 		case 2:
-			Locale.setDefault(new Locale(args[0], args[1]));
+			Locale.setDefault(Locale.of(args[0], args[1]));
 			break;
 		default:
 			System.out.println("Usage: SetLocale [language [country]]");

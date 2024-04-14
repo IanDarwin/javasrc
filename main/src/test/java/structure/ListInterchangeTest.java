@@ -24,7 +24,7 @@ public class ListInterchangeTest {
 		System.out.println(
 			"ListInterchangeTest.testNonAdjacent(): " + list);
 		assertEquals("zero", list.get(2));
-		assertEquals("two", list.get(0));
+		assertEquals("two", list.getFirst());
 	}
 
 	public void testDescending() {

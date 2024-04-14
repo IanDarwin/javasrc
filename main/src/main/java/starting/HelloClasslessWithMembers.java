@@ -1,3 +1,4 @@
+// tag::main[]
 	import java.lang.reflect.*;	// Unused, just to show import is allowed
 
 	int x;						// instance fields
@@ -9,3 +10,4 @@
 	void process(int x) {		// instance method
 		System.out.println("Hello " +x);
 	}
+// end::main[]

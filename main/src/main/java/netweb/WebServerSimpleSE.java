@@ -36,7 +36,7 @@ public class WebServerSimpleSE {
 				is.close();
 
 				final String template = "<html><p>Hello at %s!</p></html>";
-				String message = String.format(template, new Date());
+				String message = template.formatted(new Date());
 				
 				rr.sendResponseHeaders(200, message.length());
 				rr.getResponseBody().write(message.getBytes());

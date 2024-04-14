@@ -27,7 +27,7 @@ public class PluginsViaAnnotationsTest {
 		List<Class<?>> ret = 
 			PluginsViaAnnotations.findAnnotatedClasses("reflection", MyTestAnnotation.class);
 		assertEquals(1, ret.size());
-		assertSame(PluginsViaAnnotationsTest.class, ret.get(0));
+		assertSame(PluginsViaAnnotationsTest.class, ret.getFirst());
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class PluginsViaAnnotationsTest {
 		List<Class<?>> ret = 
 				PluginsViaAnnotations.findClassesWithAnnotatedMethods("reflection", MyTestAnnotation.class);
 			assertEquals(1, ret.size());
-			assertSame(PluginsViaAnnotationsTest.class, ret.get(0));
+			assertSame(PluginsViaAnnotationsTest.class, ret.getFirst());
 	}
 
 }

@@ -33,8 +33,8 @@ public class LinkList<T> implements List<T> {
 		}
 		@Override
 		public String toString() {
-			return String.format("TNode: data='%s', next='%d'", data, 
-					next == null ? 0 : next.hashCode());
+			return "TNode: data='%s', next='%d'".formatted(data,
+				next == null ? 0 : next.hashCode());
 		}
 	}
 

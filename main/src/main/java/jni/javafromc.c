@@ -22,12 +22,12 @@ main(int argc, char *argv[]) {
 	
 	/* initialize the JVM! */
 	JavaVMOption options[2];
-    options[0].optionString = "-Xmx512m";
+	options[0].optionString = "-Xmx512m";
 	options[1].optionString = "-XX:NonNMethodCodeHeapSize=128m";
-    jvmArgs.version = JNI_VERSION_1_6;
-    jvmArgs.nOptions = 1;
-    jvmArgs.options = options;
-    jvmArgs.ignoreUnrecognized = 1;
+	jvmArgs.version = JNI_VERSION_1_6;
+	jvmArgs.nOptions = 1;
+	jvmArgs.options = options;
+	jvmArgs.ignoreUnrecognized = 1;
 
 	if (JNI_CreateJavaVM(&jvm, (void **)&myEnv, &jvmArgs) < 0) {
 		fprintf(stderr, "CreateJVM failed\n");
@@ -58,7 +58,8 @@ main(int argc, char *argv[]) {
 
 	/* make an array of Strings, subtracting 1 for progname & 1 for the
 	 * java class name */
-	if ((args = (*myEnv)->NewObjectArray(myEnv, argc-2, stringClass, NULL))==NULL) {
+	if ((args = (*myEnv)->
+			NewObjectArray(myEnv, argc-2, stringClass, NULL))==NULL) {
 		fprintf(stderr, "Create array failed!\n");
 		exit(1);
 	}
@@ -69,16 +70,17 @@ main(int argc, char *argv[]) {
 			args, i-2, (*myEnv)->NewStringUTF(myEnv, argv[i]));
 
 	/* finally, call the method. */
-	(*myEnv)->CallStaticVoidMethodA(myEnv, myClass, myMethod, (const jvalue *)&args);
+	(*myEnv)->CallStaticVoidMethodA(myEnv, myClass,
+		myMethod, (const jvalue *)&args);
 
 	/* And check for exceptions */
 	if ((tossed = (*myEnv)->ExceptionOccurred(myEnv)) != NULL) {
 		fprintf(stderr, "%s: Exception detected:\n", argv[0]);
 		(*myEnv)->ExceptionDescribe(myEnv);	/* writes on stderr */
-		(*myEnv)->ExceptionClear(myEnv);	/* OK, we're done with it. */
+		(*myEnv)->ExceptionClear(myEnv);	/* We're done with it. */
 	}
 	
-	(*jvm)->DestroyJavaVM(jvm);	/* no error checking as we're done anyhow */
+	(*jvm)->DestroyJavaVM(jvm); /* no error checking as we're done anyhow */
 	return 0;
 }
 // end::main[]

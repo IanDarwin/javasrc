@@ -56,7 +56,7 @@ public class SimpleCollectorsGroupingBy {
 
 	record Transaction(Customer customer, LocalDate when, double amount) {
 		public String toString() {
-			return String.format("Customer %s, Date %s, transaction amount %.2f", customer.name(), when, amount);
+			return "Customer %s, Date %s, transaction amount %.2f".formatted(customer.name(), when, amount);
 		}
 	}
 

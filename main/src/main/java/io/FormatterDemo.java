@@ -26,7 +26,7 @@ public class FormatterDemo {
 		fmtr.close();
 
 		// Shorter way using static String.format(), default parameter numbering.
-		Object stringResult = String.format("%04d - the year of %f", 1956, Math.PI);
+		Object stringResult = "%04d - the year of %f".formatted(1956, Math.PI);
 		System.out.println(stringResult);
 
 		// A shorter way using PrintStream/PrintWriter.format, more in line with

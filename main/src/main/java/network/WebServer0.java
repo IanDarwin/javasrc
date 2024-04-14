@@ -103,7 +103,7 @@ public class WebServer0 {
 				</body>
 				</html>
 				""";
-			String reply = String.format(replyTemplate, from, VIEW_SOURCE_URL);
+			String reply = replyTemplate.formatted(from, VIEW_SOURCE_URL);
 			os.print("Content-length: " + reply.length() + CRLF);
 			os.print(CRLF);
 			os.print(reply + CRLF);

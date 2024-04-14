@@ -80,7 +80,7 @@ public class ClassLoaderMultiple extends ClassLoader {
 			System.out.println("About to load class  Demo");
 			c = loader.loadClass(CLASS_TO_LOAD, true);
 			System.out.println("About to instantiate class Demo");
-			demo = c.newInstance();
+			demo = c.getDeclaredConstructor().newInstance();
 			System.out.println("Got Demo class loaded: " + demo);
 
 			/* Now try to call a method */

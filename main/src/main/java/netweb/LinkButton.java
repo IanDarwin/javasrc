@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,9 +67,9 @@ public class LinkButton extends JPanel implements MouseListener {
 			String fontName, int fontSize) {
 		System.out.println("In LinkButton::init");
 		try {
-			targetURL = new URL(target);
+			targetURL = URI.create(target).toURL();
 			if (imName != null)
-				setImage(getImage(new URL(imName)));
+				setImage(getImage(URI.create(imName).toURL()));
 		} catch (MalformedURLException rsi) {
 			throw new IllegalArgumentException("MalformedURLException " +
 				rsi.getMessage());

@@ -90,7 +90,7 @@ public class LinkListTest {
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void testGetOnEmptyList() {
 		list.clear();
-		list.get(0);
+		list.getFirst();
 	}
 
 	@Test
@@ -123,7 +123,7 @@ public class LinkListTest {
 	public void testRemoveMIDDLE() {
 		assertTrue(list.remove(MIDDLE_STRING));
 		assertEquals(2, list.size());
-		assertSame(FIRST_STRING, list.get(0));
+		assertSame(FIRST_STRING, list.getFirst());
 		assertSame(LAST_STRING, list.get(1));
 	}
 	
@@ -131,7 +131,7 @@ public class LinkListTest {
 	public void testRemoveLast() {
 		assertTrue(list.remove(LAST_STRING));
 		assertEquals(2, list.size());
-		assertSame(FIRST_STRING, list.get(0));
+		assertSame(FIRST_STRING, list.getFirst());
 		assertSame(MIDDLE_STRING, list.get(1));
 	}
 	

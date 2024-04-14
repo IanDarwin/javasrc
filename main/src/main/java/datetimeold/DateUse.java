@@ -11,8 +11,8 @@ public class DateUse {
 	/** Typical main method ("main program") declaration */
 	public static void main(String[] av) {
 
-		Locale l1 = new Locale("en", "US"),
-			l2 = new Locale("es", "ES");
+		Locale l1 = Locale.of("en", "US"),
+			l2 = Locale.of("es", "ES");
 
 		// Create a Date object for May 5, 1986
 		Calendar c = Calendar.getInstance();

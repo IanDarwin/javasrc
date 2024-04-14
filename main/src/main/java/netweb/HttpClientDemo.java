@@ -9,6 +9,7 @@ import java.net.http.HttpClient.Version;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Simple demo of Java 11+ HttpClient (not the older Apache one)
@@ -34,7 +35,7 @@ public class HttpClientDemo {
 		// Build the HttpRequest object to "GET" the urlString
 		HttpRequest req =
 			HttpRequest.newBuilder(URI.create(urlString + 
-				URLEncoder.encode(keyword)))
+				URLEncoder.encode(keyword, StandardCharsets.UTF_8)))
 			.header("User-Agent", "Dept of Silly Walks")
 			.GET()
 			.build();

@@ -13,7 +13,7 @@ public class ExecDemoFiles {
 		Runtime rt = Runtime.getRuntime();
 
 		// Create three temporary files (the slow way!)
-		rt.exec("mktemp file1");
+		rt.exec(new String[]{"mktemp", "file1"});
 		rt.exec("mktemp file2");
 		rt.exec("mktemp file3");
 

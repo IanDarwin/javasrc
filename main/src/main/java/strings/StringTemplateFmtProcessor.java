@@ -1,6 +1,8 @@
 import java.util.Iterator;
 
 // tag::main[]
+import static java.util.FormatProcessor.FMT;
+
 /**
  * Demonstrate the creation and use of a fairly basic custom StringTemplate.Processor,
  * in particular, the FMT processor described in https://bugs.openjdk.org/browse/JDK-8273943
@@ -21,7 +23,12 @@ var MYFMT = StringTemplate.Processor.of((StringTemplate st) -> {
 
 var user = "Ian";
 
+// Using my re-implementation of FMT:
 System.out.println(
     MYFMT."Hello %s\{user}, Math.PI to 5 decimal places is %7.5f\{Math.PI}.");
+
+// Now using the built-in FMT:
+System.out.println(
+    FMT."Hello %s\{user}, Math.PI to 5 decimal places is %7.5f\{Math.PI}.");
 }
 // end::main[]

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -25,7 +26,7 @@ public class Browser0 {
 		}
 		BufferedReader is = null;
 		try {
-			URL web = new URL(loc);
+			URL web = URI.create(loc).toURL();
 			is = new BufferedReader(
 				new InputStreamReader(
 				web.openStream()));

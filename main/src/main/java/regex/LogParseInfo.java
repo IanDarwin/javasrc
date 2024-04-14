@@ -1,8 +1,7 @@
 package regex;
 
-import java.io.File;
+import java.nio.file.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Common fields and info for Apache Log Parsing demo.
@@ -16,8 +15,7 @@ public interface LogParseInfo {
 		"123.45.67.89 - - [27/Oct/2000:09:27:09 -0400] \"GET /java/javaResources.html HTTP/1.0\" 200 10450 \"-\" \"Mozilla/4.6 [en] (X11; U; OpenBSD 2.8 i386; Nav)\"";
 
 	public static void makeSample(String fileName) throws IOException {
-		try (PrintWriter p = new PrintWriter(new File(fileName))) {
-			p.print(LOG_ENTRY_LINE);
-		}
+		Files.writeString(Path.of(fileName), LOG_ENTRY_LINE);
 	}
 }
+

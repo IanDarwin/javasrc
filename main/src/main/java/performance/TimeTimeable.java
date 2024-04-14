@@ -31,7 +31,7 @@ public class TimeTimeable {
 		for (/* i already now 0 or 1*/; i < args.length; i++) {
 			String className = args[i];
 			System.out.printf("Starting class: %s%n", className);
-			t = (Timeable) Class.forName(className).newInstance();
+			t = (Timeable) Class.forName(className).getDeclaredConstructor().newInstance();
 			t.init(new String[0]);
 			measureTimes(t);
 		}

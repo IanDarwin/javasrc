@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URI;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,7 +103,7 @@ public class BookRank {
 
 		// Open the URL and get a Reader from it.
 		final BufferedReader is = new BufferedReader(new InputStreamReader(
-			new URL(url).openStream()));
+			URI.create(url).toURL().openStream()));
 
 		// Read the URL looking for the rank information, as
 		// a single long string, so can match RE across multi-lines.

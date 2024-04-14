@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  * data structure (maybe LinkedList<FilterOp> or a Tree) for complex 
  * requests like:
  *	-n "*.html" -a \( -size < 0 -o mtime < 5 \).
+ * XXX Consider replacing with BiPredicate and doing more parsing in Find.
  */
 public class FindFilter {
 	private enum SizeMode {GT, EQ, LT};
