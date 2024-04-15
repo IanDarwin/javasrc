@@ -39,7 +39,7 @@ public class BordLayPanel extends Frame {
 		// Don't forget to add a window listener so the quit control works
 	}
 
-	/** Simulate applet.showStatus() for Frame-based applications */
+	/** Provide showStatus() for Frame-based applications */
 	public void showStatus(String msg) {
 		if (msg == null)
 			msg = "";
