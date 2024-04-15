@@ -17,7 +17,7 @@ public class ExecDemoSort {
 		Process p;
 		
 		// file contains unsorted data
-		p = r.exec("sort sortdemo.txt");
+		p = r.exec(new String[]{"sort", "sortdemo.txt"});
 
 		// If we stopped writing code here, the output
 		// would appear on the standard output.

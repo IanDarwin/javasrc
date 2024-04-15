@@ -14,15 +14,15 @@ public class ExecDemoFiles {
 
 		// Create three temporary files (the slow way!)
 		rt.exec(new String[]{"mktemp", "file1"});
-		rt.exec("mktemp file2");
-		rt.exec("mktemp file3");
+		rt.exec(new String[]{"mktemp", "file2"});
+		rt.exec(new String[]{"mktemp", "file3");
 
 		// Run the "ls" (directory lister) program
 		// with its output sent into a file
 		String[] args = { "ls", "-l", "file1", "file2", "file3" };
 		ExecAndPrint.run(args);
 
-		rt.exec("rm file1 file2 file3");
+		rt.exec(new String[]{"rm", "file1", "file2", "file3"});
 		// end::main[]
 	}
 }

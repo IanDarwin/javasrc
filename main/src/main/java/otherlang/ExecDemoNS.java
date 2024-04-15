@@ -74,7 +74,7 @@ public class ExecDemoNS extends JFrame {
 						run = program;
 					}
 
-					pStack.push(Runtime.getRuntime().exec(run + " " + helpURL));
+					pStack.push(Runtime.getRuntime().exec(new String[]{run, helpURL}));
 
 					logger.info("In main after exec " + pStack.size());
 

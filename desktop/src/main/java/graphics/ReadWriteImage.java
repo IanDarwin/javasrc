@@ -41,7 +41,7 @@ public class ReadWriteImage {
 
 	public static void main(String[] args) throws Exception {
 		String dir = DIRECTORY;
-		pw = Files.newBufferedWriter(Path.of(vdefs.adoc));
+		pw = Files.newBufferedWriter(Path.of("vdefs.adoc"));
 		IntStream.rangeClosed(START, END).forEach(i -> process(DIRECTORY, Integer.toString(i)));
 		IntStream.rangeClosed(START_PC, END).forEach(i -> process(DIRECTORY, i + "P"));
 		IntStream.rangeClosed(START_PC, END).forEach(i -> process(DIRECTORY, i + "C"));
@@ -96,7 +96,7 @@ public class ReadWriteImage {
 				// Nothing
 				break;
 		}
-		System.out.println("Drawing in " + g.getColor()} + " at " + x + "," + "y");
+		System.out.println("Drawing in " + g.getColor() + " at " + x + "," + "y");
 		g.drawString(label, x, y);
 		ImageIO.write(image, "png", 
 			new File(dir + "/" + label + ".png"));

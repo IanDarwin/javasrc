@@ -57,7 +57,7 @@ public class RebootServlet extends HttpServlet {
 		}
 
 		Runtime r = Runtime.getRuntime();
-		r.exec("sudo reboot");
+		r.exec(new String[]{"sudo", "reboot"});
 		out.println("It seems to be thinking about that");
 		out.flush();
 	}

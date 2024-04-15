@@ -76,7 +76,7 @@ public class BookRank {
 			System.out.println("Plotting software not installed");
 			return;
 		}
-		Process proc = Runtime.getRuntime().exec(PLOTTER_PROG);
+		Process proc = Runtime.getRuntime().exec(new String[]{PLOTTER_PROG});
 		PrintWriter gp = new PrintWriter(proc.getOutputStream());
 		gp.print(gnuplot_cmd);
 		gp.close();

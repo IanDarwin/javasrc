@@ -26,7 +26,7 @@ public class ExecDemoLs {
 		BufferedReader is;	// reader for output of process
 		String line;
 		
-		p = Runtime.getRuntime().exec(PROGRAM);
+		p = Runtime.getRuntime().exec(new String[]{PROGRAM});
 
 		logger.info("In Main after exec");
 

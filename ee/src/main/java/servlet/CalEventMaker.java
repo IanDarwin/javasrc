@@ -32,7 +32,7 @@ public class CalEventMaker extends HttpServlet {
 			Integer.parseInt(args[4]));	// dd end
 		out.close();
 		// This is Mac OS X specific; on MS-Windows use "start".
-		Runtime.getRuntime().exec("open" + ' ' + TMPFILE);
+		Runtime.getRuntime().exec(new String[]{"open", TMPFILE});
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,7 +48,7 @@ public class CalEventMaker extends HttpServlet {
 		String mmEnd = request.getParameter("mmEnd");
 		String ddEnd = request.getParameter("ddEnd");
 
-		response.setContentType("ical");	// BLEARGH
+		response.setContentType("ical");	// XXX FIXME
 
 		PrintWriter out = response.getWriter();
 
