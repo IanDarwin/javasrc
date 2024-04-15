@@ -21,7 +21,7 @@ public class MethodHandleDemo {
         MethodHandle mh = lup.findStatic(LocalDate.class, "of", mt);
         // At last, invoke the method!
         LocalDate endDate = (LocalDate) mh.invokeExact(2014, 6, 10);
-        System.out.println(STR."LocalDate from 'of' = \{endDate}");
+        System.out.println("LocalDate from 'of' = " + endDate);
 
         // Second, invoke the LocalDate's instance method toString()
         // "toString()" returns a String, takes no args
@@ -30,7 +30,7 @@ public class MethodHandleDemo {
         mh = lup.findVirtual(LocalDate.class, "toString", mt);
         // Invoke it in the context of the LocalDate object created earlier
         String asString = (String) mh.invokeExact(endDate);
-        System.out.println(STR."LocalDate as String is \{asString}");
+        System.out.println("LocalDate as String is " + asString);
 // end::main[]
     }
 }

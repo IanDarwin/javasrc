@@ -6,14 +6,14 @@ package strings;
 // tag::main[]
 public class StringInterp {
 	final static int Z = 123;
-	final static String A_STATIC_STRING = STR."My favorite number is \{Z}";
+	final static String A_STATIC_STRING = "My favorite number is " + Z;
 
 	void main() {
 		var a = 42;
 		var b = Math.PI;
 		var c = "I like";
 
-		String result = STR."Hello! \{c} \{b} so much I'd take \{a} of them! \{a * b}";
+		String result = "Hello! " + c + b + " so much I'd take " + a + "  of them! " + (a * b);
 
 		System.out.println("Local String: " + result);
 

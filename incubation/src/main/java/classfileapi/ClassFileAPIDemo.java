@@ -21,14 +21,14 @@ class ClassFileAPIDemo implements Serializable {
 			switch (element) {
 				case FieldModel field ->
 					System.out.println(
-					STR."Field \{field.fieldName().stringValue()}");
+					"Field " + field.fieldName().stringValue());
 				case MethodModel method ->
 					System.out.println(
-					STR."Method \{method.methodName().stringValue()}");
+					"Method " + method.methodName().stringValue());
 				default -> { 
 					/* Ignore anything else */
 					System.out.println(
-					STR."Other: \{element} (\{element.getClass().getName()})");
+					"Other: " + element +  (" + element.getClass().getName()");
 				}
 			}
 		}
