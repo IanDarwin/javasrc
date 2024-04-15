@@ -5,6 +5,8 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 /**
  * Threaded Labels: each instance of this class
  * runs its own thread, with a counter that counts down to zero.
@@ -54,10 +56,6 @@ public class ThreadsOne extends JPanel implements Runnable {
 		add(lab = new Label("000"));
 	
 		// Provide a count from the PARAM, default to 100.
-		String snum;
-		if ((snum = getParameter("count")) != null)
-			setCount(Integer.parseInt(snum));
-		else
-			setCount(100);
+		setCount(100);
 	}
 }

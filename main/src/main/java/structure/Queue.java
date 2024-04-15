@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 /** Treat a LinkList as a Queue */
 public class Queue<T> extends LinkedList<T> {
+	private static final long serialVersionUID = 1L;
+
 	public void q_add(T o) {
 		addLast(o);
 	}

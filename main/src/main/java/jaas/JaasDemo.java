@@ -62,6 +62,8 @@ public class JaasDemo {
 		theFrame = new JFrame("JAAS Demo");
 		theFrame.setLayout(new FlowLayout());
 		Action loginAction = new AbstractAction("Login") {
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				login();
 			}
@@ -69,6 +71,9 @@ public class JaasDemo {
 		theFrame.add(new JButton(loginAction));
 
 		Action runAction = new AbstractAction("Run") {
+			private static final long serialVersionUID = 1L;
+
+			@SuppressWarnings("removal")
 			public void actionPerformed(ActionEvent e) {
 				Subject.doAs(subject, new PrivilegedAction<Void>() {
 
@@ -83,6 +88,8 @@ public class JaasDemo {
 		theFrame.add(new JButton(runAction));
 
 		Action quitAction = new AbstractAction("Exit") {
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}

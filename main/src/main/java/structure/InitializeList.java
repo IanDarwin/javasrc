@@ -1,7 +1,6 @@
 package structure;
 
 import java.util.List;
-import java.util.Vector;
 
 /**
  * The modern way to initialize a List with known values
