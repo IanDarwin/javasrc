@@ -173,7 +173,7 @@ public class LinkList<T> implements List<T> {
 				++n;
 				return result.data;
 			}
-			public void zremove() {
+			public void remove() {
 				throw new UnsupportedOperationException("remove");
 			}
 		};

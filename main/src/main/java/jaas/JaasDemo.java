@@ -57,7 +57,6 @@ public class JaasDemo {
 		new JaasDemo();
 	}
 
-	@SuppressWarnings("serial")
 	JaasDemo() {
 		System.out.println("JaasDemo.JaasDemo()");
 		theFrame = new JFrame("JAAS Demo");

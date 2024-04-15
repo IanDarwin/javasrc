@@ -1,5 +1,7 @@
 package lang;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  *  Try-MultiCatch demo for JavaSE 7.
  * "One Catch to Rule Them All..."
@@ -17,12 +19,24 @@ public class MultiCatch {
 			"lang.ClassWithPrivateConstructor"
 		}) {
 			try {
-				Class.forName(clazzName).newInstance();
+				Class.forName(clazzName).getDeclaredConstructor().newInstance();
 			} catch ( InstantiationException | 
 				IllegalAccessException | 
 				ClassNotFoundException e) {
 
 				System.out.println("Caught expected " + e);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
