@@ -14,6 +14,6 @@ public class WeekOfYear {
 		day = Integer.parseInt(args[2]);
 		LocalDate date = LocalDate.of(year, month, day);
 		int week = date.get(ChronoField.ALIGNED_WEEK_OF_YEAR);
-		System.out.println(STR."\{year}-\{month}-\{day} was in week \{week} of \{year}.");
+		System.out.printf("%4d-%02d-%02d was in week %d of %d.", year, month, day, week, year);
 	}
 }

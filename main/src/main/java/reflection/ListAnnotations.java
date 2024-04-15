@@ -16,10 +16,10 @@ public class ListAnnotations {
 			System.out.println(c);
 			for (Method m : c.getMethods()) {
 				int n = m.getAnnotations().length;
-				System.out.println(STR."Method \{m.getName()} has \{n} annotations.");
+				System.out.println("Method " + m.getName() + " has " + n + " annotations.");
 				if (n > 0) {
 					for (Annotation a : m.getAnnotations()) {
-						System.out.println(STR."  \{a}");
+						System.out.println("  " + a);
 					}
 				}
 			}

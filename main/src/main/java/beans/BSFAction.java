@@ -57,7 +57,7 @@ public class BSFAction {
 				new FileReader(FILENAME));
 
 		} catch (Exception ex) {
-			System.err.println(STR."Well, that didn't work. Why? \{ex}");
+			System.err.println("Well, that didn't work. Why not? " + ex);
 			return;
 		}
 

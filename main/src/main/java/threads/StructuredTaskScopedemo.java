@@ -20,7 +20,7 @@ void main() {
 }
 
 Callable<String> doSomething = () -> {
-	System.out.println(STR."In doYetMore, client \{CLIENT.get()}");
+	System.out.println("In doYetMore, client " + CLIENT.get());
 	return "One";
 };
 Callable<String> doSomethingElse = () -> {
@@ -28,7 +28,7 @@ Callable<String> doSomethingElse = () -> {
 	return "Two";
 };
 Callable<Integer> doYetMore = () -> {
-	System.out.println(STR."In doYetMore, using client \{CLIENT.get()}");
+	System.out.println("In doYetMore, using client " + CLIENT.get());
 	return 42;
 };
 

@@ -34,8 +34,8 @@ public class CallCFromJava {
             SymbolLookup ourLib = SymbolLookup.libraryLookup(
                     "/home/ian/git/javasrc/main/src/main/java/ffi/hello-ffi.so", arena);
             Optional<MemorySegment> segment = ourLib.find(updateMethod);
-            if (!segment.isPresent()) {
-                throw new IllegalArgumentException(STR."Method \{updateMethod} not found!");
+            if (segment.isEmpty()) {
+                throw new IllegalArgumentException("Method " + updateMethod + " not found!");
             }
             MemorySegment foreignFuncAddr = segment.get();
             // Create argument-list description of the C function
@@ -47,12 +47,13 @@ public class CallCFromJava {
             MethodHandle strlen = linker.downcallHandle(foreignFuncAddr, update_sig);
             // Finally, what you've all been waiting for: call a C function directly from Java
             var ret = (long) strlen.invokeExact(2L, nativeString);
-            System.out.println(STR."Update function returned \{ret}");
+            System.out.println("Update function returned " + ret);
 
             // Now call getSketch(2) to prove that it got updated
             segment = ourLib.find(getMethod);
-            if (!segment.isPresent()) {
-                throw new IllegalArgumentException(STR."Method \{getMethod} not found!");
+            if (segment.isEmpty()) {
+                throw new IllegalArgumentException(
+					"Method " + getMethod + " not found!");
             }
             foreignFuncAddr = segment.get();
             // Create argument-list description of the C function
@@ -64,13 +65,13 @@ public class CallCFromJava {
                     update_sig);
             // Once again we call a C function directly from Java
             var retStr = (MemorySegment)getter.invokeExact(2L);
-            Consumer<MemorySegment> cleanup = s -> {
+            Consumer<MemorySegment> cleanup = _ -> {
                 // Maybe some cleanup here what we had allocated in native space
             };
             retStr = retStr.reinterpret(newSketch.length() + 1, arena, cleanup);
-            System.out.println(STR."Update function returned \{retStr}");
+            System.out.println("Update function returned " + retStr);
             String updatedValue = retStr.getUtf8String(0);
-            System.out.println(STR."Retrieved updatedValue as \{updatedValue}");
+            System.out.println("Retrieved updatedValue as " + updatedValue);
         }
     }
 }

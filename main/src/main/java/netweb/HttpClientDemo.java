@@ -64,5 +64,6 @@ public class HttpClientDemo {
 			.join();
 		// end::sendAsynch[]
 
+		client.close();
 	}
 }
