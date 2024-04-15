@@ -28,7 +28,7 @@ public class CalPanel extends JPanel {
 
 		// The action for changing yy or mm draws a new calendar
 		final ActionListener listener = e -> {
-			System.out.println("CalApplet::ActionPerformed");
+			System.out.println("CalPanel::ActionPerformed");
 			yy = Integer.parseInt(yyText.getText());
 			mm = Integer.parseInt(mmText.getText());
 			dd = Integer.parseInt(ddText.getText());

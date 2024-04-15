@@ -1,6 +1,5 @@
 acks		Old program to show Acknowledgements graphically
 anttasks	Sample Ant task
-applet		Old Applet examples
 beans		Old JavaBean stuff
 chartbean	Simplistic sample graphing program
 chat		Chat program

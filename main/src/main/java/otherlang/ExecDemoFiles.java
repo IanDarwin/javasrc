@@ -15,7 +15,7 @@ public class ExecDemoFiles {
 		// Create three temporary files (the slow way!)
 		rt.exec(new String[]{"mktemp", "file1"});
 		rt.exec(new String[]{"mktemp", "file2"});
-		rt.exec(new String[]{"mktemp", "file3");
+		rt.exec(new String[]{"mktemp", "file3"});
 
 		// Run the "ls" (directory lister) program
 		// with its output sent into a file
