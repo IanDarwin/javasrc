@@ -100,7 +100,7 @@ public class ReadWriteImage {
 		g.drawString(label, x, y);
 		ImageIO.write(image, "png", 
 			new File(dir + "/" + label + ".png"));
-		pw.write(":" + label + ": image:" + dir + "/" + label + ".png\n");
+		pw.write(":" + label + ": image:" + dir + "/" + label + ".png[]\n");
 		} catch (Exception ex) {
 			throw new RuntimeException("WTF: Failure " + ex);
 		}
