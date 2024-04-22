@@ -7,6 +7,7 @@ public class VirtualThreadsDemo {
 
 	final static int MAX = 5;
 
+	// tag::main[]
 	public static void main(String[] args) throws Exception {
 
 		Runnable r = () -> {
@@ -24,4 +25,5 @@ public class VirtualThreadsDemo {
 
 		Thread.sleep(100);
 	}
+	// end::main[]
 }
