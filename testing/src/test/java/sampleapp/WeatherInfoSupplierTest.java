@@ -1,10 +1,12 @@
 package sampleapp;
 
+// tag::imports[]
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+// end::imports[]
 
 import org.junit.Before;
 import org.junit.Test;
@@ -58,6 +60,7 @@ public class WeatherInfoSupplierTest {
 
 	@Test
 	public void showExpectations() {
+		// tag::main[]
 		reporter.setStation(mockStation = mock(WeatherStation.class));
 		when(mockStation.getTemperature()).thenReturn(19.0);
 		if (testCount == 0) { // hard-coded mock, no expectations
@@ -65,5 +68,6 @@ public class WeatherInfoSupplierTest {
 		}
 		reporter.getTemperature(); // Delegates to station::getTemperature
 		verify(mockStation, atLeastOnce()).getTemperature();
+		// end::main[]
 	}
 }
