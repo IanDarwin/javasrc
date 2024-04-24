@@ -8,10 +8,11 @@ public class Deprec {
 
 	public static void main(String[] av) {
 
-		// Create a Date object for May 5, 1986
-		@SuppressWarnings("deprecation")
+		// Create a Date object for June 6, 2014
+		// @SuppressWarnings("deprecation") // Uncomment to suppress
 		// EXPECT DEPRECATION WARNING without @SuppressWarnings
-		Date d = new Date(86, 04, 05);
+		Date d = new Date(2014-1900, 6-1, 10);
+		// Shows why java.time.LocalDate.of(2014,06,10) is safer!
 		System.out.println("Date is " + d);
 	}
 }
