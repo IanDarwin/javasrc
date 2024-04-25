@@ -8,7 +8,9 @@ package gc;
  * so useCount will in some circumstances show a higher number of nodes 
  * than is actually allocated. To fix this for a real program, you need
  * only move the "gc()" and "sleep()" calls into getCount(),
- * since that's when it's needed.
+ * since that's when it's needed. Or, better yet,
+ * change finalize() to close() and call it explicitly
+ * when done with a given object.
  */
 public class Statics {
 	static int useCount;
@@ -39,6 +41,7 @@ public class Statics {
 				try {
 					Thread.sleep(100);	// let GC run??
 				} catch (Exception e) {
+					// Empty - single threaded!
 				}
 			}
 		}
