@@ -1,19 +1,22 @@
 package strings;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringReader;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-public class UndentTest extends TestCase {
-	
+class UndentTest {
+
 	/*
 	 * Test normal lines, lines with fewer, and with more, than "n" spaces.
 	 */
-	public void testBasic() throws Exception {
+	@Test
+	void basic() throws Exception {
 		String data = 
 			"        Line one\n" +
 			"        Line two\n" +
@@ -46,7 +49,8 @@ public class UndentTest extends TestCase {
 	/*
 	 * Test method for 'strings.Undent.process(BufferedReader)'
 	 */
-	public void testShortLines() throws Exception {
+	@Test
+	void shortLines() throws Exception {
 		String data = 
 			"     Line 3\n" +
 			" \n" +

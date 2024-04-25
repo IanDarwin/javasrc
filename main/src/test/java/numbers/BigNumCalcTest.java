@@ -1,17 +1,22 @@
 package numbers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.math.BigDecimal;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class BigNumCalcTest extends TestCase {
+class BigNumCalcTest {
 	BigNumCalc calc;
 
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		calc = new BigNumCalc();
 	}
 
-	public void testAdd() {
+	@Test
+	void add() {
 		Object[] testData = new Object[] {
 			new BigDecimal(22),
 			new BigDecimal(11),
@@ -21,7 +26,8 @@ public class BigNumCalcTest extends TestCase {
 			calc.calculate(testData));
 	}
 
-	public void testSubtract() {
+	@Test
+	void subtract() {
 		Object[] testData = new Object[] {
 			new BigDecimal(22),
 			new BigDecimal(11),
@@ -31,7 +37,8 @@ public class BigNumCalcTest extends TestCase {
 			calc.calculate(testData));
 	}
 
-	public void testMultipy() {
+	@Test
+	void multipy() {
 		Object[] testData = new Object[] {
 			new BigDecimal(22),
 			new BigDecimal(11),
@@ -41,7 +48,8 @@ public class BigNumCalcTest extends TestCase {
 			calc.calculate(testData));
 	}
 
-	public void testDivide() {
+	@Test
+	void divide() {
 		Object[] testData = new Object[] {
 			new BigDecimal(22),
 			new BigDecimal(11),

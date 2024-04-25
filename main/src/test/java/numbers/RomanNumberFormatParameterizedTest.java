@@ -1,29 +1,25 @@
 package numbers;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-@RunWith(Parameterized.class)
 public class RomanNumberFormatParameterizedTest {
 
 	RomanNumberFormat nf;
 	int julianYear;
 	String romanYear;
-	
-	public RomanNumberFormatParameterizedTest(int julianYear, String romanYear) {
+
+	public void initRomanNumberFormatParameterizedTest(int julianYear, String romanYear) {
 		this.julianYear = julianYear;
 		this.romanYear = romanYear;
 	}
 
-	@Parameters
 	public static List<Object[]> getParams() {
 		return Arrays.asList(data);
 	}
@@ -39,19 +35,23 @@ public class RomanNumberFormatParameterizedTest {
 			{ 2013, "MMXIII" },
 			//{ 3999, "MMMCMXCIX" },
 	};
-	
-	@Before
-	public void setUp() throws Exception {
+
+	@BeforeEach
+	void setUp() throws Exception {
 		nf = new RomanNumberFormat();
 	}
 
-	@Test
-	public void testFormat() {
+	@MethodSource("getParams")
+	@ParameterizedTest
+	public void format(int julianYear, String romanYear) {
+		initRomanNumberFormatParameterizedTest(julianYear, romanYear);
 			assertEquals(romanYear, nf.format(julianYear));
 	}
 
-	@Test
-	public void testParse() {
+	@MethodSource("getParams")
+	@ParameterizedTest
+	public void parse(int julianYear, String romanYear) {
+		initRomanNumberFormatParameterizedTest(julianYear, romanYear);
 		assertEquals(Long.valueOf(julianYear), nf.parseObject(romanYear, null));
 	}
 }

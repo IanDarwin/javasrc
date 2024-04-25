@@ -1,11 +1,14 @@
 package numbers;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GetNumberTest extends TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-	protected void setUp() throws Exception {
-		super.setUp();
+class GetNumberTest {
+
+	@BeforeEach
+	void setUp() throws Exception {
 	}
 
 	Object[][] testData = {
@@ -19,7 +22,8 @@ public class GetNumberTest extends TestCase {
 			{ Double.NaN,			"0xDeadFish" },
 	};
 
-	public final void testProcess() {
+	@Test
+	final void process() {
 		for (Object[] oo : testData) {
 			assertEquals(oo[0], GetNumber.process((String)oo[1]));
 		}

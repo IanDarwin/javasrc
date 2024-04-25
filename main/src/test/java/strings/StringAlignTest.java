@@ -1,19 +1,19 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /** StringAlign Test program.  */
-public class StringAlignTest  {
+class StringAlignTest {
 
 	@Test
-	public void testNullString() {
+	void nullString() {
 		assertEquals("     ", new StringAlign(5, StringAlign.Justify.RIGHT).format(""));
 	}
-	
+
 	@Test
-	public void testIntRight() {
+	void intRight() {
 		assertEquals("   42",
 				new StringAlign(5, StringAlign.Justify.RIGHT).format(42));
 	}
@@ -24,9 +24,9 @@ public class StringAlignTest  {
 			return "Once upon a";
 		}
 	};
-	
+
 	@Test
-	public void testObjCentred() {
+	void objCentred() {
 		assertEquals("  " + ONCE + "  ",
 				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
 	}

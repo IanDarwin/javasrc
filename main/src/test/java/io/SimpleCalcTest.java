@@ -1,13 +1,15 @@
 package io;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-public class SimpleCalcTest extends TestCase {
+class SimpleCalcTest {
 
 	final String TEST = "// This file is a test of the SimpleCalc class\n" +
 		"2 4 + = 3 / =	// should print 6, 2\n" +
@@ -17,7 +19,8 @@ public class SimpleCalcTest extends TestCase {
 		"2.0\n" +
 		"3.142857142857143\n";
 
-	public void testIt() throws Exception {
+	@Test
+	void it() throws Exception {
 		BufferedReader is = new BufferedReader(
 			new StringReader(TEST));
 		StringWriter fluffy = new StringWriter();

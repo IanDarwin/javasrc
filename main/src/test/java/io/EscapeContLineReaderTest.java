@@ -1,13 +1,13 @@
 package io;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.io.StringReader;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-public class EscapeContLineReaderTest  {
+class EscapeContLineReaderTest {
 	final static String testData = 
 		"Some lines of text to test the LineReader class.\n" +
 		"This second line is continued with backslash.\\\n" +
@@ -22,7 +22,7 @@ public class EscapeContLineReaderTest  {
 	};
 
 	@Test
-	public void test1() throws IOException {
+	void test1() throws IOException {
 		EscapeContLineReader is = new EscapeContLineReader(
 			new StringReader(testData));
 		String aLine;
@@ -34,14 +34,16 @@ public class EscapeContLineReaderTest  {
 			}
 			is.close();
 	}
-	
-	@Test(expected=IOException.class)
-	public void testBad() throws Exception {
-		String testData = "This tests for line ending in \\";
-		EscapeContLineReader is = new EscapeContLineReader(
+
+	@Test
+	void bad() throws Exception {
+		assertThrows(IOException.class, () -> {
+			String testData = "This tests for line ending in \\";
+			EscapeContLineReader is = new EscapeContLineReader(
 				new StringReader(testData));
-		is.readLine();
-		is.readLine();	// expect it to throw
-		is.close();
+			is.readLine();
+			is.readLine();	// expect it to throw
+			is.close();
+		});
 	}
 }

@@ -5,12 +5,12 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class MyObservableTest {
+class MyObservableTest {
 
 	@Test
-	public void testObservableNonStrict() {
+	void observableNonStrict() {
 		MyObservable subj1 = new MyObservable(false);
 		Observer obs1 = mock(Observer.class);
 		subj1.addObserver(obs1);
@@ -23,7 +23,7 @@ public class MyObservableTest {
 	}
 
 	@Test
-	public void testObservableStrict() {
+	void observableStrict() {
 		MyObservable subj1 = new MyObservable();
 		Observer obs1 = mock(Observer.class);
 		subj1.addObserver(obs1);

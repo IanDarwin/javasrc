@@ -1,28 +1,28 @@
 package structure;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class SimpleFixedLengthQueueTest {
+class SimpleFixedLengthQueueTest {
 	
 	SimpleFixedLengthQueue<LocalDate> target;
 
-	@Before
-	public void setup() {
+	@BeforeEach
+	void setup() {
 		target = new SimpleFixedLengthQueue<>(5);
 	}
 
 	@Test
-	public void testPushPull() {
+	void pushPull() {
 		LocalDate o = LocalDate.now();
 		target.add(o);
-		assertSame("peek", o, target.peek());
-		assertSame("poll", o, target.poll());
-		assertTrue("all gone", target.isEmpty());
+		assertSame(o, target.peek(), "peek");
+		assertSame(o, target.poll(), "poll");
+		assertTrue(target.isEmpty(), "all gone");
 	}
 }

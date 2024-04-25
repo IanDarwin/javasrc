@@ -3,12 +3,14 @@ package structure;
 import java.util.List;
 
 import domain.Person;
-import junit.framework.TestCase;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  * Make sure that CallTrack fragment actually works as shown.
  */
-public class CallTrackTestGUI extends TestCase {
+class CallTrackTestGUI {
 	Person[] testData = {					// Order when sorted
 		new Person("Ian", "Darwin"),		// 1
 		new Person("Davy", "Jones"),		// 3
@@ -18,7 +20,8 @@ public class CallTrackTestGUI extends TestCase {
 
 	protected CallTrack ct = new CallTrack();
 
-	public void testIt() {
+	@Test
+	void it() {
 		for (int i = 0; i < testData.length; i++) {
 			ct.add(testData[i]);
 		}

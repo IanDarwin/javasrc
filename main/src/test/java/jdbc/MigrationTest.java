@@ -1,16 +1,16 @@
 package jdbc;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class MigrationTest {
+class MigrationTest {
 	
 	String[][] names = {
 			{ "Jeane", "D'Arc" },
@@ -19,9 +19,9 @@ public class MigrationTest {
 	};
 	private String CREATE_STATEMENT = "create table student (firstname varchar(42), lastname varchar(42))";
 	Connection inConnection, outConnection;
-	
-	@Before
-	public void setUp() throws Exception {
+
+	@BeforeEach
+	void setUp() throws Exception {
 		inConnection = DriverManager.getConnection("jdbc:hsqldb:mem:originalDb", "SA", "");
 		inConnection.createStatement().executeUpdate(CREATE_STATEMENT);
 		PreparedStatement pst = inConnection.prepareStatement("Insert into student (firstname, lastname) values(?,?);");
@@ -37,7 +37,7 @@ public class MigrationTest {
 	}
 
 	@Test
-	public void test() throws Exception {
+	void test() throws Exception {
 		
 		// Try to populate the database in "outConnection"
 		MigrateData.migrate(inConnection, outConnection);
@@ -52,6 +52,6 @@ public class MigrationTest {
 			assertEquals(names[n][1], rs.getString(2));
 			++n;
 		}
-		assertEquals("number of rows copied", names.length, n);
+		assertEquals(names.length, n, "number of rows copied");
 	}
 }

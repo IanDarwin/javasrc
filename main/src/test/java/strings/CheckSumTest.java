@@ -1,31 +1,30 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+class CheckSumTest {
 
-public class CheckSumTest {
-	
 	@Test
-	public void testCheckSumEmptyString() {
+	void checkSumEmptyString() {
 		assertEquals(0, CheckSum.process(new BufferedReader(new StringReader(""))));
 	}
 
 	@Test
-	public void testCheckSumOneCharString() {
+	void checkSumOneCharString() {
 		assertEquals(0x42, CheckSum.process(new BufferedReader(new StringReader("\u0042"))));
 	}
 
 	@Test
-	public void testCheckSumNormalString() {
+	void checkSumNormalString() {
 		int expected = 2874;
 		String input = "Hello world\nOh, and goodbye, too!";
 		StringReader chr = new StringReader(input);
 		BufferedReader is = new BufferedReader(chr);
 		int actual = CheckSum.process(is);
-		assertEquals("cksum test", expected, actual);
+		assertEquals(expected, actual, "cksum test");
 	}
 }

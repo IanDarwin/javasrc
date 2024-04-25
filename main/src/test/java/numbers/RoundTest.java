@@ -1,27 +1,22 @@
 package numbers;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-@RunWith(Parameterized.class)
 public class RoundTest {
 	double input;
 	int expected;
 
 	/**
-	 * Constructor, only needed b/c  this is a Parameterized test
+	 * Initialization method.
 	 * @param input The double to be rounded
 	 * @param expected The expected int value from rounding
 	 */
-	public RoundTest(double input, int expected) {
-		super();
+	public void initRoundTest(double input, int expected) {
 		this.input = input;
 		this.expected = expected;
 	}
@@ -47,13 +42,14 @@ public class RoundTest {
 			{0.9500000000000003, 1},
 	};
 	
-	@Parameters
 	public static List<Object[]> getData() {
 		return Arrays.asList(data);
 	}
 
-	@Test
-	public void test() {
+	@MethodSource("getData")
+	@ParameterizedTest
+	public void test(double input, int expected) {
+		initRoundTest(input, expected);
 		assertEquals(expected, Round.round(input), 0.0000000000000001);
 	}
 }
