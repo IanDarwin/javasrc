@@ -95,7 +95,7 @@ public class StringAlign extends Format {
 	}
 
 	/** ParseObject is required, but not useful here. */
-	public Object parseObject (String source, ParsePosition pos)  {
+	public Object parseObject(String source, ParsePosition pos)  {
 		return source;
 	}
 }
