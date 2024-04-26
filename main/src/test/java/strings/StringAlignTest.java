@@ -26,6 +26,18 @@ class StringAlignTest {
 	};
 
 	@Test
+	void objCentredOdd() {
+		assertEquals("  " + ONCE + "  ",
+				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
+	void objCentredEven() {
+		assertEquals("  " + ONCE + "   ",
+				new StringAlign(16, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
 	void objCentred() {
 		assertEquals("  " + ONCE + "  ",
 				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
