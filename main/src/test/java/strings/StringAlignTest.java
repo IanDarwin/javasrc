@@ -9,13 +9,14 @@ class StringAlignTest {
 
 	@Test
 	void nullString() {
-		assertEquals("     ", new StringAlign(5, StringAlign.Justify.RIGHT).format(""));
+		assertEquals("     ",
+			new StringAlign(5, StringAlign.Justify.RIGHT).format(""));
 	}
 
 	@Test
 	void intRight() {
 		assertEquals("   42",
-				new StringAlign(5, StringAlign.Justify.RIGHT).format(42));
+			new StringAlign(5, StringAlign.Justify.RIGHT).format(42));
 	}
 	
 	final String ONCE = "Once upon a";
@@ -41,5 +42,12 @@ class StringAlignTest {
 	void objCentred() {
 		assertEquals("  " + ONCE + "  ",
 				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
+	void tooLong() {
+		var longStr = "Hippocamelephantocamelus";
+		assertEquals(longStr.substring(0, 10),
+				new StringAlign(10, StringAlign.Justify.CENTER).format(longStr));
 	}
 }
