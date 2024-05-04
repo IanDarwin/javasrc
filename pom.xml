@@ -49,7 +49,6 @@
 	<!-- sampleproject is not a module but is a maven archetype -->
 	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
-	<!-- <module>upcoming</module> Try if you like, but only with very latest JDKs -->
 		<module>xml</module>
 	</modules>
 
