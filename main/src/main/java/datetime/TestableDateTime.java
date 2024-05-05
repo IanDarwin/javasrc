@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 
 // tag::main[]
 /**
- * TestableDateTime allows test code to plug in a Fixed clock
+ * TestableDateTime allows test code to plug in a fixed-value
+ * clock for e.g., unit testing.
  */
 public class TestableDateTime {
 	private static Clock clock = Clock.systemDefaultZone();

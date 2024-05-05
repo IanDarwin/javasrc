@@ -1,27 +1,29 @@
 package dbm;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-public class TestDBM {
-	
-	@Ignore("Requires native code") @Test
-	public void testOne() throws IOException {
+class TestDBM {
+
+	@Disabled("Requires native code")
+	@Test
+	void one() throws IOException {
 		DBM d = new DBM("/tmp/mydb");
 		System.out.println(d);
 		d.store("today", new Date());
 		d.store("here", System.getProperty("user.dir"));
 		d.close();
 	}
-	
-	@Ignore("Requires native code") @Test
-	public void testTwoAndThree() throws Exception {
+
+	@Disabled("Requires native code")
+	@Test
+	void twoAndThree() throws Exception {
 		DBM d2 = null;
 		try { 
 			d2 = new DBM("NoSuchDbAnyway"); 

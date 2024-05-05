@@ -19,6 +19,7 @@ public class CallTrack {
 	/** The scrolling list */
 	protected java.awt.List visList = new java.awt.List();
 
+	// tag::addInSorted[]
 	/** Add one (new) Person to the list, keeping the list sorted. */
 	protected void add(Person p) {
 		String lastName = p.getLastName();
@@ -28,6 +29,7 @@ public class CallTrack {
 			if (lastName.compareTo((usrList.get(i)).getLastName()) <= 0)
 				break; // If we don't break, OK, will insert at end of list.
 		usrList.add(i, p);
+	// end::addInSorted[]
 
 		// Now insert them in the scrolling list, in the same position.
 		visList.add(p.getFullName(), i);

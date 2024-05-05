@@ -1,22 +1,17 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-@RunWith(Parameterized.class)
 public class CreditCardValidateIsValidTest {
 
 	String number;
 
-	public CreditCardValidateIsValidTest(String number, Boolean expected) {
-		super();
+	public void initCreditCardValidateIsValidTest(String number, Boolean expected) {
 		this.number = number;
 		this.expected = expected;
 	}
@@ -31,14 +26,14 @@ public class CreditCardValidateIsValidTest {
 			{"4417 1234 5678 9113", true}, 
 	};
 	
-	@Parameters
 	public static List<Object[]> params() {
 		return Arrays.asList(cardNumbers);
 	}
 
-	@Test
-	public void testIsValidCard() {
+	@MethodSource("params")
+	@ParameterizedTest
+	public void isValidCard(String number, Boolean expected) {
+		initCreditCardValidateIsValidTest(number, expected);
 		assertEquals(expected, CreditCardValidate.isValidCard(number));
 	}
-
 }

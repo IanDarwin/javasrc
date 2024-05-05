@@ -1,26 +1,26 @@
 package dir_file;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.regex.Pattern;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class FindFilterTest {
+class FindFilterTest {
 
 	FindFilter target;
-	
-	@Before
-	public void setUp() throws Exception {
+
+	@BeforeEach
+	void setUp() throws Exception {
 		target = new FindFilter();
 	}
 
 	@Test
-	public void testmakeNameFilter() {
+	void testmakeNameFilter() {
 		Pattern actual = target.makeNameFilter("Foo*.java");
 		Pattern expected = Pattern.compile("Foo.*\\.java$");
-		assertEquals("Convert Glob to Regex", expected.toString(), actual.toString());
+		assertEquals(expected.toString(), actual.toString(), "Convert Glob to Regex");
 	}
 
 }

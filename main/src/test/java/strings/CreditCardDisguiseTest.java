@@ -1,30 +1,35 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CreditCardDisguiseTest {
+class CreditCardDisguiseTest {
 
 	@Test
-	public void testNormal() {
+	void normal() {
 		assertEquals("XXXXXXXXXXXX1234",
 				CreditCardDisguise.disguise("9876543210981234"));
 	}
-	
+
 	@Test
-	public void testBoundary() {
+	void boundary() {
 		assertEquals("XXXXXXXXXXXXXXXX5678",
 				CreditCardDisguise.disguise("11112222333344445678"));
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTooShort() {
-		CreditCardDisguise.disguise("12345");
+
+	@Test
+	void tooShort() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CreditCardDisguise.disguise("12345");
+		});
 	}
 
-	@Test(expected=IllegalArgumentException.class)
-	public void testTooLong() {
-		CreditCardDisguise.disguise("11112222333344445555+");
+	@Test
+	void tooLong() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CreditCardDisguise.disguise("11112222333344445555+");
+		});
 	}
 }

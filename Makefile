@@ -8,7 +8,7 @@ index-bychapter.html:
 	makeIndexByChapter $$jcb/ch*.*doc | asciidoctor - > index-bychapter.html
 index-byname.html:
 	java \
-	-cp main/target/classes:$$HOME/lib/darwinsys-api.jar \
+	-cp main/target/classes:$$HOME/lib/darwinsys-api-1.8.1-SNAPSHOT.jar \
 	netweb.MkIndex */src/main/java
 
 dist:

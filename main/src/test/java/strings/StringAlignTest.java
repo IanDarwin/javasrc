@@ -1,21 +1,22 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /** StringAlign Test program.  */
-public class StringAlignTest  {
+class StringAlignTest {
 
 	@Test
-	public void testNullString() {
-		assertEquals("     ", new StringAlign(5, StringAlign.Justify.RIGHT).format(""));
+	void nullString() {
+		assertEquals("     ",
+			new StringAlign(5, StringAlign.Justify.RIGHT).format(""));
 	}
-	
+
 	@Test
-	public void testIntRight() {
+	void intRight() {
 		assertEquals("   42",
-				new StringAlign(5, StringAlign.Justify.RIGHT).format(42));
+			new StringAlign(5, StringAlign.Justify.RIGHT).format(42));
 	}
 	
 	final String ONCE = "Once upon a";
@@ -24,10 +25,29 @@ public class StringAlignTest  {
 			return "Once upon a";
 		}
 	};
-	
+
 	@Test
-	public void testObjCentred() {
+	void objCentredOdd() {
 		assertEquals("  " + ONCE + "  ",
 				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
+	void objCentredEven() {
+		assertEquals("  " + ONCE + "   ",
+				new StringAlign(16, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
+	void objCentred() {
+		assertEquals("  " + ONCE + "  ",
+				new StringAlign(15, StringAlign.Justify.CENTER).format(o));
+	}
+
+	@Test
+	void tooLong() {
+		var longStr = "Hippocamelephantocamelus";
+		assertEquals(longStr.substring(0, 10),
+				new StringAlign(10, StringAlign.Justify.CENTER).format(longStr));
 	}
 }

@@ -1,6 +1,6 @@
 package database;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,20 +10,20 @@ import javax.sql.rowset.RowSetFactory;
 import javax.sql.rowset.RowSetProvider;
 import javax.sql.rowset.WebRowSet;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * ResultsDecoratorSQLTest
  */
-public class ResultsDecoratorSQLTest {
+class ResultsDecoratorSQLTest {
 	protected static final String TEST_FILE = "rowsetdata.xml";
 	
 	protected WebRowSet testData;
-	
-	@Before
-	public void setUp() throws Exception {
+
+	@BeforeEach
+	void setUp() throws Exception {
 
 		RowSetFactory rsFactory = RowSetProvider.newFactory();
 	    testData = rsFactory.createWebRowSet();
@@ -34,10 +34,11 @@ public class ResultsDecoratorSQLTest {
 		Reader r = new InputStreamReader(dataStream);
 		testData.readXml(r);
 	}
-	
-	@Ignore("Missing XML data file contents!!") @Test
-	public  void test1() throws Exception {
+
+	@Disabled("Missing XML data file contents!!")
+	@Test
+	void test1() throws Exception {
 		testData.absolute(1);
-		assertEquals("get data", "Ian", testData.getString("first_name"));
+		assertEquals("Ian", testData.getString("first_name"), "get data");
 	}
 }

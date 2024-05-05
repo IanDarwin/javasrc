@@ -29,10 +29,10 @@ public class FlightArrivalTimeCalc {
 			LocalTime localTime = LocalTime.parse(time);
 			when = LocalDateTime.of(LocalDate.now(), localTime);               // <1>
 		}
-		calulateArrivalTime(when);
+		calculateArrivalTime(when);
 	}
 
-	public static ZonedDateTime calulateArrivalTime(LocalDateTime takeOffTime) {
+	public static ZonedDateTime calculateArrivalTime(LocalDateTime takeOffTime) {
 		ZoneId torontoZone = ZoneId.of("America/Toronto"),
 				londonZone = ZoneId.of("Europe/London");
 		ZonedDateTime takeOffTimeZoned =

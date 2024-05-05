@@ -49,10 +49,13 @@ public class StringAlign extends Format {
 	}
 
 	/** Format a String.
+	 * If the input is too long, it will be returned, truncated.
      * @param input - the string to be aligned.
      * @parm where - the StringBuilder to append it to.
      * @param ignore - a FieldPosition (may be null, not used but
      * specified by the general contract of Format).
+	 * @return A StringBufffer with the formatted string; sadly not
+	 * the newer StringBuilder because the old interface is cast in stone.
      */
 	@Override
 	public StringBuffer format(
@@ -92,7 +95,7 @@ public class StringAlign extends Format {
 	}
 
 	/** ParseObject is required, but not useful here. */
-	public Object parseObject (String source, ParsePosition pos)  {
+	public Object parseObject(String source, ParsePosition pos)  {
 		return source;
 	}
 }

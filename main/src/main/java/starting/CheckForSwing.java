@@ -10,8 +10,8 @@ public class CheckForSwing {
 		} catch (ClassNotFoundException e) {
 			String failure = 
 				"Sorry, but this version of MyApp needs \n" +
-				"a Java Runtime with JFC/Swing components\n" +
-				"having the final names (javax.swing.*)";
+				"a Java Runtime with javax.swing GUI components.\n" +
+				"Please check your Java installation and try again.";
 			// Better to make something appear in the GUI. Either a 
 			// JOptionPane, or: myPanel.add(new Label(failure));
 			System.err.println(failure);

@@ -1,19 +1,18 @@
 package otherlang;
 
-import static org.junit.Assert.assertEquals;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class CalcEngineTest {
+class CalcEngineTest {
 	
 	ScriptEngine engine;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 		engine =  scriptEngineManager.getEngineByName("SimpleCalc");
 		if (engine == null) {
@@ -22,38 +21,38 @@ public class CalcEngineTest {
 	}
 
 	@Test
-	public void testAdd() throws Exception {
+	void add() throws Exception {
 		engine.put("i", 99);
 		engine.put("j", 1);
 		Object retVal = engine.eval("i j +");
-		assertEquals("add", 100, retVal);
+		assertEquals(100, retVal, "add");
 	}
-	
+
 	@Test
-	public void testSub() throws Exception {
+	void sub() throws Exception {
 		// 7 5 - computes -2 instead of 2
 		engine.put("a", 7);
 		engine.put("b", 5);
 		Object ret = engine.eval("a b -");
-		assertEquals("subtract", +2, ret);
+		assertEquals(+2, ret, "subtract");
 	}
-	
+
 	@Test
-	public void testMultiply() throws Exception {
+	void multiply() throws Exception {
 		// 7 5 - computes -2 instead of 2
 		engine.put("a", 7);
 		engine.put("b", 5);
 		Object ret = engine.eval("a b *");
-		assertEquals("multiply", 35, ret);
+		assertEquals(35, ret, "multiply");
 	}
-	
+
 	@Test
-	public void testDivide() throws Exception {
+	void divide() throws Exception {
 		// 7 5 - computes -2 instead of 2
 		engine.put("a", 15);
 		engine.put("b", 5);
 		Object ret = engine.eval("a b /");
-		assertEquals("divide", 3, ret);
+		assertEquals(3, ret, "divide");
 	}
 
 }

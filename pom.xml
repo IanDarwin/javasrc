@@ -36,6 +36,7 @@
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
+	<!-- <module>incubation</module> Many users won't have latest Java -->
 	<!-- <module>javafx</module> doesn't work on some platforms -->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
@@ -48,7 +49,6 @@
 	<!-- sampleproject is not a module but is a maven archetype -->
 	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
-	<!-- <module>upcoming</module> Try if you like, but only with very latest JDKs -->
 		<module>xml</module>
 	</modules>
 

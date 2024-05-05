@@ -1,14 +1,14 @@
 package regex;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the simple regex-based email validation.
  */
-public class EmailValidatorTest {
+class EmailValidatorTest {
 
 	private final static String[] goodTests = {
 		"a@b.ca",
@@ -24,16 +24,16 @@ public class EmailValidatorTest {
 	};
 
 	@Test
-	public void goodTests() {
+	void goodTests() {
 		for (String test : goodTests) {
-			assertTrue(test, EmailValidator.valid(test));
+			assertTrue(EmailValidator.valid(test), test);
 		}
 	}
 
 	@Test
-	public void badTests() {
+	void badTests() {
 		for (String test : badTests) {
-			assertFalse(test, EmailValidator.valid(test));
+			assertFalse(EmailValidator.valid(test), test);
 		}
 	}
 }

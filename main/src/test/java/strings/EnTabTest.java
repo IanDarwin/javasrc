@@ -1,31 +1,31 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the guts of EnTab
  */
-public class EnTabTest {
+class EnTabTest {
 
 	EnTab t4, t8;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		t4 = new EnTab(4);
 		t8 = new EnTab();
 	}
 
 	@Test
-	public void testGetTabSpacingDelegation() {
+	void getTabSpacingDelegation() {
 		assertEquals(4, t4.getTabSpacing());
 		assertEquals(8, t8.getTabSpacing());
 	}
 
 	@Test
-	public void testIdempotency() {
+	void idempotency() {
 		assertEquals("", t4.entabLine(""));
 		assertEquals("", t8.entabLine(""));
 		assertEquals(" ", t4.entabLine(" "));
@@ -34,13 +34,13 @@ public class EnTabTest {
 	}
 
 	@Test
-	public void testLeadingTabs() {
+	void leadingTabs() {
 		System.out.println(t4.entabLine("    A"));
 		assertEquals("\tA", t4.entabLine("    A"));
 	}
 
 	@Test
-	public void testEmbeddedTabs() {
+	void embeddedTabs() {
 		final String entebbe = t4.entabLine("    A   B");
 		System.out.println("testEmbeddedTabs: result " + entebbe.replaceAll("\t", "<TAB>"));
 		assertEquals("\tA\t B", entebbe);
