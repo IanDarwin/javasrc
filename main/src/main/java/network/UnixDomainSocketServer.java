@@ -19,6 +19,11 @@ void main() throws IOException {
 	System.out.println("Waiting...");
 	SocketChannel channel = serverChan.accept();
 	while (true) {
+		try {
+			Thread.sleep(250);	// Avoid killing CPU
+		} catch (InterruptedException canthappen) {
+			// empty
+		}
 		ByteBuffer inBuf = ByteBuffer.allocate(BUFSIZE);
 		var length = channel.read(inBuf);
 		if (length < 0) {
@@ -29,11 +34,6 @@ void main() throws IOException {
 		inBuf.get(bytes);
 		String message = new String(bytes);
 		System.out.printf("[Incoming] %s\n", message);
-		try {
-			Thread.sleep(250);	// Avoid killing CPU
-		} catch (InterruptedException canthappen) {
-			// empty
-		}
 	}
 	// end::main[]
 }
