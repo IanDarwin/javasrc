@@ -11,14 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * ExecDemoNS shows how to execute a program from within Java.
+ * ExecDemoBrowser shows how to execute a program from within Java.
  */
 // tag::main[]
-public class ExecDemoNS extends JFrame {
+public class ExecDemoBrowser extends JFrame {
 	private static final long serialVersionUID = 1;
 	private static final String BROWSER = "firefox";
 	
-	Logger logger = Logger.getLogger(ExecDemoNS.class.getSimpleName());
+	Logger logger = Logger.getLogger(ExecDemoBrowser.class.getSimpleName());
 
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
@@ -29,16 +29,16 @@ public class ExecDemoNS extends JFrame {
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {
 		String program = av.length == 0 ? BROWSER : av[0];
-		new ExecDemoNS(program).setVisible(true);
+		new ExecDemoBrowser(program).setVisible(true);
 	}
 
 	/** The path to the binary executable that we will run */
 	protected static String program;
 
 	/** Constructor - set up strings and things. */
-	public ExecDemoNS(String program) {
-		super("ExecDemo: " + program);
-		ExecDemoNS.program = program;
+	public ExecDemoBrowser(String program) {
+		super("ExecDemoBrowser: " + program + " edition");
+		ExecDemoBrowser.program = program;
 
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
@@ -79,9 +79,10 @@ public class ExecDemoNS extends JFrame {
 					logger.info("In main after exec " + pStack.size());
 
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(ExecDemoNS.this,
+					JOptionPane.showMessageDialog(ExecDemoBrowser.this,
 						"Error" + ex, "Error",
 						JOptionPane.ERROR_MESSAGE);
+					ex.printStackTrace();	// In terminal window, if any
 				}
 			}
 		}.start();
