@@ -55,6 +55,10 @@
 						<exclude>lang/UsePackage.java</exclude>
 
 						<!-- Classes that demonstrate certain variations that won't comile -->
+
+						<!-- Preview API, changed on me -->
+						<exclude>ffi/CallCFromJava.java</exclude>
+
 						<!-- All (should) have 'EXPECT COMPILE ERROR' -->
 
 						<!-- Did not get xi:include working ...
