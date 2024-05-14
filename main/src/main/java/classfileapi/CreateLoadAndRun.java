@@ -53,11 +53,12 @@ public class CreateLoadAndRun extends ClassLoader {
 							.return_())));
 
 		// Save the new class to disk, just so we can examine & verify
-		var dirPath = Path.of("/tmp/notapackage");
+		var tmpPath = Path.of(System.getProperty(java.io.tmpdir"));
+		var dirPath = Path.of(tmpPath.getPath() + "/notapackage");
 		if (!Files.exists(dirPath)) {
 			Files.createDirectory(dirPath);
 		}
-		Files.write(Path.of("/tmp/notapackage/Hello.class"), classData);
+		Files.write(Path.of(tmpPath.getPath() + "/notapackage/Hello.class"), classData);
 
 		// Define the class in current ClassLoader (e.g., this) & call main()
 		Class<?> c = 
