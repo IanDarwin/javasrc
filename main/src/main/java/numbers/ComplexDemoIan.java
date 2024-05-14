@@ -8,6 +8,7 @@ package numbers;
 public class ComplexDemoIan {
 	/** The program */
 	public static void main(String[] args) {
+		// tag::main[]
 		Complex c = new Complex(3,  5);
 		Complex d = new Complex(2, -2);
 		System.out.println(c);
@@ -16,6 +17,7 @@ public class ComplexDemoIan {
 		System.out.println(c + " + " + d + " = " + Complex.add(c, d));
 		System.out.println(c + " * " + d + " = " + c.multiply(d));
 		System.out.println(Complex.divide(c, d));
+		// end::main[]
 	}
 }
 // end::main[]
