@@ -9,6 +9,7 @@ import java.nio.file.*;
  * A quick demo of the Java 22 PREVIEW "ClassFile" mechanism, described in
  * JEP 457 (https://openjdk.org/jeps/457).
  * N.B. Can only be run after "mvn compile" to create the target file
+ * Be sure to run in "javasrc/main", not in "javasrc"
  */
 // tag::main[]
 @MyAnnotation
