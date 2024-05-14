@@ -22,15 +22,15 @@ public class VectorOps {
 				", x = " + x + ", b = " + Arrays.toString(b));
 
         scalarComputation(a, x, b, sresults);
-        System.out.println("Results from scalar = " + Arrays.toString(sresults) + ");
+        System.out.println("Results from scalar = " + Arrays.toString(sresults) + ")");
 
         vectorComputation(a, x, b, vresults);
-        System.out.println("Results from vector = " + Arrays.toString(vresults) + ");
+        System.out.println("Results from vector = " + Arrays.toString(vresults) + ")");
 
         for (int i = 0; i < sresults.length; i++) {
             if (Math.abs(sresults[i] - vresults[i]) > 0.00000001D) {
                 throw new IllegalStateException(
-                        "Values differ: " + sresults[i] +  != " + vresults[i] + ");
+                        "Values differ (" + sresults[i] + " != " + vresults[i] + ")");
             }
         }
         System.out.println("Computed both ways: Close enough!");
@@ -48,7 +48,7 @@ public class VectorOps {
         for (; i < upperBound; i += SPECIES.length()) {
             var va = DoubleVector.fromArray(SPECIES, a, i);
             var vb = DoubleVector.fromArray(SPECIES, b, i);
-			System.out.println("va length = " + va.length() + ");
+			System.out.println("va length = " + va.length() + ")");
             var vc = va
 					.mul(x*x)
                     .add(vb.mul(2));
