@@ -18,8 +18,8 @@ import static java.lang.constant.ConstantDescs.*;
 // tag::main[]
 public class CreateLoadAndRun extends ClassLoader {
 
-	final String fullClassName = "notapackage.Hello";
-	// A few ClassDescs that are not in ConstantDescs
+	final String fullClassName = "notapackage.Hello";		<1>
+	// A few ClassDescs that are not in ConstantDescs		<2>
 	final ClassDesc CD_fullClassName = ClassDesc.of(fullClassName);
 	final ClassDesc CD_System = ClassDesc.of(System.class.getName());
 	final ClassDesc CD_PrintStream =
@@ -31,36 +31,39 @@ public class CreateLoadAndRun extends ClassLoader {
 		MethodTypeDesc.of(CD_void, CD_String.arrayType());
 
 	void main() throws Exception {
-		byte[] classData = ClassFile.of().build(CD_fullClassName,
+		byte[] classData = ClassFile
+			.of()
+			.build(CD_fullClassName, 						<3>
 			clb -> clb.withFlags(ClassFile.ACC_PUBLIC)
 
-				// requires no-argument constructor to be a valid class
+				// requires no-arg constructor to be valid	<4>
 				.withMethod(ConstantDescs.INIT_NAME, ConstantDescs.MTD_void,
 					ClassFile.ACC_PUBLIC,
 					mb -> mb.withCode(
-						cob -> cob.aload(0)
+						cob -> cob.aload(0)					<5>
 							.invokespecial(ConstantDescs.CD_Object,
 							ConstantDescs.INIT_NAME, ConstantDescs.MTD_void)
 							.return_()))
 
 				// Standard "void main(String[])" main method
-				.withMethod("main", MTD_void_StringArray,
+				.withMethod("main", MTD_void_StringArray,	<6>
 					ClassFile.ACC_PUBLIC + ClassFile.ACC_STATIC,
-					methodBuilder -> methodBuilder.withCode(
+					methodBuilder -> methodBuilder.withCode( <7>
 						cob -> cob.getstatic(CD_System, "out", CD_PrintStream)
 							.ldc("Hello World")
 							.invokevirtual(CD_PrintStream, "println", MTD_void_String)
-							.return_())));
+							.return_())));				
 
 		// Save the new class to disk, just so we can examine & verify
-		var dirPath = Path.of("/tmp/notapackage");
+		var dirPath = Path.of("/tmp/notapackage");			<8>
 		if (!Files.exists(dirPath)) {
 			Files.createDirectory(dirPath);
 		}
 		Files.write(Path.of("/tmp/notapackage/Hello.class"), classData);
 
-		// Define the class in current ClassLoader (e.g., this) & call main()
-		Class<?> c = 
+		// Define the class in current ClassLoader
+		// (e.g., this) and then call main()
+		Class<?> c = 										<9>
 			defineClass(fullClassName, classData, 0, classData.length);
 
 		Method m = c.getMethod("main", String[].class);
