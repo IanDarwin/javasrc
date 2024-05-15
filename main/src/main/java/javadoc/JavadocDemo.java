@@ -47,5 +47,17 @@ public class JavadocDemo extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawString("Welcome to Java", 50, 50);
 	}
+
+	/**
+	 * A simple demo method. Typical usage:
+	 * {@snippet :
+	 *	var demo = new JavadocDemo();
+	 *	demo.demo(42); // or some other int
+	 * }
+	 * @param i The value to be processed.
+	 */
+	public void demo(int i) {
+		System.out.printf("Demo value is %d\n", i);
+	}
 }
 // end::main[]
