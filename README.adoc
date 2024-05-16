@@ -79,7 +79,8 @@ https://javacook.darwinsys.com/[Java Cookbook].
 To avoid copy-and-paste errors (or, worse, retyping!),
 I use a script (`copyCodeSamples`) to pre-format these for inclusion in the O'Reilly publishing toolchain;
 these source code files will have `// tag::foo[]` and `// end::foo[]` comments to mark sections for
-mechanical inclusion into the book. These are just comments as far as Java tooling is concerned,
+mechanical inclusion into the book, and `// <n>` comments to refer to the code in the text.
+These are all just comments as far as Java tooling is concerned,
 and can be completely ignored by people looking at the source code normally.
 N.B. Not all files with these comments necessarily appear in the book;
 files are included from the manuscript using 
