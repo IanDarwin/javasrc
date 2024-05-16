@@ -1,8 +1,10 @@
+:LTS:  21
+:LATEST:  22
 = JavaCook Source Files (javasrc)
 
 This is my assorted collection of (you guessed it) Java source.
-It remains focused on building with
-https://maven.apache.org/[Maven]
+It remains focused on building with bleeding-edge Java (currently {LATEST}),
+https://maven.apache.org/[Maven],
 and the
 https://jetbrains.com/idea[IntelliJ IDEA] IDE.
 Some modules may still build with the
@@ -14,7 +16,7 @@ even with the "Java 22 updater"
 Their compiler
 fails to realize that "classless main" doesn't need (and isn't allowed to have)
 a package statement.
-This is an Eclipse bug, and fails even with the source attribute set to
+This seems to be an Eclipse bug, and fails even with the source attribute set to
 22 and using a Java 22 JDK with "Preview" checked.
 Further, their library appears to be missing at least two methods in the FFI `Arena` class,
 causing `CallCFromJava` to fail to compile.
@@ -32,7 +34,9 @@ a course for https://learningtree.com/[Learning Tree] and
 then the first edition of the https://javacook.darwinsys.com/[Java Cookbook].
 Now in its fourth edition, this book consists of several hundred how-to "recipes"
 each discussing a particular problem that devs have to code, how to solve it, and 
-illustrated with one or more code examples. The contents of the current edition looks like this:
+illustrated with one or more code examples. 
+
+The contents of the Fourth Edition looks like this:
 
 // Uses * not + because of what's at the end of this list.
 // Updated for JCB 4E; will need changes for 5E.
@@ -59,16 +63,16 @@ illustrated with one or more code examples. The contents of the current edition 
 
 == Technical Issues Compiling This Code
 
-If you want to compile everything, *the minimum Java release is currently 21*.
-You can compile for Java 17 by checking out the java-17 branch.
+If you want to compile everything, *the minimum Java release is currently {LATEST}*.
+You can compile for Java 17 by checking out the java-17 branch, but it's not actively maintained.
 Or you could just add exclusions for the few files that use newer features.
-For older releases, I don't have branches or tags, but if somebody wants to bisect (maybe start
+For releases before that, I don't have branches or tags, but if somebody wants to bisect (maybe start
 around commit `628efafe`) and tell me what works for 11,
 I shall be happy to add a tag.
 
-Some files use Java 21 "Preview" features, which work if you're compiling with the Maven POM file provided.
-If not, and you're still using Java 21 (i.e., not 22 or 23), you'll need the argument `--enable-preview`
-(and maybe `--source-21`) to get these to compile.
+Some files use Java "Preview" features, which work if you're compiling with the Maven POM file provided.
+If not, you'll probably need the argument `--enable-preview`
+(and maybe `--source-{LATEST}`) to get these to compile.
 
 As mentioned above, a goodly number of these files are featured in my O'Reilly
 https://javacook.darwinsys.com/[Java Cookbook].
