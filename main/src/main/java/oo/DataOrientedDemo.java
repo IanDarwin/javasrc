@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class DataOrientedDemo {
 
+	// tag::main[]
 	sealed interface Transaction permits Order, Refund {}	// <1>
 	
 	record Order(String product, int quantity, 				// <2>
@@ -46,4 +47,5 @@ public class DataOrientedDemo {
 		var cust = new Customer("Whizzy Systems Inc", "123 Erewhon St", "Confusion", txlist);
 		process(List.of(cust));
 	}
+	// end::main[]
 }
