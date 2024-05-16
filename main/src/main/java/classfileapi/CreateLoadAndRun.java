@@ -42,7 +42,7 @@ public class CreateLoadAndRun extends ClassLoader {
 					mb -> mb.withCode(
 						cob -> cob.aload(0)					// <5>
 							.invokespecial(ConstantDescs.CD_Object,
-							ConstantDescs.INIT_NAME, ConstantDescs.MTD_void)
+								ConstantDescs.INIT_NAME, ConstantDescs.MTD_void)
 							.return_()))
 
 				// Standard "void main(String[])" main method

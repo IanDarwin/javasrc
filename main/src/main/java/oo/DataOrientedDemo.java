@@ -42,7 +42,7 @@ public class DataOrientedDemo {
 
 	void main() {
 		List<Transaction> txlist = List.of(new Order("Widgets", 10, 200.00),
-			new Order("Whatzits", 5, 125.00),				<8>
+			new Order("Whatzits", 5, 125.00),				// <8>
 			new Refund("Lost shipment #456", 175.00));
 		var cust = new Customer("Whizzy Systems Inc", "123 Erewhon St", "Confusion", txlist);
 		process(List.of(cust));
