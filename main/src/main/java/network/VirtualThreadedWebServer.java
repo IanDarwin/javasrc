@@ -7,15 +7,18 @@ import java.util.concurrent.*;
 // tag::main[]
 public class VirtualThreadedWebServer extends WebServer0 {
 
-	ExecutorService threadpool = Executors.newVirtualThreadPerTaskExecutor();
+	VirtualThreadedWebServer() throws IOException {
+		super();
+	}
 
+	ExecutorService threadpool = Executors.newVirtualThreadPerTaskExecutor();
+	
 	/** RunServer accepts connections and passes each one to a handler. */
 	@Override
-	public void runServer(int port) throws Exception {
-		ServerSocket s = getServerSocket(port);
+	public void runServer() throws Exception {
 		while (true) {
 			try {
-				Socket us = s.accept();	// blocking
+				Socket us = serverSock.accept();	// blocking
 				threadpool.submit(() -> handle(us));
 			} catch(IOException e) {
 				e.printStackTrace();

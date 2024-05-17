@@ -1,7 +1,7 @@
 package network;
 
 import java.net.ServerSocket;
-
+import java.io.IOException;
 import javax.net.ssl.SSLServerSocketFactory;
 
 // tag::main[]
@@ -14,7 +14,11 @@ import javax.net.ssl.SSLServerSocketFactory;
  */
 public class JSSEWebServer0 extends WebServer0 {
 
-	public static final int HTTPS = 8443;
+	public static final int HTTPS_PORT = 8443;
+
+	public JSSEWebServer0() throws IOException {
+		super();
+	}
 	
 	public static void main(String[] args) throws Exception {
 		if (System.getProperty("javax.net.ssl.keyStore") == null) {
@@ -23,21 +27,11 @@ public class JSSEWebServer0 extends WebServer0 {
 			System.exit(1);
 		}
 		System.out.println("DarwinSys JSSE Server 0.0 starting...");
-		JSSEWebServer0 w = new JSSEWebServer0();
-		w.runServer(HTTPS);		// never returns!!
-	}
-
-	/** Get an HTTPS ServerSocket using JSSE.
-	 * @see WebServer0#getServerSocket(int)
-	 * @throws ClassNotFoundException if the SecurityProvider cannot be instantiated.
-	 */
-	protected ServerSocket getServerSocket(int port) throws Exception {
-		
 		SSLServerSocketFactory ssf =
 			(SSLServerSocketFactory)SSLServerSocketFactory.getDefault();
-		
-		return ssf.createServerSocket(port);
+		var sock = ssf.createServerSocket(HTTPS_PORT);
+		WebServer0 w = new WebServer0(sock);
+		w.runServer();		// never returns!!
 	}
-
 }
 // end::main[]
