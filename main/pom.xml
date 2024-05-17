@@ -40,9 +40,6 @@
 						 -->
 						<exclude>testing/Ham*.java</exclude>
 
-						<!-- Won't compile with UTF-8! -->
-						<exclude>lang/EuroLanguage.java</exclude>
-
 						<exclude>plotter/Penman.java</exclude>
 
 						<!-- Have yet to find a POM that works -->
