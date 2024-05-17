@@ -51,13 +51,13 @@ public class WebServer0 {
 		return new ServerSocket(port);
 	}
 
-	/** RunServer accepts connections and passes each one to handler. */
+	/** RunServer accepts connections and passes each one to a handler. */
 	public void runServer(int port) throws Exception {
 		s = getServerSocket(port);
 		while (true) {
 			try {
 				Socket us = s.accept();
-				Handler(us);
+				handle(us);
 			} catch(IOException e) {
 				System.err.println(e);
 				return;
@@ -66,10 +66,10 @@ public class WebServer0 {
 		}
 	}
 
-	/** Handler() handles one conversation with a Web client.
+	/** handle() handles one conversation with a Web client.
 	 * This is the only part of the program that "knows" HTTP.
 	 */
-	public void Handler(Socket s) {
+	public void handle(Socket s) {
 		BufferedReader is;	// inputStream, from Viewer
 		PrintWriter os;		// outputStream, to Viewer
 		String request;		// what Viewer sends us.
