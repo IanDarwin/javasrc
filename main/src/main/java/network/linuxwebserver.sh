@@ -4,24 +4,24 @@
 # description: Run Ian's server
 
 start() {
-      echo -n  "Starting Ian's Server: "
-      java WebServer0
-      return 0
+	echo "Starting Ian's Server: "
+	java WebServer0
+	return 0
 }
 
 stop() {
-      echo "Not shutting down Ian's Server "
-      return 0
+	echo "Shutting down Ian's Server "
+	pkill WebServer0
+	return 0
 }
 
 case "$1" in
-          start) start ;;
+	start) start ;;
 
-          stop) stop ;;
+	stop) stop ;;
 
-          *) echo "Usage: $0 {start|stop}"
-              exit 1
-
+	*) echo "Usage: $0 {start|stop}"
+	   exit 1;;
 esac
 
 exit 0     
