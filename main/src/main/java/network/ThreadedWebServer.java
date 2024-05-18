@@ -11,17 +11,22 @@ public class ThreadedWebServer extends WebServer0 {
 		super();
 	}
 
-	ExecutorService threadpool = Executors.newCachedThreadPool();
+	public static void main(String[] args) throws Exception {
+		new ThreadedWebServer().runServer();
+	}
+
+	ExecutorService threadPool = Executors.newCachedThreadPool();
 
 	/** RunServer accepts connections and passes each one to a handler. */
 	@Override
 	public void runServer() throws Exception {
-		while (true) {
+		while (!serverSock.isClosed()) {
 			try {
 				Socket us = serverSock.accept();	// blocking
-				threadpool.submit(() -> handle(us));
+				threadPool.submit(() -> handle(us));
 			} catch(IOException e) {
 				e.printStackTrace();
+				serverSock.close();
 			}
 		}
 	}
