@@ -6,11 +6,14 @@ import java.util.stream.*;
  * Demo of a custom Stream Gatherer.
  */
 
-// end::main[]
+// tag::main[]
 // Mutable State
 class DoubleHolder {
 	Double value = 0.0D;
 }
+
+// Threshold for distinctness - anything over a penny is distinct
+double THRESHOLD = 0.011D;
 
 // The star of the show: a simple custom Gatherer
 Gatherer<Double, DoubleHolder, Double> distinctByAmount =
@@ -21,13 +24,10 @@ Gatherer<Double, DoubleHolder, Double> distinctByAmount =
 
 		// Integrator
 		(state, element, downstream) -> {
-			var distinct = Math.abs(element - state.value) > 0.011D;
+			var distinct = Math.abs(element - state.value) > THRESHOLD;
 			state.value = element;
 			return distinct ? downstream.push(element) : !downstream.isRejecting();
-		},
-
-		// FINISHER
-		Gatherer.defaultFinisher()
+		}
 );
 
 // Sample data
