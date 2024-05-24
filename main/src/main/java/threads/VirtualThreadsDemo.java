@@ -17,7 +17,6 @@ public class VirtualThreadsDemo {
 		// Start vthreads with an ExecutorService
 		try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 			IntStream.range(0, MAX).forEach(i -> executor.submit(r));
-			executor.submit(r);
 		}
 
 		// Start vthreads directly
