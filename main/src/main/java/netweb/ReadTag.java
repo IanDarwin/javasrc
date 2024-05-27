@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /** A simple but reusable HTML/XML tag extractor; not to be confused with an XML parser.
@@ -55,7 +56,7 @@ public class ReadTag {
 	 * @param tags The tags to set.
 	 */
 	public void setWantedTags(String[] tags) {
-		this.wantedTags = tags.clone();
+		this.wantedTags = Arrays.copyOf(tags, tags.length);
 	}
 	
 	/**

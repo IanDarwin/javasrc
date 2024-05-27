@@ -32,6 +32,11 @@
 					</compilerArgs>
 					<excludes>
 
+						<!-- Laptop stuck on java 21, these need java 22 -->
+						<!-- DO NOT COMMIT!! -->
+						<exclude>classfileapi/*</exclude>
+						<exclude>oo/StatementsBeforeSuper.java</exclude>
+
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
 
