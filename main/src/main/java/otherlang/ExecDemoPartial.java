@@ -20,7 +20,7 @@ public class ExecDemoPartial {
 		BufferedReader is;	// reader for output of process
 		String line;
 		
-		final Process p = Runtime.getRuntime().exec(PROGRAM);
+		final Process p = Runtime.getRuntime().exec(new String[]{PROGRAM});
 
 		System.out.println("In Main after exec");
 

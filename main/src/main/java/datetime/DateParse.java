@@ -16,7 +16,8 @@ public class DateParse {
 		System.out.println("Date: " + armisticeDate);
 		
 		String armisticeDateTimeString = "1918-11-11T11:00";
-		LocalDateTime armisticeDateTime = LocalDateTime.parse(armisticeDateTimeString);
+		LocalDateTime armisticeDateTime =
+			LocalDateTime.parse(armisticeDateTimeString);
 		System.out.println("Date/Time: " + armisticeDateTime);
 		// end::part1[]
 		

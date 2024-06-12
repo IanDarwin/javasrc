@@ -27,14 +27,11 @@ public class DaytimeObject {
 			Object o = is.readObject();
 			if (o == null) {
 				System.err.println("Read null from server!");
-			} else if ((o instanceof LocalDateTime)) {
-
-				// Valid, so cast to LocalDateTime, and print
-				LocalDateTime d = (LocalDateTime) o;
+			} else if ((o instanceof LocalDateTime d)) {
 				System.out.println("Time on " + hostName + " is " + d);
 			} else {
 				throw new IllegalArgumentException(
-					String.format("Wanted LocalDateTime, got %s, a %s",
+					"Wanted LocalDateTime, got %s, a %s".formatted(
 						o, o.getClass()));
 			}
 		// end::main[]

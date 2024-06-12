@@ -59,6 +59,7 @@ public class ThreadDeathCatch {
 			t.start();
 			// Give t time to get going...
 			Thread.sleep(1000);
+			// `Thread.stop()` always throws a `new UnsupportedOperationException()` in Java 21+.
 			t.stop();				// EXPECT COMPILER WARNING
 		} catch (Exception t) {
 			System.out.println("Caught in main: " + t);

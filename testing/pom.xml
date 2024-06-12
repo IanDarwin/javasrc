@@ -20,11 +20,6 @@
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
 	<properties>
-		<javase.version>17</javase.version>
-		<maven.compiler.source>${javase.version}</maven.compiler.source>
-		<maven.compiler.target>${javase.version}</maven.compiler.target>
-		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
-		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<junit5.version>5.9.2</junit5.version>
 	</properties>
 

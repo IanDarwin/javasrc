@@ -1,9 +1,11 @@
 package functional;
 
-import java.time.*;
-import java.util.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.groupingBy;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** Convert a List<Transaction> to a Map from each Customer 
  * who has a Transactions, to a List of their Transactions.
@@ -56,7 +58,7 @@ public class SimpleCollectorsGroupingBy {
 
 	record Transaction(Customer customer, LocalDate when, double amount) {
 		public String toString() {
-			return String.format("Customer %s, Date %s, transaction amount %.2f", customer.name(), when, amount);
+			return "Customer %s, Date %s, transaction amount %.2f".formatted(customer.name(), when, amount);
 		}
 	}
 

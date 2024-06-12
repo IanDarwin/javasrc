@@ -1,34 +1,31 @@
 package sched;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeSet;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /** Confirm that Appts compare, sort, print, and read back correctly.
  */
-public class ApptTest {
+class ApptTest {
 
 	@Test
-	public void testFactoryAndGetters() {
+	void factoryAndGetters() {
 		
 		// Exercise static factory method.
 		Appt a1 = Appt.fromString("1951 4 24 6 0 birthday");
-		assertEquals("fromString and getters", 1951, a1.getYear());
-		assertEquals("fromString and getters",    4, a1.getMonth());
-		assertEquals("fromString and getters",   24, a1.getDay());
-		assertEquals("fromString and getters",    6, a1.getHour());
-		assertEquals("fromString and getters",    0, a1.getMinute());
-		assertEquals("fromString and getters", "birthday", a1.getText());
+		assertEquals(1951, a1.getYear(), "fromString and getters");
+		assertEquals(4, a1.getMonth(), "fromString and getters");
+		assertEquals(24, a1.getDay(), "fromString and getters");
+		assertEquals(6, a1.getHour(), "fromString and getters");
+		assertEquals(0, a1.getMinute(), "fromString and getters");
+		assertEquals("birthday", a1.getText(), "fromString and getters");
 	}
 
 	@Test
-	public void testFactoryFailures() {
+	void factoryFailures() {
 
 		try {
 			Appt.fromString(null);
@@ -53,36 +50,35 @@ public class ApptTest {
 	}
 
 	@Test
-	public void testConstructorAndComparisons() {
+	void constructorAndComparisons() {
 		TreeSet<Appt> days =  new TreeSet<Appt>();
 		// Exercise compareTo() method by inserting duplicates
 		// into the TreeSet - ensure that only one copy is added.
 		days.add(new Appt(1999, 1, 23, 12, 10, "go home"));
 		days.add(new Appt(1999, 1, 23, 12, 10, "go home"));
-		assertEquals("compareto", 1, days.size());
+		assertEquals(1, days.size(), "compareto");
 
 		Appt a = new Appt(2001, 2, 3, 1, 2, "testing 1 2 3");
 
-		assertEquals("a is a", a, a);	
+		assertEquals(a, a, "a is a");	
 		
-		assertEquals("fromString(toString()) idempotent", 
-			Appt.fromString(a.toString()), a);
+		assertEquals(Appt.fromString(a.toString()), a, "fromString(toString()) idempotent");
 	}
 
-	
+
 	@Test
-	public void testEquals() {
+	void equals() {
 		Appt a1 = new Appt(2020,11,4,9,00, "Vote");
 		Appt a2 = new Appt(
 			LocalDate.of(2020, 11, 4),
 			LocalTime.of(9, 00),
 			"Vote");
 
-		assertEquals("equals constructed both ways", a1, a2);
+		assertEquals(a1, a2, "equals constructed both ways");
 	}
 
 	@Test
-	public void testCompareTo() {
+	void compareTo() {
 		Appt a1 = new Appt(2020,11,4,9,00, "Vote");
 		Appt a2 = new Appt(2020,11,4,9,00, "Vote");
 		assertEquals(0, a1.compareTo(a2));
@@ -93,9 +89,9 @@ public class ApptTest {
 		a1 = new Appt(2020, 11, 4, 9, 00, "Go Vote");
 		assertTrue(a1.compareTo(a2) < 0);
 	}
-	
+
 	@Test
-	public void testCompareInvolvingNullTime() {
+	void compareInvolvingNullTime() {
 		Appt a1 = new Appt(LocalDate.of(2020,11,4), null, "Vote");
 		Appt a2 = new Appt(2020,11,4,9,00, "Vote");
 		assertTrue(a1.compareTo(a2) < 0);

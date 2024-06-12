@@ -1,37 +1,37 @@
 package i18n;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests an internationalized enum with
  * a non-default language.
  * @author Ian
  */
-public class EnumIntlTest_es {
+class EnumIntlTest_es {
 	
 	static Locale savedLocale;
-	
-	@BeforeClass
-	public static void setupLocale() {
+
+	@BeforeAll
+	static void setupLocale() {
 		// This must happen BEFORE the first
 		// reference to the EnumIntl class
 		savedLocale = Locale.getDefault();
 		Locale.setDefault(Locale.forLanguageTag("es"));
 	}
-	
-	@AfterClass
-	public static void resetLocale() {
+
+	@AfterAll
+	static void resetLocale() {
 		Locale.setDefault(savedLocale);
 	}
-	
+
 	@Test
-	public void testNorte() {
+	void norte() {
 		assertEquals("Norte", EnumIntl.NORTH.getDescription());
 	}
 }

@@ -49,6 +49,8 @@ import java.awt.event.MouseListener;
  */
 public class Mover3 extends Mover implements MouseListener {
 
+	private static final long serialVersionUID = 1;
+
 	protected volatile boolean threadSuspended;
 
 	public void init() {

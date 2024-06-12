@@ -1,13 +1,12 @@
 package xcolor;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.Color;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /** Test for XColor */
-public class XColorTest {
+class XColorTest {
 
 	protected String[] colors = {
 		"PapayaWhip",
@@ -23,11 +22,11 @@ public class XColorTest {
 	};
 
 	@Test
-	public void testColor() {
+	void color() {
 		int i = 0;
 		for (String s : colors) {
 			Color cc = new XColor(s);
-			assertEquals("RGB Match", rgb[i++], cc.getRGB());
+			assertEquals(rgb[i++], cc.getRGB(), "RGB Match");
 		}
 	}
 }

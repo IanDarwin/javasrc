@@ -3,12 +3,19 @@ package email;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import com.darwinsys.io.TextAreaOutputStream;
 import com.darwinsys.swingui.ErrorUtil;
@@ -46,9 +53,7 @@ public final class CheckOpenMailRelayGui extends JFrame {
     private JTextArea results;
     /** The piped stream for the main class to write into "results" */
     private PrintStream out;
-    /** The piped stream to read from "ps" into "results" */
-    private BufferedReader iis;
-
+    
     /** Construct a GUI and some I/O plumbing to get the output
      * of "TestOpenMailRelay" into the "results" textfield.
      */

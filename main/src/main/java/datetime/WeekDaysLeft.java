@@ -1,9 +1,10 @@
 package datetime;
 
-import java.time.*;
-import java.util.*;
-
-import static java.time.temporal.ChronoUnit.DAYS;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Calculate the number of working days left in a term (such as a school term),
@@ -11,11 +12,13 @@ import static java.time.temporal.ChronoUnit.DAYS;
  * @author Adapted from StackOverflow answer by Ravindra Ranwala
  * https://stackoverflow.com/questions/4600034/calculate-number-of-weekdays-between-two-dates-in-java
  * Added holiday etc. processing.
+ * N.B. "endDate" has to be set to a reasonable value before using this,
+ * as do the dates in "holidays".
  */
 public class WeekDaysLeft {
 	public static void main(String[] args) { 
 		LocalDate startDate = LocalDate.now();
-		LocalDate endDate = LocalDate.of(2023, 6, 30);
+		LocalDate endDate = LocalDate.of(2100, 6, 30);
 		// startDate = endDate.minusDays(1); // Calibration test: should print '1'.
 		Set<DayOfWeek> weekendDays = EnumSet.of(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
 		// See https://www.scdsb.on.ca/calendar (Primary student variant)

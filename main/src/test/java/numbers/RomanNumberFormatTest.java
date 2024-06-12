@@ -1,33 +1,36 @@
 package numbers;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class RomanNumberFormatTest {
+class RomanNumberFormatTest {
 
 	RomanNumberFormat nf;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		nf = new RomanNumberFormat();
 	}
 
-	@Test(expected=NumberFormatException.class)
-	public final void testManyFormatLong() {	
-		nf.format(0);
-		fail("Romans did not use Zero");
-	}
-	
-	@Test(expected=NumberFormatException.class)
-	public void testTooBig() {
-		nf.format(4000);
+	@Test
+	final void manyFormatLong() {
+		assertThrows(NumberFormatException.class, () -> {
+			nf.format(0);
+			fail("Romans did not use Zero");
+		});
 	}
 
 	@Test
-	public void testThereThereAndBackAgain() {
+	void tooBig() {
+		assertThrows(NumberFormatException.class, () -> {
+			nf.format(4000);
+		});
+	}
+
+	@Test
+	void thereThereAndBackAgain() {
 		Long num1 = (Long) nf.parseObject("LCX", null);
 		assertEquals(Long.valueOf(160), num1);
 		Long num2 = (Long) nf.parseObject("XX", null);

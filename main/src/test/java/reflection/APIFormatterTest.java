@@ -1,6 +1,6 @@
 package reflection;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,18 +9,18 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class APIFormatterTest {
+class APIFormatterTest {
 	String fileName;
 
 	/**
 	 * To test it for real, create zip file with one class
 	 * from the same package, loaded from classpath.
 	 */
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		File file = File.createTempFile("test", ".zip");
 		file.deleteOnExit();
 		fileName = file.getAbsolutePath();
@@ -42,9 +42,9 @@ public class APIFormatterTest {
 
 	Class<?> x = null;
 	int nClasses = 0;
-	
+
 	@Test
-	public final void testProcessOneZip() throws Exception {
+	final void processOneZip() throws Exception {
 		APIFormatter target = new APIFormatter() {
 			@Override
 			protected void doClass(Class<?> c) throws IOException {
@@ -53,7 +53,7 @@ public class APIFormatterTest {
 			}
 		};
 		target.processOneZip(fileName);
-		assertEquals(x, GetAndInvokeMethod.class);
+		assertEquals(GetAndInvokeMethod.class, x);
 		assertEquals(1, nClasses);
 		System.out.println("Pass!");
 	}

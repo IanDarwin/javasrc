@@ -1,29 +1,23 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /** Soundex Test program. Knuth's original examples, and mine. */
-@RunWith(Parameterized.class)
 public class SoundexTest {
 
 	private String name, expected;
-	
-	public SoundexTest(String expected, String name) {
-		super();
+
+	public void initSoundexTest(String expected, String name) {
 		this.expected = expected;
 		this.name = name;
 	}
 
-	@Parameters
-    public static List<Object[]> getParams() {
+	public static List<Object[]> getParams() {
         return Arrays.asList(data);
     }
     private static Object[][] data = {
@@ -38,9 +32,11 @@ public class SoundexTest {
 		{ "D650", "Derwin" },
 		{ "D260", "Decker" },
 	};
-	
-	@Test
-	public void test() {
+
+	@MethodSource("getParams")
+	@ParameterizedTest
+	public void test(String expected, String name) {
+		initSoundexTest(expected, name);
 		assertEquals(expected, Soundex.soundex(name));
 	}
 }

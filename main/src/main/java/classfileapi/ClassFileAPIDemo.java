@@ -8,6 +8,8 @@ import java.nio.file.*;
 /**
  * A quick demo of the Java 22 PREVIEW "ClassFile" mechanism, described in
  * JEP 457 (https://openjdk.org/jeps/457).
+ * N.B. Can only be run after "mvn compile" to create the target file
+ * Be sure to run in "javasrc/main", not in "javasrc"
  */
 // tag::main[]
 @MyAnnotation
@@ -21,14 +23,15 @@ class ClassFileAPIDemo implements Serializable {
 			switch (element) {
 				case FieldModel field ->
 					System.out.println(
-					STR."Field \{field.fieldName().stringValue()}");
+					"Field " + field.fieldName().stringValue());
 				case MethodModel method ->
 					System.out.println(
-					STR."Method \{method.methodName().stringValue()}");
+					"Method " + method.methodName().stringValue());
 				default -> { 
 					/* Ignore anything else */
 					System.out.println(
-					STR."Other: \{element} (\{element.getClass().getName()})");
+					"Other: " + element +
+						"(" + element.getClass().getName() + ")");
 				}
 			}
 		}

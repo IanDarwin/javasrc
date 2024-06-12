@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -20,7 +21,6 @@ import javax.swing.JFrame;
  */
 public class PostQuery {
 
-	private static final long serialVersionUID = 3258128046665315634L;
 	private static Button goButton;
 	private static String serverURL;
 
@@ -37,7 +37,7 @@ public class PostQuery {
 	}
 
 	public PostQuery(String url) {
-		this.serverURL = url != null ? url :
+		PostQuery.serverURL = url != null ? url :
 				"http://server/cgi-bin/test-cgi.pl";
 	}
 
@@ -45,7 +45,7 @@ public class PostQuery {
 		try {
 			URL myNewURL;
 			showStatus("Building URL " + serverURL);
-			myNewURL = new URL(serverURL);
+			myNewURL = URI.create(serverURL).toURL();
 
 			showStatus("Connecting to " + myNewURL);
 

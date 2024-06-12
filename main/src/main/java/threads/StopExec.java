@@ -28,7 +28,7 @@ public class StopExec extends Thread {
 		try {
 			System.out.println("StopExec.run(): starting process");
 			// Use of sleep with a number is to simulate different run times of a process
-			proc = Runtime.getRuntime().exec("sleep " + timeToRunProcess);
+			proc = Runtime.getRuntime().exec(new String[]{"sleep", Integer.toString(timeToRunProcess)});
 			proc.waitFor();
 			System.out.println("StopExec.run(): process terminated, exit status " + proc.waitFor());
 		} catch (IOException ex) {

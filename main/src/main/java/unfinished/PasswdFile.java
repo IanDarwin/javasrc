@@ -91,6 +91,7 @@ public class PasswdFile extends JFrame {
 	}
 
 	class Spacer extends Component {
+		private static final long serialVersionUID = 1;
 		public Dimension getPreferredSize() {
 			return new Dimension(10, 10);
 		}

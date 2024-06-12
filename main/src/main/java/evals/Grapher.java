@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 public class Grapher extends JPanel {
+	private static final long serialVersionUID = 1;
 	JProgressBar counter, crsScore, insScore;
 	public Grapher() {
 		setLayout(new GridLayout(3,2));

@@ -2,8 +2,6 @@ package beans;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileReader;
 
 import javax.swing.JButton;
@@ -18,8 +16,8 @@ import com.darwinsys.io.FileIO;
 import com.darwinsys.swingui.LabelText;
 
 /**
- *  Longer sample of using Bean Scripting Framework with JPython
- * N.B. You MUST hava org.python.core.PyJavaInstance on CLASSPATH or
+ *  Longer sample of using Bean Scripting Framework to call JPython
+ * N.B. You MUST have org.python.core.PyJavaInstance on CLASSPATH or
  * this program will go down in flames.
  */
 // tag::main[]
@@ -57,7 +55,7 @@ public class BSFAction {
 				new FileReader(FILENAME));
 
 		} catch (Exception ex) {
-			System.err.println(STR."Well, that didn't work. Why? \{ex}");
+			System.err.println("Well, that didn't work. Why not? " + ex);
 			return;
 		}
 
@@ -72,10 +70,8 @@ public class BSFAction {
 
 		JButton b = new JButton("Click me!");
 		cp.add(b);				// and the button under it.
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
+		b.addActionListener(_ -> {
 				try {
-
 					// When the button is pressed, run the script.
 					System.out.println("Script output: -->");
 					manager.exec(language, FILENAME, 0, 0, script);
@@ -85,17 +81,12 @@ public class BSFAction {
 						"ERROR: " + bse, "Script Error",
 						JOptionPane.ERROR_MESSAGE);
 				}
-			}
 		});
 
 		// A Quit button at the bottom
 		JButton qb = new JButton("Quit");
 		cp.add(qb);
-		qb.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				System.exit(0);
-			}
-		});
+		qb.addActionListener(_ ->  System.exit(0));
 
 		// Routine JFrame setup
 		jf.pack();

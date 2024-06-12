@@ -16,20 +16,25 @@ public class WebRedirector extends WebServer0 {
 	public static final String GOTO = "http://localhost:8080/";
 	
 	private static String gotoURL = GOTO;
-	
+
+	public WebRedirector() throws IOException {
+		super();
+	}
+
 	public static void main(String[] args) throws Exception {
 		if (args.length == 1) {
 			gotoURL = args[0];
 		}
 		System.out.println("DarwinSys Web Redirector 0.0 starting...");
-		WebRedirector w = new WebRedirector();
-		w.runServer(HTTP);		// never returns!!
+		WebServer0 w = new WebRedirector();
+		w.runServer();	// never returns!!
 	}
 	
 	/** Generate one redirection request
 	 * @see WebServer0#Handler(java.net.Socket)
 	 */
-	public void Handler(Socket s) {
+	@Override
+	public void handle(Socket s) {
 		BufferedReader is;	// inputStream, from Viewer
 		PrintWriter os;		// outputStream, to Viewer
 		String request;		// what Viewer sends us.

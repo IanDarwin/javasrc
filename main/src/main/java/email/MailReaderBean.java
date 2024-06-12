@@ -6,7 +6,6 @@ import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Store;
-import javax.mail.internet.InternetAddress;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -98,10 +97,10 @@ public class MailReaderBean extends JSplitPane {
 					// System.out.println("Select folder " + o.toString());
 					return;
 				}
-				if (o instanceof MessageNode) {
+				if (o instanceof MessageNode node) {
 					bodyText.setText("");
 					try {
-						Message m = ((MessageNode)o).m;
+						Message m = node.m;
 
 						bodyText.append("To: ");
 						Object[] tos = m.getAllRecipients();

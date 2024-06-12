@@ -23,6 +23,7 @@ import javax.swing.JPanel;
  * @author	Ian F. Darwin, https://darwinsys.com/
  */
 public class CalMonth extends JPanel implements DateSelectedListener {
+	private static final long serialVersionUID = 1;
 	/** The CalEventMgr lets us send our selected date to other parts
 	 * of the Cal collection.
 	 */

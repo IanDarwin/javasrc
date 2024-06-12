@@ -5,6 +5,7 @@ package tar;
  * $Id$
  */
 public class TarException extends java.io.IOException {
+	private static final long serialVersionUID = 1L;
 	public TarException() {
 		super();
 	}

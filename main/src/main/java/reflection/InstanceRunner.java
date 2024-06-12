@@ -60,7 +60,7 @@ public class InstanceRunner implements Runnable {
 	 */
 	public void run() {
 		try {
-			Object o = targetClass.newInstance();
+			Object o = targetClass.getDeclaredConstructor().newInstance();
 			Method m = targetClass.getMethod(methodName, new Class[0]);
 			m.invoke(o, new Object[0]);
 		} catch (Exception ex) {

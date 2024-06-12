@@ -18,9 +18,10 @@ import javax.swing.JMenuItem;
  *		java MenuIntl
  *		java -Duser.language=es MenuIntl
  */
-@SuppressWarnings("serial")
 // tag::main[]
 public class MenuIntl extends JFrame {
+
+	private static final long serialVersionUID = 1;
 
 	/** "main program" method - construct and show */
 	public static void main(String[] av) {

@@ -32,6 +32,11 @@
 					</compilerArgs>
 					<excludes>
 
+						<!-- Laptop stuck on java 21, these need java 22 -->
+						<!-- DO NOT COMMIT!! -->
+						<exclude>classfileapi/*</exclude>
+						<exclude>oo/StatementsBeforeSuper.java</exclude>
+
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
 
@@ -39,9 +44,6 @@
 						 *** testing demos for now (does not affect all the stuff in src/test/java!).
 						 -->
 						<exclude>testing/Ham*.java</exclude>
-
-						<!-- Won't compile with UTF-8! -->
-						<exclude>lang/EuroLanguage.java</exclude>
 
 						<exclude>plotter/Penman.java</exclude>
 
@@ -55,6 +57,10 @@
 						<exclude>lang/UsePackage.java</exclude>
 
 						<!-- Classes that demonstrate certain variations that won't comile -->
+
+						<!-- Preview API, changed on me -->
+						<exclude>ffi/CallCFromJava.java</exclude>
+
 						<!-- All (should) have 'EXPECT COMPILE ERROR' -->
 
 						<!-- Did not get xi:include working ...
@@ -212,7 +218,7 @@
 		<dependency>
 			<groupId>org.renjin</groupId>
 			<artifactId>renjin-script-engine</artifactId>
-			<version>RELEASE</version>
+			<version>0.9.2726</version>
 		</dependency>
 
 		<!-- Client-side CDI -->
@@ -257,6 +263,7 @@
 
 	<!-- A minor POX on those who insist on running their own 
 	 *** repos instead of using Maven Central.
+	 *** Needed for e.g. renjin
 	 -->
 	<repositories>
 		<repository>

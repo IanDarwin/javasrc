@@ -26,7 +26,7 @@ public class HelpDemo {
 		
 		// Start default browser from a Java Application
 		// Better: use Desktop class to invoke
-		r.exec("c:/windows/command/start.exe HelpDemo.htm");
+		r.exec(new String[]{"c:/windows/command/start.exe", "HelpDemo.htm"});
 
 		return;
 	}

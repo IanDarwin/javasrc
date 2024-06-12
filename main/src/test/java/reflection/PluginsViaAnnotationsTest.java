@@ -16,26 +16,26 @@ import org.junit.jupiter.api.Test;
 }
 
 @MyTestAnnotation
-public class PluginsViaAnnotationsTest {
+class PluginsViaAnnotationsTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
 	}
 
 	@Test @MyTestAnnotation
-	void testFindAnnotatedClasses() throws Exception {
+	void findAnnotatedClasses() throws Exception {
 		List<Class<?>> ret = 
 			PluginsViaAnnotations.findAnnotatedClasses("reflection", MyTestAnnotation.class);
 		assertEquals(1, ret.size());
-		assertSame(PluginsViaAnnotationsTest.class, ret.get(0));
+		assertSame(PluginsViaAnnotationsTest.class, ret.getFirst());
 	}
 
 	@Test
-	void testFindClassesWithAnnotatedMethods() throws Exception {
+	void findClassesWithAnnotatedMethods() throws Exception {
 		List<Class<?>> ret = 
 				PluginsViaAnnotations.findClassesWithAnnotatedMethods("reflection", MyTestAnnotation.class);
 			assertEquals(1, ret.size());
-			assertSame(PluginsViaAnnotationsTest.class, ret.get(0));
+			assertSame(PluginsViaAnnotationsTest.class, ret.getFirst());
 	}
 
 }

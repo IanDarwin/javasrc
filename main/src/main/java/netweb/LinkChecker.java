@@ -9,10 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -169,7 +166,7 @@ public class LinkChecker extends JFrame {
 		// Open the root URL for reading. May be a filename or a real URL.
 		try {
 			try {
-				rootURL = new URL(rootURLString);
+				rootURL = URI.create(rootURLString).toURL();
 			} catch (MalformedURLException e) {
 				System.out.println(rootURLString + ": not a valid URL, trying as a file.");
 				rootURL = new File(rootURLString).toURL();

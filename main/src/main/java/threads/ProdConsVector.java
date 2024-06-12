@@ -86,7 +86,7 @@ public class ProdConsVector {
 						return;
 					}
 				} else {
-					obj = list.get(0);				
+					obj = list.getFirst();				
 					System.out.println(
 						"Consuming " + obj + "; list size " + list.size());
 				}

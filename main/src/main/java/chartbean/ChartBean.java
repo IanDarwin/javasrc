@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Arrays;
 
 /**
  * Simple charting bean. This version just draws a Pie Chart.
@@ -63,7 +64,7 @@ public class ChartBean extends Component {
 		return title;
 	}
 	public void setData(ChartData[] newStuff) {
-		data = newStuff.clone();
+		data = Arrays.copyOf(newStuff, newStuff.length);
 		repaint();
 	}
 	public void doDemo() {

@@ -10,7 +10,8 @@ public class URIDemo {
 	public static void main(String[] args)
 	throws URISyntaxException, MalformedURLException {
 
-		URI u = new URI("https://darwinsys.com/java/../openbsd/../index.jsp");
+		// Start with un-normalized example
+		URI u = new URI("https://darwinsys.com/java/../openbsd/../index.html");
 		System.out.println("Raw: " + u);
 		URI normalized = u.normalize();
 		System.out.println("Normalized: " + normalized);
@@ -18,7 +19,7 @@ public class URIDemo {
 		System.out.println("Relativized to " + BASE + ": " + BASE.relativize(u));
 
 		// A URL is a type of URI
-		URL url = new URL(normalized.toString());
+		URL url = URI.create(normalized.toString()).toURL();
 		System.out.println("URL: " + url);
 
 		// Demo of non-URL but valid URI

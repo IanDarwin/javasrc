@@ -1,3 +1,5 @@
+package oo;
+
 import java.util.function.Consumer;
 
 /**
@@ -20,7 +22,8 @@ class BuilderAlternate {
 	}
 
 	public String toString() {
-		return STR."BuilderAlternate(name=\{modelName}, temp \{temperature}°C, maxOut \{maxTokens})";
+		return "BuilderAlternate(name = " + modelName +
+			", temp = " + temperature + "°C, maxOut = " + maxTokens + ")";
 	}
 
 	/** Utility methods that update the model instance */

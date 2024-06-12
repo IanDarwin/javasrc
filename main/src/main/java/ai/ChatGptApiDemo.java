@@ -19,7 +19,7 @@ public class ChatGptApiDemo {
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
 		// Store your API key in a one-line text file:
-       String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).get(0);
+       String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).getFirst();
        String model = "gpt-3.5-turbo";
 
 		URL obj = new URI(URL).toURL();
@@ -71,8 +71,8 @@ public class ChatGptApiDemo {
 
 	static record ChatGptRequest(String model, String role, String prompt) {
 		public String toString() {
-			return String.format(
-				"{\"model\": \"%s\", \"messages\": [{\"role\": \"%s\", \"content\": \"%s\"}]}",
+			return 
+				"{\"model\": \"%s\", \"messages\": [{\"role\": \"%s\", \"content\": \"%s\"}]}".formatted(
 				model, role, prompt);
 		}
 	}

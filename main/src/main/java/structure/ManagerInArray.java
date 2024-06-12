@@ -13,8 +13,7 @@ public class ManagerInArray {
 		};
 		for (int i=0; i<staff.length; i++) {
 			System.out.println("Employee's name is " + staff[i].getName());
-			if (staff[i] instanceof Manager) {
-				Manager mgr = (Manager)staff[i];
+			if (staff[i] instanceof Manager mgr) {
 				System.out.println("\tIS A MANAGER; department is " +
 					mgr.getManagedDepartment());
 			}

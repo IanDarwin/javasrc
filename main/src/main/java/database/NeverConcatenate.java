@@ -13,7 +13,7 @@ public class NeverConcatenate {
 
 		while (true) {
 			String name = console.readLine("Enter student login name: ");
-			String sql_command = String.format(sql_template, name);
+			String sql_command = sql_template.formatted(name);
 			System.out.println(sql_command);
 			if (sql_command.indexOf("';") > 0)
 				System.out.println("Looks like you mighta got pwned, pardner!");

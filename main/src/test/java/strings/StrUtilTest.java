@@ -1,25 +1,25 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class StrUtilTest {
+class StrUtilTest {
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 	}
 
 	@Test
-	public void testReverseInPlace() {
+	void reverseInPlace() {
 		assertEquals("", StrUtil.reverseInPlace(""));
 		assertEquals("olleh", StrUtil.reverseInPlace("hello"));	// odd length
 		assertEquals("nellaf", StrUtil.reverseInPlace("fallen"));	// even
 	}
-	
+
 	@Test
-	public void testReverseNew() {
+	void reverseNew() {
 		assertEquals("", StrUtil.reverseNew(""));
 		assertEquals("olleh", StrUtil.reverseNew("hello"));	// odd length
 		assertEquals("nellaf", StrUtil.reverseNew("fallen"));	// even

@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LinkList<T> implements List<T> {
 
 	/* A TNode stores one node or item in a Linked List */
-	private static class TNode<T> {
+	protected static class TNode<T> {
 		private TNode<T> next;
 		private T data;
 		TNode(T o, TNode<T> next) {
@@ -33,12 +33,12 @@ public class LinkList<T> implements List<T> {
 		}
 		@Override
 		public String toString() {
-			return String.format("TNode: data='%s', next='%d'", data, 
-					next == null ? 0 : next.hashCode());
+			return "TNode: data='%s', next='%d'".formatted(data,
+				next == null ? 0 : next.hashCode());
 		}
 	}
 
-	private boolean DIAGNOSTIC = false;
+	private final boolean DIAGNOSTIC = false;
 	
 	/** The root or first TNode in the list; is a dummy pointer,
 	 * so its data will always be null. Simpler this way.

@@ -1,14 +1,16 @@
 package numbers;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class NumberToWordsConverterTest {
+class NumberToWordsConverterTest {
 
+	// More to test as the program grows...
+		// 1000, 'one thousand'
 	@ParameterizedTest
 	@CsvSource(textBlock = """
         0,'zero'
@@ -33,14 +35,12 @@ public class NumberToWordsConverterTest {
         222, 'two hundred twenty two'
         999, 'nine hundred ninety nine'
         """)
-		// More to test as the program grows...
-        // 1000, 'one thousand'
-	public void testConvert(int input, String expected) {
+	void convert(int input, String expected) {
 		assertEquals(expected, NumberToWordsConverter.convert(input));
 	}
 
 	@Test()
-	public void testOutOfRange(){
+	void outOfRange(){
 		assertThrows(IllegalArgumentException.class,
 				() -> NumberToWordsConverter.convert(NumberToWordsConverter.MAX + 1));
 	}

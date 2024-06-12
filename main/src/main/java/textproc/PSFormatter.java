@@ -49,8 +49,8 @@ public class PSFormatter {
 	}
 
 	public PSFormatter(Reader in) throws IOException {
-		if (in instanceof BufferedReader)
-			br = (BufferedReader)in;
+		if (in instanceof BufferedReader reader)
+			br = reader;
 		else
 			br = new BufferedReader(in);
 	}

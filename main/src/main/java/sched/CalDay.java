@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 /** This CalDay is just a prototype!!
  */
 public class CalDay extends JPanel implements DateSelectedListener {
+	private static final long serialVersionUID = 1;
 	CalDay() {
 		setLayout(new GridLayout(0, 1));
 		for (int i=9; i<=17; i++) 
@@ -17,6 +18,7 @@ public class CalDay extends JPanel implements DateSelectedListener {
 	}
 	/** An Inner class to display one Hour view. */
 	class HourView extends JPanel {
+		private static final long serialVersionUID = 1;
 		HourView(int h) {
 			add(new JLabel(h + ":00", JLabel.RIGHT));
 			add(new JTextField(30));

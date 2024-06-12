@@ -57,12 +57,13 @@ public class JaasDemo {
 		new JaasDemo();
 	}
 
-	@SuppressWarnings("serial")
 	JaasDemo() {
 		System.out.println("JaasDemo.JaasDemo()");
 		theFrame = new JFrame("JAAS Demo");
 		theFrame.setLayout(new FlowLayout());
 		Action loginAction = new AbstractAction("Login") {
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				login();
 			}
@@ -70,6 +71,9 @@ public class JaasDemo {
 		theFrame.add(new JButton(loginAction));
 
 		Action runAction = new AbstractAction("Run") {
+			private static final long serialVersionUID = 1L;
+
+			@SuppressWarnings("removal")
 			public void actionPerformed(ActionEvent e) {
 				Subject.doAs(subject, new PrivilegedAction<Void>() {
 
@@ -84,6 +88,8 @@ public class JaasDemo {
 		theFrame.add(new JButton(runAction));
 
 		Action quitAction = new AbstractAction("Exit") {
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
@@ -107,8 +113,8 @@ public class JaasDemo {
 			// If the call to login() doesn't throw an exception, we're in!
 			subject = loginContext.getSubject();
 			JOptionPane.showMessageDialog(theFrame,
-					String.format(
-						"Congratulations %s, you are logged in!", subject),
+				
+					"Congratulations %s, you are logged in!".formatted(subject),
 					"Welcome", JOptionPane.INFORMATION_MESSAGE);
 		} catch (LoginException e) {
 			JOptionPane.showMessageDialog(theFrame,
@@ -123,10 +129,6 @@ public class JaasDemo {
 		System.out.println("JaasDemo.runDemo()");
 
 		try {
-			// Now set the security manager to control I/O
-			// (can't set it sooner because then you won't have
-			// permission to create the login context...)
-			System.setSecurityManager(new SecurityManager());
 
 			// Should be able to read
 			new FileReader(LOGINCONFIG_FILENAME).close();
@@ -157,15 +159,13 @@ public class JaasDemo {
 					"MyLoginPrompter.handle(): got " + callbacks.length + " callbacks.");
 			for (Callback c : callbacks) {
 				System.out.println(c);
-				if (c instanceof TextOutputCallback) {
+				if (c instanceof TextOutputCallback callback) {
 					// display the message: maybe a prompt...
-					System.out.println(((TextOutputCallback)c).getMessage());
-				} else if (c instanceof NameCallback) {
-					NameCallback nc = (NameCallback)c;
+					System.out.println(callback.getMessage());
+				} else if (c instanceof NameCallback nc) {
 					String userName = JOptionPane.showInputDialog(nc.getPrompt());
 					nc.setName(userName);
-				} else if (c instanceof PasswordCallback) {
-					PasswordCallback pc = (PasswordCallback)c;
+				} else if (c instanceof PasswordCallback pc) {
 					String password = JOptionPane.showInputDialog(pc.getPrompt());
 					pc.setPassword(password.toCharArray());
 				} else {

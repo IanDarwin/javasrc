@@ -14,7 +14,7 @@ void doSomethingElse() {
 }
 void doYetMore() {
 	Client client = CLIENT.get();
-	System.out.println(STR."In doYetMore, client = " + client);
+	System.out.println("In doYetMore, client = " + client);
 }
 
 record Client(int id) { }

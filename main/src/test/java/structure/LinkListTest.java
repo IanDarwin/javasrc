@@ -1,16 +1,15 @@
 package structure;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Linked list class, written out in full using Java.
@@ -18,7 +17,7 @@ import org.junit.Test;
  * You should probably use java.util.LinkedList instead!
  * @author	Ian Darwin, https://darwinsys.com/
  */
-public class LinkListTest {
+class LinkListTest {
 	private static final String FIRST_STRING = "First of Three",
 		MIDDLE_STRING = "Second of Three",
 		LAST_STRING = "Third of Three";
@@ -30,17 +29,18 @@ public class LinkListTest {
 			LAST_STRING,
 	};
 	List<String> list;
-	
-	@Before @SuppressWarnings("deprecation")
-	public void setUp() {
+
+	@BeforeEach
+	@SuppressWarnings("deprecation")
+	void setUp() {
 		list = new LinkList<>();
 		assertTrue(list.add(FIRST_STRING));
 		assertTrue(list.add(MIDDLE_STRING));
 		assertTrue(list.add(LAST_STRING));
 	}
-	
+
 	@Test
-	public void testAddAll() {
+	void addAll() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
 		assertTrue(list.addAll(c));
 		assertEquals(6, list.size());
@@ -48,7 +48,7 @@ public class LinkListTest {
 	}
 
 	@Test
-	public void testAddAllIndexed() {
+	void addAllIndexed() {
 		Collection<String> c = Arrays.asList("One", "Two", "Three");
 		assertTrue(list.addAll(1, c));
 		assertEquals(6, list.size());
@@ -58,43 +58,49 @@ public class LinkListTest {
 	}
 
 	@Test
-	public void testAddWithIndex() {
+	void addWithIndex() {
 		final String MY_STRING = "Meh";
 		// This overload of add() curiously returns void
 		list.add(1, MY_STRING);
-		assertEquals("list size post-insert", 4, list.size());
+		assertEquals(4, list.size(), "list size post-insert");
 		assertEquals("Meh", list.get(2));
 		assertEquals(LAST_STRING, list.get(3));
 	}
 
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testAddTooFar() {
-		list.add(3, "You won't see this");
+	@Test
+	void addTooFar() {
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			list.add(3, "You won't see this");
+		});
 	}
 
 	@Test
-	public void testContains() {
+	void contains() {
 		assertTrue(list.contains(MIDDLE_STRING));
 	}
 
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testGetTooFar() {
-		list.get(list.size()); // last should be size() - 1, so should fail
+	@Test
+	void getTooFar() {
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			list.get(list.size()); // last should be size() - 1, so should fail
+		}); // last should be size() - 1, so should fail
 	}
 
 	@Test
-	public void testGetSecond() {
-		assertEquals("get element", testData[1], list.get(1));
-	}
-
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void testGetOnEmptyList() {
-		list.clear();
-		list.get(0);
+	void getSecond() {
+		assertEquals(testData[1], list.get(1), "get element");
 	}
 
 	@Test
-	public void testIterable() {
+	void getOnEmptyList() {
+		assertThrows(NoSuchElementException.class, () -> {
+			list.clear();
+			list.getFirst();
+		});
+	}
+
+	@Test
+	void iterable() {
 		Iterator<String> iter = list.iterator();
 		assertEquals(FIRST_STRING, iter.next());
 		assertEquals(MIDDLE_STRING, iter.next());
@@ -107,48 +113,48 @@ public class LinkListTest {
 	}
 
 	@Test
-	public void testIterableAgain() {
+	void iterableAgain() {
 		list.forEach(o -> setString(o));
 		assertEquals(LAST_STRING, string);
 	}
-	
+
 	@Test
-	public void testRemoveFirst() {
+	void removeFirst() {
 		assertTrue(list.remove(FIRST_STRING));
 		assertEquals(2, list.size());
 		assertSame(MIDDLE_STRING, list.getFirst());
 	}
-	
+
 	@Test
-	public void testRemoveMIDDLE() {
+	void removeMIDDLE() {
 		assertTrue(list.remove(MIDDLE_STRING));
 		assertEquals(2, list.size());
-		assertSame(FIRST_STRING, list.get(0));
+		assertSame(FIRST_STRING, list.getFirst());
 		assertSame(LAST_STRING, list.get(1));
 	}
-	
+
 	@Test
-	public void testRemoveLast() {
+	void removeLast() {
 		assertTrue(list.remove(LAST_STRING));
 		assertEquals(2, list.size());
-		assertSame(FIRST_STRING, list.get(0));
+		assertSame(FIRST_STRING, list.getFirst());
 		assertSame(MIDDLE_STRING, list.get(1));
 	}
-	
+
 	@Test
-	public void testSet() {
+	void set() {
 		assertEquals(MIDDLE_STRING, list.get(1));
 		list.set(1, "Woo Woo");
 		assertEquals("Woo Woo", list.get(1));
 	}
 
 	@Test
-	public void testSize() {
-		assertEquals("list size", 3, list.size());
+	void size() {
+		assertEquals(3, list.size(), "list size");
 	}
 
 	@Test
-	public void testToArrayProvided() {
+	void toArrayProvided() {
 		String[] data = new String[list.size()];
 		list.toArray(data);
 		assertEquals(MIDDLE_STRING, data[1]);

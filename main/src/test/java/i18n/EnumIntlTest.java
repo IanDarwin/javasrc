@@ -1,12 +1,12 @@
 package i18n;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class EnumIntlTest {
+class EnumIntlTest {
 	@Test
-	public void testNorth() {
+	void north() {
 		assertEquals("North", EnumIntl.NORTH.getDescription());
 	}
 }

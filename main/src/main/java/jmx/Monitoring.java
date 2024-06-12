@@ -37,7 +37,7 @@ public class Monitoring {
 	}
 
 	private static void println(PrintWriter out, String name, Object value) {
-		out.println(String.format("%20s: %s", name, value));
+		out.println("%20s: %s".formatted(name, value));
 	}
 	
 	public static void main(String[] args) {

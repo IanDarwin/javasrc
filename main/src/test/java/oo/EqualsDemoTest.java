@@ -1,16 +1,15 @@
 package oo;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 // tag::main[]
 /** Some JUnit test cases for EqualsDemo.
  * Writing a full set is left as "an exercise for the reader".
  */
-public class EqualsDemoTest {
+class EqualsDemoTest {
 
 	/** an object being tested */
 	EqualsDemo d1;
@@ -18,25 +17,25 @@ public class EqualsDemoTest {
 	EqualsDemo d2;
 
 	/** Method to be invoked before each test method */
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		d1 = new EqualsDemo();
 		d2 = new EqualsDemo();
 	}
 
 	@Test
-	public void testSymmetry() { 
-		assertTrue(d1.equals(d1));
+	void symmetry() {
+		assertEquals(d1, d1);
 	}
 
 	@Test
-	public void testSymmetric() {
+	void symmetric() {
 		assertTrue(d1.equals(d2) && d2.equals(d1));
 	}
 
 	@Test
-	public void testCaution() {
-		assertFalse(d1.equals(null));
+	void caution() {
+		assertNotEquals(null, d1);
 	}
 }
 // end::main[]

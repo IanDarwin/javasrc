@@ -1,6 +1,6 @@
 package structure;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,7 @@ public class ListInterchangeTest {
 		System.out.println(
 			"ListInterchangeTest.testNonAdjacent(): " + list);
 		assertEquals("zero", list.get(2));
-		assertEquals("two", list.get(0));
+		assertEquals("two", list.getFirst());
 	}
 
 	public void testDescending() {

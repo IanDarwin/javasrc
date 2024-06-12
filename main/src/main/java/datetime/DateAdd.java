@@ -12,10 +12,11 @@ public class DateAdd {
 		/** Today's date */
 		LocalDate now =  LocalDate.now();
 
-		// Period p = Period.ofDays(700);
-		LocalDate then = now.plusDays(700);
+		LocalDate then1 = now.plusDays(700);
+		Period p = Period.ofDays(700);
+		LocalDate then2 = now.plus(p);
 
-		System.out.printf("Seven hundred days from %s is %s%n", now, then);
+		System.out.printf("Seven hundred days from %s is %s or %s%n", now, then1, then2);
 	}
 }
 // end::main[]

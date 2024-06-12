@@ -1,11 +1,10 @@
 package io;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.io.StringReader;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the trsly-nmd IndentContLineReader
@@ -31,13 +30,13 @@ public class IndentContLineReaderTest {
 		"How about text ending without a newline?";
 
 	@Test
-	public void testTwoLiner() throws IOException {
+	void twoLiner() throws IOException {
 		String input = "Received: by foo.bar.com\n" +
 				" at 12:34:56 January 1, 2000\n";
 		String expected = "Received: by foo.bar.com at 12:34:56 January 1, 2000";
 		try (IndentContLineReader is = new IndentContLineReader(
 	        new StringReader(input))) {
-		    assertEquals("2 liner", expected, is.readLine());
+		    assertEquals(expected, is.readLine(), "2 liner");
 		}
 	}
 	

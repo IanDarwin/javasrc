@@ -11,6 +11,7 @@ public class GetPrivateClass {
 	}
 	
 	private static class X {
+		@SuppressWarnings("unused") // Hit by reflection!
 		private int secret = 24;
 	}
 

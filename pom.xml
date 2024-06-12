@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<javase.version>21</javase.version>
+		<javase.version>21</javase.version>	<!-- DO NOT COMMIT - use 22 -->
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
@@ -36,6 +36,7 @@
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
+	<!-- <module>incubation</module> Many users won't have latest Java -->
 	<!-- <module>javafx</module> doesn't work on some platforms -->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
@@ -48,12 +49,23 @@
 	<!-- sampleproject is not a module but is a maven archetype -->
 	<!-- <module>testing-spock</module> -->
 		<module>unsafe</module>
-	<!-- <module>upcoming</module> Try if you like, but only with very latest JDKs -->
 		<module>xml</module>
 	</modules>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<compilerArgs>
+						<arg>--enable-preview</arg>
+						<arg>--source</arg><arg>${javase.version}</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+
 			<!-- Ensure that JUnit5 test runner is used -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

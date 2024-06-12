@@ -1,34 +1,41 @@
 package numbers;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Test cases for Complex
  * @author ian
  */
-public class ComplexTest extends TestCase {
-	public void testEquals() {
+class ComplexTest {
+	@Test
+	void equals() {
 		Complex c = new Complex(Math.PI, -Math.PI);
-		assertEquals("equality test", c, c);
+		assertEquals(c, c, "equality test");
 	}
-	
-	public void testAdd() {
+
+	@Test
+	void add() {
 		Complex a = new Complex(3,-1);
 		Complex b = new Complex(1, 5);
 		Complex sum = Complex.add(a, b);
-		assertEquals("add test", new Complex(4, 4), sum);
+		assertEquals(new Complex(4, 4), sum, "add test");
 	}
-	
-	public void testMultiplyAndDivide() {
+
+	@Test
+	void multiplyAndDivide() {
 		Complex c = new Complex(3,  5);
 		Complex d = new Complex(2, -2);
 		Complex m = new Complex(16.0, 4.0);
 		assertEquals(m, c.multiply(d));
 		assertEquals(c, Complex.divide(m,d));
 	}
-	
-	public void testToString() {
-		assertEquals("toString Test", "3.4-5.6i", 
-				new Complex(3.4, -5.6).toString());
+
+	@Test
+	void testToString() {
+		assertEquals("3.4-5.6i", 
+				new Complex(3.4, -5.6).toString(), 
+				"toString Test");
 	}
 }

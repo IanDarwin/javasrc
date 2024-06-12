@@ -1,6 +1,6 @@
 package strings;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.CharArrayWriter;
@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /** Potential difficulties of testing a class that insists
  * on writing to System.out. Instead of mucking about with
  * System.out here, we refactored the class under test to accept
  * a PrintWriter in some of its constructors.
  */
-public class FmtTest {
+class FmtTest {
 
 	Fmt fmt;
 	PrintWriter out;
@@ -28,8 +28,8 @@ public class FmtTest {
 			"\r\n" :
 			"\n";
 
-	@Before
-	public void setupOutputFile() throws Exception {
+	@BeforeEach
+	void setupOutputFile() throws Exception {
 		outBytes = new CharArrayWriter();
 		out = new PrintWriter(outBytes);
 	}
@@ -42,17 +42,17 @@ public class FmtTest {
 	private void construct(String data) {
 		fmt = new Fmt(setupInputFile(data), out);
 	}
-	
+
 	@Test
-	public void testEmpty() throws Exception {
+	void empty() throws Exception {
 		construct("");
 		fmt.format();
 		String[] string = outToStrings(outBytes.toString());
 		assertEquals(1, string.length);
 	}
-	
+
 	@Test
-	public void testSmall() throws Exception {
+	void small() throws Exception {
 		construct("Once\nupon\na\ntime\n...");
 		fmt.format();
 		String[] expected = { "Once upon a time ... " };
@@ -61,7 +61,7 @@ public class FmtTest {
 	}
 
 	@Test
-	public void testBlanks() throws Exception {
+	void blanks() throws Exception {
 		construct("Once\n\ntwice");
 		fmt.format();
 		String[] expected = { "Once ", "", "twice " };
@@ -82,16 +82,16 @@ public class FmtTest {
 	};
 
 	@Test
-	public void testLonger() throws Exception {
+	void longer() throws Exception {
 		construct(longInput);
 		fmt.format();
 		String[] outStrings = outToStrings(outBytes.toString());
 		compareStringArrays(longExpected, outStrings);
 	}
-	
+
 	/** Test the static Stream method */
 	@Test
-	public void testStream() throws Exception {
+	void stream() throws Exception {
 		String[] input = { "Hello,", "World" };
 		Fmt.format(Stream.of(input), out);
 		compareStringArrays(new String[]{"Hello, World "}, outToStrings(outBytes.toString()));

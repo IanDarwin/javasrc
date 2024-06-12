@@ -8,7 +8,7 @@ public class StringFormatted {
 
 	public static void main(String[] args) {
 		String sNew = "%s %s".formatted("Hello", "World").toUpperCase();
-		String sOld = String.format("%s %s", "Hello", "World").toUpperCase();
+		String sOld = "%s %s".formatted("Hello", "World").toUpperCase();
 		System.out.println("sNew = " + sNew);
 		System.out.println("sOld = " + sOld);
 	}

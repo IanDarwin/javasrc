@@ -7,6 +7,7 @@ import static java.util.FormatProcessor.FMT;
  * Demonstrate the creation and use of a fairly basic custom StringTemplate.Processor,
  * in particular, the FMT processor described in https://bugs.openjdk.org/browse/JDK-8273943
  * as "another standard processor" but never implemented for Java 21.
+ * N.B. The Preview StringTemplate is likely to be pulled out of Java 23!!
  */
 void main() {
 var MYFMT = StringTemplate.Processor.of((StringTemplate st) -> {

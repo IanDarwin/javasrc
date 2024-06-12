@@ -3,6 +3,7 @@ package netweb;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
@@ -32,7 +33,7 @@ public class Browser1 {
 				throw new IllegalArgumentException("Usage: getFromURL [url]");
 		}
 
-		URL web = new URL(loc);
+		URL web = URI.create(loc).toURL();
 		p = new JEditorPane(web);
 		JFrame jf = new JFrame("HTML");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,9 +53,8 @@ public class Browser1 {
 			final EventType eventType = e.getEventType();
 			if (eventType == HyperlinkEvent.EventType.ACTIVATED) {
 				JEditorPane pane = (JEditorPane) e.getSource();
-				if (e instanceof HTMLFrameHyperlinkEvent) {
+				if (e instanceof HTMLFrameHyperlinkEvent evt) {
 					System.out.println("Processing HTMLFrameHyperLink");
-					HTMLFrameHyperlinkEvent  evt = (HTMLFrameHyperlinkEvent)e;
 					HTMLDocument doc = (HTMLDocument)pane.getDocument();
 					doc.processHTMLFrameHyperlinkEvent(evt);
 				} else {

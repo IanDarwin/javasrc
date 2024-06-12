@@ -12,6 +12,6 @@ public class SerializableUser implements java.io.Serializable {
 	public String phoneNum;
 
 	// other fields, and methods, here...
-    static final long serialVersionUID = -7978489268769667877L;
+	private static final long serialVersionUID = -7978489268769667877L;
 }
 // end::main[]

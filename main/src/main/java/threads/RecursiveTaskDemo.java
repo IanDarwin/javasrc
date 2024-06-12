@@ -43,6 +43,7 @@ public class RecursiveTaskDemo extends RecursiveTask<Long> {
 		long avg = total / N;
 		System.out.println("Average: " + avg);
 		System.out.println("Time :" + (after - before) + " mSec");
+		pool.close();
 	}
 
 	static void loadData(int[] data) {

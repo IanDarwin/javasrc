@@ -1,24 +1,29 @@
 package structure;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Collection;
 import java.util.Properties;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-public class RandomPropsTest extends TestCase {
+class RandomPropsTest {
 
-	public void testEmpty() {
+	@Test
+	void empty() {
 		String ret = RandomProps.getRandomString(new Properties());
 		assertEquals(RandomProps.EMPTY_PROPERTIES_MESSAGE, ret);
 	}
 
-	public void testOne() {
+	@Test
+	void one() {
 		Properties p = new Properties();
 		p.put("foo", "bar");
 		assertEquals("bar", p.getProperty("foo"));
 	}
 
-	public void testSystemProps() {
+	@Test
+	void systemProps() {
 		Properties p = System.getProperties();
 		Collection<Object> values = p.values();
 		for (int i = 0; i < 10; i++) {

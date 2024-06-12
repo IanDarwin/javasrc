@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URL;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -76,7 +76,7 @@ public class BookRank {
 			System.out.println("Plotting software not installed");
 			return;
 		}
-		Process proc = Runtime.getRuntime().exec(PLOTTER_PROG);
+		Process proc = Runtime.getRuntime().exec(new String[]{PLOTTER_PROG});
 		PrintWriter gp = new PrintWriter(proc.getOutputStream());
 		gp.print(gnuplot_cmd);
 		gp.close();
@@ -102,7 +102,7 @@ public class BookRank {
 
 		// Open the URL and get a Reader from it.
 		final BufferedReader is = new BufferedReader(new InputStreamReader(
-			new URL(url).openStream()));
+			URI.create(url).toURL().openStream()));
 
 		// Read the URL looking for the rank information, as
 		// a single long string, so can match RE across multi-lines.
