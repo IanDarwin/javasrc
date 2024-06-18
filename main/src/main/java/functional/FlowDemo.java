@@ -6,6 +6,7 @@ import java.util.concurrent.Flow;
 /**
  * Simple demo of the Java 9 Reactive "Flow" API for pub-sub communication.
  */
+// tag::main[]
 public class FlowDemo {
 
     public static void main(String[] args) throws InterruptedException {
@@ -15,8 +16,13 @@ public class FlowDemo {
         SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
 
 		// Our implementation of the Subscriber interface
-        Flow.Subscriber<String> subscriber = new Flow.Subscriber<>() {
+		class MySubscriber implements Flow.Subscriber<String> {
             private Flow.Subscription subscription;
+			private String id;
+
+			MySubscriber(String id) {
+				this.id = id;
+			}
 
             @Override
             public void onSubscribe(Flow.Subscription subscription) {
@@ -26,7 +32,7 @@ public class FlowDemo {
 
             @Override
             public void onNext(String item) {
-                System.out.println("Received: " + item);
+                System.out.println(id + ": Received: " + item);
                 subscription.request(getNumBuffers());
             }
 
@@ -37,10 +43,13 @@ public class FlowDemo {
 
             @Override
             public void onComplete() {
-                System.out.println("Done");
+                System.out.println(id + ": Done");
             }
         };
+        Flow.Subscriber<String> subscriber = new MySubscriber("1");
         publisher.subscribe(subscriber);
+        Flow.Subscriber<String> subscriber2= new MySubscriber("2");
+        publisher.subscribe(subscriber2);
 		for (String mesg : messages) {
 			System.out.println("Sending: " + mesg);
 			publisher.submit(mesg);
@@ -67,4 +76,4 @@ public class FlowDemo {
 		"Day is done. Goodbye!",
 	};
 }
-
+// end::main[]
