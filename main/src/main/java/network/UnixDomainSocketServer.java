@@ -13,27 +13,26 @@ void main() throws IOException {
 	Path socketPath = Path.of("/tmp/.jcb.socket");
 
 	System.out.println("Server side");
-	ServerSocketChannel serverChan = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-	UnixDomainSocketAddress sockAddr = UnixDomainSocketAddress.of(socketPath);
-	serverChan.bind(sockAddr);
+	ServerSocketChannel serverChan = 				// <1>
+		ServerSocketChannel.open(StandardProtocolFamily.UNIX);
+	UnixDomainSocketAddress sockAddr = 				// <2>
+		UnixDomainSocketAddress.of(socketPath);
+	serverChan.bind(sockAddr);						// <3>
 	System.out.println("Waiting...");
-	SocketChannel channel = serverChan.accept();
-	while (true) {
-		try {
-			Thread.sleep(250);	// Avoid killing CPU
-		} catch (InterruptedException canthappen) {
-			// empty
+	SocketChannel channel;
+	while ((channel = serverChan.accept()) != null) {	// <4>
+		while (true) {
+			ByteBuffer inBuf = ByteBuffer.allocate(BUFSIZE); // <5>
+			int numBytes = channel.read(inBuf);			// <6>
+			if (numBytes < 0) {
+				break;
+			}
+			byte[] bytes = new byte[numBytes];
+			inBuf.flip();								// <7>
+			inBuf.get(bytes);
+			String message = new String(bytes);			// <8>
+			System.out.printf("[Incoming] %s\n", message);
 		}
-		ByteBuffer inBuf = ByteBuffer.allocate(BUFSIZE);
-		var length = channel.read(inBuf);
-		if (length < 0) {
-			continue;
-		}
-		byte[] bytes = new byte[length];
-		inBuf.flip();
-		inBuf.get(bytes);
-		String message = new String(bytes);
-		System.out.printf("[Incoming] %s\n", message);
 	}
 	// end::main[]
 }
