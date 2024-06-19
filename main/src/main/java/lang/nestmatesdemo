@@ -1,0 +1,9 @@
+for jver in 8 11
+do
+	mkdir -p $jver
+	withjava $jver javac -d $jver NestMates.java
+	echo "Disassembly of Java $jver NestMates"
+	javap -c -cp $jver lang/NestMates
+	echo "Disassembly of Java $jver NestMates Nested"
+	javap -c -cp $jver lang/NestMates\$Nested
+done
