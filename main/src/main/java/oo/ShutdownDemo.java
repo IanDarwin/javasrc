@@ -1,15 +1,11 @@
 package oo;
 
-/** Demonstrate how finalize() methods and shutdownHooks interact
+/** Demonstrate how shutdownHooks interact
  *  with calls to System.exit().
  */
 // tag::main[]
 public class ShutdownDemo {
 	public static void main(String[] args) throws Exception {
-
-		// Create an Object with a finalize() method - Bad idea!
-		// (no longer even showing this code!)
-		Object f = new Object();
 
 		// Add a shutdownHook to the JVM
 		Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -22,7 +18,7 @@ public class ShutdownDemo {
 			System.gc();
 		}
 
-		System.out.println("Calling System.exit(), with f = " + f);
+		System.out.println("Calling System.exit()");
 		System.exit(0);
 	}
 }
