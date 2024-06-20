@@ -51,6 +51,9 @@
 						<!-- Unknown issues -->
 						<exclude>lang/UsePackage.java</exclude>
 
+						<!-- Classes that are way ahead of the curve -->
+						<exclude>starting/HelloWorld23.java</exclude>
+
 						<!-- Classes that demonstrate certain variations that won't comile -->
 
 						<!-- Preview API, changed on me -->
