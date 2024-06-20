@@ -1,5 +1,6 @@
 package reflection;
 
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 // tag::main[]
@@ -18,7 +19,7 @@ public class GetAndInvokeMethod {
 		}
 		// The main code 
 		public static void main(String[] args) {
-			System.out.println("Main.args = " + args);
+			System.out.println("Main.args = " + Arrays.toString(args));
 		}
 	}
 

@@ -10,7 +10,7 @@ import java.util.Comparator;
 /**
  * CrossRef prints a cross-reference about all classes named in argv.
  * For each class, all public fields and methods are listed.
- * "Reflectance" is used to look up the information.
+ * "Reflection" is used to look up the information.
  *
  * It is expected that the output will be post-processed e.g.,
  * with sort and awk/perl. Try:
