@@ -20,7 +20,6 @@
 						<exclude>lang/ShowInitializers.java</exclude>
 						<exclude>lang/Switch.java</exclude>
 						<exclude>lang/TryStealingInnerClass.java</exclude>
-						<exclude>netweb/JScript.java</exclude>
 						<exclude>numbers/CastNeeded.java</exclude>
 						<exclude>numbers/SmallIntMult.java</exclude>
 						<exclude>oo/AllClasses.java</exclude>
