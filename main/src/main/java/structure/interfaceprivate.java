@@ -1,4 +1,4 @@
-public class intprivate {
+public class interfaceprivate {
 
 /**
  * Just to show that interface private methods cannot be called outside
