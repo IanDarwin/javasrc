@@ -29,4 +29,4 @@
 						<exclude>reflection/ClassLoaderDemo0.java</exclude>
 						<exclude>sealedclasses/B2.java</exclude>
 						<exclude>strings/WolfInStringsClothing.java</exclude>
-						<exclude>structure/intprivate.java</exclude>
+						<exclude>structure/interfaceprivate.java</exclude>
