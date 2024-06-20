@@ -66,7 +66,8 @@
 
 						<!-- All (should) have 'EXPECT COMPILE ERROR' -->
 
-						<!-- Did not get xi:include working ...
+						<!-- Include the Excludes!
+							Did not get xi:include working ...
 							xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 							href="excludes.xml" parse="xml"
 							So, for now, manually pull in 'excludes.xml' when it changes. Sigh.
