@@ -32,9 +32,12 @@
 					</compilerArgs>
 					<excludes>
 
-						<!-- Laptop stuck on java 21, these need java 22 -->
-						<!-- DO NOT COMMIT!! -->
+						<!-- Classes that need Java 23 -->
+						<exclude>starting/HelloWorld23.java</exclude>
+
+						<!-- Classes that need Java 22 -->
 						<exclude>classfileapi/*</exclude>
+						<exclude>functional/StreamGatherer*.java</exclude>
 						<exclude>oo/StatementsBeforeSuper.java</exclude>
 
 						<!-- javafx not included in some JDK distributions. -->
@@ -55,9 +58,6 @@
 
 						<!-- Unknown issues -->
 						<exclude>lang/UsePackage.java</exclude>
-
-						<!-- Classes that are way ahead of the curve -->
-						<exclude>starting/HelloWorld23.java</exclude>
 
 						<!-- Classes that demonstrate certain variations that won't comile -->
 
