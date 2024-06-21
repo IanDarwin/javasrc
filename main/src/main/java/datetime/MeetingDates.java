@@ -10,12 +10,12 @@ public class MeetingDates {
  * Compute dates of recurring meeting
  * This version has hard-coded to be 3rd Wednesday of each month.
  */
-LocalDate now = LocalDate.now();
 	int weekOfMonth = 3;
 	DayOfWeek dayOfWeek = DayOfWeek.WEDNESDAY;
 
 	// tag::method[]
 	public LocalDate getNextMeeting(int meetingsAway) {
+		LocalDate now = LocalDate.now();
 		LocalDate thisMeeting = now.with(
 			TemporalAdjusters.dayOfWeekInMonth(weekOfMonth,dayOfWeek));
 		// Has the meeting already happened this month?
