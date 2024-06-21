@@ -8,13 +8,16 @@ public class MeetingDates {
 
 /**
  * Compute dates of recurring meeting
- * This version has hard-coded to be 3rd Wednesday of each month.
+ * This version is hard-coded to be 3rd Wednesday of each month.
  */
-	int weekOfMonth = 3;
-	DayOfWeek dayOfWeek = DayOfWeek.WEDNESDAY;
+	private static int weekOfMonth = 3;
+	private static DayOfWeek dayOfWeek = DayOfWeek.WEDNESDAY;
 
 	// tag::method[]
-	public LocalDate getNextMeeting(int meetingsAway) {
+	public static LocalDate getNextMeeting(
+			int weekOfMonth,
+			DayOfWeek dayOfWeek,
+			int meetingsAway) {
 		LocalDate now = LocalDate.now();
 		LocalDate thisMeeting = now.with(
 			TemporalAdjusters.dayOfWeekInMonth(weekOfMonth,dayOfWeek));
@@ -33,10 +36,9 @@ public class MeetingDates {
 
 	// tag::main[]
 	public static void main(String[] args) {
-		MeetingDates mp = new MeetingDates();
 		DateTimeFormatter dfm = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
-		for (int i = 0; i <= 2; i++) {
-			LocalDate dt = mp.getNextMeeting(i);
+		for (int monthAway = 0; monthAway <= 2; monthAway++) {
+			LocalDate dt = getNextMeeting(weekOfMonth, dayOfWeek, monthAway);
 			System.out.println(dt.format(dfm));
 		}
 	}
