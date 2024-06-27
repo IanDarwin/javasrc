@@ -1,0 +1,7 @@
+= Artificial Intelligence from Java
+
+This module has examples of using Artificial Intelligence systems from Java code.
+
+You'll need to create some keys before using.
+
+
