@@ -42,7 +42,20 @@
 
 	<dependencies>
 
-		<!-- Jackson, used in dealing with ChatGPT -->
+		<!-- LangChain4J: One API to rule them all -->
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-open-ai</artifactId>
+			<version>0.31.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j</artifactId>
+			<version>0.31.0</version>
+		</dependency>
+
+		<!-- Jackson, general-purpose JSON, used in dealing with ChatGPT -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>

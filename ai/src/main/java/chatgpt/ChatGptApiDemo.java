@@ -1,4 +1,4 @@
-package ai;
+package chatgpt;
 
 import java.io.*;
 import java.nio.file.*;
@@ -9,6 +9,10 @@ import java.net.URISyntaxException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Calls ChatGPT API directly, using JSON-format requests and responses.
+ */
+// tag::main[]
 public class ChatGptApiDemo {
 
 	final static String URL = "https://api.openai.com/v1/chat/completions";
@@ -19,8 +23,8 @@ public class ChatGptApiDemo {
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
 		// Store your API key in a one-line text file:
-       String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).getFirst();
-       String model = "gpt-3.5-turbo";
+		String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).getFirst();
+		String model = "gpt-3.5-turbo";
 
 		URL obj = new URI(URL).toURL();
 		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
@@ -77,7 +81,7 @@ public class ChatGptApiDemo {
 		}
 	}
 
-	/** These could be record not a class, but can't get Jackson to instantiate records */
+	/** These could be record not a class, but Jackson doesn't instantiate records */
 	static class ChatGptResponse {
         private ChatGptCompletion[] choices;
 		public String toString() {
@@ -95,4 +99,5 @@ public class ChatGptApiDemo {
 		Object logprobs;
 		String finish_reason;
     }
+// end::main[]
 }
