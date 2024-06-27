@@ -26,17 +26,19 @@ public class DataOrientedDemo {
 			for (Transaction tx: c.orders) {
 				switch (tx) {
 				case Order(String p, int q, double price) -> {	// <5>
-					System.out.println(STR."Bill \{c.name()} for \{q} \{p} for $\{price}");
+					System.out.printf("Invoice %s for %d %d for $%7.2f\n",
+						c.name(), q, p, price);
 					balance += price;
 				}
 				case Refund(String reason, double amount) -> {
-					System.out.println(STR."Pay \{c.name()} $\{amount} due to \{reason}");
+					System.out.printf("Credit %s $%7.2f due to %s\n",
+						c.name(), amount, reason);
 					balance -= amount;
 				}
 				//											<6>
 				}
 			}
-			System.out.println(STR."Net balance for \{c.name()} is \{balance}"); // <7>
+			System.out.printf("Net balance for %s is %f", c.name(), balance); // <7>
 		}
 	} 
 
