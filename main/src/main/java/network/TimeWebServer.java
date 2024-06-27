@@ -29,7 +29,8 @@ for (int i = 0; i < MAX; i++) {
 
 long end_t = System.currentTimeMillis();
 
-System.out.println(STR."Time for \{MAX} fetches using \{variant} was \{end_t - start_t} mSec");
+System.out.printf("Time for %d fetches using %s was %d mSec",
+	MAX, variant, end_t - start_t);
 
 client.close();
 

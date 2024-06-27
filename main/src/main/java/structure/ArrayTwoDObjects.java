@@ -33,7 +33,7 @@ public class ArrayTwoDObjects {
 		for (int i=0; i < 2; i++) {
 			System.out.println("Row " + i + " is " + array[i].length);
 			for (int j = 0; j < Math.min(array[i].length, 3); j++) {
-				System.out.println(STR."Array[\{i}][\{j}] = \{array[i][j]}");
+				System.out.printf("Array[%d][%d] = array[%d][%d]}", i, j, i, j);
 			}
 		}
 	}
