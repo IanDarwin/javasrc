@@ -33,6 +33,7 @@
 
 	<modules>
 		<module>main</module>
+		<module>ai</module>
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
