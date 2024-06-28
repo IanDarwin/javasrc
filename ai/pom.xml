@@ -48,11 +48,17 @@
 			<artifactId>langchain4j-open-ai</artifactId>
 			<version>0.31.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>dev.langchain4j</groupId>
 			<artifactId>langchain4j</artifactId>
 			<version>0.31.0</version>
+		</dependency>
+
+		<!-- SLF4j nop logger, to placate langchain4j -->
+		<dependency> 
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>2.0.13</version>
 		</dependency>
 
 		<!-- Jackson, general-purpose JSON, used in dealing with ChatGPT -->
@@ -71,6 +77,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.4.2</version>
 		</dependency>
+
 		<!-- Test early and often -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -89,32 +96,25 @@
 	</dependencies>
 
 	<build>
+		<defaultGoal>package</defaultGoal>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.4.0</version>
-				<configuration>
-					<reportOutputDirectory>${project.basedir}</reportOutputDirectory>
-					<destDir>docs</destDir>
-					<failOnError>false</failOnError>
-					<links>
-						<link>https://docs.oracle.com/en/java/javase/17/docs/api</link>
-					</links>
-					<show>protected</show>
-					<source>${javase.version}</source>
-					<use>false</use>
-				</configuration>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
 				<executions>
 					<execution>
-						<id>attach-javadocs</id>
+						<id>auto-execution</id>
+						<phase>package</phase>
 						<goals>
-							<goal>jar</goal>
+							<goal>java</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<mainClass>langchain4j.LangChain4JImageMaker</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

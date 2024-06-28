@@ -7,15 +7,16 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URISyntaxException;
 
+import ai.Constants;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Calls ChatGPT API directly, using JSON-format requests and responses.
  */
-// tag::main[]
 public class ChatGptApiDemo {
-
+	// tag::main[]
 	final static String URL = "https://api.openai.com/v1/chat/completions";
+	final static boolean DUMP_RAW = false;
 
 	public static void main(String[] args) throws Exception {
 		System.out.println(chatGPT("What are the great themes in literature?"));
@@ -23,7 +24,7 @@ public class ChatGptApiDemo {
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
 		// Store your API key in a one-line text file:
-		String apiKey = Files.readAllLines(Path.of("openai.apikey.txt")).getFirst();
+		String apiKey = Constants.getChatGptKey();
 		String model = "gpt-3.5-turbo";
 
 		URL obj = new URI(URL).toURL();
@@ -58,46 +59,65 @@ public class ChatGptApiDemo {
 		System.out.println("Whew! Status was " + n);
 		var inputStream = connection.getInputStream();
 
-		if (inputStream != null) { // kluge for compiler
+		if (DUMP_RAW) {
 			try (BufferedReader rdr = new BufferedReader(new InputStreamReader(inputStream))) {
-				String line;;
+				String line;
 				while ((line = rdr.readLine()) != null) {
 					System.out.println(line);
 				}
+				return "Answer dumped, no JSON parsing done.";
 			}
-			return null;
+		} else {
+			var mapper = new ObjectMapper();
+			ChatGptResponse resp = mapper.readValue(inputStream, ChatGptResponse.class);
+			System.out.println(resp);
+			return resp.choices[0].message.content;
 		}
-		var mapper = new ObjectMapper();
-        ChatGptResponse resp = mapper.readValue(inputStream, ChatGptResponse.class);
-		System.out.println(resp);
-		return resp.choices[0].text;
    }
 
-	static record ChatGptRequest(String model, String role, String prompt) {
+	record ChatGptRequest(String model, String role, String prompt) {
 		public String toString() {
-			return 
+			return
 				"{\"model\": \"%s\", \"messages\": [{\"role\": \"%s\", \"content\": \"%s\"}]}".formatted(
 				model, role, prompt);
 		}
 	}
 
-	/** These could be record not a class, but Jackson doesn't instantiate records */
+	/** These could be a record not a class, but Jackson doesn't instantiate records */
 	static class ChatGptResponse {
-        private ChatGptCompletion[] choices;
+		public String id;
+		public ChatGptChoice[] choices;
+		public String object;
+		public long created;
+		public String model;
+		public ChatGptUsage usage;
+		public String system_fingerprint;
+
 		public String toString() {
 			var sb = new StringBuilder();
-			for (ChatGptCompletion comp : choices) {
+			for (ChatGptChoice comp : choices) {
 				sb.append(comp).append('\n');
 			}
 			return sb.toString();
 		}
 	}
 
-    static class ChatGptCompletion {
-		String text;
-		int index;
-		Object logprobs;
-		String finish_reason;
+    static class ChatGptChoice{
+		public int index;
+		public ChatGptMessage message;
+		public Object logprobs;
+		public String finish_reason;
     }
+
+	static class ChatGptMessage {
+		public String role;
+		public String content;
+	}
+
+	static class ChatGptUsage {
+		public int prompt_tokens;
+		public int completion_tokens;
+		public int total_tokens;
+	}
 // end::main[]
 }
