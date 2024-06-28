@@ -15,7 +15,7 @@ public class LangChain4JImageMaker {
 // tag::main[]
 	public static void main(String[] args) {
 
-		String apiKey = Constants.getChatGptKey();
+		String apiKey = Constants.getOpenAPIKey();
 		ImageModel model = OpenAiImageModel.withApiKey(apiKey);
 
 		Response<Image> response = model.generate(Constants.IMAGE_PROMPT);

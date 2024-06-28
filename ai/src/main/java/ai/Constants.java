@@ -13,7 +13,7 @@ public class Constants {
     // end::prompts[]
     public static final String OPENAI_KEY_FILE = "openai.apikey.txt";
 
-    public static String getChatGptKey() {
+    public static String getOpenAPIKey() {
         try {
             return Files.readAllLines(Path.of(OPENAI_KEY_FILE)).getFirst();
         } catch (IOException ex) {

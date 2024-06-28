@@ -1,7 +1,6 @@
 package chatgpt;
 
 import java.io.*;
-import java.nio.file.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -24,7 +23,7 @@ public class ChatGptApiDemo {
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
 		// Store your API key in a one-line text file:
-		String apiKey = Constants.getChatGptKey();
+		String apiKey = Constants.getOpenAPIKey();
 		String model = "gpt-3.5-turbo";
 
 		URL obj = new URI(URL).toURL();
