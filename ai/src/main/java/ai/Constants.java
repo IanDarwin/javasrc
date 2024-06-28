@@ -5,11 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Constants {
-    public static final String PROMPT =
+    // tag::constants[]
+    public static final String TEXT_PROMPT =
             "What are the great themes in literature?";
+    public static final String IMAGE_PROMPT =
+            "Charles Darwin in modern Toronto, cartoon style";
+    // end::constants[]
     public static final String OPENAI_KEY_FILE = "openai.apikey.txt";
 
-    public static final String getChatGptKey() {
+    public static String getChatGptKey() {
         try {
             return Files.readAllLines(Path.of(OPENAI_KEY_FILE)).getFirst();
         } catch (IOException ex) {

@@ -12,12 +12,13 @@ import java.net.URI;
 
 public class LangChain4JImageMaker {
 
+// tag::main[]
 	public static void main(String[] args) {
 
 		String apiKey = Constants.getChatGptKey();
 		ImageModel model = OpenAiImageModel.withApiKey(apiKey);
 
-		Response<Image> response = model.generate("Ian Darwin in Toronto, cartoon style");
+		Response<Image> response = model.generate(Constants.IMAGE_PROMPT);
 
 		var respUrl = response.content().url();
 
@@ -39,3 +40,4 @@ public class LangChain4JImageMaker {
 		}
 	}
 }
+// end::main[]

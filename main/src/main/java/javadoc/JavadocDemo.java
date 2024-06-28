@@ -51,7 +51,7 @@ public class JavadocDemo extends JPanel {
 		g.drawString("Welcome to Java", 50, 50);
 	}
 
-	// tag::snippet1
+	// tag::snippet-int[]
 	/**
 	 * A simple demo method. Typical usage:
 	 * {@snippet lang="java" :
@@ -63,9 +63,9 @@ public class JavadocDemo extends JPanel {
 	public void demo(int i) {
 		System.out.printf("Demo value is %d\n", i);
 	}
-	// end::snippet1
+	// end::snippet-int[]
 
-	// tag::snippet2[]
+	// tag::snippet-ext[]
 	/**
 	 * A simple method. See this note:
 	 * {@snippet lang="python" file="snyde_comment.py"}
@@ -74,5 +74,5 @@ public class JavadocDemo extends JPanel {
 	public void demo2(int i) {
 		System.out.printf("Demo value is %d\n", i);
 	}
-	// end::snippet2[]
+	// end::snippet-ext[]
 }
