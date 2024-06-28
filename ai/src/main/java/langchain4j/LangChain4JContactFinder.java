@@ -7,6 +7,7 @@ import dev.langchain4j.service.UserMessage;
 
 import ai.Constants;
 
+// tag::main[]
 public class LangChain4JContactFinder {
 
 	static class Contact {					// <1>
@@ -36,7 +37,7 @@ public class LangChain4JContactFinder {
 	interface ContactFinder {				// <3>
 
 		@UserMessage("Extract information about a person from {{it}}")
-		Contact extractContactFrom(String text); // <4>>
+		Contact extractContactFrom(String text); // <4>
 	}
 
 	public static void main(String[] args) {
@@ -61,4 +62,4 @@ public class LangChain4JContactFinder {
 		}
 	}
 }
-
+// end::main[]
