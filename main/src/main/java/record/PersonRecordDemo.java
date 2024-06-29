@@ -1,8 +1,9 @@
 package record;
 
 /**
- * Simplest demo of a Record class.
+ * Simpl demo of a Record class.
  */
+// tag::main[]
 public class PersonRecordDemo {
 
 	/** This is all it takes to define a record -
@@ -20,3 +21,4 @@ public class PersonRecordDemo {
 		System.out.println(p);
 	}
 }
+// end::main[]

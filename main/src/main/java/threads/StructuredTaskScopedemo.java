@@ -1,6 +1,7 @@
 import java.util.concurrent.Callable;
 import java.util.concurrent.StructuredTaskScope;
 
+// tag::main[]
 private static final ScopedValue<Client> CLIENT = ScopedValue.newInstance();
 
 private final Client currentClient = new Client(1234);
@@ -33,3 +34,4 @@ Callable<Integer> doYetMore = () -> {
 };
 
 record Client(int id) { }
+// end::main[]

@@ -1,3 +1,4 @@
+// tag::main[]
 void main() {
 	Class outer = lang.NestMates.class;
 	Class inner = lang.NestMates.Nested.class;
@@ -7,3 +8,4 @@ void main() {
 	System.out.println("What are all of inner's nestmates? " + 
 		java.util.Arrays.toString(inner.getNestMembers()));
 }
+// end::main[]

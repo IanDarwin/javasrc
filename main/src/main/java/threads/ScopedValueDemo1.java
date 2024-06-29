@@ -1,3 +1,4 @@
+// tag::main[]
 static final ScopedValue<Client> CLIENT = ScopedValue.newInstance();
 
 private final Client currentClient = new Client(1234);
@@ -18,3 +19,4 @@ void doYetMore() {
 }
 
 record Client(int id) { }
+// end::main[]

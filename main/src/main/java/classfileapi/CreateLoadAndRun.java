@@ -6,6 +6,7 @@ import java.lang.constant.*;
 import java.lang.reflect.*;
 import java.nio.file.*;
 
+// tag::main[]
 import static java.lang.constant.ConstantDescs.*;
 
 /**
@@ -15,7 +16,6 @@ import static java.lang.constant.ConstantDescs.*;
  * for java.lang.classfiles
  * @author Glue around that by Ian Darwin
  */
-// tag::main[]
 public class CreateLoadAndRun extends ClassLoader {
 
 	final String fullClassName = "notapackage.Hello";		// <1>

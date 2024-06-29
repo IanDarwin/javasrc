@@ -1,3 +1,4 @@
+// tag::main[]
 /*
  * A silly library just for the FFI demo.
  */
@@ -35,3 +36,4 @@ int main(int argc, char **argv) {
 	updatesketch(2, "Always look on the bright side of life");
 	puts(pythonsketch(2));
 }
+// end::main[]

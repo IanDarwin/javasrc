@@ -2,6 +2,7 @@
 
 import java.time.LocalDate;
 
+// tag::main[]
 class One {
 	int dom;
 	One(int dom) {
@@ -23,3 +24,4 @@ void main() {
 	var o = new Two();
 	System.out.println(o.dom);
 }
+// end::main[]
