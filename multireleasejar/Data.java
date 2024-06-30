@@ -6,3 +6,4 @@ public class Data {
 		return "class";
 	}
 }
+// end::main[]
