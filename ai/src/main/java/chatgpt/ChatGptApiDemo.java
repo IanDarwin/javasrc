@@ -101,12 +101,12 @@ public class ChatGptApiDemo {
 		}
 	}
 
-    static class ChatGptChoice{
+	static class ChatGptChoice{
 		public int index;
 		public ChatGptMessage message;
 		public Object logprobs;
 		public String finish_reason;
-    }
+	}
 
 	static class ChatGptMessage {
 		public String role;
