@@ -24,7 +24,7 @@ public class ChatGptApiDemo {
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
 		// Store your API key in a one-line text file:
 		String apiKey = Constants.getOpenAPIKey();
-		String model = "gpt-3.5-turbo";
+		String model = "gpt-4o";
 
 		URL obj = new URI(URL).toURL();
 		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
