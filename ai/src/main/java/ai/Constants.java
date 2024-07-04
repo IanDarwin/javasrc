@@ -11,14 +11,16 @@ public class Constants {
     public static final String IMAGE_PROMPT =
             "Charles Darwin in modern Toronto, cartoon style";
     // end::prompts[]
-    public static final String OPENAI_KEY_FILE = "openai.apikey.txt";
+    public static final String OPENAI_KEY_FILE = ".openai-apikey.txt";
 
     public static String getOpenAPIKey() {
+        var home = System.getProperty("user.home");
+        var file = home + "/" + OPENAI_KEY_FILE;
         try {
-            return Files.readAllLines(Path.of(OPENAI_KEY_FILE)).getFirst();
+            return Files.readAllLines(Path.of(file)).getFirst();
         } catch (IOException ex) {
             throw new RuntimeException(
-                    "Unable to read API Key File " + OPENAI_KEY_FILE, ex);
+                    "Unable to read API Key File " + file, ex);
         }
     }
 }

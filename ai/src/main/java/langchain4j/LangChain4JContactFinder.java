@@ -10,15 +10,14 @@ import ai.Constants;
 // tag::main[]
 public class LangChain4JContactFinder {
 
-	static class Contact {					// <1>
-
-		private String firstName;
-		private String lastName;
-		private String company;
-		private String street;
-		private String city;
-		private String state;
-		private String code;
+	record Contact(					// <1>
+		String firstName,
+		String lastName,
+		String company,
+		String street,
+		String city,
+		String state,
+		String code) {
 
 		@Override
 		public String toString() {			// <2>

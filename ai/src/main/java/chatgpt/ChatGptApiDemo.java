@@ -55,11 +55,12 @@ public class ChatGptApiDemo {
 			}
 			return null;
 		}
-		System.out.println("Whew! Status was " + n);
+		System.out.println("HTTP Status was " + n);
 		var inputStream = connection.getInputStream();
 
 		if (DUMP_RAW) {
-			try (BufferedReader rdr = new BufferedReader(new InputStreamReader(inputStream))) {
+			try (BufferedReader rdr =
+						 new BufferedReader(new InputStreamReader(inputStream))) {
 				String line;
 				while ((line = rdr.readLine()) != null) {
 					System.out.println(line);
@@ -76,9 +77,9 @@ public class ChatGptApiDemo {
 
 	record ChatGptRequest(String model, String role, String prompt) {
 		public String toString() {
-			return
-				"{\"model\": \"%s\", \"messages\": [{\"role\": \"%s\", \"content\": \"%s\"}]}".formatted(
-				model, role, prompt);
+			return """
+				{"model": "%s", "messages": [{"role": "%s", "content": "%s"}]}"""
+				.formatted(model, role, prompt);
 		}
 	}
 

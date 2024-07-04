@@ -17,7 +17,6 @@ public class LangChain4JImageMaker {
 
 		String apiKey = Constants.getOpenAPIKey();
 		ImageModel model = OpenAiImageModel.withApiKey(apiKey);
-
 		Response<Image> response = model.generate(Constants.IMAGE_PROMPT);
 
 		var respUrl = response.content().url();
