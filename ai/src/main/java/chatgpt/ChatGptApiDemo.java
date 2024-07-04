@@ -18,7 +18,7 @@ public class ChatGptApiDemo {
 	final static boolean DUMP_RAW = false;
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(chatGPT("What are the great themes in literature?"));
+		System.out.println(chatGPT(Constants.TEXT_PROMPT));
 	}
 
 	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
