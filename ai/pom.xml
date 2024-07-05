@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 	<inceptionYear>2024</inceptionYear>
 
-	<name>AI examples</name>
+	<name>javasrc - AI examples</name>
 	<description>
 		AI examples
 	</description>
