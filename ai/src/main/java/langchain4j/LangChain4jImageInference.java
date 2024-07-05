@@ -22,7 +22,7 @@ import java.util.Base64;
 /**
  * Simple demo of a chat-gpt text+media prompt and response.
  */
-public class LangChain4JMixedMedia {
+public class LangChain4jImageInference {
 
 	public static void main(String[] args) {
 
