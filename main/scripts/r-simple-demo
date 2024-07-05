@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# example for simple R interactive use in DS+R chapter
+
+R --no-save <<EOF
+2 + 2
+x = 2 + 2
+x
+r = c(10,20,30,45,55,67)
+r
+r+3
+r / 3
+EOF
+
