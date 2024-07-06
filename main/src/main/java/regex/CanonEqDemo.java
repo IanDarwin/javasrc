@@ -22,11 +22,9 @@ public class CanonEqDemo {
 		Pattern pattern = Pattern.compile(pattStr, Pattern.CANON_EQ);
 		for (int i = 0; i < input.length; i++) {
 			if (pattern.matcher(input[i]).matches()) {
-				System.out.println(
-					pattStr + " matches input " + input[i]);
+				System.out.println(pattStr + " matches input " + input[i]);
 			} else {
-				System.out.println(
-					pattStr + " does not match input " + input[i]);
+				System.out.println(pattStr + " doesn't match input " + input[i]);
 			}
 		}
 	}
