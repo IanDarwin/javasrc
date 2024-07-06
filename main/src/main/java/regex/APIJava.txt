@@ -7,55 +7,55 @@ package java.util.regex;
 
 public final class Pattern {
 	// Flags values ('or' together)
-    public static final int 
+	public static final int 
 		UNIX_LINES, CASE_INSENSITIVE, COMMENTS, MULTILINE,
 		DOTALL, UNICODE_CASE, CANON_EQ;
 	// No public constructors; use these Factory methods
-    public static Pattern compile(String patt);
-    public static Pattern compile(String patt, int flags);
+	public static Pattern compile(String patt);
+	public static Pattern compile(String patt, int flags);
 	// Method to get a Matcher for this Pattern
-    public Matcher matcher(CharSequence input);
+	public Matcher matcher(CharSequence input);
 	// Information methods
-    public String pattern();
-    public int flags();
+	public String pattern();
+	public int flags();
 	// Convenience methods
-    public static boolean matches(String pattern, CharSequence input);
-    public String[] split(CharSequence input);
-    public String[] split(CharSequence input, int max);
+	public static boolean matches(String pattern, CharSequence input);
+	public String[] split(CharSequence input);
+	public String[] split(CharSequence input, int max);
 }
 
 public final class Matcher {
 	// Action: find or match methods
-    public boolean matches();
-    public boolean find();
-    public boolean find(int start);
-    public boolean lookingAt();
+	public boolean matches();
+	public boolean find();
+	public boolean find(int start);
+	public boolean lookingAt();
 	// "Information about the previous match" methods
-    public int start();
-    public int start(int whichGroup);
-    public int end();
-    public int end(int whichGroup);
-    public int groupCount();
-    public String group();
-    public String group(int whichGroup);
+	public int start();
+	public int start(int whichGroup);
+	public int end();
+	public int end(int whichGroup);
+	public int groupCount();
+	public String group();
+	public String group(int whichGroup);
 	// Reset methods
-    public Matcher reset();
-    public Matcher reset(CharSequence newInput);
+	public Matcher reset();
+	public Matcher reset(CharSequence newInput);
 	// Replacement methods
-    public Matcher appendReplacement(StringBuffer where, String newText);
-    public StringBuffer appendTail(StringBuffer where);
-    public String replaceAll(String newText);
-    public String replaceFirst(String newText);
+	public Matcher appendReplacement(StringBuffer where, String newText);
+	public StringBuffer appendTail(StringBuffer where);
+	public String replaceAll(String newText);
+	public String replaceFirst(String newText);
 	// information methods
-    public Pattern pattern();
+	public Pattern pattern();
 }
 
 /* String, showing only the RE-related methods */
 public final class String {
-    public boolean matches(String regex);
-    public String replaceFirst(String regex, String newStr);
-    public String replaceAll(String regex, String newStr);
-    public String[] split(String regex);
-    public String[] split(String regex, int max);
+	public boolean matches(String regex);
+	public String replaceFirst(String regex, String newStr);
+	public String replaceAll(String regex, String newStr);
+	public String[] split(String regex);
+	public String[] split(String regex, int max);
 }
 // end::main[]
