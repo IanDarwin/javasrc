@@ -6,6 +6,8 @@ R --no-save <<EOF
 2 + 2
 x = 2 + 2
 x
+# r = 10 20 30 40 50
+# Error: unexpected numeric constant in "r = 10 20"
 r = c(10,20,30,45,55,67)
 r
 r+3
