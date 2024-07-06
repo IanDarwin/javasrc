@@ -3,7 +3,7 @@ import java.util.function.*;
 import java.util.stream.*;
 
 /**
- * Demo of a custom Stream Gatherer.
+ * Demo of a custom Stream Gatherer. Needs Java 22+
  */
 
 // tag::main[]
