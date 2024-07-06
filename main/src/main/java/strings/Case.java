@@ -1,5 +1,7 @@
 package strings;
 
+import org.apache.commons.text.*;
+
 /**
  * Control case.
  * @author Ian F. Darwin, https://darwinsys.com/
@@ -21,5 +23,13 @@ public class Case {
 		else
 			System.err.println("equalsIgnoreCase() incorrectly reports false");
 		// end::main[]
+
+		// tag::commons-text[]
+		// Fancier stuff via Apache Commons Text:
+		String smith = "lorry smith";
+		System.out.println(WordUtils.capitalize(smith));
+		String jones = "JENkins JONes";
+		System.out.println(WordUtils.capitalizeFully(jones));
+		// end::commons-text[]
 	}
 }
