@@ -25,6 +25,7 @@ public class NumFormat2 {
 		for (double d : data) {
 			System.out.println(
 				d + "\tformats as " + form.format(d));
+		}
 	}
 }
 // end::main[]
