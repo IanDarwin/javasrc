@@ -24,16 +24,15 @@ public class RomanNumberFormatParameterizedTest {
 		return Arrays.asList(data);
 	}
 	private static Object[][] data = {
-			// A few commented out until parse is rewritten to handle subtractives
 			{ 1, "I" },
-			//{ 42, "XLII" },
+			{ 42, "XLII" },
 			{ 678, "DCLXXVIII" },
 			{ 1537, "MDXXXVII" },
-			//{ 1999, "MCMXCIX" },
+			{ 1999, "MCMXCIX" },
 			{ 2000, "MM" },
 			{ 2001, "MMI" },
 			{ 2013, "MMXIII" },
-			//{ 3999, "MMMCMXCIX" },
+			{ 3999, "MMMCMXCIX" },
 	};
 
 	@BeforeEach

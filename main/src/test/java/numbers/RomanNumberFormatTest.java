@@ -31,7 +31,7 @@ class RomanNumberFormatTest {
 
 	@Test
 	void thereThereAndBackAgain() {
-		Long num1 = (Long) nf.parseObject("LCX", null);
+		Long num1 = (Long) nf.parseObject("CLX", null);
 		assertEquals(Long.valueOf(160), num1);
 		Long num2 = (Long) nf.parseObject("XX", null);
 		assertEquals(Long.valueOf(20), num2);

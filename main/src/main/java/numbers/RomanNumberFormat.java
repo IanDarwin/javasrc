@@ -1,5 +1,6 @@
 package numbers;
 
+import java.io.Serial;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.NumberFormat;
@@ -10,30 +11,23 @@ import java.text.ParsePosition;
  * and we don't display Roman Numbers differently in different Locales.
  * Filled with quick-n-dirty algorithms.
  *
- * @author Ian F. Darwin, https://darwinsys.com/
+ * @author Ian F. Darwin, <a href="https://darwinsys.com/">DarwinSys.com</a>
  */
 // tag::main[]
 public class RomanNumberFormat extends Format {
 
+	@Serial
 	private static final long serialVersionUID = -2303809319102357783L;
 	
 	/** Characters used in "Arabic to Roman", that is, format() methods. */
-	final static char A2R[][] = {
+	final static char[][] A2R = {
 			{ 0, 'M' },
 			{ 0, 'C', 'D', 'M' },
 			{ 0, 'X', 'L', 'C' },
 			{ 0, 'I', 'V', 'X' },
 	};
-	
-	static class R2A {
-		char ch;
-		public R2A(char ch, int amount) {
-			super();
-			this.ch = ch;
-			this.amount = amount;
-		}
-		int amount;
-	}
+
+	record R2A(char ch, int amount) {}
 	
 	final static R2A[] R2A = {
 		new R2A('M', 1000),
@@ -59,7 +53,7 @@ public class RomanNumberFormat extends Format {
 	// Not an override
 	public String format(long n) {
 		StringBuffer sb = new StringBuffer();
-		format(Integer.valueOf((int)n), sb,
+		format((int) n, sb,
 			new FieldPosition(NumberFormat.INTEGER_FIELD));
 		return sb.toString();
 	}
@@ -131,15 +125,31 @@ public class RomanNumberFormat extends Format {
 	@Override
 	public Object parseObject(String what, ParsePosition where) {
 		int n = 0;
-		for (char ch : what.toUpperCase().toCharArray()) {
-			for (R2A r : R2A) {
-				if (r.ch == ch) {
-					n += r.amount;
-					break;
+		final char[] chars = what.toUpperCase().toCharArray();
+		for (int i = 0; i < chars.length; i++) {
+			R2A cur = getR2A(chars[i]);
+			if (i < chars.length - 1) {
+				var next = getR2A(chars[i + 1]);
+				if (cur.amount < next.amount) {
+					n += next.amount - cur.amount;
+					++i;
+				} else {
+					n += cur.amount;
 				}
+			} else {
+				n += cur.amount;
 			}
-		}		
+
+		}
 		return Long.valueOf(n);
+	}
+
+	private R2A getR2A(char ch) {
+		for (R2A r : R2A) {
+			if (r.ch == ch)
+				return r;
+		}
+		throw new IllegalArgumentException("Character " + ch + " not valid");
 	}
 
 	/* Implement a toy stack */
