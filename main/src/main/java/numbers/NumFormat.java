@@ -3,7 +3,8 @@ package numbers;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/** JDK1.1 introduced a series of Formatting classes that
+/** 
+ * Java has a series of Formatting classes that
  * format various items in locale-appropriate ways
  * (10000 becomes 10,000 or 10.000 or whatever, as needed
  * in various locales.
@@ -15,8 +16,8 @@ public class NumFormat {
 	public static void main(String[] av) {
 		int data[] = { 100, 1000, 10000, 1000000 };
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
-		for (int i = 0; i < data.length; ++i) {
-			System.out.println(data[i] + "\t" + nf.format(data[i]));
+		for (int n : data) {
+			System.out.println(n + "\t" + nf.format(n));
 		}
 	}
 }
