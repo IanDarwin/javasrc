@@ -23,7 +23,7 @@
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>8.0</javaee.version>
-		<darwinsys-api.version>1.7.6</darwinsys-api.version>
+		<darwinsys-api.version>1.8.3-SNAPSHOT</darwinsys-api.version>
 		<!-- Only used in some modules, worth defining here anyway -->
 		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
 		<junit4.version>[4.13.1,)</junit4.version>
