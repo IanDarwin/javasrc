@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
  * Should use same interface as Mailer (subclass, and override doSend()).
  *
  * @author	Ian Darwin
- * @deprecated Use javax.mail instead, which almost certainly provides a more
+ * @deprecated Use jakarta.mail instead, which almost certainly provides a more
  * complete implementation of the SMTP specification.
  */
 public class RawSender implements SysExits {

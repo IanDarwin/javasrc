@@ -1,11 +1,11 @@
 package email;
 
 // tag::main[]
-import javax.mail.Address;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Store;
+import jakarta.mail.Address;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.Session;
+import jakarta.mail.Store;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;

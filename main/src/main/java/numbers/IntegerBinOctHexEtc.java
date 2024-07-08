@@ -10,6 +10,7 @@ public class IntegerBinOctHexEtc {
 		// tag::main[]
 		String input = "101010";
 		int i = 42;
+		System.out.println(input + " in default toString() is " + Integer.toString(i));
 		for (int radix : new int[] { 2, 8, 10, 16, 36 }) {
 			System.out.print(input + " in base " + radix + " is "
 					+ Integer.valueOf(input, radix) + "; ");

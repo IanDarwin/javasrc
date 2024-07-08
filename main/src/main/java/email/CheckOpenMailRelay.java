@@ -3,7 +3,7 @@ package email;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 /** TestOpenMailRelay -- send self-returning SPAM to check for relay sites.
  * @author Ian F. Darwin

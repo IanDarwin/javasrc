@@ -102,12 +102,12 @@ public class MailClient extends JComponent {
 
 		final JFrame f = new JFrame("MailClient");
 
-		// Start by checking that the javax.mail package is installed!
+		// Start by checking that the jakarta.mail package is installed!
 		try {
-			Class.forName("javax.mail.Session");
+			Class.forName("jakarta.mail.Session");
 		} catch (ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(f, 
-				"Sorry, the javax.mail package was not found\n(" + cnfe + ")",
+				"Sorry, the jakarta.mail package was not found\n(" + cnfe + ")",
 				"Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}

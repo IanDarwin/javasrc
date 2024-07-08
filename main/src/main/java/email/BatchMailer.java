@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import com.darwinsys.mail.Mailer;
 

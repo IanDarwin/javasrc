@@ -1,8 +1,8 @@
 package email;
 
-import javax.mail.Address;
-import javax.mail.Message;
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.Address;
+import jakarta.mail.Message;
+import jakarta.mail.internet.InternetAddress;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.darwinsys.lang.StringFormat;

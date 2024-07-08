@@ -1,7 +1,7 @@
 
 CLASSPATH PROBLEM
 
-You do not appear to have the javax.mail package in your CLASSPATH.
+You do not appear to have the jakarta.mail package in your CLASSPATH.
 
 You will need to download and install this file in order to compile 
 the programs in `pwd`. Either get and install the javamail and

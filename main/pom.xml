@@ -241,11 +241,11 @@
 			<version>${javaee.version}</version>	
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.5.0-b01</version>
-			<scope>provided</scope>
+			<groupId>jakarta.mail</groupId>
+			<artifactId>jakarta.mail-api</artifactId>
+			<version>2.1.3</version>
 		</dependency>
 
 	</dependencies>

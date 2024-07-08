@@ -1,6 +1,6 @@
 package email;
 
-import javax.mail.Folder;
+import jakarta.mail.Folder;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /** A Mutable Tree Node that is also a Folder. */
