@@ -6,7 +6,7 @@ package numbers;
  * @author Ian F. Darwin, https://darwinsys.com/
  */
 public class IntegerBinOctHexEtc {
-	public static void main(String[] argv) { 
+	public static void main(String[] argv) {
 		// tag::main[]
 		String input = "101010";
 		int i = 42;

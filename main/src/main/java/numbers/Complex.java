@@ -1,23 +1,13 @@
 package numbers;
 
-/** A class to represent Complex Numbers. A Complex object is
+/** My own implementation representing Complex Numbers. A Complex object is
  * immutable once created; the add, subtract and multiply routines
  * return newly-created Complex objects containing the results.
  *
  * @author Ian F. Darwin, inspired by David Flanagan.
  */
 // tag::main[]
-public class Complex {
-	/** The real part */
-	private double r;
-	/** The imaginary part */
-	private double i;
-
-	/** Construct a Complex */
-	Complex(double rr, double ii) {
-		r = rr;
-		i = ii;
-	}
+public record Complex(double r, double i) {
 
 	/** Display the current Complex as a String, for use in
 	 * println() and elsewhere.
@@ -85,23 +75,6 @@ public class Complex {
 		return new Complex(
 			(c1.r*c2.r+c1.i*c2.i)/(c2.r*c2.r+c2.i*c2.i),
 			(c1.i*c2.r-c1.r*c2.i)/(c2.r*c2.r+c2.i*c2.i));
-	}
-	
-	/* Compare this Complex number with another
-	 */
-	public boolean equals(Object o) {
-		if (o.getClass() != Complex.class) {
-			throw new IllegalArgumentException(
-					"Complex.equals argument must be a Complex");
-		}
-		Complex other = (Complex)o;
-		return r == other.r && i == other.i;
-	}
-	
-	/* Generate a hashCode; not sure how well distributed these are.
-	 */
-	public int hashCode() {
-		return (int)(r) |  (int)i;
 	}
 }
 // end::main[]

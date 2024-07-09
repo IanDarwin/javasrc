@@ -14,7 +14,6 @@ public class ComplexDemoACM {
 		System.out.println(c);
 		System.out.println(c + ".getReal() = " + c.getReal());
 		System.out.println(c + " + " + d + " = " + c.add(d));
-		System.out.println(c + " + " + d + " = " + c.add(d));
 		System.out.println(c + " * " + d + " = " + c.multiply(d));
 		System.out.println(c.divide(d));
 	}
