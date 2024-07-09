@@ -42,11 +42,13 @@ public class NumSeries {
 		b.set(3);	// April
 		b.set(8);	// September
 
-		// Presumably this would be somewhere else in the code.
+		// Print the months
 		for (int i = 0; i<months.length; i++) {
 			if (b.get(i))
 				System.out.println("Month " + months[i]);
 		}
+		// Shorter way, using IntStream stream() method
+		b.stream().forEach(i->System.out.println(months[i]));
 
 		// Same example but shorter:
 		// a discontiguous set of integers, using an array
