@@ -19,13 +19,13 @@ public class Array2  {
 
             // if (nDates >= dates.length) {
             //     throw new RuntimeException(
-			//         "Too Many Dates! Simplify your life!!");
+            //         "Too Many Dates! Simplify your life!!");
             // }
 
             // better: reallocate, making data structure dynamic
             if (nDates >= dates.length) {
                 LocalDateTime[] tmp = 
-					new LocalDateTime[dates.length * GROW_FACTOR];
+                    new LocalDateTime[dates.length * GROW_FACTOR];
                 System.arraycopy(dates, 0, tmp, 0, dates.length);
                 dates = tmp;    // copies the array reference
                 // old array will be garbage collected soon...
