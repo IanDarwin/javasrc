@@ -9,7 +9,7 @@ import java.time.Period;
  */
 public class DateAdd {
 	public static void main(String[] av) {
-		/** Today's date */
+		/* Today's date */
 		LocalDate now =  LocalDate.now();
 
 		LocalDate then1 = now.plusDays(700);

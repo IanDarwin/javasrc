@@ -11,7 +11,7 @@ public class DateConversions {
 	public static void main(String[] args) {
 		
 		// tag::main[]
-		// Convert a number of Seconds since the Epoch, to a local date/time
+		// Convert "a billion seconds of Unix" to a local date/time
 		Instant epochSec = Instant.ofEpochSecond(1000000000L);
 		ZoneId zId = ZoneId.systemDefault();
 		ZonedDateTime then = ZonedDateTime.ofInstant(epochSec, zId);
