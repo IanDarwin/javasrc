@@ -17,5 +17,6 @@ public class SetDemo {
 		hashSet.add("Three");
 		System.out.println(hashSet);
 		// end::main[]
+		hashSet.stream().map(s->s.hashCode()).forEach(System.out::println);
 	}
 }
