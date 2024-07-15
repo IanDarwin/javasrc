@@ -14,10 +14,12 @@ public class SetStuff {
 		s1.add("Ian Darwin");
 		s1.add("Tom Dooley");
 		s1.add("Jesse James");
+		print("s1", s1);
 
 		Set<String> s2 = new HashSet<String>();
 		s2.add("Ian Darwin");
 		s2.add("Duelin' Dalton");
+		print("s2", s2);
 
 		Set<String> union = new TreeSet<String>(s1);
 		union.addAll(s2);		// now contains the union
