@@ -12,12 +12,13 @@ public class SimpleStreamDemo {
 	static Hero[] heroes = { 
 		new Hero("Grelber", 21), 
 		new Hero("Roderick", 12),
-		new Hero("Francisco", 35), 
+		new Hero("Thor", 35), 
 		new Hero("Superman", 65),
-		new Hero("Jumbletron", 22),
-		new Hero("Mavericks", 1), 
+		new Hero("Batman", 37),
 		new Hero("Palladin", 50),
-		new Hero("Athena", 50) };
+		new Hero("Iron Man", 42),
+		new Hero("Athena", 50)
+	};
 
 	public static void main(String[] args) {
 
