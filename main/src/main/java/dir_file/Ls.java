@@ -10,9 +10,7 @@ public class Ls {
 	public static void main(String args[]) throws IOException {
 		Files.list(Path.of("."))
 			.sorted()
-			.forEach(dir -> {
-				System.out.println(dir);
-			});
+			.forEach(System.out::println);
 	}
 }
 // end::main[]
