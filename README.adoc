@@ -10,6 +10,7 @@ https://jetbrains.com/idea[IntelliJ IDEA] IDE.
 Some modules may still build with the
 https://eclipse.org/[Eclipse] IDE;
 for those that don't, pull requests welcome.
+
 As of 2024-04-14, this does not work on Eclipse,
 even with the "Java 22 updater"
 (https://marketplace.eclipse.org/content/java-22-support-eclipse-2024-03-431[]).
@@ -21,7 +22,7 @@ This seems to be an Eclipse bug, and fails even with the source attribute set to
 Further, their library appears to be missing at least two methods in the FFI `Arena` class,
 causing `CallCFromJava` to fail to compile.
 
-== Note to self
+== Maintenace Note
 
 Don't delete files without checking if they're still used in the Java Cookbook repo.
 
@@ -32,11 +33,11 @@ public (well, developers) accustomed to having to choose between portability and
 I turned what I'd learned from working with Java into 
 a course for https://learningtree.com/[Learning Tree] and 
 then the first edition of the https://javacook.darwinsys.com/[Java Cookbook].
-Now in its fourth edition, this book consists of several hundred how-to "recipes"
+Now in its fourth or fifth edition, this book consists of several hundred how-to "recipes"
 each discussing a particular problem that devs have to code, how to solve it, and 
 illustrated with one or more code examples. 
 
-The contents of the Fourth Edition looks like this:
+The Contents of the Fourth Edition looks like this:
 
 // Uses * not + because of what's at the end of this list.
 // Updated for JCB 4E; will need changes for 5E.
@@ -66,8 +67,8 @@ The contents of the Fourth Edition looks like this:
 If you want to compile everything, *the minimum Java release is currently {LATEST}*.
 You can compile for Java 17 by checking out the java-17 branch, but it's not actively maintained.
 Or you could just add exclusions for the few files that use newer features.
-For releases before that, I don't have branches or tags, but if somebody wants to bisect (maybe start
-around commit `628efafe`) and tell me what works for 11,
+For releases before that, I don't have branches or tags, but if somebody wants to 'git bisect'
+(maybe starting around commit `628efafe`) and tell me what works for 11,
 I shall be happy to add a tag.
 
 Some files use Java "Preview" features, which work if you're compiling with the Maven POM file provided.
@@ -90,8 +91,9 @@ to edit the tags out of the code, in case I use it elsewhere.
 
 == Structured as Maven Modules
 
-This repo consists of about a dozen Maven modules (aka subdirectories :-)),
-as follows:
+This repo consists of about a dozen Maven modules (aka subdirectories
+:-)).  The reason for this is discussed below (TL;DR: Dependencies).
+The layout is as follows:
 
 * main - everything that isn't in one of the others
 * desktop - GUI/Graphics, JavaFX, comm devices, etc.
@@ -121,13 +123,10 @@ Each module has its own POM file, Maven structure, etc.
 
 A main reason was that the CLASSPATH was becoming unmanageable.
 Not to mention MODULEPATH, and the time it takes to build the whole thing.
-Right now there is a lot of stuff in the "main" module, but this will
-get broken out into a few additional modules.
-
 Now that it's done this way, you can choose to just build one module
 or another, _without having Maven download 3/4 of the Internet_ for
 dependencies. Just `cd` into one of the module directories and
-invoke `mvn` there. Or you can do them all by invoking `mvn` in
+invoke `mvn compile` there. Or you can do them all by invoking `mvn` in
 the top-level directory. 
 
 Useful mvn targets include `compile` and `test`.
@@ -139,7 +138,7 @@ Unfortunately for those who already had the old all-in-one _javasrc_ project fro
 checked out, and an Eclipse project created in that directory,
 If you *do not have any changes worth keeping*, then just delete
 the entire project and start over.
-If you do the `git clone` inside Eclipse, there's a "Create projects from import" checkbox
+If you perform the `git clone` inside Eclipse, there's a "Create projects from import" checkbox
 that will make all the projects for you. If not, clone the repot and go to the step "Back in Eclipse" below.
 
 If you *do have changes you want to keep*, then do the following:
@@ -157,12 +156,14 @@ Click `OK/Finish`.
 Do this same way as previous step: File->new Java project etc.
 Recommmended names are javasrc-xml, javasrc-unsafe, etc.
 
+It's easier if you use IntelliJ: just open the module you want via ++Open Project++.
+But IntelliJ flubs out if you have even one file in a project that won't compile.
+
 The older 'javasrcee' repository was originally formed by splitting
-it off from this repository, several years ago. Now, with this modularization,
+it off from this repository, years ago. Now, with this modularization,
 it has been merged back in, as the `ee` module.
 
-== No module-info
-
+= No module-inf
 There are no module-info.java files in most of the subdirectories
 because this is not meant to
 be built and used as a library or even as a cohesive software base.
@@ -171,7 +172,7 @@ A few that need them for imports &c have them.
 == Notes on Individual Modules
 
 testing::
-	Works under "mvn test". Compiles as an Eclipse project, but can't run due to
+	Works under "mvn test". Compiles as an Eclipse project, but can't run there due to
 	a Junit 5 loading conflict (pull requests welcome on this one, thanks).
 
 == Building
