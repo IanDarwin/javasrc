@@ -22,6 +22,6 @@ class Two extends One {
 
 void main() {
 	var o = new Two();
-	System.out.println(o.dom);
+	System.out.println("Day of Month is " + o.dom);
 }
 // end::main[]
