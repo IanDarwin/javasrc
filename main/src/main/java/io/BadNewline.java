@@ -15,7 +15,7 @@ public class BadNewline {
 	 * DON'T DO THIS. THIS IS BAD CODE.
 	 */
 	public String toString() {
-		return "BadNewlineDemo@" + hashCode() + "\n" + myName;
+		return super.toString() + "\n" + myName;
 	}
 
 	// The obvious Constructor is not shown for brevity; it's in the code
