@@ -1,4 +1,4 @@
 ${SPARK_HOME}/bin/spark-submit \
-  --class "LogReader" \
+  --class "sparkdemo.LogReader" \
   --master local[4] \
   target/javasrc-sparkdemo-1.0.0-SNAPSHOT.jar
