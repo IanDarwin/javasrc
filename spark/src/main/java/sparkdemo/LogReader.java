@@ -14,7 +14,11 @@ public class LogReader {
 
     final String logFile = "/var/wildfly/standalone/log/access_log.log"; // <1>
     SparkSession spark = 
-      SparkSession.builder().appName("Log Analyzer").getOrCreate();      // <2>
+      SparkSession
+              .builder()
+              .appName("Log Analyzer")
+              .config("spark.master", "local")
+              .getOrCreate();      // <2>
     Dataset<String> logData = spark.read().textFile(logFile).cache();    // <3>
 
     long good = logData.filter(                                          // <4>
