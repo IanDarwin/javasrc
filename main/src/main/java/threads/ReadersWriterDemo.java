@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class ReadersWriterDemo {
 	private static final int NUM_READER_THREADS = 3;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new ReadersWriterDemo().demo();
 	}
 
@@ -21,20 +21,20 @@ public class ReadersWriterDemo {
 	private volatile boolean done = false;
 
 	/** The data being protected. */
-	private BallotBox theData;
+	private final BallotBox theData;
 
 	/** The read lock / write lock combination */
-	private ReadWriteLock lock = new ReentrantReadWriteLock();
+	private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
 	/**
 	 * Constructor: set up some quasi-random initial data
 	 */
-	public ReadersWriterDemo() {
-		List<String> questionsList = new ArrayList<>();
-		questionsList.add("Agree");
-		questionsList.add("Disagree");
-		questionsList.add("No opinion");
-		theData = new BallotBox(questionsList);
+	public ReadersWriterDemo() throws Exception {
+		List<String> choicesList = new ArrayList<>();
+		choicesList.add("Agree");
+		choicesList.add("Disagree");
+		choicesList.add("No opinion");
+		theData = new BallotBox(choicesList);
 	}
 
 	/**
@@ -44,8 +44,7 @@ public class ReadersWriterDemo {
 
 		// Start two reader threads
 		for (int i = 0; i < NUM_READER_THREADS; i++) {
-			new Thread() {
-				public void run() {
+			Thread.startVirtualThread(() -> {
 					while (!done) {
 						lock.readLock().lock();
 						try {
@@ -64,13 +63,11 @@ public class ReadersWriterDemo {
 							// nothing to do
 						}
 					}
-				}
-			}.start();
+			});
 		}
 		
 		// Start one writer thread to simulate occasional voting
-		new Thread() {
-			public void run() {
+		Thread.startVirtualThread(() -> {
 				while (!done) {
 					lock.writeLock().lock();
 					try {
@@ -88,8 +85,7 @@ public class ReadersWriterDemo {
 						// nothing to do
 					}
 				}
-			}
-		}.start();
+		});
 
 		// In the main thread, wait a while then terminate the run.
 		try {
