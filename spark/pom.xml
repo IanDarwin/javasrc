@@ -34,19 +34,19 @@
 		</developer>
 	</developers>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.12</artifactId>
-			<version>3.2.0</version>
-			<scope>provided</scope>
+			<version>3.5.1</version>
+			<!-- <scope>provided</scope> -->
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<!-- None yet -->
-		</plugins>
-	</build>
 
 </project>
