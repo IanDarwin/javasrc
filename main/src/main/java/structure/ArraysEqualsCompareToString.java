@@ -12,13 +12,13 @@ public class ArraysEqualsCompareToString {
         char[] ca = { 'a', 'b', 'c'},
                cb = { 'a', 'b', 'c'};
         System.out.println(
-            "ca = " + Arrays.toString(ca) + ", +
+            "ca = " + Arrays.toString(ca) + ", " +
             "cb = " + Arrays.toString(cb));
         System.out.println("By Arrays.equals(): " + Arrays.equals(ca, cb));
         System.out.println("compare(ca,cb) returns " + Arrays.compare(ca, cb));
         cb[2] = 'd';
         System.out.println(
-            "ca = " + Arrays.toString(ca) + ", + 
+            "ca = " + Arrays.toString(ca) + ", " +
             "cb = " + Arrays.toString(cb));
         System.out.println("By Arrays.equals(): " + Arrays.equals(ca, cb));
         System.out.println("compare(ca,cb) returns " + Arrays.compare(ca, cb));
@@ -36,7 +36,7 @@ public class ArraysEqualsCompareToString {
         System.out.println("compare(ia,ib) returns " + Arrays.compare(ia, ib));
         ia[4] = 6;
         System.out.println(
-            "ia = " + Arrays.toString(ia) + ", "
+            "ia = " + Arrays.toString(ia) + ", " +
             "ib = " + Arrays.toString(ib));
         System.out.println("By Arrays.equals(): " + Arrays.equals(ia, ib));
         System.out.println("compare(ia,ib) returns " + Arrays.compare(ia, ib));
@@ -55,7 +55,7 @@ public class ArraysEqualsCompareToString {
         ia[4] = 4;
         ia[3] = 5;
         System.out.println(
-            "ia = " + Arrays.toString(ia) +  ", "
+            "ia = " + Arrays.toString(ia) +  ", " +
             "ib = " + Arrays.toString(ib));
         System.out.println("By Arrays.equals(): " + Arrays.equals(ia, ib));
         System.out.println("compare(ia,ib) returns " + Arrays.compare(ia, ib));

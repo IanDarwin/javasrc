@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /** Show the union and intersection of two sets. */
-public class SetStuff {
+public class SetArithmetic {
 	public static void main(String[] args) {
 
 		// Create two sets.

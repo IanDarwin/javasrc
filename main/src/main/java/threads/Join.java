@@ -48,8 +48,8 @@ package threads;
 // tag::main[]
 public class Join {
 	public static void main(String[] args) {
-		Thread t = new Thread() {
-			public void run() {
+		System.out.println("Starting");
+		Thread t = Thread.startVirtualThread(() -> {
 				System.out.println("Reading");
 				try {
 					System.in.read();
@@ -57,10 +57,7 @@ public class Join {
 					System.err.println(ex);
 				}
 				System.out.println("Thread Finished.");
-			}
-		};
-		System.out.println("Starting");
-		t.start();
+		});
 		System.out.println("Joining");
 		try {
 			t.join();
