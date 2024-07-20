@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/** Producer-Consumer in Java, for J2SE 1.5+ using concurrent.
+/** Producer-Consumer in Java, for Java 5+ (JDK1.5) using
+ * Queues from java.util.concurrent.
  */
 // tag::main[]
-public class ProdCons15 {
+public class ProdConsQueues {
 
 	protected volatile boolean done = false;
 
@@ -69,7 +70,7 @@ public class ProdCons15 {
 		}
 	}
 
-	ProdCons15(int nP, int nC) {
+	ProdConsQueues(int nP, int nC) {
 		BlockingQueue<Object> myQueue = new LinkedBlockingQueue<>();
 		for (int i=0; i<nP; i++)
 			new Thread(new Producer(myQueue)).start();
@@ -83,7 +84,7 @@ public class ProdCons15 {
 		// Start producers and consumers
 		int numProducers = 4;
 		int numConsumers = 3;
-		ProdCons15 pc = new ProdCons15(numProducers, numConsumers);
+		ProdConsQueues pc = new ProdConsQueues(numProducers, numConsumers);
 
 		// Let the simulation run for, say, 10 seconds
 		Thread.sleep(10*1000);

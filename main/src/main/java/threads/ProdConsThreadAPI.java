@@ -46,12 +46,12 @@ import java.util.LinkedList;
 /** Producer-consumer in Java, Take II.
  */
 // tag::main[]
-public class ProdCons2 {
+public class ProdConsThreadAPI {
 
 	/** Throughout the code, this is the object we synchronize on so this
 	 * is also the object we wait() and notifyAll() on.
 	 */
-	protected LinkedList<Object> list = new LinkedList<>();
+	protected final LinkedList<Object> list = new LinkedList<>();
 	protected int MAX = 10;
 	protected boolean done = false; // Also protected by lock on list.
 
@@ -96,7 +96,7 @@ public class ProdCons2 {
 			while (true) {
 				Object obj = null;
 				synchronized(list) {
-					while (list.size() == 0) {
+					while (list.isEmpty()) {
 						try {
 							System.out.println("CONSUMER WAITING");
 							list.wait();	// must own the lock
@@ -122,7 +122,7 @@ public class ProdCons2 {
 		}
 	}
 
-	ProdCons2(int nP, int nC) {
+	ProdConsThreadAPI(int nP, int nC) {
 		for (int i=0; i<nP; i++)
 			new Producer().start();
 		for (int i=0; i<nC; i++)
@@ -135,7 +135,7 @@ public class ProdCons2 {
 		// Start producers and consumers
 		int numProducers = 4;
 		int numConsumers = 3;
-		ProdCons2 pc = new ProdCons2(numProducers, numConsumers);
+		ProdConsThreadAPI pc = new ProdConsThreadAPI(numProducers, numConsumers);
 
 		// Let it run for, say, 10 seconds
 		Thread.sleep(10*1000);
