@@ -60,5 +60,4 @@ public class ArraysEqualsCompareToString {
         System.out.println("By Arrays.equals(): " + Arrays.equals(ia, ib));
         System.out.println("compare(ia,ib) returns " + Arrays.compare(ia, ib));
     }
-    // end::main[]
 }
