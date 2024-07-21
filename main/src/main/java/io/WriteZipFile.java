@@ -10,8 +10,10 @@ import java.util.zip.ZipOutputStream;
 
 class WriteZipFile {
 
+	public static final String FILENAME = "temp.zip";
+
 	public static void main(String[] args) throws Exception {
-		File file = new File("temp.zip");
+		File file = new File(FILENAME);
 		ZipOutputStream zf = new ZipOutputStream(new FileOutputStream(file));
 		zf.putNextEntry(new ZipEntry("foo.bar.txt"));
 		zf.write("Hello\n".getBytes());
@@ -20,5 +22,6 @@ class WriteZipFile {
 		zf.write(source.getBytes());
 		zf.closeEntry();
 		zf.close();
+		System.out.println("Written to " + FILENAME);
 	}
 }
