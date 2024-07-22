@@ -10,13 +10,13 @@ import java.time.ZoneId;
 
 /**
  * DaytimeBinary - connect to the standard Time (binary) service.
- * N.B. This is an 'rdate' client by another name.
  * @author Ian F. Darwin
  */
 // tag::main[]
-public class RDateClient {
+public class TimeClient {
 	/** The TCP port for the binary time service. */
 	public static final short TIME_PORT = 37;
+
 	/** Seconds between 1970, the time base for dates and times
 	 * Factors in leap years (up to 2100), hours, minutes, and seconds.
 	 * Subtract 1 day for 1900, add in 1/2 day for 1969/1970.

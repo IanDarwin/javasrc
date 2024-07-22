@@ -28,7 +28,6 @@ public class DaytimeUDP {
 		String host = argv[0];
 		InetAddress servAddr = InetAddress.getByName(host);
 		DatagramSocket sock = new DatagramSocket();
-		//sock.connect(servAddr, DAYTIME_PORT);
 		byte[] buffer = new byte[PACKET_SIZE];
 
 		// The udp packet we will send and receive

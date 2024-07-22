@@ -20,16 +20,16 @@ public class ConnectFriendly {
 
 		} catch (UnknownHostException e) {
 			System.err.println(server_name + " Unknown host");
-			return;
+			System.exit(1);
 		} catch (NoRouteToHostException e) {
 			System.err.println(server_name + " Unreachable" );
-			return;
+			System.exit(1);
 		} catch (ConnectException e) {
-			System.err.println(server_name + " connect refused");
-			return;
+			System.err.println(server_name + " Connection Refused");
+			System.exit(1);
 		} catch (java.io.IOException e) {
-			System.err.println(server_name + ' ' + e.getMessage());
-			return;
+			System.err.println(server_name + ' ' + e);
+			System.exit(1);
 		}
 	}
 }
