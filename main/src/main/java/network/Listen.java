@@ -18,6 +18,7 @@ public class Listen {
 		Socket  clientSock;
 		try {
 			sock = new ServerSocket(PORT);
+			System.out.println("Listening on " + PORT);
 			while ((clientSock = sock.accept()) != null) {
 
 				// Process it, usually on a separate thread
@@ -32,7 +33,8 @@ public class Listen {
 
 	/** This would do something with one client. */
 	static void process(Socket s) throws IOException {
-		System.out.println("Accept from client " + s.getInetAddress());
+		System.out.println("Processing request from client " +
+			s.getInetAddress());
 		// The conversation would be here.
 		s.close();
 	}
