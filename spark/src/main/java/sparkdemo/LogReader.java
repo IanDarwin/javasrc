@@ -23,19 +23,19 @@ public class LogReader {
 
     long good = logData.filter(                                          // <4>
     new FilterFunction<>() {public boolean call(String s) {
-          return s.contains("200");
+          return s.contains(" 200 ");
         }
       }).count();
 
     long bad = logData.filter(new FilterFunction<>() {
         public boolean call(String s) {
-          return s.contains("404");
+          return s.matches(".*\\D404\\D.*");
         }
       }).count();
 
     long ugly = logData.filter(new FilterFunction<>() {
         public boolean call(String s) {
-          return s.contains("500");
+          return s.matches(".*\\D500\\D.*");
         }
       }).count();
 
