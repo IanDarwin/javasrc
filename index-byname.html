@@ -286,6 +286,7 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/lang/ConsRecurs.java">ConsRecurs.java</a></li>
 <li><a href="ai/src/main/java/ai/Constants.java">Constants.java</a></li>
 <li><a href="main/src/main/java/lang/ConstrException.java">ConstrException.java</a></li>
+<li><a href="main/src/main/java/functional/ConstrMethodRef.java">ConstrMethodRef.java</a></li>
 <li><a href="main/src/main/java/lang/Constructors.java">Constructors.java</a></li>
 <li><a href="desktop/src/main/java/gui/ContentPane.java">ContentPane.java</a></li>
 <li><a href="main/src/main/java/io/ContLineReader.java">ContLineReader.java</a></li>
@@ -749,7 +750,10 @@ and for any other use if the license conditions are met.
 <li><a id="L"></a><a href="desktop/src/main/java/gui/LabelText.moved.html">LabelText.moved.html</a></li>
 <li><a href="main/src/main/java/functional/LambdasInAction.java">LambdasInAction.java</a></li>
 <li><a href="main/src/main/java/functional/LambdasWithOverloading.java">LambdasWithOverloading.java</a></li>
+<li><a href="ai/src/main/java/langchain4j/LangChain4JContactFinder.java">LangChain4JContactFinder.java</a></li>
+<li><a href="ai/src/main/java/langchain4j/LangChain4jImageInference.java">LangChain4jImageInference.java</a></li>
 <li><a href="ai/src/main/java/langchain4j/LangChain4JImageMaker.java">LangChain4JImageMaker.java</a></li>
+<li><a href="ai/src/main/java/langchain4j/LangChain4JOllama.java">LangChain4JOllama.java</a></li>
 <li><a href="ai/src/main/java/langchain4j/LangChain4JSimplePrompt.java">LangChain4JSimplePrompt.java</a></li>
 <li><a href="desktop/src/main/java/graphics/Layers.java">Layers.java</a></li>
 <li><a href="main/src/main/java/datetime/LegacyDates.java">LegacyDates.java</a></li>
@@ -1050,6 +1054,7 @@ and for any other use if the license conditions are met.
 <li><a href="desktop/src/main/java/gui/PopupDemo.java">PopupDemo.java</a></li>
 <li><a href="desktop/src/main/java/javacomm/PortChooser.java">PortChooser.java</a></li>
 <li><a href="desktop/src/main/java/javacomm/PortOwner.java">PortOwner.java</a></li>
+<li><a href="main/src/main/java/network/PortScan.java">PortScan.java</a></li>
 <li><a href="main/src/main/java/dir_file/PosixFilePermissionsViewDemo.java">PosixFilePermissionsViewDemo.java</a></li>
 <li><a href="main/src/main/java/netweb/PostQuery.java">PostQuery.java</a></li>
 <li><a href="main/src/main/java/oo/interfaces/PowerSwitchable.java">PowerSwitchable.java</a></li>
@@ -1077,9 +1082,8 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/functional/ProcessIntsFunctional.java">ProcessIntsFunctional.java</a></li>
 <li><a href="main/src/main/java/functional/ProcessIntsIntUnaryOperator.java">ProcessIntsIntUnaryOperator.java</a></li>
 <li><a href="main/src/main/java/functional/ProcessIntsUsingFunctional.java">ProcessIntsUsingFunctional.java</a></li>
-<li><a href="main/src/main/java/threads/ProdCons1.java">ProdCons1.java</a></li>
-<li><a href="main/src/main/java/threads/ProdCons15.java">ProdCons15.java</a></li>
-<li><a href="main/src/main/java/threads/ProdCons2.java">ProdCons2.java</a></li>
+<li><a href="main/src/main/java/threads/ProdConsQueues.java">ProdConsQueues.java</a></li>
+<li><a href="main/src/main/java/threads/ProdConsThreadAPI.java">ProdConsThreadAPI.java</a></li>
 <li><a href="main/src/main/java/threads/ProdConsVector.java">ProdConsVector.java</a></li>
 <li><a href="main/src/main/java/structure/Product.java">Product.java</a></li>
 <li><a href="desktop/src/main/java/gui/ProgressMeterStrmDemo.java">ProgressMeterStrmDemo.java</a></li>
@@ -1118,7 +1122,6 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/email/RawSender.java">RawSender.java</a></li>
 <li><a id="r"></a><a href="main/src/main/java/jdbc/rawsql.html">rawsql.html</a></li>
 <li><a href="ee/src/main/java/servlet/RawSQLServlet.java">RawSQLServlet.java</a></li>
-<li><a href="main/src/main/java/network/RDateClient.java">RDateClient.java</a></li>
 <li><a href="main/src/main/java/regex/RE_QnotU_Args.java">RE_QnotU_Args.java</a></li>
 <li><a href="main/src/main/java/io/ReadCharsOneAtATime.java">ReadCharsOneAtATime.java</a></li>
 <li><a href="main/src/main/java/regex/ReaderIter.java">ReaderIter.java</a></li>
@@ -1210,9 +1213,6 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/xcolor/rgb.txt">rgb.txt</a></li>
 <li><a href="ee/src/main/java/jndi/rmi.properties">rmi.properties</a></li>
 <li><a href="main/src/main/java/netwatch/RMIPanel.java">RMIPanel.java</a></li>
-<li><a href="main/src/main/java/numbers/RomanNumberDemo.java">RomanNumberDemo.java</a></li>
-<li><a href="main/src/main/java/numbers/RomanNumberFormat.java">RomanNumberFormat.java</a></li>
-<li><a href="main/src/main/java/numbers/RomanNumberSimple.java">RomanNumberSimple.java</a></li>
 <li><a href="main/src/main/java/numbers/RomanYear.java">RomanYear.java</a></li>
 <li><a href="main/src/main/java/oo/metrolib/Room.java">Room.java</a></li>
 <li><a href="main/src/main/java/oo/interfaces/RoomLights.java">RoomLights.java</a></li>
@@ -1276,9 +1276,9 @@ and for any other use if the license conditions are met.
 <li><a href="ee/src/main/java/ejb2/serverinfo/bean/ServInfo.java">ServInfo.java</a></li>
 <li><a href="ee/src/main/java/ejb2/serverinfo/bean/ServInfoBean.java">ServInfoBean.java</a></li>
 <li><a href="ee/src/main/java/ejb2/serverinfo/bean/ServInfoHome.java">ServInfoHome.java</a></li>
+<li><a href="main/src/main/java/structure/SetArithmetic.java">SetArithmetic.java</a></li>
 <li><a href="main/src/main/java/structure/SetDemo.java">SetDemo.java</a></li>
 <li><a href="main/src/main/java/i18n/SetLocale.java">SetLocale.java</a></li>
-<li><a href="main/src/main/java/structure/SetStuff.java">SetStuff.java</a></li>
 <li><a href="main/src/main/java/sql/setup.sql">setup.sql</a></li>
 <li><a href="main/src/main/java/oo/shapes/Shape.java">Shape.java</a></li>
 <li><a href="main/src/main/java/oo/shapes/ShapeDriver.java">ShapeDriver.java</a></li>
@@ -1341,6 +1341,7 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/di/spring/SpringModel.java">SpringModel.java</a></li>
 <li><a href="main/src/main/java/threads/Sprite.java">Sprite.java</a></li>
 <li><a href="main/src/main/java/jdbc/sqlrunner">sqlrunner</a></li>
+<li><a href="main/src/main/java/structure/StackStillWorks.java">StackStillWorks.java</a></li>
 <li><a href="main/src/main/java/lang/StackTrace.java">StackTrace.java</a></li>
 <li><a href="ee/src/main/java/ejb3client/StatelessClient.java">StatelessClient.java</a></li>
 <li><a href="ee/src/main/java/ejb3/StatelessEJB.java">StatelessEJB.java</a></li>
@@ -1477,6 +1478,7 @@ and for any other use if the license conditions are met.
 <li><a href="desktop/src/main/java/graphics/TiledImageComponent.java">TiledImageComponent.java</a></li>
 <li><a href="main/src/main/java/performance/Time.java">Time.java</a></li>
 <li><a href="main/src/main/java/performance/Timeable.java">Timeable.java</a></li>
+<li><a href="main/src/main/java/network/TimeClient.java">TimeClient.java</a></li>
 <li><a href="main/src/main/java/datetimeold/TimeComputation.java">TimeComputation.java</a></li>
 <li><a href="ee/src/main/java/jndi/TimeJNDI.java">TimeJNDI.java</a></li>
 <li><a href="main/src/main/java/performance/TimeNoArgs.java">TimeNoArgs.java</a></li>
@@ -1598,6 +1600,7 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/io/WriteBinary.java">WriteBinary.java</a></li>
 <li><a href="json/src/main/java/json/WriteOrgJson.java">WriteOrgJson.java</a></li>
 <li><a href="main/src/main/java/io/WriteRandom.c">WriteRandom.c</a></li>
+<li><a href="main/src/main/java/io/WriteZipFile.java">WriteZipFile.java</a></li>
 <li><a id="X"></a><a href="main/src/main/java/starting/circular/X.java">X.java</a></li>
 <li><a href="desktop/src/main/java/charts/XChartDemo.java">XChartDemo.java</a></li>
 <li><a href="main/src/main/java/xcolor/XColor.html">XColor.html</a></li>
@@ -1619,7 +1622,7 @@ and for any other use if the license conditions are met.
 <li><a href="main/src/main/java/io/Zip.java">Zip.java</a></li>
 </ul>
 <p>This file generated by 
-<a href="MkIndex.java">MkIndex</a>, a Java program, at Fri Jun 28 10:08:32 EDT 2024
+<a href="MkIndex.java">MkIndex</a>, a Java program, at Mon Jul 22 13:34:55 EDT 2024
 </p>
 </body>
 </html>
