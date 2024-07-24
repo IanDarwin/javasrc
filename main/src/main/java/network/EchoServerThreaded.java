@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.*;
 
 /**
  * Threaded Echo Server, sequential allocation scheme.
@@ -15,7 +16,9 @@ import java.net.Socket;
 // tag::main[]
 public class EchoServerThreaded {
 
-	public static final int ECHOPORT = 7;
+	final static ExecutorService threadPool =
+		Executors.newVirtualThreadPerTaskExecutor();
+	public static final int ECHOPORT = 2007;
 
 	public static void main(String[] av) {
 		new EchoServerThreaded().runServer();
@@ -34,7 +37,7 @@ public class EchoServerThreaded {
 			while (true) {
 				clientSocket = sock.accept();
 				/* Create a thread to do the communication, and start it */
-				new Handler(clientSocket).start();
+				new Handler(clientSocket).handle();
 			}
 		} catch (IOException e) {
 			/* Crash the server if IO fails. Something bad has happened */
@@ -44,30 +47,32 @@ public class EchoServerThreaded {
 	}
 
 	/** A Thread subclass to handle one client conversation. */
-	class Handler extends Thread {
-		Socket sock;
+	class Handler {
+		final Socket sock;
 
 		Handler(Socket s) {
 			sock = s;
 		}
 
-		public void run() {
+		public void handle() {
 			System.out.println("Socket starting: " + sock);
-			try (BufferedReader is = new BufferedReader(
-						new InputStreamReader(sock.getInputStream()));
-					PrintStream os = new PrintStream(
-						sock.getOutputStream(), true);) {
-				String line;
-				while ((line = is.readLine()) != null) {
-					os.print(line + "\r\n");
-					os.flush();
+			threadPool.submit( () -> {
+				try (BufferedReader is = new BufferedReader(
+							new InputStreamReader(sock.getInputStream()));
+						PrintStream os = new PrintStream(
+							sock.getOutputStream(), true);) {
+					String line;
+					while ((line = is.readLine()) != null) {
+						os.print(line + "\r\n");
+						os.flush();
+					}
+					sock.close();
+				} catch (IOException e) {
+					System.out.println("IO Error on socket " + e);
+					return;
 				}
-				sock.close();
-			} catch (IOException e) {
-				System.out.println("IO Error on socket " + e);
-				return;
-			}
-			System.out.println("Socket ENDED: " + sock);
+				System.out.println("Socket ENDED: " + sock);
+			});
 		}
 	}
 }
