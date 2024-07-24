@@ -2,13 +2,13 @@ package json;
 
 import java.io.StringReader;
 
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonNumber;
-import javax.json.JsonPointer;
-import javax.json.JsonReader;
-import javax.json.JsonString;
-import javax.json.JsonStructure;
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonNumber;
+import jakarta.json.JsonPointer;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonString;
+import jakarta.json.JsonStructure;
 
 /**
  * Show some parts of the JSON Pointer API, part of Java's JSON Processing.
@@ -18,11 +18,13 @@ import javax.json.JsonStructure;
 public class JsonPointerDemo {
 
 	public static void main(String[] args) {
-		String jsonPerson =
-			"{\"firstName\":\"Robin\",\"lastName\":\"Williams\"," + 
-				"\"age\": 63," + 
-				"\"id\":0," +
-				"\"roles\":[\"Mork\", \"Mrs. Doubtfire\", \"Patch Adams\"]}";
+		String jsonPerson = """
+			{"firstName":"Robin","lastName":"Williams",
+				"age": 63,
+				"id":0,
+				"roles":["Mork", "Mrs. Doubtfire", "Patch Adams"]
+			}
+		""";
 
 		System.out.println("Input: " + jsonPerson);
 		
