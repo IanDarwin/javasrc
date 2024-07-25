@@ -203,13 +203,6 @@
 			<version>2.1.1e</version>
 		</dependency>
 
-		<!-- VLC Player for Java, jlcj -->
-		<dependency>
-			<groupId>uk.co.caprica</groupId>
-			<artifactId>vlcj</artifactId>
-			<version>4.7.1</version>
-		</dependency>
-
 		<!-- Scripting -->
 		<dependency>
 			<groupId>bsf</groupId>
