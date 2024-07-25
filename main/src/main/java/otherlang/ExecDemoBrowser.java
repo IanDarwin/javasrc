@@ -3,7 +3,6 @@ package otherlang;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.net.URL;
-import java.util.Stack;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
@@ -23,16 +22,13 @@ public class ExecDemoBrowser extends JFrame {
 	/** The name of the help file. */
 	protected final static String HELPFILE = "./help/index.html";
 
-	/** A stack of process objects; each entry tracks one external running process */
-	Stack<Process> pStack = new Stack<>();
-
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {
 		String program = av.length == 0 ? BROWSER : av[0];
 		new ExecDemoBrowser(program).setVisible(true);
 	}
 
-	/** The path to the binary executable that we will run */
+	/** The name of the binary executable that we will run */
 	protected static String program;
 
 	/** Constructor - set up strings and things. */
@@ -52,16 +48,23 @@ public class ExecDemoBrowser extends JFrame {
 		pack();
 	}
 
+	Process process;
+
 	/** Start the help, in its own Thread. */
 	public void runProgram() {
 
-		new Thread() {
-			public void run() {
-
+		Thread.startVirtualThread( () -> {
 				try {
 					// Get a "file:" URL for the Help File
 					URL helpURL = this.getClass().getClassLoader().
 						getResource(HELPFILE);
+					if (helpURL == null) {
+						JOptionPane.showMessageDialog(ExecDemoBrowser.this,
+							"Unable to find Help File in resource path",
+							"Error",
+							JOptionPane.ERROR_MESSAGE);
+						System.exit(1);
+					}
 
 					// Start the external browser from the Java Application.
 
@@ -69,14 +72,14 @@ public class ExecDemoBrowser extends JFrame {
 					String run;
 					if ("Mac OS X".equals(osname)) {
 						run = "open -a " + program;
-						// "if" allows for other OSes needing special handling
+						// Any other OSes needing special handling?
 					} else {
 						run = program;
 					}
 
-					pStack.push(Runtime.getRuntime().exec(new String[]{run, helpURL.toString()}));
+					process = Runtime.getRuntime().exec(new String[]{run, helpURL.toString()});
 
-					logger.info("In main after exec " + pStack.size());
+					logger.info("In main after exec .");
 
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(ExecDemoBrowser.this,
@@ -84,23 +87,20 @@ public class ExecDemoBrowser extends JFrame {
 						JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();	// In terminal window, if any
 				}
-			}
-		}.start();
-
+			});
 	}
 
 	public void doWait() {
-		if (pStack.size() == 0) {
+		if (process == null) {
 			logger.info("Nothing to wait for.");
 			return;
 		}
-		logger.info("Waiting for process " + pStack.size());
+		logger.info("Waiting for process " + process);
 		try {
-			Process p = pStack.pop();
-			p.waitFor();
+			process.waitFor();
 			// wait for process to complete 
 			// (may not work as expected for some old Windows programs)
-			logger.info("Process " + p + " is done.");
+			logger.info("Process " + process + " is done.");
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this,
 				"Error" + ex, "Error",
