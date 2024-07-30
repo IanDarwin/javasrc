@@ -210,9 +210,16 @@
 			<version>2.4.0</version>
 		</dependency>
 		<dependency>
+			<groupId>com.sample</groupId>
+			<artifactId>nashorn</artifactId>
+			<version>15.4</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/nashorn-core-15.4.jar</systemPath>
+		</dependency>
+		<dependency>
 			<groupId>org.python</groupId>
-			<artifactId>jython-standalone</artifactId>
-			<version>2.7.2</version>
+			<artifactId>jython-slim</artifactId>
+			<version>2.7.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.renjin</groupId>
