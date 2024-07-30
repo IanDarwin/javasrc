@@ -11,7 +11,7 @@ class ClassWithPrivateField {
 
 /**
  * Demonstrate that it is, in fact, all too easy to access private members
- * of an object using Reflection, using the default SecurityManager
+ * of an object using Reflection.
  */
 public class DefeatPrivacy {
 
