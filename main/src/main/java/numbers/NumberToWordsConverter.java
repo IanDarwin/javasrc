@@ -40,6 +40,9 @@ public class NumberToWordsConverter {
 		if (num < 0) {
 			return "minus " + convert(-num);
 		}
+		if (num == 1000) {
+			return "one thousand";
+		}
 		if (num >= 100) {
 			int hun = num / 100;
 			return convert(hun) + " hundred" +
