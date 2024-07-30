@@ -10,10 +10,6 @@ public class ScriptEnginesDemo {
 	public static void main(String[] args) throws ScriptException {
 		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 		
-		// Print list of supported languages
-		scriptEngineManager.getEngineFactories().forEach(factory ->
-			System.out.println(factory.getLanguageName()));
-		
 		// Run a script in the JavaScript language
 		String lang = "JavaScript";
 		ScriptEngine engine = 

@@ -19,16 +19,12 @@ public class PythonFromJava {
 
 	public static void main(String[] args) throws Exception {
 		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
-		
+
 		ScriptEngine engine = scriptEngineManager.getEngineByName("python");
 		if (engine == null) {
-			final String message = 
-				"Could not find 'python' engine; add its jar to CLASSPATH";
-			System.out.println(message);
-			System.out.println("Available script engines are: ");
-			scriptEngineManager.getEngineFactories().forEach(factory ->
-				System.out.println(factory.getLanguageName()));
-			throw new IllegalStateException(message);	
+            System.out.println("" +
+					"Could not find 'python' engine; add its JAR to CLASSPATH");
+			System.exit(1);
 		}
 
 		final Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
@@ -41,7 +37,7 @@ public class PythonFromJava {
 			throw new IOException("Could not find file " + PY_SCRIPTNAME);
 		}
 		engine.eval(new InputStreamReader(is));
-		System.out.println("Java: Meaning is now " + bindings.get("meaning"));
+		System.out.println("Java: Meaning of life is now " + bindings.get("meaning"));
 	}
 }
 // end::main[]

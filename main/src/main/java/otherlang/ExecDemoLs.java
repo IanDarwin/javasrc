@@ -33,19 +33,16 @@ public class ExecDemoLs {
 		// Optional: start a thread to wait for the process to terminate.
 		// Don't just wait in main line, but here set a "done" flag and
 		// use that to control the main reading loop below.
-		Thread waiter = new Thread() {
-			public void run() {
-				try {
-					p.waitFor();
-				} catch (InterruptedException ex) {
-					// OK, just quit.
-					return;
-				}
-				System.out.println("Program terminated!");
-				done = true;
+		Thread.startVirtualThread( () -> {
+			try {
+				p.waitFor();
+			} catch (InterruptedException ex) {
+				// OK, just quit.
+				return;
 			}
-		};
-		waiter.start();
+			System.out.println("Program terminated!");
+			done = true;
+		});
 
 		// getInputStream gives an Input stream connected to
 		// the process p's standard output (and vice versa). We use

@@ -10,7 +10,7 @@ import java.net.*;
 import java.nio.file.*;
 
 // tag::main[]
-public class SimpleServerDemo {
+public class SimpleServerDemo2 {
 
 	public static final int PORT = 8910;
 
