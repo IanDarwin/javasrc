@@ -1,28 +1,20 @@
 package structure;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 interface Observer {
   public abstract void update(MyObservable obs, Object news);
 }
 
 /**
- * A trivial re-implementation of the java.util.Observable class,
- * with additionally the ability to ignore the need for setChanged() calls.
- * Only extends Observable to allow use of existing Observer.update(Observable, data)
+ * A trivial implementation of the Observable pattern
  */
 public class MyObservable {
-	final boolean strictMode;
-	final List<Observer> observers = new ArrayList<Observer>();
-	private boolean changed;
-
-	public MyObservable(boolean strictMode) {
-		this.strictMode = strictMode;
-	}
+	final Set<Observer> observers = new HashSet<Observer>();
 
 	public MyObservable() {
-		this(true);
+		// empty
 	}
 
 	// LIST MANAGEMENT
@@ -43,33 +35,11 @@ public class MyObservable {
 	// Deal with observers
 
 	public void notifyObservers(Object data) {
-		if (strictMode && !changed)
-			return;
 		for (Observer o : observers)
 			o.update(this, data);
-		changed = false;
 	}
 
 	public void notifyObservers() {
 		notifyObservers(null);
-	}
-
-	// Deal with the Changed flag
-
-	protected synchronized void setChanged() {
-		this.changed = true;
-	}
-
-	protected synchronized void clearChanged() {
-		this.changed = false;
-	}
-
-	// NOT AN OVERRIDE - added for testing
-	public void setChanged(boolean changed) {
-		this.changed = changed;
-	}
-
-	public synchronized boolean hasChanged() {
-		return changed;
 	}
 }
