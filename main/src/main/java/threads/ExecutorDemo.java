@@ -1,8 +1,7 @@
 package threads;
 
 import java.util.Random;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * Simple demo of the Java5 Executor FixedThreadPool; start a number of threads, 
@@ -11,56 +10,53 @@ import java.util.concurrent.Executors;
  */
 public class ExecutorDemo {
 
-	private final Executor myThreadPool;
-
-	private boolean done = false;
+	private static final ExecutorService myThreadPool = Executors.newVirtualThreadPerTaskExecutor();
+	private static final Random random = new Random();
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new ExecutorDemo().runDemo();
+		for (int i = 0; i < 5; i++) {
+			// Start a new thread running
+			myThreadPool.execute(new DemoRunnable(i));
+			try {
+				Thread.sleep(2 * 1000);
+			} catch (InterruptedException e) {
+				// nothing to do
+			}
+		}
+		myThreadPool.shutdown();	// drain then stop
 	}
 
-	public ExecutorDemo() {
-		super();
-		myThreadPool = Executors.newFixedThreadPool(5);
-	}
-
-	Random random = new Random();
-
-	class DemoRunnable implements Runnable {
+	/**
+	 * The "task" that will be run in the thread pool.
+	 */
+	static class DemoRunnable implements Runnable {
+		int number;
 		int nSeconds;
 
-		DemoRunnable() {
-			nSeconds = random.nextInt(120);
+		DemoRunnable(int number) {
+			this.number = number;
+			nSeconds = random.nextInt(15);
 		}
 
 		@Override
 		public String toString() {
-			return super.toString() + "; nSeconds = " + nSeconds;
+			var t = Thread.currentThread();
+			return t.getName() + "; nSeconds = " + nSeconds;
 		}
 
 		public void run() {
+			Thread.currentThread().setName("Demo#" + number);
 			System.out.println("Starting " + this);
 			try {
 				Thread.sleep(nSeconds * 1000);
 			} catch (InterruptedException e) {
 				// nothing to do
 			}
-			System.out.println("Stopping " + this);
-		}
-	}
-
-	private void runDemo() {
-		while (!done) {
-			// Start a new thread running
-			myThreadPool.execute(new DemoRunnable());
-			try {
-				Thread.sleep(5 * 1000);
-			} catch (InterruptedException e) {
-				// nothing to do
-			}
+			System.out.println("Finished " + this);
 		}
 	}
 }
+
