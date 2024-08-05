@@ -5,10 +5,14 @@ package otherlang;
  */
 // tag::main[]
 public class ExecDemoSimple {
-	public static void main(String av[]) throws Exception {
+
+	// Choose one of kate, kwrite, gedit, notepad, wordpad, ...
+	static final String EDITOR = "kwrite";
+
+	public static void main(String args[]) throws Exception {
 		
-		// Run the "notepad" program or a similar editor
-		Process p = Runtime.getRuntime().exec(new String[]{"kwrite"});
+		// Run a "notepad" style editor
+		Process p = Runtime.getRuntime().exec(new String[]{EDITOR});
 
 		p.waitFor();
 	}
