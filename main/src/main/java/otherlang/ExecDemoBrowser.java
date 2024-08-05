@@ -13,19 +13,22 @@ import javax.swing.JOptionPane;
  * ExecDemoBrowser shows how to execute a program from within Java.
  */
 // tag::main[]
-public class ExecDemoBrowser extends JFrame {
+public class ExecDemoBrowser {
 	private static final long serialVersionUID = 1;
-	private static final String BROWSER = "firefox";
 	
-	Logger logger = Logger.getLogger(ExecDemoBrowser.class.getSimpleName());
+	Logger logger = Logger.getLogger(ExecDemoBrowser.class.getName());
 
+	/** The name of the browser. */
+	private static final String BROWSER = "firefox";
 	/** The name of the help file. */
-	protected final static String HELPFILE = "./help/index.html";
+	protected final static String HELP_FILE = "/help/index.html";
+	/** The JFrame */
+	protected final JFrame jf;
 
 	/** main - instantiate and run */
 	public static void main(String av[]) throws Exception {
 		String program = av.length == 0 ? BROWSER : av[0];
-		new ExecDemoBrowser(program).setVisible(true);
+		new ExecDemoBrowser(program);
 	}
 
 	/** The name of the binary executable that we will run */
@@ -33,10 +36,10 @@ public class ExecDemoBrowser extends JFrame {
 
 	/** Constructor - set up strings and things. */
 	public ExecDemoBrowser(String program) {
-		super("ExecDemoBrowser: " + program + " edition");
+		jf = new JFrame("ExecDemoBrowser: " + program + " edition");
 		ExecDemoBrowser.program = program;
 
-		Container cp = getContentPane();
+		Container cp = jf.getContentPane();
 		cp.setLayout(new FlowLayout());
 		JButton b;
 		cp.add(b=new JButton("Exec"));
@@ -45,7 +48,9 @@ public class ExecDemoBrowser extends JFrame {
 		b.addActionListener(e -> doWait());
 		cp.add(b=new JButton("Exit"));
 		b.addActionListener(e -> System.exit(0));
-		pack();
+		jf.pack();
+		jf.setLocation(400, 300);
+		jf.setVisible(true);
 	}
 
 	Process process;
@@ -56,10 +61,9 @@ public class ExecDemoBrowser extends JFrame {
 		Thread.startVirtualThread( () -> {
 				try {
 					// Get a "file:" URL for the Help File
-					URL helpURL = this.getClass().getClassLoader().
-						getResource(HELPFILE);
+					URL helpURL = ExecDemoBrowser.this.getClass().getResource(HELP_FILE);
 					if (helpURL == null) {
-						JOptionPane.showMessageDialog(ExecDemoBrowser.this,
+						JOptionPane.showMessageDialog(jf,
 							"Unable to find Help File in resource path",
 							"Error",
 							JOptionPane.ERROR_MESSAGE);
@@ -68,9 +72,9 @@ public class ExecDemoBrowser extends JFrame {
 
 					// Start the external browser from the Java Application.
 
-					String osname = System.getProperty("os.name");
+					String osName = System.getProperty("os.name");
 					String run;
-					if ("Mac OS X".equals(osname)) {
+					if ("Mac OS X".equals(osName)) {
 						run = "open -a " + program;
 						// Any other OSes needing special handling?
 					} else {
@@ -82,7 +86,7 @@ public class ExecDemoBrowser extends JFrame {
 					logger.info("In main after exec .");
 
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(ExecDemoBrowser.this,
+					JOptionPane.showMessageDialog(jf,
 						"Error" + ex, "Error",
 						JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();	// In terminal window, if any
@@ -102,7 +106,7 @@ public class ExecDemoBrowser extends JFrame {
 			// (may not work as expected for some old Windows programs)
 			logger.info("Process " + process + " is done.");
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this,
+			JOptionPane.showMessageDialog(jf,
 				"Error" + ex, "Error",
 				JOptionPane.ERROR_MESSAGE);
 		}
