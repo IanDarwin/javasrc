@@ -55,9 +55,13 @@ public class MacOsUiHints {
 		
 		JMenu fileMenu = new JMenu("File");
 		mb.add(fileMenu);
-		fileMenu.add(new JMenuItem("Quit"));
+		var quitMI = new JMenuItem("Quit");
+		fileMenu.add(quitMI);
+		quitMI.addActionListener(e -> System.exit(0));
 		
-		mb.add(new JMenu("Edit"));
+		var editMenu = new JMenu("Edit");
+		mb.add(editMenu);
+		editMenu.add(new JMenuItem("Not implemented");
 		
 		// Tester: see that Application->About produces our popup
 		// Ditto for Preferences and Shutdown.
