@@ -1,6 +1,6 @@
 package dir_file;
 
-import java.io.File;
+import java.nio.file.*;
 import java.io.IOException;
 
 /**
@@ -11,12 +11,19 @@ import java.io.IOException;
 public class Delete {
 	public static void main(String[] argv) throws IOException {
 
+		String fileToDelete = "Delete.java~";
+		System.out.println("Deleting " + fileToDelete);
 		// Construct a File object for the backup created by editing
 		// this source file. The file probably already exists.
 		// Some text editors create backups by putting ~ at end of filename.
-		File bkup = new File("Delete.java~");
+		Path bkup = Path.of(fileToDelete);
 		// Now, delete it:
-		bkup.delete();
+		if (Files.exists(bkup)) {
+			Files.delete(bkup);
+			System.out.println("Done");
+		} else {
+			System.out.println("File not found");
+		}
 	}
 }
 // end::main[]
