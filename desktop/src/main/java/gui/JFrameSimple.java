@@ -13,6 +13,7 @@ public class JFrameSimple extends JFrame {
 		super("JFrameSimple");
 
 		getContentPane().add(quitButton = new JButton("Exit"));
+		quitButton.addActionListener( e -> System.exit(0));
 
 		// Set up so that "Close" will exit the program
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
