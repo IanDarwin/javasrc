@@ -9,7 +9,7 @@ public class GetNumber {
 
 	// tag::main[]
 	/*
-	 * Process one String, returning it as a Number subclass
+	 * Process one String, displaying it as int or double as appropriate
 	 */
 	public static void process(String s) {
 		if (s.matches("[+-]*\\d*\\.\\d+[dDeEfF]*")) {
