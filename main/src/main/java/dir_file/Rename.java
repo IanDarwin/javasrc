@@ -5,8 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Rename a file in Java
- * @author Ian F. Darwin, https://darwinsys.com/
+ * Rename "MyCoolDocument" to "mydoc.bak" in Java
  */
 // tag::main[]
 public class Rename {
@@ -18,8 +17,8 @@ public class Rename {
 		// Setup for the demo: create a new "old" file
 		final Path oldName = Files.exists(p) ? p : Files.createFile(p);
 		
-		// Rename the backup file to "mydoc.bak"
-		// Renaming requires a Path object for the target.
+		// Rename the file to "mydoc.bak"
+		// Renaming needs a Path object for the target.
 		final Path newName = Path.of("mydoc.bak");
 		Files.deleteIfExists(newName); // In case previous run left it there
 		Path p2 = Files.move(oldName, newName);
