@@ -26,16 +26,16 @@ public class ScanStringTok {
 		String s = null;
 		try (BufferedReader is = 
 				new BufferedReader(new FileReader(fileName));) {
-			while ((s = is.readLine()) != null) {
-				StringTokenizer st = new StringTokenizer(s, "@", true);
-				String user = (String)st.nextElement();
-				st.nextElement();
-				String host = (String)st.nextElement();
-				System.out.println("User name: " + user +
-					"; host part: " + host);
+				while ((s = is.readLine()) != null) {
+					StringTokenizer st = new StringTokenizer(s, "@", true);
+					String user = (String)st.nextElement();
+					st.nextElement();
+					String host = (String)st.nextElement();
+					System.out.println("User name: " + user +
+						"; host part: " + host);
 
-				// Do something useful with the user and host parts...  
-			}
+					// Do something useful with the user and host parts...  
+				}
 		} catch (NoSuchElementException ix) {
 			System.err.println("Malformed input " + s);
 		} catch (IOException e) {

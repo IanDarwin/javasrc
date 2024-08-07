@@ -17,7 +17,7 @@ public class MethodHandleDemo {
         // Create a matcher for the arg list types we want to invoke
         // First the return type, then the argument types
         MethodType mt = MethodType.methodType(LocalDate.class,
-			int.class, int.class, int.class);
+            int.class, int.class, int.class);
         // Use the Lookup object to find the static method "of" in LocalDate
         MethodHandle mh = lup.findStatic(LocalDate.class, "of", mt);
         // At last, invoke the method!

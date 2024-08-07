@@ -25,7 +25,7 @@ public class ReadWriteImage {
 	/** The mode used in this run */
 	static Mode mode = Mode.R_RECTANGLE;
 	/** Java release to start with */
-	final static int START = 8;
+	final static int START = 5;
 	/** Several beyond current Java release, room for expansion */
 	final static int END = 25;
 	/** Releases we still care about Preview/Incubation in these releases */

@@ -30,7 +30,7 @@ class EqualsDemoTest {
 
 	@Test
 	void symmetric() {
-		assertTrue(d1.equals(d2) && d2.equals(d1));
+		assertTrue(d1.equals(d2) == d2.equals(d1));
 	}
 
 	@Test

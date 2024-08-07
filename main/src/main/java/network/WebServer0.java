@@ -36,7 +36,8 @@ public class WebServer0 {
 	public static void main(String[] args) throws Exception {
 		var port = args.length == 1 ?  Integer.parseInt(args[0]) : HTTP_PORT;
 		WebServer0 w = new WebServer0(port);
-		System.out.println("DarwinSys Java WebServer0 listening on http://localhost:" + port + "/");
+		System.out.println(
+			"DarwinSys Java WebServer0 listening on http://localhost:" + port + "/");
 		w.runServer();		// never returns!!
 	}
 

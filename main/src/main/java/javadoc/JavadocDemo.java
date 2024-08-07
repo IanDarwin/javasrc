@@ -30,7 +30,7 @@ public class JavadocDemo extends JPanel {
     Button b = new Button("Hello");
     add(b);            // connect Button into component
     // Totally capricious example of what you should not do
-	if (LocalDate.now().getDayOfWeek() == DayOfWeek.SUNDAY) {
+    if (LocalDate.now().getDayOfWeek() == DayOfWeek.SUNDAY) {
       throw new IllegalArgumentException("Never On A Sunday");
     }
   }

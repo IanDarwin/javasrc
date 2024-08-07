@@ -11,8 +11,7 @@ import javax.tools.SimpleJavaFileObject;
 import javax.tools.ToolProvider;
 
 /** Demo the Java Compiler API: Create a class, compile, load, and run it.
- * N.B. Will not run under Eclipse due to classpath settings;
- * best run it standalone using "java JavaCompiler.java"
+ * Best run standalone using "java JavaCompiler.java"
  * @author Ian Darwin
  */
 public class JavaCompilerDemo {

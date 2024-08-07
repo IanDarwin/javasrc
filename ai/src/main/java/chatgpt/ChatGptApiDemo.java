@@ -21,7 +21,8 @@ public class ChatGptApiDemo {
 		System.out.println(chatGPT(Constants.TEXT_PROMPT));
 	}
 
-	public static String chatGPT(String prompt) throws IOException, URISyntaxException {
+	public static String chatGPT(String prompt)
+			throws IOException, URISyntaxException {
 		String apiKey = Constants.getOpenAPIKey();
 		String model = "gpt-4o";
 
@@ -34,7 +35,8 @@ public class ChatGptApiDemo {
 		// Send the request
 		var request = new ChatGptRequest(model, "user", prompt);
 		connection.setDoOutput(true);
-		OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+		OutputStreamWriter writer =
+			new OutputStreamWriter(connection.getOutputStream());
 		writer.write(request.toString());
 		writer.flush();
 		writer.close();
@@ -47,7 +49,8 @@ public class ChatGptApiDemo {
 			if ((rah = connection.getHeaderField("retry-after")) != null) {
 				System.out.println("Try again: " + rah);
 			}
-			try (var br = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+			try (var br = 
+				new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
 				while ((rah = br.readLine()) != null) {
 					System.out.println(rah);
 				}

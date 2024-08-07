@@ -81,7 +81,8 @@ public class ExecDemoBrowser {
 						run = program;
 					}
 
-					process = Runtime.getRuntime().exec(new String[]{run, helpURL.toString()});
+					process = Runtime.getRuntime().exec(
+						new String[]{run, helpURL.toString()});
 
 					logger.info("In main after exec .");
 
