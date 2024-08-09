@@ -1,6 +1,9 @@
 package io;
 
+import java.io.IOException;
 import java.util.Formatter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /** Demonstrate some usage patterns and format-code examples 
  * of the Formatter class and PrintStream/PrintWriter 
@@ -8,7 +11,7 @@ import java.util.Formatter;
  */
 // tag::main[]
 public class FormatterDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		// The arguments to all these format methods consist of
 		// a format code String and 1 or more arguments.
@@ -36,6 +39,16 @@ public class FormatterDemo {
 
 		// Format doubles with more control
 		System.out.printf("PI is approximately %4.2f%n", Math.PI);
+
+		final String TMPFILE = "/tmp/format-demo.txt";
+		Formatter fmt2 = new Formatter(TMPFILE);
+		fmt2.format(
+			"This is a %s opportunity that you can get in for just $%5.2f!%n",
+			"new", 27.99);
+		fmt2.close();
+
+		String result2 = Files.readString(Path.of(TMPFILE));
+		System.out.print("Formatted string is: " + result2);
 	}
 }
 // end::main[]

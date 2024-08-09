@@ -20,7 +20,7 @@ public class GetNumber {
 				return dValue;
 			} catch (NumberFormatException e) {
 				System.out.println(s + ": Invalid double: " + s);
-				return null;
+				return Double.NaN;
 			}
 		} else try {
 			// did not contain . d e or f, so try as int.
@@ -30,7 +30,7 @@ public class GetNumber {
 				return iValue;
 			} catch (NumberFormatException e2) {
 				System.out.println(s + ": Not a number: " + s);
-				return null;
+				return Double.NaN;
 			}
 	}
 
