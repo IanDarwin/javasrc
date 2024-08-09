@@ -28,5 +28,4 @@ class GetNumberTest {
 			assertEquals(oo[0], GetNumber.process((String)oo[1]));
 		}
 	}
-
 }
