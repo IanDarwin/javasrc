@@ -55,9 +55,8 @@ public class MacOsUiHints {
 		mb.add(editMenu);
 		editMenu.add(new JMenuItem("Not implemented"));
 
-		Desktop desktop = Desktop.getDesktop();
-
 		if ("Mac OS X".equals(System.getProperty("os.name"))) {
+			Desktop desktop = Desktop.getDesktop();
 			desktop.setAboutHandler(e ->
 				JOptionPane.showMessageDialog(null, """
 				About MacOSUIHints\n
