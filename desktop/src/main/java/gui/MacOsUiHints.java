@@ -1,16 +1,16 @@
 package gui;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-// tag::main[]
 /**
  * Interactive test for "macosui" package.
  * Must set Apple properties before first
@@ -18,22 +18,17 @@ import javax.swing.SwingUtilities;
  */
 public class MacOsUiHints {
 
+	// tag::main[]
 	public static void main(String[] args) throws Exception {
-		// OS X Tester: 
-		// check that the File Edit View menu appears atop the desktop not the window
-		System.setProperty("apple.laf.useScreenMenuBar", "true");
-		// OS X Tester: check that this string appears in the Application Menu.
-		System.setProperty("apple.awt.application.name", "macOSUiHints");
-		System.setProperty("com.apple.mrj.application.apple.menu.about.name",
-			"MacOsUiHints");
+		System.setProperty("apple.laf.useScreenMenuBar", "true");         // <1>
+		System.setProperty("apple.awt.application.name", "macOSUiHints"); // <2>
+//		System.setProperty(
+//			"com.apple.mrj.application.apple.menu.about.name",            // <3>
+//			"MacOsUiHints");
 		final MacOsUiHints gui = new MacOsUiHints( );
-		SwingUtilities.invokeAndWait(new Runnable() {
-			@Override
-			public void run() {
-				gui.getFrame().setVisible(true);
-			}
-		});
+		SwingUtilities.invokeAndWait(() -> gui.getFrame().setVisible(true));
 	}
+	// end::main[]
 
 	JFrame jf;
 
@@ -44,11 +39,7 @@ public class MacOsUiHints {
 	public MacOsUiHints( ) {
 		jf = new JFrame("MacOsUiHints");
 		JButton button = new JButton("Exit");
-		button.addActionListener(new ActionListener( ) {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
+		button.addActionListener(e -> System.exit(0));
 		jf.getContentPane( ).add(button);
 		
 		JMenuBar mb = new JMenuBar();
@@ -63,14 +54,17 @@ public class MacOsUiHints {
 		var editMenu = new JMenu("Edit");
 		mb.add(editMenu);
 		editMenu.add(new JMenuItem("Not implemented"));
+
+		Desktop desktop = Desktop.getDesktop();
+
+		if ("Mac OS X".equals(System.getProperty("os.name"))) {
+			desktop.setAboutHandler(e ->
+				JOptionPane.showMessageDialog(null, """
+				About MacOSUIHints\n
+				Version 0.0"""));
+		}
 		
-		// Tester: see that Application->About produces our popup
-		// Ditto for Preferences and Shutdown.
-		// MacOSAppAdapter adapter =
-		//   new MacOSAppAdapter(jf, abouter, prefser, printer, shutter);
-		//adapter.register( );
 		jf.setSize(300, 200);
 
 	}
 }
-// end::main[]
