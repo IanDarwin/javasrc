@@ -13,7 +13,8 @@ public class CheckForSwing {
 				"a Java Runtime with javax.swing GUI components.\n" +
 				"Please check your Java installation and try again.";
 			// Better to make something appear in the GUI. Either a 
-			// JOptionPane, or: myPanel.add(new Label(failure));
+			// Dialog, or: myPanel.add(new Label(failure));
+			// Can't be JDialog as Swing isn't present.
 			System.err.println(failure);
 		}
 		// No need to print anything here - the GUI should work...
