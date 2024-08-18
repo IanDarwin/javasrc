@@ -23,6 +23,7 @@ public class MacOsUiHints {
 		// check that the File Edit View menu appears atop the desktop not the window
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		// OS X Tester: check that this string appears in the Application Menu.
+		System.setProperty("apple.awt.application.name", "macOSUiHints");
 		System.setProperty("com.apple.mrj.application.apple.menu.about.name",
 			"MacOsUiHints");
 		final MacOsUiHints gui = new MacOsUiHints( );
@@ -61,7 +62,7 @@ public class MacOsUiHints {
 		
 		var editMenu = new JMenu("Edit");
 		mb.add(editMenu);
-		editMenu.add(new JMenuItem("Not implemented");
+		editMenu.add(new JMenuItem("Not implemented"));
 		
 		// Tester: see that Application->About produces our popup
 		// Ditto for Preferences and Shutdown.
