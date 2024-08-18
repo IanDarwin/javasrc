@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Desktop;
+import java.awt.Desktop.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -22,9 +23,6 @@ public class MacOsUiHints {
 	public static void main(String[] args) throws Exception {
 		System.setProperty("apple.laf.useScreenMenuBar", "true");         // <1>
 		System.setProperty("apple.awt.application.name", "macOSUiHints"); // <2>
-//		System.setProperty(
-//			"com.apple.mrj.application.apple.menu.about.name",            // <3>
-//			"MacOsUiHints");
 		final MacOsUiHints gui = new MacOsUiHints( );
 		SwingUtilities.invokeAndWait(() -> gui.getFrame().setVisible(true));
 	}
@@ -55,15 +53,25 @@ public class MacOsUiHints {
 		mb.add(editMenu);
 		editMenu.add(new JMenuItem("Not implemented"));
 
-		if ("Mac OS X".equals(System.getProperty("os.name"))) {
-			Desktop desktop = Desktop.getDesktop();
-			desktop.setAboutHandler(e ->
-				JOptionPane.showMessageDialog(null, """
-				About MacOSUIHints\n
-				Version 0.0"""));
+		var helpMenu = new JMenu("Help");
+		mb.add(helpMenu);
+		var aboutMI = new JMenuItem("About");
+		aboutMI.addActionListener(e -> doAboutBox());
+		helpMenu.add(aboutMI);
+
+		// tag::about[]
+		Desktop desktop = Desktop.getDesktop();
+		if (desktop.isSupported(Action.APP_ABOUT)) {
+			desktop.setAboutHandler(e -> doAboutBox());
 		}
+		// end::about[]
 		
 		jf.setSize(300, 200);
+	}
 
+	void doAboutBox() {
+		JOptionPane.showMessageDialog(jf, """
+			About MacOSUIHints\n
+			Version 0.0""");
 	}
 }
