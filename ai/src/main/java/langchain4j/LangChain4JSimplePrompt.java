@@ -15,9 +15,9 @@ public class LangChain4JSimplePrompt {
         String apiKey = Constants.getOpenAPIKey();
         ChatLanguageModel model = OpenAiChatModel.withApiKey(apiKey);
 
-        String themes = model.generate(Constants.TEXT_PROMPT);
+        String results = model.generate(Constants.TEXT_PROMPT);
 
-        System.out.println(themes);
+        System.out.println(results);
     }
 }
 // end::main[]
