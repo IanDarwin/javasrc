@@ -6,6 +6,7 @@ import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.service.AiServices;
 
+// tag::main[]
 interface Chatterer {
 	String speak(String response);
 }
@@ -39,3 +40,4 @@ public class Converse {
 		System.out.println(first);
 	}
 }
+// end::main[]
