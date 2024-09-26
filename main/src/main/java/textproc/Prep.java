@@ -22,7 +22,7 @@ import java.util.stream.Stream;
  * Ideally use graalvm's "nativeimage" to make it fastest.
  */
 public class Prep {
-	void main(String[] files) throws IOException {
+	public static void main(String[] files) throws IOException {
 		if (files.length == 0) {
 			process(System.in);
 		} else {
@@ -38,7 +38,7 @@ public class Prep {
 			if (ich > 255)
 				continue;
 			char c = (char)ich;
-			if (Character.isSpace(c))
+			if (Character.isWhitespace(c))
 				send('\n');
 			if (Character.isAlphabetic(c))
 				send(c);
