@@ -38,10 +38,10 @@ public class Prep {
 			if (ich > 255)
 				continue;
 			char c = (char)ich;
-			if (Character.isWhitespace(c))
-				send('\n');
 			if (Character.isAlphabetic(c))
 				send(c);
+			else
+				send('\n');
 		}
 	}
 
