@@ -12,10 +12,10 @@ public class LoadAverage {
 		Field f = Unsafe.class.getDeclaredField("theUnsafe");
 		f.setAccessible(true);
 		Unsafe unsafe = (Unsafe) f.get(null);
-		int nelem = 3;
-		double loadAvg[] = new double[nelem];
-		unsafe.getLoadAverage(loadAvg, nelem);
-		for (double d : loadAvg) {
+		int numElements = 3;
+		double loadAverage[] = new double[numElements];
+		unsafe.getLoadAverage(loadAverage, numElements);
+		for (double d : loadAverage) {
 			System.out.printf("%4.2f ", d);
 		}
 		System.out.println();

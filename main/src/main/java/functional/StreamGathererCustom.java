@@ -13,7 +13,7 @@ class DoubleHolder {
 }
 
 // Threshold for distinctness - anything over a penny is distinct
-double THRESHOLD = 0.011D;
+double THRESHOLD = 0.01D;
 
 // The star of the show: a simple custom Gatherer
 Gatherer<Double, DoubleHolder, Double> distinctByAmount =
