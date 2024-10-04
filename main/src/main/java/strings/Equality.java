@@ -1,11 +1,13 @@
 package strings;
 
+/**
+ * Demonstration of "interning", that is, Java makes and caches
+ * unique string literals, to save memory.
+ * The == operator is true if both arguments refer to the same
+ * physical object in memory, which likely means they were interned.
+ */
 public class Equality {
-	public static void main(String[] args) { 
-		new Equality().run();
-	}
-
-	public void run() {
+	void main(){ 
 		String x = "hello";
 
 		// Two string literals in same class, must print true,true
