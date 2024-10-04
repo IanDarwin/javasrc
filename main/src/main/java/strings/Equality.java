@@ -8,9 +8,12 @@ public class Equality {
 	public void run() {
 		String x = "hello";
 
+		// Two string literals in same class, must print true,true
+		compare(x, "hello");
+
 		String y = Equality2.getString();
 	
-		// Assuming Equality2 uses a String constant, this prints true,true
+		// Since Equality2 uses a String constant, this prints true,true
 		compare(x, y);
 
 		// A "new String" is uniquely created, so this prints false, true
@@ -30,5 +33,11 @@ public class Equality {
 		System.out.println(s1 == s2);
 		System.out.println(".equals():" + s1.equals(s2));
 		System.out.println(); 
+	}
+}
+
+class Equality2 {
+	public static String getString() {
+		return "hello";
 	}
 }
