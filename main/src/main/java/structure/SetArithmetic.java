@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /** Show the union and intersection of two sets. */
 public class SetArithmetic {
@@ -23,14 +25,17 @@ public class SetArithmetic {
 
 		Set<String> union = new TreeSet<String>(s1);
 		union.addAll(s2);		// now contains the union
-
-		print("union", union);
+		print("union via addAll()", union);
 
 		Set<String> intersect = new TreeSet<String>(s1);
 		intersect.retainAll(s2);
+		print("intersection via retainAll()", intersect);
 
-		print("intersection", intersect);
+		Set union2 = Stream.concat(s1.stream(),s2.stream()).collect(Collectors.toSet()); 
+		print("union via Streams", union2);
 
+		Set intersect2 = s1.stream().filter(s2::contains).collect(Collectors.toSet());
+		print("intersection with Streams", intersect2);
 	}
 
 	protected static void print(String label, Collection<String> c) {
