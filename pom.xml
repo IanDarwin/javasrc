@@ -37,7 +37,7 @@
 		<module>desktop</module>
 	<!-- <module>ee</module> XML and other issues -->
 	<!-- <module>graal</module> Only works with graal vm-->
-	<!-- <module>incubation</module> Many users won't have latest Java -->
+		<module>incubation</module> <!-- Comment out if don't have recent-enough Java -->
 	<!-- <module>javafx</module> doesn't work on some platforms -->
 	<!-- <module>jlink</module> has custom build script -->
 		<module>json</module>
