@@ -35,7 +35,7 @@
 	</developers>
 
 	<properties>
-		<javase.version>17</javase.version>
+		<javase.version>21</javase.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
