@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-	<!-- This file MUST be in the root of each CLASSPATH element for which you want injection to work! -->
+	<!-- This file MUST be in the root of each CLASSPATH element for CDI injection to work! -->
 </beans>

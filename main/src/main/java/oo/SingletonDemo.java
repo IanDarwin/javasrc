@@ -10,7 +10,7 @@ public class SingletonDemo {
 
         // tag::codeBased[]
         // Demonstrate the codeBased method:
-        Singleton.getInstance().demoMethod();
+        Singleton.instance().demoMethod();
         // end::codeBased[]
     }
 }
