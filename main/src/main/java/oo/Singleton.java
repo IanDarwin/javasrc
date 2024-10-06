@@ -20,12 +20,12 @@ public class Singleton {
         // nothing to do this time
     }
 
-    /** Static 'instance' method */
-    public static Singleton getInstance() {
+    /** Static 'instance' method to obtain the one-and-only instance */
+    public static Singleton instance() {
         return instance;
     }
 
-    // other methods protected by singleton-ness would be here...
+    // other instance methods protected by singleton-ness would be here...
 
     /** A simple demo method */
     public String demoMethod() {
