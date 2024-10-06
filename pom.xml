@@ -48,7 +48,7 @@
 		<module>spark</module>
 		<module>testing</module>
 	<!-- sampleproject is not a module but is a maven archetype -->
-	<!-- <module>testing-spock</module> -->
+		<module>testing-spock</module>
 		<module>unsafe</module>
 		<module>xml</module>
 	</modules>
