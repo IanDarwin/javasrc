@@ -1,10 +1,10 @@
 package dir_file;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Get a list of files that should be present, and check
@@ -13,49 +13,43 @@ import java.util.ArrayList;
  */
 public class CheckFiles {
 	public static void main(String[] argv) {
-		CheckFiles cf = new CheckFiles();
 		System.out.println("CheckFiles starting.");
-		cf.getListFromFile();
-		cf.getListFromDirectory();
-		cf.reportMissingFiles();
-		System.out.println("CheckFiles done.");
-	}
-	public String FILENAME = "filelist.txt";
-
-	protected ArrayList<String> listFromFile = new ArrayList<String>();
-	protected ArrayList<String> listFromDir = new ArrayList<String>();
-
-	protected void getListFromFile() {
-		BufferedReader is = null;
+		CheckFiles cf = new CheckFiles();
 		try {
-			is = new BufferedReader(new FileReader(FILENAME));
-			String line;
-			while ((line = is.readLine()) != null)
-				listFromFile.add(line);
+			var filesToCheck = cf.getListFromConfigFile();
+			var filesThatExist = cf.getListFromDirectory();
+			cf.reportMissingFiles(filesToCheck, filesThatExist);
+			System.out.println("CheckFiles done.");
 		} catch (FileNotFoundException e) {
 			System.err.println("Can't open file list file.");
 			return;
 		} catch (IOException e) {
 			System.err.println("Error reading file list");
 			return;
-		} finally {
-			try {
-				is.close();
-			} catch (IOException e) {
-				// nothing to do
-			}
 		}
+	}
+	public String FILENAME = "filelist.txt";
+
+	protected List<String> getListFromConfigFile() throws IOException {
+		var list= new ArrayList<String>();
+		Files.lines(Path.of(FILENAME))
+			.forEach(line -> list.add(line));
+		return list;
 	}
 
 	/** Get list of names from the directory */
-	protected void getListFromDirectory() {
-		String[] list = new java.io.File(".").list();
-		for (String file : list) {
-			listFromDir.add(file);
+	protected List<String> getListFromDirectory() {
+		var array = new java.io.File(".").list();
+		var list = new ArrayList<String>();
+		for (String file : array) {
+			list.add(file);
 		}
+		return list;
 	}
 
-	protected void reportMissingFiles() {
+	protected void reportMissingFiles(
+		List<String> listFromFile, List<String> listFromDir) {
+
 		for (String name : listFromFile) {
 			if (!listFromDir.contains(name))
 				System.err.println("File " + name + " missing.");
