@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 // tag::main[]
 /**
- * Implement word frequency count; shown in to main steps
+ * Implement word frequency count; shown in two main steps
  * (WordFreq2 shows the steps combined into one statement).
  */
 public class WordFreq {
