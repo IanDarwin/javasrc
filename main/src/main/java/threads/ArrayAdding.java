@@ -4,6 +4,7 @@ import java.util.concurrent.*;
 
 /** Simple demo of synchronized method.
  */
+// tag::main[]
 public class ArrayWriter {
 	private static final int HOWMANY = 1000;
     private static int[] array;
@@ -38,7 +39,9 @@ public class ArrayWriter {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != 2 * i) {
 				System.out.printf("%d found at offset %d\n", array[i], i);
+				return;			// A single failure crashes the rocket.
 			}
 		}
 	}
 }
+// end::main[]
