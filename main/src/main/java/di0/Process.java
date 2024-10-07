@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.inject.Named;
 
+// tag::main[]
 @Named("processor")
 public class Process implements Processor {
 
@@ -15,3 +16,4 @@ public class Process implements Processor {
 		reporter.report(result);
 	}
 }
+// end::main[]

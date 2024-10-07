@@ -3,6 +3,7 @@ package di0;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+// tag::main[]
 public class SpringMain {
 	public static void main(String[] args) {
         ApplicationContext ctx =
@@ -13,3 +14,4 @@ public class SpringMain {
 		processor.process(2,3);
 	}
 }
+// end::main[]

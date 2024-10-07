@@ -4,6 +4,7 @@ import jakarta.enterprise.inject.Produces;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// tag::main[]
 @Configuration
 public class SpringBeanConfig {
     @Bean
@@ -11,3 +12,4 @@ public class SpringBeanConfig {
         return new Process();
     }
 }
+// end::main[]
