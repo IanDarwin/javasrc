@@ -30,15 +30,13 @@ public class ThreadPoolDemo {
 			System.out.println("Result " + f.get());
 		}
 		pool.shutdown();
-		// end::main[]
 	}
 
 	static class DemoRunnable implements Callable<Integer> {
 		int time, numRuns;
 		DemoRunnable(int t) { time = t; }
 
-		// @Override
-		public Integer call() {
+		@Override public Integer call() {
 			while (!done) {
 				System.out.println("Running " + Thread.currentThread());
 				++numRuns;
@@ -47,4 +45,5 @@ public class ThreadPoolDemo {
 			return numRuns;
 		}
 	}
+	// end::main[]
 }
