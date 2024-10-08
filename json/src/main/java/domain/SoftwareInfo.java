@@ -1,4 +1,4 @@
-package json;
+package domain;
 
 import java.util.List;
 
