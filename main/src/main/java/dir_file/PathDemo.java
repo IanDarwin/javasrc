@@ -1,6 +1,6 @@
 package nio;
 
-// tag main[]
+// tag::main[]
 import java.nio.file.Path;
 
 public class PathDemo {
@@ -21,7 +21,7 @@ public class PathDemo {
 		display("absolutePath", t.toAbsolutePath());
 	}
 
-	// end main[]
+	// end::main[]
 	/** Convenience routine */
 	static void display(String msg, String value) {
 		System.out.printf("%25s: %s\n", msg, value);
