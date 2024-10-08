@@ -36,7 +36,7 @@ public class HttpClientDemo {
 		HttpRequest req =
 			HttpRequest.newBuilder(URI.create(urlString + 
 				URLEncoder.encode(keyword, StandardCharsets.UTF_8)))
-			.header("User-Agent", "Dept of Silly Walks")
+			.header("User-Agent", "Ministry of Silly Walks")
 			.GET()
 			.build();
 		// end::setup[]

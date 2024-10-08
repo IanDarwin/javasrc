@@ -1,6 +1,7 @@
 package dir_file;
 
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -19,10 +20,24 @@ public class Rename {
 		
 		// Rename the file to "mydoc.bak"
 		// Renaming needs a Path object for the target.
-		final Path newName = Path.of("mydoc.bak");
+		final Path newName = Path.of("Mydoc.bak");
 		Files.deleteIfExists(newName); // In case previous run left it there
 		Path p2 = Files.move(oldName, newName);
 		System.out.println(p + " renamed to " + p2);
+
+		// What if a directory exists and you try to move a file into it?
+		Path target = Path.of("temp");
+		if (!Files.isDirectory(target)) {
+			Files.createDirectory(target);
+		}
+		try {
+			Files.move(p2, target);
+		} catch (java.nio.file.FileAlreadyExistsException ex) {
+			System.out.println("Caught expected FileAlreadyExistsException");
+		}
+		// Cleanup time!
+		Files.delete(p2);
+		Files.delete(target);
 	}
 }
 // end::main[]

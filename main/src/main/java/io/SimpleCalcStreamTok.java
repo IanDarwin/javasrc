@@ -19,8 +19,6 @@ public class SimpleCalcStreamTok {
 	protected  StreamTokenizer tf;
 	/** The Output File */
 	protected PrintWriter out = new PrintWriter(System.out, true);
-	/** The variable name (not used in this version) */
-	protected String variable;
 	/** The operand stack */
 	protected Stack<Double> s = new Stack<>();
 
