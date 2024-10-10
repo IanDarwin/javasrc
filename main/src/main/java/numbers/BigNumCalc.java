@@ -49,7 +49,7 @@ public class BigNumCalc {
 					break;
 				// - and /, order *does* matter
 				case '-':
-					tmp = (BigDecimal)stack.pop();
+					tmp = stack.pop();
 					stack.push((stack.pop()).subtract(tmp));
 					break;
 				case '/':
