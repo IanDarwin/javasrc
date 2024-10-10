@@ -22,15 +22,18 @@ public class LinkedListDemo {
 		l.forEach(o -> 
 			System.out.println("Next element: " + o));
 
-		if (l.indexOf("Hello") < 0)
+		if (l.indexOf("Hello") != 1)
 			System.err.println("Lookup does not work");
 		else
 			System.err.println("Lookup works");
 
 		// Now, for added fun, let's walk the linked list backwards.
 		ListIterator<String> li = l.listIterator();
+		// (have to get to the end first)
+		while (li.hasNext())
+			li.next();
 		while (li.hasPrevious()) {
-			System.out.println("Back to: " + li.previous());
+			System.out.println("Backwards we find: " + li.previous());
 		}
 	}
 }
