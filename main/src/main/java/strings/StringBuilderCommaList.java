@@ -21,6 +21,7 @@ public class StringBuilderCommaList {
 			sb1.append(word);
 		}
 		System.out.println(sb1);
+		// end::main[]
 
 		System.out.println(
 			"Split using StringTokenizer; joined using StringBuilder");
@@ -33,6 +34,5 @@ public class StringBuilderCommaList {
 			}
 		}
 		System.out.println(sb2);
-		// end::main[]
 	}
 }
