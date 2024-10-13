@@ -21,6 +21,8 @@ public class SimpleCalcStreamTok {
 	protected PrintWriter out = new PrintWriter(System.out, true);
 	/** The operand stack */
 	protected Stack<Double> s = new Stack<>();
+	/** The name of a variable */
+	protected String variable;
 
 	/* Driver - main program */
 	public static void main(String[] av) throws IOException {

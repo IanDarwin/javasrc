@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 /** Simple demo of synchronized method.
  */
 // tag::main[]
-public class ArrayWriter {
+public class ArrayAdding {
 	private static final int HOWMANY = 1000;
     private static int[] array;
 	private static ExecutorService pool = Executors.newFixedThreadPool(2);

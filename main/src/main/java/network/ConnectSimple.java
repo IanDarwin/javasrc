@@ -1,4 +1,4 @@
- ackage network;
+ package network;
 
 // tag::main[]
 import java.net.Socket;

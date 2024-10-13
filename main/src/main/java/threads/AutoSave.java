@@ -16,14 +16,14 @@ public class AutoSave implements Runnable {
 
 	public AutoSave(FileSaver m) {
 		Thread.currentThread().setName("AutoSave Thread");
-		setDaemon(true);		// so we don't keep the main app alive
+		Thread.currentThread().setDaemon(true);		// so we don't keep the main app alive
 		model = m;
 	}
 
 	public void run() {
 		while (true) {		// entire run method runs forever.
 			try {
-				sleep(SECONDS*1000);
+				Thread.sleep(SECONDS*1000);
 			} catch (InterruptedException e) {
 				// do nothing with it
 			}

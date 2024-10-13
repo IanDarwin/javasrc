@@ -49,7 +49,7 @@ public class HashMapWithRemoves {
 		// or
 		map .entrySet()
 			.removeIf(entry -> Set.of("Netscape", "Sun")
-			.contains(entry.getKey()));
+				.contains(entry.getKey()));
 		map.entrySet().forEach(System.out::println);
 		// end::functional[]
 		// end::main[]
