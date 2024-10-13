@@ -11,7 +11,7 @@ public class IntObject {
 		System.out.println(wrapped.toString());		// or just "wrapped"
 		
 		// Integer to int
-		int primitive = i1.intValue();
+		int primitive = wrapped.intValue();
 		System.out.println(primitive);
 		// end::main[]
 	}
