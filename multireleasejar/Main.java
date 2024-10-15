@@ -3,7 +3,7 @@ package mrjdemo;
 // tag::main[]
 public class Main {
 	public static void main(String[] args) { 
-		var type = new Data().getType();
+		var type = new Data().type();
 		System.out.printf("Run with a Data object of type '%s'.\n", type);
 	}
 }

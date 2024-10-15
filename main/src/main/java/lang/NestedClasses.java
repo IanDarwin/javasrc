@@ -3,7 +3,7 @@ package lang;
 /** Show various forms of nested classes.
  * Not all nested classes are "inner classes".
  */
-class A extends Object {
+class OuterA extends Object {
 	public class B {	// member class
 		public class BB {
 			public void print() {
@@ -27,6 +27,6 @@ class A extends Object {
 		new B().print();
 	}
 	public static void main(String[] av) {
-		new A().print();
+		new OuterA().print();
 	}
 }

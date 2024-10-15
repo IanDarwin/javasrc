@@ -22,7 +22,7 @@ public class Listen {
 			while ((clientSock = sock.accept()) != null) {
 
 				// Process it, usually on a separate thread
-				// to avoid blocking the accept() call.
+				// to avoid blocking further accept() calls.
 				process(clientSock);
 			}
 

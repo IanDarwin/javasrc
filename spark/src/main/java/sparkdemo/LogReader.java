@@ -23,7 +23,7 @@ public class LogReader {
 
     long good = logData.filter(                                          // <4>
     new FilterFunction<>() {public boolean call(String s) {
-          return s.contains(" 200 ");
+          return s.contains(".*\\D200\\D.*");
         }
       }).count();
 

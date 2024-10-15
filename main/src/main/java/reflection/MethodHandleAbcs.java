@@ -12,7 +12,7 @@ void main() throws Throwable {
     MethodHandles.Lookup lookup = MethodHandles.lookup();
     MethodType mt = MethodType.methodType(String.class, int.class, int.class);
     MethodHandle mh = lookup.findVirtual(String.class, "substring", mt);
-    String s = (String) mh.invokeExact("Antidisestablishmentrianism", 7, 20);
+    String s = (String) mh.invokeExact("Antidisestablishmentarianism", 7, 20);
     System.out.println(s);  // prints "establishment"
 	// end::main[]
 }

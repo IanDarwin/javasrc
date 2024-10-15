@@ -1,7 +1,6 @@
 package structure;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +20,6 @@ public class BeanUtilsDemo {
 	 */
 	public static void main(String[] args) throws Exception {
 		
-		Calendar c = Calendar.getInstance();
 		@SuppressWarnings("unchecked")
 		Map<String,Object> m = BeanUtils.describe(c);
 		printMap(m);
@@ -52,11 +50,10 @@ public class BeanUtilsDemo {
 	/**
 	 * @param m
 	 */
-	private static void printMap(Map<String, Object> m) {
-		Set<String> keys = m.keySet();
-		for (String v : keys) {
-			System.out.println(v + "-->" + m.get(v).toString() + "(" + m.get(v).getClass().getName() + ")");
-		}
+	private static void printMap(Map<String, Object> map) {
+		map.forEach((k,v) -> {
+			System.out.println(v + "-->" + v.toString() + "(" + v.getClass().getName() + ")");
+		});
 	}
 
 }

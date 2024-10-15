@@ -5,8 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 /** Sched -- command-line scheduler printer.
 *
@@ -15,11 +14,11 @@ import java.util.GregorianCalendar;
 
 public class Sched {
 
-	/** The Calendar for today, expected to be a GregorianCalendar. */
-	protected Calendar gc;
+	/** The date today, expected to be a GregorianCalendar. */
+	protected LocalDate gc = LocalDate.now();
 
 	/** The current date */
-	protected int year, month, day;
+	protected int year = gc.getYear(), month = gc.getMonth(), day = gc.getDayOfMonth();
 
 	/** Process one file
 	 */
@@ -42,18 +41,6 @@ public class Sched {
 		} catch (IOException e) {
 			System.out.println("IOException: " + e);
 		}
-	}
-
-	/** Construct a Scheduler. For now just get day, month, and year.
-	 */
-	public Sched() {
-		gc = Calendar.getInstance();
-		if (!(gc instanceof GregorianCalendar))
-			System.err.println(
-				"Warning: non-Gregorian Calendar"+gc);
-		year = gc.get(Calendar.YEAR);
-		month = 1 + gc.get(Calendar.MONTH);
-		day = gc.get(Calendar.DAY_OF_MONTH);
 	}
 
 	public String toString() {

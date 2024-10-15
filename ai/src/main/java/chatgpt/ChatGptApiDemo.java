@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URISyntaxException;
 
 import ai.Constants;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -43,21 +44,26 @@ public class ChatGptApiDemo {
 
 		// Get a response from ChatGPT
 		int n = connection.getResponseCode();
-		if (n == 429) {
-			System.out.println("No ChatGPT wants to listen to your chuntering.");
-			String rah = null;
-			if ((rah = connection.getHeaderField("retry-after")) != null) {
-				System.out.println("Try again: " + rah);
-			}
-			try (var br = 
-				new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
-				while ((rah = br.readLine()) != null) {
-					System.out.println(rah);
+		switch(n) {
+			case 429:
+				System.out.println("No ChatGPT wants to listen to your chuntering.");
+				String rah = null;
+				if ((rah = connection.getHeaderField("retry-after")) != null) {
+					System.out.println("Try again: " + rah);
 				}
-			}
-			return null;
+				try (var br =
+							 new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+					while ((rah = br.readLine()) != null) {
+						System.out.println(rah);
+					}
+				}
+				return null;
+			case 500: case 501: case 502:
+				System.out.println("GPT Server error " + n + " " + connection.getResponseMessage());
+				return null;
+			default:
+				System.out.println("HTTP Status was " + n);
 		}
-		System.out.println("HTTP Status was " + n);
 		var inputStream = connection.getInputStream();
 
 		if (DUMP_RAW) {
@@ -71,6 +77,8 @@ public class ChatGptApiDemo {
 			}
 		} else {
 			var mapper = new ObjectMapper();
+			// Guard against fields added as GPT evolves
+			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			ChatGptResponse resp = mapper.readValue(inputStream, ChatGptResponse.class);
 			System.out.println(resp);
 			return resp.choices[0].message.content;
@@ -114,11 +122,14 @@ public class ChatGptApiDemo {
 	static class ChatGptMessage {
 		public String role;
 		public String content;
+		public String refusal;
 	}
 
 	static class ChatGptUsage {
 		public int prompt_tokens;
+		public Object prompt_tokens_details;
 		public int completion_tokens;
+		public Object completion_tokens_details;
 		public int total_tokens;
 	}
 // end::main[]

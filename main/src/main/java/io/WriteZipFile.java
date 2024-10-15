@@ -8,6 +8,7 @@ import java.nio.file.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+// tag::main[]
 class WriteZipFile {
 
 	public static final String FILENAME = "temp.zip";
@@ -25,3 +26,4 @@ class WriteZipFile {
 		System.out.println("Written to " + FILENAME);
 	}
 }
+// end::main[]

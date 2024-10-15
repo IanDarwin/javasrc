@@ -1,3 +1,5 @@
+package lang;
+
 /* Creates a "diamond inheritance" (B and C both extend from A,
  * and the main class implements both). While this is a conflict,
  * it's resolvable by use of _interfaceName_.super().method().

@@ -74,7 +74,6 @@ public class EchoServer {
 				System.err.println(e);
 			}
 		}
-		/* NOTREACHED */
 	}
 }
 // end::main[]

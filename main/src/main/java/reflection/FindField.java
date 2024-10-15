@@ -1,7 +1,7 @@
 package reflection;
 
 import java.lang.reflect.Field;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /** This class shows using Reflection to get a field from another class. */
 // tag::main[]
@@ -33,6 +33,6 @@ public class FindField {
 /** This is just a class that we want to get a field from */
 class YearHolder {
 	/** Just a field that is used to show getting a field's value. */
-	public int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+	public int currentYear = LocalDate.now().getYear();
 }
 // end::main[]

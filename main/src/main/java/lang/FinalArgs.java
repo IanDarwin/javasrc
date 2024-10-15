@@ -1,6 +1,6 @@
 package lang;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  * Experiment with "final" args to functions (new in 1.1)
@@ -10,12 +10,14 @@ public class FinalArgs {
 		new FinalArgs().run();
 	}
 	void run() {
-		System.out.println("Hummm de dummm...");
-		myFunc(Calendar.getInstance());
-		System.out.println("Once upon a time...");
+		StringBuilder sb = new StringBuilder("Today's the day!");
+		System.out.println("sb = " + sb);
+		myFunc(sb);
+		System.out.println("sb = " + sb);
 	}
-	void myFunc(final Calendar d) {
-		// d = null;	// this will not compile
-		d.set(Calendar.YEAR, 1999); // this will compile, and changes the object
+	void myFunc(final StringBuilder sb) {
+		// sb = null;	// this will not compile
+		// this will compile, and changes the object
+		sb.setLength(0); sb.append("No, it's not!");
 	}
 }

@@ -2,7 +2,7 @@ package mrjdemo;
 
 // tag::main[]
 public record Data() {
-	public String getType() {
+	public String type() {
 		return "record";
 	}
 }

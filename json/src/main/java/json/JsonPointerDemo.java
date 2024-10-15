@@ -33,11 +33,8 @@ public class JsonPointerDemo {
 		JsonStructure jsonStr = rdr.read();
 		rdr.close();
 
-		JsonPointer jsonPointer;
-		JsonString jsonString;
-		
-		jsonPointer = Json.createPointer("/firstName");				// <2>
-		jsonString = (JsonString)jsonPointer.getValue(jsonStr);
+		JsonPointer jsonPointer = Json.createPointer("/firstName");	 // <2>
+		JsonString jsonString = (JsonString)jsonPointer.getValue(jsonStr);
 		String firstName = jsonString.getString();
 		System.out.println("/firstName => " + firstName);
 		
