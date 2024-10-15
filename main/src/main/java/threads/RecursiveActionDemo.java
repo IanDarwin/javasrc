@@ -11,7 +11,6 @@ import java.util.concurrent.RecursiveAction;
  * compute() call to return its result; the work is
  * accumulated in the "dest" array.
  * @see RecursiveTaskDemo when each computation has to return a value.
- * @author Ian Darwin
  */
 public class RecursiveActionDemo extends RecursiveAction {
 

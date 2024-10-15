@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
  * JUnit test for MyStack.
  * XXX Consider splitting off interface-method tests into a new
  * SimpleStackClass, parameterizing it to test both implementations.
- * @author Ian Darwin
  */
 class MyStackTest {
 	SimpleStack<String> ss = new MyStack<String>();

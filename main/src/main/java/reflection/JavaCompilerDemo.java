@@ -12,7 +12,6 @@ import javax.tools.ToolProvider;
 
 /** Demo the Java Compiler API: Create a class, compile, load, and run it.
  * Best run standalone using "java JavaCompiler.java"
- * @author Ian Darwin
  */
 public class JavaCompilerDemo {
 	private final static String PACKAGE = "reflection";

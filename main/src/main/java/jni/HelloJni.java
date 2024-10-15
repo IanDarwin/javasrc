@@ -7,7 +7,7 @@ package jni;
 public class HelloJni {
   int myNumber = 42; // used to show argument passing
 
-  // declare native class
+  // declare native method
   public native void displayHelloJni();
 
   // Application main, call its display method

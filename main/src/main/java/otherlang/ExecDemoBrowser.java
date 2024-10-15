@@ -3,6 +3,7 @@ package otherlang;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.net.URL;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
@@ -54,11 +55,12 @@ public class ExecDemoBrowser {
 	}
 
 	Process process;
+	ExecutorService threadPool = Executors.newFixedThreadPool(1);
 
 	/** Start the help, in its own Thread. */
 	public void runProgram() {
 
-		Thread.startVirtualThread( () -> {
+		threadPool.submit(() -> {
 				try {
 					// Get a "file:" URL for the Help File
 					URL helpURL = ExecDemoBrowser.this.getClass().getResource(HELP_FILE);
