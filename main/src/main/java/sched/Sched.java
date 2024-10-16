@@ -18,7 +18,7 @@ public class Sched {
 	protected LocalDate gc = LocalDate.now();
 
 	/** The current date */
-	protected int year = gc.getYear(), month = gc.getMonth(), day = gc.getDayOfMonth();
+	protected int year = gc.getYear(), month = gc.getMonth().ordinal(), day = gc.getDayOfMonth();
 
 	/** Process one file
 	 */

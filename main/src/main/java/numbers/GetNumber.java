@@ -23,11 +23,11 @@ public class GetNumber {
 				return Double.NaN;
 			}
 		} else try {
-			// did not contain . d e or f, so try as int.
-				int iValue = Integer.parseInt(s);
-				System.out.println(s + ": is an int: " + iValue +
-					" by Integer.parseInt()");
-				return iValue;
+			// did not contain . d e or f, so try as long.
+				long longValue = Long.parseLong(s);
+				System.out.println(s + ": is a long: " + longValue +
+					" by Long.parseLong()");
+				return longValue;
 			} catch (NumberFormatException e2) {
 				System.out.println(s + ": Not a number: " + s);
 				return Double.NaN;

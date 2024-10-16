@@ -20,7 +20,7 @@ public class FloatCmp {
 		} else if (equals(da, db, 0.0000001)) {
 			System.out.println("Equal within epsilon " + EPSILON);
 		} else {
-			System.out.println(da + " != " + db);
+			System.err.println(da + " != " + db);
 		}
 		
 		System.out.println("NaN prints as " + Double.NaN);
@@ -31,12 +31,12 @@ public class FloatCmp {
 		if (nan1 == nan2)
 			System.out.println("Comparing two NaNs incorrectly returns true.");
 		else
-			System.out.println("Comparing two NaNs correctly reports false.");
+			System.err.println("Comparing two NaNs correctly reports false.");
 
 		if (Double.valueOf(nan1).equals(Double.valueOf(nan2)))
 			System.out.println("Double(NaN).equals(NaN) correctly returns true.");
 		else
-			System.out.println("Double(NaN).equals(NaN) incorrectly returns false.");
+			System.err.println("Double(NaN).equals(NaN) incorrectly returns false.");
 	}
 
 	/** Compare two doubles within a given epsilon */
