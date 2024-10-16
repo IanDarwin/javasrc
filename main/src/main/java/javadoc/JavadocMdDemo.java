@@ -13,8 +13,14 @@ import javax.swing.JPanel;
 ///
 /// In Java 23, JEP 467 specifies [Markdown](https://en.wikipedia.org/wiki/Markdown)
 /// as an alternate implementation language to prepare Javadoc.
-/// It uses three slashes per line instead of the /** ... */ by
-/// traditional JavaDoc.
+///
+/// Markdown Javadoc uses three slashes per line instead of the /** ... */ by
+/// traditional JavaDoc. This format has some advantages:
+/// - it's easier to write, and to read in the code
+/// - bullet points like this are easier to format
+/// - etc.
+///
+/// @author Ian Darwin https://darwinsys.com/java
 ///
 // tag::main[]
 public class JavadocMdDemo extends JPanel {
@@ -69,6 +75,13 @@ public class JavadocMdDemo extends JPanel {
   }
   // end::snippet-int[]
 
+  ///
+  /// Creates a [java.lang.String] representation of this object.
+  /// @return A string describing the object.
+  public String toString() {
+	return "A JavaDocMdDemo instance";
+  }
+
   // tag::snippet-ext[]
   /**
    * A simple method. See this note:
@@ -79,11 +92,4 @@ public class JavadocMdDemo extends JPanel {
     System.out.printf("Demo value is %d\n", i);
   }
   // end::snippet-ext[]
-
-  ///
-  /// Creates a [java.lang.String] representation of this object.
-  /// @return a string.
-  public String toString() {
-	return "A JavaDocMdDemo instance";
-  }
 }
