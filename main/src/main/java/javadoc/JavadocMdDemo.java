@@ -8,20 +8,24 @@ import java.time.LocalDate;
 
 import javax.swing.JPanel;
 
-/**
- * JavadocDemo - a simple example to show JavaDoc comments.
- * @author Ian F. Darwin, https://darwinsys.com/
- */
+///
+/// JavadocMdDemo - a MarkDown example to show JavaDoc comments.
+///
+/// In Java 23, JEP 467 specifies [Markdown](https://en.wikipedia.org/wiki/Markdown)
+/// as an alternate implementation language to prepare Javadoc.
+/// It uses three slashes per line instead of the /** ... */ by
+/// traditional JavaDoc.
+///
 // tag::main[]
-public class JavadocDemo extends JPanel {
+public class JavadocMdDemo extends JPanel {
 
   private static final long serialVersionUID = 1L;
 
-  /**
-   * Construct the GUI
-   * @throws java.lang.IllegalArgumentException if constructed on a Sunday.
-   */
-  public JavadocDemo() {
+  ///
+  /// Construct the GUI
+  /// @throws java.lang.IllegalArgumentException if constructed on a Sunday.
+  ///
+  public JavadocMdDemo() {
     // We create and add a pushbutton here, 
     // but it doesn't do anything yet.
     Button b = new Button("Hello");
@@ -32,13 +36,12 @@ public class JavadocDemo extends JPanel {
     }
   }
 
-  /** paint() is an AWT Component method, called when the 
-   *  component needs to be painted. This one just draws colored
-   * boxes in the window.
-   *
-   * @param g A java.awt.Graphics that we use for all our
-   * drawing methods.
-   */
+  /// paint() is an AWT Component method, called when the 
+  /// component needs to be painted. This one just draws colored
+  /// boxes in the window.
+  ///
+  /// @param g A java.awt.Graphics that we use for all our
+  /// drawing methods.
   @Override
   public void paint(Graphics g) {
     // ...
@@ -76,4 +79,11 @@ public class JavadocDemo extends JPanel {
     System.out.printf("Demo value is %d\n", i);
   }
   // end::snippet-ext[]
+
+  ///
+  /// Creates a [java.lang.String] representation of this object.
+  /// @return a string.
+  public String toString() {
+	return "A JavaDocMdDemo instance";
+  }
 }
