@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 /// Try to show the difference between "standard" and "standalone"
 /// formats such as "M/L" in [java.time.format.DateTimeFormatter].
 ///
-public class DateFormatterLM {
+public class DateTimeFormatterLM {
 	public static void main(String[] args) {
 		System.out.println("L       M");
 		var then = LocalDate.of(2222,2,2);
