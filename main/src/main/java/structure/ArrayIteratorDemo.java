@@ -17,7 +17,7 @@ public class ArrayIteratorDemo {
 			System.out.println(s);
 		}
 		
-		System.out.println("Java 5, 6 ways");
+		System.out.println("Java 8 ways");
 		arrayIterator.forEach(s->System.out.println(s));
 		arrayIterator.forEach(System.out::println);
 	}

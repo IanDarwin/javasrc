@@ -2,6 +2,8 @@ package threads;
 
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /** Producer-Consumer in Java, for Java 5+ (JDK1.5) using
@@ -11,6 +13,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ProdConsQueues {
 
 	protected volatile boolean done = false;
+	protected ExecutorService threadPool =
+		Executors.newCachedThreadPool();
 
 	/** Inner class representing the Producer side */
 	class Producer implements Runnable {
@@ -73,13 +77,13 @@ public class ProdConsQueues {
 	ProdConsQueues(int nP, int nC) {
 		BlockingQueue<Object> myQueue = new LinkedBlockingQueue<>();
 		for (int i=0; i<nP; i++)
-			new Thread(new Producer(myQueue)).start();
+			threadPool.submit(new Producer(myQueue));
 		for (int i=0; i<nC; i++)
-			new Thread(new Consumer(myQueue)).start();
+			threadPool.submit(new Consumer(myQueue));
 	}
 
 	public static void main(String[] args)
-	throws IOException, InterruptedException {
+		throws IOException, InterruptedException {
 
 		// Start producers and consumers
 		int numProducers = 4;
@@ -91,6 +95,7 @@ public class ProdConsQueues {
 
 		// End of simulation - shut down gracefully
 		pc.done = true;
+		pc.threadPool.shutdown();
 	}
 }
 // end::main[]

@@ -44,12 +44,15 @@ public class HashMapWithRemoves {
 		// end::SafeRemoval[]
 
 		// tag::functional[]
-		// Alternate to just do the removals, without explicit looping
+		// Alternate 1 to just do the removals, without explicit looping
 		map.keySet().removeIf(key -> Set.of("Netscape", "Sun").contains(key));
-		// or
+
+		// Alternate 2 to do the removals without an explicit loop
 		map .entrySet()
 			.removeIf(entry -> Set.of("Netscape", "Sun")
 				.contains(entry.getKey()));
+
+		// Show the results.
 		map.entrySet().forEach(System.out::println);
 		// end::functional[]
 		// end::main[]

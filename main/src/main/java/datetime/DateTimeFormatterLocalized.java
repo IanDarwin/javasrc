@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.time.*;
 import java.time.format.*;
 
+// tag::main[]
 public class DateTimeFormatterLocalized {
 
 	public static void main(String[] args) { 
@@ -18,5 +19,4 @@ public class DateTimeFormatterLocalized {
 		}
 	}
 }
-
-
+// end::main[]

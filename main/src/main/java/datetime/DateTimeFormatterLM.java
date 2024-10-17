@@ -5,6 +5,7 @@ import java.time.format.*;
 import java.util.List;
 import java.util.stream.IntStream;
 
+// tag::main[]
 /// Try to show the difference between "standard" and "standalone"
 /// formats such as "M/L" in [java.time.format.DateTimeFormatter].
 ///
@@ -19,3 +20,4 @@ public class DateTimeFormatterLM {
 		});
 	}
 }
+// end::main[]
