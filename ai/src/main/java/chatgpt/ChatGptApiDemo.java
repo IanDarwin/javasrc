@@ -5,10 +5,14 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 import ai.Constants;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 /**
  * Calls ChatGPT API directly, using JSON-format requests and responses.
@@ -26,60 +30,56 @@ public class ChatGptApiDemo {
 			throws IOException, URISyntaxException {
 		String apiKey = Constants.getOpenAPIKey();
 		String model = "gpt-4o";
+		HttpClient client = HttpClient.newHttpClient();
 
-		URL obj = new URI(URL).toURL();
-		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-		connection.setRequestMethod("POST");
-		connection.setRequestProperty("Authorization", "Bearer " + apiKey);
-		connection.setRequestProperty("Content-Type", "application/json");
+		URI uri = new URI(URL);
 
 		// Send the request
 		var request = new ChatGptRequest(model, "user", prompt);
-		connection.setDoOutput(true);
-		OutputStreamWriter writer =
-			new OutputStreamWriter(connection.getOutputStream());
-		writer.write(request.toString());
-		writer.flush();
-		writer.close();
+		String json = request.toString();
+		System.out.println("Sending this: " + json);
+
+        HttpRequest webRequest = HttpRequest.newBuilder()
+				.uri(uri)
+				.header("Content-Type", "application/json")
+				.header("Authorization", "Bearer " + apiKey)
+				.POST(HttpRequest.BodyPublishers.ofString(json))
+				.build();
+		HttpResponse<String> response = null;
+		try {
+			response = client.send(webRequest, HttpResponse.BodyHandlers.ofString());
+			System.out.println("Response code: " + response.statusCode());
+			System.out.println("Response body: " + response.body());
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
 
 		// Get a response from ChatGPT
-		int n = connection.getResponseCode();
+		int n = response.statusCode();
 		switch(n) {
 			case 429:
 				System.out.println("No ChatGPT wants to listen to your chuntering.");
 				String rah = null;
-				if ((rah = connection.getHeaderField("retry-after")) != null) {
+				if ((rah = response.headers().map().get("retry-after").getFirst()) != null) {
 					System.out.println("Try again: " + rah);
 				}
-				try (var br =
-							 new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
-					while ((rah = br.readLine()) != null) {
-						System.out.println(rah);
-					}
-				}
+				System.out.println("Response body: " + response.body());
 				return null;
 			case 500: case 501: case 502:
-				System.out.println("GPT Server error " + n + " " + connection.getResponseMessage());
+				System.out.println("GPT Server error " + n + " " + response.body());
 				return null;
 			default:
 				System.out.println("HTTP Status was " + n);
 		}
-		var inputStream = connection.getInputStream();
 
 		if (DUMP_RAW) {
-			try (BufferedReader rdr =
-						 new BufferedReader(new InputStreamReader(inputStream))) {
-				String line;
-				while ((line = rdr.readLine()) != null) {
-					System.out.println(line);
-				}
-				return "Answer dumped, no JSON parsing done.";
-			}
+			System.out.println("Response body: " + response.body());
+			return "Answer dumped, no JSON parsing done.";
 		} else {
 			var mapper = new ObjectMapper();
 			// Guard against fields added as GPT evolves
 			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-			ChatGptResponse resp = mapper.readValue(inputStream, ChatGptResponse.class);
+			ChatGptResponse resp = mapper.readValue(response.body(), ChatGptResponse.class);
 			System.out.println(resp);
 			return resp.choices[0].message.content;
 		}
@@ -93,7 +93,7 @@ public class ChatGptApiDemo {
 		}
 	}
 
-	/** These could be a record not a class, but Jackson doesn't instantiate records */
+	/** These could be records or classes */
 	static class ChatGptResponse {
 		public String id;
 		public ChatGptChoice[] choices;
