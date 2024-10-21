@@ -40,6 +40,9 @@
 						<exclude>functional/StreamGatherer*.java</exclude>
 						<exclude>oo/StatementsBeforeSuper.java</exclude>
 
+						<!-- Class using first WITHDRAWN Preview feature -->
+						<exclude>strings/StringTemplateFmtProcessor.java</exclude>
+
 						<!-- javafx not included in some JDK distributions. -->
 						<exclude>javafx/*.java</exclude>
 
