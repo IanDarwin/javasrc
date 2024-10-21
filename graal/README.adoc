@@ -1,4 +1,15 @@
 = GraalVM Examples
 
-The examples in this directory require use of GraalVM; they will not work
+Graal is a separate JVM from the standard JDK version of Java.
+As such, not everything works the same!
+
+The examples in this directory require use of GraalVM; they will probably not work
 in a standard JVM or JDK!!
+
+Note that with Java 21, the Graal team dropped the previous "gu"
+installer in favor of using Maven/Gradle to add support for
+polyglot languages (e.g., ruby, python). This project has been
+updated; see the depenencies in the _pom.xml_ file.
+For a more involved example, see https://github.com/graalvm/polglot-embedding-demo.
+For background on these changes, see
+https://medium.com/graalvm/truffle-unchained-13887b77b62c[].

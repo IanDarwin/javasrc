@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.darwinsys.javasrc</groupId>
+    <artifactId>graaldemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>24</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+		<graalvm.version>24.1.1</graalvm.version>
+	</properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>polyglot</artifactId>
+            <version>${graalvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>js</artifactId>
+            <version>${graalvm.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>python</artifactId>
+            <version>${graalvm.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency> <!-- all tools we include in Oracle GraalVM --> 
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>tools</artifactId>
+            <version>${graalvm.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>22</source>
+					<target>22</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
