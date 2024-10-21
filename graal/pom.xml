@@ -19,6 +19,7 @@
 		<graalvm.version>24.1.1</graalvm.version>
 	</properties>
 
+	<!-- tag::language-packs[] -->
     <dependencies>
         <dependency>
             <groupId>org.graalvm.polyglot</groupId>
@@ -37,13 +38,14 @@
             <version>${graalvm.version}</version>
             <type>pom</type>
         </dependency>
-        <dependency> <!-- all tools we include in Oracle GraalVM --> 
+        <dependency>
             <groupId>org.graalvm.polyglot</groupId>
             <artifactId>tools</artifactId>
             <version>${graalvm.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
+	<!-- end::language-packs[] -->
 
 	<build>
 		<plugins>

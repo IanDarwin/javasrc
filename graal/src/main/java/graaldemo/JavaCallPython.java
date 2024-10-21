@@ -1,6 +1,6 @@
 package graaldemo;
 
-// tag::main[]:
+// tag::main[]
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Value;
 
