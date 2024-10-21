@@ -58,7 +58,7 @@ public class ReadersWriterDemo {
 						}
 						
 						try {
-							Thread.sleep(((long)(Math.random()* 1000)));
+							Thread.sleep(((long)(Math.random() * 1000)));
 						} catch (InterruptedException ex) {
 							// nothing to do
 						}
@@ -74,8 +74,8 @@ public class ReadersWriterDemo {
 						theData.voteFor(
 							// Vote for random candidate :-)
 							// Performance: should have one PRNG per thread.
-							(((int)(Math.random()*
-							theData.getCandidateCount()))));
+							(((int)(Math.random() *
+								theData.getCandidateCount()))));
 					} finally {
 						lock.writeLock().unlock();
 					}

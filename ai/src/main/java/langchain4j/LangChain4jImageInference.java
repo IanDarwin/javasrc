@@ -35,13 +35,13 @@ public class LangChain4jImageInference {
 				.build();
 
 		var fileName = "mystery-image.png";
-        byte[] imageData = null;
-        try {
-            imageData = Files.readAllBytes(Path.of(fileName));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Image image = Image.builder()
+		byte[] imageData = null;
+		try {
+			imageData = Files.readAllBytes(Path.of(fileName));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		Image image = Image.builder()
 				.mimeType("image/png")
 				.base64Data(Base64.getEncoder().encodeToString(imageData))
 				.build();

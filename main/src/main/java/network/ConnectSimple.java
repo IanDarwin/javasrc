@@ -11,7 +11,8 @@ public class ConnectSimple {
 
 		try (Socket sock = new Socket("suggestqueries.google.com", 80);
 			PrintStream pout = new PrintStream(sock.getOutputStream());
-			BufferedReader is = new BufferedReader(new InputStreamReader(sock.getInputStream()))) {
+			BufferedReader is = 
+				new BufferedReader(new InputStreamReader(sock.getInputStream()))) {
 
 			pout.println("GET /complete/search?client=firefox&q=darwin HTTP/1.0\r");
 			pout.println("\r");

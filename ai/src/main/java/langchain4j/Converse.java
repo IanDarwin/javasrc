@@ -15,8 +15,8 @@ public class Converse {
 
 	public static void main(String[] args) { 
 
-        String apiKey = Constants.getOpenAPIKey();
-        ChatLanguageModel model = OpenAiChatModel.withApiKey(apiKey);
+		String apiKey = Constants.getOpenAPIKey();
+		ChatLanguageModel model = OpenAiChatModel.withApiKey(apiKey);
 
 		Chatterer chatter = AiServices.builder(Chatterer.class)
 			.chatLanguageModel(model)

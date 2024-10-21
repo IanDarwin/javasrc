@@ -79,7 +79,8 @@ public class ChatGptApiDemo {
 			var mapper = new ObjectMapper();
 			// Guard against fields added as GPT evolves
 			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-			ChatGptResponse resp = mapper.readValue(response.body(), ChatGptResponse.class);
+			ChatGptResponse resp =
+				mapper.readValue(response.body(), ChatGptResponse.class);
 			System.out.println(resp);
 			return resp.choices[0].message.content;
 		}
