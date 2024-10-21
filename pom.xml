@@ -17,13 +17,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<javase.version>21</javase.version>	<!-- DO NOT COMMIT - use 22 -->
+		<javase.version>23</javase.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
 		<javaee.version>8.0</javaee.version>
-		<darwinsys-api.version>1.8.3-SNAPSHOT</darwinsys-api.version>
+		<darwinsys-api.version>1.9.0-SNAPSHOT</darwinsys-api.version>
 		<!-- Only used in some modules, worth defining here anyway -->
 		<darwinsys-ee.version>0.3.9</darwinsys-ee.version>
 		<junit4.version>[4.13.1,)</junit4.version>
