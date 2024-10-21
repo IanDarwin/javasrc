@@ -20,20 +20,20 @@ public class FormatterDemo {
 		// N$ - OPTIONAL parameter number (1-based) after the format code
 		// N - field width
 		// L - format letter (d: decimal(int); f: float; s: general; many more)
-		// For the full(!) story, see javadoc for java.util.Formatter.
 
 		// Most general (cumbersome) way of proceding.
 		Formatter fmtr = new Formatter();
+		// The format() method returns a Formatter, so use Object
 		Object result = fmtr.format("%1$04d - the year of %2$f", 1956, Math.PI);
 		System.out.println(result);
 		fmtr.close();
 
 		// Shorter way using static String.format(), default parameter numbering.
-		Object stringResult = "%04d - the year of %f".formatted(1956, Math.PI);
+		String stringResult = "%04d - the year of %f".formatted(1956, Math.PI);
 		System.out.println(stringResult);
 
 		// A shorter way using PrintStream/PrintWriter.format, more in line with
-		// other languages. But this way you should provide the newline delimiter 
+		// other languages. Using this way, you should provide the newline delimiter 
 		// using %n (rather than \n as that is platform-dependent!).
 		System.out.printf("%04d - the year of %f%n", 1956, Math.PI);
 
@@ -48,7 +48,7 @@ public class FormatterDemo {
 		fmt2.close();
 
 		String result2 = Files.readString(Path.of(TMPFILE));
-		System.out.print("Formatted string is: " + result2);
+		System.out.print("String from file is: " + result2);
 	}
 }
 // end::main[]

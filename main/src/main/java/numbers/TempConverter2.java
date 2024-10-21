@@ -7,6 +7,8 @@ package numbers;
 // tag::main[]
 public class TempConverter2 extends TempConverter {
 
+	public static final String SEP = "-----------------";
+
 	public static void main(String[] args) {
 		TempConverter t = new TempConverter2();
 		t.start();
@@ -16,17 +18,18 @@ public class TempConverter2 extends TempConverter {
 
 	@Override
 	protected void print(double f, double c) {
-		System.out.printf("%6.2f %6.2f%n", f, c);
+		System.out.printf("%6.2f\u00B0F %6.2f\u00B0C%n", f, c);
 	}
 
 	@Override
 	protected void start() {
-		System.out.println("Fahr    Centigrade");
+		System.out.println("Fahr      Celsius");
+		System.out.println(SEP);
 	}
 
 	@Override
 	protected void end() {
-		System.out.println("-------------------");
+		System.out.println(SEP);
 	}
 }
 // end::main[]

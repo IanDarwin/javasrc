@@ -1,16 +1,15 @@
 // tag::main[]
-/*
- * This is a C program that calls Java code.
- * This could be used as a model for building Java into an
- * existing application as an extention language, for example.
- */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <jni.h>
 
-int
-main(int argc, char *argv[]) {
+/*
+ * This is a C program that calls Java code.
+ * This could be used as a model for building Java into an
+ * existing application as an extention language, for example.
+ */
+int main(int argc, char *argv[]) {
 	int i;
 	JavaVM *jvm;		/* The Java VM we will use */
 	JNIEnv *myEnv;		/* pointer to native environment */
@@ -49,15 +48,13 @@ main(int argc, char *argv[]) {
 	}
 
 	/* Since we're calling main, must pass along the command line arguments,
-	 * in the form of Java String array
-	 */
+	 * in the form of Java String array */
 	if ((stringClass = (*myEnv)->FindClass(myEnv, "java/lang/String")) == NULL){
 		fprintf(stderr, "get of String class failed!!\n");
 		exit(1);
 	}
 
-	/* make an array of Strings, subtracting 1 for progname & 1 for the
-	 * java class name */
+	/* make an array of Strings, - 1 for progname & 1 for the class name */
 	if ((args = (*myEnv)->
 			NewObjectArray(myEnv, argc-2, stringClass, NULL))==NULL) {
 		fprintf(stderr, "Create array failed!\n");

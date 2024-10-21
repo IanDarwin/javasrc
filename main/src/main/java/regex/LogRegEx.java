@@ -66,6 +66,6 @@ public class LogRegEx {
 		if (!matcher.group(9).equals("-"))
 			System.out.println("Referer: " + matcher.group(9));
 		System.out.println("User-Agent: " + matcher.group(10));
-}
+	}
 }
 // end::main[]

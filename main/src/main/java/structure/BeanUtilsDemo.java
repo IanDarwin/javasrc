@@ -1,6 +1,7 @@
 package structure;
 
 import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -19,9 +20,10 @@ public class BeanUtilsDemo {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		
+
+		LocalDate d = LocalDate.now();
 		@SuppressWarnings("unchecked")
-		Map<String,Object> m = BeanUtils.describe(c);
+		Map<String,Object> m = BeanUtils.describe(d);
 		printMap(m);
 				
 		System.out.println("----------------------------------");

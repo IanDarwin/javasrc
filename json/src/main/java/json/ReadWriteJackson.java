@@ -1,10 +1,9 @@
 package json;
 
+// tag::main[]
 import java.io.IOException;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-// tag::main[]
 public class ReadWriteJackson {
 
 

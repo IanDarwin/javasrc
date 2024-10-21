@@ -51,11 +51,12 @@ public final class Matcher {
 }
 
 /* String, showing only the RE-related methods */
-public final class String {
+public final class java.lang.String {
 	public boolean matches(String regex);
 	public String replaceFirst(String regex, String newStr);
 	public String replaceAll(String regex, String newStr);
 	public String[] split(String regex);
 	public String[] split(String regex, int max);
+	...
 }
 // end::main[]

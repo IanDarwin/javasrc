@@ -1,9 +1,9 @@
 package logging;
 
+// tag::main[]
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// tag::main[]
 public class Log4JLambda {
 
 	private static Logger myLogger = LogManager.getLogger();

@@ -1,8 +1,8 @@
 package logging;
 
+// tag::main[]
 import java.util.logging.Logger;
 
-// tag::main[]
 public class JulLogDemo {
 	public static void main(String[] args) {
 

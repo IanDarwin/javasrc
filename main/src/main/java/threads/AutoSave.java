@@ -34,7 +34,7 @@ public class AutoSave implements Runnable {
 
 	// Not shown:
 	// 1) saveFile() must now be synchronized.
-	// 2) method that shuts down main program be synchronized on *SAME* object
+	// 2) method that shuts down main program must be synchronized on *SAME* object
 }
 
 /** Local copy of FileSaver interface, for compiling AutoSave demo. */

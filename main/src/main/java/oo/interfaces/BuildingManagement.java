@@ -19,7 +19,7 @@ public class BuildingManagement {
 	 */
 	public void goodNight() {
 		things.forEach(obj -> {
-			if (obj instanceof PowerSwitchable switchable)
+			if (obj instanceof PowerSwitchable switchable) // Java 14 way
 				switchable.powerDown();
 			});
 	}

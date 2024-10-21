@@ -17,12 +17,13 @@ public class Array2  {
         LocalDateTime c;
         while ((c=source.getDate()) != null) {
 
+			// Sub-optimal: give up
             // if (nDates >= dates.length) {
             //     throw new RuntimeException(
             //         "Too Many Dates! Simplify your life!!");
             // }
 
-            // better: reallocate, making data structure dynamic
+            // Better: reallocate, making data structure dynamic
             if (nDates >= dates.length) {
                 LocalDateTime[] tmp = 
                     new LocalDateTime[dates.length * GROW_FACTOR];

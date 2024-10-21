@@ -8,15 +8,12 @@ import java.time.format.DateTimeFormatter;
  * Tutorial/Example of LocalDate and DateTimeFormatter formatting
  */
 // tag::main[]
-public class DateFormatter {
+public class DateTimeFormatterDemo {
 	public static void main(String[] args) {
 		
 		// Format a date ISO8601-like but with slashes instead of dashes
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/LL/dd");
 		System.out.println(df.format(LocalDate.now()));
-		
-		// Parse a String to a date using the same formatter
-		System.out.println(LocalDate.parse("2014/04/01", df));
 		
 		// Format a ZonedDateTime without timezone information
 		DateTimeFormatter nTZ =

@@ -22,6 +22,7 @@ public class DateParse {
 		// end::part1[]
 		
 		// tag::part2[]
+		// You can also parse with any DateTimeFormatter that matches your input
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd MMM uuuu");
 		String anotherDate = "27 Jan 2027";
 		LocalDate random = LocalDate.parse(anotherDate, df);

@@ -39,7 +39,7 @@ public class ExecDemoWait {
 		try {
 			p.waitFor();	// wait for process to complete
 		} catch (InterruptedException e) {
-			System.err.println(e);	// "Can'tHappen"
+			System.err.println(e);	// "Can't Happen"
 			return;
 		}
 		System.err.println("Process done, exit status was " + p.exitValue());

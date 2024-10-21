@@ -24,6 +24,8 @@ public class SimpleCalcStreamTok {
 	/** The name of a variable */
 	protected String variable;
 
+	// end::main[]
+
 	/* Driver - main program */
 	public static void main(String[] av) throws IOException {
 		if (av.length == 0)
@@ -62,6 +64,7 @@ public class SimpleCalcStreamTok {
 		this.out = out;
 	}
 
+	// tag::main[]
 	protected void doCalc() throws IOException {
 		int iType;
 		double tmp;
@@ -113,5 +116,5 @@ public class SimpleCalcStreamTok {
 	void clearStack() {
 		s.removeAllElements();
 	}
+	// end::main[]
 }
-// end::main[]
