@@ -1,7 +1,7 @@
 package graaldemo;
 
 import java.io.*;
-import java.util.stream.*;
+
 import org.graalvm.polyglot.*;
 
 /**
@@ -9,16 +9,11 @@ import org.graalvm.polyglot.*;
  */
 public class JavaCallJS {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
-		try (BufferedReader reader = 
-			new BufferedReader(new InputStreamReader(System.in));
-			Context context = Context.create("js");) {
-		 
-			Value parse = context.eval("js", "JSON.parse");
-			Value stringify = context.eval("js", "JSON.stringify");
-			Value result = context.eval("js", "(2 + 2).toString()");
-			System.out.println(result.asString());
-		}
+		Context context = Context.create("js");
+		Value result = context.eval("js", "2 + 2");
+		int i = result.asInt();
+		System.out.println(i);
 	}
 }
