@@ -30,7 +30,8 @@ public class StringReverse {
 
 		// tag::list-reversed[]
 		// The easier way (Java 21+, no temporary variables)
-		System.out.println(String.join(" ",List.of(sample.split("\\s")).reversed()));
+		System.out.println(String.join(" ",
+			List.of(sample.split("\\s")).reversed()));
 		// end::list-reversed[]
 	}
 }
