@@ -13,14 +13,14 @@ public class StringReverse {
 		String sample = "Father Charles Goes Down And Ends Battle";
 
 		// An older way
-		// Put it in the stack frontwards
+		// Put it in the stack frontward
 		Stack<String> myStack = new Stack<>();
 		var forward = sample.split("\\s");
 		for (String str : forward) {
 			myStack.push(str);
 		}
 
-		// Print the stack backwards
+		// Print the stack backward
 		while (!myStack.empty()) {
 			System.out.print(myStack.pop());
 			System.out.print(' ');	// inter-word spacing
