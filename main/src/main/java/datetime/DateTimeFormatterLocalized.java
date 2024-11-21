@@ -12,9 +12,11 @@ public class DateTimeFormatterLocalized {
 
 		var dt = ZonedDateTime.now();
 
-		for (Locale l : List.of(Locale.CANADA, Locale.FRANCE, Locale.UK, Locale.TAIWAN)) {
+		for (Locale l :
+			List.of(Locale.CANADA, Locale.FRANCE, Locale.UK, Locale.TAIWAN)) {
 			Locale.setDefault(l);
-			DateTimeFormatter f = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+			DateTimeFormatter f = 
+				DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
 			System.out.printf(
 				"In Locale %s, date is %s\n",Locale.getDefault(), f.format(dt));
 		}
