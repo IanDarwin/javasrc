@@ -7,7 +7,7 @@ import java.util.concurrent.RecursiveTask;
 
 // tag::main[]
 /**
- * Demonstrate the Fork-Join Framework to average a large array.
+ * Demonstrate the Fork/Join Framework to average a large array.
  * Running this on a multi-core machine as e.g., 
  * $ time java threads.RecursiveTaskDemo
  * shows that the CPU time is always greater than the elapsed time,

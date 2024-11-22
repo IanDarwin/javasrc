@@ -5,7 +5,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
 // tag::main[]
-/** A trivial demonstration of the "Fork-Join" framework:
+/** A trivial demonstration of the "Fork/Join" framework:
  * square a bunch of numbers using RecursiveAction.
  * We use RecursiveAction here b/c we don't need each
  * compute() call to return its result; the work is
