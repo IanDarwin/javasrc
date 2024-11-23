@@ -11,7 +11,7 @@ import javax.script.ScriptEngineManager;
 
 // tag::main[]
 /**
- * Scripting demo using Python (jython) to get a Java variable, print, and change it.
+ * Scripting demo using Python (Jython) to get a Java variable, print, and change it.
  * @author Ian Darwin
  */
 public class PythonFromJava {
@@ -30,7 +30,7 @@ public class PythonFromJava {
 		final Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
 		bindings.put("meaning", 42);
 		
-		// Let's run a python script stored on disk (well, on classpath):
+		// Let's run a Python script stored on disk (well, on classpath):
 		InputStream is =
 			PythonFromJava.class.getResourceAsStream("/" + PY_SCRIPTNAME);
 		if (is == null) {
