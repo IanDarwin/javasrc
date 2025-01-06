@@ -11,7 +11,7 @@ public class RestClientURLDemo {
 	public static void main(String[] args) throws Exception {
 		HttpURLConnection conn = (HttpURLConnection)
 			URI.create(HttpClientDemo.urlString +
-				HttpClientDemo.keyword).toURL()
+				HttpClientDemo.searchString).toURL()
 				.openConnection();
 		try (BufferedReader is =
 			new BufferedReader(

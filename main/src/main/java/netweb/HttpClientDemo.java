@@ -18,7 +18,7 @@ public class HttpClientDemo {
 
 	public static String urlString = 
 		"https://suggestqueries.google.com/complete/search?client=firefox&q=";
-	public static String input = "darwin";
+	public static String searchString = "darwin";
 
 	public static void main(String[] args)
 		throws IOException, InterruptedException {
@@ -35,7 +35,7 @@ public class HttpClientDemo {
 		// Build the HttpRequest object to "GET" the urlString
 		HttpRequest req =
 			HttpRequest.newBuilder(URI.create(urlString + 
-				URLEncoder.encode(input, StandardCharsets.UTF_8)))
+				URLEncoder.encode(searchString, StandardCharsets.UTF_8)))
 			.header("User-Agent", "Ministry of Silly Walks")
 			.GET()
 			.build();
