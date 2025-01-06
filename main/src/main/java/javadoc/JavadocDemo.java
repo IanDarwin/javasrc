@@ -8,11 +8,11 @@ import java.time.LocalDate;
 
 import javax.swing.JPanel;
 
+// tag::main[]
 /**
  * JavadocDemo - a simple example to show JavaDoc comments.
  * @author Ian F. Darwin, https://darwinsys.com/
  */
-// tag::main[]
 public class JavadocDemo extends JPanel {
 
   private static final long serialVersionUID = 1L;
