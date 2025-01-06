@@ -19,6 +19,14 @@
 	<url>https://javacook.darwinsys.com</url>
 	<description>Code Examples for the O'Reilly Java Cookbook</description>
 
+	<properties>
+		<javase.version>21</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+	</properties>
+
 	<dependencies>
 
 		<!-- Dependencies for using Spock -->
