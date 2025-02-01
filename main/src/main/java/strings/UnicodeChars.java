@@ -24,5 +24,14 @@ public class UnicodeChars {
 		}
 		System.out.println("Accumulated characters are " + b);
 		// end::main[]
+
+		// tag::bigChars[]
+		// Note: characters above 0xffff need special handling
+		// Let's show Santa (0x1f385) + Star (0x2600):
+		int[] codePoints = {0x1f385, 0x2600};
+		String faceAndStar = new String(codePoints, 0, codePoints.length);
+		System.out.println(faceAndStar);	// "🎅☀"
+		// end::bigChars[]
+
 	}
 }
