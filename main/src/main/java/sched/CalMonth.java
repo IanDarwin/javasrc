@@ -1,6 +1,5 @@
 package sched;
 
-// $Id$
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -49,6 +48,7 @@ public class CalMonth extends JPanel implements DateSelectedListener {
 	/** Construct a CalMonth, starting with today. Can not collapse
 	 * into a "this(...)" constructor since you can't call calendar.get()
 	 * before calling super(). Been there. Done that. Didn't work :-)
+	 * XXX Revisit when "code before super" in Java 22+ out of preview.
 	 */
 	CalMonth(CalEventMgr cm) {
 		super();
