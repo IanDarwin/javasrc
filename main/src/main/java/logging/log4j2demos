@@ -5,10 +5,13 @@
 # under maven project structure in the Javasrc project.
 # Use elsewhere may require tweaking of some settings.
 
+# Make sure this agrees with top-level parent pom
+V=2.17.1
+
 build=../../../../target/classes
 log4j2_jar=\
-${HOME}/.m2/repository/org/apache/logging/log4j/log4j-api/2.13.0/log4j-api-2.13.0.jar:\
-${HOME}/.m2/repository/org/apache/logging/log4j/log4j-core/2.13.0/log4j-core-2.13.0.jar
+${HOME}/.m2/repository/org/apache/logging/log4j/log4j-api/${V}/log4j-api-${V}.jar:\
+${HOME}/.m2/repository/org/apache/logging/log4j/log4j-core/${V}/log4j-core-${V}.jar
 
 echo "==> Log4JDemo"
 java -classpath ".:${build}:${log4j2_jar}" logging.Log4JDemo
