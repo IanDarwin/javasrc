@@ -213,11 +213,9 @@
 			<version>2.4.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sample</groupId>
-			<artifactId>nashorn</artifactId>
-			<version>15.4</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/nashorn-core-15.4.jar</systemPath>
+			<groupId>org.openjdk.nashorn</groupId>
+			<artifactId>nashorn-core</artifactId>
+			<version>15.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.python</groupId>
