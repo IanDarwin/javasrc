@@ -19,8 +19,8 @@ class WriteZipFile {
 		zf.putNextEntry(new ZipEntry("foo.bar.txt"));
 		zf.write("Hello\n".getBytes());
 		zf.putNextEntry(new ZipEntry("WriteZipFile.java"));
-		String source = Files.readString(Path.of("src/main/java/io/WriteZipFile.java"));
-		zf.write(source.getBytes());
+		Files.copy(
+				Path.of("main/src/main/java/io/WriteZipFile.java"), zf);
 		zf.closeEntry();
 		zf.close();
 		System.out.println("Written to " + FILENAME);
