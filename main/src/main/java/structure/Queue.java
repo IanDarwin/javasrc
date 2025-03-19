@@ -10,7 +10,7 @@ public class Queue<T> extends LinkedList<T> {
 		addLast(o);
 	}
 
-	public Object q_take() {
+	public T q_take() {
 		return removeFirst();
 	}
 
@@ -22,7 +22,7 @@ public class Queue<T> extends LinkedList<T> {
 		return size() == 0;
 	}
 
-	public Object q_check() {
+	public T q_check() {
 		return getFirst();
 	}
 
