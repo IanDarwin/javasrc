@@ -27,11 +27,6 @@ import domain.User;
  * to be able to do ANYTHING to the database,
  * to go beyond, and to repair any errors introduced
  * by bugs in the UserDB code and/or queries. :-)
- *
- * If using InstantDB, therefore, you MUST NOT RUN THIS PROGRAM
- * while users have access to the system, or the database will
- * get worse instead of better!
- *
  */
 public class JDAdmin extends JFrame {
 
