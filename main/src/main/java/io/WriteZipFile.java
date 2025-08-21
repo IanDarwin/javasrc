@@ -20,7 +20,7 @@ class WriteZipFile {
 		zf.write("Hello\n".getBytes());
 		zf.putNextEntry(new ZipEntry("WriteZipFile.java"));
 		Files.copy(
-				Path.of("main/src/main/java/io/WriteZipFile.java"), zf);
+				Path.of("WriteZipFile.java"), zf);
 		zf.closeEntry();
 		zf.close();
 		System.out.println("Written to " + FILENAME);
