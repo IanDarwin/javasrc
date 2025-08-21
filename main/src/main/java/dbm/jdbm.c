@@ -5,12 +5,10 @@
 #include <dbm.h>	/* system directory - for UNIX DBM library information */
 #include <string.h>	/* needed for strerror */
 
-#ident	"$Id$"
-
 extern int errno;
 
 /*
- * This is the native implentation of our Java-DBM hookup.
+ * This is the native implementation of our Java-DBM hookup.
  */
 
 /* Convenience routine: make datum into jbyteArray */
