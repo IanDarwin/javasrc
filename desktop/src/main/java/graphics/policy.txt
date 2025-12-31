@@ -1,7 +1,0 @@
-grant codeBase "http://localhost:8080/tmp/" {
-	permission java.io.FilePermission "/tmp/*", "read,write";
-};
-grant codeBase "file:///C:/" {
-  permission java.net.SocketPermission "server:80", "connect";
-};
-

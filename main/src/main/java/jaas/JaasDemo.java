@@ -51,9 +51,6 @@ public class JaasDemo {
 		System.setProperty("java.security.auth.login.config",
 				LOGINCONFIG_FILENAME);
 
-		System.setProperty("java.security.policy",
-				"permissions.txt");
-
 		new JaasDemo();
 	}
 
