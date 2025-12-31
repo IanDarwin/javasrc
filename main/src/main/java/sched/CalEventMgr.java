@@ -1,6 +1,9 @@
 package sched;
 
-/** Generic(?) Event Handling for the DateSelectedListeners */
+/** 
+ * Generic(?) Event Handling for the DateSelectedListeners
+ * Simple implementation of Observer pattern.
+ */
 import java.util.List;
 import java.util.Vector;
 public class CalEventMgr {

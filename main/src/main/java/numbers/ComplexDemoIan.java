@@ -5,6 +5,8 @@ package numbers;
  * see ComplexTest for actual unit tests.
  */
 // tag::main[]
+import com.darwinsys.numbers.Complex;
+
 public class ComplexDemoIan {
 	/** The program */
 	public static void main(String[] args) {
