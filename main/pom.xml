@@ -32,6 +32,10 @@
 					</compilerArgs>
 					<excludes>
 
+						<!-- Classes that depend on the shifting sands -->
+						<exclude>threads/ScopedValueDemo1.java</exclude>
+						<exclude>threads/StructuredTaskScopedemo.java</exclude>
+
 						<!-- Classes that need Java 23 -->
 						<exclude>starting/HelloWorld23.java</exclude>
 
