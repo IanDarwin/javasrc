@@ -1,6 +1,7 @@
 package regex;
 
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.io.IOException;
 
 /**

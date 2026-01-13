@@ -1,6 +1,6 @@
 package strings;
 
-import org.apache.commons.text.*;
+import org.apache.commons.text.WordUtils;
 
 /**
  * Control case.

@@ -1,7 +1,8 @@
 package threads;
 
-import java.util.concurrent.*;
-import java.util.stream.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 public class VirtualThreadsDemo {
 

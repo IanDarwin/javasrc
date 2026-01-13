@@ -1,6 +1,6 @@
 package lang;
 
-import java.io.*;
+import java.io.IOException;
 
 /** 
  * Demo to show what happens if you try to add an exception to a method

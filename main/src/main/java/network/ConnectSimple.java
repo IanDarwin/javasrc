@@ -2,7 +2,9 @@
 
 // tag::main[]
 import java.net.Socket;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 
 /* Client with NO error handling */
 public class ConnectSimple {

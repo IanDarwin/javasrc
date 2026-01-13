@@ -2,8 +2,8 @@ package netweb;
 
 import com.sun.net.httpserver.SimpleFileServer;
 import static com.sun.net.httpserver.SimpleFileServer.OutputLevel;
-import java.net.*;
-import java.nio.file.*;
+import java.net.InetSocketAddress;
+import java.nio.file.Path;
 
 public class SimpleServerDemo {
 

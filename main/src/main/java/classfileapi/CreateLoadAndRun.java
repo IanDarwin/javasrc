@@ -1,10 +1,13 @@
 package classfileapi;
 
-import java.io.*;
-import java.lang.classfile.*;
-import java.lang.constant.*;
-import java.lang.reflect.*;
-import java.nio.file.*;
+import java.io.PrintStream;
+import java.lang.classfile.ClassFile;
+import java.lang.constant.ClassDesc;
+import java.lang.constant.ConstantDescs;
+import java.lang.constant.MethodTypeDesc;
+import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 // tag::main[]
 import static java.lang.constant.ConstantDescs.*;

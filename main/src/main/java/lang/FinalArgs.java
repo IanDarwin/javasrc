@@ -1,7 +1,5 @@
 package lang;
 
-import java.time.LocalDate;
-
 /**
  * Experiment with "final" args to functions (new in 1.1)
  */

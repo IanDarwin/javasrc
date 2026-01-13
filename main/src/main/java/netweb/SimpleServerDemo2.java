@@ -3,11 +3,9 @@ package netweb;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.SimpleFileServer;
-import static com.sun.net.httpserver.SimpleFileServer.OutputLevel;
-import java.io.*;
-import java.net.*;
-import java.nio.file.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
 
 // tag::main[]
 public class SimpleServerDemo2 {

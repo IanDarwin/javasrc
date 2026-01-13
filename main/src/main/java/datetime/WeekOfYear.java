@@ -1,7 +1,7 @@
 package datetime;
 
-import java.time.*;
-import java.time.temporal.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 
 /**
  * Compute the week-of-year for any date

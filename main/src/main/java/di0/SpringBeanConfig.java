@@ -1,6 +1,5 @@
 package di0;
 
-import jakarta.enterprise.inject.Produces;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

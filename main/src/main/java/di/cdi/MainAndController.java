@@ -1,7 +1,5 @@
 package di.cdi;
 
-import javax.enterprise.inject.Instance;
-
 import org.jboss.weld.environment.se.Weld;
 
 // tag::main[]

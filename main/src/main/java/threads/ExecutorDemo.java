@@ -1,7 +1,8 @@
 package threads;
 
 import java.util.Random;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Simple demo of the Java5 Executor FixedThreadPool; start a number of threads, 

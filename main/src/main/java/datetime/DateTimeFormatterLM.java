@@ -1,8 +1,7 @@
 package datetime;
 
-import java.time.*;
-import java.time.format.*;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.IntStream;
 
 // tag::main[]

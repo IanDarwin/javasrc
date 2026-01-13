@@ -1,10 +1,8 @@
 package textproc;
 
-import java.util.*;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Stream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /** 
  * prep - output text file(s) one word per line, in "prep"aration

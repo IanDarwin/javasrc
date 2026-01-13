@@ -3,7 +3,8 @@ package otherlang;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.net.URL;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;

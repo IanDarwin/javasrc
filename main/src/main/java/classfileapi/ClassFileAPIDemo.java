@@ -1,9 +1,12 @@
 package classfileapi;
 
-import java.io.*;
-import java.lang.annotation.*;
+import java.io.IOException;
+import java.io.Serializable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.classfile.*;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * A quick demo of the Java 22 PREVIEW "ClassFile" mechanism, described in
