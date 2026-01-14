@@ -1,6 +1,7 @@
 package lang;
 
-import com.darwinsys.ianstuff.*;
+import com.darwinsys.ianstuff.X;
+import com.darwinsys.ianstuff.Y;
 
 /** Demo program using classes from a package. */
 public class UsePackage {
