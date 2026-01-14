@@ -13,6 +13,7 @@ import org.perl.inline.java.*;
  * <br/>
  * Does not run on its own -- for usage, see StringDistance.pl!
  */
+// EXPECT COMPILE ERROR as per the above
 // tag::main[]
 public class StringDistance extends InlineJavaPerlCaller {
   JFrame frame;           // visual container
