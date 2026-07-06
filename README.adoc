@@ -1,5 +1,5 @@
 :LTS:  21
-:LATEST:  22
+:LATEST:  25
 = JavaCook Source Files (javasrc)
 
 This is my assorted collection of (you guessed it) Java source.
@@ -10,17 +10,6 @@ https://jetbrains.com/idea[IntelliJ IDEA] IDE.
 Some modules may still build with the
 https://eclipse.org/[Eclipse] IDE;
 for those that don't, pull requests welcome.
-
-As of 2024-04-14, this does not work on Eclipse,
-even with the "Java 22 updater"
-(https://marketplace.eclipse.org/content/java-22-support-eclipse-2024-03-431[]).
-Their compiler
-fails to realize that "classless main" doesn't need (and isn't allowed to have)
-a package statement.
-This seems to be an Eclipse bug, and fails even with the source attribute set to
-22 and using a Java 22 JDK with "Preview" checked.
-Further, their library appears to be missing at least two methods in the FFI `Arena` class,
-causing `CallCFromJava` to fail to compile.
 
 == Maintenace Note
 
@@ -179,18 +168,13 @@ testing::
 
 * You MUST HAVE a current release of Java (see notes at beginning) to successfully compile this whole package.
 Sorry if you are on some relic platform that doesn't have current Java.
-Even https://openbsd.org[OpenBSD] has Java 21 (Thanks Kurt!).
+Even https://openbsd.org[OpenBSD] has Java 25 (Thanks Kurt!).
 Also sorry if your organization is stuck on an ancient Java due to application server issues.
 
-* I am using Eclipse for most of my development, and Maven for building, and Jenkins
-for automated building. The Ant scripts have been removed (except for a few in the ee module
-under _ejb2_ and _rmi_; the few that remain
-will someday get deleted, or converted to Maven exec:java configurations).
+* I am using IntelliJ Idea for most of my development, and Maven for building, and Jenkins
+for automated building. The Ant scripts have been removed.
 
 * Building with Maven 3.x works and tests pass.
-
-* Building with Eclipse tested with Eclipse 4.x; MUST HAVE "m2e" (free in the Eclipse Marketplace)
-Compiles and tests pass.
 
 * Building with other platforms? Good luck, but let me know if it works.
 
@@ -202,5 +186,5 @@ https://darwinsys.com/contact
 
 == Misc. ToDo
 
-CONSIDER Moving all "compilation error" methods in $js into "dontcompile/"
+CONSIDER Moving all "compilation error" demos in $js into new "dontcompile/" subdir
 
