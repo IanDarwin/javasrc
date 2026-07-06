@@ -26,12 +26,12 @@ Now in its fourth or fifth edition, this book consists of several hundred how-to
 each discussing a particular problem that devs have to code, how to solve it, and 
 illustrated with one or more code examples. 
 
-The Contents of the Fourth Edition looks like this:
+The Contents of the Fifth Edition looks like this:
 
 // Uses * not + because of what's at the end of this list.
-// Updated for JCB 4E; will need changes for 5E.
+// Updated for JCB 5E.
 * 1 Getting Started: Compiling and Running Java
-* 2 Interacting with the Environment
+* 2 Software Development, Maintenance & Testing.
 * 3 String and Things
 * 4 Pattern Matching with Regular Expressions
 * 5 Numbers
@@ -40,16 +40,17 @@ The Contents of the Fourth Edition looks like this:
 * 8 Object-oriented Techniques
 * 9 Functional Programming
 * 10 Input and Output
-* 11 Data Science and R
-* 12 Networking: Clients 
-* 13 Networking: Server-Side Java
-* 14 Processing JSON Data
-* 15 Packages and Packaging
-* 16 Threaded Java
+* 11 Threaded Java
+* 12 Data Science and R
+* 13 Machine Learning / Artificial Intelligence
+* 14 Networki Clients 
+* 15 Server-Side Java
+* 16 Processing JSON Data
 * 17 Reflection, or "A Class Named Class"
 * 18 Using Java with Other Languages
 * Afterword
 * Appendix: Java Then and Now
+* Index
 
 == Technical Issues Compiling This Code
 
