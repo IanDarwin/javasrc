@@ -15,6 +15,8 @@ class EasterTest {
 		2001,'2001-04-15'
 		2020,'2020-04-12'
 		2023,'2023-04-09'
+		2026,'2026-04-05'
+		2027,'2027-03-28'
 		""")
 	void convert(int year, String expected) {
 		assertEquals(expected, Easter.findHolyDay(year).toString());
